@@ -1,11 +1,133 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Education Hub — Tracks</title><meta name="description" content="Education Hub with Beginner, Intermediate and Advanced tracks."><link rel="stylesheet" href="styles.css"></head>
-<body><header class="header"><div class="container"><h1>Education Hub</h1><p class="kicker">Three tracks. Clear lessons. Zero hype.</p>
-<div class="navbar"><a href="beginner.html">Beginner</a><a href="intermediate.html">Intermediate</a><a href="advanced.html">Advanced</a></div></div></header>
-<main class="container"><div class="grid">
-<a href="beginner.html" class="card" style="display:block"><h3>Beginner</h3><p class="kicker">Learn market basics, order execution, risk and journaling.</p><p class="small">15 lessons</p></a>
-<a href="intermediate.html" class="card" style="display:block"><h3>Intermediate</h3><p class="kicker">Context: volatility, structure, testing, plan.</p><p class="small">15 lessons</p></a>
-<a href="advanced.html" class="card" style="display:block"><h3>Advanced</h3><p class="kicker">Robustness, execution, psychology, operations.</p><p class="small">15 lessons</p></a>
-</div>
-<div class="card"><h3>How to Use This Hub</h3><ul><li>Pick a track; complete lessons in order.</li><li>Do the exercises; mastery beats trivia.</li><li>Paper trade or use tiny size while learning.</li></ul></div>
-<div class="footer">For education only. No financial advice.</div></main></body></html>
+<!-- FILE: /index.html -->
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Learn about trading — SignalPilot Education</title>
+  <meta name="description" content="Short, practical guides that favor clarity over mysticism. Educational only—no P&L promises.">
+  <link rel="canonical" href="https://education.signalpilot.io/">
+  <meta name="theme-color" content="#05070d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Learn about trading — SignalPilot Education">
+  <meta property="og:description" content="Short, practical guides that favor clarity over mysticism. Educational only—no P&L promises.">
+  <meta property="og:url" content="https://education.signalpilot.io/">
+  <meta property="og:image" content="https://signalpilot.io/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Fonts (Option B) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Styles + JS -->
+  <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/">
+      <!-- inline logo (keeps repo asset‑light) -->
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>SignalPilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li>
+        <li><a href="https://signalpilot.io/#inside">What’s inside</a></li>
+        <li><a aria-current="page" href="/">Education</a></li>
+        <li><a href="https://docs.signalpilot.io/" target="_blank" rel="noopener">Docs</a></li>
+        <li><a href="https://signalpilot.io/#pricing">Pricing</a></li>
+        <li><a href="https://signalpilot.io/#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="header-ctls">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button>
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainnav">Menu ☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="badge">EDUCATION</span>
+      <h1 class="headline xl">Learn about trading</h1>
+      <p class="lead measure">Short, practical guides that favor clarity over mysticism. Educational only—no P&amp;L promises.</p>
+    </div>
+  </section>
+
+  <section class="mission">
+    <div class="wrap">
+      <div class="card">
+        <h2 class="headline md">Mission</h2>
+        <p>SignalPilot isn’t only a set of indicators. The goal is to help traders think clearly: set a <b>bias</b> (regime), confirm <b>participation</b> (flow), respect <b>structure</b> (levels/zones), and <b>time</b> entries with evidence—then size positions so a single trade can’t ruin you.</p>
+        <ul class="bullets">
+          <li><b>Method first.</b> Tools are only useful when a simple method ties them together.</li>
+          <li><b>Close‑confirmed data.</b> All examples and screenshots align with non‑repainting signals.</li>
+          <li><b>Survivorship &gt; hero trades.</b> Risk and sizing matter more than prediction.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid-sec">
+    <div class="wrap">
+      <div class="grid auto-300">
+        <!-- Post cards -->
+        <article class="card post">
+          <div class="kicker">Beginner</div>
+          <h3>A Beginner’s Guide to Technical Indicators</h3>
+          <p class="note">What indicators are (and aren’t), and how to combine a few without painting yourself into a corner.</p>
+          <a class="btn btn-primary btn-sm" href="/articles/beginners-guide-technical-indicators.html">Read the guide</a>
+        </article>
+
+        <article class="card post">
+          <div class="kicker">Foundation</div>
+          <h3>Price vs. Value: Regime before Entries</h3>
+          <p class="note">Why “which way is the wind blowing?” beats “where’s my arrow?”—and how to check it.</p>
+          <a class="btn btn-primary btn-sm" href="/articles/price-vs-value-regime-before-entries.html">Read the guide</a>
+        </article>
+
+        <article class="card post">
+          <div class="kicker">Momentum</div>
+          <h3>Momentum ≠ Trend</h3>
+          <p class="note">Stop asking one oscillator to do two jobs. Separate bias from impulse or you’ll fight the tape.</p>
+          <a class="btn btn-primary btn-sm" href="/articles/momentum-not-trend.html">Read the guide</a>
+        </article>
+
+        <article class="card post">
+          <div class="kicker">Risk</div>
+          <h3>Position Sizing 101: Risk per Trade &amp; R‑multiples</h3>
+          <p class="note">Size the bet, not the feeling. A 1R world keeps drawdowns survivable and learning cheap.</p>
+          <a class="btn btn-primary btn-sm" href="/articles/position-sizing-101.html">Read the guide</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <div class="card">
+        <h2 class="headline md">How to use this hub</h2>
+        <ol>
+          <li>Pick a track; complete lessons in order.</li>
+          <li>Do the exercises—mastery beats trivia.</li>
+          <li>Paper trade or use tiny size while learning.</li>
+        </ol>
+        <p class="note">Educational only. No financial advice.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<!-- Shared script -->
+<script src="/assets/edu.js"></script>
+</body>
+</html>
