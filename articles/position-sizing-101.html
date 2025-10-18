@@ -1,0 +1,95 @@
+<!-- FILE: /articles/position-sizing-101.html -->
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Position Sizing 101: Risk per Trade & R‑multiples — SignalPilot Education</title>
+  <meta name="description" content="Size the bet, not the feeling. Compute position size from account risk and stop distance; measure outcomes in R.">
+  <link rel="canonical" href="https://education.signalpilot.io/articles/position-sizing-101.html">
+  <meta name="theme-color" content="#05070d">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Position Sizing 101: Risk per Trade & R‑multiples">
+  <meta property="og:description" content="Size the bet, not the feeling. Compute position size from account risk and stop distance; measure outcomes in R.">
+  <meta property="og:url" content="https://education.signalpilot.io/articles/position-sizing-101.html">
+  <meta property="og:image" content="https://signalpilot.io/preview.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>SignalPilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li>
+        <li><a href="https://signalpilot.io/#inside">What’s inside</a></li>
+        <li><a href="/">Education</a></li>
+        <li><a href="https://docs.signalpilot.io/" target="_blank" rel="noopener">Docs</a></li>
+        <li><a href="https://signalpilot.io/#pricing">Pricing</a></li>
+        <li><a href="https://signalpilot.io/#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="header-ctls">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button>
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainnav">Menu ☰</button>
+    </div>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <span class="badge">Risk</span>
+      <h1 class="headline xl">Position Sizing 101: Risk per Trade &amp; R‑multiples</h1>
+      <div class="meta">Reading time ~9 min • Educational only</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+      <p>Good entries can’t save reckless sizing. Use a fixed <b>account risk</b> per trade (e.g., 0.5–1.0%) and compute size from your stop distance. Then evaluate outcomes in <b>R‑multiples</b> so different trades are comparable.</p>
+
+      <h2>Step 1 — pick account risk</h2>
+      <p>Choose a constant risk fraction. Example: 1% on a $10,000 account → <code>$100</code> risk per trade.</p>
+
+      <h2>Step 2 — define the stop from structure</h2>
+      <p>Stops live below/above structure (zone/anchor). Suppose your long entry is 50, stop is 48 → <code>$2</code> per share at risk.</p>
+
+      <h2>Step 3 — compute position size</h2>
+      <p>Position size = <code>AccountRisk / StopDistance</code>. From the example: <code>$100 / $2 = 50 shares</code>.</p>
+
+      <h2>Measure results in R</h2>
+      <ul>
+        <li>Risk (1R) = <code>$100</code> here.</li>
+        <li>Win of $250 = <code>+2.5R</code> regardless of symbol or timeframe.</li>
+        <li>Keep daily/weekly R‑drawdown limits to avoid death by churn.</li>
+      </ul>
+
+      <div class="callout"><b>Practice:</b> backtest your method on 20 trades. Force risk = 1R each time. Track average R and max drawdown in R. If the method only wins with oversized bets, it’s not a method.</div>
+    </div>
+
+    <aside class="toc" aria-label="On this page"></aside>
+  </div>
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/articles/momentum-not-trend.html">&larr; Previous</a>
+    <a class="btn btn-primary" href="/">Back to Education</a>
+  </div>
+</article>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script src="/assets/edu.js"></script>
+</body>
+</html>
