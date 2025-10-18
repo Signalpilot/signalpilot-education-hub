@@ -1,0 +1,123 @@
+<!-- FILE: /articles/beginners-guide-technical-indicators.html -->
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>A Beginner’s Guide to Technical Indicators — SignalPilot Education</title>
+  <meta name="description" content="What indicators measure, what they don’t, and how to combine a few without painting yourself into a corner.">
+  <link rel="canonical" href="https://education.signalpilot.io/articles/beginners-guide-technical-indicators.html">
+  <meta name="theme-color" content="#05070d">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A Beginner’s Guide to Technical Indicators">
+  <meta property="og:description" content="What indicators measure, what they don’t, and how to combine a few without painting yourself into a corner.">
+  <meta property="og:url" content="https://education.signalpilot.io/articles/beginners-guide-technical-indicators.html">
+  <meta property="og:image" content="https://signalpilot.io/preview.png">
+  <!-- Fonts + CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"A Beginner’s Guide to Technical Indicators","author":{"@type":"Organization","name":"SignalPilot"},"datePublished":"2025-10-18","description":"What indicators measure, what they don’t, and how to combine a few without painting yourself into a corner.","image":"https://signalpilot.io/preview.png","publisher":{"@type":"Organization","name":"SignalPilot","logo":{"@type":"ImageObject","url":"https://signalpilot.io/preview.png"}}}
+  </script>
+</head>
+<body>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>SignalPilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li>
+        <li><a href="https://signalpilot.io/#inside">What’s inside</a></li>
+        <li><a href="/">Education</a></li>
+        <li><a href="https://docs.signalpilot.io/" target="_blank" rel="noopener">Docs</a></li>
+        <li><a href="https://signalpilot.io/#pricing">Pricing</a></li>
+        <li><a href="https://signalpilot.io/#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="header-ctls">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button>
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainnav">Menu ☰</button>
+    </div>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <span class="badge">Beginner</span>
+      <h1 class="headline xl">A Beginner’s Guide to Technical Indicators</h1>
+      <div class="meta">Reading time ~10 min • Educational only</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+      <p><b>Working theory:</b> indicators are thermometers, not doctors. They measure something about price/volume; they don’t predict the future. The edge is in <em>process</em>—choosing a few tools that answer specific questions and combining them without double‑counting the same thing.</p>
+
+      <h2>What indicators actually measure</h2>
+      <p>Group them by the question they answer:</p>
+      <ul>
+        <li><b>Trend / regime:</b> moving averages (EMA50/100/200), slope, MACD. “Is price generally drifting up, down, or sideways?”</li>
+        <li><b>Momentum / impulse:</b> RSI, Stoch, MACD histogram. “How fast is it moving <em>right now</em>?”</li>
+        <li><b>Volatility:</b> ATR, Bollinger Bands. “How loud is the market?”</li>
+        <li><b>Participation / flow:</b> OBV, CVD, RVOL/PVA. “Is there real money behind the move?”</li>
+        <li><b>Structure / context:</b> higher‑highs/lows, swings, supply/demand, anchored VWAP/levels.</li>
+      </ul>
+
+      <h2>Where people go wrong</h2>
+      <ul>
+        <li><b>Redundancy:</b> three oscillators ≠ three confirmations. They’re often correlated.</li>
+        <li><b>Role confusion:</b> using RSI to decide trend, or a moving average crossover to time entries to the second.</li>
+        <li><b>Repainting traps:</b> anything that changes after the bar closes will lie to you in backtests.</li>
+      </ul>
+
+      <h2>A minimal, sane stack</h2>
+      <div class="callout">
+        <p><b>Bias:</b> 200‑EMA slope or MACD+ regime • <b>Participation:</b> PVA/OBV confirmation • <b>Structure:</b> SD zones & anchors • <b>Timing:</b> RSI Triad / SRSI+.</p>
+      </div>
+      <p>This keeps each tool in its lane. You can trade any market and timeframe with that skeleton.</p>
+
+      <h2>Starter checklist</h2>
+      <ul>
+        <li>Decide bias first. If regime is unclear, skip.</li>
+        <li>Require participation. No flow → no trade.</li>
+        <li>Place trades at structure, not in the void.</li>
+        <li>Use a fixed stop and size to risk ≤1R.</li>
+      </ul>
+
+      <h2>Practice: the Trend‑Dip play</h2>
+      <ol>
+        <li>Bias Up (MACD+ or EMA stack).</li>
+        <li>PVA prints Bull or EVR Climax through anchor.</li>
+        <li>Pullback into demand/VWAP area.</li>
+        <li>RSI Triad turns up; enter with stop below structure.</li>
+      </ol>
+
+      <blockquote><b>Reminder:</b> Educational only. These are methods to practice, not P&L promises.</blockquote>
+    </div>
+
+    <aside class="toc" aria-label="On this page"></aside>
+  </div>
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/">&larr; Back to Education</a>
+    <a class="btn btn-primary" href="/articles/price-vs-value-regime-before-entries.html">Next: Price vs. Value</a>
+  </div>
+</article>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script src="/assets/edu.js"></script>
+</body>
+</html>
