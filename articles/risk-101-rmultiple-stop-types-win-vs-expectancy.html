@@ -1,0 +1,35 @@
+<!doctype html><html lang="en" dir="ltr" data-theme="dark"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Risk 101: R-multiple, stop types, expectancy — SignalPilot Education</title>
+<meta name="description" content="Build a risk language: R, expectancy math, stop styles, and sequence risk. Guardrails that keep you solvent.">
+<meta name="sp-level" content="Beginner"><meta name="sp-order" content="6">
+<link rel="canonical" href="https://education.signalpilot.io/articles/risk-101-r-multiple-stop-types-expectancy.html">
+<meta name="theme-color" content="#05070d"><meta property="og:title" content="Risk 101: R-multiple, stop types, expectancy">
+<meta property="og:description" content="R, expectancy math, stop styles, and sequence risk.">
+<meta property="og:image" content="https://signalpilot.io/preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/edu.css"><script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script></head>
+<body>
+<div class="bg-stars" aria-hidden="true"></div><canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+<nav id="mainnav"><ul><li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li><li><a href="https://signalpilot.io/#inside">What’s inside</a></li><li><a href="/">Education</a></li><li><a href="https://docs.signalpilot.io/" target="_blank" rel="noopener">Docs</a></li><li><a href="https://signalpilot.io/#pricing">Pricing</a></li><li><a href="https://signalpilot.io/#faq">FAQ</a></li></ul></nav>
+<div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button><button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainnav">Menu ☰</button></div></div></header>
+
+<article class="article"><header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">Risk 101: R-multiple, stop types, win% vs. expectancy</h1><div class="meta">Reading time ~12–15 min • Educational only</div></div></header>
+<div class="wrap article-grid"><div class="prose">
+<p><b>R</b> is the dollars you lose if the stop hits. Expectancy <b>E</b> in R is <code>E = Win% × AvgWin − Loss% × AvgLoss</code>.</p>
+<h2>Math that matters</h2>
+<p>Example: 45% × 1.9R − 55% × 1.0R = <b>+0.305R</b>. Lower win% can still win if payoffs are bigger.</p>
+<h2>Stop styles</h2>
+<ul><li><b>Hard stop</b> (resting order)</li><li><b>Soft stop</b> (alert then market/limit)</li><li><b>Time stop</b> (good-until, close the trade if N bars)</li></ul>
+<h2>Sequence risk</h2>
+<p>Losses cluster. Keep <b>r</b> small (0.25–1.0%). If drawdown hits 5R, halve size and only take A+ setups until back above water.</p>
+<h2>Guardrails</h2>
+<ul><li>Daily stop (e.g., 2R). Walk away after.</li><li>No martingale. Add only after confirmation.</li><li>Journal MAE/MFE to improve exits.</li></ul>
+</div><aside class="toc" aria-label="On this page"></aside></div>
+<div class="wrap nav-article"><a class="btn btn-ghost" href="/">&larr; Back to Education</a></div></article>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+<script src="/assets/edu.js"></script><script src="/assets/aurora.js" defer></script>
+</body></html>
