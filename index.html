@@ -74,36 +74,32 @@
     <div class="wrap">
       <div class="grid auto-300">
         <!-- Post cards -->
-        <article class="card post">
-          <div class="kicker">Beginner</div>
-          <h3>A Beginner’s Guide to Technical Indicators</h3>
-          <p class="note">What indicators are (and aren’t), and how to combine a few without painting yourself into a corner.</p>
-          <a class="btn btn-primary btn-sm" href="/articles/beginners-guide-technical-indicators.html">Read the guide</a>
-        </article>
+        <section class="grid-sec">
+  <div class="wrap">
+    <div class="grid auto-300" id="edu-post-grid" aria-live="polite"></div>
+  </div>
+</section>
 
-        <article class="card post">
-          <div class="kicker">Foundation</div>
-          <h3>Price vs. Value: Regime before Entries</h3>
-          <p class="note">Why “which way is the wind blowing?” beats “where’s my arrow?”—and how to check it.</p>
-          <a class="btn btn-primary btn-sm" href="/articles/price-vs-value-regime-before-entries.html">Read the guide</a>
-        </article>
+<script>
+(async function(){
+  const grid = document.getElementById('edu-post-grid');
+  try {
+    const res = await fetch('/articles/index.json', { cache: 'no-store' });
+    const posts = await res.json();
+    grid.innerHTML = posts.map(p => `
+      <article class="card post">
+        <div class="kicker">${p.level || 'General'}</div>
+        <h3>${p.title}</h3>
+        <p class="note">${p.description || ''}</p>
+        <a class="btn btn-primary btn-sm" href="${p.href}">Read the guide</a>
+      </article>
+    `).join('');
+  } catch {
+    grid.innerHTML = '<div class="card"><p class="note">Couldn’t load /articles/index.json</p></div>';
+  }
+})();
+</script>
 
-        <article class="card post">
-          <div class="kicker">Momentum</div>
-          <h3>Momentum ≠ Trend</h3>
-          <p class="note">Stop asking one oscillator to do two jobs. Separate bias from impulse or you’ll fight the tape.</p>
-          <a class="btn btn-primary btn-sm" href="/articles/momentum-not-trend.html">Read the guide</a>
-        </article>
-
-        <article class="card post">
-          <div class="kicker">Risk</div>
-          <h3>Position Sizing 101: Risk per Trade &amp; R‑multiples</h3>
-          <p class="note">Size the bet, not the feeling. A 1R world keeps drawdowns survivable and learning cheap.</p>
-          <a class="btn btn-primary btn-sm" href="/articles/position-sizing-101.html">Read the guide</a>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <section class="how">
     <div class="wrap">
