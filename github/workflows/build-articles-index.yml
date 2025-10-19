@@ -1,11 +1,11 @@
 name: Build articles index
 
 permissions:
-  contents: write    # <— REQUIRED so the Action can commit index.json
+  contents: write
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ]          # change if your default branch isn't main
     paths:
       - "articles/**.html"
       - "tools/build-articles-index.mjs"
