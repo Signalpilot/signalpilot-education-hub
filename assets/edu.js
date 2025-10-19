@@ -65,3 +65,9 @@
     });
   });
 })();
+
+// Mount brand background (stars + constellations + aurora) on every hub page
+(function(w,d){ if(w.__spbg_loaded) return; w.__spbg_loaded=true;
+  var s=d.createElement('script'); s.src='/assets/sp-bg.js'; s.defer=true; d.head.appendChild(s);
+})(window,document);
+
