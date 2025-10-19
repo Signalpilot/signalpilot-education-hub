@@ -1,5 +1,8 @@
 name: Build articles index
 
+permissions:
+  contents: write    # <— REQUIRED so the Action can commit index.json
+
 on:
   push:
     branches: [ "main" ]
