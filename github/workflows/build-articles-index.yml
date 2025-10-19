@@ -1,0 +1,31 @@
+name: Build articles index
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "articles/**.html"
+      - "tools/build-articles-index.mjs"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build manifest
+        run: node tools/build-articles-index.mjs
+      - name: Commit & push if changed
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.email "actions@users.noreply.github.com"
+            git config user.name "GitHub Actions"
+            git add articles/index.json
+            git commit -m "Update articles index [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
