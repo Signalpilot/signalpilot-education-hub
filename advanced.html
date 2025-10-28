@@ -1,4 +1,125 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Advanced — Education Hub</title><meta name="description" content="Advanced track of the Education Hub."><link rel="stylesheet" href="styles.css"></head>
-<body><header class="header"><div class="container"><h1>Advanced Track</h1><p class="kicker">Curated lessons to progress your skills.</p><div class="navbar"><a href="index.html">Home</a></div></div></header>
-<main class="container"><div class="grid"><div class="card"><h3>A01 — Expectancy, Sizing & Portfolio Construction</h3><p class="kicker">Estimated time: 26 min</p><a class="cta" href="advanced/expectancy-portfolio.html">Open Lesson</a></div><div class="card"><h3>A02 — Robustness: OOS, Walk‑Forward & Monte Carlo</h3><p class="kicker">Estimated time: 26 min</p><a class="cta" href="advanced/strategy-robustness.html">Open Lesson</a></div><div class="card"><h3>A03 — Execution & Microstructure: From Auction to Fill</h3><p class="kicker">Estimated time: 24 min</p><a class="cta" href="advanced/execution-microstructure.html">Open Lesson</a></div><div class="card"><h3>A04 — Psychology & Drawdown Management</h3><p class="kicker">Estimated time: 22 min</p><a class="cta" href="advanced/psychology-drawdowns.html">Open Lesson</a></div><div class="card"><h3>A05 — Operational Risk, Data & Compliance Basics</h3><p class="kicker">Estimated time: 20 min</p><a class="cta" href="advanced/operational-risk-compliance.html">Open Lesson</a></div><div class="card"><h3>A06 — Algorithmic Strategy Architecture Basics</h3><p class="kicker">Estimated time: 26 min</p><a class="cta" href="advanced/algo-architecture-basics.html">Open Lesson</a></div><div class="card"><h3>A07 — Parameter Stability & Regime Overlays</h3><p class="kicker">Estimated time: 24 min</p><a class="cta" href="advanced/parameter-stability-regimes.html">Open Lesson</a></div><div class="card"><h3>A08 — Hedging & Correlation Shocks</h3><p class="kicker">Estimated time: 24 min</p><a class="cta" href="advanced/hedging-correlation-shocks.html">Open Lesson</a></div><div class="card"><h3>A09 — Options Greeks & Volatility Primer</h3><p class="kicker">Estimated time: 26 min</p><a class="cta" href="advanced/options-greeks-vol.html">Open Lesson</a></div><div class="card"><h3>A10 — Futures Term Structure, Roll & Carry</h3><p class="kicker">Estimated time: 24 min</p><a class="cta" href="advanced/futures-term-structure-carry.html">Open Lesson</a></div><div class="card"><h3>A11 — Pairs Trading & Stat Arb Primer</h3><p class="kicker">Estimated time: 24 min</p><a class="cta" href="advanced/pairs-stat-arb-primer.html">Open Lesson</a></div><div class="card"><h3>A12 — Tail Risk & Crisis Playbook</h3><p class="kicker">Estimated time: 22 min</p><a class="cta" href="advanced/tail-risk-crisis-playbook.html">Open Lesson</a></div><div class="card"><h3>A13 — Scenario Analysis & Stress Testing</h3><p class="kicker">Estimated time: 22 min</p><a class="cta" href="advanced/scenario-stress-testing.html">Open Lesson</a></div><div class="card"><h3>A14 — Kelly, Fractional Kelly & Drawdown Control</h3><p class="kicker">Estimated time: 22 min</p><a class="cta" href="advanced/kelly-fraction-drawdown.html">Open Lesson</a></div><div class="card"><h3>A15 — Data Engineering for Traders</h3><p class="kicker">Estimated time: 24 min</p><a class="cta" href="advanced/data-engineering-reproducibility.html">Open Lesson</a></div></div><div class="footer">For education only.</div></main></body></html>
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Advanced Curriculum — SignalPilot Education</title>
+  <meta name="description" content="Advanced trading curriculum: 15 articles (37,000 words) covering institutional trading, algorithmic execution, ML/automation, portfolio theory, and professional infrastructure.">
+  <link rel="canonical" href="https://education.signalpilot.io/advanced.html">
+  <meta name="theme-color" content="#05070d">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>SignalPilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li>
+        <li><a href="https://signalpilot.io/#inside">What's inside</a></li>
+        <li><a href="/">Education</a></li>
+        <li><a href="https://docs.signalpilot.io/" target="_blank" rel="noopener">Docs</a></li>
+        <li><a href="https://signalpilot.io/#pricing">Pricing</a></li>
+        <li><a href="https://signalpilot.io/#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="header-ctls">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button>
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainnav">Menu ☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="badge">🔴 ADVANCED TIER</span>
+      <h1 class="headline xl">Institutional-Grade Trading</h1>
+      <p class="lead measure">15 comprehensive articles covering institutional trading mechanics, algorithmic execution, machine learning, automation, portfolio theory, and professional infrastructure.</p>
+      <div style="margin-top: 2rem;">
+        <a class="btn btn-primary" href="/curriculum/advanced/28-institutional-order-flow.html">Start Article #28 →</a>
+        <a class="btn btn-ghost" href="/" style="margin-left: 1rem;">All Tiers</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission">
+    <div class="wrap">
+      <div class="card">
+        <h2 class="headline md">What You'll Learn</h2>
+        <p style="margin-bottom: 1.5rem;"><strong>Articles 28-42</strong> • ~37,000 words • 10-15 weeks</p>
+        <div class="grid auto-300" style="margin-top: 1.5rem;">
+          <div>
+            <h4>🏦 Institutional Trading</h4>
+            <ul class="bullets">
+              <li>VWAP, TWAP, iceberg orders</li>
+              <li>Market regime recognition systems</li>
+              <li>Auction theory (opening range, FVGs)</li>
+              <li>Cross-asset correlations (DXY, TNX, VIX)</li>
+              <li>Volatility trading (VIX, gamma exposure)</li>
+            </ul>
+          </div>
+          <div>
+            <h4>⚙️ Algorithmic Trading</h4>
+            <ul class="bullets">
+              <li>Order types & slippage optimization</li>
+              <li>System development & backtesting</li>
+              <li>Machine learning for trading</li>
+              <li>HFT concepts & latency arbitrage</li>
+              <li>Trading automation via broker APIs</li>
+            </ul>
+          </div>
+          <div>
+            <h4>📊 Portfolio Theory</h4>
+            <ul class="bullets">
+              <li>Modern Portfolio Theory (MPT)</li>
+              <li>Efficient frontier & risk parity</li>
+              <li>Performance attribution (alpha vs beta)</li>
+              <li>Tax optimization strategies</li>
+            </ul>
+          </div>
+          <div>
+            <h4>🏗️ Professional Infrastructure</h4>
+            <ul class="bullets">
+              <li>Hardware & software stacks</li>
+              <li>Data management & monitoring</li>
+              <li>Risk management systems</li>
+              <li>Professional trading career paths</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top: 2rem;"><strong>Prerequisites:</strong> Complete <a href="/beginner.html">Beginner</a> and <a href="/intermediate.html">Intermediate</a> tiers first. These articles assume advanced understanding of order flow, Signal Pilot indicators, and professional trading frameworks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid-sec">
+    <div class="wrap">
+      <div class="card" style="text-align: center; padding: 3rem 2rem; margin-bottom: 2rem;">
+        <h2 class="headline md">Start Advanced Tier</h2>
+        <p class="lead">Begin with Article #28: Institutional Order Flow</p>
+        <p>Learn how institutions execute massive orders via VWAP, TWAP, and iceberg orders without moving price—and how to trade alongside them.</p>
+        <a class="btn btn-primary" href="/curriculum/advanced/28-institutional-order-flow.html" style="margin-top: 1.5rem;">Start Learning →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/aurora.js" defer></script>
+</body>
+</html>
