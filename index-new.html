@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Trading Education — SignalPilot Learn</title>
+  <meta name="description" content="Interactive trading course: 42 lessons across 3 tiers with quizzes, progress tracking, and achievements. Learn market structure, order flow, and institutional trading.">
+  <link rel="canonical" href="https://education.signalpilot.io/">
+  <meta name="theme-color" content="#05070d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"></noscript>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; background: #05070d; color: #e0e0e0; }
+    .sp-header { background: rgba(5, 7, 13, 0.95); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .hero { min-height: 30vh; display: flex; align-items: center; padding: 3rem 0 2rem; text-align: center; }
+  </style>
+  <link rel="stylesheet" href="/assets/edu.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/assets/edu.css"></noscript>
+</head>
+<body>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/">
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>SignalPilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li>
+        <li><a href="https://signalpilot.io/#inside">What's inside</a></li>
+        <li><a aria-current="page" href="/">Education</a></li>
+        <li><a href="/search.html">🔍 Search</a></li>
+        <li><a href="https://signalpilot.io/#pricing">Pricing</a></li>
+      </ul>
+    </nav>
+    <div class="header-ctls">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button>
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="badge">📚 SIGNALPILOT LEARN</span>
+      <h1 class="headline xl" style="margin:1rem 0">Master Trading from First Principles</h1>
+      <p class="lead" style="max-width:680px;margin:1rem auto">Interactive course with 42 lessons, quizzes, progress tracking, and achievements. Learn market structure, institutional order flow, and professional trading frameworks.</p>
+    </div>
+  </section>
+
+  <!-- Continue Reading Card (dynamically loaded) -->
+  <div id="continue-reading-container"></div>
+
+  <!-- Your Progress Dashboard -->
+  <section class="wrap" style="margin:2rem auto">
+    <div class="progress-card">
+      <h4>📊 Your Progress</h4>
+      <div class="progress-stats">
+        <div class="progress-stat">
+          <span class="stat-value" id="stat-completed">0</span>
+          <span class="stat-label">Lessons Completed</span>
+        </div>
+        <div class="progress-stat">
+          <span class="stat-value" id="stat-tier">—</span>
+          <span class="stat-label">Current Tier</span>
+        </div>
+        <div class="progress-stat">
+          <span class="stat-value" id="stat-streak">0</span>
+          <span class="stat-label">Day Streak</span>
+        </div>
+        <div class="progress-stat">
+          <span class="stat-value" id="stat-achievements">0</span>
+          <span class="stat-label">Achievements</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <section class="wrap">
+    <div class="search-wrapper">
+      <input type="text" class="search-input" placeholder="Search lessons, topics, or concepts..." aria-label="Search">
+      <div class="search-results"></div>
+    </div>
+  </section>
+
+  <!-- Curriculum Modules -->
+  <section class="wrap" style="margin:3rem auto">
+    <h2 class="headline lg text-center mb-3">🎓 Complete Curriculum</h2>
+    <p class="text-center text-muted mb-4">3 progressive tiers, 42 lessons, ~110,000 words of practical trading education</p>
+
+    <!-- Module 1: Beginner Tier -->
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-number">01</div>
+        <div class="module-title">
+          <h3>🟢 Beginner: Foundation & Reality Checks</h3>
+          <div class="module-meta">12 lessons • ~31,000 words • 6-8 hours</div>
+        </div>
+      </div>
+      <p style="margin-bottom:1.5rem;color:var(--muted)">Break free from retail myths. Learn how markets actually work, what moves price, and why most indicators fail. Build a foundation in order flow, liquidity engineering, and risk management.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Lessons</button>
+          <button>What You'll Learn</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <ul class="lesson-list">
+              <li class="lesson-item"><span style="flex:1"><strong>#1:</strong> The Liquidity Lie</span><span style="font-size:.85rem;color:var(--muted)">15 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#2:</strong> Volume != Activity</span><span style="font-size:.85rem;color:var(--muted)">18 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#3:</strong> Order Flow Basics</span><span style="font-size:.85rem;color:var(--muted)">20 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#4:</strong> The Repainting Problem</span><span style="font-size:.85rem;color:var(--muted)">12 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#5:</strong> RSI's Fatal Flaw</span><span style="font-size:.85rem;color:var(--muted)">16 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#6:</strong> EMAs Aren't Support</span><span style="font-size:.85rem;color:var(--muted)">14 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#7:</strong> Why You Revenge Trade</span><span style="font-size:.85rem;color:var(--muted)">22 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#8:</strong> Confirmation Bias in Trading</span><span style="font-size:.85rem;color:var(--muted)">19 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#9:</strong> Building Discipline Systems</span><span style="font-size:.85rem;color:var(--muted)">21 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#10:</strong> Position Sizing Science</span><span style="font-size:.85rem;color:var(--muted)">25 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#11:</strong> ATR-Based Stop Placement</span><span style="font-size:.85rem;color:var(--muted)">17 min</span></li>
+              <li class="lesson-item"><span style="flex:1"><strong>#12:</strong> Multi-Timeframe Analysis</span><span style="font-size:.85rem;color:var(--muted)">23 min</span></li>
+            </ul>
+          </div>
+          <div class="tab-panel">
+            <div class="grid two-col">
+              <div>
+                <h4 style="margin:0 0 .75rem 0">📊 Market Structure</h4>
+                <ul style="margin:0;padding-left:1.5rem;list-style:disc">
+                  <li>Liquidity sweeps & engineering</li>
+                  <li>Delta, volume absorption</li>
+                  <li>Tape reading fundamentals</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="margin:0 0 .75rem 0">🔧 Indicator Truth</h4>
+                <ul style="margin:0;padding-left:1.5rem;list-style:disc">
+                  <li>Detecting repainting indicators</li>
+                  <li>Regime-based RSI</li>
+                  <li>EMAs as filters, not support</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="margin:0 0 .75rem 0">🧠 Psychology</h4>
+                <ul style="margin:0;padding-left:1.5rem;list-style:disc">
+                  <li>Neuroscience of revenge trading</li>
+                  <li>Overcoming confirmation bias</li>
+                  <li>Building discipline systems</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="margin:0 0 .75rem 0">⚖️ Risk Management</h4>
+                <ul style="margin:0;padding-left:1.5rem;list-style:disc">
+                  <li>Kelly Criterion sizing</li>
+                  <li>ATR-based stops</li>
+                  <li>Multi-timeframe confirmation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;gap:1rem">
+        <a href="/curriculum/beginner/01-the-liquidity-lie.html" class="btn btn-primary">Start Beginner Tier →</a>
+        <a href="/beginner.html" class="btn btn-ghost">View All Lessons</a>
+      </div>
+    </div>
+
+    <!-- Module 2: Intermediate Tier -->
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-number">02</div>
+        <div class="module-title">
+          <h3>🟡 Intermediate: Professional Frameworks</h3>
+          <div class="module-meta">15 lessons • ~42,000 words • 8-10 hours</div>
+        </div>
+      </div>
+      <p style="margin-bottom:1.5rem;color:var(--muted)">Deep dive into market microstructure, advanced order flow, multi-timeframe analysis, and Signal Pilot tool mastery. Build professional trading frameworks that work across all market conditions.</p>
+
+      <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
+        <p style="margin:0;font-size:.9rem"><strong>Prerequisites:</strong> Complete Beginner tier first (Articles 1-12)</p>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;gap:1rem">
+        <a href="/curriculum/intermediate/13-bid-ask-spread-dynamics.html" class="btn btn-primary">Start Intermediate Tier →</a>
+        <a href="/intermediate.html" class="btn btn-ghost">View All Lessons</a>
+      </div>
+    </div>
+
+    <!-- Module 3: Advanced Tier -->
+    <div class="module-card">
+      <div class="module-header">
+        <div class="module-number">03</div>
+        <div class="module-title">
+          <h3>🔴 Advanced: Institutional & Algorithmic</h3>
+          <div class="module-meta">15 lessons • ~37,000 words • 7-9 hours</div>
+        </div>
+      </div>
+      <p style="margin-bottom:1.5rem;color:var(--muted)">Master institutional order flow, algorithmic execution, machine learning, portfolio theory, and professional infrastructure. Learn what separates retail from professional traders.</p>
+
+      <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
+        <p style="margin:0;font-size:.9rem"><strong>Prerequisites:</strong> Complete Intermediate tier (Articles 1-27)</p>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;gap:1rem">
+        <a href="/curriculum/advanced/28-institutional-order-flow.html" class="btn btn-primary">Start Advanced Tier →</a>
+        <a href="/advanced.html" class="btn btn-ghost">View All Lessons</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="wrap" style="margin:3rem auto">
+    <h3 class="headline md text-center mb-3">🏆 Achievements</h3>
+    <div class="grid auto-200" id="achievements-grid">
+      <div class="card text-center" style="opacity:.4">
+        <div style="font-size:3rem;margin-bottom:.5rem">🎯</div>
+        <strong>First Steps</strong>
+        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 1 lesson</p>
+      </div>
+      <div class="card text-center" style="opacity:.4">
+        <div style="font-size:3rem;margin-bottom:.5rem">📚</div>
+        <strong>Dedicated Learner</strong>
+        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 5 lessons</p>
+      </div>
+      <div class="card text-center" style="opacity:.4">
+        <div style="font-size:3rem;margin-bottom:.5rem">🏅</div>
+        <strong>Beginner Master</strong>
+        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete all Beginner tier</p>
+      </div>
+      <div class="card text-center" style="opacity:.4">
+        <div style="font-size:3rem;margin-bottom:.5rem">⭐</div>
+        <strong>Intermediate Pro</strong>
+        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete all Intermediate</p>
+      </div>
+      <div class="card text-center" style="opacity:.4">
+        <div style="font-size:3rem;margin-bottom:.5rem">🏆</div>
+        <strong>Complete Scholar</strong>
+        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete all 42 lessons</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="wrap" style="margin:3rem auto">
+    <div class="card featured">
+      <h2 class="headline md text-center mb-2">How SignalPilot Learn Works</h2>
+      <div class="grid three-col">
+        <div class="text-center">
+          <div style="font-size:2.5rem;margin-bottom:1rem">📖</div>
+          <h4 style="margin:0 0 .5rem 0">Read & Learn</h4>
+          <p style="font-size:.9rem;color:var(--muted)">Interactive lessons with visual examples, callouts, and key takeaways</p>
+        </div>
+        <div class="text-center">
+          <div style="font-size:2.5rem;margin-bottom:1rem">✅</div>
+          <h4 style="margin:0 0 .5rem 0">Test Knowledge</h4>
+          <p style="font-size:.9rem;color:var(--muted)">Quizzes and knowledge checks after each lesson</p>
+        </div>
+        <div class="text-center">
+          <div style="font-size:2.5rem;margin-bottom:1rem">🏆</div>
+          <h4 style="margin:0 0 .5rem 0">Track Progress</h4>
+          <p style="font-size:.9rem;color:var(--muted)">Progress tracking, achievements, and completion badges</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script src="/assets/edu.js" defer></script>
+<script src="/assets/edu-enhanced.js" defer></script>
+<script>
+  // Load user progress and display stats
+  document.addEventListener('DOMContentLoaded', function() {
+    // Count completed articles
+    let completed = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.includes('sp_edu_') && key.includes('_completed')) {
+        completed++;
+      }
+    }
+
+    document.getElementById('stat-completed').textContent = completed;
+
+    // Determine current tier
+    let tier = '—';
+    if (completed === 0) tier = 'Not Started';
+    else if (completed <= 12) tier = 'Beginner';
+    else if (completed <= 27) tier = 'Intermediate';
+    else tier = 'Advanced';
+    document.getElementById('stat-tier').textContent = tier;
+
+    // Count achievements
+    let achievements = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+      if (localStorage.key(i).includes('sp_edu_ach_')) achievements++;
+    }
+    document.getElementById('stat-achievements').textContent = achievements;
+
+    // Unlock achieved badges
+    const milestones = [
+      { count: 1, index: 0 },
+      { count: 5, index: 1 },
+      { count: 12, index: 2 },
+      { count: 27, index: 3 },
+      { count: 42, index: 4 }
+    ];
+
+    milestones.forEach(m => {
+      if (completed >= m.count) {
+        const cards = document.querySelectorAll('#achievements-grid .card');
+        if (cards[m.index]) {
+          cards[m.index].style.opacity = '1';
+          cards[m.index].style.border = '2px solid #ffd700';
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
