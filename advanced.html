@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <title>Advanced Curriculum — SignalPilot Education</title>
+  <title>Advanced Curriculum — Signal Pilot Education</title>
   <meta name="description" content="Advanced trading curriculum: 15 articles (37,000 words) covering institutional trading, algorithmic execution, ML/automation, portfolio theory, and professional infrastructure.">
   <link rel="canonical" href="https://education.signalpilot.io/advanced.html">
   <meta name="theme-color" content="#05070d">
@@ -12,11 +12,13 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"></noscript>
   <style>
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif; background: #05070d; color: #e0e0e0; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; background: #05070d; color: #e0e0e0; }
     .sp-header { background: rgba(5, 7, 13, 0.95); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
     .wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-    .hero { min-height: 40vh; display: flex; align-items: center; padding: 4rem 0; }
+    .hero { min-height: 30vh; display: flex; align-items: center; padding: 3rem 0 2rem; text-align: center; }
   </style>
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/assets/edu.css"></noscript>
   <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
@@ -27,11 +29,11 @@
   <div class="wrap">
     <a class="brand" href="https://signalpilot.io/">
       <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-      <span>SignalPilot</span>
+      <span>Signal Pilot</span>
     </a>
     <nav id="mainnav" aria-label="Main">
       <ul>
-        <li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li>
+        <li><a href="https://signalpilot.io/#why">Why Signal Pilot?</a></li>
         <li><a href="https://signalpilot.io/#inside">What's inside</a></li>
         <li><a href="/">Education</a></li>
         <li><a href="https://docs.signalpilot.io/" target="_blank" rel="noopener">Docs</a></li>
@@ -40,8 +42,10 @@
       </ul>
     </nav>
     <div class="header-ctls">
-      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button>
-      <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainnav">Menu ☰</button>
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button>
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button>
     </div>
   </div>
 </header>
@@ -123,22 +127,13 @@
 
 <footer class="sp-footer">
   <div class="wrap">
-    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div>© <span id="year"></span> Signal Pilot Labs, Inc. All rights reserved.</div>
     <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
   </div>
 </footer>
 
 <script src="/assets/edu.js" defer></script>
-<script src="/assets/aurora.js" defer></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const theme = localStorage.getItem('sp_theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-    document.body.classList.add('loaded');
-  }, { once: true });
-  if (window.addEventListener) {
-    window.addEventListener('touchstart', function(){}, { passive: true });
-  }
-</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
 </body>
 </html>

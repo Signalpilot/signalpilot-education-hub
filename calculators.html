@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Trading Calculators — Signal Pilot</title>
+  <meta name="description" content="Professional trading calculators: Position sizing, risk/reward, P&L, fees, compound growth, and win rate calculators for serious traders.">
+  <link rel="canonical" href="https://education.signalpilot.io/calculators.html">
+  <meta name="theme-color" content="#05070d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"></noscript>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; background: #05070d; color: #e0e0e0; }
+    .sp-header { background: rgba(5, 7, 13, 0.95); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .hero { min-height: 30vh; display: flex; align-items: center; padding: 3rem 0 2rem; text-align: center; }
+  </style>
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/assets/edu.css"></noscript>
+</head>
+<body>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/">
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="https://signalpilot.io/#why">Why Signal Pilot?</a></li>
+        <li><a href="https://signalpilot.io/#inside">What's inside</a></li>
+        <li><a href="/">Education</a></li>
+        <li><a href="/search.html">🔍 Search</a></li>
+        <li><a aria-current="page" href="/calculators.html">Calculators</a></li>
+        <li><a href="https://signalpilot.io/#pricing">Pricing</a></li>
+      </ul>
+    </nav>
+    <div class="header-ctls">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button>
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="badge">📊 TRADING CALCULATORS</span>
+      <h1 class="headline xl" style="margin:1rem 0">Professional Trading Tools</h1>
+      <p class="lead" style="max-width:680px;margin:1rem auto">Essential calculators for position sizing, risk management, P&L analysis, and performance tracking. All calculations happen locally—your data never leaves your browser.</p>
+    </div>
+  </section>
+
+  <!-- Calculators Grid -->
+  <section class="wrap" style="margin:3rem auto">
+    <div class="grid two-col" style="gap:2rem">
+
+      <!-- 1. Position Size Calculator -->
+      <div class="card">
+        <h3 class="headline sm">📏 Position Size Calculator</h3>
+        <p style="margin:0.5rem 0 1.5rem;color:var(--muted)">Calculate optimal position size based on account risk percentage</p>
+
+        <div class="form-group">
+          <label>Account Balance ($)</label>
+          <input type="number" id="ps-balance" class="calc-input" value="10000" min="0" step="100">
+        </div>
+
+        <div class="form-group">
+          <label>Risk Per Trade (%)</label>
+          <input type="number" id="ps-risk-pct" class="calc-input" value="1" min="0.1" max="100" step="0.1">
+        </div>
+
+        <div class="form-group">
+          <label>Entry Price ($)</label>
+          <input type="number" id="ps-entry" class="calc-input" value="100" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label>Stop Loss Price ($)</label>
+          <input type="number" id="ps-stop" class="calc-input" value="95" min="0" step="0.01">
+        </div>
+
+        <button class="btn btn-primary" onclick="calculatePositionSize()">Calculate</button>
+
+        <div id="ps-result" class="result-box" style="display:none">
+          <div class="result-item">
+            <span class="result-label">Position Size:</span>
+            <span class="result-value" id="ps-size">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Dollar Risk:</span>
+            <span class="result-value" id="ps-dollar-risk">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Risk Per Unit:</span>
+            <span class="result-value" id="ps-risk-unit">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Risk/Reward Calculator -->
+      <div class="card">
+        <h3 class="headline sm">⚖️ Risk/Reward Calculator</h3>
+        <p style="margin:0.5rem 0 1.5rem;color:var(--muted)">Determine if a trade meets your R:R criteria</p>
+
+        <div class="form-group">
+          <label>Entry Price ($)</label>
+          <input type="number" id="rr-entry" class="calc-input" value="100" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label>Stop Loss ($)</label>
+          <input type="number" id="rr-stop" class="calc-input" value="95" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label>Take Profit ($)</label>
+          <input type="number" id="rr-target" class="calc-input" value="115" min="0" step="0.01">
+        </div>
+
+        <button class="btn btn-primary" onclick="calculateRiskReward()">Calculate</button>
+
+        <div id="rr-result" class="result-box" style="display:none">
+          <div class="result-item">
+            <span class="result-label">Risk/Reward Ratio:</span>
+            <span class="result-value" id="rr-ratio">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Risk Amount:</span>
+            <span class="result-value" id="rr-risk">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Reward Amount:</span>
+            <span class="result-value" id="rr-reward">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Profit/Loss Calculator -->
+      <div class="card">
+        <h3 class="headline sm">💰 Profit/Loss Calculator</h3>
+        <p style="margin:0.5rem 0 1.5rem;color:var(--muted)">Calculate P&L for completed or open positions</p>
+
+        <div class="form-group">
+          <label>Position Type</label>
+          <select id="pl-type" class="calc-input">
+            <option value="long">Long</option>
+            <option value="short">Short</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Entry Price ($)</label>
+          <input type="number" id="pl-entry" class="calc-input" value="100" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label>Exit Price ($)</label>
+          <input type="number" id="pl-exit" class="calc-input" value="110" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label>Position Size (shares/contracts)</label>
+          <input type="number" id="pl-size" class="calc-input" value="100" min="0" step="0.01">
+        </div>
+
+        <button class="btn btn-primary" onclick="calculateProfitLoss()">Calculate</button>
+
+        <div id="pl-result" class="result-box" style="display:none">
+          <div class="result-item">
+            <span class="result-label">Profit/Loss:</span>
+            <span class="result-value" id="pl-amount">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Return (%):</span>
+            <span class="result-value" id="pl-pct">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Fee/Commission Calculator -->
+      <div class="card">
+        <h3 class="headline sm">💸 Fee/Commission Calculator</h3>
+        <p style="margin:0.5rem 0 1.5rem;color:var(--muted)">Calculate total trading costs including fees and commissions</p>
+
+        <div class="form-group">
+          <label>Entry Price ($)</label>
+          <input type="number" id="fee-entry" class="calc-input" value="100" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label>Exit Price ($)</label>
+          <input type="number" id="fee-exit" class="calc-input" value="110" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label>Position Size</label>
+          <input type="number" id="fee-size" class="calc-input" value="100" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label>Commission Per Trade ($)</label>
+          <input type="number" id="fee-commission" class="calc-input" value="5" min="0" step="0.01">
+        </div>
+
+        <div class="form-group">
+          <label>Fee Rate (%)</label>
+          <input type="number" id="fee-rate" class="calc-input" value="0.1" min="0" step="0.01">
+        </div>
+
+        <button class="btn btn-primary" onclick="calculateFees()">Calculate</button>
+
+        <div id="fee-result" class="result-box" style="display:none">
+          <div class="result-item">
+            <span class="result-label">Total Fees:</span>
+            <span class="result-value" id="fee-total">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Entry Costs:</span>
+            <span class="result-value" id="fee-entry-cost">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Exit Costs:</span>
+            <span class="result-value" id="fee-exit-cost">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Net P&L After Fees:</span>
+            <span class="result-value" id="fee-net-pl">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Compound Growth Calculator -->
+      <div class="card">
+        <h3 class="headline sm">📈 Compound Growth Calculator</h3>
+        <p style="margin:0.5rem 0 1.5rem;color:var(--muted)">Project account growth with compound returns</p>
+
+        <div class="form-group">
+          <label>Starting Balance ($)</label>
+          <input type="number" id="cg-balance" class="calc-input" value="10000" min="0" step="100">
+        </div>
+
+        <div class="form-group">
+          <label>Average Monthly Return (%)</label>
+          <input type="number" id="cg-return" class="calc-input" value="5" min="-100" step="0.1">
+        </div>
+
+        <div class="form-group">
+          <label>Number of Months</label>
+          <input type="number" id="cg-months" class="calc-input" value="12" min="1" step="1">
+        </div>
+
+        <div class="form-group">
+          <label>Monthly Addition ($)</label>
+          <input type="number" id="cg-addition" class="calc-input" value="0" min="0" step="100">
+        </div>
+
+        <button class="btn btn-primary" onclick="calculateCompoundGrowth()">Calculate</button>
+
+        <div id="cg-result" class="result-box" style="display:none">
+          <div class="result-item">
+            <span class="result-label">Final Balance:</span>
+            <span class="result-value" id="cg-final">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Total Gain:</span>
+            <span class="result-value" id="cg-gain">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Total Return (%):</span>
+            <span class="result-value" id="cg-pct">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Win Rate Calculator -->
+      <div class="card">
+        <h3 class="headline sm">🎯 Win Rate & Expectancy Calculator</h3>
+        <p style="margin:0.5rem 0 1.5rem;color:var(--muted)">Calculate win rate and expected value per trade</p>
+
+        <div class="form-group">
+          <label>Number of Wins</label>
+          <input type="number" id="wr-wins" class="calc-input" value="60" min="0" step="1">
+        </div>
+
+        <div class="form-group">
+          <label>Number of Losses</label>
+          <input type="number" id="wr-losses" class="calc-input" value="40" min="0" step="1">
+        </div>
+
+        <div class="form-group">
+          <label>Average Win ($)</label>
+          <input type="number" id="wr-avg-win" class="calc-input" value="200" min="0" step="1">
+        </div>
+
+        <div class="form-group">
+          <label>Average Loss ($)</label>
+          <input type="number" id="wr-avg-loss" class="calc-input" value="100" min="0" step="1">
+        </div>
+
+        <button class="btn btn-primary" onclick="calculateWinRate()">Calculate</button>
+
+        <div id="wr-result" class="result-box" style="display:none">
+          <div class="result-item">
+            <span class="result-label">Win Rate:</span>
+            <span class="result-value" id="wr-rate">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Expectancy Per Trade:</span>
+            <span class="result-value" id="wr-expectancy">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Profit Factor:</span>
+            <span class="result-value" id="wr-pf">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Total Trades:</span>
+            <span class="result-value" id="wr-total">-</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="wrap" style="margin:3rem auto">
+    <div class="card featured">
+      <h2 class="headline md">About These Calculators</h2>
+      <div class="grid three-col">
+        <div>
+          <h4>🔒 Privacy First</h4>
+          <p style="font-size:.9rem;color:var(--muted)">All calculations happen locally in your browser. No data is sent to any server.</p>
+        </div>
+        <div>
+          <h4>📊 Professional Tools</h4>
+          <p style="font-size:.9rem;color:var(--muted)">Industry-standard formulas used by professional traders worldwide.</p>
+        </div>
+        <div>
+          <h4>💯 Free Forever</h4>
+          <p style="font-size:.9rem;color:var(--muted)">These calculators will always be free. No registration required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> Signal Pilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script src="/assets/edu.js" defer></script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+<script>
+// Position Size Calculator
+function calculatePositionSize() {
+  const balance = parseFloat(document.getElementById('ps-balance').value);
+  const riskPct = parseFloat(document.getElementById('ps-risk-pct').value);
+  const entry = parseFloat(document.getElementById('ps-entry').value);
+  const stop = parseFloat(document.getElementById('ps-stop').value);
+
+  const dollarRisk = balance * (riskPct / 100);
+  const riskPerUnit = Math.abs(entry - stop);
+  const positionSize = dollarRisk / riskPerUnit;
+
+  document.getElementById('ps-size').textContent = positionSize.toFixed(2) + ' shares';
+  document.getElementById('ps-dollar-risk').textContent = '$' + dollarRisk.toFixed(2);
+  document.getElementById('ps-risk-unit').textContent = '$' + riskPerUnit.toFixed(2);
+  document.getElementById('ps-result').style.display = 'block';
+}
+
+// Risk/Reward Calculator
+function calculateRiskReward() {
+  const entry = parseFloat(document.getElementById('rr-entry').value);
+  const stop = parseFloat(document.getElementById('rr-stop').value);
+  const target = parseFloat(document.getElementById('rr-target').value);
+
+  const risk = Math.abs(entry - stop);
+  const reward = Math.abs(target - entry);
+  const ratio = reward / risk;
+
+  document.getElementById('rr-ratio').textContent = '1:' + ratio.toFixed(2);
+  document.getElementById('rr-risk').textContent = '$' + risk.toFixed(2) + ' per share';
+  document.getElementById('rr-reward').textContent = '$' + reward.toFixed(2) + ' per share';
+
+  const resultBox = document.getElementById('rr-result');
+  resultBox.style.display = 'block';
+
+  // Color code based on R:R
+  const ratioEl = document.getElementById('rr-ratio');
+  if (ratio >= 2) {
+    ratioEl.style.color = '#3ed598';
+  } else if (ratio >= 1) {
+    ratioEl.style.color = '#f9a23c';
+  } else {
+    ratioEl.style.color = '#ff6b6b';
+  }
+}
+
+// Profit/Loss Calculator
+function calculateProfitLoss() {
+  const type = document.getElementById('pl-type').value;
+  const entry = parseFloat(document.getElementById('pl-entry').value);
+  const exit = parseFloat(document.getElementById('pl-exit').value);
+  const size = parseFloat(document.getElementById('pl-size').value);
+
+  let pl;
+  if (type === 'long') {
+    pl = (exit - entry) * size;
+  } else {
+    pl = (entry - exit) * size;
+  }
+
+  const plPct = (pl / (entry * size)) * 100;
+
+  const plAmountEl = document.getElementById('pl-amount');
+  plAmountEl.textContent = '$' + pl.toFixed(2);
+  plAmountEl.style.color = pl >= 0 ? '#3ed598' : '#ff6b6b';
+
+  const plPctEl = document.getElementById('pl-pct');
+  plPctEl.textContent = (pl >= 0 ? '+' : '') + plPct.toFixed(2) + '%';
+  plPctEl.style.color = pl >= 0 ? '#3ed598' : '#ff6b6b';
+
+  document.getElementById('pl-result').style.display = 'block';
+}
+
+// Fee/Commission Calculator
+function calculateFees() {
+  const entry = parseFloat(document.getElementById('fee-entry').value);
+  const exit = parseFloat(document.getElementById('fee-exit').value);
+  const size = parseFloat(document.getElementById('fee-size').value);
+  const commission = parseFloat(document.getElementById('fee-commission').value);
+  const feeRate = parseFloat(document.getElementById('fee-rate').value) / 100;
+
+  const entryCost = commission + (entry * size * feeRate);
+  const exitCost = commission + (exit * size * feeRate);
+  const totalFees = entryCost + exitCost;
+
+  const grossPL = (exit - entry) * size;
+  const netPL = grossPL - totalFees;
+
+  document.getElementById('fee-total').textContent = '$' + totalFees.toFixed(2);
+  document.getElementById('fee-entry-cost').textContent = '$' + entryCost.toFixed(2);
+  document.getElementById('fee-exit-cost').textContent = '$' + exitCost.toFixed(2);
+
+  const netPLEl = document.getElementById('fee-net-pl');
+  netPLEl.textContent = '$' + netPL.toFixed(2);
+  netPLEl.style.color = netPL >= 0 ? '#3ed598' : '#ff6b6b';
+
+  document.getElementById('fee-result').style.display = 'block';
+}
+
+// Compound Growth Calculator
+function calculateCompoundGrowth() {
+  const startBalance = parseFloat(document.getElementById('cg-balance').value);
+  const monthlyReturn = parseFloat(document.getElementById('cg-return').value) / 100;
+  const months = parseInt(document.getElementById('cg-months').value);
+  const monthlyAddition = parseFloat(document.getElementById('cg-addition').value);
+
+  let balance = startBalance;
+  for (let i = 0; i < months; i++) {
+    balance = balance * (1 + monthlyReturn) + monthlyAddition;
+  }
+
+  const totalGain = balance - startBalance - (monthlyAddition * months);
+  const totalReturnPct = ((balance - startBalance) / startBalance) * 100;
+
+  document.getElementById('cg-final').textContent = '$' + balance.toFixed(2);
+  document.getElementById('cg-gain').textContent = '$' + totalGain.toFixed(2);
+  document.getElementById('cg-pct').textContent = '+' + totalReturnPct.toFixed(2) + '%';
+  document.getElementById('cg-result').style.display = 'block';
+}
+
+// Win Rate Calculator
+function calculateWinRate() {
+  const wins = parseInt(document.getElementById('wr-wins').value);
+  const losses = parseInt(document.getElementById('wr-losses').value);
+  const avgWin = parseFloat(document.getElementById('wr-avg-win').value);
+  const avgLoss = parseFloat(document.getElementById('wr-avg-loss').value);
+
+  const totalTrades = wins + losses;
+  const winRate = (wins / totalTrades) * 100;
+
+  const expectancy = (winRate / 100 * avgWin) - ((1 - winRate / 100) * avgLoss);
+  const profitFactor = (wins * avgWin) / (losses * avgLoss);
+
+  document.getElementById('wr-rate').textContent = winRate.toFixed(2) + '%';
+
+  const expectancyEl = document.getElementById('wr-expectancy');
+  expectancyEl.textContent = '$' + expectancy.toFixed(2);
+  expectancyEl.style.color = expectancy >= 0 ? '#3ed598' : '#ff6b6b';
+
+  document.getElementById('wr-pf').textContent = profitFactor.toFixed(2);
+  document.getElementById('wr-total').textContent = totalTrades;
+  document.getElementById('wr-result').style.display = 'block';
+}
+
+// Set current year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<style>
+.grid.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.calc-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.calc-input:focus {
+  outline: none;
+  border-color: var(--brand);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="light"] .calc-input {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: var(--text);
+}
+
+html[data-theme="light"] .calc-input:focus {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.result-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(91, 138, 255, 0.1);
+  border: 1px solid rgba(91, 138, 255, 0.3);
+  border-radius: 8px;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.result-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .grid.two-col {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+</body>
+</html>
