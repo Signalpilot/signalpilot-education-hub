@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Advanced Portfolio Theory: Modern Portfolio Theory & Beyond — SignalPilot Education</title>
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="38">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Advanced Portfolio Theory: Modern Portfolio Theory & Beyond</h1><div class="meta">Reading time ~14 min • Portfolio Construction</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>Diversification isn't just holding multiple stocks—it's mathematical optimization of risk-return.</b> Learn MPT, efficient frontier, correlation matrices, and professional portfolio construction frameworks.</p>
+      
+      <h2>Modern Portfolio Theory (MPT)</h2>
+      
+      <h3>Core Principle</h3>
+      <p><strong>For given risk level, maximize return. For given return, minimize risk.</strong></p>
+      <pre><code>Key Insight: Combining uncorrelated assets reduces portfolio risk
+
+Example:
+Asset A: 20% return, 25% volatility
+Asset B: 15% return, 20% volatility
+Correlation: 0.3 (low)
+
+Portfolio (50/50): 17.5% return, 18% volatility (LOWER than both!)
+
+Why: Losses in A sometimes offset by gains in B (diversification benefit)</code></pre>
+
+      <h2>Correlation & Diversification</h2>
+      
+      <h3>Correlation Coefficient</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Correlation</th><th>Meaning</th><th>Diversification Benefit</th></tr>
+        <tr><td>+1.0</td><td>Perfect positive (move together)</td><td>None (no diversification)</td></tr>
+        <tr><td>+0.7</td><td>Strong positive</td><td>Low</td></tr>
+        <tr><td>+0.3</td><td>Weak positive</td><td>Moderate</td></tr>
+        <tr><td>0.0</td><td>Uncorrelated</td><td>High</td></tr>
+        <tr><td>-0.3</td><td>Weak negative</td><td>Very high</td></tr>
+        <tr><td>-1.0</td><td>Perfect negative (opposite)</td><td>Maximum (perfect hedge)</td></tr>
+      </table>
+
+      <h3>Building Correlation Matrix</h3>
+      <pre><code>Assets: SPY (S&P 500), TLT (Bonds), GLD (Gold), DBC (Commodities)
+
+Correlation Matrix:
+         SPY    TLT    GLD    DBC
+SPY     1.00   -0.40   0.10   0.45
+TLT    -0.40    1.00  -0.20  -0.30
+GLD     0.10   -0.20   1.00   0.35
+DBC     0.45   -0.30   0.35   1.00
+
+Insights:
+- SPY/TLT: -0.40 (bonds hedge stocks, good!)
+- SPY/GLD: 0.10 (gold uncorrelated, diversifier)
+- TLT/DBC: -0.30 (bonds negative to commodities)</code></pre>
+
+      <h2>Efficient Frontier</h2>
+      
+      <h3>What is the Efficient Frontier?</h3>
+      <p><strong>Set of portfolios with maximum return for given risk level.</strong></p>
+      <pre><code>Efficient Frontier Curve:
+
+Risk (Std Dev)  |  Return
+10%             |  5%
+15%             |  9%
+20%             |  12%
+25%             |  14%
+30%             |  15%
+
+Portfolios ON frontier: Optimal (max return per risk unit)
+Portfolios BELOW frontier: Suboptimal (can improve return without adding risk)</code></pre>
+
+      <h3>Calculating Optimal Portfolio</h3>
+      <pre><code>Goal: Max Sharpe Ratio (best risk-adjusted return)
+
+Sharpe Ratio = (Portfolio Return - Risk-Free Rate) / Portfolio Std Dev
+
+Python (using scipy):
+from scipy.optimize import minimize
+
+def portfolio_stats(weights, returns, cov_matrix):
+    portfolio_return = np.sum(returns * weights) * 252  # Annualized
+    portfolio_std = np.sqrt(np.dot(weights.T, np.dot(cov_matrix * 252, weights)))
+    sharpe = (portfolio_return - 0.04) / portfolio_std  # 4% risk-free
+    return -sharpe  # Negative (minimize for max)
+
+# Optimize
+result = minimize(portfolio_stats, initial_weights, constraints=...)
+optimal_weights = result.x
+
+# Output: [0.45 SPY, 0.25 TLT, 0.15 GLD, 0.15 DBC]</code></pre>
+
+      <h2>Risk Parity</h2>
+      
+      <h3>Equal Risk Contribution</h3>
+      <p><strong>Allocate so each asset contributes equally to portfolio risk.</strong></p>
+      <pre><code>Traditional 60/40:
+60% stocks (high vol) → 90% of portfolio risk
+40% bonds (low vol) → 10% of portfolio risk
+
+Problem: Portfolio dominated by stock risk!
+
+Risk Parity:
+25% stocks, 75% bonds (weighted by inverse volatility)
+Result: 50% stock risk, 50% bond risk (balanced)</code></pre>
+
+      <h3>Leverage in Risk Parity</h3>
+      <pre><code>Problem: Risk parity = lower returns (more bonds)
+
+Solution: Use leverage to boost returns while maintaining balanced risk
+
+Example:
+40% SPY (leveraged 1.5x = 60% exposure)
+60% TLT (leveraged 1.5x = 90% exposure)
+Total: 150% exposure via leverage
+
+Result: Higher return, balanced risk (both contribute equally)</code></pre>
+
+      <h2>Black-Litterman Model</h2>
+      <h3>Combining Market Views with MPT</h3>
+      <p><strong>Adjust MPT allocations based on personal convictions.</strong></p>
+      <pre><code>MPT Allocation (neutral):
+40% SPY, 30% TLT, 15% GLD, 15% DBC
+
+Your View: "I'm bullish on gold (+10% expected vs. neutral)"
+
+Black-Litterman Output:
+35% SPY, 28% TLT, 22% GLD, 15% DBC (tilted toward gold based on view)
+
+Advantage: Incorporates conviction without abandoning diversification</code></pre>
+
+      <h2>Kelly Criterion for Portfolio Sizing</h2>
+      <p><strong>Optimal allocation to maximize long-term growth.</strong></p>
+      <pre><code>Kelly % = (Win Rate × Avg Win - Loss Rate × Avg Loss) / Avg Win
+
+Strategy: 60% WR, 2.5R avg win, 1R avg loss
+Kelly = (0.60 × 2.5 - 0.40 × 1) / 2.5 = 0.44 = 44%
+
+Conservative: Use 1/4 Kelly = 11% per strategy
+
+Portfolio:
+Strategy A (11%), Strategy B (11%), Strategy C (11%), Cash (67%)</code></pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>Diversification reduces risk if correlation < 1.0</strong></li>
+        <li><strong>Efficient frontier: max return for given risk</strong></li>
+        <li><strong>Risk parity: equal risk contribution (not equal $)</strong></li>
+        <li><strong>Kelly Criterion: optimal sizing for growth</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Calculate correlation</strong></p>
+      <p>Export your trades (if multi-asset). Calculate correlation. Are positions truly diversified or correlated?</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Diversification is the only free lunch in finance—if done right. Correlation matters more than asset count."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/advanced/37-trading-automation-apis.html">&larr; Previous: Automation</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/39-performance-attribution.html">Next: Performance Attribution &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

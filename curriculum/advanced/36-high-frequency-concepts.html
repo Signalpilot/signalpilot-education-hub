@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>High-Frequency Trading Concepts: Latency, Arbitrage & Market Making — SignalPilot Education</title>
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="36">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">High-Frequency Trading Concepts: Latency, Arbitrage & Market Making</h1><div class="meta">Reading time ~14 min • HFT Mechanics</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>HFT firms make billions on microseconds. You can't compete on speed—but you can understand their strategies and avoid being their liquidity.</b> Learn HFT mechanics, latency arbitrage, and how to trade around their tactics.</p>
+      
+      <h2>What is High-Frequency Trading?</h2>
+      
+      <h3>HFT Characteristics</h3>
+      <ul>
+        <li><b>Ultra-low latency:</b> 0.5-5 milliseconds (vs. retail 50-200ms)</li>
+        <li><b>High turnover:</b> Thousands of trades per second</li>
+        <li><b>Tiny edges:</b> $0.001-0.01 per share (scalable to billions)</li>
+        <li><b>Market making:</b> Provide liquidity, capture spread</li>
+        <li><b>Arbitrage:</b> Exploit price differences across venues</li>
+      </ul>
+
+      <h3>HFT Strategies</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Strategy</th><th>Description</th><th>Edge</th></tr>
+        <tr><td>Market Making</td><td>Quote bid/ask, capture spread</td><td>Rebates + spread</td></tr>
+        <tr><td>Arbitrage</td><td>Buy NYSE, sell NASDAQ (price diff)</td><td>Price inefficiency</td></tr>
+        <tr><td>Latency Arbitrage</td><td>Front-run slow orders</td><td>Speed advantage</td></tr>
+        <tr><td>Order Anticipation</td><td>Detect large orders, front-run</td><td>Information edge</td></tr>
+        <tr><td>Liquidity Rebate Trading</td><td>Trade for exchange rebates</td><td>Rebate > costs</td></tr>
+      </table>
+
+      <h2>Latency & Co-Location</h2>
+      
+      <h3>The Speed Arms Race</h3>
+      <pre><code>Latency Breakdown:
+
+Retail Trader (Home Internet):
+Decision → Router → ISP → Broker → Exchange
+Total: 50-200 milliseconds
+
+HFT Firm (Co-Located):
+Decision → Direct fiber → Exchange server (same building)
+Total: 0.5-2 milliseconds (100x faster!)</code></pre>
+
+      <h3>Why Speed Matters</h3>
+      <pre><code>Scenario: SPY bid $520.00, ask $520.01
+
+0ms: Large sell order hits (10,000 shares)
+0.5ms: HFT detects order, cancels bid at $520.00
+1ms: HFT places new bid at $519.98 (lower)
+50ms: Retail order arrives, fills at $519.98
+
+HFT profit: $0.02/share × 10,000 = $200 (from speed)</code></pre>
+
+      <h2>HFT Market Making</h2>
+      
+      <h3>How HFT Market Makers Profit</h3>
+      <pre><code>Bid: $520.00 (HFT buys)
+Ask: $520.01 (HFT sells)
+Spread: $0.01
+
+If both fill:
+Buy 1000 at $520.00 = -$520,000
+Sell 1000 at $520.01 = +$520,010
+Gross profit: $10
+
+Add maker rebate: $0.002/share × 2000 shares = $4
+Total profit: $14 per round-turn
+
+Scale: 1 million round-turns/day = $14M/day</code></pre>
+
+      <h3>Adverse Selection Risk</h3>
+      <p><strong>HFT's biggest fear: trading with informed traders.</strong></p>
+      <pre><code>HFT quotes: Bid $520.00, Ask $520.01
+
+Scenario 1: Uninformed flow (retail)
+- Random buy/sell (50/50)
+- HFT profits from spread (low risk)
+
+Scenario 2: Informed flow (institution about to announce)
+- Institution sells aggressively (knows bad news coming)
+- HFT buys at $520.00
+- News drops, stock falls to $518
+- HFT loses $2/share (adverse selection!)
+
+Defense: HFT widens spreads, cancels quotes when detecting toxicity</code></pre>
+
+      <h2>Arbitrage Strategies</h2>
+      
+      <h3>Cross-Exchange Arbitrage</h3>
+      <pre><code>NYSE: SPY bid $520.00, ask $520.01
+NASDAQ: SPY bid $520.01, ask $520.02
+
+HFT action:
+1. Buy NYSE at $520.01 (take ask)
+2. Sell NASDAQ at $520.01 (hit bid)
+3. Net: $0.00 (but earns maker rebate on NASDAQ)
+
+Rebate: $0.001/share × 1000 = $1 profit (risk-free!)</code></pre>
+
+      <h3>Triangular Arbitrage (Crypto)</h3>
+      <pre><code>Exchange A: BTC/USD = $42,000
+Exchange B: ETH/USD = $2,200
+Exchange C: BTC/ETH = 19.05 (should be 19.09)
+
+Arbitrage:
+1. Buy 1 BTC for $42,000 on A
+2. Sell 1 BTC for 19.05 ETH on C
+3. Sell 19.05 ETH for $41,910 on B
+
+Loss: $90 (spread costs)
+
+If executed in microseconds (before arb closes):
+- Potential $50-100 profit per cycle
+- Scale to 1000 cycles/day = $50K-100K</code></pre>
+
+      <h2>Order Anticipation (Front-Running)</h2>
+      
+      <h3>How HFTs Detect Large Orders</h3>
+      <pre><code>Signals of incoming institutional order:
+
+1. Dark pool prints (large blocks executing)
+2. Iceberg orders (refreshing bid/ask)
+3. Momentum shift (unusual buying pressure)
+4. Cross-venue activity (orders hitting multiple exchanges)
+
+HFT response:
+- Buy ahead of detected institutional buy
+- Push price up $0.05-0.10
+- Sell to institution at higher price</code></pre>
+
+      <h3>Quote Stuffing</h3>
+      <p><strong>Flood order book to slow competitors.</strong></p>
+      <pre><code>HFT places 10,000 orders in 1 second:
+- Bid $520.00 (100 shares)
+- Cancel
+- Bid $520.01 (100 shares)
+- Cancel
+- Repeat...
+
+Purpose:
+1. Generate data noise (slow competitor algos)
+2. Probe for hidden orders (icebergs)
+3. Manipulate NBBO (best bid/offer)
+
+Result: Order book chaos, retail sees flickering prices</code></pre>
+
+      <h2>How Retail Can Adapt</h2>
+      
+      <h3>Strategy 1: Avoid Toxic Times</h3>
+      <pre><code>High HFT Activity:
+- 9:30-9:45 AM (opening chaos)
+- 3:45-4:00 PM (closing auction)
+- News events (FOMC, earnings)
+
+Low HFT Activity:
+- 10:30 AM-12 PM (stable flow)
+- Mid-week (Tuesday-Thursday)
+
+Takeaway: Trade during calm windows (better execution)</code></pre>
+
+      <h3>Strategy 2: Use Limit Orders</h3>
+      <pre><code>Bad: Market order to buy SPY
+- Pays ask ($520.01)
+- May get front-run (price jumps to $520.05)
+
+Good: Limit order at bid ($520.00)
+- Join queue, wait for fill
+- Save spread ($0.01/share)
+- HFTs can't front-run (you're already in queue)</code></pre>
+
+      <h3>Strategy 3: Hide Intent (Iceberg Orders)</h3>
+      <pre><code>Want to buy 10,000 shares SPY
+
+Bad: Single market order (signals large size)
+- HFT detects, front-runs
+- Slippage: $0.05-0.10/share = $500-1000 loss
+
+Good: Iceberg order (display 500, hide 9,500)
+- HFT doesn't see full size
+- Reduced slippage: $0.01-0.02/share = $100-200 loss</code></pre>
+
+      <h3>Strategy 4: Use Dark Pools</h3>
+      <pre><code>Large order: Buy 50,000 SPY shares
+
+Lit markets: HFT detects, front-runs (high impact)
+
+Dark pools:
+- Hidden liquidity (HFTs can't see)
+- Midpoint execution (save spread)
+- Lower market impact
+
+Result: Better avg fill ($520.02 vs. $520.10 on lit)</code></pre>
+
+      <h2>Flash Crashes & Circuit Breakers</h2>
+      
+      <h3>2010 Flash Crash</h3>
+      <pre><code>May 6, 2010:
+- DOW drops 1,000 points in 5 minutes
+- SPY falls 6% in seconds, recovers in minutes
+
+Cause: HFT algos detected large sell order
+- Cascading stop-losses triggered
+- HFTs withdrew liquidity (widened spreads)
+- Algos sold into vacuum (no bids)
+
+Lesson: HFTs provide liquidity in calm, withdraw in chaos</code></pre>
+
+      <h3>Circuit Breakers</h3>
+      <p><strong>Automatic trading halts to prevent cascades.</strong></p>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Level</th><th>Drop</th><th>Halt Duration</th></tr>
+        <tr><td>Level 1</td><td>-7% from open</td><td>15 minutes</td></tr>
+        <tr><td>Level 2</td><td>-13% from open</td><td>15 minutes</td></tr>
+        <tr><td>Level 3</td><td>-20% from open</td><td>Remainder of day</td></tr>
+      </table>
+
+      <h2>Signal Pilot vs. HFT</h2>
+      
+      <h3>Signal Pilot Advantage: Human Discretion</h3>
+      <pre><code>HFT Weakness: Can't interpret context
+- News sentiment (bullish vs. bearish headline)
+- Chart patterns (support/resistance)
+- Multi-timeframe alignment
+
+Signal Pilot + Human:
+- Janus sweep (algo detects pattern)
+- Human confirms: HTF trend, regime, macro context
+- Execute: Better edge than pure HFT (context matters)</code></pre>
+
+      <h3>Swing Trading > HFT Competition</h3>
+      <pre><code>HFT dominates: Sub-second to minutes (scalping)
+
+Swing trading (hours to days):
+- HFTs don't compete (not their timeframe)
+- Fundamental edge (macro, regime, flow)
+- Lower execution costs (fewer trades)
+
+Takeaway: Trade longer timeframes to avoid HFT battleground</code></pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>HFTs trade on microseconds (you can't compete on speed)</strong></li>
+        <li><strong>HFT strategies: market making, arbitrage, front-running</strong></li>
+        <li><strong>Adapt: limit orders, iceberg orders, dark pools</strong></li>
+        <li><strong>Avoid toxic times (9:30-9:45 AM, 3:45-4:00 PM)</strong></li>
+        <li><strong>Trade longer timeframes (escape HFT competition)</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Measure your latency</strong></p>
+      <p>Place test limit order. How long from click to confirmation? Compare to HFT (0.5-2ms). Understand the gap.</p>
+      
+      <p><strong>Exercise 2: Track slippage by time</strong></p>
+      <p>Log fills: 9:30 AM vs. 11:00 AM. Is slippage worse during opening? Adjust timing.</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"You can't outrun HFTs. But you can outsmart them—trade longer, hide intent, avoid their battlefield."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/advanced/35-machine-learning-trading.html">&larr; Previous: Machine Learning</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/37-trading-automation-apis.html">Next: Trading Automation &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

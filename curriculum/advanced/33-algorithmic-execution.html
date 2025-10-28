@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Algorithmic Execution: Order Types & Slippage Optimization — SignalPilot Education</title>
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="33">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Algorithmic Execution: Order Types & Slippage Optimization</h1><div class="meta">Reading time ~17 min • Execution Algorithms</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>How you enter matters as much as what you enter. Bad execution costs 0.1-0.5% per trade—that's your edge, gone.</b> Learn advanced order types, execution algorithms, and slippage minimization used by professionals.</p>
+      
+      <h2>The Cost of Poor Execution</h2>
+      
+      <h3>Hidden Execution Costs</h3>
+      <pre><code>Example: 1000 trades/year, $10K avg position
+
+Retail execution (market orders):
+Slippage per trade: 0.15% = $15
+Annual slippage: $15 × 1000 = $15,000
+
+Professional execution (limit orders + algos):
+Slippage per trade: 0.03% = $3
+Annual slippage: $3 × 1000 = $3,000
+
+Savings: $12,000/year (just from execution!)</code></pre>
+
+      <h3>Components of Execution Cost</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Cost Type</th><th>Typical Range</th><th>How to Minimize</th></tr>
+        <tr><td>Spread</td><td>0.01-0.10%</td><td>Limit orders at mid, not market</td></tr>
+        <tr><td>Slippage</td><td>0.02-0.20%</td><td>Scale in, avoid large market orders</td></tr>
+        <tr><td>Commission</td><td>$0-2/trade</td><td>Choose low-cost broker</td></tr>
+        <tr><td>Market Impact</td><td>0.05-0.50%</td><td>Iceberg orders, VWAP algos</td></tr>
+        <tr><td>Opportunity Cost</td><td>Variable</td><td>Don't wait too long (miss move)</td></tr>
+      </table>
+
+      <h2>Advanced Order Types</h2>
+      
+      <h3>1. Limit Order (Price Priority)</h3>
+      <p><strong>Specify max price willing to pay (buy) or min price to accept (sell).</strong></p>
+      <pre><code>SPY at $520.05 (bid $520.04, ask $520.06)
+
+Market Order BUY: Fills at $520.06 (pay spread)
+Limit Order BUY $520.04: Join bid, wait for fill
+
+Advantage: Save spread ($0.02 = $20 on 1000 shares)
+Risk: May not fill if price runs away</code></pre>
+
+      <h3>2. Stop-Limit Order (Breakout Entry)</h3>
+      <p><strong>Converts to limit order when stop price hit.</strong></p>
+      <pre><code>SPY at $520, resistance at $522
+
+Stop-Limit: Stop $522.00, Limit $522.10
+- If SPY hits $522 → Limit buy order at $522.10 activated
+- Fills if can get $522.10 or better
+
+Advantage: Avoid buying breakout into vacuum (get reasonable fill)
+Risk: If price gaps through $522.10, no fill (missed trade)</code></pre>
+
+      <h3>3. Iceberg Order (Hide Size)</h3>
+      <p><strong>Display small size, hide large order underneath.</strong></p>
+      <pre><code>Want to buy 10,000 SPY shares without moving market
+
+Iceberg: Display 500 shares, hide 9,500
+- Order book shows 500 bid
+- When 500 fills → Another 500 appears (refreshes)
+- Repeat until 10,000 filled
+
+Advantage: Don't reveal intent (avoid front-running)
+Use: Large positions, avoid market impact</code></pre>
+
+      <h3>4. Post-Only Order (Maker Rebate)</h3>
+      <p><strong>Only fills if adding liquidity (not taking).</strong></p>
+      <pre><code>Order book:
+Bid: $520.04 (500 shares)
+Ask: $520.06 (500 shares)
+
+Post-Only BUY $520.05:
+- Sits between bid/ask (adds liquidity)
+- Earns maker rebate ($0.001/share)
+- Doesn't cross spread (no taker fee)
+
+If order would cross spread → Canceled (post-only constraint)
+
+Advantage: Earn rebates, reduce costs
+Risk: May not fill quickly</code></pre>
+
+      <h3>5. Fill-or-Kill (FOK)</h3>
+      <p><strong>Execute entire order immediately or cancel.</strong></p>
+      <pre><code>Want 1000 shares at $520.05 or better
+
+FOK: Fill all 1000 immediately OR cancel entire order
+- If 800 available → Order canceled (partial not accepted)
+- If 1000+ available → Fills all 1000
+
+Use: When partial fills unacceptable (want all or nothing)</code></pre>
+
+      <h3>6. Immediate-or-Cancel (IOC)</h3>
+      <p><strong>Fill what's available immediately, cancel rest.</strong></p>
+      <pre><code>IOC: Buy 1000 shares at $520.05
+- If 600 available → Fills 600, cancels 400
+- Immediately executed (no lingering order)
+
+Use: Probing liquidity without leaving order in book</code></pre>
+
+      <h2>Execution Algorithms</h2>
+      
+      <h3>VWAP Algo (Volume-Weighted Average Price)</h3>
+      <p><strong>Distribute order throughout day based on historical volume profile.</strong></p>
+      <pre><code>Order: Buy 50,000 SPY shares, 9:30 AM - 4:00 PM
+
+Algo logic:
+- Analyze historical volume (% of daily volume per hour)
+- Slice order proportionally
+- Example: 9:30-10:30 AM = 20% volume → Buy 10,000 shares
+
+Execution:
+- Small clips every 1-5 minutes
+- Adjusts dynamically to real-time volume
+- Goal: Match VWAP benchmark (minimize cost)
+
+Best for: Large orders, liquid assets, normal days</code></pre>
+
+      <h3>TWAP Algo (Time-Weighted Average Price)</h3>
+      <p><strong>Equal slices at regular time intervals.</strong></p>
+      <pre><code>Order: Buy 50,000 shares over 4 hours
+
+Algo logic:
+- Divide into equal slices (e.g., 10,000 every 30 min)
+- Execute on schedule (10:00, 10:30, 11:00...)
+- Ignores volume (pure time-based)
+
+Best for: Illiquid assets, avoid signaling intent</code></pre>
+
+      <h3>Implementation Shortfall (IS) Algo</h3>
+      <p><strong>Minimize difference between decision price and execution price.</strong></p>
+      <pre><code>Decision price: $520.00 (when you decided to buy)
+Target: Execute 10,000 shares close to $520.00
+
+Algo logic:
+- Starts aggressive (large clips, capture price)
+- If price moves away → Becomes more aggressive (urgency)
+- If price favorable → Slows down (patient, save cost)
+
+Best for: Time-sensitive trades, minimize opportunity cost</code></pre>
+
+      <h3>POV Algo (Percentage of Volume)</h3>
+      <p><strong>Execute as fixed % of market volume.</strong></p>
+      <pre><code>Order: Buy 50,000 shares, 20% POV target
+
+Algo logic:
+- If market volume = 10,000/min → Buy 2,000/min (20%)
+- If volume increases → Algo speeds up
+- If volume decreases → Algo slows down
+
+Best for: Large orders, avoid dominating tape (< 30% volume)</code></pre>
+
+      <h2>Smart Order Routing (SOR)</h2>
+      
+      <h3>What is SOR?</h3>
+      <p><strong>Algorithm routes order to multiple venues to find best execution.</strong></p>
+      <pre><code>Want to buy 1000 SPY shares at $520.05 or better
+
+SOR scans:
+- NYSE: 300 shares at $520.05
+- NASDAQ: 400 shares at $520.04 (best price!)
+- BATS: 500 shares at $520.06
+
+SOR routes:
+1. 400 shares to NASDAQ at $520.04
+2. 300 shares to NYSE at $520.05
+3. 300 shares to BATS at $520.05 (only takes < $520.06)
+
+Result: Avg fill $520.047 (better than single venue)</code></pre>
+
+      <h3>Dark Pool Routing</h3>
+      <p><strong>SOR also checks dark pools for hidden liquidity.</strong></p>
+      <pre><code>Visible markets: Only 500 shares available at $520.05
+Dark pools: 5,000 shares available at $520.03 (midpoint)
+
+SOR routes to dark pool:
+- Fills 1,000 at $520.03 (saved $0.02/share = $20!)
+- No market impact (hidden execution)
+
+Advantage: Better prices, anonymity
+Risk: Dark pools have own fees, slower fills</code></pre>
+
+      <h2>Minimizing Slippage</h2>
+      
+      <h3>Strategy 1: Scale Into Position</h3>
+      <p><strong>Don't enter full size at once (average in).</strong></p>
+      <pre><code>Want 1000 shares SPY at ~$520
+
+Bad: Market order 1000 shares
+Fill: $520.08 (paid ask + slippage)
+
+Good: Scale in over 3-5 orders
+Order 1: 300 shares at $520.05 (limit)
+Order 2: 300 shares at $520.03 (dip)
+Order 3: 400 shares at $520.06 (breakout confirmed)
+
+Avg Fill: $520.047 (saved $0.033 = $33)</code></pre>
+
+      <h3>Strategy 2: Join the Bid/Ask</h3>
+      <p><strong>Place limit at bid (buy) or ask (sell), wait for fill.</strong></p>
+      <pre><code>SPY: Bid $520.04, Ask $520.06
+
+Market Order: Pay $520.06 (take liquidity)
+Limit at Ask: Join $520.06 (if price dips, you fill)
+Limit at Mid: $520.05 (aggressive maker, may fill on spread tightening)
+
+Advantage: Save spread cost (maker rebate possible)
+Risk: May not fill if price runs away</code></pre>
+
+      <h3>Strategy 3: Avoid Predictable Times</h3>
+      <p><strong>Don't execute during high-slippage windows.</strong></p>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Time</th><th>Slippage Risk</th><th>Why</th></tr>
+        <tr><td>9:30-9:45 AM</td><td>High</td><td>Opening volatility, wide spreads</td></tr>
+        <tr><td>10:30 AM-12 PM</td><td>Low</td><td>Stable, liquid</td></tr>
+        <tr><td>12:00-2:00 PM</td><td>Medium</td><td>Low volume (lunch)</td></tr>
+        <tr><td>3:45-4:00 PM</td><td>High</td><td>Closing volatility, algos finishing</td></tr>
+      </table>
+
+      <h3>Strategy 4: Use Conditional Orders</h3>
+      <p><strong>Enter on pullback, not chase.</strong></p>
+      <pre><code>Scenario: Breakout above $522, want to buy
+
+Bad: Market order at $522.20 (chasing)
+Slippage: 0.10% ($10 on 10K position)
+
+Good: Conditional limit order
+"If price > $522, then limit buy $522.05"
+- Waits for slight pullback
+- Fills at $522.05 vs. $522.20
+
+Savings: $0.15/share = $150 on 1000 shares</code></pre>
+
+      <h2>Latency & Co-Location</h2>
+      
+      <h3>What is Latency?</h3>
+      <p><strong>Time delay between decision and execution.</strong></p>
+      <pre><code>Retail Trader:
+Decision → Internet → Broker → Exchange
+Latency: 50-200 milliseconds
+
+Professional (Co-Located):
+Decision → Direct fiber → Exchange
+Latency: 0.5-2 milliseconds (100x faster)
+
+Impact:
+Fast market moves $0.10 in 100ms
+Retail: Order arrives, price now $520.10 (slippage)
+Pro: Order arrives, price still $520.00 (minimal slippage)</code></pre>
+
+      <h3>Latency Arbitrage (Why HFTs Win)</h3>
+      <pre><code>HFT sees your large order coming:
+1. Your order: Buy 10,000 shares at market (50ms away)
+2. HFT algo detects order flow (0.5ms to react)
+3. HFT buys 5,000 shares at $520.05
+4. Your order arrives, pushes price to $520.15
+5. HFT sells 5,000 shares at $520.15 to you
+
+HFT profit: $0.10/share × 5,000 = $500 (your slippage!)
+
+Defense: Limit orders, iceberg orders, algos (don't signal intent)</code></pre>
+
+      <h2>Order Flow Toxicity</h2>
+      
+      <h3>Informed vs. Uninformed Flow</h3>
+      <p><strong>Market makers detect "toxic" order flow (informed traders).</strong></p>
+      <pre><code>Uninformed Flow (Retail):
+- Random timing
+- Small size
+- Market orders
+→ Market makers willing to trade (low risk)
+
+Informed Flow (Institutional):
+- Timed around events
+- Large size
+- Aggressive (pay spread)
+→ Market makers widen spreads (adverse selection risk)
+
+Result: If detected as informed → Worse execution (wider spreads)</code></pre>
+
+      <h3>Minimizing Order Toxicity</h3>
+      <ul>
+        <li><b>Randomize timing:</b> Don't execute at same time daily (pattern detection)</li>
+        <li><b>Use iceberg orders:</b> Hide true size</li>
+        <li><b>Route to dark pools:</b> Avoid lit markets for large orders</li>
+        <li><b>Avoid aggressive market orders:</b> Signal urgency (widens spreads)</li>
+      </ul>
+
+      <h2>Signal Pilot + Execution Integration</h2>
+      
+      <h3>Janus Sweep Entry Execution</h3>
+      <pre><code>Setup: Janus sweep to $519.50, reclaim above $520.00
+
+Entry plan:
+DON'T: Market order at $520.05 (chase, slippage)
+
+DO: Conditional limit order
+"If price > $520.00, limit buy $520.02"
+- Waits for reclaim
+- Enters at bid (saves spread)
+- Fills during consolidation above $520
+
+Result: Better fill, less slippage, same setup</code></pre>
+
+      <h3>Scaling Into Plutus POC Support</h3>
+      <pre><code>Setup: POC support at $520.00, price dipping
+
+Entry plan (scale in):
+Order 1: 30% size at $520.05 (initial test)
+Order 2: 30% size at $519.95 (if dips, average down)
+Order 3: 40% size at $519.90 (max conviction, dip confirmed)
+
+Stop: $519.50 (below POC)
+
+Advantage: Better avg entry, less risk of single bad fill</code></pre>
+
+      <h2>Execution Quality Metrics</h2>
+      
+      <h3>1. Effective Spread</h3>
+      <p><strong>How much you paid vs. midpoint.</strong></p>
+      <pre><code>Midpoint: $520.00
+Your fill: $520.08
+
+Effective Spread: $0.08 (0.015%)
+
+Benchmark:
+< 0.01% = Excellent
+0.01-0.05% = Good
+> 0.05% = Poor (improve execution)</code></pre>
+
+      <h3>2. Fill Rate</h3>
+      <p><strong>% of limit orders that filled.</strong></p>
+      <pre><code>100 limit orders placed
+85 filled
+
+Fill Rate: 85%
+
+Benchmark:
+> 80% = Good balance (getting filled without overpaying)
+< 50% = Too passive (missing trades)</code></pre>
+
+      <h3>3. Implementation Shortfall</h3>
+      <p><strong>Cost from decision to execution.</strong></p>
+      <pre><code>Decision price: $520.00 (when you decided to buy)
+Avg fill price: $520.12 (actual execution)
+
+Implementation Shortfall: $0.12 (0.023%)
+
+Target: < 0.05% (minimize opportunity cost + slippage)</code></pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>Execution costs 0.1-0.5% per trade (use limits, not market orders)</strong></li>
+        <li><strong>Scale in (3-5 orders) to average better price</strong></li>
+        <li><strong>Iceberg orders hide size, avoid market impact</strong></li>
+        <li><strong>VWAP algos minimize cost on large orders</strong></li>
+        <li><strong>Avoid 9:30-9:45 AM and 3:45-4:00 PM (high slippage)</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Track your fills</strong></p>
+      <p>Next 10 trades: Log midpoint when you decided vs. actual fill. Calculate effective spread. How much did execution cost?</p>
+      
+      <p><strong>Exercise 2: Test scaling</strong></p>
+      <p>Next trade: Scale in with 3 limit orders (30%, 30%, 40%). Compare avg fill to market order fill. Did you save?</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Edge isn't just your setup—it's your execution. Save 0.1% per trade, that's 10% annually. Execution is edge."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/advanced/32-volatility-trading.html">&larr; Previous: Volatility</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/34-system-development.html">Next: System Development &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

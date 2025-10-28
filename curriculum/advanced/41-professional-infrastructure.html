@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Professional Trading Infrastructure — SignalPilot Education</title>
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="41">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Professional Trading Infrastructure</h1><div class="meta">Reading time ~14 min • Professional Setup</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>Professional traders don't wing it—they build systems for data, execution, risk, and monitoring.</b> Learn the complete infrastructure stack from hardware to software to processes.</p>
+      
+      <h2>Hardware Setup</h2>
+      
+      <h3>Multi-Monitor Configuration</h3>
+      <pre><code>Professional Setup (4-6 monitors):
+
+Monitor 1 (Primary Charts): 32" 4K
+- Quad-pane: Daily, 4H, 1H, 15min
+- Signal Pilot indicators loaded
+
+Monitor 2 (Order Flow): 27" 2K
+- Footprint chart
+- Order book / DOM
+- Volume Profile
+
+Monitor 3 (Macro Context): 27" 2K
+- Futures (ES, NQ, YM)
+- VIX, DXY, TNX
+- Sector heatmap
+
+Monitor 4 (Execution): 24"
+- Order entry terminal
+- Position monitor
+- P&L tracker
+
+Monitors 5-6 (Optional): News, journal, alerts</code></pre>
+
+      <h3>Computer Specs</h3>
+      <pre><code>Minimum Professional:
+CPU: Intel i7 / AMD Ryzen 7 (8+ cores)
+RAM: 32GB (64GB if running backtests)
+GPU: Mid-range (for multi-monitor, not gaming)
+Storage: 1TB NVMe SSD (fast boot, data access)
+Network: Wired Ethernet (1Gbps, NOT WiFi)
+
+Cost: $1,500-2,500</code></pre>
+
+      <h3>Internet & Redundancy</h3>
+      <pre><code>Primary: Fiber (1Gbps down, 500Mbps up)
+Backup: 4G/5G hotspot (automatic failover)
+
+UPS (Uninterruptible Power Supply):
+- 1500VA minimum (30+ min runtime)
+- Auto-shutdown on low battery
+- Cost: $150-300
+
+Why: Prevents data loss, missed exits during outage</code></pre>
+
+      <h2>Software Stack</h2>
+      
+      <h3>Core Trading Platform</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Platform</th><th>Best For</th><th>Cost</th></tr>
+        <tr><td>TradingView Pro+</td><td>Charting, alerts, indicators</td><td>$60/month</td></tr>
+        <tr><td>ThinkorSwim</td><td>Options, advanced charting</td><td>Free (TD Ameritrade)</td></tr>
+        <tr><td>Sierra Chart</td><td>Futures, order flow, DOM</td><td>$36/month</td></tr>
+        <tr><td>NinjaTrader</td><td>Futures, automation</td><td>$60/month</td></tr>
+        <tr><td>Interactive Brokers TWS</td><td>Multi-asset, global</td><td>Free</td></tr>
+      </table>
+
+      <h3>Data Feeds</h3>
+      <pre><code>Real-Time Data:
+- Level 1 (bid/ask): Free (most brokers)
+- Level 2 (order book): $10-30/month
+- Tick data: $50-100/month
+- Options flow: $100-300/month
+
+Professional Data:
+- Bloomberg Terminal: $2,000/month (institutional)
+- Refinitiv Eikon: $1,000/month
+- FactSet: $1,000+/month</code></pre>
+
+      <h3>Backtesting & Analytics</h3>
+      <ul>
+        <li><b>Python (pandas, backtrader, zipline):</b> Free, flexible</li>
+        <li><b>QuantConnect:</b> Cloud backtesting, $20-100/month</li>
+        <li><b>TradeStation:</b> EasyLanguage, $100/month</li>
+        <li><b>Amibroker:</b> One-time $300 (fast, efficient)</li>
+      </ul>
+
+      <h3>Journal & Tracking</h3>
+      <pre><code>Options:
+1. Spreadsheet (Google Sheets): Free, manual
+2. Edgewonk: $99/year (automated from broker API)
+3. TraderSync: $40/month (auto-import, analytics)
+4. TradesViz: $30/month (advanced visualizations)</code></pre>
+
+      <h2>Data Management</h2>
+      
+      <h3>Historical Data Storage</h3>
+      <pre><code>Data Organization:
+/trading_data/
+  /equities/
+    /daily/
+      SPY_daily_2018-2024.csv
+    /intraday/
+      SPY_1min_2024-01.csv
+  /futures/
+    ES_tick_2024-03.csv
+  /options/
+    SPY_options_chain_2024-03-15.csv
+
+Backup Strategy:
+- Local NVMe SSD (primary)
+- External HDD (weekly backup)
+- Cloud (Google Drive, Dropbox) (monthly backup)</code></pre>
+
+      <h3>Data Quality Checks</h3>
+      <pre><code>import pandas as pd
+
+def validate_data(df):
+    # Check for gaps (missing bars)
+    time_diff = df['timestamp'].diff()
+    gaps = time_diff[time_diff > pd.Timedelta('2 minutes')]
+    if len(gaps) > 0:
+        print(f"Warning: {len(gaps)} gaps found")
+    
+    # Check for outliers (bad ticks)
+    price_change = df['close'].pct_change()
+    outliers = price_change[abs(price_change) > 0.05]  # 5%+ moves
+    if len(outliers) > 0:
+        print(f"Warning: {len(outliers)} outliers found")
+    
+    # Check for duplicates
+    dupes = df.duplicated(subset=['timestamp'])
+    if dupes.sum() > 0:
+        print(f"Warning: {dupes.sum()} duplicate timestamps")</code></pre>
+
+      <h2>Risk Management System</h2>
+      
+      <h3>Automated Risk Checks</h3>
+      <pre><code>Pre-Trade Risk System:
+
+class RiskManager:
+    def __init__(self, max_position_risk=0.02, max_portfolio_heat=0.08):
+        self.max_position_risk = max_position_risk
+        self.max_portfolio_heat = max_portfolio_heat
+    
+    def check_position_size(self, equity, entry, stop, size):
+        risk_amt = (entry - stop) × size
+        risk_pct = risk_amt / equity
+        
+        if risk_pct > self.max_position_risk:
+            return False, f"Position risk {risk_pct:.1%} > max {self.max_position_risk:.1%}"
+        return True, "OK"
+    
+    def check_portfolio_heat(self, equity, open_positions):
+        total_risk = sum([pos.risk_amt for pos in open_positions])
+        heat_pct = total_risk / equity
+        
+        if heat_pct > self.max_portfolio_heat:
+            return False, f"Portfolio heat {heat_pct:.1%} > max {self.max_portfolio_heat:.1%}"
+        return True, "OK"</code></pre>
+
+      <h3>Kill Switch</h3>
+      <pre><code>Automated Trading Halt Conditions:
+
+1. Daily loss > 3% → Close all, stop trading
+2. Drawdown > 20% → Reduce size 75%
+3. Consecutive losses > 5 → Stop, review
+4. API errors > 10/hour → Stop, investigate
+5. VIX > 40 → Close all, sit out
+
+Implementation:
+- Check conditions every 5 minutes
+- Send SMS/email alert when triggered
+- Requires manual override to resume</code></pre>
+
+      <h2>Monitoring & Alerts</h2>
+      
+      <h3>Real-Time Monitoring Dashboard</h3>
+      <pre><code>Dashboard Metrics (Update Every 60s):
+
+Performance:
+- Today P&L: +$1,250 (+1.25%)
+- Week P&L: +$3,800 (+3.8%)
+- Month P&L: +$12,400 (+12.4%)
+- Max DD (today): -0.8%
+
+Positions:
+- Open positions: 3
+- Total exposure: $45,000 (45% of capital)
+- Total risk: $1,800 (1.8% portfolio heat)
+
+System Health:
+- API latency: 45ms (normal)
+- Data feed: Connected
+- Errors (last hour): 0
+- Uptime: 99.2%</code></pre>
+
+      <h3>Alert System</h3>
+      <pre><code>Alert Channels:
+1. Email: Non-urgent (daily summary)
+2. SMS: Urgent (risk limits, errors)
+3. Telegram/Discord: Trade notifications
+4. Push notifications: Price alerts
+
+Example Alerts:
+- "SPY swept $520 (Janus trigger)" → Telegram
+- "Portfolio heat 7.5% (near limit)" → SMS
+- "VIX spiked to 32 (high vol regime)" → SMS
+- "Daily loss -2.8% (approaching limit)" → SMS + Email</code></pre>
+
+      <h2>Disaster Recovery Plan</h2>
+      
+      <h3>Failure Scenarios</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Failure</th><th>Backup Plan</th></tr>
+        <tr><td>Internet outage</td><td>4G hotspot (auto-failover)</td></tr>
+        <tr><td>Power outage</td><td>UPS (30+ min), mobile broker app</td></tr>
+        <tr><td>PC crash</td><td>Backup laptop, cloud-based platform</td></tr>
+        <tr><td>Broker down</td><td>Secondary broker account ready</td></tr>
+        <tr><td>Data feed down</td><td>Backup data provider</td></tr>
+      </table>
+
+      <h3>Emergency Protocol</h3>
+      <pre><code>If Primary System Fails:
+
+1. Access positions via mobile app
+2. Close all positions (or place stops)
+3. Switch to backup system (laptop + hotspot)
+4. Contact broker if execution issues
+5. Log incident, review after market close
+
+Drill: Test failover quarterly (simulate failures)</code></pre>
+
+      <h2>Cost Breakdown</h2>
+      
+      <h3>Professional Setup (Annual)</h3>
+      <pre><code>Hardware (one-time):
+- PC: $2,000
+- Monitors (4x): $1,500
+- Desk, chair, peripherals: $500
+Total: $4,000 (amortize over 3 years = $1,333/year)
+
+Software (monthly):
+- Trading platform: $60
+- Data feeds: $100
+- Backtesting: $50
+- Journal: $40
+Total: $250/month × 12 = $3,000/year
+
+Infrastructure:
+- Internet (fiber): $80/month = $960/year
+- UPS, backup: $200/year
+- Cloud storage: $100/year
+Total: $1,260/year
+
+Grand Total: $5,593/year (~$466/month)
+
+Break-even: $466 × 12 = $5,592/year cost
+If edge = 2R/month, need ~2.8 trades/month to cover (very achievable)</code></pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>Hardware: 4-6 monitors, 32GB RAM, wired internet</strong></li>
+        <li><strong>Software: TradingView + broker platform + journal</strong></li>
+        <li><strong>Risk system: Automated checks, kill switch</strong></li>
+        <li><strong>Monitoring: Real-time dashboard, SMS alerts</strong></li>
+        <li><strong>Backup: UPS, hotspot, secondary broker</strong></li>
+        <li><strong>Cost: ~$5K-6K/year (professional setup)</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Assess your setup</strong></p>
+      <p>Rate your current infrastructure (1-10). What's missing? What's your biggest single point of failure?</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Amateurs focus on setups. Professionals build systems. Infrastructure is the foundation of consistency."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/advanced/40-tax-optimization.html">&larr; Previous: Tax Optimization</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/42-trading-career-path.html">Next: Career Path &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Trading Automation & Broker APIs — SignalPilot Education</title>
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="37">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Trading Automation & Broker APIs</h1><div class="meta">Reading time ~15 min • Automated Execution</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>Fully automated trading: code your strategy, connect to broker API, execute 24/7 without screen time.</b> Learn broker API integration, order management, error handling, and production deployment.</p>
+      
+      <h2>Why Automate?</h2>
+      
+      <h3>Benefits of Automation</h3>
+      <ul>
+        <li><b>Zero emotions:</b> No FOMO, fear, or hesitation (executes exactly)</li>
+        <li><b>24/7 trading:</b> Crypto, forex, futures (trade while sleeping)</li>
+        <li><b>Perfect discipline:</b> Never skips stop loss, always follows rules</li>
+        <li><b>Scalability:</b> Run multiple strategies simultaneously</li>
+        <li><b>Backtestable:</b> Code once, backtest on years of data</li>
+      </ul>
+
+      <h2>Broker API Options</h2>
+      
+      <h3>Top Broker APIs</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Broker</th><th>API Type</th><th>Assets</th><th>Costs</th></tr>
+        <tr><td>Interactive Brokers</td><td>TWS API (Python, Java, C++)</td><td>Stocks, options, futures, forex</td><td>$0.005/share</td></tr>
+        <tr><td>Alpaca</td><td>REST + WebSocket</td><td>Stocks (US), crypto</td><td>Free (commission-free)</td></tr>
+        <tr><td>TD Ameritrade</td><td>REST API</td><td>Stocks, options</td><td>$0/trade (retail)</td></tr>
+        <tr><td>Binance</td><td>REST + WebSocket</td><td>Crypto only</td><td>0.1% maker/taker</td></tr>
+        <tr><td>Kraken</td><td>REST + WebSocket</td><td>Crypto only</td><td>0.16-0.26%</td></tr>
+      </table>
+
+      <h3>API Selection Criteria</h3>
+      <pre><code>Choose based on:
+1. Asset class (stocks, crypto, futures)
+2. Costs (commissions, API fees)
+3. Data quality (real-time tick data)
+4. Reliability (uptime, order execution)
+5. Documentation (good docs = faster dev)
+
+Recommendation for beginners: Alpaca (stocks), Binance (crypto)</code></pre>
+
+      <h2>API Integration Basics</h2>
+      
+      <h3>Authentication</h3>
+      <pre><code>import alpaca_trade_api as tradeapi
+
+# API credentials (NEVER hardcode! Use env variables)
+API_KEY = os.getenv('ALPACA_API_KEY')
+API_SECRET = os.getenv('ALPACA_API_SECRET')
+BASE_URL = 'https://paper-api.alpaca.markets'  # Paper trading
+
+# Initialize API connection
+api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL)</code></pre>
+
+      <h3>Fetching Market Data</h3>
+      <pre><code># Get latest price
+barset = api.get_barset('SPY', 'minute', limit=1)
+spy_bar = barset['SPY'][0]
+current_price = spy_bar.c  # Close price
+
+print(f"SPY current price: ${current_price}")</code></pre>
+
+      <h3>Placing Orders</h3>
+      <pre><code># Market order
+api.submit_order(
+    symbol='SPY',
+    qty=100,
+    side='buy',
+    type='market',
+    time_in_force='gtc'  # Good till canceled
+)
+
+# Limit order
+api.submit_order(
+    symbol='SPY',
+    qty=100,
+    side='buy',
+    type='limit',
+    time_in_force='gtc',
+    limit_price=520.00
+)
+
+# Bracket order (entry + stop + target)
+api.submit_order(
+    symbol='SPY',
+    qty=100,
+    side='buy',
+    type='market',
+    time_in_force='gtc',
+    order_class='bracket',
+    stop_loss={'stop_price': 518.00},
+    take_profit={'limit_price': 525.00}
+)</code></pre>
+
+      <h2>Order Management System</h2>
+      
+      <h3>Order States & Lifecycle</h3>
+      <pre><code>Order States:
+1. new → Order submitted to broker
+2. accepted → Broker received, pending exchange
+3. pending_new → Exchange received
+4. filled → Executed (full or partial)
+5. canceled → User canceled
+6. rejected → Broker/exchange rejected
+7. expired → Time limit exceeded
+
+Monitor: Check order status before assuming fill!</code></pre>
+
+      <h3>Handling Partial Fills</h3>
+      <pre><code>order = api.submit_order(symbol='SPY', qty=1000, side='buy', type='limit', limit_price=520.00)
+
+# Check fill status
+order_status = api.get_order(order.id)
+
+if order_status.filled_qty < order_status.qty:
+    # Partial fill detected
+    filled = order_status.filled_qty
+    remaining = order_status.qty - filled
+    
+    print(f"Partial fill: {filled}/{order_status.qty}")
+    
+    # Options:
+    # 1. Wait for full fill
+    # 2. Cancel remaining, adjust strategy
+    # 3. Market order remaining (guarantee fill)</code></pre>
+
+      <h2>Building a Complete Trading Bot</h2>
+      
+      <h3>Bot Architecture</h3>
+      <pre><code>Components:
+1. Data Feed (real-time market data)
+2. Strategy Logic (entry/exit rules)
+3. Risk Manager (position sizing, stops)
+4. Order Manager (place/cancel/modify)
+5. Logger (trade history, errors)
+6. Monitor (performance, alerts)</code></pre>
+
+      <h3>Example: Simple Sweep Reversal Bot</h3>
+      <pre><code>import time
+
+class SweepReversalBot:
+    def __init__(self, api):
+        self.api = api
+        self.position = None
+        self.swing_low = None
+        
+    def get_swing_low(self, bars, lookback=20):
+        lows = [bar.l for bar in bars[-lookback:]]
+        return min(lows)
+        
+    def check_sweep(self, current_price, current_low):
+        if self.swing_low is None:
+            return False
+        # Check if swept below swing low
+        if current_low < self.swing_low * 0.997:  # 0.3% below
+            if current_price > self.swing_low:  # Reclaimed
+                return True
+        return False
+        
+    def calculate_position_size(self, entry, stop):
+        account = self.api.get_account()
+        equity = float(account.equity)
+        risk_amt = equity * 0.02  # 2% risk
+        stop_distance = entry - stop
+        size = int(risk_amt / stop_distance)
+        return size
+        
+    def run(self):
+        while True:
+            try:
+                # Fetch data
+                bars = self.api.get_barset('SPY', 'minute', limit=50)['SPY']
+                current_bar = bars[-1]
+                current_price = current_bar.c
+                current_low = current_bar.l
+                
+                # Update swing low
+                self.swing_low = self.get_swing_low(bars)
+                
+                # Check for setup
+                if self.position is None:  # No position
+                    if self.check_sweep(current_price, current_low):
+                        # Entry signal!
+                        entry_price = current_price
+                        stop_price = self.swing_low * 0.995
+                        target_price = entry_price + (entry_price - stop_price) * 3  # 3R
+                        
+                        # Calculate size
+                        size = self.calculate_position_size(entry_price, stop_price)
+                        
+                        # Place bracket order
+                        order = self.api.submit_order(
+                            symbol='SPY',
+                            qty=size,
+                            side='buy',
+                            type='limit',
+                            limit_price=entry_price,
+                            time_in_force='gtc',
+                            order_class='bracket',
+                            stop_loss={'stop_price': stop_price},
+                            take_profit={'limit_price': target_price}
+                        )
+                        
+                        self.position = order
+                        print(f"Entered long: {size} shares at ${entry_price}")
+                
+                # Sleep 60 seconds (check every minute)
+                time.sleep(60)
+                
+            except Exception as e:
+                print(f"Error: {e}")
+                time.sleep(60)  # Continue despite errors
+                
+# Run bot
+api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL)
+bot = SweepReversalBot(api)
+bot.run()</code></pre>
+
+      <h2>Error Handling & Robustness</h2>
+      
+      <h3>Common Errors</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Error</th><th>Cause</th><th>Solution</th></tr>
+        <tr><td>Connection timeout</td><td>Network issue</td><td>Retry with exponential backoff</td></tr>
+        <tr><td>Order rejected</td><td>Insufficient funds, invalid price</td><td>Check account, adjust order</td></tr>
+        <tr><td>Rate limit exceeded</td><td>Too many API calls</td><td>Add rate limiter (max 200/min)</td></tr>
+        <tr><td>Market closed</td><td>Trading outside hours</td><td>Check market hours before order</td></tr>
+      </table>
+
+      <h3>Retry Logic</h3>
+      <pre><code>import time
+
+def place_order_with_retry(api, **order_params):
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            order = api.submit_order(**order_params)
+            return order  # Success
+        except Exception as e:
+            if attempt < max_retries - 1:
+                wait = 2 ** attempt  # Exponential backoff (1s, 2s, 4s)
+                print(f"Order failed: {e}. Retrying in {wait}s...")
+                time.sleep(wait)
+            else:
+                print(f"Order failed after {max_retries} attempts: {e}")
+                raise  # Give up, alert human</code></pre>
+
+      <h2>Production Deployment</h2>
+      
+      <h3>Deployment Checklist</h3>
+      <ul>
+        <li>[ ] Backtest shows positive expectancy (> 0.5R/trade)</li>
+        <li>[ ] Paper trading 3-6 months (performance matches backtest)</li>
+        <li>[ ] Error handling robust (retries, logging)</li>
+        <li>[ ] Monitoring alerts (email/SMS on errors)</li>
+        <li>[ ] Kill switch (manual stop if DD exceeds threshold)</li>
+        <li>[ ] Server uptime (VPS, not home PC)</li>
+        <li>[ ] API credentials secured (env variables, not hardcoded)</li>
+      </ul>
+
+      <h3>Hosting Options</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>Option</th><th>Pros</th><th>Cons</th></tr>
+        <tr><td>Home PC</td><td>Free</td><td>Unreliable (power outage, internet)</td></tr>
+        <tr><td>Cloud VPS (AWS, DigitalOcean)</td><td>99.9% uptime, scalable</td><td>$5-20/month</td></tr>
+        <tr><td>Raspberry Pi</td><td>Low power, always-on</td><td>Limited compute</td></tr>
+      </table>
+
+      <h2>Monitoring & Alerts</h2>
+      
+      <h3>Key Metrics to Monitor</h3>
+      <pre><code>Daily Dashboard:
+- Orders placed: 5
+- Win rate: 60% (3/5)
+- Net P&L: +$450
+- Drawdown: -8% (within tolerance)
+- Errors: 2 (connection timeouts, resolved)
+
+Alerts (email/SMS):
+- Drawdown > 15% → CRITICAL
+- Win rate < 40% (30-day) → WARNING
+- Consecutive losses > 5 → WARNING
+- API errors > 10/hour → CRITICAL</code></pre>
+
+      <h3>Logging Best Practices</h3>
+      <pre><code>import logging
+
+# Configure logger
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('trading_bot.log'),
+        logging.StreamHandler()  # Also print to console
+    ]
+)
+
+# Log trades
+logging.info(f"Entered long: 100 SPY at $520.05")
+logging.info(f"Exited: +$200 (+2R)")
+
+# Log errors
+logging.error(f"Order rejected: {error_message}")
+
+# Review logs weekly to spot issues</code></pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>Broker APIs: Alpaca (stocks), Binance (crypto) for beginners</strong></li>
+        <li><strong>Paper trade 3-6 months before live (verify performance)</strong></li>
+        <li><strong>Error handling crucial (retries, logging, alerts)</strong></li>
+        <li><strong>Monitor: DD, win rate, errors (daily dashboard)</strong></li>
+        <li><strong>Deploy on VPS (99.9% uptime, not home PC)</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Set up paper trading</strong></p>
+      <p>Create Alpaca paper account. Connect via API. Place test market order. Confirm execution.</p>
+      
+      <p><strong>Exercise 2: Build simple bot</strong></p>
+      <p>Code: If SPY < $520, buy 10 shares. If SPY > $525, sell. Run in paper for 1 week. Track results.</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Automation isn't about removing the trader—it's about removing emotion. Code your edge, let it execute."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/advanced/36-high-frequency-concepts.html">&larr; Previous: HFT Concepts</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/38-portfolio-theory-advanced.html">Next: Portfolio Theory &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

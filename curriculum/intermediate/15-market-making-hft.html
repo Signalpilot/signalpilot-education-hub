@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Market Making & HFT: The Game Within the Game — SignalPilot Education</title>
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="15">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Market Making & HFT: The Game Within the Game</h1><div class="meta">Reading time ~15 min • Market Microstructure</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>HFT and market makers control 50-70% of volume.</b> You can't compete on speed—but you can understand their game and avoid being prey.</p>
+      
+      <h2>How Market Makers Profit</h2>
+      
+      <h3>Revenue 1: The Spread</h3>
+      <pre><code>Bid: $100.00, Ask: $100.05, Spread: $0.05
+
+Market maker:
+- Buys at $100.00
+- Sells at $100.05
+- Profit: $0.05/share
+
+On 1M shares/day: $50,000/day = $12.5M/year</code></pre>
+
+      <h3>Revenue 2: Exchange Rebates</h3>
+      <p><strong>Maker-Taker Model:</strong> Exchanges PAY market makers to provide liquidity.</p>
+      <ul>
+        <li><b>Maker (limit order):</b> Receives rebate ($0.0015/share)</li>
+        <li><b>Taker (market order):</b> Pays fee ($0.0030/share)</li>
+      </ul>
+      <p>On 1M shares/day: $1,500/day = $375,000/year (on top of spread).</p>
+
+      <h3>Revenue 3: Information Advantage</h3>
+      <p>MMs see order flow in real-time:</p>
+      <ul>
+        <li>Large buy orders coming → Widen ask, lift inventory</li>
+        <li>Large sell orders coming → Widen bid, short inventory</li>
+      </ul>
+      <p><b>They front-run the market (legally, via latency).</b></p>
+
+      <h2>HFT Strategies</h2>
+      
+      <h3>Strategy 1: Quote Stuffing</h3>
+      <p><strong>Definition:</strong> Flooding order book with fake orders to confuse competitors.</p>
+      <pre><code>11:00:00.001: Post 10,000 orders
+11:00:00.050: Cancel 9,800 orders
+11:00:00.100: Post 10,000 new orders
+
+Intent: Overload competitors, gain time advantage</code></pre>
+      <p><b>Defense:</b> Use limit orders, monitor changes (not static view), trade during high liquidity.</p>
+
+      <h3>Strategy 2: Latency Arbitrage</h3>
+      <p><strong>Definition:</strong> Exploiting speed differences between exchanges.</p>
+      <pre><code>Price on Exchange A: $100.00
+Price on Exchange B: $100.02
+
+HFT: Buy A at $100.00, sell B at $100.02
+Profit: $0.02/share, risk-free</code></pre>
+      <p><b>Impact on you:</b> Your market order fills at $100.01 (HFT bought first).</p>
+      <p><b>Defense:</b> Use IEX (speed bump exchange) or limit orders.</p>
+
+      <h3>Strategy 3: Order Anticipation</h3>
+      <p><strong>Definition:</strong> Predicting large orders before full execution.</p>
+      <pre><code>Detects: 5,000 buy @ $100, 3,000 @ $100.01, 4,000 @ $100.02
+
+Pattern: Large institutional buyer scaling in
+
+HFT: Buy ahead, sell back at higher price</code></pre>
+      <p><b>Defense:</b> Randomize timing, use iceberg orders, scale over days (not minutes).</p>
+
+      <h2>Why Your Stops Get Hunted</h2>
+      
+      <p><strong>Typical retail:</strong> Long AAPL at $150, stop at $149.50 (below support at $149.55).</p>
+      <p><strong>Market maker sees:</strong> Cluster of stops at $149.50 = $10M+ liquidity pool.</p>
+      <p><strong>Incentive:</strong> Push price to $149.50 (costs $10-50K), trigger stops, buy cheap, ride reversal.</p>
+      
+      <p><b>It's profitable, so they do it.</b></p>
+
+      <h3>Anatomy of a Stop Hunt</h3>
+      <pre><code>12:00: BTC at $45,200
+12:05: Support at $45,000, stops at $44,950
+12:15: Price tests $45,050
+12:16: Aggressive selling → $44,980
+12:17: Stops triggered at $44,950
+12:18: Price spikes to $44,900 (max carnage)
+12:19: REVERSES to $45,300 (stops absorbed)</code></pre>
+      
+      <p><strong>Signal Pilot Integration:</strong> <b>Janus Atlas</b> detects these sweeps. Trade the reversal, not the trap.</p>
+
+      <h2>Defending Against HFT</h2>
+      
+      <h3>Tactic 1: Use Limit Orders</h3>
+      <p>Market orders = guaranteed worst fill. Limit orders = better price (or no fill if setup invalid).</p>
+
+      <h3>Tactic 2: Avoid Obvious Stop Placement</h3>
+      <p><strong>Bad:</strong> Support $100, stop $99.95 (obvious, clustered, hunted)</p>
+      <p><strong>Better:</strong> Support $100, stop $99.50 (structure + ATR buffer, beyond obvious level)</p>
+
+      <h3>Tactic 3: Trade High Liquidity Hours</h3>
+      <p>HFT works best when thin. Trade 9:30-16:00 ET (tight spreads, harder to manipulate).</p>
+
+      <h3>Tactic 4: Use IEX (Speed Bump Exchange)</h3>
+      <p>IEX adds 350-microsecond delay to ALL orders, neutralizing HFT latency advantage.</p>
+
+      <h2>Market Maker Signals (Trade WITH Them)</h2>
+      
+      <h3>Signal 1: Spread Widening</h3>
+      <p>When MMs widen spreads without news → Uncertainty, expect move.</p>
+
+      <h3>Signal 2: Quote Pulling</h3>
+      <p>Large bid wall disappears before hit → Fake wall, price likely breaks down.</p>
+
+      <h3>Signal 3: Absorption Without Movement</h3>
+      <p>Large volume trades, price doesn't move → MM absorbing (iceberg), strong level.</p>
+
+      <h2>Practical Strategies</h2>
+      
+      <h3>Strategy 1: Trade the Sweep (Not Get Swept)</h3>
+      <p><strong>Setup:</strong></p>
+      <ol>
+        <li>Janus Atlas shows sweep below support</li>
+        <li>Volume spike + rapid reversal</li>
+        <li>Enter LONG on reclaim</li>
+        <li>Stop below swept low</li>
+      </ol>
+      <p><b>Edge:</b> Trading liquidity event, not being liquidated.</p>
+
+      <h3>Strategy 2: Avoid First 15 Minutes</h3>
+      <p><strong>Why dangerous:</strong> Spread spikes, volatility high, HFT most active.</p>
+      <p><strong>Better:</strong> Wait 9:45-10:00 ET, let volatility settle, enter with Minimal Flow confirmation.</p>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>MMs profit from spread + rebates + information</strong></li>
+        <li><strong>HFT exploits latency, order anticipation, arbitrage</strong></li>
+        <li><strong>Stop hunts are profitable (so they happen)</strong></li>
+        <li><strong>Limit orders > market orders</strong></li>
+        <li><strong>Trade WITH MMs, not against</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Track market vs. limit fills</strong></p>
+      <p>Next 10 trades: Use market, log spread paid. Next 10: Use limits, log fill rate. Compare savings vs. missed fills.</p>
+      
+      <p><strong>Exercise 2: Identify 1 stop hunt</strong></p>
+      <p>Use Janus Atlas to find sweep on your chart. Was it a trap? Did it reverse?</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"You can't outrun HFT. But you can out-think them by trading on timeframes where speed doesn't matter."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/intermediate/14-order-book-analysis.html">&larr; Previous: Order Book</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/16-footprint-charts.html">Next: Footprint Charts &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Performance Attribution: Where Returns Come From — SignalPilot Education</title>
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="39">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Performance Attribution: Where Returns Come From</h1><div class="meta">Reading time ~12 min • Performance Analysis</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>+50% return—but why? Was it skill or luck? Which strategies worked? Which failed?</b> Learn to decompose performance, identify true edges, and eliminate what doesn't work.</p>
+      
+      <h2>Performance Attribution Framework</h2>
+      
+      <h3>Key Questions</h3>
+      <ul>
+        <li>Which strategies contributed most to returns?</li>
+        <li>Which assets/sectors drove performance?</li>
+        <li>Was outperformance from selection or timing?</li>
+        <li>How much was skill vs. market beta (luck)?</li>
+      </ul>
+
+      <h3>Attribution Breakdown</h3>
+      <pre><code>Total Return: +45%
+
+By Strategy:
+- Janus sweeps: +25% (55% of return)
+- Breakouts: +12% (27%)
+- Mean reversion: +8% (18%)
+
+By Asset:
+- SPY: +30% (67%)
+- QQQ: +10% (22%)
+- IWM: +5% (11%)
+
+By Time Period:
+- Q1: +15%
+- Q2: +8%
+- Q3: +20% (best quarter)
+- Q4: +2%</code></pre>
+
+      <h2>Alpha vs. Beta</h2>
+      
+      <h3>Understanding Beta</h3>
+      <p><strong>Beta = sensitivity to market moves (systematic risk).</strong></p>
+      <pre><code>Beta = 1.0: Moves with market (SPY up 10% → you up 10%)
+Beta = 1.5: 1.5x market (SPY up 10% → you up 15%)
+Beta = 0.5: 0.5x market (SPY up 10% → you up 5%)
+Beta = -0.5: Inverse (SPY up 10% → you down 5%)</code></pre>
+
+      <h3>Calculating Alpha</h3>
+      <p><strong>Alpha = return above expected (risk-adjusted excess return).</strong></p>
+      <pre><code>Your return: +40%
+SPY return: +20%
+Your beta: 1.5
+
+Expected return: 1.5 × 20% = 30% (beta explains this)
+Alpha: 40% - 30% = +10% (skill-based excess return!)
+
+Interpretation: +10% alpha = genuine edge (not just riding market)</code></pre>
+
+      <h2>Sharpe, Sortino, & Information Ratio</h2>
+      
+      <h3>Sharpe Ratio</h3>
+      <pre><code>Sharpe = (Return - Risk-Free) / Std Dev
+
+Your stats:
+Return: 40%
+Risk-Free: 4%
+Std Dev: 18%
+
+Sharpe = (40 - 4) / 18 = 2.0 (excellent!)</code></pre>
+
+      <h3>Sortino Ratio (Downside-Focused)</h3>
+      <pre><code>Sortino = (Return - Risk-Free) / Downside Deviation
+
+Advantage: Only penalizes bad volatility (losses), not gains
+
+Your stats:
+Return: 40%
+Downside Dev: 12% (vs. total 18%)
+
+Sortino = (40 - 4) / 12 = 3.0 (better than Sharpe!)</code></pre>
+
+      <h3>Information Ratio (Alpha per Risk)</h3>
+      <pre><code>IR = Alpha / Tracking Error
+
+Alpha: +10%
+Tracking Error: 8%
+
+IR = 10 / 8 = 1.25
+
+Benchmark:
+< 0.5 = Poor (high risk for alpha)
+0.5-1.0 = Good
+> 1.0 = Excellent (efficient alpha generation)</code></pre>
+
+      <h2>Monthly Performance Analysis</h2>
+      
+      <h3>Win Rate by Month</h3>
+      <pre><code>Jan: +8% (5 wins, 2 losses)
+Feb: +3% (4W, 3L)
+Mar: +12% (6W, 1L) ← Best month
+Apr: -2% (3W, 5L)
+May: +6% (5W, 2L)
+
+Insights:
+- March: 86% WR (optimal conditions?)
+- April: Negative (regime changed? review trades)
+- Overall: 68% monthly win rate (solid)</code></pre>
+
+      <h3>Drawdown Analysis</h3>
+      <pre><code>Max Drawdown: -15% (April-May)
+
+Duration: 6 weeks
+Recovery: 3 weeks
+
+Analysis:
+- Cause: Volatile regime (VIX spiked 18 → 28)
+- Action: Should have reduced size (regime filter)
+- Lesson: Add VIX > 25 filter (reduce or sit out)</code></pre>
+
+      <h2>Trade-Level Attribution</h2>
+      
+      <h3>Best vs. Worst Trades</h3>
+      <pre><code>Top 5 Winners:
+1. SPY sweep reversal: +$2,500 (5R)
+2. QQQ breakout: +$1,800 (4.5R)
+3. IWM mean reversion: +$1,200 (3R)
+4. SPY VWAP bounce: +$1,100 (2.8R)
+5. QQQ Janus sweep: +$1,000 (2.5R)
+
+Total from top 5: +$7,600 (56% of total profit!)
+
+Insight: Let winners run (top 5 trades = 56% of profit)</code></pre>
+
+      <h3>Worst Trades Analysis</h3>
+      <pre><code>Bottom 5 Losers:
+1. IWM breakout (false): -$800 (-1R, stopped)
+2. SPY FOMO entry: -$600 (-1R, ignored HTF)
+3. QQQ oversize: -$500 (-0.8R, risked 3% not 2%)
+4. SPY news event: -$450 (-1R, volatile regime)
+5. IWM late entry: -$400 (-1R, chased)
+
+Common themes:
+- FOMO/chasing (2/5)
+- Ignored regime/HTF (3/5)
+- Oversized (1/5)
+
+Action: Pre-entry checklist (HTF aligned, regime OK, no FOMO)</code></pre>
+
+      <h2>Strategy-Specific Performance</h2>
+      
+      <h3>Janus Sweeps</h3>
+      <pre><code>Trades: 45
+Win Rate: 71%
+Avg R: 3.2R
+Total: +$12,500
+
+Best conditions:
+- Trending regime (Minimal Flow): 78% WR
+- HTF aligned: 75% WR
+- Multi-TF confluence: 82% WR
+
+Worst conditions:
+- Ranging regime: 58% WR (skip)
+- Volatile (VIX > 25): 48% WR (avoid!)</code></pre>
+
+      <h3>Breakouts</h3>
+      <pre><code>Trades: 20
+Win Rate: 55%
+Avg R: 1.8R
+Total: +$2,400
+
+Analysis: Marginal strategy (barely profitable)
+Issue: Many false breakouts (stopped out)
+
+Action: Add volume filter (breakout volume > 2x avg)</code></pre>
+
+      <h2>Time-of-Day Performance</h2>
+      
+      <pre><code>9:30-10:30 AM: 12 trades, 50% WR, 1.2R avg (choppy)
+10:30 AM-12 PM: 35 trades, 74% WR, 3.5R avg (BEST)
+12 PM-2 PM: 8 trades, 38% WR, 0.5R avg (lunch chop)
+2 PM-4 PM: 20 trades, 60% WR, 2.3R avg (OK)
+
+Action: Focus on 10:30 AM-12 PM, avoid lunch (12-2 PM)</code></pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>Decompose returns: which strategies, assets, time periods</strong></li>
+        <li><strong>Alpha vs. Beta: separate skill from market moves</strong></li>
+        <li><strong>Top trades = most profit (let winners run!)</strong></li>
+        <li><strong>Analyze losses: find common mistakes, fix them</strong></li>
+        <li><strong>Time-of-day matters: avoid low-win-rate windows</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Attribution analysis</strong></p>
+      <p>Last 3 months: Break down returns by strategy. Which contributed most? Which dragged performance?</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Performance without attribution is noise. Know what works, double down. Know what doesn't, eliminate."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/advanced/38-portfolio-theory-advanced.html">&larr; Previous: Portfolio Theory</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/40-tax-optimization.html">Next: Tax Optimization &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

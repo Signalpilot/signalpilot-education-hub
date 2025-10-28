@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Plutus Flow Mastery: Volume Profile & Delta Precision — SignalPilot Education</title>
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="21">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Plutus Flow Mastery: Volume Profile & Delta Precision</h1><div class="meta">Reading time ~15 min • Signal Pilot Deep Dive</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>Plutus Flow combines spike-clipped OBV, CVD tracking, and Volume Profile in one tool.</b> Learn advanced POC trading, delta divergence strategies, and complete Volume Profile frameworks.</p>
+      
+      <h2>Plutus Flow Components</h2>
+      
+      <h3>Component 1: Spike-Clipped OBV</h3>
+      <p><strong>Traditional OBV problem:</strong> Single volume spike distorts entire trend.</p>
+      <p><strong>Plutus solution:</strong> Clips extreme spikes, smooths trend without losing signal.</p>
+      <p><b>Use:</b> Identify divergences (OBV rising, price falling = bullish).</p>
+
+      <h3>Component 2: Cumulative Volume Delta (CVD)</h3>
+      <p><strong>Tracks running total:</strong> Buy Volume - Sell Volume</p>
+      <ul>
+        <li><b>CVD rising:</b> Net buying pressure (bullish)</li>
+        <li><b>CVD falling:</b> Net selling pressure (bearish)</li>
+        <li><b>CVD divergence:</b> Price vs. CVD conflict (reversal signal)</li>
+      </ul>
+
+      <h3>Component 3: Volume Profile</h3>
+      <p><strong>Shows volume AT each price level (not over time).</strong></p>
+      <ul>
+        <li><b>POC (Point of Control):</b> Price with highest volume = fair value</li>
+        <li><b>HVN (High Volume Node):</b> Support/resistance clusters</li>
+        <li><b>LVN (Low Volume Node):</b> Rejection zones (fast moves)</li>
+        <li><b>Value Area:</b> Range containing 70% of volume</li>
+      </ul>
+
+      <h2>Advanced POC Trading</h2>
+      
+      <h3>POC as Magnet</h3>
+      <p><strong>Price gravitates toward POC (fair value).</strong></p>
+      <pre><code>POC at $100.00
+Price at $102.00 (above POC)
+
+Implication: Price likely to pull back toward $100
+Strategy: Wait for pullback, enter long at $100 support</code></pre>
+
+      <h3>POC Migration</h3>
+      <p><strong>Strong trends:</strong> POC migrates with price (trend strength indicator).</p>
+      <pre><code>Day 1: POC at $100
+Day 2: POC at $101 (moved up)
+Day 3: POC at $102 (moved up)
+
+Interpretation: Strong uptrend (fair value rising)
+Action: Trade WITH trend (pullbacks to POC are buy opportunities)</code></pre>
+
+      <h3>POC Rejection = Weak Trend</h3>
+      <pre><code>Price rallies $100 → $105
+POC stays at $100 (not migrating)
+
+Interpretation: Weak rally (fair value not rising)
+Action: Expect pullback to POC ($100)</code></pre>
+
+      <h2>HVN vs. LVN Trading</h2>
+      
+      <h3>HVN (High Volume Node): Support/Resistance</h3>
+      <p><strong>Price accepted here = more likely to hold.</strong></p>
+      <pre><code>HVN at $100 (heavy volume traded)
+Price approaches from $102
+
+Strategy: Look for absorption at HVN, enter long if holds</code></pre>
+
+      <h3>LVN (Low Volume Node): Fast Moves</h3>
+      <p><strong>Price rejected here = less likely to hold.</strong></p>
+      <pre><code>LVN at $100 (thin volume)
+Price breaks through $100
+
+Strategy: Expect fast move (little resistance), target next HVN</code></pre>
+
+      <h2>Delta Divergence Strategies</h2>
+      
+      <h3>Strategy 1: Bullish CVD Divergence</h3>
+      <p><strong>Setup:</strong></p>
+      <ol>
+        <li>Price makes lower low</li>
+        <li>CVD makes higher low (less selling)</li>
+        <li>Janus sweep confirms at structure</li>
+        <li>Footprint shows absorption</li>
+        <li>Enter long on reversal</li>
+      </ol>
+      <p><b>Win Rate: 65-70%</b></p>
+
+      <h3>Strategy 2: Bearish CVD Divergence</h3>
+      <p><strong>Setup:</strong></p>
+      <ol>
+        <li>Price makes higher high</li>
+        <li>CVD makes lower high (less buying)</li>
+        <li>Price at HTF resistance</li>
+        <li>Exhaustion on footprint</li>
+        <li>Enter short on breakdown</li>
+      </ol>
+      <p><b>Win Rate: 60-65%</b></p>
+
+      <h2>Complete Volume Profile Framework</h2>
+      
+      <h3>Step 1: Identify POC</h3>
+      <p>Mark POC on your chart (Plutus shows this automatically).</p>
+
+      <h3>Step 2: Map Value Area</h3>
+      <p>Range containing 70% of volume = accepted prices.</p>
+      <ul>
+        <li><b>Above Value Area:</b> Overvalued (expect pullback)</li>
+        <li><b>Below Value Area:</b> Undervalued (expect rally)</li>
+        <li><b>Inside Value Area:</b> Fair value (chop/consolidation)</li>
+      </ul>
+
+      <h3>Step 3: Mark HVN/LVN</h3>
+      <ul>
+        <li>HVN = likely support/resistance</li>
+        <li>LVN = likely to break through quickly</li>
+      </ul>
+
+      <h3>Step 4: Trade the Setup</h3>
+      <p><strong>Reversion to POC:</strong></p>
+      <ul>
+        <li>Price far from POC → Trade toward POC</li>
+        <li>Price at HVN + POC → High probability support</li>
+      </ul>
+      <p><strong>Breakout through LVN:</strong></p>
+      <ul>
+        <li>Price breaks LVN → Target next HVN (fast move)</li>
+      </ul>
+
+      <h2>Combining Plutus with Janus/Minimal Flow</h2>
+      
+      <h3>Plutus + Janus (Perfect Combo)</h3>
+      <pre><code>Janus: Sweep at $100
+Plutus: POC at $100, CVD rising
+
+Interpretation: Sweep at fair value + buying pressure
+Action: LONG with high conviction</code></pre>
+
+      <h3>Plutus + Minimal Flow</h3>
+      <pre><code>Minimal Flow: Trending regime
+Plutus: POC migrating higher ($100 → $102 → $104)
+
+Interpretation: Strong trend confirmed
+Action: Trade pullbacks to POC</code></pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>POC = fair value (price magnet)</strong></li>
+        <li><strong>POC migration = trend strength</strong></li>
+        <li><strong>HVN = support/resistance (likely to hold)</strong></li>
+        <li><strong>LVN = breakout zones (fast moves)</strong></li>
+        <li><strong>CVD divergence = reversal warning</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Track POC migration</strong></p>
+      <p>For 5 days, mark daily POC. Does it migrate with trend? Or stay flat?</p>
+      
+      <p><strong>Exercise 2: Find CVD divergence</strong></p>
+      <p>Log 3 instances where price and CVD diverged. What happened next?</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Volume Profile shows where price was accepted. Trade toward fair value, away from rejection."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/intermediate/20-janus-atlas-advanced.html">&larr; Previous: Janus</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/22-minimal-flow-regimes.html">Next: Minimal Flow &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

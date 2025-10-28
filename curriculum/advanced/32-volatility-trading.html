@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Volatility Trading: VIX Strategies & Gamma Exposure — SignalPilot Education</title>
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="32">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Volatility Trading: VIX Strategies & Gamma Exposure</h1><div class="meta">Reading time ~18 min • Volatility & Options Flow</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>Volatility isn't noise—it's tradeable. VIX predicts fear, gamma drives pinning.</b> Learn how to trade volatility directly, exploit gamma exposure, and use options flow as a directional edge.</p>
+      
+      <h2>Understanding the VIX</h2>
+      
+      <h3>What is VIX?</h3>
+      <p><strong>VIX = CBOE Volatility Index = Implied volatility of SPX 30-day options.</strong></p>
+      <pre><code>VIX measures: How much the market EXPECTS SPX to move
+
+VIX 15 = Market expects 15% annualized vol
+       = ~0.94% daily move (15% / √252 trading days)
+
+VIX 30 = Market expects 30% annualized vol
+       = ~1.88% daily move (2x the movement)
+
+Important: VIX measures EXPECTED volatility, not actual</code></pre>
+
+      <h3>VIX Regime Classification</h3>
+      <table style="width:100%; border-collapse: collapse;">
+        <tr><th>VIX Level</th><th>Regime</th><th>Market State</th></tr>
+        <tr><td>&lt; 12</td><td>Extreme Complacency</td><td>Grind higher, low vol (unsustainable)</td></tr>
+        <tr><td>12-15</td><td>Low Volatility</td><td>Calm, bullish bias</td></tr>
+        <tr><td>15-20</td><td>Normal</td><td>Healthy volatility</td></tr>
+        <tr><td>20-30</td><td>Elevated Fear</td><td>Corrective, choppy</td></tr>
+        <tr><td>30-40</td><td>High Fear</td><td>Significant decline</td></tr>
+        <tr><td>&gt; 40</td><td>Panic</td><td>Crash/capitulation (buy signal)</td></tr>
+      </table>
+
+      <h3>VIX Mean Reversion</h3>
+      <p><strong>VIX spikes hard, then reverts to mean (~15-18).</strong></p>
+      <pre><code>Historical Pattern:
+VIX average: ~16-17 (long-term mean)
+VIX spikes: Rare, violent, SHORT-LIVED
+
+2020 COVID: VIX 12 → 82 (6x spike), back to 25 in 3 weeks
+2022 Bear: VIX 15 → 36 (2.4x spike), back to 20 in 6 weeks
+
+Implication: VIX > 30 = buy opportunity (mean reversion trade)</code></pre>
+
+      <h2>Trading the VIX</h2>
+      
+      <h3>Method 1: VIX Futures (Direct Exposure)</h3>
+      <p><strong>Futures trade forward expectations of VIX.</strong></p>
+      <pre><code>VIX Spot: 20 (current implied vol)
+VIX 1-month future: 21.5 (contango, expect higher)
+VIX 2-month future: 22.8
+
+Contango = Futures > Spot (normal state, costs to hold long)
+Backwardation = Futures < Spot (fear, VIX spiking)
+
+Trade:
+Long VIX futures when spot VIX < 15 (expecting spike)
+Short VIX futures when spot VIX > 30 (expecting reversion)</code></pre>
+
+      <h3>Method 2: VIX ETFs (UVXY, VXX)</h3>
+      <p><strong>ETFs track VIX futures (with decay from contango).</strong></p>
+      <pre><code>UVXY: 1.5x leveraged VIX futures ETF
+
+Structure: Rolls front-month VIX futures daily
+Problem: Contango decay (loses ~5-10%/month in calm markets)
+
+Use Case: SHORT-TERM hedge or spike trade
+DO NOT hold long-term (decay kills)
+
+Trade:
+Buy UVXY when VIX < 15 AND market topping (hedge)
+Short UVXY when VIX > 30 (mean reversion + decay)
+Hold < 5 days (avoid decay)</code></pre>
+
+      <h3>Method 3: SPY Puts (Indirect Vol Trade)</h3>
+      <p><strong>Buying puts = Long volatility (put premium rises when VIX spikes).</strong></p>
+      <pre><code>Setup: VIX 14, SPY $520, expect volatility spike
+
+Trade: Buy SPY $510 puts (2 weeks out)
+Cost: $1.50/contract ($150)
+
+Scenario 1: VIX spikes to 25, SPY drops to $515
+Put value: $2.80 (profit from vol + directional)
+
+Scenario 2: VIX stays 14, SPY flat at $520
+Put value: $0.80 (decay loss)
+
+Risk: Theta decay (time kills premium)
+Reward: Gamma + Vega (move + vol expansion)</code></pre>
+
+      <h2>Gamma Exposure (GEX)</h2>
+      
+      <h3>What is Gamma?</h3>
+      <p><strong>Gamma = rate of change of delta (option sensitivity acceleration).</strong></p>
+      <pre><code>Delta: How much option price moves per $1 move in underlying
+Gamma: How much delta changes per $1 move
+
+Example:
+Call option: Delta 0.50, Gamma 0.05
+
+SPY moves $1 up:
+New Delta: 0.50 + 0.05 = 0.55
+(Option becomes MORE sensitive to price moves)
+
+Implication: Near expiry + ATM = HIGH gamma (explosive moves)</code></pre>
+
+      <h3>Market Maker Gamma Hedging</h3>
+      <p><strong>Market makers hedge gamma by buying/selling underlying.</strong></p>
+      <pre><code>Scenario: Dealer sold 10,000 SPY $520 calls (0-DTE)
+
+Dealer Position: Short gamma (loses if SPY moves)
+
+Hedging Behavior:
+If SPY rises → Dealer buys SPY (delta hedge, creates buying pressure)
+If SPY falls → Dealer sells SPY (delta hedge, creates selling pressure)
+
+Result: Dealers AMPLIFY moves (buy high, sell low = momentum)</code></pre>
+
+      <h3>Gamma Pinning (Max Pain)</h3>
+      <p><strong>Price gravitates toward strike with most open interest (gamma neutral).</strong></p>
+      <pre><code>SPY options expiring today (0-DTE):
+$515 strike: 5,000 contracts OI
+$520 strike: 50,000 contracts OI ← MAX PAIN
+$525 strike: 8,000 contracts OI
+
+Implication: Dealers want SPY to close at $520 (max options expire worthless)
+
+Hedging: As SPY approaches $520, dealers hedge less (reduce delta)
+Result: Price "pins" to $520 into close (gravity effect)
+
+Trade: Fade moves away from max pain strike (mean reversion)</code></pre>
+
+      <h2>0-DTE Options (Zero Days to Expiry)</h2>
+      
+      <h3>The 0-DTE Phenomenon</h3>
+      <p><strong>0-DTE options = expire same day (extreme gamma, massive volume).</strong></p>
+      <pre><code>Statistics (2023-2024):
+- 0-DTE = 50%+ of SPY options volume
+- Most active: Monday, Wednesday, Friday expirations
+- Drives intraday volatility (gamma flips)
+
+Characteristics:
+- High gamma (explosive delta changes)
+- Rapid theta decay (premium evaporates by close)
+- Dealer hedging = amplified moves</code></pre>
+
+      <h3>Gamma Flip Zones</h3>
+      <p><strong>When price crosses strikes with heavy OI, dealer hedging flips direction.</strong></p>
+      <pre><code>Setup: SPY at $519, 0-DTE $520 calls have 100K OI
+
+Below $520:
+- Calls OTM (low delta)
+- Dealers short calls, delta-neutral (small hedge)
+
+Crosses $520:
+- Calls go ITM (delta increases rapidly)
+- Dealers must buy MORE SPY (delta hedge)
+- Buying pressure accelerates move to $521
+
+Result: Gamma flip = momentum acceleration through strike
+
+Trade: Buy breakout above high-OI strike (momentum trade)</code></pre>
+
+      <h3>0-DTE Trading Strategy</h3>
+      <pre><code>Pre-Market:
+1. Identify max pain strike (highest OI)
+2. Mark gamma flip zones (large OI strikes)
+3. Note SPY open relative to these levels
+
+Intraday:
+IF price < max pain:
+→ Fade weakness (expect reversion to max pain)
+
+IF price breaks gamma flip zone:
+→ Trade momentum (dealers amplify move)
+
+Last Hour (3-4 PM):
+→ Strongest pinning effect (avoid fighting max pain)</code></pre>
+
+      <h2>Options Flow as Directional Signal</h2>
+      
+      <h3>Smart Money Options Indicators</h3>
+      <p><strong>Large, aggressive options trades = institutional intent.</strong></p>
+      <pre><code>Bullish Signals:
+- Large call sweeps (market orders, paying ask)
+- Far OTM calls (high conviction, low delta bets)
+- Long-dated calls (3-6 months, position building)
+
+Bearish Signals:
+- Large put sweeps (paying ask for protection)
+- ATM/ITM puts (direct bearish bet)
+- Unusual put volume spike (hedging)</code></pre>
+
+      <h3>Call/Put Ratio Analysis</h3>
+      <p><strong>Ratio shows sentiment (contrarian indicator).</strong></p>
+      <pre><code>Put/Call Ratio = Put Volume / Call Volume
+
+Interpretation:
+< 0.7 = Extreme bullish sentiment (potential top)
+0.7-1.0 = Neutral to bullish
+1.0-1.3 = Neutral to bearish
+> 1.3 = Extreme bearish sentiment (potential bottom)
+
+Contrarian Trade:
+P/C > 1.5 + VIX > 25 = Capitulation (BUY signal)
+P/C < 0.6 + VIX < 15 = Complacency (SELL signal)</code></pre>
+
+      <h3>Unusual Options Activity (UOA)</h3>
+      <p><strong>Volume >> Open Interest = NEW positions (not rolling).</strong></p>
+      <pre><code>Example:
+SPY $530 calls (1 month out)
+Open Interest: 5,000
+Today's Volume: 25,000 (5x OI)
+
+Analysis:
+- Large NEW positions opened
+- Premium paid (not collected)
+- Bullish bet on $530+ within 30 days
+
+Trade: Align with flow (buy underlying or calls)</code></pre>
+
+      <h2>Volatility Surface & Skew</h2>
+      
+      <h3>Volatility Smile/Skew</h3>
+      <p><strong>OTM puts more expensive than OTM calls (fear premium).</strong></p>
+      <pre><code>SPY at $520:
+$500 put (OTM): IV = 22% (expensive, fear of crash)
+$520 call (ATM): IV = 18% (baseline)
+$540 call (OTM): IV = 16% (cheap, no fear of spike)
+
+Put Skew = 22% - 16% = 6% premium for downside protection
+
+Implication: Market prices tail risk (crashes > rallies)</code></pre>
+
+      <h3>Skew Trading</h3>
+      <pre><code>Normal Skew: 4-6% (puts more expensive)
+High Skew: 8-12% (extreme fear, puts very expensive)
+
+Trade:
+High skew + VIX > 25 → Sell OTM puts (collect premium, mean reversion)
+Low skew + complacency → Buy OTM puts (cheap protection)</code></pre>
+
+      <h2>Volatility Crush (Post-Event)</h2>
+      
+      <h3>Earnings Volatility Crush</h3>
+      <p><strong>IV spikes before earnings, collapses after (regardless of move).</strong></p>
+      <pre><code>AAPL Earnings Tomorrow:
+IV Today: 60% (elevated, pricing uncertainty)
+IV After Earnings: 25% (drops to normal)
+
+Option Trade:
+Bought $180 call for $3.00 (60% IV)
+AAPL moves from $175 → $182 (good directional call)
+
+BUT: IV drops 60% → 25% (volatility crush)
+Option value: $2.50 (LOSS despite correct direction!)
+
+Lesson: Don't buy options into known events (vol crush kills)</code></pre>
+
+      <h3>Post-Event Trade</h3>
+      <pre><code>Better Strategy: SELL options before event (collect IV premium)
+
+Sell iron condor before earnings:
+Sell $170 put + Buy $165 put
+Sell $185 call + Buy $190 call
+
+Collect: $1.50 credit
+
+After earnings: IV crushes, options decay
+Keep credit if stock stays $170-$185 (high probability)</code></pre>
+
+      <h2>Signal Pilot + Volatility Integration</h2>
+      
+      <h3>Minimal Flow + VIX Filter</h3>
+      <pre><code>Setup: Janus sweep on SPY at $520
+
+Check VIX:
+VIX 16 (normal) → Trade normally (2% risk)
+VIX 28 (elevated) → Reduce size 50% (1% risk)
+VIX 35 (high fear) → Skip trade (too volatile)
+
+Minimal Flow Regime:
+Trending + VIX < 20 → Full confidence
+Ranging + VIX > 25 → Sit out (choppy, high vol)</code></pre>
+
+      <h3>Gamma Levels + Janus Sweeps</h3>
+      <pre><code>Pre-Market:
+Max pain: $520 (heavy 0-DTE OI)
+Gamma flip: $522 (large call OI)
+
+Trade Setup:
+10:30 AM: Janus sweep to $519.50, reclaim $520.05
+
+Analysis:
+- Above max pain ($520, dealers neutral to long)
+- Below gamma flip ($522)
+- Sweep + reclaim = bullish
+
+Trade: Long $520.10, target $522.50 (gamma flip + resistance)
+Bonus: If breaks $522, dealers amplify move (chase to $524)</code></pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>VIX mean reverts: < 15 expect spike, > 30 expect reversion</strong></li>
+        <li><strong>Gamma pinning: Price gravitates to max pain (high OI strike)</strong></li>
+        <li><strong>0-DTE: Massive volume, drives intraday volatility (gamma flips)</strong></li>
+        <li><strong>Options flow: Large sweeps = smart money intent</strong></li>
+        <li><strong>Vol crush: Never buy options into known events (IV collapses)</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Track VIX vs. SPY</strong></p>
+      <p>For 2 weeks, log daily VIX close. When VIX spiked > 20, did SPY drop? How long until VIX reverted?</p>
+      
+      <p><strong>Exercise 2: Find max pain</strong></p>
+      <p>Friday 3 PM: Check SPY 0-DTE options. What strike has most OI? Where did SPY close? Did it pin?</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Volatility isn't chaos—it's tradeable fear. VIX spikes mean-revert. Gamma pins price. Trade the mechanics, not emotions."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/advanced/31-cross-asset-correlations.html">&larr; Previous: Cross-Asset</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/33-algorithmic-execution.html">Next: Algo Execution &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>
