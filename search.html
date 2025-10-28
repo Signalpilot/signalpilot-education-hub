@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Search Lessons — SignalPilot Learn</title>
+  <meta name="description" content="Search through 42 trading lessons to find exactly what you need to learn.">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a aria-current="page" href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
+  </div>
+</header>
+
+<main>
+  <section style="padding:3rem 0">
+    <div class="wrap" style="max-width:800px">
+      <h1 class="headline xl text-center mb-2">🔍 Search Lessons</h1>
+      <p class="text-center text-muted mb-4">Find lessons by topic, concept, or keyword across all 42 lessons</p>
+
+      <div class="search-wrapper">
+        <input type="text" class="search-input" placeholder="Try: liquidity, volume, risk management..." aria-label="Search" autofocus>
+        <div class="search-results"></div>
+      </div>
+
+      <div style="margin-top:3rem" id="popular-topics">
+        <h3 style="margin-bottom:1rem">Popular Topics</h3>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+          <button class="btn btn-ghost btn-sm topic-btn" data-query="liquidity">Liquidity</button>
+          <button class="btn btn-ghost btn-sm topic-btn" data-query="order flow">Order Flow</button>
+          <button class="btn btn-ghost btn-sm topic-btn" data-query="volume">Volume</button>
+          <button class="btn btn-ghost btn-sm topic-btn" data-query="risk management">Risk Management</button>
+          <button class="btn btn-ghost btn-sm topic-btn" data-query="indicators">Indicators</button>
+          <button class="btn btn-ghost btn-sm topic-btn" data-query="psychology">Psychology</button>
+          <button class="btn btn-ghost btn-sm topic-btn" data-query="institutional">Institutional</button>
+          <button class="btn btn-ghost btn-sm topic-btn" data-query="algorithmic">Algorithmic</button>
+        </div>
+      </div>
+
+      <div style="margin-top:3rem" id="recent-lessons">
+        <h3 style="margin-bottom:1rem">Recently Viewed</h3>
+        <div id="recent-list"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script>
+  // Popular topic buttons
+  document.querySelectorAll('.topic-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const query = btn.dataset.query;
+      const input = document.querySelector('.search-input');
+      input.value = query;
+      input.dispatchEvent(new Event('input'));
+      input.focus();
+    });
+  });
+
+  // Show recently viewed lessons
+  const recentList = document.getElementById('recent-list');
+  const lastArticle = localStorage.getItem('sp_edu_last_article');
+  if (lastArticle) {
+    try {
+      const data = JSON.parse(lastArticle);
+      recentList.innerHTML = `
+        <a href="${data.url}" class="search-result-item">
+          <h4>${data.title}</h4>
+          <p>${data.level} • Lesson #${data.order}</p>
+          <span class="search-badge">Last Viewed</span>
+        </a>
+      `;
+    } catch(e) {
+      recentList.innerHTML = '<p class="text-muted">No recent lessons</p>';
+    }
+  } else {
+    recentList.innerHTML = '<p class="text-muted">No recent lessons</p>';
+  }
+</script>
+</body>
+</html>
