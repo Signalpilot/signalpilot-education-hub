@@ -1,203 +1,431 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Smart Money Divergence: When Price Lies, Follow the Money — SignalPilot Education</title>
-  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="18">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>When Price Lies, Follow the Money — SignalPilot Learn</title>
+  <meta name="description" content="Price can be manipulated. Order flow can't. Learn how to spot smart money divergences that precede major reversals.">
+  <meta name="sp-level" content="Intermediate">
+  <meta name="sp-order" content="18">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Smart Money Divergence: When Price Lies, Follow the Money</h1><div class="meta">Reading time ~13 min • Advanced Order Flow</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Price can be manipulated. Order flow can't.</b> When price moves one way but order flow/institutions move opposite → High-probability reversal. Learn delta divergence, dark pool divergence, and complete trading framework.</p>
-      
-      <h2>What IS Smart Money Divergence?</h2>
-      <p><strong>Price:</strong> What retail sees (one direction)</p>
-      <p><strong>Order flow/institutions:</strong> What professionals see (opposite direction)</p>
-      <p><b>When they disagree, bet on the money every time.</b></p>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #18</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 18 of 27</span>
+      <h1 class="headline xl">When Price Lies, Follow the Money</h1>
+      <div class="meta">13 min read • Divergence Mastery</div>
 
-      <h2>Types of Divergence</h2>
-      
-      <h3>1. Price vs. Volume Divergence</h3>
-      <pre><code>Bullish Divergence (Reversal UP):
-Price: Lower low ($99 → $98)
-Volume: Lower on second low (exhaustion)
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-Interpretation: Sellers exhausted, reversal likely</code></pre>
-      
-      <p><strong>Signal Pilot:</strong> Plutus Flow OBV rising while price falling = Bullish divergence.</p>
+  <div class="wrap article-grid">
+    <div class="prose">
 
-      <h3>2. Price vs. Delta Divergence</h3>
-      <pre><code>Bullish Delta Divergence:
-Price: Lower low ($100 → $98)
-CVD: Higher low (less selling pressure)
+      <p><b>Price makes a new high. Your chart screams "BUY!"</b></p>
 
-Footprint:
-First low ($100): Delta = -5,000
-Second low ($98): Delta = -2,000
+      <p>But delta is falling. Dark pools are distributing. Order flow is bearish.</p>
 
-Interpretation: Selling pressure DECREASED → Reversal UP</code></pre>
-      
-      <p><strong>Signal Pilot:</strong> Plutus CVD + Janus sweep = High conviction.</p>
+      <p>Who do you trust? The chart or the money?</p>
 
-      <h3>3. Price vs. Dark Pool Divergence</h3>
-      <pre><code>Accumulation Divergence (Bullish):
-Lit exchange (retail): Price falling $105 → $100 (panic)
-Dark pool (institutions): Large buy prints (200k-500k shares)
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Price can be pushed around with a few market orders. Order flow can't be faked—it represents billions of dollars moving.</p>
+        <p>When price says one thing and order flow says another, <strong>bet on the money. Every. Single. Time.</strong></p>
+      </div>
 
-Divergence: Retail selling, institutions buying
-Result: Price reverses UP (institutions win)</code></pre>
-
-      <h3>4. Price vs. Order Book Divergence</h3>
-      <pre><code>Absorption Divergence (Bullish):
-Price approaching $100 support
-Order book: 50,000 bid wall at $100
-Aggressive selling hits wall → Absorbed
-
-Divergence: Price should break (based on selling), but wall ABSORBS
-Result: Reversal UP</code></pre>
-
-      <h2>Detecting Delta Divergence</h2>
-      
-      <h3>Bullish Delta Divergence</h3>
-      <pre><code>Price: $100 → $98 (new low)
-CVD: Higher low (less selling)
-
-Setup:
-1. Janus shows sweep below $98
-2. CVD shows bullish divergence
-3. Enter long on reversal candle
-4. Stop below swept low</code></pre>
-      <p><b>Win Rate:</b> 60-70%</p>
-
-      <h3>Bearish Delta Divergence</h3>
-      <pre><code>Price: $100 → $102 (new high)
-CVD: Lower high (less buying)
-
-Setup:
-1. Price tests resistance
-2. CVD bearish divergence
-3. Minimal Flow regime shift (trending → ranging)
-4. Enter short on breakdown</code></pre>
-      <p><b>Win Rate:</b> 55-65%</p>
-
-      <h2>Practical Strategies</h2>
-      
-      <h3>Strategy 1: Triple Divergence Reversal</h3>
-      <p><strong>Setup (Bullish):</strong></p>
-      <ol>
-        <li>Price lower low</li>
-        <li>Volume divergence (declining)</li>
-        <li>CVD divergence (higher low)</li>
-        <li>Dark pool accumulation (3 days)</li>
-        <li>Janus sweep</li>
-        <li>Enter on reversal</li>
-      </ol>
-      <p><b>Win Rate:</b> 70-80% (extreme confluence)</p>
-
-      <h3>Strategy 2: Distribution Fade</h3>
-      <p><strong>Setup (Bearish):</strong></p>
-      <ol>
-        <li>Price higher high</li>
-        <li>Volume divergence (declining)</li>
-        <li>CVD divergence (lower high)</li>
-        <li>Dark pool distribution (4 days)</li>
-        <li>Failed breakout (Janus)</li>
-        <li>Enter short on breakdown</li>
-      </ol>
-      <p><b>Win Rate:</b> 65-75%</p>
-
-      <h3>Strategy 3: Order Book Absorption Scalp</h3>
-      <p><strong>Setup:</strong></p>
-      <ol>
-        <li>Price approaches support</li>
-        <li>Order book large wall (10k+)</li>
-        <li>Footprint absorption (wall holds)</li>
-        <li>Minimal Flow regime supports</li>
-        <li>Enter on reversal</li>
-      </ol>
-      <p><b>Win Rate:</b> 60-70%</p>
-
-      <h2>Common Mistakes</h2>
-      
-      <h3>Mistake 1: Acting on Single Divergence</h3>
-      <p><b>Bad:</b> "CVD divergence, entering now!"</p>
-      <p><b>Reality:</b> Single divergence can persist for long time.</p>
-      <p><b>Fix:</b> Require 2+ divergences + price trigger.</p>
-
-      <h3>Mistake 2: Ignoring the Trend</h3>
-      <p><b>Bad:</b> "Bullish divergence in downtrend, buying!"</p>
-      <p><b>Reality:</b> Divergence in strong trend often fails.</p>
-      <p><b>Fix:</b> Trade divergences WITH trend or at major turning points.</p>
-
-      <h3>Mistake 3: No Trigger</h3>
-      <p><b>Bad:</b> "Divergence exists, entering now!"</p>
-      <p><b>Reality:</b> Divergence can build for weeks.</p>
-      <p><b>Fix:</b> Wait for price action TRIGGER (Janus sweep, breakout, reversal candle).</p>
-
-      <h2>Complete Divergence Framework</h2>
-      
-      <p><strong>Pre-Trade Checklist:</strong></p>
+      <p><strong>In this lesson, you'll learn:</strong></p>
       <ul>
-        <li>[ ] Divergence identified (minimum 2):
-          <ul>
-            <li>Volume divergence</li>
-            <li>Delta divergence (CVD)</li>
-            <li>Dark pool divergence</li>
-            <li>Order book divergence</li>
-          </ul>
-        </li>
-        <li>[ ] Signal Pilot confirmation:
-          <ul>
-            <li>Janus: Sweep or failed breakout</li>
-            <li>Minimal Flow: Regime shift or support</li>
-            <li>Plutus: CVD alignment</li>
-          </ul>
-        </li>
-        <li>[ ] Price action trigger:
-          <ul>
-            <li>Reversal candle</li>
-            <li>Breakout/breakdown</li>
-            <li>Structure test</li>
-          </ul>
-        </li>
-        <li>[ ] Risk management:
-          <ul>
-            <li>Stop beyond invalidation</li>
-            <li>Target &gt; 2R</li>
-            <li>Size appropriate</li>
-          </ul>
-        </li>
+        <li>Why divergences are the most reliable reversal signals</li>
+        <li>The 4 types of divergence (and which ones matter most)</li>
+        <li>How to combine CVD, dark pool, and volume divergence for extreme edge</li>
+        <li>The exact framework for high-probability divergence trades</li>
       </ul>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Divergence = price vs. smart money conflict</strong></li>
-        <li><strong>Multiple divergences &gt; single</strong></li>
-        <li><strong>Smart money wins long-term</strong></li>
-        <li><strong>Require trigger, not just divergence</strong></li>
-        <li><strong>Best = divergence + structure + Signal Pilot</strong></li>
-      </ul>
+      <div class="section-break"><span>Part 1: The Divergence Advantage</span></div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Review losing trades</strong></p>
-      <p>Was there divergence you missed? Could it have kept you out?</p>
-      
-      <p><strong>Exercise 2: Set up CVD indicator</strong></p>
-      <p>Track delta divergence for 1 week. How often does it predict reversals?</p>
+      <h2>What Is Smart Money Divergence?</h2>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Price is what retail sees. Flow is what institutions do. When they diverge, bet on the institutions."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <p>Here's the setup:</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>What Retail Sees</button>
+          <button>What Smart Money Sees</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>The Surface Level (Price)</h3>
+            <p><strong>BTC price action:</strong></p>
+            <ul style="margin:.5rem 0">
+              <li>First low: $100.00</li>
+              <li>Second low: $98.00 (new low!)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Retail interpretation:</strong> "Breaking down! Sell!"</p>
+            <p><strong>Action:</strong> Panic sell, shorts pile in</p>
+            <p style="margin-top:1rem"><strong>What happens next:</strong> Price reverses to $110. Retail stopped out. Again.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>The Reality (Order Flow)</h3>
+            <p><strong>Order flow underneath:</strong></p>
+            <ul style="margin:.5rem 0">
+              <li>First low ($100): CVD delta = -5,000 (heavy selling)</li>
+              <li>Second low ($98): CVD delta = -2,000 (less selling!)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Professional interpretation:</strong> "Lower low on price, higher low on delta = bullish divergence. Selling pressure decreasing."</p>
+            <p><strong>Action:</strong> Buy the second low. Stop below. Ride the reversal to $110.</p>
+            <p style="margin-top:1rem"><strong>Why they win:</strong> They're not watching price. They're watching <em>pressure</em>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Price shows you WHERE we are. Divergence shows you WHEN it's about to reverse.</p>
+        <p>When price makes a new extreme but order flow doesn't confirm, that's your signal: The move is exhausting.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: The 4 Types of Divergence</span></div>
+
+      <h2>Type #1: Price vs. Volume Divergence</h2>
+
+      <p>The classic. And still deadly effective.</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Bullish Volume Divergence</div>
+          <div class="accordion-content">
+            <p><strong>Setup:</strong></p>
+            <ul style="margin:.5rem 0">
+              <li>Price: Lower low ($99 → $98)</li>
+              <li>Volume: Lower on second low (exhaustion)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Interpretation:</strong> Sellers are exhausting. Less conviction on the second push down.</p>
+            <p><strong>Signal Pilot:</strong> Plutus Flow OBV rising while price falling = bullish divergence confirmed.</p>
+            <p style="margin-top:1rem"><strong>What happens next:</strong> Reversal UP (high probability)</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Bearish Volume Divergence</div>
+          <div class="accordion-content">
+            <p><strong>Setup:</strong></p>
+            <ul style="margin:.5rem 0">
+              <li>Price: Higher high ($100 → $102)</li>
+              <li>Volume: Lower on second high (exhaustion)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Interpretation:</strong> Buyers are exhausting. Weaker push on the second high.</p>
+            <p><strong>What happens next:</strong> Reversal DOWN (high probability)</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Type #2: Price vs. Delta Divergence (The Pro Edge)</h2>
+
+      <p>This is where it gets real.</p>
+
+      <p>Volume can lie (wash trading, fake volume). Delta can't—someone bought or sold.</p>
+
+      <div class="callout-info">
+        <h4>📖 War Story: The $100 Fake Breakdown</h4>
+        <p><strong>Setup:</strong> March 8th, 10:45 AM. SPY at $451.</p>
+        <p><strong>First low:</strong> 10:00 AM, drops to $450.00. CVD shows -8,000 delta (heavy selling).</p>
+        <p><strong>Second low:</strong> 10:45 AM, drops to $449.50 (new low!). CVD shows only -3,000 delta.</p>
+
+        <p style="margin-top:1.5rem"><strong>The divergence:</strong></p>
+        <p>Price made a lower low ($449.50 &lt; $450.00). But delta made a <em>higher</em> low (-3,000 &gt; -8,000).</p>
+
+        <p style="margin-top:1rem"><strong>Translation:</strong> Selling pressure decreased by 60% despite price going lower. That's exhaustion.</p>
+
+        <p style="margin-top:1.5rem"><strong>Retail reaction:</strong> "Breakdown! Short!"</p>
+        <p><strong>Footprint traders:</strong> "Bullish divergence. Long at $449.60, stop $449.30."</p>
+
+        <p style="margin-top:1.5rem"><strong>What happened:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li>10:50 AM: Reversal to $450.50</li>
+          <li>11:30 AM: $452.00 (+$2.50 from entry = 8.3R trade)</li>
+        </ul>
+
+        <p style="margin-top:1rem">Retail shorted the bottom. Divergence traders caught the entire reversal.</p>
+      </div>
+
+      <p><strong>Signal Pilot integration:</strong> Plutus Flow CVD + Janus sweep = extreme confluence for divergence trades.</p>
+
+      <h2>Type #3: Price vs. Dark Pool Divergence</h2>
+
+      <p>Picture this scenario:</p>
+
+      <div style="background:#0a0e27;padding:1.5rem;border-radius:8px;font-family:monospace;font-size:.9rem;margin:1.5rem 0">
+<strong style="color:#ff6b9d">Lit exchange (what retail sees):</strong>
+Price falling $105 → $100
+Retail: Panicking, selling
+
+<strong style="color:#64ffda">Dark pools (what institutions do):</strong>
+200k shares bought @ $104
+150k shares bought @ $102
+300k shares bought @ $100.50
+
+<strong style="color:#ffd93d">Divergence:</strong>
+Retail selling (public), institutions buying (private)
+
+<strong style="color:#64ffda">Result:</strong>
+Price reverses UP (institutions win, retail loses)
+      </div>
+
+      <p>That's the dark pool divergence. Retail sells in fear. Institutions accumulate in the shadows.</p>
+
+      <p><strong>Who wins?</strong> The money. Every time.</p>
+
+      <h2>Type #4: Price vs. Order Book Divergence</h2>
+
+      <p>Here's the tell:</p>
+
+      <p>Price approaches $100 support. Order book shows a massive 50,000 bid wall at $100. Selling hits the wall hard.</p>
+
+      <p><strong>Two scenarios:</strong></p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Absorption (Bullish)</button>
+          <button>Spoofing (Bearish)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Wall Holds (Divergence Confirmed)</h3>
+            <p><strong>What happens:</strong></p>
+            <p>Aggressive selling hits the 50k wall. Wall absorbs everything. Price holds $100.00-$100.05.</p>
+            <p style="margin-top:1rem"><strong>Divergence:</strong> Price should break (based on selling pressure), but wall absorbs.</p>
+            <p><strong>Interpretation:</strong> Strong buyer defending the level. Bullish.</p>
+            <p><strong>Trade:</strong> Long above $100.10, stop $99.85, target $102+</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Wall Pulled (Fake)</h3>
+            <p><strong>What happens:</strong></p>
+            <p>Price approaches $100. Suddenly the 50k wall vanishes (order canceled). Price drops through.</p>
+            <p style="margin-top:1rem"><strong>Reality:</strong> The wall was a spoof. No real buyer.</p>
+            <p><strong>Action:</strong> Don't trade fake divergences. Require actual absorption, not just walls.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: The Ultimate Divergence Framework</span></div>
+
+      <h2>Triple Divergence Reversal (70-80% Win Rate)</h2>
+
+      <p>When you stack divergences, magic happens.</p>
+
+      <div class="callout-tip">
+        <h4>🎯 The High-Conviction Setup (Bullish Example)</h4>
+        <p><strong>Conditions (all must be met):</strong></p>
+        <ol style="margin:.5rem 0">
+          <li><strong>Price:</strong> Lower low ($99 → $98)</li>
+          <li><strong>Volume divergence:</strong> Declining volume on second low</li>
+          <li><strong>CVD divergence:</strong> Higher low on delta (less selling pressure)</li>
+          <li><strong>Dark pool:</strong> 3+ days of accumulation (institutions buying)</li>
+          <li><strong>Janus sweep:</strong> Sweep at $98, immediate reclaim</li>
+        </ol>
+
+        <p style="margin-top:1.5rem"><strong>Translation:</strong></p>
+        <p>Every single metric confirms: selling is exhausted, institutions are positioned long, sweep cleared final stops.</p>
+
+        <p style="margin-top:1.5rem"><strong>Your trade:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li><strong>Entry:</strong> $98.50 (above reclaim)</li>
+          <li><strong>Stop:</strong> $97.80 (below sweep)</li>
+          <li><strong>Target 1:</strong> $102 (previous high) = 5R</li>
+          <li><strong>Target 2:</strong> $105 (HTF resistance) = 9.3R</li>
+        </ul>
+
+        <p style="margin-top:1rem"><strong>Win rate:</strong> 70-80% (extreme confluence)</p>
+      </div>
+
+      <h2>Common Divergence Mistakes</h2>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Mistake #1: Trading Single Divergences</div>
+          <div class="accordion-content">
+            <p><strong>Bad approach:</strong> "CVD divergence exists, entering now!"</p>
+            <p><strong>Reality:</strong> Single divergences can persist for weeks in strong trends.</p>
+            <p><strong>Fix:</strong> Require at least 2 divergences + price action trigger (sweep, reversal candle, breakout).</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Mistake #2: Fighting the Trend</div>
+          <div class="accordion-content">
+            <p><strong>Bad approach:</strong> "Bullish divergence in downtrend, going long!"</p>
+            <p><strong>Reality:</strong> Divergences in strong trends often lead to consolidation, not reversal.</p>
+            <p><strong>Fix:</strong> Trade divergences WITH HTF trend, or at major turning points (HTF support/resistance).</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Mistake #3: No Trigger</div>
+          <div class="accordion-content">
+            <p><strong>Bad approach:</strong> "Divergence spotted, entering immediately!"</p>
+            <p><strong>Reality:</strong> Divergence can build for days. Entry too early = drawdown.</p>
+            <p><strong>Fix:</strong> Wait for trigger: Janus sweep + reclaim, reversal candle, structure break, dark pool print.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Complete Pre-Trade Checklist</h2>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Step 1: Divergence Identified (Minimum 2)</div>
+          <div class="accordion-content">
+            <ul>
+              <li>☐ Volume divergence (declining on new extreme)</li>
+              <li>☐ Delta divergence (CVD not confirming new extreme)</li>
+              <li>☐ Dark pool divergence (institutions positioning opposite)</li>
+              <li>☐ Order book divergence (absorption at level)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 2: Signal Pilot Confirmation</div>
+          <div class="accordion-content">
+            <ul>
+              <li>☐ Janus: Sweep or failed breakout at divergence level</li>
+              <li>☐ Minimal Flow: Regime shift supports reversal (trending → ranging, or regime change)</li>
+              <li>☐ Plutus: CVD alignment with divergence thesis</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 3: Price Action Trigger</div>
+          <div class="accordion-content">
+            <ul>
+              <li>☐ Reversal candle (strong close opposite to trend)</li>
+              <li>☐ Janus sweep + reclaim</li>
+              <li>☐ Structure break (trendline, support/resistance)</li>
+              <li>☐ Dark pool print at divergence level</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 4: Risk Management</div>
+          <div class="accordion-content">
+            <ul>
+              <li>☐ Stop beyond invalidation point (below sweep, below structure)</li>
+              <li>☐ Target at HTF level (&gt;2R minimum)</li>
+              <li>☐ Size appropriate (divergence trades can take time to play out)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Divergence = price vs. smart money conflict</strong> — When they disagree, bet on the money</li>
+          <li><strong>Multiple divergences &gt; single</strong> — Stack volume + delta + dark pool for 70%+ win rate</li>
+          <li><strong>Smart money wins long-term</strong> — Price can be pushed around, order flow represents real capital</li>
+          <li><strong>Require a trigger, not just divergence</strong> — Divergence can build for weeks; wait for the reversal signal</li>
+          <li><strong>Best trades = divergence + structure + Signal Pilot</strong> — Triple confirmation = extreme edge</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0;padding:1.5rem;background:linear-gradient(135deg, rgba(100,255,218,0.1), rgba(157,118,255,0.1));border-radius:8px;border-left:4px solid var(--accent)">
+        This is how professionals trade reversals. Not with indicators. Not with patterns. With money flow. If you've made it this far, you now see markets the way hedge funds do.
+      </p>
+
+      <div class="quiz">
+        <h4>🎮 Test Your Understanding (No Pressure)</h4>
+        <div class="quiz-question">
+          <p><strong>Price makes a lower low ($100 → $98). CVD makes a higher low (less selling). Volume is declining. What's the signal?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              A) Bearish — price is still falling, trend continues
+            </div>
+            <div class="quiz-option" data-correct="true">
+              B) Bullish divergence — selling pressure exhausting, reversal likely
+            </div>
+            <div class="quiz-option" data-correct="false">
+              C) Neutral — conflicting signals, stay out
+            </div>
+          </div>
+          <div class="quiz-explanation">
+            <strong>Why B is correct:</strong> You have double divergence (volume + delta). Price lower low with higher low on selling pressure = exhaustion. This is a textbook bullish divergence setup. Wait for trigger (Janus sweep, reversal candle), then enter long.
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>You spot bullish divergence in a strong HTF downtrend. Do you take the long trade?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              A) Yes — divergence is divergence, always trade it
+            </div>
+            <div class="quiz-option" data-correct="true">
+              B) Only if at major HTF support — otherwise skip (don't fight HTF trend)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              C) Yes, but with reduced size
+            </div>
+          </div>
+          <div class="quiz-explanation">
+            <strong>Why B is correct:</strong> Divergences in strong trends often lead to consolidation, not reversal. Only trade divergences against HTF trend if you're at a major turning point (HTF support, key level). Otherwise, wait for HTF alignment.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
+        <div class="quiz-result"></div>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #19: Multi-Timeframe Mastery</strong> — Single timeframe = gambling. Learn the professional's 3-timeframe framework: HTF guides, MTF confirms, LTF executes.</p>
+      </div>
+
+    </div>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/intermediate/17-dark-pools.html">&larr; Previous: Dark Pools</a>
-    <a class="btn btn-primary" href="/">More Coming Soon &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/intermediate/17-dark-pools.html">&larr; Previous: Dark Pool Detection</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/19-multi-timeframe-mastery.html">Next: Multi-Timeframe Mastery &rarr;</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

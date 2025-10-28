@@ -1,133 +1,225 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Performance Attribution: Where Returns Come From — SignalPilot Education</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Performance Attribution: Where Did Your Returns Really Come From? — SignalPilot Education</title>
+  <meta name="description" content="+50% return—but why? Was it skill or luck? Decompose your performance to identify true edges and eliminate what doesn't work.">
   <meta name="sp-level" content="Advanced"><meta name="sp-order" content="39">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/39-performance-attribution.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Performance Attribution: Where Returns Come From</h1><div class="meta">Reading time ~12 min • Performance Analysis</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>+50% return—but why? Was it skill or luck? Which strategies worked? Which failed?</b> Learn to decompose performance, identify true edges, and eliminate what doesn't work.</p>
-      
-      <h2>Performance Attribution Framework</h2>
-      
-      <h3>Key Questions</h3>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #39</span>
+      </div>
+      <span class="badge">🔴 Advanced • Lesson 12 of 15</span>
+      <h1 class="headline xl">Performance Attribution: Where Did Your Returns Really Come From?</h1>
+      <div class="meta">12 min read • Returns Decomposition & Analysis</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>You made +45% this year. Congratulations!</b></p>
+
+      <p>But here's the question nobody asks: <em>Where did that +45% come from?</em></p>
+
+      <p>Was it your Janus strategy? Or did you just ride a bull market? Was it skill or luck?</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Most traders can't answer this question. They see a green number and celebrate.</p>
+        <p>Professionals decompose every dollar of return. They know which strategies work, which don't, and why.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
       <ul>
-        <li>Which strategies contributed most to returns?</li>
-        <li>Which assets/sectors drove performance?</li>
-        <li>Was outperformance from selection or timing?</li>
-        <li>How much was skill vs. market beta (luck)?</li>
+        <li>How to separate alpha (skill) from beta (market exposure)</li>
+        <li>Strategy-by-strategy performance breakdown</li>
+        <li>Identifying your top 5 winners (they're probably 80% of profit)</li>
+        <li>Eliminating strategies that don't work (and doubling down on what does)</li>
       </ul>
 
-      <h3>Attribution Breakdown</h3>
-      <pre><code>Total Return: +45%
+      <div class="section-break"><span>Part 1: The Attribution Framework</span></div>
+
+      <h2>Breaking Down the +45%</h2>
+
+      <p>Let's say you made +45% this year. Time to decompose it.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">By Strategy</button>
+          <button>By Asset</button>
+          <button>By Time Period</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Which Strategy Made the Money?</h3>
+            <pre><code>Total Return: +45%
 
 By Strategy:
-- Janus sweeps: +25% (55% of return)
+- Janus sweeps: +25% (56% of return) ← Your edge!
 - Breakouts: +12% (27%)
 - Mean reversion: +8% (18%)
+- Failed experiments: -5% (oops)
+
+Insight: 56% came from ONE strategy
+Action: Allocate more capital to Janus sweeps</code></pre>
+            <p><em>One strategy dominated. That's your edge. Scale it.</em></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Which Asset Made the Money?</h3>
+            <pre><code>Total Return: +45%
 
 By Asset:
-- SPY: +30% (67%)
+- SPY: +30% (67% of return)
 - QQQ: +10% (22%)
 - IWM: +5% (11%)
 
-By Time Period:
+Insight: SPY trades worked best
+Action: Focus on SPY setups (highest liquidity)</code></pre>
+            <p><em>Liquidity matters. SPY = best execution, least slippage.</em></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Which Quarter Made the Money?</h3>
+            <pre><code>Total Return: +45%
+
+By Quarter:
 - Q1: +15%
 - Q2: +8%
-- Q3: +20% (best quarter)
-- Q4: +2%</code></pre>
+- Q3: +20% ← Best quarter (trending regime)
+- Q4: +2%
 
-      <h2>Alpha vs. Beta</h2>
-      
-      <h3>Understanding Beta</h3>
-      <p><strong>Beta = sensitivity to market moves (systematic risk).</strong></p>
-      <pre><code>Beta = 1.0: Moves with market (SPY up 10% → you up 10%)
-Beta = 1.5: 1.5x market (SPY up 10% → you up 15%)
-Beta = 0.5: 0.5x market (SPY up 10% → you up 5%)
-Beta = -0.5: Inverse (SPY up 10% → you down 5%)</code></pre>
+Insight: Q3 = trending regime = Janus edge
+Action: Trade larger in trending regimes</code></pre>
+            <p><em>Know when your edge is strongest. Size accordingly.</em></p>
+          </div>
+        </div>
+      </div>
 
-      <h3>Calculating Alpha</h3>
-      <p><strong>Alpha = return above expected (risk-adjusted excess return).</strong></p>
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Performance attribution reveals where you ACTUALLY make money.</p>
+        <p>Most traders are surprised: 80% of profit comes from 20% of trades (Pareto principle).</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: Alpha vs. Beta</span></div>
+
+      <h2>Was It Skill or Just a Bull Market?</h2>
+
+      <p>You made +40%. SPY made +20%. You're celebrating.</p>
+
+      <p>But wait—your portfolio has a beta of 1.5 (moves 1.5x the market).</p>
+
+      <p>Let's do the math:</p>
+
       <pre><code>Your return: +40%
 SPY return: +20%
 Your beta: 1.5
 
-Expected return: 1.5 × 20% = 30% (beta explains this)
-Alpha: 40% - 30% = +10% (skill-based excess return!)
+Expected return (based on beta): 1.5 × 20% = 30%
 
-Interpretation: +10% alpha = genuine edge (not just riding market)</code></pre>
+Alpha = Actual return - Expected return
+      = 40% - 30%
+      = +10%
 
-      <h2>Sharpe, Sortino, & Information Ratio</h2>
-      
-      <h3>Sharpe Ratio</h3>
-      <pre><code>Sharpe = (Return - Risk-Free) / Std Dev
+Interpretation: +10% alpha = skill-based excess return
+                +30% beta = just riding the market</code></pre>
+
+      <p>Only +10% was skill. The rest was market exposure.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 The Uncomfortable Truth</h4>
+        <p>If the market had dropped -20%, you'd be at -30% (1.5x beta). Your +10% alpha wouldn't save you.</p>
+        <p>Alpha = skill. Beta = risk. Know the difference.</p>
+      </div>
+
+      <h3>Sharpe, Sortino, Information Ratio</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Sharpe Ratio (Return Per Unit of Risk)</div>
+          <div class="accordion-content">
+            <pre><code>Sharpe = (Return - Risk-Free) / Std Dev
 
 Your stats:
 Return: 40%
 Risk-Free: 4%
 Std Dev: 18%
 
-Sharpe = (40 - 4) / 18 = 2.0 (excellent!)</code></pre>
+Sharpe = (40 - 4) / 18 = 2.0 (excellent!)
 
-      <h3>Sortino Ratio (Downside-Focused)</h3>
-      <pre><code>Sortino = (Return - Risk-Free) / Downside Deviation
+Benchmark:
+< 1.0 = Poor
+1.0-2.0 = Good
+> 2.0 = Excellent</code></pre>
+            <p><em>Sharpe > 1.5 = you have an edge. Below 1.0 = reconsider your strategy.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Sortino Ratio (Only Penalizes Downside)</div>
+          <div class="accordion-content">
+            <pre><code>Sortino = (Return - Risk-Free) / Downside Dev
 
-Advantage: Only penalizes bad volatility (losses), not gains
+Advantage: Ignores upside volatility (good vol)
 
 Your stats:
 Return: 40%
 Downside Dev: 12% (vs. total 18%)
 
-Sortino = (40 - 4) / 12 = 3.0 (better than Sharpe!)</code></pre>
+Sortino = (40 - 4) / 12 = 3.0 (better than Sharpe!)
 
-      <h3>Information Ratio (Alpha per Risk)</h3>
-      <pre><code>IR = Alpha / Tracking Error
+Takeaway: Your losses are controlled, gains are large</code></pre>
+            <p><em>Sortino > Sharpe = asymmetric returns (good!). Let winners run, cut losers fast.</em></p>
+          </div>
+        </div>
+      </div>
 
-Alpha: +10%
-Tracking Error: 8%
+      <div class="section-break"><span>Part 3: Top Winners & Losers</span></div>
 
-IR = 10 / 8 = 1.25
+      <h2>Your Top 5 Trades Are 80% of Profit</h2>
 
-Benchmark:
-< 0.5 = Poor (high risk for alpha)
-0.5-1.0 = Good
-> 1.0 = Excellent (efficient alpha generation)</code></pre>
+      <p>This is the part that hurts (and helps).</p>
 
-      <h2>Monthly Performance Analysis</h2>
-      
-      <h3>Win Rate by Month</h3>
-      <pre><code>Jan: +8% (5 wins, 2 losses)
-Feb: +3% (4W, 3L)
-Mar: +12% (6W, 1L) ← Best month
-Apr: -2% (3W, 5L)
-May: +6% (5W, 2L)
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Top 5 Winners</button>
+          <button>Bottom 5 Losers</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Where You Made Money</h3>
+            <pre><code>Top 5 Winners (out of 50 trades):
 
-Insights:
-- March: 86% WR (optimal conditions?)
-- April: Negative (regime changed? review trades)
-- Overall: 68% monthly win rate (solid)</code></pre>
-
-      <h3>Drawdown Analysis</h3>
-      <pre><code>Max Drawdown: -15% (April-May)
-
-Duration: 6 weeks
-Recovery: 3 weeks
-
-Analysis:
-- Cause: Volatile regime (VIX spiked 18 → 28)
-- Action: Should have reduced size (regime filter)
-- Lesson: Add VIX > 25 filter (reduce or sit out)</code></pre>
-
-      <h2>Trade-Level Attribution</h2>
-      
-      <h3>Best vs. Worst Trades</h3>
-      <pre><code>Top 5 Winners:
 1. SPY sweep reversal: +$2,500 (5R)
 2. QQQ breakout: +$1,800 (4.5R)
 3. IWM mean reversion: +$1,200 (3R)
@@ -136,82 +228,170 @@ Analysis:
 
 Total from top 5: +$7,600 (56% of total profit!)
 
-Insight: Let winners run (top 5 trades = 56% of profit)</code></pre>
+Lesson: Let. Winners. Run.</code></pre>
+            <p><em>5 trades = 56% of profit. This is why you hold 3R+ targets.</em></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Where You Lost Money</h3>
+            <pre><code>Bottom 5 Losers:
 
-      <h3>Worst Trades Analysis</h3>
-      <pre><code>Bottom 5 Losers:
-1. IWM breakout (false): -$800 (-1R, stopped)
+1. IWM false breakout: -$800 (-1R, stop hit)
 2. SPY FOMO entry: -$600 (-1R, ignored HTF)
-3. QQQ oversize: -$500 (-0.8R, risked 3% not 2%)
-4. SPY news event: -$450 (-1R, volatile regime)
-5. IWM late entry: -$400 (-1R, chased)
+3. QQQ oversize: -$500 (-0.8R, risked 3%)
+4. SPY news volatility: -$450 (-1R, VIX spike)
+5. IWM late chase: -$400 (-1R, FOMO)
 
 Common themes:
-- FOMO/chasing (2/5)
-- Ignored regime/HTF (3/5)
+- FOMO/chasing (3/5) ← Fix this!
+- Ignored HTF/regime (3/5)
 - Oversized (1/5)
 
-Action: Pre-entry checklist (HTF aligned, regime OK, no FOMO)</code></pre>
+Action: Pre-entry checklist (HTF, regime, no FOMO)</code></pre>
+            <p><em>Most losses are preventable. Stop chasing. Stop ignoring context.</em></p>
+          </div>
+        </div>
+      </div>
 
-      <h2>Strategy-Specific Performance</h2>
-      
-      <h3>Janus Sweeps</h3>
-      <pre><code>Trades: 45
+      <div class="callout-tip">
+        <h4>🎯 Monthly Review Checklist</h4>
+        <ul style="margin:.5rem 0">
+          <li>Which strategy contributed most profit?</li>
+          <li>Which strategy had best win rate / avg R?</li>
+          <li>What's the common theme in losses?</li>
+          <li>Did I follow my rules (or break them)?</li>
+          <li>What regime performed best? Worst?</li>
+        </ul>
+        <p>Do this monthly. Compound learning, not just capital.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Strategy-Specific Performance</span></div>
+
+      <h2>Deep Dive: Which Strategy to Scale, Which to Kill</h2>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Janus Sweeps (Your Best Strategy)</div>
+          <div class="accordion-content">
+            <pre><code>Trades: 45
 Win Rate: 71%
 Avg R: 3.2R
-Total: +$12,500
+Total P&L: +$12,500
 
 Best conditions:
-- Trending regime (Minimal Flow): 78% WR
+- Trending regime: 78% WR
 - HTF aligned: 75% WR
 - Multi-TF confluence: 82% WR
 
 Worst conditions:
-- Ranging regime: 58% WR (skip)
-- Volatile (VIX > 25): 48% WR (avoid!)</code></pre>
+- Ranging regime: 58% WR (skip!)
+- VIX > 25: 48% WR (avoid!)
 
-      <h3>Breakouts</h3>
-      <pre><code>Trades: 20
+Action: Allocate MORE capital to Janus in trending regimes</code></pre>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Breakouts (Marginal Strategy)</div>
+          <div class="accordion-content">
+            <pre><code>Trades: 20
 Win Rate: 55%
 Avg R: 1.8R
-Total: +$2,400
+Total P&L: +$2,400
 
-Analysis: Marginal strategy (barely profitable)
-Issue: Many false breakouts (stopped out)
+Analysis: Barely profitable (many false breakouts)
 
-Action: Add volume filter (breakout volume > 2x avg)</code></pre>
+Action: Add volume filter (breakout vol > 2x avg)
+        Or consider killing this strategy entirely</code></pre>
+          </div>
+        </div>
+      </div>
 
-      <h2>Time-of-Day Performance</h2>
-      
-      <pre><code>9:30-10:30 AM: 12 trades, 50% WR, 1.2R avg (choppy)
-10:30 AM-12 PM: 35 trades, 74% WR, 3.5R avg (BEST)
-12 PM-2 PM: 8 trades, 38% WR, 0.5R avg (lunch chop)
+      <h3>Time-of-Day Performance</h3>
+
+      <pre><code>9:30-10:30 AM: 12 trades, 50% WR, 1.2R avg (choppy, skip)
+10:30 AM-12 PM: 35 trades, 74% WR, 3.5R avg ← BEST window!
+12 PM-2 PM: 8 trades, 38% WR, 0.5R avg (lunch chop, avoid)
 2 PM-4 PM: 20 trades, 60% WR, 2.3R avg (OK)
 
-Action: Focus on 10:30 AM-12 PM, avoid lunch (12-2 PM)</code></pre>
+Action: Focus 10:30 AM-12 PM, avoid lunch, reduce size 9:30-10:30</code></pre>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Decompose returns: which strategies, assets, time periods</strong></li>
-        <li><strong>Alpha vs. Beta: separate skill from market moves</strong></li>
-        <li><strong>Top trades = most profit (let winners run!)</strong></li>
-        <li><strong>Analyze losses: find common mistakes, fix them</strong></li>
-        <li><strong>Time-of-day matters: avoid low-win-rate windows</strong></li>
-      </ul>
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Decompose returns: by strategy, asset, time period</strong></li>
+          <li><strong>Alpha vs. Beta: separate skill from market exposure</strong></li>
+          <li><strong>Top 5 trades = 80% of profit (let winners run!)</strong></li>
+          <li><strong>Analyze losses: find patterns, create filters</strong></li>
+          <li><strong>Time-of-day matters: avoid low-WR windows</strong></li>
+          <li><strong>Review monthly: identify what works, eliminate what doesn't</strong></li>
+        </ul>
+      </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Attribution analysis</strong></p>
-      <p>Last 3 months: Break down returns by strategy. Which contributed most? Which dragged performance?</p>
+      <div class="quiz">
+        <h4>🎮 Test Your Understanding (No Pressure)</h4>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Performance without attribution is noise. Know what works, double down. Know what doesn't, eliminate."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+        <div class="quiz-question">
+          <p><strong>Question 1: You made +50% this year. SPY made +20%. Your beta is 2.0. What's your alpha?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              <strong>A)</strong> +30% (50% - 20%)
+            </div>
+            <div class="quiz-option" data-correct="true">
+              <strong>B)</strong> +10% (50% - 2.0×20%)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>C)</strong> +50% (total return = alpha)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>D)</strong> Beta doesn't matter for alpha calculation
+            </div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Question 2: Your top 5 trades out of 50 total made 60% of your profit. What's the lesson?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              <strong>A)</strong> Take fewer trades (lower quantity)
+            </div>
+            <div class="quiz-option" data-correct="true">
+              <strong>B)</strong> Let winners run (hold for 3R+ targets)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>C)</strong> Only take "top 5" setups (cherry-pick)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>D)</strong> 60% of trades were bad (stop trading)
+            </div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
+        <div class="quiz-results"></div>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">
+        If you made it this far, you understand that performance without attribution is noise. Know what works. Double down. Know what doesn't. Eliminate it. That's how you compound an edge.
+      </p>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #40: Tax Optimization</strong> — Taxes can cost 20-40% of gains. Learn short vs. long-term rates, trader tax status, wash sales, and entity structuring to keep more of what you earn.</p>
+      </div>
+
+    </div>
+  </div>
+
   <div class="wrap nav-article">
     <a class="btn btn-ghost" href="/curriculum/advanced/38-portfolio-theory-advanced.html">&larr; Previous: Portfolio Theory</a>
     <a class="btn btn-primary" href="/curriculum/advanced/40-tax-optimization.html">Next: Tax Optimization &rarr;</a>
   </div>
 </article>
+
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
 <script src="/assets/edu.js"></script>
-</body></html>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

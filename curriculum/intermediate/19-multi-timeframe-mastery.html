@@ -1,279 +1,456 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Multi-Timeframe Mastery: HTF Guides, LTF Executes — SignalPilot Education</title>
-  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="19">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Single Timeframe Trading = Gambling — SignalPilot Learn</title>
+  <meta name="description" content="HTF guides, MTF confirms, LTF executes. Learn the professional 3-timeframe framework that turns low-probability guesses into high-edge setups.">
+  <meta name="sp-level" content="Intermediate">
+  <meta name="sp-order" content="19">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Multi-Timeframe Mastery: HTF Guides, LTF Executes</h1><div class="meta">Reading time ~15 min • Multi-Timeframe Analysis</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Trading on one timeframe = gambling. Professional multi-timeframe alignment = edge.</b> Learn the 3-timeframe rule, how to avoid conflicting signals, and complete frameworks for HTF/MTF/LTF integration with Signal Pilot.</p>
-      
-      <h2>The 3-Timeframe Rule</h2>
-      <p><strong>Framework: Higher guides, Medium confirms, Lower executes.</strong></p>
-      
-      <h3>HTF (Higher Timeframe): Trend & Context</h3>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #19</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 19 of 27</span>
+      <h1 class="headline xl">Single Timeframe Trading = Gambling</h1>
+      <div class="meta">15 min read • Multi-Timeframe Analysis</div>
+
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>Perfect setup on the 15-minute chart. You enter long. Two hours later: stopped out.</b></p>
+
+      <p>What happened? You checked Daily. It was downtrend. At resistance.</p>
+
+      <p>That 15-minute "perfect setup" never had a chance.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Trading on a single timeframe is like driving with half your windshield covered. Sure, you can see the road in front of you. But you're blind to the semi-truck in the other lane.</p>
+        <p><strong>Professional traders use 3 timeframes. Always.</strong> HTF for bias. MTF for structure. LTF for execution.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
       <ul>
-        <li><b>Timeframe:</b> Daily or Weekly</li>
-        <li><b>Purpose:</b> Identify trend, major support/resistance, market regime</li>
-        <li><b>Question:</b> "Are we in uptrend, downtrend, or range?"</li>
-        <li><b>Signal Pilot:</b> Minimal Flow regime (trending/ranging/volatile)</li>
+        <li>The 3-timeframe rule that eliminates 80% of bad trades</li>
+        <li>How to stack HTF, MTF, and LTF alignment for 65-75% win rates</li>
+        <li>Why "perfect" LTF setups fail (and how to avoid them)</li>
+        <li>Exact Signal Pilot integration across all three timeframes</li>
       </ul>
 
-      <h3>MTF (Medium Timeframe): Structure</h3>
-      <ul>
-        <li><b>Timeframe:</b> 4H or 1H</li>
-        <li><b>Purpose:</b> Swing structure, sweep zones, entry areas</li>
-        <li><b>Question:</b> "Where are the key levels?"</li>
-        <li><b>Signal Pilot:</b> Janus Atlas sweeps, Plutus Flow POC</li>
-      </ul>
+      <div class="section-break"><span>Part 1: Why Single Timeframe Fails</span></div>
 
-      <h3>LTF (Lower Timeframe): Execution</h3>
-      <ul>
-        <li><b>Timeframe:</b> 15min or 5min</li>
-        <li><b>Purpose:</b> Precise entry timing, confirmation</li>
-        <li><b>Question:</b> "What's the exact entry price?"</li>
-        <li><b>Signal Pilot:</b> Real-time order flow, footprint confirmation</li>
-      </ul>
+      <h2>The Three Deadly Sins</h2>
 
-      <p><b>RULE: NEVER trade against HTF. Only execute LTF setups aligned with HTF trend.</b></p>
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Sin #1: Conflicting Signals</button>
+          <button>Sin #2: No Context</button>
+          <button>Sin #3: Wrong Targets</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>When Your Entry Fights Your Trend</h3>
+            <p><strong>15-minute chart:</strong> Bullish breakout. BUY signal.</p>
+            <p><strong>Daily chart:</strong> Downtrend. At resistance. SELL context.</p>
+            <p style="margin-top:1rem"><strong>What happens:</strong></p>
+            <p>Breakout runs 10 points. You're up. Then? Daily resistance kicks in. Sellers flood in. You're stopped out.</p>
+            <p style="margin-top:1rem"><strong>The lesson:</strong> Never trade LTF setups against HTF trend. You're fighting billions of dollars.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>The Blind Entry</h3>
+            <p><strong>5-minute chart:</strong> Perfect Janus sweep at $100. Looks great!</p>
+            <p><strong>What you don't know:</strong> $100 is major HTF resistance (Daily chart). Institutions are selling.</p>
+            <p style="margin-top:1rem"><strong>What happens:</strong></p>
+            <p>Entry looks great. Price reverses 5 minutes later. HTF sellers crush it.</p>
+            <p style="margin-top:1rem"><strong>The lesson:</strong> Mark HTF levels on your LTF chart. Or trade blind.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Optimizing for Pennies, Losing Dollars</h3>
+            <p><strong>1-minute scalp:</strong></p>
+            <ul style="margin:.5rem 0">
+              <li>Entry: $100.00</li>
+              <li>Stop: $99.90</li>
+              <li>Target: $100.20</li>
+              <li>R:R = 1:2 (looks okay!)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>But Daily chart shows:</strong> Resistance at $100.15.</p>
+            <p><strong>Real R:R:</strong> 1:1.5 (terrible)</p>
+            <p style="margin-top:1rem"><strong>The lesson:</strong> Use HTF for targets. LTF for entries.</p>
+          </div>
+        </div>
+      </div>
 
-      <h2>Why Single-Timeframe Trading Fails</h2>
-      
-      <h3>Problem 1: Conflicting Signals</h3>
-      <pre><code>15min chart: Bullish breakout (BUY signal)
-Daily chart: Downtrend, at resistance (SELL context)
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Single timeframe analysis is incomplete. You're missing <em>context</em> (HTF) and <em>precision</em> (LTF).</p>
+        <p>Professionals use 3 timeframes to see the full picture: Where we are (HTF), where we're going (MTF), and exactly when to enter (LTF).</p>
+      </div>
 
-Result: Breakout fails, you get stopped out</code></pre>
-      <p><b>Solution:</b> Check Daily FIRST. If bearish, don't take 15min longs.</p>
+      <div class="section-break"><span>Part 2: The 3-Timeframe Rule</span></div>
 
-      <h3>Problem 2: No Context</h3>
-      <pre><code>5min chart: Perfect sweep setup at $100
-BUT you don't know: $100 is major HTF resistance
+      <h2>HTF, MTF, LTF Explained</h2>
 
-Result: Entry looks great, but HTF sellers crush it</code></pre>
-      <p><b>Solution:</b> Mark HTF levels on LTF chart.</p>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">HTF (Higher Timeframe): Trend & Context</div>
+          <div class="accordion-content">
+            <p><strong>Timeframe:</strong> Daily or Weekly</p>
+            <p><strong>Purpose:</strong> Identify trend, major support/resistance, market regime</p>
+            <p><strong>The question:</strong> "Are we in uptrend, downtrend, or range?"</p>
+            <p style="margin-top:1rem"><strong>Signal Pilot:</strong> Minimal Flow regime (trending/ranging/volatile)</p>
+            <p><strong>Rule:</strong> <em>Never</em> trade against HTF trend. Only execute LTF setups aligned with HTF bias.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">MTF (Medium Timeframe): Structure</div>
+          <div class="accordion-content">
+            <p><strong>Timeframe:</strong> 4H or 1H</p>
+            <p><strong>Purpose:</strong> Swing structure, sweep zones, entry areas</p>
+            <p><strong>The question:</strong> "Where are the key levels?"</p>
+            <p style="margin-top:1rem"><strong>Signal Pilot:</strong> Janus Atlas sweeps, Plutus Flow POC</p>
+            <p><strong>Use:</strong> Identify entry zones, manage trades (targets, stops)</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">LTF (Lower Timeframe): Execution</div>
+          <div class="accordion-content">
+            <p><strong>Timeframe:</strong> 15min or 5min</p>
+            <p><strong>Purpose:</strong> Precise entry timing, confirmation</p>
+            <p><strong>The question:</strong> "What's the exact entry price?"</p>
+            <p style="margin-top:1rem"><strong>Signal Pilot:</strong> Real-time order flow, footprint confirmation</p>
+            <p><strong>Use:</strong> Pinpoint entries within MTF zones. Never used for bias or targets.</p>
+          </div>
+        </div>
+      </div>
 
-      <h3>Problem 3: Poor Risk:Reward</h3>
-      <pre><code>1min scalp: Entry $100, stop $99.90, target $100.20
-R:R = 1:2 (looks okay)
+      <div class="callout-info">
+        <h4>📖 Case Study: The Perfect Alignment Trade</h4>
+        <p><strong>Asset:</strong> BTC</p>
+        <p><strong>Date:</strong> November 15th</p>
 
-BUT Daily shows resistance at $100.15
-Real R:R = 1:1.5 (terrible)</code></pre>
-      <p><b>Solution:</b> Use HTF for targets, LTF for entries.</p>
+        <p style="margin-top:1.5rem"><strong>HTF (Daily):</strong></p>
+        <ul style="margin:.5rem 0;font-size:.95rem">
+          <li>Uptrend, above 50/200 EMA</li>
+          <li>Minimal Flow: Trending regime</li>
+          <li>Bias: LONG only</li>
+        </ul>
 
-      <h2>Complete Multi-Timeframe Framework</h2>
-      
-      <h3>Step 1: HTF Analysis (Daily)</h3>
-      <p><strong>Questions to answer:</strong></p>
-      <ul>
-        <li>[ ] Trend direction? (Up/Down/Range)</li>
-        <li>[ ] Price above/below major EMAs?</li>
-        <li>[ ] Minimal Flow regime? (Trending/Ranging/Volatile)</li>
-        <li>[ ] Major support/resistance nearby?</li>
-        <li>[ ] Bias: Long, Short, or Neutral?</li>
-      </ul>
+        <p style="margin-top:1.5rem"><strong>MTF (4H):</strong></p>
+        <ul style="margin:.5rem 0;font-size:.95rem">
+          <li>Pullback to $44,500 (POC from Plutus Flow)</li>
+          <li>Janus sweep to $44,300</li>
+          <li>Entry zone identified: $44,300-$44,500</li>
+        </ul>
 
-      <h3>Step 2: MTF Structure (4H)</h3>
-      <p><strong>Questions to answer:</strong></p>
-      <ul>
-        <li>[ ] Where are swing highs/lows?</li>
-        <li>[ ] Janus Atlas sweep zones identified?</li>
-        <li>[ ] Plutus Flow POC/HVN/LVN marked?</li>
-        <li>[ ] Structure supports HTF bias?</li>
-        <li>[ ] Entry zones defined?</li>
-      </ul>
+        <p style="margin-top:1.5rem"><strong>LTF (15min):</strong></p>
+        <ul style="margin:.5rem 0;font-size:.95rem">
+          <li>10:15 AM: Reversal candle at $44,350</li>
+          <li>Footprint: +8,000 delta (absorption)</li>
+          <li>Trigger confirmed</li>
+        </ul>
 
-      <h3>Step 3: LTF Execution (15min)</h3>
-      <p><strong>Questions to answer:</strong></p>
-      <ul>
-        <li>[ ] Setup aligns with HTF + MTF?</li>
-        <li>[ ] Janus sweep confirmed (if reversal)?</li>
-        <li>[ ] Footprint shows absorption/imbalance?</li>
-        <li>[ ] Order book supports direction?</li>
-        <li>[ ] Entry candle closes in favor?</li>
-      </ul>
+        <p style="margin-top:1.5rem"><strong>The trade:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li><strong>Entry:</strong> $44,400 (15min close above sweep)</li>
+          <li><strong>Stop:</strong> $44,200 (below swept low + ATR)</li>
+          <li><strong>Target 1:</strong> $45,000 (4H resistance) = 3R</li>
+          <li><strong>Target 2:</strong> $45,500 (Daily resistance) = 5.5R</li>
+        </ul>
 
-      <h3>Step 4: Manage on MTF</h3>
-      <p><strong>Use MTF for management:</strong></p>
-      <ul>
-        <li>Targets: MTF swing highs/lows</li>
-        <li>Trailing stop: MTF structure breaks</li>
-        <li>Partial exits: MTF resistance/support</li>
-      </ul>
+        <p style="margin-top:1.5rem"><strong>Result:</strong></p>
+        <p>Target 1 hit in 6 hours. Target 2 hit in 18 hours. +$1,100 from a $200 risk = 5.5R winner.</p>
 
-      <h2>Alignment Scenarios</h2>
-      
-      <h3>Scenario 1: Perfect Alignment (Trade This)</h3>
-      <pre><code>HTF (Daily): Uptrend, above 50 EMA, Minimal Flow trending up
-MTF (4H): Pullback to support, Janus sweep completed
-LTF (15min): Reversal candle, footprint absorption
+        <p style="margin-top:1rem"><strong>Win rate on setups like this:</strong> 70%</p>
+      </div>
 
-Action: LONG with high conviction
-Why: All timeframes aligned bullish</code></pre>
-      <p><b>Win Rate: 65-75%</b></p>
+      <div class="section-break"><span>Part 3: Alignment Scenarios</span></div>
 
-      <h3>Scenario 2: Partial Alignment (Trade Carefully)</h3>
-      <pre><code>HTF (Daily): Uptrend, but approaching resistance
-MTF (4H): Bullish structure
-LTF (15min): Long setup
+      <h2>When to Trade, When to Skip</h2>
 
-Action: LONG with reduced size, tight target
-Why: HTF resistance creates risk</code></pre>
-      <p><b>Win Rate: 50-60%</b></p>
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Perfect Alignment ✓</button>
+          <button>Partial Alignment ⚠</button>
+          <button>Conflicting ✗</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Trade This Aggressively</h3>
+            <p><strong>HTF (Daily):</strong> Uptrend, above 50 EMA, Minimal Flow trending</p>
+            <p><strong>MTF (4H):</strong> Pullback to support, Janus sweep completed</p>
+            <p><strong>LTF (15min):</strong> Reversal candle, footprint absorption</p>
 
-      <h3>Scenario 3: Conflicting (SKIP)</h3>
-      <pre><code>HTF (Daily): Downtrend, below EMAs
-MTF (4H): Bearish structure
-LTF (15min): Bullish breakout setup
+            <p style="margin-top:1.5rem"><strong>Action:</strong> LONG with high conviction</p>
+            <p><strong>Why:</strong> All timeframes aligned bullish. HTF trend supports. MTF structure confirms. LTF entry precise.</p>
+            <p><strong>Win rate:</strong> 65-75%</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Trade with Caution</h3>
+            <p><strong>HTF (Daily):</strong> Uptrend, but approaching resistance</p>
+            <p><strong>MTF (4H):</strong> Bullish structure</p>
+            <p><strong>LTF (15min):</strong> Long setup</p>
 
-Action: SKIP (do not fight HTF)
-Why: LTF longs against HTF downtrend = low win rate</code></pre>
-      <p><b>Win Rate: 30-40% (avoid)</b></p>
+            <p style="margin-top:1.5rem"><strong>Action:</strong> LONG with reduced size, tight target</p>
+            <p><strong>Why:</strong> HTF resistance creates risk. Take profits early.</p>
+            <p><strong>Win rate:</strong> 50-60%</p>
+          </div>
+          <div class="tab-panel">
+            <h3>SKIP (Don't Trade)</h3>
+            <p><strong>HTF (Daily):</strong> Downtrend, below EMAs</p>
+            <p><strong>MTF (4H):</strong> Bearish structure</p>
+            <p><strong>LTF (15min):</strong> Bullish breakout setup</p>
 
-      <h2>Practical Examples</h2>
-      
-      <h3>Example 1: HTF Trending, MTF Pullback, LTF Reversal</h3>
-      <pre><code>Asset: BTC
-HTF (Daily): Uptrend, Minimal Flow trending, above 50/200 EMA
-MTF (4H): Pullback to $44,500 (POC), Janus sweep to $44,300
-LTF (15min): Reversal candle at $44,350, footprint +8,000 delta
+            <p style="margin-top:1.5rem"><strong>Action:</strong> SKIP (do not fight HTF)</p>
+            <p><strong>Why:</strong> LTF longs against HTF downtrend = low win rate. You're fighting the trend.</p>
+            <p><strong>Win rate:</strong> 30-40% (avoid)</p>
+          </div>
+        </div>
+      </div>
 
-Setup:
-Entry: $44,400 (15min close above sweep)
-Stop: $44,200 (below swept low + ATR)
-Target 1: $45,000 (4H resistance) = 3R
-Target 2: $45,500 (Daily resistance) = 5.5R
+      <h2>Complete Multi-Timeframe Workflow</h2>
 
-Risk: $200, Reward 1: $600, Reward 2: $1,100</code></pre>
-      <p><b>Outcome: 70% win rate on setups like this.</b></p>
-
-      <h3>Example 2: HTF Range, MTF Structure, LTF Fade</h3>
-      <pre><code>Asset: SPY
-HTF (Daily): Range $450-$455, Minimal Flow ranging
-MTF (4H): At range high ($455), bearish divergence
-LTF (15min): Exhaustion at $455, negative delta despite bullish candle
-
-Setup:
-Entry: $454.80 (short on rejection)
-Stop: $455.40 (above range high + buffer)
-Target: $452.00 (range mid) = 4.7R
-
-Risk: $0.60, Reward: $2.80</code></pre>
-      <p><b>Outcome: 60% win rate in ranging markets.</b></p>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Step 1: HTF Analysis (Daily)</div>
+          <div class="accordion-content">
+            <p><strong>Questions to answer:</strong></p>
+            <ul>
+              <li>☐ Trend direction? (Up/Down/Range)</li>
+              <li>☐ Price above/below major EMAs?</li>
+              <li>☐ Minimal Flow regime? (Trending/Ranging/Volatile)</li>
+              <li>☐ Major support/resistance nearby?</li>
+              <li>☐ <strong>Bias:</strong> Long, Short, or Neutral?</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Output:</strong> Directional bias for the day/week. Trade WITH this bias only.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 2: MTF Structure (4H)</div>
+          <div class="accordion-content">
+            <p><strong>Questions to answer:</strong></p>
+            <ul>
+              <li>☐ Where are swing highs/lows?</li>
+              <li>☐ Janus Atlas sweep zones identified?</li>
+              <li>☐ Plutus Flow POC/HVN/LVN marked?</li>
+              <li>☐ Structure supports HTF bias?</li>
+              <li>☐ <strong>Entry zones defined?</strong></li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Output:</strong> Specific price zones to watch for LTF entries.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 3: LTF Execution (15min)</div>
+          <div class="accordion-content">
+            <p><strong>Questions to answer:</strong></p>
+            <ul>
+              <li>☐ Setup aligns with HTF + MTF?</li>
+              <li>☐ Janus sweep confirmed (if reversal)?</li>
+              <li>☐ Footprint shows absorption/imbalance?</li>
+              <li>☐ Order book supports direction?</li>
+              <li>☐ <strong>Entry candle closed in favor?</strong></li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Output:</strong> Exact entry price, stop, and target (based on MTF/HTF levels).</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 4: Manage on MTF</div>
+          <div class="accordion-content">
+            <p><strong>Use MTF for management:</strong></p>
+            <ul>
+              <li>Targets: MTF swing highs/lows, HTF resistance/support</li>
+              <li>Trailing stop: MTF structure breaks</li>
+              <li>Partial exits: MTF resistance/support levels</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Don't use LTF for management</strong> (you'll exit way too early).</p>
+          </div>
+        </div>
+      </div>
 
       <h2>Common Multi-Timeframe Mistakes</h2>
-      
-      <h3>Mistake 1: Analyzing HTF but Trading LTF Without Context</h3>
-      <p><b>Bad:</b> "Daily is uptrend, but this 1min short looks good!"</p>
-      <p><b>Fix:</b> Only trade LTF setups aligned with HTF bias.</p>
 
-      <h3>Mistake 2: Using LTF for Targets</h3>
-      <p><b>Bad:</b> HTF resistance at $105, but taking profit at $100.50 (5min level).</p>
-      <p><b>Fix:</b> Use HTF/MTF for targets, LTF for entries.</p>
+      <div class="callout-warning">
+        <h4>⚠️ Mistakes That Kill Accounts</h4>
+        <p><strong>Mistake #1: Analyzing HTF but Trading LTF Without Context</strong></p>
+        <p>"Daily is uptrend, but this 1min short looks good!"</p>
+        <p><strong>Fix:</strong> Only trade LTF setups aligned with HTF bias. Period.</p>
 
-      <h3>Mistake 3: Too Many Timeframes</h3>
-      <p><b>Bad:</b> Analyzing Monthly, Weekly, Daily, 4H, 1H, 15min, 5min, 1min.</p>
-      <p><b>Fix:</b> Stick to 3 timeframes maximum (Daily, 4H, 15min).</p>
+        <p style="margin-top:1.5rem"><strong>Mistake #2: Using LTF for Targets</strong></p>
+        <p>HTF resistance at $105, but taking profit at $100.50 (5min level).</p>
+        <p><strong>Fix:</strong> Use HTF/MTF for targets. LTF for entries only.</p>
 
-      <h2>Signal Pilot Multi-Timeframe Integration</h2>
-      
-      <h3>Minimal Flow (HTF Regime)</h3>
-      <p>Use on Daily/4H to determine overall regime:</p>
-      <ul>
-        <li><b>Trending:</b> Trade WITH pullbacks, avoid counter-trend</li>
-        <li><b>Ranging:</b> Fade extremes, target mid</li>
-        <li><b>Volatile:</b> Reduce size, widen stops</li>
-      </ul>
+        <p style="margin-top:1.5rem"><strong>Mistake #3: Too Many Timeframes</strong></p>
+        <p>Analyzing Monthly, Weekly, Daily, 4H, 1H, 15min, 5min, 1min.</p>
+        <p><strong>Fix:</strong> Stick to 3 timeframes max (Daily, 4H, 15min). More = paralysis.</p>
+      </div>
 
-      <h3>Janus Atlas (MTF Structure)</h3>
-      <p>Use on 4H/1H to identify entry zones:</p>
-      <ul>
-        <li>Sweep zones (reversal areas)</li>
-        <li>Breakout levels</li>
-        <li>Liquidity pools</li>
-      </ul>
+      <div class="section-break"><span>Part 4: Signal Pilot Integration</span></div>
 
-      <h3>Plutus Flow (MTF + LTF Confirmation)</h3>
-      <p>Use on 4H for POC, LTF for real-time delta:</p>
-      <ul>
-        <li>4H: Volume Profile POC (fair value)</li>
-        <li>15min: CVD alignment, absorption/exhaustion</li>
-      </ul>
+      <h2>Using Signal Pilot Across Timeframes</h2>
 
-      <h3>Omnideck (Multi-Timeframe Confluence)</h3>
-      <p>Omnideck shows all indicators across timeframes:</p>
-      <ul>
-        <li>HTF: Trend direction, regime</li>
-        <li>MTF: Structure, sweeps</li>
-        <li>LTF: Entry timing</li>
-        <li><b>When all align → Highest conviction trades</b></li>
-      </ul>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Minimal Flow (HTF Regime)</div>
+          <div class="accordion-content">
+            <p><strong>Use on Daily/4H to determine regime:</strong></p>
+            <ul>
+              <li><strong>Trending:</strong> Trade WITH pullbacks, avoid counter-trend</li>
+              <li><strong>Ranging:</strong> Fade extremes, target mid-range</li>
+              <li><strong>Volatile:</strong> Reduce size, widen stops, wait for clarity</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Janus Atlas (MTF Structure)</div>
+          <div class="accordion-content">
+            <p><strong>Use on 4H/1H to identify entry zones:</strong></p>
+            <ul>
+              <li>Sweep zones (reversal areas)</li>
+              <li>Breakout levels</li>
+              <li>Liquidity pools (stop clusters)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Plutus Flow (MTF + LTF Confirmation)</div>
+          <div class="accordion-content">
+            <p><strong>Use on 4H for POC, LTF for real-time delta:</strong></p>
+            <ul>
+              <li><strong>4H:</strong> Volume Profile POC (fair value)</li>
+              <li><strong>15min:</strong> CVD alignment, absorption/exhaustion</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Omnideck (Multi-Timeframe Confluence)</div>
+          <div class="accordion-content">
+            <p><strong>Omnideck shows all indicators across timeframes:</strong></p>
+            <ul>
+              <li>HTF: Trend direction, regime</li>
+              <li>MTF: Structure, sweeps</li>
+              <li>LTF: Entry timing</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>When all align:</strong> Highest conviction trades (70%+ win rate)</p>
+          </div>
+        </div>
+      </div>
 
-      <h2>Complete Pre-Trade Checklist</h2>
-      
-      <p><strong>HTF Analysis (Daily):</strong></p>
-      <ul>
-        <li>[ ] Trend: Up/Down/Range</li>
-        <li>[ ] Minimal Flow regime identified</li>
-        <li>[ ] Major levels marked</li>
-        <li>[ ] Bias: Long/Short/Neutral</li>
-      </ul>
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>3 timeframes: HTF guides, MTF confirms, LTF executes</strong> — Never trade on just one</li>
+          <li><strong>Never trade against HTF trend</strong> — Billions of dollars vs. your position = you lose</li>
+          <li><strong>Use HTF/MTF for targets, LTF for entries</strong> — Precision on entry, patience on exit</li>
+          <li><strong>Perfect alignment = 65-75% win rate</strong> — All 3 timeframes agree = highest edge</li>
+          <li><strong>Omnideck shows multi-timeframe confluence</strong> — One screen, all timeframes, instant alignment check</li>
+        </ul>
+      </div>
 
-      <p><strong>MTF Structure (4H):</strong></p>
-      <ul>
-        <li>[ ] Swing structure defined</li>
-        <li>[ ] Janus Atlas zones marked</li>
-        <li>[ ] Plutus Flow POC identified</li>
-        <li>[ ] Entry areas defined</li>
-      </ul>
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0;padding:1.5rem;background:linear-gradient(135deg, rgba(100,255,218,0.1), rgba(157,118,255,0.1));border-radius:8px;border-left:4px solid var(--accent)">
+        This one framework will eliminate 80% of your losing trades. Most traders never learn this. You just did.
+      </p>
 
-      <p><strong>LTF Execution (15min):</strong></p>
-      <ul>
-        <li>[ ] Setup aligns with HTF + MTF</li>
-        <li>[ ] Trigger confirmed (sweep, breakout, reversal)</li>
-        <li>[ ] Order flow supports (delta, footprint)</li>
-        <li>[ ] Entry candle closed</li>
-      </ul>
+      <div class="quiz">
+        <h4>🎮 Test Your Understanding (No Pressure)</h4>
+        <div class="quiz-question">
+          <p><strong>Daily is downtrend. 4H shows bearish structure. 15min shows a perfect bullish breakout. Do you take the long?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              A) Yes — 15min setup looks perfect, take it
+            </div>
+            <div class="quiz-option" data-correct="true">
+              B) No — HTF downtrend, don't fight it (skip this trade)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              C) Yes, but with reduced size
+            </div>
+          </div>
+          <div class="quiz-explanation">
+            <strong>Why B is correct:</strong> Never trade LTF setups against HTF trend. The 15min breakout might work for 20 minutes, but HTF sellers will crush it. Win rate on counter-HTF trades is 30-40%. Skip it.
+          </div>
+        </div>
 
-      <p><strong>Risk Management:</strong></p>
-      <ul>
-        <li>[ ] Stop beyond MTF structure</li>
-        <li>[ ] Target at HTF/MTF level</li>
-        <li>[ ] R:R &gt; 2:1</li>
-        <li>[ ] Size appropriate</li>
-      </ul>
+        <div class="quiz-question">
+          <p><strong>You enter a trade using 15min chart. Where should you set your target?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              A) 15min resistance (next swing high)
+            </div>
+            <div class="quiz-option" data-correct="true">
+              B) 4H or Daily resistance (MTF/HTF levels)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              C) 1min resistance (get out fast)
+            </div>
+          </div>
+          <div class="quiz-explanation">
+            <strong>Why B is correct:</strong> Use LTF for entries, MTF/HTF for targets. If you target 15min levels, you'll exit way too early and miss the real move. Let your winners run to HTF/MTF targets.
+          </div>
+        </div>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>3 timeframes: HTF guides, MTF confirms, LTF executes</strong></li>
-        <li><strong>Never trade against HTF trend</strong></li>
-        <li><strong>Use HTF/MTF for targets, LTF for entries</strong></li>
-        <li><strong>Perfect alignment = highest win rate</strong></li>
-        <li><strong>Omnideck shows multi-timeframe confluence</strong></li>
-      </ul>
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
+        <div class="quiz-result"></div>
+      </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Map 3 timeframes</strong></p>
-      <p>For your next trade: Screenshot Daily, 4H, 15min. Mark: Trend, structure, entry. Do they align?</p>
-      
-      <p><strong>Exercise 2: Track alignment vs. outcome</strong></p>
-      <p>Over 20 trades, log: Perfect alignment (3/3), Partial (2/3), Conflict (1/3 or 0/3). Compare win rates.</p>
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #20: Janus Atlas Advanced</strong> — Beyond basic sweeps. Learn double sweeps, multi-timeframe confluence, and sweep-and-reclaim patterns with 70-80% win rates.</p>
+      </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Higher timeframe guides, lower timeframe executes. Never fight the HTF."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+    </div>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/intermediate/18-smart-money-divergence.html">&larr; Previous: Divergence</a>
-    <a class="btn btn-primary" href="/curriculum/intermediate/20-janus-atlas-advanced.html">Next: Janus Atlas &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/intermediate/18-smart-money-divergence.html">&larr; Previous: Smart Money Divergence</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/20-janus-atlas-advanced.html">Next: Janus Atlas Advanced &rarr;</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

@@ -1,65 +1,403 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Confirmation Bias is Killing Your P&L</title><meta name="sp-level" content="Beginner"><link rel="stylesheet" href="/assets/edu.css"></head>
-<body><div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Your Brain Is Filtering Out Half the Chart (Confirmation Bias)</title>
+  <meta name="description" content="You're bullish, so you only see bullish signals. Learn how confirmation bias creates false edges and the falsification mindset that separates pros from retail.">
+  <meta name="sp-level" content="Beginner"><meta name="sp-order" content="8">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">Confirmation Bias is Killing Your P&L</h1><div class="meta">Reading time ~9 min • Psychology Foundations</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Your brain is wired to see patterns that aren't there.</b> Learn how confirmation bias creates false edges, the echo chamber effect, and the falsification mindset that separates pros from retail.</p>
-      <h2>What IS Confirmation Bias?</h2>
-      <p><strong>Definition:</strong> The tendency to seek, interpret, and remember information that confirms your existing beliefs while ignoring contradictory evidence.</p>
-      <p><strong>In trading:</strong> You're bullish on BTC. You see every green candle as "confirmation" and ignore every red candle as "noise."</p>
-      <p><b>Result: You hold losing trades too long and exit winners too early.</b></p>
-      <h2>How Confirmation Bias Creates False Edges</h2>
-      <p><strong>Scenario:</strong> You believe "hammer candles at support = reversal."</p>
-      <ul><li>You see 5 hammer candles that led to reversals (remember these)</li><li>You ignore 10 hammer candles that failed (forget these)</li><li><b>Your brain:</b> "Hammers work 100%!" (Reality: 33% win rate)</li></ul>
-      <p><b>You just created a losing strategy and convinced yourself it's profitable.</b></p>
-      <h2>The Echo Chamber Effect (Discord/Twitter)</h2>
-      <p><strong>You're bullish. You follow:</strong></p>
-      <ul><li>5 bullish traders on Twitter</li><li>3 bullish Discord channels</li><li>Bull market YouTube channels</li></ul>
-      <p><b>Everyone you listen to is bullish. Market tops. You're the last to know.</b></p>
-      <p><strong>Fix:</strong> Actively seek OPPOSITE views. Follow bears when you're bullish. Read bear cases. This is uncomfortable—that's the point.</p>
-      <h2>Falsification Mindset: The Professional Approach</h2>
-      <h3>Retail Approach (Confirmation)</h3>
-      <p><strong>"I'm bullish. Let me find evidence I'm right."</strong></p>
-      <ul><li>Looks for bullish patterns</li><li>Ignores bearish signals</li><li>Holds through drawdowns ("it'll come back!")</li></ul>
-      <h3>Professional Approach (Falsification)</h3>
-      <p><strong>"I'm bullish. Let me find reasons I'm WRONG."</strong></p>
-      <ul><li>Actively seeks bearish signals</li><li>Requires answers to bear case</li><li>Exits if thesis is invalidated</li></ul>
-      <p><b>Seek to DISPROVE your thesis, not confirm it.</b></p>
-      <h2>Red Team Exercise: Attack Your Own Thesis</h2>
-      <p><strong>Before every trade, write down:</strong></p>
-      <ol><li><b>Bull case:</b> Why you want to go long (3 reasons)</li><li><b>Bear case:</b> Why you should NOT go long (3 reasons)</li><li><b>Invalidation:</b> At what price/condition is the bull case dead?</li></ol>
-      <p><strong>Example (Bullish BTC):</strong></p>
-      <ul><li><b>Bull case:</b> Swept support, volume spike, Janus confirmed</li><li><b>Bear case:</b> HTF still in downtrend, low CVD, distribution on dark pools</li><li><b>Invalidation:</b> If BTC closes below $44,000, thesis is wrong → Exit</li></ul>
-      <p><b>If you can't articulate the bear case, you don't understand the trade.</b></p>
-      <h2>Pre-Trade Checklist (Falsification Version)</h2>
-      <p><strong>BEFORE entry:</strong></p>
-      <ul><li>[ ] What is my thesis? (Bullish/bearish, why?)</li><li>[ ] What is the OPPOSITE case? (List 3 reasons against trade)</li><li>[ ] Can I refute the opposite case? (If no → Don't trade)</li><li>[ ] What invalidates my thesis? (Specific price/condition)</li><li>[ ] Am I ignoring any signals? (CVD, dark pools, regime?)</li><li>[ ] Is this confirmation bias or real edge? (Honest self-assessment)</li></ul>
-      <p><b>If ANY answer is weak, skip the trade.</b></p>
-      <h2>Building Objectivity Systems</h2>
-      <h3>System 1: Trade Journal with OPPOSITE View</h3>
-      <p><strong>For every trade, log:</strong></p>
-      <ul><li><b>My bias:</b> Bullish/bearish</li><li><b>Opposite view:</b> What would a bear/bull say?</li><li><b>Which was right?:</b> After trade, which view was correct?</li></ul>
-      <p><b>Review monthly. Are you consistently ignoring the opposite view?</b></p>
-      <h3>System 2: Devil's Advocate Partner</h3>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner.html">Beginner</a> <span>›</span>
+        <span>Lesson #8</span>
+      </div>
+      <span class="badge">🟢 Beginner • Lesson 8 of 12</span>
+      <h1 class="headline xl">Your Brain Is Filtering Out Half the Chart (Confirmation Bias)</h1>
+      <div class="meta">9 min read • Psychology Foundations</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>You're bullish on BTC.</b></p>
+
+      <p>So every green candle is "confirmation." Every red candle is "just noise." Every bounce is "the bottom." Every dip is "accumulation."</p>
+
+      <p>Your brain is actively filtering reality to match your belief. And it's killing your P&L.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Confirmation bias isn't a character flaw. It's hardwired neuroscience.</p>
+        <p>Your brain WANTS to be right. So it seeks evidence that confirms your beliefs and ignores everything else.</p>
+        <p><strong>This is why you hold losers too long and exit winners too early.</strong></p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>How confirmation bias creates false edges (you think 80%, reality is 30%)</li>
+        <li>The echo chamber effect (Discord/Twitter amplifies your bias)</li>
+        <li>The falsification mindset (seek to DISPROVE your thesis, not confirm it)</li>
+        <li>Red Team exercises and objectivity systems that actually work</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: What IS Confirmation Bias?</span></div>
+
+      <h2>The Pattern-Seeking Machine in Your Skull</h2>
+
+      <p>Here's what's happening in your brain:</p>
+
+      <p><strong>Confirmation bias:</strong> The tendency to seek, interpret, and remember information that confirms your existing beliefs while ignoring contradictory evidence.</p>
+
+      <p>In everyday life, this is useful. It helps you make fast decisions.</p>
+
+      <p>In trading? It's a silent account killer.</p>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>You don't see the market as it is. You see the market as <em>you are</em>.</p>
+        <p>Bullish bias = bullish patterns everywhere. Bearish bias = bearish patterns everywhere. Reality? Neither is objectively "there" until you interpret it.</p>
+      </div>
+
+      <h3>How It Manifests in Trading</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">The Trap</button>
+          <button>The Reality Check</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>What Your Brain Does</h3>
+            <p><strong>You believe:</strong> "Hammer candles at support = reversal."</p>
+            <p><strong>What you remember:</strong></p>
+            <ul>
+              <li>✅ 5 times it worked (you remember these vividly)</li>
+              <li>❌ 10 times it failed (you forgot these or labeled them "bad luck")</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px">
+              <strong>Your brain's conclusion:</strong> "Hammers work 100%!"<br>
+              <strong>Actual win rate:</strong> 33%
+            </p>
+            <p><strong>You just created a losing strategy and convinced yourself it's profitable.</strong></p>
+          </div>
+          <div class="tab-panel">
+            <h3>The Objective View</h3>
+            <p><strong>Real win rate tracking:</strong></p>
+            <p>After 50 trades using "hammer at support" strategy:</p>
+            <ul>
+              <li>17 wins (34%)</li>
+              <li>33 losses (66%)</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px">
+              <strong>Objective conclusion:</strong> Strategy is unprofitable<br>
+              <strong>Required action:</strong> Stop using this pattern OR add confluence filters
+            </p>
+            <p><strong>But without tracking, you'd never know. Your brain would keep telling you it works.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 2: The Echo Chamber Effect</span></div>
+
+      <h2>When Everyone You Follow Agrees With You</h2>
+
+      <p>Let's say you're bullish on BTC. Where do you get your information?</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Your Information Diet (Be Honest)</div>
+          <div class="accordion-content">
+            <p><strong>You follow:</strong></p>
+            <ul>
+              <li>5 bullish traders on Twitter</li>
+              <li>2 bullish Discord channels</li>
+              <li>Bull-focused YouTube channels</li>
+              <li>Crypto subreddits that lean bullish</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.08);border-radius:8px">
+              <strong>Result:</strong> Everyone you listen to is bullish. Your timeline is bullish. Your Discord is bullish.
+            </p>
+            <p><strong>What happens when the market tops?</strong> You're the last to know. Because nobody in your echo chamber is bearish.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">The November 2021 Example</div>
+          <div class="accordion-content">
+            <p><strong>November 2021:</strong> BTC hits $69,000 all-time high</p>
+            <p><strong>Crypto Twitter:</strong> "$100k by end of year!" "$150k Q1 2022!"</p>
+            <p><strong>Your feed:</strong> 100% bullish. Zero dissent.</p>
+            <p><strong>What actually happened:</strong> BTC dumped to $32,000 by July (-53%)</p>
+            <hr style="margin:1rem 0;opacity:.3">
+            <p><strong>Who called the top?</strong> The bears you unfollowed 3 months earlier because "they're always wrong."</p>
+            <p><strong>The lesson:</strong> Echo chambers blind you to risk.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 The Fix</h4>
+        <p><strong>If you follow 10 bulls, also follow 10 bears.</strong></p>
+        <p>Force yourself to read opposite views daily. This is uncomfortable—that's the point.</p>
+        <p>You don't have to agree with them. You just need to HEAR them.</p>
+      </div>
+
+      <div class="section-break"><span>Part 3: The Falsification Mindset</span></div>
+
+      <h2>How Professionals Think Differently</h2>
+
+      <p>Here's the difference between retail and professional mindset:</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">❌ Retail Approach (Confirmation)</h3>
+          <p><strong>"I'm bullish. Let me find evidence I'm right."</strong></p>
+          <p><strong>What they do:</strong></p>
+          <ul>
+            <li>Look for bullish patterns</li>
+            <li>Ignore bearish signals</li>
+            <li>Hold through drawdowns ("it'll come back!")</li>
+            <li>Blame "manipulation" when wrong</li>
+          </ul>
+          <p style="margin-top:1rem;font-size:.9rem"><em>Outcome: Blown account because they couldn't admit they were wrong.</em></p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">✅ Professional Approach (Falsification)</h3>
+          <p><strong>"I'm bullish. Let me find reasons I'm WRONG."</strong></p>
+          <p><strong>What they do:</strong></p>
+          <ul>
+            <li>Actively seek bearish signals</li>
+            <li>Require answers to bear case</li>
+            <li>Exit immediately if thesis invalidated</li>
+            <li>Accept being wrong early = small loss</li>
+          </ul>
+          <p style="margin-top:1rem;font-size:.9rem"><em>Outcome: Preserved capital. Survive to trade another day.</em></p>
+        </div>
+      </div>
+
+      <div class="callout-info">
+        <h4>📖 Real Example</h4>
+        <p><strong>Retail trader:</strong> "BTC is at $45k support. I'm buying. Support will hold because... reasons."</p>
+        <p><strong>Pro trader:</strong> "BTC is at $45k support. I WANT to buy. But let me list 3 reasons why $45k might break:"</p>
+        <ol>
+          <li>HTF still in downtrend (Daily EMA pointing down)</li>
+          <li>CVD showing distribution (big players selling into bounces)</li>
+          <li>Swept low at $44,500 has massive stop cluster below it</li>
+        </ol>
+        <p><strong>Conclusion:</strong> "Bull case is weak. Bear case is strong. Skip this trade."</p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>What happened?</strong> BTC broke $45k, swept $44,500, then bounced to $46,500.</p>
+        <p><strong>Retail:</strong> Stopped out at $44,950. -$500 loss.</p>
+        <p><strong>Pro:</strong> Skipped the trade. Entered at $45,200 after sweep confirmation. +$1,300 profit.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: The Red Team Exercise</span></div>
+
+      <h2>Attack Your Own Thesis</h2>
+
+      <p>Before EVERY trade, run this framework:</p>
+
+      <div style="margin:2rem 0;padding:2rem;background:linear-gradient(135deg, rgba(91,138,255,.12), rgba(118,221,255,.08));border-radius:16px">
+        <h3 style="margin-top:0">📋 Pre-Trade Red Team Checklist</h3>
+
+        <p><strong>1. Bull Case (Why You Want This Trade)</strong></p>
+        <p>List 3 specific reasons:</p>
+        <ul>
+          <li>Example: Liquidity sweep confirmed at $44,800</li>
+          <li>Example: Volume spike on reversal candle</li>
+          <li>Example: HTF Daily showing bullish divergence</li>
+        </ul>
+
+        <p><strong>2. Bear Case (Why You Should NOT Take This Trade)</strong></p>
+        <p>List 3 specific counter-arguments:</p>
+        <ul>
+          <li>Example: Weekly timeframe still in downtrend</li>
+          <li>Example: CVD showing continued distribution</li>
+          <li>Example: No clear target (resistance overhead at $45,500)</li>
+        </ul>
+
+        <p><strong>3. Invalidation Point</strong></p>
+        <p>At what price/condition is the bull case DEAD?</p>
+        <ul>
+          <li>Example: If BTC closes below $44,000, thesis is wrong → Exit immediately</li>
+        </ul>
+
+        <p><strong>4. Can You Refute the Bear Case?</strong></p>
+        <ul>
+          <li>If YES → Trade has merit, proceed</li>
+          <li>If NO → Bear case is stronger, skip trade</li>
+        </ul>
+      </div>
+
+      <div class="callout-warning">
+        <h4>⚠️ Critical Rule</h4>
+        <p><strong>If you can't articulate the bear case, you don't understand the trade.</strong></p>
+        <p>Not knowing the opposite view = trading blind. Don't do it.</p>
+      </div>
+
+      <div class="section-break"><span>Part 5: Building Objectivity Systems</span></div>
+
+      <h2>Systems That Work When Willpower Fails</h2>
+
+      <p>You can't willpower your way out of confirmation bias. You need systems.</p>
+
+      <h3>System #1: Journal with Opposite View</h3>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(255,255,255,.04);border-radius:12px">
+        <p><strong>For every trade, log:</strong></p>
+        <ul>
+          <li><strong>My bias:</strong> Bullish or bearish</li>
+          <li><strong>Opposite view:</strong> What would a bear/bull say about this setup?</li>
+          <li><strong>Outcome:</strong> Win or loss</li>
+          <li><strong>Post-trade review:</strong> Which view was right?</li>
+        </ul>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(91,138,255,.08);border-radius:8px">
+          <strong>Review monthly:</strong> Are you consistently ignoring the opposite view? That's your bias showing.
+        </p>
+      </div>
+
+      <h3>System #2: Devil's Advocate Partner</h3>
+
       <p><strong>Find another trader. Before every trade:</strong></p>
-      <ul><li>You explain your bull case</li><li>They MUST argue the bear case (even if they agree with you)</li><li>You must defend your thesis</li></ul>
-      <p><b>If you can't defend it, don't trade it.</b></p>
-      <h3>System 3: Invert Your Watchlist</h3>
-      <p><strong>If you follow 10 bulls, also follow 10 bears.</strong> Force yourself to read opposite views daily.</p>
-      <h2>Common Confirmation Bias Traps</h2>
-      <p><strong>Trap 1: "I knew it would bounce there!"</strong> (Hindsight bias—you didn't "know," you hoped.)</p>
-      <p><strong>Trap 2: "My strategy works 80%!"</strong> (Sample size too small, ignoring losses.)</p>
-      <p><strong>Trap 3: "Everyone agrees with me."</strong> (Echo chamber, not edge.)</p>
-      <h2>Key Takeaways</h2>
-      <ul><li><strong>Confirmation bias = seeing only what confirms your beliefs</strong></li><li><strong>Creates false edges</strong> (selective memory of wins, ignoring losses)</li><li><strong>Echo chambers amplify bias</strong> (Discord/Twitter bulls/bears)</li><li><strong>Falsification mindset = seek to DISPROVE thesis</strong></li><li><strong>Red team exercise = attack your own trade idea</strong></li><li><strong>Objectivity systems = journal, devil's advocate, inverted watchlist</strong></li></ul>
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Seek to disprove your thesis, not confirm it."</em> — <strong>Signal Pilot Education Team</strong></p>
-    </div></div>
-  <div class="wrap nav-article"><a class="btn btn-ghost" href="/curriculum/beginner/07-revenge-trading.html">&larr; Previous</a><a class="btn btn-primary" href="/curriculum/beginner/09-position-sizing.html">Next: Position Sizing &rarr;</a></div>
+      <ol>
+        <li>You explain your bull case</li>
+        <li>They MUST argue the bear case (even if they agree with you)</li>
+        <li>You must defend your thesis against their arguments</li>
+      </ol>
+
+      <p><strong>If you can't defend it convincingly, don't trade it.</strong></p>
+
+      <h3>System #3: Inverted Watchlist</h3>
+
+      <p><strong>Create two lists:</strong></p>
+      <ul>
+        <li><strong>List A:</strong> 10 traders who match your current bias</li>
+        <li><strong>List B:</strong> 10 traders with the OPPOSITE bias</li>
+      </ul>
+
+      <p><strong>Rule:</strong> Read List B daily. Force yourself to consume opposing views.</p>
+
+      <p>You don't have to agree. You just need exposure to prevent echo chamber blindness.</p>
+
+      <div class="section-break"><span>Part 6: Common Confirmation Bias Traps</span></div>
+
+      <h2>How It Shows Up (And How to Catch It)</h2>
+
+      <h3>Trap #1: "I Knew It Would Bounce There!"</h3>
+      <p><strong>The bias:</strong> Hindsight bias. You didn't "know"—you hoped.</p>
+      <p><strong>The fix:</strong> Pre-document your thesis BEFORE the trade. Then review. Were you actually right, or did you retrofit the story?</p>
+
+      <h3>Trap #2: "My Strategy Works 80%!"</h3>
+      <p><strong>The bias:</strong> Selective memory. You remember wins, forget losses.</p>
+      <p><strong>The fix:</strong> Track EVERY trade. Calculate actual win rate. Reality is usually 20-30% lower than your perception.</p>
+
+      <h3>Trap #3: "Everyone Agrees With Me"</h3>
+      <p><strong>The bias:</strong> Echo chamber. Your feed is filtered.</p>
+      <p><strong>The fix:</strong> Diversify your information sources. Follow bears if you're bullish. Follow bulls if you're bearish.</p>
+
+      <h3>Trap #4: "This Time Is Different"</h3>
+      <p><strong>The bias:</strong> Rationalization. Ignoring your rules because "this setup is special."</p>
+      <p><strong>The fix:</strong> No exceptions. If it doesn't meet your checklist, skip it. Period.</p>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Confirmation bias = seeing only what confirms your beliefs</strong></li>
+          <li><strong>Creates false edges</strong> (you think 80% win rate, reality is 30%)</li>
+          <li><strong>Echo chambers amplify bias</strong> (diversify your information sources)</li>
+          <li><strong>Falsification mindset = seek to DISPROVE your thesis</strong> (not confirm it)</li>
+          <li><strong>Red Team exercise = attack your own trade before entering</strong></li>
+          <li><strong>Systems beat willpower</strong> (journal, devil's advocate, inverted watchlist)</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you've been wondering why you keep getting blindsided by moves you "didn't see coming," this is why. You were looking the other direction.</p>
+
+      <div class="section-break"><span>Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Quick Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q: You're bullish on BTC. Before entering a long, what should you do?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Find 5 bullish charts to confirm your view</div>
+            <div class="quiz-option" data-correct="false">B) Ask bullish traders on Discord if they agree</div>
+            <div class="quiz-option" data-correct="true">C) List 3 reasons why you're WRONG and try to refute them</div>
+            <div class="quiz-option" data-correct="false">D) Just enter—you've done the analysis already</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> The falsification mindset requires you to actively seek reasons why your thesis is WRONG, not confirmation that it's right. This prevents you from trading blind spots. If you can't refute the bear case, you shouldn't take the trade.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #9: Position Sizing—The Only Edge That Actually Matters</strong></p>
+        <p>Win rate is a vanity metric. Position sizing is everything. Learn why fixed percentages fail and how to size based on setup quality, ATR, and portfolio heat management.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">What Is Confirmation Bias?</a>
+      <a href="#">The Echo Chamber Effect</a>
+      <a href="#">Falsification Mindset</a>
+      <a href="#">Red Team Exercise</a>
+      <a href="#">Objectivity Systems</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/beginner/07-revenge-trading.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/beginner/09-position-sizing.html">Next Lesson &rarr;</a>
+  </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

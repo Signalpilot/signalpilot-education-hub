@@ -1,201 +1,263 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Professional Trading Infrastructure — SignalPilot Education</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Professional Infrastructure: Why Amateurs Wing It, Pros Build Systems — SignalPilot Education</title>
+  <meta name="description" content="Professional traders build systems for data, execution, risk, and monitoring. Learn the complete infrastructure stack from hardware to software.">
   <meta name="sp-level" content="Advanced"><meta name="sp-order" content="41">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/41-professional-infrastructure.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Professional Trading Infrastructure</h1><div class="meta">Reading time ~14 min • Professional Setup</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Professional traders don't wing it—they build systems for data, execution, risk, and monitoring.</b> Learn the complete infrastructure stack from hardware to software to processes.</p>
-      
-      <h2>Hardware Setup</h2>
-      
-      <h3>Multi-Monitor Configuration</h3>
-      <pre><code>Professional Setup (4-6 monitors):
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #41</span>
+      </div>
+      <span class="badge">🔴 Advanced • Lesson 14 of 15</span>
+      <h1 class="headline xl">Professional Infrastructure: Why Amateurs Wing It, Pros Build Systems</h1>
+      <div class="meta">14 min read • Professional Trading Setup</div>
+    </div>
+  </header>
 
-Monitor 1 (Primary Charts): 32" 4K
-- Quad-pane: Daily, 4H, 1H, 15min
-- Signal Pilot indicators loaded
+  <div class="wrap article-grid">
+    <div class="prose">
 
-Monitor 2 (Order Flow): 27" 2K
-- Footprint chart
-- Order book / DOM
-- Volume Profile
+      <p><b>Your laptop dies. Your internet cuts out. Your broker app crashes.</b></p>
 
-Monitor 3 (Macro Context): 27" 2K
-- Futures (ES, NQ, YM)
-- VIX, DXY, TNX
-- Sector heatmap
+      <p>Your position? Still open. Stop order? Not placed. P&L? Bleeding.</p>
 
-Monitor 4 (Execution): 24"
-- Order entry terminal
-- Position monitor
-- P&L tracker
+      <p>This is why amateurs lose and professionals win.</p>
 
-Monitors 5-6 (Optional): News, journal, alerts</code></pre>
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Infrastructure isn't sexy. But it's the difference between consistent execution and random chaos.</p>
+        <p>Professionals don't wing it. They build systems with redundancy at every layer.</p>
+      </div>
 
-      <h3>Computer Specs</h3>
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>Multi-monitor setups (4-6 screens, $2K investment)</li>
+        <li>Software stack (platforms, data, backtesting, journaling)</li>
+        <li>Redundancy: UPS, backup internet, failover plans</li>
+        <li>Cost breakdown: ~$5K/year for professional infrastructure</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: Hardware Setup</span></div>
+
+      <h2>The Professional Workspace</h2>
+
+      <p>Single laptop screen? You're handicapped.</p>
+
+      <p>Here's the professional standard:</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Amateur Setup</button>
+          <button>Professional Setup</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Single Screen Trading</h3>
+            <p><strong>Equipment:</strong></p>
+            <ul>
+              <li>1 laptop (13-15 inch)</li>
+              <li>WiFi connection</li>
+              <li>Trading platform + browser tabs</li>
+            </ul>
+            <p><strong>Problems:</strong></p>
+            <ul>
+              <li>Constant tab switching (miss signals)</li>
+              <li>WiFi lag (execution delays)</li>
+              <li>No backup if laptop dies</li>
+            </ul>
+            <p><em>Cost: $1,000. Handicap: Severe.</em></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Multi-Monitor Setup (4-6 Screens)</h3>
+            <p><strong>Monitor layout:</strong></p>
+            <ul>
+              <li><strong>Monitor 1 (32" 4K):</strong> Charts (Daily, 4H, 1H, 15min)</li>
+              <li><strong>Monitor 2 (27"):</strong> Order flow (footprint, DOM)</li>
+              <li><strong>Monitor 3 (27"):</strong> Macro (ES, NQ, VIX, DXY)</li>
+              <li><strong>Monitor 4 (24"):</strong> Execution (order entry, P&L)</li>
+            </ul>
+            <p><strong>Benefits:</strong></p>
+            <ul>
+              <li>See everything at once (no tab switching)</li>
+              <li>Wired ethernet (lower latency)</li>
+              <li>Backup laptop ready</li>
+            </ul>
+            <p><em>Cost: $4,000. Edge: Significant.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Computer Specs (Don't Cheap Out)</h3>
+
       <pre><code>Minimum Professional:
 CPU: Intel i7 / AMD Ryzen 7 (8+ cores)
 RAM: 32GB (64GB if running backtests)
-GPU: Mid-range (for multi-monitor, not gaming)
-Storage: 1TB NVMe SSD (fast boot, data access)
+GPU: Mid-range (for multi-monitor)
+Storage: 1TB NVMe SSD (fast data access)
 Network: Wired Ethernet (1Gbps, NOT WiFi)
 
-Cost: $1,500-2,500</code></pre>
+Cost: $1,500-2,500
 
-      <h3>Internet & Redundancy</h3>
-      <pre><code>Primary: Fiber (1Gbps down, 500Mbps up)
-Backup: 4G/5G hotspot (automatic failover)
+Why it matters: No lag, no crashes, 99.9% uptime</code></pre>
 
-UPS (Uninterruptible Power Supply):
-- 1500VA minimum (30+ min runtime)
-- Auto-shutdown on low battery
-- Cost: $150-300
+      <div class="section-break"><span>Part 2: Internet & Redundancy</span></div>
 
-Why: Prevents data loss, missed exits during outage</code></pre>
+      <h2>Your Internet Dies. Now What?</h2>
 
-      <h2>Software Stack</h2>
-      
-      <h3>Core Trading Platform</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Platform</th><th>Best For</th><th>Cost</th></tr>
-        <tr><td>TradingView Pro+</td><td>Charting, alerts, indicators</td><td>$60/month</td></tr>
-        <tr><td>ThinkorSwim</td><td>Options, advanced charting</td><td>Free (TD Ameritrade)</td></tr>
-        <tr><td>Sierra Chart</td><td>Futures, order flow, DOM</td><td>$36/month</td></tr>
-        <tr><td>NinjaTrader</td><td>Futures, automation</td><td>$60/month</td></tr>
-        <tr><td>Interactive Brokers TWS</td><td>Multi-asset, global</td><td>Free</td></tr>
-      </table>
+      <p>2:45 PM. You're in a position. Your internet cuts out.</p>
 
-      <h3>Data Feeds</h3>
-      <pre><code>Real-Time Data:
-- Level 1 (bid/ask): Free (most brokers)
-- Level 2 (order book): $10-30/month
-- Tick data: $50-100/month
-- Options flow: $100-300/month
+      <p>Amateur? Panics.</p>
 
-Professional Data:
-- Bloomberg Terminal: $2,000/month (institutional)
-- Refinitiv Eikon: $1,000/month
-- FactSet: $1,000+/month</code></pre>
+      <p>Professional? Automatic failover to 4G hotspot.</p>
 
-      <h3>Backtesting & Analytics</h3>
-      <ul>
-        <li><b>Python (pandas, backtrader, zipline):</b> Free, flexible</li>
-        <li><b>QuantConnect:</b> Cloud backtesting, $20-100/month</li>
-        <li><b>TradeStation:</b> EasyLanguage, $100/month</li>
-        <li><b>Amibroker:</b> One-time $300 (fast, efficient)</li>
-      </ul>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Primary: Fiber Internet</div>
+          <div class="accordion-content">
+            <p><strong>Speed:</strong> 1Gbps down, 500Mbps up</p>
+            <p><strong>Latency:</strong> 10-20ms</p>
+            <p><strong>Cost:</strong> $80/month</p>
+            <p><em>Fastest consumer option. Use this as primary.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Backup: 4G/5G Hotspot</div>
+          <div class="accordion-content">
+            <p><strong>Speed:</strong> 20-100Mbps</p>
+            <p><strong>Failover:</strong> Automatic (if configured)</p>
+            <p><strong>Cost:</strong> $50/month</p>
+            <p><em>Critical backup. Worth every dollar.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">UPS (Uninterruptible Power Supply)</div>
+          <div class="accordion-content">
+            <p><strong>Runtime:</strong> 30+ minutes (1500VA minimum)</p>
+            <p><strong>Purpose:</strong> Prevents data loss, gives time to close positions</p>
+            <p><strong>Cost:</strong> $150-300</p>
+            <p><em>Power outage? You have 30 min to exit cleanly.</em></p>
+          </div>
+        </div>
+      </div>
 
-      <h3>Journal & Tracking</h3>
-      <pre><code>Options:
-1. Spreadsheet (Google Sheets): Free, manual
-2. Edgewonk: $99/year (automated from broker API)
-3. TraderSync: $40/month (auto-import, analytics)
-4. TradesViz: $30/month (advanced visualizations)</code></pre>
+      <div class="callout-tip">
+        <h4>🎯 Disaster Recovery Protocol</h4>
+        <p><strong>If primary system fails:</strong></p>
+        <ol style="margin:.5rem 0">
+          <li>Access positions via mobile app</li>
+          <li>Close all or place stops</li>
+          <li>Switch to backup laptop + hotspot</li>
+          <li>Log incident, review after close</li>
+        </ol>
+        <p>Drill this quarterly. When it happens, you'll be ready.</p>
+      </div>
 
-      <h2>Data Management</h2>
-      
-      <h3>Historical Data Storage</h3>
-      <pre><code>Data Organization:
-/trading_data/
-  /equities/
-    /daily/
-      SPY_daily_2018-2024.csv
-    /intraday/
-      SPY_1min_2024-01.csv
-  /futures/
-    ES_tick_2024-03.csv
-  /options/
-    SPY_options_chain_2024-03-15.csv
+      <div class="section-break"><span>Part 3: Software Stack</span></div>
 
-Backup Strategy:
-- Local NVMe SSD (primary)
-- External HDD (weekly backup)
-- Cloud (Google Drive, Dropbox) (monthly backup)</code></pre>
+      <h2>The Tools Professionals Use</h2>
 
-      <h3>Data Quality Checks</h3>
-      <pre><code>import pandas as pd
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Trading Platform</div>
+          <div class="accordion-content">
+            <p><strong>Options:</strong></p>
+            <ul>
+              <li><strong>TradingView Pro+:</strong> $60/mo (charting, alerts)</li>
+              <li><strong>ThinkorSwim:</strong> Free (TD Ameritrade, advanced)</li>
+              <li><strong>Sierra Chart:</strong> $36/mo (futures, order flow)</li>
+              <li><strong>Interactive Brokers TWS:</strong> Free (multi-asset)</li>
+            </ul>
+            <p><em>Recommendation: TradingView for charts + broker platform for execution.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Data Feeds</div>
+          <div class="accordion-content">
+            <p><strong>Real-time data:</strong></p>
+            <ul>
+              <li>Level 1 (bid/ask): Free (most brokers)</li>
+              <li>Level 2 (order book): $10-30/mo</li>
+              <li>Tick data: $50-100/mo</li>
+            </ul>
+            <p><em>Level 1 sufficient for swing trading. Level 2 for scalping.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Backtesting & Analytics</div>
+          <div class="accordion-content">
+            <p><strong>Options:</strong></p>
+            <ul>
+              <li><strong>Python (pandas):</strong> Free, flexible</li>
+              <li><strong>QuantConnect:</strong> $20-100/mo (cloud)</li>
+              <li><strong>TradeStation:</strong> $100/mo</li>
+            </ul>
+            <p><em>Python for programmers. QuantConnect for non-coders.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Journaling</div>
+          <div class="accordion-content">
+            <p><strong>Options:</strong></p>
+            <ul>
+              <li><strong>Edgewonk:</strong> $99/year</li>
+              <li><strong>TraderSync:</strong> $40/mo</li>
+              <li><strong>Google Sheets:</strong> Free (manual)</li>
+            </ul>
+            <p><em>Any journal is better than no journal. Pick one, use it.</em></p>
+          </div>
+        </div>
+      </div>
 
-def validate_data(df):
-    # Check for gaps (missing bars)
-    time_diff = df['timestamp'].diff()
-    gaps = time_diff[time_diff > pd.Timedelta('2 minutes')]
-    if len(gaps) > 0:
-        print(f"Warning: {len(gaps)} gaps found")
-    
-    # Check for outliers (bad ticks)
-    price_change = df['close'].pct_change()
-    outliers = price_change[abs(price_change) > 0.05]  # 5%+ moves
-    if len(outliers) > 0:
-        print(f"Warning: {len(outliers)} outliers found")
-    
-    # Check for duplicates
-    dupes = df.duplicated(subset=['timestamp'])
-    if dupes.sum() > 0:
-        print(f"Warning: {dupes.sum()} duplicate timestamps")</code></pre>
+      <div class="section-break"><span>Part 4: Monitoring & Alerts</span></div>
 
-      <h2>Risk Management System</h2>
-      
-      <h3>Automated Risk Checks</h3>
-      <pre><code>Pre-Trade Risk System:
+      <h2>Real-Time Performance Dashboard</h2>
 
-class RiskManager:
-    def __init__(self, max_position_risk=0.02, max_portfolio_heat=0.08):
-        self.max_position_risk = max_position_risk
-        self.max_portfolio_heat = max_portfolio_heat
-    
-    def check_position_size(self, equity, entry, stop, size):
-        risk_amt = (entry - stop) × size
-        risk_pct = risk_amt / equity
-        
-        if risk_pct > self.max_position_risk:
-            return False, f"Position risk {risk_pct:.1%} > max {self.max_position_risk:.1%}"
-        return True, "OK"
-    
-    def check_portfolio_heat(self, equity, open_positions):
-        total_risk = sum([pos.risk_amt for pos in open_positions])
-        heat_pct = total_risk / equity
-        
-        if heat_pct > self.max_portfolio_heat:
-            return False, f"Portfolio heat {heat_pct:.1%} > max {self.max_portfolio_heat:.1%}"
-        return True, "OK"</code></pre>
+      <p>Professional traders monitor everything. Real-time.</p>
 
-      <h3>Kill Switch</h3>
-      <pre><code>Automated Trading Halt Conditions:
-
-1. Daily loss > 3% → Close all, stop trading
-2. Drawdown > 20% → Reduce size 75%
-3. Consecutive losses > 5 → Stop, review
-4. API errors > 10/hour → Stop, investigate
-5. VIX > 40 → Close all, sit out
-
-Implementation:
-- Check conditions every 5 minutes
-- Send SMS/email alert when triggered
-- Requires manual override to resume</code></pre>
-
-      <h2>Monitoring & Alerts</h2>
-      
-      <h3>Real-Time Monitoring Dashboard</h3>
-      <pre><code>Dashboard Metrics (Update Every 60s):
+      <pre><code>Dashboard (updates every 60s):
 
 Performance:
 - Today P&L: +$1,250 (+1.25%)
 - Week P&L: +$3,800 (+3.8%)
 - Month P&L: +$12,400 (+12.4%)
-- Max DD (today): -0.8%
+- Max DD today: -0.8%
 
 Positions:
-- Open positions: 3
-- Total exposure: $45,000 (45% of capital)
-- Total risk: $1,800 (1.8% portfolio heat)
+- Open: 3
+- Total exposure: $45,000 (45% capital)
+- Total risk: $1,800 (1.8% heat)
 
 System Health:
 - API latency: 45ms (normal)
@@ -203,92 +265,126 @@ System Health:
 - Errors (last hour): 0
 - Uptime: 99.2%</code></pre>
 
-      <h3>Alert System</h3>
-      <pre><code>Alert Channels:
-1. Email: Non-urgent (daily summary)
-2. SMS: Urgent (risk limits, errors)
-3. Telegram/Discord: Trade notifications
-4. Push notifications: Price alerts
+      <h3>Alert System (Critical)</h3>
 
-Example Alerts:
-- "SPY swept $520 (Janus trigger)" → Telegram
-- "Portfolio heat 7.5% (near limit)" → SMS
-- "VIX spiked to 32 (high vol regime)" → SMS
-- "Daily loss -2.8% (approaching limit)" → SMS + Email</code></pre>
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Alert Channels</button>
+          <button>Alert Triggers</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>How You Get Notified</h3>
+            <ul>
+              <li><strong>Email:</strong> Non-urgent (daily summary)</li>
+              <li><strong>SMS:</strong> Urgent (risk limits, errors)</li>
+              <li><strong>Telegram:</strong> Trade notifications</li>
+              <li><strong>Push notifications:</strong> Price alerts</li>
+            </ul>
+          </div>
+          <div class="tab-panel">
+            <h3>When You Get Notified</h3>
+            <ul>
+              <li>Portfolio heat > 7.5% (near limit)</li>
+              <li>Daily loss > -2.8% (approaching -3% limit)</li>
+              <li>VIX spike > 32 (high vol regime)</li>
+              <li>API errors > 10/hour (critical)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-      <h2>Disaster Recovery Plan</h2>
-      
-      <h3>Failure Scenarios</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Failure</th><th>Backup Plan</th></tr>
-        <tr><td>Internet outage</td><td>4G hotspot (auto-failover)</td></tr>
-        <tr><td>Power outage</td><td>UPS (30+ min), mobile broker app</td></tr>
-        <tr><td>PC crash</td><td>Backup laptop, cloud-based platform</td></tr>
-        <tr><td>Broker down</td><td>Secondary broker account ready</td></tr>
-        <tr><td>Data feed down</td><td>Backup data provider</td></tr>
-      </table>
+      <div class="section-break"><span>Part 5: Cost Breakdown</span></div>
 
-      <h3>Emergency Protocol</h3>
-      <pre><code>If Primary System Fails:
+      <h2>Professional Setup: ~$5K-6K/Year</h2>
 
-1. Access positions via mobile app
-2. Close all positions (or place stops)
-3. Switch to backup system (laptop + hotspot)
-4. Contact broker if execution issues
-5. Log incident, review after market close
-
-Drill: Test failover quarterly (simulate failures)</code></pre>
-
-      <h2>Cost Breakdown</h2>
-      
-      <h3>Professional Setup (Annual)</h3>
-      <pre><code>Hardware (one-time):
-- PC: $2,000
-- Monitors (4x): $1,500
-- Desk, chair, peripherals: $500
-Total: $4,000 (amortize over 3 years = $1,333/year)
+      <pre><code>Hardware (one-time, amortized over 3 years):
+- PC: $2,000 / 3 = $667/year
+- Monitors (4x): $1,500 / 3 = $500/year
+- Desk, chair: $500 / 3 = $167/year
 
 Software (monthly):
-- Trading platform: $60
-- Data feeds: $100
-- Backtesting: $50
-- Journal: $40
-Total: $250/month × 12 = $3,000/year
+- Trading platform: $60/mo = $720/year
+- Data feeds: $100/mo = $1,200/year
+- Backtesting: $50/mo = $600/year
+- Journal: $40/mo = $480/year
 
 Infrastructure:
-- Internet (fiber): $80/month = $960/year
-- UPS, backup: $200/year
+- Internet (fiber): $80/mo = $960/year
+- Backup internet: $50/mo = $600/year
+- UPS: $200/year
 - Cloud storage: $100/year
-Total: $1,260/year
 
-Grand Total: $5,593/year (~$466/month)
+Total: ~$5,594/year (~$466/month)
 
-Break-even: $466 × 12 = $5,592/year cost
-If edge = 2R/month, need ~2.8 trades/month to cover (very achievable)</code></pre>
+Break-even: If edge = 2R/month, need ~2.8 trades/month
+            Very achievable for consistent traders</code></pre>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Hardware: 4-6 monitors, 32GB RAM, wired internet</strong></li>
-        <li><strong>Software: TradingView + broker platform + journal</strong></li>
-        <li><strong>Risk system: Automated checks, kill switch</strong></li>
-        <li><strong>Monitoring: Real-time dashboard, SMS alerts</strong></li>
-        <li><strong>Backup: UPS, hotspot, secondary broker</strong></li>
-        <li><strong>Cost: ~$5K-6K/year (professional setup)</strong></li>
-      </ul>
+      <div class="callout-key">
+        <h4>💡 The ROI Perspective</h4>
+        <p>$5K/year infrastructure cost seems high.</p>
+        <p>But one avoided mishap (internet failure during position) = $2K+ saved.</p>
+        <p>Infrastructure pays for itself with reliability and uptime.</p>
+      </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Assess your setup</strong></p>
-      <p>Rate your current infrastructure (1-10). What's missing? What's your biggest single point of failure?</p>
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Multi-monitor setup (4-6 screens) = see everything, no tab switching</strong></li>
+          <li><strong>Redundancy is non-negotiable: UPS, backup internet, failover plan</strong></li>
+          <li><strong>Software stack: Platform + data + backtesting + journal ($250/mo)</strong></li>
+          <li><strong>Monitoring & alerts: Know your P&L, risk, system health real-time</strong></li>
+          <li><strong>Total cost: ~$5K-6K/year (worth it for consistency)</strong></li>
+        </ul>
+      </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Amateurs focus on setups. Professionals build systems. Infrastructure is the foundation of consistency."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <div class="quiz">
+        <h4>🎮 Test Your Understanding (No Pressure)</h4>
+
+        <div class="quiz-question">
+          <p><strong>Question: Your primary internet fails while you're in a trade. What's the professional response?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              <strong>A)</strong> Panic and hope it reconnects
+            </div>
+            <div class="quiz-option" data-correct="true">
+              <strong>B)</strong> Automatic failover to 4G hotspot (pre-configured)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>C)</strong> Drive to Starbucks for WiFi
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>D)</strong> Accept the loss and move on
+            </div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+        <div class="quiz-results"></div>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">
+        If you made it this far, you understand that infrastructure is the foundation of consistency. Amateurs focus on setups. Professionals build systems. Which one are you?
+      </p>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #42: Trading Career Path (FINAL LESSON!)</strong> — From beginner to full-time trader. What's the path? What's realistic? How long does it take? Learn the complete roadmap.</p>
+      </div>
+
+    </div>
+  </div>
+
   <div class="wrap nav-article">
     <a class="btn btn-ghost" href="/curriculum/advanced/40-tax-optimization.html">&larr; Previous: Tax Optimization</a>
     <a class="btn btn-primary" href="/curriculum/advanced/42-trading-career-path.html">Next: Career Path &rarr;</a>
   </div>
 </article>
+
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
 <script src="/assets/edu.js"></script>
-</body></html>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

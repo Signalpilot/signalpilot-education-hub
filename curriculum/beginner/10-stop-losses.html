@@ -1,98 +1,506 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Stop Losses Don't Protect You (If Placed Wrong)</title><meta name="sp-level" content="Beginner"><link rel="stylesheet" href="/assets/edu.css"></head>
-<body><div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Stop Losses Don't Protect You (If Placed Like a Textbook)</title>
+  <meta name="description" content="Percentage stops are meaningless. The market doesn't care about your 2%. Learn ATR-based stops, structure invalidation, and the 2R minimum rule.">
+  <meta name="sp-level" content="Beginner"><meta name="sp-order" content="10">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">Stop Losses Don't Protect You (If Placed Wrong)</h1><div class="meta">Reading time ~10 min • Risk Reality</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Percentage stops are meaningless. The market doesn't care about your account.</b> Learn ATR-based stops, structure-based stops, the 2R rule, and when NOT to use stops.</p>
-      <h2>Why 2% Stops Fail Consistently</h2>
-      <p><strong>Retail logic:</strong> "I'll risk 2% on every trade. Stop is 2% below entry."</p>
-      <p><strong>Problem:</strong> Market volatility changes daily. 2% might be:</p>
-      <ul><li><b>Too tight:</b> On volatile days (ATR = 3%), you get stopped on noise</li><li><b>Too wide:</b> On calm days (ATR = 0.5%), you're risking 4× what you need</li></ul>
-      <p><b>Your stop should reflect MARKET conditions, not your account size.</b></p>
-      <h2>ATR-Based Stops: Letting the Market Breathe</h2>
-      <p><strong>ATR (Average True Range) = average price movement over N periods.</strong></p>
-      <p><strong>Stop Formula:</strong> <code>Stop Distance = Multiplier × ATR</code></p>
-      <p><strong>Typical multipliers:</strong></p>
-      <ul><li><b>1.5× ATR:</b> Tight stop (scalping, mean reversion)</li><li><b>2.0× ATR:</b> Standard stop (swing trades)</li><li><b>3.0× ATR:</b> Wide stop (position trades, volatile assets)</li></ul>
-      <p><strong>Example:</strong> BTC, 14-period ATR = $500</p>
-      <ul><li>2× ATR stop = $1,000 below entry</li><li>If ATR spikes to $800 (volatile day), stop widens to $1,600</li></ul>
-      <p><b>Your stop adapts to market conditions automatically.</b></p>
-      <h2>Structure-Based Stops vs. Arbitrary Levels</h2>
-      <h3>Bad Stop Placement</h3>
-      <p><strong>Entry:</strong> $100.00<br><strong>Stop:</strong> $99.00 (1% below entry)</p>
-      <p><b>Why it's bad:</b> Arbitrary. No structural significance. Market doesn't care about your 1%.</p>
-      <h3>Good Stop Placement</h3>
-      <p><strong>Entry:</strong> $100.20 (above swept low at $99.50)<br><strong>Stop:</strong> $99.00 (below swept low + 0.5× ATR buffer)</p>
-      <p><b>Why it's good:</b> If $99 is hit, the sweep thesis is invalid. Setup is STRUCTURALLY broken.</p>
-      <p><strong>Key principle: If stop is hit, the REASON for the trade must be invalidated.</strong></p>
-      <h2>The 2R Rule for First Targets</h2>
-      <p><strong>Rule: Minimum target = 2× your risk (2R).</strong></p>
-      <p><strong>Example:</strong></p>
-      <ul><li>Entry: $100</li><li>Stop: $98 (risk = $2)</li><li>Minimum target: $104 (reward = $4 = 2R)</li></ul>
-      <p><b>Why 2R?</b> Mathematically, you only need 40% win rate to break even:</p>
-      <pre><code>Expectancy = (Win Rate × Avg Win) - (Loss Rate × Avg Loss)
-= (0.40 × 2R) - (0.60 × 1R)
-= 0.80R - 0.60R = +0.20R per trade</code></pre>
-      <p><b>Below 2R, you need >50% win rate to profit. Above 2R, you can profit with 33-40%.</b></p>
-      <h2>When NOT to Use Stops</h2>
-      <h3>Scenario 1: Hedged Positions</h3>
-      <p><strong>If you're hedged (long spot + short futures), no hard stop needed.</strong> Your hedge limits loss.</p>
-      <h3>Scenario 2: Options (Defined Risk)</h3>
-      <p><strong>Buying options = max loss is premium paid.</strong> No stop needed (risk already defined).</p>
-      <h3>Scenario 3: Dollar-Cost Averaging (DCA)</h3>
-      <p><strong>Long-term investing with planned scale-ins.</strong> Temporary drawdowns are expected, stops counterproductive.</p>
-      <p><b>For TRADING (not investing), always use stops.</b></p>
-      <h2>Stop Management During Trade</h2>
-      <h3>Breakeven Stop</h3>
-      <p><strong>Once trade is +1R in profit, move stop to breakeven (entry price).</strong></p>
-      <p><strong>Example:</strong> Entry $100, Stop $98, Target $104. When price hits $102 (+1R), move stop to $100.</p>
-      <p><b>Now you can't lose (worst case = breakeven).</b></p>
-      <h3>Trailing Stop (Pentarch Events)</h3>
-      <p><strong>Use Pentarch Pilot Line events to trail stop:</strong></p>
-      <ul><li><b>TD/IGN event:</b> Initial stop below EMA</li><li><b>RUN event:</b> Trail stop to previous swing low</li><li><b>EXT event:</b> Tighten stop (overextended)</li><li><b>BRK event:</b> Exit immediately (trend broken)</li></ul>
-      <h2>Complete Stop Placement Framework</h2>
-      <p><strong>Step 1: Identify Structure Invalidation</strong></p>
-      <ul><li>Where is the swept low (Janus Atlas)?</li><li>Where is support/resistance broken (invalidates thesis)?</li></ul>
-      <p><strong>Step 2: Add ATR Buffer</strong></p>
-      <ul><li>Structure + (1.5-2× ATR) = Final stop placement</li></ul>
-      <p><strong>Step 3: Calculate Risk in Dollars</strong></p>
-      <ul><li><code>Risk = (Entry - Stop) × Position Size</code></li></ul>
-      <p><strong>Step 4: Verify 2R Target Exists</strong></p>
-      <ul><li>If no structural target at 2R+, setup is invalid (skip trade)</li></ul>
-      <p><strong>Step 5: Set Stop Order</strong></p>
-      <ul><li>Use stop-loss order (not mental stop—you'll cheat)</li></ul>
-      <p><strong>Step 6: Manage During Trade</strong></p>
-      <ul><li>+1R → Breakeven stop</li><li>+2R → Take partial (50%), trail remainder</li><li>BRK event → Exit all</li></ul>
-      <h2>Common Mistakes</h2>
-      <p><strong>Mistake 1: Using percentage stops.</strong> Fix: ATR + structure-based stops.</p>
-      <p><strong>Mistake 2: Tight stops "to reduce risk."</strong> Fix: Tight stops = more stop-outs. Risk is controlled by position SIZE, not stop distance.</p>
-      <p><strong>Mistake 3: Moving stop FURTHER away.</strong> Fix: NEVER move stop away from entry (only closer). If price isn't working, exit.</p>
-      <p><strong>Mistake 4: No stop at all ("I'll watch it").</strong> Fix: ALWAYS use hard stop-loss orders. Mental stops fail 90% of the time.</p>
-      <h2>Stop Loss Calculator Template</h2>
-      <pre><code>Entry Price:     $100.00
-Structure:       Swept low at $99.50
-ATR (14):        $0.80
-Multiplier:      2.0×
-ATR Buffer:      $1.60 ($0.80 × 2)
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner.html">Beginner</a> <span>›</span>
+        <span>Lesson #10</span>
+      </div>
+      <span class="badge">🟢 Beginner • Lesson 10 of 12</span>
+      <h1 class="headline xl">Stop Losses Don't Protect You (If Placed Like a Textbook)</h1>
+      <div class="meta">10 min read • Risk Management Reality</div>
+    </div>
+  </header>
 
-Stop Price = $99.50 - $1.60 = $97.90
+  <div class="wrap article-grid">
+    <div class="prose">
 
-Risk per share:  $2.10 ($100.00 - $97.90)
-Position Size:   95 shares ($200 risk / $2.10)
-Total Risk:      $199.50
+      <p><b>"I'll risk 2% per trade. Stop is 2% below my entry."</b></p>
 
-Minimum Target (2R): $104.20 ($100 + $4.20)
-Target exists?:  Yes (resistance at $105)</code></pre>
-      <h2>Key Takeaways</h2>
-      <ul><li><strong>Percentage stops fail</strong> (market doesn't care about your account)</li><li><strong>ATR-based stops adapt to volatility</strong></li><li><strong>Structure-based stops invalidate thesis</strong></li><li><strong>2R minimum target</strong> (allows 40% win rate profitability)</li><li><strong>Breakeven at +1R</strong> (eliminate risk)</li><li><strong>Never move stop away</strong> (only closer)</li></ul>
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Stop distance should reflect market volatility, not account size."</em> — <strong>Signal Pilot Education Team</strong></p>
-    </div></div>
-  <div class="wrap nav-article"><a class="btn btn-ghost" href="/curriculum/beginner/09-position-sizing.html">&larr; Previous</a><a class="btn btn-primary" href="/curriculum/beginner/11-timeframe-illusion.html">Next: Timeframes &rarr;</a></div>
+      <p>Sounds disciplined, right? Actually, it's arbitrary nonsense.</p>
+
+      <p>The market doesn't care that you want to risk 2%. It doesn't care where your entry is. It moves based on volatility, structure, and liquidity—none of which respect your neat percentage.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Percentage-based stops are killing your trades.</p>
+        <p>On volatile days, 2% is too tight—you get stopped on noise. On calm days, 2% is too wide—you're risking 4× what you need.</p>
+        <p><strong>Your stop should reflect MARKET conditions, not your account size.</strong></p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>Why "risk 2% always" is amateur hour (market volatility changes daily)</li>
+        <li>ATR-based stops that adapt to market conditions</li>
+        <li>Structure-based stops (if stop hits, thesis is DEAD)</li>
+        <li>The 2R minimum rule (40% win rate = profitable)</li>
+        <li>When NOT to use stops (hedged, options, DCA)</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: Why 2% Stops Fail Consistently</span></div>
+
+      <h2>The Market Doesn't Care About Your Account</h2>
+
+      <p>Let me show you the problem:</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Volatile Day (ATR = 3%)</button>
+          <button>Calm Day (ATR = 0.5%)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>High Volatility Scenario</h3>
+            <p><strong>Market state:</strong> ATR = 3% (high volatility)</p>
+            <p><strong>Your stop:</strong> 2% below entry (fixed percentage)</p>
+            <p><strong>What happens:</strong></p>
+            <ul>
+              <li>Normal intraday swing = 2-3%</li>
+              <li>Your 2% stop is WITHIN normal noise</li>
+              <li>Price dips 2.1%, hits your stop</li>
+              <li>Then reverses exactly as you predicted</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px">
+              <strong>Result:</strong> Stopped out on normal volatility. Not because your thesis was wrong, but because your stop was too tight for market conditions.
+            </p>
+          </div>
+          <div class="tab-panel">
+            <h3>Low Volatility Scenario</h3>
+            <p><strong>Market state:</strong> ATR = 0.5% (low volatility)</p>
+            <p><strong>Your stop:</strong> 2% below entry (fixed percentage)</p>
+            <p><strong>What happens:</strong></p>
+            <ul>
+              <li>Normal intraday swing = 0.3-0.7%</li>
+              <li>Your 2% stop is 4× WIDER than needed</li>
+              <li>You're risking 4× more than necessary</li>
+              <li>If wrong, you lose way more than required</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px">
+              <strong>Result:</strong> Oversized risk. You could've placed stop at 1% (2× ATR) and still had plenty of room. Instead, you're risking double.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Volatility changes daily. Your stop placement should too.</p>
+        <p><strong>ATR (Average True Range) = market's natural breathing room.</strong> If you place stops inside that range, you're fighting the market's heartbeat.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: ATR-Based Stops</span></div>
+
+      <h2>Letting the Market Tell You Where to Stop</h2>
+
+      <p>Here's the professional approach:</p>
+
+      <p><strong>ATR = Average True Range</strong> (the average price movement over the last N periods)</p>
+
+      <p><strong>Stop Formula:</strong></p>
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(91,138,255,.08);border-left:4px solid #5b8aff;border-radius:12px">
+        <code style="font-size:1.1rem">Stop Distance = Multiplier × ATR</code>
+      </div>
+
+      <h3>The ATR Multiplier Guide</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">1.5× ATR: Tight Stops (Scalping)</div>
+          <div class="accordion-content">
+            <p><strong>When to use:</strong> Scalping, mean reversion trades, very tight ranges</p>
+            <p><strong>Risk level:</strong> Higher stop-out rate, but tighter risk control</p>
+            <p><strong>Example:</strong> BTC ATR = $500. Stop = 1.5 × $500 = $750 below entry</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.08);border-radius:8px">
+              <strong>Warning:</strong> Tight stops get swept more often. Only use if setup quality is A+ and you're managing actively.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">2.0× ATR: Standard Stops (Swing Trading)</div>
+          <div class="accordion-content">
+            <p><strong>When to use:</strong> Swing trades, trend following, most setups</p>
+            <p><strong>Risk level:</strong> Balanced—gives market room to breathe without excessive risk</p>
+            <p><strong>Example:</strong> BTC ATR = $500. Stop = 2.0 × $500 = $1,000 below entry</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px">
+              <strong>Sweet spot:</strong> This is the default for most professional swing traders. Enough room, not excessive.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">3.0× ATR: Wide Stops (Position Trading)</div>
+          <div class="accordion-content">
+            <p><strong>When to use:</strong> Position trades, volatile assets, holding through noise</p>
+            <p><strong>Risk level:</strong> Lowest stop-out rate, but larger losses if wrong</p>
+            <p><strong>Example:</strong> BTC ATR = $500. Stop = 3.0 × $500 = $1,500 below entry</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
+              <strong>Use case:</strong> When you want to hold through volatility spikes. Reduce position SIZE to compensate for wider stop.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Why This Is Genius</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">High Volatility Day</h4>
+          <p><strong>ATR widens to $800</strong></p>
+          <p>Your stop automatically widens to $1,600 (2× ATR)</p>
+          <p><em>Gives you room for the bigger swings</em></p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">Low Volatility Day</h4>
+          <p><strong>ATR tightens to $300</strong></p>
+          <p>Your stop automatically tightens to $600 (2× ATR)</p>
+          <p><em>Reduces risk when market is calm</em></p>
+        </div>
+      </div>
+
+      <p><strong>Your stop placement auto-adjusts to market conditions.</strong> You're not fighting volatility—you're scaling to it.</p>
+
+      <div class="section-break"><span>Part 3: Structure-Based Stops</span></div>
+
+      <h2>Stop Where the Thesis Dies</h2>
+
+      <p>ATR tells you HOW FAR. Structure tells you WHERE.</p>
+
+      <p>Here's the principle: <strong>If your stop is hit, the REASON for the trade must be invalidated.</strong></p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">❌ Bad Stop Placement</h3>
+          <p><strong>Entry:</strong> $100.00</p>
+          <p><strong>Stop:</strong> $99.00 (1% below entry)</p>
+          <p><strong>Why it's bad:</strong> Arbitrary. No structural significance. The market doesn't care about your 1%.</p>
+          <p style="margin-top:1rem;font-size:.9rem"><em>If $99.00 is hit, does that invalidate your thesis? No. It's just a random number you picked.</em></p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">✅ Good Stop Placement</h3>
+          <p><strong>Entry:</strong> $100.20 (above swept low at $99.50)</p>
+          <p><strong>Stop:</strong> $99.00 (below swept low + 0.5× ATR buffer)</p>
+          <p><strong>Why it's good:</strong> If $99.00 is hit, the sweep thesis is DEAD. Setup is structurally broken.</p>
+          <p style="margin-top:1rem;font-size:.9rem"><em>You entered BECAUSE price swept $99.50 and held. If it breaks $99.00, that thesis is invalidated. Exit is correct.</em></p>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 Structure-Based Stop Formula</h4>
+        <p><code>Stop = Key Structure Level - (1.5-2× ATR buffer)</code></p>
+        <p><strong>Example:</strong></p>
+        <ul>
+          <li>Swept low: $99.50</li>
+          <li>ATR: $0.40</li>
+          <li>Stop: $99.50 - ($0.40 × 1.5) = $98.90</li>
+        </ul>
+        <p style="margin-top:1rem">This gives you breathing room while keeping stop tied to thesis invalidation.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: The 2R Minimum Rule</span></div>
+
+      <h2>Why You Need at Least 2:1 Risk:Reward</h2>
+
+      <p>Pop quiz: What win rate do you need to be profitable?</p>
+
+      <p>Most people say 50%. They're wrong.</p>
+
+      <div class="callout-info">
+        <h4>📊 The Math of 2R</h4>
+        <p><strong>2R = 2× Risk as Reward</strong></p>
+        <p><strong>Example:</strong></p>
+        <ul>
+          <li>Risk: $100 (entry to stop)</li>
+          <li>Reward: $200 (entry to target) = 2R</li>
+        </ul>
+        <p><strong>Win rate needed:</strong> 40%</p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>The calculation:</strong></p>
+        <p><code>Expectancy = (Win Rate × Avg Win) - (Loss Rate × Avg Loss)</code></p>
+        <p><code>= (0.40 × 2R) - (0.60 × 1R)</code></p>
+        <p><code>= 0.80R - 0.60R = +0.20R per trade</code></p>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px">
+          <strong>Translation:</strong> With 2R targets and 40% win rate, you're profitable. Lose 6 out of 10 trades and STILL make money.
+        </p>
+      </div>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(255,255,255,.04);border-radius:12px">
+        <h3 style="margin-top:0">What Happens Below 2R?</h3>
+        <p><strong>1:1 Risk:Reward (1R):</strong></p>
+        <ul>
+          <li>Need >50% win rate just to break even</li>
+          <li>Need 55-60% win rate to be profitable after fees</li>
+        </ul>
+        <p><strong>1.5:1 Risk:Reward (1.5R):</strong></p>
+        <ul>
+          <li>Need 47% win rate to break even</li>
+          <li>Still requiring near-coin-flip accuracy</li>
+        </ul>
+        <p><strong>2:1 Risk:Reward (2R):</strong></p>
+        <ul>
+          <li>Need only 40% win rate to profit</li>
+          <li>Can be wrong 60% of the time and still win</li>
+        </ul>
+      </div>
+
+      <div class="callout-warning">
+        <h4>⚠️ The 2R Rule</h4>
+        <p><strong>Before taking ANY trade:</strong></p>
+        <ol>
+          <li>Calculate your stop distance</li>
+          <li>Identify a 2R target (2× the stop distance)</li>
+          <li>If no clear 2R target exists → SKIP THE TRADE</li>
+        </ol>
+        <p><strong>No exceptions.</strong> If structure doesn't allow for 2R, the setup isn't good enough.</p>
+      </div>
+
+      <div class="section-break"><span>Part 5: Stop Management During the Trade</span></div>
+
+      <h2>It's Not Set-and-Forget</h2>
+
+      <p>Okay, you've placed your stop. Now what?</p>
+
+      <h3>Stage 1: Breakeven Stop (At +1R)</h3>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px">
+        <p><strong>Once your trade is +1R in profit, move stop to breakeven (entry price).</strong></p>
+        <p><strong>Example:</strong></p>
+        <ul>
+          <li>Entry: $100</li>
+          <li>Stop: $98 (risk = $2)</li>
+          <li>Target: $104 (reward = $4 = 2R)</li>
+        </ul>
+        <p><strong>When price hits $102 (+1R):</strong> Move stop from $98 to $100 (breakeven)</p>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px">
+          <strong>Now you can't lose.</strong> Worst case = breakeven. You've eliminated risk and are playing with house money.
+        </p>
+      </div>
+
+      <h3>Stage 2: Trailing Stop (Pentarch Events)</h3>
+
+      <p>Use the Pentarch Pilot Line events to manage stops dynamically:</p>
+
+      <ul>
+        <li><strong>TD/IGN event:</strong> Initial stop below EMA or structure</li>
+        <li><strong>RUN event:</strong> Trail stop to previous swing low (let it run)</li>
+        <li><strong>EXT event:</strong> Tighten stop aggressively (overextended, take profits)</li>
+        <li><strong>BRK event:</strong> EXIT IMMEDIATELY (trend broken)</li>
+      </ul>
+
+      <div class="callout-tip">
+        <h4>🎯 Pro Trailing System</h4>
+        <p><strong>As price moves in your favor:</strong></p>
+        <ol>
+          <li>+1R: Move to breakeven</li>
+          <li>+2R: Take 30% profits, trail remaining 70%</li>
+          <li>+3R: Take another 30%, trail remaining 40%</li>
+          <li>BRK event: Exit all remaining</li>
+        </ol>
+      </div>
+
+      <div class="section-break"><span>Part 6: When NOT to Use Stops</span></div>
+
+      <h2>Three Scenarios Where Hard Stops Don't Make Sense</h2>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Scenario 1: Hedged Positions</div>
+          <div class="accordion-content">
+            <p><strong>Setup:</strong> You're long spot + short futures (delta-neutral or partially hedged)</p>
+            <p><strong>Why no hard stop:</strong> Your hedge limits loss. If spot drops, futures profit offsets.</p>
+            <p><strong>Management:</strong> Monitor delta imbalance. Rebalance hedge as needed.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Scenario 2: Options (Defined Risk)</div>
+          <div class="accordion-content">
+            <p><strong>Setup:</strong> You bought call/put options (premium paid upfront)</p>
+            <p><strong>Why no hard stop:</strong> Max loss = premium paid. Risk is already defined and capped.</p>
+            <p><strong>Management:</strong> Let theta decay work against you or exit based on time/delta, not price stop.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Scenario 3: Dollar-Cost Averaging (Long-Term Investing)</div>
+          <div class="accordion-content">
+            <p><strong>Setup:</strong> DCA into BTC/ETH for long-term hold (5+ years)</p>
+            <p><strong>Why no hard stop:</strong> Temporary drawdowns are expected. Stops would lock in losses during volatility.</p>
+            <p><strong>Management:</strong> Continue planned scale-ins regardless of price. This is INVESTING, not trading.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>⚠️ Critical Distinction</h4>
+        <p><strong>For TRADING (active, short-to-medium term), ALWAYS use stops.</strong></p>
+        <p>The three exceptions above are for specific strategies (hedging, options, DCA). Don't confuse them with normal directional trading.</p>
+      </div>
+
+      <div class="section-break"><span>Part 7: Complete Stop Placement Framework</span></div>
+
+      <h2>Your Step-by-Step System</h2>
+
+      <div style="margin:2rem 0;padding:2rem;background:linear-gradient(135deg, rgba(91,138,255,.12), rgba(118,221,255,.08));border-radius:16px">
+        <h3 style="margin-top:0">📋 Stop Placement Checklist</h3>
+
+        <p><strong>Step 1: Identify Structure Invalidation</strong></p>
+        <ul>
+          <li>Where is the swept low/high (Janus Atlas)?</li>
+          <li>What key structure level breaks your thesis?</li>
+        </ul>
+
+        <p><strong>Step 2: Calculate ATR Buffer</strong></p>
+        <ul>
+          <li>Check 14-period ATR on your timeframe</li>
+          <li>Calculate buffer: Structure - (1.5-2× ATR)</li>
+        </ul>
+
+        <p><strong>Step 3: Calculate Risk in Dollars</strong></p>
+        <ul>
+          <li><code>Risk = (Entry - Stop) × Position Size</code></li>
+          <li>Verify risk matches your account % allocation</li>
+        </ul>
+
+        <p><strong>Step 4: Verify 2R Target Exists</strong></p>
+        <ul>
+          <li>Is there clear structure at 2× your stop distance?</li>
+          <li>If NO → Setup is invalid, skip trade</li>
+        </ul>
+
+        <p><strong>Step 5: Set Stop-Loss Order</strong></p>
+        <ul>
+          <li><strong>Use HARD stop-loss orders</strong> (not mental stops)</li>
+          <li>Mental stops fail 90% of the time</li>
+        </ul>
+
+        <p><strong>Step 6: Manage During Trade</strong></p>
+        <ul>
+          <li>+1R → Move to breakeven</li>
+          <li>+2R → Take partial (30-50%), trail remainder</li>
+          <li>BRK event → Exit all</li>
+        </ul>
+      </div>
+
+      <h3>Common Mistakes (And Fixes)</h3>
+
+      <p><strong>Mistake #1: Using percentage stops</strong></p>
+      <p><em>Fix:</em> Use ATR + structure-based stops. Let the market tell you where to stop, not your account size.</p>
+
+      <p><strong>Mistake #2: Tight stops "to reduce risk"</strong></p>
+      <p><em>Fix:</em> Tight stops = more stop-outs. Control risk via position SIZE, not stop distance. Wider stop + smaller size > tight stop + large size.</p>
+
+      <p><strong>Mistake #3: Moving stop FURTHER away</strong></p>
+      <p><em>Fix:</em> NEVER move stop away from entry (only closer or to breakeven). If price isn't working, exit. Don't give it "more room."</p>
+
+      <p><strong>Mistake #4: No stop at all ("I'll watch it")</strong></p>
+      <p><em>Fix:</em> ALWAYS use hard stop-loss orders. Mental stops fail when emotions kick in. Set it and trust your plan.</p>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Percentage stops fail</strong> (market doesn't care about your account)</li>
+          <li><strong>ATR-based stops adapt to volatility</strong> (auto-scale to market conditions)</li>
+          <li><strong>Structure-based stops invalidate thesis</strong> (if stop hits, setup is broken)</li>
+          <li><strong>2R minimum target</strong> (allows 40% win rate profitability)</li>
+          <li><strong>Breakeven at +1R</strong> (eliminate risk, play with house money)</li>
+          <li><strong>Never move stop away</strong> (only closer—don't give losers "more room")</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you've been getting stopped out on "bad luck," it's not luck. Your stops are either too tight for volatility or placed at arbitrary levels. This framework fixes that.</p>
+
+      <div class="section-break"><span>Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Quick Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q: You enter at $100. ATR = $2. You want to risk 2% ($200). Where should your stop be?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) $98 (fixed 2% below entry)</div>
+            <div class="quiz-option" data-correct="true">B) Below key structure - (2× ATR) = structure dependent</div>
+            <div class="quiz-option" data-correct="false">C) $99 (tight stop to reduce risk)</div>
+            <div class="quiz-option" data-correct="false">D) No stop needed (I'll watch it)</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Stop placement should be structure-based (where thesis breaks) MINUS an ATR buffer (2× ATR = $4 in this case). Don't place stops based on arbitrary percentages or account size. Let the market's structure and volatility guide you.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #11: The Chart Timeframe Illusion</strong></p>
+        <p>5-minute charts create gambling addicts. Learn why lower timeframes destroy profitability, the 3-timeframe alignment rule, and how to break timeframe addiction.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">Why 2% Stops Fail</a>
+      <a href="#">ATR-Based Stops</a>
+      <a href="#">Structure-Based Stops</a>
+      <a href="#">The 2R Rule</a>
+      <a href="#">Stop Management</a>
+      <a href="#">When NOT to Stop</a>
+      <a href="#">Complete Framework</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/beginner/09-position-sizing.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/beginner/11-timeframe-illusion.html">Next Lesson &rarr;</a>
+  </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

@@ -17,6 +17,8 @@
     .wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
     .hero { min-height: 30vh; display: flex; align-items: center; padding: 3rem 0 2rem; text-align: center; }
   </style>
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/assets/edu.css"></noscript>
 </head>
@@ -38,7 +40,9 @@
       </ul>
     </nav>
     <div class="header-ctls">
-      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button>
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button>
       <button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button>
     </div>
   </div>
@@ -461,5 +465,8 @@
     });
   });
 </script>
+
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
 </body>
 </html>

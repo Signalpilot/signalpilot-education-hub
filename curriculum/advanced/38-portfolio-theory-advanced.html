@@ -1,170 +1,448 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Advanced Portfolio Theory: Modern Portfolio Theory & Beyond — SignalPilot Education</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Portfolio Theory Reality: Why "Diversification" Fails Most Traders — SignalPilot Education</title>
+  <meta name="description" content="Holding 10 stocks isn't diversification if they're all correlated. Learn Modern Portfolio Theory, efficient frontier, and professional portfolio construction.">
   <meta name="sp-level" content="Advanced"><meta name="sp-order" content="38">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/38-portfolio-theory-advanced.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
-<article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Advanced Portfolio Theory: Modern Portfolio Theory & Beyond</h1><div class="meta">Reading time ~14 min • Portfolio Construction</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Diversification isn't just holding multiple stocks—it's mathematical optimization of risk-return.</b> Learn MPT, efficient frontier, correlation matrices, and professional portfolio construction frameworks.</p>
-      
-      <h2>Modern Portfolio Theory (MPT)</h2>
-      
-      <h3>Core Principle</h3>
-      <p><strong>For given risk level, maximize return. For given return, minimize risk.</strong></p>
-      <pre><code>Key Insight: Combining uncorrelated assets reduces portfolio risk
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
 
-Example:
-Asset A: 20% return, 25% volatility
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #38</span>
+      </div>
+      <span class="badge">🔴 Advanced • Lesson 11 of 15</span>
+      <h1 class="headline xl">Portfolio Theory Reality: Why "Diversification" Fails Most Traders</h1>
+      <div class="meta">14 min read • Modern Portfolio Theory & Construction</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>"I'm diversified—I hold AAPL, MSFT, GOOGL, AMZN, and NVDA."</b></p>
+
+      <p>No, you're not. You're holding 5 highly correlated tech stocks. When QQQ drops 5%, you're dropping 5%. All of them. At once.</p>
+
+      <p>That's not diversification. That's concentration with extra steps.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>True diversification isn't about holding many assets. It's about holding <em>uncorrelated</em> assets.</p>
+        <p>Correlation matters more than count. And most traders don't even check it.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>Why correlation is the key to real diversification</li>
+        <li>How to build the efficient frontier (max return per unit of risk)</li>
+        <li>Risk parity: Why equal dollar allocations are wrong</li>
+        <li>How professionals actually construct portfolios</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: The Diversification Illusion</span></div>
+
+      <h2>The Classic Mistake</h2>
+
+      <p>You open your portfolio. You see 10 positions. You feel diversified.</p>
+
+      <p>Market tanks 3%. Your portfolio? Down 2.9%.</p>
+
+      <p>What happened to diversification?</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Fake Diversification</button>
+          <button>Real Diversification</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>The Illusion</h3>
+            <p><strong>Portfolio:</strong></p>
+            <ul>
+              <li>AAPL (tech)</li>
+              <li>MSFT (tech)</li>
+              <li>GOOGL (tech)</li>
+              <li>NVDA (tech)</li>
+              <li>TSLA (tech)</li>
+              <li>AMD (tech)</li>
+              <li>META (tech)</li>
+              <li>NFLX (tech)</li>
+              <li>SHOP (e-commerce)</li>
+              <li>SQ (fintech)</li>
+            </ul>
+            <p><strong>Correlation to QQQ:</strong> 0.85-0.95 (highly correlated)</p>
+            <p><em>"I hold 10 stocks!" Cool. They all move together.</em></p>
+          </div>
+          <div class="tab-panel">
+            <h3>True Diversification</h3>
+            <p><strong>Portfolio:</strong></p>
+            <ul>
+              <li>40% SPY (US equities, correlation: 1.0 to itself)</li>
+              <li>30% TLT (bonds, correlation: -0.40 to SPY)</li>
+              <li>15% GLD (gold, correlation: 0.10 to SPY)</li>
+              <li>15% DBC (commodities, correlation: 0.45 to SPY)</li>
+            </ul>
+            <p><strong>Result:</strong> When SPY drops 5%, portfolio might drop 3% (bonds/gold cushion)</p>
+            <p><em>4 assets. Actually diversified. Low correlation = real protection.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Asset count doesn't matter. Correlation does.</p>
+        <p>10 correlated assets = 1 bet. 4 uncorrelated assets = 4 bets. Choose wisely.</p>
+      </div>
+
+      <h3>Understanding Correlation</h3>
+
+      <pre><code>Correlation Coefficient (-1.0 to +1.0):
+
++1.0 = Perfect positive (move together exactly)
++0.7 = Strong positive (usually move together)
++0.3 = Weak positive (sometimes move together)
+ 0.0 = Uncorrelated (independent movement)
+-0.3 = Weak negative (often move opposite)
+-1.0 = Perfect negative (perfect hedge)
+
+Diversification benefit:
+Correlation < 0.5 = Good
+Correlation < 0.0 = Excellent (negative correlation = hedge)</code></pre>
+
+      <div class="section-break"><span>Part 2: Modern Portfolio Theory (MPT)</span></div>
+
+      <h2>The Core Insight: Magic Math</h2>
+
+      <p>Here's something that sounds impossible:</p>
+
+      <p><strong>Combining two risky assets can create a portfolio LESS risky than either asset alone.</strong></p>
+
+      <p>Wait, what?</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">The Math (Simple Version)</div>
+          <div class="accordion-content">
+            <pre><code>Asset A: 20% return, 25% volatility
 Asset B: 15% return, 20% volatility
 Correlation: 0.3 (low)
 
-Portfolio (50/50): 17.5% return, 18% volatility (LOWER than both!)
+50/50 Portfolio:
+Expected return: (20% + 15%) / 2 = 17.5%
+Expected volatility: NOT 22.5%!
+Actual volatility: ~18% (LOWER than both!)
 
-Why: Losses in A sometimes offset by gains in B (diversification benefit)</code></pre>
+Why: Losses in A sometimes offset by gains in B
+Result: Higher return per unit of risk</code></pre>
+            <p><em>This is the only "free lunch" in finance. Use it.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Real Example: Stocks + Bonds</div>
+          <div class="accordion-content">
+            <pre><code>100% SPY:
+Return: 12% avg
+Volatility: 18%
+Sharpe: 0.67
 
-      <h2>Correlation & Diversification</h2>
-      
-      <h3>Correlation Coefficient</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Correlation</th><th>Meaning</th><th>Diversification Benefit</th></tr>
-        <tr><td>+1.0</td><td>Perfect positive (move together)</td><td>None (no diversification)</td></tr>
-        <tr><td>+0.7</td><td>Strong positive</td><td>Low</td></tr>
-        <tr><td>+0.3</td><td>Weak positive</td><td>Moderate</td></tr>
-        <tr><td>0.0</td><td>Uncorrelated</td><td>High</td></tr>
-        <tr><td>-0.3</td><td>Weak negative</td><td>Very high</td></tr>
-        <tr><td>-1.0</td><td>Perfect negative (opposite)</td><td>Maximum (perfect hedge)</td></tr>
-      </table>
+100% TLT (bonds):
+Return: 6% avg
+Volatility: 12%
+Sharpe: 0.33
 
-      <h3>Building Correlation Matrix</h3>
-      <pre><code>Assets: SPY (S&P 500), TLT (Bonds), GLD (Gold), DBC (Commodities)
+60/40 SPY/TLT:
+Return: 9.6% (weighted avg)
+Volatility: 11% (LESS than TLT alone!)
+Sharpe: 0.87 (BETTER than either!)
 
-Correlation Matrix:
-         SPY    TLT    GLD    DBC
-SPY     1.00   -0.40   0.10   0.45
-TLT    -0.40    1.00  -0.20  -0.30
-GLD     0.10   -0.20   1.00   0.35
-DBC     0.45   -0.30   0.35   1.00
+Magic: -0.40 correlation = diversification benefit</code></pre>
+            <p><em>60/40 outperforms on risk-adjusted basis. This is why institutions use it.</em></p>
+          </div>
+        </div>
+      </div>
 
-Insights:
-- SPY/TLT: -0.40 (bonds hedge stocks, good!)
-- SPY/GLD: 0.10 (gold uncorrelated, diversifier)
-- TLT/DBC: -0.30 (bonds negative to commodities)</code></pre>
+      <h2>The Efficient Frontier</h2>
 
-      <h2>Efficient Frontier</h2>
-      
-      <h3>What is the Efficient Frontier?</h3>
-      <p><strong>Set of portfolios with maximum return for given risk level.</strong></p>
-      <pre><code>Efficient Frontier Curve:
+      <p>Question: For a given level of risk, what's the maximum return I can achieve?</p>
 
-Risk (Std Dev)  |  Return
-10%             |  5%
-15%             |  9%
-20%             |  12%
-25%             |  14%
-30%             |  15%
+      <p>Answer: The efficient frontier.</p>
 
-Portfolios ON frontier: Optimal (max return per risk unit)
-Portfolios BELOW frontier: Suboptimal (can improve return without adding risk)</code></pre>
+      <div class="callout-tip">
+        <h4>🎯 What Is the Efficient Frontier?</h4>
+        <p>It's the set of portfolios that offer:</p>
+        <ul style="margin:.5rem 0">
+          <li><strong>Maximum return</strong> for a given risk level</li>
+          <li><strong>Minimum risk</strong> for a given return level</li>
+        </ul>
+        <p>Portfolios ON the frontier = optimal. Portfolios BELOW = suboptimal (can improve without adding risk).</p>
+      </div>
 
-      <h3>Calculating Optimal Portfolio</h3>
-      <pre><code>Goal: Max Sharpe Ratio (best risk-adjusted return)
+      <pre><code>Example Efficient Frontier:
 
-Sharpe Ratio = (Portfolio Return - Risk-Free Rate) / Portfolio Std Dev
+Risk (Volatility) → Return
+10%                  5%  (low risk, low return)
+15%                  9%  (moderate risk, moderate return)
+20%                 12%  (medium risk, good return)
+25%                 14%  (higher risk, higher return)
+30%                 15%  (high risk, diminishing returns)
 
-Python (using scipy):
-from scipy.optimize import minimize
+Your goal: Pick a point on the frontier based on risk tolerance</code></pre>
 
-def portfolio_stats(weights, returns, cov_matrix):
-    portfolio_return = np.sum(returns * weights) * 252  # Annualized
-    portfolio_std = np.sqrt(np.dot(weights.T, np.dot(cov_matrix * 252, weights)))
-    sharpe = (portfolio_return - 0.04) / portfolio_std  # 4% risk-free
-    return -sharpe  # Negative (minimize for max)
+      <h3>Finding the Optimal Portfolio (Max Sharpe Ratio)</h3>
 
-# Optimize
-result = minimize(portfolio_stats, initial_weights, constraints=...)
-optimal_weights = result.x
+      <p>The best portfolio on the frontier? The one with the highest Sharpe ratio (return per unit of risk).</p>
 
-# Output: [0.45 SPY, 0.25 TLT, 0.15 GLD, 0.15 DBC]</code></pre>
-
-      <h2>Risk Parity</h2>
-      
-      <h3>Equal Risk Contribution</h3>
-      <p><strong>Allocate so each asset contributes equally to portfolio risk.</strong></p>
-      <pre><code>Traditional 60/40:
-60% stocks (high vol) → 90% of portfolio risk
-40% bonds (low vol) → 10% of portfolio risk
-
-Problem: Portfolio dominated by stock risk!
-
-Risk Parity:
-25% stocks, 75% bonds (weighted by inverse volatility)
-Result: 50% stock risk, 50% bond risk (balanced)</code></pre>
-
-      <h3>Leverage in Risk Parity</h3>
-      <pre><code>Problem: Risk parity = lower returns (more bonds)
-
-Solution: Use leverage to boost returns while maintaining balanced risk
+      <pre><code>Sharpe Ratio = (Portfolio Return - Risk-Free Rate) / Volatility
 
 Example:
-40% SPY (leveraged 1.5x = 60% exposure)
-60% TLT (leveraged 1.5x = 90% exposure)
-Total: 150% exposure via leverage
+Portfolio A: 12% return, 18% volatility → Sharpe = 0.67
+Portfolio B: 14% return, 25% volatility → Sharpe = 0.56
+Portfolio C: 10% return, 12% volatility → Sharpe = 0.83
 
-Result: Higher return, balanced risk (both contribute equally)</code></pre>
+Winner: Portfolio C (best risk-adjusted return)</code></pre>
 
-      <h2>Black-Litterman Model</h2>
-      <h3>Combining Market Views with MPT</h3>
-      <p><strong>Adjust MPT allocations based on personal convictions.</strong></p>
-      <pre><code>MPT Allocation (neutral):
-40% SPY, 30% TLT, 15% GLD, 15% DBC
+      <div class="section-break"><span>Part 3: Risk Parity (The Smarter Approach)</span></div>
 
-Your View: "I'm bullish on gold (+10% expected vs. neutral)"
+      <h2>Why 60/40 Is Broken</h2>
 
-Black-Litterman Output:
-35% SPY, 28% TLT, 22% GLD, 15% DBC (tilted toward gold based on view)
+      <p>The classic 60/40 portfolio (60% stocks, 40% bonds) has a dirty secret:</p>
 
-Advantage: Incorporates conviction without abandoning diversification</code></pre>
+      <p><strong>90% of the risk comes from the 60% stocks.</strong></p>
 
-      <h2>Kelly Criterion for Portfolio Sizing</h2>
-      <p><strong>Optimal allocation to maximize long-term growth.</strong></p>
+      <p>Let me show you:</p>
+
+      <pre><code>60/40 Portfolio:
+60% SPY (volatility: 18%)
+40% TLT (volatility: 12%)
+
+Risk contribution:
+SPY: 60% × 18% = 10.8 (90% of total risk)
+TLT: 40% × 12% = 4.8 (10% of total risk)
+
+Result: Portfolio is 90% exposed to stock risk
+        Not diversified in risk terms!</code></pre>
+
+      <p>Enter risk parity.</p>
+
+      <h3>Risk Parity: Equal Risk, Not Equal Dollars</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Traditional 60/40</button>
+          <button>Risk Parity Approach</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Equal Dollar Allocation</h3>
+            <p><strong>Allocation:</strong></p>
+            <ul>
+              <li>60% stocks (high volatility)</li>
+              <li>40% bonds (low volatility)</li>
+            </ul>
+            <p><strong>Risk contribution:</strong></p>
+            <ul>
+              <li>Stocks: 90% of portfolio risk</li>
+              <li>Bonds: 10% of portfolio risk</li>
+            </ul>
+            <p><em>Problem: Portfolio dominated by stock risk. When stocks crash, you crash.</em></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Equal Risk Allocation</h3>
+            <p><strong>Allocation:</strong></p>
+            <ul>
+              <li>25% stocks (weighted by inverse volatility)</li>
+              <li>75% bonds (weighted by inverse volatility)</li>
+            </ul>
+            <p><strong>Risk contribution:</strong></p>
+            <ul>
+              <li>Stocks: 50% of portfolio risk</li>
+              <li>Bonds: 50% of portfolio risk</li>
+            </ul>
+            <p><em>Result: Balanced risk. Stocks crash? Portfolio cushioned by large bond allocation.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 The Trade-Off</h4>
+        <p>Risk parity = lower expected returns (more bonds = lower growth).</p>
+        <p>Solution? Some funds use leverage to boost returns while maintaining balanced risk. (Not for beginners.)</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Professional Portfolio Construction</span></div>
+
+      <h2>The Kelly Criterion (How Much to Allocate)</h2>
+
+      <p>You have an edge. Your Janus strategy wins 65% of the time at 2.5R average.</p>
+
+      <p>Question: What percentage of your capital should you allocate to it?</p>
+
+      <p><strong>Answer: Kelly Criterion.</strong></p>
+
       <pre><code>Kelly % = (Win Rate × Avg Win - Loss Rate × Avg Loss) / Avg Win
 
-Strategy: 60% WR, 2.5R avg win, 1R avg loss
-Kelly = (0.60 × 2.5 - 0.40 × 1) / 2.5 = 0.44 = 44%
+Example:
+Win Rate: 65%
+Avg Win: 2.5R
+Loss Rate: 35%
+Avg Loss: 1R
 
-Conservative: Use 1/4 Kelly = 11% per strategy
+Kelly = (0.65 × 2.5 - 0.35 × 1) / 2.5
+      = (1.625 - 0.35) / 2.5
+      = 1.275 / 2.5
+      = 0.51 = 51%
 
-Portfolio:
-Strategy A (11%), Strategy B (11%), Strategy C (11%), Cash (67%)</code></pre>
+Interpretation: Allocate 51% of capital to this strategy</code></pre>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Diversification reduces risk if correlation < 1.0</strong></li>
-        <li><strong>Efficient frontier: max return for given risk</strong></li>
-        <li><strong>Risk parity: equal risk contribution (not equal $)</strong></li>
-        <li><strong>Kelly Criterion: optimal sizing for growth</strong></li>
-      </ul>
+      <p>But here's the catch:</p>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Calculate correlation</strong></p>
-      <p>Export your trades (if multi-asset). Calculate correlation. Are positions truly diversified or correlated?</p>
+      <div class="callout-warning">
+        <h4>🚨 Full Kelly Is Aggressive</h4>
+        <p>Full Kelly maximizes long-term growth but has wild swings.</p>
+        <p><strong>Professional approach:</strong> Use 1/4 Kelly to 1/2 Kelly for smoother equity curve.</p>
+        <p>Example: 51% full Kelly → Use 13-25% allocation (safer).</p>
+      </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Diversification is the only free lunch in finance—if done right. Correlation matters more than asset count."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <h2>Multi-Strategy Portfolio</h2>
+
+      <p>Real professionals don't run one strategy. They run a portfolio of uncorrelated strategies.</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Strategy Portfolio Example</div>
+          <div class="accordion-content">
+            <pre><code>Strategy A (Janus Sweeps):
+Win rate: 65%, Avg R: 2.5R
+Kelly: 13% (1/4 Kelly)
+Regime: Works in trending markets
+
+Strategy B (Mean Reversion):
+Win rate: 58%, Avg R: 2.0R
+Kelly: 10%
+Regime: Works in ranging markets
+
+Strategy C (Breakouts):
+Win rate: 52%, Avg R: 3.0R
+Kelly: 8%
+Regime: Works in volatile expansions
+
+Total allocation: 31% (rest in cash as buffer)
+
+Result:
+- Different regimes = one strategy always working
+- Uncorrelated strategies = smoother equity curve
+- Cash buffer = flexibility for drawdowns</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Correlation matters more than asset count—check it before claiming diversification</strong></li>
+          <li><strong>Efficient frontier = max return for given risk (optimize your allocation)</strong></li>
+          <li><strong>Risk parity = equal risk contribution, not equal dollars (more balanced than 60/40)</strong></li>
+          <li><strong>Kelly Criterion = optimal sizing for growth (use 1/4 to 1/2 Kelly for safety)</strong></li>
+          <li><strong>Multi-strategy portfolios = uncorrelated edges = smoother returns</strong></li>
+        </ul>
+      </div>
+
+      <div class="quiz">
+        <h4>🎮 Test Your Understanding (No Pressure)</h4>
+
+        <div class="quiz-question">
+          <p><strong>Question 1: You hold 10 tech stocks. Their average correlation to QQQ is 0.90. Are you diversified?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              <strong>A)</strong> Yes (10 stocks = diversified by definition)
+            </div>
+            <div class="quiz-option" data-correct="true">
+              <strong>B)</strong> No (high correlation = concentrated tech bet)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>C)</strong> Partially (better than holding 1 stock)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>D)</strong> Doesn't matter (diversification is a myth)
+            </div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Question 2: Your strategy has a 60% win rate, 2R average win, 1R average loss. What's the full Kelly allocation?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              <strong>A)</strong> 20%
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>B)</strong> 30%
+            </div>
+            <div class="quiz-option" data-correct="true">
+              <strong>C)</strong> 40%
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>D)</strong> 60% (same as win rate)
+            </div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
+        <div class="quiz-results"></div>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">
+        If you made it this far, you understand that portfolio construction is about math, not guesses. Correlation, Sharpe ratios, Kelly criterion—these aren't academic exercises. They're tools professionals use daily.
+      </p>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #39: Performance Attribution</strong> — Decompose your returns. Which strategies worked? Which failed? Learn to identify your true edges and eliminate what doesn't work.</p>
+      </div>
+
+    </div>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/advanced/37-trading-automation-apis.html">&larr; Previous: Automation</a>
+    <a class="btn btn-ghost" href="/curriculum/advanced/37-trading-automation-apis.html">&larr; Previous: Trading Automation</a>
     <a class="btn btn-primary" href="/curriculum/advanced/39-performance-attribution.html">Next: Performance Attribution &rarr;</a>
   </div>
 </article>
+
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
 <script src="/assets/edu.js"></script>
-</body></html>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

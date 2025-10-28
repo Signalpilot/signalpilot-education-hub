@@ -1,106 +1,193 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Market Regime Recognition: Adaptive Trading Systems — SignalPilot Education</title>
-  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="29">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Market Regime Recognition: Adaptive Trading Systems — SignalPilot Learn</title>
+  <meta name="description" content="One strategy doesn't work everywhere. Learn to detect regime changes in real-time and adapt before the market chops you up.">
+  <meta name="sp-level" content="Advanced">
+  <meta name="sp-order" content="29">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Market Regime Recognition: Adaptive Trading Systems</h1><div class="meta">Reading time ~17 min • Regime Detection & Adaptation</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Markets shift between regimes—trending, mean-reverting, volatile. One strategy doesn't work everywhere.</b> Learn to detect regime changes in real-time and adapt your approach before you get chopped up.</p>
-      
-      <h2>The Four Core Market Regimes</h2>
-      
-      <h3>Regime 1: Trending (Directional)</h3>
-      <p><strong>Characteristics:</strong></p>
-      <ul>
-        <li>Clear higher highs + higher lows (uptrend) or lower lows + lower highs (downtrend)</li>
-        <li>Price sustains away from mean (EMA, VWAP)</li>
-        <li>Volume increases on trend moves, decreases on pullbacks</li>
-        <li>ADX > 25 (strong trend)</li>
-      </ul>
-      <pre><code>Best Strategies:
-- Pullback entries (buy dips in uptrend, sell rallies in downtrend)
-- Breakout continuations
-- Trend following (ride the move)
+  <!-- Article Header -->
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #29</span>
+      </div>
+      <span class="badge">🔴 Advanced • Lesson 1 of 15</span>
+      <h1 class="headline xl">Market Regime Recognition: Stop Fighting the Wrong Battle</h1>
+      <div class="meta">Reading time ~17 min • Regime Detection & Adaptation</div>
 
-Avoid:
-- Fading trends (fighting momentum)
-- Range-bound strategies (no mean reversion)</code></pre>
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      <h3>Regime 2: Mean-Reverting (Range-Bound)</h3>
-      <p><strong>Characteristics:</strong></p>
-      <ul>
-        <li>Price oscillates between defined support/resistance</li>
-        <li>Repeatedly touches and bounces from extremes</li>
-        <li>Volume spikes at range extremes (exhaustion)</li>
-        <li>ADX < 20 (weak trend)</li>
-      </ul>
-      <pre><code>Best Strategies:
-- Fade extremes (sell highs, buy lows)
-- VWAP reversions (price returns to VWAP)
-- Oscillator extremes (RSI, Stochastic)
+  <!-- Main Content -->
+  <div class="wrap article-grid">
+    <div class="prose">
 
-Avoid:
-- Breakout trades (false breaks common)
-- Trend following (no sustained direction)</code></pre>
+      <p><b>Your trend-following strategy was printing money last month. This month? Getting chopped to pieces.</b></p>
 
-      <h3>Regime 3: High Volatility (Chaotic)</h3>
-      <p><strong>Characteristics:</strong></p>
-      <ul>
-        <li>Large price swings, whipsaws</li>
-        <li>ATR spikes (2-3x normal)</li>
-        <li>VIX > 25-30 (elevated fear)</li>
-        <li>News-driven (FOMC, earnings, geopolitical)</li>
-      </ul>
-      <pre><code>Best Strategies:
-- Sit out (preserve capital)
-- Reduce size 50-75% if trading
-- Wider stops (avoid noise stopouts)
-- Very short timeframes (scalp only)
+      <p>Sound familiar?</p>
 
-Avoid:
-- Normal position sizing (too risky)
-- Swing trades (overnight risk extreme)</code></pre>
+      <p>Here's the uncomfortable truth: Markets shift between regimes—trending, mean-reverting, volatile. And the strategy that worked yesterday can destroy you tomorrow.</p>
 
-      <h3>Regime 4: Low Volatility (Compression)</h3>
-      <p><strong>Characteristics:</strong></p>
-      <ul>
-        <li>Tight range, narrow candles</li>
-        <li>ATR at multi-week lows</li>
-        <li>Bollinger Bands squeeze</li>
-        <li>Precedes regime shift (expansion coming)</li>
-      </ul>
-      <pre><code>Best Strategies:
-- Wait for breakout (compression → expansion)
-- Prepare directional setups (don't trade the chop)
-- Reduce size or frequency
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Most traders have ONE strategy they try to force on EVERY market condition. It's like showing up to a knife fight with a tennis racket. Wrong tool, wrong time, wrong outcome.</p>
+      </div>
 
-Avoid:
-- Forcing trades (low R:R in tight ranges)
-- Scalping (spread costs eat profits)</code></pre>
+      <div class="callout-tip">
+        <h4>🎯 What You'll Gain</h4>
+        <p>After this lesson, you'll be able to:</p>
+        <ul>
+          <li>Identify the four core market regimes in real-time</li>
+          <li>Build a multi-indicator regime detection system (ADX, ATR, Bollinger Width)</li>
+          <li>Adapt your strategy selection BEFORE getting chopped up</li>
+          <li>Integrate regime filters with Janus Atlas and Minimal Flow</li>
+        </ul>
+      </div>
 
-      <h2>Quantifying Regimes with Indicators</h2>
-      
-      <h3>ADX (Average Directional Index)</h3>
-      <p><strong>Measures trend strength (NOT direction).</strong></p>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>ADX Value</th><th>Regime</th><th>Strategy</th></tr>
-        <tr><td>&lt; 20</td><td>Weak/No trend</td><td>Mean reversion, fade extremes</td></tr>
-        <tr><td>20-25</td><td>Developing trend</td><td>Early trend entries</td></tr>
-        <tr><td>25-40</td><td>Strong trend</td><td>Trend following, pullbacks</td></tr>
-        <tr><td>&gt; 40</td><td>Very strong trend</td><td>Ride trend, avoid fades</td></tr>
-        <tr><td>&gt; 50</td><td>Extreme (exhaustion risk)</td><td>Trail stops, scale out</td></tr>
-      </table>
+      <div class="section-break"><span>Part 1: The Four Regimes (And Why You Keep Trading the Wrong One)</span></div>
 
-      <h3>ATR (Average True Range)</h3>
-      <p><strong>Measures volatility (average range per candle).</strong></p>
-      <pre><code>ATR Regime Classification:
+      <h2>Markets Have Moods—And You Need to Read Them</h2>
+
+      <p>Think of markets like weather. You wouldn't wear shorts in a blizzard, right?</p>
+
+      <p>Yet traders do the equivalent EVERY DAY: trying to buy breakouts in choppy ranges, fading trends that never stop, scalping in explosive volatility.</p>
+
+      <p>Let's fix that.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Trending Regime</button>
+          <button>Range-Bound</button>
+          <button>High Volatility</button>
+          <button>Compression</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>🚀 Trending (Directional)</h3>
+            <p><strong>What it looks like:</strong></p>
+            <ul>
+              <li>Clear higher highs + higher lows (uptrend)</li>
+              <li>Price sustains away from mean (VWAP, EMA)</li>
+              <li>ADX > 25 (strong trend)</li>
+              <li>Volume increases on trend moves</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Best strategies:</strong> Pullback entries, breakout continuations, ride the move</p>
+            <p><strong>Avoid:</strong> Fading the trend (fighting momentum), range-bound scalping</p>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-left:3px solid rgba(0,212,170,.5)">
+              <strong>Pro Tip:</strong> In strong trends, RSI can stay "overbought" (>70) for WEEKS. Don't fade it. Ride it.
+            </div>
+          </div>
+          <div class="tab-panel">
+            <h3>↔️ Range-Bound (Mean-Reverting)</h3>
+            <p><strong>What it looks like:</strong></p>
+            <ul>
+              <li>Price oscillates between defined support/resistance</li>
+              <li>Repeatedly bounces from extremes</li>
+              <li>ADX < 20 (weak/no trend)</li>
+              <li>Volume spikes at range edges</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Best strategies:</strong> Fade extremes (sell highs, buy lows), VWAP reversions</p>
+            <p><strong>Avoid:</strong> Breakout trades (false breaks common), trend-following</p>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-left:3px solid rgba(255,107,107,.5)">
+              <strong>Warning:</strong> Ranges WILL eventually break. Don't get stubborn fading the 5th breakout attempt.
+            </div>
+          </div>
+          <div class="tab-panel">
+            <h3>💥 High Volatility (Chaotic)</h3>
+            <p><strong>What it looks like:</strong></p>
+            <ul>
+              <li>Large price swings, whipsaws everywhere</li>
+              <li>ATR spikes 2-3x normal</li>
+              <li>VIX > 25-30 (elevated fear)</li>
+              <li>News-driven (FOMC, earnings, geopolitical events)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Best strategies:</strong> Sit out (preserve capital), or reduce size 50-75%</p>
+            <p><strong>Avoid:</strong> Normal position sizing (too risky), swing trades (overnight risk extreme)</p>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-left:3px solid rgba(255,107,107,.5)">
+              <strong>Real Talk:</strong> Sometimes the best trade is NO trade. Your capital survives to fight another day.
+            </div>
+          </div>
+          <div class="tab-panel">
+            <h3>🔒 Compression (Low Volatility)</h3>
+            <p><strong>What it looks like:</strong></p>
+            <ul>
+              <li>Tight range, narrow candles</li>
+              <li>ATR at multi-week lows</li>
+              <li>Bollinger Bands squeeze tight</li>
+              <li>Precedes regime shift (expansion coming)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Best strategies:</strong> Wait for breakout, don't trade the chop</p>
+            <p><strong>Avoid:</strong> Forcing trades (low R:R in tight ranges), scalping (spread costs eat profits)</p>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.1);border-left:3px solid rgba(255,193,7,.5)">
+              <strong>Heads Up:</strong> Compression → Expansion is THE most predictable regime shift. Be ready.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 2: Quantifying Regimes (No More Guessing)</span></div>
+
+      <h2>Build Your Regime Detection System</h2>
+
+      <p>You can't manage what you can't measure.</p>
+
+      <p>Let's turn that fuzzy "feels trendy" into a precise, quantifiable signal.</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Indicator 1: ADX (Trend Strength)</div>
+          <div class="accordion-content">
+            <p><strong>ADX measures trend strength—NOT direction.</strong></p>
+            <table style="width:100%; border-collapse: collapse; margin:1rem 0">
+              <tr style="border-bottom:1px solid rgba(255,255,255,.1)"><th style="padding:.5rem">ADX Value</th><th style="padding:.5rem">Regime</th><th style="padding:.5rem">Strategy</th></tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05)"><td style="padding:.5rem">< 20</td><td style="padding:.5rem">Weak/No trend</td><td style="padding:.5rem">Mean reversion, fade extremes</td></tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05)"><td style="padding:.5rem">20-25</td><td style="padding:.5rem">Developing trend</td><td style="padding:.5rem">Early trend entries</td></tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05)"><td style="padding:.5rem">25-40</td><td style="padding:.5rem">Strong trend</td><td style="padding:.5rem">Trend following, pullbacks</td></tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05)"><td style="padding:.5rem">> 40</td><td style="padding:.5rem">Very strong</td><td style="padding:.5rem">Ride trend, avoid fades</td></tr>
+              <tr><td style="padding:.5rem">> 50</td><td style="padding:.5rem">Extreme</td><td style="padding:.5rem">Trail stops, scale out (exhaustion risk)</td></tr>
+            </table>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
+              <strong>Key Insight:</strong> ADX > 25 is your green light for trend strategies. ADX < 20? Switch to mean reversion or sit out.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Indicator 2: ATR (Volatility)</div>
+          <div class="accordion-content">
+            <p><strong>ATR measures volatility (average range per candle).</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>ATR Regime Classification:
 Current ATR: $2.50
 20-period ATR avg: $2.00
 
@@ -110,33 +197,30 @@ Interpretation:
 < 0.8x = Low volatility (compression)
 0.8-1.2x = Normal volatility
 1.2-1.5x = Elevated volatility
-> 1.5x = High volatility (reduce size)</code></pre>
+> 1.5x = High volatility (reduce size 50%+)</code></pre>
+            <p style="margin-top:1rem">When ATR spikes above 1.5x average, you're in the danger zone. Cut position sizes or sit out entirely.</p>
+          </div>
+        </div>
 
-      <h3>Bollinger Band Width</h3>
-      <p><strong>Measures range expansion/contraction.</strong></p>
-      <pre><code>BB Width = (Upper Band - Lower Band) / Middle Band
+        <div class="accordion-item">
+          <div class="accordion-header">Indicator 3: Bollinger Band Width</div>
+          <div class="accordion-content">
+            <p><strong>Bollinger Width measures range expansion/contraction.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>BB Width = (Upper Band - Lower Band) / Middle Band
 
 Interpretation:
 BB Width < 4% = Tight range (compression, breakout pending)
 BB Width 4-8% = Normal range
 BB Width > 8% = Wide range (high volatility)</code></pre>
+            <p style="margin-top:1rem">The squeeze is your early-warning system. When BB Width drops below 4%, a volatility expansion is coming. Get ready.</p>
+          </div>
+        </div>
 
-      <h3>Linear Regression Slope</h3>
-      <p><strong>Measures directional bias over N periods.</strong></p>
-      <pre><code>20-period linear regression slope:
-
-Slope > 0.5° = Uptrend (bullish bias)
-Slope -0.5° to +0.5° = No trend (range-bound)
-Slope < -0.5° = Downtrend (bearish bias)
-
-R² (fit quality):
-R² > 0.7 = Strong trend (price follows line)
-R² < 0.3 = Weak trend (choppy)</code></pre>
-
-      <h2>Regime Detection Framework</h2>
-      
-      <h3>Multi-Indicator Regime Score</h3>
-      <pre><code>Regime Detection Checklist:
+        <div class="accordion-item">
+          <div class="accordion-header">Putting It Together: Multi-Indicator Regime Score</div>
+          <div class="accordion-content">
+            <p><strong>Combine all three for a regime "score":</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Regime Detection Checklist:
 
 1. ADX Score:
    ADX > 25 → +1 (trending)
@@ -163,103 +247,92 @@ Total Score:
 +3 to +5 = Strong Trending (trade pullbacks, breakouts)
 0 to +2 = Weak Trend / Range (mean reversion)
 -3 to -5 = Compressed (wait for breakout)</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px">
+              <strong>Pro Move:</strong> Before EVERY trade, check your regime score. If it's negative, don't force the trade. Wait for the regime to shift.
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <h3>Real-Time Regime Detection</h3>
-      <pre><code>Example: SPY 15-min chart, 10:30 AM
+      <div class="section-break"><span>Part 3: Real-Time Application</span></div>
 
-ADX: 18 (-1, weak trend)
-ATR: $1.20, avg $1.50 (-1, compressed)
-BB Width: 3.2% (-1, tight)
-Price vs VWAP: $520.02, VWAP $520.00 (0, at VWAP)
-Volume: Flat (0, no trend)
+      <h2>Seeing It In Action: A Tale of Two Timeframes</h2>
 
-Total Score: -3 (Compressed Range)
+      <p>Let's walk through a real example. Same chart, 30 minutes apart. Watch how regime detection saves you from a terrible trade:</p>
 
-Action: WAIT. Do not trade. Regime shift imminent.
+      <div class="callout-info">
+        <h4>📖 Case Study: The Compression Trap</h4>
+        <p><strong>10:30 AM – SPY 15-min Chart</strong></p>
+        <ul>
+          <li>ADX: 18 (-1, weak trend)</li>
+          <li>ATR: $1.20, avg $1.50 (-1, compressed)</li>
+          <li>BB Width: 3.2% (-1, tight)</li>
+          <li>Price vs VWAP: $520.02, VWAP $520.00 (0, at VWAP)</li>
+          <li>Volume: Flat (0, no trend)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Total Score: -3 (Compressed Range)</strong></p>
+        <p><strong>Action: WAIT.</strong> Do not trade. Regime shift imminent. You see a "perfect" Janus sweep setup. Your trigger finger is itching. But your regime score is screaming "DON'T DO IT."</p>
+        <p style="margin-top:1rem"><strong>11:00 AM – Same Chart, 30 min later</strong></p>
+        <ul>
+          <li>ADX: 28 (+1, trending)</li>
+          <li>ATR: $2.10, avg $1.50 (+1, expanding)</li>
+          <li>BB Width: 6.5% (0, normal)</li>
+          <li>Price vs VWAP: $521.10, VWAP $520.00 (+1, above)</li>
+          <li>Volume: Spiking on up moves (+1, trend)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Total Score: +4 (Strong Uptrend)</strong></p>
+        <p><strong>Action: TRADE.</strong> Now the same setup is a high-probability play. The regime shifted. You're trading WITH the flow, not against it.</p>
+      </div>
 
----
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Your setup doesn't exist in a vacuum. A "perfect" Janus sweep in a compressed regime has a 50% win rate. The SAME setup in a trending regime? 75%+. Context is everything.</p>
+      </div>
 
-Same chart, 11:00 AM (30 min later):
+      <div class="section-break"><span>Part 4: Regime-Adaptive Strategy Selection</span></div>
 
-ADX: 28 (+1, trending)
-ATR: $2.10, avg $1.50 (+1, expanding)
-BB Width: 6.5% (0, normal)
-Price vs VWAP: $521.10, VWAP $520.00 (+1, above)
-Volume: Spiking on up moves (+1, trend)
+      <h2>Match Your Weapon to the Fight</h2>
 
-Total Score: +4 (Strong Uptrend)
+      <p>Now that you can identify regimes, here's what to DO about it:</p>
 
-Action: TRADE. Look for pullback longs, ride trend.</code></pre>
-
-      <h2>Regime Transition Patterns</h2>
-      
-      <h3>Compression → Trending (Breakout)</h3>
-      <pre><code>Phase 1: Compression
-- Low ATR, tight Bollinger Bands
-- ADX < 20 (no trend)
-- Price consolidates in narrow range
-
-Phase 2: Breakout
-- ATR spikes (volatility expansion)
-- Volume increases dramatically
-- Price breaks range high/low
-- ADX starts rising (20 → 25+)
-
-Phase 3: Trend Establishment
-- ADX > 25, climbing
-- Price sustains directional move
-- Pullbacks shallow (higher lows in uptrend)
-
-Trading:
-- Enter on breakout confirmation (close above range + volume)
-- Ride trend until ADX peaks and reverses</code></pre>
-
-      <h3>Trending → Mean Reversion (Exhaustion)</h3>
-      <pre><code>Phase 1: Strong Trend
-- ADX > 40 (very strong)
-- Extended move (> 3% from VWAP)
-- Volume climaxing
-
-Phase 2: Exhaustion Signals
-- ADX peaks and starts declining
-- Price fails to make new high/low
-- Volume drops on continuation attempts
-- Divergence (price up, ADX down)
-
-Phase 3: Range Formation
-- ADX drops below 25
-- Price oscillates around VWAP
-- Support/resistance defined
-
-Trading:
-- Exit trend trades when ADX peaks
-- Switch to fade extremes (mean reversion)</code></pre>
-
-      <h3>Mean Reversion → Volatile (Shock)</h3>
-      <pre><code>Trigger: Unexpected news (FOMC, geopolitical)
-
-Before: ADX 18, ATR $1.50, ranging between $519-521
-After: ADX 35, ATR $3.50, violent swings $518-524
-
-Action:
-- Close all positions (risk spike)
-- Wait for volatility to normalize
-- Do NOT try to "buy the dip" in chaos</code></pre>
-
-      <h2>Regime-Adaptive Strategy Selection</h2>
-      
-      <h3>Strategy Matrix</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Regime</th><th>Best Strategy</th><th>Avoid</th></tr>
-        <tr><td>Strong Uptrend</td><td>Buy pullbacks to VWAP, Janus sweeps</td><td>Shorts, fading strength</td></tr>
-        <tr><td>Strong Downtrend</td><td>Sell rallies to VWAP, fade bounces</td><td>Longs, catching knives</td></tr>
-        <tr><td>Range-Bound</td><td>Fade extremes, VWAP reversions</td><td>Breakouts (false)</td></tr>
-        <tr><td>High Volatility</td><td>Sit out OR scalp with 50% size</td><td>Normal position sizing</td></tr>
-        <tr><td>Compression</td><td>Wait, prepare for breakout</td><td>Forcing trades</td></tr>
+      <table style="width:100%; border-collapse: collapse; margin:2rem 0">
+        <tr style="border-bottom:2px solid rgba(255,255,255,.2)">
+          <th style="padding:.75rem;text-align:left">Regime</th>
+          <th style="padding:.75rem;text-align:left">Best Strategy</th>
+          <th style="padding:.75rem;text-align:left">Avoid</th>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+          <td style="padding:.75rem"><strong>Strong Uptrend</strong></td>
+          <td style="padding:.75rem">Buy pullbacks to VWAP, Janus sweeps</td>
+          <td style="padding:.75rem">Shorts, fading strength</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+          <td style="padding:.75rem"><strong>Strong Downtrend</strong></td>
+          <td style="padding:.75rem">Sell rallies to VWAP, fade bounces</td>
+          <td style="padding:.75rem">Longs, catching knives</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+          <td style="padding:.75rem"><strong>Range-Bound</strong></td>
+          <td style="padding:.75rem">Fade extremes, VWAP reversions</td>
+          <td style="padding:.75rem">Breakouts (false)</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+          <td style="padding:.75rem"><strong>High Volatility</strong></td>
+          <td style="padding:.75rem">Sit out OR scalp with 50% size</td>
+          <td style="padding:.75rem">Normal position sizing</td>
+        </tr>
+        <tr>
+          <td style="padding:.75rem"><strong>Compression</strong></td>
+          <td style="padding:.75rem">Wait, prepare for breakout</td>
+          <td style="padding:.75rem">Forcing trades</td>
+        </tr>
       </table>
 
       <h3>Position Sizing by Regime</h3>
-      <pre><code>Base Risk: 2% per trade
+
+      <p>Your base risk might be 2% per trade. But regimes demand adjustments:</p>
+
+      <pre style="background:rgba(0,0,0,.3);padding:1.5rem;border-radius:8px;overflow-x:auto"><code>Base Risk: 2% per trade
 
 Regime Adjustments:
 Strong Trending (ADX > 30): 2.0% (full size, high confidence)
@@ -268,11 +341,29 @@ Range-Bound (ADX < 20): 1.0% (tight targets, lower R)
 High Volatility (ATR > 1.5x): 0.5-1.0% (risk management)
 Compression: 0% (wait for regime shift)</code></pre>
 
-      <h2>Signal Pilot Regime Integration</h2>
-      
-      <h3>Minimal Flow: Automated Regime Detection</h3>
-      <p><strong>Minimal Flow classifies regime in real-time.</strong></p>
-      <pre><code>Minimal Flow Signals:
+      <div class="callout-warning">
+        <h4>🚨 The Painful Truth</h4>
+        <p>If you're trading full size in ALL regimes, you're destroying your account. Period.</p>
+        <p>The pros reduce size in chop, sit out in volatility, and load up ONLY when conditions are perfect. That's how you survive long enough to win.</p>
+      </div>
+
+      <div class="section-break"><span>Part 5: Integration with Signal Pilot</span></div>
+
+      <h2>Regime Detection + Janus Atlas = Unfair Advantage</h2>
+
+      <p>Here's where it gets powerful. You're not just using regime detection in isolation—you're layering it with institutional signals.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Minimal Flow Integration</button>
+          <button>Janus Atlas Filter</button>
+          <button>Plutus Flow Context</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Minimal Flow: Automated Regime Detection</h3>
+            <p><strong>Minimal Flow classifies regime in real-time for you.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Minimal Flow Signals:
 - Trending Up: Green (trade pullback longs)
 - Trending Down: Red (trade bounce shorts)
 - Ranging: Yellow (fade extremes)
@@ -282,9 +373,11 @@ Integration:
 ONLY trade when Minimal Flow = Trending
 If Ranging → Reduce size 50%, tight targets
 If Volatile → No new trades</code></pre>
-
-      <h3>Janus Atlas: Regime-Specific Interpretation</h3>
-      <pre><code>Trending Regime + Janus Sweep:
+            <p style="margin-top:1rem">Think of Minimal Flow as your regime co-pilot. When it's green, you're cleared for takeoff. Yellow or red? Stay grounded.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Janus Atlas: Regime-Specific Interpretation</h3>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Trending Regime + Janus Sweep:
 - Sweep = institutional accumulation
 - High probability reversal (70%+ win rate)
 - Trade aggressively (2% risk)
@@ -297,70 +390,117 @@ Ranging Regime + Janus Sweep:
 Volatile Regime + Janus Sweep:
 - Ambiguous (could reverse OR continue violently)
 - Skip (too risky)</code></pre>
-
-      <h3>Plutus Flow: VWAP + Regime</h3>
-      <pre><code>Trending Regime:
+            <p style="margin-top:1rem">Same setup, different regime = different edge. Respect that.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Plutus Flow: VWAP + Regime</h3>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Trending Regime:
 - Price dips to VWAP = buy (institutions accumulating)
 - POC = strong support (add to position)
 
 Ranging Regime:
 - Price above VWAP = fade (mean reversion to VWAP)
 - Price below VWAP = buy (mean reversion to VWAP)</code></pre>
+            <p style="margin-top:1rem">In trends, VWAP is support. In ranges, VWAP is a magnet. Know the difference.</p>
+          </div>
+        </div>
+      </div>
 
-      <h2>Backtesting by Regime</h2>
-      
-      <h3>Regime Segmentation</h3>
-      <p><strong>Analyze strategy performance by regime.</strong></p>
-      <pre><code>Strategy: Janus sweep reversals (2020-2024)
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Four regimes:</strong> Trending, range-bound, volatile, compressed—each demands a different approach</li>
+          <li><strong>ADX + ATR + BB Width:</strong> Your regime detection toolkit (quantify, don't guess)</li>
+          <li><strong>Regime score:</strong> +3 to +5 = trade trending strategies, -3 to -5 = wait for breakout</li>
+          <li><strong>Position sizing adapts:</strong> Full size in trends, half size in ranges, zero in volatility</li>
+          <li><strong>Layer with Minimal Flow:</strong> Only trade when regime AND flow align</li>
+          <li><strong>Same setup, different regime:</strong> 75% win rate in trends, 50% in ranges—context is edge</li>
+        </ul>
+      </div>
 
-Overall: 65% WR, 2.8R avg
+      <div class="section-break"><span>Test Your Knowledge</span></div>
 
-By Regime:
-Trending (ADX > 25): 72% WR, 3.4R avg (BEST)
-Ranging (ADX < 20): 58% WR, 1.9R avg (Marginal)
-Volatile (ATR > 1.5x): 45% WR, 0.8R avg (LOSING)
+      <div class="quiz">
+        <h4>🎮 Quick Check (No Pressure)</h4>
 
-Lesson: ONLY trade this strategy in trending regimes
-Skip ranging, avoid volatile</code></pre>
+        <div class="quiz-question">
+          <p><strong>SPY shows ADX at 17, ATR at 0.75x average, and BB Width at 3.8%. What's the regime and what should you do?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Trending – Trade pullback longs aggressively</div>
+            <div class="quiz-option" data-correct="true">B) Compression – Wait for breakout, don't force trades</div>
+            <div class="quiz-option" data-correct="false">C) High Volatility – Reduce size to 50%</div>
+            <div class="quiz-option" data-correct="false">D) Range-Bound – Fade extremes with mean reversion</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> ADX < 20 (-1), ATR < 0.8x (-1), BB Width < 4% (-1) = Total score -3 (Compression). The market is coiling. Wait for the expansion—don't trade the chop.
+          </div>
+        </div>
 
-      <h3>Regime Filter Rules</h3>
-      <pre><code>Trading Plan Update:
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
 
-Entry Checklist:
-[ ] HTF aligned
-[ ] Setup grade A/B
-[ ] Confluence ≥ 3/5
-[ ] ADX > 25 (trending regime) ← NEW RULE
-[ ] ATR < 1.5x avg (not volatile) ← NEW RULE
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you're in the top 5% of traders. Most people never learn to adapt. They have one strategy and wonder why it stops working. You just learned the meta-skill: reading the market's regime and adapting BEFORE it chops you up.</p>
 
-Result: Win rate +10%, avg R +0.6 (regime filtering)</code></pre>
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Article #30: Advanced Auction Theory</strong> — Markets are continuous auctions searching for fair value. Learn to trade opening ranges, fair value gaps, and single prints like a professional floor trader.</p>
+      </div>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Four regimes: Trending, range-bound, volatile, compressed</strong></li>
-        <li><strong>Use ADX + ATR + BB Width to classify regime</strong></li>
-        <li><strong>Trending: Trade pullbacks, breakouts (with trend)</strong></li>
-        <li><strong>Range: Fade extremes, mean reversion to VWAP</strong></li>
-        <li><strong>Volatile: Sit out or drastically reduce size</strong></li>
-        <li><strong>Backtest by regime to find your edge</strong></li>
-      </ul>
+    </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Classify today's regime</strong></p>
-      <p>Chart SPY. Calculate ADX, ATR ratio, BB Width. Score regime. What strategy should you use?</p>
-      
-      <p><strong>Exercise 2: Regime backtest</strong></p>
-      <p>Review your last 20 trades. Label regime (trending/ranging/volatile). What's your win rate in each? Should you filter any regime?</p>
+    <!-- Table of Contents Sidebar -->
+    <aside class="toc">
+      <h3>On this page</h3>
+      <a href="#" style="opacity:.6">The Four Regimes</a>
+      <a href="#">Quantifying Regimes</a>
+      <a href="#">Real-Time Application</a>
+      <a href="#">Strategy Selection</a>
+      <a href="#">Signal Pilot Integration</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"One strategy, all regimes = inconsistent results. Adapt or get chopped up. Regime awareness is edge."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+  <!-- Bottom Navigation -->
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/advanced/28-institutional-order-flow.html">&larr; Previous: Institutional Flow</a>
-    <a class="btn btn-primary" href="/curriculum/advanced/30-auction-theory-advanced.html">Next: Auction Theory &rarr;</a>
+    <a class="btn btn-ghost" href="/advanced.html">← Back to Advanced</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/30-auction-theory-advanced.html">Next Lesson →</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script>
+  // Update progress circle as user scrolls
+  window.addEventListener('scroll', () => {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrolled = window.scrollY;
+    const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);
+
+    const circle = document.querySelector('.progress-circle');
+    if (circle) {
+      circle.style.setProperty('--progress', percent + '%');
+      circle.querySelector('span').textContent = percent + '%';
+    }
+  }, { passive: true });
+
+  // Save last article to localStorage for "Continue Reading"
+  localStorage.setItem('sp_edu_last_article', JSON.stringify({
+    title: 'Market Regime Recognition',
+    level: 'Advanced',
+    order: '29',
+    url: window.location.pathname,
+    progress: 0
+  }));
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

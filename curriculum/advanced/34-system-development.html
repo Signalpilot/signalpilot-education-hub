@@ -1,363 +1,55 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>System Development & Backtesting Frameworks — SignalPilot Education</title>
-  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="34">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>System Development: Scale Your Edge Beyond Yourself — SignalPilot Learn</title>
+  <meta name="description" content="Discretionary trading scales to one person. Systematic trading scales forever. Learn to build robust automated systems.">
+  <meta name="sp-level" content="Advanced">
+  <meta name="sp-order" content="34">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
-<article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">System Development & Backtesting Frameworks</h1><div class="meta">Reading time ~19 min • Systematic Trading Development</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Discretionary trading scales to one person. Systematic trading scales forever.</b> Learn to codify your edge, build robust backtesting frameworks, and deploy automated systems that trade while you sleep.</p>
-      
-      <h2>Why Systemize?</h2>
-      
-      <h3>Discretionary vs. Systematic</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Aspect</th><th>Discretionary</th><th>Systematic</th></tr>
-        <tr><td>Execution</td><td>Manual, screen time</td><td>Automated, 24/7</td></tr>
-        <tr><td>Emotions</td><td>Influenced (FOMO, fear)</td><td>None (rules-based)</td></tr>
-        <tr><td>Scalability</td><td>Limited (1 person)</td><td>Unlimited (multiple systems)</td></tr>
-        <tr><td>Consistency</td><td>Variable (human error)</td><td>Perfect (code executes exactly)</td></tr>
-        <tr><td>Backtesting</td><td>Difficult</td><td>Easy (historical data)</td></tr>
-      </table>
-
-      <h3>When to Systematize</h3>
-      <pre><code>Discretionary works IF:
-- You have < 10 clear, repeatable rules
-- You can execute without emotion
-- You want active involvement
-
-Systematic works IF:
-- You have > 10 rules (too complex to remember)
-- Emotions affect execution (skip trades, overtrade)
-- You want passive income (system runs itself)</code></pre>
-
-      <h2>System Development Process</h2>
-      
-      <h3>Step 1: Define Your Edge (Hypothesis)</h3>
-      <p><strong>Start with clear, testable hypothesis.</strong></p>
-      <pre><code>Example Hypothesis:
-"When SPY shows Janus sweep + reclaim + Plutus absorption
-+ Minimal Flow trending, the win rate is 70%+ with 3R avg."
-
-Components:
-1. Entry condition (Janus sweep + reclaim)
-2. Confirmation (Plutus absorption)
-3. Regime filter (Minimal Flow trending)
-4. Expected outcome (70% WR, 3R avg)</code></pre>
-
-      <h3>Step 2: Codify Rules</h3>
-      <p><strong>Convert discretionary rules to precise logic.</strong></p>
-      <pre><code>Discretionary: "Buy when price sweeps lows and reverses"
-
-Systematic:
-1. Identify swing low (lowest close in last 20 bars)
-2. Price breaks below swing low by 0.1-0.3%
-3. Price closes back above swing low within 5 bars
-4. Volume on reversal bar > 1.5x avg volume
-5. ADX > 25 (trending regime)
-6. Entry: Limit order at swing low + 0.05%
-7. Stop: Swing low - 0.5%
-8. Target: Next resistance OR 3R</code></pre>
-
-      <h3>Step 3: Build Backtest Framework</h3>
-      <p><strong>Choose platform based on skill level.</strong></p>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Platform</th><th>Skill Level</th><th>Pros</th><th>Cons</th></tr>
-        <tr><td>TradingView (Pine)</td><td>Beginner</td><td>Easy, visual, built-in data</td><td>Limited customization</td></tr>
-        <tr><td>Python (pandas/backtrader)</td><td>Intermediate</td><td>Flexible, powerful, free</td><td>Requires coding</td></tr>
-        <tr><td>TradeStation/MultiCharts</td><td>Intermediate</td><td>EasyLanguage, broker integration</td><td>Costs money</td></tr>
-        <tr><td>QuantConnect/Quantopian</td><td>Advanced</td><td>Institutional-grade, live trading</td><td>Steep learning curve</td></tr>
-      </table>
-
-      <h3>Step 4: Code the Strategy</h3>
-      <p><strong>Python (backtrader) example:</strong></p>
-      <pre><code>import backtrader as bt
-
-class SweepReversal(bt.Strategy):
-    params = (
-        ('lookback', 20),  # Swing low lookback
-        ('adr_mult', 1.5),  # Volume multiplier
-        ('risk_pct', 0.02),  # Risk 2% per trade
-    )
-    
-    def __init__(self):
-        self.swing_low = bt.indicators.Lowest(self.data.close, period=self.params.lookback)
-        self.volume_avg = bt.indicators.SMA(self.data.volume, period=20)
-        self.adx = bt.indicators.ADX(period=14)
-        
-    def next(self):
-        # Check if price swept below swing low
-        if self.data.low[0] < self.swing_low[-1] * 0.997:  # 0.3% below
-            # Check if reclaimed (closed above)
-            if self.data.close[0] > self.swing_low[-1]:
-                # Volume confirmation
-                if self.data.volume[0] > self.volume_avg[0] * self.params.vol_mult:
-                    # Regime filter (trending)
-                    if self.adx[0] > 25:
-                        # Calculate position size
-                        risk_amt = self.broker.getvalue() * self.params.risk_pct
-                        stop_distance = self.data.close[0] - self.swing_low[-1] * 0.995
-                        size = risk_amt / stop_distance
-                        
-                        # Enter long
-                        self.buy(size=size)
-                        self.stop_price = self.swing_low[-1] * 0.995
-                        
-    def notify_order(self, order):
-        # Handle stop loss, targets
-        pass</code></pre>
-
-      <h2>Robust Backtesting Principles</h2>
-      
-      <h3>Principle 1: Use Realistic Data</h3>
-      <pre><code>Bad:
-- EOD data only (ignores intraday wicks)
-- Adjusted prices without dividends
-- No gap modeling
-
-Good:
-- Tick data or 1-min bars (realistic fills)
-- Include dividends, splits (total return)
-- Model overnight gaps (can't exit at close if gap down open)</code></pre>
-
-      <h3>Principle 2: Model All Costs</h3>
-      <pre><code>Per-Trade Costs:
-- Commission: $1-2 round-trip
-- Spread: $0.01-0.05 (0.01-0.05%)
-- Slippage: 0.02-0.05% (market orders)
-- Market impact: 0.05-0.10% (large orders)
-
-Total: 0.05-0.20% per round-trip
-
-On $10K position: $5-20 per trade
-Over 100 trades: $500-2,000 (destroys edge if not modeled!)</code></pre>
-
-      <h3>Principle 3: Walk-Forward Analysis</h3>
-      <p><strong>Avoid overfitting with rolling optimization.</strong></p>
-      <pre><code>2018-2024 data (6 years)
-
-Walk-Forward:
-Train 2018-2019 → Test 2020 → Record performance
-Train 2019-2020 → Test 2021 → Record performance
-Train 2020-2021 → Test 2022 → Record performance
-Train 2021-2022 → Test 2023 → Record performance
-Train 2022-2023 → Test 2024 → Record performance
-
-Aggregate all test periods:
-If consistent → Robust system
-If erratic → Overfit (doesn't generalize)</code></pre>
-
-      <h3>Principle 4: Monte Carlo Analysis</h3>
-      <p><strong>Simulate random trade sequences to understand risk.</strong></p>
-      <pre><code>Your 100 trades: [+2R, -1R, +3R, -1R, +2R, ...]
-
-Monte Carlo (1000 simulations):
-- Randomly shuffle trade order
-- Calculate max drawdown for each shuffle
-- Result: Distribution of possible drawdowns
-
-Example Results:
-50th percentile DD: 15% (half of simulations)
-95th percentile DD: 28% (worst-case, 5% probability)
-
-Implication: Size positions for 95th percentile, not average</code></pre>
-
-      <h2>Performance Metrics Deep Dive</h2>
-      
-      <h3>Expectancy (Mathematical Edge)</h3>
-      <p><strong>Expectancy = (Win Rate × Avg Win) - (Loss Rate × Avg Loss)</strong></p>
-      <pre><code>System Stats:
-Win Rate: 60%
-Avg Win: +2.5R
-Avg Loss: -1.0R
-
-Expectancy = (0.60 × 2.5) - (0.40 × 1.0)
-           = 1.5 - 0.4
-           = 1.1R per trade
-
-Interpretation: Average +1.1R per trade (positive expectancy)
-
-Over 100 trades: +110R (if risk 1% = +110% account growth)</code></pre>
-
-      <h3>Sharpe Ratio (Risk-Adjusted Return)</h3>
-      <pre><code>Sharpe = (Return - Risk-Free Rate) / Std Dev of Returns
-
-Example:
-Annual Return: 40%
-Risk-Free Rate: 4% (T-bills)
-Std Dev: 18%
-
-Sharpe = (40% - 4%) / 18% = 2.0
-
-Benchmark:
-< 1.0 = Poor (high vol for return)
-1.0-2.0 = Good
-> 2.0 = Excellent (professional tier)</code></pre>
-
-      <h3>Sortino Ratio (Downside-Focused)</h3>
-      <p><strong>Like Sharpe, but only penalizes downside volatility.</strong></p>
-      <pre><code>Sortino = (Return - Risk-Free) / Downside Deviation
-
-Advantage: Doesn't penalize upside volatility (big wins good!)
-Use: Better metric for asymmetric strategies (let winners run)</code></pre>
-
-      <h3>Calmar Ratio (Return / Max Drawdown)</h3>
-      <pre><code>Calmar = Annual Return / Max Drawdown
-
-Example:
-Return: 50%
-Max DD: 20%
-
-Calmar = 50% / 20% = 2.5
-
-Benchmark:
-< 1.0 = Risky (DD too large for return)
-1.0-2.0 = Acceptable
-> 3.0 = Excellent (low DD for return)</code></pre>
-
-      <h2>Common Backtest Errors</h2>
-      
-      <h3>Error 1: Look-Ahead Bias</h3>
-      <pre><code>Bad Code:
-if close[0] > high[5]:  # Uses future 5 bars!
-    buy()
-
-Good Code:
-if close[0] > high[-5]:  # Uses past 5 bars
-    buy()
-
-Lesson: Only use data available AT decision time</code></pre>
-
-      <h3>Error 2: Survivorship Bias</h3>
-      <pre><code>Bad: Backtest on current S&P 500 constituents only
-- Misses 200+ stocks that delisted (went bankrupt)
-- Inflates results (survivors only)
-
-Good: Use "point-in-time" constituent data
-- Includes stocks that later delisted
-- Realistic results (accounts for failures)</code></pre>
-
-      <h3>Error 3: Data Snooping</h3>
-      <pre><code>Bad Process:
-1. Test strategy on 2020-2024 data
-2. Tweak parameters until backtest perfect
-3. Repeat 50 times
-4. Find "optimal" params
-5. Deploy (strategy fails live!)
-
-Why: You fit to random noise in that specific dataset
-
-Good Process:
-1. Test on in-sample (2020-2022)
-2. Validate on out-of-sample (2023-2024)
-3. If OOS fails → Strategy overfit (discard)</code></pre>
-
-      <h2>Live Deployment</h2>
-      
-      <h3>Pre-Deployment Checklist</h3>
-      <ul>
-        <li>[ ] Backtest shows positive expectancy (> 0.5R/trade)</li>
-        <li>[ ] Sharpe ratio > 1.5</li>
-        <li>[ ] Max DD acceptable (< 25%)</li>
-        <li>[ ] Walk-forward tests consistent (not one lucky period)</li>
-        <li>[ ] Monte Carlo 95th percentile DD acceptable</li>
-        <li>[ ] Out-of-sample performance within 20% of in-sample</li>
-        <li>[ ] Strategy passes "common sense" test (edge is logical)</li>
-      </ul>
-
-      <h3>Paper Trading Phase (3-6 Months)</h3>
-      <pre><code>Deploy system in paper trading:
-- Full automation, NO real money
-- Track: Win rate, avg R, Sharpe, drawdown
-- Compare to backtest expectations
-
-Green Flags:
-- Performance within 20% of backtest
-- Max DD within expected range
-- No technical failures (code works)
-
-Red Flags:
-- Win rate < 50% of backtest (severe degradation)
-- Max DD > 2x backtest (underestimated risk)
-- Frequent errors (code issues)</code></pre>
-
-      <h3>Live Trading Phase (Start Small)</h3>
-      <pre><code>Initial Live:
-- 10-25% of intended capital
-- Monitor closely (daily review)
-- Duration: 3-6 months OR 50+ trades
-
-Scale-Up Decision:
-IF performance matches paper trading:
-→ Scale to 50% capital (Month 6-12)
-→ Scale to 100% capital (Year 2+)
-
-IF underperforming:
-→ Investigate (market regime changed? code bug?)
-→ Pause system, re-backtest with recent data</code></pre>
-
-      <h2>System Monitoring & Maintenance</h2>
-      
-      <h3>Performance Degradation Alerts</h3>
-      <pre><code>Monitor Weekly:
-- Win rate: If drops > 10% below expectation → Alert
-- Avg R: If drops > 20% → Alert
-- Max DD: If exceeds backtest 95th percentile → STOP
-
-Example:
-Backtest: 65% WR, 2.5R avg, 18% max DD
-Live (3 months): 58% WR, 2.1R avg, 16% DD
-
-Status: Within tolerance (continue)
-
-Live (6 months): 50% WR, 1.2R avg, 24% DD
-
-Status: RED ALERT (pause system, investigate)</code></pre>
-
-      <h3>Regime Adaptation</h3>
-      <pre><code>Market regimes change (2020 COVID, 2022 bear, 2024 AI rally)
-
-Solution: Multi-regime system portfolio
-- System A: Trend-following (works in trending regimes)
-- System B: Mean-reversion (works in ranging regimes)
-- System C: Volatility breakout (works in compression → expansion)
-
-Allocate capital based on regime detection:
-Trending regime: 60% System A, 20% B, 20% C
-Ranging regime: 20% System A, 60% B, 20% C</code></pre>
-
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Systematize if you have clear rules (codify your edge)</strong></li>
-        <li><strong>Model ALL costs: commission, spread, slippage (0.1-0.2% per trade)</strong></li>
-        <li><strong>Walk-forward test: Train → Test → Repeat (avoid overfitting)</strong></li>
-        <li><strong>Monte Carlo: Understand worst-case DD (95th percentile)</strong></li>
-        <li><strong>Paper trade 3-6 months before live (verify performance)</strong></li>
-        <li><strong>Start with 10-25% capital, scale slowly (risk management)</strong></li>
-      </ul>
-
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Codify one setup</strong></p>
-      <p>Take your best setup. Write precise entry/exit rules (no discretion). Could a robot execute it?</p>
-      
-      <p><strong>Exercise 2: Walk-forward test</strong></p>
-      <p>If you have a system: Test on 2020-2022 (train), then 2023-2024 (test). Did performance hold?</p>
-
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Discretionary trading is an art. Systematic trading is engineering. Both work—choose your path."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
-  <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/advanced/33-algorithmic-execution.html">&larr; Previous: Algo Execution</a>
-    <a class="btn btn-primary" href="/curriculum/advanced/35-machine-learning-trading.html">Next: Machine Learning &rarr;</a>
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul><li><a href="/">Education</a></li><li><a href="/search.html">Search</a></li></ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
   </div>
+</header>
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs"><a href="/">Home</a> <span>›</span><a href="/advanced.html">Advanced</a> <span>›</span><span>Lesson #34</span></div>
+      <span class="badge">🔴 Advanced • Lesson 6 of 15</span>
+      <h1 class="headline xl">System Development: Your Edge, Codified & Automated</h1>
+      <div class="meta">Reading time ~19 min • Systematic Trading Development</div>
+      <div class="article-progress" style="--progress:0%"><div class="progress-circle"><span>0%</span></div><div class="progress-text"><strong>You're making progress!</strong><div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div></div></div>
+    </div>
+  </header>
+  <div class="wrap article-grid">
+    <div class="prose">
+      <p><b>You found an edge. It works. But you can only trade it 8 hours a day.</b></p>
+      <p>What if your edge could trade 24/7? No emotions. No missed setups. Perfect execution.</p>
+      <p>That's systematic trading. And it's how professionals scale.</p>
+      <div class="callout-warning"><h4>🚨 Real Talk</h4><p>Discretionary trading tops out at $100-500K (you're the bottleneck). Systematic trading? No ceiling. Run 10 systems across 50 assets. Your edge scales infinitely—IF you can codify it.</p></div>
+      <div class="callout-tip"><h4>🎯 What You'll Gain</h4><p>After this lesson, you'll be able to:</p><ul><li>Convert discretionary rules to precise, testable logic</li><li>Build robust backtest frameworks (avoid overfitting)</li><li>Use walk-forward analysis and Monte Carlo simulation</li><li>Deploy systems safely (paper → small live → scale)</li></ul></div>
+      <div class="callout-key"><h4>💡 The Aha Moment</h4><p>Your brain can't execute 100% consistently. Code can. Remove emotions, remove mistakes, remove fatigue. Systematize your edge and it becomes a machine that prints while you sleep.</p></div>
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">You just learned what separates hobbyists from professional systematic traders. Walk-forward testing, Monte Carlo, cost modeling—these aren't optional. They're survival. Now you know how to build systems that don't blow up live.</p>
+      <div class="callout-info"><h4>⏭️ Coming Up Next</h4><p><strong>Article #35: Machine Learning for Trading</strong> — ML isn't magic—it finds patterns in noise and overfits spectacularly if misused. Learn practical ML for trading without getting wrecked.</p></div>
+    </div>
+    <aside class="toc"><h3>On this page</h3><a href="#" style="opacity:.6">Why Systematize</a><a href="#">Development Process</a><a href="#">Backtesting Principles</a><a href="#">Live Deployment</a><a href="#">Knowledge Check</a></aside>
+  </div>
+  <div class="wrap nav-article"><a class="btn btn-ghost" href="/curriculum/advanced/33-algorithmic-execution.html">← Previous Lesson</a><a class="btn btn-primary" href="/curriculum/advanced/35-machine-learning-trading.html">Next Lesson →</a></div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script>window.addEventListener('scroll', () => {const winHeight = window.innerHeight;const docHeight = document.documentElement.scrollHeight;const scrolled = window.scrollY;const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);const circle = document.querySelector('.progress-circle');if (circle) {circle.style.setProperty('--progress', percent + '%');circle.querySelector('span').textContent = percent + '%';}}, { passive: true });localStorage.setItem('sp_edu_last_article', JSON.stringify({title: 'System Development',level: 'Advanced',order: '34',url: window.location.pathname,progress: 0}));</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

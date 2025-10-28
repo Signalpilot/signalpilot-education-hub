@@ -1,196 +1,424 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Portfolio Construction: Beyond Single Trades — SignalPilot Education</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Portfolio Construction: Why All Your Trades Blow Up at Once</title>
+  <meta name="description" content="You're not losing because of bad trades. You're losing because all your positions are correlated. Learn portfolio heat management and diversification that actually works.">
   <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="23">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/intermediate/23-portfolio-construction.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Portfolio Construction: Beyond Single Trades</h1><div class="meta">Reading time ~14 min • Risk & Position Management</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Portfolio risk ≠ sum of individual trade risks.</b> Learn correlation, portfolio heat management, sector exposure limits, and professional portfolio construction frameworks.</p>
-      
-      <h2>Portfolio Heat (Total Risk)</h2>
-      
-      <p><strong>Portfolio Heat = Total $ at risk across all open positions.</strong></p>
-      <pre><code>Trade 1: $200 risk (2%)
-Trade 2: $150 risk (1.5%)
-Trade 3: $100 risk (1%)
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #23</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 23 of 27</span>
+      <h1 class="headline xl">Portfolio Construction: Why All Your Trades Blow Up at Once</h1>
+      <div class="meta">14 min read • Professional Risk Management</div>
+    </div>
+  </header>
 
-Total Heat: $450 (4.5%)</code></pre>
-      
-      <h3>Max Heat Rule</h3>
-      <p><b>Never exceed 6-8% total portfolio heat.</b></p>
-      <p>Why: If all positions hit stops simultaneously (market crash), you lose max 6-8% (survivable).</p>
+  <div class="wrap article-grid">
+    <div class="prose">
 
-      <h2>Correlation Risk</h2>
-      
-      <h3>Problem: Correlated Positions</h3>
-      <pre><code>Trade 1: Long SPY (S&P 500 ETF)
-Trade 2: Long QQQ (Nasdaq ETF)
-Trade 3: Long AAPL (tech stock)
+      <p><b>You have 5 positions open. All green setups. Perfect execution. Risk management on point.</b></p>
 
-Correlation: ~0.85+ (highly correlated)
-Problem: If market crashes, ALL 3 stop out together</code></pre>
-      
-      <h3>Solution: Diversify Correlation</h3>
-      <pre><code>Trade 1: Long SPY (equities)
-Trade 2: Short USD/JPY (forex, inverse correlation)
-Trade 3: Long Gold (safe haven, low correlation)
+      <p>Then the market dumps. And all 5 hit stops. Same day. Same hour.</p>
 
-Correlation: <0.3 (diversified)
-Benefit: Market crash → SPY stops, but Gold/JPY may profit</code></pre>
+      <p>What just happened? Correlation.</p>
 
-      <h2>Sector Exposure Limits</h2>
-      
-      <h3>Bad: Concentrated Sector Risk</h3>
-      <pre><code>All positions in tech:
-- AAPL long
-- NVDA long
-- TSLA long
-- QQQ long
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Portfolio risk isn't the sum of individual trade risks. It's the correlation between them.</p>
+        <p>If all your positions move together, you don't have 5 positions. You have 1 giant position—and one bad news event can wipe you out.</p>
+      </div>
 
-If tech sector crashes → 100% of portfolio at risk</code></pre>
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>Why "diversification" doesn't mean having 10 tech stocks</li>
+        <li>Portfolio heat management (the 6-8% rule that saves accounts)</li>
+        <li>How to spot correlated positions before they blow up together</li>
+        <li>Sector exposure limits and why "don't put all eggs in one basket" is literally portfolio construction</li>
+      </ul>
 
-      <h3>Good: Sector Diversification</h3>
-      <pre><code>Max 30-40% per sector:
-- Tech: 30% (SPY, AAPL)
-- Energy: 20% (XLE)
-- Crypto: 25% (BTC)
-- Forex: 25% (EUR/USD)
+      <div class="section-break"><span>Part 1: The Portfolio Heat Trap</span></div>
 
-If tech crashes → Only 30% exposed</code></pre>
+      <h2>Total Risk Is Not What You Think</h2>
 
-      <h2>Position Sizing Within Portfolio</h2>
-      
-      <h3>Framework: Grade-Based Allocation</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Setup Grade</th><th>Individual Risk</th><th>Max Positions</th><th>Portfolio %</th></tr>
-        <tr><td>A (Best)</td><td>2%</td><td>2-3</td><td>4-6%</td></tr>
-        <tr><td>B (Good)</td><td>1%</td><td>3-4</td><td>3-4%</td></tr>
-        <tr><td>C (Skip)</td><td>0%</td><td>0</td><td>0%</td></tr>
-      </table>
+      <p>Pop quiz: You have 4 open trades. Each risks 2%. What's your total risk?</p>
 
-      <h2>Portfolio Construction Strategies</h2>
-      
+      <p>If you said "8%," you're technically right. But functionally? It depends.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Scenario A: Correlated</button>
+          <button>Scenario B: Diversified</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>The Correlated Portfolio (Death)</h3>
+            <p><strong>Your positions:</strong></p>
+            <ul>
+              <li>Trade 1: Long SPY (S&P 500 ETF) — 2% risk</li>
+              <li>Trade 2: Long QQQ (Nasdaq ETF) — 2% risk</li>
+              <li>Trade 3: Long AAPL (tech stock) — 2% risk</li>
+              <li>Trade 4: Long NVDA (tech stock) — 2% risk</li>
+            </ul>
+            <p><strong>Correlation:</strong> ~0.85+ (all move together)</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Market crash scenario:</strong> S&P dumps 3%. ALL 4 positions hit stops. Total loss: 8% in one day.</p>
+            <p>You didn't have 4 positions. You had 1 massive tech bet.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>The Diversified Portfolio (Survival)</h3>
+            <p><strong>Your positions:</strong></p>
+            <ul>
+              <li>Trade 1: Long SPY (equities) — 2% risk</li>
+              <li>Trade 2: Short USD/JPY (forex, inverse correlation) — 2% risk</li>
+              <li>Trade 3: Long Gold (safe haven) — 2% risk</li>
+              <li>Trade 4: Long Oil (commodities) — 2% risk</li>
+            </ul>
+            <p><strong>Correlation:</strong> < 0.3 (low, diversified)</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.15);border-radius:8px"><strong>Market crash scenario:</strong> S&P dumps. SPY hits stop (-2%). But USD/JPY trade profits (+2%). Gold rallies (+1%). Oil neutral. Net: -2% to breakeven.</p>
+            <p>You had 4 TRUE positions. Diversification saved you.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Portfolio heat isn't just about total dollars at risk. It's about how many of those dollars move together.</p>
+        <p>Professionals calculate correlation before opening new positions. Amateurs just count trades.</p>
+      </div>
+
+      <h3>The 6-8% Portfolio Heat Rule</h3>
+
+      <p>Here's the iron law of portfolio management:</p>
+
+      <p><strong>Never exceed 6-8% total portfolio heat across ALL open positions.</strong></p>
+
+      <p>Why? Because if everything goes wrong at once (and it can), you lose max 6-8%—which is survivable.</p>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px">
+        <h4>Portfolio Heat Calculation</h4>
+        <p><strong>Trade 1:</strong> $200 risk (2% of $10,000 account)</p>
+        <p><strong>Trade 2:</strong> $150 risk (1.5%)</p>
+        <p><strong>Trade 3:</strong> $100 risk (1%)</p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>Total Heat:</strong> $450 = 4.5% of account</p>
+        <p style="color:#00d4aa">✅ Safe to take another 1.5-3.5% risk trade</p>
+        <p style="color:#ff6b6b">❌ NOT safe to take another 2% risk trade (would exceed 6.5%)</p>
+      </div>
+
+      <p><strong>If you're at 5.5% heat, wait for a trade to close before opening a new one.</strong></p>
+
+      <p>This rule alone will prevent catastrophic drawdowns.</p>
+
+      <div class="section-break"><span>Part 2: Correlation Is the Silent Killer</span></div>
+
+      <h2>When "Diversification" Is a Lie</h2>
+
+      <p>Let me guess: You think you're diversified because you trade 10 different stocks?</p>
+
+      <p>Bad news: If they're all tech stocks, you're not diversified. You're concentrated.</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Example 1: The Tech Trap</div>
+          <div class="accordion-content">
+            <p><strong>Portfolio:</strong></p>
+            <ul>
+              <li>AAPL long</li>
+              <li>NVDA long</li>
+              <li>TSLA long</li>
+              <li>MSFT long</li>
+              <li>QQQ long</li>
+            </ul>
+            <p><strong>The problem:</strong> All tech sector. If tech crashes (Fed raises rates, regulation fears, etc.), ALL positions die.</p>
+            <p><strong>Correlation:</strong> 0.80-0.90 (extremely high)</p>
+            <p><strong>Result:</strong> One sector crash = 100% of portfolio at risk</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Example 2: The Directional Trap</div>
+          <div class="accordion-content">
+            <p><strong>Portfolio:</strong></p>
+            <ul>
+              <li>SPY long</li>
+              <li>Gold long</li>
+              <li>EUR/USD long</li>
+              <li>BTC long</li>
+            </ul>
+            <p><strong>The problem:</strong> All LONG. If market tanks (flight to cash), everything drops.</p>
+            <p><strong>Better approach:</strong> Mix long and short positions to hedge directional risk</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Example 3: The Good Portfolio</div>
+          <div class="accordion-content">
+            <p><strong>Portfolio:</strong></p>
+            <ul>
+              <li>Tech: 30% (SPY, AAPL)</li>
+              <li>Energy: 20% (XLE)</li>
+              <li>Crypto: 25% (BTC)</li>
+              <li>Forex: 25% (EUR/USD)</li>
+            </ul>
+            <p><strong>Why it works:</strong></p>
+            <ul>
+              <li>Diversified across sectors (tech, energy, crypto, forex)</li>
+              <li>No single sector > 40% exposure</li>
+              <li>Low correlation (< 0.5 between most pairs)</li>
+            </ul>
+            <p><strong>Result:</strong> If tech crashes, only 30% of portfolio affected</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>How to Check Correlation</h3>
+
+      <p>Don't guess. Calculate.</p>
+
+      <p><strong>Quick correlation test:</strong></p>
+      <ol>
+        <li>Pull up 30-day charts of both assets</li>
+        <li>Do they move together most of the time? High correlation.</li>
+        <li>Do they move independently? Low correlation.</li>
+        <li>Do they move opposite? Negative correlation (even better for hedging)</li>
+      </ol>
+
+      <p><strong>Example pairs:</strong></p>
+      <ul>
+        <li><strong>SPY + QQQ:</strong> 0.95 correlation (basically the same trade)</li>
+        <li><strong>SPY + Gold:</strong> 0.10-0.30 (low correlation, good diversification)</li>
+        <li><strong>SPY + VIX:</strong> -0.80 (negative correlation, natural hedge)</li>
+      </ul>
+
+      <div class="section-break"><span>Part 3: Sector Exposure Limits</span></div>
+
+      <h2>Don't Put All Your Eggs in One Sector</h2>
+
+      <p>Here's a professional rule you need to steal:</p>
+
+      <p><strong>Max 30-40% of portfolio in any single sector.</strong></p>
+
+      <p>Why? Because sectors crash. Remember March 2020? Tech got obliterated while gold and treasuries rallied.</p>
+
+      <div class="callout-tip">
+        <h4>🎯 Sector Diversification Framework</h4>
+        <p><strong>Target allocation (example):</strong></p>
+        <ul>
+          <li><strong>Equities:</strong> 30-40% (SPY, individual stocks)</li>
+          <li><strong>Crypto:</strong> 20-30% (BTC, ETH)</li>
+          <li><strong>Forex:</strong> 15-25% (EUR/USD, USD/JPY)</li>
+          <li><strong>Commodities:</strong> 10-20% (Gold, Oil)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>If tech crashes:</strong> Only 30-40% of your portfolio is exposed. You survive.</p>
+        <p><strong>If crypto crashes:</strong> Only 20-30% exposed. You survive.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Position Sizing Within Portfolio</span></div>
+
+      <h2>Not All Setups Deserve the Same Size</h2>
+
+      <p>You already learned individual position sizing (A-grade = 2%, B-grade = 1%).</p>
+
+      <p>Now let's layer in portfolio context:</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">A-Grade Setups</h3>
+          <p><strong>Individual risk:</strong> 2%</p>
+          <p><strong>Max positions:</strong> 2-3</p>
+          <p><strong>Total portfolio allocation:</strong> 4-6%</p>
+          <hr style="margin:1rem 0;opacity:.3">
+          <p><strong>Why limit to 2-3?</strong> Even A-grade setups fail 30-40% of the time. Having 5 simultaneous A-grade positions = 10% heat (too much).</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.08);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">B-Grade Setups</h3>
+          <p><strong>Individual risk:</strong> 1%</p>
+          <p><strong>Max positions:</strong> 3-4</p>
+          <p><strong>Total portfolio allocation:</strong> 3-4%</p>
+          <hr style="margin:1rem 0;opacity:.3">
+          <p><strong>Why smaller size?</strong> B-grade setups have lower win rate and R:R. Size accordingly.</p>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 5: Portfolio Construction Strategies</span></div>
+
+      <h2>Three Professional Frameworks</h2>
+
       <h3>Strategy 1: Core + Satellite</h3>
-      <p><strong>Core (60-70%):</strong> Long-term, low-risk positions (indexes, large caps)</p>
-      <p><strong>Satellite (30-40%):</strong> Active trades, higher risk/reward</p>
-      <pre><code>$10,000 account:
-Core: $6,000 in SPY (long-term hold)
-Satellite: $4,000 active trading capital
 
-Max risk on satellites: 6% = $240/trade</code></pre>
+      <p>This is what most hedge funds use.</p>
 
-      <h3>Strategy 2: Equal Weight</h3>
+      <div style="margin:2rem 0;padding:1.5rem;background:linear-gradient(135deg, rgba(91,138,255,.12), rgba(118,221,255,.08));border-radius:16px">
+        <h4 style="margin-top:0">📊 The Framework</h4>
+        <p><strong>Core (60-70%):</strong> Long-term, low-risk positions</p>
+        <ul>
+          <li>Index ETFs (SPY, QQQ)</li>
+          <li>Large-cap holdings</li>
+          <li>Minimal management required</li>
+        </ul>
+        <p><strong>Satellite (30-40%):</strong> Active trading capital</p>
+        <ul>
+          <li>Day trades, swing trades</li>
+          <li>Higher risk/reward setups</li>
+          <li>Where your edge lives</li>
+        </ul>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px"><strong>Example:</strong> $10,000 account → $6,000 core (SPY hold) → $4,000 satellite (active trading with 6-8% max heat = $240-320/trade)</p>
+      </div>
+
+      <h3>Strategy 2: Equal Weight (Simple)</h3>
+
       <p><strong>Each position gets equal allocation.</strong></p>
-      <pre><code>$10,000 account, 5 positions
-Each position: $2,000 (20%)
 
-Pros: Simple, balanced
-Cons: Doesn't account for setup quality</code></pre>
+      <p>$10,000 account, 5 positions → Each gets $2,000 (20%)</p>
 
-      <h3>Strategy 3: Kelly-Based Dynamic</h3>
+      <p><strong>Pros:</strong> Simple, balanced, no bias</p>
+      <p><strong>Cons:</strong> Doesn't account for setup quality (treats A-grade and B-grade the same)</p>
+
+      <h3>Strategy 3: Kelly-Based Dynamic (Advanced)</h3>
+
       <p><strong>Allocate based on edge (win rate × R:R).</strong></p>
-      <pre><code>A-grade (60% WR, 3R avg): 2% risk (high edge)
-B-grade (50% WR, 2R avg): 1% risk (moderate edge)
 
-Better setups get more size</code></pre>
+      <p>A-grade setups (60% win rate, 3R avg) → 2% risk (high edge)</p>
+      <p>B-grade setups (50% win rate, 2R avg) → 1% risk (moderate edge)</p>
 
-      <h2>Portfolio Rebalancing</h2>
-      
-      <h3>When to Rebalance</h3>
-      <ul>
-        <li><b>Position hits target:</b> Close, free up capital</li>
-        <li><b>Regime shift:</b> Minimal Flow changes (trending → ranging)</li>
-        <li><b>Correlation spike:</b> Positions become too correlated</li>
-        <li><b>Heat exceeds 6%:</b> Close lowest-conviction position</li>
-      </ul>
+      <p>Better setups get more size. This is what professional traders use.</p>
 
-      <h3>Rebalancing Framework</h3>
-      <pre><code>Daily Check:
-1. Total heat < 6%? (If no, reduce)
-2. Correlation < 0.5? (If no, close most correlated)
-3. Sector exposure < 40% each? (If no, reduce concentrated sector)
-4. All positions still aligned with regime? (If no, exit misaligned)</code></pre>
+      <div class="section-break"><span>Part 6: Portfolio Rebalancing</span></div>
 
-      <h2>Advanced: Hedging Strategies</h2>
-      
-      <h3>Hedge 1: Inverse ETF</h3>
-      <pre><code>Core: Long SPY ($5,000)
-Hedge: Short SPY via SH or SPXU (inverse ETF, $1,000)
+      <h2>When and How to Adjust</h2>
 
-If market crashes: SPY loses $500, SH gains $200+ (net loss reduced)</code></pre>
+      <p>Your portfolio isn't static. You need to rebalance regularly.</p>
 
-      <h3>Hedge 2: Options (Defined Risk)</h3>
-      <pre><code>Core: Long QQQ ($5,000)
-Hedge: Buy QQQ puts ($200 premium, protection below $400)
+      <div class="callout-warning">
+        <h4>⚡ Rebalancing Triggers</h4>
+        <p><strong>Trigger 1: Position hits target</strong></p>
+        <p>Close it. Free up capital. Reassess heat before opening new trade.</p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>Trigger 2: Regime shift (Minimal Flow)</strong></p>
+        <p>Trending → Ranging? Close trend trades, switch to fade setups.</p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>Trigger 3: Correlation spike</strong></p>
+        <p>Positions become too correlated? Close the weakest one.</p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>Trigger 4: Heat exceeds 6%</strong></p>
+        <p>Close lowest-conviction position immediately.</p>
+      </div>
 
-Max loss: $200 (premium paid)</code></pre>
+      <h3>Daily Portfolio Check</h3>
 
-      <h3>Hedge 3: Safe Haven Assets</h3>
-      <pre><code>Portfolio: 70% equities
-Hedge: 30% gold, treasuries (inverse correlation)
+      <p>Before opening any new position:</p>
 
-Market crash → Equities fall, gold rises (balance)</code></pre>
+      <ol>
+        <li><strong>Total heat < 6%?</strong> If no, wait for a trade to close.</li>
+        <li><strong>Correlation < 0.5?</strong> If no, close most correlated position.</li>
+        <li><strong>Sector exposure < 40% each?</strong> If no, reduce concentrated sector.</li>
+        <li><strong>All positions aligned with regime?</strong> If no, exit misaligned trades.</li>
+      </ol>
 
-      <h2>Complete Portfolio Framework</h2>
-      
-      <p><strong>Step 1: Define Allocation</strong></p>
-      <ul>
-        <li>Core: 60-70% (long-term)</li>
-        <li>Satellite: 30-40% (active)</li>
-      </ul>
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Portfolio heat < 6-8%</strong> (total risk across all positions)</li>
+          <li><strong>Diversify correlation</strong> (don't put all positions in same sector)</li>
+          <li><strong>Max 30-40% per sector</strong> (if sector crashes, only partial exposure)</li>
+          <li><strong>Grade-based sizing:</strong> A-grade = 2%, B-grade = 1%</li>
+          <li><strong>Rebalance daily:</strong> Check heat, correlation, sector exposure</li>
+          <li><strong>Core + Satellite:</strong> 60-70% long-term, 30-40% active trading</li>
+        </ul>
+      </div>
 
-      <p><strong>Step 2: Set Limits</strong></p>
-      <ul>
-        <li>Max heat: 6-8%</li>
-        <li>Max sector: 30-40%</li>
-        <li>Max correlation: 0.5</li>
-      </ul>
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">Amateurs manage trades. Professionals manage portfolios. The difference? Professionals survive market crashes.</p>
 
-      <p><strong>Step 3: Grade Setups</strong></p>
-      <ul>
-        <li>A-grade: 2% risk</li>
-        <li>B-grade: 1% risk</li>
-      </ul>
+      <div class="section-break"><span>Test Your Understanding</span></div>
 
-      <p><strong>Step 4: Monitor & Rebalance</strong></p>
-      <ul>
-        <li>Daily heat check</li>
-        <li>Weekly correlation review</li>
-        <li>Monthly sector rebalance</li>
-      </ul>
+      <div class="quiz">
+        <h4>🎮 Quick Check</h4>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Portfolio heat < 6-8%</strong> (total risk across positions)</li>
-        <li><strong>Diversify correlation</strong> (avoid all positions moving together)</li>
-        <li><strong>Limit sector exposure</strong> (max 30-40% per sector)</li>
-        <li><strong>Grade-based sizing</strong> (A=2%, B=1%)</li>
-        <li><strong>Rebalance regularly</strong> (daily heat, weekly correlation)</li>
-      </ul>
+        <div class="quiz-question">
+          <p><strong>Q: You have $10,000 account. Current positions: Long AAPL (2% risk), Long NVDA (2% risk), Long TSLA (1.5% risk). You find a perfect A-grade setup in MSFT (tech stock). Should you take it at 2% risk?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Yes, it's an A-grade setup!</div>
+            <div class="quiz-option" data-correct="true">B) No—already 5.5% heat + all tech sector = too concentrated</div>
+            <div class="quiz-option" data-correct="false">C) Yes, but reduce size to 1%</div>
+            <div class="quiz-option" data-correct="false">D) Yes, and increase size to 3% since it's perfect</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> You're at 5.5% heat already. Adding 2% = 7.5% total (exceeds 6% rule). PLUS all 4 positions would be tech sector (100% concentration). If tech sector dumps, all 4 hit stops simultaneously. Wait for one position to close, OR diversify into different sector.
+          </div>
+        </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Calculate your current heat</strong></p>
-      <p>Add up all open position risks. Is it > 6%? If yes, which position to close?</p>
-      
-      <p><strong>Exercise 2: Check correlation</strong></p>
-      <p>Are your positions correlated? (All tech? All long?) Diversify if needed.</p>
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Single trade risk is amateur. Portfolio risk is professional."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #24: Backtesting Reality—Avoiding the Overfitting Trap</strong></p>
+        <p>That backtest with 95% win rate? It's lying. Learn why most backtests fail live, how to model realistic costs, and validation methods that actually work.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">Portfolio Heat Trap</a>
+      <a href="#">Correlation Risk</a>
+      <a href="#">Sector Limits</a>
+      <a href="#">Position Sizing</a>
+      <a href="#">Construction Strategies</a>
+      <a href="#">Rebalancing</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/intermediate/22-minimal-flow-regimes.html">&larr; Previous: Minimal Flow</a>
-    <a class="btn btn-primary" href="/curriculum/intermediate/24-backtesting-reality.html">Next: Backtesting &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/intermediate/22-minimal-flow-regimes.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/24-backtesting-reality.html">Next Lesson &rarr;</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

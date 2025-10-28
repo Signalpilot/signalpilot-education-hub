@@ -1,178 +1,454 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Dark Pool Detection: Following the Smart Money — SignalPilot Education</title>
-  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="17">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>They're Buying in the Dark (But You Can See the Footprints) — SignalPilot Learn</title>
+  <meta name="description" content="30-40% of US equity volume trades in dark pools. Learn how to detect institutional accumulation and distribution before price moves.">
+  <meta name="sp-level" content="Intermediate">
+  <meta name="sp-order" content="17">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
-<article class="article">
-  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Dark Pool Detection: Following the Smart Money</h1><div class="meta">Reading time ~14 min • Advanced Order Flow</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>30-40% of US equity volume trades in dark pools.</b> Learn how institutions accumulate/distribute, detect dark pool prints, and trade WITH institutional flow.</p>
-      
-      <h2>What ARE Dark Pools?</h2>
-      <p>Private exchanges where institutional orders execute without showing on public order books.</p>
-      <p><strong>Why institutions use them:</strong></p>
-      <pre><code>Public order: 1M shares bid → Market front-runs → Slippage
-Dark pool: 1M routed privately → No visibility → Better fill
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
 
-Savings: 1-3% on execution = millions saved</code></pre>
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #17</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 17 of 27</span>
+      <h1 class="headline xl">They're Buying in the Dark (But You Can See the Footprints)</h1>
+      <div class="meta">14 min read • Dark Pool Intelligence</div>
+
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>Institutions don't buy on the exchanges you're watching. They buy in the shadows.</b></p>
+
+      <p>But here's the secret: They can't hide the footprints.</p>
+
+      <p>30-40% of US equity volume trades in dark pools—private exchanges where massive orders execute without showing on public order books. By the time you see the move, they're already positioned.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Right now, while you're watching the public tape, institutions are accumulating millions of shares without moving price a single penny.</p>
+        <p>Then—when they're done loading—price rips. And you're wondering "Where did that come from?"</p>
+        <p>It came from the dark pools. And you're about to learn how to see it coming.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>Why institutions use dark pools (it's not what you think)</li>
+        <li>How to detect accumulation vs. distribution patterns</li>
+        <li>The exact signals that precede major moves</li>
+        <li>Combining dark pool data with Janus sweeps for extreme edge</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: The Dark Pool Game</span></div>
+
+      <h2>Why Trade in the Dark?</h2>
+
+      <p>Pop quiz: You're a hedge fund. You need to buy 1 million shares of AAPL. What do you do?</p>
+
+      <p>If you answered "Place a 1M share market order," congratulations—you just cost your fund millions in slippage.</p>
+
+      <p>Here's what happens on the public exchange:</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Public Order (The Disaster)</button>
+          <button>Dark Pool Order (The Pro Move)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Trading on Lit Exchanges</h3>
+            <p><strong>You place:</strong> 1,000,000 share buy order at $150</p>
+            <p><strong>What happens:</strong></p>
+            <ol style="margin:.5rem 0">
+              <li><strong>9:30:00 AM:</strong> Order appears on public book</li>
+              <li><strong>9:30:01 AM:</strong> HFT algorithms detect massive bid</li>
+              <li><strong>9:30:02 AM:</strong> Front-running begins (they buy ahead of you)</li>
+              <li><strong>9:30:05 AM:</strong> Your order starts filling at $150.10, $150.15, $150.20...</li>
+              <li><strong>9:30:30 AM:</strong> Final fill at $150.50 (average $150.25)</li>
+            </ol>
+            <p style="margin-top:1rem"><strong>Cost:</strong> You wanted $150. You paid $150.25 average.</p>
+            <p><strong>Slippage:</strong> $0.25 × 1,000,000 shares = <span style="color:#ff6b9d;font-weight:600">$250,000 loss</span></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Trading in Dark Pools</h3>
+            <p><strong>You route:</strong> 1,000,000 share buy to dark pool at $150</p>
+            <p><strong>What happens:</strong></p>
+            <ol style="margin:.5rem 0">
+              <li><strong>9:30:00 AM:</strong> Order routed privately (no public visibility)</li>
+              <li><strong>9:30:05 AM:</strong> Dark pool matches with seller at midpoint ($150.01)</li>
+              <li><strong>9:30:06 AM:</strong> Entire 1M shares filled at $150.01</li>
+              <li><strong>9:30:07 AM:</strong> Trade reports to tape (FINRA TRF)</li>
+            </ol>
+            <p style="margin-top:1rem"><strong>Fill price:</strong> $150.01 (not $150.25)</p>
+            <p><strong>Savings:</strong> $0.24 × 1,000,000 = <span style="color:#64ffda;font-weight:600">$240,000 saved</span></p>
+            <p><strong>Bonus:</strong> Nobody front-ran you. Nobody knew it was coming.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>That's why dark pools exist. Not because institutions are evil. Because they're smart.</p>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Dark pools let institutions trade large size without tipping their hand. But the trade still has to <em>report to the tape</em>.</p>
+        <p>That report is your signal. They can hide the order. They can't hide the print.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: Reading the Prints</span></div>
 
       <h2>How Dark Pool Prints Appear</h2>
-      <pre><code>Step 1: Orders match in dark pool (10:15:30.000)
-Step 2: Trade reports to tape (10:15:30.500, 500ms later)
 
-You see: 500,000 shares @ $150.01 (FINRA TRF print)</code></pre>
-      <p><b>Key:</b> Print appears AFTER execution, often with delay.</p>
+      <p>Here's the timeline:</p>
+
+      <div style="background:#0a0e27;padding:1.5rem;border-radius:8px;font-family:monospace;font-size:.9rem;margin:1.5rem 0">
+<strong style="color:#64ffda">Step 1:</strong> Orders match in dark pool (10:15:30.000)
+<strong style="color:#64ffda">Step 2:</strong> Trade reports to tape (10:15:30.500, ~500ms later)
+
+<strong style="color:#ffd93d">What you see on your screen:</strong>
+500,000 shares @ $150.01 (FINRA TRF print)
+
+<strong style="color:#ff6b9d">Key detail:</strong> Print appears AFTER execution
+      </div>
+
+      <p>That 500ms delay matters. The trade already happened. But the <em>pattern</em> of prints over hours/days? That's where the edge is.</p>
 
       <h2>Identifying Dark Pool Prints</h2>
-      <h3>Characteristics:</h3>
-      <ol>
-        <li><b>Large size:</b> 10,000+ shares (institutional threshold: 50,000+)</li>
-        <li><b>Mid-point execution:</b> If bid/ask = $150.00/$150.02, dark pool = $150.01</li>
-        <li><b>No order book impact:</b> Large print appeared, but book didn't show it</li>
-        <li><b>TRF designation:</b> Reported via FINRA TRF</li>
-      </ol>
 
-      <h2>Reading Dark Pool Data</h2>
-      
-      <h3>Pattern 1: Accumulation (Bullish)</h3>
-      <pre><code>Day 1:
-10:00: 50,000 @ $150.01
-11:30: 75,000 @ $150.05
-14:00: 100,000 @ $150.03
-Close: $150.10
+      <p>Not all big prints are dark pools. Here's how to spot them:</p>
 
-Day 2:
-10:15: 60,000 @ $150.08
-12:00: 80,000 @ $150.12
-15:00: 90,000 @ $150.15
-Close: $150.20
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Characteristic #1: Large Size</div>
+          <div class="accordion-content">
+            <p><strong>Retail trades:</strong> 100-1,000 shares</p>
+            <p><strong>Institutional threshold:</strong> 10,000+ shares</p>
+            <p><strong>Dark pool typical:</strong> 50,000-500,000 shares</p>
+            <p style="margin-top:1rem">If you see a 200,000 share print and the order book never showed it, that's dark pool flow.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Characteristic #2: Midpoint Execution</div>
+          <div class="accordion-content">
+            <p><strong>Lit exchange:</strong> Trades execute at bid or ask</p>
+            <p><strong>Dark pool:</strong> Trades execute at <em>midpoint</em></p>
+            <p style="margin-top:1rem"><strong>Example:</strong></p>
+            <ul style="margin:.5rem 0">
+              <li>Bid: $150.00</li>
+              <li>Ask: $150.02</li>
+              <li>Dark pool print: $150.01 (midpoint)</li>
+            </ul>
+            <p style="margin-top:1rem">That's your tell. Midpoint fills = dark pool.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Characteristic #3: No Order Book Impact</div>
+          <div class="accordion-content">
+            <p>You're watching the order book. Suddenly: 200,000 share print.</p>
+            <p>But the book never changed. No massive bid appeared. No wall got hit.</p>
+            <p style="margin-top:1rem"><strong>That's dark pool flow.</strong> The order was never visible.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Characteristic #4: TRF Designation</div>
+          <div class="accordion-content">
+            <p>Dark pool trades report via FINRA Trade Reporting Facility (TRF).</p>
+            <p>If your platform shows "FINRA TRF" or "TRF" on the print, that's dark pool confirmation.</p>
+          </div>
+        </div>
+      </div>
 
-Pattern: 455,000 shares bought, price only +$0.20
-Interpretation: ACCUMULATION (institutional buying without pushing price)</code></pre>
-      
-      <p><b>What happens next:</b> Price breaks out (accumulated = less sell pressure). Institutions now WANT price to rise.</p>
+      <div class="section-break"><span>Part 3: The Two Patterns That Matter</span></div>
 
-      <h3>Pattern 2: Distribution (Bearish)</h3>
-      <pre><code>Day 1:
-10:00: 100,000 @ $250.50 sold
-12:00: 80,000 @ $250.55
-15:00: 120,000 @ $250.48
+      <h2>Pattern #1: Accumulation (Bullish)</h2>
+
+      <p>Picture this: Price is falling. Retail is panicking. But institutions? They're buying in the dark.</p>
+
+      <p><strong>What accumulation looks like:</strong></p>
+
+      <div class="callout-info">
+        <h4>📖 Case Study: The Silent Accumulation</h4>
+        <p><strong>Ticker:</strong> SPY</p>
+        <p><strong>Timeframe:</strong> 3 days</p>
+
+        <p style="margin-top:1rem"><strong>Day 1:</strong></p>
+        <ul style="margin:.5rem 0;font-size:.95rem">
+          <li>10:00 AM: 50,000 shares @ $150.01 (dark pool)</li>
+          <li>11:30 AM: 75,000 shares @ $150.05 (dark pool)</li>
+          <li>2:00 PM: 100,000 shares @ $150.03 (dark pool)</li>
+          <li>Close: $150.10</li>
+        </ul>
+
+        <p style="margin-top:1rem"><strong>Day 2:</strong></p>
+        <ul style="margin:.5rem 0;font-size:.95rem">
+          <li>10:15 AM: 60,000 shares @ $150.08 (dark pool)</li>
+          <li>12:00 PM: 80,000 shares @ $150.12 (dark pool)</li>
+          <li>3:00 PM: 90,000 shares @ $150.15 (dark pool)</li>
+          <li>Close: $150.20</li>
+        </ul>
+
+        <p style="margin-top:1rem"><strong>Pattern:</strong> 455,000 shares bought over 2 days. Price only +$0.20.</p>
+        <p><strong>Interpretation:</strong> Institutions are accumulating without pushing price (yet).</p>
+        <p style="margin-top:1rem"><strong>What happened next:</strong> Day 3 opened at $150.25. By close: $153.80 (+2.4%).</p>
+        <p><strong>Why?</strong> Accumulated shares = less sell pressure. When institutions finished loading, they let price run.</p>
+      </div>
+
+      <p><strong>The signal:</strong> Repeated large prints above VWAP, but price isn't rising proportionally.</p>
+
+      <p>That's not weakness. That's control.</p>
+
+      <h2>Pattern #2: Distribution (Bearish)</h2>
+
+      <p>Same playbook, opposite direction.</p>
+
+      <p>Price is rallying. Retail is euphoric. Institutions? Quietly exiting in the dark.</p>
+
+      <div style="background:#0a0e27;padding:1.5rem;border-radius:8px;font-family:monospace;font-size:.9rem;margin:1.5rem 0">
+<strong style="color:#64ffda">Day 1:</strong>
+10:00 AM: 100,000 sold @ $250.50 (dark pool)
+12:00 PM: 80,000 sold @ $250.55
+3:00 PM: 120,000 sold @ $250.48
 Close: $250.40
 
-Day 2:
-10:30: 150,000 @ $250.35
-13:00: 90,000 @ $250.30
-15:30: 110,000 @ $250.25
+<strong style="color:#64ffda">Day 2:</strong>
+10:30 AM: 150,000 sold @ $250.35
+1:00 PM: 90,000 sold @ $250.30
+3:30 PM: 110,000 sold @ $250.25
 Close: $250.20
 
-Pattern: 650,000 shares sold, price only -$0.30
-Interpretation: DISTRIBUTION (institutional selling without crashing)</code></pre>
-      
-      <p><b>What happens next:</b> Price breaks down (distributed = no buy support).</p>
+<strong style="color:#ffd93d">Pattern:</strong> 650,000 shares sold, price only -$0.30
+<strong style="color:#ff6b9d">Interpretation:</strong> Distribution (selling without crashing)
 
-      <h3>Pattern 3: Sweep + Dark Pool (Reversal)</h3>
-      <pre><code>11:05: Price sweeps $149.50 support
-11:06: 200,000 dark pool print @ $149.55
+<strong style="color:#64ffda">What happens next:</strong> Breakdown (no institutional support left)
+      </div>
 
-Interpretation: Sweep triggered stops, institutions bought dip
-Likely: Reversal UP</code></pre>
-      
-      <p><strong>Signal Pilot Integration:</strong> Janus sweep + dark pool print = High conviction long.</p>
+      <p><strong>The uncomfortable truth:</strong> When institutions distribute, they need retail to buy. That's why price holds—until they're done selling.</p>
 
-      <h2>Dark Pool Sentiment (DIX)</h2>
-      <p><strong>Dark Pool Index:</strong> % of volume traded in dark pools vs. lit exchanges.</p>
-      <ul>
-        <li><b>High DIX (&gt;45%):</b> Institutions buying aggressively → Bullish</li>
-        <li><b>Low DIX (&lt;35%):</b> Institutions selling/absent → Bearish</li>
-        <li><b>Rising DIX:</b> Accumulation increasing → Bullish</li>
-      </ul>
-      
-      <p><strong>Signal Pilot Integration:</strong> Use DIX as macro filter with Minimal Flow trending regime.</p>
+      <p>Then? The rug pull.</p>
 
-      <h2>Practical Strategies</h2>
-      
-      <h3>Strategy 1: Accumulation Breakouts</h3>
-      <p><strong>Setup:</strong></p>
-      <ol>
-        <li>3+ days dark pool buying (prints above VWAP)</li>
-        <li>Price consolidates (no rise)</li>
-        <li>Minimal Flow ranging</li>
-        <li>Breakout triggers</li>
-        <li>Enter long on confirmation</li>
-      </ol>
-      <p><b>Win Rate:</b> 60-70%</p>
+      <div class="section-break"><span>Part 4: The Ultimate Edge</span></div>
 
-      <h3>Strategy 2: Distribution Fades</h3>
-      <p><strong>Setup:</strong></p>
-      <ol>
-        <li>2+ days dark pool selling (prints below VWAP)</li>
-        <li>Price fails resistance 3×</li>
-        <li>Janus shows failed breakout</li>
-        <li>Breakdown below support</li>
-        <li>Enter short</li>
-      </ol>
-      <p><b>Win Rate:</b> 55-65%</p>
+      <h2>Combining Dark Pools with Janus Sweeps</h2>
 
-      <h3>Strategy 3: Sweep + Dark Pool Confirmation</h3>
-      <p><strong>Setup:</strong></p>
-      <ol>
-        <li>Janus sweep at support</li>
-        <li>Large dark pool print at swept level</li>
-        <li>Price reverses (absorption)</li>
-        <li>Enter long, stop beyond sweep</li>
-      </ol>
-      <p><b>Win Rate:</b> 65-75%</p>
+      <p>Here's where it gets good.</p>
 
-      <h2>Limitations</h2>
-      <h3>Limitation 1: Delayed Data</h3>
-      <p>Prints appear 500ms-5sec after execution. Edge may be gone.</p>
-      <p><b>Mitigation:</b> Look for PATTERNS (accumulation over days), not single prints.</p>
+      <p>Dark pool accumulation tells you WHAT institutions are doing. Janus sweeps tell you WHEN they're ready to move.</p>
 
-      <h3>Limitation 2: Print Context Matters</h3>
-      <p>200,000 print could be: Accumulation, rebalancing (neutral), index flow (neutral), hedging (neutral).</p>
-      <p><b>Mitigation:</b> Require REPETITION (multiple prints, consistent flow).</p>
+      <div class="callout-tip">
+        <h4>🎯 The High-Conviction Setup</h4>
+        <p><strong>Setup:</strong></p>
+        <ol style="margin:.5rem 0">
+          <li>3+ days of dark pool accumulation (prints above VWAP)</li>
+          <li>Price consolidates (no rise yet—accumulation phase)</li>
+          <li>Janus marks a sweep at support ($149.50)</li>
+          <li>Large dark pool print (200,000 shares) at the sweep level</li>
+          <li>Price immediately reclaims above swept level</li>
+        </ol>
+        <p style="margin-top:1.5rem"><strong>Translation:</strong></p>
+        <p>Institutions accumulated for days. Janus sweep grabbed the last stops. Dark pool print at the sweep = institutions bought the dip aggressively. Reclaim = reversal confirmed.</p>
+        <p style="margin-top:1.5rem"><strong>Your trade:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li><strong>Entry:</strong> $150.10 (above reclaim)</li>
+          <li><strong>Stop:</strong> $149.30 (below sweep)</li>
+          <li><strong>Target:</strong> $155.00 (previous high) = 6.1R</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Win rate:</strong> 65-75% (extreme confluence)</p>
+      </div>
 
-      <h2>Complete Framework</h2>
-      <p><strong>Pre-Trade Checklist:</strong></p>
-      <ul>
-        <li>[ ] Dark pool pattern: Accumulation (3+ days buying above VWAP) OR Distribution OR Sweep + print</li>
-        <li>[ ] Janus Atlas confirms structure</li>
-        <li>[ ] Minimal Flow regime supports</li>
-        <li>[ ] Plutus Flow CVD aligns</li>
-        <li>[ ] Price action trigger (breakout, reversal, sweep)</li>
-      </ul>
+      <h2>The DIX (Dark Pool Index)</h2>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Dark pools = 30-40% of volume</strong></li>
-        <li><strong>Accumulation = repeated buying without price rise</strong></li>
-        <li><strong>Distribution = repeated selling without price fall</strong></li>
-        <li><strong>Prints delayed (look for patterns, not single prints)</strong></li>
-        <li><strong>Dark pool + structure = high probability</strong></li>
-      </ul>
+      <p>Some platforms track the Dark Pool Index (DIX)—the percentage of volume traded in dark pools vs. lit exchanges.</p>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Track 1 stock for 5 days</strong></p>
-      <p>Log all dark pool prints. Is it accumulation or distribution? Does price confirm thesis?</p>
-      
-      <p><strong>Exercise 2: Set up dark pool scanner</strong></p>
-      <p>Filter: Size &gt; 50k shares, price within 1% of VWAP. Track for 1 week.</p>
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>High DIX (Bullish)</button>
+          <button>Low DIX (Bearish)</button>
+          <button>Rising DIX (Very Bullish)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>DIX &gt; 45%</h3>
+            <p><strong>Interpretation:</strong> Institutions buying aggressively in dark pools</p>
+            <p><strong>Signal:</strong> Bullish accumulation</p>
+            <p><strong>Action:</strong> Look for long setups</p>
+            <p style="margin-top:1rem"><strong>Signal Pilot integration:</strong> High DIX + Minimal Flow trending regime = trade pullbacks WITH the institutional flow</p>
+          </div>
+          <div class="tab-panel">
+            <h3>DIX &lt; 35%</h3>
+            <p><strong>Interpretation:</strong> Institutions selling or absent</p>
+            <p><strong>Signal:</strong> Bearish or neutral</p>
+            <p><strong>Action:</strong> Reduce long exposure, look for fades</p>
+            <p style="margin-top:1rem"><strong>Signal Pilot integration:</strong> Low DIX + resistance test = high-probability short setup</p>
+          </div>
+          <div class="tab-panel">
+            <h3>DIX Rising (35% → 45% → 48%)</h3>
+            <p><strong>Interpretation:</strong> Accumulation increasing</p>
+            <p><strong>Signal:</strong> Institutions getting more bullish</p>
+            <p><strong>Action:</strong> Aggressively trade WITH the flow</p>
+            <p style="margin-top:1rem"><strong>Signal Pilot integration:</strong> Rising DIX + Janus sweep + Plutus absorption = highest-conviction long</p>
+          </div>
+        </div>
+      </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"The smart money trades in the dark. But they can't hide the footprints."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <h2>Complete Pre-Trade Checklist</h2>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Step 1: Dark Pool Pattern Identified</div>
+          <div class="accordion-content">
+            <ul>
+              <li>☐ Accumulation: 3+ days buying above VWAP, price consolidating</li>
+              <li>☐ OR Distribution: 2+ days selling below VWAP, price holding artificially</li>
+              <li>☐ OR Sweep + Dark Pool Print: Large print at Janus sweep level</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 2: Signal Pilot Confirmation</div>
+          <div class="accordion-content">
+            <ul>
+              <li>☐ Janus Atlas: Sweep or failed breakout identified</li>
+              <li>☐ Minimal Flow: Regime supports direction (trending for accumulation, ranging for distribution)</li>
+              <li>☐ Plutus Flow: CVD alignment (rising for longs, falling for shorts)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 3: Price Action Trigger</div>
+          <div class="accordion-content">
+            <ul>
+              <li>☐ Accumulation: Breakout above consolidation</li>
+              <li>☐ Distribution: Breakdown below support</li>
+              <li>☐ Sweep + Print: Reclaim above swept level</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>⚠️ The Limitations (Be Honest)</h4>
+        <p><strong>Limitation #1: Delayed Data</strong></p>
+        <p>Dark pool prints appear 500ms-5 seconds after execution. The immediate edge is gone. But the <em>pattern</em> edge (accumulation over days) remains.</p>
+        <p style="margin-top:1rem"><strong>Limitation #2: Context Matters</strong></p>
+        <p>A 200,000 share print could be: accumulation, rebalancing (neutral), index flow (neutral), or hedging (neutral).</p>
+        <p><strong>Solution:</strong> Require REPETITION. One print = noise. 5+ prints over 3 days = pattern.</p>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>30-40% of volume trades in dark pools</strong> — Institutions hide orders, but can't hide prints</li>
+          <li><strong>Accumulation = repeated buying without price rise</strong> — Loading up before the move</li>
+          <li><strong>Distribution = repeated selling without price fall</strong> — Exiting into retail euphoria</li>
+          <li><strong>Prints are delayed, patterns are not</strong> — Look for 3+ day accumulation, not single prints</li>
+          <li><strong>Dark pool + Janus sweep = extreme confluence</strong> — Institutions accumulating + sweep = highest-probability reversal</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0;padding:1.5rem;background:linear-gradient(135deg, rgba(100,255,218,0.1), rgba(157,118,255,0.1));border-radius:8px;border-left:4px solid var(--accent)">
+        You just learned what hedge funds pay hundreds of thousands for in dark pool data terminals. Most retail traders have no idea this even exists. You now have institutional-level edge.
+      </p>
+
+      <div class="quiz">
+        <h4>🎮 Test Your Understanding (No Pressure)</h4>
+        <div class="quiz-question">
+          <p><strong>You see 5 consecutive days of large dark pool prints (50k+ shares) above VWAP, but price is only +0.3% over that period. What's happening?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              A) Bearish — buying isn't moving price, therefore weak demand
+            </div>
+            <div class="quiz-option" data-correct="true">
+              B) Bullish accumulation — institutions loading without pushing price (yet)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              C) Neutral — dark pool data is noise
+            </div>
+          </div>
+          <div class="quiz-explanation">
+            <strong>Why B is correct:</strong> Institutions accumulate slowly to avoid pushing price higher. The fact that price isn't rising despite massive buying means they're absorbing all selling pressure. Once accumulation is done, they let price run. This is textbook bullish accumulation.
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Janus marks a sweep at $100. Immediately after, you see a 200,000 share dark pool print at $100.05. Price reclaims above $100.20. What's the play?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              A) Short — too much supply from the dark pool
+            </div>
+            <div class="quiz-option" data-correct="true">
+              B) Long — sweep + dark pool buying + reclaim = extreme bullish confluence
+            </div>
+            <div class="quiz-option" data-correct="false">
+              C) Wait — need more confirmation
+            </div>
+          </div>
+          <div class="quiz-explanation">
+            <strong>Why B is correct:</strong> This is the holy grail setup. Janus sweep cleared stops. Dark pool print = institutions bought the dip aggressively (200k shares). Reclaim = reversal confirmed. This is one of the highest-probability long setups in order flow trading. Entry: $100.25, stop: $99.85, target: previous high.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
+        <div class="quiz-result"></div>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #18: Smart Money Divergence</strong> — Price can be manipulated. Order flow can't. Learn how to spot when institutions are positioning opposite of price movement.</p>
+      </div>
+
+    </div>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/intermediate/16-footprint-charts.html">&larr; Previous: Footprints</a>
-    <a class="btn btn-primary" href="/curriculum/intermediate/18-smart-money-divergence.html">Next: Divergence &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/intermediate/16-footprint-charts.html">&larr; Previous: Footprint Charts</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/18-smart-money-divergence.html">Next: Smart Money Divergence &rarr;</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>
