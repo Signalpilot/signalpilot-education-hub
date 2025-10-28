@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Your Indicators Are Lying to You (The Repaint Problem) — SignalPilot Education</title>
+  <meta name="sp-level" content="Beginner"><meta name="sp-order" content="4">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">Your Indicators Are Lying to You (The Repaint Problem)</h1><div class="meta">Reading time ~15 min • Indicator Truth</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>60-90% of indicators repaint</b>—showing perfect signals in backtest that never existed real-time. Learn to detect repainting, audit any indicator, and why Signal Pilot's deterministic protocol matters.</p>
+      <h2>What IS Repainting?</h2>
+      <p><strong>Definition:</strong> An indicator that changes its past values or signals after the bar closes. What you saw live disappears or moves in historical view.</p>
+      <p><strong>Example:</strong> Indicator shows "BUY" signal at $100. You enter. Bar closes. You check history—signal is now at $95. You were tricked.</p>
+      <h2>Why Repainting Happens</h2>
+      <h3>1. Future Data Leakage</h3>
+      <p><code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code> pulls future data into current bar.</p>
+      <h3>2. Non-Deterministic Calculations</h3>
+      <p>Indicators that recalculate based on new data (changing past values).</p>
+      <h3>3. HTF (Higher Timeframe) Repainting</h3>
+      <p>HTF bar hasn't closed yet, but indicator uses its incomplete data.</p>
+      <h2>The 4 Methods to Detect Repainting</h2>
+      <h3>Method 1: Visual Test</h3>
+      <ol><li>Note indicator signal on live chart</li><li>Wait for bar to close</li><li>Refresh chart</li><li>Check if signal moved or disappeared</li></ol>
+      <p><b>If it changed = REPAINTING</b></p>
+      <h3>Method 2: Replay Test</h3>
+      <ol><li>Use TradingView Bar Replay</li><li>Mark where signal appears</li><li>Finish replay</li><li>Compare historical vs. live signals</li></ol>
+      <h3>Method 3: Alert Test</h3>
+      <ol><li>Set alert on indicator signal</li><li>Track alerts over 20+ trades</li><li>Compare alert price vs. historical signal price</li></ol>
+      <p><b>If they don't match = REPAINTING</b></p>
+      <h3>Method 4: Code Audit</h3>
+      <p><strong>Red flags in Pine Script:</strong></p>
+      <ul>
+        <li><code>request.security()</code> without <code>lookahead_off</code></li>
+        <li><code>var</code> misuse (changing historical values)</li>
+        <li><code>security()</code> pulling HTF data without offset</li>
+        <li>No <code>[1]</code> offset for HTF confirmation</li>
+      </ul>
+      <p><strong>Safe code example:</strong></p>
+      <pre><code>// NON-REPAINTING:
+htf_close = request.security(syminfo.tickerid, "D", close[1],
+             lookahead = barmerge.lookahead_off)</code></pre>
+      <p><strong>Repainting code example:</strong></p>
+      <pre><code>// REPAINTING (bad):
+htf_close = request.security(syminfo.tickerid, "D", close)</code></pre>
+      <h2>Signal Pilot's Deterministic Protocol</h2>
+      <p>All Signal Pilot indicators follow strict rules:</p>
+      <ul>
+        <li><b>No future data:</b> All HTF requests use <code>lookahead_off</code></li>
+        <li><b>Fixed signals:</b> Once a signal prints, it never moves</li>
+        <li><b>Confirmed bars only:</b> Signals wait for bar close (no intra-bar changes)</li>
+        <li><b>Open-source auditable:</b> Code available for review</li>
+      </ul>
+      <h2>Complete Indicator Audit Framework</h2>
+      <p><strong>For any indicator you use:</strong></p>
+      <ol>
+        <li><b>Visual test:</b> Watch live, compare to history (3+ signals)</li>
+        <li><b>Replay test:</b> Use Bar Replay to verify signals</li>
+        <li><b>Alert test:</b> Set alerts, track 20+ instances</li>
+        <li><b>Code audit:</b> Check for <code>request.security()</code> and <code>lookahead</code> settings</li>
+      </ol>
+      <p><strong>If ANY test fails → REPAINTING → DO NOT USE</strong></p>
+      <h2>Why This Matters</h2>
+      <p><strong>Backtest:</strong> 80% win rate, 3R average winner (looks amazing!)</p>
+      <p><strong>Reality:</strong> Signals repainted, actual results: 45% win rate, -0.5R expectancy (disaster)</p>
+      <p><b>You just wasted months developing a strategy that never worked.</b></p>
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>60-90% of indicators repaint</strong> (test everything)</li>
+        <li><strong>Repainting = fake edge</strong> (backtest perfection, live failure)</li>
+        <li><strong>4 detection methods:</strong> Visual, Replay, Alert, Code Audit</li>
+        <li><strong>Signal Pilot = deterministic</strong> (what you see is what you get)</li>
+        <li><strong>Never trust, always verify</strong> (audit every indicator)</li>
+      </ul>
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk.</blockquote>
+      <p><em>"Backtest perfection often means real-time failure. Audit your indicators."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/beginner/03-price-action-is-dead.html">&larr; Previous</a>
+    <a class="btn btn-primary" href="/curriculum/beginner/05-rsi-extremes.html">Next: RSI &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script><script src="/assets/aurora.js" defer></script>
+</body></html>

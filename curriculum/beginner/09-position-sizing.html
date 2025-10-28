@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Position Sizing: The Only Edge That Matters</title><meta name="sp-level" content="Beginner"><link rel="stylesheet" href="/assets/edu.css"></head>
+<body><div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">Position Sizing: The Only Edge That Matters</h1><div class="meta">Reading time ~11 min • Risk Reality</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>Win rate is a vanity metric. Position sizing is everything.</b> Learn why fixed percentage is amateur hour, Kelly Criterion simplified, and ATR-based position calculators.</p>
+      <h2>Why Win Rate Doesn't Matter</h2>
+      <p><strong>Trader A:</strong> 80% win rate, 1:1 R:R</p>
+      <ul><li>10 trades: 8 wins × +$100 = +$800</li><li>2 losses × -$100 = -$200</li><li><b>Net:</b> +$600</li></ul>
+      <p><strong>Trader B:</strong> 40% win rate, 3:1 R:R</p>
+      <ul><li>10 trades: 4 wins × +$300 = +$1,200</li><li>6 losses × -$100 = -$600</li><li><b>Net:</b> +$600 (same!)</li></ul>
+      <p><b>Same profit, completely different stats. Win rate is IRRELEVANT without R:R.</b></p>
+      <h2>The Fixed Percentage Trap</h2>
+      <p><strong>Retail approach:</strong> "I risk 1% per trade, always."</p>
+      <p><strong>Problem:</strong> Not all setups are equal. High-quality sweep with 3R potential ≠ low-quality breakout with 1R potential.</p>
+      <p><b>Sizing should match setup quality, not be fixed.</b></p>
+      <h2>Kelly Criterion Simplified</h2>
+      <p><strong>Formula:</strong> <code>f* = (bp - q) / b</code></p>
+      <ul><li><b>f* =</b> % of bankroll to risk</li><li><b>b =</b> Odds (R:R, e.g., 2 for 2:1)</li><li><b>p =</b> Win rate (e.g., 0.55 for 55%)</li><li><b>q =</b> Loss rate (1 - p)</li></ul>
+      <p><strong>Example:</strong> 55% win rate, 2:1 R:R</p>
+      <p><code>f* = (2 × 0.55 - 0.45) / 2 = 0.325 = 32.5%</code></p>
+      <p><b>Wait, 32.5% per trade?! That's insane.</b></p>
+      <h3>Quarter Kelly (Realistic)</h3>
+      <p><strong>Full Kelly = too aggressive (huge drawdowns).</strong> Use <b>Quarter Kelly</b> (divide by 4):</p>
+      <p><code>Quarter Kelly = 32.5% / 4 = 8.1% per trade</code></p>
+      <p><b>Still aggressive, but survivable.</b></p>
+      <h2>ATR-Based Position Sizing</h2>
+      <p><strong>Formula:</strong></p>
+      <p><code>Position Size = (Account × Risk%) / Stop Distance</code></p>
+      <p><strong>Example:</strong></p>
+      <ul><li><b>Account:</b> $10,000</li><li><b>Risk:</b> 2% = $200</li><li><b>Stop Distance:</b> $2.00 (ATR-based, 2× ATR)</li><li><b>Position Size:</b> $200 / $2 = 100 shares</li></ul>
+      <p><b>If ATR is wider (volatile), position size is smaller. If ATR is tighter, position size is larger.</b></p>
+      <p><strong>This scales risk to market conditions.</strong></p>
+      <h2>Portfolio Heat Management</h2>
+      <p><strong>Portfolio heat = total risk across all open positions.</strong></p>
+      <p><strong>Example:</strong></p>
+      <ul><li>Trade 1: Risking $200 (2%)</li><li>Trade 2: Risking $150 (1.5%)</li><li>Trade 3: Risking $100 (1%)</li><li><b>Total heat:</b> $450 (4.5%)</li></ul>
+      <p><b>Max heat rule: Never exceed 6% total portfolio risk.</b></p>
+      <p><strong>If you're at 5.5% heat, DO NOT take new trade until one closes.</strong></p>
+      <h2>Variable Position Sizing Based on Setup Quality</h2>
+      <p><strong>Grade setups A/B/C:</strong></p>
+      <ul><li><b>A-grade:</b> Sweep + absorption + HTF alignment + Omnideck confluence → Risk 2%</li><li><b>B-grade:</b> Clean structure, 2/3 confirmations → Risk 1%</li><li><b>C-grade:</b> Marginal setup, 1/2 confirmations → Risk 0.5% (or skip)</li></ul>
+      <p><b>Never trade C-grade setups. Only A/B. Scale size to quality.</b></p>
+      <h2>Complete Position Sizing Framework</h2>
+      <p><strong>Step 1: Grade Setup</strong></p>
+      <ul><li>A/B/C based on confluence (Janus, Plutus, Minimal Flow, Harmonic Oscillator)</li></ul>
+      <p><strong>Step 2: Calculate Stop Distance</strong></p>
+      <ul><li>ATR-based: 1.5-2× ATR beyond structure</li></ul>
+      <p><strong>Step 3: Calculate Position Size</strong></p>
+      <ul><li><code>Size = (Account × Risk%) / Stop Distance</code></li><li>A-grade: 2% risk, B-grade: 1% risk</li></ul>
+      <p><strong>Step 4: Check Portfolio Heat</strong></p>
+      <ul><li>Total risk across open positions < 6%</li><li>If >6%, wait for trade to close</li></ul>
+      <p><strong>Step 5: Execute</strong></p>
+      <ul><li>Enter with calculated size</li><li>Set stop at calculated distance</li><li>Target minimum 2R (adjust based on structure)</li></ul>
+      <h2>Common Mistakes</h2>
+      <p><strong>Mistake 1: Fixed 1% on every trade.</strong> Fix: Scale to setup quality (A=2%, B=1%, C=skip).</p>
+      <p><strong>Mistake 2: Ignoring ATR.</strong> Fix: Wider ATR = smaller size, tighter ATR = larger size.</p>
+      <p><strong>Mistake 3: No portfolio heat limit.</strong> Fix: Max 6% total risk across all positions.</p>
+      <h2>Position Sizing Calculator Template</h2>
+      <pre><code>Account Size:        $10,000
+Risk % (setup grade): 2% (A-grade)
+Risk $:              $200
+
+Entry Price:         $100.00
+Stop Price:          $98.50
+Stop Distance:       $1.50
+
+Position Size = $200 / $1.50 = 133 shares
+
+Total Position Value: $13,300 (133 × $100)
+Max Loss if Stopped:  $200 (2%)
+Target (2R):          $103.00 (+$3.00)</code></pre>
+      <h2>Key Takeaways</h2>
+      <ul><li><strong>Win rate is vanity, R:R + sizing = profit</strong></li><li><strong>Fixed % is amateur</strong> (scale to setup quality)</li><li><strong>Kelly Criterion = optimal sizing</strong> (use Quarter Kelly)</li><li><strong>ATR-based stops = dynamic sizing</strong> (adapts to volatility)</li><li><strong>Portfolio heat < 6%</strong> (total risk across positions)</li><li><strong>Grade setups A/B/C, size accordingly</strong></li></ul>
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Right position size turns edge into profit. Wrong size turns edge into ruin."</em> — <strong>Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article"><a class="btn btn-ghost" href="/curriculum/beginner/08-confirmation-bias.html">&larr; Previous</a><a class="btn btn-primary" href="/curriculum/beginner/10-stop-losses.html">Next: Stop Losses &rarr;</a></div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

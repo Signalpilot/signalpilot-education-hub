@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Volume Doesn't Lie, But You're Reading It Wrong — SignalPilot Education</title>
+  <meta name="description" content="Two candles with identical volume can have opposite implications. Learn delta analysis, absorption vs exhaustion, and Plutus Flow integration.">
+  <meta name="sp-level" content="Beginner"><meta name="sp-order" content="2">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner/02-volume-doesnt-lie.html">
+  <meta name="theme-color" content="#05070d">
+  <meta property="og:title" content="Volume Doesn't Lie, But You're Reading It Wrong">
+  <meta property="og:description" content="Learn delta analysis, absorption vs exhaustion patterns, and Volume Profile POC/HVN/LVN analysis.">
+  <meta property="og:image" content="https://signalpilot.io/preview.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li>
+      <li><a href="https://signalpilot.io/#inside">What's inside</a></li>
+      <li><a href="/">Education</a></li>
+      <li><a href="https://docs.signalpilot.io/" target="_blank" rel="noopener">Docs</a></li>
+      <li><a href="https://signalpilot.io/#pricing">Pricing</a></li>
+      <li><a href="https://signalpilot.io/#faq">FAQ</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button><button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainnav">Menu ☰</button></div>
+  </div>
+</header>
+
+<article class="article">
+  <header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">Volume Doesn't Lie, But You're Reading It Wrong</h1><div class="meta">Reading time ~20 min • Market Structure Reality • Plutus Flow</div></div></header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>Hook:</b> Volume bars show <em>quantity</em>, not <em>quality</em>. Two candles with identical volume can have completely opposite implications. One signals absorption (continuation), the other exhaustion (reversal). Traditional volume analysis can't tell you which—but delta analysis can.</p>
+
+      <h2>Part 1: Why Traditional Volume Analysis Fails</h2>
+
+      <h3>The Standard Volume Bar Problem</h3>
+      <p>Most traders look at volume bars under the chart:</p>
+      <ul>
+        <li><strong>High volume =</strong> "Strong move"</li>
+        <li><strong>Low volume =</strong> "Weak move"</li>
+        <li><strong>Volume spike =</strong> "Something important"</li>
+      </ul>
+
+      <p><b>But this tells you NOTHING about direction or quality.</b></p>
+
+      <h3>The Identical Volume Paradox</h3>
+      <p><strong>Scenario A:</strong> Bullish candle, 100,000 volume<br>
+      <strong>Breakdown:</strong> 80,000 buy volume, 20,000 sell volume<br>
+      <strong>Delta:</strong> +60,000 (strong buying)<br>
+      <strong>Implication:</strong> Continuation UP likely</p>
+
+      <p><strong>Scenario B:</strong> Bullish candle, 100,000 volume<br>
+      <strong>Breakdown:</strong> 40,000 buy volume, 60,000 sell volume<br>
+      <strong>Delta:</strong> -20,000 (selling pressure)<br>
+      <strong>Implication:</strong> Reversal DOWN likely</p>
+
+      <p><strong>Same candle shape, same volume, opposite outcomes.</strong> Traditional volume bars can't differentiate—but delta can.</p>
+
+      <h2>Part 2: Delta Analysis — Buy Volume vs. Sell Volume</h2>
+
+      <h3>What IS Delta?</h3>
+      <p><code>Delta = Buy Volume - Sell Volume</code></p>
+
+      <ul>
+        <li><strong>Positive Delta (+):</strong> More buying than selling (bullish pressure)</li>
+        <li><strong>Negative Delta (-):</strong> More selling than buying (bearish pressure)</li>
+        <li><strong>Cumulative Volume Delta (CVD):</strong> Running total of delta (trend of pressure)</li>
+      </ul>
+
+      <h3>How Delta Works</h3>
+      <p><strong>Buy Volume:</strong> Aggressive market buy orders (lift the ask)<br>
+      <strong>Sell Volume:</strong> Aggressive market sell orders (hit the bid)</p>
+
+      <p><strong>Example:</strong></p>
+      <pre><code>Price at $100.00 / $100.01 (bid/ask)
+
+Trade 1: 1,000 shares bought at $100.01 (ask lifted) → +1,000 buy volume
+Trade 2: 500 shares sold at $100.00 (bid hit) → +500 sell volume
+Trade 3: 2,000 shares bought at $100.02 (ask lifted) → +2,000 buy volume
+
+Delta = (1,000 + 2,000) - 500 = +2,500 (bullish)</code></pre>
+
+      <h3>Signal Pilot Integration: Plutus Flow</h3>
+      <p><strong>Plutus Flow</strong> tracks delta and CVD with spike-clipped OBV methodology:</p>
+      <ul>
+        <li><strong>Real-time delta</strong> — Per-candle buy/sell breakdown</li>
+        <li><strong>CVD trending</strong> — Direction of cumulative pressure</li>
+        <li><strong>Spike detection</strong> — Abnormal volume events (absorption or exhaustion)</li>
+        <li><strong>Volume Profile</strong> — POC, HVN, LVN identification</li>
+      </ul>
+
+      <h2>Part 3: Absorption vs. Exhaustion</h2>
+
+      <h3>Absorption (Strength)</h3>
+      <p><strong>Definition:</strong> High volume + price holds level = Strong hand absorbing pressure</p>
+
+      <p><strong>Bullish Absorption Example:</strong></p>
+      <pre><code>Price at $100 support
+Volume spike: 200,000 shares
+Delta: -80,000 (heavy selling)
+Price action: Closes at $100.05 (held support)
+
+Interpretation: Strong buyer absorbed all selling → Reversal UP likely</code></pre>
+
+      <p><b>Signal Pilot:</b> Plutus Flow shows volume spike with negative delta, but price holds → Absorption confirmed.</p>
+
+      <h3>Exhaustion (Weakness)</h3>
+      <p><strong>Definition:</strong> High volume + price rejects level = Buyers/sellers exhausted</p>
+
+      <p><strong>Bullish Exhaustion Example:</strong></p>
+      <pre><code>Price rallies to $105 resistance
+Volume spike: 180,000 shares
+Delta: +30,000 (moderate buying)
+Price action: Closes at $104.50 (rejected resistance)
+
+Interpretation: Buyers exhausted, couldn't break $105 → Reversal DOWN likely</code></pre>
+
+      <p><b>Signal Pilot:</b> Plutus Flow shows volume spike with weak positive delta at resistance → Exhaustion confirmed.</p>
+
+      <h2>Part 4: Volume Profile — POC, HVN, LVN</h2>
+
+      <h3>What IS Volume Profile?</h3>
+      <p>Instead of showing volume over TIME (traditional bars), Volume Profile shows volume at each PRICE level.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li><strong>POC (Point of Control):</strong> Price level with highest volume (fair value)</li>
+        <li><strong>Value Area:</strong> Range containing 70% of volume (accepted prices)</li>
+        <li><strong>HVN (High Volume Node):</strong> Price clusters with heavy trading (support/resistance)</li>
+        <li><strong>LVN (Low Volume Node):</strong> Price gaps with little trading (rejection zones)</li>
+      </ul>
+
+      <h3>Using Volume Profile for Trading</h3>
+
+      <p><strong>POC as Magnet:</strong></p>
+      <ul>
+        <li>Price tends to revert to POC (fair value)</li>
+        <li>Above POC = potential pullback target</li>
+        <li>Below POC = potential rally target</li>
+      </ul>
+
+      <p><strong>HVN as Support/Resistance:</strong></p>
+      <ul>
+        <li>HVN = accepted price = more likely to hold</li>
+        <li>Price approaching HVN = watch for absorption</li>
+      </ul>
+
+      <p><strong>LVN as Breakout Zones:</strong></p>
+      <ul>
+        <li>LVN = rejected price = less likely to hold</li>
+        <li>Breakout through LVN = fast move (little resistance)</li>
+      </ul>
+
+      <h2>Part 5: Plutus Flow Integration Framework</h2>
+
+      <h3>Pre-Trade Checklist</h3>
+      <p><strong>Volume Confirmation:</strong></p>
+      <ul>
+        <li>[ ] Delta supports trade direction (positive for longs, negative for shorts)</li>
+        <li>[ ] CVD trending in trade direction (not diverging)</li>
+        <li>[ ] Plutus Flow spike confirms setup (absorption or exhaustion)</li>
+        <li>[ ] Volume Profile POC identified (target or invalidation)</li>
+      </ul>
+
+      <p><strong>Absorption Setup (Reversal):</strong></p>
+      <ul>
+        <li>[ ] Price at key level (support/resistance)</li>
+        <li>[ ] Volume spike with opposing delta (selling at support, buying at resistance)</li>
+        <li>[ ] Price HOLDS level (absorption confirmed)</li>
+        <li>[ ] Janus Atlas confirms sweep (if applicable)</li>
+        <li>[ ] Enter on reversal candle</li>
+      </ul>
+
+      <p><strong>Exhaustion Setup (Fade):</strong></p>
+      <ul>
+        <li>[ ] Price at extreme (resistance for longs, support for shorts)</li>
+        <li>[ ] Volume spike with weak delta (buyers exhausted at top, sellers at bottom)</li>
+        <li>[ ] Price REJECTS level (exhaustion confirmed)</li>
+        <li>[ ] Enter on rejection candle</li>
+      </ul>
+
+      <h2>Part 6: Common Mistakes</h2>
+
+      <h3>Mistake 1: High Volume = Bullish</h3>
+      <p><strong>Bad:</strong> "Volume is high, price must go up!"<br>
+      <strong>Reality:</strong> High volume can be selling pressure (distribution).<br>
+      <strong>Fix:</strong> Check delta—positive or negative?</p>
+
+      <h3>Mistake 2: Ignoring Delta Divergence</h3>
+      <p><strong>Bad:</strong> "Price is rising, so it's bullish."<br>
+      <strong>Reality:</strong> CVD falling while price rises = Distribution.<br>
+      <strong>Fix:</strong> Require CVD and price alignment (or trade the divergence).</p>
+
+      <h3>Mistake 3: Trading Every Volume Spike</h3>
+      <p><strong>Bad:</strong> "Plutus Flow spike, entering now!"<br>
+      <strong>Reality:</strong> Spikes can be absorption OR exhaustion—context matters.<br>
+      <strong>Fix:</strong> Require structure (Janus Atlas), regime (Minimal Flow), and price action confirmation.</p>
+
+      <h2>Part 7: Key Takeaways</h2>
+
+      <h3>Core Concepts</h3>
+      <ul>
+        <li><strong>Delta = Buy Volume - Sell Volume</strong> (directional pressure)</li>
+        <li><strong>CVD = Cumulative delta</strong> (trend of pressure)</li>
+        <li><strong>Absorption = High volume, price holds</strong> (strength)</li>
+        <li><strong>Exhaustion = High volume, price rejects</strong> (weakness)</li>
+        <li><strong>Volume Profile POC = Fair value</strong> (magnet)</li>
+      </ul>
+
+      <h3>Actionable Framework</h3>
+      <ul>
+        <li>Use Plutus Flow to track delta and CVD in real-time</li>
+        <li>Identify absorption (reversal setups) and exhaustion (fade setups)</li>
+        <li>Combine with Volume Profile for POC targets and HVN support/resistance</li>
+        <li>Require delta confirmation for all trades (no blind entries)</li>
+      </ul>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk. This content is for learning purposes only.</blockquote>
+
+      <p><em>"Volume shows activity. Delta shows intent. Context transforms both into edge."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+
+    </div>
+    <aside class="toc" aria-label="On this page"></aside>
+  </div>
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/beginner/01-the-liquidity-lie.html">&larr; Previous: Liquidity Lie</a>
+    <a class="btn btn-primary" href="/curriculum/beginner/03-price-action-is-dead.html">Next: Order Flow &rarr;</a>
+  </div>
+</article>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+<script src="/assets/edu.js"></script><script src="/assets/aurora.js" defer></script>
+</body></html>
