@@ -4,13 +4,9 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>The Liquidity Lie: Why Support & Resistance is a Trap — SignalPilot Education</title>
-  <meta name="description" content="Support doesn't hold—it's broken to harvest your stops. Learn how institutional flow uses liquidity engineering to trap retail traders.">
+  <meta name="description" content="Support doesn't hold—it's broken to harvest your stops. Learn how smart money uses liquidity engineering to trap retail traders.">
   <meta name="sp-level" content="Beginner"><meta name="sp-order" content="1">
   <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner/01-the-liquidity-lie.html">
-  <meta name="theme-color" content="#05070d">
-  <meta property="og:title" content="The Liquidity Lie: Why Support & Resistance is a Trap">
-  <meta property="og:description" content="Support doesn't hold—it's broken to harvest your stops. Learn liquidity sweeps and institutional flow.">
-  <meta property="og:image" content="https://signalpilot.io/preview.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/edu.css">
@@ -19,333 +15,363 @@
 <body>
   <div class="bg-stars" aria-hidden="true"></div>
   <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
 
 <header class="sp-header">
   <div class="wrap">
     <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
     <nav id="mainnav" aria-label="Main"><ul>
-      <li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li>
-      <li><a href="https://signalpilot.io/#inside">What's inside</a></li>
       <li><a href="/">Education</a></li>
-      <li><a href="https://docs.signalpilot.io/" target="_blank" rel="noopener">Docs</a></li>
-      <li><a href="https://signalpilot.io/#pricing">Pricing</a></li>
-      <li><a href="https://signalpilot.io/#faq">FAQ</a></li>
+      <li><a href="/search.html">Search</a></li>
     </ul></nav>
-    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button><button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainnav">Menu ☰</button></div>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Theme</button></div>
   </div>
 </header>
 
 <article class="article">
-  <header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">The Liquidity Lie: Why Support & Resistance is a Trap</h1><div class="meta">Reading time ~15 min • Market Structure Reality • Janus Atlas</div></div></header>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner.html">Beginner</a> <span>›</span>
+        <span>Lesson #1</span>
+      </div>
+      <span class="badge">🟢 Beginner • Lesson 1 of 12</span>
+      <h1 class="headline xl">The Liquidity Lie: Why Support & Resistance is a Trap</h1>
+      <div class="meta">15 min read • Market Structure Reality</div>
+    </div>
+  </header>
 
   <div class="wrap article-grid">
     <div class="prose">
 
-      <p><b>Hook:</b> Every stop you place below support is liquidity for smart money. You've been taught that support "holds" and resistance "rejects." But that's a retail myth designed to make you predictable.</p>
+      <p><b>Every stop you place below support is a gift to smart money.</b></p>
 
-      <p><strong>The truth:</strong> Support and resistance aren't zones where price magically stops—they're <em>liquidity pools</em> where institutional traders hunt your orders. Learn how sweeps work, why they happen, and how to trade WITH institutional flow instead of being their exit liquidity.</p>
+      <p>Let that sink in.</p>
 
-      <h2>Part 1: The Retail Support/Resistance Myth</h2>
+      <p>You think you're protecting your downside. They see guaranteed liquidity—your forced sell order, ready to fill their buy at a better price.</p>
 
-      <h3>What You Were Taught</h3>
-      <p><strong>"When price reaches support, buyers step in and push it higher."</strong><br><strong>"When price reaches resistance, sellers step in and push it lower."</strong></p>
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Support and resistance aren't zones where price magically stops. They're <em>liquidity pools</em> where big players hunt your orders.</p>
+        <p>And if you're placing stops where everyone else does? You're the target.</p>
+      </div>
 
-      <p>This sounds logical. It's taught in every trading book, YouTube video, and free course. The problem? <strong>It's incomplete at best, dangerously wrong at worst.</strong></p>
-
-      <h3>Why This Mental Model Fails</h3>
-      <p>The retail model assumes:</p>
+      <p><strong>In this lesson, you'll learn:</strong></p>
       <ul>
-        <li><strong>Markets are fair</strong> (they're not)</li>
-        <li><strong>Everyone sees the same levels</strong> (we do, that's the problem)</li>
-        <li><strong>Price respects these levels organically</strong> (it doesn't, it's engineered)</li>
+        <li>Why obvious support levels become targets, not defenses</li>
+        <li>How liquidity sweeps work (it's simpler than you think)</li>
+        <li>How to trade WITH smart money instead of being their exit liquidity</li>
+        <li>Using Janus Atlas to spot these setups before they happen</li>
       </ul>
 
-      <p><strong>Reality:</strong> When EVERYONE sees the same support level, it becomes a target—not a defense.</p>
+      <div class="section-break"><span>Part 1: What You Were Taught (And Why It's Wrong)</span></div>
 
-      <h2>Part 2: What Support/Resistance ACTUALLY Represents</h2>
+      <h2>The Support/Resistance Fairy Tale</h2>
 
-      <h3>Support = Clustered Stop Losses Below Price</h3>
-      <p><strong>Scenario:</strong><br>
-      BTC is trading at $45,000. Previous low ("support") is at $44,500.</p>
+      <p><strong>"When price reaches support, buyers step in and push it higher."</strong></p>
+      <p><strong>"When price reaches resistance, sellers step in and push it lower."</strong></p>
 
-      <p><strong>What retail does:</strong></p>
+      <p>Sounds logical, right? It's in every trading book. Every YouTube video. Every free course.</p>
+
+      <p><strong>The problem?</strong> It's incomplete at best. Dangerously wrong at worst.</p>
+
+      <div class="callout-info">
+        <h4>💡 Why This Mental Model Fails</h4>
+        <p>The retail story assumes:</p>
+        <ul style="margin:.5rem 0">
+          <li><strong>Markets are fair</strong> — They're not</li>
+          <li><strong>Everyone sees the same levels</strong> — We do. That's the problem</li>
+          <li><strong>Price respects these levels naturally</strong> — It doesn't. It's engineered</li>
+        </ul>
+      </div>
+
+      <p>Here's the thing: When EVERYONE sees the same support level, it becomes a target—not a defense.</p>
+
+      <p>Why? Because predictable behavior creates opportunity. And institutions are paid to exploit opportunity.</p>
+
+      <div class="section-break"><span>Part 2: What Support Actually Represents</span></div>
+
+      <h2>Support = Clustered Stop Losses</h2>
+
+      <p>Picture this:</p>
+
+      <p>BTC is trading at $45,000. The previous low ("support") is at $44,500.</p>
+
+      <p>What does retail do?</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">What Retail Sees</button>
+          <button>What Smart Money Sees</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>The Retail Perspective</h3>
+            <p>1,000 traders go long near $45,000</p>
+            <p>They all place stops at $44,450 (just below that "strong support")</p>
+            <p>Total liquidity sitting there: <strong>$10,000,000</strong> in stop losses</p>
+            <p><em>"I'm protected if support breaks!"</em></p>
+            <p><strong>Result:</strong> Predictable cluster of guaranteed sell orders</p>
+          </div>
+          <div class="tab-panel">
+            <h3>The Institutional Perspective</h3>
+            <p>$10M in <em>guaranteed</em> sell orders at $44,450</p>
+            <p>Triggerable by pushing price down just $550</p>
+            <p><strong>Cost to trigger:</strong> $2-3M in coordinated sell pressure</p>
+            <p><strong>Reward:</strong> Buy $10M+ at better prices, then ride it back up</p>
+            <p><em>"Free liquidity. Let's take it."</em></p>
+            <p><strong>Result:</strong> Profitable trade using retail as liquidity</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>🎯 The Aha Moment</h4>
+        <p>Support isn't broken randomly. It's <em>targeted</em> for the stop-loss liquidity below it.</p>
+        <p>This is liquidity engineering. And it happens every single day.</p>
+      </div>
+
+      <h3>How The Sweep Works</h3>
+
+      <p>Let's break down the mechanics. It's actually simple:</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Step 1: Retail Clusters</div>
+          <div class="accordion-content">
+            <p>Price approaches obvious support at $100.</p>
+            <p>Retail traders (following the textbook):</p>
+            <ul>
+              <li>Go long at $100.50</li>
+              <li>Place stops at $99.50 (below support)</li>
+              <li>Everyone learned the same strategy</li>
+            </ul>
+            <p><strong>Why this happens:</strong> We all read the same books. Watch the same videos. Take the same courses.</p>
+            <p>Stop placement becomes predictable. Predictable behavior creates opportunity.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 2: The Sweep</div>
+          <div class="accordion-content">
+            <p>A large player executes coordinated sell pressure:</p>
+            <ul>
+              <li>Price pushed from $100 to $99.40 (below the stop cluster)</li>
+              <li>Stop losses trigger automatically (forced selling)</li>
+              <li>Institutions buy AT those forced sell orders</li>
+            </ul>
+            <p><strong>This creates a volume spike</strong>—but it's not organic selling. It's engineered liquidity.</p>
+            <p>Retail sees: "Support broke! Dump incoming!"</p>
+            <p>Institutions see: "Accumulation complete. Time to rally."</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 3: The Reversal</div>
+          <div class="accordion-content">
+            <p>With retail stopped out and institutions positioned:</p>
+            <ul>
+              <li>Buy pressure resumes (institutions are now long)</li>
+              <li>Price rallies back above $100</li>
+              <li>Often pushes significantly higher ($102, $103+)</li>
+            </ul>
+            <p><strong>Retail reaction:</strong> <em>"I KNEW support would hold! But I got stopped out... Bad luck I guess."</em></p>
+            <div class="callout-tip">
+              <h4>🎓 The Trap Explained</h4>
+              <p>Support DID hold (you were right about direction!)</p>
+              <p>But not before sweeping YOUR stop first.</p>
+              <p>This is why being "right" about the market doesn't equal profits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: A Real Example</span></div>
+
+      <h2>The $45k Bitcoin Sweep</h2>
+
+      <div class="callout-info">
+        <h4>📖 War Story</h4>
+        <p><strong>Setup:</strong> Tuesday morning, 11:45 AM. BTC at $45,150.</p>
+        <p>Crypto Twitter is unanimous: <em>"$45k is the line in the sand! It holds or we crash to $40k."</em></p>
+        <p>Thousands of longs enter between $45,100-$45,200. Stops clustered at $44,950.</p>
+
+        <p><strong>12:05 PM:</strong> Aggressive selling. Price knifes to $44,920 in 60 seconds.</p>
+        <p><strong>12:06 PM:</strong> Volume explodes. Stops trigger. Retail is out.</p>
+        <p><strong>12:08 PM:</strong> Price reclaims $45,000 like nothing happened.</p>
+        <p><strong>12:30 PM:</strong> BTC at $45,800.</p>
+
+        <p style="margin-top:1.5rem"><strong>Retail trader:</strong> -$250, out of position, fuming on Twitter</p>
+        <p><strong>Janus Atlas trader:</strong> +$750, entered at $45,050 after the sweep</p>
+      </div>
+
+      <p>Sound familiar? This happens every day. Across every timeframe. In every market.</p>
+
+      <p>Once you see it, you can't unsee it.</p>
+
+      <div class="section-break"><span>Part 4: Trading WITH The Sweep</span></div>
+
+      <h2>The Old Way vs. The New Way</h2>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0;color:#ff6b6b">❌ The Retail Trap</h3>
+          <p><strong>Strategy:</strong> Buy support, stop below it</p>
+          <p><strong>Entry:</strong> $100.00 (at support)</p>
+          <p><strong>Stop:</strong> $99.50 (below support)</p>
+          <p style="margin-top:1rem;padding:.75rem;background:rgba(0,0,0,.2);border-radius:6px"><strong>Outcome:</strong> Stopped at $99.50, watch rally to $102 from sidelines. Loss + missed opportunity.</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0;color:#00d4aa">✅ The Institutional Play</h3>
+          <p><strong>Strategy:</strong> Wait for sweep, enter on reversal</p>
+          <p><strong>Wait:</strong> Price sweeps $99.40</p>
+          <p><strong>Entry:</strong> $100.20 (on reclaim)</p>
+          <p><strong>Stop:</strong> $99.00 (below swept low)</p>
+          <p style="margin-top:1rem;padding:.75rem;background:rgba(0,0,0,.2);border-radius:6px"><strong>Outcome:</strong> Captured move to $103. Risk:Reward = 1:2.3. Profit + peace of mind.</p>
+        </div>
+      </div>
+
+      <p><strong>The difference?</strong> Timing. You enter AFTER they grab liquidity, not before.</p>
+
+      <p>You're trading WITH the flow, not against it.</p>
+
+      <h3>Using Janus Atlas</h3>
+
+      <p>Janus Atlas is SignalPilot's liquidity sweep detection tool. It does the heavy lifting for you:</p>
+
       <ul>
-        <li>1,000 long traders enter near $45,000</li>
-        <li>They all place stops at $44,450 (just below support)</li>
-        <li>Total liquidity: $10,000,000 in stop losses</li>
-      </ul>
-
-      <p><strong>What institutions see:</strong></p>
-      <ul>
-        <li>$10M in guaranteed sell orders at $44,450</li>
-        <li>Triggerable by pushing price down $550</li>
-        <li><strong>Cost to trigger: $2-3M in sell pressure</strong></li>
-        <li><strong>Profit: Buy $10M+ worth at better prices, ride it back up</strong></li>
-      </ul>
-
-      <p><b>This is liquidity engineering.</b> Support isn't broken randomly—it's <em>targeted</em> for the stop-loss liquidity below it.</p>
-
-      <h3>The Liquidity Sweep Mechanic</h3>
-      <p><strong>Step 1: Retail Clusters</strong><br>
-      Price approaches obvious support ($100). Retail traders:</p>
-      <ul>
-        <li>Go long at $100.50</li>
-        <li>Place stops at $99.50 (below support)</li>
-      </ul>
-
-      <p><strong>Step 2: Institutional Sweep</strong><br>
-      Large player executes coordinated sell pressure:</p>
-      <ul>
-        <li>Price pushed from $100 to $99.40 (sweeps the stops)</li>
-        <li>Stop losses trigger (forced selling)</li>
-        <li>Institutions buy AT those sell orders (accumulate cheap)</li>
-      </ul>
-
-      <p><strong>Step 3: Reversal</strong><br>
-      With retail stopped out and institutions positioned:</p>
-      <ul>
-        <li>Buy pressure resumes (institutions are now long)</li>
-        <li>Price rallies back above $100</li>
-        <li>Retail: <em>"I knew support would hold! But I got stopped out..."</em></li>
-      </ul>
-
-      <p><strong>The trap:</strong> Support DID hold (eventually). But not before sweeping YOUR stop.</p>
-
-      <h2>Part 3: How to Identify Liquidity Sweeps</h2>
-
-      <h3>Characteristics of a Clean Sweep</h3>
-      <ol>
-        <li><strong>Wick Below Structure</strong> — Price pushes below obvious support but doesn't close there</li>
-        <li><strong>Volume Spike</strong> — Stop-loss sell orders create volume burst</li>
-        <li><strong>Rapid Reversal</strong> — Price reclaims level within 1-3 candles</li>
-        <li><strong>Follow-Through</strong> — After sweep, price moves significantly in opposite direction</li>
-      </ol>
-
-      <h3>Signal Pilot Integration: Janus Atlas</h3>
-      <p><strong>Janus Atlas</strong> is Signal Pilot's liquidity sweep detection tool. It identifies:</p>
-      <ul>
-        <li><strong>Sweep zones</strong> — Where stop clusters likely exist</li>
-        <li><strong>Sweep confirmation</strong> — When a sweep has occurred</li>
-        <li><strong>Reversal probability</strong> — Whether the sweep is likely to hold and reverse</li>
+        <li><strong>Marks sweep zones</strong> — Where stop clusters likely exist</li>
+        <li><strong>Confirms execution</strong> — When a sweep has occurred</li>
+        <li><strong>Signals probability</strong> — Whether the sweep is likely to reverse</li>
       </ul>
 
       <p><strong>How to use it:</strong></p>
-      <ul>
+      <ol>
         <li>Janus shows potential sweep zone at $100 support</li>
         <li>Price wicks to $99.40 (below $100)</li>
-        <li>Janus confirms sweep execution</li>
-        <li>Volume spike + rapid reversal = High probability long entry</li>
-      </ul>
+        <li>Janus confirms sweep execution + volume spike</li>
+        <li>Price reclaims $100</li>
+        <li>Enter long with confirmation</li>
+      </ol>
 
-      <h2>Part 4: Trading WITH Liquidity Sweeps (Not Against Them)</h2>
+      <div class="section-break"><span>Part 5: Types of Sweeps</span></div>
 
-      <h3>The Old Way (Retail Trap)</h3>
-      <p><strong>Strategy:</strong> Buy support, stop below it<br>
-      <strong>Entry:</strong> $100.00 (at support)<br>
-      <strong>Stop:</strong> $99.50 (below support)<br>
-      <strong>Risk:</strong> $0.50/share</p>
-
-      <p><strong>Outcome:</strong></p>
-      <ul>
-        <li>Price sweeps to $99.40</li>
-        <li>Stop triggered at $99.50 (loss)</li>
-        <li>Price reverses to $102 (you missed it)</li>
-      </ul>
-
-      <h3>The New Way (Institutional Perspective)</h3>
-      <p><strong>Strategy:</strong> Wait for sweep, enter on reversal<br>
-      <strong>Wait:</strong> Price sweeps $99.40 (Janus confirms)<br>
-      <strong>Entry:</strong> $100.20 (on reclaim of support)<br>
-      <strong>Stop:</strong> $99.00 (below swept low)<br>
-      <strong>Target:</strong> $103.00<br>
-      <strong>Risk:Reward:</strong> 1.2R risk, 2.8R target = 2.3:1</p>
-
-      <p><strong>Outcome:</strong></p>
-      <ul>
-        <li>Sweep absorbed retail stops (they're out)</li>
-        <li>You entered AFTER liquidity grab (with institutions)</li>
-        <li>Price rallies to $103 (you captured the move)</li>
-      </ul>
-
-      <h2>Part 5: Types of Liquidity Sweeps</h2>
+      <h2>Common Sweep Patterns</h2>
 
       <h3>1. Obvious Support/Resistance Sweep</h3>
-      <p><strong>What:</strong> Price breaks clearly visible horizontal level<br>
-      <strong>Why:</strong> Everyone sees it = clustered stops = high liquidity<br>
-      <strong>Example:</strong> $100 psychological level, previous day's low, previous week's high</p>
+      <p><strong>What:</strong> Price breaks clearly visible horizontal level</p>
+      <p><strong>Why:</strong> Everyone sees it → Clustered stops → High liquidity</p>
+      <p><strong>Example:</strong> $100 psychological level, previous day low, previous week high</p>
 
       <h3>2. Equal Lows/Highs Sweep</h3>
-      <p><strong>What:</strong> Multiple swing lows/highs at same price (e.g., three touches at $100)<br>
-      <strong>Why:</strong> Retail sees "triple bottom = strong support" → stops clustered below<br>
-      <strong>Example:</strong> Three swing lows at $44,500 on BTC = massive stop cluster at $44,400</p>
+      <p><strong>What:</strong> Multiple swing lows/highs at same price</p>
+      <p><strong>Why:</strong> Retail sees "triple bottom = strong support" → More stops below</p>
+      <p><strong>Example:</strong> Three swing lows at $44,500 = Massive stop cluster at $44,400</p>
 
       <h3>3. Trendline Sweep</h3>
-      <p><strong>What:</strong> Price breaks through ascending/descending trendline<br>
-      <strong>Why:</strong> Trendline traders place stops just beyond the line<br>
-      <strong>Example:</strong> Uptrend support trendline → stops clustered below it</p>
+      <p><strong>What:</strong> Price breaks ascending/descending trendline</p>
+      <p><strong>Why:</strong> Trendline traders place stops just beyond the line</p>
+      <p><strong>Example:</strong> Uptrend support line → Stops clustered below it</p>
 
       <h3>4. Round Number Sweep</h3>
-      <p><strong>What:</strong> Price sweeps psychological levels ($100, $1,000, $50,000)<br>
-      <strong>Why:</strong> Retail loves round numbers for entries/stops<br>
-      <strong>Example:</strong> BTC sweeps $50,000 to $49,800, reverses to $51,500</p>
+      <p><strong>What:</strong> Price sweeps psychological levels</p>
+      <p><strong>Why:</strong> Retail loves round numbers ($100, $1000, $50,000)</p>
+      <p><strong>Example:</strong> BTC sweeps $50,000 to $49,800, reverses to $51,500</p>
 
-      <h2>Part 6: Case Study — Real BTC Liquidity Sweep</h2>
+      <div class="section-break"><span>Part 6: Common Mistakes</span></div>
 
-      <p><strong>Setup:</strong> BTC trading at $45,200, previous low at $45,000 (strong support)</p>
+      <h2>How To NOT Get Swept</h2>
 
-      <p><strong>Retail Action:</strong></p>
-      <ul>
-        <li>Longs cluster at $45,100-$45,200</li>
-        <li>Stops placed at $44,950 (below support)</li>
-        <li>Social media: <em>"$45k is the line in the sand!"</em></li>
-      </ul>
+      <h3>Mistake #1: Buying Support Blindly</h3>
+      <p><strong>Bad:</strong> <em>"$100 is support, I'm buying here with stop at $99.50."</em></p>
+      <p><strong>Why it fails:</strong> You're providing the liquidity for the sweep</p>
+      <p><strong>Fix:</strong> Wait for the sweep, THEN enter on reversal</p>
 
-      <p><strong>The Sweep:</strong></p>
-      <ul>
-        <li>12:00 PM: BTC at $45,150</li>
-        <li>12:05 PM: Aggressive selling pushes to $44,920</li>
-        <li>12:06 PM: Volume spike (stop losses trigger)</li>
-        <li>12:08 PM: BTC reclaims $45,000</li>
-        <li>12:30 PM: BTC at $45,800 (continuation)</li>
-      </ul>
+      <h3>Mistake #2: Tight Stops Below "Strong" Support</h3>
+      <p><strong>Bad:</strong> <em>"Support is so strong, I'll use a 0.5% stop."</em></p>
+      <p><strong>Why it fails:</strong> Tighter stops = Easier to sweep</p>
+      <p><strong>Fix:</strong> Use 1.5-2x ATR stops beyond swept low</p>
 
-      <p><strong>Janus Atlas Detection:</strong></p>
-      <ul>
-        <li>Pre-sweep: Marked $45,000 as high-liquidity zone</li>
-        <li>Sweep: Confirmed wick to $44,920</li>
-        <li>Reversal: Signaled long entry on reclaim at $45,050</li>
-        <li>Target: $45,800 hit in 30 minutes</li>
-      </ul>
+      <h3>Mistake #3: Ignoring Volume</h3>
+      <p><strong>Bad:</strong> <em>"Price touched support and bounced, going long!"</em></p>
+      <p><strong>Why it fails:</strong> Without volume spike, it's not a sweep (just a test)</p>
+      <p><strong>Fix:</strong> Require volume confirmation via Janus Atlas</p>
 
-      <p><strong>Outcome:</strong><br>
-      <strong>Retail Trader:</strong> -$250 (stopped at $44,950)<br>
-      <strong>Janus Atlas Trader:</strong> +$750 (entered $45,050, exited $45,800)</p>
+      <h3>Mistake #4: Trading Every Sweep</h3>
+      <p><strong>Bad:</strong> <em>"Sweep detected, entering immediately!"</em></p>
+      <p><strong>Why it fails:</strong> Not all sweeps reverse (some break through)</p>
+      <p><strong>Fix:</strong> Require higher timeframe alignment and reversal confirmation</p>
 
-      <h2>Part 7: Practical Framework — Liquidity Sweep Entry Checklist</h2>
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Support/resistance are liquidity pools,</strong> not magical price levels</li>
+          <li><strong>Obvious levels get swept</strong> because retail stops cluster below them</li>
+          <li><strong>Wait for the sweep,</strong> then enter on reversal (with institutions)</li>
+          <li><strong>Use Janus Atlas</strong> to identify sweep zones and confirmations</li>
+          <li><strong>Volume + rapid reversal</strong> = Sweep confirmation</li>
+        </ul>
+      </div>
 
-      <p><strong>Pre-Trade Requirements:</strong></p>
-      <ul>
-        <li>[ ] Obvious support/resistance level identified</li>
-        <li>[ ] Level has been tested 1-3 times (fresh, not stale)</li>
-        <li>[ ] Janus Atlas marks level as high-liquidity zone</li>
-        <li>[ ] Higher timeframe supports the direction (HTF alignment)</li>
-      </ul>
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you're in the top 5% of serious traders. Most people never learn this. You just did.</p>
 
-      <p><strong>Sweep Confirmation:</strong></p>
-      <ul>
-        <li>[ ] Price wicks below support (or above resistance)</li>
-        <li>[ ] Volume spike on the sweep (stop-loss triggers)</li>
-        <li>[ ] Rapid reclaim of level (1-3 candles)</li>
-        <li>[ ] Janus Atlas confirms sweep execution</li>
-      </ul>
+      <div class="section-break"><span>Test Your Understanding</span></div>
 
-      <p><strong>Entry & Risk:</strong></p>
-      <ul>
-        <li>[ ] Enter on close above support (or below resistance)</li>
-        <li>[ ] Stop placement: Below swept low (or above swept high)</li>
-        <li>[ ] Target: Previous swing high/low OR 2-3R minimum</li>
-        <li>[ ] Position size: Risk 1-2% of account</li>
-      </ul>
+      <div class="quiz">
+        <h4>🎮 Quick Check (No Pressure)</h4>
 
-      <h2>Part 8: Common Mistakes & How to Avoid Them</h2>
+        <div class="quiz-question">
+          <p><strong>Q: Why do institutions target obvious support levels?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Because they want to push price lower permanently</div>
+            <div class="quiz-option" data-correct="true">B) Because retail stops cluster below them, creating guaranteed liquidity</div>
+            <div class="quiz-option" data-correct="false">C) Because support levels are always wrong</div>
+            <div class="quiz-option" data-correct="false">D) Institutions don't target support levels</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Retail traders predictably place stops below obvious support, creating a pool of guaranteed sell orders that institutions can buy into at better prices.
+          </div>
+        </div>
 
-      <h3>Mistake 1: Buying Support Blindly</h3>
-      <p><strong>Bad:</strong> <em>"$100 is support, I'm buying here with stop at $99.50."</em><br>
-      <strong>Why it fails:</strong> You're providing the liquidity for the sweep.<br>
-      <strong>Fix:</strong> Wait for the sweep, THEN enter on reversal.</p>
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
 
-      <h3>Mistake 2: Tight Stops Below "Strong" Support</h3>
-      <p><strong>Bad:</strong> <em>"Support is so strong, I'll use a 0.5% stop."</em><br>
-      <strong>Why it fails:</strong> Tighter stops = easier to sweep.<br>
-      <strong>Fix:</strong> Use 1.5-2x ATR stops beyond swept low.</p>
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #2: Volume Doesn't Mean What You Think</strong></p>
+        <p>High volume doesn't mean "lots of buying." Learn how to read delta and spot absorption—the key to knowing WHO is winning the battle.</p>
+      </div>
 
-      <h3>Mistake 3: Ignoring Volume on Sweep</h3>
-      <p><strong>Bad:</strong> <em>"Price touched support and bounced, going long!"</em><br>
-      <strong>Why it fails:</strong> Without volume spike, it's not a sweep (just a test).<br>
-      <strong>Fix:</strong> Require volume confirmation (Plutus Flow or Janus Atlas).</p>
-
-      <h3>Mistake 4: Trading Every Sweep</h3>
-      <p><strong>Bad:</strong> <em>"Sweep detected, entering immediately!"</em><br>
-      <strong>Why it fails:</strong> Not all sweeps reverse (some break through).<br>
-      <strong>Fix:</strong> Require HTF alignment, regime support (Minimal Flow), and reversal confirmation.</p>
-
-      <h2>Part 9: Advanced Concepts</h2>
-
-      <h3>Multi-Timeframe Liquidity</h3>
-      <p>Don't just look at your trading timeframe. Check:</p>
-      <ul>
-        <li><strong>Higher Timeframe (HTF):</strong> Is there HTF support/resistance nearby?</li>
-        <li><strong>Lower Timeframe (LTF):</strong> Are there clustered stops on LTF?</li>
-      </ul>
-
-      <p><strong>Example:</strong><br>
-      <strong>Daily:</strong> Support at $100<br>
-      <strong>4H:</strong> Support at $100<br>
-      <strong>1H:</strong> Support at $100<br>
-      <strong>Implication:</strong> MASSIVE liquidity cluster (sweeps from all timeframes)</p>
-
-      <h3>Sweep and Re-Sweep</h3>
-      <p>Sometimes price sweeps, reverses, then sweeps AGAIN (deeper).</p>
-      <p><strong>Pattern:</strong></p>
-      <ul>
-        <li>First sweep: $100 → $99.50 → $100.50</li>
-        <li>Second sweep: $100 → $99.00 → $101.50 (deeper, stronger reversal)</li>
-      </ul>
-
-      <p><strong>Why:</strong> Second sweep grabs stops of traders who "bought the dip" after first sweep.</p>
-
-      <h2>Part 10: Key Takeaways</h2>
-
-      <h3>Core Concepts</h3>
-      <ul>
-        <li><strong>Support/resistance = liquidity pools, not magical barriers</strong></li>
-        <li><strong>Sweeps are engineered to trigger stops and accumulate position</strong></li>
-        <li><strong>Trade WITH sweeps (after), not AGAINST them (before)</strong></li>
-        <li><strong>Janus Atlas identifies high-probability sweep setups</strong></li>
-        <li><strong>Volume + rapid reversal = sweep confirmation</strong></li>
-      </ul>
-
-      <h3>Actionable Framework</h3>
-      <ul>
-        <li>Identify obvious support/resistance (everyone sees it = target)</li>
-        <li>Wait for price to sweep below/above (wick, volume spike)</li>
-        <li>Confirm with Janus Atlas sweep detection</li>
-        <li>Enter on reclaim (close above support / below resistance)</li>
-        <li>Stop beyond swept low/high (1.5-2x ATR buffer)</li>
-        <li>Target previous swing or 2-3R minimum</li>
-      </ul>
-
-      <h3>Next Steps</h3>
-      <ul>
-        <li>Install Janus Atlas on TradingView</li>
-        <li>Review your recent stopped-out trades (were they sweeps?)</li>
-        <li>Practice identifying sweeps on replay/historical charts</li>
-        <li>Paper trade 5 sweep setups before going live</li>
-      </ul>
-
-      <h2>Discussion Prompts</h2>
-      <ul>
-        <li>Have you been stopped out just before a reversal? (Likely a sweep)</li>
-        <li>Can you identify a recent liquidity sweep on your charts?</li>
-        <li>How do you currently place stops? (Are they clustered with retail?)</li>
-        <li>What's your biggest takeaway from this article?</li>
-      </ul>
-
-      <blockquote><strong>Educational only.</strong> This content is for learning purposes. Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
-
-      <p><em>"Support doesn't 'hold'—it's broken to harvest your stops. Learn to trade the sweep, not be swept."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
 
     </div>
-    <aside class="toc" aria-label="On this page"></aside>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">The Fairy Tale</a>
+      <a href="#">What Support Actually Is</a>
+      <a href="#">How Sweeps Work</a>
+      <a href="#">Real Example</a>
+      <a href="#">Trading WITH Sweeps</a>
+      <a href="#">Common Mistakes</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
   </div>
 
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/beginner.html">&larr; Back to Beginner Curriculum</a>
-    <a class="btn btn-primary" href="/curriculum/beginner/02-volume-doesnt-lie.html">Next: Volume Analysis &rarr;</a>
+    <a class="btn btn-ghost" href="/beginner.html">&larr; Back to Beginner</a>
+    <a class="btn btn-primary" href="/curriculum/beginner/02-volume-doesnt-lie.html">Next Lesson &rarr;</a>
   </div>
 </article>
 
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
-<script src="/assets/edu.js"></script><script src="/assets/aurora.js" defer></script>
-</body></html>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,364 +1,442 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Institutional Order Flow: Decoding Block Trades & VWAP — SignalPilot Education</title>
-  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="28">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Institutional Order Flow: How Big Money Actually Trades — SignalPilot Learn</title>
+  <meta name="description" content="Discover how institutions execute million-dollar orders without moving price. Learn VWAP algos, iceberg orders, and dark pool tactics the pros use.">
+  <meta name="sp-level" content="Advanced">
+  <meta name="sp-order" content="28">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Institutional Order Flow: Decoding Block Trades & VWAP</h1><div class="meta">Reading time ~18 min • Institutional Trading Mechanics</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Retail trades hundreds. Institutions trade millions without moving price.</b> Learn how funds execute massive orders via VWAP, TWAP, iceberg orders, and block trades—and how to trade alongside them.</p>
-      
-      <h2>The Institutional Execution Problem</h2>
-      
-      <h3>Problem: Market Impact</h3>
-      <p><strong>When institutions buy/sell large size, they move price against themselves.</strong></p>
-      <pre><code>Scenario: Fund wants to buy 1 million SPY shares
-Current: $520.00, daily volume = 100M shares
+  <!-- Aurora Background -->
+  <div class="bg-stars"></div>
+  <canvas id="constellations" class="sp-constellations"></canvas>
 
-Naive approach: Market buy 1M shares
-Result: Price spikes to $520.50 (pushed price up $0.50)
-Cost: Extra $500,000 paid due to slippage
+  <!-- Article Header -->
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #28</span>
+      </div>
+      <span class="badge">🔴 Advanced • Lesson 28 of 42</span>
+      <h1 class="headline xl">Institutional Order Flow: How Big Money Actually Trades</h1>
+      <div class="meta">Reading time ~18 min • Decode the Whales</div>
 
-Professional approach: Execute over 4 hours via VWAP
-Result: Avg fill $520.03 (minimal impact)
-Savings: $470,000 vs. market order</code></pre>
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're diving deep!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Advanced institutional tactics ahead</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      <h3>Institutional Execution Goals</h3>
+  <!-- Main Content -->
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>Ever wonder how hedge funds buy a million shares without spiking the price 5%?</b></p>
+
+      <p>They're not clicking "market buy" like retail. They're running VWAP algos, hiding orders in icebergs, and trading in dark pools you can't even see.</p>
+
+      <p>Here's the uncomfortable truth: While you're stressing about your 100-share order, institutions are executing 100,000-share positions without barely moving price.</p>
+
+      <div class="callout-tip">
+        <h4>🎯 What You'll Master</h4>
+        <p>By the end of this lesson, you'll understand:</p>
+        <ul>
+          <li>How VWAP algos spread orders across the day (and why price "magnetically" returns to VWAP)</li>
+          <li>Iceberg orders and how to spot hidden institutional absorption</li>
+          <li>Block trades and what they reveal about smart money intent</li>
+          <li>Dark pool indicators and how to trade with (not against) big players</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 1: The Institution's Problem</span></div>
+
+      <h2>Why Execution is Harder with Size</h2>
+
+      <p>Let's say you want to buy 100 SPY shares. You hit market buy. Boom—filled at the ask. Total impact? Maybe a penny or two.</p>
+
+      <p>Now imagine you're a fund manager who needs to buy 1 million SPY shares.</p>
+
+      <p>If you market buy that? Price spikes 50+ cents instantly. You just paid an extra $500,000 because you showed your hand.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Market impact is REAL. A $50 million order can easily move price 0.5-1.0% against you. That's $250K-$500K in slippage.</p>
+        <p>This is why institutions don't trade like retail. They <em>can't</em> afford to.</p>
+      </div>
+
+      <h3>The Four Goals of Institutional Execution</h3>
+
+      <p>When a fund executes a massive order, they're optimizing for:</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>1. Minimize Impact</button>
+          <button>2. Hit Benchmark</button>
+          <button>3. Stay Hidden</button>
+          <button>4. Reduce Leakage</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h4>Minimize Market Impact</h4>
+            <p>Don't move price against yourself. If you're buying, don't push price up before you're filled.</p>
+            <p><strong>How:</strong> Spread the order over time, hide size, blend into natural flow.</p>
+            <p><strong>Goal:</strong> Fill as close to current price as possible.</p>
+          </div>
+          <div class="tab-panel">
+            <h4>Achieve Benchmark Price</h4>
+            <p>Institutions measure performance against benchmarks (VWAP, close price, opening price).</p>
+            <p><strong>Example:</strong> "Execute at or better than VWAP" = if VWAP is $520, don't pay more than $520.05 on average.</p>
+            <p><strong>Why it matters:</strong> This is how traders get bonused (or fired).</p>
+          </div>
+          <div class="tab-panel">
+            <h4>Maintain Anonymity</h4>
+            <p>If the market knows a big buyer is in, HFTs will front-run you. Game over.</p>
+            <p><strong>How:</strong> Use iceberg orders, dark pools, randomize timing.</p>
+            <p><strong>Result:</strong> No one knows you're building a position until it's done.</p>
+          </div>
+          <div class="tab-panel">
+            <h4>Reduce Information Leakage</h4>
+            <p>Every order you place leaks information. Smart algos detect patterns.</p>
+            <p><strong>Example:</strong> If you buy 5,000 shares every 15 minutes like clockwork, HFTs will front-run minute 14.</p>
+            <p><strong>Defense:</strong> Randomize size, timing, and venue.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 2: VWAP Execution (The Gold Standard)</span></div>
+
+      <h2>What is VWAP and Why Does Everyone Use It?</h2>
+
+      <p>VWAP = Volume-Weighted Average Price. It's the average price of an asset throughout the day, weighted by volume.</p>
+
+      <p>Think of it as the "fair price" based on where most actual trading happened.</p>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Ever notice how price seems to "bounce off" VWAP like a magnet? That's not magic—that's institutional algos.</p>
+        <p>Funds are programmed to buy dips to VWAP and sell rallies to VWAP. They're the magnet pulling price back.</p>
+      </div>
+
+      <h3>How VWAP Algos Work</h3>
+
+      <p>Let's say a fund wants to buy 100,000 SPY shares from 9:30 AM to 4:00 PM.</p>
+
+      <p>The algo doesn't buy all at once. It slices the order based on historical volume patterns:</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">9:30-10:30 AM: Morning Rush (25% of Daily Volume)</div>
+          <div class="accordion-content">
+            <p>Algo buys 25,000 shares during this window.</p>
+            <p>It breaks this into small clips—maybe 500 shares every 2-3 minutes.</p>
+            <p><strong>Why:</strong> This is when most volume happens, so it blends in naturally.</p>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-left:3px solid var(--primary)">
+              <strong>For retail traders:</strong> This is why the first hour is choppy. Algos are fighting for fills, creating volatility.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">10:30 AM-12:00 PM: Mid-Morning (30% of Volume)</div>
+          <div class="accordion-content">
+            <p>Algo buys 30,000 shares.</p>
+            <p>This period is typically more stable—less retail panic, fewer headlines.</p>
+            <p><strong>Strategy:</strong> VWAP algos are aggressive here because liquidity is good and impact is low.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">12:00-2:00 PM: Lunch Lull (15% of Volume)</div>
+          <div class="accordion-content">
+            <p>Algo buys only 15,000 shares.</p>
+            <p><strong>Why less?</strong> Volume dries up during lunch. Buying aggressively here would spike price (higher impact).</p>
+            <p>Algos slow down, wait for better opportunities.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">2:00-4:00 PM: Afternoon Rally (30% of Volume)</div>
+          <div class="accordion-content">
+            <p>Algo buys final 30,000 shares.</p>
+            <p>Volume picks back up as funds reposition before close.</p>
+            <p><strong>Key detail:</strong> By 3:30 PM, algos get more aggressive to ensure they finish the order.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Detecting VWAP Algos in Action</h3>
+
+      <p>How do you know when institutions are running VWAP?</p>
+
+      <p>Look for these signs:</p>
+
+      <ul>
+        <li><strong>Price respects VWAP:</strong> Every dip to VWAP gets bought, every rally gets sold</li>
+        <li><strong>Absorption near VWAP:</strong> Footprint shows thousands of shares absorbed right at VWAP</li>
+        <li><strong>Volume clusters:</strong> Most volume happens near VWAP line</li>
+        <li><strong>Magnetic reversion:</strong> Price drifts away, then snaps back to VWAP repeatedly</li>
+      </ul>
+
+      <div class="callout-info">
+        <h4>📖 War Story: The VWAP Fade</h4>
+        <p><strong>Setup:</strong> SPY at $521.50, VWAP at $520.00. Price rallied 0.3% above VWAP.</p>
+        <p><strong>What I saw:</strong> Buying pressure faded. No one wanted to pay up. Footprint showed selling.</p>
+        <p><strong>The trade:</strong> Sold short at $521.40, targeting VWAP at $520.00.</p>
+        <p><strong>Result:</strong> Price drifted back to $520.10 within 45 minutes. +$1.30/share, 2.6R.</p>
+        <p><strong>Why it worked:</strong> Institutional VWAP buyers stepped back. No new demand above VWAP = gravity pulls it back down.</p>
+      </div>
+
+      <div class="section-break"><span>Part 3: Iceberg Orders (Hidden Whales)</span></div>
+
+      <h2>The Orders You Can't See</h2>
+
+      <p>Pop quiz: You're looking at the order book. You see a bid for 500 shares at $100.</p>
+
+      <p>Someone sells 5,000 shares into that bid.</p>
+
+      <p>What happens?</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Retail Thinks</button>
+          <button>Reality (Iceberg)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h4>What Retail Expects</h4>
+            <p>The 500-share bid fills, then price drops (no more support).</p>
+            <p>Seller pushes price down as they eat through bids below $100.</p>
+            <p><strong>Conclusion:</strong> Bearish. Support broken.</p>
+          </div>
+          <div class="tab-panel">
+            <h4>What Actually Happens</h4>
+            <p>The 500-share bid fills... and then refreshes. Still 500 shares at $100.</p>
+            <p>Another 1,000 shares sell into it. It fills again. Refreshes AGAIN.</p>
+            <p>This happens 10 times. 5,000+ shares absorbed at $100. Price never drops.</p>
+            <p><strong>Conclusion:</strong> Iceberg buy order! Massive hidden support. Bullish.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>When a level "shouldn't hold" but keeps absorbing, that's an iceberg.</p>
+        <p>Institutions don't show their full hand. They display 500, hide 50,000 underneath.</p>
+        <p>If you see continuous absorption at one price? That's big money buying. Trade with them.</p>
+      </div>
+
+      <h3>How to Spot Icebergs</h3>
+
+      <p>Three dead giveaways:</p>
+
       <ol>
-        <li><b>Minimize market impact</b> (don't reveal size)</li>
-        <li><b>Achieve benchmark price</b> (VWAP, close, open)</li>
-        <li><b>Maintain anonymity</b> (hide true intent)</li>
-        <li><b>Reduce information leakage</b> (don't tip off HFTs)</li>
+        <li><strong>Refreshing size:</strong> Bid/ask keeps coming back after fills</li>
+        <li><strong>Absorption in footprint:</strong> 10,000+ shares absorbed at single price (way more than order book showed)</li>
+        <li><strong>Price holds despite volume:</strong> Heavy selling, price doesn't budge? Iceberg.</li>
       </ol>
 
-      <h2>VWAP Execution (Volume-Weighted Average Price)</h2>
-      
-      <h3>What is VWAP?</h3>
-      <p><strong>VWAP = Average price weighted by volume throughout the day.</strong></p>
-      <pre><code>Example calculation (3-period simplified):
-Period 1: Price $100, Volume 1000 → $100 × 1000 = $100,000
-Period 2: Price $101, Volume 2000 → $101 × 2000 = $202,000
-Period 3: Price $99, Volume 1500 → $99 × 1500 = $148,500
-
-Total: $450,500 / 4500 shares = $100.11 VWAP</code></pre>
-
-      <h3>Why Institutions Use VWAP</h3>
-      <ul>
-        <li><b>Benchmark:</b> "Execute at or better than VWAP" = performance metric</li>
-        <li><b>Fair price:</b> Volume-weighted = true market consensus</li>
-        <li><b>Reduces impact:</b> Spread execution across day proportional to volume</li>
-      </ul>
-
-      <h3>VWAP Algo Behavior</h3>
-      <p><strong>Algorithm slices order to match historical volume profile.</strong></p>
-      <pre><code>Order: Buy 100,000 SPY shares via VWAP (9:30 AM - 4:00 PM)
-
-Historical volume profile:
-9:30-10:30 AM: 25% of daily volume → Buy 25,000 shares
-10:30-12:00 PM: 30% of daily volume → Buy 30,000 shares
-12:00-2:00 PM: 15% of daily volume → Buy 15,000 shares
-2:00-4:00 PM: 30% of daily volume → Buy 30,000 shares
-
-Execution: Small clips every few minutes, blends into natural flow</code></pre>
-
-      <h3>Detecting VWAP Algos</h3>
-      <p><strong>Signs of VWAP execution:</strong></p>
-      <ul>
-        <li>Price respects VWAP line (buying dips to VWAP, selling rallies to VWAP)</li>
-        <li>Absorption near VWAP (footprint shows buying every dip to VWAP)</li>
-        <li>Volume clusters around VWAP band</li>
-        <li>Price mean-reverts to VWAP (magnetically pulled back)</li>
-      </ul>
-
-      <pre><code>Trading Strategy: VWAP Magnet
-When price > 0.2% above VWAP:
-- Institutional buyers step back (waiting for reversion)
-- Price drifts back to VWAP
-- Fade the extreme (short, target VWAP)
-
-When price < 0.2% below VWAP:
-- Institutional sellers step back
-- Price drifts up to VWAP
-- Buy the dip (long, target VWAP)</code></pre>
-
-      <h2>TWAP Execution (Time-Weighted Average Price)</h2>
-      
-      <h3>What is TWAP?</h3>
-      <p><strong>TWAP = Execute equal slices at regular time intervals.</strong></p>
-      <pre><code>Order: Buy 100,000 shares via TWAP over 4 hours
-
-Execution:
-10:00 AM: Buy 10,000
-10:15 AM: Buy 10,000
-10:30 AM: Buy 10,000
-...
-(Every 15 min, buy 10,000 shares)
-
-Total: 100,000 shares, spread evenly over time</code></pre>
-
-      <h3>VWAP vs. TWAP</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Algo</th><th>Strategy</th><th>Use Case</th></tr>
-        <tr><td>VWAP</td><td>Slice based on volume profile</td><td>Liquid assets, normal days</td></tr>
-        <tr><td>TWAP</td><td>Equal slices over time</td><td>Illiquid assets, avoid signaling</td></tr>
-      </table>
-
-      <h3>Detecting TWAP Algos</h3>
-      <p><strong>Signs of TWAP execution:</strong></p>
-      <ul>
-        <li>Regular buy/sell prints every X minutes (clockwork pattern)</li>
-        <li>Size doesn't vary with volume (unlike VWAP)</li>
-        <li>Continues through low-volume periods (lunch)</li>
-      </ul>
-
-      <h2>Iceberg Orders (Hidden Liquidity)</h2>
-      
-      <h3>What is an Iceberg Order?</h3>
-      <p><strong>Display small size on order book, hide massive size underneath.</strong></p>
-      <pre><code>Order: Buy 100,000 shares, display only 500
-Order book shows: 500 shares bid at $100.00
-
-When 500 shares fill → Another 500 appears (automatically)
-Repeat 200 times → Full 100,000 filled
-
-Advantage: Doesn't reveal true size (avoids front-running)</code></pre>
-
-      <h3>Detecting Iceberg Orders</h3>
-      <p><strong>Signs of icebergs:</strong></p>
-      <ul>
-        <li><b>Refreshing bids/asks:</b> Same price, size keeps refreshing after fills</li>
-        <li><b>Absorption:</b> Large volume absorbed at single price (visible in footprint)</li>
-        <li><b>Price support/resistance:</b> Level holds despite heavy selling/buying</li>
-      </ul>
-
-      <pre><code>Example:
-Order book: 500 shares bid at $100.00
-5,000 shares sell into bid
-Order book: Still 500 shares bid at $100.00 (refreshed!)
-
-Conclusion: Iceberg buy at $100.00 (strong support)</code></pre>
-
       <h3>Trading Iceberg Support/Resistance</h3>
-      <pre><code>Iceberg Buy Detected (Support):
-- Multiple refreshes at $100.00
-- Footprint shows 20,000+ absorbed
-- Price holds despite selling pressure
 
-Trade: Long at $100.05 (above iceberg)
-Stop: $99.80 (below iceberg, invalidation)
-Target: $102.00 (next resistance)
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code>Scenario: Iceberg Buy at $520.00
 
-Logic: Institutional buyer = strong hands, likely accumulation</code></pre>
+9:45 AM: Order book shows 500 shares bid at $520.00
+9:50 AM: 3,000 shares sold. Bid still 500 at $520.00 (refreshed 6x)
+9:55 AM: Footprint shows 8,000 shares absorbed at $520.00
+10:00 AM: Price bounces to $520.50
 
-      <h2>Block Trades (Off-Exchange)</h2>
-      
-      <h3>What is a Block Trade?</h3>
-      <p><strong>Large trade negotiated off-exchange, printed after execution.</strong></p>
-      <pre><code>Definition: Typically 10,000+ shares (or $200K+ notional)
+Trade: Long at $520.10 (above iceberg)
+Stop: $519.70 (below iceberg = invalidation)
+Target: $522.00 (next resistance)
+R:R: 4.8R
 
-Process:
-1. Fund calls block desk: "I want to sell 500K shares SPY"
-2. Block desk finds counterparty (another fund, market maker)
-3. Negotiate price (usually mid-spread or slight discount)
-4. Execute off-exchange
-5. Print to tape (appears as large single print)
+Logic: Institutional buyer = strong hands. They're not here to lose money.</code></pre>
 
-Advantage: No market impact (done in single print)</code></pre>
+      <p>If you've made it this far, you're already thinking like an institutional trader. Most retail never learn this.</p>
+
+      <div class="section-break"><span>Part 4: Block Trades & Dark Pools</span></div>
+
+      <h2>The Trades That Print After They're Done</h2>
+
+      <p>Block trades are massive orders—usually 10,000+ shares—negotiated off-exchange and printed to the tape after execution.</p>
+
+      <p>Why off-exchange? To avoid market impact.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>When you see a 200,000-share block print? That trade already happened. You're seeing the receipt, not the order.</p>
+        <p>But here's the thing: The <em>direction</em> and <em>price</em> tell you what smart money is doing.</p>
+      </div>
 
       <h3>Reading Block Prints</h3>
-      <p><strong>Block prints reveal institutional intent.</strong></p>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Block Type</th><th>Interpretation</th></tr>
-        <tr><td>Buy block above VWAP</td><td>Aggressive accumulation (bullish)</td></tr>
-        <tr><td>Sell block below VWAP</td><td>Aggressive distribution (bearish)</td></tr>
-        <tr><td>Buy block at lows</td><td>Strong conviction buy (very bullish)</td></tr>
-        <tr><td>Sell block at highs</td><td>Taking profits (bearish)</td></tr>
+
+      <p>Not all blocks are equal. Context matters.</p>
+
+      <table style="width:100%;border-collapse:collapse;margin:2rem 0">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05)">
+            <th style="padding:.75rem;text-align:left">Block Type</th>
+            <th style="padding:.75rem;text-align:left">Interpretation</th>
+            <th style="padding:.75rem;text-align:left">Trade Idea</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Buy block above VWAP</td>
+            <td style="padding:.75rem">Aggressive accumulation (paying premium)</td>
+            <td style="padding:.75rem;color:var(--primary)">✓ Bullish—buy pullbacks</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Sell block below VWAP</td>
+            <td style="padding:.75rem">Aggressive distribution (taking discount)</td>
+            <td style="padding:.75rem;color:var(--danger)">✗ Bearish—short bounces</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Buy block at lows</td>
+            <td style="padding:.75rem">Strong conviction (dip buy)</td>
+            <td style="padding:.75rem;color:var(--primary)">✓ Very bullish</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">Sell block at highs</td>
+            <td style="padding:.75rem">Taking profits (distribution)</td>
+            <td style="padding:.75rem;color:var(--danger)">✗ Bearish signal</td>
+          </tr>
+        </tbody>
       </table>
 
-      <pre><code>Example:
-SPY at $520.00, VWAP = $519.50
-Block print: 200,000 shares bought at $520.10
+      <h3>Dark Pool Index (DIX)</h3>
 
-Analysis:
-- Large size (institutional)
-- Above VWAP (paying premium = urgency)
-- Above current price (aggressive)
+      <p>The DIX measures net dark pool buying pressure. Think of it as a "smart money sentiment" gauge.</p>
 
-Interpretation: Strong bullish intent
-Trade: Long on confirmation (breakout above $520.20)</code></pre>
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code>DIX > 45% = Strong institutional buying (bullish)
+DIX 35-45% = Neutral
+DIX < 35% = Weak buying / distribution (bearish)
 
-      <h2>Dark Pool Flow Analysis</h2>
-      
-      <h3>Dark Pool Order Types</h3>
-      <p><strong>Institutions route orders to dark pools for anonymity.</strong></p>
-      <ul>
-        <li><b>Midpoint pegged:</b> Execute at midpoint (avoid spread cost)</li>
-        <li><b>Hidden limit:</b> Non-displayed limit order in dark pool</li>
-        <li><b>IOC (Immediate or Cancel):</b> Fill immediately or cancel (probe liquidity)</li>
-      </ul>
-
-      <h3>Dark Pool Indicators (DIX)</h3>
-      <p><strong>Dark Pool Index = Net dark pool buying pressure.</strong></p>
-      <pre><code>DIX Calculation (simplified):
-Dark pool buys: 60% of dark volume
-Dark pool sells: 40% of dark volume
-
-DIX = 60% - 40% = +20% (net buying)
-
-Interpretation:
-DIX > 45% = Strong institutional buying (bullish)
-DIX < 35% = Weak buying / selling (bearish)
-DIX 35-45% = Neutral</code></pre>
-
-      <h3>Combining DIX with Price Action</h3>
-      <pre><code>Scenario 1: Price down, DIX up (bullish divergence)
-Price: $520 → $515 (down)
-DIX: 42% → 48% (institutions buying dip)
+Example Trade:
+Price: SPY drops from $525 → $518 (down -1.3%)
+DIX: Rises from 42% → 48% (institutions buying the dip)
 
 Interpretation: Smart money accumulating weakness
-Trade: Long on reversal signal
+Trade: Long on reversal signal (Janus sweep, VWAP bounce)
+Result: Institutions were right. SPY rallied back to $524 in 3 days.</code></pre>
 
-Scenario 2: Price up, DIX down (bearish divergence)
-Price: $515 → $520 (up)
-DIX: 48% → 38% (institutions distributing)
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>VWAP = institutional benchmark:</strong> Price gravitates to it because algos trade around it</li>
+          <li><strong>Iceberg orders hide size:</strong> Look for refreshing bids/asks and massive absorption</li>
+          <li><strong>Block trades show intent:</strong> Above VWAP = bullish, below = bearish</li>
+          <li><strong>DIX measures dark pool flow:</strong> Above 45% = institutions buying (follow them!)</li>
+          <li><strong>Trade WITH institutions:</strong> They have more info, bigger teams, better tools. Don't fight them.</li>
+        </ul>
+      </div>
 
-Interpretation: Retail buying, institutions selling
-Trade: Fade the rally (short on weakness)</code></pre>
+      <div class="section-break"><span>Test Your Understanding</span></div>
 
-      <h2>Order Flow Sequence Analysis</h2>
-      
-      <h3>Accumulation Sequence</h3>
-      <pre><code>Phase 1: Quiet absorption
-- Price consolidates, low volatility
-- Iceberg bids appear at lows
-- Dark pool DIX increases
-- No breakout yet (stealth accumulation)
+      <!-- Quiz -->
+      <div class="quiz">
+        <h4>🎮 Quick Check (No Pressure)</h4>
 
-Phase 2: Absorption + markup
-- Price breaks out
-- VWAP algos shift to buying rallies (chase)
-- Block buys print above VWAP
-- Volume expands
+        <div class="quiz-question">
+          <p><strong>You see SPY at $521, VWAP at $520. A 150K-share buy block prints at $520.80. What's the signal?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="true">A) Bullish—institutions paying above VWAP (aggressive)</div>
+            <div class="quiz-option" data-correct="false">B) Bearish—distribution at highs</div>
+            <div class="quiz-option" data-correct="false">C) Neutral—could go either way</div>
+            <div class="quiz-option" data-correct="false">D) Retail FOMO (ignore it)</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Exactly!</strong> A block buy ABOVE VWAP means institutions are willing to pay a premium. That's conviction. It's not retail—retail doesn't trade 150K-share blocks. Follow the smart money.
+          </div>
+        </div>
 
-Phase 3: Trend
-- Price sustains above VWAP
-- Continuous buying on dips to VWAP
-- Trend established (follow institutional flow)</code></pre>
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
 
-      <h3>Distribution Sequence</h3>
-      <pre><code>Phase 1: Quiet distribution
-- Price choppy at highs
-- Iceberg offers appear
-- DIX decreases (institutions selling)
-- Retail still buying (optimistic)
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you now understand more about institutional execution than 95% of retail traders. This is how the pros actually trade—and now you can trade with them, not against them.</p>
 
-Phase 2: Distribution + markdown
-- Price breaks down
-- VWAP algos shift to selling bounces
-- Block sells print below VWAP
-- Volume expands on down moves
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Article #29: Market Regime Recognition</strong> — Learn to detect regime shifts in real-time and adapt your strategy before you get chopped up. Trending vs. ranging vs. volatile—each needs different tactics.</p>
+      </div>
 
-Phase 3: Decline
-- Price sustains below VWAP
-- Selling on rallies to VWAP
-- Downtrend established</code></pre>
+    </div>
 
-      <h2>Signal Pilot Integration with Institutional Flow</h2>
-      
-      <h3>Plutus Flow: VWAP + POC Confluence</h3>
-      <pre><code>Setup: VWAP = $520.00, POC = $519.80
-Price dips to $519.90 (between VWAP and POC)
+    <!-- Table of Contents Sidebar -->
+    <aside class="toc">
+      <h3>On this page</h3>
+      <a href="#" style="opacity:.6">The Institution's Problem</a>
+      <a href="#">VWAP Execution</a>
+      <a href="#">Iceberg Orders</a>
+      <a href="#">Block Trades & Dark Pools</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
 
-Plutus Flow shows:
-- Volume spike at $519.90 (absorption)
-- CVD positive (net buying)
-
-Interpretation: Institutional VWAP algo + POC support
-Trade: Long $519.95, Stop $519.50, Target $521.50 (2.6R)</code></pre>
-
-      <h3>Janus Atlas: Institutional Sweep Patterns</h3>
-      <pre><code>Scenario: Janus detects sweep to $519.50 (below VWAP $520.00)
-Footprint: 30,000+ shares absorbed at swept low
-Block print: 150K shares bought at $519.60
-
-Analysis:
-- Sweep triggered stops (liquidity grab)
-- Institutional absorption (iceberg + block)
-- Reclaim above VWAP ($520.05)
-
-Trade: Long $520.10, Stop $519.20, Target $523.00 (3.2R)</code></pre>
-
-      <h3>Minimal Flow: Regime + Institutional Flow</h3>
-      <pre><code>Minimal Flow: Trending Up
-DIX: 48% (high, institutional buying)
-VWAP: Price holding above VWAP
-
-Strategy: Only take longs (align with institutions)
-- Buy dips to VWAP
-- Buy Janus sweeps (institutional absorption)
-- Avoid shorts (fighting institutional flow)</code></pre>
-
-      <h2>Practical Framework: Trading with Institutions</h2>
-      
-      <h3>Step 1: Identify Institutional Activity</h3>
-      <ul>
-        <li>[ ] VWAP algo detected (price respects VWAP, absorption at VWAP)</li>
-        <li>[ ] Iceberg orders detected (refreshing size, absorption)</li>
-        <li>[ ] Block trades (large prints, above/below VWAP)</li>
-        <li>[ ] DIX direction (net buying/selling pressure)</li>
-      </ul>
-
-      <h3>Step 2: Determine Institutional Bias</h3>
-      <ul>
-        <li><b>Bullish:</b> Blocks above VWAP, icebergs at support, DIX rising</li>
-        <li><b>Bearish:</b> Blocks below VWAP, icebergs at resistance, DIX falling</li>
-        <li><b>Neutral:</b> Mixed signals, avoid or wait for clarity</li>
-      </ul>
-
-      <h3>Step 3: Align Your Trades</h3>
-      <pre><code>If institutions buying:
-- Only take longs
-- Buy dips to VWAP
-- Buy absorption (Plutus, footprint)
-- Targets: Next resistance, VWAP bands (+0.5%, +1.0%)
-
-If institutions selling:
-- Only take shorts
-- Sell bounces to VWAP
-- Sell exhaustion (Plutus, footprint)
-- Targets: Next support, VWAP bands (-0.5%, -1.0%)</code></pre>
-
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>VWAP = institutional execution benchmark (trade near VWAP)</strong></li>
-        <li><strong>Icebergs = hidden orders (detect via refreshing size, absorption)</strong></li>
-        <li><strong>Block trades = institutional intent (aggressive = strong conviction)</strong></li>
-        <li><strong>DIX = dark pool buying pressure (> 45% bullish, < 35% bearish)</strong></li>
-        <li><strong>Trade WITH institutions, not against them</strong></li>
-      </ul>
-
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Identify VWAP algo</strong></p>
-      <p>Chart SPY intraday. Add VWAP line. Watch for absorption at VWAP dips. Does price respect VWAP?</p>
-      
-      <p><strong>Exercise 2: Spot iceberg order</strong></p>
-      <p>Watch order book. Find level where size refreshes after fills. Confirm with footprint (absorption). Trade the iceberg support.</p>
-
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Retail fights the tape. Professionals read institutional flow. Trade with the smart money, not against it."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+  <!-- Bottom Navigation -->
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/intermediate/27-professional-operations.html">&larr; Previous: Pro Operations</a>
-    <a class="btn btn-primary" href="/curriculum/advanced/29-market-regime-recognition.html">Next: Market Regimes &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/intermediate/27-professional-operations.html">← Previous: Pro Operations</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/29-market-regime-recognition.html">Next Lesson →</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script>
+  // Update progress circle as user scrolls
+  window.addEventListener('scroll', () => {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrolled = window.scrollY;
+    const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);
+
+    const circle = document.querySelector('.progress-circle');
+    if (circle) {
+      circle.style.setProperty('--progress', percent + '%');
+      circle.querySelector('span').textContent = percent + '%';
+    }
+  }, { passive: true });
+
+  // Save last article to localStorage
+  localStorage.setItem('sp_edu_last_article', JSON.stringify({
+    title: 'Institutional Order Flow',
+    level: 'Advanced',
+    order: '28',
+    url: window.location.pathname,
+    progress: 0
+  }));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

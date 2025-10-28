@@ -3,129 +3,539 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <title>Price Action is Dead: Long Live Order Flow — SignalPilot Education</title>
+  <title>Price Action is Dead: Long Live Order Flow — SignalPilot Learn</title>
   <meta name="description" content="Candlesticks show WHERE price traded, not HOW or WHY. Learn Time & Sales tape reading, footprint charts, and Minimal Flow integration.">
-  <meta name="sp-level" content="Beginner"><meta name="sp-order" content="3">
-  <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner/03-price-action-is-dead.html">
-  <meta name="theme-color" content="#05070d">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <meta name="sp-level" content="Beginner">
+  <meta name="sp-order" content="3">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
   <div class="bg-stars" aria-hidden="true"></div>
   <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+
 <header class="sp-header">
   <div class="wrap">
     <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
     <nav id="mainnav" aria-label="Main"><ul>
-      <li><a href="https://signalpilot.io/#why">Why SignalPilot?</a></li>
       <li><a href="/">Education</a></li>
-      <li><a href="https://docs.signalpilot.io/" target="_blank">Docs</a></li>
+      <li><a href="/search.html">Search</a></li>
     </ul></nav>
-    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm">Light/Dark</button></div>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
   </div>
 </header>
 
 <article class="article">
-  <header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">Price Action is Dead: Long Live Order Flow</h1><div class="meta">Reading time ~18 min • Market Structure Reality</div></div></header>
+  <!-- Article Header -->
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner.html">Beginner</a> <span>›</span>
+        <span>Lesson #3</span>
+      </div>
+      <span class="badge">🟢 Beginner • Lesson 3 of 12</span>
+      <h1 class="headline xl">Price Action is Dead: Long Live Order Flow</h1>
+      <div class="meta">Reading time ~15 min • Order Flow & Tape Reading</div>
 
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
   <div class="wrap article-grid">
     <div class="prose">
-      <p><b>Price tells you where you are. Order flow tells you where you're going.</b> Candlesticks show the result—order flow shows the process. Learn to read Time & Sales, footprint charts, aggressive vs. passive flow, and how Minimal Flow regime detection supercharges your edge.</p>
 
-      <h2>The Candlestick Illusion</h2>
-      <p>Two identical bullish candles: Same open, close, high, low. Traditional price action sees them as equal. Order flow reveals one had aggressive buying (continuation), the other had sellers absorbing rallies (reversal imminent). The candle can't tell you which.</p>
+      <p><b>Two identical bullish candles. Same open. Same close. Same high and low.</b></p>
 
-      <h2>Time & Sales: Reading the Tape</h2>
-      <p><strong>What it shows:</strong> Every individual trade—price, size, and aggressor (buy or sell).</p>
-      <p><strong>How to read it:</strong></p>
+      <p>Traditional price action? Sees them as identical signals.</p>
+
+      <p>Order flow? Reveals one had aggressive institutional buying (continuation incoming), and the other had sellers absorbing every rally (reversal imminent).</p>
+
+      <p><strong>The candle looks the same. The outcome is opposite.</strong></p>
+
+      <div class="callout-warning">
+        <h4>🚨 The Hard Truth</h4>
+        <p>Candlesticks show you WHERE price traded. Order flow shows you HOW it got there and WHY.</p>
+        <p>If you're trading on candles alone, you're driving with your eyes closed.</p>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 What You'll Gain</h4>
+        <p>After this lesson, you'll be able to:</p>
+        <ul>
+          <li>Read Time & Sales tape like a professional floor trader</li>
+          <li>Identify aggressive vs passive order flow (and why it matters)</li>
+          <li>Use footprint charts to see buy/sell volume at each price level</li>
+          <li>Detect iceberg orders (hidden institutional positioning)</li>
+          <li>Combine order flow with Minimal Flow regime detection for precision entries</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 1: The Candlestick Illusion</span></div>
+
+      <h2>Why Price Action Traders Get Wrecked</h2>
+
+      <p>You see a bullish engulfing candle. Volume is high. Textbook setup, right?</p>
+
+      <p>You enter long.</p>
+
+      <p>Price immediately reverses and stops you out.</p>
+
+      <p>Sound familiar?</p>
+
+      <div class="callout-info">
+        <h4>📖 War Story: The Fake Breakout</h4>
+        <p><strong>Setup:</strong> BTC breaks above $46,000 resistance. Green candle, high volume. Every price action trader sees a breakout.</p>
+        <p><strong>What they missed:</strong> Time & Sales showed aggressive SELLING the entire time. Institutions were distributing into retail FOMO.</p>
+        <p><strong>Result:</strong> Price reversed within 10 minutes, dumped to $45,200.</p>
+        <p style="margin-top:1rem"><strong>Retail:</strong> Bought the breakout at $46,050, stopped at $45,800. -$250 per contract.<br>
+        <strong>Order flow trader:</strong> Saw the aggressive selling, stayed flat. Shorted the rejection at $45,900. +$700 per contract.</p>
+      </div>
+
+      <p>Here's the thing: The candle can't tell you if buyers or sellers were in control. It just shows the final score.</p>
+
+      <p>Order flow shows you the <em>game</em>.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Price Action View</button>
+          <button>Order Flow View</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>What Candlesticks Show</h3>
+            <ul>
+              <li><strong>Open:</strong> $45,800</li>
+              <li><strong>Close:</strong> $46,100</li>
+              <li><strong>High:</strong> $46,150</li>
+              <li><strong>Low:</strong> $45,750</li>
+              <li><strong>Volume:</strong> 180,000 contracts</li>
+            </ul>
+            <p style="margin-top:1rem;font-style:italic">Looks bullish. But is it?</p>
+          </div>
+          <div class="tab-panel">
+            <h3>What Order Flow Reveals</h3>
+            <ul>
+              <li><strong>Buy volume:</strong> 65,000 (mostly passive)</li>
+              <li><strong>Sell volume:</strong> 115,000 (mostly aggressive)</li>
+              <li><strong>Delta:</strong> -50,000 (heavy selling pressure)</li>
+              <li><strong>Large orders:</strong> 12 aggressive sells over 5,000 contracts</li>
+              <li><strong>Context:</strong> Distribution disguised as bullish candle</li>
+            </ul>
+            <p style="margin-top:1rem;font-style:italic">Reversal incoming. Obvious once you see it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Price tells you where you are. Order flow tells you <strong>where you're going</strong>.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: Reading the Tape (Time & Sales)</span></div>
+
+      <h2>How Floor Traders Read Order Flow</h2>
+
+      <p>Before charts existed, traders stood on exchange floors and watched the tape—a stream of every single trade.</p>
+
+      <p>They got rich reading order flow in real-time.</p>
+
+      <p>You can do the same. Except now it's digital, and you don't need to wear a silly jacket.</p>
+
+      <h3>What Time & Sales Shows</h3>
+
+      <p>Every single trade that executes:</p>
       <ul>
-        <li><strong>Green trades (buy):</strong> Market orders lifting the ask (aggressive buying)</li>
-        <li><strong>Red trades (sell):</strong> Market orders hitting the bid (aggressive selling)</li>
-        <li><strong>Size clustering:</strong> Large trades (10k+ shares) = institutional flow</li>
-        <li><strong>Sequence matters:</strong> 5 consecutive large buys = momentum building</li>
+        <li><strong>Price:</strong> What price it traded at</li>
+        <li><strong>Size:</strong> How many contracts/shares</li>
+        <li><strong>Aggressor:</strong> Was it a buy (lifted ask) or sell (hit bid)?</li>
+        <li><strong>Timestamp:</strong> When it happened</li>
       </ul>
 
-      <h2>Aggressive vs. Passive Order Flow</h2>
-      <p><strong>Aggressive:</strong> Market orders (immediate execution, pays the spread)—shows urgency, conviction.</p>
-      <p><strong>Passive:</strong> Limit orders (patient execution, collects the spread)—shows price sensitivity, no urgency.</p>
-      <p><b>Bullish Signal:</b> Aggressive buying + passive selling = Strong demand pushing price higher.</p>
-      <p><b>Bearish Signal:</b> Aggressive selling + passive buying = Weak demand, distribution.</p>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Green Trades = Aggressive Buying</div>
+          <div class="accordion-content">
+            <p><strong>Definition:</strong> Market buy orders that <em>lifted the ask</em> (paid more to execute immediately).</p>
+            <p><strong>What it means:</strong> Urgency. Conviction. Someone wants in NOW and doesn't care about paying the spread.</p>
+            <p><strong>Implication:</strong> Bullish pressure building.</p>
+          </div>
+        </div>
 
-      <h2>Footprint Charts: Volume at Price</h2>
-      <p>Footprint charts show buy/sell volume AT EACH PRICE LEVEL within a candle. This reveals:</p>
-      <ul>
-        <li><strong>Imbalances:</strong> 5:1 or 10:1 buy:sell ratios at specific prices (directional momentum)</li>
-        <li><strong>Absorption:</strong> Large orders soaking up pressure without price moving</li>
-        <li><strong>Exhaustion:</strong> High volume but price rejecting (weak hands)</li>
-      </ul>
+        <div class="accordion-item">
+          <div class="accordion-header">Red Trades = Aggressive Selling</div>
+          <div class="accordion-content">
+            <p><strong>Definition:</strong> Market sell orders that <em>hit the bid</em> (accepted less to exit immediately).</p>
+            <p><strong>What it means:</strong> Urgency to exit. Fear. Someone wants out NOW and doesn't care about losing the spread.</p>
+            <p><strong>Implication:</strong> Bearish pressure building.</p>
+          </div>
+        </div>
 
-      <h2>Iceberg Order Detection</h2>
-      <p><strong>Iceberg:</strong> Large hidden order showing only small visible portion.</p>
-      <p><strong>How to detect:</strong></p>
-      <ol>
-        <li>Order book shows 500 shares at $100</li>
-        <li>5,000 shares trade at $100</li>
-        <li>Order book STILL shows 500 shares at $100</li>
-        <li><b>Conclusion:</b> Hidden 10,000+ share order (iceberg)</li>
-      </ol>
-      <p><strong>Implication:</strong> Strong institutional interest at that price level.</p>
+        <div class="accordion-item">
+          <div class="accordion-header">Size Clustering = Institutional Flow</div>
+          <div class="accordion-content">
+            <p><strong>What to watch for:</strong> Trades significantly larger than average (10k+ contracts in BTC, 50k+ shares in equities).</p>
+            <p><strong>Why it matters:</strong> Retail doesn't trade in size. Big orders = institutions positioning.</p>
+            <p><strong>Power pattern:</strong> 5+ consecutive large orders in the same direction = momentum building.</p>
+          </div>
+        </div>
+      </div>
 
-      <h2>Minimal Flow Regime Integration</h2>
-      <p><strong>Minimal Flow</strong> detects market regime (trending, ranging, volatile). Combine with order flow:</p>
-      <ul>
-        <li><strong>Trending + Aggressive buying:</strong> Enter WITH trend (high win rate)</li>
-        <li><strong>Ranging + Absorption at extremes:</strong> Mean reversion trade</li>
-        <li><strong>Volatile + Exhaustion:</strong> Fade the move (distribution likely)</li>
-      </ul>
+      <div class="callout-info">
+        <h4>📖 Real Tape Reading Example</h4>
+        <p><strong>12:03:15 PM</strong> — Buy 8,500 @ $45,020 (green)<br>
+        <strong>12:03:18 PM</strong> — Buy 12,000 @ $45,025 (green)<br>
+        <strong>12:03:22 PM</strong> — Sell 2,100 @ $45,023 (red)<br>
+        <strong>12:03:26 PM</strong> — Buy 9,800 @ $45,030 (green)<br>
+        <strong>12:03:30 PM</strong> — Buy 15,000 @ $45,035 (green)</p>
+        <p style="margin-top:1rem"><strong>Translation:</strong> Aggressive institutional buying. Four large buy orders, one small sell. Strong momentum building.</p>
+        <p><strong>Action:</strong> Look for entry on pullback. Institutions are accumulating.</p>
+      </div>
 
-      <h2>Complete Order Flow Entry Framework</h2>
-      <p><strong>Pre-Trade:</strong></p>
-      <ul>
-        <li>[ ] Minimal Flow regime supports direction</li>
-        <li>[ ] Janus Atlas structural confirmation (sweep, breakout, or support/resistance)</li>
-        <li>[ ] Plutus Flow delta aligns with direction</li>
-      </ul>
-      <p><strong>Order Flow Confirmation:</strong></p>
-      <ul>
-        <li>[ ] Time & Sales shows aggressive flow in trade direction (3+ large sequential orders)</li>
-        <li>[ ] Footprint shows imbalance or absorption pattern</li>
-        <li>[ ] No conflicting signals (aggressive both ways = wait)</li>
-      </ul>
-      <p><strong>Execution:</strong></p>
-      <ul>
-        <li>[ ] Entry on confirmation candle close</li>
-        <li>[ ] Stop beyond structure (1.5-2× ATR)</li>
-        <li>[ ] Target minimum 2R, trail with Pentarch events</li>
-      </ul>
+      <h3>What to Look For</h3>
 
-      <h2>Common Mistakes</h2>
-      <p><strong>Mistake 1: Trading on candlesticks alone.</strong> Fix: Require order flow confirmation (delta, tape, footprint).</p>
-      <p><strong>Mistake 2: Ignoring regime.</strong> Fix: Only trade setups aligned with Minimal Flow regime.</p>
-      <p><strong>Mistake 3: Overcomplicating.</strong> Fix: Focus on aggressive flow direction + absorption/exhaustion patterns.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">✓ Bullish Tape</h3>
+          <p><strong>Pattern:</strong> Consecutive large buys</p>
+          <p><strong>Size:</strong> Big orders (10k+ contracts)</p>
+          <p><strong>Frequency:</strong> Rapid succession (seconds apart)</p>
+          <p><strong>Context:</strong> Price holding or rising</p>
+          <p style="margin-top:1rem;font-style:italic;opacity:.8"><strong>Edge:</strong> Momentum trade with institutions</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">✗ Bearish Tape</h3>
+          <p><strong>Pattern:</strong> Consecutive large sells</p>
+          <p><strong>Size:</strong> Big orders (10k+ contracts)</p>
+          <p><strong>Frequency:</strong> Rapid succession (seconds apart)</p>
+          <p><strong>Context:</strong> Price stalling or falling</p>
+          <p style="margin-top:1rem;font-style:italic;opacity:.8"><strong>Edge:</strong> Fade or short with distribution</p>
+        </div>
+      </div>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Order flow > Price action</strong> (shows intent, not just result)</li>
-        <li><strong>Aggressive flow = conviction</strong> (directional edge)</li>
-        <li><strong>Absorption = strength, Exhaustion = weakness</strong></li>
-        <li><strong>Icebergs = institutional positioning</strong></li>
-        <li><strong>Regime context is critical</strong> (Minimal Flow)</li>
-      </ul>
+      <div class="section-break"><span>Part 3: Aggressive vs Passive Flow</span></div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves substantial risk.</blockquote>
-      <p><em>"Price tells you where you are. Order flow tells you where you're going."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
+      <h2>The Flow That Matters</h2>
+
+      <p>Real talk: Not all order flow is created equal.</p>
+
+      <p>Aggressive flow moves markets. Passive flow doesn't.</p>
+
+      <p>Learn the difference, or stay confused forever.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Aggressive Flow</button>
+          <button>Passive Flow</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Aggressive Orders (Market Orders)</h3>
+            <p><strong>Execution:</strong> Immediate (pays the spread)</p>
+            <p><strong>Shows:</strong> Urgency, conviction, strong intent</p>
+            <p><strong>Impact:</strong> Moves price (lifts asks or hits bids)</p>
+            <p style="margin-top:1rem"><strong>Bullish signal:</strong> Aggressive buying overwhelms sellers</p>
+            <p><strong>Bearish signal:</strong> Aggressive selling overwhelms buyers</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Passive Orders (Limit Orders)</h3>
+            <p><strong>Execution:</strong> Patient (collects the spread)</p>
+            <p><strong>Shows:</strong> Price sensitivity, no urgency</p>
+            <p><strong>Impact:</strong> Doesn't move price (provides liquidity)</p>
+            <p style="margin-top:1rem"><strong>Context:</strong> Passive orders are important for absorption detection, but they don't drive momentum.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Pattern That Prints</h4>
+        <p><strong>Aggressive buying + Passive selling</strong> = Bullish rocket fuel</p>
+        <p><strong>Aggressive selling + Passive buying</strong> = Bearish cliff dive</p>
+        <p>When one side is urgent and the other isn't? Edge.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Footprint Charts</span></div>
+
+      <h2>Volume at EACH Price Level</h2>
+
+      <p>Pop quiz: Where inside that candle did buying happen? At the high? The low? Evenly distributed?</p>
+
+      <p>Candlesticks can't tell you. Footprint charts can.</p>
+
+      <div class="callout-tip">
+        <h4>🎓 What is a Footprint Chart?</h4>
+        <p>A footprint chart shows <strong>buy volume vs sell volume at each individual price level</strong> within a candle.</p>
+        <p>It's like an X-ray of the candle. You see exactly where aggressive buying/selling happened.</p>
+      </div>
+
+      <h3>What Footprints Reveal</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Imbalances (5:1 or 10:1 ratios)</div>
+          <div class="accordion-content">
+            <p><strong>What it is:</strong> At a specific price, buy volume is 5-10× greater than sell volume (or vice versa).</p>
+            <p><strong>Why it matters:</strong> Shows directional conviction. One side is dominating.</p>
+            <p><strong>How to trade it:</strong></p>
+            <ul>
+              <li><strong>Imbalance at candle low:</strong> Strong buying stepping in (reversal)</li>
+              <li><strong>Imbalance at candle high:</strong> Aggressive buying pushing higher (continuation)</li>
+              <li><strong>Imbalance cluster:</strong> Multiple consecutive imbalances = strong momentum</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Absorption (High Volume, No Movement)</div>
+          <div class="accordion-content">
+            <p><strong>What it is:</strong> Massive volume at a price level, but price doesn't break through.</p>
+            <p><strong>Why it matters:</strong> Someone with deep pockets is absorbing all the pressure. Strong hand positioning.</p>
+            <p><strong>Example:</strong> 80,000 sell volume at $45,000 support, but price holds. Translation: Big buyer absorbed it all. Reversal incoming.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Exhaustion (High Volume, Price Rejects)</div>
+          <div class="accordion-content">
+            <p><strong>What it is:</strong> Spike in volume at extreme (resistance/support), but price can't break.</p>
+            <p><strong>Why it matters:</strong> Buyers/sellers exhausted. No fuel left.</p>
+            <p><strong>Example:</strong> 120,000 buy volume at $48,000 resistance, price closes at $47,850. Translation: Buyers tried, failed. Reversal down incoming.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>You can trade profitably without footprint charts. But once you see absorption/exhaustion patterns in real-time, you'll never want to trade without them.</p>
+        <p>It's like switching from black-and-white TV to 4K.</p>
+      </div>
+
+      <div class="section-break"><span>Part 5: Iceberg Order Detection</span></div>
+
+      <h2>Finding Hidden Institutional Orders</h2>
+
+      <p>Picture this: The order book shows 500 BTC for sale at $45,000.</p>
+
+      <p>Then 5,000 BTC trades at $45,000.</p>
+
+      <p>The order book <em>still</em> shows 500 BTC for sale at $45,000.</p>
+
+      <p>What just happened?</p>
+
+      <p><strong>Iceberg order.</strong> A massive hidden order (10,000+ BTC) showing only the tip (500 BTC) to the public.</p>
+
+      <div class="callout-info">
+        <h4>📖 How to Spot an Iceberg</h4>
+        <p><strong>Step 1:</strong> Watch the order book. Note the size at a key level (e.g., 500 contracts at $45,000).</p>
+        <p><strong>Step 2:</strong> Price hits $45,000. Watch Time & Sales. 5,000 contracts trade there.</p>
+        <p><strong>Step 3:</strong> Check order book again. Still shows 500 contracts at $45,000.</p>
+        <p style="margin-top:1rem"><strong>Conclusion:</strong> There's a hidden order (iceberg) of 10,000+ contracts. Institution is defending that level.</p>
+        <p><strong>Trade it:</strong> That level is likely to hold (absorption). Enter in the direction the iceberg is supporting.</p>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 Why Icebergs Matter</h4>
+        <p>Institutions don't show their full size because it would scare away counterparties.</p>
+        <p>But if you can <em>detect</em> the iceberg, you know where they're positioned. And you can trade with them.</p>
+      </div>
+
+      <div class="section-break"><span>Part 6: Minimal Flow Regime Integration</span></div>
+
+      <h2>Context is Everything</h2>
+
+      <p>You've learned order flow. But order flow without context is like a map without a compass.</p>
+
+      <p>This is where <strong>Minimal Flow</strong> comes in.</p>
+
+      <div class="callout-tip">
+        <h4>🎓 What is Minimal Flow?</h4>
+        <p>Minimal Flow detects the current market regime:</p>
+        <ul style="margin:.5rem 0">
+          <li><strong>Trending:</strong> Directional moves, momentum trades work</li>
+          <li><strong>Ranging:</strong> Mean reversion, fades work</li>
+          <li><strong>Volatile:</strong> Choppy, low probability, stay out</li>
+        </ul>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">Trending Regime</h3>
+          <p><strong>Order flow signal:</strong> Aggressive buying</p>
+          <p><strong>Action:</strong> Enter WITH trend (high win rate)</p>
+          <p><strong>Edge:</strong> Momentum trade</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">Ranging Regime</h3>
+          <p><strong>Order flow signal:</strong> Absorption at extremes</p>
+          <p><strong>Action:</strong> Mean reversion trade</p>
+          <p><strong>Edge:</strong> Fade extremes</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(255,193,7,.1);border:2px solid rgba(255,193,7,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">Volatile Regime</h3>
+          <p><strong>Order flow signal:</strong> Mixed/choppy</p>
+          <p><strong>Action:</strong> Stay flat or reduce size</p>
+          <p><strong>Edge:</strong> Preservation</p>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>The <em>same</em> order flow signal can win or lose depending on regime.</p>
+        <p>Aggressive buying in a trending market? Gold. Aggressive buying in a ranging market at resistance? Trap.</p>
+        <p><strong>Context. Always.</strong></p>
+      </div>
+
+      <div class="section-break"><span>Part 7: Complete Order Flow Framework</span></div>
+
+      <h2>How to Put It All Together</h2>
+
+      <p>Alright. You've learned the tools. Now here's the exact framework for order flow trading.</p>
+
+      <div class="callout-tip">
+        <h4>✅ Pre-Trade Checklist</h4>
+        <p><strong>Before entering ANY trade:</strong></p>
+        <ul>
+          <li>[ ] <strong>Minimal Flow</strong> regime supports your direction</li>
+          <li>[ ] <strong>Janus Atlas</strong> structural confirmation (sweep, breakout, support/resistance hold)</li>
+          <li>[ ] <strong>Plutus Flow</strong> delta aligns with your direction</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Order Flow Confirmation:</strong></p>
+        <ul>
+          <li>[ ] <strong>Time & Sales</strong> shows 3+ large aggressive orders in your direction</li>
+          <li>[ ] <strong>Footprint</strong> shows imbalance or absorption pattern</li>
+          <li>[ ] No conflicting signals (aggressive flow both ways = wait)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Execution:</strong></p>
+        <ul>
+          <li>[ ] Enter on confirmation candle close</li>
+          <li>[ ] Stop beyond structure (1.5-2× ATR)</li>
+          <li>[ ] Target minimum 2R, trail with Pentarch events</li>
+        </ul>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">❌ The Old Way (Blind Price Action)</h3>
+          <p><strong>Signal:</strong> Bullish engulfing candle</p>
+          <p><strong>Entry:</strong> Immediate (candle close)</p>
+          <p><strong>Confirmation:</strong> None (just the candle)</p>
+          <p><strong>Result:</strong> 50% win rate (coin flip)</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">✓ The New Way (Order Flow + Context)</h3>
+          <p><strong>Signal:</strong> Bullish candle + aggressive buy flow</p>
+          <p><strong>Entry:</strong> After confirming delta, tape, footprint</p>
+          <p><strong>Confirmation:</strong> Trending regime + structural level</p>
+          <p><strong>Result:</strong> 65-70% win rate (edge)</p>
+        </div>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Price shows WHERE, order flow shows WHY</strong> — Candlesticks are the result, not the cause</li>
+          <li><strong>Aggressive flow = conviction</strong> — Market orders show urgency and directional intent</li>
+          <li><strong>Tape reading is a superpower</strong> — Time & Sales reveals institutional positioning in real-time</li>
+          <li><strong>Footprints show the battle</strong> — Buy/sell volume at each price reveals imbalances, absorption, exhaustion</li>
+          <li><strong>Icebergs = hidden institutional orders</strong> — Detect them, trade with them</li>
+          <li><strong>Regime context is critical</strong> — Same signal, different regime = different outcome</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Test Your Knowledge</span></div>
+
+      <!-- Quiz -->
+      <div class="quiz">
+        <h4>🎮 Quick Check (No Pressure)</h4>
+
+        <div class="quiz-question">
+          <p><strong>BTC prints a bullish candle with 100,000 volume. Time & Sales shows 8 consecutive large aggressive sells and 2 small buys. What's the play?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Enter long (bullish candle = bullish)</div>
+            <div class="quiz-option" data-correct="true">B) Wait or short (aggressive selling reveals distribution)</div>
+            <div class="quiz-option" data-correct="false">C) Doesn't matter, candle is green</div>
+            <div class="quiz-option" data-correct="false">D) Enter long with tight stop</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> The candle is bullish, but order flow reveals heavy institutional selling. That's distribution disguised as a bullish candle. Wait for confirmation or short the rejection.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">
+        If you made it this far, congrats. You just learned what most "price action experts" never figure out. Order flow is the game behind the game.
+      </p>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Article #4: The Repaint Problem (Why Most Indicators Lie)</strong> — Learn why indicators repaint, how to detect it, and which SignalPilot tools are safe to trust.</p>
+      </div>
+
     </div>
+
+    <!-- Table of Contents Sidebar -->
+    <aside class="toc">
+      <h3>On this page</h3>
+      <a href="#" style="opacity:.6">The Candlestick Illusion</a>
+      <a href="#">Reading the Tape</a>
+      <a href="#">Aggressive vs Passive Flow</a>
+      <a href="#">Footprint Charts</a>
+      <a href="#">Iceberg Detection</a>
+      <a href="#">Minimal Flow Integration</a>
+      <a href="#">Complete Framework</a>
+    </aside>
   </div>
 
+  <!-- Bottom Navigation -->
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/beginner/02-volume-doesnt-lie.html">&larr; Previous</a>
-    <a class="btn btn-primary" href="/curriculum/beginner/04-repaint-problem.html">Next: Repainting &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/beginner/02-volume-doesnt-lie.html">← Previous: Volume Analysis</a>
+    <a class="btn btn-primary" href="/curriculum/beginner/04-repaint-problem.html">Next Lesson →</a>
   </div>
 </article>
 
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
-<script src="/assets/edu.js"></script><script src="/assets/aurora.js" defer></script>
-</body></html>
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/aurora.js" defer></script>
+<script>
+  // Update progress circle as user scrolls
+  window.addEventListener('scroll', () => {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrolled = window.scrollY;
+    const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);
+
+    const circle = document.querySelector('.progress-circle');
+    if (circle) {
+      circle.style.setProperty('--progress', percent + '%');
+      circle.querySelector('span').textContent = percent + '%';
+    }
+  }, { passive: true });
+
+  // Save last article to localStorage
+  localStorage.setItem('sp_edu_last_article', JSON.stringify({
+    title: 'Price Action is Dead',
+    level: 'Beginner',
+    order: '3',
+    url: window.location.pathname,
+    progress: 0
+  }));
+</script>
+</body>
+</html>
