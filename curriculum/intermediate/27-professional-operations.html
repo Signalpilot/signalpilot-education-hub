@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Professional Trading Operations: Workflow & Automation — SignalPilot Education</title>
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="27">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Professional Trading Operations: Workflow & Automation</h1><div class="meta">Reading time ~16 min • Trading Infrastructure</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>Amateurs wing it. Professionals systematize.</b> Learn complete pre-market routines, trading session workflows, automation tools, and operational excellence frameworks used by institutional traders.</p>
+      
+      <h2>The Professional Trading Day</h2>
+      
+      <h3>Phase 1: Pre-Market Routine (30-60 min)</h3>
+      <p><strong>Goal: Identify regime, bias, key levels BEFORE market opens.</strong></p>
+      
+      <p><b>Step 1: Macro Context (5 min)</b></p>
+      <ul>
+        <li>Check overnight news (earnings, Fed, geopolitical)</li>
+        <li>Futures direction (SPY, NQ, YM)</li>
+        <li>VIX level (< 15 = calm, 20-30 = elevated, > 30 = panic)</li>
+        <li>Economic calendar (rate decisions, NFP, CPI)</li>
+      </ul>
+
+      <p><b>Step 2: HTF Analysis - Daily Chart (10 min)</b></p>
+      <ul>
+        <li>[ ] Trend: Up/Down/Range (above/below 50/200 EMA)</li>
+        <li>[ ] Minimal Flow regime: Trending/Ranging/Volatile</li>
+        <li>[ ] Major support/resistance levels marked</li>
+        <li>[ ] Plutus POC identified (fair value)</li>
+        <li>[ ] Bias: Long/Short/Neutral</li>
+      </ul>
+
+      <p><b>Step 3: MTF Structure - 4H/1H Chart (10 min)</b></p>
+      <ul>
+        <li>[ ] Swing highs/lows identified</li>
+        <li>[ ] Janus Atlas sweep zones marked</li>
+        <li>[ ] Recent order flow (absorption vs. exhaustion)</li>
+        <li>[ ] Entry zones defined (where to look for setups)</li>
+      </ul>
+
+      <p><b>Step 4: Watchlist Prep (10 min)</b></p>
+      <ul>
+        <li>3-5 instruments max (focus > diversification)</li>
+        <li>For each: HTF bias, key levels, expected range</li>
+        <li>Alert setup: Notify when price approaches entry zones</li>
+      </ul>
+
+      <p><b>Step 5: Risk Parameters (5 min)</b></p>
+      <ul>
+        <li>Current equity: $_____</li>
+        <li>Drawdown: ____% (adjust risk if > 10%)</li>
+        <li>Max risk per trade today: ____% (1-2%)</li>
+        <li>Max total heat: 6-8%</li>
+        <li>Max trades: 3-5 (quality > quantity)</li>
+      </ul>
+
+      <h3>Phase 2: Trading Session (Market Hours)</h3>
+      
+      <p><b>9:30-10:30 AM: Avoid or Scalp Only</b></p>
+      <pre><code>Why: High volatility, whipsaws, fake breakouts
+Action: Watch only, identify regime shift
+
+Exception: Experienced scalpers (tight stops, small size)</code></pre>
+
+      <p><b>10:30 AM-12:00 PM: Prime Trading Window</b></p>
+      <pre><code>Why: Regime established, institutional flow clear
+Action: Execute A-grade setups aligned with HTF
+
+Checklist before entry:
+1. HTF aligned? ✓
+2. Janus sweep or structure setup? ✓
+3. Order flow confirming (Plutus, footprint)? ✓
+4. Minimal Flow regime = Trending? ✓
+5. Risk < 2%? ✓
+
+If all ✓ → Execute</code></pre>
+
+      <p><b>12:00-2:00 PM: Lunch Lull (Avoid or Manage Only)</b></p>
+      <pre><code>Why: Low volume, sideways chop, poor R:R
+Action: Manage open positions, avoid new entries
+
+Exception: Swing trades unaffected by intraday noise</code></pre>
+
+      <p><b>2:00-4:00 PM: Afternoon Session</b></p>
+      <pre><code>Why: Volume returns, potential continuation or reversal
+Action: Execute setups IF regime unchanged
+
+Caution: Watch for EOD manipulation (power hour 3-4 PM)</code></pre>
+
+      <h3>Phase 3: Post-Market Review (15-30 min)</h3>
+      
+      <p><b>Step 1: Journal All Trades (5 min/trade)</b></p>
+      <ul>
+        <li>Setup type, entry/exit, P&L</li>
+        <li>Emotional state, mistakes, lessons</li>
+      </ul>
+
+      <p><b>Step 2: Performance Review (10 min)</b></p>
+      <ul>
+        <li>Today's win rate: ___%</li>
+        <li>Today's net P&L: $_____</li>
+        <li>Best trade: ____ (why?)</li>
+        <li>Worst trade: ____ (what went wrong?)</li>
+        <li>Repeated mistakes: ____</li>
+      </ul>
+
+      <p><b>Step 3: Tomorrow's Prep (10 min)</b></p>
+      <ul>
+        <li>Mark key levels for tomorrow</li>
+        <li>Note regime shift signals to watch</li>
+        <li>Update watchlist if needed</li>
+      </ul>
+
+      <h2>Workspace Setup</h2>
+      
+      <h3>Multi-Monitor Configuration (Recommended)</h3>
+      
+      <p><strong>Monitor 1 (Primary): Trading Charts</strong></p>
+      <ul>
+        <li>4-pane layout: Daily, 4H, 1H, 15min</li>
+        <li>Signal Pilot indicators: Janus, Plutus, Minimal Flow, Omnideck</li>
+        <li>Order entry panel</li>
+      </ul>
+
+      <p><strong>Monitor 2 (Secondary): Order Flow & Analysis</strong></p>
+      <ul>
+        <li>Footprint chart (real-time delta)</li>
+        <li>Order book / DOM (depth of market)</li>
+        <li>Volume Profile (Plutus Flow)</li>
+      </ul>
+
+      <p><strong>Monitor 3 (Optional): Market Context</strong></p>
+      <ul>
+        <li>Futures (ES, NQ)</li>
+        <li>VIX, DXY, TNX (macro)</li>
+        <li>News feed</li>
+        <li>Trade journal spreadsheet</li>
+      </ul>
+
+      <h3>Single Monitor Layout (Minimalist)</h3>
+      <pre><code>Layout: 4-quadrant split
+Top-Left: Daily chart (HTF context)
+Top-Right: 4H chart (MTF structure)
+Bottom-Left: 15min chart (LTF execution)
+Bottom-Right: Order entry + P&L tracker</code></pre>
+
+      <h2>Automation Tools</h2>
+      
+      <h3>Tool 1: Price Alerts</h3>
+      <p><strong>Setup alerts at key levels (don't stare at charts 8 hours/day).</strong></p>
+      <pre><code>SPY at $520
+Alerts:
+- $522 (4H resistance, potential short)
+- $518 (support, potential long)
+- $525 (Daily resistance, take profit)
+
+Platform: TradingView alerts, broker app notifications</code></pre>
+
+      <h3>Tool 2: Pre-Market Scanners</h3>
+      <p><strong>Scan for instruments meeting criteria.</strong></p>
+      <pre><code>Scanner criteria:
+- HTF uptrend (above 50 EMA)
+- Minimal Flow = Trending
+- Janus sweep within last 10 candles
+- ATR > 0.5% (sufficient volatility)
+
+Result: 3-5 high-probability candidates daily</code></pre>
+
+      <h3>Tool 3: Auto Position Sizing Calculator</h3>
+      <p><strong>Input: Entry, stop → Output: Position size.</strong></p>
+      <pre><code>Tool: Spreadsheet or script
+
+Input:
+- Account: $10,000
+- Risk %: 2%
+- Entry: $100
+- Stop: $98
+
+Calculation:
+Risk $ = $10,000 × 2% = $200
+Stop distance = $100 - $98 = $2
+Position = $200 / $2 = 100 shares
+
+Output: "Buy 100 shares"</code></pre>
+
+      <h3>Tool 4: Trade Journal Auto-Logger</h3>
+      <p><strong>Import trades from broker API → auto-populate journal.</strong></p>
+      <pre><code>Brokers with API: Interactive Brokers, TD Ameritrade, Alpaca
+
+Script:
+1. Fetch closed trades (via API)
+2. Parse: Symbol, Entry, Exit, P&L
+3. Append to journal spreadsheet
+
+Manual add: Setup type, confluence, emotions, lessons</code></pre>
+
+      <h3>Tool 5: Equity Curve Tracker</h3>
+      <p><strong>Auto-update equity chart after each trade.</strong></p>
+      <pre><code>Tool: Google Sheets + Google Apps Script
+
+After trade close:
+1. Append trade P&L to sheet
+2. Calculate cumulative equity
+3. Update chart (X = Trade #, Y = Equity)
+
+Visual feedback: See progress (or decline) immediately</code></pre>
+
+      <h2>Checklists (Professional Discipline)</h2>
+      
+      <h3>Pre-Entry Checklist</h3>
+      <pre><code>STOP. Before clicking "Buy/Sell", verify:
+
+[ ] HTF analysis complete (Daily trend, bias)
+[ ] MTF structure identified (4H levels, Janus zones)
+[ ] Setup grade = A or B (if C, skip)
+[ ] Confluence ≥ 3/5 (Janus + Plutus + Minimal Flow)
+[ ] Regime appropriate (avoid volatile)
+[ ] Entry trigger confirmed (sweep reclaim, breakout close)
+[ ] Stop loss defined (structure-based, ATR)
+[ ] Target defined (HTF level, 2:1+ R:R)
+[ ] Position size calculated (risk 1-2%)
+[ ] Emotional state = CALM (not FOMO/revenge)
+
+If ANY box unchecked → DO NOT ENTER</code></pre>
+
+      <h3>In-Trade Checklist</h3>
+      <pre><code>After entry:
+
+[ ] Stop loss order placed (don't trust mental stops)
+[ ] Target order placed (or alert set)
+[ ] Journal entry started (log setup, entry price)
+[ ] Set "check-in" timer (review in 30 min / 1 hour)
+
+During trade:
+[ ] Resist urge to check every 30 seconds
+[ ] Do NOT move stop loss wider (accept loss if triggered)
+[ ] If hitting target sooner than expected → trail stop, lock profit
+[ ] If stalling near entry for > X candles → consider exit (time-based stop)</code></pre>
+
+      <h3>Post-Exit Checklist</h3>
+      <pre><code>Trade closed:
+
+[ ] Log exit price, exit reason
+[ ] Calculate actual R, net P&L
+[ ] Emotional state check (calm? frustrated?)
+[ ] Mistakes made? (log in journal)
+[ ] Lesson learned? (1 key takeaway)
+[ ] Update equity tracker
+[ ] Wait 30 min before next trade (avoid revenge/overtrading)</code></pre>
+
+      <h2>Common Operational Failures</h2>
+      
+      <h3>Failure 1: No Pre-Market Prep</h3>
+      <p><b>Bad:</b> Wake up at 9:35 AM, open chart, "let's see what looks good..."</p>
+      <p><b>Good:</b> Pre-market routine complete by 9:20 AM. Bias clear, levels marked, watchlist ready.</p>
+
+      <h3>Failure 2: No Hard Stop Loss</h3>
+      <p><b>Bad:</b> "I'll just watch it and exit if it goes against me."</p>
+      <p><b>Result:</b> -5% loss (panic exit far below intended stop).</p>
+      <p><b>Good:</b> Stop loss order placed immediately after entry. Discipline enforced.</p>
+
+      <h3>Failure 3: Overtrading</h3>
+      <p><b>Bad:</b> 20 trades/day (chasing, FOMO, bored).</p>
+      <p><b>Result:</b> 35% win rate, negative R, death by 1000 fees.</p>
+      <p><b>Good:</b> Max 3-5 trades/day. Quality > quantity.</p>
+
+      <h3>Failure 4: No Post-Trade Review</h3>
+      <p><b>Bad:</b> Close trade, forget about it, repeat same mistake next day.</p>
+      <p><b>Good:</b> 5-min journal entry. Lesson logged. Pattern spotted within 1 week.</p>
+
+      <h3>Failure 5: Trading Through Drawdown</h3>
+      <p><b>Bad:</b> Down 18%, keep trading full size (trying to "win it back").</p>
+      <p><b>Result:</b> Down 30% (spiral).</p>
+      <p><b>Good:</b> 15% DD → Reduce size 50%, only A-grade setups. 20% DD → Stop trading.</p>
+
+      <h2>Weekly Operations Routine</h2>
+      
+      <h3>Sunday Evening (60 min): Weekly Prep</h3>
+      <ul>
+        <li><b>Week review:</b> Analyze all trades (win rate, avg R, P&L)</li>
+        <li><b>Mistake analysis:</b> What repeated errors occurred?</li>
+        <li><b>Update trading plan:</b> Add 1 new rule based on lesson</li>
+        <li><b>Week ahead:</b> Mark major economic events (FOMC, CPI, earnings)</li>
+        <li><b>Watchlist refresh:</b> Update instruments to focus on</li>
+      </ul>
+
+      <h3>Monthly Operations (2-3 hours)</h3>
+      <ul>
+        <li><b>Performance report:</b> Total P&L, Sharpe ratio, max DD</li>
+        <li><b>Deep dive:</b> Pivot tables (time-of-day, setup type, regime)</li>
+        <li><b>Strategy audit:</b> Is edge still working? Regime changed?</li>
+        <li><b>Goal adjustment:</b> Next month targets (P&L, win rate, process goals)</li>
+        <li><b>System maintenance:</b> Update indicators, test new tools</li>
+      </ul>
+
+      <h2>Signal Pilot Operations Integration</h2>
+      
+      <h3>Omnideck: Multi-Timeframe Dashboard</h3>
+      <p><strong>Use Omnideck for 1-glance context check.</strong></p>
+      <pre><code>Omnideck shows:
+- HTF: Trend, Minimal Flow regime
+- MTF: Janus zones, Plutus POC
+- LTF: Real-time order flow
+
+Pre-entry: Glance at Omnideck
+If all green (aligned) → Execute
+If mixed → Wait for confluence</code></pre>
+
+      <h3>Janus Atlas: Auto-Alert on Sweeps</h3>
+      <pre><code>Setup: Alert when Janus detects sweep on watchlist
+
+Alert triggers:
+"SPY: Janus sweep at $520.40 (support)"
+
+Action: Check footprint, Plutus, HTF alignment
+If confluence → Execute
+If not → Monitor for reclaim</code></pre>
+
+      <h3>Minimal Flow: Regime Filter</h3>
+      <pre><code>Pre-market: Check Minimal Flow on Daily
+
+If Trending → Trade pullbacks, breakouts
+If Ranging → Fade extremes, tight targets
+If Volatile → Reduce size or sit out
+
+Operational rule: Only trade when Minimal Flow = Trending (highest edge)</code></pre>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>Pre-market routine: 30-60 min (HTF analysis, bias, levels)</strong></li>
+        <li><strong>Prime trading: 10:30 AM-12 PM (avoid open, lunch)</strong></li>
+        <li><strong>Checklists: Pre-entry, in-trade, post-exit (discipline)</strong></li>
+        <li><strong>Automation: Alerts, scanners, position calculators (efficiency)</strong></li>
+        <li><strong>Weekly/monthly review: Spot patterns, improve process</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Build your pre-market routine</strong></p>
+      <p>Write down 5 steps you'll complete BEFORE first trade. Time yourself (target: 30-45 min).</p>
+      
+      <p><strong>Exercise 2: Create pre-entry checklist</strong></p>
+      <p>List 10 items you MUST verify before every trade. Print it. Tape it to monitor.</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Amateurs improvise. Professionals systematize. Your edge isn't just your strategy—it's your operations."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+      <p><strong>Congratulations! You've completed the Intermediate tier. You now have professional-grade frameworks for order flow, risk management, and operational excellence. Next: Advanced tier (institutional strategies, automation, quant methods).</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/intermediate/26-trade-journal-mastery.html">&larr; Previous: Trade Journal</a>
+    <a class="btn btn-primary" href="/curriculum/">Complete Intermediate! View All &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Janus Atlas Advanced: Sweep Mastery — SignalPilot Education</title>
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="20">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Janus Atlas Advanced: Sweep Mastery</h1><div class="meta">Reading time ~14 min • Signal Pilot Deep Dive</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>Beyond basic sweeps: Learn multi-timeframe sweep confluence, sweep-and-reclaim patterns, failed sweep identification, and complete trading frameworks.</b></p>
+      
+      <h2>Advanced Sweep Patterns</h2>
+      
+      <h3>Pattern 1: Double Sweep (Highest Probability)</h3>
+      <p><strong>Definition:</strong> Price sweeps same level twice, then reverses.</p>
+      <pre><code>First sweep: $100 → $99.50 → $100.50
+Second sweep: $100 → $99.00 → $101.50 (stronger reversal)
+
+Why: First sweep grabbed obvious stops. Second sweep grabbed traders who "bought the dip." Now all stops cleared → Reversal.</code></pre>
+      <p><b>Win Rate: 70-80% (very high)</b></p>
+
+      <h3>Pattern 2: Multi-Timeframe Sweep Confluence</h3>
+      <p><strong>Definition:</strong> Multiple timeframes have liquidity at same price.</p>
+      <pre><code>Daily: Support at $100
+4H: Support at $100
+1H: Support at $100
+
+Implication: MASSIVE liquidity cluster (sweeps from all timeframes converge)
+Result: Sweep to $99.50 likely grabs $50M+ in stops</code></pre>
+      <p><b>Win Rate after confluence sweep: 75-85%</b></p>
+
+      <h3>Pattern 3: Sweep and Reclaim</h3>
+      <p><strong>Definition:</strong> Sweep below support, IMMEDIATE reclaim with volume.</p>
+      <pre><code>12:00: Price at $100.50
+12:05: Sweep to $99.40 (below $100 support)
+12:06: IMMEDIATE reclaim to $100.20 (within 1-3 candles)
+12:10: Volume spike + positive delta
+
+Result: Strong reversal (failed breakdown)</code></pre>
+      <p><b>Janus Integration:</b> Janus marks sweep, then reclaim signal triggers entry.</p>
+
+      <h3>Pattern 4: Failed Sweep (Trade Opposite)</h3>
+      <p><strong>Definition:</strong> Sweep occurs, but price continues through (doesn't reverse).</p>
+      <pre><code>Price sweeps $100 to $99.50
+Expected: Reversal to $101+
+Reality: Continues to $98 (breakdown)
+
+Implication: Support was truly broken (not just sweep)
+Action: Enter SHORT on continuation</code></pre>
+
+      <h2>Janus Atlas Signals Decoded</h2>
+      
+      <h3>Signal Types</h3>
+      <ul>
+        <li><b>Sweep Detected:</b> Wick below/above structure, volume spike</li>
+        <li><b>Reclaim:</b> Close back above (bullish) or below (bearish) swept level</li>
+        <li><b>Failed Sweep:</b> No reclaim within 5 candles, continuation through</li>
+        <li><b>High Liquidity Zone:</b> Multiple swing levels clustered (high probability target)</li>
+      </ul>
+
+      <h2>Complete Trading Frameworks</h2>
+      
+      <h3>Framework 1: Classic Sweep Reversal</h3>
+      <p><strong>Setup:</strong></p>
+      <ol>
+        <li>Janus identifies support at $100</li>
+        <li>Price sweeps to $99.50</li>
+        <li>Volume spike + rapid reclaim to $100.20</li>
+        <li>Plutus Flow shows absorption (+6,000 delta)</li>
+        <li>Minimal Flow confirms trending up regime</li>
+      </ol>
+      <p><strong>Entry:</strong> $100.30 (close above reclaim)</p>
+      <p><strong>Stop:</strong> $99.30 (below sweep + ATR)</p>
+      <p><strong>Target 1:</strong> $102 (previous high) = 5.7R</p>
+      <p><strong>Target 2:</strong> $104 (HTF resistance) = 12.3R</p>
+      <p><b>Win Rate: 65-70%</b></p>
+
+      <h3>Framework 2: Double Sweep Power Trade</h3>
+      <p><strong>Setup:</strong></p>
+      <ol>
+        <li>First sweep: $100 → $99.50 → $100.50</li>
+        <li>Price returns to $100</li>
+        <li>Second sweep: $100 → $99.00 → $100.20</li>
+        <li>Janus confirms double sweep</li>
+        <li>Footprint shows massive absorption at $99-$99.50</li>
+      </ol>
+      <p><strong>Entry:</strong> $100.40 (aggressive reclaim)</p>
+      <p><strong>Stop:</strong> $98.80 (below second sweep)</p>
+      <p><strong>Target:</strong> $105 (HTF level) = 10R+</p>
+      <p><b>Win Rate: 70-80% (highest probability)</b></p>
+
+      <h3>Framework 3: Failed Sweep Continuation</h3>
+      <p><strong>Setup:</strong></p>
+      <ol>
+        <li>Sweep below $100 to $99.50</li>
+        <li>NO reclaim within 5 candles</li>
+        <li>Continues to $98.50 (breakdown)</li>
+        <li>Janus marks failed sweep</li>
+        <li>Enter SHORT on confirmation</li>
+      </ol>
+      <p><strong>Entry:</strong> $98.30 (breakdown confirmed)</p>
+      <p><strong>Stop:</strong> $99.80 (above failed sweep)</p>
+      <p><strong>Target:</strong> $95 (next support) = 2.2R</p>
+      <p><b>Win Rate: 60-65%</b></p>
+
+      <h2>Multi-Timeframe Janus Integration</h2>
+      
+      <h3>HTF Janus (Daily): Trend Context</h3>
+      <ul>
+        <li>Identify major sweep zones on Daily</li>
+        <li>These are HIGH priority targets for reversals</li>
+        <li>Only trade LTF sweeps aligned with HTF bias</li>
+      </ul>
+
+      <h3>MTF Janus (4H): Entry Zones</h3>
+      <ul>
+        <li>Identify swing sweep zones on 4H</li>
+        <li>These are your entry areas</li>
+        <li>Wait for LTF confirmation within these zones</li>
+      </ul>
+
+      <h3>LTF Janus (15min): Execution</h3>
+      <ul>
+        <li>Real-time sweep detection</li>
+        <li>Precise entry timing</li>
+        <li>Reclaim confirmation</li>
+      </ul>
+
+      <h2>Combining Janus with Other Indicators</h2>
+      
+      <h3>Janus + Plutus Flow</h3>
+      <ul>
+        <li><b>Sweep + Absorption:</b> High probability reversal (positive delta at sweep)</li>
+        <li><b>Sweep + Exhaustion:</b> Failed sweep likely (negative delta, continuation)</li>
+      </ul>
+
+      <h3>Janus + Minimal Flow</h3>
+      <ul>
+        <li><b>Sweep + Trending Regime:</b> Trade pullback sweeps WITH trend</li>
+        <li><b>Sweep + Ranging Regime:</b> Fade extremes (reversals at range edges)</li>
+      </ul>
+
+      <h3>Janus + Harmonic Oscillator</h3>
+      <ul>
+        <li><b>Sweep + Oversold (5/5 agreement):</b> Extreme reversal probability</li>
+        <li><b>Sweep + Divergence:</b> Additional confirmation</li>
+      </ul>
+
+      <h2>Common Mistakes</h2>
+      
+      <h3>Mistake 1: Trading Every Sweep</h3>
+      <p><b>Bad:</b> "Janus showed sweep, entering immediately!"</p>
+      <p><b>Fix:</b> Require reclaim + volume + order flow confirmation.</p>
+
+      <h3>Mistake 2: Ignoring Failed Sweeps</h3>
+      <p><b>Bad:</b> Holding long after sweep failed to reclaim.</p>
+      <p><b>Fix:</b> If no reclaim within 5 candles, exit. Consider reversal (short).</p>
+
+      <h3>Mistake 3: Fighting HTF After Sweep</h3>
+      <p><b>Bad:</b> LTF sweep reversal long, but HTF downtrend.</p>
+      <p><b>Fix:</b> Only trade sweeps aligned with HTF bias.</p>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>Double sweeps = highest probability (70-80%)</strong></li>
+        <li><strong>Multi-TF confluence sweeps = massive liquidity grab</strong></li>
+        <li><strong>Sweep + reclaim = reversal confirmation</strong></li>
+        <li><strong>Failed sweep = trade opposite direction</strong></li>
+        <li><strong>Always combine Janus with Plutus/Minimal Flow</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Find 3 double sweeps</strong></p>
+      <p>Review recent charts. How often do double sweeps lead to strong reversals?</p>
+      
+      <p><strong>Exercise 2: Track failed sweeps</strong></p>
+      <p>Log 5 instances where sweep didn't reclaim. What happened? Did continuation occur?</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Trade the sweep, don't be swept. Janus Atlas shows you where retail stops cluster—trade the reversal."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/intermediate/19-multi-timeframe-mastery.html">&larr; Previous: Multi-TF</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/21-plutus-flow-mastery.html">Next: Plutus Flow &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>
