@@ -1,179 +1,514 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Bid-Ask Spread Dynamics: The Hidden Cost — SignalPilot Education</title>
-  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="13">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Bid-Ask Spread Dynamics: The Hidden Cost — SignalPilot Learn</title>
+  <meta name="description" content="That innocent little spread? It's quietly stealing thousands from your account. Learn how to read spread dynamics like a pro and stop paying the impatience tax.">
+  <meta name="sp-level" content="Intermediate">
+  <meta name="sp-order" content="13">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Bid-Ask Spread Dynamics: The Hidden Cost</h1><div class="meta">Reading time ~16 min • Market Microstructure</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>The spread is not a "small fee"—it's a tax on impatient participants.</b> Learn why spreads widen and tighten, how to read spread dynamics as a leading indicator, and why market orders vs. limit orders can make or break your edge.</p>
-      
-      <h2>The Spread is a Negotiation</h2>
-      <p><strong>Market makers provide liquidity and take inventory risk. The spread is their compensation.</strong></p>
-      <pre><code>Bid: $100.00 (highest buyers will pay)
-Ask: $100.05 (lowest sellers accept)
-Spread: $0.05 (5 cents, 5 basis points)
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #13</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 13 of 27</span>
+      <h1 class="headline xl">The Spread is Stealing From You (And You Don't Even Notice)</h1>
+      <div class="meta">Reading time ~12 min • Market Microstructure Reality</div>
 
-Market buy → Pay $100.05 (ask)
-Market sell → Get $100.00 (bid)
-Round-trip cost: $0.05</code></pre>
-      <p><b>On $10,000 position with 5bp spread: $5 per round-trip. 50 trades/month = $250/month = $3,000/year.</b></p>
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      <h2>What Drives Spread Width</h2>
-      
-      <h3>1. Volatility</h3>
-      <p><strong>When volatility spikes, market makers widen spreads to compensate for risk.</strong></p>
-      <p><b>SPY Example:</b> Normal = 0.01 spread ($0.01). Fed announcement = 0.10 spread ($0.10) → 10× wider</p>
-      <p><strong>Signal Pilot Integration:</strong> Use <b>Minimal Flow</b> regime detection to anticipate spread widening during volatile regimes.</p>
+  <div class="wrap article-grid">
+    <div class="prose">
 
-      <h3>2. Liquidity Depth</h3>
-      <p>Low liquidity = wide spreads. High liquidity = tight spreads.</p>
+      <p><b>That innocent 0.01% spread just cost you $3,000 this year.</b></p>
+
+      <p>Let that sink in.</p>
+
+      <p>You're obsessing over entry timing, backtesting strategies, optimizing stop placement. Meanwhile, the spread is silently bleeding your account with every single trade.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Most traders don't realize they're paying 20-30% of their potential profits to the spread. Not commissions. Not fees. The invisible tax they pay for impatience.</p>
+        <p>And here's the kicker: <strong>The spread is also a crystal ball.</strong> It tells you what's about to happen BEFORE price moves. But nobody's watching.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
       <ul>
-        <li><b>BTC on Binance:</b> 0.01% spread</li>
-        <li><b>Illiquid altcoin:</b> 0.5-2% spread (50-200× worse)</li>
+        <li>Why the spread isn't a "fee"—it's a negotiation you're losing</li>
+        <li>How to read spread widening as a leading indicator (before the move)</li>
+        <li>The exact framework for when to use market vs. limit orders</li>
+        <li>Why your scalping strategy is mathematically impossible</li>
       </ul>
 
-      <h3>3. Time of Day</h3>
-      <p><strong>ES Futures:</strong></p>
+      <div class="section-break"><span>Part 1: The Spread is Not What You Think</span></div>
+
+      <h2>It's Not a Fee. It's a Tax on Impatience.</h2>
+
+      <p>Pop quiz: What's the spread?</p>
+
+      <p>If you answered "the difference between bid and ask," you're technically right. But you're missing the entire game.</p>
+
+      <p>Here's what's really happening:</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>What You Think</button>
+          <button>What's Actually Happening</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>The Retail Story</h3>
+            <p><strong>Bid:</strong> $100.00<br>
+            <strong>Ask:</strong> $100.05<br>
+            <strong>Spread:</strong> $0.05</p>
+            <p>"It's just 5 cents. No big deal."</p>
+            <p><strong>Your mental model:</strong> Small cost of doing business. Like a $1 exchange fee at the airport.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>The Reality</h3>
+            <p><strong>Market makers:</strong> "We'll provide liquidity, but you'll pay us for the service."</p>
+            <p><strong>The spread is their profit.</strong> They buy at $100.00, sell at $100.05, pocket $0.05 every time someone's too impatient to wait.</p>
+            <p><strong>You:</strong> Trade 50 times/month with a $10,000 position.</p>
+            <p><strong>Cost:</strong> $5/trade × 50 trades = <strong>$250/month = $3,000/year</strong></p>
+            <p>And that's with a TIGHT spread. Illiquid markets? Multiply by 10.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>Market makers are like casinos. They don't care if you win or lose. They profit from the spread (the green 0 on the roulette wheel) every single time you trade.</p>
+        <p>The more you trade, the more they make. Your impatience is their salary.</p>
+      </div>
+
+      <h2>Your "Edge" Just Evaporated</h2>
+
+      <p>Let's do some uncomfortable math.</p>
+
+      <p>Say you've backtested a strategy:</p>
       <ul>
-        <li>9:30-16:00 ET (liquid): 0.25 points ($12.50)</li>
-        <li>18:00-20:00 ET (Asian): 0.50-1.00 points ($25-$50)</li>
-        <li>02:00 ET (dead zone): 1.00-2.00 points ($50-$100) → 4-8× wider</li>
+        <li><strong>Win rate:</strong> 55%</li>
+        <li><strong>Average win:</strong> 1.5R</li>
+        <li><strong>Average loss:</strong> 1.0R</li>
+        <li><strong>Expected value:</strong> +0.275R per trade</li>
       </ul>
-      <p><b>Trade at 3am, pay 8× the spread.</b></p>
 
-      <h3>4. News Events</h3>
-      <p><strong>FOMC Pattern:</strong></p>
-      <pre><code>14:00 (1hr before): 0.01% spread
-14:55 (5min before): 0.05% spread (5× wider)
-15:00 (release): 0.10-0.20% spread (10-20× wider)
-15:05 (5min after): 0.02-0.03% spread (normalizing)</code></pre>
-      <p><b>Avoid market orders 10 minutes before high-impact news.</b></p>
+      <p>Looks profitable, right?</p>
 
-      <h2>Spread as a Leading Indicator</h2>
-      <p><strong>Professionals see spread as a SIGNAL, not just a cost.</strong></p>
+      <p><strong>Now add the spread:</strong></p>
 
-      <h3>Spread Widening = Uncertainty</h3>
-      <p><strong>When spreads widen WITHOUT obvious news:</strong> Market makers pulling liquidity, positioning for move, uncertainty increasing.</p>
-      <pre><code>10:00 AM: SPY spread = $0.01 (normal)
-10:15 AM: SPY spread = $0.02 (widening, no news)
-10:25 AM: Price breaks lower (hidden selling)</code></pre>
-      <p><b>The spread told you BEFORE the price move.</b></p>
+      <div style="background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <p style="margin:0"><strong>Spread + slippage:</strong> 0.10R per round-trip</p>
+        <p style="margin:.5rem 0 0 0"><strong>New expected value:</strong> +0.275R - 0.10R = <strong>+0.175R</strong></p>
+        <p style="margin:.5rem 0 0 0;font-size:1.1rem"><strong>You just lost 36% of your edge to the spread.</strong></p>
+      </div>
 
-      <h3>Spread Tightening = Confidence</h3>
-      <p><strong>When spreads tighten during consolidation:</strong> Market makers confident, breakout likely to stick.</p>
-      <p><strong>Signal Pilot Integration:</strong> Combine spread tightening with <b>Janus Atlas</b> sweep confirmation:</p>
-      <ol>
-        <li>Consolidation after sweep (Janus confirms)</li>
-        <li>Spread tightens (MMs comfortable)</li>
-        <li>Breakout triggers → High probability follow-through</li>
-      </ol>
+      <p>And if you're scalping with tight stops? That 0.10R spread might be 25% of your stop loss. Your "edge" is now a coin flip.</p>
 
-      <h2>The Real Cost of Market Orders</h2>
-      <p><strong>Example Trade: AAPL, $50,000 position, $0.05 spread</strong></p>
-      <pre><code>Market buy at $150.05 (ask)
-Limit buy at $150.00 (bid)
+      <p>Sound familiar?</p>
 
-Immediate "loss" from market order: $16.67
-(50,000 / 150 shares × $0.05)</code></pre>
-      <p><b>If your edge is 55% win rate with 1.5R average, and spread + slippage = 0.10R, you just gave up 67% of your edge.</b></p>
+      <div class="section-break"><span>Part 2: What Actually Drives Spread Width</span></div>
 
-      <h3>Strategic Framework</h3>
-      <p><strong>Use market orders when:</strong></p>
-      <ul>
-        <li>Breakout with momentum (missing fill = missing trade)</li>
-        <li>Stop loss hit (get out NOW)</li>
-        <li>Spread tight (< 2 basis points)</li>
-      </ul>
-      <p><strong>Use limit orders when:</strong></p>
+      <h2>The Spread Isn't Random. It's a Signal.</h2>
+
+      <p>Here's what they don't teach you: <strong>The spread is a leading indicator.</strong></p>
+
+      <p>When spreads widen or tighten, market makers are telling you something. You just have to listen.</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Driver #1: Volatility (The Panic Tax)</div>
+          <div class="accordion-content">
+            <p><strong>Normal conditions:</strong> SPY trades with a $0.01 spread.</p>
+            <p><strong>Fed announcement hits:</strong> Spread explodes to $0.10—that's 10× wider.</p>
+            <p><strong>Why?</strong> Market makers aren't dumb. When volatility spikes, they're taking on more risk. So they charge you more.</p>
+            <div class="callout-tip">
+              <h4>🎯 Pro Move</h4>
+              <p>Use <strong>Minimal Flow</strong> to detect regime changes BEFORE volatility spikes. When the regime shifts, spreads widen. If you're already positioned, great. If not, wait it out.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Driver #2: Liquidity Depth (The Desert Tax)</div>
+          <div class="accordion-content">
+            <p>Think of liquidity like water in a market:</p>
+            <ul>
+              <li><strong>BTC on Binance:</strong> Ocean. Spread = 0.01% (tight)</li>
+              <li><strong>Illiquid altcoin:</strong> Desert. Spread = 0.5-2% (50-200× worse)</li>
+            </ul>
+            <p><strong>Real talk:</strong> If the spread is over 0.1%, you're not trading—you're gambling. Market makers can swing price 1-2% just by pulling liquidity. Don't play in deserts.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Driver #3: Time of Day (The 3am Robbery)</div>
+          <div class="accordion-content">
+            <p><strong>ES Futures spread throughout the day:</strong></p>
+            <ul>
+              <li><strong>9:30 AM - 4:00 PM ET (liquid):</strong> 0.25 points ($12.50)</li>
+              <li><strong>6:00 PM - 8:00 PM ET (Asian session):</strong> 0.50 points ($25)</li>
+              <li><strong>2:00 AM ET (dead zone):</strong> 1.00-2.00 points ($50-$100)</li>
+            </ul>
+            <p><strong>Trade at 3am?</strong> You're paying 4-8× the normal spread. Congrats, you just gave away your edge before the trade even started.</p>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
+              <strong>Rule:</strong> If you're not a professional market maker, don't trade illiquid hours. Full stop.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Driver #4: News Events (The FOMC Special)</div>
+          <div class="accordion-content">
+            <p>Picture this: It's 2:55 PM. FOMC announcement in 5 minutes.</p>
+            <p><strong>Here's what happens to spreads:</strong></p>
+            <ul>
+              <li><strong>2:00 PM (1 hour before):</strong> 0.01% spread (normal)</li>
+              <li><strong>2:55 PM (5 min before):</strong> 0.05% spread (5× wider)</li>
+              <li><strong>3:00 PM (release):</strong> 0.10-0.20% spread (10-20× wider)</li>
+              <li><strong>3:05 PM (5 min after):</strong> 0.02% spread (normalizing)</li>
+            </ul>
+            <p><strong>The lesson?</strong> Never use market orders within 10 minutes of high-impact news. Market makers are basically saying, "If you want to trade now, it'll cost you 20× more."</p>
+            <p>Wait 5 minutes. Let spreads normalize. Save thousands.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: Spread as a Crystal Ball</span></div>
+
+      <h2>Reading Spread Changes BEFORE Price Moves</h2>
+
+      <p>This is where it gets interesting.</p>
+
+      <p>Most traders watch price. Professionals watch the spread.</p>
+
+      <p>Why? Because <strong>spread changes predict price changes.</strong></p>
+
+      <h3>Signal #1: Spread Widening = Uncertainty</h3>
+
+      <p>Picture this: It's 10:00 AM. SPY trading normally. Spread is $0.01.</p>
+
+      <p>10:15 AM: Spread quietly widens to $0.02. No news. No obvious catalyst.</p>
+
+      <p>10:25 AM: Price breaks lower. Volume spike. Everyone's scrambling to figure out what happened.</p>
+
+      <p><strong>But the spread told you 10 minutes early.</strong></p>
+
+      <div class="callout-key">
+        <h4>💡 What Just Happened</h4>
+        <p>Market makers saw hidden selling pressure (large orders, dark pool activity, institutional flow). They widened the spread to protect themselves.</p>
+        <p>You couldn't see the selling. But they could. And they adjusted the spread accordingly.</p>
+        <p><strong>Spread widening without news = something's coming.</strong></p>
+      </div>
+
+      <h3>Signal #2: Spread Tightening = Confidence</h3>
+
+      <p>Opposite scenario: Price has been consolidating after a breakout. Janus Atlas confirmed a liquidity sweep. You're watching for continuation.</p>
+
+      <p>Then you notice: The spread tightens from $0.02 to $0.01.</p>
+
+      <p><strong>What does that mean?</strong> Market makers are comfortable. They're willing to quote tighter spreads because they don't expect sudden moves. Translation: Breakout is likely to stick.</p>
+
+      <div class="callout-tip">
+        <h4>🎯 Complete Setup</h4>
+        <p><strong>Combine spread analysis with your tools:</strong></p>
+        <ol>
+          <li><strong>Janus Atlas:</strong> Confirms liquidity sweep</li>
+          <li><strong>Consolidation:</strong> Price holding above swept level</li>
+          <li><strong>Spread tightens:</strong> Market makers confident</li>
+          <li><strong>Breakout triggers:</strong> Enter with high probability</li>
+        </ol>
+        <p>This is how professionals stack confluence.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Market Orders vs. Limit Orders</span></div>
+
+      <h2>When to Be Patient (And When to Pay)</h2>
+
+      <p>Let's be honest: Sometimes you need to use a market order. Breakouts don't wait for you.</p>
+
+      <p>But most of the time? You're throwing money away.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">❌ When Retail Uses Market Orders</h3>
+          <ul style="margin:0">
+            <li>Every single trade (impatient)</li>
+            <li>Mean reversion setups (price coming to you)</li>
+            <li>Illiquid hours (spreads 5× wider)</li>
+            <li>News events (spreads 20× wider)</li>
+          </ul>
+          <p style="margin-top:1rem"><strong>Result:</strong> Gave away 30% of edge before trade even started.</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">✓ When Professionals Use Market Orders</h3>
+          <ul style="margin:0">
+            <li>Breakout with momentum (can't miss it)</li>
+            <li>Stop loss hit (exit NOW)</li>
+            <li>Spread tight (< 2 basis points)</li>
+            <li>Opportunity cost > spread cost</li>
+          </ul>
+          <p style="margin-top:1rem"><strong>Result:</strong> Only pay when absolutely necessary.</p>
+        </div>
+      </div>
+
+      <h3>The Simple Framework</h3>
+
+      <p><strong>Use LIMIT orders when:</strong></p>
       <ul>
         <li>Mean reversion (price coming to you)</li>
         <li>Spread wide (> 5 basis points)</li>
-        <li>Pyramiding into winner (not urgent)</li>
+        <li>Pyramiding into a winner (not urgent)</li>
+        <li>Liquid hours (you can wait 30 seconds)</li>
       </ul>
 
-      <h2>Spread-Aware Trading Framework</h2>
-      
-      <h3>Step 1: Measure Typical Spread</h3>
-      <pre><code>Symbol: ES Futures
-Liquid hours: 0.25 points ($12.50)
-Overnight: 0.50 points ($25)
-News event: 1.00 points ($50)</code></pre>
-
-      <h3>Step 2: Calculate Spread as % of Stop</h3>
-      <p><b>Spread should be < 10% of stop loss.</b></p>
-      <pre><code>Setup: Long ES at 4500
-Stop: 4495 (5 points = $250)
-Spread: 0.25 points ($12.50)
-
-Spread % of stop: $12.50 / $250 = 5% ✅ Good</code></pre>
-      <p><strong>Bad Example (scalping):</strong></p>
-      <pre><code>Scalp: Long ES at 4500
-Stop: 4499 (1 point = $50)
-Spread: 0.25 points ($12.50)
-
-Spread % of stop: $12.50 / $50 = 25% ❌ Terrible</code></pre>
-      <p><b>This is why tight-stop scalping is nearly impossible to profit from.</b></p>
-
-      <h3>Step 3: Adjust Frequency Based on Spread</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Spread (bps)</th><th>Max Trades/Day</th><th>Strategy</th></tr>
-        <tr><td>0-2</td><td>10+</td><td>Scalping viable</td></tr>
-        <tr><td>2-5</td><td>5-10</td><td>Intraday swing</td></tr>
-        <tr><td>5-10</td><td>2-5</td><td>Position trades</td></tr>
-        <tr><td>10+</td><td>0-2</td><td>Avoid or limits only</td></tr>
-      </table>
-
-      <h3>Step 4: Integrate with Signal Pilot</h3>
-      <p><strong>Complete Entry Checklist:</strong></p>
+      <p><strong>Use MARKET orders when:</strong></p>
       <ul>
-        <li>[ ] Janus Atlas confirms sweep/breakout</li>
-        <li>[ ] Plutus Flow shows absorption (not exhaustion)</li>
-        <li>[ ] Minimal Flow regime supports direction</li>
-        <li>[ ] Current spread < 5 basis points</li>
-        <li>[ ] Spread stable (not widening)</li>
-        <li>[ ] Limit order at bid if mean reversion</li>
-        <li>[ ] R:R > 2:1 AFTER spread costs</li>
+        <li>Breakout with momentum (missing fill = missing trade)</li>
+        <li>Stop loss hit (get out immediately)</li>
+        <li>Spread already tight (< 2 basis points)</li>
       </ul>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Spread is a tax, not a fee</strong> (compounds with frequency)</li>
-        <li><strong>Spread is a signal</strong> (widening = uncertainty, tightening = confidence)</li>
-        <li><strong>Spread kills scalping</strong> (if >10% of stop, setup compromised)</li>
-        <li><strong>Limit orders > market orders</strong> (patience saves money)</li>
-        <li><strong>Liquid hours = tight spreads</strong> (trade 9:30-16:00 ET)</li>
-      </ul>
+      <div class="callout-warning">
+        <h4>🚨 Real Talk: Scalping</h4>
+        <p>If your stop loss is 1 point and the spread is 0.25 points, <strong>the spread is 25% of your risk.</strong></p>
+        <p>That means you need to win 65%+ just to break even. Good luck with that.</p>
+        <p><strong>This is why tight-stop scalping doesn't work for retail traders.</strong> The math is against you before you even start.</p>
+      </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Measure Your Spread Cost</strong></p>
-      <ol>
-        <li>Pick 1 asset you trade</li>
-        <li>Record spread at open, mid-day, close, after-hours</li>
-        <li>Calculate: Spread × trade frequency × year = annual cost</li>
-      </ol>
-      <p><strong>Exercise 2: Track Spread Impact</strong></p>
-      <ol>
-        <li>Next 10 trades: Use market orders, log spread paid</li>
-        <li>Next 10 trades: Use limit orders, log fill rate</li>
-        <li>Compare: Savings vs. missed fills</li>
-      </ol>
+      <div class="section-break"><span>Part 5: Spread-Aware Trading System</span></div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"The spread is the market's way of charging you for impatience. Learn to wait, or pay the tax."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <h2>The Complete Checklist</h2>
+
+      <p>Here's how to integrate spread analysis into your actual trading:</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Step 1: Measure Normal Spread</div>
+          <div class="accordion-content">
+            <p><strong>For each asset you trade, document:</strong></p>
+            <ul>
+              <li>Normal spread during liquid hours</li>
+              <li>Spread during overnight session</li>
+              <li>Spread during news events</li>
+            </ul>
+            <p><strong>Example: ES Futures</strong></p>
+            <ul>
+              <li>Liquid hours: 0.25 points ($12.50)</li>
+              <li>Overnight: 0.50 points ($25)</li>
+              <li>News event: 1.00 points ($50)</li>
+            </ul>
+            <p>Now you have a baseline. When spread deviates, you'll notice.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 2: Calculate Spread % of Stop</div>
+          <div class="accordion-content">
+            <p><strong>Rule:</strong> Spread should be less than 10% of your stop loss.</p>
+            <p><strong>Good Example:</strong></p>
+            <ul>
+              <li>Setup: Long ES at 4500</li>
+              <li>Stop: 4495 (5 points = $250)</li>
+              <li>Spread: 0.25 points ($12.50)</li>
+              <li><strong>Spread % of stop:</strong> $12.50 / $250 = 5% ✓ Good</li>
+            </ul>
+            <p><strong>Bad Example (scalping):</strong></p>
+            <ul>
+              <li>Setup: Long ES at 4500</li>
+              <li>Stop: 4499 (1 point = $50)</li>
+              <li>Spread: 0.25 points ($12.50)</li>
+              <li><strong>Spread % of stop:</strong> $12.50 / $50 = 25% ✗ Terrible</li>
+            </ul>
+            <p>If spread is > 10% of stop, either widen your stop or skip the trade.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 3: Adjust Trade Frequency</div>
+          <div class="accordion-content">
+            <table style="width:100%;border-collapse:collapse;margin-top:1rem">
+              <thead>
+                <tr style="background:rgba(255,255,255,.05)">
+                  <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Spread (bps)</th>
+                  <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Max Trades/Day</th>
+                  <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Strategy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">0-2</td>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">10+</td>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Scalping viable</td>
+                </tr>
+                <tr>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">2-5</td>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">5-10</td>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Intraday swing</td>
+                </tr>
+                <tr>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">5-10</td>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">2-5</td>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Position trades</td>
+                </tr>
+                <tr>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">10+</td>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">0-2</td>
+                  <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Avoid or limits only</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="margin-top:1rem"><strong>The wider the spread, the less you should trade.</strong> Period.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 4: Complete Entry Checklist</div>
+          <div class="accordion-content">
+            <p><strong>Before entering ANY trade:</strong></p>
+            <ul>
+              <li>[ ] Janus Atlas confirms sweep/breakout</li>
+              <li>[ ] Plutus Flow shows absorption (not exhaustion)</li>
+              <li>[ ] Minimal Flow regime supports direction</li>
+              <li>[ ] Current spread < 5 basis points</li>
+              <li>[ ] Spread stable (not widening rapidly)</li>
+              <li>[ ] Spread < 10% of stop loss</li>
+              <li>[ ] R:R > 2:1 AFTER spread costs</li>
+            </ul>
+            <p>Miss one? Skip the trade. There's always another one.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>Key Takeaways</h4>
+        <ul>
+          <li><strong>The spread is a tax on impatience</strong> — it compounds with every trade, bleeding your account silently</li>
+          <li><strong>Spread is a leading indicator</strong> — widening = uncertainty, tightening = confidence</li>
+          <li><strong>Spread kills scalping</strong> — if spread > 10% of stop, your setup is mathematically compromised</li>
+          <li><strong>Limit orders > market orders</strong> — patience saves money (use markets only for breakouts/stops)</li>
+          <li><strong>Trade liquid hours</strong> — 9:30 AM - 4:00 PM ET for tightest spreads</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Test Your Knowledge</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Knowledge Check (No Pressure)</h4>
+
+        <div class="quiz-question">
+          <p><strong>You're scalping ES with a 1-point stop ($50). Normal spread is 0.25 points ($12.50). What's the problem?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Nothing, this is fine</div>
+            <div class="quiz-option" data-correct="true">B) Spread is 25% of stop—mathematically you need 65%+ win rate to break even</div>
+            <div class="quiz-option" data-correct="false">C) The spread is too tight</div>
+            <div class="quiz-option" data-correct="false">D) Scalping always works with tight stops</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> When the spread is 25% of your stop loss, you're starting every trade with a massive handicap. The math is simple: You need an exceptionally high win rate just to overcome the spread cost. This is why tight-stop scalping is nearly impossible for retail traders.
+          </div>
+        </div>
+
+        <div class="quiz-question" style="margin-top:2rem">
+          <p><strong>It's 10:15 AM. No news. SPY spread suddenly widens from $0.01 to $0.03. What does this signal?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Nothing, spreads fluctuate randomly</div>
+            <div class="quiz-option" data-correct="true">B) Market makers see hidden flow—something's coming</div>
+            <div class="quiz-option" data-correct="false">C) It's time to go all-in</div>
+            <div class="quiz-option" data-correct="false">D) The market is about to close</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Exactly!</strong> When spreads widen without obvious news, market makers are protecting themselves from hidden order flow. They see institutional activity you can't see. Spread widening is often a leading indicator of an impending price move. Watch for it.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you just learned what costs most traders thousands per year. And you now know how to read spreads like a leading indicator. Not bad.</p>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Article #14: Order Book Analysis</strong> — The order book isn't showing you real supply and demand—it's showing you theater. Learn to read what's actually happening beneath the surface.</p>
+      </div>
+
+    </div>
+
+    <aside class="toc">
+      <h3>On this page</h3>
+      <a href="#" style="opacity:.6">The Impatience Tax</a>
+      <a href="#">What Drives Spreads</a>
+      <a href="#">Spread as Crystal Ball</a>
+      <a href="#">Market vs Limit Orders</a>
+      <a href="#">Complete Framework</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/beginner.html">&larr; Back to Beginner</a>
-    <a class="btn btn-primary" href="/curriculum/intermediate/14-order-book-analysis.html">Next: Order Book &rarr;</a>
+    <a class="btn btn-ghost" href="/intermediate.html">← Back to Intermediate</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/14-order-book-analysis.html">Next Lesson →</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrolled = window.scrollY;
+    const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);
+
+    const circle = document.querySelector('.progress-circle');
+    if (circle) {
+      circle.style.setProperty('--progress', percent + '%');
+      circle.querySelector('span').textContent = percent + '%';
+    }
+  }, { passive: true });
+
+  localStorage.setItem('sp_edu_last_article', JSON.stringify({
+    title: 'Bid-Ask Spread Dynamics',
+    level: 'Intermediate',
+    order: '13',
+    url: window.location.pathname,
+    progress: 0
+  }));
+</script>
+</body>
+</html>

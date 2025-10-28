@@ -1,163 +1,452 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Market Making & HFT: The Game Within the Game — SignalPilot Education</title>
-  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="15">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Market Making & HFT: You Can't Win Their Game (Play Yours Instead) — SignalPilot Learn</title>
+  <meta name="description" content="HFT controls 70% of volume. They're faster, smarter, better capitalized. You can't compete on speed—but you can learn their playbook and stop being prey.">
+  <meta name="sp-level" content="Intermediate">
+  <meta name="sp-order" content="15">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Market Making & HFT: The Game Within the Game</h1><div class="meta">Reading time ~15 min • Market Microstructure</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>HFT and market makers control 50-70% of volume.</b> You can't compete on speed—but you can understand their game and avoid being prey.</p>
-      
-      <h2>How Market Makers Profit</h2>
-      
-      <h3>Revenue 1: The Spread</h3>
-      <pre><code>Bid: $100.00, Ask: $100.05, Spread: $0.05
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #15</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 15 of 27</span>
+      <h1 class="headline xl">They're Faster Than You (And That's Not Even Their Edge)</h1>
+      <div class="meta">Reading time ~13 min • Understanding The Other Side</div>
 
-Market maker:
-- Buys at $100.00
-- Sells at $100.05
-- Profit: $0.05/share
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-On 1M shares/day: $50,000/day = $12.5M/year</code></pre>
+  <div class="wrap article-grid">
+    <div class="prose">
 
-      <h3>Revenue 2: Exchange Rebates</h3>
-      <p><strong>Maker-Taker Model:</strong> Exchanges PAY market makers to provide liquidity.</p>
+      <p><b>HFT firms and market makers control 50-70% of all trading volume.</b></p>
+
+      <p>They execute trades in microseconds. You blink, they've completed 10,000 transactions.</p>
+
+      <p>You can't beat them on speed. So stop trying.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Every time you place a market order, you're playing their game. They see your order before it fills. They front-run you (legally). They profit from your impatience.</p>
+        <p><strong>But here's the good news:</strong> You don't need to outrun them. You need to understand their playbook and trade on timeframes where speed doesn't matter.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
       <ul>
-        <li><b>Maker (limit order):</b> Receives rebate ($0.0015/share)</li>
-        <li><b>Taker (market order):</b> Pays fee ($0.0030/share)</li>
+        <li>How market makers actually profit (hint: it's not just the spread)</li>
+        <li>The HFT strategies that hunt YOUR stops</li>
+        <li>Why your market orders always fill at the worst price</li>
+        <li>How to defend yourself and trade WITH them (not against)</li>
       </ul>
-      <p>On 1M shares/day: $1,500/day = $375,000/year (on top of spread).</p>
 
-      <h3>Revenue 3: Information Advantage</h3>
-      <p>MMs see order flow in real-time:</p>
-      <ul>
-        <li>Large buy orders coming → Widen ask, lift inventory</li>
-        <li>Large sell orders coming → Widen bid, short inventory</li>
-      </ul>
-      <p><b>They front-run the market (legally, via latency).</b></p>
+      <div class="section-break"><span>Part 1: The Market Maker Business Model</span></div>
 
-      <h2>HFT Strategies</h2>
-      
-      <h3>Strategy 1: Quote Stuffing</h3>
-      <p><strong>Definition:</strong> Flooding order book with fake orders to confuse competitors.</p>
-      <pre><code>11:00:00.001: Post 10,000 orders
-11:00:00.050: Cancel 9,800 orders
-11:00:00.100: Post 10,000 new orders
+      <h2>How They Make $12.5M/Year (And You Fund It)</h2>
 
-Intent: Overload competitors, gain time advantage</code></pre>
-      <p><b>Defense:</b> Use limit orders, monitor changes (not static view), trade during high liquidity.</p>
+      <p>Let's talk about the business you're unknowingly funding every time you trade.</p>
 
-      <h3>Strategy 2: Latency Arbitrage</h3>
-      <p><strong>Definition:</strong> Exploiting speed differences between exchanges.</p>
-      <pre><code>Price on Exchange A: $100.00
-Price on Exchange B: $100.02
+      <p>Market makers make money three ways. Most traders only know about one.</p>
 
-HFT: Buy A at $100.00, sell B at $100.02
-Profit: $0.02/share, risk-free</code></pre>
-      <p><b>Impact on you:</b> Your market order fills at $100.01 (HFT bought first).</p>
-      <p><b>Defense:</b> Use IEX (speed bump exchange) or limit orders.</p>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Revenue Stream #1: The Spread (The Obvious One)</div>
+          <div class="accordion-content">
+            <p><strong>The setup:</strong></p>
+            <div style="background:rgba(255,255,255,.04);border-radius:8px;padding:1rem;margin:1rem 0;font-family:monospace">
+              <p style="margin:0">Bid: $100.00</p>
+              <p style="margin:.25rem 0 0 0">Ask: $100.05</p>
+              <p style="margin:.25rem 0 0 0">Spread: $0.05</p>
+            </div>
+            <p><strong>Market maker:</strong></p>
+            <ul>
+              <li>Buys at $100.00 (bid)</li>
+              <li>Sells at $100.05 (ask)</li>
+              <li>Profit: $0.05/share</li>
+            </ul>
+            <p><strong>The math:</strong> On 1M shares per day = $50,000/day = <strong>$12.5M/year</strong></p>
+            <p>And that's just ONE revenue stream.</p>
+          </div>
+        </div>
 
-      <h3>Strategy 3: Order Anticipation</h3>
-      <p><strong>Definition:</strong> Predicting large orders before full execution.</p>
-      <pre><code>Detects: 5,000 buy @ $100, 3,000 @ $100.01, 4,000 @ $100.02
+        <div class="accordion-item">
+          <div class="accordion-header">Revenue Stream #2: Exchange Rebates (The Hidden One)</div>
+          <div class="accordion-content">
+            <p>Here's what they don't tell you: <strong>Exchanges PAY market makers to provide liquidity.</strong></p>
+            <p><strong>The Maker-Taker Model:</strong></p>
+            <ul>
+              <li><strong>Maker (limit order):</strong> Receives rebate = $0.0015/share</li>
+              <li><strong>Taker (market order):</strong> Pays fee = $0.0030/share</li>
+            </ul>
+            <p><strong>Who's the taker?</strong> You. Every market order you place.</p>
+            <p><strong>The math:</strong> On 1M shares per day = $1,500/day = <strong>$375,000/year</strong></p>
+            <p>That's on TOP of the spread. They're getting paid twice.</p>
+            <div class="callout-key">
+              <h4>💡 The Aha Moment</h4>
+              <p>Every time you use a market order, you're paying the exchange fee AND giving the market maker a rebate. You're literally paying them twice to take the other side of your trade.</p>
+            </div>
+          </div>
+        </div>
 
-Pattern: Large institutional buyer scaling in
+        <div class="accordion-item">
+          <div class="accordion-header">Revenue Stream #3: Information Advantage (The Scary One)</div>
+          <div class="accordion-content">
+            <p><strong>Market makers see order flow in real-time.</strong></p>
+            <p>They know what's coming before it hits the tape.</p>
+            <p><strong>Example:</strong></p>
+            <ul>
+              <li>Large buy orders incoming → Widen ask, reduce inventory, let price run</li>
+              <li>Large sell orders incoming → Widen bid, short inventory, profit on drop</li>
+            </ul>
+            <p><strong>They front-run the market. Legally.</strong> (It's called "latency advantage," not "front-running.")</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Your market order?</strong> They saw it 10 microseconds before it filled. They adjusted the price. You got the worst fill.</p>
+          </div>
+        </div>
+      </div>
 
-HFT: Buy ahead, sell back at higher price</code></pre>
-      <p><b>Defense:</b> Randomize timing, use iceberg orders, scale over days (not minutes).</p>
+      <div class="section-break"><span>Part 2: HFT Strategies (Why You Keep Getting Burned)</span></div>
 
-      <h2>Why Your Stops Get Hunted</h2>
-      
-      <p><strong>Typical retail:</strong> Long AAPL at $150, stop at $149.50 (below support at $149.55).</p>
-      <p><strong>Market maker sees:</strong> Cluster of stops at $149.50 = $10M+ liquidity pool.</p>
-      <p><strong>Incentive:</strong> Push price to $149.50 (costs $10-50K), trigger stops, buy cheap, ride reversal.</p>
-      
-      <p><b>It's profitable, so they do it.</b></p>
+      <h2>The Tactics That Make You Exit Liquidity</h2>
+
+      <p>Alright, let's talk about the dirty tricks. And yes, most of them are legal.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Quote Stuffing</button>
+          <button>Latency Arbitrage</button>
+          <button>Order Anticipation</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Strategy: Quote Stuffing</h3>
+            <p><strong>What it is:</strong> Flooding the order book with thousands of fake orders to confuse competitors and slow down their systems.</p>
+            <p><strong>How it works:</strong></p>
+            <div style="background:rgba(255,255,255,.04);border-radius:8px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.85rem">
+              <p style="margin:0">11:00:00.001 → Post 10,000 orders</p>
+              <p style="margin:.25rem 0 0 0">11:00:00.050 → Cancel 9,800 orders</p>
+              <p style="margin:.25rem 0 0 0">11:00:00.100 → Post 10,000 NEW orders</p>
+              <p style="margin:1rem 0 0 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1)"><strong>Result:</strong> Competitor systems overloaded. HFT gains millisecond advantage.</p>
+            </div>
+            <p><strong>Defense:</strong> Use limit orders. Trade during high liquidity hours. Don't react to noise.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Strategy: Latency Arbitrage</h3>
+            <p><strong>What it is:</strong> Exploiting speed differences between exchanges to guarantee risk-free profits.</p>
+            <p><strong>Example:</strong></p>
+            <ul>
+              <li>Price on Exchange A: $100.00</li>
+              <li>Price on Exchange B: $100.02</li>
+              <li><strong>HFT:</strong> Buy A at $100.00, sell B at $100.02 instantly</li>
+              <li><strong>Profit:</strong> $0.02/share, risk-free</li>
+            </ul>
+            <p><strong>Impact on you:</strong> Your market order on Exchange A fills at $100.01 (HFT bought first and pushed the price).</p>
+            <p><strong>Defense:</strong> Use IEX (speed bump exchange) or limit orders only.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Strategy: Order Anticipation</h3>
+            <p><strong>What it is:</strong> Detecting large institutional orders and front-running them.</p>
+            <p><strong>Pattern detection:</strong></p>
+            <div style="background:rgba(255,255,255,.04);border-radius:8px;padding:1rem;margin:1rem 0">
+              <p style="margin:0"><strong>HFT detects:</strong></p>
+              <ul style="margin:.5rem 0">
+                <li>5,000 shares bought @ $100.00</li>
+                <li>3,000 shares bought @ $100.01</li>
+                <li>4,000 shares bought @ $100.02</li>
+              </ul>
+              <p style="margin-top:1rem"><strong>Pattern identified:</strong> Large institutional buyer scaling in.</p>
+              <p style="margin:.5rem 0 0 0"><strong>HFT action:</strong> Buy ahead, sell back at higher price.</p>
+            </div>
+            <p><strong>Defense:</strong> Randomize timing. Use iceberg orders. Scale over days, not minutes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: Why Your Stops Get Hunted</span></div>
+
+      <h2>It's Not Personal. It's Profitable.</h2>
+
+      <p>Pop quiz: Why do your stops always get triggered right before price reverses?</p>
+
+      <p>If you answered "bad luck," you're wrong. It's economics.</p>
+
+      <p><strong>Here's the setup:</strong></p>
+
+      <div style="background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <p style="margin:0"><strong>You:</strong> Long AAPL at $150.00</p>
+        <p style="margin:.5rem 0 0 0"><strong>Support:</strong> $149.55</p>
+        <p style="margin:.5rem 0 0 0"><strong>Your stop:</strong> $149.50 (just below support)</p>
+        <p style="margin:1.5rem 0 0 0;padding-top:1rem;border-top:1px solid rgba(255,107,107,.5)"><strong>Market maker sees:</strong></p>
+        <p style="margin:.5rem 0 0 0">• Cluster of stops at $149.50</p>
+        <p style="margin:.25rem 0 0 0">• Total liquidity: $10M+ in guaranteed sell orders</p>
+        <p style="margin:.25rem 0 0 0">• Cost to trigger: $10-50K in selling pressure</p>
+        <p style="margin:.25rem 0 0 0">• Profit potential: Buy $10M+ at better price, ride reversal back up</p>
+        <p style="margin:1.5rem 0 0 0;padding-top:1rem;border-top:1px solid rgba(255,107,107,.5);font-size:1.1rem"><strong>Conclusion: It's profitable. So they do it.</strong></p>
+      </div>
 
       <h3>Anatomy of a Stop Hunt</h3>
-      <pre><code>12:00: BTC at $45,200
-12:05: Support at $45,000, stops at $44,950
-12:15: Price tests $45,050
-12:16: Aggressive selling → $44,980
-12:17: Stops triggered at $44,950
-12:18: Price spikes to $44,900 (max carnage)
-12:19: REVERSES to $45,300 (stops absorbed)</code></pre>
-      
-      <p><strong>Signal Pilot Integration:</strong> <b>Janus Atlas</b> detects these sweeps. Trade the reversal, not the trap.</p>
 
-      <h2>Defending Against HFT</h2>
-      
-      <h3>Tactic 1: Use Limit Orders</h3>
-      <p>Market orders = guaranteed worst fill. Limit orders = better price (or no fill if setup invalid).</p>
+      <p>Let me show you exactly how this plays out:</p>
 
-      <h3>Tactic 2: Avoid Obvious Stop Placement</h3>
-      <p><strong>Bad:</strong> Support $100, stop $99.95 (obvious, clustered, hunted)</p>
-      <p><strong>Better:</strong> Support $100, stop $99.50 (structure + ATR buffer, beyond obvious level)</p>
+      <div style="background:rgba(255,255,255,.04);border-radius:8px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.85rem">
+        <p style="margin:0"><strong>12:00 PM:</strong> BTC at $45,200</p>
+        <p style="margin:.5rem 0 0 0"><strong>12:05 PM:</strong> Support identified at $45,000. Stops clustered at $44,950.</p>
+        <p style="margin:.5rem 0 0 0"><strong>12:15 PM:</strong> Price tests $45,050</p>
+        <p style="margin:.5rem 0 0 0;color:#ff6b6b"><strong>12:16 PM:</strong> Aggressive selling → $44,980</p>
+        <p style="margin:.5rem 0 0 0;color:#ff6b6b"><strong>12:17 PM:</strong> Stops triggered at $44,950. Volume spike.</p>
+        <p style="margin:.5rem 0 0 0;color:#ff6b6b"><strong>12:18 PM:</strong> Price knifes to $44,900 (maximum carnage)</p>
+        <p style="margin:.5rem 0 0 0;color:#00d4aa"><strong>12:19 PM:</strong> REVERSES to $45,300</p>
+        <p style="margin:1rem 0 0 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1)"><strong>Retail trader:</strong> Stopped out at $44,950, fuming on Twitter</p>
+        <p style="margin:.25rem 0 0 0"><strong>Market maker:</strong> Bought $10M at $44,950, sold at $45,200, profit banked</p>
+      </div>
 
-      <h3>Tactic 3: Trade High Liquidity Hours</h3>
-      <p>HFT works best when thin. Trade 9:30-16:00 ET (tight spreads, harder to manipulate).</p>
+      <div class="callout-tip">
+        <h4>🎯 How to Trade This</h4>
+        <p><strong>Don't be the victim. Be the hunter.</strong></p>
+        <p>Use <strong>Janus Atlas</strong> to detect these sweeps. When you see support broken briefly then reclaimed with volume:</p>
+        <ol>
+          <li>Wait for sweep confirmation</li>
+          <li>Enter LONG on reclaim above support</li>
+          <li>Stop below swept low</li>
+          <li>Target previous high</li>
+        </ol>
+        <p>You just traded WITH the market makers instead of being their exit liquidity.</p>
+      </div>
 
-      <h3>Tactic 4: Use IEX (Speed Bump Exchange)</h3>
-      <p>IEX adds 350-microsecond delay to ALL orders, neutralizing HFT latency advantage.</p>
+      <div class="section-break"><span>Part 4: How to Defend Yourself</span></div>
 
-      <h2>Market Maker Signals (Trade WITH Them)</h2>
-      
-      <h3>Signal 1: Spread Widening</h3>
-      <p>When MMs widen spreads without news → Uncertainty, expect move.</p>
+      <h2>You Can't Outrun Them. Out-Think Them.</h2>
 
-      <h3>Signal 2: Quote Pulling</h3>
-      <p>Large bid wall disappears before hit → Fake wall, price likely breaks down.</p>
+      <p>Here's the honest truth: You're not going to beat HFT on speed. Accept it.</p>
 
-      <h3>Signal 3: Absorption Without Movement</h3>
-      <p>Large volume trades, price doesn't move → MM absorbing (iceberg), strong level.</p>
+      <p>But you CAN trade on timeframes and with strategies where speed doesn't matter.</p>
 
-      <h2>Practical Strategies</h2>
-      
-      <h3>Strategy 1: Trade the Sweep (Not Get Swept)</h3>
-      <p><strong>Setup:</strong></p>
-      <ol>
-        <li>Janus Atlas shows sweep below support</li>
-        <li>Volume spike + rapid reversal</li>
-        <li>Enter LONG on reclaim</li>
-        <li>Stop below swept low</li>
-      </ol>
-      <p><b>Edge:</b> Trading liquidity event, not being liquidated.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">❌ How Retail Gets Wrecked</h3>
+          <ul style="margin:0">
+            <li>Use market orders (worst fills guaranteed)</li>
+            <li>Place stops just below support (obvious clusters)</li>
+            <li>Trade first 15 minutes (highest HFT activity)</li>
+            <li>Trade illiquid hours (easy to manipulate)</li>
+            <li>Scalp with tight stops (spread > edge)</li>
+          </ul>
+          <p style="margin-top:1rem;font-size:.95rem;opacity:.8"><strong>Result:</strong> Death by a thousand cuts. Account slowly bleeds.</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">✓ How Professionals Survive</h3>
+          <ul style="margin:0">
+            <li>Use limit orders (better fills or no fill)</li>
+            <li>Place stops with ATR buffer (avoid clusters)</li>
+            <li>Wait until 9:45 AM (volatility settles)</li>
+            <li>Trade 9:30 AM - 4:00 PM ET (liquid hours)</li>
+            <li>Trade higher timeframes (speed irrelevant)</li>
+          </ul>
+          <p style="margin-top:1rem;font-size:.95rem;opacity:.8"><strong>Result:</strong> Better fills. Fewer stop-outs. Edge preserved.</p>
+        </div>
+      </div>
 
-      <h3>Strategy 2: Avoid First 15 Minutes</h3>
-      <p><strong>Why dangerous:</strong> Spread spikes, volatility high, HFT most active.</p>
-      <p><strong>Better:</strong> Wait 9:45-10:00 ET, let volatility settle, enter with Minimal Flow confirmation.</p>
+      <h3>The Complete Defense Playbook</h3>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>MMs profit from spread + rebates + information</strong></li>
-        <li><strong>HFT exploits latency, order anticipation, arbitrage</strong></li>
-        <li><strong>Stop hunts are profitable (so they happen)</strong></li>
-        <li><strong>Limit orders > market orders</strong></li>
-        <li><strong>Trade WITH MMs, not against</strong></li>
-      </ul>
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Defense #1: Use Limit Orders (Always)</div>
+          <div class="accordion-content">
+            <p><strong>Why:</strong> Market orders guarantee the worst fill. Limit orders guarantee YOUR price (or no fill).</p>
+            <p><strong>Example:</strong></p>
+            <ul>
+              <li><strong>Market order:</strong> You want to buy at $100.00. Get filled at $100.05 (slippage).</li>
+              <li><strong>Limit order:</strong> You bid $100.02. Either fill at $100.02 or don't trade.</li>
+            </ul>
+            <p><strong>Result:</strong> Better fills. Or no trade (which is also fine—missed trade ≠ loss).</p>
+          </div>
+        </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Track market vs. limit fills</strong></p>
-      <p>Next 10 trades: Use market, log spread paid. Next 10: Use limits, log fill rate. Compare savings vs. missed fills.</p>
-      
-      <p><strong>Exercise 2: Identify 1 stop hunt</strong></p>
-      <p>Use Janus Atlas to find sweep on your chart. Was it a trap? Did it reverse?</p>
+        <div class="accordion-item">
+          <div class="accordion-header">Defense #2: Avoid Obvious Stop Placement</div>
+          <div class="accordion-content">
+            <p><strong>Bad stop placement:</strong> Support at $100.00, stop at $99.95</p>
+            <p><strong>Why it's bad:</strong> Everyone does this. Stops cluster. They get hunted.</p>
+            <p><strong>Better stop placement:</strong> Support at $100.00, stop at $99.50</p>
+            <p><strong>Why it's better:</strong> ATR buffer. Below obvious cluster. Based on structure, not round numbers.</p>
+            <p><strong>Yes, wider stop = smaller position size.</strong> That's the trade-off. But you won't get swept as often.</p>
+          </div>
+        </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"You can't outrun HFT. But you can out-think them by trading on timeframes where speed doesn't matter."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+        <div class="accordion-item">
+          <div class="accordion-header">Defense #3: Trade High Liquidity Hours</div>
+          <div class="accordion-content">
+            <p><strong>HFT works best in thin markets.</strong> When liquidity is low, they can move price with less capital.</p>
+            <p><strong>Avoid:</strong></p>
+            <ul>
+              <li>First 15 minutes (9:30-9:45 AM ET)</li>
+              <li>Last 15 minutes (3:45-4:00 PM ET)</li>
+              <li>Overnight sessions (Asia/Europe for US stocks)</li>
+            </ul>
+            <p><strong>Trade:</strong> 9:45 AM - 3:45 PM ET (liquid hours, tight spreads, harder to manipulate)</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Defense #4: Use IEX (Speed Bump Exchange)</div>
+          <div class="accordion-content">
+            <p><strong>What is IEX?</strong> An exchange with a 350-microsecond speed bump on ALL orders.</p>
+            <p><strong>Why it helps:</strong> Neutralizes HFT latency advantage. Everyone gets the same speed.</p>
+            <p><strong>Trade-off:</strong> Lower volume (less popular exchange). But fairer fills.</p>
+            <p><strong>When to use:</strong> Large orders on liquid stocks.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 5: Trading WITH Market Makers</span></div>
+
+      <h2>If You Can't Beat Them, Join Them</h2>
+
+      <p>Here's the mindset shift: Stop trying to beat market makers. Start trading WITH them.</p>
+
+      <p><strong>How?</strong> By reading their signals.</p>
+
+      <h3>Signal #1: Spread Widening</h3>
+      <p>When market makers widen spreads without news → They sense uncertainty. Expect a move.</p>
+      <p><strong>Action:</strong> Tighten stops. Wait for confirmation. Don't enter until direction clear.</p>
+
+      <h3>Signal #2: Quote Pulling</h3>
+      <p>Large bid wall disappears before price tests it → Fake wall. Price likely breaks down.</p>
+      <p><strong>Action:</strong> If long, exit. If watching, short on breakdown confirmation.</p>
+
+      <h3>Signal #3: Absorption Without Movement</h3>
+      <p>Large volume trades, but price doesn't move → Market maker absorbing via iceberg. Strong level.</p>
+      <p><strong>Action:</strong> This is REAL support/resistance. Trade the breakout or bounce.</p>
+
+      <div class="key-takeaway">
+        <h4>Key Takeaways</h4>
+        <ul>
+          <li><strong>Market makers profit three ways</strong> — spread, rebates, information advantage</li>
+          <li><strong>HFT exploits speed</strong> — quote stuffing, latency arbitrage, order anticipation</li>
+          <li><strong>Stop hunts are profitable</strong> — so they happen constantly</li>
+          <li><strong>Use limit orders</strong> — better fills or no trade (both acceptable)</li>
+          <li><strong>Trade liquid hours</strong> — 9:45 AM - 3:45 PM ET for best conditions</li>
+          <li><strong>Trade WITH market makers</strong> — read their signals, don't fight them</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Test Your Knowledge</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Knowledge Check (No Pressure)</h4>
+
+        <div class="quiz-question">
+          <p><strong>Why do market makers widen spreads before major moves?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) To make more money from retail</div>
+            <div class="quiz-option" data-correct="true">B) They sense uncertainty/incoming volatility and protect themselves from risk</div>
+            <div class="quiz-option" data-correct="false">C) It's random—spreads always fluctuate</div>
+            <div class="quiz-option" data-correct="false">D) They're manipulating the market</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Market makers widen spreads when they detect uncertainty or incoming volatility. They're protecting themselves from taking on too much risk. This widening often happens BEFORE major moves, making it a useful leading indicator.
+          </div>
+        </div>
+
+        <div class="quiz-question" style="margin-top:2rem">
+          <p><strong>Your stop is at $99.50, just below support at $99.55. What's the problem?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Nothing—this is textbook stop placement</div>
+            <div class="quiz-option" data-correct="true">B) It's an obvious cluster—everyone places stops there, making it a target for stop hunts</div>
+            <div class="quiz-option" data-correct="false">C) The stop is too tight</div>
+            <div class="quiz-option" data-correct="false">D) You should never use stops</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Exactly!</strong> Placing stops just below obvious support levels creates predictable clusters. Market makers can see these clusters and profit by triggering them. Better to use ATR-based stops below obvious levels, even if it means a wider stop and smaller position size.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you understand the game within the game. You can't outrun HFT. But you can out-think them by trading on timeframes where speed doesn't matter.</p>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Article #16: Footprint Charts</strong> — Volume at price. Who's buying? Who's selling? Footprint charts show you the battle in real-time—if you know how to read them.</p>
+      </div>
+
+    </div>
+
+    <aside class="toc">
+      <h3>On this page</h3>
+      <a href="#" style="opacity:.6">MM Business Model</a>
+      <a href="#">HFT Strategies</a>
+      <a href="#">Why Stops Get Hunted</a>
+      <a href="#">Defense Playbook</a>
+      <a href="#">Trading WITH MMs</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/intermediate/14-order-book-analysis.html">&larr; Previous: Order Book</a>
-    <a class="btn btn-primary" href="/curriculum/intermediate/16-footprint-charts.html">Next: Footprint Charts &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/intermediate/14-order-book-analysis.html">← Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/16-footprint-charts.html">Next Lesson →</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrolled = window.scrollY;
+    const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);
+
+    const circle = document.querySelector('.progress-circle');
+    if (circle) {
+      circle.style.setProperty('--progress', percent + '%');
+      circle.querySelector('span').textContent = percent + '%';
+    }
+  }, { passive: true });
+
+  localStorage.setItem('sp_edu_last_article', JSON.stringify({
+    title: 'Market Making & HFT',
+    level: 'Intermediate',
+    order: '15',
+    url: window.location.pathname,
+    progress: 0
+  }));
+</script>
+</body>
+</html>

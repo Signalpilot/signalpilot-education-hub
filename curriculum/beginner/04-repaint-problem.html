@@ -1,90 +1,396 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Your Indicators Are Lying to You (The Repaint Problem) — SignalPilot Education</title>
-  <meta name="sp-level" content="Beginner"><meta name="sp-order" content="4">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Your Indicators Are Lying to You (The Repaint Problem) — SignalPilot Learn</title>
+  <meta name="description" content="60-90% of indicators repaint—showing perfect signals in backtest that never existed real-time. Learn detection methods and why deterministic code matters.">
+  <meta name="sp-level" content="Beginner">
+  <meta name="sp-order" content="4">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">Your Indicators Are Lying to You (The Repaint Problem)</h1><div class="meta">Reading time ~15 min • Indicator Truth</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>60-90% of indicators repaint</b>—showing perfect signals in backtest that never existed real-time. Learn to detect repainting, audit any indicator, and why Signal Pilot's deterministic protocol matters.</p>
-      <h2>What IS Repainting?</h2>
-      <p><strong>Definition:</strong> An indicator that changes its past values or signals after the bar closes. What you saw live disappears or moves in historical view.</p>
-      <p><strong>Example:</strong> Indicator shows "BUY" signal at $100. You enter. Bar closes. You check history—signal is now at $95. You were tricked.</p>
-      <h2>Why Repainting Happens</h2>
-      <h3>1. Future Data Leakage</h3>
-      <p><code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code> pulls future data into current bar.</p>
-      <h3>2. Non-Deterministic Calculations</h3>
-      <p>Indicators that recalculate based on new data (changing past values).</p>
-      <h3>3. HTF (Higher Timeframe) Repainting</h3>
-      <p>HTF bar hasn't closed yet, but indicator uses its incomplete data.</p>
-      <h2>The 4 Methods to Detect Repainting</h2>
-      <h3>Method 1: Visual Test</h3>
-      <ol><li>Note indicator signal on live chart</li><li>Wait for bar to close</li><li>Refresh chart</li><li>Check if signal moved or disappeared</li></ol>
-      <p><b>If it changed = REPAINTING</b></p>
-      <h3>Method 2: Replay Test</h3>
-      <ol><li>Use TradingView Bar Replay</li><li>Mark where signal appears</li><li>Finish replay</li><li>Compare historical vs. live signals</li></ol>
-      <h3>Method 3: Alert Test</h3>
-      <ol><li>Set alert on indicator signal</li><li>Track alerts over 20+ trades</li><li>Compare alert price vs. historical signal price</li></ol>
-      <p><b>If they don't match = REPAINTING</b></p>
-      <h3>Method 4: Code Audit</h3>
-      <p><strong>Red flags in Pine Script:</strong></p>
-      <ul>
-        <li><code>request.security()</code> without <code>lookahead_off</code></li>
-        <li><code>var</code> misuse (changing historical values)</li>
-        <li><code>security()</code> pulling HTF data without offset</li>
-        <li>No <code>[1]</code> offset for HTF confirmation</li>
-      </ul>
-      <p><strong>Safe code example:</strong></p>
-      <pre><code>// NON-REPAINTING:
+  <!-- Article Header -->
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner.html">Beginner</a> <span>›</span>
+        <span>Lesson #4</span>
+      </div>
+      <span class="badge">🟢 Beginner • Lesson 4 of 12</span>
+      <h1 class="headline xl">Your Indicators Are Lying to You (The Repaint Problem)</h1>
+      <div class="meta">Reading time ~12 min • Indicator Truth & Detection</div>
+
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>You backtest a strategy. 80% win rate. 3R average winner. It's perfect.</b></p>
+
+      <p>You trade it live. 42% win rate. -0.8R expectancy. Account blown in 6 weeks.</p>
+
+      <p>What happened? <strong>Your indicator was repainting.</strong></p>
+
+      <div class="callout-warning">
+        <h4>🚨 The Brutal Truth</h4>
+        <p>60-90% of indicators on TradingView <em>repaint</em>. That means they show signals in history that <strong>never existed</strong> when the bar was forming.</p>
+        <p>Your backtest was a fantasy. Your live results? Those are real.</p>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 What You'll Gain</h4>
+        <p>After this lesson, you'll be able to:</p>
+        <ul>
+          <li>Understand exactly what repainting is (and why it destroys strategies)</li>
+          <li>Use 4 proven methods to detect repainting in ANY indicator</li>
+          <li>Audit Pine Script code for repaint vulnerabilities</li>
+          <li>Understand why SignalPilot's deterministic protocol matters</li>
+          <li>Never waste months on a fake strategy again</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 1: What IS Repainting?</span></div>
+
+      <h2>The Time-Traveling Indicator</h2>
+
+      <p>Imagine this: You're watching a chart live. At 2:15 PM, your indicator shows a BUY signal at $45,000. Perfect!</p>
+
+      <p>You enter long at $45,010.</p>
+
+      <p>At 2:20 PM, the candle closes. You refresh the chart to review your entry.</p>
+
+      <p>The BUY signal? <em>It's now at $44,850.</em></p>
+
+      <p>Or worse—it <strong>disappeared completely</strong>.</p>
+
+      <div class="callout-key">
+        <h4>💡 Definition: Repainting</h4>
+        <p>An indicator that <strong>changes its past signals or values</strong> after the bar closes. What you saw live either moves, disappears, or transforms in hindsight.</p>
+        <p>It's like time travel—except only the indicator gets to go back. You're stuck with your entry.</p>
+      </div>
+
+      <div class="callout-info">
+        <h4>📖 War Story: The $12k Lesson</h4>
+        <p><strong>Trader discovers "holy grail" indicator:</strong> 85% win rate, 4.2R average. Backtested on 2 years of BTC data. Perfection.</p>
+        <p><strong>Live trading begins:</strong> First 3 trades hit stops. "Bad luck," he thinks. Next 5 trades? 1 winner, 4 losers.</p>
+        <p><strong>2 months later:</strong> Down $12,000. Win rate: 38%. He reviews his entries in history.</p>
+        <p><strong>The horror:</strong> Every signal he entered? Moved 20-50 points after the bar closed. He was trading signals that never existed.</p>
+        <p style="margin-top:1rem"><strong>The indicator was repainting.</strong> His backtest? A hallucination. His losses? Very real.</p>
+      </div>
+
+      <p>Here's what makes this devastating: <strong>Repainting indicators look perfect in backtest</strong> because they cheat. They use future information to paint ideal signals in the past.</p>
+
+      <p>It's like taking a test where you see the answers afterward, then going back and filling them in. Yeah, you'll score 100%. But you learned nothing.</p>
+
+      <div class="section-break"><span>Part 2: Why Repainting Happens</span></div>
+
+      <h2>The Three Ways Indicators Lie</h2>
+
+      <p>Repainting isn't always intentional (though some scammers do it on purpose). Often, it's coding mistakes. Here are the three main causes:</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">1. Future Data Leakage</div>
+          <div class="accordion-content">
+            <p><strong>What it is:</strong> The indicator pulls data from future bars into the current calculation.</p>
+            <p><strong>How it happens in code:</strong> Using <code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code>.</p>
+            <p><strong>Example:</strong></p>
+            <pre style="background:rgba(255,255,255,.05);padding:1rem;border-radius:8px;overflow-x:auto"><code>// REPAINTING CODE (bad):
+htf_close = request.security(syminfo.tickerid, "D", close)
+
+// This pulls the CURRENT daily close, which hasn't finished yet.
+// In backtest, it sees the COMPLETED daily close. Cheating.</code></pre>
+            <p><strong>Why it's evil:</strong> In backtest, it sees finished daily bars. Live? It sees incomplete bars that change every minute.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">2. Non-Deterministic Calculations</div>
+          <div class="accordion-content">
+            <p><strong>What it is:</strong> The indicator recalculates past values when new data arrives, changing history.</p>
+            <p><strong>How it happens:</strong> Using <code>var</code> variables incorrectly, or loops that reprocess historical bars.</p>
+            <p><strong>Why it's bad:</strong> Your signal at bar 50 changes when bar 100 closes. You can't trust anything.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">3. HTF (Higher Timeframe) Repainting</div>
+          <div class="accordion-content">
+            <p><strong>What it is:</strong> Using data from a higher timeframe bar that <em>hasn't closed yet</em>.</p>
+            <p><strong>Example:</strong> You're on 15-minute chart. Indicator uses daily data. But the daily bar doesn't close until 5 PM. At 2 PM, that daily bar's values are still changing.</p>
+            <p><strong>The trap:</strong> In backtest, all daily bars are finished. Live? The current daily bar is incomplete.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Most traders never check for repainting. They backtest, see great results, and jump in. Months later, they're confused why they're losing.</p>
+        <p>Don't be that trader. <strong>Test everything.</strong></p>
+      </div>
+
+      <div class="section-break"><span>Part 3: The 4 Detection Methods</span></div>
+
+      <h2>How to Catch a Repainting Indicator</h2>
+
+      <p>You don't need to be a coder to detect repainting. Here are 4 methods—use at least 2 for every indicator you trade.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Visual Test</button>
+          <button>Replay Test</button>
+          <button>Alert Test</button>
+          <button>Code Audit</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Method 1: Visual Test (Easiest)</h3>
+            <p><strong>Steps:</strong></p>
+            <ol>
+              <li>Open a live chart with your indicator</li>
+              <li>Screenshot or note where signals appear (exact price + time)</li>
+              <li>Wait for the bar to close</li>
+              <li>Refresh your browser</li>
+              <li>Check if signals moved or disappeared</li>
+            </ol>
+            <p style="margin-top:1rem"><strong>Verdict:</strong> If signals changed = <span style="color:#ff6b6b;font-weight:700">REPAINTING</span></p>
+            <p><strong>Repeat 3-5 times to be sure.</strong></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Method 2: Replay Test (Most Accurate)</h3>
+            <p><strong>Steps:</strong></p>
+            <ol>
+              <li>Use TradingView's Bar Replay feature</li>
+              <li>Go back 100+ bars</li>
+              <li>Play forward bar-by-bar</li>
+              <li>Mark where signals appear AS THEY APPEAR</li>
+              <li>Finish replay, compare to historical signals</li>
+            </ol>
+            <p style="margin-top:1rem"><strong>Verdict:</strong> If live signals ≠ historical signals = <span style="color:#ff6b6b;font-weight:700">REPAINTING</span></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Method 3: Alert Test (Real-World)</h3>
+            <p><strong>Steps:</strong></p>
+            <ol>
+              <li>Set an alert on your indicator's signal</li>
+              <li>Track 20+ alerts over 1-2 weeks</li>
+              <li>Record: Alert time + price</li>
+              <li>Compare alert entries to historical signal locations</li>
+            </ol>
+            <p style="margin-top:1rem"><strong>Verdict:</strong> If alert prices ≠ signal prices in history = <span style="color:#ff6b6b;font-weight:700">REPAINTING</span></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Method 4: Code Audit (For Coders)</h3>
+            <p><strong>Red flags in Pine Script:</strong></p>
+            <ul>
+              <li><code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code></li>
+              <li><code>security()</code> without <code>[1]</code> offset for HTF data</li>
+              <li>No <code>barstate.isconfirmed</code> check for signals</li>
+              <li><code>var</code> variables changing past values</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Safe code example:</strong></p>
+            <pre style="background:rgba(255,255,255,.05);padding:1rem;border-radius:8px;overflow-x:auto"><code>// NON-REPAINTING (good):
 htf_close = request.security(syminfo.tickerid, "D", close[1],
              lookahead = barmerge.lookahead_off)</code></pre>
-      <p><strong>Repainting code example:</strong></p>
-      <pre><code>// REPAINTING (bad):
-htf_close = request.security(syminfo.tickerid, "D", close)</code></pre>
-      <h2>Signal Pilot's Deterministic Protocol</h2>
-      <p>All Signal Pilot indicators follow strict rules:</p>
-      <ul>
-        <li><b>No future data:</b> All HTF requests use <code>lookahead_off</code></li>
-        <li><b>Fixed signals:</b> Once a signal prints, it never moves</li>
-        <li><b>Confirmed bars only:</b> Signals wait for bar close (no intra-bar changes)</li>
-        <li><b>Open-source auditable:</b> Code available for review</li>
-      </ul>
-      <h2>Complete Indicator Audit Framework</h2>
-      <p><strong>For any indicator you use:</strong></p>
-      <ol>
-        <li><b>Visual test:</b> Watch live, compare to history (3+ signals)</li>
-        <li><b>Replay test:</b> Use Bar Replay to verify signals</li>
-        <li><b>Alert test:</b> Set alerts, track 20+ instances</li>
-        <li><b>Code audit:</b> Check for <code>request.security()</code> and <code>lookahead</code> settings</li>
-      </ol>
-      <p><strong>If ANY test fails → REPAINTING → DO NOT USE</strong></p>
-      <h2>Why This Matters</h2>
-      <p><strong>Backtest:</strong> 80% win rate, 3R average winner (looks amazing!)</p>
-      <p><strong>Reality:</strong> Signals repainted, actual results: 45% win rate, -0.5R expectancy (disaster)</p>
-      <p><b>You just wasted months developing a strategy that never worked.</b></p>
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>60-90% of indicators repaint</strong> (test everything)</li>
-        <li><strong>Repainting = fake edge</strong> (backtest perfection, live failure)</li>
-        <li><strong>4 detection methods:</strong> Visual, Replay, Alert, Code Audit</li>
-        <li><strong>Signal Pilot = deterministic</strong> (what you see is what you get)</li>
-        <li><strong>Never trust, always verify</strong> (audit every indicator)</li>
-      </ul>
-      <blockquote><strong>Educational only.</strong> Trading involves substantial risk.</blockquote>
-      <p><em>"Backtest perfection often means real-time failure. Audit your indicators."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎓 Pro Tip</h4>
+        <p>Use <strong>at least 2 methods</strong> to audit any indicator. Visual + Alert test is the easiest combo for non-coders.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: SignalPilot's Deterministic Protocol</span></div>
+
+      <h2>What "Deterministic" Means (And Why It Matters)</h2>
+
+      <p>Here's the thing: Most indicators are built by hobbyists who don't know about repainting. Or worse, by scammers who <em>do</em> know and don't care.</p>
+
+      <p>SignalPilot takes a different approach.</p>
+
+      <div class="callout-key">
+        <h4>💡 SignalPilot's Guarantee</h4>
+        <p><strong>Every SignalPilot indicator follows strict deterministic rules:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li><strong>No future data:</strong> All HTF requests use <code>lookahead_off</code> and <code>[1]</code> offsets</li>
+          <li><strong>Fixed signals:</strong> Once a signal prints, it <em>never</em> moves or disappears</li>
+          <li><strong>Confirmed bars only:</strong> Signals wait for bar close (no intra-bar magic)</li>
+          <li><strong>Open-source auditable:</strong> Code is available for independent review</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Translation:</strong> What you see live is what you'll see in history. No tricks. No lies.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">❌ Repainting Indicator</h3>
+          <p><strong>Backtest:</strong> 80% win rate</p>
+          <p><strong>Live trading:</strong> 42% win rate</p>
+          <p><strong>Problem:</strong> Signals change after bar close</p>
+          <p><strong>Result:</strong> Wasted months, blown account</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">✓ Deterministic Indicator</h3>
+          <p><strong>Backtest:</strong> 62% win rate</p>
+          <p><strong>Live trading:</strong> 61% win rate</p>
+          <p><strong>Integrity:</strong> Signals never change</p>
+          <p><strong>Result:</strong> Consistent, profitable edge</p>
+        </div>
+      </div>
+
+      <p>Notice: The deterministic indicator has a <em>lower</em> backtest win rate. That's because it's honest. It doesn't cheat by using future data.</p>
+
+      <p>But live? It actually <strong>works</strong>.</p>
+
+      <div class="section-break"><span>Part 5: Complete Audit Framework</span></div>
+
+      <h2>Never Trust, Always Verify</h2>
+
+      <p>Here's your step-by-step framework for auditing ANY indicator before risking real money:</p>
+
+      <div class="callout-tip">
+        <h4>✅ Indicator Audit Checklist</h4>
+        <p><strong>Before trading ANY indicator:</strong></p>
+        <ol>
+          <li><strong>Visual test:</strong> Watch 3-5 signals live, check if they move after bar close</li>
+          <li><strong>Replay test:</strong> Use Bar Replay to compare live vs historical signals</li>
+          <li><strong>Alert test:</strong> Set alerts, track 20+ instances, compare to history</li>
+          <li><strong>Code audit (if available):</strong> Check for <code>request.security()</code> red flags</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Pass criteria:</strong> ALL tests must show consistent signals.</p>
+        <p><strong>If ANY test fails → DO NOT USE → Find another indicator</strong></p>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>This feels like extra work. It is. But consider the alternative:</p>
+        <p>Spend 2 hours testing → Save months of losses and psychological damage.</p>
+        <p>Skip testing → Blow account → Wonder why trading is "impossible."</p>
+        <p><strong>Your choice.</strong></p>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>60-90% of indicators repaint</strong> — Test everything before trading it</li>
+          <li><strong>Repainting = fake edge</strong> — Perfect backtests, disastrous live results</li>
+          <li><strong>Use 4 detection methods</strong> — Visual, Replay, Alert, Code audit</li>
+          <li><strong>Deterministic code matters</strong> — Signals should never change after bar close</li>
+          <li><strong>SignalPilot guarantees it</strong> — No future data, no tricks, no lies</li>
+          <li><strong>Audit before you trade</strong> — 2 hours testing saves months of losses</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Test Your Knowledge</span></div>
+
+      <!-- Quiz -->
+      <div class="quiz">
+        <h4>🎮 Quick Check (No Pressure)</h4>
+
+        <div class="quiz-question">
+          <p><strong>You backtest an indicator: 78% win rate. You trade it live: 44% win rate. What's the most likely cause?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Market conditions changed</div>
+            <div class="quiz-option" data-correct="true">B) The indicator repaints (signals changed after bar close)</div>
+            <div class="quiz-option" data-correct="false">C) You need more data for backtesting</div>
+            <div class="quiz-option" data-correct="false">D) Your execution was bad</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> A massive gap between backtest and live results (34 percentage points) strongly suggests repainting. The indicator showed perfect signals in history that never existed live.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">
+        If you made it this far, you just saved yourself months (maybe years) of pain. Most traders never learn this. You just did.
+      </p>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Article #5: RSI Extremes Are Not Reversal Signals</strong> — Learn why RSI >70 in an uptrend is often a BUY signal, and how regime determines everything.</p>
+      </div>
+
+    </div>
+
+    <!-- Table of Contents Sidebar -->
+    <aside class="toc">
+      <h3>On this page</h3>
+      <a href="#" style="opacity:.6">What IS Repainting?</a>
+      <a href="#">Why Repainting Happens</a>
+      <a href="#">4 Detection Methods</a>
+      <a href="#">Deterministic Protocol</a>
+      <a href="#">Complete Audit Framework</a>
+    </aside>
+  </div>
+
+  <!-- Bottom Navigation -->
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/beginner/03-price-action-is-dead.html">&larr; Previous</a>
-    <a class="btn btn-primary" href="/curriculum/beginner/05-rsi-extremes.html">Next: RSI &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/beginner/03-price-action-is-dead.html">← Previous: Order Flow</a>
+    <a class="btn btn-primary" href="/curriculum/beginner/05-rsi-extremes.html">Next Lesson →</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
-<script src="/assets/edu.js"></script><script src="/assets/aurora.js" defer></script>
-</body></html>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/aurora.js" defer></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrolled = window.scrollY;
+    const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);
+
+    const circle = document.querySelector('.progress-circle');
+    if (circle) {
+      circle.style.setProperty('--progress', percent + '%');
+      circle.querySelector('span').textContent = percent + '%';
+    }
+  }, { passive: true });
+
+  localStorage.setItem('sp_edu_last_article', JSON.stringify({
+    title: 'The Repaint Problem',
+    level: 'Beginner',
+    order: '4',
+    url: window.location.pathname,
+    progress: 0
+  }));
+</script>
+</body>
+</html>

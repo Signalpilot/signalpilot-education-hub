@@ -1,228 +1,514 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Order Book Analysis: Reading the Mind of the Market — SignalPilot Education</title>
-  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="14">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Order Book Analysis: The Theater vs. The Reality — SignalPilot Learn</title>
+  <meta name="description" content="The order book isn't showing you real supply and demand—it's showing you theater. Learn to read icebergs, fake walls, and absorption patterns that matter.">
+  <meta name="sp-level" content="Intermediate">
+  <meta name="sp-order" content="14">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Order Book Analysis: Reading the Mind of the Market</h1><div class="meta">Reading time ~14 min • Market Microstructure</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>The order book shows you where buyers and sellers are ACTUALLY positioned.</b> Learn Level 2 data, bid/ask imbalances, absorption vs. exhaustion patterns, and iceberg order detection.</p>
-      
-      <h2>What IS the Order Book?</h2>
-      <p>A live ledger of all pending buy (bid) and sell (ask) orders.</p>
-      <pre><code>ASKS (Sellers)
-$100.05  500     ← Best ask (lowest sell)
-$100.06  1,200
-$100.07  800
-$100.08  2,500
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #14</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 14 of 27</span>
+      <h1 class="headline xl">The Order Book is Theater (Here's What's Real)</h1>
+      <div class="meta">Reading time ~14 min • Market Microstructure Reality</div>
 
-------- SPREAD ($0.05) -------
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-BIDS (Buyers)
-$100.00  1,000  ← Best bid (highest buy)
-$99.99   700
-$99.98   1,500
-$99.97   2,000</code></pre>
-      
-      <h2>Reading Order Book Depth</h2>
-      
-      <h3>Thick Levels = Potential Support/Resistance</h3>
-      <pre><code>ASKS
-$100.10  200
-$100.09  5,000  ← WALL (thick resistance)
-$100.08  300
+  <div class="wrap article-grid">
+    <div class="prose">
 
-BIDS
-$99.99   200
-$99.98   8,000  ← WALL (thick support)
-$99.97   300</code></pre>
-      <p><strong>But walls can:</strong></p>
+      <p><b>That 10,000-share bid at $100? It's fake. It'll vanish before price gets there.</b></p>
+
+      <p>Welcome to the order book—where 80% of what you see is theater, and 20% is real money.</p>
+
+      <p>Your job? Learn to tell the difference.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>The order book isn't a crystal ball showing "true" supply and demand. It's a negotiation table where players show their cards (or fake them) to influence YOUR decisions.</p>
+        <p><strong>Big players use fake walls, iceberg orders, and spoofing to manipulate what you see.</strong> If you're trading based on visible orders alone, you're playing their game.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>How to read Level 2 data (and why most of it is noise)</li>
+        <li>Bid/ask imbalances that actually predict moves</li>
+        <li>The difference between absorption (strength) and exhaustion (weakness)</li>
+        <li>How to detect iceberg orders and fake walls</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: What You're Actually Looking At</span></div>
+
+      <h2>The Order Book Basics (But Not What You Think)</h2>
+
+      <p>Let's start simple. Here's what the order book shows you:</p>
+
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:monospace;font-size:.9rem">
+        <p style="margin:0;color:#ff6b6b"><strong>ASKS (Sellers)</strong></p>
+        <p style="margin:.25rem 0">$100.05 → 500 shares</p>
+        <p style="margin:.25rem 0">$100.06 → 1,200 shares</p>
+        <p style="margin:.25rem 0">$100.07 → 800 shares</p>
+        <p style="margin:.25rem 0">$100.08 → 2,500 shares</p>
+        <p style="margin:1rem 0;text-align:center;color:#888">———— SPREAD ($0.05) ————</p>
+        <p style="margin:0;color:#00d4aa"><strong>BIDS (Buyers)</strong></p>
+        <p style="margin:.25rem 0">$100.00 → 1,000 shares</p>
+        <p style="margin:.25rem 0">$99.99 → 700 shares</p>
+        <p style="margin:.25rem 0">$99.98 → 1,500 shares</p>
+        <p style="margin:.25rem 0">$99.97 → 2,000 shares</p>
+      </div>
+
+      <p><strong>What retail thinks:</strong> "Wow, 2,500 shares at $100.08! That's a big wall. Price will stop there."</p>
+
+      <p><strong>What actually happens:</strong></p>
       <ol>
-        <li><b>Hold</b> (real liquidity, price respects)</li>
-        <li><b>Get pulled</b> (fake wall, removed before hit)</li>
-        <li><b>Get absorbed</b> (aggressive flow breaks through)</li>
+        <li>Price approaches $100.08</li>
+        <li>Wall disappears (canceled)</li>
+        <li>You enter based on "support" that never existed</li>
+        <li>You're now exit liquidity</li>
       </ol>
-      <p><b>Your job: Distinguish which.</b></p>
 
-      <h2>Order Book Imbalance</h2>
-      <p><strong>Bid/Ask Ratio shows directional bias:</strong></p>
-      <pre><code>Total Bid Size (top 10): 50,000
-Total Ask Size (top 10): 20,000
+      <p>Sound familiar?</p>
 
-Ratio: 50,000 / 20,000 = 2.5
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>The order book shows you <em>committed orders</em>, but they can be canceled instantly. Unlike executed trades (which are permanent), orders are just <strong>intentions</strong>—and intentions can be fake.</p>
+        <p>This is why volume (actual trades) > order book depth (potential trades).</p>
+      </div>
 
-Interpretation: 2.5× more buying interest
-Bias: Bullish (if sustained)</code></pre>
-      
-      <table style="width:100%; border-collapse: collapse; margin: 1rem 0;">
-        <tr><th>Ratio</th><th>Imbalance</th><th>Bias</th><th>Action</th></tr>
-        <tr><td>&gt; 1.5</td><td>Heavy Bid</td><td>Bullish</td><td>Look for longs</td></tr>
-        <tr><td>0.9 - 1.1</td><td>Balanced</td><td>Neutral</td><td>Wait</td></tr>
-        <tr><td>&lt; 0.67</td><td>Heavy Ask</td><td>Bearish</td><td>Look for shorts</td></tr>
+      <div class="section-break"><span>Part 2: Reading Bid/Ask Imbalances</span></div>
+
+      <h2>When Imbalances Actually Matter</h2>
+
+      <p>Here's the thing: Imbalances CAN predict direction—but only when combined with other signals.</p>
+
+      <p>Let me show you:</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Imbalance Alone (Useless)</button>
+          <button>Imbalance + Context (Useful)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Scenario: Heavy Bid Imbalance</h3>
+            <p><strong>Order book shows:</strong></p>
+            <ul>
+              <li>Total bid size: 50,000 shares</li>
+              <li>Total ask size: 20,000 shares</li>
+              <li><strong>Ratio: 2.5</strong> (2.5× more buying interest)</li>
+            </ul>
+            <p><strong>Your thought:</strong> "This is bullish! I'm going long."</p>
+            <p><strong>What happens next:</strong> Price drops anyway.</p>
+            <p><strong>Why?</strong> Those bids were fake. They got pulled. Or they were there to create the illusion of support while smart money unloaded above.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Scenario: Heavy Bid + Confirmation</h3>
+            <p><strong>Order book shows:</strong></p>
+            <ul>
+              <li>Total bid size: 50,000 shares</li>
+              <li>Total ask size: 20,000 shares</li>
+              <li><strong>Ratio: 2.5</strong> (heavy bid)</li>
+            </ul>
+            <p><strong>BUT ALSO:</strong></p>
+            <ul>
+              <li><strong>Plutus Flow CVD:</strong> Positive delta (buyers winning)</li>
+              <li><strong>Janus Atlas:</strong> Just swept lows, now reclaiming</li>
+              <li><strong>Minimal Flow:</strong> Regime supports upside</li>
+            </ul>
+            <p><strong>Now</strong> the imbalance matters. It's not alone—it's confirmed.</p>
+            <p><strong>Result:</strong> High-probability long setup.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>The Simple Framework</h3>
+
+      <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05)">
+            <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Bid/Ask Ratio</th>
+            <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Imbalance</th>
+            <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Bias</th>
+            <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">› 1.5</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Heavy Bid</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Bullish</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Look for longs (IF confirmed)</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">0.9 - 1.1</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Balanced</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Neutral</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Wait for catalyst</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">‹ 0.67</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Heavy Ask</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Bearish</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Look for shorts (IF confirmed)</td>
+          </tr>
+        </tbody>
       </table>
-      
-      <p><strong>Signal Pilot Integration:</strong> Combine <b>Plutus Flow</b> delta with imbalance:</p>
+
+      <p><strong>Key word:</strong> IF confirmed. Never trade imbalance alone.</p>
+
+      <div class="section-break"><span>Part 3: Absorption vs. Exhaustion</span></div>
+
+      <h2>This is Where the Money Is</h2>
+
+      <p>Forget the visible walls. Forget the imbalances.</p>
+
+      <p>If you want to know where REAL money is, watch what happens when price TESTS those levels.</p>
+
+      <p>Does the wall hold (absorption)? Or does it break (exhaustion)?</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Absorption = Strength (Reversal Setup)</div>
+          <div class="accordion-content">
+            <p><strong>Definition:</strong> A large order EATS incoming volume without price moving.</p>
+            <p><strong>Example:</strong></p>
+            <div style="background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:8px;padding:1rem;margin-top:1rem">
+              <p style="margin:0"><strong>10:00 AM:</strong> $100.00 bid shows 10,000 shares</p>
+              <p style="margin:.5rem 0 0 0"><strong>10:02 AM:</strong> 2,000 sold → bid still $100.00 (8,000 left)</p>
+              <p style="margin:.5rem 0 0 0"><strong>10:04 AM:</strong> 3,000 sold → bid still $100.00 (5,000 left)</p>
+              <p style="margin:.5rem 0 0 0"><strong>10:06 AM:</strong> 2,000 sold → bid still $100.00 (3,000 left)</p>
+              <p style="margin:.5rem 0 0 0;font-size:1.05rem"><strong>Result:</strong> 7,000 shares absorbed. Price didn't drop.</p>
+            </div>
+            <p style="margin-top:1rem"><strong>What this means:</strong> Strong buyer at $100.00. They're not faking. They're accumulating. Reversal likely.</p>
+            <div class="callout-tip">
+              <h4>🎯 Complete Setup</h4>
+              <p><strong>When to enter:</strong></p>
+              <ol>
+                <li>Janus Atlas confirms sweep below $100.00</li>
+                <li>Price returns to $100.00</li>
+                <li>Large order visible at $100.00</li>
+                <li>Volume gets absorbed (price holds)</li>
+                <li>Enter long at $100.10, stop below swept low</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Exhaustion = Weakness (Continuation Setup)</div>
+          <div class="accordion-content">
+            <p><strong>Definition:</strong> A large order gets EATEN THROUGH. Momentum continues.</p>
+            <p><strong>Example:</strong></p>
+            <div style="background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:8px;padding:1rem;margin-top:1rem">
+              <p style="margin:0"><strong>10:00 AM:</strong> $100.00 bid shows 10,000 shares</p>
+              <p style="margin:.5rem 0 0 0"><strong>10:02 AM:</strong> 5,000 sold → bid drops to $99.99</p>
+              <p style="margin:.5rem 0 0 0"><strong>10:04 AM:</strong> 8,000 sold → bid drops to $99.95 (wall broken)</p>
+              <p style="margin:.5rem 0 0 0"><strong>10:06 AM:</strong> Selling continues → price at $99.80</p>
+              <p style="margin:.5rem 0 0 0;font-size:1.05rem"><strong>Result:</strong> Wall failed. Price collapsed.</p>
+            </div>
+            <p style="margin-top:1rem"><strong>What this means:</strong> Selling pressure > buying interest. The wall was either fake or insufficient. More downside coming.</p>
+            <div class="callout-tip">
+              <h4>🎯 Complete Setup</h4>
+              <p><strong>When to enter:</strong></p>
+              <ol>
+                <li>Large wall identified (e.g., $100.00 bid, 10,000 shares)</li>
+                <li>Aggressive selling hits wall</li>
+                <li>Wall breaks (price moves through)</li>
+                <li>Plutus Flow shows volume spike</li>
+                <li>Enter short on continuation, stop above broken wall</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Difference</h4>
+        <p><strong>Absorption:</strong> Wall holds → Buyers strong → Reversal likely</p>
+        <p><strong>Exhaustion:</strong> Wall breaks → Sellers strong → Continuation likely</p>
+        <p>Same setup. Opposite outcome. This is why you WAIT for the wall to be tested before trading.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Iceberg Orders & Fake Walls</span></div>
+
+      <h2>The Hidden Game</h2>
+
+      <p>Here's where it gets sneaky.</p>
+
+      <p>Not all walls are visible. Not all visible walls are real.</p>
+
+      <h3>Iceberg Orders: The Hidden Liquidity</h3>
+
+      <p>An iceberg order shows a small visible portion but hides the majority.</p>
+
+      <p><strong>Example:</strong></p>
+      <div style="background:rgba(255,255,255,.04);border-radius:8px;padding:1rem;margin:1rem 0">
+        <p style="margin:0"><strong>Visible:</strong> $100.00 bid → 500 shares</p>
+        <p style="margin:.5rem 0 0 0"><strong>Reality:</strong> $100.00 bid → 500 visible + 20,000 hidden</p>
+        <p style="margin:1rem 0 0 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1)"><strong>What happens:</strong></p>
+        <p style="margin:.5rem 0 0 0">• 10,000 shares get bought</p>
+        <p style="margin:.25rem 0 0 0">• Bid STILL shows 500 shares</p>
+        <p style="margin:.25rem 0 0 0">• Price "stuck" at $100.00 despite volume</p>
+      </div>
+
+      <p><strong>How to detect icebergs:</strong></p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Detection Method #1: Order Refreshing</div>
+          <div class="accordion-content">
+            <p>Watch the order book for the same price level refreshing repeatedly.</p>
+            <p><strong>Pattern:</strong></p>
+            <ul>
+              <li>500 shares trade → immediately replaced with 500 more</li>
+              <li>Happens 5-10 times at the SAME price</li>
+              <li>Visible size never changes, but volume is massive</li>
+            </ul>
+            <p><strong>Conclusion:</strong> Hidden iceberg order.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Detection Method #2: Volume › Visible Size</div>
+          <div class="accordion-content">
+            <p><strong>Math check:</strong></p>
+            <ul>
+              <li>Visible order: 1,000 shares at $100.00</li>
+              <li>Volume traded at $100.00: 8,000 shares</li>
+              <li>Order still there after</li>
+            </ul>
+            <p><strong>Conclusion:</strong> 7,000+ shares were hidden (iceberg).</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Detection Method #3: Price Stickiness</div>
+          <div class="accordion-content">
+            <p>Price "glued" to a level despite high volume.</p>
+            <p><strong>Example:</strong> BTC trades at $45,000 for 30 minutes. Volume: 10,000 BTC. Visible orders: 200 BTC.</p>
+            <p><strong>Conclusion:</strong> Massive hidden iceberg absorbing volume. Strong support.</p>
+            <p><strong>Trade:</strong> When price breaks away from iceberg level, momentum follows.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Fake Walls: Spoofing</h3>
+
+      <p>This is the opposite problem. Walls that LOOK real but vanish before being tested.</p>
+
+      <p><strong>The pattern:</strong></p>
+      <div style="background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:8px;padding:1rem;margin:1rem 0">
+        <p style="margin:0"><strong>11:00 AM:</strong> Large 10,000-share bid appears at $99.50</p>
+        <p style="margin:.5rem 0 0 0"><strong>11:01 AM:</strong> Price approaches $99.55</p>
+        <p style="margin:.5rem 0 0 0"><strong>11:02 AM:</strong> Bid PULLED (canceled)</p>
+        <p style="margin:.5rem 0 0 0"><strong>11:02 AM:</strong> Price drops through $99.50 (no support)</p>
+        <p style="margin:1rem 0 0 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1)"><strong>Intent:</strong> Create false support, trap longs, then dump on them.</p>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk: Spoofing</h4>
+        <p>Spoofing is technically illegal. But it happens constantly in crypto and less-regulated markets.</p>
+        <p><strong>How to protect yourself:</strong> Only trust walls that have been TESTED. If price hits a wall and it holds, it's probably real. If it disappears before being tested? Fake.</p>
+      </div>
+
+      <p><strong>How to identify spoofing:</strong></p>
       <ul>
-        <li>Positive CVD + Heavy bid = <b>Strong bullish</b></li>
-        <li>Negative CVD + Heavy bid = <b>Divergence (caution)</b></li>
+        <li>Wall appears and disappears without any trades</li>
+        <li>Wall "chases" price (moves with it, never gets hit)</li>
+        <li>Walls on BOTH sides (designed to keep price in range)</li>
       </ul>
 
-      <h2>Absorption vs. Exhaustion</h2>
-      
-      <h3>Absorption = Strength (Reversal Setup)</h3>
-      <p><strong>Definition:</strong> Large order EATS incoming volume without price moving.</p>
-      <pre><code>Initial: $100.00 bid (10,000 shares)
+      <div class="section-break"><span>Part 5: Practical Trading Strategies</span></div>
 
-Aggressive selling:
-- 2,000 sold → Bid still $100.00 (8,000 left)
-- 3,000 sold → Bid still $100.00 (5,000 left)
-- 2,000 sold → Bid still $100.00 (3,000 left)
+      <h2>Putting It All Together</h2>
 
-Result: 7,000 absorbed, price didn't drop
-Implication: Strong buyer, reversal likely</code></pre>
-      
-      <p><strong>Signal Pilot Integration:</strong> When <b>Janus Atlas</b> shows sweep + order book shows absorption → High probability long.</p>
+      <p>Alright, enough theory. Here's how to actually trade this.</p>
 
-      <h3>Exhaustion = Weakness (Continuation Setup)</h3>
-      <p><strong>Definition:</strong> Large order gets EATEN THROUGH, momentum continues.</p>
-      <pre><code>Initial: $100.00 bid (10,000 shares)
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">Strategy #1: Absorption Reversals</h3>
+          <p style="margin:0"><strong>Setup:</strong></p>
+          <ul style="margin:.5rem 0">
+            <li>Janus Atlas sweep confirmed</li>
+            <li>Large order book wall at swept level</li>
+            <li>Volume absorbed (price holds)</li>
+            <li>Enter reversal, stop beyond sweep</li>
+          </ul>
+          <p style="margin-top:1rem"><strong>Win Rate:</strong> 50-60%<br><strong>R:R:</strong> 2:1 to 4:1</p>
+        </div>
 
-Aggressive selling:
-- 5,000 sold → Bid drops to $99.99
-- 8,000 sold → Bid drops to $99.95 (wall broken)
-- Selling continues → $99.80
+        <div style="padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">Strategy #2: Wall Breakout</h3>
+          <p style="margin:0"><strong>Setup:</strong></p>
+          <ul style="margin:.5rem 0">
+            <li>Large wall identified</li>
+            <li>Aggressive flow hits wall</li>
+            <li>Wall broken (exhaustion)</li>
+            <li>Enter continuation, stop at broken wall</li>
+          </ul>
+          <p style="margin-top:1rem"><strong>Win Rate:</strong> 55-65%<br><strong>R:R:</strong> 1.5:1 to 3:1</p>
+        </div>
+      </div>
 
-Result: Wall failed, price collapsed
-Implication: Selling > buying, more downside</code></pre>
-      
-      <p><strong>Signal Pilot Integration:</strong> <b>Plutus Flow</b> volume spike + wall failure = Strong bearish signal.</p>
+      <h3>Complete Pre-Trade Checklist</h3>
 
-      <h2>Iceberg Orders and Hidden Liquidity</h2>
-      
-      <p><strong>Iceberg:</strong> Order showing small visible portion, hiding majority.</p>
-      <pre><code>Visible: $100.00 bid (500 shares)
-Reality: $100.00 bid (500 visible + 20,000 hidden)
-
-What happens: 10,000 shares bought, bid STILL shows 500</code></pre>
-      
-      <h3>How to Detect Icebergs</h3>
-      <ol>
-        <li><b>Order Refreshing:</b> 500 trades, immediately replaced with 500 more (5-10 times same price)</li>
-        <li><b>Volume > Visible:</b> 8,000 shares traded, visible was only 1,000</li>
-        <li><b>Price Stickiness:</b> Price "stuck" at level despite high volume</li>
-      </ol>
-      
-      <p><strong>Signal Pilot Integration:</strong> Iceberg at HTF support + <b>Omnideck</b> confluence = High conviction long.</p>
-
-      <h2>Spoofing and Fake Walls</h2>
-      
-      <p><strong>Spoofing:</strong> Placing large fake orders to manipulate, then canceling.</p>
-      <pre><code>11:00: Large 10,000 bid appears at $99.50
-11:01: Price approaches $99.55
-11:02: Bid PULLED (canceled)
-11:02: Price drops through $99.50 (no support)
-
-Intent: Create false support, trap longs</code></pre>
-      
-      <h3>How to Identify Spoofing</h3>
-      <ul>
-        <li>Wall appears/disappears without trading</li>
-        <li>Wall moves with price (never gets hit)</li>
-        <li>Walls on both sides (designed to keep range)</li>
-      </ul>
-      
-      <p><b>Defense:</b> Only trust walls that have been TESTED (price hit them, they held).</p>
-
-      <h2>Practical Strategies</h2>
-      
-      <h3>Strategy 1: Imbalance Scalping</h3>
-      <p><strong>Setup:</strong></p>
-      <ol>
-        <li>Bid/ask ratio &gt; 2.0 (heavy bid)</li>
-        <li><b>Minimal Flow</b> shows trending up</li>
-        <li>Enter pullback to support</li>
-        <li>Exit when ratio &lt; 1.0</li>
-      </ol>
-      <p><b>Win Rate:</b> 60-70% (high frequency, small R)</p>
-
-      <h3>Strategy 2: Absorption Reversals</h3>
-      <p><strong>Setup:</strong></p>
-      <ol>
-        <li>Janus Atlas sweep confirmation</li>
-        <li>Large order book wall at swept level</li>
-        <li>Volume absorbed (price holds)</li>
-        <li>Enter reversal, stop beyond sweep</li>
-      </ol>
-      <p><b>Win Rate:</b> 50-60% (lower frequency, higher R)</p>
-
-      <h3>Strategy 3: Wall Breakout</h3>
-      <p><strong>Setup:</strong></p>
-      <ol>
-        <li>Large wall identified ($100 ask, 10,000 shares)</li>
-        <li>Aggressive buying hits wall</li>
-        <li>Wall absorbed (breaks through)</li>
-        <li>Enter continuation, stop below broken wall</li>
-      </ol>
-      <p><b>Win Rate:</b> 55-65% (moderate R)</p>
-
-      <h2>Complete Pre-Trade Checklist</h2>
-      
       <p><strong>Structural Setup:</strong></p>
       <ul>
-        <li>[ ] Janus Atlas sweep or breakout</li>
+        <li>[ ] Janus Atlas sweep or breakout confirmed</li>
         <li>[ ] Minimal Flow regime supports direction</li>
-        <li>[ ] HTF alignment</li>
+        <li>[ ] Higher timeframe alignment</li>
       </ul>
-      
+
       <p><strong>Order Book Confirmation:</strong></p>
       <ul>
-        <li>[ ] Bid/ask imbalance &gt; 1.5 (longs) or &lt; 0.67 (shorts)</li>
-        <li>[ ] Large order at key level</li>
-        <li>[ ] No spoofing detected</li>
-        <li>[ ] Sufficient depth (not thin)</li>
+        <li>[ ] Bid/ask imbalance › 1.5 (longs) or ‹ 0.67 (shorts)</li>
+        <li>[ ] Large order at key level (tested, not fake)</li>
+        <li>[ ] No spoofing detected (wall held when tested)</li>
+        <li>[ ] Sufficient depth (not illiquid)</li>
       </ul>
-      
+
       <p><strong>Volume Confirmation:</strong></p>
       <ul>
-        <li>[ ] Plutus Flow delta aligns</li>
-        <li>[ ] Volume Profile POC alignment</li>
+        <li>[ ] Plutus Flow delta aligns with direction</li>
+        <li>[ ] Volume Profile POC supports setup</li>
         <li>[ ] No CVD divergence</li>
       </ul>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Order book = live auction</strong> (real commitments)</li>
-        <li><strong>Imbalance = bias, not signal</strong> (need trigger)</li>
-        <li><strong>Absorption = strength</strong> (reversal setup)</li>
-        <li><strong>Exhaustion = weakness</strong> (continuation)</li>
-        <li><strong>Spoofing exists</strong> (only trust tested walls)</li>
-      </ul>
+      <p>Miss one checkbox? Skip the trade.</p>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Track imbalance for 1 hour</strong></p>
-      <p>Every 5 min: Log bid size, ask size, ratio, price movement. Does imbalance predict direction?</p>
-      
-      <p><strong>Exercise 2: Find 3 absorption/exhaustion events</strong></p>
-      <p>Document: Order size, volume that hit it, outcome (held or broke), what happened next.</p>
-      
-      <p><strong>Exercise 3: Detect 1 iceberg</strong></p>
-      <p>Watch for order refreshing, volume &gt; visible size, price stickiness. Log: Price, visible size, estimated total.</p>
+      <div class="key-takeaway">
+        <h4>Key Takeaways</h4>
+        <ul>
+          <li><strong>Order book = theater</strong> — 80% is noise, 20% is real money (your job: find the 20%)</li>
+          <li><strong>Imbalances need confirmation</strong> — never trade based on bid/ask ratio alone</li>
+          <li><strong>Absorption = strength</strong> — wall holds → reversal likely</li>
+          <li><strong>Exhaustion = weakness</strong> — wall breaks → continuation likely</li>
+          <li><strong>Iceberg orders hide real liquidity</strong> — detect via refreshing, volume › visible, price stickiness</li>
+          <li><strong>Spoofing is real</strong> — only trust tested walls</li>
+        </ul>
+      </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"The order book doesn't lie. It shows you exactly where money is positioned—if you know how to read it."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <div class="section-break"><span>Test Your Knowledge</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Knowledge Check (No Pressure)</h4>
+
+        <div class="quiz-question">
+          <p><strong>You see a 10,000-share bid at $100.00. Price drops from $100.50 to $100.05. What do you do?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Immediately go long—that's a huge wall!</div>
+            <div class="quiz-option" data-correct="true">B) Wait to see if the wall absorbs volume or gets pulled/broken</div>
+            <div class="quiz-option" data-correct="false">C) Short it—walls are fake</div>
+            <div class="quiz-option" data-correct="false">D) Check Twitter for confirmation</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Never trade a wall before it's tested. Wait to see if it absorbs volume (strength = reversal) or gets broken/pulled (weakness = continuation or fake). Walls mean nothing until price tests them.
+          </div>
+        </div>
+
+        <div class="quiz-question" style="margin-top:2rem">
+          <p><strong>Price is "stuck" at $50,000 for 20 minutes. Volume shows 5,000 BTC traded. Visible order book shows only 200 BTC. What's happening?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Nothing unusual</div>
+            <div class="quiz-option" data-correct="true">B) Iceberg order—hidden liquidity absorbing volume</div>
+            <div class="quiz-option" data-correct="false">C) The market is broken</div>
+            <div class="quiz-option" data-correct="false">D) Retail is in control</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Exactly!</strong> When volume traded massively exceeds visible orders and price stays "sticky," you're seeing an iceberg order. Large player is hiding liquidity and accumulating. When price breaks away from this level, momentum typically follows.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you now know how to read the order book like the 5% who actually profit from it. Most traders see theater. You see the script.</p>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Article #15: Market Making & HFT</strong> — Ever wonder who's on the other side of your trade? Spoiler: They're faster, better capitalized, and playing a totally different game. Learn their playbook.</p>
+      </div>
+
+    </div>
+
+    <aside class="toc">
+      <h3>On this page</h3>
+      <a href="#" style="opacity:.6">Theater vs Reality</a>
+      <a href="#">Bid/Ask Imbalances</a>
+      <a href="#">Absorption vs Exhaustion</a>
+      <a href="#">Icebergs & Fake Walls</a>
+      <a href="#">Trading Strategies</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/intermediate/13-bid-ask-spread-dynamics.html">&larr; Previous: Spreads</a>
-    <a class="btn btn-primary" href="/curriculum/intermediate/15-market-making-hft.html">Next: HFT &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/intermediate/13-bid-ask-spread-dynamics.html">← Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/15-market-making-hft.html">Next Lesson →</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrolled = window.scrollY;
+    const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);
+
+    const circle = document.querySelector('.progress-circle');
+    if (circle) {
+      circle.style.setProperty('--progress', percent + '%');
+      circle.querySelector('span').textContent = percent + '%';
+    }
+  }, { passive: true });
+
+  localStorage.setItem('sp_edu_last_article', JSON.stringify({
+    title: 'Order Book Analysis',
+    level: 'Intermediate',
+    order: '14',
+    url: window.location.pathname,
+    progress: 0
+  }));
+</script>
+</body>
+</html>
