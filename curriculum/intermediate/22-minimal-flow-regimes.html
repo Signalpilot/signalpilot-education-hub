@@ -1,174 +1,427 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Minimal Flow: Regime-Based Trading Mastery — SignalPilot Education</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Minimal Flow: Stop Fighting the Market's Mood</title>
+  <meta name="description" content="Same setup, different regime = opposite outcome. Learn to detect trending, ranging, and volatile regimes so you trade WITH the market, not against it.">
   <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="22">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/intermediate/22-minimal-flow-regimes.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Minimal Flow: Regime-Based Trading Mastery</h1><div class="meta">Reading time ~13 min • Signal Pilot Deep Dive</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Same setup, different regime = opposite outcome.</b> Minimal Flow detects trending, ranging, and volatile regimes. Learn to adapt your strategy to market conditions instead of fighting them.</p>
-      
-      <h2>The 3 Market Regimes</h2>
-      
-      <h3>Regime 1: Trending (Directional)</h3>
-      <p><strong>Characteristics:</strong></p>
-      <ul>
-        <li>Clear higher highs/higher lows (uptrend) or lower lows/lower highs (downtrend)</li>
-        <li>Momentum indicators aligned</li>
-        <li>Volume on trend moves &gt; volume on pullbacks</li>
-      </ul>
-      <p><strong>Strategy:</strong> Trade WITH trend (pullback entries, breakout continuations)</p>
-      <p><strong>Avoid:</strong> Counter-trend, mean reversion</p>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #22</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 22 of 27</span>
+      <h1 class="headline xl">Minimal Flow: Stop Fighting the Market's Mood</h1>
+      <div class="meta">12 min read • Regime Detection Mastery</div>
+    </div>
+  </header>
 
-      <h3>Regime 2: Ranging (Sideways)</h3>
-      <p><strong>Characteristics:</strong></p>
-      <ul>
-        <li>Price oscillating between defined support/resistance</li>
-        <li>No clear momentum</li>
-        <li>Volume balanced (no directional bias)</li>
-      </ul>
-      <p><strong>Strategy:</strong> Fade extremes (sell resistance, buy support)</p>
-      <p><strong>Avoid:</strong> Breakout trading (high failure rate)</p>
+  <div class="wrap article-grid">
+    <div class="prose">
 
-      <h3>Regime 3: Volatile (Chaotic)</h3>
-      <p><strong>Characteristics:</strong></p>
-      <ul>
-        <li>Wide price swings, erratic movement</li>
-        <li>High ATR (3-5× normal)</li>
-        <li>News-driven or low liquidity</li>
-      </ul>
-      <p><strong>Strategy:</strong> Reduce size, widen stops, or sit out</p>
-      <p><strong>Avoid:</strong> Normal position sizing, tight stops</p>
+      <p><b>Your breakout strategy worked perfectly last week. This week? Five losing trades in a row.</b></p>
 
-      <h2>How Minimal Flow Detects Regimes</h2>
-      
-      <p><strong>Minimal Flow uses:</strong></p>
-      <ul>
-        <li>ADX (trend strength)</li>
-        <li>ATR (volatility)</li>
-        <li>Swing structure analysis</li>
-        <li>Volume patterns</li>
-      </ul>
-      
-      <p><strong>Output:</strong> Clear regime classification (Trending Up/Down, Ranging, Volatile)</p>
+      <p>What changed?</p>
 
-      <h2>Regime-Specific Strategies</h2>
-      
-      <h3>Trending Regime Strategy</h3>
-      <p><strong>Setup:</strong></p>
+      <p>Not your strategy. The regime.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>The same setup that prints money in a trending market will destroy your account in a ranging market.</p>
+        <p>Trading without regime awareness is like surfing during a hurricane. You're not brave. You're about to get wrecked.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>The 3 market regimes and how to trade each one</li>
+        <li>Why your "winning strategy" suddenly stopped working</li>
+        <li>How Minimal Flow detects regime shifts before most traders notice</li>
+        <li>The #1 mistake that kills accounts during regime transitions</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: The Three Market Personalities</span></div>
+
+      <h2>Markets Aren't Always the Same Game</h2>
+
+      <p>Here's what nobody tells beginners: Markets have moods.</p>
+
+      <p>Sometimes they trend. Sometimes they range. Sometimes they lose their mind completely.</p>
+
+      <p>And if you trade the same way regardless of mood? You're going to bleed.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Regime 1: Trending</button>
+          <button>Regime 2: Ranging</button>
+          <button>Regime 3: Volatile</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Trending Market (The Money Printer)</h3>
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+              <li>Clear higher highs/higher lows (or vice versa)</li>
+              <li>Momentum indicators aligned and strong</li>
+              <li>Volume on trend moves exceeds pullback volume</li>
+              <li>Price respects moving averages</li>
+            </ul>
+            <p><strong>What works:</strong> Pullback entries, breakout continuations, trend following</p>
+            <p><strong>What fails:</strong> Mean reversion, fading extremes, counter-trend trades</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Win rate potential:</strong> 65-75% when aligned with trend</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Ranging Market (The Coin Flip)</h3>
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+              <li>Price bouncing between defined support/resistance</li>
+              <li>No clear directional momentum</li>
+              <li>Volume balanced (no bias)</li>
+              <li>Moving averages flat or tangled</li>
+            </ul>
+            <p><strong>What works:</strong> Fading extremes, selling resistance, buying support</p>
+            <p><strong>What fails:</strong> Breakout trading (high failure rate), holding for big targets</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.1);border-radius:8px"><strong>Win rate potential:</strong> 60-70%, but lower R:R (tight targets)</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Volatile Market (The Account Killer)</h3>
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+              <li>Wild price swings, erratic movement</li>
+              <li>ATR 3-5x normal levels</li>
+              <li>News-driven or low liquidity conditions</li>
+              <li>Stops getting hit left and right</li>
+            </ul>
+            <p><strong>What works:</strong> Sitting out, watching from sidelines</p>
+            <p><strong>What fails:</strong> Normal position sizing, tight stops, ANY strategy really</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Win rate potential:</strong> Unpredictable. Best action = don't play</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>You don't have one trading strategy. You have THREE strategies—one for each regime.</p>
+        <p>Pro traders don't fight the regime. They identify it, adapt to it, and profit from it.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: How Minimal Flow Detects Regimes</span></div>
+
+      <h2>The Science Behind the Signal</h2>
+
+      <p>Minimal Flow isn't magic. It's math.</p>
+
+      <p>It combines multiple regime-detection inputs to give you a clear, actionable classification:</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Input 1: ADX (Trend Strength)</div>
+          <div class="accordion-content">
+            <p><strong>What it measures:</strong> How strong the directional movement is</p>
+            <ul>
+              <li><strong>ADX > 25:</strong> Strong trend (trending regime)</li>
+              <li><strong>ADX 15-25:</strong> Moderate trend</li>
+              <li><strong>ADX < 15:</strong> Weak trend (ranging regime)</li>
+            </ul>
+            <p><strong>Why it matters:</strong> Tells you whether to trade WITH momentum or fade extremes</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Input 2: ATR (Volatility)</div>
+          <div class="accordion-content">
+            <p><strong>What it measures:</strong> Average range of price movement</p>
+            <ul>
+              <li><strong>ATR normal range:</strong> Standard volatility</li>
+              <li><strong>ATR 2-3x normal:</strong> Elevated (caution)</li>
+              <li><strong>ATR 3-5x normal:</strong> Chaotic (volatile regime)</li>
+            </ul>
+            <p><strong>Why it matters:</strong> Determines whether your normal stops will survive</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Input 3: Swing Structure Analysis</div>
+          <div class="accordion-content">
+            <p><strong>What it measures:</strong> Pattern of swing highs and lows</p>
+            <ul>
+              <li><strong>Higher highs + higher lows:</strong> Uptrend</li>
+              <li><strong>Lower lows + lower highs:</strong> Downtrend</li>
+              <li><strong>Equal highs/lows:</strong> Range</li>
+            </ul>
+            <p><strong>Why it matters:</strong> Confirms whether the regime is directional or sideways</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Input 4: Volume Patterns</div>
+          <div class="accordion-content">
+            <p><strong>What it measures:</strong> Where volume is concentrating</p>
+            <ul>
+              <li><strong>Volume on trend moves > pullbacks:</strong> Trending</li>
+              <li><strong>Volume balanced:</strong> Ranging</li>
+              <li><strong>Volume spikes erratically:</strong> Volatile</li>
+            </ul>
+            <p><strong>Why it matters:</strong> Volume confirms what price is telling you</p>
+          </div>
+        </div>
+      </div>
+
+      <p><strong>The result?</strong> Minimal Flow gives you a clear output:</p>
+
+      <ul>
+        <li><strong>Trending Up/Down</strong> → Trade pullbacks WITH the trend</li>
+        <li><strong>Ranging</strong> → Fade extremes, take profits early</li>
+        <li><strong>Volatile</strong> → Reduce size or sit out entirely</li>
+      </ul>
+
+      <div class="section-break"><span>Part 3: Regime-Specific Strategies</span></div>
+
+      <h2>How to Trade Each Regime</h2>
+
+      <p>Let's get tactical. Here's exactly what to do in each regime:</p>
+
+      <h3>Strategy 1: Trending Regime</h3>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:linear-gradient(135deg, rgba(0,212,170,.12), rgba(0,170,136,.08));border-radius:16px">
+        <h4 style="margin-top:0">🎯 The Pullback Play</h4>
+        <p><strong>Setup checklist:</strong></p>
+        <ol>
+          <li>Minimal Flow shows "Trending Up" or "Trending Down"</li>
+          <li>Price pulls back to HTF support level (Daily EMA, Janus sweep zone)</li>
+          <li>Plutus Flow POC aligns with pullback area</li>
+          <li>Footprint shows absorption (buyers stepping in on pullback)</li>
+          <li>Enter WITH trend on reversal candle</li>
+        </ol>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px"><strong>Expected performance:</strong> 65-75% win rate, 2.5-4R average</p>
+      </div>
+
+      <p><strong>Example setup:</strong></p>
+      <p>SPY in strong uptrend. Minimal Flow = Trending Up. Price pulls back from $525 to $522 (HTF Daily EMA). Janus shows liquidity sweep at $521.80. Footprint shows absorption. Entry: $522.50 long. Target: $528 (previous high).</p>
+
+      <h3>Strategy 2: Ranging Regime</h3>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:linear-gradient(135deg, rgba(255,193,7,.12), rgba(255,170,0,.08));border-radius:16px">
+        <h4 style="margin-top:0">🎯 The Fade Play</h4>
+        <p><strong>Setup checklist:</strong></p>
+        <ol>
+          <li>Minimal Flow shows "Ranging"</li>
+          <li>Price at range extreme (support or resistance)</li>
+          <li>Harmonic Oscillator shows extreme reading (5/5 overbought/oversold)</li>
+          <li>Footprint shows exhaustion (volume drying up at extreme)</li>
+          <li>Enter fade (short at resistance, long at support)</li>
+        </ol>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px"><strong>Expected performance:</strong> 60-70% win rate, 1.5-2R average (tight targets)</p>
+      </div>
+
+      <p><strong>Example setup:</strong></p>
+      <p>BTC ranging between $44,000-$45,000 for 3 days. Minimal Flow = Ranging. Price hits $45,000 (resistance). Harmonic Oscillator = 5/5 overbought. Footprint exhaustion. Entry: $44,950 short. Target: $44,200 (mid-range).</p>
+
+      <h3>Strategy 3: Volatile Regime</h3>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:linear-gradient(135deg, rgba(255,107,107,.12), rgba(220,50,50,.08));border-radius:16px">
+        <h4 style="margin-top:0">🎯 The Survival Play</h4>
+        <p><strong>Actions to take:</strong></p>
+        <ul>
+          <li>Reduce position size by 50-75%</li>
+          <li>Widen stops to 3x ATR (normal stops will get hunted)</li>
+          <li>Only take A+ grade setups (skip everything else)</li>
+          <li><strong>OR</strong> sit out entirely (usually the best choice)</li>
+        </ul>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px"><strong>Expected performance:</strong> Unpredictable. Preservation > profit.</p>
+      </div>
+
+      <p><strong>Real talk:</strong> Most profitable traders make their money in trending regimes, tread water in ranging regimes, and sit out volatile regimes.</p>
+
+      <p>You don't get paid extra for trading every day. You get paid for trading the RIGHT days.</p>
+
+      <div class="section-break"><span>Part 4: Regime Shifts (The Danger Zone)</span></div>
+
+      <h2>When Markets Change Their Mind</h2>
+
+      <p>Here's where accounts blow up: The transition between regimes.</p>
+
+      <p>You're trading a breakout strategy. It's been working for 2 weeks straight. Then suddenly—4 losing trades in a row.</p>
+
+      <p>What happened? The market shifted from trending to ranging. But you kept trading breakouts.</p>
+
+      <div class="callout-warning">
+        <h4>⚠️ Regime Shift Warning Signs</h4>
+        <p><strong>Trending → Ranging:</strong></p>
+        <ul>
+          <li>Price making equal highs/lows instead of breaking structure</li>
+          <li>Minimal Flow shifts from "Trending" to "Ranging"</li>
+          <li>Volume declining on attempts to break out</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Ranging → Trending:</strong></p>
+        <ul>
+          <li>Breakout from range with HIGH TIMEFRAME confirmation</li>
+          <li>Minimal Flow shifts to "Trending"</li>
+          <li>Volume spike on breakout (institutional participation)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Any → Volatile:</strong></p>
+        <ul>
+          <li>ATR spikes 3-5x suddenly</li>
+          <li>Major news event or thin liquidity period</li>
+          <li>Minimal Flow shows "Volatile" warning</li>
+        </ul>
+      </div>
+
+      <p><strong>What to do when regime shifts:</strong></p>
+
       <ol>
-        <li>Minimal Flow shows trending regime</li>
-        <li>Price pulls back to HTF support (Daily EMA, Janus sweep zone)</li>
-        <li>Plutus Flow POC aligns with pullback area</li>
-        <li>Footprint shows absorption at pullback</li>
-        <li>Enter WITH trend on reversal candle</li>
+        <li><strong>Stop trading immediately</strong> (don't force your old strategy)</li>
+        <li><strong>Reassess on higher timeframe</strong> (is this a real shift or noise?)</li>
+        <li><strong>Wait for Minimal Flow confirmation</strong> (let the regime establish)</li>
+        <li><strong>Switch strategy</strong> (trending tactics → ranging tactics, or vice versa)</li>
+        <li><strong>Start with reduced size</strong> (test new regime with smaller risk)</li>
       </ol>
-      <p><b>Win Rate: 65-75%</b></p>
 
-      <h3>Ranging Regime Strategy</h3>
-      <p><strong>Setup:</strong></p>
-      <ol>
-        <li>Minimal Flow shows ranging regime</li>
-        <li>Price at range extreme (support or resistance)</li>
-        <li>Harmonic Oscillator shows extreme (5/5 overbought/oversold)</li>
-        <li>Footprint shows exhaustion</li>
-        <li>Enter fade (short at resistance, long at support)</li>
-      </ol>
-      <p><b>Win Rate: 60-70% (but lower R, tight targets)</b></p>
+      <div class="callout-key">
+        <h4>🎓 Professional Insight</h4>
+        <p>The best traders don't have the highest win rates. They have the best regime detection.</p>
+        <p>They pile on size during trending regimes, scale back during ranging regimes, and vanish during volatile regimes.</p>
+      </div>
 
-      <h3>Volatile Regime Strategy</h3>
-      <p><strong>Action:</strong></p>
-      <ul>
-        <li>Reduce position size by 50%</li>
-        <li>Widen stops to 3× ATR</li>
-        <li>Only take A-grade setups</li>
-        <li>OR sit out entirely (best option)</li>
-      </ul>
-      <p><b>Win Rate: Unpredictable (best to avoid)</b></p>
+      <div class="section-break"><span>Part 5: Complete Regime Framework</span></div>
 
-      <h2>Regime Shift Detection</h2>
-      
-      <h3>Trending → Ranging</h3>
-      <p><strong>Signals:</strong></p>
-      <ul>
-        <li>Price making equal highs/lows (no longer trending)</li>
-        <li>Minimal Flow shifts to ranging</li>
-        <li>Volume declining</li>
-      </ul>
-      <p><strong>Action:</strong> Exit trend trades, switch to range-fade strategy</p>
+      <h2>Your Pre-Trade Regime Checklist</h2>
 
-      <h3>Ranging → Trending</h3>
-      <p><strong>Signals:</strong></p>
-      <ul>
-        <li>Breakout from range (HTF confirmation required)</li>
-        <li>Minimal Flow shifts to trending</li>
-        <li>Volume spike on breakout</li>
-      </ul>
-      <p><strong>Action:</strong> Enter WITH new trend, target extension</p>
+      <p>Before EVERY trade, answer these questions:</p>
 
-      <h3>Any → Volatile</h3>
-      <p><strong>Signals:</strong></p>
-      <ul>
-        <li>ATR spikes 3-5×</li>
-        <li>News event, thin liquidity</li>
-        <li>Minimal Flow shifts to volatile</li>
-      </ul>
-      <p><strong>Action:</strong> Close positions or reduce size immediately</p>
+      <div style="margin:2rem 0;padding:2rem;background:rgba(91,138,255,.08);border-radius:16px">
+        <h3 style="margin-top:0">📋 Regime Assessment</h3>
 
-      <h2>Complete Regime-Based Framework</h2>
-      
-      <p><strong>Step 1: Identify Regime (Minimal Flow)</strong></p>
-      <ul>
-        <li>[ ] Trending Up/Down → Trade pullbacks WITH trend</li>
-        <li>[ ] Ranging → Fade extremes</li>
-        <li>[ ] Volatile → Reduce size or sit out</li>
-      </ul>
+        <p><strong>Step 1: Identify Current Regime</strong></p>
+        <ul>
+          <li>[ ] Check Minimal Flow on Daily chart</li>
+          <li>[ ] Trending Up/Down → Prepare trend-following setups</li>
+          <li>[ ] Ranging → Prepare fade setups</li>
+          <li>[ ] Volatile → Reduce size or sit out</li>
+        </ul>
 
-      <p><strong>Step 2: Select Strategy</strong></p>
-      <ul>
-        <li><b>Trending:</b> Janus sweep + absorption = long/short WITH trend</li>
-        <li><b>Ranging:</b> Extremes + exhaustion = fade</li>
-        <li><b>Volatile:</b> Only A-grade, reduced size</li>
-      </ul>
+        <p><strong>Step 2: Select Appropriate Strategy</strong></p>
+        <ul>
+          <li>[ ] <strong>If Trending:</strong> Look for Janus sweeps + absorption = long/short WITH trend</li>
+          <li>[ ] <strong>If Ranging:</strong> Look for extremes + exhaustion = fade</li>
+          <li>[ ] <strong>If Volatile:</strong> Only A+ setups with 50% size, OR skip trading</li>
+        </ul>
 
-      <p><strong>Step 3: Confirm with Other Indicators</strong></p>
-      <ul>
-        <li>Janus: Structure support</li>
-        <li>Plutus: Delta/POC alignment</li>
-        <li>Harmonic: Extreme readings (if ranging)</li>
-      </ul>
+        <p><strong>Step 3: Confirm with Other Indicators</strong></p>
+        <ul>
+          <li>[ ] <strong>Janus Atlas:</strong> Structure support for your bias</li>
+          <li>[ ] <strong>Plutus Flow:</strong> Delta/POC alignment</li>
+          <li>[ ] <strong>Harmonic Oscillator:</strong> Extreme readings (if fading range)</li>
+        </ul>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>3 regimes: Trending, Ranging, Volatile</strong></li>
-        <li><strong>Trending = trade WITH (pullbacks, breakouts)</strong></li>
-        <li><strong>Ranging = fade extremes</strong></li>
-        <li><strong>Volatile = reduce size or avoid</strong></li>
-        <li><strong>Regime shifts = strategy shifts</strong></li>
-      </ul>
+        <p><strong>Step 4: Size Appropriately</strong></p>
+        <ul>
+          <li>[ ] Trending regime = 2% risk (high confidence)</li>
+          <li>[ ] Ranging regime = 1% risk (lower R targets)</li>
+          <li>[ ] Volatile regime = 0.5% risk OR 0% (no trades)</li>
+        </ul>
+      </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Track regime for 1 week</strong></p>
-      <p>Every day, log: Minimal Flow regime, your trades, outcomes. Do trades aligned with regime win more?</p>
-      
-      <p><strong>Exercise 2: Identify regime shift</strong></p>
-      <p>Find 1 instance where market shifted from trending to ranging. What happened to trend traders?</p>
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Three regimes:</strong> Trending (directional), Ranging (sideways), Volatile (chaotic)</li>
+          <li><strong>Trending = trade WITH</strong> (pullbacks, breakouts)</li>
+          <li><strong>Ranging = fade extremes</strong> (sell resistance, buy support)</li>
+          <li><strong>Volatile = reduce or avoid</strong> (preservation mode)</li>
+          <li><strong>Regime shifts = strategy shifts</strong> (don't fight the new reality)</li>
+          <li><strong>Minimal Flow automates detection</strong> (removes guesswork)</li>
+        </ul>
+      </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Adapt to the regime, or the regime will break you. Minimal Flow shows you what game is being played."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you've been profitable some weeks and destroyed others, this is why. You're not bipolar. The market is. Minimal Flow tells you which personality you're dealing with.</p>
+
+      <div class="section-break"><span>Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Quick Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q: You've been crushing pullback longs for 10 days straight. Today, you take 3 pullback longs and all hit stops immediately. Minimal Flow just shifted to "Ranging." What do you do?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Keep taking pullback longs (your strategy works!)</div>
+            <div class="quiz-option" data-correct="true">B) Stop trading pullbacks, switch to fading extremes</div>
+            <div class="quiz-option" data-correct="false">C) Increase position size to make back losses</div>
+            <div class="quiz-option" data-correct="false">D) Ignore Minimal Flow, trust your gut</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Regime shifted from trending to ranging. Pullback strategies fail in ranges. Switch to fading extremes (sell resistance, buy support) with tighter targets. Trading the same strategy in a different regime = guaranteed losses.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #23: Portfolio Construction—Beyond Single Trades</strong></p>
+        <p>Win rate doesn't matter if you blow up your account with correlated positions. Learn portfolio heat management, diversification, and how to survive market crashes.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">The Three Regimes</a>
+      <a href="#">Minimal Flow Detection</a>
+      <a href="#">Regime Strategies</a>
+      <a href="#">Regime Shifts</a>
+      <a href="#">Complete Framework</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/intermediate/21-plutus-flow-mastery.html">&larr; Previous: Plutus</a>
-    <a class="btn btn-primary" href="/curriculum/intermediate/23-portfolio-construction.html">Next: Portfolio &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/intermediate/21-plutus-flow-mastery.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/23-portfolio-construction.html">Next Lesson &rarr;</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

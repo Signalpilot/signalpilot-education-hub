@@ -1,342 +1,656 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Trading Automation & Broker APIs — SignalPilot Education</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Trading Automation: Code Your Edge, Remove Emotion — SignalPilot Education</title>
+  <meta name="description" content="Fully automated trading: code your strategy, connect to broker APIs, execute 24/7 without screen time. Remove emotion, trade while you sleep.">
   <meta name="sp-level" content="Advanced"><meta name="sp-order" content="37">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/37-trading-automation-apis.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Trading Automation & Broker APIs</h1><div class="meta">Reading time ~15 min • Automated Execution</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Fully automated trading: code your strategy, connect to broker API, execute 24/7 without screen time.</b> Learn broker API integration, order management, error handling, and production deployment.</p>
-      
-      <h2>Why Automate?</h2>
-      
-      <h3>Benefits of Automation</h3>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #37</span>
+      </div>
+      <span class="badge">🔴 Advanced • Lesson 10 of 15</span>
+      <h1 class="headline xl">Trading Automation: Code Your Edge, Remove Emotion</h1>
+      <div class="meta">15 min read • Automated Execution & APIs</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>3 AM. Your sweep setup triggers. You're asleep.</b></p>
+
+      <p>Your bot places the trade, sets the stop, targets 3R. All while you're dreaming.</p>
+
+      <p>6 AM. You wake up. Position closed. +2.8R profit. Coffee tastes better.</p>
+
+      <div class="callout-tip">
+        <h4>🎯 The Promise of Automation</h4>
+        <p>No FOMO. No fear. No hesitation. Just code executing your rules perfectly, every single time.</p>
+        <p>This isn't science fiction. It's how professionals trade in 2024.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
       <ul>
-        <li><b>Zero emotions:</b> No FOMO, fear, or hesitation (executes exactly)</li>
-        <li><b>24/7 trading:</b> Crypto, forex, futures (trade while sleeping)</li>
-        <li><b>Perfect discipline:</b> Never skips stop loss, always follows rules</li>
-        <li><b>Scalability:</b> Run multiple strategies simultaneously</li>
-        <li><b>Backtestable:</b> Code once, backtest on years of data</li>
+        <li>How to connect to broker APIs (Alpaca, Binance, Interactive Brokers)</li>
+        <li>Building a complete trading bot from scratch (with code examples)</li>
+        <li>Error handling, order management, and production deployment</li>
+        <li>The reality of automated trading (it's not set-and-forget)</li>
       </ul>
 
-      <h2>Broker API Options</h2>
-      
-      <h3>Top Broker APIs</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Broker</th><th>API Type</th><th>Assets</th><th>Costs</th></tr>
-        <tr><td>Interactive Brokers</td><td>TWS API (Python, Java, C++)</td><td>Stocks, options, futures, forex</td><td>$0.005/share</td></tr>
-        <tr><td>Alpaca</td><td>REST + WebSocket</td><td>Stocks (US), crypto</td><td>Free (commission-free)</td></tr>
-        <tr><td>TD Ameritrade</td><td>REST API</td><td>Stocks, options</td><td>$0/trade (retail)</td></tr>
-        <tr><td>Binance</td><td>REST + WebSocket</td><td>Crypto only</td><td>0.1% maker/taker</td></tr>
-        <tr><td>Kraken</td><td>REST + WebSocket</td><td>Crypto only</td><td>0.16-0.26%</td></tr>
-      </table>
+      <div class="section-break"><span>Part 1: Why Automate?</span></div>
 
-      <h3>API Selection Criteria</h3>
-      <pre><code>Choose based on:
-1. Asset class (stocks, crypto, futures)
-2. Costs (commissions, API fees)
-3. Data quality (real-time tick data)
-4. Reliability (uptime, order execution)
-5. Documentation (good docs = faster dev)
+      <h2>The Manual Trading Tax</h2>
 
-Recommendation for beginners: Alpaca (stocks), Binance (crypto)</code></pre>
+      <p>You have a strategy. It works. You've backtested it. 65% win rate. 2.5R average.</p>
 
-      <h2>API Integration Basics</h2>
-      
-      <h3>Authentication</h3>
+      <p>Then you trade it live.</p>
+
+      <p>Setup appears. You hesitate. "Is this A-grade or B-grade?" You skip it.</p>
+
+      <p>Price runs without you. +3R missed. You're frustrated.</p>
+
+      <p>Next setup. You're eager to make up for the miss. You take a C-grade setup. It stops out. -1R.</p>
+
+      <p>Sound familiar?</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Manual Trading (Emotional)</button>
+          <button>Automated Trading (Systematic)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>The Human Reality</h3>
+            <ul>
+              <li><strong>FOMO:</strong> Chase entries after missing setups</li>
+              <li><strong>Fear:</strong> Exit winners too early</li>
+              <li><strong>Revenge trading:</strong> Overtrade after losses</li>
+              <li><strong>Inconsistency:</strong> Skip A-grade setups, take C-grade ones</li>
+              <li><strong>Screen time:</strong> 6-8 hours/day watching charts</li>
+            </ul>
+            <p><em>"I know what to do. I just can't execute consistently."</em></p>
+          </div>
+          <div class="tab-panel">
+            <h3>The Automated Advantage</h3>
+            <ul>
+              <li><strong>Zero emotion:</strong> Code doesn't feel FOMO or fear</li>
+              <li><strong>Perfect discipline:</strong> Executes every A-grade setup, skips every C-grade</li>
+              <li><strong>24/7 trading:</strong> Crypto, forex, futures (trade while sleeping)</li>
+              <li><strong>Scalable:</strong> Run 5 strategies simultaneously</li>
+              <li><strong>Backtestable:</strong> Code once, test on years of data</li>
+            </ul>
+            <p><em>"My bot took 12 trades this month. I took 3. Same strategy."</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Automation won't fix a bad strategy. Garbage in, garbage out.</p>
+        <p>But if your edge is proven? Automation amplifies it by removing the human error layer.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: Choosing Your Broker API</span></div>
+
+      <h2>Not All APIs Are Created Equal</h2>
+
+      <p>You need three things from a broker API:</p>
+      <ol>
+        <li><strong>Real-time market data</strong> (to make decisions)</li>
+        <li><strong>Order execution</strong> (to place trades)</li>
+        <li><strong>Reliability</strong> (99%+ uptime, or you're blind)</li>
+      </ol>
+
+      <h3>Top Broker APIs for Automation</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Alpaca (Stocks & Crypto — Best for Beginners)</div>
+          <div class="accordion-content">
+            <p><strong>Why use it:</strong></p>
+            <ul>
+              <li>Commission-free trading (stocks)</li>
+              <li>Clean REST API + WebSockets (real-time data)</li>
+              <li>Excellent documentation (Python library)</li>
+              <li>Paper trading built-in (test without risk)</li>
+            </ul>
+            <p><strong>Costs:</strong> $0 commissions (US stocks), crypto spreads vary</p>
+            <p><strong>Assets:</strong> US stocks, ETFs, crypto</p>
+            <p><em>Verdict: Best starting point for algo traders.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Interactive Brokers (Multi-Asset — Pro Level)</div>
+          <div class="accordion-content">
+            <p><strong>Why use it:</strong></p>
+            <ul>
+              <li>Trade everything (stocks, options, futures, forex, bonds)</li>
+              <li>Global markets (100+ countries)</li>
+              <li>TWS API (Python, Java, C++)</li>
+              <li>Low commissions ($0.005/share)</li>
+            </ul>
+            <p><strong>Costs:</strong> $0.005/share (stocks), varies by asset</p>
+            <p><strong>Learning curve:</strong> Steep (documentation is... dense)</p>
+            <p><em>Verdict: Pro-level API. Worth learning if you need multi-asset.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Binance (Crypto Only — High Volume)</div>
+          <div class="accordion-content">
+            <p><strong>Why use it:</strong></p>
+            <ul>
+              <li>Largest crypto exchange (liquidity)</li>
+              <li>REST + WebSocket API (fast, reliable)</li>
+              <li>Low fees (0.1% maker/taker, lower with volume)</li>
+              <li>Futures, margin, spot (all via API)</li>
+            </ul>
+            <p><strong>Costs:</strong> 0.1% per trade (volume discounts available)</p>
+            <p><strong>Assets:</strong> Crypto only (BTC, ETH, 600+ altcoins)</p>
+            <p><em>Verdict: Best for crypto automation. 24/7 markets.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 Recommendation</h4>
+        <p><strong>Beginners:</strong> Start with Alpaca (stocks) or Binance (crypto). Easy setup, good docs.</p>
+        <p><strong>Advanced:</strong> Interactive Brokers for multi-asset professional trading.</p>
+      </div>
+
+      <div class="section-break"><span>Part 3: Building Your First Trading Bot</span></div>
+
+      <h2>Let's Code a Simple Sweep Reversal Bot</h2>
+
+      <p>Here's the thing: You don't need to be a software engineer.</p>
+
+      <p>You need basic Python skills and the willingness to debug. That's it.</p>
+
+      <h3>Step 1: Connect to Alpaca API</h3>
+
       <pre><code>import alpaca_trade_api as tradeapi
+import os
 
-# API credentials (NEVER hardcode! Use env variables)
+# NEVER hardcode credentials! Use environment variables
 API_KEY = os.getenv('ALPACA_API_KEY')
 API_SECRET = os.getenv('ALPACA_API_SECRET')
 BASE_URL = 'https://paper-api.alpaca.markets'  # Paper trading
 
 # Initialize API connection
-api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL)</code></pre>
-
-      <h3>Fetching Market Data</h3>
-      <pre><code># Get latest price
-barset = api.get_barset('SPY', 'minute', limit=1)
-spy_bar = barset['SPY'][0]
-current_price = spy_bar.c  # Close price
-
-print(f"SPY current price: ${current_price}")</code></pre>
-
-      <h3>Placing Orders</h3>
-      <pre><code># Market order
-api.submit_order(
-    symbol='SPY',
-    qty=100,
-    side='buy',
-    type='market',
-    time_in_force='gtc'  # Good till canceled
-)
-
-# Limit order
-api.submit_order(
-    symbol='SPY',
-    qty=100,
-    side='buy',
-    type='limit',
-    time_in_force='gtc',
-    limit_price=520.00
-)
-
-# Bracket order (entry + stop + target)
-api.submit_order(
-    symbol='SPY',
-    qty=100,
-    side='buy',
-    type='market',
-    time_in_force='gtc',
-    order_class='bracket',
-    stop_loss={'stop_price': 518.00},
-    take_profit={'limit_price': 525.00}
-)</code></pre>
-
-      <h2>Order Management System</h2>
-      
-      <h3>Order States & Lifecycle</h3>
-      <pre><code>Order States:
-1. new → Order submitted to broker
-2. accepted → Broker received, pending exchange
-3. pending_new → Exchange received
-4. filled → Executed (full or partial)
-5. canceled → User canceled
-6. rejected → Broker/exchange rejected
-7. expired → Time limit exceeded
-
-Monitor: Check order status before assuming fill!</code></pre>
-
-      <h3>Handling Partial Fills</h3>
-      <pre><code>order = api.submit_order(symbol='SPY', qty=1000, side='buy', type='limit', limit_price=520.00)
-
-# Check fill status
-order_status = api.get_order(order.id)
-
-if order_status.filled_qty < order_status.qty:
-    # Partial fill detected
-    filled = order_status.filled_qty
-    remaining = order_status.qty - filled
-    
-    print(f"Partial fill: {filled}/{order_status.qty}")
-    
-    # Options:
-    # 1. Wait for full fill
-    # 2. Cancel remaining, adjust strategy
-    # 3. Market order remaining (guarantee fill)</code></pre>
-
-      <h2>Building a Complete Trading Bot</h2>
-      
-      <h3>Bot Architecture</h3>
-      <pre><code>Components:
-1. Data Feed (real-time market data)
-2. Strategy Logic (entry/exit rules)
-3. Risk Manager (position sizing, stops)
-4. Order Manager (place/cancel/modify)
-5. Logger (trade history, errors)
-6. Monitor (performance, alerts)</code></pre>
-
-      <h3>Example: Simple Sweep Reversal Bot</h3>
-      <pre><code>import time
-
-class SweepReversalBot:
-    def __init__(self, api):
-        self.api = api
-        self.position = None
-        self.swing_low = None
-        
-    def get_swing_low(self, bars, lookback=20):
-        lows = [bar.l for bar in bars[-lookback:]]
-        return min(lows)
-        
-    def check_sweep(self, current_price, current_low):
-        if self.swing_low is None:
-            return False
-        # Check if swept below swing low
-        if current_low < self.swing_low * 0.997:  # 0.3% below
-            if current_price > self.swing_low:  # Reclaimed
-                return True
-        return False
-        
-    def calculate_position_size(self, entry, stop):
-        account = self.api.get_account()
-        equity = float(account.equity)
-        risk_amt = equity * 0.02  # 2% risk
-        stop_distance = entry - stop
-        size = int(risk_amt / stop_distance)
-        return size
-        
-    def run(self):
-        while True:
-            try:
-                # Fetch data
-                bars = self.api.get_barset('SPY', 'minute', limit=50)['SPY']
-                current_bar = bars[-1]
-                current_price = current_bar.c
-                current_low = current_bar.l
-                
-                # Update swing low
-                self.swing_low = self.get_swing_low(bars)
-                
-                # Check for setup
-                if self.position is None:  # No position
-                    if self.check_sweep(current_price, current_low):
-                        # Entry signal!
-                        entry_price = current_price
-                        stop_price = self.swing_low * 0.995
-                        target_price = entry_price + (entry_price - stop_price) * 3  # 3R
-                        
-                        # Calculate size
-                        size = self.calculate_position_size(entry_price, stop_price)
-                        
-                        # Place bracket order
-                        order = self.api.submit_order(
-                            symbol='SPY',
-                            qty=size,
-                            side='buy',
-                            type='limit',
-                            limit_price=entry_price,
-                            time_in_force='gtc',
-                            order_class='bracket',
-                            stop_loss={'stop_price': stop_price},
-                            take_profit={'limit_price': target_price}
-                        )
-                        
-                        self.position = order
-                        print(f"Entered long: {size} shares at ${entry_price}")
-                
-                # Sleep 60 seconds (check every minute)
-                time.sleep(60)
-                
-            except Exception as e:
-                print(f"Error: {e}")
-                time.sleep(60)  # Continue despite errors
-                
-# Run bot
 api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL)
-bot = SweepReversalBot(api)
-bot.run()</code></pre>
 
-      <h2>Error Handling & Robustness</h2>
-      
-      <h3>Common Errors</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Error</th><th>Cause</th><th>Solution</th></tr>
-        <tr><td>Connection timeout</td><td>Network issue</td><td>Retry with exponential backoff</td></tr>
-        <tr><td>Order rejected</td><td>Insufficient funds, invalid price</td><td>Check account, adjust order</td></tr>
-        <tr><td>Rate limit exceeded</td><td>Too many API calls</td><td>Add rate limiter (max 200/min)</td></tr>
-        <tr><td>Market closed</td><td>Trading outside hours</td><td>Check market hours before order</td></tr>
-      </table>
+# Test connection
+account = api.get_account()
+print(f"Connected! Buying power: ${float(account.buying_power):,.2f}")</code></pre>
 
-      <h3>Retry Logic</h3>
+      <p>Run that. If you see your buying power? You're connected. Welcome to automation.</p>
+
+      <h3>Step 2: Fetch Market Data</h3>
+
+      <pre><code># Get latest price for SPY
+barset = api.get_barset('SPY', 'minute', limit=50)
+bars = barset['SPY']
+
+# Extract data
+current_bar = bars[-1]
+current_price = current_bar.c  # Close price
+current_low = current_bar.l    # Low of bar
+
+print(f"SPY current price: ${current_price}")
+print(f"Current low: ${current_low}")</code></pre>
+
+      <p>You now have real-time data. Next: trade logic.</p>
+
+      <h3>Step 3: Detect Sweep Reversal Setup</h3>
+
+      <pre><code>def get_swing_low(bars, lookback=20):
+    """Find swing low over last N bars"""
+    lows = [bar.l for bar in bars[-lookback:]]
+    return min(lows)
+
+def check_sweep(current_price, current_low, swing_low):
+    """
+    Sweep conditions:
+    1. Current low swept below swing low (by 0.3%)
+    2. Price reclaimed back above swing low
+    """
+    if swing_low is None:
+        return False
+
+    # Check if swept below
+    if current_low < swing_low * 0.997:  # 0.3% below
+        # Check if reclaimed
+        if current_price > swing_low:
+            return True  # Sweep confirmed!
+
+    return False</code></pre>
+
+      <p>This is your edge, coded. If conditions = true, trade. If false, skip.</p>
+
+      <p>No hesitation. No emotion. Just logic.</p>
+
+      <h3>Step 4: Calculate Position Size (Risk Management)</h3>
+
+      <pre><code>def calculate_position_size(api, entry, stop):
+    """
+    Risk 2% of account per trade
+    Position size = (Account × Risk%) / (Entry - Stop)
+    """
+    account = api.get_account()
+    equity = float(account.equity)
+    risk_amount = equity * 0.02  # 2% risk
+
+    stop_distance = abs(entry - stop)
+    size = int(risk_amount / stop_distance)
+
+    return size
+
+# Example: $100K account, $520 entry, $518 stop
+# Risk: $100K × 2% = $2,000
+# Stop distance: $520 - $518 = $2
+# Size: $2,000 / $2 = 1,000 shares</code></pre>
+
+      <p>Your bot now risks exactly 2% per trade. Every time. No exceptions.</p>
+
+      <h3>Step 5: Place Bracket Order (Entry + Stop + Target)</h3>
+
+      <pre><code>def place_bracket_order(api, symbol, size, entry, stop, target):
+    """
+    Bracket order = entry + stop-loss + take-profit
+    All three orders placed simultaneously
+    """
+    try:
+        order = api.submit_order(
+            symbol=symbol,
+            qty=size,
+            side='buy',
+            type='limit',
+            limit_price=entry,
+            time_in_force='gtc',  # Good till canceled
+            order_class='bracket',
+            stop_loss={'stop_price': stop},
+            take_profit={'limit_price': target}
+        )
+
+        print(f"✓ Order placed: {size} shares at ${entry}")
+        print(f"  Stop: ${stop} | Target: ${target}")
+        return order
+
+    except Exception as e:
+        print(f"✗ Order failed: {e}")
+        return None</code></pre>
+
+      <p>One function call. Three orders placed. Your risk is defined before you're even filled.</p>
+
+      <h3>Step 6: Put It All Together (The Main Loop)</h3>
+
       <pre><code>import time
 
-def place_order_with_retry(api, **order_params):
+def run_bot():
+    """Main bot loop"""
+    swing_low = None
+    position = None
+
+    print("Bot started. Watching for sweep setups...")
+
+    while True:
+        try:
+            # Fetch latest data
+            barset = api.get_barset('SPY', 'minute', limit=50)
+            bars = barset['SPY']
+            current_bar = bars[-1]
+            current_price = current_bar.c
+            current_low = current_bar.l
+
+            # Update swing low
+            swing_low = get_swing_low(bars)
+
+            # Check if we're already in a position
+            if position is None:
+                # Look for setup
+                if check_sweep(current_price, current_low, swing_low):
+                    print(f"\n🎯 Sweep detected at ${current_price}!")
+
+                    # Calculate entry, stop, target
+                    entry = current_price
+                    stop = swing_low * 0.995  # Below sweep
+                    target = entry + (entry - stop) * 3  # 3R target
+
+                    # Calculate size
+                    size = calculate_position_size(api, entry, stop)
+
+                    # Place trade
+                    position = place_bracket_order(
+                        api, 'SPY', size, entry, stop, target
+                    )
+
+            # Sleep 60 seconds (check every minute)
+            time.sleep(60)
+
+        except Exception as e:
+            print(f"Error: {e}")
+            time.sleep(60)  # Continue despite errors
+
+# Run the bot
+run_bot()</code></pre>
+
+      <p>That's it. 60 lines of code. Your bot now trades 24/7.</p>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>You just removed the human layer. No more "Should I take this?" No more "Maybe I'll wait."</p>
+        <p>Setup appears → Bot trades. Setup doesn't appear → Bot waits. Perfect discipline.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Production Deployment (The Hard Part)</span></div>
+
+      <h2>Paper Trading ≠ Live Trading</h2>
+
+      <p>Your bot works perfectly in paper trading. You deploy it live. It crashes. Orders get rejected. You're confused.</p>
+
+      <p>Welcome to production.</p>
+
+      <h3>Common Errors (And How to Handle Them)</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">The Error</button>
+          <button>The Fix</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Things That Will Go Wrong</h3>
+            <ul>
+              <li><strong>Connection timeout:</strong> Internet hiccup, API down</li>
+              <li><strong>Order rejected:</strong> Insufficient funds, invalid price</li>
+              <li><strong>Partial fills:</strong> Order only 60% filled</li>
+              <li><strong>Rate limit exceeded:</strong> Too many API calls</li>
+              <li><strong>Market closed:</strong> Tried to trade at 3 AM</li>
+            </ul>
+            <p><em>"It worked yesterday! Why is it broken today?!"</em></p>
+          </div>
+          <div class="tab-panel">
+            <h3>Bulletproof Your Bot</h3>
+            <ul>
+              <li><strong>Retry logic:</strong> Try 3 times with exponential backoff</li>
+              <li><strong>Pre-trade checks:</strong> Verify funds, market hours, valid price</li>
+              <li><strong>Partial fill handling:</strong> Cancel remaining or market-fill</li>
+              <li><strong>Rate limiting:</strong> Max 200 requests/minute (add delays)</li>
+              <li><strong>Market hours check:</strong> Only trade 9:30 AM - 4:00 PM ET</li>
+            </ul>
+            <p><em>Professional bots handle errors gracefully, log everything, and keep trading.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Retry Logic (Essential)</h3>
+
+      <pre><code>def place_order_with_retry(api, **order_params):
+    """Retry order placement up to 3 times"""
     max_retries = 3
+
     for attempt in range(max_retries):
         try:
             order = api.submit_order(**order_params)
-            return order  # Success
+            return order  # Success!
+
         except Exception as e:
             if attempt < max_retries - 1:
-                wait = 2 ** attempt  # Exponential backoff (1s, 2s, 4s)
-                print(f"Order failed: {e}. Retrying in {wait}s...")
+                wait = 2 ** attempt  # 1s, 2s, 4s (exponential backoff)
+                print(f"Order failed: {e}. Retry in {wait}s...")
                 time.sleep(wait)
             else:
+                # Final attempt failed
                 print(f"Order failed after {max_retries} attempts: {e}")
-                raise  # Give up, alert human</code></pre>
+                # Send alert (email, SMS)
+                raise  # Re-raise exception</code></pre>
 
-      <h2>Production Deployment</h2>
-      
-      <h3>Deployment Checklist</h3>
-      <ul>
-        <li>[ ] Backtest shows positive expectancy (> 0.5R/trade)</li>
-        <li>[ ] Paper trading 3-6 months (performance matches backtest)</li>
-        <li>[ ] Error handling robust (retries, logging)</li>
-        <li>[ ] Monitoring alerts (email/SMS on errors)</li>
-        <li>[ ] Kill switch (manual stop if DD exceeds threshold)</li>
-        <li>[ ] Server uptime (VPS, not home PC)</li>
-        <li>[ ] API credentials secured (env variables, not hardcoded)</li>
-      </ul>
+      <h3>Monitoring & Alerts (Critical)</h3>
 
-      <h3>Hosting Options</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Option</th><th>Pros</th><th>Cons</th></tr>
-        <tr><td>Home PC</td><td>Free</td><td>Unreliable (power outage, internet)</td></tr>
-        <tr><td>Cloud VPS (AWS, DigitalOcean)</td><td>99.9% uptime, scalable</td><td>$5-20/month</td></tr>
-        <tr><td>Raspberry Pi</td><td>Low power, always-on</td><td>Limited compute</td></tr>
-      </table>
+      <p>Your bot is running on a VPS in the cloud. You're at dinner. It encounters an error.</p>
 
-      <h2>Monitoring & Alerts</h2>
-      
-      <h3>Key Metrics to Monitor</h3>
-      <pre><code>Daily Dashboard:
-- Orders placed: 5
-- Win rate: 60% (3/5)
-- Net P&L: +$450
-- Drawdown: -8% (within tolerance)
-- Errors: 2 (connection timeouts, resolved)
+      <p>How do you know?</p>
 
-Alerts (email/SMS):
-- Drawdown > 15% → CRITICAL
-- Win rate < 40% (30-day) → WARNING
-- Consecutive losses > 5 → WARNING
-- API errors > 10/hour → CRITICAL</code></pre>
+      <p><strong>Answer:</strong> Alerts.</p>
 
-      <h3>Logging Best Practices</h3>
-      <pre><code>import logging
+      <pre><code>import smtplib
+from email.mime.text import MIMEText
 
-# Configure logger
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('trading_bot.log'),
-        logging.StreamHandler()  # Also print to console
-    ]
-)
+def send_alert(subject, message):
+    """Send email alert"""
+    msg = MIMEText(message)
+    msg['Subject'] = subject
+    msg['From'] = 'bot@yourbot.com'
+    msg['To'] = 'you@gmail.com'
 
-# Log trades
-logging.info(f"Entered long: 100 SPY at $520.05")
-logging.info(f"Exited: +$200 (+2R)")
+    # Send via Gmail SMTP
+    with smtplib.SMTP('smtp.gmail.com', 587) as server:
+        server.starttls()
+        server.login('bot@yourbot.com', os.getenv('EMAIL_PASSWORD'))
+        server.send_message(msg)
 
-# Log errors
-logging.error(f"Order rejected: {error_message}")
+# Usage
+try:
+    # Trading logic
+    pass
+except Exception as e:
+    send_alert(
+        subject="🚨 Trading Bot Error",
+        message=f"Bot encountered error: {e}"
+    )
+    raise</code></pre>
 
-# Review logs weekly to spot issues</code></pre>
+      <p>Now you know within minutes if something breaks.</p>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Broker APIs: Alpaca (stocks), Binance (crypto) for beginners</strong></li>
-        <li><strong>Paper trade 3-6 months before live (verify performance)</strong></li>
-        <li><strong>Error handling crucial (retries, logging, alerts)</strong></li>
-        <li><strong>Monitor: DD, win rate, errors (daily dashboard)</strong></li>
-        <li><strong>Deploy on VPS (99.9% uptime, not home PC)</strong></li>
-      </ul>
+      <div class="callout-warning">
+        <h4>🚨 Kill Switch (Non-Negotiable)</h4>
+        <p>Your bot should automatically stop trading if:</p>
+        <ul style="margin:.5rem 0">
+          <li>Daily drawdown exceeds -3%</li>
+          <li>5 consecutive losses</li>
+          <li>API errors > 10 per hour</li>
+          <li>Unexpected behavior detected</li>
+        </ul>
+        <p>Code this. Test it. Your account depends on it.</p>
+      </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Set up paper trading</strong></p>
-      <p>Create Alpaca paper account. Connect via API. Place test market order. Confirm execution.</p>
-      
-      <p><strong>Exercise 2: Build simple bot</strong></p>
-      <p>Code: If SPY < $520, buy 10 shares. If SPY > $525, sell. Run in paper for 1 week. Track results.</p>
+      <h3>Hosting: Where to Run Your Bot</h3>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Automation isn't about removing the trader—it's about removing emotion. Code your edge, let it execute."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Home PC (Don't)</button>
+          <button>Cloud VPS (Do)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Why Home PC Fails</h3>
+            <ul>
+              <li><strong>Power outage:</strong> PC shuts down, bot stops</li>
+              <li><strong>Internet outage:</strong> No connection = missed trades</li>
+              <li><strong>Windows updates:</strong> Auto-restart at 3 AM = bot dead</li>
+              <li><strong>You:</strong> "Let me just restart my PC real quick..."</li>
+            </ul>
+            <p><strong>Uptime:</strong> 95% (unacceptable for algo trading)</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Why Cloud VPS Wins</h3>
+            <ul>
+              <li><strong>99.9% uptime:</strong> AWS, DigitalOcean, Linode</li>
+              <li><strong>No power outages:</strong> Redundant power, backups</li>
+              <li><strong>Fast internet:</strong> Low latency to broker APIs</li>
+              <li><strong>Auto-restart:</strong> Bot crashes? Auto-restarts in 30s</li>
+            </ul>
+            <p><strong>Cost:</strong> $5-20/month (cheapest edge amplifier you'll ever buy)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 5: The Reality Check</span></div>
+
+      <h2>Automation Isn't Set-and-Forget</h2>
+
+      <p>You deploy your bot. It trades for a month. Win rate: 65%. Just like backtest. You're thrilled.</p>
+
+      <p>Month 2: Win rate drops to 48%. You're confused.</p>
+
+      <p>What happened?</p>
+
+      <p><strong>Market regime changed.</strong> Your strategy works in trending markets. Market shifted to ranging. Your bot kept trading. Results suffered.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 The Hard Truth</h4>
+        <p>Automation amplifies your edge. But it doesn't adapt to regime changes automatically.</p>
+        <p>You still need to monitor, review, and adjust. Just less frequently.</p>
+      </div>
+
+      <h3>Monthly Bot Maintenance Checklist</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Review Performance Metrics</div>
+          <div class="accordion-content">
+            <ul>
+              <li>Win rate: Is it within 5% of backtest?</li>
+              <li>Average R: Still positive?</li>
+              <li>Drawdown: Within acceptable limits?</li>
+              <li>Slippage: Has execution quality degraded?</li>
+            </ul>
+            <p><em>If metrics diverge from backtest, investigate why.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Check Error Logs</div>
+          <div class="accordion-content">
+            <ul>
+              <li>Connection errors: How many?</li>
+              <li>Order rejections: Why were they rejected?</li>
+              <li>Unexpected behavior: Any edge cases?</li>
+            </ul>
+            <p><em>Fix recurring errors. Improve retry logic.</em></p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Regime Check</div>
+          <div class="accordion-content">
+            <ul>
+              <li>Is the market still in a regime your strategy favors?</li>
+              <li>VIX elevated? Consider pausing or reducing size.</li>
+              <li>Low volatility? Your breakout strategy might struggle.</li>
+            </ul>
+            <p><em>Turn off strategies that don't fit current regime.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Automation removes emotion—but won't fix a bad strategy</strong></li>
+          <li><strong>Start with Alpaca (stocks) or Binance (crypto) for easy API access</strong></li>
+          <li><strong>Paper trade for 3-6 months before going live</strong></li>
+          <li><strong>Error handling is critical: retry logic, alerts, kill switch</strong></li>
+          <li><strong>Host on cloud VPS ($5-20/month) for 99.9% uptime</strong></li>
+          <li><strong>Monitor monthly: performance, errors, regime alignment</strong></li>
+        </ul>
+      </div>
+
+      <div class="quiz">
+        <h4>🎮 Test Your Understanding (No Pressure)</h4>
+
+        <div class="quiz-question">
+          <p><strong>Question 1: You've coded a bot that works perfectly in paper trading. What's the minimum testing period before going live?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              <strong>A)</strong> 1 week (if it works, deploy it!)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>B)</strong> 1 month (enough to see if it's profitable)
+            </div>
+            <div class="quiz-option" data-correct="true">
+              <strong>C)</strong> 3-6 months (verify consistency across market conditions)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>D)</strong> No testing needed (backtest = good enough)
+            </div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Question 2: Your bot's win rate was 65% in backtest, but it's 48% live after 2 months. What's the most likely cause?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">
+              <strong>A)</strong> The broker is sabotaging your trades
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>B)</strong> Your code has a bug (random behavior)
+            </div>
+            <div class="quiz-option" data-correct="true">
+              <strong>C)</strong> Market regime changed (strategy doesn't fit current conditions)
+            </div>
+            <div class="quiz-option" data-correct="false">
+              <strong>D)</strong> Backtesting is useless (always fails live)
+            </div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
+        <div class="quiz-results"></div>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">
+        If you made it this far, you understand that automation isn't magic—it's disciplined execution at scale. Code your edge. Test rigorously. Deploy cautiously. Monitor continuously.
+      </p>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #38: Advanced Portfolio Theory</strong> — Modern Portfolio Theory, efficient frontier, risk parity, and professional portfolio construction frameworks.</p>
+      </div>
+
+    </div>
+  </div>
+
   <div class="wrap nav-article">
     <a class="btn btn-ghost" href="/curriculum/advanced/36-high-frequency-concepts.html">&larr; Previous: HFT Concepts</a>
     <a class="btn btn-primary" href="/curriculum/advanced/38-portfolio-theory-advanced.html">Next: Portfolio Theory &rarr;</a>
   </div>
 </article>
+
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
 <script src="/assets/edu.js"></script>
-</body></html>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

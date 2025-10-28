@@ -1,372 +1,490 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Advanced Auction Theory: Opening Range & Fair Value Gaps — SignalPilot Education</title>
-  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="30">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Advanced Auction Theory: Opening Range & Fair Value Gaps — SignalPilot Learn</title>
+  <meta name="description" content="Markets are continuous auctions searching for fair value. Openings reveal intent, gaps show imbalance—learn to trade them like a floor trader.">
+  <meta name="sp-level" content="Advanced">
+  <meta name="sp-order" content="30">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Advanced Auction Theory: Opening Range & Fair Value Gaps</h1><div class="meta">Reading time ~16 min • Market Microstructure</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Markets are continuous auctions searching for fair value. Openings reveal intent, gaps show imbalance.</b> Learn to trade opening auctions, fair value gaps, and single prints for high-probability setups.</p>
-      
-      <h2>Market Profile Basics</h2>
-      
-      <h3>The Auction Concept</h3>
-      <p><strong>Markets facilitate price discovery through auction.</strong></p>
-      <pre><code>Auction Process:
-1. Price offered too high → No buyers → Price drops
-2. Price offered too low → No sellers → Price rises
-3. Fair value found → Maximum volume transacts (POC)
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #30</span>
+      </div>
+      <span class="badge">🔴 Advanced • Lesson 2 of 15</span>
+      <h1 class="headline xl">Advanced Auction Theory: The First 30 Minutes Tell You Everything</h1>
+      <div class="meta">Reading time ~16 min • Market Microstructure</div>
 
-Market Profile: Visualizes where price spent time (volume at price)</code></pre>
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      <h3>Key Market Profile Concepts</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Term</th><th>Definition</th></tr>
-        <tr><td>POC (Point of Control)</td><td>Price with most volume (fair value)</td></tr>
-        <tr><td>Value Area</td><td>70% of volume (accepted range)</td></tr>
-        <tr><td>VAH (Value Area High)</td><td>Top of value area</td></tr>
-        <tr><td>VAL (Value Area Low)</td><td>Bottom of value area</td></tr>
-        <tr><td>Single Prints</td><td>Prices traded once (low time at price = imbalance)</td></tr>
-        <tr><td>Fair Value Gap</td><td>Price jumped without transacting (imbalance)</td></tr>
-      </table>
+  <div class="wrap article-grid">
+    <div class="prose">
 
-      <h2>Opening Auction Dynamics</h2>
-      
-      <h3>The Opening Range (First 30-60 min)</h3>
-      <p><strong>Opening range establishes day's value area and often predicts direction.</strong></p>
-      <pre><code>Market open: 9:30 AM
-Opening Range: High/Low of 9:30-10:00 AM period
+      <p><b>By 10:00 AM, professional traders already know if today is a trend day or chop day.</b></p>
 
-Example:
-9:30-10:00 AM: High $520.50, Low $519.20
-Opening Range: $1.30
+      <p>How? They're reading the opening auction—the first 30 minutes where smart money reveals their hand.</p>
 
-Significance:
-- If price breaks above $520.50 → Bullish day (70% of time)
-- If price breaks below $519.20 → Bearish day (70% of time)
-- If price stays inside range → Range-bound day</code></pre>
+      <p>Most retail traders? They're still waking up, checking Twitter, missing the entire signal.</p>
 
-      <h3>Opening Type Classification</h3>
-      
-      <p><b>Type 1: Open-Drive (Directional Intent)</b></p>
-      <pre><code>Market opens, immediately moves directional (no balance)
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>If you're not trading the opening range, fair value gaps, and single prints, you're trading with one eye closed. These aren't "advanced concepts"—they're the language professional traders speak fluently.</p>
+      </div>
 
-Example:
+      <div class="callout-tip">
+        <h4>🎯 What You'll Gain</h4>
+        <p>After this lesson, you'll be able to:</p>
+        <ul>
+          <li>Read opening auction patterns to predict the rest of the day (70%+ accuracy)</li>
+          <li>Trade fair value gap fills (90%+ fill rate within 24 hours)</li>
+          <li>Use single prints as support/resistance zones</li>
+          <li>Integrate POC and value area with Plutus Flow signals</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 1: The Opening Auction (Where Smart Money Shows Their Cards)</span></div>
+
+      <h2>Why the First 30 Minutes Matter More Than the Next 6 Hours</h2>
+
+      <p>Think of the market open like a poker game.</p>
+
+      <p>Smart money makes their bet early—aggressive buying OR aggressive selling. Then they watch retail chase.</p>
+
+      <p>Your job? Read their hand BEFORE you commit capital.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Open-Drive</button>
+          <button>Open-Test-Drive</button>
+          <button>Open-Rejection</button>
+          <button>Open-Balance</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>🚀 Open-Drive (Directional Intent)</h3>
+            <p><strong>Market opens, immediately moves directional. No hesitation, no pullback.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Example:
 Open: $520.00
 9:35 AM: $520.50 (no pullback)
 9:45 AM: $521.20 (continued drive)
 10:00 AM: $522.00 (strong momentum)
 
-Interpretation: Strong institutional buying (trend day likely)
-Strategy: Buy first pullback (don't chase, wait for dip)</code></pre>
+Interpretation: Strong institutional buying
+Likely: Trend day (70%+ probability)
 
-      <p><b>Type 2: Open-Test-Drive (Probe then Move)</b></p>
-      <pre><code>Market opens, tests opposite direction, then reverses
-
-Example:
+Strategy: Buy first pullback
+Don't chase! Wait for dip to VWAP or opening range low</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-left:3px solid rgba(0,212,170,.5)">
+              <strong>Pro Tip:</strong> Open-Drive days rarely pull back more than 50% of opening range. That's your entry.
+            </div>
+          </div>
+          <div class="tab-panel">
+            <h3>🎯 Open-Test-Drive (Probe Then Move)</h3>
+            <p><strong>Market opens, tests opposite direction quickly, then reverses hard.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Example:
 Open: $520.00
 9:35 AM: $519.50 (quick dip, "test")
 9:40 AM: $520.00 (back to open)
 9:50 AM: $521.00 (drive up)
 
-Interpretation: Tested for sellers (found none), buying takes over
-Strategy: Long after test fails (reversal pattern)</code></pre>
+Interpretation: Tested for sellers (found none)
+Likely: Reversal day (institutions flipped direction)
 
-      <p><b>Type 3: Open-Rejection-Reverse (False Direction)</b></p>
-      <pre><code>Market opens strong one way, gets rejected, reverses hard
-
-Example:
+Strategy: Long after test fails
+Entry: When price reclaims opening price</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.1);border-left:3px solid rgba(255,193,7,.5)">
+              <strong>Heads Up:</strong> The "test" usually happens within first 15 minutes. If it fails, that's your signal.
+            </div>
+          </div>
+          <div class="tab-panel">
+            <h3>⛔ Open-Rejection-Reverse (False Direction)</h3>
+            <p><strong>Market rallies strong at open, gets rejected at resistance, reverses violently.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Example:
 Open: $520.00
 9:40 AM: $521.00 (rallies)
 9:50 AM: $520.80 (stalls at resistance)
 10:00 AM: $520.00 (back to open)
 10:30 AM: $519.00 (reverses lower)
 
-Interpretation: Early buyers trapped, stop cascade
-Strategy: Fade the failed breakout (short below open)</code></pre>
+Interpretation: Early buyers trapped
+Likely: Stop cascade day (shorts take control)
 
-      <p><b>Type 4: Open-Balance (Range Day)</b></p>
-      <pre><code>Market opens, oscillates in narrow range
-
-Example:
+Strategy: Fade the failed breakout
+Short below opening price with tight stop</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-left:3px solid rgba(255,107,107,.5)">
+              <strong>Warning:</strong> This is THE most painful pattern for retail. They buy the breakout, get trapped, stop out at the worst price.
+            </div>
+          </div>
+          <div class="tab-panel">
+            <h3>↔️ Open-Balance (Range Day)</h3>
+            <p><strong>Market opens, oscillates in narrow range for 30+ minutes.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Example:
 Open: $520.00
 9:30-10:30 AM: Oscillates $519.50 - $520.50
 
 Interpretation: Balance, no directional conviction
-Strategy: Fade range extremes OR wait for breakout</code></pre>
+Likely: Range day OR waiting for catalyst (news)
 
-      <h3>Opening Auction Trading Rules</h3>
-      <pre><code>Rule 1: Wait 15-30 min (let opening volatility settle)
+Strategy:
+- Fade range extremes OR
+- Wait for breakout (don't force trades in chop)</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.1);border-left:3px solid rgba(255,193,7,.5)">
+              <strong>Real Talk:</strong> Balance days are profit killers. If you see this pattern, reduce frequency or sit out until a clear direction emerges.
+            </div>
+          </div>
+        </div>
+      </div>
 
-Rule 2: Identify opening type (Drive vs. Test vs. Balance)
+      <div class="section-break"><span>Part 2: Fair Value Gaps (The Market's Magnets)</span></div>
 
-Rule 3: Trade WITH opening direction IF:
-- Open-Drive continues (buy pullback in uptrend)
-- Open-Test-Drive confirms (long after test fails)
+      <h2>Price Skipped $519.80 to $520.20—Guess Where It's Going Back?</h2>
 
-Rule 4: Trade AGAINST opening IF:
-- Open-Rejection-Reverse (fade failed breakout)
-- Open at extreme, rejected (fade back to value)
+      <p>Fair Value Gaps (FVGs) are price zones that got skipped due to imbalance.</p>
 
-Rule 5: AVOID during Open-Balance (wait for breakout)</code></pre>
+      <p>Think of them like magnets. Price WILL return to fill them. The question isn't IF, it's WHEN.</p>
 
-      <h2>Fair Value Gaps (FVG)</h2>
-      
-      <h3>What is a Fair Value Gap?</h3>
-      <p><strong>Price jumps without transacting (gap in candle wicks = imbalance).</strong></p>
-      <pre><code>3-Candle Pattern:
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>FVGs fill 90%+ of the time within 24 hours. That's not prediction—that's probability. Trade the reversion, not the continuation.</p>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">What Creates a Fair Value Gap?</div>
+          <div class="accordion-content">
+            <p><strong>A 3-candle pattern where price jumps without transacting in between.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Bullish FVG (Gap Up):
 
 Candle 1: High $519.80
-Candle 2: Low $520.20, High $521.50 (gaps up, no overlap)
+Candle 2: Low $520.20, High $521.50 (gap!)
 Candle 3: Low $521.00
 
-Fair Value Gap: $519.80 - $520.20 (unfilled gap)
+Fair Value Gap: $519.80 - $520.20 (unfilled)
 
-Why it matters: Price skipped $519.80-$520.20 (imbalance)
-Expected: Price returns to fill gap (balance auction)</code></pre>
+Why it matters:
+Price jumped from $519.80 to $520.20 without trading
+This creates imbalance (auction theory says price must return)</code></pre>
+            <p style="margin-top:1rem">Picture a line of people at an auction. If the auctioneer skips $520.00, someone's going to yell "Hey! What about $520?" The market does the same—it goes back to fill what it missed.</p>
+          </div>
+        </div>
 
-      <h3>FVG Trading Framework</h3>
-      <p><strong>Gaps act as magnets (price returns to fill imbalance).</strong></p>
-      <pre><code>Bullish FVG (Gap up):
-- Price gaps from $519.80 to $520.20
-- Continues rally to $522.00
-- Pullback to gap ($520.00 area)
-- Trade: Long at gap fill ($520.10), Stop $519.50, Target $522.50
+        <div class="accordion-item">
+          <div class="accordion-header">Trading FVG Fills</div>
+          <div class="accordion-content">
+            <p><strong>Wait for price to return, then trade the bounce/rejection.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Bullish FVG Trade:
+Gap: $519.80 - $520.20
+Price rallies to $522.00
+Then pulls back to $520.10 (gap fill)
 
-Bearish FVG (Gap down):
-- Price gaps from $521.00 to $520.60
-- Continues drop to $519.00
-- Bounces to gap ($520.80 area)
-- Trade: Short at gap fill ($520.70), Stop $521.30, Target $518.50</code></pre>
+Entry: Long at $520.10 (gap support)
+Stop: $519.50 (below gap)
+Target: $522.50 (previous high + buffer)
+R:R: 2.4R
 
-      <h3>FVG Fill Probability</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Time Since FVG</th><th>Fill Probability</th></tr>
-        <tr><td>Same session</td><td>70-80%</td></tr>
-        <tr><td>Within 24 hours</td><td>85-90%</td></tr>
-        <tr><td>Within 3 days</td><td>95%+</td></tr>
-      </table>
-      <p><b>Implication: Most gaps fill. Trade the reversion.</b></p>
+Bearish FVG Trade:
+Gap: $521.00 - $520.60
+Price drops to $519.00
+Then bounces to $520.70 (gap fill)
 
-      <h3>Partial vs. Full Gap Fill</h3>
-      <pre><code>Gap: $519.80 - $520.20
+Entry: Short at $520.70 (gap resistance)
+Stop: $521.30 (above gap)
+Target: $518.50 (previous low)
+R:R: 2.1R</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px">
+              <strong>Pro Move:</strong> Enter on 50% fill ($520.00 in example). If it rejects there, gap respected = high probability trade. If it fills 100%, wait for acceptance beyond gap before trading.
+            </div>
+          </div>
+        </div>
 
-Partial Fill: Price touches $520.15 (fills 75% of gap)
-- Often sufficient (price may reverse here)
+        <div class="accordion-item">
+          <div class="accordion-header">FVG Fill Statistics</div>
+          <div class="accordion-content">
+            <table style="width:100%; border-collapse: collapse; margin:1rem 0">
+              <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+                <th style="padding:.5rem">Time Since FVG</th>
+                <th style="padding:.5rem">Fill Probability</th>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                <td style="padding:.5rem">Same session</td>
+                <td style="padding:.5rem">70-80%</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                <td style="padding:.5rem">Within 24 hours</td>
+                <td style="padding:.5rem">85-90%</td>
+              </tr>
+              <tr>
+                <td style="padding:.5rem">Within 3 days</td>
+                <td style="padding:.5rem">95%+</td>
+              </tr>
+            </table>
+            <p style="margin-top:1rem"><strong>Implication:</strong> Mark all FVGs on your chart. They're future trade zones. When price returns, you're ready.</p>
+          </div>
+        </div>
+      </div>
 
-Full Fill: Price touches $519.85 (fills 100% of gap)
-- Stronger confirmation (complete rebalancing)
+      <div class="section-break"><span>Part 3: Value Area & POC</span></div>
 
-Trading:
-- Enter on 50% fill ($520.00), tight stop below full fill
-- If rejects at 50% → Gap respected (strong)
-- If fills 100% → Wait for acceptance beyond gap</code></pre>
+      <h2>Price Reverts to Fair Value Like a Rubber Band</h2>
 
-      <h2>Single Prints (Low Volume Nodes)</h2>
-      
-      <h3>What are Single Prints?</h3>
-      <p><strong>Price traded briefly (one TPO period, ~30 min), low volume = imbalance.</strong></p>
-      <pre><code>Market Profile Example:
-$521.00: ######### (9 TPO periods, high volume, POC)
-$520.50: ########## (10 periods)
-$520.00: ## (2 periods, SINGLE PRINT area)
-$519.50: ######### (9 periods)
+      <p>The Point of Control (POC) is where MOST volume traded—aka fair value.</p>
 
-Interpretation: $520.00 = imbalance (quickly passed through)
-Expected: Price avoids returning OR fills and breaks through</code></pre>
+      <p>Above POC? Price is expensive. Below POC? Price is cheap.</p>
 
-      <h3>Single Print Trading</h3>
-      <p><strong>Single prints act as support/resistance.</strong></p>
-      <pre><code>Scenario 1: Single Print Support
-Price drops from $521 → $520 (single print) → bounces to $521.50
+      <p>Markets love mean reversion. And the POC is the mean.</p>
 
-Trade: Buy at $520.20 (above single print)
-Logic: Single print respected = support confirmed
-
-Scenario 2: Single Print Broken
-Price drops from $521 → $520 → continues to $519
-
-Trade: Short on break of $519.80 (single print failed)
-Logic: Single print break = continuation, no support</code></pre>
-
-      <h2>Value Area Migration</h2>
-      
-      <h3>Day-Over-Day Value Shifts</h3>
-      <p><strong>Value area shifts reveal institutional repositioning.</strong></p>
-      <pre><code>Day 1 Value Area: $519.00 - $521.00 (POC $520.00)
-Day 2 Value Area: $520.50 - $522.50 (POC $521.50)
-
-Migration: Value shifted UP by $1.50
-
-Interpretation:
-- Institutional buyers lifting offers
-- New fair value = $521.50 (was $520.00)
-- Bullish trend forming
-
-Strategy: Buy pullbacks to old POC ($520.00, now support)</code></pre>
-
-      <h3>Value Area Relationship Trading</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Price Location</th><th>Interpretation</th><th>Strategy</th></tr>
-        <tr><td>Above VAH</td><td>Expensive (above value)</td><td>Fade or wait for acceptance</td></tr>
-        <tr><td>Inside Value Area</td><td>Fair value (balanced)</td><td>Range trade or wait</td></tr>
-        <tr><td>Below VAL</td><td>Cheap (below value)</td><td>Buy for reversion to POC</td></tr>
-      </table>
-
-      <pre><code>Example Trade: Value Area Reversion
-VAH: $521.00, POC: $520.00, VAL: $519.00
-Current Price: $518.50 (below VAL, "cheap")
-
-Trade: Long $518.60
+      <div class="callout-info">
+        <h4>📖 Case Study: Value Area Reversion</h4>
+        <p><strong>Setup:</strong></p>
+        <ul>
+          <li>VAH (Value Area High): $521.00</li>
+          <li>POC (Point of Control): $520.00</li>
+          <li>VAL (Value Area Low): $519.00</li>
+          <li>Current Price: $518.50 (below VAL = "cheap")</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Trade Logic:</strong></p>
+        <p>Price is trading below fair value. Institutions see this as a discount. They'll accumulate here, pushing price back to POC.</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;margin-top:1rem;overflow-x:auto"><code>Entry: Long $518.60
 Target: $520.00 (POC, fair value)
 Stop: $518.00 (below VAL, invalidation)
 R:R: ($520 - $518.60) / ($518.60 - $518) = 2.3R</code></pre>
+        <p style="margin-top:1rem"><strong>Result:</strong> Price reverts to $520.00 within 2 hours. POC acts as magnet. Trade wins at 2.3R.</p>
+      </div>
 
-      <h2>Overnight Inventory & Gap Rules</h2>
-      
-      <h3>Gap Types</h3>
-      <p><strong>Gap Up (Open > Previous Close)</strong></p>
-      <pre><code>Previous Close: $520.00
-Open: $521.00 (gap up $1.00)
+      <table style="width:100%; border-collapse: collapse; margin:2rem 0">
+        <tr style="border-bottom:2px solid rgba(255,255,255,.2)">
+          <th style="padding:.75rem;text-align:left">Price Location</th>
+          <th style="padding:.75rem;text-align:left">Interpretation</th>
+          <th style="padding:.75rem;text-align:left">Strategy</th>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+          <td style="padding:.75rem">Above VAH</td>
+          <td style="padding:.75rem">Expensive (above value)</td>
+          <td style="padding:.75rem">Fade or wait for acceptance</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+          <td style="padding:.75rem">Inside Value Area</td>
+          <td style="padding:.75rem">Fair value (balanced)</td>
+          <td style="padding:.75rem">Range trade or wait</td>
+        </tr>
+        <tr>
+          <td style="padding:.75rem">Below VAL</td>
+          <td style="padding:.75rem">Cheap (below value)</td>
+          <td style="padding:.75rem">Buy for reversion to POC</td>
+        </tr>
+      </table>
 
-Scenarios:
-1. Gap and Go: Continues higher (strong demand)
-   → Trade: Buy first pullback to gap fill ($520.80)
+      <div class="section-break"><span>Part 4: Plutus Flow Integration</span></div>
 
-2. Gap Fill: Returns to $520.00 (neutral demand)
-   → Trade: Long at fill IF holds, Short if breaks through
+      <h2>Auction Theory Meets Institutional Flow</h2>
 
-3. Gap Reversal: Fills and continues lower (weak)
-   → Trade: Short below previous close ($519.80)</code></pre>
+      <p>Now the real power: layering auction concepts with Plutus Flow volume analysis.</p>
 
-      <p><strong>Gap Down (Open < Previous Close)</strong></p>
-      <pre><code>Previous Close: $520.00
-Open: $519.00 (gap down $1.00)
-
-Scenarios:
-1. Gap and Go: Continues lower (strong selling)
-   → Trade: Short first bounce to gap fill ($519.20)
-
-2. Gap Fill: Returns to $520.00 (neutral)
-   → Trade: Short at fill IF rejects, Long if breaks higher
-
-3. Gap Reversal: Fills and continues higher (strong buying)
-   → Trade: Long above previous close ($520.20)</code></pre>
-
-      <h3>Gap Fill Statistics</h3>
-      <pre><code>Gap Size < 0.5%: 90% fill same day
-Gap Size 0.5-1%: 75% fill same day
-Gap Size > 1%: 50% fill same day (often takes days/weeks)
-
-Trading Rule:
-Small gaps (<0.5%) = Trade fill aggressively
-Large gaps (>1%) = Wait for acceptance, don't assume fill</code></pre>
-
-      <h2>Signal Pilot Integration with Auction Theory</h2>
-      
-      <h3>Plutus Flow: POC + Value Area</h3>
-      <pre><code>Plutus Flow shows real-time POC and volume distribution
-
-Setup: Price dips below VAL ($519.00)
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Plutus + POC</button>
+          <button>Janus + Opening Range</button>
+          <button>Complete Setup</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Plutus Flow: POC + Volume Absorption</h3>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Setup:
+Price dips below VAL ($519.00)
 Plutus POC: $520.00
-Volume spike at $518.80 (absorption, Plutus shows CVD+)
+Volume spike at $518.80 (Plutus shows CVD+)
 
-Trade: Long $518.90
+Analysis:
+- Below VAL = cheap
+- Volume absorption at $518.80 (institutions buying)
+- POC at $520.00 (fair value target)
+
+Trade:
+Long $518.90
 Target: POC $520.00 (fair value reversion)
 Stop: $518.50 (below absorption)
 R:R: 2.75R</code></pre>
+            <p style="margin-top:1rem">When Plutus confirms absorption at value area extremes, you're trading WITH institutions, not against them.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Janus Atlas: Opening Range Sweep</h3>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Setup:
+Opening Range: $519.50 - $520.50 (9:30-10:00 AM)
 
-      <h3>Janus Atlas: Opening Range Sweep</h3>
-      <pre><code>Opening Range: $519.50 - $520.50 (9:30-10:00 AM)
-
-10:15 AM: Janus sweep to $519.35 (below OR low)
+10:15 AM:
+Janus sweep to $519.35 (below OR low)
 Footprint: 15,000 shares absorbed
 Price reclaims $519.55
 
-Trade: Long $519.60 (above OR low)
+Analysis:
+- Opening range low swept (liquidity grab)
+- Janus confirms institutional absorption
+- Reclaim = reversal signal
+
+Trade:
+Long $519.60 (above OR low)
 Stop: $519.20 (below sweep)
 Target: $520.80 (OR high + buffer)
 R:R: 3.0R</code></pre>
+            <p style="margin-top:1rem">Opening range sweeps + Janus = institutional accumulation in plain sight. Don't fight it. Join it.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Complete Confluence Setup</h3>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Pre-Market:
+Previous day Value Area: $519-$521 (POC $520)
+Opening pattern: Open-Test-Drive (bullish)
 
-      <h3>Minimal Flow: Regime + Auction</h3>
-      <pre><code>Minimal Flow: Trending Up
-Opening Type: Open-Drive (bullish)
-Value Area: Migrating higher
+10:00 AM:
+Fair Value Gap: $519.80-$520.20
+Price pulls back to $520.05 (FVG 50% fill)
+Plutus: Volume absorption at $520.00 (CVD+)
+Janus: No sweep signal (clean structure)
+Regime: ADX 28, trending up
 
-Strategy: ONLY longs
-- Buy pullbacks to OR low
-- Buy FVG fills
-- Buy dips to POC
-- Target: VAH, then previous day high</code></pre>
+Confluence Count: 5/5
+- Opening drive (bullish intent) ✓
+- FVG fill at support ✓
+- POC support ($520.00) ✓
+- Volume absorption (Plutus) ✓
+- Trending regime ✓
 
-      <h2>Complete Opening Auction Framework</h2>
-      
-      <h3>Pre-Market Checklist</h3>
-      <ul>
-        <li>[ ] Previous day Value Area (VAH, POC, VAL)</li>
-        <li>[ ] Overnight range (high/low during off-hours)</li>
-        <li>[ ] Gap size and direction (vs. previous close)</li>
-        <li>[ ] Pre-market volume (high = strong intent)</li>
-      </ul>
+Trade:
+Long $520.10 (above FVG)
+Stop: $519.50 (below FVG + POC)
+Target 1: $521.50 (VAH)
+Target 2: $522.50 (extension)
+R:R: 2.3R to T1, 4.0R to T2
 
-      <h3>Opening 30-Min Process</h3>
-      <ul>
-        <li>[ ] Observe opening type (Drive, Test, Rejection, Balance)</li>
-        <li>[ ] Mark opening range high/low</li>
-        <li>[ ] Identify any FVGs or single prints</li>
-        <li>[ ] Wait for first meaningful setup (don't force)</li>
-      </ul>
+Result: Price to $522.80
+Exit T1 at $521.50 (50% size)
+Exit T2 at $522.40 (50% size)
+Avg: 3.1R</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px">
+              <strong>This Is The Edge:</strong> When auction theory, volume analysis, and regime detection ALL align, your win rate skyrockets. This isn't luck. This is systematic confluence.
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <h3>Trade Execution Rules</h3>
-      <pre><code>IF Open-Drive + Minimal Flow Trending:
-→ Buy first pullback to OR low or VWAP
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Opening range (first 30-60 min):</strong> Reveals institutional intent, predicts day type (70%+ accuracy)</li>
+          <li><strong>Four opening patterns:</strong> Drive (trend day), Test-Drive (reversal), Rejection (trap), Balance (range day)</li>
+          <li><strong>Fair Value Gaps:</strong> Fill 90%+ within 24 hours—trade the reversion, not the continuation</li>
+          <li><strong>POC = fair value:</strong> Price above VAH = expensive, below VAL = cheap—trade the mean reversion</li>
+          <li><strong>Layer with Plutus Flow:</strong> Volume absorption at value extremes = institutional positioning</li>
+          <li><strong>Janus + Opening Range:</strong> Sweeps below OR low = liquidity grab before reversal</li>
+        </ul>
+      </div>
 
-IF Open-Test-Drive + failed test:
-→ Long on reclaim above test low
+      <div class="section-break"><span>Test Your Knowledge</span></div>
 
-IF Open-Rejection-Reverse:
-→ Short below opening range low (breakdown)
+      <div class="quiz">
+        <h4>🎮 Quick Check (No Pressure)</h4>
 
-IF Open-Balance:
-→ Wait for OR breakout, trade direction of break
+        <div class="quiz-question">
+          <p><strong>Market opens at $520, immediately pushes to $521.50 by 9:45 AM with no pullback. Volume is elevated. What's the most likely day type and what should you do?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Range day – Fade the move, price will return to open</div>
+            <div class="quiz-option" data-correct="true">B) Trend day (Open-Drive) – Wait for pullback to buy, don't chase</div>
+            <div class="quiz-option" data-correct="false">C) Rejection day – Short at $521.50, expecting reversal</div>
+            <div class="quiz-option" data-correct="false">D) Balance day – No directional bias, trade range extremes</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Open-Drive pattern with no pullback and elevated volume = strong institutional buying = trend day (70%+ probability). Wait for first dip to VWAP or 50% opening range, then go long. Don't chase the initial spike.
+          </div>
+        </div>
 
-IF FVG within OR:
-→ Trade reversion to gap fill
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
 
-IF price below VAL:
-→ Long for reversion to POC (2-3R setup)</code></pre>
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">You just learned what floor traders spent YEARS mastering. Opening auctions, fair value gaps, POC—these are the tools that separate professionals from amateurs. Most traders never learn this. You just did.</p>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Opening range (first 30-60 min) sets tone for day</strong></li>
-        <li><strong>Fair Value Gaps fill 90%+ of the time (trade reversion)</strong></li>
-        <li><strong>Single prints = imbalance (act as support/resistance)</strong></li>
-        <li><strong>Value Area: Above VAH = expensive, below VAL = cheap</strong></li>
-        <li><strong>POC = fair value (price reverts to POC)</strong></li>
-      </ul>
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Article #31: Cross-Asset Correlations</strong> — Assets don't trade in isolation. Bonds lead, dollar drives, gold warns. Learn intermarket analysis to anticipate moves before they happen.</p>
+      </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Opening range classification</strong></p>
-      <p>Tomorrow, watch first 30 min. Classify opening type. Did it predict the rest of the day?</p>
-      
-      <p><strong>Exercise 2: Track FVG fills</strong></p>
-      <p>Mark all FVGs on 15-min chart today. How many filled within same session? How long did it take?</p>
+    </div>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Markets auction for fair value. Gaps and singles show imbalance. Trade the rebalancing—it's probability, not prediction."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+    <aside class="toc">
+      <h3>On this page</h3>
+      <a href="#" style="opacity:.6">Opening Auction Patterns</a>
+      <a href="#">Fair Value Gaps</a>
+      <a href="#">Value Area & POC</a>
+      <a href="#">Plutus Flow Integration</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/advanced/29-market-regime-recognition.html">&larr; Previous: Market Regimes</a>
-    <a class="btn btn-primary" href="/curriculum/advanced/31-cross-asset-correlations.html">Next: Cross-Asset Analysis &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/advanced/29-market-regime-recognition.html">← Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/31-cross-asset-correlations.html">Next Lesson →</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrolled = window.scrollY;
+    const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);
+    const circle = document.querySelector('.progress-circle');
+    if (circle) {
+      circle.style.setProperty('--progress', percent + '%');
+      circle.querySelector('span').textContent = percent + '%';
+    }
+  }, { passive: true });
+
+  localStorage.setItem('sp_edu_last_article', JSON.stringify({
+    title: 'Advanced Auction Theory',
+    level: 'Advanced',
+    order: '30',
+    url: window.location.pathname,
+    progress: 0
+  }));
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

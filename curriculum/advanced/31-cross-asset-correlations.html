@@ -1,323 +1,451 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Cross-Asset Correlations: Intermarket Analysis — SignalPilot Education</title>
-  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="31">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Cross-Asset Correlations: Don't Trade Blind — SignalPilot Learn</title>
+  <meta name="description" content="Assets don't trade in isolation. Bonds lead, dollar drives, gold warns. Learn intermarket analysis to see moves before they happen.">
+  <meta name="sp-level" content="Advanced">
+  <meta name="sp-order" content="31">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
-<article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Cross-Asset Correlations: Intermarket Analysis</h1><div class="meta">Reading time ~17 min • Intermarket Relationships</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Assets don't trade in isolation. Bonds lead, dollar drives, gold warns.</b> Learn intermarket correlations to anticipate moves before they happen and avoid trades doomed by macro headwinds.</p>
-      
-      <h2>The Four Pillars of Intermarket Analysis</h2>
-      
-      <h3>1. US Dollar (DXY)</h3>
-      <p><strong>Dollar strength impacts everything (commodities, stocks, crypto).</strong></p>
-      <pre><code>DXY UP (strong dollar):
-→ Commodities DOWN (gold, oil priced in $, more expensive)
-→ Foreign stocks DOWN (earnings hurt by FX)
-→ Crypto DOWN (risk-off, capital to USD)
-→ US exporters DOWN (goods more expensive abroad)
 
-DXY DOWN (weak dollar):
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #31</span>
+      </div>
+      <span class="badge">🔴 Advanced • Lesson 3 of 15</span>
+      <h1 class="headline xl">Cross-Asset Correlations: Stop Trading in a Vacuum</h1>
+      <div class="meta">Reading time ~17 min • Intermarket Relationships</div>
+
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>Your perfect SPY setup just triggered. You're long at $520.</b></p>
+
+      <p>Then bonds spike, dollar rips higher, VIX jumps to 25. Your trade gets demolished.</p>
+
+      <p>"Bad luck," you think. Wrong. You ignored the macro headwinds screaming at you.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Trading one asset in isolation is like driving with your eyes glued to the hood. You'll miss the semi-truck barreling toward you from the side. Bonds, dollar, VIX—they ALL matter. Ignore them at your own risk.</p>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 What You'll Gain</h4>
+        <p>After this lesson, you'll be able to:</p>
+        <ul>
+          <li>Read DXY, TNX, VIX as leading indicators for stocks and crypto</li>
+          <li>Spot intermarket divergences (SPY up + VIX up = warning)</li>
+          <li>Use macro filters to avoid trades doomed by headwinds</li>
+          <li>Anticipate moves 6-24 hours before they happen</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 1: The Four Pillars (Your Macro Dashboard)</span></div>
+
+      <h2>If You're Not Watching These, You're Trading Blind</h2>
+
+      <p>Professional traders check these BEFORE every trade. Retail? They check Twitter instead.</p>
+
+      <p>Be different. Be informed.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>US Dollar (DXY)</button>
+          <button>Bonds (TNX)</button>
+          <button>VIX (Fear)</button>
+          <button>Gold & Oil</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>💵 US Dollar (DXY) - The Master Driver</h3>
+            <p><strong>When the dollar moves, EVERYTHING reacts.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>DXY UP (Strong Dollar):
+→ Commodities DOWN (gold, oil priced in $)
+→ Foreign stocks DOWN (FX headwind)
+→ Crypto DOWN (risk-off, capital to USD)
+→ US exporters DOWN (goods expensive abroad)
+
+DXY DOWN (Weak Dollar):
 → Commodities UP (cheaper in USD terms)
 → Foreign stocks UP (FX tailwind)
 → Crypto UP (risk-on, alternative to USD)
 → US exporters UP (competitive advantage)</code></pre>
-
-      <h3>2. Treasury Yields (TNX, 10-Year)</h3>
-      <p><strong>Yields show bond market's growth/inflation expectations.</strong></p>
-      <pre><code>Yields RISING:
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-left:3px solid rgba(255,107,107,.5)">
+              <strong>Warning:</strong> If DXY is spiking while you're long crypto or gold, you're fighting the tide. Exit or reduce size IMMEDIATELY.
+            </div>
+          </div>
+          <div class="tab-panel">
+            <h3>📈 Treasury Yields (TNX) - Growth Expectations</h3>
+            <p><strong>Bond yields show where smart money thinks rates are going.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Yields RISING (TNX up):
 → Stocks DOWN (competing asset, discount rates up)
-→ Growth stocks HIT HARDEST (ARKK, tech, high P/E)
-→ Value stocks OUTPERFORM (banks, energy, lower duration)
-→ Gold DOWN (opportunity cost of holding non-yielding asset)
+→ Growth stocks HIT HARDEST (tech, ARKK)
+→ Value stocks OUTPERFORM (banks, energy)
+→ Gold DOWN (opportunity cost rises)
 
-Yields FALLING:
+Yields FALLING (TNX down):
 → Stocks UP (TINA: There Is No Alternative)
-→ Growth stocks OUTPERFORM (low rates = high valuations)
+→ Growth stocks OUTPERFORM (low rates = high P/E)
 → Gold UP (safe haven + low opportunity cost)</code></pre>
-
-      <h3>3. VIX (Volatility Index)</h3>
-      <p><strong>VIX measures fear (SPX options implied volatility).</strong></p>
-      <pre><code>VIX < 15: Complacency (risk-on)
-→ Stocks grind higher
-→ Low volatility = favorable for selling premium
-
-VIX 15-20: Normal (neutral)
-→ Regular volatility
-
-VIX 20-30: Elevated fear (caution)
-→ Stocks choppy, downside risk
-→ Reduce position sizing
-
-VIX > 30: Panic (extreme fear)
-→ Stocks in correction/crash mode
-→ Sit out OR buy deep dips (capitulation)</code></pre>
-
-      <h3>4. Commodities (Gold, Oil)</h3>
-      <p><strong>Gold = inflation hedge + safe haven. Oil = growth proxy.</strong></p>
-      <pre><code>GOLD rising:
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.1);border-left:3px solid rgba(255,193,7,.5)">
+              <strong>Heads Up:</strong> When TNX breaks resistance (yields spike), expect SPY to correct 3-5% within days. It's not IF, it's WHEN.
+            </div>
+          </div>
+          <div class="tab-panel">
+            <h3>📊 VIX (Volatility Index) - Fear Gauge</h3>
+            <p><strong>VIX measures market fear via SPX options.</strong></p>
+            <table style="width:100%; border-collapse: collapse; margin:1rem 0">
+              <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+                <th style="padding:.5rem">VIX Level</th>
+                <th style="padding:.5rem">Market State</th>
+                <th style="padding:.5rem">Action</th>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                <td style="padding:.5rem">< 15</td>
+                <td style="padding:.5rem">Complacency (risk-on)</td>
+                <td style="padding:.5rem">Trade normally</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                <td style="padding:.5rem">15-20</td>
+                <td style="padding:.5rem">Normal</td>
+                <td style="padding:.5rem">Regular trading</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                <td style="padding:.5rem">20-30</td>
+                <td style="padding:.5rem">Elevated fear</td>
+                <td style="padding:.5rem">Reduce size 50%</td>
+              </tr>
+              <tr>
+                <td style="padding:.5rem">> 30</td>
+                <td style="padding:.5rem">Panic</td>
+                <td style="padding:.5rem">Sit out OR buy dips</td>
+              </tr>
+            </table>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-left:3px solid rgba(255,107,107,.5)">
+              <strong>Real Talk:</strong> When VIX > 25, stop trying to be a hero. Cut size, widen stops, or just sit out. Your capital will thank you.
+            </div>
+          </div>
+          <div class="tab-panel">
+            <h3>🪙 Gold & Oil - Inflation & Growth</h3>
+            <p><strong>Gold = inflation hedge + safe haven. Oil = growth proxy.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>GOLD Rising:
 → Inflation fears OR risk-off (flight to safety)
 → USD typically falling
-→ Real yields falling (10Y yield - inflation)
+→ Real yields falling (10Y - inflation)
 
-OIL rising:
+OIL Rising:
 → Economic growth (demand) OR supply shock
 → Inflation pressures (energy costs pass through)
-→ Energy stocks up, airlines/transport down (input costs)</code></pre>
+→ Energy stocks up, airlines/transport down</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-left:3px solid rgba(0,212,170,.5)">
+              <strong>Pro Tip:</strong> When gold and oil BOTH spike simultaneously, it's usually inflation fears. Expect Fed hawkish talk → stocks down.
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <h2>Key Correlation Relationships</h2>
-      
-      <h3>SPY vs. TNX (Stock-Bond Inverse)</h3>
-      <p><strong>Typical correlation: Negative (yields up = stocks down).</strong></p>
-      <pre><code>Scenario 1: Yields spike (TNX 4.0% → 4.5%)
-Result: SPY drops 3-5% (valuation compression)
+      <div class="section-break"><span>Part 2: Key Correlations (The Relationships That Matter)</span></div>
 
-Why: Higher yields = bonds more attractive vs. stocks
-     Discount rate up = future earnings worth less
+      <h2>These Aren't Theories—They're Mechanical Relationships</h2>
 
-Trade: If TNX breaking resistance → Short SPY or reduce longs</code></pre>
+      <p>When you see these divergences, pay attention. The market is screaming at you.</p>
 
-      <h3>DXY vs. Gold (Inverse)</h3>
-      <p><strong>Correlation: -0.7 to -0.9 (strong inverse).</strong></p>
-      <pre><code>DXY rallies (strong dollar) → Gold falls
-DXY drops (weak dollar) → Gold rallies
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">SPY vs TNX (Inverse Correlation)</div>
+          <div class="accordion-content">
+            <p><strong>Typical correlation: Negative (yields up = stocks down).</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Scenario: TNX breaks resistance (4.0% → 4.5%)
 
-Why: Gold priced in USD. Strong USD = gold more expensive (less demand)
+Why SPY drops:
+- Higher yields = bonds more attractive vs. stocks
+- Discount rate up = future earnings worth less
+- Valuation compression (P/E multiples contract)
+
+Expected Move:
+TNX +0.5% → SPY drops 3-5% within 3-7 days
 
 Trade Setup:
-DXY breaks support → Go long GLD (gold ETF)
-DXY breaks resistance → Short GLD or avoid longs</code></pre>
+IF TNX breaking resistance AND SPY hasn't reacted yet:
+→ Short SPY or reduce longs
+→ Target: 3-5% correction
+→ Stop: If TNX reverses back below breakout</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
+              <strong>Key Insight:</strong> TNX leads SPY by 1-3 days. When yields break out, don't wait—SPY WILL follow.
+            </div>
+          </div>
+        </div>
 
-      <h3>Crypto vs. Nasdaq (High Correlation)</h3>
-      <p><strong>BTC/ETH correlate 0.6-0.8 with QQQ (Nasdaq).</strong></p>
-      <pre><code>Nasdaq rallies → Crypto typically rallies
-Nasdaq dumps → Crypto dumps (often 2-3x magnitude)
+        <div class="accordion-item">
+          <div class="accordion-header">DXY vs Gold (Strong Inverse)</div>
+          <div class="accordion-content">
+            <p><strong>Correlation: -0.7 to -0.9 (extremely inverse).</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Why They're Inverse:
+Gold priced in USD
+Strong USD = gold more expensive globally
+→ Demand drops → Gold falls
 
-Why: Crypto treated as risk-on tech asset (not yet uncorrelated)
+DXY rallies → Gold falls
+DXY drops → Gold rallies
 
-Leading Indicator: Nasdaq often leads crypto by 6-24 hours
-Trade: If QQQ breaks down overnight → Expect BTC to follow</code></pre>
+Trade Setup:
+DXY breaks support (major level) → Go long GLD
+DXY breaks resistance → Short GLD or avoid longs
 
-      <h3>Oil vs. Energy Stocks (Positive)</h3>
-      <p><strong>XLE (Energy ETF) tracks oil with lag.</strong></p>
-      <pre><code>Oil (WTI) rallies 5% → XLE typically up 3-4% (levered)
-Oil drops 5% → XLE down 3-4%
+Win Rate: 75%+ (one of most reliable correlations)</code></pre>
+          </div>
+        </div>
 
-Trade: Watch oil for early signal
-If WTI breaks resistance → Long XLE (equity leverage)
-If WTI breaks support → Short XLE or avoid</code></pre>
+        <div class="accordion-item">
+          <div class="accordion-header">Crypto vs Nasdaq (High Correlation)</div>
+          <div class="accordion-content">
+            <p><strong>BTC/ETH correlate 0.6-0.8 with QQQ (Nasdaq).</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Why They Move Together:
+Crypto treated as risk-on tech asset (not yet uncorrelated)
+Same buyers (retail + tech-focused institutions)
 
-      <h2>Divergence Trading (High-Probability Setups)</h2>
-      
-      <h3>What is Intermarket Divergence?</h3>
-      <p><strong>When correlated assets move opposite directions = WARNING.</strong></p>
-      <pre><code>Example 1: SPY up, TNX up (both rising)
-Normal: SPY up usually = TNX down (inverse)
-Divergence: Both rising = inflation fears (not bullish)
+Leading Indicator:
+Nasdaq often leads crypto by 6-24 hours
 
-Interpretation: Stock rally may be short-lived
-Trade: Fade the SPY rally (short on weakness)</code></pre>
+Trade Setup:
+IF QQQ breaks down overnight (futures red):
+→ Expect BTC to follow within 6-24 hours
+→ Short BTC or exit longs before US open</code></pre>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.1);border-radius:8px">
+              <strong>Warning:</strong> When Nasdaq dumps 2%, expect crypto to dump 4-6% (2-3x leverage). Plan accordingly.
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <h3>SPY Up + VIX Up (Fear Rally)</h3>
-      <p><strong>Unusual: Stocks rising while fear increases.</strong></p>
-      <pre><code>Scenario:
-SPY: $520 → $525 (+1%)
+      <div class="section-break"><span>Part 3: Divergence Trading (High-Probability Warnings)</span></div>
+
+      <h2>When Correlations Break, Pay Attention</h2>
+
+      <p>Divergences are like smoke detectors. Something's about to break.</p>
+
+      <div class="callout-info">
+        <h4>📖 Case Study: SPY Up + VIX Up (Fear Rally)</h4>
+        <p><strong>The Setup:</strong></p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;margin-top:1rem;overflow-x:auto"><code>SPY: $520 → $525 (+1%)
 VIX: 18 → 22 (+22%, fear spiking)
 
-Interpretation: Short covering (forced buying), not conviction
-Likely: Rally fails, reversal coming
+Normal: SPY up = VIX down (inverse)
+Actual: BOTH rising (divergence)
 
-Trade: Fade rally above $525 (short with tight stop)</code></pre>
+Interpretation:
+Short covering (forced buying), not conviction
+Rally driven by panic, not strength
 
-      <h3>DXY Up + SPY Up (Risk-On Divergence)</h3>
-      <p><strong>Unusual: Strong dollar hurts stocks (negative correlation).</strong></p>
-      <pre><code>Scenario:
-DXY: 103 → 105 (strong dollar)
-SPY: $520 → $525 (stocks rallying)
-
-Interpretation: Temporary, one will resolve
-Likely: SPY drops to realign (dollar strength wins)
-
-Trade: Short SPY when shows weakness</code></pre>
-
-      <h3>Gold Up + Real Yields Up (Illogical)</h3>
-      <p><strong>Gold typically falls when real yields rise.</strong></p>
-      <pre><code>Scenario:
-10Y Yield - Inflation = 1.5% (real yield, rising)
-Gold (GLD): Rising
-
-Interpretation: Fear overriding fundamentals (crisis)
-Likely: Unsustainable, gold corrects OR yields collapse
-
-Trade: Depends on context (geopolitical vs. economic)</code></pre>
-
-      <h2>Leading vs. Lagging Indicators</h2>
-      
-      <h3>Leading Indicators (Move First)</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Asset</th><th>What It Leads</th><th>Lag Time</th></tr>
-        <tr><td>Treasury Yields</td><td>Stocks (growth expectations)</td><td>1-7 days</td></tr>
-        <tr><td>DXY (Dollar)</td><td>Commodities, Gold</td><td>0-2 days</td></tr>
-        <tr><td>China A-Shares</td><td>Global risk sentiment</td><td>12-24 hours</td></tr>
-        <tr><td>VIX Futures</td><td>SPX volatility</td><td>1-3 days</td></tr>
-        <tr><td>Copper</td><td>Industrial stocks</td><td>1-4 weeks</td></tr>
-      </table>
-
-      <h3>Using Leading Indicators</h3>
-      <pre><code>Example: TNX (10-Year Yield) Leading SPY
-
-Day 1: TNX breaks resistance (4.20% → 4.35%)
-Day 2: SPY still holding (no reaction yet)
-Day 3: SPY starts dropping (catching up to yields)
-
-Trade Setup (Day 2):
-- TNX already broke (leading indicator fired)
-- SPY hasn't reacted yet (lagging)
-- Action: Short SPY in anticipation of catch-up</code></pre>
-
-      <h2>Sector Rotation Based on Intermarket Signals</h2>
-      
-      <h3>Rotation Cycle</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Macro Environment</th><th>Outperformers</th><th>Underperformers</th></tr>
-        <tr><td>Rising Yields + Strong Economy</td><td>Banks (XLF), Energy (XLE)</td><td>Tech (XLK), Utilities (XLU)</td></tr>
-        <tr><td>Falling Yields + Weak Economy</td><td>Utilities (XLU), Staples (XLP)</td><td>Cyclicals, Small Caps</td></tr>
-        <tr><td>Strong Dollar</td><td>Domestic (retailers), Large Caps</td><td>Multinationals, Materials</td></tr>
-        <tr><td>Weak Dollar</td><td>Commodities, Emerging Markets</td><td>Domestic</td></tr>
-        <tr><td>High VIX</td><td>Defensive (XLP, XLU)</td><td>Growth (ARKK), High Beta</td></tr>
-      </table>
-
-      <h3>Tactical Sector Rotation Trade</h3>
-      <pre><code>Observation: TNX rising (yields up), SPY flat
-
-Analysis:
-- Rising yields hurt growth, help value
-- Banks (XLF) benefit (net interest margin up)
-- Tech (XLK) hurt (valuation compression)
+Likely Outcome:
+Rally fails within 1-2 sessions
+Reversal back below $520
 
 Trade:
-Long XLF (banks), Short XLK (tech)
-Pairs trade (market neutral, capture rotation)
+Fade rally above $525
+Short with tight stop above $526
+Target: $520 (where rally started)</code></pre>
+        <p style="margin-top:1rem"><strong>Result:</strong> SPY peaks at $525.80, reverses to $519.50 within 36 hours. Divergence traders profit 2.7R.</p>
+      </div>
 
-Exit: When yield spike reverses</code></pre>
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>When correlated assets move opposite directions, one of them is lying. The divergence WILL resolve. Trade the convergence, not the divergence.</p>
+      </div>
 
-      <h2>Correlation Breakdown (Regime Shifts)</h2>
-      
-      <h3>When Correlations Break</h3>
-      <p><strong>Crisis = correlations go to 1.0 (everything falls together).</strong></p>
-      <pre><code>Normal Market:
-SPY/Gold correlation: -0.3 (slightly inverse)
-SPY/TLT correlation: -0.5 (bonds hedge stocks)
+      <div class="section-break"><span>Part 4: Pre-Market Intermarket Scan</span></div>
 
-Crisis (2008, 2020 March):
-SPY/Gold correlation: +0.8 (both sold for cash)
-SPY/TLT correlation: +0.6 (liquidation, even bonds sold)
+      <h2>The 5-Minute Macro Check (Before EVERY Trade)</h2>
 
-Implication: Diversification fails in crisis (except cash)</code></pre>
+      <p>Copy this checklist. Use it religiously. It'll save you thousands in avoided bad trades.</p>
 
-      <h3>Detecting Regime Shifts</h3>
-      <pre><code>Rolling 30-Day Correlation (SPY vs. TLT):
+      <div style="background:rgba(0,212,170,.1);padding:1.5rem;border-radius:12px;margin:2rem 0">
+        <h3 style="margin:0 0 1rem 0">Pre-Market Checklist (Check These FIRST)</h3>
+        <table style="width:100%; border-collapse: collapse">
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem;width:30%"><strong>Asset</strong></td>
+            <td style="padding:.75rem;width:40%"><strong>Check This</strong></td>
+            <td style="padding:.75rem;width:30%"><strong>Implication</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">DXY</td>
+            <td style="padding:.75rem">Up/Down/Flat?</td>
+            <td style="padding:.75rem">Up = headwind for stocks/crypto</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">TNX</td>
+            <td style="padding:.75rem">Breaking resistance?</td>
+            <td style="padding:.75rem">Yes = bearish for growth stocks</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">VIX</td>
+            <td style="padding:.75rem">< 15, 15-20, > 20?</td>
+            <td style="padding:.75rem">> 20 = reduce size</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">Gold</td>
+            <td style="padding:.75rem">Spiking?</td>
+            <td style="padding:.75rem">Yes = safe haven demand (risk-off)</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">Oil</td>
+            <td style="padding:.75rem">Moving 2%+?</td>
+            <td style="padding:.75rem">Yes = inflation concerns</td>
+          </tr>
+        </table>
+      </div>
 
-Normal: -0.4 to -0.6 (inverse, bonds hedge stocks)
-Warning: -0.2 to 0 (decorrelating)
-Crisis: +0.3 to +0.7 (selling everything)
+      <h3>Confluence Matrix (Macro + Micro)</h3>
 
-Trade Action:
-If correlation flips positive → Risk-off (exit all longs)
-If correlation normalizes → Risk-on (resume trading)</code></pre>
-
-      <h2>Practical Intermarket Checklist</h2>
-      
-      <h3>Pre-Market Intermarket Scan (5 min)</h3>
-      <ul>
-        <li>[ ] DXY: Up/Down/Flat (strong dollar = headwind for commodities)</li>
-        <li>[ ] TNX: Up/Down/Flat (rising yields = headwind for growth stocks)</li>
-        <li>[ ] VIX: < 15 (calm), 15-20 (normal), > 20 (caution)</li>
-        <li>[ ] Gold: Up/Down (safe haven demand?)</li>
-        <li>[ ] Oil: Up/Down (inflation signal?)</li>
-        <li>[ ] Futures: ES, NQ direction</li>
-      </ul>
-
-      <h3>Intermarket Confirmation Matrix</h3>
-      <pre><code>Before taking SPY LONG:
+      <pre style="background:rgba(0,0,0,.3);padding:1.5rem;border-radius:8px;overflow-x:auto"><code>Before Taking SPY LONG:
 
 Bullish Confirmations:
 ✓ DXY falling or flat (weak dollar = tailwind)
-✓ TNX falling or stable (yields not rising)
+✓ TNX falling or stable (yields not spiking)
 ✓ VIX < 20 (low fear)
 ✓ Sector rotation into cyclicals (XLF, XLE up)
 
 Bearish Warnings:
-✗ DXY spiking (strong dollar)
-✗ TNX breaking resistance (yield spike)
+✗ DXY spiking (strong dollar = headwind)
+✗ TNX breaking resistance (yield spike = bearish)
 ✗ VIX > 20 and rising (fear increasing)
 ✗ Sector rotation into defensives (XLU, XLP)
 
-If 3+ bullish confirmations → High confidence long
-If 2+ bearish warnings → Reduce size or skip</code></pre>
+Decision Rule:
+IF 3+ bullish confirmations → High confidence long
+IF 2+ bearish warnings → Reduce size or skip
 
-      <h2>Signal Pilot + Intermarket Integration</h2>
-      
-      <h3>Macro Filter for Micro Setups</h3>
-      <pre><code>Janus Atlas sweep detected on SPY at $520
+Example:
+DXY flat, TNX stable, VIX 17, cyclicals up = 4 bullish → GO
+DXY +0.8%, TNX breaking out, VIX 23 = 3 bearish → SKIP</code></pre>
 
-Micro: Perfect setup (sweep + reclaim + absorption)
+      <div class="callout-warning">
+        <h4>🚨 The Painful Truth</h4>
+        <p>Your setup might be perfect—Janus sweep, Plutus absorption, regime trending. But if macro is screaming "RISK-OFF," your trade is doomed.</p>
+        <p>Macro beats micro. Every. Single. Time.</p>
+      </div>
 
-Macro Check:
-- DXY: Spiking +0.8% (bearish for SPY)
-- TNX: Breaking resistance (yields up, bearish)
-- VIX: 18 → 22 (fear rising)
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>DXY up = commodities/crypto down:</strong> Inverse correlation -0.7 to -0.9</li>
+          <li><strong>TNX up = stocks down:</strong> Especially growth (tech, ARKK). Leads SPY by 1-3 days</li>
+          <li><strong>VIX > 20 = reduce size:</strong> > 30 = sit out entirely. Fear kills rallies</li>
+          <li><strong>Divergences = warnings:</strong> SPY up + VIX up = unsustainable (short covering)</li>
+          <li><strong>Pre-market scan = mandatory:</strong> 5-minute macro check before EVERY trade</li>
+          <li><strong>Macro beats micro:</strong> Perfect setup + macro headwinds = losing trade</li>
+        </ul>
+      </div>
 
-Decision: SKIP the long (macro headwinds too strong)
+      <div class="section-break"><span>Test Your Knowledge</span></div>
 
-Result: SPY rallies to $521, then dumps to $518 (macro won)</code></pre>
+      <div class="quiz">
+        <h4>🎮 Quick Check (No Pressure)</h4>
 
-      <h3>Confluence Setup: Micro + Macro Aligned</h3>
-      <pre><code>Setup: BTC at $42,000, Janus sweep to $41,500
+        <div class="quiz-question">
+          <p><strong>You have a perfect Janus sweep setup on SPY at $520. Before entering, you check: DXY +1.2% (spiking), TNX breaking resistance (+0.4%), VIX 24 (elevated). What do you do?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Take the trade—setup is perfect, macro doesn't matter</div>
+            <div class="quiz-option" data-correct="true">B) Skip the trade—3 macro headwinds override the setup</div>
+            <div class="quiz-option" data-correct="false">C) Take the trade but reduce size to 50%</div>
+            <div class="quiz-option" data-correct="false">D) Wait 30 minutes to see if macro stabilizes</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> DXY spiking (bearish for stocks), TNX breaking out (bearish), VIX elevated (fear rising) = 3 strong bearish signals. Macro headwinds this strong will override even perfect setups. Skip and live to trade another day. Protecting capital > forcing trades.
+          </div>
+        </div>
 
-Micro: Sweep + reclaim + Plutus absorption
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
 
-Macro:
-- QQQ (Nasdaq): Breaking resistance (risk-on)
-- DXY: Falling (bullish for BTC)
-- VIX: 16 → 14 (complacency, risk-on)
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">You just learned what most traders ignore until they blow up an account. Intermarket analysis isn't optional—it's survival. When dollar, bonds, and VIX all align against you, no setup is good enough. Now you know what to watch.</p>
 
-Decision: HIGH CONFIDENCE LONG (macro + micro aligned)
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Article #32: Volatility Trading</strong> — VIX isn't noise—it's tradeable. Learn how to trade volatility directly, exploit gamma exposure, and use VIX as a directional edge.</p>
+      </div>
 
-Trade: Long $42,050, Stop $41,300, Target $44,000 (2.6R)</code></pre>
+    </div>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>DXY up = commodities/crypto down (inverse)</strong></li>
-        <li><strong>TNX up = stocks down, especially growth (inverse)</strong></li>
-        <li><strong>VIX > 20 = reduce size, > 30 = sit out</strong></li>
-        <li><strong>Divergences = warnings (SPY up + VIX up = unsustainable)</strong></li>
-        <li><strong>Use macro as filter (don't fight macro headwinds)</strong></li>
-      </ul>
+    <aside class="toc">
+      <h3>On this page</h3>
+      <a href="#" style="opacity:.6">The Four Pillars</a>
+      <a href="#">Key Correlations</a>
+      <a href="#">Divergence Trading</a>
+      <a href="#">Pre-Market Scan</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Track correlations</strong></p>
-      <p>For 1 week, log daily: DXY, TNX, VIX, SPY. Calculate correlation. Notice patterns?</p>
-      
-      <p><strong>Exercise 2: Spot divergence</strong></p>
-      <p>Find day when SPY rallied but VIX also rose. What happened next session? Did rally fail?</p>
-
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"Assets don't trade in vacuum. Dollar leads, yields warn, VIX screams. Ignore intermarket? Trade blind."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/advanced/30-auction-theory-advanced.html">&larr; Previous: Auction Theory</a>
-    <a class="btn btn-primary" href="/curriculum/advanced/32-volatility-trading.html">Next: Volatility Trading &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/advanced/30-auction-theory-advanced.html">← Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/advanced/32-volatility-trading.html">Next Lesson →</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div>
+    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  </div>
+</footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script>
+  window.addEventListener('scroll', () => {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrolled = window.scrollY;
+    const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);
+    const circle = document.querySelector('.progress-circle');
+    if (circle) {
+      circle.style.setProperty('--progress', percent + '%');
+      circle.querySelector('span').textContent = percent + '%';
+    }
+  }, { passive: true });
+
+  localStorage.setItem('sp_edu_last_article', JSON.stringify({
+    title: 'Cross-Asset Correlations',
+    level: 'Advanced',
+    order: '31',
+    url: window.location.pathname,
+    progress: 0
+  }));
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

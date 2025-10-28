@@ -1,51 +1,405 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Moving Averages: The Most Misunderstood Tool</title><meta name="sp-level" content="Beginner"><link rel="stylesheet" href="/assets/edu.css"></head>
-<body><div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Moving Averages Aren't Support (Stop Buying the Touch)</title>
+  <meta name="description" content="EMAs describe trend, they don't predict reversals. Learn why the Golden Cross lags and how Pentarch's 5-event system gives you actionable signals.">
+  <meta name="sp-level" content="Beginner"><meta name="sp-order" content="6">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Beginner</span><h1 class="headline xl">Moving Averages: The Most Misunderstood Tool</h1><div class="meta">Reading time ~11 min • Indicator Truth • Pentarch Pilot Line</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>EMAs aren't support/resistance—they're trend filters.</b> Learn why the Golden Cross lags, how multi-timeframe alignment works, and Pentarch Pilot Line's 5-event system (TD, IGN, RUN, EXT, BRK).</p>
-      <h2>The Moving Average Myth</h2>
-      <p><strong>Retail belief:</strong> "50 EMA is support. When price touches it, buy!"</p>
-      <p><strong>Reality:</strong> EMAs DESCRIBE trend, they don't PREDICT reversals. Price can blast through any MA.</p>
-      <h2>What MAs Actually Show</h2>
-      <ul><li><b>Trend direction:</b> Price above MA = uptrend. Below = downtrend.</li><li><b>Trend strength:</b> Steep MA angle = strong trend. Flat = ranging.</li><li><b>Momentum shifts:</b> Price crossing MA = potential regime change.</li></ul>
-      <p><b>MAs are DESCRIPTIVE, not PREDICTIVE.</b></p>
-      <h2>Why the Golden Cross Lags Too Much</h2>
-      <p><strong>Golden Cross:</strong> 50 EMA crosses above 200 EMA (bullish signal).</p>
-      <p><strong>Problem:</strong> By the time this happens, the trend is already 20-30% into the move. You're late.</p>
-      <p><strong>Example:</strong> BTC bottoms at $20k. Golden Cross triggers at $28k (+40%). Rally tops at $32k. You caught 14% of a 60% move.</p>
-      <h2>Multi-Timeframe EMA Alignment (The Right Way)</h2>
-      <p><strong>3-Timeframe Stack:</strong></p>
-      <ul><li><b>HTF (Higher):</b> Daily EMA (trend direction)</li><li><b>MTF (Medium):</b> 4H EMA (confirmation)</li><li><b>LTF (Lower):</b> 1H EMA (execution)</li></ul>
-      <p><strong>Bullish Alignment:</strong> Price above all 3 EMAs → Strong uptrend → Long bias</p>
-      <p><strong>Bearish Alignment:</strong> Price below all 3 EMAs → Strong downtrend → Short bias</p>
-      <p><strong>Mixed:</strong> Price between EMAs → Ranging/transitioning → Wait</p>
-      <h2>Pentarch Pilot Line: 5-Event System</h2>
-      <p><strong>Pentarch</strong> tracks 5 key EMA events:</p>
-      <ol><li><b>TD (Trend Definition):</b> Price crosses EMA (trend birth/death)</li><li><b>IGN (Ignition):</b> Price accelerates away from EMA (momentum)</li><li><b>RUN (Run):</b> Sustained move without retest (strong trend)</li><li><b>EXT (Extension):</b> Price far from EMA (overextended, pullback likely)</li><li><b>BRK (Break):</b> Price crosses back through EMA (trend failure)</li></ol>
-      <p><strong>Trading Framework:</strong></p>
-      <ul><li><b>TD event:</b> New trend starting, watch for IGN confirmation</li><li><b>IGN event:</b> Momentum confirmed, enter WITH trend</li><li><b>RUN event:</b> Trend strong, trail stop below EMA</li><li><b>EXT event:</b> Take partial profits, expect pullback</li><li><b>BRK event:</b> Exit all, trend over</li></ul>
-      <h2>Complete MA Framework</h2>
-      <p><strong>Step 1: Multi-Timeframe Alignment</strong></p>
-      <ul><li>Check HTF (Daily), MTF (4H), LTF (1H) EMAs</li><li>Require 2/3 alignment for trade (ideally 3/3)</li></ul>
-      <p><strong>Step 2: Pentarch Event Confirmation</strong></p>
-      <ul><li>Wait for IGN or RUN event (not just TD)</li><li>Avoid trading on EXT (overextended)</li><li>Exit immediately on BRK (trend failure)</li></ul>
-      <p><strong>Step 3: Structure + Volume Confirmation</strong></p>
-      <ul><li>Janus Atlas: Sweep or breakout confirmation</li><li>Plutus Flow: Delta supporting direction</li><li>Minimal Flow: Regime = trending (not ranging)</li></ul>
-      <h2>Common Mistakes</h2>
-      <p><strong>Mistake 1: Buying MA "support" blindly.</strong> Fix: MAs aren't support—they're trend filters.</p>
-      <p><strong>Mistake 2: Using Golden Cross as entry.</strong> Fix: Too lagging. Use Pentarch IGN instead.</p>
-      <p><strong>Mistake 3: Trading single timeframe MA.</strong> Fix: Require multi-timeframe alignment (2/3 minimum).</p>
-      <h2>Key Takeaways</h2>
-      <ul><li><strong>EMAs describe trend, don't predict reversals</strong></li><li><strong>Golden Cross lags too much</strong> (late entry)</li><li><strong>Multi-timeframe alignment = high probability</strong> (HTF + MTF + LTF)</li><li><strong>Pentarch 5 events = actionable framework</strong> (TD, IGN, RUN, EXT, BRK)</li><li><strong>MAs are filters, not triggers</strong> (require structure confirmation)</li></ul>
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"EMAs describe trend; they don't predict reversals."</em> — <strong>Signal Pilot Education Team</strong></p>
-    </div></div>
-  <div class="wrap nav-article"><a class="btn btn-ghost" href="/curriculum/beginner/05-rsi-extremes.html">&larr; Previous</a><a class="btn btn-primary" href="/curriculum/beginner/07-revenge-trading.html">Next: Psychology &rarr;</a></div>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner.html">Beginner</a> <span>›</span>
+        <span>Lesson #6</span>
+      </div>
+      <span class="badge">🟢 Beginner • Lesson 6 of 12</span>
+      <h1 class="headline xl">Moving Averages Aren't Support (Stop Buying the Touch)</h1>
+      <div class="meta">11 min read • Indicator Truth</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>"Price is approaching the 50 EMA. Time to buy the bounce!"</b></p>
+
+      <p>Famous last words before getting wrecked.</p>
+
+      <p>Here's the uncomfortable truth: EMAs aren't magical support lines. They're lagging descriptors of what already happened. Buying blindly at MA "support" is how you get run over.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Moving averages don't predict anything. They DESCRIBE the past.</p>
+        <p>When price touches your 50 EMA, that line doesn't "hold" price. Price either continues or reverses based on actual supply/demand—not because a line exists on your chart.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>What MAs actually show you (trend description, not prediction)</li>
+        <li>Why the Golden Cross is 20-30% late to every trend</li>
+        <li>Multi-timeframe EMA alignment (the right way to use MAs)</li>
+        <li>Pentarch Pilot Line's 5-event system (TD, IGN, RUN, EXT, BRK)</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: The Moving Average Myth</span></div>
+
+      <h2>What You Think They Do vs. What They Actually Do</h2>
+
+      <p>Let's clear this up right now:</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Retail Belief</button>
+          <button>The Reality</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>What Retail Thinks</h3>
+            <p><strong>"The 50 EMA is strong support!"</strong></p>
+            <p><em>Translation: Price will bounce here because... reasons?</em></p>
+            <p><strong>What they do:</strong></p>
+            <ul>
+              <li>Set alerts for when price touches the MA</li>
+              <li>Buy immediately on contact</li>
+              <li>Place stop below the MA</li>
+              <li>Get stopped out when price blasts through</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Result:</strong> Stopped out, confused why "support failed"</p>
+          </div>
+          <div class="tab-panel">
+            <h3>What MAs Actually Show</h3>
+            <p><strong>EMAs are DESCRIPTIVE, not PREDICTIVE.</strong></p>
+            <p>They tell you:</p>
+            <ul>
+              <li><strong>Trend direction:</strong> Price above MA = uptrend. Below = downtrend.</li>
+              <li><strong>Trend strength:</strong> Steep MA angle = strong momentum. Flat = ranging.</li>
+              <li><strong>Regime shifts:</strong> Price crossing MA = potential change (but not guaranteed)</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Reality:</strong> MAs describe what's happening, not what will happen next</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>If EMAs predicted the future, every trader would be rich. They don't. They lag.</p>
+        <p><strong>A 50-period EMA is the average price of the last 50 bars.</strong> It's a history book, not a crystal ball.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: Why the Golden Cross Lags Too Much</span></div>
+
+      <h2>The Most Overhyped Signal in Trading</h2>
+
+      <p>You've heard of it. The legendary "Golden Cross."</p>
+
+      <p><strong>Definition:</strong> 50 EMA crosses above 200 EMA = bullish signal</p>
+
+      <p>Sounds great! Except...</p>
+
+      <div class="callout-info">
+        <h4>📖 War Story: The Golden Cross Trap</h4>
+        <p><strong>January 2023:</strong> BTC bottoms at $16,500.</p>
+        <p><strong>February:</strong> Rally begins. Price at $20,000 (+21%).</p>
+        <p><strong>March 15th:</strong> Golden Cross triggers. Price at $24,500 (+48%).</p>
+        <p><strong>April:</strong> Rally continues to $28,000 (+70%), then pulls back.</p>
+        <p><strong>May:</strong> Price consolidates at $26,000.</p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>Retail trader who waited for Golden Cross:</strong> Entered at $24,500, rode to $28,000, caught about 14% of a 70% move.</p>
+        <p><strong>Trader using leading indicators:</strong> Entered at $18,000 after liquidity sweep confirmation, caught 55% of the move.</p>
+      </div>
+
+      <p><strong>The problem with the Golden Cross:</strong> By the time two lagging indicators agree, the trend is already mature. You're late.</p>
+
+      <p>Not bad. Just late. And in trading, late = less profit.</p>
+
+      <div class="section-break"><span>Part 3: Multi-Timeframe EMA Alignment</span></div>
+
+      <h2>The Right Way to Use Moving Averages</h2>
+
+      <p>Okay, so EMAs lag. Does that mean they're useless?</p>
+
+      <p>No. It means you need to use them correctly.</p>
+
+      <p><strong>The framework: 3-Timeframe Alignment</strong></p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">HTF (Higher Timeframe): Trend Direction</div>
+          <div class="accordion-content">
+            <p><strong>Timeframe:</strong> Daily (for swing trading) or Weekly (for position trading)</p>
+            <p><strong>Purpose:</strong> Determine the macro trend</p>
+            <p><strong>Question:</strong> "Are we in an uptrend, downtrend, or range?"</p>
+            <p><strong>Rule:</strong></p>
+            <ul>
+              <li>Price above Daily 21 EMA = Uptrend bias (only look for longs)</li>
+              <li>Price below Daily 21 EMA = Downtrend bias (only look for shorts)</li>
+              <li>Price chopping through EMA = Range (wait for clarity)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">MTF (Medium Timeframe): Structure Confirmation</div>
+          <div class="accordion-content">
+            <p><strong>Timeframe:</strong> 4H (for swing) or Daily (for position)</p>
+            <p><strong>Purpose:</strong> Identify swing structure and entry zones</p>
+            <p><strong>Question:</strong> "Where are the key levels for entries?"</p>
+            <p><strong>Rule:</strong></p>
+            <ul>
+              <li>Wait for pullback to MTF EMA in trending markets</li>
+              <li>Look for confluence with swept lows/highs (Janus)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">LTF (Lower Timeframe): Execution Timing</div>
+          <div class="accordion-content">
+            <p><strong>Timeframe:</strong> 15min or 1H</p>
+            <p><strong>Purpose:</strong> Pinpoint exact entry after HTF and MTF align</p>
+            <p><strong>Question:</strong> "What's the precise entry price?"</p>
+            <p><strong>Rule:</strong></p>
+            <ul>
+              <li>Only execute LTF entries that align with HTF trend</li>
+              <li>Wait for LTF reversal candle or sweep confirmation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3>The Alignment Framework</h3>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(255,255,255,.04);border-radius:12px">
+        <h4 style="margin-top:0">Bullish Alignment (High Probability Long)</h4>
+        <p><strong>Setup:</strong> Price above all 3 EMAs (Daily, 4H, 1H)</p>
+        <p><strong>Signal:</strong> Strong uptrend confirmed across timeframes</p>
+        <p><strong>Action:</strong> Long bias. Wait for pullback to 4H EMA, then enter on 1H reversal.</p>
+        <hr style="margin:1.5rem 0;opacity:.3">
+        <h4>Bearish Alignment (High Probability Short)</h4>
+        <p><strong>Setup:</strong> Price below all 3 EMAs</p>
+        <p><strong>Signal:</strong> Strong downtrend confirmed across timeframes</p>
+        <p><strong>Action:</strong> Short bias. Wait for bounce to 4H EMA, then enter on 1H rejection.</p>
+        <hr style="margin:1.5rem 0;opacity:.3">
+        <h4>Mixed (No Clear Direction)</h4>
+        <p><strong>Setup:</strong> Price between EMAs (above some, below others)</p>
+        <p><strong>Signal:</strong> Ranging or transitioning between regimes</p>
+        <p><strong>Action:</strong> WAIT. No trade until alignment appears.</p>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 Pro Tip</h4>
+        <p><strong>Require 2 out of 3 timeframe alignment minimum.</strong> Ideally 3/3, but 2/3 is tradeable if the other confluences are strong (Janus, Plutus, etc.).</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Pentarch Pilot Line (5-Event System)</span></div>
+
+      <h2>Moving Beyond "Price Crossed the MA"</h2>
+
+      <p>Okay, so you're using multi-timeframe alignment. Good.</p>
+
+      <p>But what about execution? When exactly do you enter? Exit? Trail?</p>
+
+      <p><strong>That's where Pentarch comes in.</strong></p>
+
+      <p>Pentarch tracks FIVE key EMA events that give you actionable signals—not just "price touched a line."</p>
+
+      <h3>The 5 Pentarch Events</h3>
+
+      <ol>
+        <li><strong>TD (Trend Definition):</strong> Price crosses EMA (potential new trend starting)</li>
+        <li><strong>IGN (Ignition):</strong> Price accelerates away from EMA (momentum confirmation)</li>
+        <li><strong>RUN (Run):</strong> Sustained move without retesting EMA (strong trend)</li>
+        <li><strong>EXT (Extension):</strong> Price very far from EMA (overextended, pullback likely)</li>
+        <li><strong>BRK (Break):</strong> Price crosses back through EMA (trend failure)</li>
+      </ol>
+
+      <h3>Trading the Events</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(91,138,255,.08);border-left:4px solid #5b8aff;border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">TD Event (Trend Definition)</h4>
+          <p><strong>What it means:</strong> Price just crossed above/below EMA</p>
+          <p><strong>Action:</strong> Watch for IGN confirmation. Don't enter yet—wait for momentum.</p>
+          <p><em>Think: "Possible new trend. Need confirmation."</em></p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(91,138,255,.08);border-left:4px solid #5b8aff;border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">IGN Event (Ignition)</h4>
+          <p><strong>What it means:</strong> Price accelerating away from EMA</p>
+          <p><strong>Action:</strong> ENTER. Momentum confirmed. This is your entry signal.</p>
+          <p><em>Think: "Rocket launching. Get on board."</em></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(0,212,170,.08);border-left:4px solid #00d4aa;border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">RUN Event (Run)</h4>
+          <p><strong>What it means:</strong> Price running without retesting EMA</p>
+          <p><strong>Action:</strong> Hold position. Trail stop below EMA. Strong trend in progress.</p>
+          <p><em>Think: "This is working. Let it run."</em></p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(255,193,7,.08);border-left:4px solid #ffc107;border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">EXT Event (Extension)</h4>
+          <p><strong>What it means:</strong> Price very far from EMA (overextended)</p>
+          <p><strong>Action:</strong> Take partial profits (20-30%). Expect pullback. Tighten stops.</p>
+          <p><em>Think: "Too far, too fast. Scale out."</em></p>
+        </div>
+      </div>
+
+      <div style="padding:1.5rem;background:rgba(255,107,107,.08);border-left:4px solid #ff6b6b;border-radius:12px;margin:2rem 0">
+        <h4 style="margin:0 0 1rem 0">BRK Event (Break)</h4>
+        <p><strong>What it means:</strong> Price crossed back through EMA (trend failure)</p>
+        <p><strong>Action:</strong> EXIT IMMEDIATELY. Trend is over. No exceptions.</p>
+        <p><em>Think: "Party's over. Get out."</em></p>
+      </div>
+
+      <div class="section-break"><span>Part 5: Complete MA Framework</span></div>
+
+      <h2>Your Step-by-Step System</h2>
+
+      <div style="margin:2rem 0;padding:2rem;background:linear-gradient(135deg, rgba(91,138,255,.12), rgba(118,221,255,.08));border-radius:16px">
+        <h3 style="margin-top:0">📋 Moving Average Trading Checklist</h3>
+
+        <p><strong>Step 1: Multi-Timeframe Alignment</strong></p>
+        <ul>
+          <li>Check HTF (Daily), MTF (4H), LTF (1H) EMAs</li>
+          <li>Require 2/3 alignment minimum for trade (ideally 3/3)</li>
+          <li>If price between EMAs (mixed) → Skip, wait for clarity</li>
+        </ul>
+
+        <p><strong>Step 2: Wait for Pentarch Event</strong></p>
+        <ul>
+          <li><strong>Don't trade on TD alone</strong> (just a cross, no momentum)</li>
+          <li><strong>Enter on IGN or RUN event</strong> (momentum confirmed)</li>
+          <li><strong>Avoid entering on EXT</strong> (overextended, high risk)</li>
+        </ul>
+
+        <p><strong>Step 3: Structural + Volume Confirmation</strong></p>
+        <ul>
+          <li>Janus Atlas: Sweep or breakout confirmation</li>
+          <li>Plutus Flow: Delta supporting your direction</li>
+          <li>Minimal Flow: Regime = trending (not ranging)</li>
+        </ul>
+
+        <p><strong>Step 4: Trade Management</strong></p>
+        <ul>
+          <li><strong>Initial stop:</strong> Below/above EMA (depending on direction)</li>
+          <li><strong>RUN event:</strong> Trail stop to previous swing low/high</li>
+          <li><strong>EXT event:</strong> Take 20-30% profits, tighten stops</li>
+          <li><strong>BRK event:</strong> Exit all positions immediately</li>
+        </ul>
+      </div>
+
+      <h3>Common Mistakes (And How to Fix Them)</h3>
+
+      <p><strong>Mistake #1: Buying MA "support" blindly</strong></p>
+      <p><em>Fix:</em> MAs aren't support—they're trend filters. Only buy pullbacks to MAs when aligned with HTF trend + confluence (Janus, Plutus).</p>
+
+      <p><strong>Mistake #2: Using Golden Cross as entry signal</strong></p>
+      <p><em>Fix:</em> Golden Cross is 20-30% late. Use Pentarch IGN event instead for earlier, momentum-confirmed entries.</p>
+
+      <p><strong>Mistake #3: Trading single timeframe MA</strong></p>
+      <p><em>Fix:</em> Always check multi-timeframe alignment. Require 2/3 minimum (HTF + MTF + LTF).</p>
+
+      <p><strong>Mistake #4: Ignoring BRK events</strong></p>
+      <p><em>Fix:</em> When price breaks back through your EMA (BRK event), exit immediately. Don't hope. Don't wait. Exit.</p>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>EMAs describe trend, don't predict reversals</strong></li>
+          <li><strong>Golden Cross lags 20-30%</strong> (late entry signal)</li>
+          <li><strong>Multi-timeframe alignment = high probability</strong> (HTF + MTF + LTF)</li>
+          <li><strong>Pentarch 5 events = actionable framework</strong> (TD, IGN, RUN, EXT, BRK)</li>
+          <li><strong>Enter on IGN, hold through RUN, exit on BRK</strong></li>
+          <li><strong>MAs are filters, not triggers</strong> (require structure + volume confirmation)</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you've been buying every touch of the 50 EMA and wondering why you keep getting run over, you now know: MAs describe, they don't defend.</p>
+
+      <div class="section-break"><span>Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Quick Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q: Price just crossed above the 50 EMA (TD event). What do you do?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Buy immediately (trend just started!)</div>
+            <div class="quiz-option" data-correct="true">B) Wait for IGN event (price accelerating away) to confirm momentum</div>
+            <div class="quiz-option" data-correct="false">C) Short it (fade the breakout)</div>
+            <div class="quiz-option" data-correct="false">D) Check the Golden Cross first</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> TD event (trend definition) alone is NOT an entry signal—it's just a cross. Wait for IGN (ignition) where price accelerates away from the EMA with momentum. That's your confirmation to enter. Entering on TD alone = getting faked out 50% of the time.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #7: Why You Keep Revenge Trading (And How to Actually Stop)</strong></p>
+        <p>Revenge trading isn't a discipline problem—it's neuroscience. Learn why your brain hijacks you after losses and the circuit breaker systems that actually work.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">The MA Myth</a>
+      <a href="#">Why Golden Cross Lags</a>
+      <a href="#">Multi-Timeframe Alignment</a>
+      <a href="#">Pentarch 5 Events</a>
+      <a href="#">Complete Framework</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/beginner/05-rsi-extremes.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/beginner/07-revenge-trading.html">Next Lesson &rarr;</a>
+  </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
-<script src="/assets/edu.js"></script><script src="/assets/aurora.js" defer></script>
-</body></html>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

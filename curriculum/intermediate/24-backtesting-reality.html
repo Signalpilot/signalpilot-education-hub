@@ -1,313 +1,361 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Backtesting Reality: Avoiding the Overfitting Trap — SignalPilot Education</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Backtesting Reality: That 95% Win Rate Is Lying to You</title>
+  <meta name="description" content="Perfect backtest. Terrible forward results. Learn why overfitting kills strategies, how to model realistic slippage, and validation methods that actually work.">
   <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="24">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/intermediate/24-backtesting-reality.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
+  </div>
+</header>
+
 <article class="article">
-  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Backtesting Reality: Avoiding the Overfitting Trap</h1><div class="meta">Reading time ~16 min • Backtesting & Validation</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>Perfect backtest ≠ profitable forward testing.</b> Learn why most backtests lie, how to model realistic execution, avoid curve-fitting, and validate strategies that actually work live.</p>
-      
-      <h2>Why 90% of Backtests Fail Live</h2>
-      
-      <h3>Problem 1: Overfitting (Curve Fitting)</h3>
-      <p><strong>Definition:</strong> Optimizing strategy to fit historical data perfectly, but failing on new data.</p>
-      <pre><code>Backtest: Optimized to buy EXACTLY at $100.23, sell at $102.87
-Result: 95% win rate, 8R avg (looks incredible!)
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #24</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 24 of 27</span>
+      <h1 class="headline xl">Backtesting Reality: That 95% Win Rate Is Lying to You</h1>
+      <div class="meta">16 min read • Strategy Validation</div>
+    </div>
+  </header>
 
-Forward Test: New prices don't match these exact levels
-Result: 30% win rate, fails miserably</code></pre>
-      <p><b>Why:</b> Strategy learned the noise (random patterns), not the signal (real edge).</p>
+  <div class="wrap article-grid">
+    <div class="prose">
 
-      <h3>Problem 2: Look-Ahead Bias</h3>
-      <p><strong>Definition:</strong> Using future data to make past decisions (impossible in live trading).</p>
-      <pre><code>Backtest Code (WRONG):
-if close[0] > high[5]:  # Uses future 5 candles to decide NOW
-    enter_long()
+      <p><b>Your backtest: 95% win rate. 8R average. $50,000 profit on $10,000 account.</b></p>
 
-Live Reality: You don't know future 5 candles yet!</code></pre>
+      <p>You go live. First week: 30% win rate. Account down 12%.</p>
 
-      <h3>Problem 3: Unrealistic Execution</h3>
-      <p><strong>Assumption:</strong> "I can buy at the close price."</p>
-      <p><strong>Reality:</strong> Slippage, spread, latency = you get filled $0.05-0.20 worse.</p>
-      <pre><code>Backtest: Buy BTC at $45,000 (close price)
-Reality: Market order fills at $45,012 (spread + slippage)
+      <p>What happened? Your backtest lied.</p>
 
-On 100 trades: $12 × 100 = $1,200 profit evaporated</code></pre>
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Most backtests are pure fantasy. They assume perfect fills, zero slippage, no spreads, and magical entries that don't exist in live markets.</p>
+        <p>If your backtest looks too good to be true, it is. You curve-fitted to noise, not signal.</p>
+      </div>
 
-      <h3>Problem 4: Survivorship Bias</h3>
-      <p><strong>Assumption:</strong> Tested on stocks that exist today.</p>
-      <p><strong>Reality:</strong> Many stocks delisted/went bankrupt (you'd have lost 100% on those).</p>
-      <pre><code>Backtest on S&P 500 (2024 list): 70% win rate
-Reality: Includes survivors, excludes 200+ delistings = false win rate</code></pre>
-
-      <h2>Realistic Backtest Modeling</h2>
-      
-      <h3>Step 1: Model Spread Costs</h3>
-      <p><strong>Always subtract bid-ask spread from entry/exit.</strong></p>
-      <pre><code>Asset: SPY
-Spread: $0.01 (typical)
-
-Entry: $450.00 → Fill at $450.005 (pay half spread)
-Exit: $452.00 → Fill at $451.995 (pay half spread)
-
-Net cost: $0.01 per round trip</code></pre>
-      <p><b>For 1000 shares: $0.01 × 1000 = $10 cost per trade</b></p>
-
-      <h3>Step 2: Model Slippage</h3>
-      <p><strong>Slippage = difference between intended price and actual fill.</strong></p>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Market Condition</th><th>Slippage</th></tr>
-        <tr><td>Normal liquidity</td><td>0.01-0.02%</td></tr>
-        <tr><td>Volatile (news)</td><td>0.05-0.10%</td></tr>
-        <tr><td>Thin liquidity</td><td>0.10-0.30%</td></tr>
-        <tr><td>Large position</td><td>0.20-0.50%</td></tr>
-      </table>
-      <pre><code>Conservative assumption: 0.05% slippage per trade
-$10,000 position × 0.05% = $5 slippage
-
-Per trade cost: Spread ($10) + Slippage ($5) = $15</code></pre>
-
-      <h3>Step 3: Model Commissions</h3>
-      <pre><code>Broker: Interactive Brokers
-Commission: $0.005/share, min $1
-
-Trade: 200 shares SPY
-Commission: 200 × $0.005 = $1 (meets min)
-
-Total per round trip: $2 (in + out)</code></pre>
-
-      <h3>Step 4: Total Realistic Cost</h3>
-      <pre><code>Per Trade Costs:
-- Spread: $10
-- Slippage: $5
-- Commission: $2
-Total: $17 per round trip
-
-If strategy makes $50/trade gross → $33 net (34% reduction!)</code></pre>
-
-      <h2>Avoiding Overfitting</h2>
-      
-      <h3>Rule 1: In-Sample vs. Out-of-Sample Testing</h3>
-      <p><strong>Split data into 2 periods:</strong></p>
+      <p><strong>In this lesson, you'll learn:</strong></p>
       <ul>
-        <li><b>In-Sample (60-70%):</b> Develop and optimize strategy</li>
-        <li><b>Out-of-Sample (30-40%):</b> Validate on unseen data</li>
-      </ul>
-      <pre><code>Data: 2018-2024 (6 years)
-In-Sample: 2018-2022 (optimize here)
-Out-of-Sample: 2023-2024 (test here)
-
-If strategy performs similarly on both → NOT overfit</code></pre>
-
-      <h3>Rule 2: Walk-Forward Analysis</h3>
-      <p><strong>Continually re-optimize and test forward.</strong></p>
-      <pre><code>Period 1: Train on 2018-2019, test on 2020
-Period 2: Train on 2019-2020, test on 2021
-Period 3: Train on 2020-2021, test on 2022
-
-If consistent across all periods → Robust strategy</code></pre>
-
-      <h3>Rule 3: Limit Optimization Parameters</h3>
-      <p><b>Bad:</b> Optimize 15 parameters (EMA period, RSI threshold, ATR multiplier, etc.)</p>
-      <p><b>Good:</b> 2-3 core parameters maximum</p>
-      <pre><code>Bad (Overfit Risk):
-- EMA: 23 periods (vs. 20, 21, 22, 24, 25...)
-- RSI: 32 threshold (vs. 30, 31, 33...)
-- ATR: 1.73 multiplier (too specific!)
-
-Good (Robust):
-- EMA: 20 periods (standard)
-- RSI: 30 threshold (classic)
-- ATR: 1.5-2.0 range (forgiving)</code></pre>
-
-      <h3>Rule 4: Test Across Multiple Markets</h3>
-      <p><strong>If strategy only works on BTC in 2020 → Overfit to that regime.</strong></p>
-      <pre><code>Test strategy on:
-- BTC 2018-2024
-- ETH 2018-2024
-- SPY 2018-2024
-- Gold 2018-2024
-
-If works across all → Robust edge (not curve-fit)</code></pre>
-
-      <h2>Realistic Performance Metrics</h2>
-      
-      <h3>Metric 1: Sharpe Ratio (Risk-Adjusted Return)</h3>
-      <p><strong>Formula:</strong> (Return - Risk-Free Rate) / Volatility</p>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Sharpe Ratio</th><th>Quality</th></tr>
-        <tr><td>&lt; 1.0</td><td>Poor (high volatility for return)</td></tr>
-        <tr><td>1.0 - 2.0</td><td>Good (acceptable)</td></tr>
-        <tr><td>2.0 - 3.0</td><td>Excellent (professional tier)</td></tr>
-        <tr><td>&gt; 3.0</td><td>Suspicious (likely overfit)</td></tr>
-      </table>
-
-      <h3>Metric 2: Max Drawdown</h3>
-      <p><strong>Peak-to-trough loss (worst losing streak).</strong></p>
-      <pre><code>Account: $10,000
-Peak: $12,000 (after winning streak)
-Trough: $10,500 (after losing streak)
-
-Max Drawdown: ($12,000 - $10,500) / $12,000 = 12.5%</code></pre>
-      <p><b>Acceptable:</b> 15-25% max drawdown (professional range)</p>
-      <p><b>Dangerous:</b> > 30% max drawdown (psychological breaking point)</p>
-
-      <h3>Metric 3: Profit Factor</h3>
-      <p><strong>Gross Profit / Gross Loss</strong></p>
-      <pre><code>Total Wins: $5,000
-Total Losses: $2,500
-
-Profit Factor: $5,000 / $2,500 = 2.0</code></pre>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Profit Factor</th><th>Quality</th></tr>
-        <tr><td>&lt; 1.0</td><td>Losing strategy</td></tr>
-        <tr><td>1.0 - 1.5</td><td>Marginal (barely profitable)</td></tr>
-        <tr><td>1.5 - 2.5</td><td>Good (acceptable)</td></tr>
-        <tr><td>&gt; 2.5</td><td>Excellent (rare, verify not overfit)</td></tr>
-      </table>
-
-      <h3>Metric 4: Win Rate × R:R</h3>
-      <p><b>Both matter. High win rate with low R:R = break even.</b></p>
-      <pre><code>Strategy A: 70% win rate, 1:1 R:R
-100 trades: 70 winners × $100 = $7,000
-            30 losers × $100 = $3,000
-Net: $4,000 (but high stress, low R)
-
-Strategy B: 40% win rate, 1:3 R:R
-100 trades: 40 winners × $300 = $12,000
-            60 losers × $100 = $6,000
-Net: $6,000 (lower stress, big winners)</code></pre>
-
-      <h2>Complete Backtesting Framework</h2>
-      
-      <p><strong>Step 1: Define Strategy Rules</strong></p>
-      <ul>
-        <li>Entry: Specific conditions (Janus sweep + absorption + Minimal Flow trending)</li>
-        <li>Exit: Stop loss (structure-based), target (HTF level)</li>
-        <li>Position size: Fixed risk % (e.g., 1-2%)</li>
+        <li>Why 90% of backtests fail when taken live</li>
+        <li>The 4 deadly sins: overfitting, look-ahead bias, unrealistic costs, survivorship bias</li>
+        <li>How to model slippage and spreads that actually reflect reality</li>
+        <li>In-sample vs. out-of-sample testing (the only validation that matters)</li>
       </ul>
 
-      <p><strong>Step 2: Code Realistically</strong></p>
-      <ul>
-        <li>No look-ahead bias (only use data available at entry time)</li>
-        <li>Model spread, slippage, commissions</li>
-        <li>Use bar close for entries (not intra-bar perfection)</li>
-      </ul>
+      <div class="section-break"><span>Part 1: The Four Ways Backtests Lie</span></div>
 
-      <p><strong>Step 3: Split Data</strong></p>
-      <ul>
-        <li>In-Sample: 60-70% (develop here)</li>
-        <li>Out-of-Sample: 30-40% (validate here)</li>
-      </ul>
+      <h2>Why Your Perfect Strategy Will Fail Live</h2>
 
-      <p><strong>Step 4: Run Backtest</strong></p>
-      <ul>
-        <li>Track every trade (entry, exit, P&L, drawdown)</li>
-        <li>Calculate metrics (Sharpe, Profit Factor, Max DD, Win Rate, Avg R)</li>
-      </ul>
+      <p>Let's start with the uncomfortable truth: If you optimized a strategy to fit historical data, you didn't find an edge. You found noise.</p>
 
-      <p><strong>Step 5: Validate Out-of-Sample</strong></p>
-      <ul>
-        <li>If in-sample Sharpe = 2.5, out-of-sample Sharpe should be 1.8-2.5</li>
-        <li>If out-of-sample Sharpe < 1.0 → Strategy overfit</li>
-      </ul>
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Problem 1: Overfitting</button>
+          <button>Problem 2: Look-Ahead Bias</button>
+          <button>Problem 3: Execution Fantasy</button>
+          <button>Problem 4: Survivorship Bias</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Curve-Fitting to Random Noise</h3>
+            <p><strong>What it is:</strong> Optimizing parameters until backtest looks perfect</p>
+            <p><strong>Example:</strong></p>
+            <ul>
+              <li>You test 100 different EMA periods (10, 11, 12... 110)</li>
+              <li>EMA(47) gives 95% win rate in backtest</li>
+              <li>You think you found the "magic number"</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> EMA(47) just happened to fit that specific data set. Forward test? 35% win rate. You learned the noise, not the signal.</p>
+            <p><strong>Fix:</strong> Limit optimization. Use standard parameters. Test on unseen data.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Using Future Data (Impossible in Live Trading)</h3>
+            <p><strong>What it is:</strong> Code that "peeks" into future candles to make current decisions</p>
+            <p><strong>Example:</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>if close[0] > high[5]:  # Uses FUTURE 5 candles
+    enter_long()</code></pre>
+            <p><strong>The problem:</strong> In backtesting, you have future data. In live trading, you don't.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> This code literally cannot execute live. Your backtest is testing a strategy that doesn't exist.</p>
+            <p><strong>Fix:</strong> Only use data available at the moment of decision.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Assuming Perfect Fills at Perfect Prices</h3>
+            <p><strong>Backtest assumption:</strong> "I buy at $100.00 exactly"</p>
+            <p><strong>Reality:</strong> Market order fills at $100.12 (spread + slippage)</p>
+            <p><strong>Impact over 100 trades:</strong></p>
+            <ul>
+              <li>Backtest profit: $5,000</li>
+              <li>Spread cost ($0.10/trade): -$1,000</li>
+              <li>Slippage ($0.05/trade): -$500</li>
+              <li>Commissions ($2/trade): -$200</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> Real profit = $3,300 (34% less than backtest)</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Testing Only on Survivors</h3>
+            <p><strong>What it is:</strong> Backtesting on current S&P 500 stocks only</p>
+            <p><strong>The problem:</strong> You're excluding 200+ stocks that got delisted/bankrupted</p>
+            <p><strong>Example:</strong></p>
+            <ul>
+              <li>Backtest on 2024 S&P 500 list: 70% win rate</li>
+              <li>But in 2020, you'd have been long Hertz (bankrupt), Wirecard (fraud), etc.</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> Your "70% win rate" excludes catastrophic losses from delistings. Real win rate: 45%.</p>
+          </div>
+        </div>
+      </div>
 
-      <p><strong>Step 6: Walk-Forward Test</strong></p>
-      <ul>
-        <li>Test across multiple time periods</li>
-        <li>Verify consistency</li>
-      </ul>
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p>A backtest isn't reality. It's a simulation. And if your simulation includes impossible assumptions, your live results will be impossible too.</p>
+      </div>
 
-      <h2>Red Flags (Strategy Likely Overfit)</h2>
-      
-      <ul>
-        <li><b>Perfect equity curve:</b> Smooth upward line with no drawdowns (unrealistic)</li>
-        <li><b>Sharpe > 3.0:</b> Too good to be true (likely curve-fit)</li>
-        <li><b>Win rate > 80%:</b> Extremely rare (verify execution assumptions)</li>
-        <li><b>Only 20-30 trades:</b> Sample size too small (statistically insignificant)</li>
-        <li><b>Only tested on 1 asset/period:</b> Likely fit to that specific regime</li>
-        <li><b>10+ optimized parameters:</b> Over-optimization (noise fit)</li>
-      </ul>
+      <div class="section-break"><span>Part 2: Modeling Realistic Costs</span></div>
 
-      <h2>Forward Testing (Paper Trading)</h2>
-      
-      <h3>Phase 1: Simulated Forward Test</h3>
-      <p><strong>Test strategy on live data WITHOUT real money.</strong></p>
-      <pre><code>Duration: 3-6 months minimum
-Trades: 50+ (statistical significance)
-Conditions: Track ACTUAL spreads, slippage, execution delays
+      <h2>The Hidden Costs That Kill Strategies</h2>
 
-If performance matches backtest → Proceed to Phase 2</code></pre>
+      <p>Here's what most backtests ignore—and why yours is probably 20-40% too optimistic:</p>
 
-      <h3>Phase 2: Small Live Capital</h3>
-      <pre><code>Capital: 10-20% of intended size
-Duration: 3-6 months
-Purpose: Test psychology, execution, real costs
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Step 1: Model Bid-Ask Spread</div>
+          <div class="accordion-content">
+            <p><strong>What it is:</strong> The difference between buy price and sell price</p>
+            <p><strong>Example:</strong></p>
+            <ul>
+              <li>SPY bid: $450.00 / ask: $450.01 → Spread = $0.01</li>
+              <li>You buy: Pay $450.01 (half spread = $0.005)</li>
+              <li>You sell: Receive $450.00 (half spread = $0.005)</li>
+            </ul>
+            <p><strong>Cost per round trip:</strong> $0.01</p>
+            <p><strong>For 1,000 shares:</strong> $0.01 × 1,000 = $10 per trade</p>
+            <p><strong>100 trades:</strong> $1,000 in spread costs</p>
+          </div>
+        </div>
 
-If Sharpe/DD acceptable → Scale to full size</code></pre>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 2: Model Slippage</div>
+          <div class="accordion-content">
+            <p><strong>What it is:</strong> Difference between intended price and actual fill</p>
+            <p><strong>Realistic slippage by condition:</strong></p>
+            <ul>
+              <li><strong>Normal liquidity:</strong> 0.01-0.02%</li>
+              <li><strong>Volatile markets:</strong> 0.05-0.10%</li>
+              <li><strong>Thin liquidity:</strong> 0.10-0.30%</li>
+              <li><strong>Large position size:</strong> 0.20-0.50%</li>
+            </ul>
+            <p><strong>Conservative assumption:</strong> 0.05% per trade</p>
+            <p>$10,000 position × 0.05% = $5 slippage per side = $10 round trip</p>
+          </div>
+        </div>
 
-      <h2>Signal Pilot Backtesting Integration</h2>
-      
-      <h3>Janus Atlas Backtesting</h3>
-      <p><strong>Test sweep reversal win rate historically.</strong></p>
-      <pre><code>2018-2024: Log every Janus sweep
-- Sweep + reclaim within 5 candles = long
-- Track: Win rate, Avg R, Max DD
+        <div class="accordion-item">
+          <div class="accordion-header">Step 3: Model Commissions</div>
+          <div class="accordion-content">
+            <p><strong>Example: Interactive Brokers</strong></p>
+            <ul>
+              <li>$0.005 per share, $1 minimum</li>
+              <li>200 shares × $0.005 = $1 per side</li>
+              <li>Round trip = $2</li>
+            </ul>
+            <p><strong>100 trades:</strong> $200 in commissions</p>
+          </div>
+        </div>
 
-Result: 65-70% win rate, 3.2R avg (if realistic execution modeled)</code></pre>
+        <div class="accordion-item">
+          <div class="accordion-header">Step 4: Total Realistic Cost</div>
+          <div class="accordion-content">
+            <p><strong>Per trade (round trip):</strong></p>
+            <ul>
+              <li>Spread: $10</li>
+              <li>Slippage: $10</li>
+              <li>Commission: $2</li>
+            </ul>
+            <p><strong>Total: $22 per trade</strong></p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.15);border-radius:8px">If your strategy makes $50/trade gross → $28 net (44% reduction!)</p>
+          </div>
+        </div>
+      </div>
 
-      <h3>Plutus Flow Backtesting</h3>
-      <p><strong>Test POC reversion strategies.</strong></p>
-      <pre><code>Rule: When price > 2% above POC, fade (short)
-Exit: POC or stop at +3%
+      <h3>Backtest Adjustment Example</h3>
 
-Backtest 2020-2024:
-- 150 trades
-- 58% win rate
-- 2.1 Profit Factor
-- 18% max drawdown</code></pre>
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px">
+        <h4>Before vs. After Realistic Costs</h4>
+        <p><strong>Strategy: 100 trades, $50 avg profit per trade</strong></p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>Backtest (fantasy):</strong></p>
+        <p>100 trades × $50 = $5,000 profit</p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>After realistic costs:</strong></p>
+        <ul>
+          <li>Gross: $5,000</li>
+          <li>Spread: -$1,000</li>
+          <li>Slippage: -$1,000</li>
+          <li>Commissions: -$200</li>
+        </ul>
+        <p style="margin-top:1rem;font-weight:700;color:#00d4aa">Net profit: $2,800 (44% reduction)</p>
+      </div>
 
-      <h3>Minimal Flow Backtesting</h3>
-      <p><strong>Test regime-based strategy switching.</strong></p>
-      <pre><code>Trending regime: Trade pullbacks (70% win rate)
-Ranging regime: Fade extremes (55% win rate)
-Volatile regime: Sit out (0 trades)
+      <div class="section-break"><span>Part 3: In-Sample vs. Out-of-Sample</span></div>
 
-Result: Combined 65% win rate, Sharpe 1.8</code></pre>
+      <h2>The Only Validation That Matters</h2>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>Model realistic costs</strong> (spread, slippage, commissions)</li>
-        <li><strong>Split data</strong> (in-sample vs. out-of-sample)</li>
-        <li><strong>Avoid overfitting</strong> (limit parameters, test across markets)</li>
-        <li><strong>Walk-forward test</strong> (verify consistency over time)</li>
-        <li><strong>Forward test before live</strong> (paper trade 3-6 months)</li>
-        <li><strong>Red flags: Sharpe > 3.0, win rate > 80%, < 30 trades</strong></li>
-      </ul>
+      <p>Here's the professional way to validate a strategy:</p>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Calculate realistic costs</strong></p>
-      <p>Your strategy trades SPY 50 times/month. Spread = $0.01, slippage = 0.03%, commission = $1. What's monthly cost?</p>
-      
-      <p><strong>Exercise 2: Validate a backtest</strong></p>
-      <p>Find a strategy online claiming 90% win rate, 5.0 Sharpe. List 3 red flags. How would you validate it?</p>
+      <p><strong>Split your data into two periods.</strong></p>
 
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"In backtesting, perfection is suspicion. Realism is edge. Model costs, avoid overfitting, forward test—or fail live."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
+      <ol>
+        <li><strong>In-Sample (60-70%):</strong> Develop and optimize your strategy here</li>
+        <li><strong>Out-of-Sample (30-40%):</strong> Validate on UNSEEN data</li>
+      </ol>
+
+      <div class="callout-tip">
+        <h4>🎯 Example: 6 Years of Data (2018-2024)</h4>
+        <p><strong>In-Sample:</strong> 2018-2022 (optimize here)</p>
+        <ul>
+          <li>Test different parameters</li>
+          <li>Find best-performing rules</li>
+          <li>Refine entry/exit logic</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Out-of-Sample:</strong> 2023-2024 (validate here)</p>
+        <ul>
+          <li>Run strategy with ZERO changes</li>
+          <li>Compare performance to in-sample</li>
+          <li>If similar → Not overfit!</li>
+          <li>If much worse → Overfit to in-sample noise</li>
+        </ul>
+      </div>
+
+      <h3>Red Flags of Overfitting</h3>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(255,107,107,.12);border-radius:12px">
+        <h4>🚩 Warning Signs Your Strategy Is Curve-Fit</h4>
+        <ul>
+          <li><strong>Sharpe > 3.0:</strong> Too good to be true</li>
+          <li><strong>Win rate > 80%:</strong> Extremely rare (verify execution assumptions)</li>
+          <li><strong>Only 20-30 trades:</strong> Sample size too small (statistically meaningless)</li>
+          <li><strong>Perfect equity curve:</strong> Smooth line with no drawdowns (impossible)</li>
+          <li><strong>Tested on 1 asset only:</strong> Likely fit to that specific regime</li>
+          <li><strong>10+ optimized parameters:</strong> You fit the noise, not the signal</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 4: Walk-Forward Analysis</span></div>
+
+      <h2>The Professional Validation Method</h2>
+
+      <p>In-sample/out-of-sample is good. Walk-forward is better.</p>
+
+      <p><strong>How it works:</strong></p>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:linear-gradient(135deg, rgba(91,138,255,.12), rgba(118,221,255,.08));border-radius:16px">
+        <h4 style="margin-top:0">📊 Walk-Forward Framework</h4>
+        <p><strong>Period 1:</strong> Train on 2018-2019 → Test on 2020</p>
+        <p><strong>Period 2:</strong> Train on 2019-2020 → Test on 2021</p>
+        <p><strong>Period 3:</strong> Train on 2020-2021 → Test on 2022</p>
+        <p><strong>Period 4:</strong> Train on 2021-2022 → Test on 2023</p>
+        <hr style="margin:1rem 0;opacity:.3">
+        <p><strong>If consistent across all periods:</strong> Robust strategy</p>
+        <p><strong>If performance degrades:</strong> Overfit or regime-dependent</p>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Model realistic costs:</strong> Spread, slippage, commissions (20-40% profit reduction)</li>
+          <li><strong>Avoid overfitting:</strong> Limit parameters, test across multiple markets</li>
+          <li><strong>In-sample vs. out-of-sample:</strong> Develop on 60-70%, validate on 30-40%</li>
+          <li><strong>Walk-forward testing:</strong> Verify consistency across time periods</li>
+          <li><strong>Red flags:</strong> Sharpe > 3.0, win rate > 80%, < 30 trades</li>
+          <li><strong>Forward test before live:</strong> Paper trade 3-6 months minimum</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">In backtesting, perfection is suspicion. Realism is edge. Model costs, avoid overfitting, forward test—or fail live.</p>
+
+      <div class="section-break"><span>Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Quick Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q: You backtest a strategy: 85% win rate, 4.2 Sharpe ratio, tested on 25 trades, using EMA(47) because it gave the best results after testing 100 different periods. What's wrong?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Nothing—great strategy!</div>
+            <div class="quiz-option" data-correct="true">B) All of it: Sample size too small, Sharpe too high, EMA(47) is curve-fit</div>
+            <div class="quiz-option" data-correct="false">C) Just the win rate is too high</div>
+            <div class="quiz-option" data-correct="false">D) Just the sample size is too small</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Three major red flags: (1) Only 25 trades = statistically insignificant, (2) Sharpe 4.2 = suspiciously high (likely overfit), (3) EMA(47) found by testing 100 periods = curve-fit to noise. This strategy will fail live. Need: 100+ trades, realistic Sharpe (1.5-2.5), standard parameters.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #25: Advanced Risk Management—Professional Frameworks</strong></p>
+        <p>Per-trade risk is amateur hour. Learn Kelly Criterion, dynamic position sizing, drawdown protocols, and the 3-tier risk pyramid used by institutions.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">Four Backtest Lies</a>
+      <a href="#">Realistic Costs</a>
+      <a href="#">In-Sample vs Out-of-Sample</a>
+      <a href="#">Walk-Forward Analysis</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
   <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/intermediate/23-portfolio-construction.html">&larr; Previous: Portfolio</a>
-    <a class="btn btn-primary" href="/curriculum/intermediate/25-advanced-risk-management.html">Next: Advanced Risk &rarr;</a>
+    <a class="btn btn-ghost" href="/curriculum/intermediate/23-portfolio-construction.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/25-advanced-risk-management.html">Next Lesson &rarr;</a>
   </div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

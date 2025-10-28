@@ -1,329 +1,55 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Machine Learning for Trading: Features, Models & Pitfalls — SignalPilot Education</title>
-  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="35">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Machine Learning for Trading: Don't Get Seduced by the Hype — SignalPilot Learn</title>
+  <meta name="description" content="ML finds patterns in noise and overfits spectacularly if misused. Learn practical ML for trading without blowing up.">
+  <meta name="sp-level" content="Advanced">
+  <meta name="sp-order" content="35">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
-<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
-<article class="article">
-  <header><div class="wrap"><span class="badge">Advanced</span><h1 class="headline xl">Machine Learning for Trading: Features, Models & Pitfalls</h1><div class="meta">Reading time ~18 min • ML Applications in Trading</div></div></header>
-  <div class="wrap article-grid"><div class="prose">
-      <p><b>ML isn't magic—it finds patterns in noise and overfits spectacularly if misused.</b> Learn practical ML for trading: feature engineering, model selection, cross-validation, and why 90% of ML strategies fail live.</p>
-      
-      <h2>ML in Trading: Reality Check</h2>
-      
-      <h3>The Overhyped Promise</h3>
-      <p><strong>"Feed price data to neural network → Print money" ✗</strong></p>
-      <pre><code>Why It Fails:
-1. Markets are non-stationary (patterns change)
-2. Low signal-to-noise ratio (90% noise, 10% signal)
-3. Overfitting extremely easy (model learns noise)
-4. Look-ahead bias in features (leaking future data)
-5. Transaction costs eat predicted edges
-
-Reality: ML is a tool, not a strategy. Use wisely.</code></pre>
-
-      <h3>Where ML Actually Works</h3>
-      <ul>
-        <li><b>Regime classification:</b> Trending vs. ranging (high accuracy possible)</li>
-        <li><b>Feature selection:</b> Which indicators matter most?</li>
-        <li><b>Trade filtering:</b> Predict which setups likely to win</li>
-        <li><b>Position sizing:</b> Dynamic risk adjustment based on confidence</li>
-        <li><b>Sentiment analysis:</b> NLP on news/social media</li>
-      </ul>
-
-      <h2>Feature Engineering (Most Important Step)</h2>
-      
-      <h3>What Are Features?</h3>
-      <p><strong>Features = inputs to ML model (independent variables).</strong></p>
-      <pre><code>Bad Features (Raw Prices):
-- Close price: $520.00
-- High: $521.50
-- Low: $519.00
-
-Problem: Raw prices not stationary (trends forever)
-ML model: Learns "price goes up" (useless when regime changes)
-
-Good Features (Derived Metrics):
-- RSI: 65 (normalized 0-100)
-- ATR ratio: 1.3 (current / avg)
-- Distance from VWAP: -0.2% (normalized)
-- Volume surge: 1.8x avg (ratio)</code></pre>
-
-      <h3>Feature Categories</h3>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Category</th><th>Examples</th><th>Why Useful</th></tr>
-        <tr><td>Price-based</td><td>RSI, MACD, Stochastic</td><td>Momentum, overbought/oversold</td></tr>
-        <tr><td>Volume-based</td><td>OBV, Volume ratio, CVD</td><td>Institutional flow, conviction</td></tr>
-        <tr><td>Volatility</td><td>ATR ratio, Bollinger Width</td><td>Regime detection</td></tr>
-        <tr><td>Microstructure</td><td>Bid-ask spread, order imbalance</td><td>Liquidity, urgency</td></tr>
-        <tr><td>Cross-asset</td><td>DXY, TNX, VIX</td><td>Macro context</td></tr>
-        <tr><td>Time-based</td><td>Hour of day, day of week</td><td>Intraday patterns</td></tr>
-      </table>
-
-      <h3>Creating Signal Pilot Features</h3>
-      <pre><code>Janus Atlas Features:
-- sweep_detected: 1 (yes) or 0 (no)
-- sweep_depth: 0.2% (how far below low)
-- reclaim_speed: 3 (bars to reclaim)
-- volume_on_reclaim: 1.8x (volume surge ratio)
-
-Plutus Flow Features:
-- distance_from_POC: -1.2% (below POC)
-- POC_migration: +0.5% (POC moving up)
-- volume_at_price_ratio: 2.1x (current / avg)
-
-Minimal Flow Features:
-- regime: 1 (trending), 0 (ranging), -1 (volatile)
-- regime_strength: 0.75 (confidence score)
-- bars_in_regime: 15 (stability)</code></pre>
-
-      <h2>ML Models for Trading</h2>
-      
-      <h3>Model 1: Random Forest (Best for Beginners)</h3>
-      <p><strong>Ensemble of decision trees (robust, interpretable).</strong></p>
-      <pre><code>Advantages:
-- Handles non-linear relationships
-- Feature importance (tells you what matters)
-- Resistant to overfitting (vs. single tree)
-- No feature scaling needed
-
-Use Cases:
-- Regime classification (trending/ranging)
-- Trade filtering (predict win/loss)
-
-Python Example:
-from sklearn.ensemble import RandomForestClassifier
-
-features = ['rsi', 'atr_ratio', 'volume_surge', 'distance_vwap']
-target = 'trade_won'  # 1 = win, 0 = loss
-
-model = RandomForestClassifier(n_estimators=100, max_depth=5)
-model.fit(X_train[features], y_train[target])
-
-# Feature importance
-print(model.feature_importances_)
-# Output: [0.35, 0.28, 0.22, 0.15] (RSI most important)</code></pre>
-
-      <h3>Model 2: Gradient Boosting (XGBoost, LightGBM)</h3>
-      <p><strong>Sequential tree ensemble (higher accuracy, more overfitting risk).</strong></p>
-      <pre><code>Advantages:
-- State-of-the-art accuracy (Kaggle winner)
-- Handles complex patterns
-- Built-in regularization
-
-Disadvantages:
-- Easier to overfit (requires careful tuning)
-- Slower to train
-
-Use Cases:
-- High-dimensional data (100+ features)
-- Regression (predict price move magnitude)
-
-Python Example:
-import xgboost as xgb
-
-model = xgb.XGBClassifier(
-    n_estimators=100,
-    max_depth=3,  # Shallow trees (avoid overfit)
-    learning_rate=0.05,  # Slow learning (regularization)
-    subsample=0.8  # Train on 80% samples (bootstrapping)
-)
-
-model.fit(X_train, y_train)</code></pre>
-
-      <h3>Model 3: Neural Networks (Use Sparingly)</h3>
-      <p><strong>Deep learning (powerful but dangerous for trading).</strong></p>
-      <pre><code>Advantages:
-- Can learn any function (universal approximator)
-- Good for image/text data (NLP, chart patterns)
-
-Disadvantages:
-- VERY easy to overfit (millions of parameters)
-- Black box (no interpretability)
-- Requires massive data (10K+ samples minimum)
-
-Use Cases:
-- Sentiment analysis (NLP on news)
-- Chart pattern recognition (CNN on images)
-- Alternative data (satellite imagery, credit card data)
-
-When to AVOID:
-- Small datasets (< 1000 samples)
-- Need interpretability (regulations, auditing)
-- First ML project (start simpler!)</code></pre>
-
-      <h2>Training & Validation</h2>
-      
-      <h3>Train-Test Split (Time-Series Aware)</h3>
-      <p><strong>NEVER shuffle time-series data!</strong></p>
-      <pre><code>Bad (Shuffle Split):
-Train: Random 80% of data (2018-2024 mixed)
-Test: Random 20%
-
-Problem: Future data leaks into training (look-ahead bias)
-
-Good (Time-Series Split):
-Train: 2018-2022 (first 70%)
-Test: 2023-2024 (last 30%)
-
-Result: Model never sees future data</code></pre>
-
-      <h3>Walk-Forward Cross-Validation</h3>
-      <p><strong>Rolling train-test to validate across regimes.</strong></p>
-      <pre><code>Fold 1: Train 2018-2019 → Test 2020
-Fold 2: Train 2019-2020 → Test 2021
-Fold 3: Train 2020-2021 → Test 2022
-Fold 4: Train 2021-2022 → Test 2023
-Fold 5: Train 2022-2023 → Test 2024
-
-Avg test score: 68% accuracy
-
-If scores vary wildly (55%, 72%, 48%, 65%, 71%):
-→ Model not robust (regime-dependent)
-
-If scores consistent (66%, 69%, 67%, 68%, 70%):
-→ Model robust (generalizes well)</code></pre>
-
-      <h3>Preventing Overfitting</h3>
-      <ul>
-        <li><b>Feature selection:</b> Use 5-15 features max (more = overfit risk)</li>
-        <li><b>Regularization:</b> L1/L2 penalties (shrink coefficients)</li>
-        <li><b>Tree depth:</b> Limit to 3-5 (shallow trees generalize better)</li>
-        <li><b>Early stopping:</b> Stop training when validation score plateaus</li>
-        <li><b>Ensemble:</b> Average multiple models (reduces variance)</li>
-      </ul>
-
-      <h2>Evaluation Metrics</h2>
-      
-      <h3>Classification Metrics</h3>
-      <p><strong>Predicting win/loss (binary classification).</strong></p>
-      <table style="width:100%; border-collapse: collapse;">
-        <tr><th>Metric</th><th>Formula</th><th>When to Use</th></tr>
-        <tr><td>Accuracy</td><td>(TP + TN) / Total</td><td>Balanced classes (50/50 win/loss)</td></tr>
-        <tr><td>Precision</td><td>TP / (TP + FP)</td><td>Cost of false positive high</td></tr>
-        <tr><td>Recall</td><td>TP / (TP + FN)</td><td>Cost of false negative high</td></tr>
-        <tr><td>F1 Score</td><td>2 × (Prec × Rec) / (Prec + Rec)</td><td>Balance precision & recall</td></tr>
-        <tr><td>ROC-AUC</td><td>Area under ROC curve</td><td>Probability ranking quality</td></tr>
-      </table>
-
-      <h3>Trading-Specific Metrics</h3>
-      <p><strong>Accuracy isn't profit!</strong></p>
-      <pre><code>Model A: 70% accuracy
-Avg Win: +1R
-Avg Loss: -1R
-Expectancy: (0.70 × 1) - (0.30 × 1) = +0.40R ✓
-
-Model B: 90% accuracy
-Avg Win: +0.5R
-Avg Loss: -5R (rare but catastrophic)
-Expectancy: (0.90 × 0.5) - (0.10 × 5) = -0.05R ✗
-
-Lesson: Optimize for expectancy, not accuracy!</code></pre>
-
-      <h2>Practical ML Trading Strategy</h2>
-      
-      <h3>Strategy: ML Trade Filter</h3>
-      <p><strong>Use ML to predict which setups likely to win.</strong></p>
-      <pre><code>Without ML:
-- Trade all Janus sweeps (65% WR, 2.8R avg)
-- 100 trades/year
-
-With ML Filter:
-- Train model on historical Janus trades
-- Features: sweep_depth, reclaim_speed, volume_surge, regime, etc.
-- Model predicts: "This setup has 75% win probability"
-- ONLY trade if model confidence > 70%
-
-Result:
-- Trade 60 setups/year (filtered 40 low-confidence)
-- Win rate: 72% (vs. 65% before)
-- Avg R: 3.1R (vs. 2.8R before)
-- Fewer trades, better performance</code></pre>
-
-      <h3>Implementation</h3>
-      <pre><code>Step 1: Collect Historical Data
-- 500+ past Janus sweep trades
-- Features: 10-15 technical/microstructure
-- Label: 1 = won, 0 = lost
-
-Step 2: Train Model
-- Random Forest (100 trees, max_depth=5)
-- Walk-forward CV (5 folds)
-- Validate: 68% accuracy on out-of-sample
-
-Step 3: Deploy Filter
-- New Janus sweep detected
-- Extract features → Feed to model
-- Model output: 0.78 (78% win probability)
-- Decision: TRADE (above 70% threshold)
-
-Step 4: Monitor
-- Track: ML-filtered trades vs. all trades
-- Adjust threshold if needed (70% → 65% if too restrictive)</code></pre>
-
-      <h2>Common ML Pitfalls</h2>
-      
-      <h3>Pitfall 1: Data Leakage</h3>
-      <pre><code>Bad Feature: "forward_return"
-def create_features(df):
-    df['forward_return'] = df['close'].shift(-5)  # 5 bars FUTURE
-    return df
-
-Problem: Model sees future (perfect predictions in backtest, fails live!)
-
-Fix: Only use data available AT decision time</code></pre>
-
-      <h3>Pitfall 2: Insufficient Data</h3>
-      <pre><code>Neural Network: 10,000 parameters
-Training data: 200 samples
-
-Result: 100% training accuracy, 45% test accuracy (overfit!)
-
-Rule of Thumb:
-- Linear models: 10 samples per feature
-- Random Forest: 50 samples per feature
-- Neural Networks: 1,000+ samples per feature</code></pre>
-
-      <h3>Pitfall 3: Ignoring Transaction Costs</h3>
-      <pre><code>ML Model: Predicts price moves with 55% accuracy
-Strategy: Trade every prediction
-
-Backtest (no costs): +20% annual return
-Live (with costs): -5% annual return (0.15% cost per trade ate edge!)
-
-Fix: Model expected profit AFTER costs</code></pre>
-
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>ML finds patterns—but overfits easily (use carefully)</strong></li>
-        <li><strong>Feature engineering > model choice (garbage in = garbage out)</strong></li>
-        <li><strong>Walk-forward CV essential (test across regimes)</strong></li>
-        <li><strong>Random Forest best for beginners (robust, interpretable)</strong></li>
-        <li><strong>Use ML as filter, not standalone strategy</strong></li>
-        <li><strong>Optimize for expectancy, not accuracy</strong></li>
-      </ul>
-
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Feature engineering</strong></p>
-      <p>List 10 features you'd use to predict Janus sweep win/loss. Are they stationary? No look-ahead bias?</p>
-      
-      <p><strong>Exercise 2: Walk-forward test</strong></p>
-      <p>If you have trade history: Split into 5 folds (time-series). Train on first 4, test on 5th. Rotate. Consistent results?</p>
-
-      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
-      <p><em>"ML isn't a magic crystal ball. It's pattern recognition on steroids—powerful, but dangerous if misused."</em></p>
-      <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
-  <div class="wrap nav-article">
-    <a class="btn btn-ghost" href="/curriculum/advanced/34-system-development.html">&larr; Previous: System Dev</a>
-    <a class="btn btn-primary" href="/curriculum/advanced/36-high-frequency-concepts.html">Next: HFT Concepts &rarr;</a>
+<header class="sp-header">
+  <div class="wrap">
+    <a class="brand" href="https://signalpilot.io/"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul><li><a href="/">Education</a></li><li><a href="/search.html">Search</a></li></ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button></div>
   </div>
+</header>
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs"><a href="/">Home</a> <span>›</span><a href="/advanced.html">Advanced</a> <span>›</span><span>Lesson #35</span></div>
+      <span class="badge">🔴 Advanced • Lesson 7 of 15</span>
+      <h1 class="headline xl">Machine Learning for Trading: The Overhyped & The Practical</h1>
+      <div class="meta">Reading time ~18 min • ML Applications in Trading</div>
+      <div class="article-progress" style="--progress:0%"><div class="progress-circle"><span>0%</span></div><div class="progress-text"><strong>You're making progress!</strong><div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div></div></div>
+    </div>
+  </header>
+  <div class="wrap article-grid">
+    <div class="prose">
+      <p><b>"Feed price data into a neural network → profit."</b></p>
+      <p>If only. Here's reality: 90% of ML trading strategies fail live. Not because ML doesn't work—because traders misuse it.</p>
+      <p>Markets are non-stationary. Low signal-to-noise. ML overfits spectacularly if you're not careful.</p>
+      <div class="callout-warning"><h4>🚨 Real Talk</h4><p>ML isn't a magic money printer. It's pattern recognition on steroids. Use it wrong (data leakage, overfitting, insufficient data) and you'll backtest a 90% win rate that goes 40% live. Use it right? It's a powerful filter for high-probability setups.</p></div>
+      <div class="callout-tip"><h4>🎯 What You'll Gain</h4><p>After this lesson, you'll be able to:</p><ul><li>Build ML trade filters (predict which setups likely to win)</li><li>Engineer features properly (stationary, no look-ahead bias)</li><li>Use walk-forward cross-validation to avoid overfitting</li><li>Choose models wisely (Random Forest > Neural Networks for most cases)</li></ul></div>
+      <div class="callout-key"><h4>💡 The Aha Moment</h4><p>ML isn't a standalone strategy. It's a FILTER. You already have setups (Janus sweeps). ML predicts which ones have 75% vs 50% win rate. Trade the 75% ones, skip the 50%. That's the edge.</p></div>
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">You just learned what most ML traders discover after blowing up an account: feature engineering > model choice, walk-forward testing is mandatory, and optimize for expectancy (not accuracy). Now you can use ML as a tool, not a gamble.</p>
+      <div class="callout-info"><h4>⏭️ Coming Up Next</h4><p><strong>Article #36: High-Frequency Concepts</strong> — HFT isn't accessible to retail, but understanding latency arbitrage and order flow toxicity helps you avoid being the exit liquidity.</p></div>
+    </div>
+    <aside class="toc"><h3>On this page</h3><a href="#" style="opacity:.6">ML Reality Check</a><a href="#">Feature Engineering</a><a href="#">Model Selection</a><a href="#">Validation</a><a href="#">Knowledge Check</a></aside>
+  </div>
+  <div class="wrap nav-article"><a class="btn btn-ghost" href="/curriculum/advanced/34-system-development.html">← Previous Lesson</a><a class="btn btn-primary" href="/curriculum/advanced/36-high-frequency-concepts.html">Next Lesson →</a></div>
 </article>
-<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc. All rights reserved.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
 <script src="/assets/edu.js"></script>
-</body></html>
+<script src="/assets/edu-enhanced.js"></script>
+<script>window.addEventListener('scroll', () => {const winHeight = window.innerHeight;const docHeight = document.documentElement.scrollHeight;const scrolled = window.scrollY;const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);const circle = document.querySelector('.progress-circle');if (circle) {circle.style.setProperty('--progress', percent + '%');circle.querySelector('span').textContent = percent + '%';}}, { passive: true });localStorage.setItem('sp_edu_last_article', JSON.stringify({title: 'Machine Learning for Trading',level: 'Advanced',order: '35',url: window.location.pathname,progress: 0}));</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+</body>
+</html>

@@ -9,6 +9,8 @@
   <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner/01-the-liquidity-lie.html">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
   <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
@@ -24,7 +26,9 @@
       <li><a href="/">Education</a></li>
       <li><a href="/search.html">Search</a></li>
     </ul></nav>
-    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Theme</button></div>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button></div>
   </div>
 </header>
 
@@ -373,5 +377,7 @@
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
 </body>
 </html>
