@@ -5,7 +5,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Learn about trading — SignalPilot Education</title>
-  <meta name="description" content="Short, practical guides that favor clarity over mysticism. Educational only—no P&L promises.">
+  <meta name="description" content="Complete trading curriculum: 12 beginner articles (31K words) covering market structure, order flow, indicators, psychology & risk. Beyond retail thinking.">
   <link rel="canonical" href="https://education.signalpilot.io/">
   <meta name="theme-color" content="#05070d">
   <meta property="og:type" content="website">
@@ -52,15 +52,16 @@
     <div class="wrap">
       <span class="badge">EDUCATION</span>
       <h1 class="headline xl">Learn about trading</h1>
-      <p class="lead measure">Short, practical guides that favor clarity over mysticism. Educational only—no P&amp;L promises.</p>
+      <p class="lead measure">Complete tiered curriculum teaching you to think like a market maker. 12 beginner articles now available covering market structure, order flow, indicators, psychology & risk management.</p>
     </div>
   </section>
 
   <section class="mission">
     <div class="wrap">
       <div class="card">
-        <h2 class="headline md">Mission</h2>
-        <p>SignalPilot isn’t only a set of indicators. The goal is to help traders think clearly: set a <b>bias</b> (regime), confirm <b>participation</b> (flow), respect <b>structure</b> (levels/zones), and <b>time</b> entries with evidence—then size positions so a single trade can’t ruin you.</p>
+        <h2 class="headline md">Beyond Retail Thinking</h2>
+        <p><em>"We don't teach you to trade. We teach you to think like a market maker."</em></p>
+        <p>SignalPilot isn't only a set of indicators. The goal is to help traders think clearly: set a <b>bias</b> (regime), confirm <b>participation</b> (flow), respect <b>structure</b> (levels/zones), and <b>time</b> entries with evidence—then size positions so a single trade can't ruin you.</p>
         <ul class="bullets">
           <li><b>Method first.</b> Tools are only useful when a simple method ties them together.</li>
           <li><b>Close‑confirmed data.</b> All examples and screenshots align with non‑repainting signals.</li>
@@ -70,35 +71,106 @@
     </div>
   </section>
 
+  <!-- NEW CURRICULUM SECTION -->
   <section class="grid-sec">
     <div class="wrap">
-      <div class="grid auto-300">
-        <!-- Post cards -->
-        <section class="grid-sec">
-  <div class="wrap">
-    <div class="grid auto-300" id="edu-post-grid" aria-live="polite"></div>
-  </div>
-</section>
+      <h2 class="headline lg" style="margin-bottom: 2rem;">🎓 Complete Beginner Curriculum</h2>
+      <div class="card" style="margin-bottom: 2rem;">
+        <p><strong>NEW:</strong> 12 comprehensive articles (~31,000 words) covering market structure, indicators, psychology, and risk management. Start here if you're serious about professional trading education.</p>
+        <a class="btn btn-primary" href="/curriculum/beginner/01-the-liquidity-lie.md">Start with Article #1 →</a>
+        <a class="btn btn-ghost" href="/curriculum/README.md" style="margin-left: 1rem;">View Full Curriculum</a>
+      </div>
+    </div>
+  </section>
 
-<script>
-(async function(){
-  const grid = document.getElementById('edu-post-grid');
-  try {
-    const res = await fetch('/articles/index.json', { cache: 'no-store' });
-    const posts = await res.json();
-    grid.innerHTML = posts.map(p => `
-      <article class="card post">
-        <div class="kicker">${p.level || 'General'}</div>
-        <h3>${p.title}</h3>
-        <p class="note">${p.description || ''}</p>
-        <a class="btn btn-primary btn-sm" href="${p.href}">Read the guide</a>
-      </article>
-    `).join('');
-  } catch {
-    grid.innerHTML = '<div class="card"><p class="note">Couldn’t load /articles/index.json</p></div>';
-  }
-})();
-</script>
+  <section class="grid-sec">
+    <div class="wrap">
+      <h3 class="headline md" style="margin-bottom: 1.5rem;">Beginner Tier Articles (1-12)</h3>
+      <div class="grid auto-300" id="curriculum-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <script>
+  (async function(){
+    const curriculumGrid = document.getElementById('curriculum-grid');
+    try {
+      const res = await fetch('/curriculum/index.json', { cache: 'no-store' });
+      const articles = await res.json();
+
+      // Group by category
+      const categories = {
+        'Market Structure Reality': [],
+        'Indicator Truth': [],
+        'Psychology Foundations': [],
+        'Risk Reality': [],
+        'Bonus Beginner': []
+      };
+
+      articles.forEach(a => {
+        if (categories[a.category]) {
+          categories[a.category].push(a);
+        }
+      });
+
+      let html = '';
+      Object.keys(categories).forEach(cat => {
+        const catArticles = categories[cat];
+        if (catArticles.length > 0) {
+          html += `<div class="card" style="grid-column: 1 / -1; background: var(--surface-2); padding: 1rem; margin-bottom: 1rem;">
+            <h4 style="margin: 0; color: var(--primary);">${cat}</h4>
+          </div>`;
+
+          catArticles.forEach(a => {
+            const statusBadge = a.status === 'complete' ? '✅' : '📝';
+            html += `
+              <article class="card post">
+                <div class="kicker">${statusBadge} Article ${a.order}</div>
+                <h3 style="font-size: 1.1rem;">${a.title}</h3>
+                <p class="note">${a.description}</p>
+                <div style="font-size: 0.85rem; color: var(--text-2); margin-top: 0.5rem;">
+                  📖 ${a.readingTime} • ${a.wordCount.toLocaleString()} words
+                </div>
+                <a class="btn btn-primary btn-sm" href="${a.href}">Read Article →</a>
+              </article>
+            `;
+          });
+        }
+      });
+
+      curriculumGrid.innerHTML = html;
+    } catch (err) {
+      curriculumGrid.innerHTML = '<div class="card"><p class="note">Couldn't load curriculum. Error: ' + err.message + '</p></div>';
+    }
+  })();
+  </script>
+
+  <!-- LEGACY ARTICLES SECTION -->
+  <section class="grid-sec" style="margin-top: 4rem;">
+    <div class="wrap">
+      <h3 class="headline md" style="margin-bottom: 1.5rem;">Additional Articles</h3>
+      <div class="grid auto-300" id="edu-post-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <script>
+  (async function(){
+    const grid = document.getElementById('edu-post-grid');
+    try {
+      const res = await fetch('/articles/index.json', { cache: 'no-store' });
+      const posts = await res.json();
+      grid.innerHTML = posts.map(p => `
+        <article class="card post">
+          <div class="kicker">${p.level || 'General'}</div>
+          <h3>${p.title}</h3>
+          <p class="note">${p.description || ''}</p>
+          <a class="btn btn-primary btn-sm" href="${p.href}">Read the guide</a>
+        </article>
+      `).join('');
+    } catch {
+      grid.innerHTML = '<div class="card"><p class="note">Couldn't load /articles/index.json</p></div>';
+    }
+  })();
+  </script>
 
 
   <section class="how">
