@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Smart Money Divergence: When Price Lies, Follow the Money — SignalPilot Education</title>
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="18">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+  <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
+<header class="sp-header"><div class="wrap"><a class="brand" href="https://signalpilot.io/"><svg width="24" height="24"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SignalPilot</span></a><nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav></div></header>
+<article class="article">
+  <header><div class="wrap"><span class="badge">Intermediate</span><h1 class="headline xl">Smart Money Divergence: When Price Lies, Follow the Money</h1><div class="meta">Reading time ~13 min • Advanced Order Flow</div></div></header>
+  <div class="wrap article-grid"><div class="prose">
+      <p><b>Price can be manipulated. Order flow can't.</b> When price moves one way but order flow/institutions move opposite → High-probability reversal. Learn delta divergence, dark pool divergence, and complete trading framework.</p>
+      
+      <h2>What IS Smart Money Divergence?</h2>
+      <p><strong>Price:</strong> What retail sees (one direction)</p>
+      <p><strong>Order flow/institutions:</strong> What professionals see (opposite direction)</p>
+      <p><b>When they disagree, bet on the money every time.</b></p>
+
+      <h2>Types of Divergence</h2>
+      
+      <h3>1. Price vs. Volume Divergence</h3>
+      <pre><code>Bullish Divergence (Reversal UP):
+Price: Lower low ($99 → $98)
+Volume: Lower on second low (exhaustion)
+
+Interpretation: Sellers exhausted, reversal likely</code></pre>
+      
+      <p><strong>Signal Pilot:</strong> Plutus Flow OBV rising while price falling = Bullish divergence.</p>
+
+      <h3>2. Price vs. Delta Divergence</h3>
+      <pre><code>Bullish Delta Divergence:
+Price: Lower low ($100 → $98)
+CVD: Higher low (less selling pressure)
+
+Footprint:
+First low ($100): Delta = -5,000
+Second low ($98): Delta = -2,000
+
+Interpretation: Selling pressure DECREASED → Reversal UP</code></pre>
+      
+      <p><strong>Signal Pilot:</strong> Plutus CVD + Janus sweep = High conviction.</p>
+
+      <h3>3. Price vs. Dark Pool Divergence</h3>
+      <pre><code>Accumulation Divergence (Bullish):
+Lit exchange (retail): Price falling $105 → $100 (panic)
+Dark pool (institutions): Large buy prints (200k-500k shares)
+
+Divergence: Retail selling, institutions buying
+Result: Price reverses UP (institutions win)</code></pre>
+
+      <h3>4. Price vs. Order Book Divergence</h3>
+      <pre><code>Absorption Divergence (Bullish):
+Price approaching $100 support
+Order book: 50,000 bid wall at $100
+Aggressive selling hits wall → Absorbed
+
+Divergence: Price should break (based on selling), but wall ABSORBS
+Result: Reversal UP</code></pre>
+
+      <h2>Detecting Delta Divergence</h2>
+      
+      <h3>Bullish Delta Divergence</h3>
+      <pre><code>Price: $100 → $98 (new low)
+CVD: Higher low (less selling)
+
+Setup:
+1. Janus shows sweep below $98
+2. CVD shows bullish divergence
+3. Enter long on reversal candle
+4. Stop below swept low</code></pre>
+      <p><b>Win Rate:</b> 60-70%</p>
+
+      <h3>Bearish Delta Divergence</h3>
+      <pre><code>Price: $100 → $102 (new high)
+CVD: Lower high (less buying)
+
+Setup:
+1. Price tests resistance
+2. CVD bearish divergence
+3. Minimal Flow regime shift (trending → ranging)
+4. Enter short on breakdown</code></pre>
+      <p><b>Win Rate:</b> 55-65%</p>
+
+      <h2>Practical Strategies</h2>
+      
+      <h3>Strategy 1: Triple Divergence Reversal</h3>
+      <p><strong>Setup (Bullish):</strong></p>
+      <ol>
+        <li>Price lower low</li>
+        <li>Volume divergence (declining)</li>
+        <li>CVD divergence (higher low)</li>
+        <li>Dark pool accumulation (3 days)</li>
+        <li>Janus sweep</li>
+        <li>Enter on reversal</li>
+      </ol>
+      <p><b>Win Rate:</b> 70-80% (extreme confluence)</p>
+
+      <h3>Strategy 2: Distribution Fade</h3>
+      <p><strong>Setup (Bearish):</strong></p>
+      <ol>
+        <li>Price higher high</li>
+        <li>Volume divergence (declining)</li>
+        <li>CVD divergence (lower high)</li>
+        <li>Dark pool distribution (4 days)</li>
+        <li>Failed breakout (Janus)</li>
+        <li>Enter short on breakdown</li>
+      </ol>
+      <p><b>Win Rate:</b> 65-75%</p>
+
+      <h3>Strategy 3: Order Book Absorption Scalp</h3>
+      <p><strong>Setup:</strong></p>
+      <ol>
+        <li>Price approaches support</li>
+        <li>Order book large wall (10k+)</li>
+        <li>Footprint absorption (wall holds)</li>
+        <li>Minimal Flow regime supports</li>
+        <li>Enter on reversal</li>
+      </ol>
+      <p><b>Win Rate:</b> 60-70%</p>
+
+      <h2>Common Mistakes</h2>
+      
+      <h3>Mistake 1: Acting on Single Divergence</h3>
+      <p><b>Bad:</b> "CVD divergence, entering now!"</p>
+      <p><b>Reality:</b> Single divergence can persist for long time.</p>
+      <p><b>Fix:</b> Require 2+ divergences + price trigger.</p>
+
+      <h3>Mistake 2: Ignoring the Trend</h3>
+      <p><b>Bad:</b> "Bullish divergence in downtrend, buying!"</p>
+      <p><b>Reality:</b> Divergence in strong trend often fails.</p>
+      <p><b>Fix:</b> Trade divergences WITH trend or at major turning points.</p>
+
+      <h3>Mistake 3: No Trigger</h3>
+      <p><b>Bad:</b> "Divergence exists, entering now!"</p>
+      <p><b>Reality:</b> Divergence can build for weeks.</p>
+      <p><b>Fix:</b> Wait for price action TRIGGER (Janus sweep, breakout, reversal candle).</p>
+
+      <h2>Complete Divergence Framework</h2>
+      
+      <p><strong>Pre-Trade Checklist:</strong></p>
+      <ul>
+        <li>[ ] Divergence identified (minimum 2):
+          <ul>
+            <li>Volume divergence</li>
+            <li>Delta divergence (CVD)</li>
+            <li>Dark pool divergence</li>
+            <li>Order book divergence</li>
+          </ul>
+        </li>
+        <li>[ ] Signal Pilot confirmation:
+          <ul>
+            <li>Janus: Sweep or failed breakout</li>
+            <li>Minimal Flow: Regime shift or support</li>
+            <li>Plutus: CVD alignment</li>
+          </ul>
+        </li>
+        <li>[ ] Price action trigger:
+          <ul>
+            <li>Reversal candle</li>
+            <li>Breakout/breakdown</li>
+            <li>Structure test</li>
+          </ul>
+        </li>
+        <li>[ ] Risk management:
+          <ul>
+            <li>Stop beyond invalidation</li>
+            <li>Target &gt; 2R</li>
+            <li>Size appropriate</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>Divergence = price vs. smart money conflict</strong></li>
+        <li><strong>Multiple divergences &gt; single</strong></li>
+        <li><strong>Smart money wins long-term</strong></li>
+        <li><strong>Require trigger, not just divergence</strong></li>
+        <li><strong>Best = divergence + structure + Signal Pilot</strong></li>
+      </ul>
+
+      <h2>Exercises</h2>
+      <p><strong>Exercise 1: Review losing trades</strong></p>
+      <p>Was there divergence you missed? Could it have kept you out?</p>
+      
+      <p><strong>Exercise 2: Set up CVD indicator</strong></p>
+      <p>Track delta divergence for 1 week. How often does it predict reversals?</p>
+
+      <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
+      <p><em>"Price is what retail sees. Flow is what institutions do. When they diverge, bet on the institutions."</em></p>
+      <p><strong>— Signal Pilot Education Team</strong></p>
+    </div></div>
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/intermediate/17-dark-pools.html">&larr; Previous: Dark Pools</a>
+    <a class="btn btn-primary" href="/">More Coming Soon &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> SignalPilot Labs, Inc.</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body></html>
