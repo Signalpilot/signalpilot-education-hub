@@ -191,7 +191,7 @@
 
       <div class="section-break"><span>Part 3: Building Your First Trading Bot</span></div>
 
-      <h2>Let's Code a Simple Sweep Reversal Bot</h2>
+      <h2>Let's Code a Simple Sweep Potential Reversal Bot</h2>
 
       <p>Here's the thing: You don't need to be a software engineer.</p>
 
@@ -232,7 +232,7 @@ print(f"Current low: ${current_low}")</code></pre>
 
       <p>You now have real-time data. Next: trade logic.</p>
 
-      <h3>Step 3: Detect Sweep Reversal Setup</h3>
+      <h3>Step 3: Detect Sweep Potential Reversal Setup</h3>
 
       <pre><code>def get_swing_low(bars, lookback=20):
     """Find swing low over last N bars"""
@@ -566,7 +566,7 @@ except Exception as e:
             <ul>
               <li>Is the market still in a regime your strategy favors?</li>
               <li>VIX elevated? Consider pausing or reducing size.</li>
-              <li>Low volatility? Your breakout strategy might struggle.</li>
+              <li>Low volatility? Your potential breakout strategy might struggle.</li>
             </ul>
             <p><em>Turn off strategies that don't fit current regime.</em></p>
           </div>
