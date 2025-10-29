@@ -1,7 +1,7 @@
 # Signal Pilot Compliance Guidelines
 ## Language Requirements for Educational & Documentation Materials
 
-**Version**: 1.0
+**Version**: 1.1
 **Last Updated**: October 29, 2025
 **Status**: MANDATORY for all content
 
@@ -24,7 +24,7 @@ These guidelines ensure our trading education materials and signal descriptions 
 
 ```
 "TOUCHDOWN is a bottom signal"
-"OUT is a reversal signal"
+"BDN is a reversal signal"
 "CAP signals top"
 "IGN confirms breakout"
 "bottom forming"
@@ -39,7 +39,7 @@ These guidelines ensure our trading education materials and signal descriptions 
 
 ```
 "TOUCHDOWN is a potential bottom signal"
-"OUT is a potential reversal signal"
+"BDN is a potential reversal signal"
 "CAP signals potential top"
 "IGN signals potential breakout"
 "potential bottom forming"
@@ -99,10 +99,10 @@ These guidelines ensure our trading education materials and signal descriptions 
 ### Example 2: Educational Content
 
 **❌ Non-Compliant:**
-> "The Pentarch system maps market cycles through 5 phases. When you see TD → IGN, you're observing a bottom development. When you see WRN → CAP → OUT, you're watching a top formation."
+> "The Pentarch system maps market cycles through 5 phases. When you see TD → IGN, you're observing a bottom development. When you see WRN → CAP → BDN, you're watching a top formation."
 
 **✅ Compliant:**
-> "The Pentarch system maps potential market cycles through 5 phases. When you see TD → IGN, you're observing a potential bottom development. When you see WRN → CAP → OUT, you're watching a potential top formation."
+> "The Pentarch system maps potential market cycles through 5 phases. When you see TD → IGN, you're observing a potential bottom development. When you see WRN → CAP → BDN, you're watching a potential top formation."
 
 ### Example 3: Tool Documentation
 
@@ -188,7 +188,7 @@ Update these in order of priority:
 
 ✅ "TD (Touchdown) detects potential bottoming formations where selling pressure may be exhausting"
 
-✅ "OUT signals a potential trend reversal, suggesting that the current direction might be changing"
+✅ "BDN signals a potential trend reversal, suggesting that the current direction might be changing"
 
 ✅ "CAP indicates potential topping conditions, which could suggest caution for existing positions"
 
@@ -354,6 +354,7 @@ Print this and keep it visible:
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.1 | Oct 29, 2025 | Updated signal rebrand: OUT → BDN (Breakdown) |
 | 1.0 | Oct 29, 2025 | Initial compliance guidelines created |
 
 ---
