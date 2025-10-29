@@ -421,6 +421,64 @@
         </ul>
       </div>
 
+      <div class="section-break"><span>Practice Exercise</span></div>
+
+      <div class="callout-key">
+        <h4>🎯 Real-World Practice: Identifying Order Stacking and Spoofing</h4>
+        <p><strong>Objective:</strong> Learn to differentiate real liquidity from fake walls in live order books</p>
+
+        <p style="margin-top:1.5rem"><strong>Step-by-step exercise:</strong></p>
+        <ol>
+          <li><strong>Open Level 2 data</strong> — Use your broker's order book (depth of market) view for a liquid asset</li>
+          <li><strong>Identify large walls</strong> — Look for orders 5-10× larger than typical size at a single price level</li>
+          <li><strong>Document the setup:</strong>
+            <ul style="margin-top:.5rem">
+              <li>Wall size (e.g., 10,000 shares at $100.00)</li>
+              <li>Direction (bid or ask wall)</li>
+              <li>Current price distance from wall</li>
+            </ul>
+          </li>
+          <li><strong>Watch what happens when price approaches:</strong>
+            <ul style="margin-top:.5rem">
+              <li>Does the wall hold (absorption)?</li>
+              <li>Does it disappear before being tested (spoofing)?</li>
+              <li>Does it get eaten through (exhaustion)?</li>
+            </ul>
+          </li>
+          <li><strong>Track pattern over 5 days:</strong> Log at least 10 large walls and their outcomes</li>
+        </ol>
+
+        <p style="margin-top:1.5rem"><strong>Success metrics:</strong></p>
+        <ul style="margin-top:.5rem">
+          <li>Find 2-3 spoofing instances (walls pulled before being hit)</li>
+          <li>Find 2-3 absorption patterns (walls hold, price reverses)</li>
+          <li>Find 1-2 exhaustion patterns (walls break, price continues)</li>
+        </ul>
+
+        <p style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px"><strong>Detection tip:</strong> Real walls stay put. Fake walls "chase" price or disappear. Iceberg orders refresh repeatedly at the same level with small visible size but high volume traded.</p>
+      </div>
+
+      <div style="margin-top:3rem">
+        <h3 style="margin-bottom:1.5rem">Related Lessons</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+          <a href="/curriculum/intermediate/13-bid-ask-spread-dynamics.html" style="display:block;padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;text-decoration:none;transition:all .2s">
+            <div style="font-size:.85rem;color:var(--accent);margin-bottom:.5rem">LESSON 13 • INTERMEDIATE</div>
+            <h4 style="margin:0 0 .5rem 0;color:var(--text)">Bid-Ask Spread Dynamics</h4>
+            <p style="margin:0;font-size:.9rem;color:var(--muted)">Master spread analysis to understand when market makers are protecting themselves—complements order book reading</p>
+          </a>
+          <a href="/curriculum/intermediate/15-market-making-hft.html" style="display:block;padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;text-decoration:none;transition:all .2s">
+            <div style="font-size:.85rem;color:var(--accent);margin-bottom:.5rem">LESSON 15 • INTERMEDIATE</div>
+            <h4 style="margin:0 0 .5rem 0;color:var(--text)">Market Making & HFT</h4>
+            <p style="margin:0;font-size:.9rem;color:var(--muted)">Understand the players behind order book walls—learn their strategies to avoid being their exit liquidity</p>
+          </a>
+          <a href="/curriculum/intermediate/16-footprint-charts.html" style="display:block;padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;text-decoration:none;transition:all .2s">
+            <div style="font-size:.85rem;color:var(--accent);margin-bottom:.5rem">LESSON 16 • INTERMEDIATE</div>
+            <h4 style="margin:0 0 .5rem 0;color:var(--text)">Footprint Charts</h4>
+            <p style="margin:0;font-size:.9rem;color:var(--muted)">Visualize order book execution in real-time—see exactly where absorption and exhaustion happen</p>
+          </a>
+        </div>
+      </div>
+
       <div class="section-break"><span>Test Your Knowledge</span></div>
 
       <div class="quiz">

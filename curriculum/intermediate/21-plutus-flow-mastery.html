@@ -152,21 +152,93 @@ Plutus: POC migrating higher ($100 → $102 → $104)
 Interpretation: Strong trend confirmed
 Action: Trade pullbacks to POC</code></pre>
 
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li><strong>POC = fair value (price magnet)</strong></li>
-        <li><strong>POC migration = trend strength</strong></li>
-        <li><strong>HVN = support/resistance (likely to hold)</strong></li>
-        <li><strong>LVN = potential breakout zones (fast moves)</strong></li>
-        <li><strong>CVD divergence = potential reversal warning</strong></li>
-      </ul>
+      <div class="key-takeaway">
+        <h4>Key Takeaways</h4>
+        <ul>
+          <li><strong>POC = fair value (price magnet)</strong> — Price gravitates toward highest volume node</li>
+          <li><strong>POC migration = trend strength</strong> — Moving POC confirms trend, static POC warns of reversal</li>
+          <li><strong>HVN = support/resistance (likely to hold)</strong> — High acceptance zones act as magnets</li>
+          <li><strong>LVN = potential breakout zones (fast moves)</strong> — Low acceptance zones offer minimal resistance</li>
+          <li><strong>CVD divergence = potential reversal warning</strong> — Price vs delta conflict signals exhaustion</li>
+        </ul>
+      </div>
 
-      <h2>Exercises</h2>
-      <p><strong>Exercise 1: Track POC migration</strong></p>
-      <p>For 5 days, mark daily POC. Does it migrate with trend? Or stay flat?</p>
-      
-      <p><strong>Exercise 2: Find CVD divergence</strong></p>
-      <p>Log 3 instances where price and CVD diverged. What happened next?</p>
+      <div class="section-break"><span>Practice Exercise</span></div>
+
+      <div class="callout-key">
+        <h4>🎯 Real-World Practice: POC Holds vs Breaks for Win Rate Analysis</h4>
+        <p><strong>Objective:</strong> Build a data-driven understanding of POC behavior to improve mean reversion and breakout trades</p>
+
+        <p style="margin-top:1.5rem"><strong>Step-by-step exercise:</strong></p>
+        <ol>
+          <li><strong>Setup Plutus Flow:</strong>
+            <ul style="margin-top:.5rem">
+              <li>Enable Volume Profile on your chart (daily or session profile)</li>
+              <li>Mark the POC (Point of Control—highest volume node)</li>
+              <li>Enable CVD overlay to track delta</li>
+            </ul>
+          </li>
+          <li><strong>Track POC migration over 10 trading days:</strong>
+            <ul style="margin-top:.5rem">
+              <li>Day 1 POC: $100.00</li>
+              <li>Day 2 POC: $100.50 or $100.00? (migrated or static?)</li>
+              <li>Continue for 10 days</li>
+            </ul>
+          </li>
+          <li><strong>Test POC as support/resistance:</strong>
+            <ul style="margin-top:.5rem">
+              <li>When price pulls back to POC, does it hold or break?</li>
+              <li>Check CVD at test: Positive delta = absorption (likely hold)</li>
+              <li>Negative delta = exhaustion (likely break)</li>
+            </ul>
+          </li>
+          <li><strong>Document each test:</strong>
+            <ul style="margin-top:.5rem">
+              <li>POC level</li>
+              <li>Price approach direction (from above/below)</li>
+              <li>CVD reading at test (+/- and magnitude)</li>
+              <li>Outcome: Hold (reversal) or Break (continuation)</li>
+              <li>Hypothetical trade result</li>
+            </ul>
+          </li>
+          <li><strong>Calculate win rates:</strong>
+            <ul style="margin-top:.5rem">
+              <li>POC + positive delta holds = X% win rate</li>
+              <li>POC + negative delta breaks = Y% win rate</li>
+            </ul>
+          </li>
+        </ol>
+
+        <p style="margin-top:1.5rem"><strong>Success metrics:</strong></p>
+        <ul style="margin-top:.5rem">
+          <li>Track 15+ POC tests over 10 days</li>
+          <li>Identify 3+ POC migration patterns (trending vs ranging)</li>
+          <li>Achieve 60%+ accuracy predicting holds vs breaks using CVD</li>
+        </ul>
+
+        <p style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px"><strong>Pro insight:</strong> In strong trends, POC migrates daily and acts as support on pullbacks (65-70% hold rate). In ranges, POC stays static and gets tested repeatedly (50-50 hold/break). Use Minimal Flow to identify regime first, then trade POC accordingly.</p>
+      </div>
+
+      <div style="margin-top:3rem">
+        <h3 style="margin-bottom:1.5rem">Related Lessons</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+          <a href="/curriculum/intermediate/20-janus-atlas-advanced.html" style="display:block;padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;text-decoration:none;transition:all .2s">
+            <div style="font-size:.85rem;color:var(--accent);margin-bottom:.5rem">LESSON 20 • INTERMEDIATE</div>
+            <h4 style="margin:0 0 .5rem 0;color:var(--text)">Janus Atlas Advanced</h4>
+            <p style="margin:0;font-size:.9rem;color:var(--muted)">Combine sweeps with POC levels—when Janus sweep happens AT POC with positive delta, you have highest-conviction setup</p>
+          </a>
+          <a href="/curriculum/intermediate/16-footprint-charts.html" style="display:block;padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;text-decoration:none;transition:all .2s">
+            <div style="font-size:.85rem;color:var(--accent);margin-bottom:.5rem">LESSON 16 • INTERMEDIATE</div>
+            <h4 style="margin:0 0 .5rem 0;color:var(--text)">Footprint Charts</h4>
+            <p style="margin:0;font-size:.9rem;color:var(--muted)">See volume profile in real-time execution—footprint shows HOW the POC formed and where absorption happened</p>
+          </a>
+          <a href="/curriculum/intermediate/22-minimal-flow-regimes.html" style="display:block;padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;text-decoration:none;transition:all .2s">
+            <div style="font-size:.85rem;color:var(--accent);margin-bottom:.5rem">LESSON 22 • INTERMEDIATE</div>
+            <h4 style="margin:0 0 .5rem 0;color:var(--text)">Minimal Flow: Regime Detection</h4>
+            <p style="margin:0;font-size:.9rem;color:var(--muted)">Identify market regime first—POC behaves differently in trending vs ranging regimes</p>
+          </a>
+        </div>
+      </div>
 
       <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
       <p><em>"Volume Profile shows where price was accepted. Trade toward fair value, away from rejection."</em></p>
