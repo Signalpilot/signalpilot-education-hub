@@ -369,6 +369,183 @@ DXY +0.8%, TNX breaking out, VIX 23 = 3 bearish → SKIP</code></pre>
         </ul>
       </div>
 
+      <div class="callout-key">
+        <h4>🎯 Practice Exercise: Map Correlation Breakdowns During Volatility</h4>
+        <p><strong>Objective:</strong> Build a real-time intermarket monitoring system and learn to identify high-probability divergence trades.</p>
+
+        <p><strong>Part 1: Daily Pre-Market Macro Dashboard</strong></p>
+        <p>Before EVERY trading session, create a macro snapshot. Build this as a spreadsheet template:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0">
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <th style="padding:.5rem">Asset</th>
+            <th style="padding:.5rem">Current Value</th>
+            <th style="padding:.5rem">Change (%)</th>
+            <th style="padding:.5rem">Interpretation</th>
+            <th style="padding:.5rem">Impact on Stocks</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">DXY</td>
+            <td style="padding:.5rem">_______</td>
+            <td style="padding:.5rem">+/- ______%</td>
+            <td style="padding:.5rem">Strong/Weak/Neutral</td>
+            <td style="padding:.5rem">Headwind/Tailwind/Neutral</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">TNX (10Y)</td>
+            <td style="padding:.5rem">_______</td>
+            <td style="padding:.5rem">+/- ______%</td>
+            <td style="padding:.5rem">Rising/Falling</td>
+            <td style="padding:.5rem">Bearish/Bullish</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">VIX</td>
+            <td style="padding:.5rem">_______</td>
+            <td style="padding:.5rem">+/- ______%</td>
+            <td style="padding:.5rem">< 15 / 15-20 / > 20</td>
+            <td style="padding:.5rem">Normal/Caution/Reduce</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">GLD (Gold)</td>
+            <td style="padding:.5rem">_______</td>
+            <td style="padding:.5rem">+/- ______%</td>
+            <td style="padding:.5rem">Spiking/Stable</td>
+            <td style="padding:.5rem">Risk-off/Normal</td>
+          </tr>
+          <tr>
+            <td style="padding:.5rem">USO (Oil)</td>
+            <td style="padding:.5rem">_______</td>
+            <td style="padding:.5rem">+/- ______%</td>
+            <td style="padding:.5rem">Spiking/Stable</td>
+            <td style="padding:.5rem">Inflation/Normal</td>
+          </tr>
+        </table>
+        <p><strong>Action Rules:</strong></p>
+        <ul>
+          <li>2+ bearish signals (DXY up, TNX up, VIX > 20) = Reduce size 50% or skip longs</li>
+          <li>Gold + Oil both spiking = Inflation fear → Expect Fed hawkish → Bearish stocks</li>
+          <li>All bullish (DXY down, TNX stable, VIX < 18) = Green light for aggressive long entries</li>
+        </ul>
+
+        <p><strong>Part 2: 20-Day Correlation Tracking Study</strong></p>
+        <p>Track DXY vs. SPY daily closes for 20 trading days. Calculate the relationship:</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Day 1:
+DXY: $104.50 (+0.5%) | SPY: $520.00 (-0.8%)
+Correlation: Inverse (expected)
+
+Day 2:
+DXY: $104.80 (+0.3%) | SPY: $521.50 (+0.3%)
+Correlation: DIVERGENCE (both up = unusual)
+
+[Track 20 days]
+
+Summary:
+Days with inverse correlation: ___ / 20
+Days with divergence: ___ / 20
+Average SPY move after divergence (next 1-3 days): _______%</code></pre>
+        <p><strong>Key Insight:</strong> Divergences (DXY + SPY both rising) typically resolve within 1-3 days. The divergence resolves toward DXY's direction 70%+ of the time.</p>
+
+        <p><strong>Part 3: TNX Leading Indicator Test</strong></p>
+        <p>Test the hypothesis: TNX leads SPY by 1-3 days. Find 5 examples where TNX broke a major level:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0">
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <th style="padding:.5rem">Date</th>
+            <th style="padding:.5rem">TNX Event</th>
+            <th style="padding:.5rem">SPY Response</th>
+            <th style="padding:.5rem">Lag (days)</th>
+            <th style="padding:.5rem">Confirmed?</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">___</td>
+            <td style="padding:.5rem">Broke 4.0% resistance</td>
+            <td style="padding:.5rem">SPY -___% within ___ days</td>
+            <td style="padding:.5rem">___ days</td>
+            <td style="padding:.5rem">Y/N</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem" colspan="5"><em>...document 5 events...</em></td>
+          </tr>
+        </table>
+        <p><strong>Trading Rule:</strong> If TNX breaks major resistance, expect SPY correction within 1-3 days. Reduce long exposure or take profits proactively.</p>
+
+        <p><strong>Part 4: VIX Divergence Alert System</strong></p>
+        <p>Build alerts for the deadly divergence: SPY rallying + VIX rising. Track 10 occurrences:</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Divergence Template:
+Date: ___________
+SPY: $_____ → $_____ (+___%)
+VIX: _____ → _____ (+___%)
+
+Interpretation: Short covering rally (unsustainable)
+Trade Action: Fade rally? Y/N
+Entry: Short at $_____
+Stop: $_____
+Result: +/- ___R within ___ days
+
+Success Rate: ___ / 10 trades
+Avg Hold Time: ___ days
+Avg R per trade: ___R</code></pre>
+        <p><strong>Pattern:</strong> When SPY + VIX both rise 1%+ in same session, fade the rally within 1-2 days. Win rate should be 65-70%+.</p>
+
+        <p><strong>Part 5: DXY/Gold Inverse Relationship Backtest</strong></p>
+        <p>Verify the -0.8 correlation between DXY and Gold. Test 10 scenarios:</p>
+        <ol>
+          <li>Find days when DXY moved 1%+ (up or down)</li>
+          <li>Check Gold's move same day and next day</li>
+          <li>Confirm inverse: DXY up = Gold down (and vice versa)</li>
+          <li>Calculate correlation strength: Moved opposite ___ / 10 times</li>
+        </ol>
+        <p><strong>Trade Application:</strong></p>
+        <ul>
+          <li>DXY breaks major support → Long GLD (gold ETF) immediately</li>
+          <li>DXY breaks major resistance → Short GLD or avoid gold longs</li>
+        </ul>
+
+        <p><strong>Part 6: Crypto + Nasdaq Correlation Study</strong></p>
+        <p>Track BTC vs QQQ for 15 days. Does Nasdaq lead crypto by 6-24 hours?</p>
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0">
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <th style="padding:.5rem">Date</th>
+            <th style="padding:.5rem">QQQ Move</th>
+            <th style="padding:.5rem">BTC Same Day</th>
+            <th style="padding:.5rem">BTC Next Day</th>
+            <th style="padding:.5rem">Lag Confirmed?</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">___</td>
+            <td style="padding:.5rem">+/- ___%</td>
+            <td style="padding:.5rem">+/- ___%</td>
+            <td style="padding:.5rem">+/- ___%</td>
+            <td style="padding:.5rem">Y/N</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem" colspan="5"><em>...track 15 days...</em></td>
+          </tr>
+        </table>
+        <p><strong>Trading Edge:</strong> If Nasdaq futures dump 2% overnight, expect BTC to follow -4 to -6% within 12-24 hours. Exit crypto longs preemptively or short.</p>
+
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.15);border-radius:8px"><strong>Implementation Goal:</strong> Build your macro dashboard template in 24 hours. Use it for 30 consecutive trading days. Track 5+ intermarket divergences and trade them. By the end, checking DXY/TNX/VIX before trades should be automatic. This one habit prevents 30%+ of losing trades.</p>
+      </div>
+
+      <div style="margin:3rem 0">
+        <h3 style="margin-bottom:1.5rem">Related Lessons</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+          <a href="/curriculum/advanced/29-market-regime-recognition.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 29 • Advanced</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Market Regime Recognition</div>
+            <div style="font-size:.9rem;opacity:.8">Macro conditions define regime—combine intermarket analysis with regime detection</div>
+          </a>
+          <a href="/curriculum/advanced/32-volatility-trading.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 32 • Advanced</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Volatility Trading</div>
+            <div style="font-size:.9rem;opacity:.8">VIX is THE critical cross-asset signal—master volatility context for all trades</div>
+          </a>
+          <a href="/curriculum/intermediate/25-advanced-risk-management.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 25 • Intermediate</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Advanced Risk Management</div>
+            <div style="font-size:.9rem;opacity:.8">Adjust position sizing based on macro headwinds and VIX levels</div>
+          </a>
+        </div>
+      </div>
+
       <div class="section-break"><span>Test Your Knowledge</span></div>
 
       <div class="quiz">

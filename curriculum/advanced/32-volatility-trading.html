@@ -98,6 +98,170 @@
         <p style="margin-top:1rem"><strong>Lesson:</strong> VIX spikes are explosive but short-lived. If you bought SPY when VIX hit 70+, you made 50%+ in 6 months. Fear = opportunity for the prepared.</p>
       </div>
 
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>VIX measures fear:</strong> Spikes to 30+ are short-lived and mean-reverting (opportunity to buy dips)</li>
+          <li><strong>VIX regimes:</strong> < 15 = complacent, 15-20 = normal, 20-30 = elevated (reduce size), > 30 = panic (sit out or buy)</li>
+          <li><strong>Gamma pinning:</strong> 0-DTE options create price magnetism to max gamma strikes (track dealer positioning)</li>
+          <li><strong>Options flow:</strong> Whale trades (10,000+ contracts) can predict directional moves 6-24 hours ahead</li>
+          <li><strong>VIX mean reversion:</strong> When VIX > 30, expect reversion to 15-18 within 2-4 weeks (80%+ historical accuracy)</li>
+          <li><strong>Position sizing by VIX:</strong> VIX > 25 = cut size 50%+, VIX > 30 = consider sitting out or trading reversions only</li>
+        </ul>
+      </div>
+
+      <div class="callout-key">
+        <h4>🎯 Practice Exercise: Trade Volatility Spikes with Defined Risk</h4>
+        <p><strong>Objective:</strong> Learn to exploit VIX mean reversion and gamma effects through systematic observation and controlled trading.</p>
+
+        <p><strong>Part 1: VIX Spike Trading Backtest</strong></p>
+        <p>Identify 10 historical VIX spikes (VIX > 28) and track the reversion pattern:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0">
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <th style="padding:.5rem">Date</th>
+            <th style="padding:.5rem">VIX Peak</th>
+            <th style="padding:.5rem">SPY at Peak</th>
+            <th style="padding:.5rem">Days to VIX < 20</th>
+            <th style="padding:.5rem">SPY Recovery</th>
+            <th style="padding:.5rem">Trade Result</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">___/___/___</td>
+            <td style="padding:.5rem">___</td>
+            <td style="padding:.5rem">$_____</td>
+            <td style="padding:.5rem">___ days</td>
+            <td style="padding:.5rem">+___%</td>
+            <td style="padding:.5rem">+___R</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem" colspan="6"><em>...document 10 spikes...</em></td>
+          </tr>
+        </table>
+        <p><strong>Trading Rule:</strong> When VIX hits 30+, buy SPY calls 2-4 weeks out OR buy SPY shares with tight 2-3% stop. VIX reverts 80%+ of the time within 2 weeks. This is one of the highest-probability mean reversion trades in markets.</p>
+
+        <p><strong>Part 2: Daily VIX Regime Classification</strong></p>
+        <p>For 20 trading days, classify VIX regime each morning and adjust position sizing:</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Day 1:
+VIX: 16.5 (Normal regime)
+Position Size Multiplier: 1.0x (full size)
+Trades Taken: ___ | Winners: ___ | Avg R: ___R
+
+Day 2:
+VIX: 23.8 (Elevated regime)
+Position Size Multiplier: 0.5x (half size)
+Trades Taken: ___ | Winners: ___ | Avg R: ___R
+
+Day 3:
+VIX: 31.2 (Panic regime)
+Position Size Multiplier: 0x (no new directional trades)
+VIX Reversion Trade: Long SPY at $_____
+Result: +___R
+
+[Track 20 days]
+
+Summary:
+Average R on Normal VIX days: ___R
+Average R on Elevated VIX days: ___R
+VIX Reversion Trades: ___ / ___ successful</code></pre>
+        <p><strong>Key Insight:</strong> Your average R should be HIGHER on fewer trades during normal VIX. If you're taking same number of trades during high VIX and losing, you're not adapting.</p>
+
+        <p><strong>Part 3: 0-DTE Gamma Pinning Observation</strong></p>
+        <p>On option expiration days (Mon/Wed/Fri for SPY), identify max gamma strikes:</p>
+        <ol>
+          <li>Check options flow data for strikes with highest open interest</li>
+          <li>Note the top 3 strikes with most gamma exposure</li>
+          <li>Track how price behaves around these levels during the day</li>
+          <li>Does price "stick" to max gamma strike? Document attraction/repulsion</li>
+        </ol>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Example Observation:
+Date: Friday (0-DTE expiration)
+Max Gamma Strikes: $520, $522, $525
+Price at 9:30 AM: $521.50
+Price at 2:00 PM: $520.80 (gravitated to $520)
+Price at 3:30 PM: $520.20 (pinned to $520)
+Close: $520.05
+
+Pattern: Price gravitated to $520 (max gamma) and stayed within $0.50 range for final 90 minutes.
+
+YOUR OBSERVATIONS (track 5 expiration days):
+Expiration Day 1: Max gamma strike $_____, Close: $_____ (within ___%)
+[repeat for 5 days]
+
+Win Rate of Fading Moves Away from Max Gamma: ___ / 5</code></pre>
+
+        <p><strong>Part 4: Options Whale Trade Tracking</strong></p>
+        <p>Use options flow scanner (Unusual Whales, Flow Algo, etc.) to identify 5 large trades:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0">
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <th style="padding:.5rem">Date/Time</th>
+            <th style="padding:.5rem">Trade</th>
+            <th style="padding:.5rem">Strike/Exp</th>
+            <th style="padding:.5rem">Direction</th>
+            <th style="padding:.5rem">Follow-Up Move</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">___</td>
+            <td style="padding:.5rem">15,000 SPY calls</td>
+            <td style="padding:.5rem">$525 / 7 DTE</td>
+            <td style="padding:.5rem">Bullish</td>
+            <td style="padding:.5rem">SPY +___% in 24h</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem" colspan="5"><em>...track 5 whale trades...</em></td>
+          </tr>
+        </table>
+        <p><strong>Pattern to Find:</strong> Whale call buys followed by upward moves within 24-48 hours (accuracy: 60-70%). Whale put buys followed by downward moves (similar accuracy). Follow the whales—they know something you don't.</p>
+
+        <p><strong>Part 5: VIX Divergence + Mean Reversion Setup</strong></p>
+        <p>Combine VIX spike with SPY support level for high-probability reversal trade:</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Setup Criteria:
+1. VIX spikes above 28 (fear extreme)
+2. SPY tests major support (previous value area low, key level)
+3. Footprint shows absorption (Plutus CVD+ or Janus sweep)
+4. No macro headwinds (DXY/TNX not spiking)
+
+Trade Template:
+Entry: Long SPY at support (when 3+ criteria met)
+Stop: 2-3% below support (tight stop during high vol)
+Target 1: VIX return to 20 (usually +5-8% SPY move)
+Target 2: VIX return to 18 (usually +8-12% SPY move)
+Position Size: 50% normal (high vol environment)
+
+YOUR TRACKED SETUPS (find 3 examples):
+Setup 1:
+VIX: ___ → SPY: $_____
+Entry: $_____
+Stop: $_____
+Result: +___R in ___ days
+
+Setup 2-3: [repeat]
+
+Success Rate: ___ / 3</code></pre>
+
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.15);border-radius:8px"><strong>Implementation Goal:</strong> Track VIX daily for 30 days. Adjust position sizing by regime. When VIX hits 30+, execute 1-2 mean reversion trades with defined risk. This single skill can generate 20-30% annual returns from just 3-5 trades per year during volatility spikes. Professionals wait for these setups—now you will too.</p>
+      </div>
+
+      <div style="margin:3rem 0">
+        <h3 style="margin-bottom:1.5rem">Related Lessons</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+          <a href="/curriculum/advanced/31-cross-asset-correlations.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 31 • Advanced</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Cross-Asset Correlations</div>
+            <div style="font-size:.9rem;opacity:.8">VIX is the master fear gauge—combine with DXY and TNX for complete macro picture</div>
+          </a>
+          <a href="/curriculum/advanced/29-market-regime-recognition.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 29 • Advanced</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Market Regime Recognition</div>
+            <div style="font-size:.9rem;opacity:.8">High VIX defines volatile regime—adjust strategy and position sizing accordingly</div>
+          </a>
+          <a href="/curriculum/intermediate/25-advanced-risk-management.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 25 • Intermediate</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Advanced Risk Management</div>
+            <div style="font-size:.9rem;opacity:.8">Essential for sizing positions during volatile VIX regimes</div>
+          </a>
+        </div>
+      </div>
+
       <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">You just learned what separates professionals from amateurs. Volatility trading isn't gambling—it's exploiting predictable mean reversion and gamma mechanics. Master this and you'll profit when everyone else is panicking.</p>
 
       <div class="callout-info">

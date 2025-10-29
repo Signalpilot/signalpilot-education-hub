@@ -38,6 +38,218 @@
       <div class="callout-warning"><h4>🚨 Real Talk</h4><p>ML isn't a magic money printer. It's pattern recognition on steroids. Use it wrong (data leakage, overfitting, insufficient data) and you'll backtest a 90% win rate that goes 40% live. Use it right? It's a powerful filter for high-probability setups.</p></div>
       <div class="callout-tip"><h4>🎯 What You'll Gain</h4><p>After this lesson, you'll be able to:</p><ul><li>Build ML trade filters (predict which setups likely to win)</li><li>Engineer features properly (stationary, no look-ahead bias)</li><li>Use walk-forward cross-validation to avoid overfitting</li><li>Choose models wisely (Random Forest > Neural Networks for most cases)</li></ul></div>
       <div class="callout-key"><h4>💡 The Aha Moment</h4><p>ML isn't a standalone strategy. It's a FILTER. You already have setups (Janus sweeps). ML predicts which ones have 75% vs 50% win rate. Trade the 75% ones, skip the 50%. That's the edge.</p></div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>ML is a filter, not a strategy:</strong> Use it to predict which setups have higher win rates, not to generate trades</li>
+          <li><strong>Feature engineering > model choice:</strong> Good features (RSI, VWAP distance) beat fancy models every time</li>
+          <li><strong>Walk-forward validation is mandatory:</strong> Train/test split on time series = data leakage. Use rolling windows</li>
+          <li><strong>Optimize for expectancy:</strong> 80% accuracy with bad R:R loses money. 55% accuracy with 3R wins</li>
+          <li><strong>Avoid look-ahead bias:</strong> Features must use ONLY data available at prediction time</li>
+          <li><strong>Random Forest > Neural Networks:</strong> For most trading applications, simpler models generalize better</li>
+        </ul>
+      </div>
+
+      <div class="callout-key">
+        <h4>🎯 Practice Exercise: Implement ML Feature Engineering for Trade Filtering</h4>
+        <p><strong>Objective:</strong> Build an ML model that filters your existing setups, improving win rate by 10-15% through selective trade-taking.</p>
+
+        <p><strong>Part 1: Feature Engineering (The Most Important Step)</strong></p>
+        <p>For each of your historical trades, calculate these features AT TIME OF SIGNAL (no look-ahead!):</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Feature Set Template (20+ features recommended):
+
+PRICE FEATURES:
+1. Distance from VWAP (%): (Price - VWAP) / VWAP
+2. Distance from 50 EMA (%): (Price - EMA50) / EMA50
+3. Distance from daily high (%): (High - Price) / High
+4. Distance from daily low (%): (Price - Low) / Low
+
+MOMENTUM FEATURES:
+5. RSI (14): Value 0-100
+6. ADX (14): Trend strength
+7. +DI / -DI ratio: Directional indicator
+8. Rate of Change (10): Price change last 10 candles
+
+VOLATILITY FEATURES:
+9. ATR / Price ratio: Normalized volatility
+10. Bollinger Band Width %: (Upper - Lower) / Middle
+11. Recent range expansion: Current ATR / 20-period avg ATR
+
+VOLUME FEATURES:
+12. Volume vs avg: Current / 20-period average
+13. CVD (Cumulative Volume Delta): Net buying pressure
+14. VWAP vs POC distance: Fair value alignment
+
+TIME FEATURES:
+15. Time of day: Minutes since open (normalize 0-390)
+16. Day of week: Mon=1, Fri=5
+17. Time since last signal: Minutes
+
+REGIME FEATURES:
+18. VIX level: Current VIX reading
+19. Regime score: ADX + ATR + BB Width composite
+20. DXY change %: Macro headwind/tailwind
+
+YOUR FEATURES (calculate for 50+ historical trades):
+Trade 1: [Feature 1: ___, Feature 2: ___, ..., Feature 20: ___, Outcome: Win/Loss]
+Trade 2: [...]</code></pre>
+
+        <p><strong>Part 2: Train/Test Split (Time-Based ONLY)</strong></p>
+        <p>NEVER shuffle time series data. Use rolling windows:</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Walk-Forward ML Validation:
+
+Window 1:
+Train: Jan-Jun 2023 (trades 1-30)
+Test: Jul-Sep 2023 (trades 31-40)
+Model: Random Forest, max_depth=5
+Test Accuracy: ___%
+Test Win Rate: ___%
+
+Window 2:
+Train: Apr-Sep 2023 (trades 15-50)
+Test: Oct-Dec 2023 (trades 51-65)
+Model: Re-train on new window
+Test Accuracy: ___%
+Test Win Rate: ___%
+
+Window 3:
+Train: Jul-Dec 2023 (trades 35-75)
+Test: Jan-Mar 2024 (trades 76-90)
+Test Accuracy: ___%
+Test Win Rate: ___%
+
+Average Test Performance: ___% win rate
+Compare to Baseline (no filter): ___% win rate
+Improvement: +___% (target: +10% minimum)</code></pre>
+
+        <p><strong>Part 3: Model Selection and Overfitting Prevention</strong></p>
+        <p>Test 3 models. Simplest one that works = winner:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0">
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <th style="padding:.5rem">Model</th>
+            <th style="padding:.5rem">Parameters</th>
+            <th style="padding:.5rem">Train Accuracy</th>
+            <th style="padding:.5rem">Test Accuracy</th>
+            <th style="padding:.5rem">Overfit?</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">Logistic Regression</td>
+            <td style="padding:.5rem">Simple, few params</td>
+            <td style="padding:.5rem">____%</td>
+            <td style="padding:.5rem">____%</td>
+            <td style="padding:.5rem">< 10% gap = OK</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.5rem">Random Forest</td>
+            <td style="padding:.5rem">max_depth=5, n_estimators=50</td>
+            <td style="padding:.5rem">____%</td>
+            <td style="padding:.5rem">____%</td>
+            <td style="padding:.5rem">< 10% gap = OK</td>
+          </tr>
+          <tr>
+            <td style="padding:.5rem">Neural Network</td>
+            <td style="padding:.5rem">2 layers, 32 neurons</td>
+            <td style="padding:.5rem">____%</td>
+            <td style="padding:.5rem">____%</td>
+            <td style="padding:.5rem">Risk: Overfit if gap > 15%</td>
+          </tr>
+        </table>
+        <p><strong>Red Flag:</strong> If train accuracy is 90% but test is 60%, you're overfitting. Reduce model complexity or add more data.</p>
+
+        <p><strong>Part 4: Feature Importance Analysis</strong></p>
+        <p>Which features actually matter? Use model's feature importance:</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Random Forest Feature Importance:
+
+Top 10 Features (by importance score):
+1. VIX level: 0.18 (most important)
+2. Distance from VWAP: 0.15
+3. ADX: 0.12
+4. Time of day: 0.10
+5. CVD: 0.09
+6. RSI: 0.07
+7. ATR ratio: 0.06
+8. Volume vs avg: 0.05
+9. BB Width: 0.04
+10. DXY change: 0.03
+
+Bottom Features (< 0.02): Day of week, Time since last signal
+→ Remove these features (noise, not signal)
+
+Simplified Model (top 6 features only):
+Test Accuracy: ___% (compare to 20-feature model)
+If within 2%, use simpler model (less overfitting)</code></pre>
+
+        <p><strong>Part 5: Production Deployment with Confidence Thresholds</strong></p>
+        <p>Don't trade ALL predictions. Only trade high-confidence ones:</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Model Output = Probability (0.0 to 1.0)
+
+Confidence Thresholds:
+Probability > 0.65 = High confidence (take trade)
+Probability 0.45-0.65 = Neutral (skip trade)
+Probability < 0.45 = Low confidence (skip or inverse)
+
+Backtest Results by Threshold:
+All Trades (no filter): 55% win rate, 1.8R avg
+Confidence > 0.60: ___% win rate, ___R avg
+Confidence > 0.65: ___% win rate, ___R avg
+Confidence > 0.70: ___% win rate, ___R avg (fewer trades)
+
+Optimal Threshold: 0.___ (maximize expectancy, not accuracy)
+
+YOUR RESULTS:
+Trades Taken with ML Filter: ___ / 100 total signals
+Win Rate Improvement: From ___% → ___% (+___%)
+Expectancy Improvement: From $___/trade → $___/trade</code></pre>
+
+        <p><strong>Part 6: Monitoring and Retraining Protocol</strong></p>
+        <p>ML models degrade over time. Monitor and retrain:</p>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Monitoring Schedule:
+
+Week 1-4: Track live performance vs test predictions
+Expected: 60% accuracy
+Actual: ___% accuracy
+Drift: ___% (< 5% OK)
+
+Week 5-8: Continue tracking
+Actual: ___% accuracy
+Drift: ___% (if > 10%, retrain)
+
+Retraining Trigger:
+1. Accuracy drops > 10% below test baseline
+2. Market regime shifts (VIX spikes, new cycle)
+3. Every 3 months minimum (refresh with recent data)
+
+Retrain Process:
+- Add last 3 months of new trade data
+- Re-run walk-forward validation
+- Compare new model to old model on same test set
+- Deploy only if new model outperforms by 3%+</code></pre>
+
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.15);border-radius:8px"><strong>Implementation Goal:</strong> Build ML filter over 4-6 weeks using your last 50-100 trades. Deploy in paper trading for 20 signals. Target: Improve win rate by 10%+ through selective filtering. If successful, ML just added 15-20% to your annual returns by helping you skip low-probability setups. This is how professionals use ML—not as magic, but as systematic edge enhancement.</p>
+      </div>
+
+      <div style="margin:3rem 0">
+        <h3 style="margin-bottom:1.5rem">Related Lessons</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+          <a href="/curriculum/advanced/34-system-development.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 34 • Advanced</div>
+            <div style="font-weight:600;margin-bottom:.5rem">System Development</div>
+            <div style="font-size:.9rem;opacity:.8">ML integrates into systematic strategies—build the foundation first</div>
+          </a>
+          <a href="/curriculum/intermediate/24-backtesting-reality.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 24 • Intermediate</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Backtesting Reality</div>
+            <div style="font-size:.9rem;opacity:.8">Avoid ML overfitting with proper validation techniques</div>
+          </a>
+          <a href="/curriculum/advanced/29-market-regime-recognition.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 29 • Advanced</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Market Regime Recognition</div>
+            <div style="font-size:.9rem;opacity:.8">Regime features are critical inputs for ML models</div>
+          </a>
+        </div>
+      </div>
+
       <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">You just learned what most ML traders discover after blowing up an account: feature engineering > model choice, walk-forward testing is mandatory, and optimize for expectancy (not accuracy). Now you can use ML as a tool, not a gamble.</p>
       <div class="callout-info"><h4>⏭️ Coming Up Next</h4><p><strong>Article #36: High-Frequency Concepts</strong> — HFT isn't accessible to retail, but understanding latency arbitrage and order flow toxicity helps you avoid being the exit liquidity.</p></div>
     </div>
