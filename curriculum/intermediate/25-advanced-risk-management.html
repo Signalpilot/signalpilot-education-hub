@@ -308,10 +308,79 @@ Position: $400 / $500 ATR = 0.8 BTC (~$36,000 notional)</code></pre>
         <li><strong>Regime-based risk: Volatile = reduce or sit out</strong></li>
       </ul>
 
+      <div class="callout-key">
+        <h4>🎯 Practice Exercise: Portfolio Heat & Drawdown Scenarios</h4>
+        <p><strong>Objective:</strong> Calculate real portfolio heat and create emergency drawdown response protocols.</p>
+
+        <p><strong>Scenario 1: Calculate Current Portfolio Heat</strong></p>
+        <p>You have a $10,000 account with these open positions:</p>
+        <ul>
+          <li>Trade 1: Long SPY, Entry $520, Stop $516 (200 shares) = $800 risk</li>
+          <li>Trade 2: Short TSLA, Entry $250, Stop $255 (50 shares) = $250 risk</li>
+          <li>Trade 3: Long BTC, Entry $45,000, Stop $44,000 (0.15 BTC) = $150 risk</li>
+        </ul>
+        <p><strong>Calculate:</strong></p>
+        <ul>
+          <li>Total dollar risk: $______</li>
+          <li>Total portfolio heat %: ______%</li>
+          <li>Can you take another 2% risk trade? Yes/No (and why?)</li>
+        </ul>
+
+        <p><strong>Scenario 2: Maximum Drawdown Protocol</strong></p>
+        <p>Your account peaked at $12,000 three weeks ago. After a losing streak, you're now at $9,600.</p>
+        <ul>
+          <li>Current drawdown: ______% (show calculation)</li>
+          <li>According to drawdown protocol, what action should you take?</li>
+          <li>What should your position size be on next trade? (normal is 2% = $240)</li>
+          <li>At what equity level can you return to full size?</li>
+        </ul>
+
+        <p><strong>Scenario 3: Risk of Ruin Comparison</strong></p>
+        <p>Compare two traders with $10,000 accounts:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0">
+          <tr><th>Trader</th><th>Win Rate</th><th>Risk/Trade</th><th>Risk of Ruin</th></tr>
+          <tr><td>Trader A</td><td>55%</td><td>10%</td><td>~40%</td></tr>
+          <tr><td>Trader B</td><td>55%</td><td>2%</td><td>&lt; 1%</td></tr>
+        </table>
+        <p><strong>Question:</strong> Both have same win rate. Why is Trader A's Risk of Ruin 40x higher? What's the key lesson?</p>
+
+        <p><strong>Scenario 4: Dynamic Position Sizing</strong></p>
+        <p>You normally risk 2% per trade. Using equity-based dynamic sizing:</p>
+        <ul>
+          <li>Start: $10,000 account → 2% = $200 risk per trade</li>
+          <li>After profit: $11,500 account → 2% = $______ risk per trade</li>
+          <li>After drawdown: $9,000 account → 2% = $______ risk per trade</li>
+        </ul>
+        <p><strong>Why is this method superior to fixed $200/trade?</strong></p>
+
+        <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Critical Rule:</strong> If any scenario shows heat > 8% or drawdown > 15%, you MUST reduce size or stop trading. Survival > profit.</p>
+      </div>
+
+      <div style="margin:3rem 0">
+        <h3 style="margin-bottom:1.5rem">Related Lessons</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+          <a href="/curriculum/intermediate/23-portfolio-construction.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 23</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Portfolio Construction</div>
+            <div style="font-size:.9rem;opacity:.8">Apply risk management across multiple positions with portfolio heat control</div>
+          </a>
+          <a href="/curriculum/intermediate/26-trade-journal-mastery.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 26</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Trade Journal Mastery</div>
+            <div style="font-size:.9rem;opacity:.8">Track risk metrics and drawdown patterns through systematic journaling</div>
+          </a>
+          <a href="/curriculum/intermediate/27-professional-operations.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 27</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Professional Operations</div>
+            <div style="font-size:.9rem;opacity:.8">Build daily risk checklists and operational workflows for consistent execution</div>
+          </a>
+        </div>
+      </div>
+
       <h2>Exercises</h2>
       <p><strong>Exercise 1: Calculate your risk</strong></p>
       <p>Account: $15,000. Max per-trade risk: 1.5%. Entry: $50, Stop: $48. How many shares?</p>
-      
+
       <p><strong>Exercise 2: Drawdown protocol</strong></p>
       <p>Peak: $20,000. Current: $16,500. What's DD%? What action per protocol?</p>
 
