@@ -14,7 +14,7 @@
 
 <header class="sp-header">
   <div class="wrap">
-    <a class="brand" href="https://signalpilot.io/"><svg width="32" height="32" viewBox="0 0 24 24" style="color:#5b8aff"><path d="M3 17l6-6 4 4 7-7" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M21 10V4h-6" fill="none" stroke="currentColor" stroke-width="2.5"/></svg><span>SIGNAL PILOT</span></a>
+    <a class="brand" href="https://signalpilot.io/"><span>SIGNAL PILOT</span></a>
     <nav id="mainnav" aria-label="Main"><ul>
       <li><a href="/">Education</a></li>
       <li><a aria-current="page" href="/search.html">Search</a></li>
@@ -67,10 +67,10 @@
   </div>
 </footer>
 
-<script src="/assets/edu.js"></script>
-<script src="/assets/edu-enhanced.js"></script>
-<!-- SignalPilot Theme Switcher -->
-<script src="/assets/signalpilot-theme.js"></script>
+<!-- SignalPilot Theme Switcher (load first) -->
+<script src="/assets/signalpilot-theme.js" defer></script>
+<script src="/assets/edu.js" defer></script>
+<script src="/assets/edu-enhanced.js" defer></script>
 <script>
   // Popular topic buttons
   document.querySelectorAll('.topic-btn').forEach(btn => {
