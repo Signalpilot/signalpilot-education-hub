@@ -585,6 +585,65 @@ except Exception as e:
         </ul>
       </div>
 
+      <div class="callout-practice">
+        <h4>📝 Practice Exercise</h4>
+        <p><strong>Build Your First API Trading Script</strong></p>
+        <ol style="margin:.5rem 0">
+          <li><strong>Setup Alpaca paper trading account</strong>
+            <ul style="margin:.5rem 0">
+              <li>Sign up at alpaca.markets (free paper trading)</li>
+              <li>Generate API key and secret</li>
+              <li>Install Python library: <code>pip install alpaca-trade-api</code></li>
+            </ul>
+          </li>
+          <li><strong>Code a simple strategy script</strong>
+            <ul style="margin:.5rem 0">
+              <li>Connect to Alpaca API</li>
+              <li>Fetch latest SPY price every 60 seconds</li>
+              <li>Implement basic logic: If price crosses above 20-period SMA, place buy order</li>
+              <li>Add position size calculation (risk 2% per trade)</li>
+              <li>Include stop-loss at -1R</li>
+            </ul>
+          </li>
+          <li><strong>Add error handling</strong>
+            <ul style="margin:.5rem 0">
+              <li>Wrap API calls in try/except blocks</li>
+              <li>Log all errors to file</li>
+              <li>Implement retry logic (3 attempts)</li>
+            </ul>
+          </li>
+          <li><strong>Test for 1 week in paper trading</strong>
+            <ul style="margin:.5rem 0">
+              <li>Monitor execution: Are orders filling correctly?</li>
+              <li>Check logs: Any connection errors?</li>
+              <li>Review performance: Does it match your backtest?</li>
+            </ul>
+          </li>
+        </ol>
+        <p><strong>Goal:</strong> Build and deploy your first automated trading script in paper trading mode. Master the basics before risking real capital.</p>
+      </div>
+
+      <div class="related-lessons">
+        <h4>🔗 Related Lessons</h4>
+        <div class="lesson-grid">
+          <a href="/curriculum/advanced/35-machine-learning-trading.html" class="lesson-card">
+            <span class="lesson-badge">Advanced</span>
+            <h5>Machine Learning in Trading</h5>
+            <p>Use ML models to generate automated trading signals</p>
+          </a>
+          <a href="/curriculum/advanced/32-backtesting-advanced.html" class="lesson-card">
+            <span class="lesson-badge">Advanced</span>
+            <h5>Advanced Backtesting</h5>
+            <p>Test your automated strategies before deploying live</p>
+          </a>
+          <a href="/curriculum/advanced/39-performance-attribution.html" class="lesson-card">
+            <span class="lesson-badge">Advanced</span>
+            <h5>Performance Attribution</h5>
+            <p>Analyze which automated strategies contribute to returns</p>
+          </a>
+        </div>
+      </div>
+
       <div class="quiz">
         <h4>🎮 Test Your Understanding (No Pressure)</h4>
 
