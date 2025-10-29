@@ -298,6 +298,57 @@
         </ul>
       </div>
 
+      <div class="section-break"><span>Practice Exercise</span></div>
+
+      <div class="callout-key">
+        <h4>🎯 Backtest Validation Practice</h4>
+        <p><strong>Exercise: Validate Your Strategy Using the Red Flag Detector</strong></p>
+        <p>Take your current strategy (or a strategy you're considering) and run it through validation:</p>
+        <ol style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li>Backtest on 60% of your data (in-sample). Record: trades, win rate, Sharpe, max DD</li>
+          <li>Identify parameters used (EMAs, thresholds, etc.). Did you optimize these by testing multiple values?</li>
+          <li>Test on remaining 40% of data (out-of-sample). Compare results to in-sample.</li>
+          <li>Use the validation scorecard from the template (8 categories, 60 points max)</li>
+          <li>Calculate your score: 50-60 = proceed, 40-49 = revise, <40 = scrap</li>
+          <li>If score ≥50: Paper trade for 30-60 trades before going live</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Goal:</strong> Catch curve-fitting, look-ahead bias, and unrealistic assumptions BEFORE they destroy your live account. Better to scrap a bad strategy in backtesting than lose real money.</p>
+      </div>
+
+      <div class="section-break"><span>Downloadable Resources</span></div>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;border-left:4px solid var(--accent)">
+        <h4 style="margin:0 0 1rem 0">📥 Free Template for This Lesson</h4>
+        <p style="margin-bottom:1rem">Use this comprehensive validation framework to detect curve-fitting, look-ahead bias, and unrealistic assumptions in your backtests.</p>
+        <a href="/resources/templates/backtesting-validation-template.md" download class="btn btn-primary" style="display:inline-block">
+          Download Backtesting Validation Template
+        </a>
+        <p style="margin-top:.75rem;font-size:.9rem;color:var(--muted)">Includes 8-category scorecard (60 points), red flag detector, in-sample vs. out-of-sample comparison, walk-forward analysis, and paper trading tracker.</p>
+      </div>
+
+      <div class="section-break"><span>Related Lessons</span></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:2rem 0">
+        <div class="card">
+          <span class="badge">Intermediate #26</span>
+          <h4>Trade Journal Mastery</h4>
+          <p>Track live performance and compare to backtest results — essential validation step</p>
+          <a href="/curriculum/intermediate/26-trade-journal-mastery.html" class="btn btn-ghost btn-sm">Read Lesson &rarr;</a>
+        </div>
+        <div class="card">
+          <span class="badge">Beginner #9</span>
+          <h4>Position Sizing</h4>
+          <p>Apply proper position sizing in backtests — unrealistic sizing = unrealistic results</p>
+          <a href="/curriculum/beginner/09-position-sizing.html" class="btn btn-ghost btn-sm">Read Lesson &rarr;</a>
+        </div>
+        <div class="card">
+          <span class="badge">Intermediate #22</span>
+          <h4>Regime Recognition</h4>
+          <p>Test your strategy across all regimes — regime-dependent strategies fail live</p>
+          <a href="/curriculum/intermediate/22-minimal-flow-regimes.html" class="btn btn-ghost btn-sm">Read Lesson &rarr;</a>
+        </div>
+      </div>
+
       <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">In backtesting, perfection is suspicion. Realism is edge. Model costs, avoid overfitting, forward test—or fail live.</p>
 
       <div class="section-break"><span>Test Your Understanding</span></div>
