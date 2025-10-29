@@ -1,7 +1,7 @@
 # Signal Pilot Compliance Guidelines
 ## Language Requirements for Educational & Documentation Materials
 
-**Version**: 1.1
+**Version**: 2.0
 **Last Updated**: October 29, 2025
 **Status**: MANDATORY for all content
 
@@ -9,7 +9,9 @@
 
 ## 🎯 Purpose
 
-These guidelines ensure our trading education materials and signal descriptions are accurately represented as educational tools showing **potential** market conditions, not definitive predictions. This is critical for:
+These guidelines ensure our trading education materials and signal descriptions comply with financial services regulations and accurately represent our tools as educational resources showing market conditions, not trading directives.
+
+This is critical for:
 
 - ✅ Payment processor compliance (LemonSqueezy, Stripe, etc.)
 - ✅ Accurate product representation
@@ -18,71 +20,80 @@ These guidelines ensure our trading education materials and signal descriptions 
 
 ---
 
-## ⚠️ Critical Rule: Always Use "Potential" Qualifiers
+## 📛 Pentarch Signal Names & Descriptions
 
-### ❌ INCORRECT (Remove These):
+### Signal Names (Clean - No "Potential")
 
-```
-"TOUCHDOWN is a bottom signal"
-"BDN is a reversal signal"
-"CAP signals top"
-"IGN confirms breakout"
-"bottom forming"
-"top approaching"
-"exit now"
-"reversal confirmed"
-"breakout detected"
-"breakdown imminent"
-```
+These are identifiers/names - like "Apple" or "Bitcoin". No compliance issue with the name itself.
 
-### ✅ CORRECT (Use These):
+- **TD** - Touchdown
+- **IGN** - Ignition
+- **CAP** - Climax
+- **WRN** - Warning
+- **BDN** - Breakdown
 
-```
-"TOUCHDOWN is a potential bottom signal"
-"BDN is a potential reversal signal"
-"CAP signals potential top"
-"IGN signals potential breakout"
-"potential bottom forming"
-"potential top approaching"
-"potential exit signal"
-"potential reversal"
-"potential breakout detected"
-"potential breakdown"
-```
+### When Describing What They Indicate (Add "Potential" + Use "Indicates")
+
+**ALL signals use "indicates"** (never "confirms", "signals", "detects", "marks")
+
+✅ **TD** - Touchdown → **Indicates** early-cycle reversal conditions
+✅ **IGN** - Ignition → **Indicates** momentum breakout conditions
+✅ **CAP** - Climax → **Indicates** late-cycle exhaustion conditions
+✅ **WRN** - Warning → **Indicates** weakening momentum
+✅ **BDN** - Breakdown → **Indicates** bearish breakdown conditions
 
 ---
 
-## 📋 Key Terms Requiring "Potential"
+## 🔄 Find/Replace Throughout All Docs
 
-| Term | Compliant Version | Context |
-|------|------------------|---------|
-| bottom signal | potential bottom signal | Any market bottom reference |
-| top signal | potential top signal | Any market top reference |
-| reversal | potential reversal | Direction changes |
-| breakout | potential breakout | Price level breaks |
-| breakdown | potential breakdown | Support failures |
-| bottom forming | potential bottom forming | Pattern development |
-| top forming | potential top forming | Pattern development |
-| structure break | potential structure break | Chart patterns |
-| topping completion | potential topping completion | Cycle analysis |
+| ❌ REMOVE THIS | ✅ USE THIS INSTEAD |
+|---------------|---------------------|
+| potential bottom | early-cycle reversal |
+| potential top | late-cycle exhaustion |
+| bottom to top | early cycle to late cycle |
+| marks the bottom | indicates early-cycle conditions |
+| marks the top | indicates late-cycle conditions |
+| confirms | indicates |
+| tells you exactly | shows you |
+| know exactly | can see |
+| Capitulation (for CAP) | Climax |
 
 ---
 
-## 🔄 Definitive Language Replacements
+## 🚫 Forbidden Words/Phrases
 
-### Replace These Definitive Terms:
+### NEVER use:
 
-| ❌ Avoid | ✅ Use Instead |
-|---------|---------------|
-| "confirms a bottom" | "suggests a potential bottom" |
-| "confirms the breakout" | "suggests the potential breakout" |
-| "signals reversal" | "signals potential reversal" |
-| "indicates top" | "indicates potential top" |
-| "the bottom is in" | "a potential bottom may be forming" |
-| "exit now" | "potential exit signal" |
-| "guaranteed" | "potential" or "possible" |
-| "will reverse" | "may potentially reverse" |
-| "must happen" | "could potentially happen" |
+❌ **"bottom"** or **"top"** (use cycle language instead)
+❌ **"know exactly"** (use "can see")
+❌ **"tells you exactly"** (use "shows you")
+❌ **"confirms"** (use "indicates")
+❌ **"guarantees"** (except for technical features like "zero repaint")
+❌ **"always"** / **"never"** (avoid absolutes about market outcomes)
+❌ **"will happen"** (avoid future predictions)
+
+---
+
+## ✅ Safe Language Patterns
+
+### ALWAYS use:
+
+✅ **"indicates"** (not confirms/signals)
+✅ **"shows"** (not tells)
+✅ **"can see"** (not know exactly)
+✅ **"conditions"** (not predictions)
+✅ **"cycle position"** (not price direction)
+✅ **"potential"** when describing outcomes
+
+### Examples:
+
+✅ "TD indicates potential early-cycle reversal conditions"
+✅ "You can see where you are in the cycle"
+✅ "Shows institutional activity patterns"
+
+❌ "TD confirms a bottom is forming"
+❌ "You know exactly when to buy"
+❌ "Tells you what institutions are doing"
 
 ---
 
@@ -91,26 +102,26 @@ These guidelines ensure our trading education materials and signal descriptions 
 ### Example 1: Signal Description
 
 **❌ Non-Compliant:**
-> "When TD (Touchdown) fires, it detects a bottoming formation. This means selling pressure is exhausted after a downtrend. Traders can use this signal to enter reversal trades."
+> "When TD (Touchdown) fires, it confirms a bottom. This tells you exactly when selling pressure is exhausted. Traders know this is the entry point."
 
 **✅ Compliant:**
-> "When TD (Touchdown) fires, it detects a potential bottoming formation. This means selling pressure may be showing exhaustion after a downtrend. Traders can use this signal to consider whether a potential reversal might be developing."
+> "When TD (Touchdown) fires, it indicates potential early-cycle reversal conditions. This shows you where selling pressure may be exhausting. Traders can see this as a possible point to consider for analysis."
 
 ### Example 2: Educational Content
 
 **❌ Non-Compliant:**
-> "The Pentarch system maps market cycles through 5 phases. When you see TD → IGN, you're observing a bottom development. When you see WRN → CAP → BDN, you're watching a top formation."
+> "The Pentarch system confirms market cycles through 5 phases. When you see TD → IGN, you know a bottom is in. When you see WRN → CAP → BDN, the top is confirmed."
 
 **✅ Compliant:**
-> "The Pentarch system maps potential market cycles through 5 phases. When you see TD → IGN, you're observing a potential bottom development. When you see WRN → CAP → BDN, you're watching a potential top formation."
+> "The Pentarch system indicates market cycle phases through 5 signals. When you see TD → IGN, you can see potential early-cycle conditions developing. When you see WRN → CAP → BDN, you can see potential late-cycle exhaustion."
 
 ### Example 3: Tool Documentation
 
 **❌ Non-Compliant:**
-> "Janus Atlas confirms execution when a sweep has occurred, giving you the exact entry point for your trade."
+> "Janus Atlas tells you exactly when a sweep has occurred, confirming the perfect entry point for your trade."
 
 **✅ Compliant:**
-> "Janus Atlas suggests potential execution when a sweep may have occurred, helping you identify possible entry points for consideration in your analysis."
+> "Janus Atlas shows you when a sweep may have occurred, indicating possible areas for trade consideration in your analysis."
 
 ---
 
@@ -142,90 +153,17 @@ Every piece of content should emphasize that these are:
 
 Before publishing ANY content, verify:
 
-- [ ] Every reference to "bottom," "top," "reversal," "breakout," or "breakdown" includes "potential"
+- [ ] All "bottom/top" references replaced with cycle language
+- [ ] "Confirms" replaced with "indicates"
+- [ ] "Tells you exactly" replaced with "shows you"
+- [ ] "Know exactly" replaced with "can see"
 - [ ] No language suggests signals are definitive predictions
 - [ ] Educational disclaimers are prominent
 - [ ] Materials emphasize these are analysis tools, not trading advice
 - [ ] Language focuses on "possibilities" and "indicators" not "confirmations" or "certainties"
 - [ ] Examples use "may," "might," "could," "potential" instead of "will," "is," "confirms"
-- [ ] No guarantee language anywhere
+- [ ] No guarantee language anywhere (except technical features)
 - [ ] Proper risk warnings included
-
----
-
-## 📍 Priority Materials to Update
-
-Update these in order of priority:
-
-### 🔴 Critical (Update Immediately):
-
-1. TradingView indicator descriptions
-2. Website landing pages
-3. Product documentation (docs.signalpilot.io)
-4. Email onboarding sequences
-5. Payment processor-facing content
-
-### 🟡 High Priority (Update Within 7 Days):
-
-6. Tutorial videos and transcripts
-7. Support articles and FAQs
-8. Course materials and lessons
-9. Social media templates
-10. Marketing materials
-
-### 🟢 Standard Priority (Update Within 30 Days):
-
-11. Blog posts and articles
-12. Newsletter templates
-13. Community guidelines
-14. Internal documentation
-
----
-
-## 💬 Compliant Language Examples
-
-### Signal Descriptions:
-
-✅ "TD (Touchdown) detects potential bottoming formations where selling pressure may be exhausting"
-
-✅ "BDN signals a potential trend reversal, suggesting that the current direction might be changing"
-
-✅ "CAP indicates potential topping conditions, which could suggest caution for existing positions"
-
-✅ "IGN highlights potential breakout scenarios for traders to analyze"
-
-### Educational Content:
-
-✅ "Remember: All signals are educational tools showing possibilities, not certainties"
-
-✅ "These indicators help you analyze market conditions, but they don't guarantee outcomes"
-
-✅ "Always conduct your own research and manage your risk appropriately"
-
-✅ "This tool suggests potential market conditions for your consideration"
-
-### Product Features:
-
-✅ "Analyze potential market cycles with Pentarch's 5-phase framework"
-
-✅ "Identify possible liquidity sweeps using Janus Atlas"
-
-✅ "Track potential order flow imbalances with Plutus Flow"
-
----
-
-## 🚫 Examples of Non-Compliant Language
-
-### ❌ NEVER Use These Phrases:
-
-- "This signals a bottom" → Use: "This signals a potential bottom"
-- "Confirmed breakout" → Use: "Potential breakout"
-- "The reversal is happening" → Use: "A potential reversal may be developing"
-- "Exit now" → Use: "Potential exit signal"
-- "Guaranteed profit" → NEVER use "guaranteed"
-- "Can't lose" → NEVER use absolutes
-- "Will go up" → Use: "May potentially move higher"
-- "Must reverse here" → Use: "Could potentially reverse"
 
 ---
 
@@ -237,8 +175,8 @@ Copy and adapt this disclaimer for your materials:
 Educational Disclaimer:
 
 [Product/Tool Name] provides educational tools designed to help traders
-analyze market conditions and understand potential trading scenarios. All
-signals, indicators, and analysis represent possibilities based on historical
+analyze market conditions and understand market cycle phases. All
+signals and indicators show current market conditions based on historical
 patterns and mathematical models—not predictions or guaranteed outcomes.
 
 These materials are for educational purposes only and should not be considered
@@ -251,65 +189,35 @@ consulting with qualified financial professionals before making trading decision
 
 ---
 
-## 🎯 Training Your Team
+## 💬 Compliant Signal Language Examples
 
-### For Content Writers:
+### When Mentioning Signals:
 
-- Install a text expander with compliant phrases
-- Run all content through the compliance checklist
-- When in doubt, add "potential"
-- Focus on "possibilities" not "certainties"
+✅ "A TD Touchdown signal appeared"
+✅ "Touchdown indicates potential early-cycle conditions"
+✅ "CAP Climax shows late-cycle exhaustion"
+✅ "You can see where institutional activity is strongest"
 
-### For Video Creators:
-
-- Script all signal descriptions
-- Include verbal disclaimers
-- Add text overlays emphasizing educational nature
-- Review transcripts for compliance
-
-### For Developers:
-
-- Update indicator tooltips and descriptions
-- Add prominent disclaimers in UI
-- Ensure default messaging uses compliant language
-- Test all user-facing text
-
-### For Support Team:
-
-- Respond using compliant language
-- Never promise specific outcomes
-- Emphasize educational nature of tools
-- Direct users to documentation with proper disclaimers
+❌ "TD signals a potential bottom"
+❌ "Buy when you see Touchdown"
+❌ "CAP confirms the top"
+❌ "You know exactly when to exit"
 
 ---
 
-## ✅ Compliance Verification Process
+## 🎯 Why This Matters
 
-### Before Publishing:
+### Using "confirms", "know exactly", "bottom/top" sounds like:
 
-1. **Self-Review**: Author checks against checklist
-2. **Peer Review**: Second team member verifies compliance
-3. **Final Check**: Content lead approves
-4. **Documentation**: Log what was reviewed and when
+- We're providing trading advice
+- We're guaranteeing outcomes
+- We're telling people what to do
 
-### Regular Audits:
+### Using "indicates", "can see", "cycle position" sounds like:
 
-- Monthly spot-checks of published content
-- Quarterly comprehensive reviews
-- Annual full compliance audit
-- Update guidelines as regulations evolve
-
----
-
-## 📞 Questions?
-
-**Uncertain about specific language?**
-
-Contact: Aldi (Compliance Lead)
-
-**Default Rule:** When in doubt, add "potential" and emphasize educational nature.
-
-**Remember:** It's better to over-qualify than under-qualify. We'd rather be overly cautious than risk compliance issues.
+- We're providing educational data
+- We're showing information
+- Users make their own decisions
 
 ---
 
@@ -319,31 +227,34 @@ Print this and keep it visible:
 
 ```
 ┌─────────────────────────────────────────┐
-│   COMPLIANCE QUICK REFERENCE            │
+│   PENTARCH COMPLIANCE QUICK REF         │
 ├─────────────────────────────────────────┤
 │                                         │
-│  ✅ ALWAYS ADD "POTENTIAL" BEFORE:     │
+│  Signal Names (Clean):                  │
+│  • TD (Touchdown)                       │
+│  • IGN (Ignition)                       │
+│  • CAP (Climax)                         │
+│  • WRN (Warning)                        │
+│  • BDN (Breakdown)                      │
 │                                         │
-│  • bottom / top                         │
-│  • reversal                             │
-│  • breakout / breakdown                 │
-│  • any directional prediction           │
+│  ✅ ALWAYS USE "indicates"              │
+│     (never confirms/signals/detects)    │
 │                                         │
 │  ✅ REPLACE:                            │
+│  • bottom → early-cycle reversal        │
+│  • top → late-cycle exhaustion          │
+│  • confirms → indicates                 │
+│  • tells you exactly → shows you        │
+│  • know exactly → can see               │
 │                                         │
-│  • "confirms" → "suggests potential"    │
-│  • "will" → "may" or "might"            │
-│  • "is" → "could be"                    │
-│  • "guaranteed" → NEVER USE             │
+│  ✅ FORBIDDEN:                          │
+│  • bottom/top (use cycle language)      │
+│  • confirms (use indicates)             │
+│  • exactly (use can see/shows)          │
+│  • guarantees (except tech features)    │
 │                                         │
-│  ✅ ALWAYS INCLUDE:                     │
-│                                         │
-│  • Educational disclaimers              │
-│  • "Not financial advice" notice        │
-│  • Risk warnings                        │
-│  • Emphasis on possibilities            │
-│                                         │
-│  When in doubt: ADD "POTENTIAL"         │
+│  When in doubt: Use cycle language      │
+│  and "indicates"                        │
 │                                         │
 └─────────────────────────────────────────┘
 ```
@@ -354,6 +265,7 @@ Print this and keep it visible:
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 2.0 | Oct 29, 2025 | Major update: Removed "bottom/top" language, standardized to "indicates", added cycle terminology |
 | 1.1 | Oct 29, 2025 | Updated signal rebrand: OUT → BDN (Breakdown) |
 | 1.0 | Oct 29, 2025 | Initial compliance guidelines created |
 
