@@ -98,6 +98,9 @@ html[data-theme="light"] .callout{border-color:rgba(10,20,40,.10);background:lin
     radial-gradient(ellipse 80% 60% at 50% 100%, rgba(91,138,255,.15), transparent 50%);
   opacity:0.85;
   animation:aurora-shift 15s ease-in-out infinite;
+  will-change:transform,opacity;
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
 }
 
 @keyframes aurora-shift{
@@ -137,6 +140,9 @@ html[data-theme="light"] .bg-aurora{
   animation:hero-gradient-rotate 20s linear infinite;
   z-index:0;
   filter:blur(60px);
+  will-change:transform;
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
 }
 
 @keyframes hero-gradient-rotate{
@@ -316,8 +322,67 @@ html[data-theme="light"] .hero::before{
 }
 
 /* Mobile-specific optimizations */
+@media (max-width:768px){
+  /* Hero section mobile optimization */
+  .hero{
+    min-height:auto;
+    padding:2rem 0 1.5rem;
+  }
+
+  .hero::before{
+    filter:blur(40px);
+    animation:hero-gradient-rotate 30s linear infinite;
+  }
+
+  /* Reduce gradient intensity on mobile */
+  .bg-aurora{
+    opacity:0.6;
+    animation:aurora-shift 20s ease-in-out infinite;
+  }
+
+  html[data-theme="light"] .bg-aurora{
+    opacity:0.4;
+  }
+
+  /* Module cards mobile */
+  .module-card .module-header{
+    flex-direction:column;
+    gap:.5rem;
+  }
+
+  .module-card .module-number{
+    font-size:1.5rem;
+    min-width:auto;
+  }
+}
+
 @media (max-width:480px){
   body{font-size:15px;line-height:1.65}
+
+  /* Hero mobile optimization */
+  .hero{
+    padding:1.5rem 0 1rem;
+  }
+
+  .hero::before{
+    filter:blur(30px);
+    inset:-40%;
+  }
+
+  .hero .headline.xl{
+    font-size:clamp(1.75rem,8vw,2.5rem);
+  }
+
+  .hero .lead{
+    font-size:.95rem;
+    line-height:1.6;
+  }
+
+  /* Further reduce animations on small mobile */
+  .bg-aurora{
+    opacity:0.5;
+  }
+
   .badge{font-size:.9rem;padding:.45rem 1rem}
   .progress-stats{grid-template-columns:repeat(2,1fr);gap:.75rem}
   .prose{font-size:.95rem}
@@ -328,6 +393,7 @@ html[data-theme="light"] .hero::before{
   .quiz{padding:1.5rem}
   .quiz-option{padding:.85rem 1rem;font-size:.95rem}
   .module-card{padding:1.25rem;margin:1.25rem 0}
+  .module-card .module-title h3{font-size:1.15rem}
   .continue-reading{padding:1.5rem}
   .key-takeaway{padding:1.25rem}
   .article-progress{flex-direction:column;text-align:center}
@@ -336,6 +402,13 @@ html[data-theme="light"] .hero::before{
   .card{padding:1.25rem}
   .btn{padding:.7rem 1rem;font-size:.95rem;min-height:48px}
   .toc{position:static;margin:1rem 0}
+
+  /* Lesson list mobile */
+  .lesson-item{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.25rem;
+  }
 }
 
 /* Extra small devices */
@@ -343,6 +416,112 @@ html[data-theme="light"] .hero::before{
   .progress-stats{grid-template-columns:1fr;gap:.5rem}
   .badge{font-size:.85rem;padding:.4rem .85rem}
   .quiz-option{font-size:.9rem}
+
+  /* Further reduce gradients on very small screens */
+  .hero::before{
+    filter:blur(25px);
+  }
+
+  .bg-aurora{
+    opacity:0.4;
+  }
+}
+
+/* Tablet-specific optimizations (portrait) */
+@media (min-width:768px) and (max-width:1024px){
+  .module-card{
+    padding:1.75rem;
+  }
+
+  .progress-stats{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .hero{
+    padding:2.5rem 0 2rem;
+  }
+}
+
+/* Landscape phone optimization */
+@media (max-height:450px) and (orientation:landscape){
+  .hero{
+    min-height:auto;
+    padding:1rem 0 .75rem;
+  }
+
+  .hero .headline.xl{
+    font-size:clamp(1.5rem,5vw,2rem);
+  }
+
+  .hero .lead{
+    font-size:.9rem;
+  }
+
+  .sp-header .wrap{
+    padding:.5rem 0;
+  }
+
+  /* Reduce vertical spacing in landscape */
+  .module-card{
+    margin:1rem 0;
+    padding:1rem;
+  }
+
+  .badge{
+    padding:.35rem .75rem;
+    font-size:.8rem;
+  }
+}
+
+/* Safe area support for notched devices */
+@supports(padding:max(0px)){
+  .sp-header{
+    padding-left:max(0px,env(safe-area-inset-left));
+    padding-right:max(0px,env(safe-area-inset-right));
+  }
+
+  .wrap{
+    padding-left:max(clamp(16px,4vw,24px),env(safe-area-inset-left));
+    padding-right:max(clamp(16px,4vw,24px),env(safe-area-inset-right));
+  }
+
+  #mainnav{
+    padding-left:max(1rem,env(safe-area-inset-left));
+    padding-right:max(1rem,env(safe-area-inset-right));
+  }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hero::before,
+  .bg-aurora{
+    animation:none !important;
+  }
+
+  .hero::before{
+    transform:none;
+  }
+
+  *{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high){
+  .btn{
+    border:2px solid currentColor;
+  }
+
+  .badge{
+    border-width:2px;
+  }
+
+  .module-card{
+    border:2px solid rgba(255,255,255,.3);
+  }
 }
 
 /* Utility Classes */
