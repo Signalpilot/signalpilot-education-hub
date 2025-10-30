@@ -270,7 +270,7 @@ def check_sweep(current_price, current_low, swing_low):
 
       <h3>Step 4: Calculate Position Size (Risk Management)</h3>
 
-      <pre><code>def calculate_position_size(api, entry, stop):
+      <pre><code>def calculate_position_size(api, entry area, stop):
     """
     Risk 2% of account per trade
     Position size = (Account × Risk%) / (Entry - Stop)
@@ -279,12 +279,12 @@ def check_sweep(current_price, current_low, swing_low):
     equity = float(account.equity)
     risk_amount = equity * 0.02  # 2% risk
 
-    stop_distance = abs(entry - stop)
+    stop_distance = abs(entry area - stop)
     size = int(risk_amount / stop_distance)
 
     return size
 
-# Example: $100K account, $520 entry, $518 stop
+# Example: $100K account, $520 entry area, $518 stop
 # Risk: $100K × 2% = $2,000
 # Stop distance: $520 - $518 = $2
 # Size: $2,000 / $2 = 1,000 shares</code></pre>
@@ -293,9 +293,9 @@ def check_sweep(current_price, current_low, swing_low):
 
       <h3>Step 5: Place Bracket Order (Entry + Stop + Target)</h3>
 
-      <pre><code>def place_bracket_order(api, symbol, size, entry, stop, target):
+      <pre><code>def place_bracket_order(api, symbol, size, entry area, stop, target):
     """
-    Bracket order = entry + stop-loss + take-profit
+    Bracket order = entry area + stop-loss + take-profit
     All three orders placed simultaneously
     """
     try:
@@ -304,15 +304,15 @@ def check_sweep(current_price, current_low, swing_low):
             qty=size,
             side='buy',
             type='limit',
-            limit_price=entry,
+            limit_price=entry area,
             time_in_force='gtc',  # Good till canceled
             order_class='bracket',
             stop_loss={'stop_price': stop},
             take_profit={'limit_price': target}
         )
 
-        print(f"✓ Order placed: {size} shares at ${entry}")
-        print(f"  Stop: ${stop} | Target: ${target}")
+        print(f"✓ Order placed: {size} shares at ${entry area}")
+        print(f"  Example stop: ${stop} | Example target: ${target}")
         return order
 
     except Exception as e:
@@ -350,17 +350,17 @@ def run_bot():
                 if check_sweep(current_price, current_low, swing_low):
                     print(f"\n🎯 Sweep detected at ${current_price}!")
 
-                    # Calculate entry, stop, target
-                    entry = current_price
+                    # Calculate entry area, stop, target
+                    entry area = current_price
                     stop = swing_low * 0.995  # Below sweep
-                    target = entry + (entry - stop) * 3  # 3R target
+                    target = entry area + (entry area - stop) * 3  # 3R target
 
                     # Calculate size
-                    size = calculate_position_size(api, entry, stop)
+                    size = calculate_position_size(api, entry area, stop)
 
                     # Place trade
                     position = place_bracket_order(
-                        api, 'SPY', size, entry, stop, target
+                        api, 'SPY', size, entry area, stop, target
                     )
 
             # Sleep 60 seconds (check every minute)
@@ -483,7 +483,7 @@ except Exception as e:
 
       <div class="callout-warning">
         <h4>🚨 Kill Switch (Non-Negotiable)</h4>
-        <p>Your bot should automatically stop trading if:</p>
+        <p>Your bot often automatically stop trading if:</p>
         <ul style="margin:.5rem 0">
           <li>Daily drawdown exceeds -3%</li>
           <li>5 consecutive losses</li>

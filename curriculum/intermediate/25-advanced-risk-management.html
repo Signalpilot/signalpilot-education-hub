@@ -31,7 +31,7 @@
       <pre><code>$10,000 account
 Max risk: 1% = $100/trade
 
-Entry: $100, Stop: $99
+Example entry: $100, Example stop: $99
 Shares: $100 risk / $1 stop = 100 shares</code></pre>
 
       <h3>Level 2: Portfolio Heat (Total Risk)</h3>
@@ -201,23 +201,23 @@ OR: 0% (no trades, wait for regime shift)</code></pre>
       
       <h3>Strategy 1: ATR-Based Stops</h3>
       <p><strong>Stop = Entry ± (1.5-2.0 × ATR)</strong></p>
-      <pre><code>Entry: $100 long
+      <pre><code>Example entry: $100 long
 ATR: $2.00
-Stop: $100 - (1.5 × $2) = $97.00
+Example stop: $100 - (1.5 × $2) = $97.00
 
 Why: Gives room for normal volatility, doesn't get stopped by noise</code></pre>
 
       <h3>Strategy 2: Structure-Based Stops</h3>
-      <p><strong>Stop below/above key structure (swing low/high).</strong></p>
-      <pre><code>Entry: $100.50 long (after sweep to $99.80)
+      <p><strong>Stop area below/above key structure (swing low/high).</strong></p>
+      <pre><code>Example entry: $100.50 long (after sweep to $99.80)
 Structure: Swept low at $99.80
-Stop: $99.50 (below swept low + buffer)
+Example stop: $99.50 (below swept low + buffer)
 
 Why: If breaks structure, setup invalidated</code></pre>
 
       <h3>Strategy 3: Time-Based Stops</h3>
       <p><strong>Exit if trade doesn't move within X candles/hours.</strong></p>
-      <pre><code>Entry: $100 long
+      <pre><code>Example entry: $100 long
 Expectation: Move to $102 within 10 candles
 
 Reality: 10 candles later, price at $100.20 (stalled)
@@ -225,7 +225,7 @@ Action: Exit (setup not playing out, capital trapped)</code></pre>
 
       <h3>Strategy 4: Trailing Stops</h3>
       <p><strong>Move stop to lock in profit as trade moves in favor.</strong></p>
-      <pre><code>Entry: $100, Stop: $98, Target: $105
+      <pre><code>Example entry: $100, Example stop: $98, Example target: $105
 
 Price hits $103:
 - Move stop to $100.50 (breakeven + buffer)
@@ -254,7 +254,7 @@ Price reverses to $102 → Stopped with $2 profit (vs. holding to $100)</code></
         <li>[ ] Position size calculated (risk %, ATR-based)</li>
         <li>[ ] Stop loss defined (structure-based, ATR-based)</li>
         <li>[ ] R:R ≥ 2:1 verified</li>
-        <li>[ ] Portfolio heat after entry &lt; 8%</li>
+        <li>[ ] Portfolio heat after entry area &lt; 8%</li>
         <li>[ ] Drawdown &lt; 15% (if not, reduce size)</li>
         <li>[ ] Setup grade: A/B (if C, skip)</li>
       </ul>
@@ -291,8 +291,8 @@ If hit 10% DD → Reduce to 50% size for rest of month</code></pre>
       
       <h3>Janus Atlas: Structure-Based Stops</h3>
       <pre><code>Janus sweep to $99.50
-Entry: $100.20
-Stop: $99.20 (below swept low + ATR buffer)
+Example entry: $100.20
+Example stop: $99.20 (below swept low + ATR buffer)
 
 R:R: ($105 target - $100.20) / ($100.20 - $99.20) = 4.8R</code></pre>
 
@@ -338,8 +338,8 @@ Position: $400 / $500 ATR = 0.8 BTC (~$36,000 notional)</code></pre>
         <p>Your account peaked at $12,000 three weeks ago. After a losing streak, you're now at $9,600.</p>
         <ul>
           <li>Current drawdown: ______% (show calculation)</li>
-          <li>According to drawdown protocol, what action should you take?</li>
-          <li>What should your position size be on next trade? (normal is 2% = $240)</li>
+          <li>According to drawdown protocol, what action often you take?</li>
+          <li>What often your position size be on next trade? (normal is 2% = $240)</li>
           <li>At what equity level can you return to full size?</li>
         </ul>
 
@@ -387,7 +387,7 @@ Position: $400 / $500 ATR = 0.8 BTC (~$36,000 notional)</code></pre>
 
       <h2>Exercises</h2>
       <p><strong>Exercise 1: Calculate your risk</strong></p>
-      <p>Account: $15,000. Max per-trade risk: 1.5%. Entry: $50, Stop: $48. How many shares?</p>
+      <p>Account: $15,000. Max per-trade risk: 1.5%. Example entry: $50, Example stop: $48. How many shares?</p>
 
       <p><strong>Exercise 2: Drawdown protocol</strong></p>
       <p>Peak: $20,000. Current: $16,500. What's DD%? What action per protocol?</p>
