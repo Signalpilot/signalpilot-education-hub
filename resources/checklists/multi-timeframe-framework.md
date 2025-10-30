@@ -66,16 +66,16 @@ Use this framework to analyze setups across three timeframes before every trade.
 
 - [ ] **MTF Trend:** (Same as HTF / Opposite / Neutral)
 
-- [ ] **Key Question:** Does MTF structure suggest potential confirmation of HTF trend?
+- [ ] **Key Question:** Does MTF structure suggest potential alignment with HTF trend?
   - ☐ Yes → High probability setup
-  - ☐ No → Wait for confirmation
+  - ☐ No → Wait for alignment
   - ☐ Opposite → Skip this trade
 
 ### MTF Signal Pilot Indicators:
 
 - [ ] **Janus Atlas**
   - Sweep detected? (liquidity grab before move)
-  - Reclaim confirmed? (institutions positioned)
+  - Reclaim indicated? (institutions positioned)
 
 - [ ] **Plutus Flow**
   - Delta alignment (buying in uptrend, selling in downtrend)
@@ -220,7 +220,7 @@ ________________________________________________
 
 **3. Wait for MTF Confirmation**
 - HTF + MTF alignment = patient entry
-- Don't rush LTF entry without MTF confirmation
+- Don't rush LTF entry without MTF alignment
 
 **4. LTF is for Timing Only**
 - LTF doesn't tell you direction

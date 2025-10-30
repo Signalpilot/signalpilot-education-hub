@@ -136,7 +136,7 @@ Use this template to calculate exact position size for every trade.
 
 ## 📋 Pre-Trade Checklist
 
-Before entering, confirm:
+Before entering, verify:
 
 - [ ] Position size calculated correctly
 - [ ] Risk is exactly 1% of account (or less)

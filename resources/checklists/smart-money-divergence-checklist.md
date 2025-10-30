@@ -49,7 +49,7 @@ Use this checklist to identify and trade divergence setups with Plutus Flow.
 ## ✅ Entry Criteria
 
 **Must Have (All Required):**
-- [ ] Clear divergence confirmed (price vs. delta)
+- [ ] Clear divergence indicated (price vs. delta)
 - [ ] Minimum 50% delta reduction on second extreme
 - [ ] Price structure shows exhaustion (wicks, indecision)
 - [ ] Risk/reward minimum 2:1
@@ -90,7 +90,7 @@ Use this checklist to identify and trade divergence setups with Plutus Flow.
 - [ ] +1: >50% delta reduction
 - [ ] +1: >75% delta reduction
 - [ ] +1: Janus sweep present
-- [ ] +1: Footprint absorption confirmed
+- [ ] +1: Footprint absorption indicated
 - [ ] +1: Dark pool prints support direction
 - [ ] +1: HTF alignment
 - [ ] +1: Regime supports reversal pattern
@@ -121,7 +121,7 @@ Use this checklist to identify and trade divergence setups with Plutus Flow.
 **Confluence factors present:**
 - ________________________________________________
 
-**What confirmed the divergence:**
+**What indicated the divergence:**
 - ________________________________________________
 
 **What I learned:**

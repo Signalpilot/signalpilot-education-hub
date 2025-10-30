@@ -42,7 +42,7 @@ Use this template to systematically review and improve your trading.
 **Mid Timeframe (MTF):**
 - Direction: ____________
 - Structure: ____________
-- Confirms setup? Yes / No
+- Indicates setup? Yes / No
 
 **Lower Timeframe (LTF):**
 - Entry timing: ____________
@@ -55,10 +55,10 @@ Use this template to systematically review and improve your trading.
 ### Confluence Checklist
 
 - [ ] HTF trend alignment
-- [ ] MTF structure confirmation
+- [ ] MTF structure alignment
 - [ ] LTF precise entry
 - [ ] Signal Pilot indicator signal
-- [ ] Volume confirmation
+- [ ] Volume indication
 - [ ] Regime supports setup
 - [ ] Risk/reward >2:1
 
