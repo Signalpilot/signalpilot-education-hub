@@ -280,7 +280,7 @@
     if (lowerQuery.includes('janus')) results.push({ type: 'indicator', name: 'Janus Atlas', lesson: 20 });
     if (lowerQuery.includes('plutus')) results.push({ type: 'indicator', name: 'Plutus Flow', lesson: 21 });
     if (lowerQuery.includes('minimal')) results.push({ type: 'indicator', name: 'Minimal Flow', lesson: 22 });
-    if (lowerQuery.includes('pentarch')) results.push({ type: 'indicator', name: 'Pentarch', lesson: 39 });
+    if (lowerQuery.includes('pentarch')) results.push({ type: 'indicator', name: 'Pentarch', external: 'https://docs.signalpilot.io/', note: 'See official documentation' });
 
     // Check concept keywords
     if (lowerQuery.includes('order') && lowerQuery.includes('flow')) results.push({ type: 'concept', name: 'Order Flow', lessons: [2, 3] });
@@ -288,6 +288,7 @@
     if (lowerQuery.includes('repaint')) results.push({ type: 'concept', name: 'Repainting', lesson: 4 });
     if (lowerQuery.includes('dark') && lowerQuery.includes('pool')) results.push({ type: 'concept', name: 'Dark Pools', lesson: 17 });
     if (lowerQuery.includes('footprint')) results.push({ type: 'concept', name: 'Footprint Charts', lesson: 16 });
+    if (lowerQuery.includes('regime')) results.push({ type: 'concept', name: 'Market Regimes', lesson: 22 });
 
     if (results.length === 0) {
       return `No results found for "${query}". Try searching for indicators (Janus, Plutus, Minimal, Pentarch) or concepts (order flow, liquidity, dark pools).<br><br>🔍 <a href='/search.html'>Use full search →</a>`;
@@ -295,7 +296,9 @@
 
     let msg = `🔍 <strong>Search Results for "${query}"</strong><br><br>`;
     results.forEach(r => {
-      if (r.lessons) {
+      if (r.external) {
+        msg += `📚 <a href='${r.external}' target='_blank'>${r.name}</a> - ${r.note}<br>`;
+      } else if (r.lessons) {
         r.lessons.forEach(num => {
           msg += `📖 <a href='${lessonFiles[num]}'>${r.name} - Lesson #${num}</a><br>`;
         });
@@ -326,15 +329,15 @@
       janus: "Janus Atlas is our order flow divergence indicator. It detects when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
       plutus: "Plutus Flow tracks cumulative delta and absorption patterns. It's essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
       minimal: "Minimal Flow is our regime detection system for identifying market conditions. Perfect for context-aware trading.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-minimal-flow-regimes.html'>Read Lesson #22: Minimal Flow Regimes →</a>",
-      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/advanced/39-performance-attribution.html'>Read Lesson #39: Performance Attribution →</a>"
+      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Pentarch Documentation →</a><br>💡 <em>Note: Pentarch is covered in the official documentation. Check lessons on regime detection and market cycles!</em>"
     },
 
     concepts: {
       orderflow: "Order flow is the study of real buying and selling pressure. Unlike price action, it shows you ACTUAL transactions.<br><br>📖 <a href='/curriculum/beginner/03-price-action-is-dead.html'>Read Lesson #3: Price Action is Dead →</a><br>📖 <a href='/curriculum/beginner/02-volume-doesnt-lie.html'>Read Lesson #2: Volume Doesn't Lie →</a>",
       liquidity: "Liquidity engineering is how institutions manipulate price to trigger stops and hunt orders.<br><br>📖 <a href='/curriculum/beginner/01-the-liquidity-lie.html'>Read Lesson #1: The Liquidity Lie →</a>",
-      repainting: "60-90% of indicators repaint (change historical values). Signal Pilot indicators NEVER repaint.<br><br>📖 <a href='/curriculum/beginner/04-the-repainting-problem.html'>Read Lesson #4: The Repainting Problem →</a>",
-      regime: "Market regimes are different market conditions (trending, ranging, volatile, calm). Trade the regime, not just the signal!<br><br>📖 <a href='/curriculum/intermediate/22-regime-trading.html'>Read Lesson #22: Regime Trading →</a>",
-      darkpool: "Dark pools are private exchanges where institutions trade without moving the market.<br><br>📖 <a href='/curriculum/intermediate/17-dark-pool-analysis.html'>Read Lesson #17: Dark Pool Analysis →</a>",
+      repainting: "60-90% of indicators repaint (change historical values). Signal Pilot indicators NEVER repaint.<br><br>📖 <a href='/curriculum/beginner/04-repaint-problem.html'>Read Lesson #4: The Repaint Problem →</a>",
+      regime: "Market regimes are different market conditions (trending, ranging, volatile, calm). Trade the regime, not just the signal!<br><br>📖 <a href='/curriculum/intermediate/22-minimal-flow-regimes.html'>Read Lesson #22: Minimal Flow Regimes →</a>",
+      darkpool: "Dark pools are private exchanges where institutions trade without moving the market.<br><br>📖 <a href='/curriculum/intermediate/17-dark-pools.html'>Read Lesson #17: Dark Pools →</a>",
       footprint: "Footprint charts show volume at each price level, revealing where buyers and sellers actually transacted.<br><br>📖 <a href='/curriculum/intermediate/16-footprint-charts.html'>Read Lesson #16: Footprint Charts →</a>"
     },
 
