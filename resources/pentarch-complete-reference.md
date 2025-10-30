@@ -87,7 +87,7 @@ The **Pilot Line** is your primary trend reference indicator. Think of it as the
 A: Similar concept, but double-smoothed for trend clarity and uses slope-based coloring for momentum insights.
 
 **Q: Should I trade Pilot Line crossovers?**
-A: No. The line itself doesn't give entry signals. Watch for event candles (TD/IGN/WRN/CAP/BDN) that use PL as context.
+A: No. The line itself doesn't give entry signals. Event candles (TD/IGN/WRN/CAP/BDN) use PL as context and provide the actual cycle-phase indications.
 
 **Q: What does the ribbon mean?**
 A: The semi-transparent bands show the "influence zone." Price within ribbon = balanced. Price outside ribbon = extended.
@@ -118,19 +118,19 @@ Pentarch colors every candle on your chart based on the current **regime state**
 
 ### Visual System
 
-| Candle Color | Meaning | Trading Bias |
+| Candle Color | Meaning | Educational Context |
 |--------------|---------|--------------|
-| 🟢 Green | Bull regime active | Look for opportunities in early-cycle conditions (TD/IGN) |
-| 🔴 Red | Bear regime active | Look for opportunities in late-cycle conditions (WRN/CAP/BDN) |
+| 🟢 Green | Bull regime active | Typically associated with analysis of early-cycle conditions (TD/IGN) |
+| 🔴 Red | Bear regime active | Typically associated with analysis of late-cycle conditions (WRN/CAP/BDN) |
 | 🟣🔵🟡🟠🔴 Special colors | Event signal fired | Specific reversal/continuation indication on that bar |
 
 **Note:** Event candles override regime color when they fire.
 
 ### What It Shows You
 
-1. **Instant Regime Awareness**: No need to check indicators—candle color shows regime
+1. **Instant Regime Awareness**: Candle color shows regime without checking additional indicators
 2. **Context for Events**: Same signal means different things in different regimes
-3. **Visual Trade Bias**: Green = bias long setups, Red = bias short setups
+3. **Visual Structural Context**: Green indicates bull regime structure, Red indicates bear regime structure
 4. **Trend Strength**: Long color streaks = strong trend, frequent changes = choppy
 
 ### Regime Context Examples
@@ -162,10 +162,10 @@ A: Yes! Most events require the "correct" regime:
 - BDN follows WRN/CAP, so it's regime-dependent
 
 **Q: Can I make regime more or less sensitive?**
-A: Yes! Use "SP: Regime Sensitivity" setting:
+A: Yes! The "SP: Regime Sensitivity" setting adjusts this:
 - Hair Trigger = Changes quickly (more signals, more whipsaw)
 - Normal = Balanced (default)
-- Rock Solid = Changes rarely (fewer signals, strong validation)
+- Rock Solid = Changes rarely (fewer signals, strong indication)
 
 ---
 
@@ -213,8 +213,8 @@ A: Yes! Use "SP: Regime Sensitivity" setting:
 - IGN fires + no green NanoFlow for 5 bars = Weak indication quality
 
 **Chop Detection:**
-- NanoFlow flipping green/red rapidly = Avoid trading, choppy conditions
-- NanoFlow absent entirely = Low volatility, wait for setup
+- NanoFlow flipping green/red rapidly = Indicates choppy conditions, unclear momentum
+- NanoFlow absent entirely = Indicates low volatility conditions
 
 ### NanoFlow vs. Main Events
 
@@ -230,7 +230,7 @@ A: Yes! Use "SP: Regime Sensitivity" setting:
 ### Common Questions
 
 **Q: Should I trade every NanoFlow cross?**
-A: No. NanoFlow is too sensitive for entries. Use it to validate TD/IGN/WRN/CAP/BDN signal quality.
+A: No. NanoFlow is too sensitive for direct trading signals. It can be used to assess TD/IGN/WRN/CAP/BDN signal quality in educational analysis.
 
 **Q: Can I turn off NanoFlow if it's too noisy?**
 A: Yes. In TradingView settings, uncheck "Show NanoFlow Crosses."
@@ -329,8 +329,8 @@ These signals show market cycle phases and conditions for educational analysis. 
 **START: Looking at a bar**
 
 1. **What COLOR is the candle?**
-   - Green = Bull regime → Look for long setups
-   - Red = Bear regime → Look for short setups
+   - Green = Bull regime → Typically associated with early-cycle analysis
+   - Red = Bear regime → Typically associated with late-cycle analysis
    - Special color = Event fired this bar
 
 2. **Where is price vs PILOT LINE?**
@@ -410,10 +410,10 @@ These signals show market cycle phases and conditions for educational analysis. 
 ### Key Principles
 
 1. **Pilot Line is your baseline** - Everything else relates to it
-2. **Regime colors show your structural bias** - Green = look for longs, Red = look for shorts
-3. **NanoFlow is validation, not a signal** - Use it to assess momentum quality
-4. **Event signals are your cycle-phase indications** - These are what you analyze
-5. **All layers work together** - Context (PL, Regime, NanoFlow) informs Action (Events)
+2. **Regime colors show structural context** - Green indicates bull regime, Red indicates bear regime
+3. **NanoFlow shows momentum quality** - Can be used to assess trend health in analysis
+4. **Event signals are your cycle-phase indications** - These show market cycle phases
+5. **All layers work together** - Context (PL, Regime, NanoFlow) informs Analysis (Events)
 
 ### Remember
 
