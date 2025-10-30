@@ -75,6 +75,12 @@
         <a href="#profit-loss" class="btn btn-sm btn-ghost">Profit/Loss</a>
         <a href="#fees" class="btn btn-sm btn-ghost">Fees & Commissions</a>
         <a href="#compound" class="btn btn-sm btn-ghost">Compound Growth</a>
+        <a href="#expectancy" class="btn btn-sm btn-ghost">Expectancy</a>
+        <a href="#drawdown" class="btn btn-sm btn-ghost">Drawdown Recovery</a>
+        <a href="#scaling" class="btn btn-sm btn-ghost">Position Scaling</a>
+        <a href="#slippage" class="btn btn-sm btn-ghost">Slippage Reality</a>
+        <a href="#r-multiple" class="btn btn-sm btn-ghost">R-Multiple Tracker</a>
+        <a href="#breakeven" class="btn btn-sm btn-ghost">Break-Even Recovery</a>
       </div>
     </div>
   </section>
@@ -1322,6 +1328,270 @@
                   <li>More realistic: 2-3% on winning days, -1% on losing days, 0.5% average</li>
                 </ul>
                 <p>This compounds to 10-15% monthly if you can sustain it (elite level).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 6: Expectancy Calculator -->
+  <section class="wrap" id="expectancy" style="margin:4rem auto">
+    <div class="card featured">
+      <div class="calc-header">
+        <div class="calc-number">06</div>
+        <div>
+          <h2 class="headline md" style="margin:0">🎯 Expectancy Calculator</h2>
+          <p class="calc-tagline">The ONLY metric that matters. If your expectancy is negative, you're mathematically guaranteed to lose. If it's positive, you print money.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Calculator</button>
+          <button>Why This Matters</button>
+          <button>The Math</button>
+          <button>Pro Analysis</button>
+        </div>
+        <div class="tabs-content">
+          <!-- Calculator Tab -->
+          <div class="tab-panel">
+            <div class="calc-grid">
+              <div class="calc-inputs">
+                <div class="form-group">
+                  <label>Total Wins ($)</label>
+                  <input type="number" id="exp-total-wins" class="calc-input" value="12000" min="0" step="100">
+                </div>
+
+                <div class="form-group">
+                  <label>Total Losses ($)</label>
+                  <input type="number" id="exp-total-losses" class="calc-input" value="4000" min="0" step="100">
+                </div>
+
+                <div class="form-group">
+                  <label>Number of Trades</label>
+                  <input type="number" id="exp-num-trades" class="calc-input" value="100" min="1" step="1">
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateExpectancy()">Calculate Expectancy</button>
+                <button class="btn btn-secondary" onclick="loadExpectancyExample()">Load Example</button>
+              </div>
+
+              <div class="calc-results">
+                <div id="exp-result" class="result-box" style="display:none">
+                  <h4 style="margin:0 0 1rem 0">Results</h4>
+                  <div class="result-item large">
+                    <span class="result-label">Expectancy Per Trade</span>
+                    <span class="result-value" id="exp-value">-</span>
+                  </div>
+                  <div id="exp-verdict" class="verdict-box" style="margin:1rem 0"></div>
+                  <div class="result-item">
+                    <span class="result-label">Profit Factor</span>
+                    <span class="result-value" id="exp-pf">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Average R-Multiple</span>
+                    <span class="result-value" id="exp-avg-r">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Net Profit</span>
+                    <span class="result-value" id="exp-net">-</span>
+                  </div>
+                </div>
+
+                <div class="info-card" style="margin-top:1.5rem">
+                  <h5>💡 What This Means</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">Expectancy is your average profit per trade. If positive, you're printing money. If negative, you're mathematically doomed.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why This Matters Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Expectancy Is The ONLY Metric That Matters</h3>
+
+              <p>Forget everything else. Expectancy tells you the average $ you make (or lose) per trade. It's the single number that determines if you're profitable or bankrupt.</p>
+
+              <div class="callout callout-info">
+                <h4>💎 The Brutal Truth</h4>
+                <p><strong>Positive expectancy = Money printing machine</strong></p>
+                <p><strong>Negative expectancy = Slow death by 1,000 cuts</strong></p>
+                <p>There's no middle ground. The math doesn't care about your feelings.</p>
+              </div>
+
+              <h4>Real Example: Two Traders, 100 Trades Each</h4>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+                <div class="comparison-box bad">
+                  <h5>❌ Trader A: Negative Expectancy</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Total Wins: $7,000</li>
+                    <li>Total Losses: $9,000</li>
+                    <li>100 trades</li>
+                    <li><strong>Expectancy: -$20/trade</strong></li>
+                  </ul>
+                  <p style="margin-top:1rem">After 1,000 trades: <strong>-$20,000</strong></p>
+                  <p>Mathematically guaranteed to lose.</p>
+                </div>
+
+                <div class="comparison-box good">
+                  <h5>✓ Trader B: Positive Expectancy</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Total Wins: $12,000</li>
+                    <li>Total Losses: $4,000</li>
+                    <li>100 trades</li>
+                    <li><strong>Expectancy: +$80/trade</strong></li>
+                  </ul>
+                  <p style="margin-top:1rem">After 1,000 trades: <strong>+$80,000</strong></p>
+                  <p>Mathematically guaranteed to win.</p>
+                </div>
+              </div>
+
+              <div class="callout callout-warning">
+                <h4>⚠️ Why Most Traders Fail</h4>
+                <p>They track everything EXCEPT expectancy:</p>
+                <ul>
+                  <li>Total P&L (misleading—could be luck)</li>
+                  <li>Biggest win (irrelevant if you give it back)</li>
+                  <li>Number of green days (doesn't matter if red days are bigger)</li>
+                </ul>
+                <p><strong>Track expectancy. Nothing else matters.</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Math Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>The Math Behind Expectancy</h3>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Expectancy Formula</h4>
+                  <p><strong>Expectancy = (Total Wins - Total Losses) / Number of Trades</strong></p>
+                  <p>That's it. Dead simple. Your average profit per trade.</p>
+                </div>
+              </div>
+
+              <h4>Profit Factor (Supporting Metric)</h4>
+
+              <div class="callout callout-info">
+                <h4>📊 Profit Factor = Total Wins / Total Losses</h4>
+                <p>Shows how much you make per dollar lost.</p>
+                <ul>
+                  <li>PF < 1.0 = Losing system</li>
+                  <li>PF = 1.5-2.0 = Profitable system</li>
+                  <li>PF > 3.0 = Elite system</li>
+                </ul>
+                <p><strong>Example:</strong> $12,000 wins / $4,000 losses = 3.0 Profit Factor</p>
+              </div>
+
+              <h4>Average R-Multiple</h4>
+
+              <p>If you track risk in R-units (1R = your initial risk per trade):</p>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <p><strong>Average R = Net Profit / (Number of Trades × Risk per Trade)</strong></p>
+                  <p>Normalizes performance across different position sizes.</p>
+                  <p><strong>Target:</strong> +0.5R to +1R per trade = professional level</p>
+                </div>
+              </div>
+
+              <h4>Sample Size Matters</h4>
+
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Number of Trades</th>
+                    <th>Confidence Level</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>&lt;30</td>
+                    <td class="bad">Not statistically significant</td>
+                  </tr>
+                  <tr>
+                    <td>30-100</td>
+                    <td class="warn">Marginal confidence</td>
+                  </tr>
+                  <tr>
+                    <td>100-300</td>
+                    <td class="good">Good confidence</td>
+                  </tr>
+                  <tr>
+                    <td>300+</td>
+                    <td class="good">High confidence</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Pro Analysis Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Professional Expectancy Standards</h3>
+
+              <div class="callout callout-success">
+                <h4>✓ What Your Numbers Should Look Like</h4>
+                <p><strong>Scalping:</strong> $5-20 expectancy per trade</p>
+                <p><strong>Day Trading:</strong> $20-100 expectancy per trade</p>
+                <p><strong>Swing Trading:</strong> $100-500 expectancy per trade</p>
+                <p><strong>Position Trading:</strong> $500-2,000+ expectancy per trade</p>
+              </div>
+
+              <h4>The Expectancy Improvement Framework</h4>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Only 2 Ways to Improve Expectancy:</h4>
+                  <p><strong>1. Increase average winner</strong></p>
+                  <ul>
+                    <li>Let winners run (trail stops)</li>
+                    <li>Take partials at logical targets</li>
+                    <li>Better entry timing (improve R:R)</li>
+                  </ul>
+                  <p><strong>2. Decrease average loser</strong></p>
+                  <ul>
+                    <li>Cut losses faster</li>
+                    <li>Tighter stops at structure</li>
+                    <li>Skip low R:R setups entirely</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="mistake-card">
+                <div class="mistake-header bad">❌ The Expectancy Killer</div>
+                <h4>Taking Profits Too Early</h4>
+                <p>Most traders cut winners at +1R and let losers run to -1R.</p>
+                <p><strong>Result:</strong> Even with 60% accuracy, expectancy is ZERO.</p>
+                <div class="mistake-fix">
+                  <strong>✓ Fix:</strong> Minimum 2:1 R:R on every trade
+                  <ul>
+                    <li>Scale out: Take 50% at 2R, let 50% run to 4R+</li>
+                    <li>Average winner: 3R</li>
+                    <li>Average loser: -1R</li>
+                    <li><strong>Result:</strong> Positive expectancy even at 40% accuracy</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="callout callout-info">
+                <h4>📖 Related Education</h4>
+                <p>For deep dive into expectancy optimization:</p>
+                <ul>
+                  <li><a href="/curriculum/beginner/09-position-sizing.html">Article #9: Position Sizing Science</a></li>
+                  <li><a href="/curriculum/intermediate/26-trade-journal-mastery.html">Article #26: Performance Tracking</a></li>
+                  <li><a href="/curriculum/advanced/39-performance-attribution.html">Article #39: Performance Attribution</a></li>
+                </ul>
               </div>
             </div>
           </div>
