@@ -221,7 +221,7 @@ Candle 3: 100.00 | 2000 | 4000 | +2000
 
 **Confluence Factors:**
 - [ ] Janus sweep signal present
-- [ ] Plutus CVD confirming direction
+- [ ] Plutus CVD indicating direction
 - [ ] Dark pool activity supporting thesis
 - [ ] Higher timeframe alignment
 
@@ -374,7 +374,7 @@ Result: Support breaks, continuation DOWN
 
 **Confluence:**
 - [ ] Janus sweep present
-- [ ] Plutus CVD confirming
+- [ ] Plutus CVD indicating
 - [ ] Dark pool activity aligned
 - [ ] HTF support
 
@@ -387,7 +387,7 @@ Result: Support breaks, continuation DOWN
 **Result:**
 - Outcome: Win / Loss / Breakeven
 - R-multiple: ________
-- Pattern accuracy: Confirmed / Failed
+- Pattern accuracy: Validated / Failed
 
 **Lesson:**
 ________________________________________________

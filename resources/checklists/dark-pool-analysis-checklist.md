@@ -121,11 +121,11 @@ Dark Pools: 75K sold @ $101
 
 1. **Identify dark pool activity** (accumulation or distribution)
 2. **Wait for price to test the level** where prints occurred
-3. **Watch for reversal confirmation:**
+3. **Watch for reversal indication:**
    - Janus sweep + reclaim
    - Delta reversal on Plutus
    - Volume spike showing absorption
-4. **Enter on confirmation candle close**
+4. **Enter on indication candle close**
 
 ---
 
@@ -140,7 +140,7 @@ Dark Pools: 75K sold @ $101
 - Janus marks sweep of $98 low
 - Price reclaims back above $98.50
 - Plutus shows +6,000 delta (buying)
-- Dark pool prints confirmed institutional positioning
+- Dark pool prints indicated institutional positioning
 
 **Entry:** $98.60 (on reclaim candle close)
 
@@ -235,9 +235,9 @@ Dark Pools: 75K sold @ $101
 - "I see dark pool buys, going long immediately"
 
 **✅ Correct Approach:**
-- "Dark pool buys noted. Waiting for price to test level + reversal confirmation"
+- "Dark pool buys noted. Waiting for price to test level + reversal indication"
 
-**Why:** Dark pool prints can be hours old. Wait for price action confirmation.
+**Why:** Dark pool prints can be hours old. Wait for price action indication.
 
 ---
 
@@ -255,13 +255,13 @@ Dark Pools: 75K sold @ $101
 
 ---
 
-### Mistake #3: Not Confirming with Delta
+### Mistake #3: Not Verifying with Delta
 
 **❌ Wrong Approach:**
 - "Dark pool buys at $100, price is $101, going long"
 
 **✅ Correct Approach:**
-- "Dark pool buys at $100. Price at $101. Waiting for retest + delta confirmation"
+- "Dark pool buys at $100. Price at $101. Waiting for retest + delta indication"
 
 **Why:** Dark pools show WHAT happened. Plutus CVD shows if buying CONTINUES.
 
@@ -273,7 +273,7 @@ Dark Pools: 75K sold @ $101
 - "Dark pools accumulated, but I think it's going down"
 
 **✅ Correct Approach:**
-- "Dark pools accumulated. I'll wait for price to confirm their thesis, then trade with them"
+- "Dark pools accumulated. I'll wait for price to indicate their thesis is playing out, then trade with them"
 
 **Why:** Institutions have more information than you. Don't fight their flow.
 
@@ -290,12 +290,12 @@ Before taking a dark pool-based trade:
 
 **Confluence:**
 - [ ] Janus sweep signal at the level
-- [ ] Plutus delta confirming direction
+- [ ] Plutus delta indicating direction
 - [ ] Volume shows absorption/reversal
 - [ ] Multi-timeframe alignment
 
 **Entry:**
-- [ ] Waiting for confirmation (not jumping on print alone)
+- [ ] Waiting for price action indication (not jumping on print alone)
 - [ ] Entry on reclaim/rejection candle close
 - [ ] Risk/reward minimum 2:1
 
@@ -325,7 +325,7 @@ Before taking a dark pool-based trade:
 **Confluence:**
 - Janus: ☐ Yes ☐ No
 - Plutus Delta: +________ / -________
-- Volume: ☐ Confirming ☐ Neutral
+- Volume: ☐ Indicating ☐ Neutral
 - HTF Alignment: ☐ Yes ☐ No
 
 **Trade Decision:** Long / Short / Wait / Skip
@@ -371,7 +371,7 @@ ________________________________________________
 
 ---
 
-**Dark pools reveal institutional positioning. Price action confirms it. Trade when both align.**
+**Dark pools reveal institutional positioning. Price action indicates continuation. Trade when both align.**
 
 **Follow the money. It knows more than you.**
 

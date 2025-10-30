@@ -17,12 +17,12 @@ Use this checklist to identify and trade liquidity sweep setups with Janus Atlas
   - Price wicks below support (or above resistance)
   - Stops triggered, creating liquidity pool
 
-- [ ] **Confirm the rejection**
+- [ ] **Verify the rejection**
   - Price quickly reclaims the swept level
   - Candle closes back above support (or below resistance)
   - Shows institutional absorption of retail stops
 
-- [ ] **Check volume confirmation**
+- [ ] **Check volume indication**
   - Volume spike during the sweep
   - Plutus Flow shows delta reversal (buying after sell sweep)
 
@@ -32,7 +32,7 @@ Use this checklist to identify and trade liquidity sweep setups with Janus Atlas
 
 - [ ] Janus Atlas sweep signal fired
 - [ ] Price reclaimed back above swept level within 1-3 candles
-- [ ] Volume confirmed the reversal
+- [ ] Volume indicated the reversal
 - [ ] Multi-timeframe alignment (HTF trend supports this direction)
 - [ ] Risk/reward minimum 2:1
 
@@ -85,7 +85,7 @@ Use this checklist to identify and trade liquidity sweep setups with Janus Atlas
 - ✅ Wait for Janus sweep + reclaim
 - ✅ Stops go BEYOND the sweep (not at the level)
 - ✅ 2:1 minimum risk/reward
-- ✅ Multi-timeframe confirmation
+- ✅ Multi-timeframe alignment
 
 **This is for educational purposes only. Not financial advice.**
 
