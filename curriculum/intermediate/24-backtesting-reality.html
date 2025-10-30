@@ -7,7 +7,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
   <meta http-equiv="Pragma" content="no-cache"/>
   <meta http-equiv="Expires" content="0"/>
-  <title>Backtesting Reality: That 95% Win Rate Is Lying to You</title>
+  <title>Backtesting Reality: That Perfect Expectancy Is Lying to You</title>
   <meta name="description" content="Perfect backtest. Terrible forward results. Learn why overfitting kills strategies, how to model realistic slippage, and validation methods that actually work.">
   <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="24">
   <link rel="canonical" href="https://education.signalpilot.io/curriculum/intermediate/24-backtesting-reality.html">
@@ -49,7 +49,7 @@
         <span>Lesson #24</span>
       </div>
       <span class="badge">🟡 Intermediate • Lesson 24 of 27</span>
-      <h1 class="headline xl">Backtesting Reality: That 95% Win Rate Is Lying to You</h1>
+      <h1 class="headline xl">Backtesting Reality: That Perfect Expectancy Is Lying to You</h1>
       <div class="meta">16 min read • Strategy Validation</div>
     </div>
   </header>
@@ -57,9 +57,9 @@
   <div class="wrap article-grid">
     <div class="prose">
 
-      <p><b>Your backtest: 95% win rate. 8R average. $50,000 profit on $10,000 account.</b></p>
+      <p><b>Your backtest: 8R expectancy. 3.5 profit factor. $50,000 profit on $10,000 account.</b></p>
 
-      <p>You go live. First week: 30% win rate. Account down 12%.</p>
+      <p>You go live. First week: -2R expectancy. 0.4 profit factor. Account down 12%.</p>
 
       <p>What happened? Your backtest lied.</p>
 
@@ -97,10 +97,10 @@
             <p><strong>Example:</strong></p>
             <ul>
               <li>You test 100 different EMA periods (10, 11, 12... 110)</li>
-              <li>EMA(47) gives 95% win rate in backtest</li>
+              <li>EMA(47) gives 4.2R expectancy in backtest</li>
               <li>You think you found the "magic number"</li>
             </ul>
-            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> EMA(47) just happened to fit that specific data set. Forward test? 35% win rate. You learned the noise, not the signal.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> EMA(47) just happened to fit that specific data set. Forward test? -0.8R expectancy. You learned the noise, not the signal.</p>
             <p><strong>Fix:</strong> Limit optimization. Use standard parameters. Test on unseen data.</p>
           </div>
           <div class="tab-panel">
@@ -132,10 +132,10 @@
             <p><strong>The problem:</strong> You're excluding 200+ stocks that got delisted/bankrupted</p>
             <p><strong>Example:</strong></p>
             <ul>
-              <li>Backtest on 2024 S&P 500 list: 70% win rate</li>
+              <li>Backtest on 2024 S&P 500 list: 1.8R expectancy, 2.1 profit factor</li>
               <li>But in 2020, you'd have been long Hertz (bankrupt), Wirecard (fraud), etc.</li>
             </ul>
-            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> Your "70% win rate" excludes catastrophic losses from delistings. Real win rate: 45%.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> Your expectancy excludes catastrophic losses from delistings. Real expectancy: -0.2R (losing system).</p>
           </div>
         </div>
       </div>
@@ -267,7 +267,7 @@
         <h4>🚩 Warning Signs Your Strategy Is Curve-Fit</h4>
         <ul>
           <li><strong>Sharpe > 3.0:</strong> Too good to be true</li>
-          <li><strong>Win rate > 80%:</strong> Extremely rare (verify execution assumptions)</li>
+          <li><strong>Expectancy > 5R:</strong> Extremely rare (verify execution assumptions)</li>
           <li><strong>Only 20-30 trades:</strong> Sample size too small (statistically meaningless)</li>
           <li><strong>Perfect equity curve:</strong> Smooth line with no drawdowns (impossible)</li>
           <li><strong>Tested on 1 asset only:</strong> Likely fit to that specific regime</li>
@@ -301,7 +301,7 @@
           <li><strong>Avoid overfitting:</strong> Limit parameters, test across multiple markets</li>
           <li><strong>In-sample vs. out-of-sample:</strong> Develop on 60-70%, validate on 30-40%</li>
           <li><strong>Walk-forward testing:</strong> Verify consistency across time periods</li>
-          <li><strong>Red flags:</strong> Sharpe > 3.0, win rate > 80%, < 30 trades</li>
+          <li><strong>Red flags:</strong> Sharpe > 3.0, expectancy > 5R, < 30 trades</li>
           <li><strong>Forward test before live:</strong> Paper trade 3-6 months minimum</li>
         </ul>
       </div>
@@ -313,7 +313,7 @@
         <p><strong>Exercise: Validate Your Strategy Using the Red Flag Detector</strong></p>
         <p>Take your current strategy (or a strategy you're considering) and run it through validation:</p>
         <ol style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
-          <li>Backtest on 60% of your data (in-sample). Record: trades, win rate, Sharpe, max DD</li>
+          <li>Backtest on 60% of your data (in-sample). Record: trades, expectancy, Sharpe, max DD</li>
           <li>Identify parameters used (EMAs, thresholds, etc.). Did you optimize these by testing multiple values?</li>
           <li>Test on remaining 40% of data (out-of-sample). Compare results to in-sample.</li>
           <li>Use the validation scorecard from the template (8 categories, 60 points max)</li>
@@ -365,11 +365,11 @@
         <h4>🎮 Quick Check</h4>
 
         <div class="quiz-question">
-          <p><strong>Q: You backtest a strategy: 85% win rate, 4.2 Sharpe ratio, tested on 25 trades, using EMA(47) because it gave the best results after testing 100 different periods. What's wrong?</strong></p>
+          <p><strong>Q: You backtest a strategy: 5.2R expectancy, 4.2 Sharpe ratio, tested on 25 trades, using EMA(47) because it gave the best results after testing 100 different periods. What's wrong?</strong></p>
           <div class="quiz-options">
             <div class="quiz-option" data-correct="false">A) Nothing—great strategy!</div>
-            <div class="quiz-option" data-correct="true">B) All of it: Sample size too small, Sharpe too high, EMA(47) is curve-fit</div>
-            <div class="quiz-option" data-correct="false">C) Just the win rate is too high</div>
+            <div class="quiz-option" data-correct="true">B) All of it: Sample size too small, Sharpe & expectancy too high, EMA(47) is curve-fit</div>
+            <div class="quiz-option" data-correct="false">C) Just the expectancy is too high</div>
             <div class="quiz-option" data-correct="false">D) Just the sample size is too small</div>
           </div>
           <div class="quiz-feedback">

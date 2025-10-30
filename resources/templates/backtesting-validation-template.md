@@ -1,6 +1,6 @@
 # Backtesting Validation Template
 
-**From Lesson 24: Backtesting Reality - That 95% Win Rate Is Lying to You**
+**From Lesson 24: Backtesting Reality - That Perfect Expectancy Is Lying to You**
 
 Use this template to validate backtest results and avoid curve-fitting disasters.
 
@@ -92,7 +92,6 @@ ________________________________________________
 
 **Winning Trades:** ________
 **Losing Trades:** ________
-**Win Rate:** ________%
 
 **Average Winner:** $________
 **Average Loser:** $________
@@ -114,7 +113,7 @@ ________________________________________________
 **Sharpe Ratio:** ________
 **Sortino Ratio:** ________
 **Profit Factor:** ________ (Gross Profit ÷ Gross Loss)
-**Expectancy:** $________ (Avg R × Win Rate - Avg R × Loss Rate)
+**Expectancy:** $________ (Average profit per trade)
 
 ---
 
@@ -195,8 +194,8 @@ ________________________________________________
 
 | Metric | In-Sample | Out-of-Sample | Difference |
 |--------|-----------|---------------|------------|
-| Win Rate | ________% | ________% | ________% |
 | Avg R | ________ | ________ | ________ |
+| Profit Factor | ________ | ________ | ________ |
 | Sharpe | ________ | ________ | ________ |
 | Max DD | ________% | ________% | ________% |
 
@@ -214,17 +213,17 @@ ________________________________________________
 
 **If Yes, results by year/quarter:**
 
-| Period | Trades | Win Rate | Avg R | Total R |
-|--------|--------|----------|-------|---------|
-| Q1 | ________ | ________% | ________ | ________ |
-| Q2 | ________ | ________% | ________ | ________ |
-| Q3 | ________ | ________% | ________ | ________ |
-| Q4 | ________ | ________% | ________ | ________ |
+| Period | Trades | Avg R | Profit Factor | Total R |
+|--------|--------|-------|---------------|---------|
+| Q1 | ________ | ________ | ________ | ________ |
+| Q2 | ________ | ________ | ________ | ________ |
+| Q3 | ________ | ________ | ________ | ________ |
+| Q4 | ________ | ________ | ________ | ________ |
 
 **Consistency Check:**
 - [ ] All periods positive R
 - [ ] No single period dominates results
-- [ ] Similar win rates across periods
+- [ ] Similar expectancy across periods
 
 **Verdict:** Consistent / Inconsistent
 
@@ -234,12 +233,12 @@ ________________________________________________
 
 **Performance by Regime:**
 
-| Regime | Trades | Win Rate | Avg R |
-|--------|--------|----------|-------|
-| Trending Up | ________ | ________% | ________ |
-| Trending Down | ________ | ________% | ________ |
-| Ranging | ________ | ________% | ________ |
-| Volatile | ________ | ________% | ________ |
+| Regime | Trades | Avg R | Profit Factor |
+|--------|--------|-------|---------------|
+| Trending Up | ________ | ________ | ________ |
+| Trending Down | ________ | ________ | ________ |
+| Ranging | ________ | ________ | ________ |
+| Volatile | ________ | ________ | ________ |
 
 **🚩 RED FLAG:** If 80%+ of profit came from one regime that rarely occurs.
 
@@ -354,13 +353,13 @@ ________________________________________________
 | Metric | Backtest | Paper Trading | Difference |
 |--------|----------|---------------|------------|
 | Trades | ________ | ________ | ________ |
-| Win Rate | ________% | ________% | ________% |
 | Avg R | ________ | ________ | ________ |
+| Profit Factor | ________ | ________ | ________ |
 | Total R | ________ | ________ | ________ |
 | Max DD | ________% | ________% | ________% |
 
 **🚩 RED FLAGS in Paper Trading:**
-- Win rate drops >15%: Strategy may not translate to live
+- Expectancy drops >20%: Strategy may not translate to live
 - Avg R drops >20%: Slippage worse than expected
 - Max DD increases >30%: Risk model inadequate
 - Can't follow rules: Strategy too complex or emotionally difficult
@@ -374,7 +373,7 @@ ________________________________________________
 ## 🎓 Key Principles
 
 **1. Be Skeptical of Great Results**
-- If backtest shows 70%+ win rate, assume error
+- If backtest shows >5R expectancy, assume error
 - If Sharpe >3.0, verify extensively
 - Best strategies are "good enough," not perfect
 

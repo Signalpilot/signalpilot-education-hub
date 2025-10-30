@@ -82,7 +82,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 - [ ] Use tight stops (will get shaken out)
 - [ ] Trade range strategies
 
-**Expected Win Rate:** 60-70%
+**Reliability:** Highly reliable in trending conditions
 
 ---
 
@@ -101,7 +101,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 - [ ] Use wide stops (unnecessary)
 - [ ] Trade trend-following strategies
 
-**Expected Win Rate:** 55-65%
+**Reliability:** Moderately reliable in ranging conditions
 
 ---
 
@@ -120,7 +120,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 - [ ] Overtrade to "make up for lost time"
 - [ ] Ignore the regime change
 
-**Expected Win Rate:** 40-50% (skip if possible)
+**Reliability:** Low probability (skip if possible)
 
 ---
 
@@ -292,11 +292,11 @@ ________________________________________________
 **5. Most Losses Come from Wrong Regime**
 - Review your last 20 losses
 - How many were "right setup, wrong regime"?
-- Probably 60-70%
+- Likely a significant majority
 
 ---
 
-**This one framework will eliminate 40-50% of your losing trades.**
+**This one framework will eliminate a significant portion of your losing trades.**
 
 **Master regime recognition. Trade the market's mood, not your bias.**
 

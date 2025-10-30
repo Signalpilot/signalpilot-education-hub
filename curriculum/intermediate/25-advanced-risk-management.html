@@ -56,9 +56,9 @@ Action: Reduce size by 50% until recovery to < 10% drawdown</code></pre>
       <h2>Kelly Criterion (Optimal Position Sizing)</h2>
       
       <h3>Kelly Formula</h3>
-      <p><strong>Optimal % to risk = (Win Rate × Avg R - (1 - Win Rate)) / Avg R</strong></p>
+      <p><strong>Optimal % to risk = (Success Rate × Avg R - (1 - Success Rate)) / Avg R</strong></p>
       <pre><code>Strategy Stats:
-Win Rate: 60%
+Success Rate: 60%
 Avg R:R: 2:1
 
 Kelly % = (0.60 × 2 - 0.40) / 2
@@ -76,7 +76,7 @@ Quarter Kelly: 10% (conservative, recommended)
 Most professionals: Use 1/4 to 1/2 Kelly</code></pre>
 
       <h3>Practical Kelly Example</h3>
-      <pre><code>Strategy: 55% win rate, 2.5:1 avg R:R
+      <pre><code>Strategy: 55% expectancy, 2.5:1 avg R:R
 Kelly = (0.55 × 2.5 - 0.45) / 2.5 = 0.34 = 34%
 Quarter Kelly = 8.5%
 
@@ -150,18 +150,18 @@ Prevention: HARD STOP at 20% DD (mandatory break)</code></pre>
       
       <h3>What is Risk of Ruin?</h3>
       <p><strong>Probability of losing entire account.</strong></p>
-      <pre><code>Win Rate: 50%
+      <pre><code>Performance: 50%
 Risk per trade: 10% (way too high!)
 Risk of Ruin: ~50% (coin flip to blow account)
 
-Win Rate: 55%
+Performance: 55%
 Risk per trade: 2%
 Risk of Ruin: < 1% (safe)</code></pre>
 
       <h3>Risk of Ruin Formula (Simplified)</h3>
-      <p><strong>RoR ≈ ((1 - Win Rate) / Win Rate) ^ (Max Trades)</strong></p>
+      <p><strong>RoR ≈ ((1 - Success Rate) / Success Rate) ^ (Max Trades)</strong></p>
       <pre><code>Example:
-Win Rate: 60%
+Success Rate: 60%
 Max consecutive losses before ruin: 20
 
 RoR = (0.40 / 0.60)^20 ≈ 0.0001 = 0.01% (very safe)</code></pre>
@@ -169,7 +169,7 @@ RoR = (0.40 / 0.60)^20 ≈ 0.0001 = 0.01% (very safe)</code></pre>
       <h3>Reducing Risk of Ruin</h3>
       <ol>
         <li><b>Lower per-trade risk</b> (1-2% vs. 5-10%)</li>
-        <li><b>Increase win rate</b> (better setups, better execution)</li>
+        <li><b>Improve expectancy</b> (better setups, better execution)</li>
         <li><b>Increase R:R</b> (target 2:1 minimum)</li>
         <li><b>Diversify</b> (uncorrelated positions reduce simultaneous losses)</li>
       </ol>
@@ -346,11 +346,11 @@ Position: $400 / $500 ATR = 0.8 BTC (~$36,000 notional)</code></pre>
         <p><strong>Scenario 3: Risk of Ruin Comparison</strong></p>
         <p>Compare two traders with $10,000 accounts:</p>
         <table style="width:100%;border-collapse:collapse;margin:1rem 0">
-          <tr><th>Trader</th><th>Win Rate</th><th>Risk/Trade</th><th>Risk of Ruin</th></tr>
+          <tr><th>Trader</th><th>Performance</th><th>Risk/Trade</th><th>Risk of Ruin</th></tr>
           <tr><td>Trader A</td><td>55%</td><td>10%</td><td>~40%</td></tr>
           <tr><td>Trader B</td><td>55%</td><td>2%</td><td>&lt; 1%</td></tr>
         </table>
-        <p><strong>Question:</strong> Both have same win rate. Why is Trader A's Risk of Ruin 40x higher? What's the key lesson?</p>
+        <p><strong>Question:</strong> Both have same expectancy. Why is Trader A's Risk of Ruin 40x higher? What's the key lesson?</p>
 
         <p><strong>Scenario 4: Dynamic Position Sizing</strong></p>
         <p>You normally risk 2% per trade. Using equity-based dynamic sizing:</p>

@@ -106,7 +106,7 @@ Target(s): _________________________</code></pre>
             <td style="padding:.5rem">_______</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-            <td style="padding:.5rem">Win Rate</td>
+            <td style="padding:.5rem">Success Rate</td>
             <td style="padding:.5rem">Winners / Total</td>
             <td style="padding:.5rem">_______%</td>
           </tr>
@@ -131,7 +131,7 @@ Target(s): _________________________</code></pre>
             <td style="padding:.5rem">_______</td>
           </tr>
         </table>
-        <p><strong>Minimum Thresholds:</strong> Win Rate > 50%, Avg R > 0.5R, Max DD < 25%, Sharpe > 1.0</p>
+        <p><strong>Minimum Thresholds:</strong> Success Rate > 50%, Avg R > 0.5R, Max DD < 25%, Sharpe > 1.0</p>
 
         <p><strong>Part 3: Walk-Forward Analysis (Critical Validation)</strong></p>
         <p>Split data into 6-month chunks. Train on past, test on future. Repeat rolling forward:</p>
@@ -140,20 +140,20 @@ Target(s): _________________________</code></pre>
 Period 1:
 Train: Jan-Jun 2023 (optimize parameters)
 Test: Jul-Dec 2023 (validate performance)
-Result: Win Rate ___%, Avg R ___R
+Result: Success Rate ___%, Avg R ___R
 
 Period 2:
 Train: Jul-Dec 2023 (re-optimize)
 Test: Jan-Jun 2024 (validate)
-Result: Win Rate ___%, Avg R ___R
+Result: Success Rate ___%, Avg R ___R
 
 Period 3:
 Train: Jan-Jun 2024
 Test: Jul-Dec 2024
-Result: Win Rate ___%, Avg R ___R
+Result: Success Rate ___%, Avg R ___R
 
 Summary:
-Average Test Performance: ___% win rate, ___R avg
+Average Test Performance: ___% expectancy, ___R avg
 Consistency: If 3/3 periods positive = good system
 Degradation: Train vs Test performance drop = ___% (< 20% OK)</code></pre>
         <p><strong>Red Flag:</strong> If test performance is 30%+ worse than train, you're overfitting. Simplify rules.</p>
@@ -194,7 +194,7 @@ Interpretation:
             <td style="padding:.5rem">1. Paper Trading</td>
             <td style="padding:.5rem">20 trades</td>
             <td style="padding:.5rem">Simulated</td>
-            <td style="padding:.5rem">Win rate within 5% of backtest</td>
+            <td style="padding:.5rem">Success rate within 5% of backtest</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
             <td style="padding:.5rem">2. Micro Size</td>

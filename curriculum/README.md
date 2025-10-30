@@ -159,7 +159,7 @@ Your brain is wired to see patterns that aren't there. Learn:
 #### 9. **Position Sizing: The Only Edge That Matters** 📝
 **Planned Length:** ~3,000 words | **Status:** In Development
 
-Win rate is a vanity metric. Position sizing is everything. Learn:
+Success rate is a vanity metric. Position sizing is everything. Learn:
 - Why fixed percentage is amateur hour
 - Kelly Criterion simplified (no PhD required)
 - Fixed fractional vs. optimal f

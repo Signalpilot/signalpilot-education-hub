@@ -133,7 +133,7 @@ Price  | Sell | Buy  | Delta
 
 **Trade:** Long reversal from support
 
-**This is THE highest-probability footprint pattern** (70-80% win rate)
+**This is THE highest-probability footprint pattern** (extremely reliable)
 
 ---
 
@@ -192,7 +192,7 @@ Candle 3: 100.00 | 2000 | 4000 | +2000
 - [ ] Price reclaims above support
 - [ ] Delta reverses positive
 
-**Confluence Score:** ⭐⭐⭐⭐⭐ (90%+ accuracy when all align)
+**Confluence Score:** ⭐⭐⭐⭐⭐ (Extremely high accuracy when all align)
 
 ---
 
@@ -202,7 +202,7 @@ Candle 3: 100.00 | 2000 | 4000 | +2000
 - [ ] Price fails back below resistance
 - [ ] Delta reverses negative
 
-**Confluence Score:** ⭐⭐⭐⭐⭐ (90%+ accuracy)
+**Confluence Score:** ⭐⭐⭐⭐⭐ (Extremely high accuracy)
 
 ---
 
@@ -396,7 +396,7 @@ ________________________________________________
 
 ## 🎯 The Ultimate Footprint Setup
 
-**When All These Align (80%+ Win Rate):**
+**When All These Align (Highly Reliable Setup):**
 
 1. **Key level** (major support/resistance)
 2. **Janus sweep** (liquidity grab)
