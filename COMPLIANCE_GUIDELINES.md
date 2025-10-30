@@ -42,6 +42,34 @@ These are identifiers/names - like "Apple" or "Bitcoin". No compliance issue wit
 ✅ **WRN** - Warning → **Indicates** weakening momentum
 ✅ **BDN** - Breakdown → **Indicates** bearish breakdown conditions
 
+### Pentarch Supporting Components (Always Use "Indicates" or "Shows")
+
+**Pilot Line (PL):**
+✅ "The Pilot Line **indicates** trend direction"
+✅ "Green Pilot Line **shows** uptrend structure"
+✅ "The PL **indicates** the reference point for distance metrics"
+❌ "The Pilot Line **confirms** the trend"
+❌ "The PL **tells you exactly** where to enter"
+
+**Regime Bar Colors:**
+✅ "Green candles **indicate** bull regime conditions"
+✅ "The regime **shows** structural bias"
+✅ "You **can see** the current regime from candle colors"
+❌ "Green candles **confirm** you should buy"
+❌ "The regime **tells you exactly** what to do"
+
+**NanoFlow:**
+✅ "NanoFlow **indicates** micro momentum conditions"
+✅ "Green crosses **show** micro bull momentum"
+✅ "NanoFlow **can validate** signal quality"
+❌ "NanoFlow **confirms** the trend"
+❌ "NanoFlow **tells you exactly** when to enter"
+
+**Key Principle for All Components:**
+- Use **"indicates"**, **"shows"**, **"can see"**, **"reveals"**
+- Never use **"confirms"**, **"validates"**, **"proves"**, **"guarantees"**
+- Never use **"tells you exactly"**, **"know exactly"**
+
 ---
 
 ## 🔄 Find/Replace Throughout All Docs
