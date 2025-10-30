@@ -11,32 +11,39 @@
     ],
 
     curriculum: {
-      beginner: "The Beginner tier has 12 lessons covering fundamental concepts like liquidity engineering, order flow, indicator truth, and risk management. It's designed to unlearn retail myths and build a professional foundation. Want to know about a specific lesson?",
-      intermediate: "The Intermediate tier contains 15 lessons on market microstructure, advanced order flow, Signal Pilot indicators (Janus Atlas, Plutus Flow, Minimal Flow), and professional frameworks. Complete the Beginner tier first!",
-      advanced: "The Advanced tier has 15 lessons covering institutional order flow, machine learning, trading automation, and professional infrastructure. This is for traders ready to think probabilistically. Prerequisites: Complete Beginner and Intermediate tiers."
+      beginner: "The Beginner tier has 12 lessons covering fundamental concepts like liquidity engineering, order flow, indicator truth, and risk management. It's designed to unlearn retail myths and build a professional foundation.<br><br>📖 <a href='/beginner.html'>View Beginner Curriculum →</a><br>🚀 <a href='/curriculum/beginner/01-the-liquidity-lie.html'>Start with Lesson #1 →</a>",
+      intermediate: "The Intermediate tier contains 15 lessons on market microstructure, advanced order flow, Signal Pilot indicators (Janus Atlas, Plutus Flow, Minimal Flow), and professional frameworks. Complete the Beginner tier first!<br><br>📖 <a href='/intermediate.html'>View Intermediate Curriculum →</a><br>🚀 <a href='/curriculum/intermediate/13-bid-ask-spread-dynamics.html'>Start with Lesson #13 →</a>",
+      advanced: "The Advanced tier has 15 lessons covering institutional order flow, machine learning, trading automation, and professional infrastructure. This is for traders ready to think probabilistically. Prerequisites: Complete Beginner and Intermediate tiers.<br><br>📖 <a href='/advanced.html'>View Advanced Curriculum →</a><br>🚀 <a href='/curriculum/advanced/28-institutional-order-flow.html'>Start with Lesson #28 →</a>"
     },
 
     indicators: {
-      janus: "Janus Atlas is our order flow divergence indicator. It detects when price and flow don't agree. Lesson #20 covers it in detail: 'Janus Atlas Advanced'.",
-      plutus: "Plutus Flow tracks cumulative delta and absorption patterns. Learn it in Lesson #21: 'Plutus Flow Mastery'. It's essential for understanding institutional accumulation.",
-      minimal: "Minimal Flow is our regime detection system. Lesson #22 explains how to use it for identifying market conditions. Perfect for context-aware trading.",
-      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle."
+      janus: "Janus Atlas is our order flow divergence indicator. It detects when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/janus-atlas' target='_blank' rel='noopener'>View Janus Atlas Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
+      plutus: "Plutus Flow tracks cumulative delta and absorption patterns. It's essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/plutus-flow' target='_blank' rel='noopener'>View Plutus Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
+      minimal: "Minimal Flow is our regime detection system for identifying market conditions. Perfect for context-aware trading.<br><br>📚 <a href='https://docs.signalpilot.io/minimal-flow' target='_blank' rel='noopener'>View Minimal Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-regime-trading.html'>Read Lesson #22: Regime Trading →</a>",
+      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/pentarch' target='_blank' rel='noopener'>View Pentarch Documentation →</a><br>📖 <a href='/curriculum/advanced/39-pentarch-cycle-phases.html'>Read Lesson #39: Pentarch Cycle Phases →</a>"
     },
 
     concepts: {
-      orderflow: "Order flow is the study of real buying and selling pressure. Unlike price action, it shows you ACTUAL transactions. Start with Lesson #3: 'Price Action is Dead' and Lesson #2: 'Volume Doesn't Lie'.",
-      liquidity: "Liquidity engineering is how institutions manipulate price to trigger stops and hunt orders. Lesson #1: 'The Liquidity Lie' explains this in detail.",
-      repainting: "60-90% of indicators repaint (change historical values). Lesson #4: 'The Repainting Problem' teaches you how to detect them. Signal Pilot indicators NEVER repaint.",
-      regime: "Market regimes are different market conditions (trending, ranging, volatile, calm). Lesson #22: 'Minimal Flow Regimes' covers this. Trade the regime, not just the signal!",
-      darkpool: "Dark pools are private exchanges where institutions trade without moving the market. Lesson #17 covers dark pool analysis and how to detect institutional activity.",
-      footprint: "Footprint charts show volume at each price level, revealing where buyers and sellers actually transacted. Lesson #16 teaches you how to read them like a pro."
+      orderflow: "Order flow is the study of real buying and selling pressure. Unlike price action, it shows you ACTUAL transactions.<br><br>📖 <a href='/curriculum/beginner/03-price-action-is-dead.html'>Read Lesson #3: Price Action is Dead →</a><br>📖 <a href='/curriculum/beginner/02-volume-doesnt-lie.html'>Read Lesson #2: Volume Doesn't Lie →</a>",
+      liquidity: "Liquidity engineering is how institutions manipulate price to trigger stops and hunt orders.<br><br>📖 <a href='/curriculum/beginner/01-the-liquidity-lie.html'>Read Lesson #1: The Liquidity Lie →</a>",
+      repainting: "60-90% of indicators repaint (change historical values). Signal Pilot indicators NEVER repaint.<br><br>📖 <a href='/curriculum/beginner/04-the-repainting-problem.html'>Read Lesson #4: The Repainting Problem →</a>",
+      regime: "Market regimes are different market conditions (trending, ranging, volatile, calm). Trade the regime, not just the signal!<br><br>📖 <a href='/curriculum/intermediate/22-regime-trading.html'>Read Lesson #22: Regime Trading →</a>",
+      darkpool: "Dark pools are private exchanges where institutions trade without moving the market.<br><br>📖 <a href='/curriculum/intermediate/17-dark-pool-analysis.html'>Read Lesson #17: Dark Pool Analysis →</a>",
+      footprint: "Footprint charts show volume at each price level, revealing where buyers and sellers actually transacted.<br><br>📖 <a href='/curriculum/intermediate/16-footprint-charts.html'>Read Lesson #16: Footprint Charts →</a>"
     },
 
     help: {
-      start: "Start with the Beginner tier! Begin with Lesson #1: 'The Liquidity Lie'. Complete lessons in order for best results. Track your progress in the dashboard.",
-      study: "Study tip: Complete one lesson per day. Take the quiz at the end. Make notes on key concepts. Review previous lessons before moving to the next tier.",
-      stuck: "Feeling stuck? Re-read the lesson, try the quiz again, and check the 'Key Takeaways' section. Remember: institutional thinking takes time to develop.",
-      time: "Each lesson takes 15-25 minutes to read. Plan 30-40 minutes including the quiz. The full curriculum is about 30-40 hours total."
+      start: "Start with the Beginner tier! Begin with Lesson #1: 'The Liquidity Lie'. Complete lessons in order for best results.<br><br>🚀 <a href='/beginner.html'>View Beginner Curriculum →</a><br>📖 <a href='/curriculum/beginner/01-the-liquidity-lie.html'>Start Learning Now →</a>",
+      study: "Study tip: Complete one lesson per day. Take the quiz at the end. Make notes on key concepts. Review previous lessons before moving to the next tier.<br><br>📥 <a href='/resources.html'>Download Study Resources →</a>",
+      stuck: "Feeling stuck? Re-read the lesson, try the quiz again, and check the 'Key Takeaways' section. Remember: institutional thinking takes time to develop.<br><br>💬 Need help? Join our community for support!",
+      time: "Each lesson takes 15-25 minutes to read. Plan 30-40 minutes including the quiz. The full curriculum is about 30-40 hours total.<br><br>📖 <a href='/'>See All 42 Lessons →</a>"
+    },
+
+    links: {
+      docs: "📚 <strong>Signal Pilot Documentation</strong><br><br>• <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>Main Documentation →</a><br>• <a href='https://docs.signalpilot.io/janus-atlas' target='_blank' rel='noopener'>Janus Atlas →</a><br>• <a href='https://docs.signalpilot.io/plutus-flow' target='_blank' rel='noopener'>Plutus Flow →</a><br>• <a href='https://docs.signalpilot.io/minimal-flow' target='_blank' rel='noopener'>Minimal Flow →</a><br>• <a href='https://docs.signalpilot.io/pentarch' target='_blank' rel='noopener'>Pentarch →</a>",
+      pricing: "💰 <strong>Signal Pilot Pricing</strong><br><br>View our plans and get started with Signal Pilot indicators.<br><br>💳 <a href='https://signalpilot.io/#pricing' target='_blank' rel='noopener'>View Pricing Plans →</a>",
+      resources: "📥 <strong>Free Resources</strong><br><br>Downloadable checklists, templates, and frameworks to accelerate your learning.<br><br>📥 <a href='/resources.html'>Browse All Resources →</a>",
+      search: "🔍 <strong>Search Lessons</strong><br><br>Find lessons by topic, concept, or keyword across all 42 lessons.<br><br>🔍 <a href='/search.html'>Search Now →</a>"
     }
   };
 
@@ -45,16 +52,22 @@
     // Greetings
     { regex: /^(hi|hello|hey|greetings)/i, response: 'greeting' },
 
-    // Curriculum questions
-    { regex: /(beginner|start|first|new)/i, response: () => knowledgeBase.curriculum.beginner },
-    { regex: /intermediate/i, response: () => knowledgeBase.curriculum.intermediate },
-    { regex: /advanced/i, response: () => knowledgeBase.curriculum.advanced },
-
-    // Indicator questions
+    // Indicator questions (check BEFORE general docs to catch "pentarch docs" etc.)
     { regex: /janus/i, response: () => knowledgeBase.indicators.janus },
     { regex: /plutus/i, response: () => knowledgeBase.indicators.plutus },
     { regex: /minimal/i, response: () => knowledgeBase.indicators.minimal },
     { regex: /pentarch/i, response: () => knowledgeBase.indicators.pentarch },
+
+    // General links and documentation
+    { regex: /(docs|documentation|manual|guide|link|url|website)/i, response: () => knowledgeBase.links.docs },
+    { regex: /(pricing|price|cost|subscription|plan|buy|purchase)/i, response: () => knowledgeBase.links.pricing },
+    { regex: /(resource|download|template|checklist|framework)/i, response: () => knowledgeBase.links.resources },
+    { regex: /(search|find|lookup)/i, response: () => knowledgeBase.links.search },
+
+    // Curriculum questions
+    { regex: /(beginner|start|first|new)/i, response: () => knowledgeBase.curriculum.beginner },
+    { regex: /intermediate/i, response: () => knowledgeBase.curriculum.intermediate },
+    { regex: /advanced/i, response: () => knowledgeBase.curriculum.advanced },
 
     // Concept questions
     { regex: /(order.?flow|buying.?pressure|selling.?pressure)/i, response: () => knowledgeBase.concepts.orderflow },
@@ -89,11 +102,11 @@
   // Suggestions for quick questions
   const suggestions = [
     "Where should I start?",
-    "What is order flow?",
-    "Explain Janus Atlas",
-    "How long does the course take?",
-    "What's a dark pool?",
-    "Tell me about repainting"
+    "What is Pentarch?",
+    "Show me the docs",
+    "What's order flow?",
+    "How much does it cost?",
+    "Free resources"
   ];
 
   // Create chatbot UI
