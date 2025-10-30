@@ -277,10 +277,10 @@
     const lowerQuery = query.toLowerCase();
 
     // Check indicator keywords
-    if (lowerQuery.includes('janus')) results.push({ type: 'indicator', name: 'Janus Atlas', lesson: 20 });
-    if (lowerQuery.includes('plutus')) results.push({ type: 'indicator', name: 'Plutus Flow', lesson: 21 });
-    if (lowerQuery.includes('minimal')) results.push({ type: 'indicator', name: 'Minimal Flow', lesson: 22 });
-    if (lowerQuery.includes('pentarch')) results.push({ type: 'indicator', name: 'Pentarch', external: 'https://docs.signalpilot.io/', note: 'See official documentation' });
+    if (lowerQuery.includes('janus')) results.push({ type: 'indicator', name: 'Janus Atlas', lesson: 20, docs: 'https://docs.signalpilot.io/janus-atlas' });
+    if (lowerQuery.includes('plutus')) results.push({ type: 'indicator', name: 'Plutus Flow', lesson: 21, docs: 'https://docs.signalpilot.io/plutus-flow' });
+    if (lowerQuery.includes('minimal')) results.push({ type: 'indicator', name: 'Minimal Flow', lesson: 22, docs: 'https://docs.signalpilot.io/minimal-flow' });
+    if (lowerQuery.includes('pentarch')) results.push({ type: 'indicator', name: 'Pentarch', external: 'https://docs.signalpilot.io/pentarch', note: 'See official documentation' });
 
     // Check concept keywords
     if (lowerQuery.includes('order') && lowerQuery.includes('flow')) results.push({ type: 'concept', name: 'Order Flow', lessons: [2, 3] });
@@ -297,12 +297,16 @@
     let msg = `🔍 <strong>Search Results for "${query}"</strong><br><br>`;
     results.forEach(r => {
       if (r.external) {
-        msg += `📚 <a href='${r.external}' target='_blank'>${r.name}</a> - ${r.note}<br>`;
+        msg += `📚 <a href='${r.external}' target='_blank'>${r.name} Documentation</a> - ${r.note}<br>`;
       } else if (r.lessons) {
         r.lessons.forEach(num => {
           msg += `📖 <a href='${lessonFiles[num]}'>${r.name} - Lesson #${num}</a><br>`;
         });
-      } else {
+      } else if (r.docs && r.lesson) {
+        // Indicator with both docs and lesson
+        msg += `📚 <a href='${r.docs}' target='_blank'>${r.name} Documentation</a><br>`;
+        msg += `📖 <a href='${lessonFiles[r.lesson]}'>${r.name} - Lesson #${r.lesson}</a><br>`;
+      } else if (r.lesson) {
         msg += `📖 <a href='${lessonFiles[r.lesson]}'>${r.name} - Lesson #${r.lesson}</a><br>`;
       }
     });
@@ -326,10 +330,10 @@
     },
 
     indicators: {
-      janus: "Janus Atlas is our order flow divergence indicator. It detects when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
-      plutus: "Plutus Flow tracks cumulative delta and absorption patterns. It's essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
-      minimal: "Minimal Flow is our regime detection system for identifying market conditions. Perfect for context-aware trading.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-minimal-flow-regimes.html'>Read Lesson #22: Minimal Flow Regimes →</a>",
-      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Pentarch Documentation →</a><br>💡 <em>Note: Pentarch is covered in the official documentation. Check lessons on regime detection and market cycles!</em>"
+      janus: "Janus Atlas is our order flow divergence indicator. It detects when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/janus-atlas' target='_blank' rel='noopener'>View Janus Atlas Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
+      plutus: "Plutus Flow tracks cumulative delta and absorption patterns. It's essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/plutus-flow' target='_blank' rel='noopener'>View Plutus Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
+      minimal: "Minimal Flow is our regime detection system for identifying market conditions. Perfect for context-aware trading.<br><br>📚 <a href='https://docs.signalpilot.io/minimal-flow' target='_blank' rel='noopener'>View Minimal Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-minimal-flow-regimes.html'>Read Lesson #22: Minimal Flow Regimes →</a>",
+      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/pentarch' target='_blank' rel='noopener'>View Pentarch Documentation →</a><br>💡 <em>Note: Pentarch is covered in the official documentation. Check lessons on regime detection and market cycles!</em>"
     },
 
     concepts: {
