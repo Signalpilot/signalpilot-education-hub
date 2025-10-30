@@ -6,126 +6,195 @@
 
 ---
 
-## 🚀 What's New
+## 📊 Current Status (Updated 2025-10-30)
 
-**2025-10-28 - Major Curriculum Restructure**
+### ✅ **COMPLETE: 42 Professional Trading Lessons**
 
-We've completely restructured the education hub with a comprehensive, tiered curriculum system:
+**110,000+ words** of institutional-grade trading education across 3 tiers
 
-### ✅ Now Available: Beginner Tier (Articles 1-4)
+| Tier | Lessons | Status | Word Count |
+|------|---------|--------|------------|
+| 🟢 **Beginner** | 12 | ✅ Complete | ~31,000 words |
+| 🟡 **Intermediate** | 15 | ✅ Complete | ~42,000 words |
+| 🔴 **Advanced** | 15 | ✅ Complete | ~37,000 words |
 
-**~18,000 words of professional trading education**
-
-1. **The Liquidity Lie** (~2,400 words) - How smart money uses your stops
-2. **Volume Analysis** (~5,100 words) - Reading volume like a professional
-3. **Order Flow** (~5,700 words) - What candlesticks hide
-4. **The Repaint Problem** (~4,800 words) - Why most indicators lie
-
-### 📝 In Development: Beginner Tier (Articles 5-12)
-
-- RSI Extremes (Indicator Truth)
-- Moving Averages (Indicator Truth)
-- Revenge Trading (Psychology)
-- Confirmation Bias (Psychology)
-- Position Sizing (Risk Management)
-- Stop Losses (Risk Management)
-- Timeframe Illusion (Multi-TF)
-- Paper Trading Reality (Practice)
+**Total:** 42 interactive lessons with quizzes, progress tracking, and achievements
 
 ---
 
-## 📚 Curriculum Structure
+## 🚀 What's Inside
 
-### 🟢 **Beginner Tier** (10-12 Articles)
-**Focus:** Truth over tradition - Unlearn retail lies, build professional foundation
+### 🟢 **Beginner Tier** (12 Lessons)
+**Focus:** Unlearn retail lies, build professional foundation
 
-**Categories:**
-- Market Structure Reality (liquidity, volume, order flow)
-- Indicator Truth (repainting, RSI, MAs)
-- Psychology Foundations (tilt, bias)
-- Risk Reality (position sizing, stops)
+**Core Topics:**
+- Liquidity engineering & market structure
+- Volume analysis & delta reading
+- Order flow mechanics
+- Indicator truth (repainting, RSI, MAs)
+- Psychology (revenge trading, confirmation bias)
+- Risk management (position sizing, stops)
+- Multi-timeframe analysis
+- Paper trading reality
 
-**Status:** 4/12 Complete | 8/12 In Development
+**Key Lessons:**
+1. The Liquidity Lie - How institutions hunt your stops
+2. Volume Doesn't Lie - Delta, CVD, and absorption patterns
+3. The Repaint Problem - Why 60-90% of indicators lie
+4. RSI Extremes - Using RSI correctly (regime, not reversal)
+5. Moving Averages - Death/Golden Cross vs. Pentarch IGN events
+6. Revenge Trading - Breaking the tilt cycle
+7. Confirmation Bias - The falsification mindset
+8. Position Sizing - Structure-based risk, not percentages
+9. Stop Losses - Why retail stops get hunted
+10. Timeframe Illusion - HTF bias, MTF structure, LTF timing
+11. Paper Trading - Why sim results don't transfer to live
+12. Spread Dynamics - Bid-ask mechanics
 
 ---
 
-### 🟡 **Intermediate Tier** (12-15 Articles)
+### 🟡 **Intermediate Tier** (15 Lessons)
 **Focus:** Systems over signals - Build systematic edge
 
-**Topics:**
-- Discretionary to systematic transition
-- Backtesting methodology
+**Core Topics:**
+- Market microstructure (bid-ask, order book, market making, HFT)
+- Advanced order flow (footprint charts, dark pools, smart money divergence)
 - Multi-timeframe mastery
-- Regime detection
-- Market dynamics (reversals, breakouts)
-- Advanced psychology
+- Signal Pilot indicators (Janus Atlas, Plutus Flow, Minimal Flow)
+- Regime detection & portfolio construction
+- Backtesting methodology
+- Trade journal mastery
+- Professional operations
 
-**Status:** Planned
+**Key Lessons:**
+13. Bid-Ask Spread Dynamics
+14. Order Book Analysis
+15. Market Making & HFT
+16. Footprint Charts
+17. Dark Pools
+18. Smart Money Divergence
+19. Multi-Timeframe Mastery
+20. Janus Atlas Advanced
+21. Plutus Flow Mastery
+22. Minimal Flow Regimes
+23. Portfolio Construction
+24. Backtesting Reality
+25. Trade Journal Mastery
+26. Professional Operations
 
 ---
 
-### 🔴 **Advanced Tier** (15-18 Articles)
+### 🔴 **Advanced Tier** (15 Lessons)
 **Focus:** Probabilistic thinking - How professionals trade
 
-**Topics:**
-- Institutional thinking
-- Statistical arbitrage
-- Quantitative methods
-- Strategy architecture
-- Market microstructure
-- Platform optimization
+**Core Topics:**
+- Institutional order flow (iceberg orders, block trades)
+- Market regime recognition
+- Auction theory & fair value gaps
+- Cross-asset correlations
+- Option flow & skew
+- Principal component analysis
+- Machine learning foundations
+- Trading automation & APIs
+- Portfolio theory
+- Professional infrastructure
+- Behavioral finance
 
-**Status:** Planned
+**Key Lessons:**
+28. Institutional Order Flow
+29. Market Regime Recognition
+30. Auction Theory Advanced
+31. Cross-Asset Correlations
+32. Statistical Arbitrage
+33. Options Flow & Skew
+34. Advanced Risk Management
+35. Portfolio Theory Advanced
+36. High-Frequency Concepts
+37. Trading Automation & APIs
+38. Principal Component Analysis
+39. Machine Learning Foundations
+40. Behavioral Finance Advanced
+41. Professional Infrastructure
+42. Meta-Learning & Mastery
 
 ---
 
-### ⚫ **Hard Tier** (12-15 Articles)
-**Focus:** The cutting edge - What competitors don't know
+## 📚 Additional Resources
 
-**Topics:**
-- Information theory in trading
-- Agent-based simulation
-- Principal component analysis
-- Alternative data (on-chain, sentiment)
-- Professional operations
-- Meta-learning & deliberate practice
+### ✅ **Comprehensive Documentation**
 
-**Status:** Planned
+**Pentarch System Reference** (`resources/pentarch-complete-reference.md`)
+- Complete documentation of all 8 Pentarch components
+- 5 Event Signals: TD, IGN, CAP, WRN, BDN
+- 3 Supporting Components: Pilot Line, Regime Bar Colors, NanoFlow
+- Integration examples and cycle-phase analysis
+- Compliance-safe language (observational, educational, conditional)
+
+**Trading Checklists** (`resources/checklists/`)
+- Liquidity Sweep Checklist
+- Dark Pool Analysis Checklist
+- Footprint Reading Checklist
+- Multi-Timeframe Framework
+- Smart Money Divergence Checklist
+- Regime Recognition Checklist
+
+**Templates** (`resources/templates/`)
+- Trade Journal Template
+- Position Sizing Calculator
+- Risk Management Template
+
+**Interactive Tools**
+- Professional calculators (position sizing, risk/reward, Sharpe ratio)
+- Search functionality across all 42 lessons
+- Progress tracking with achievements
 
 ---
 
 ## 🎯 Quick Start Guide
 
-### New to Signal Pilot Education?
+### **Step 1: Choose Your Path**
 
-**Step 1: Start with Beginner Tier**
+**New to Trading?** → Start with Beginner Lesson #1
+**Experienced Trader?** → Jump to Intermediate Tier
+**Professional?** → Explore Advanced Tier
+
+### **Step 2: Access the Education Hub**
+
+**Live Site:** `https://education.signalpilot.io/`
+
+**Local Development:**
+```bash
+# Clone the repository
+git clone https://github.com/signalpilot/signalpilot-education-hub.git
+
+# Open index.html in browser
+cd signalpilot-education-hub
+open index.html  # macOS
+start index.html # Windows
+xdg-open index.html # Linux
 ```
-📖 Read: /curriculum/beginner/01-the-liquidity-lie.md
-⏱️ Time: 15-20 minutes
-🎯 Goal: Understand liquidity engineering fundamentals
-```
 
-**Step 2: Progress Sequentially**
-- Don't skip articles (each builds on previous)
-- Do the exercises and checklists
-- Use provided templates
+### **Step 3: Progress Sequentially**
 
-**Step 3: Install Signal Pilot Indicators**
-- Janus Atlas (liquidity sweeps)
-- Plutus Flow (volume analysis)
-- Minimal Flow (regime detection)
-- Harmonic Oscillator (timing)
-- Omnideck (multi-system confluence)
+✅ Don't skip lessons (each builds on previous)
+✅ Complete quizzes to test understanding
+✅ Use checklists and templates
+✅ Track progress with built-in system
 
-**Step 4: Paper Trade Each Concept**
-- Practice before combining
+### **Step 4: Install Signal Pilot Indicators**
+
+**Core Indicators:**
+- **Janus Atlas** - Liquidity sweep detection
+- **Plutus Flow** - Volume analysis & delta reading
+- **Minimal Flow** - Regime detection & market structure
+- **Harmonic Oscillator** - Timing & momentum
+- **Pentarch** - Complete 8-component cycle-phase system
+
+### **Step 5: Practice & Apply**
+
+- Paper trade each concept before combining
 - Journal using provided templates
-- Track statistics
-
-**Step 5: Join the Community**
-- Discord: Share observations
-- Study groups: Learn with peers
-- Trade reviews: Get feedback
+- Join Signal Pilot community for feedback
 
 ---
 
@@ -134,61 +203,160 @@ We've completely restructured the education hub with a comprehensive, tiered cur
 ```
 signalpilot-education-hub/
 │
-├── curriculum/                          # 🆕 New tiered curriculum
-│   ├── README.md                        # Master curriculum guide
-│   ├── index.json                       # Article metadata
+├── curriculum/                          # 42 interactive lessons
+│   ├── beginner/                        # 12 lessons (31,000 words)
+│   │   ├── 01-the-liquidity-lie-enhanced.html
+│   │   ├── 02-volume-doesnt-lie.html
+│   │   └── ... (10 more)
 │   │
-│   ├── beginner/                        # Beginner tier (Articles 1-12)
-│   │   ├── README.md
-│   │   ├── 01-the-liquidity-lie.md      ✅
-│   │   ├── 02-volume-doesnt-lie.md      ✅
-│   │   ├── 03-price-action-is-dead.md   ✅
-│   │   ├── 04-repaint-problem.md        ✅
-│   │   └── 05-12... (in development)    📝
+│   ├── intermediate/                    # 15 lessons (42,000 words)
+│   │   ├── 13-bid-ask-spread-dynamics.html
+│   │   ├── 14-order-book-analysis.html
+│   │   └── ... (13 more)
 │   │
-│   ├── intermediate/                    # Intermediate tier (Planned)
-│   ├── advanced/                        # Advanced tier (Planned)
-│   └── hard/                            # Hard tier (Planned)
+│   └── advanced/                        # 15 lessons (37,000 words)
+│       ├── 28-institutional-order-flow.html
+│       ├── 29-market-regime-recognition.html
+│       └── ... (13 more)
 │
-├── articles/                            # Legacy articles (existing)
-│   ├── index.json
-│   └── *.html                           # Existing HTML articles
+├── resources/                           # Checklists, templates, docs
+│   ├── pentarch-complete-reference.md   # 8-component Pentarch system
+│   ├── checklists/                      # 6 professional checklists
+│   └── templates/                       # Trade journal, calculators
 │
-├── assets/                              # Shared resources
-│   ├── charts/                          # Chart examples
-│   ├── templates/                       # Downloadable templates
-│   └── edu.css                          # Styles
-│
-├── tools/                               # Calculators & utilities
+├── assets/                              # Styles, scripts, fonts
+│   ├── edu.css                          # Education hub styles
+│   ├── signalpilot-theme.css            # Theme system
+│   └── sp-*.js                          # Interactive components
 │
 ├── index.html                           # Main landing page
-├── beginner.html                        # Beginner tier page
-├── intermediate.html                    # Intermediate tier page
-└── advanced.html                        # Advanced tier page
+├── beginner.html                        # Beginner tier overview
+├── intermediate.html                    # Intermediate tier overview
+├── advanced.html                        # Advanced tier overview
+├── resources.html                       # Resources & downloads
+├── search.html                          # Search all lessons
+├── calculators.html                     # Trading calculators
+│
+├── COMPLIANCE_GUIDELINES.md             # Content compliance standards
+├── VISUAL_HIERARCHY_ASSESSMENT.md       # UI/UX analysis
+└── README.md                            # This file
 ```
 
 ---
 
-## 🚀 Get Started Now
+## 🎨 Features
 
-### Recommended First Step
+### **Interactive Learning**
+- ✅ Quizzes with instant feedback
+- ✅ Progress tracking across all lessons
+- ✅ Achievement badges
+- ✅ Continue reading functionality
+- ✅ Responsive design (desktop & mobile)
 
-**Read Article #1: The Liquidity Lie**
+### **Professional Design**
+- ✅ Dark/light theme support
+- ✅ Gradient typography
+- ✅ Clear visual hierarchy
+- ✅ Professional callout boxes (info, warning, tip, key)
+- ✅ Interactive tabs and accordions
+- ✅ Smooth animations and transitions
 
-```bash
-📍 Location: /curriculum/beginner/01-the-liquidity-lie.md
-📖 Length: ~2,400 words
-⏱️ Time: 15-20 minutes
-🎯 Impact: Fundamental shift in market understanding
-```
-
-[**→ Start Reading Now**](./curriculum/beginner/01-the-liquidity-lie.md)
+### **Search & Navigation**
+- ✅ Full-text search across all 42 lessons
+- ✅ Breadcrumb navigation
+- ✅ Table of contents on long articles
+- ✅ Related lesson suggestions
+- ✅ Progress indicators
 
 ---
 
-## ⚠️ Important Disclaimers
+## 🛠️ Recent Updates
 
-**Trading involves substantial risk of loss.** This is educational content only, not financial advice.
+### **2025-10-30: Visual Hierarchy Improvements**
+- Fixed breadcrumb wrapping issue (now stays on one line)
+- Improved heading scale (H2: 2.25rem, H3: 1.75rem, H4: 1.4rem)
+- Enhanced badge visibility with glow effects
+- Standardized logo across all pages
+- Improved search prominence
+- Better card hover states
+- Cache-busting for CSS updates
+
+### **2025-10-29: Comprehensive Compliance Update**
+- Replaced 200+ instances of certainty language
+- Changed "confirms/confirmed" → "indicates/indicated"
+- Removed "perfect/exact/precision" language
+- Eliminated directive language ("Look for", "must", "should")
+- Updated financial advice language ("your trade" → "a trade")
+- All content now observational, educational, conditional
+
+### **2025-10-29: Pentarch Documentation**
+- Added complete 8-component Pentarch reference
+- Documented Pilot Line, Regime Bar Colors, NanoFlow
+- Integration examples and cycle-phase analysis
+- Compliance-safe language throughout
+
+---
+
+## ⚖️ Compliance & Disclaimers
+
+### **Educational Content Only**
+This education hub provides educational content about trading concepts, market structure, and technical analysis. **This is not financial advice.** All content is for educational and informational purposes only.
+
+### **Risk Disclosure**
+Trading involves substantial risk of loss. Past performance is not indicative of future results. All examples and case studies are for educational illustration only.
+
+### **Language Standards**
+All content uses:
+- **Observational language** ("shows", "indicates", "appears")
+- **Educational language** ("context", "data", "typically associated with")
+- **Conditional language** ("can indicate", "may suggest", "potential")
+
+Zero instances of:
+- Directive language ("must", "should", "Look for")
+- Certainty claims ("confirms", "guarantees", "always")
+- Perfection language ("perfect", "exact", "precision")
+- Direct financial advice ("your trade", "buy", "sell")
+
+See `COMPLIANCE_GUIDELINES.md` for full standards.
+
+---
+
+## 🤝 Contributing
+
+This is the official Signal Pilot education repository. Content is created by the Signal Pilot team.
+
+**Feedback Welcome:**
+- Report issues: Use GitHub issues
+- Suggest improvements: Pull requests accepted
+- Join discussion: Signal Pilot Discord community
+
+---
+
+## 📜 License
+
+© 2025 Signal Pilot. All rights reserved.
+
+Content is proprietary and provided for educational use by Signal Pilot subscribers and community members.
+
+---
+
+## 🔗 Links
+
+- **Education Hub:** https://education.signalpilot.io/
+- **Main Website:** https://signalpilot.io/
+- **Pricing:** https://signalpilot.io/#pricing
+- **Documentation:** https://docs.signalpilot.io/
+- **Discord Community:** [Join Discord](https://signalpilot.io/#faq)
+
+---
+
+## 📞 Support
+
+Questions about the education content?
+- Check lesson-specific Q&A sections
+- Search the knowledge base
+- Ask in Discord community
+- Email: support@signalpilot.io
 
 ---
 
