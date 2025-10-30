@@ -224,6 +224,90 @@
     }
   }
 
+  // ========== PHASE 3: STUDY TIMER ==========
+
+  let studyTimer = null;
+  let studyStartTime = null;
+
+  function startStudyTimer(minutes = 25) {
+    if (studyTimer) {
+      return `Timer already running! ${getRemainingTime()} remaining.`;
+    }
+
+    studyStartTime = Date.now();
+    const duration = minutes * 60 * 1000;
+
+    studyTimer = setTimeout(() => {
+      studyTimer = null;
+      studyStartTime = null;
+      // Could show a notification here
+      console.log('Study session complete!');
+    }, duration);
+
+    return `⏱️ <strong>${minutes}-minute study session started!</strong><br><br>Focus on your lesson. I'll let you know when time's up.<br><br>💡 <em>Tip: Use the Pomodoro technique - 25min work, 5min break!</em>`;
+  }
+
+  function getRemainingTime() {
+    if (!studyTimer || !studyStartTime) return null;
+
+    const elapsed = Date.now() - studyStartTime;
+    const remaining = Math.max(0, Math.ceil((25 * 60 * 1000 - elapsed) / 60000));
+    return `${remaining} minute${remaining !== 1 ? 's' : ''}`;
+  }
+
+  function stopStudyTimer() {
+    if (!studyTimer) {
+      return `No timer running. Start one with "start study timer"!`;
+    }
+
+    const elapsed = Math.floor((Date.now() - studyStartTime) / 60000);
+    clearTimeout(studyTimer);
+    studyTimer = null;
+    studyStartTime = null;
+
+    return `⏱️ Timer stopped! You studied for ${elapsed} minute${elapsed !== 1 ? 's' : ''}. Great work! 🎉`;
+  }
+
+  // ========== PHASE 3: SMART SEARCH ==========
+
+  function searchLessons(query) {
+    const results = [];
+
+    // Search in knowledge base
+    const lowerQuery = query.toLowerCase();
+
+    // Check indicator keywords
+    if (lowerQuery.includes('janus')) results.push({ type: 'indicator', name: 'Janus Atlas', lesson: 20 });
+    if (lowerQuery.includes('plutus')) results.push({ type: 'indicator', name: 'Plutus Flow', lesson: 21 });
+    if (lowerQuery.includes('minimal')) results.push({ type: 'indicator', name: 'Minimal Flow', lesson: 22 });
+    if (lowerQuery.includes('pentarch')) results.push({ type: 'indicator', name: 'Pentarch', lesson: 39 });
+
+    // Check concept keywords
+    if (lowerQuery.includes('order') && lowerQuery.includes('flow')) results.push({ type: 'concept', name: 'Order Flow', lessons: [2, 3] });
+    if (lowerQuery.includes('liquidity')) results.push({ type: 'concept', name: 'Liquidity Engineering', lesson: 1 });
+    if (lowerQuery.includes('repaint')) results.push({ type: 'concept', name: 'Repainting', lesson: 4 });
+    if (lowerQuery.includes('dark') && lowerQuery.includes('pool')) results.push({ type: 'concept', name: 'Dark Pools', lesson: 17 });
+    if (lowerQuery.includes('footprint')) results.push({ type: 'concept', name: 'Footprint Charts', lesson: 16 });
+
+    if (results.length === 0) {
+      return `No results found for "${query}". Try searching for indicators (Janus, Plutus, Minimal, Pentarch) or concepts (order flow, liquidity, dark pools).<br><br>🔍 <a href='/search.html'>Use full search →</a>`;
+    }
+
+    let msg = `🔍 <strong>Search Results for "${query}"</strong><br><br>`;
+    results.forEach(r => {
+      if (r.lessons) {
+        r.lessons.forEach(num => {
+          msg += `📖 <a href='${lessonFiles[num]}'>${r.name} - Lesson #${num}</a><br>`;
+        });
+      } else {
+        msg += `📖 <a href='${lessonFiles[r.lesson]}'>${r.name} - Lesson #${r.lesson}</a><br>`;
+      }
+    });
+    msg += `<br>🔍 <a href='/search.html'>Advanced search →</a>`;
+
+    return msg;
+  }
+
   // Knowledge base for the chatbot
   const knowledgeBase = {
     greeting: [
@@ -363,6 +447,34 @@
 
     // Panel actions
     { regex: /(open.?notes|show.?notes|notes.?panel)/i, response: () => openNotes() },
+
+    // ===== PHASE 3: STUDY TIMER =====
+
+    // Timer actions
+    { regex: /(start.?(study.?)?timer|start.?pomodoro|set.?timer)/i, response: (match) => {
+      // Check for custom duration
+      const customMatch = match.input.match(/(\d+).?min/i);
+      const minutes = customMatch ? parseInt(customMatch[1]) : 25;
+      return startStudyTimer(Math.min(minutes, 60)); // Max 60 min
+    }},
+
+    { regex: /(stop.?timer|end.?timer|cancel.?timer|timer.?off)/i, response: () => stopStudyTimer() },
+
+    { regex: /(check.?timer|timer.?status|time.?remaining|how.?much.?time)/i, response: () => {
+      const remaining = getRemainingTime();
+      if (!remaining) {
+        return `⏱️ No timer running. Start one with "start study timer"!<br><br>💡 Pomodoro technique: 25min focus, 5min break, repeat 4x, then 15-30min break!`;
+      }
+      return `⏱️ <strong>${remaining} remaining</strong> in your study session. Stay focused! 💪`;
+    }},
+
+    // ===== PHASE 3: SMART SEARCH =====
+
+    // Search query pattern
+    { regex: /search.?(for)?[\s:]+([\w\s]+)/i, response: (match) => {
+      const query = match[2] || match[1];
+      return searchLessons(query);
+    }},
 
     // Bookmark actions
     { regex: /(show.?bookmarks|my.?bookmarks|saved.?responses)/i, response: () => {
