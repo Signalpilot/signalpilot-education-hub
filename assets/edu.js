@@ -4,17 +4,61 @@
   // Theme is now handled by signalpilot-theme.js
   // Keeping only non-theme functionality here
 
-  // 1) Mobile menu
-  const menuBtn=document.getElementById('menuToggle');
-  const nav=document.getElementById('mainnav');
-  let backdrop=document.querySelector('.nav-backdrop');
-  if(!backdrop){ backdrop=document.createElement('div'); backdrop.className='nav-backdrop'; document.body.appendChild(backdrop); }
-  function lock(lock){ document.documentElement.style.overflow = lock ? 'hidden' : ''; document.body.style.touchAction = lock ? 'none' : ''; }
-  function open(){ nav?.classList.add('open'); backdrop.classList.add('show'); menuBtn?.setAttribute('aria-expanded','true'); lock(true); }
-  function close(){ nav?.classList.remove('open'); backdrop.classList.remove('show'); menuBtn?.setAttribute('aria-expanded','false'); lock(false); }
-  menuBtn?.addEventListener('click',()=>{ (nav.classList.contains('open')?close:open)(); });
-  backdrop?.addEventListener('click', close);
-  document.querySelectorAll('#mainnav a').forEach(a=>a.addEventListener('click', close));
+  // 1) Mobile menu - completely rebuilt
+  (function(){
+    const menuBtn = document.getElementById('menuToggle');
+    if(!menuBtn) return;
+
+    // Create mobile nav structure
+    const backdrop = document.createElement('div');
+    backdrop.className = 'mobile-nav-backdrop';
+
+    const mobileNav = document.createElement('div');
+    mobileNav.className = 'mobile-nav';
+
+    const header = document.createElement('div');
+    header.className = 'mobile-nav-header';
+    header.innerHTML = '<span style="color:#fff;font-weight:700;font-size:1.1rem">Menu</span><button class="mobile-nav-close">&times;</button>';
+
+    const links = document.createElement('div');
+    links.className = 'mobile-nav-links';
+    links.innerHTML = `
+      <a href="https://signalpilot.io/#why">Why Signal Pilot?</a>
+      <a href="https://signalpilot.io/#inside">What's inside</a>
+      <a href="/">Education</a>
+      <a href="/search.html">🔍 Search</a>
+      <a href="/calculators.html">Calculators</a>
+      <a href="https://signalpilot.io/#pricing">Pricing</a>
+    `;
+
+    mobileNav.appendChild(header);
+    mobileNav.appendChild(links);
+    document.body.appendChild(backdrop);
+    document.body.appendChild(mobileNav);
+
+    const closeBtn = header.querySelector('.mobile-nav-close');
+
+    // Open/close functions
+    function open(){
+      backdrop.classList.add('active');
+      mobileNav.classList.add('active');
+      menuBtn.setAttribute('aria-expanded','true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close(){
+      backdrop.classList.remove('active');
+      mobileNav.classList.remove('active');
+      menuBtn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    }
+
+    // Event listeners
+    menuBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  })();
 
   // 2) Build ToC from h2/h3
   const toc = document.querySelector('aside.toc');
