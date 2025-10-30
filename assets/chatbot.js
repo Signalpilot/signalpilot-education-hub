@@ -2,6 +2,105 @@
 (function() {
   'use strict';
 
+  // ========== PHASE 1: CONTEXT & PROGRESS ==========
+
+  // Detect current lesson from URL
+  function getCurrentLesson() {
+    const path = window.location.pathname;
+    const match = path.match(/\/curriculum\/(beginner|intermediate|advanced)\/(\d+)-(.+)\.html/);
+    if (match) {
+      return {
+        tier: match[1],
+        number: parseInt(match[2]),
+        slug: match[3],
+        title: match[3].split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+      };
+    }
+    return null;
+  }
+
+  // Get user progress from localStorage
+  function getUserProgress() {
+    try {
+      const progress = JSON.parse(localStorage.getItem('sp_progress') || '{}');
+      const completed = Object.keys(progress).filter(key => progress[key].completed).length;
+      const total = 42;
+      const percentage = Math.round((completed / total) * 100);
+
+      // Calculate tier breakdown
+      const beginnerCompleted = Object.keys(progress).filter(k => {
+        const num = parseInt(k.replace('lesson-', ''));
+        return num >= 1 && num <= 12 && progress[k].completed;
+      }).length;
+
+      const intermediateCompleted = Object.keys(progress).filter(k => {
+        const num = parseInt(k.replace('lesson-', ''));
+        return num >= 13 && num <= 27 && progress[k].completed;
+      }).length;
+
+      const advancedCompleted = Object.keys(progress).filter(k => {
+        const num = parseInt(k.replace('lesson-', ''));
+        return num >= 28 && num <= 42 && progress[k].completed;
+      }).length;
+
+      return {
+        completed,
+        total,
+        percentage,
+        beginner: { completed: beginnerCompleted, total: 12 },
+        intermediate: { completed: intermediateCompleted, total: 15 },
+        advanced: { completed: advancedCompleted, total: 15 },
+        data: progress
+      };
+    } catch (e) {
+      return { completed: 0, total: 42, percentage: 0 };
+    }
+  }
+
+  // Learning streak tracker
+  function updateStreak() {
+    try {
+      const today = new Date().toDateString();
+      const streakData = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0, "best": 0, "lastDate": null}');
+
+      if (streakData.lastDate !== today) {
+        const yesterday = new Date(Date.now() - 86400000).toDateString();
+
+        if (streakData.lastDate === yesterday) {
+          // Continuing streak
+          streakData.current++;
+        } else if (streakData.lastDate === null || streakData.lastDate < yesterday) {
+          // New streak or broken streak
+          streakData.current = 1;
+        }
+
+        streakData.lastDate = today;
+        streakData.best = Math.max(streakData.best, streakData.current);
+        localStorage.setItem('sp_learning_streak', JSON.stringify(streakData));
+      }
+
+      return streakData;
+    } catch (e) {
+      return { current: 0, best: 0, lastDate: null };
+    }
+  }
+
+  // Get next recommended lesson
+  function getNextLesson(progress) {
+    for (let i = 1; i <= 42; i++) {
+      const key = `lesson-${i}`;
+      if (!progress.data[key] || !progress.data[key].completed) {
+        let tier = 'beginner';
+        let tierNum = i;
+        if (i >= 28) { tier = 'advanced'; tierNum = i; }
+        else if (i >= 13) { tier = 'intermediate'; tierNum = i; }
+
+        return { number: i, tier, tierNum };
+      }
+    }
+    return null; // All completed!
+  }
+
   // Knowledge base for the chatbot
   const knowledgeBase = {
     greeting: [
@@ -17,10 +116,10 @@
     },
 
     indicators: {
-      janus: "Janus Atlas is our order flow divergence indicator. It detects when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/janus-atlas' target='_blank' rel='noopener'>View Janus Atlas Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
-      plutus: "Plutus Flow tracks cumulative delta and absorption patterns. It's essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/plutus-flow' target='_blank' rel='noopener'>View Plutus Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
-      minimal: "Minimal Flow is our regime detection system for identifying market conditions. Perfect for context-aware trading.<br><br>📚 <a href='https://docs.signalpilot.io/minimal-flow' target='_blank' rel='noopener'>View Minimal Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-regime-trading.html'>Read Lesson #22: Regime Trading →</a>",
-      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/pentarch' target='_blank' rel='noopener'>View Pentarch Documentation →</a><br>📖 <a href='/curriculum/advanced/39-pentarch-cycle-phases.html'>Read Lesson #39: Pentarch Cycle Phases →</a>"
+      janus: "Janus Atlas is our order flow divergence indicator. It detects when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
+      plutus: "Plutus Flow tracks cumulative delta and absorption patterns. It's essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
+      minimal: "Minimal Flow is our regime detection system for identifying market conditions. Perfect for context-aware trading.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-regime-trading.html'>Read Lesson #22: Regime Trading →</a>",
+      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/advanced/39-pentarch-cycle-phases.html'>Read Lesson #39: Pentarch Cycle Phases →</a>"
     },
 
     concepts: {
@@ -40,7 +139,7 @@
     },
 
     links: {
-      docs: "📚 <strong>Signal Pilot Documentation</strong><br><br>• <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>Main Documentation →</a><br>• <a href='https://docs.signalpilot.io/janus-atlas' target='_blank' rel='noopener'>Janus Atlas →</a><br>• <a href='https://docs.signalpilot.io/plutus-flow' target='_blank' rel='noopener'>Plutus Flow →</a><br>• <a href='https://docs.signalpilot.io/minimal-flow' target='_blank' rel='noopener'>Minimal Flow →</a><br>• <a href='https://docs.signalpilot.io/pentarch' target='_blank' rel='noopener'>Pentarch →</a>",
+      docs: "📚 <strong>Signal Pilot Documentation</strong><br><br>Browse the full documentation for all indicators and features.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a>",
       pricing: "💰 <strong>Signal Pilot Pricing</strong><br><br>View our plans and get started with Signal Pilot indicators.<br><br>💳 <a href='https://signalpilot.io/#pricing' target='_blank' rel='noopener'>View Pricing Plans →</a>",
       resources: "📥 <strong>Free Resources</strong><br><br>Downloadable checklists, templates, and frameworks to accelerate your learning.<br><br>📥 <a href='/resources.html'>Browse All Resources →</a>",
       search: "🔍 <strong>Search Lessons</strong><br><br>Find lessons by topic, concept, or keyword across all 42 lessons.<br><br>🔍 <a href='/search.html'>Search Now →</a>"
@@ -51,6 +150,82 @@
   const patterns = [
     // Greetings
     { regex: /^(hi|hello|hey|greetings)/i, response: 'greeting' },
+
+    // ===== PHASE 1: CONTEXT-AWARE RESPONSES =====
+
+    // Progress queries (enhanced with actual data)
+    { regex: /(my.?progress|how.?am.?i.?doing|show.?progress|progress.?report)/i, response: () => {
+      const progress = getUserProgress();
+      const streak = updateStreak();
+
+      let msg = `📊 <strong>Your Learning Progress</strong><br><br>`;
+      msg += `🎯 Overall: ${progress.completed}/${progress.total} lessons (${progress.percentage}%)<br>`;
+      msg += `📚 Beginner: ${progress.beginner.completed}/${progress.beginner.total}<br>`;
+      msg += `📚 Intermediate: ${progress.intermediate.completed}/${progress.intermediate.total}<br>`;
+      msg += `📚 Advanced: ${progress.advanced.completed}/${progress.advanced.total}<br><br>`;
+
+      if (streak.current > 0) {
+        msg += `🔥 Current streak: ${streak.current} day${streak.current > 1 ? 's' : ''}!<br>`;
+        msg += `🏆 Best streak: ${streak.best} day${streak.best > 1 ? 's' : ''}<br><br>`;
+      }
+
+      const next = getNextLesson(progress);
+      if (next) {
+        msg += `➡️ <strong>Up next:</strong> <a href='/curriculum/${next.tier}/${String(next.number).padStart(2, '0')}-lesson.html'>Lesson #${next.number}</a>`;
+      } else {
+        msg += `🎓 <strong>Congratulations!</strong> You've completed all 42 lessons!`;
+      }
+
+      return msg;
+    }},
+
+    // Streak queries
+    { regex: /(streak|consecutive|daily|habit)/i, response: () => {
+      const streak = updateStreak();
+      let msg = `🔥 <strong>Learning Streak</strong><br><br>`;
+
+      if (streak.current === 0) {
+        msg += `You haven't started a learning streak yet. Complete a lesson today to start your streak!<br><br>`;
+        msg += `💡 <strong>Tip:</strong> Learning consistently (even 20 minutes daily) is more effective than cramming!`;
+      } else if (streak.current === 1) {
+        msg += `Current streak: 1 day 🌱<br>`;
+        msg += `Come back tomorrow to keep it growing!<br><br>`;
+        msg += `Your best streak: ${streak.best} day${streak.best > 1 ? 's' : ''}`;
+      } else if (streak.current >= 7) {
+        msg += `🎉 Amazing! ${streak.current}-day streak!<br>`;
+        msg += `You're building a solid learning habit!<br><br>`;
+        msg += `🏆 Best streak: ${streak.best} day${streak.best > 1 ? 's' : ''}`;
+      } else {
+        msg += `Current streak: ${streak.current} days 🔥<br>`;
+        msg += `Keep going! Consistency is key.<br><br>`;
+        msg += `🏆 Best streak: ${streak.best} day${streak.best > 1 ? 's' : ''}`;
+      }
+
+      return msg;
+    }},
+
+    // Next lesson query
+    { regex: /(next.?lesson|what.?next|where.?should.?i.?go|recommend)/i, response: () => {
+      const progress = getUserProgress();
+      const next = getNextLesson(progress);
+
+      if (!next) {
+        return `🎓 You've completed all 42 lessons! Time to apply your knowledge to live trading. Consider reviewing lessons or exploring our advanced resources.`;
+      }
+
+      const tierName = next.tier.charAt(0).toUpperCase() + next.tier.slice(1);
+      return `➡️ <strong>Next up: Lesson #${next.number}</strong><br><br>This is in the ${tierName} tier. Ready to continue?<br><br>📖 <a href='/curriculum/${next.tier}/${String(next.number).padStart(2, '0')}-lesson.html'>Start Lesson #${next.number} →</a>`;
+    }},
+
+    // Current lesson help (context-aware)
+    { regex: /(this.?lesson|current.?lesson|help.?with.?this)/i, response: () => {
+      const currentLesson = getCurrentLesson();
+      if (!currentLesson) {
+        return `You're not currently on a lesson page. Need help finding a specific lesson? Try asking "What's my next lesson?" or browse the curriculum pages.`;
+      }
+
+      return `📖 <strong>You're on Lesson #${currentLesson.number}: ${currentLesson.title}</strong><br><br>Need help with this lesson? I can:<br>• Explain key concepts<br>• Point you to related lessons<br>• Give quiz hints<br>• Suggest study tips<br><br>What would you like to know?`;
+    }},
 
     // Indicator questions (check BEFORE general docs to catch "pentarch docs" etc.)
     { regex: /janus/i, response: () => knowledgeBase.indicators.janus },
@@ -92,22 +267,47 @@
       return "We have 42 lessons total. Which tier are you interested in: Beginner, Intermediate, or Advanced?";
     }},
 
-    // Progress questions
-    { regex: /(progress|track|achievement|badge)/i, response: () => "Your progress is tracked automatically! Check the dashboard on the homepage to see completed lessons, your current tier, and achievements earned." },
-
     // Quiz questions
     { regex: /(quiz|test|assessment)/i, response: () => "Each lesson has a quiz at the end to test your understanding. You need to pass to mark the lesson as complete. Pro tip: Take notes while reading!" }
   ];
 
-  // Suggestions for quick questions
-  const suggestions = [
-    "Where should I start?",
-    "What is Pentarch?",
-    "Show me the docs",
-    "What's order flow?",
-    "How much does it cost?",
-    "Free resources"
-  ];
+  // Dynamic suggestions based on context
+  function getDynamicSuggestions() {
+    const currentLesson = getCurrentLesson();
+    const progress = getUserProgress();
+
+    if (currentLesson) {
+      // On a lesson page - show lesson-specific suggestions
+      return [
+        "Help with this lesson",
+        "What's my progress?",
+        "What's next?",
+        "My learning streak",
+        "Show me the docs",
+        "Free resources"
+      ];
+    } else if (progress.completed === 0) {
+      // New user - show getting started suggestions
+      return [
+        "Where should I start?",
+        "What is Pentarch?",
+        "What's order flow?",
+        "Show me the docs",
+        "How much does it cost?",
+        "Free resources"
+      ];
+    } else {
+      // Returning user - show progress-focused suggestions
+      return [
+        "What's my progress?",
+        "What's next?",
+        "My learning streak",
+        "What is Pentarch?",
+        "Show me the docs",
+        "Free resources"
+      ];
+    }
+  }
 
   // Create chatbot UI
   function createChatbot() {
@@ -195,11 +395,12 @@
     return "I'm not sure about that specific question. Try asking about:\n• The curriculum (Beginner, Intermediate, Advanced)\n• Indicators (Janus, Plutus, Minimal, Pentarch)\n• Concepts (order flow, liquidity, dark pools)\n• How to get started\n\nOr pick a suggestion below!";
   }
 
-  // Create suggestion chips
+  // Create suggestion chips (context-aware)
   function createSuggestions() {
     const container = document.getElementById('chatbot-suggestions');
     container.innerHTML = '';
 
+    const suggestions = getDynamicSuggestions();
     suggestions.forEach(text => {
       const chip = document.createElement('button');
       chip.className = 'chatbot-suggestion';
@@ -262,6 +463,33 @@
     });
   }
 
+  // Get context-aware greeting
+  function getContextGreeting() {
+    const currentLesson = getCurrentLesson();
+    const progress = getUserProgress();
+    const streak = updateStreak();
+
+    let greeting = knowledgeBase.greeting[Math.floor(Math.random() * knowledgeBase.greeting.length)];
+
+    // Add context
+    if (currentLesson) {
+      greeting += `<br><br>📖 I see you're on <strong>Lesson #${currentLesson.number}: ${currentLesson.title}</strong>. Need help with this lesson?`;
+    } else if (progress.completed > 0) {
+      greeting += `<br><br>📊 You've completed ${progress.completed}/${progress.total} lessons (${progress.percentage}%)!`;
+
+      if (streak.current > 0) {
+        greeting += ` 🔥 ${streak.current}-day streak!`;
+      }
+
+      const next = getNextLesson(progress);
+      if (next) {
+        greeting += `<br>➡️ Ready for Lesson #${next.number}?`;
+      }
+    }
+
+    return greeting;
+  }
+
   // Initialize chatbot
   function init() {
     const { button, container } = createChatbot();
@@ -269,16 +497,37 @@
     const input = document.getElementById('chatbot-input');
     const sendBtn = document.getElementById('chatbot-send');
 
+    // ===== PHASE 1: KEYBOARD SHORTCUTS =====
+
+    // Global keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Ctrl+K or Cmd+K to open chatbot
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        if (!container.classList.contains('active')) {
+          button.click();
+        } else {
+          input.focus();
+        }
+      }
+
+      // Escape to close chatbot
+      if (e.key === 'Escape' && container.classList.contains('active')) {
+        container.classList.remove('active');
+        button.setAttribute('aria-expanded', 'false');
+      }
+    });
+
     // Toggle chatbot
     button.addEventListener('click', () => {
       const isActive = container.classList.toggle('active');
       button.setAttribute('aria-expanded', isActive);
 
       if (isActive) {
-        // First time opening - show welcome
+        // First time opening - show context-aware welcome
         const messages = document.getElementById('chatbot-messages');
         if (messages.children.length === 0) {
-          addMessage(knowledgeBase.greeting[0]);
+          addMessage(getContextGreeting());
           createSuggestions();
         }
         input.focus();
@@ -302,6 +551,9 @@
         handleUserMessage(input.value);
       }
     });
+
+    // Update streak on page load (track daily activity)
+    updateStreak();
 
     // Load previous conversation
     // loadConversation(); // Commented out - start fresh each session
