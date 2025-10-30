@@ -4,6 +4,52 @@
 
   // ========== PHASE 1: CONTEXT & PROGRESS ==========
 
+  // Accurate lesson file mapping
+  const lessonFiles = {
+    1: '/curriculum/beginner/01-the-liquidity-lie.html',
+    2: '/curriculum/beginner/02-volume-doesnt-lie.html',
+    3: '/curriculum/beginner/03-price-action-is-dead.html',
+    4: '/curriculum/beginner/04-repaint-problem.html',
+    5: '/curriculum/beginner/05-rsi-extremes.html',
+    6: '/curriculum/beginner/06-moving-averages.html',
+    7: '/curriculum/beginner/07-revenge-trading.html',
+    8: '/curriculum/beginner/08-confirmation-bias.html',
+    9: '/curriculum/beginner/09-position-sizing.html',
+    10: '/curriculum/beginner/10-stop-losses.html',
+    11: '/curriculum/beginner/11-timeframe-illusion.html',
+    12: '/curriculum/beginner/12-paper-trading.html',
+    13: '/curriculum/intermediate/13-bid-ask-spread-dynamics.html',
+    14: '/curriculum/intermediate/14-order-book-analysis.html',
+    15: '/curriculum/intermediate/15-market-making-hft.html',
+    16: '/curriculum/intermediate/16-footprint-charts.html',
+    17: '/curriculum/intermediate/17-dark-pools.html',
+    18: '/curriculum/intermediate/18-smart-money-divergence.html',
+    19: '/curriculum/intermediate/19-multi-timeframe-mastery.html',
+    20: '/curriculum/intermediate/20-janus-atlas-advanced.html',
+    21: '/curriculum/intermediate/21-plutus-flow-mastery.html',
+    22: '/curriculum/intermediate/22-minimal-flow-regimes.html',
+    23: '/curriculum/intermediate/23-portfolio-construction.html',
+    24: '/curriculum/intermediate/24-backtesting-reality.html',
+    25: '/curriculum/intermediate/25-advanced-risk-management.html',
+    26: '/curriculum/intermediate/26-trade-journal-mastery.html',
+    27: '/curriculum/intermediate/27-professional-operations.html',
+    28: '/curriculum/advanced/28-institutional-order-flow.html',
+    29: '/curriculum/advanced/29-market-regime-recognition.html',
+    30: '/curriculum/advanced/30-auction-theory-advanced.html',
+    31: '/curriculum/advanced/31-cross-asset-correlations.html',
+    32: '/curriculum/advanced/32-volatility-trading.html',
+    33: '/curriculum/advanced/33-algorithmic-execution.html',
+    34: '/curriculum/advanced/34-system-development.html',
+    35: '/curriculum/advanced/35-machine-learning-trading.html',
+    36: '/curriculum/advanced/36-high-frequency-concepts.html',
+    37: '/curriculum/advanced/37-trading-automation-apis.html',
+    38: '/curriculum/advanced/38-portfolio-theory-advanced.html',
+    39: '/curriculum/advanced/39-performance-attribution.html',
+    40: '/curriculum/advanced/40-tax-optimization.html',
+    41: '/curriculum/advanced/41-professional-infrastructure.html',
+    42: '/curriculum/advanced/42-trading-career-path.html'
+  };
+
   // Detect current lesson from URL
   function getCurrentLesson() {
     const path = window.location.pathname;
@@ -101,6 +147,83 @@
     return null; // All completed!
   }
 
+  // ========== PHASE 2: QUICK ACTIONS ==========
+
+  // Navigate to next lesson (using accurate file mapping)
+  function navigateToNextLesson() {
+    const progress = getUserProgress();
+    const next = getNextLesson(progress);
+
+    if (!next) {
+      return "You've completed all 42 lessons! 🎓";
+    }
+
+    const lessonUrl = lessonFiles[next.number];
+    if (lessonUrl) {
+      window.location.href = lessonUrl;
+      return `Taking you to Lesson #${next.number}... 🚀`;
+    } else {
+      return `Lesson #${next.number} URL not found. Please navigate manually.`;
+    }
+  }
+
+  // Scroll to quiz section
+  function scrollToQuiz() {
+    const quizSection = document.querySelector('.quiz-section, #quiz, [class*="quiz"]');
+    if (quizSection) {
+      quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return "Scrolling to the quiz section... 📝";
+    }
+    return "I don't see a quiz section on this page. Make sure you're on a lesson page!";
+  }
+
+  // Scroll to key takeaways
+  function scrollToTakeaways() {
+    const takeaways = document.querySelector('.key-takeaways, #key-takeaways, h2:has-text("Key Takeaways")');
+    if (takeaways) {
+      takeaways.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return "Scrolling to Key Takeaways... 📌";
+    }
+    return "I don't see a Key Takeaways section on this page.";
+  }
+
+  // Toggle notes panel
+  function openNotes() {
+    const notesToggle = document.querySelector('[data-notes-toggle], .notes-toggle, #notesToggle');
+    if (notesToggle) {
+      notesToggle.click();
+      return "Opening notes panel... 📝";
+    }
+    return "Notes feature not available on this page. Try opening a lesson!";
+  }
+
+  // Bookmark management
+  function saveBookmark(message, response) {
+    try {
+      const bookmarks = JSON.parse(localStorage.getItem('sp_chatbot_bookmarks') || '[]');
+      bookmarks.push({
+        timestamp: Date.now(),
+        question: message,
+        answer: response,
+        date: new Date().toLocaleDateString()
+      });
+      // Keep last 20 bookmarks
+      if (bookmarks.length > 20) bookmarks.shift();
+      localStorage.setItem('sp_chatbot_bookmarks', JSON.stringify(bookmarks));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function getBookmarks() {
+    try {
+      return JSON.parse(localStorage.getItem('sp_chatbot_bookmarks') || '[]');
+    } catch (e) {
+      return [];
+    }
+  }
+
   // Knowledge base for the chatbot
   const knowledgeBase = {
     greeting: [
@@ -118,8 +241,8 @@
     indicators: {
       janus: "Janus Atlas is our order flow divergence indicator. It detects when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
       plutus: "Plutus Flow tracks cumulative delta and absorption patterns. It's essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
-      minimal: "Minimal Flow is our regime detection system for identifying market conditions. Perfect for context-aware trading.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-regime-trading.html'>Read Lesson #22: Regime Trading →</a>",
-      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/advanced/39-pentarch-cycle-phases.html'>Read Lesson #39: Pentarch Cycle Phases →</a>"
+      minimal: "Minimal Flow is our regime detection system for identifying market conditions. Perfect for context-aware trading.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-minimal-flow-regimes.html'>Read Lesson #22: Minimal Flow Regimes →</a>",
+      pentarch: "Pentarch is our cycle-phase detection system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 momentum indicators. It helps you understand where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a><br>📖 <a href='/curriculum/advanced/39-performance-attribution.html'>Read Lesson #39: Performance Attribution →</a>"
     },
 
     concepts: {
@@ -171,7 +294,8 @@
 
       const next = getNextLesson(progress);
       if (next) {
-        msg += `➡️ <strong>Up next:</strong> <a href='/curriculum/${next.tier}/${String(next.number).padStart(2, '0')}-lesson.html'>Lesson #${next.number}</a>`;
+        const lessonUrl = lessonFiles[next.number];
+        msg += `➡️ <strong>Up next:</strong> <a href='${lessonUrl}'>Lesson #${next.number}</a>`;
       } else {
         msg += `🎓 <strong>Congratulations!</strong> You've completed all 42 lessons!`;
       }
@@ -214,7 +338,8 @@
       }
 
       const tierName = next.tier.charAt(0).toUpperCase() + next.tier.slice(1);
-      return `➡️ <strong>Next up: Lesson #${next.number}</strong><br><br>This is in the ${tierName} tier. Ready to continue?<br><br>📖 <a href='/curriculum/${next.tier}/${String(next.number).padStart(2, '0')}-lesson.html'>Start Lesson #${next.number} →</a>`;
+      const lessonUrl = lessonFiles[next.number];
+      return `➡️ <strong>Next up: Lesson #${next.number}</strong><br><br>This is in the ${tierName} tier. Ready to continue?<br><br>📖 <a href='${lessonUrl}'>Start Lesson #${next.number} →</a>`;
     }},
 
     // Current lesson help (context-aware)
@@ -225,6 +350,93 @@
       }
 
       return `📖 <strong>You're on Lesson #${currentLesson.number}: ${currentLesson.title}</strong><br><br>Need help with this lesson? I can:<br>• Explain key concepts<br>• Point you to related lessons<br>• Give quiz hints<br>• Suggest study tips<br><br>What would you like to know?`;
+    }},
+
+    // ===== PHASE 2: QUICK ACTIONS =====
+
+    // Navigate actions
+    { regex: /(take.?me.?to.?next|go.?to.?next|next.?lesson.?please|start.?next)/i, response: () => navigateToNextLesson() },
+
+    // Scroll actions
+    { regex: /(start.?quiz|take.?quiz|quiz.?time|show.?quiz)/i, response: () => scrollToQuiz() },
+    { regex: /(key.?takeaways|show.?takeaways|takeaways|summary)/i, response: () => scrollToTakeaways() },
+
+    // Panel actions
+    { regex: /(open.?notes|show.?notes|notes.?panel)/i, response: () => openNotes() },
+
+    // Bookmark actions
+    { regex: /(show.?bookmarks|my.?bookmarks|saved.?responses)/i, response: () => {
+      const bookmarks = getBookmarks();
+      if (bookmarks.length === 0) {
+        return `📚 You don't have any bookmarks yet!<br><br>When you get a helpful response, type "bookmark this" to save it for later.`;
+      }
+
+      let msg = `📚 <strong>Your Bookmarks</strong> (${bookmarks.length})<br><br>`;
+      bookmarks.slice(-5).reverse().forEach((bm, i) => {
+        msg += `<strong>${bm.date}</strong>: ${bm.question}<br>`;
+      });
+      msg += `<br>💡 Type "bookmark this" after any helpful response to save it!`;
+      return msg;
+    }},
+
+    { regex: /(bookmark.?this|save.?this|remember.?this)/i, response: () => {
+      return `To bookmark a response, I'll need to save the last helpful answer. Try asking a question first, then say "bookmark this"!<br><br>📌 <em>(Bookmark feature will save your last conversation)</em>`;
+    }},
+
+    // Quiz help system
+    { regex: /(quiz.?hint|give.?hint|help.?quiz|stuck.?quiz)/i, response: () => {
+      const currentLesson = getCurrentLesson();
+      if (!currentLesson) {
+        return `I can help with quiz questions, but you need to be on a lesson page first!<br><br>💡 <strong>Tip:</strong> Read the lesson carefully before taking the quiz. The answers are all in the content!`;
+      }
+
+      return `💡 <strong>Quiz Help</strong><br><br>Here's how to approach quizzes:<br><br>1️⃣ <strong>Read carefully:</strong> Questions test concepts from the lesson<br>2️⃣ <strong>Eliminate wrong answers:</strong> Often 2 answers are obviously wrong<br>3️⃣ <strong>Re-read the section:</strong> If stuck, go back to the relevant part<br>4️⃣ <strong>Think practically:</strong> How would this apply to real trading?<br><br>Stuck on a specific concept? Ask me to explain it!`;
+    }},
+
+    // Motivational responses
+    { regex: /(struggling|frustrated|giving.?up|too.?hard|can't.?do)/i, response: () => {
+      const progress = getUserProgress();
+      const streak = updateStreak();
+
+      let msg = `💪 <strong>You've got this!</strong><br><br>`;
+
+      if (progress.completed > 0) {
+        msg += `You've already completed ${progress.completed} lesson${progress.completed > 1 ? 's' : ''}! That's real progress. 📈<br><br>`;
+      }
+
+      if (streak.current > 1) {
+        msg += `You're on a ${streak.current}-day streak! That kind of consistency will pay off. 🔥<br><br>`;
+      }
+
+      msg += `Remember:<br>`;
+      msg += `• Institutional thinking takes time to develop<br>`;
+      msg += `• Confusion means you're learning something new<br>`;
+      msg += `• Every expert was once a beginner<br><br>`;
+      msg += `Take a break if needed, then come back fresh. You're building skills that 95% of traders don't have! 🚀`;
+
+      return msg;
+    }},
+
+    { regex: /(encourage|motivation|keep.?going)/i, response: () => {
+      const progress = getUserProgress();
+
+      const encouragements = [
+        `💎 You're learning what institutions don't want retail traders to know!`,
+        `🎯 Every lesson completed is a step closer to trading like a professional.`,
+        `🔥 Consistency beats intensity. Keep showing up!`,
+        `📊 The concepts you're learning now will compound over time.`,
+        `🚀 You're on a journey that most traders never take. That's powerful!`
+      ];
+
+      let msg = encouragements[Math.floor(Math.random() * encouragements.length)];
+
+      if (progress.percentage >= 50) {
+        msg += `<br><br>You're over halfway there (${progress.percentage}%)! The finish line is in sight! 🏁`;
+      } else if (progress.completed > 0) {
+        msg += `<br><br>You've completed ${progress.completed} lessons. Each one makes you sharper! 📈`;
+      }
+
+      return msg;
     }},
 
     // Indicator questions (check BEFORE general docs to catch "pentarch docs" etc.)
@@ -271,20 +483,20 @@
     { regex: /(quiz|test|assessment)/i, response: () => "Each lesson has a quiz at the end to test your understanding. You need to pass to mark the lesson as complete. Pro tip: Take notes while reading!" }
   ];
 
-  // Dynamic suggestions based on context
+  // Dynamic suggestions based on context (PHASE 2: Enhanced with actions)
   function getDynamicSuggestions() {
     const currentLesson = getCurrentLesson();
     const progress = getUserProgress();
 
     if (currentLesson) {
-      // On a lesson page - show lesson-specific suggestions
+      // On a lesson page - show lesson-specific ACTION suggestions
       return [
-        "Help with this lesson",
-        "What's my progress?",
-        "What's next?",
-        "My learning streak",
-        "Show me the docs",
-        "Free resources"
+        "Start quiz",
+        "Show takeaways",
+        "Open notes",
+        "Quiz hint",
+        "Take me to next",
+        "What's my progress?"
       ];
     } else if (progress.completed === 0) {
       // New user - show getting started suggestions
@@ -296,12 +508,22 @@
         "How much does it cost?",
         "Free resources"
       ];
+    } else if (progress.completed > 0 && progress.percentage < 100) {
+      // Returning user - show progress-focused suggestions with actions
+      return [
+        "Take me to next",
+        "What's my progress?",
+        "My learning streak",
+        "Show bookmarks",
+        "Keep going",
+        "Free resources"
+      ];
     } else {
-      // Returning user - show progress-focused suggestions
+      // Completed all lessons!
       return [
         "What's my progress?",
-        "What's next?",
         "My learning streak",
+        "Show bookmarks",
         "What is Pentarch?",
         "Show me the docs",
         "Free resources"
