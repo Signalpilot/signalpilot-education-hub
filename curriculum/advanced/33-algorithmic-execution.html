@@ -14,6 +14,8 @@
   <!-- SignalPilot Theme System -->
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
   <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
@@ -231,5 +233,8 @@ Average Savings per Stop: $_____/share</code></pre>
 <script>window.addEventListener('scroll', () => {const winHeight = window.innerHeight;const docHeight = document.documentElement.scrollHeight;const scrolled = window.scrollY;const percent = Math.min(Math.round((scrolled / (docHeight - winHeight)) * 100), 100);const circle = document.querySelector('.progress-circle');if (circle) {circle.style.setProperty('--progress', percent + '%');circle.querySelector('span').textContent = percent + '%';}}, { passive: true });localStorage.setItem('sp_edu_last_article', JSON.stringify({title: 'Algorithmic Execution',level: 'Advanced',order: '33',url: window.location.pathname,progress: 0}));</script>
 <!-- SignalPilot Theme Switcher -->
 <script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
 </body>
 </html>
