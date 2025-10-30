@@ -17,6 +17,8 @@
   justify-content: center;
   font-size: 1.5rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  touch-action: manipulation; /* Prevent double-tap zoom on mobile */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
 }
 
 .chatbot-button:hover {
@@ -42,6 +44,7 @@
   display: none;
   flex-direction: column;
   overflow: hidden;
+  touch-action: manipulation; /* Prevent zoom gestures */
 }
 
 .chatbot-container.active {
