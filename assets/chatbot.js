@@ -276,14 +276,14 @@
     // Search in knowledge base
     const lowerQuery = query.toLowerCase();
 
-    // Check indicator keywords (ALL 7 INDICATORS)
-    if (lowerQuery.includes('janus')) results.push({ type: 'indicator', name: 'Janus Atlas', lesson: 20, docs: 'https://docs.signalpilot.io/janus-atlas' });
-    if (lowerQuery.includes('plutus')) results.push({ type: 'indicator', name: 'Plutus Flow', lesson: 21, docs: 'https://docs.signalpilot.io/plutus-flow' });
-    if (lowerQuery.includes('minimal')) results.push({ type: 'indicator', name: 'Minimal Flow', lesson: 22, docs: 'https://docs.signalpilot.io/minimal-flow' });
-    if (lowerQuery.includes('pentarch')) results.push({ type: 'indicator', name: 'Pentarch', external: 'https://docs.signalpilot.io/pentarch', note: 'Reversal Events System' });
-    if (lowerQuery.includes('omnideck')) results.push({ type: 'indicator', name: 'Omnideck', external: 'https://docs.signalpilot.io/omnideck', note: 'Everything Indicator Dashboard' });
-    if (lowerQuery.includes('augury') || lowerQuery.includes('grid')) results.push({ type: 'indicator', name: 'Augury Grid', external: 'https://docs.signalpilot.io/augury-grid', note: 'Multi-Symbol Screener' });
-    if (lowerQuery.includes('harmonic') || lowerQuery.includes('oscillator')) results.push({ type: 'indicator', name: 'Harmonic Oscillator', external: 'https://docs.signalpilot.io/harmonic-oscillator', note: 'Composite Momentum' });
+    // Check indicator keywords (ALL 7 INDICATORS - CORRECT v10 URLs!)
+    if (lowerQuery.includes('janus')) results.push({ type: 'indicator', name: 'Janus Atlas', lesson: 20, docs: 'https://docs.signalpilot.io/janus-atlas-v10/' });
+    if (lowerQuery.includes('plutus')) results.push({ type: 'indicator', name: 'Plutus Flow', lesson: 21, docs: 'https://docs.signalpilot.io/plutus-flow-v10/' });
+    if (lowerQuery.includes('minimal')) results.push({ type: 'indicator', name: 'Minimal Flow', lesson: 22, docs: 'https://docs.signalpilot.io/minimal-flow-v10/' });
+    if (lowerQuery.includes('pentarch')) results.push({ type: 'indicator', name: 'Pentarch', external: 'https://docs.signalpilot.io/pentarch-v10/', note: 'Reversal Events System' });
+    if (lowerQuery.includes('omnideck')) results.push({ type: 'indicator', name: 'Omnideck', external: 'https://docs.signalpilot.io/omnideck-v10/', note: 'Everything Indicator Dashboard' });
+    if (lowerQuery.includes('augury') || lowerQuery.includes('grid')) results.push({ type: 'indicator', name: 'Augury Grid', external: 'https://docs.signalpilot.io/augury-grid-v10/', note: 'Multi-Symbol Screener' });
+    if (lowerQuery.includes('harmonic') || lowerQuery.includes('oscillator')) results.push({ type: 'indicator', name: 'Harmonic Oscillator', external: 'https://docs.signalpilot.io/harmonic-oscillator-v10/', note: 'Composite Momentum' });
 
     // Check concept keywords
     if (lowerQuery.includes('order') && lowerQuery.includes('flow')) results.push({ type: 'concept', name: 'Order Flow', lessons: [2, 3] });
@@ -333,13 +333,13 @@
     },
 
     indicators: {
-      janus: "Janus Atlas is our levels system that detects liquidity sweeps and key price levels. It shows when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/janus-atlas' target='_blank' rel='noopener'>View Janus Atlas Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
-      plutus: "Plutus Flow is our advanced OBV indicator that tracks cumulative delta and absorption patterns. Essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/plutus-flow' target='_blank' rel='noopener'>View Plutus Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
-      minimal: "Minimal Flow is our volume strategy and regime detection system. It identifies market conditions and structure.<br><br>📚 <a href='https://docs.signalpilot.io/minimal-flow' target='_blank' rel='noopener'>View Minimal Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-minimal-flow-regimes.html'>Read Lesson #22: Minimal Flow Regimes →</a>",
-      pentarch: "Pentarch is our reversal events system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 supporting components. It shows where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/pentarch' target='_blank' rel='noopener'>View Pentarch Documentation →</a><br>💡 <em>Note: Pentarch is covered in the official documentation. Check lessons on regime detection and market cycles!</em>",
-      omnideck: "Omnideck is our 'Everything Indicator' - a comprehensive dashboard that displays all Signal Pilot indicators across multiple timeframes in one view.<br><br>📚 <a href='https://docs.signalpilot.io/omnideck' target='_blank' rel='noopener'>View Omnideck Documentation →</a><br>💡 <em>Perfect for multi-timeframe analysis and getting the complete market picture!</em>",
-      augury: "Augury Grid is our multi-symbol screener that monitors multiple assets simultaneously. It helps you spot opportunities across your watchlist.<br><br>📚 <a href='https://docs.signalpilot.io/augury-grid' target='_blank' rel='noopener'>View Augury Grid Documentation →</a><br>💡 <em>Ideal for scanning multiple markets and finding the best setups!</em>",
-      harmonic: "Harmonic Oscillator is our composite momentum indicator that combines multiple momentum signals for timing entries and exits.<br><br>📚 <a href='https://docs.signalpilot.io/harmonic-oscillator' target='_blank' rel='noopener'>View Harmonic Oscillator Documentation →</a><br>💡 <em>Use for precise timing and momentum confirmation!</em>"
+      janus: "Janus Atlas is our levels system that detects liquidity sweeps and key price levels. It shows when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/janus-atlas-v10/' target='_blank' rel='noopener'>View Janus Atlas Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
+      plutus: "Plutus Flow is our advanced OBV indicator that tracks cumulative delta and absorption patterns. Essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/plutus-flow-v10/' target='_blank' rel='noopener'>View Plutus Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
+      minimal: "Minimal Flow is our volume strategy and regime detection system. It identifies market conditions and structure.<br><br>📚 <a href='https://docs.signalpilot.io/minimal-flow-v10/' target='_blank' rel='noopener'>View Minimal Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-minimal-flow-regimes.html'>Read Lesson #22: Minimal Flow Regimes →</a>",
+      pentarch: "Pentarch is our reversal events system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 supporting components. It shows where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/pentarch-v10/' target='_blank' rel='noopener'>View Pentarch Documentation →</a><br>💡 <em>Note: Pentarch is covered in the official documentation. Check lessons on regime detection and market cycles!</em>",
+      omnideck: "Omnideck is our 'Everything Indicator' - a comprehensive dashboard that displays all Signal Pilot indicators across multiple timeframes in one view.<br><br>📚 <a href='https://docs.signalpilot.io/omnideck-v10/' target='_blank' rel='noopener'>View Omnideck Documentation →</a><br>💡 <em>Perfect for multi-timeframe analysis and getting the complete market picture!</em>",
+      augury: "Augury Grid is our multi-symbol screener that monitors multiple assets simultaneously. It helps you spot opportunities across your watchlist.<br><br>📚 <a href='https://docs.signalpilot.io/augury-grid-v10/' target='_blank' rel='noopener'>View Augury Grid Documentation →</a><br>💡 <em>Ideal for scanning multiple markets and finding the best setups!</em>",
+      harmonic: "Harmonic Oscillator is our composite momentum indicator that combines multiple momentum signals for timing entries and exits.<br><br>📚 <a href='https://docs.signalpilot.io/harmonic-oscillator-v10/' target='_blank' rel='noopener'>View Harmonic Oscillator Documentation →</a><br>💡 <em>Use for precise timing and momentum confirmation!</em>"
     },
 
     concepts: {
