@@ -25,7 +25,7 @@ Use this template to systematically review and improve your trading.
 **Signal Pilot Indicators Used:**
 - [ ] Janus Atlas: ______________________________________
 - [ ] Plutus Flow: ______________________________________
-- [ ] Minimal Flow: ____________________________________
+- [ ] The Volume Oracle: ____________________________________
 - [ ] Pentarch Pilot: __________________________________
 
 **Market Regime:** (Trending Up / Trending Down / Ranging / Volatile)

@@ -74,7 +74,7 @@ Candlesticks show WHERE price traded, not HOW or WHY. Learn:
 - Footprint charts: Volume at price
 - Aggressive vs. passive order flow
 - Iceberg detection and institutional footprints
-- Integrating order flow with Minimal Flow regime detection
+- Integrating order flow with The Volume Oracle regime detection
 
 **Key Takeaway:** Price tells you where you are. Order flow tells you where you're going.
 
@@ -343,7 +343,7 @@ Sim fills aren't real. Psychology with play money isn't real. Learn:
 **Signal Pilot Integration:**
 - ✅ Janus Atlas for sweeps
 - ✅ Plutus Flow for volume
-- ✅ Minimal Flow for regime
+- ✅ The Volume Oracle for regime
 - ✅ Harmonic Oscillator for timing
 - ✅ Omnideck for confluence
 

@@ -42,7 +42,7 @@ Use this framework to analyze setups across three timeframes before every trade.
   - RUN events: Trend continuation
   - EXT/BRK events: Potential exhaustion
 
-- [ ] **Minimal Flow Regime**
+- [ ] **The Volume Oracle Regime**
   - Trending regime? (Green = follow pullbacks)
   - Ranging regime? (Red = fade extremes)
 

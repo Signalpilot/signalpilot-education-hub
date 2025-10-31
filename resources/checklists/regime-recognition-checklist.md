@@ -1,6 +1,6 @@
 # Market Regime Recognition Checklist
 
-**From Lesson 22: Minimal Flow - Stop Fighting the Market's Mood**
+**From Lesson 22: The Volume Oracle - Stop Fighting the Market's Mood**
 
 Use this checklist to identify market regime and adapt your strategy accordingly.
 
@@ -20,7 +20,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 
 ## 📊 Step 1: Identify Current Regime
 
-### Check Minimal Flow Indicator
+### Check The Volume Oracle
 
 - [ ] **Green (Trending Regime)**
   - Price making consistent directional progress
@@ -66,7 +66,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 
 ## 📋 Step 3: Match Strategy to Regime
 
-### If TRENDING (Minimal Flow = Green):
+### If TRENDING (The Volume Oracle = Green):
 
 **DO:**
 - [ ] Trade in direction of trend
@@ -86,7 +86,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 
 ---
 
-### If RANGING (Minimal Flow = Red):
+### If RANGING (The Volume Oracle = Red):
 
 **DO:**
 - [ ] Fade extremes (sell resistance, buy support)
@@ -105,7 +105,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 
 ---
 
-### If VOLATILE (Minimal Flow = Yellow or Whipsawing):
+### If VOLATILE (The Volume Oracle = Yellow or Whipsawing):
 
 **DO:**
 - [ ] Reduce position size by 50%
@@ -133,7 +133,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 - [ ] Pullbacks get deeper (50%+ retracements)
 - [ ] Price starts oscillating around MA
 - [ ] Volume decreases
-- [ ] Minimal Flow turns red
+- [ ] The Volume Oracle turns red
 
 **Action:** Exit trend-following trades, prepare range strategies
 
@@ -144,7 +144,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 - [ ] Volume increases on breakout
 - [ ] Price makes new highs/lows with momentum
 - [ ] Moving averages start sloping
-- [ ] Minimal Flow turns green
+- [ ] The Volume Oracle turns green
 
 **Action:** Exit range trades, prepare trend-following strategies
 
@@ -155,7 +155,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 - [ ] News event or market shock
 - [ ] Large gaps or fast moves
 - [ ] Support/resistance levels breaking rapidly
-- [ ] Minimal Flow shows yellow or rapid color changes
+- [ ] The Volume Oracle shows yellow or rapid color changes
 
 **Action:** Reduce size immediately, tighten stops, consider cash
 
@@ -220,7 +220,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 ### Mistake #2: Not Recognizing Transitions
 - ❌ Holding trend trades as market transitions to range
 - ❌ Fading breakouts as range transitions to trend
-- **Fix:** Watch Minimal Flow and price action for regime shifts
+- **Fix:** Watch The Volume Oracle and price action for regime shifts
 
 ### Mistake #3: Overtrading Volatile Regimes
 - ❌ Full size trades during high volatility
@@ -238,7 +238,7 @@ Use this checklist to identify market regime and adapt your strategy accordingly
 
 **Date:** _______________
 
-**Minimal Flow Color:** Green / Red / Yellow
+**The Volume Oracle Color:** Green / Red / Yellow
 
 **My Assessment:** Trending / Ranging / Volatile
 
@@ -273,7 +273,7 @@ ________________________________________________
 ## 🎓 Pro Tips
 
 **1. Check Regime BEFORE Looking at Setups**
-- Open charts → Check Minimal Flow → Then look for setups
+- Open charts → Check The Volume Oracle → Then look for setups
 - Not: See setup → Take trade → Ignore regime
 
 **2. Regime Trumps Setup Quality**
