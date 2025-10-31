@@ -155,7 +155,7 @@
 
   // Helper function to add explanations to existing quizzes
   window.addQuizExplanations = function(lessonId, explanations) {
-    quiz Explanations[lessonId] = explanations;
+    quizExplanations[lessonId] = explanations;
 
     // Apply explanations to DOM
     const container = document.querySelector('.quiz');
