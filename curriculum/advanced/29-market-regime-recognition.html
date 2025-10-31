@@ -79,7 +79,7 @@
           <li>Identify the four core market regimes in real-time</li>
           <li>Build a multi-indicator regime detection system (ADX, ATR, Bollinger Width)</li>
           <li>Adapt your strategy selection BEFORE getting chopped up</li>
-          <li>Integrate regime filters with Janus Atlas and Minimal Flow</li>
+          <li>Integrate regime filters with Janus Atlas and Volume Oracle</li>
         </ul>
       </div>
 
@@ -363,25 +363,25 @@ Compression: 0% (wait for regime shift)</code></pre>
 
       <div class="tabs">
         <div class="tabs-nav">
-          <button>Minimal Flow Integration</button>
+          <button>Volume Oracle Integration</button>
           <button>Janus Atlas Filter</button>
           <button>Plutus Flow Context</button>
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3>Minimal Flow: Automated Regime Detection</h3>
-            <p><strong>Minimal Flow classifies regime in real-time for you.</strong></p>
-            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Minimal Flow Signals:
+            <h3>Volume Oracle: Automated Regime Detection</h3>
+            <p><strong>Volume Oracle classifies regime in real-time for you.</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Volume Oracle Signals:
 - Trending Up: Green (trade pullback longs)
 - Trending Down: Red (trade bounce shorts)
 - Ranging: Yellow (fade extremes)
 - Volatile: Flashing red (sit out)
 
 Integration:
-ONLY trade when Minimal Flow = Trending
+ONLY trade when Volume Oracle = Trending
 If Ranging → Reduce size 50%, tight targets
 If Volatile → No new trades</code></pre>
-            <p style="margin-top:1rem">Think of Minimal Flow as your regime co-pilot. When it's green, you're cleared for takeoff. Yellow or red? Stay grounded.</p>
+            <p style="margin-top:1rem">Think of Volume Oracle as your regime co-pilot. When it's green, you're cleared for takeoff. Yellow or red? Stay grounded.</p>
           </div>
           <div class="tab-panel">
             <h3>Janus Atlas: Regime-Specific Interpretation</h3>
@@ -421,7 +421,7 @@ Ranging Regime:
           <li><strong>ADX + ATR + BB Width:</strong> Your regime detection toolkit (quantify, don't guess)</li>
           <li><strong>Regime score:</strong> +3 to +5 = trade trending strategies, -3 to -5 = wait for potential breakout</li>
           <li><strong>Position sizing adapts:</strong> Full size in trends, half size in ranges, zero in volatility</li>
-          <li><strong>Layer with Minimal Flow:</strong> Only trade when regime AND flow align</li>
+          <li><strong>Layer with Volume Oracle:</strong> Only trade when regime AND flow align</li>
           <li><strong>Same setup, different regime:</strong> 75% expectancy in trends, 50% in ranges—context is edge</li>
         </ul>
       </div>
@@ -546,7 +546,7 @@ Risk Per Trade Today: $_______</code></pre>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
           <a href="/curriculum/intermediate/22-minimal-flow-regimes.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
             <div style="font-size:.9rem;color:#5b8aff;margin-bottom:.5rem">Lesson 22 • Intermediate</div>
-            <div style="font-weight:600;margin-bottom:.5rem">Minimal Flow Regimes</div>
+            <div style="font-weight:600;margin-bottom:.5rem">Volume Oracle Regimes</div>
             <div style="font-size:.9rem;opacity:.8">Foundation for regime detection using automated flow classification</div>
           </a>
           <a href="/curriculum/advanced/28-institutional-order-flow.html" style="display:block;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px;text-decoration:none;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 16px rgba(0,0,0,.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">

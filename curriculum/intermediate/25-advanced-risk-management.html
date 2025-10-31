@@ -177,21 +177,21 @@ RoR = (0.40 / 0.60)^20 ≈ 0.0001 = 0.01% (very safe)</code></pre>
       <h2>Regime-Based Risk Adjustment</h2>
       
       <h3>Trending Regime (Low Risk)</h3>
-      <pre><code>Minimal Flow: Trending Up
+      <pre><code>Volume Oracle: Trending Up
 Strategy: Pullback longs (aligned with trend)
 
 Risk: 2% per trade (normal)
 Confidence: High (with trend = edge)</code></pre>
 
       <h3>Ranging Regime (Moderate Risk)</h3>
-      <pre><code>Minimal Flow: Ranging
+      <pre><code>Volume Oracle: Ranging
 Strategy: Fade extremes
 
 Risk: 1% per trade (reduced, lower R targets)
 Confidence: Moderate (tight targets, lower R)</code></pre>
 
       <h3>Volatile Regime (High Risk)</h3>
-      <pre><code>Minimal Flow: Volatile
+      <pre><code>Volume Oracle: Volatile
 Strategy: Sit out OR only A+ setups
 
 Risk: 0.5% per trade (drastically reduced)
@@ -245,7 +245,7 @@ Price reverses to $102 → Stopped with $2 profit (vs. holding to $100)</code></
         <li>[ ] Drawdown: ____%</li>
         <li>[ ] Open positions: ___</li>
         <li>[ ] Total heat: ____%</li>
-        <li>[ ] Regime (Minimal Flow): ______</li>
+        <li>[ ] Regime (Volume Oracle): ______</li>
         <li>[ ] Risk per trade today: ____%</li>
       </ul>
 
@@ -296,7 +296,7 @@ Example stop: $99.20 (below swept low + ATR buffer)
 
 R:R: ($105 target - $100.20) / ($100.20 - $99.20) = 4.8R</code></pre>
 
-      <h3>Minimal Flow: Regime Risk Adjustment</h3>
+      <h3>Volume Oracle: Regime Risk Adjustment</h3>
       <pre><code>Trending: 2% risk/trade
 Ranging: 1% risk/trade
 Volatile: 0.5% risk/trade OR sit out</code></pre>

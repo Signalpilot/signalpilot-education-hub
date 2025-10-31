@@ -40,7 +40,7 @@
       <p><b>Step 2: HTF Analysis - Daily Chart (10 min)</b></p>
       <ul>
         <li>[ ] Trend: Up/Down/Range (above/below 50/200 EMA)</li>
-        <li>[ ] Minimal Flow regime: Trending/Ranging/Volatile</li>
+        <li>[ ] Volume Oracle regime: Trending/Ranging/Volatile</li>
         <li>[ ] Major support/resistance levels marked</li>
         <li>[ ] Plutus POC identified (fair value)</li>
         <li>[ ] Bias: Long/Short/Neutral</li>
@@ -86,7 +86,7 @@ Checklist before entry area:
 1. HTF aligned? ✓
 2. Janus sweep or structure setup? ✓
 3. Order flow indicating (Plutus, footprint)? ✓
-4. Minimal Flow regime = Trending? ✓
+4. Volume Oracle regime = Trending? ✓
 5. Risk < 2%? ✓
 
 If all ✓ → Execute</code></pre>
@@ -134,7 +134,7 @@ Caution: Watch for EOD manipulation (power hour 3-4 PM)</code></pre>
       <p><strong>Monitor 1 (Primary): Trading Charts</strong></p>
       <ul>
         <li>4-pane layout: Daily, 4H, 1H, 15min</li>
-        <li>Signal Pilot indicators: Janus, Plutus, Minimal Flow, Omnideck</li>
+        <li>Signal Pilot indicators: Janus, Plutus, Volume Oracle, Omnideck</li>
         <li>Order entry area panel</li>
       </ul>
 
@@ -176,7 +176,7 @@ Platform: TradingView alerts, broker app notifications</code></pre>
       <p><strong>Scan for instruments meeting criteria.</strong></p>
       <pre><code>Scanner criteria:
 - HTF uptrend (above 50 EMA)
-- Minimal Flow = Trending
+- Volume Oracle = Trending
 - Janus sweep within last 10 candles
 - ATR > 0.5% (sufficient volatility)
 
@@ -229,7 +229,7 @@ Visual feedback: See progress (or decline) immediately</code></pre>
 [ ] HTF analysis complete (Daily trend, bias)
 [ ] MTF structure identified (4H levels, Janus zones)
 [ ] Setup grade = A or B (if C, skip)
-[ ] Confluence ≥ 3/5 (Janus + Plutus + Minimal Flow)
+[ ] Confluence ≥ 3/5 (Janus + Plutus + Volume Oracle)
 [ ] Regime appropriate (avoid volatile)
 [ ] Entry trigger indicated (sweep reclaim, potential breakout close)
 [ ] Stop loss defined (structure-based, ATR)
@@ -314,7 +314,7 @@ During trade:
       <h3>Omnideck: Multi-Timeframe Dashboard</h3>
       <p><strong>Use Omnideck for 1-glance context check.</strong></p>
       <pre><code>Omnideck shows:
-- HTF: Trend, Minimal Flow regime
+- HTF: Trend, Volume Oracle regime
 - MTF: Janus zones, Plutus POC
 - LTF: Real-time order flow
 
@@ -332,14 +332,14 @@ Action: Check footprint, Plutus, HTF alignment
 If confluence → Execute
 If not → Monitor for reclaim</code></pre>
 
-      <h3>Minimal Flow: Regime Filter</h3>
-      <pre><code>Pre-market: Check Minimal Flow on Daily
+      <h3>Volume Oracle: Regime Filter</h3>
+      <pre><code>Pre-market: Check Volume Oracle on Daily
 
 If Trending → Trade pullbacks, potential breakouts
 If Ranging → Fade extremes, tight targets
 If Volatile → Reduce size or sit out
 
-Operational rule: Only trade when Minimal Flow = Trending (highest edge)</code></pre>
+Operational rule: Only trade when Volume Oracle = Trending (highest edge)</code></pre>
 
       <h2>Key Takeaways</h2>
       <ul>
@@ -358,7 +358,7 @@ Operational rule: Only trade when Minimal Flow = Trending (highest edge)</code><
         <p>Create a checklist with specific actions and time allocations:</p>
         <ol>
           <li><strong>Macro Context (5 min):</strong> List 3 sources you'll check daily (e.g., futures, VIX, economic calendar)</li>
-          <li><strong>HTF Analysis (10 min):</strong> Which timeframe? (Daily/4H) What indicators? (50/200 EMA, Minimal Flow?)</li>
+          <li><strong>HTF Analysis (10 min):</strong> Which timeframe? (Daily/4H) What indicators? (50/200 EMA, Volume Oracle?)</li>
           <li><strong>MTF Structure (10 min):</strong> How will you identify Janus sweep zones and key levels?</li>
           <li><strong>Watchlist (10 min):</strong> How many instruments? (Recommendation: 3-5 max) What criteria?</li>
           <li><strong>Risk Check (5 min):</strong> Document current equity, drawdown, max risk per trade</li>
@@ -371,7 +371,7 @@ Operational rule: Only trade when Minimal Flow = Trending (highest edge)</code><
           <li>[ ] HTF trend direction identified and aligned</li>
           <li>[ ] Janus sweep or structure setup indicated</li>
           <li>[ ] Plutus POC / order flow analyzed</li>
-          <li>[ ] Minimal Flow regime = Trending (or appropriate for strategy)</li>
+          <li>[ ] Volume Oracle regime = Trending (or appropriate for strategy)</li>
           <li>[ ] Entry trigger executed (sweep reclaim, close above/below level)</li>
           <li>[ ] Stop loss placement defined (structure + ATR)</li>
           <li>[ ] Target identified with 2:1+ R:R verified</li>
