@@ -3,10 +3,8 @@
   'use strict';
 
   // Supabase Configuration
-  // USER: Replace these with your actual Supabase project credentials
-  // Get them from: https://app.supabase.com/project/YOUR_PROJECT/settings/api
-  const SUPABASE_URL = 'YOUR_SUPABASE_URL'; // e.g., 'https://xxx.supabase.co'
-  const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Public anon key (safe for client-side)
+  const SUPABASE_URL = 'https://cquqncenftgmsiyyctyk.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxdXFuY2VuZnRnbXNpeXljdHlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE5NDQ4MjYsImV4cCI6MjA3NzUyMDgyNn0.7-tLVV3uxoHxhh6nfbw_r0LLZ-prVOf2LirzaUcPu_E';
 
   // Initialize Supabase client
   let supabase = null;
