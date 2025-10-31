@@ -88,7 +88,12 @@
   // Sign Up
   async function signUp(email, password, userName) {
     if (!supabase) {
-      throw new Error('Supabase not initialized');
+      console.log('[Supabase] Not initialized, initializing now...');
+      await initSupabase();
+
+      if (!supabase) {
+        return { success: false, error: 'Failed to initialize authentication. Please refresh the page and try again.' };
+      }
     }
 
     try {
@@ -109,6 +114,10 @@
         trackAchievement('account_created');
       }
 
+      if (typeof plausible === 'function') {
+        plausible('User Signed Up');
+      }
+
       return { success: true, data };
     } catch (error) {
       console.error('[Supabase] Sign up error:', error);
@@ -119,7 +128,12 @@
   // Sign In
   async function signIn(email, password) {
     if (!supabase) {
-      throw new Error('Supabase not initialized');
+      console.log('[Supabase] Not initialized, initializing now...');
+      await initSupabase();
+
+      if (!supabase) {
+        return { success: false, error: 'Failed to initialize authentication. Please refresh the page and try again.' };
+      }
     }
 
     try {
@@ -129,6 +143,10 @@
       });
 
       if (error) throw error;
+
+      if (typeof plausible === 'function') {
+        plausible('User Signed In');
+      }
 
       return { success: true, data };
     } catch (error) {
@@ -160,7 +178,12 @@
   // Password Reset
   async function resetPassword(email) {
     if (!supabase) {
-      throw new Error('Supabase not initialized');
+      console.log('[Supabase] Not initialized, initializing now...');
+      await initSupabase();
+
+      if (!supabase) {
+        return { success: false, error: 'Failed to initialize authentication. Please refresh the page and try again.' };
+      }
     }
 
     try {

@@ -168,23 +168,39 @@
     if (signinForm) {
       signinForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        console.log('[Auth UI] Sign in form submitted');
 
         const email = document.getElementById('signin-email').value;
         const password = document.getElementById('signin-password').value;
 
+        console.log('[Auth UI] Sign in email:', email);
+
+        if (!window.supabaseAuth) {
+          console.error('[Auth UI] window.supabaseAuth is not available!');
+          showMessage('❌ Authentication system not loaded. Please refresh the page.', 'error');
+          return;
+        }
+
         setLoading(true, 'Signing in...');
 
-        const result = await window.supabaseAuth.signIn(email, password);
+        try {
+          const result = await window.supabaseAuth.signIn(email, password);
+          console.log('[Auth UI] Sign in result:', result);
 
-        if (result.success) {
-          showMessage('✅ Signed in successfully!', 'success');
-          setTimeout(() => {
-            document.getElementById('auth-modal').remove();
-            // Reload to sync progress
-            window.location.reload();
-          }, 1000);
-        } else {
-          showMessage(`❌ ${result.error}`, 'error');
+          if (result.success) {
+            showMessage('✅ Signed in successfully!', 'success');
+            setTimeout(() => {
+              document.getElementById('auth-modal').remove();
+              // Reload to sync progress
+              window.location.reload();
+            }, 1000);
+          } else {
+            showMessage(`❌ ${result.error}`, 'error');
+            setLoading(false);
+          }
+        } catch (error) {
+          console.error('[Auth UI] Sign in error:', error);
+          showMessage(`❌ ${error.message}`, 'error');
           setLoading(false);
         }
       });
@@ -195,23 +211,39 @@
     if (signupForm) {
       signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        console.log('[Auth UI] Sign up form submitted');
 
         const name = document.getElementById('signup-name').value;
         const email = document.getElementById('signup-email').value;
         const password = document.getElementById('signup-password').value;
 
+        console.log('[Auth UI] Sign up data:', { name, email, passwordLength: password.length });
+
+        if (!window.supabaseAuth) {
+          console.error('[Auth UI] window.supabaseAuth is not available!');
+          showMessage('❌ Authentication system not loaded. Please refresh the page.', 'error');
+          return;
+        }
+
         setLoading(true, 'Creating account...');
 
-        const result = await window.supabaseAuth.signUp(email, password, name);
+        try {
+          const result = await window.supabaseAuth.signUp(email, password, name);
+          console.log('[Auth UI] Sign up result:', result);
 
-        if (result.success) {
-          showMessage('✅ Account created! Check your email to verify.', 'success');
-          setTimeout(() => {
-            switchAuthMode('signin');
+          if (result.success) {
+            showMessage('✅ Account created! Check your email to verify.', 'success');
+            setTimeout(() => {
+              switchAuthMode('signin');
+              setLoading(false);
+            }, 3000);
+          } else {
+            showMessage(`❌ ${result.error}`, 'error');
             setLoading(false);
-          }, 3000);
-        } else {
-          showMessage(`❌ ${result.error}`, 'error');
+          }
+        } catch (error) {
+          console.error('[Auth UI] Sign up error:', error);
+          showMessage(`❌ ${error.message}`, 'error');
           setLoading(false);
         }
       });
