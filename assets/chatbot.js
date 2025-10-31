@@ -179,12 +179,25 @@
 
   // Scroll to key takeaways
   function scrollToTakeaways() {
-    const takeaways = document.querySelector('.key-takeaways, #key-takeaways, h2:has-text("Key Takeaways")');
+    // Try class selector first (most common - note: singular "key-takeaway")
+    let takeaways = document.querySelector('.key-takeaway, #key-takeaways');
+
+    // If not found, search for headings containing "Key Takeaway"
+    if (!takeaways) {
+      const headings = document.querySelectorAll('h2, h3, h4');
+      for (const heading of headings) {
+        if (heading.textContent.match(/key\s+takeaway/i)) {
+          takeaways = heading;
+          break;
+        }
+      }
+    }
+
     if (takeaways) {
       takeaways.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return "Scrolling to Key Takeaways... 📌";
     }
-    return "I don't see a Key Takeaways section on this page.";
+    return "I don't see a Key Takeaways section on this page. Try scrolling down manually to find it!";
   }
 
   // Toggle notes panel
@@ -742,7 +755,7 @@
     }
 
     // Default response
-    return "I'm not sure about that specific question. Try asking about:\n• The curriculum (Beginner, Intermediate, Advanced)\n• Indicators (Janus, Plutus, Minimal, Pentarch, Omnideck, Augury, Harmonic)\n• Concepts (order flow, liquidity, dark pools, regime)\n• How to get started\n\nOr pick a suggestion below!";
+    return "I'm not sure about that specific question. Try asking about:<br><br>• The curriculum (Beginner, Intermediate, Advanced)<br>• Indicators (Janus, Plutus, Minimal, Pentarch, Omnideck, Augury, Harmonic)<br>• Concepts (order flow, liquidity, dark pools, regime)<br>• How to get started<br><br>Or pick a suggestion below!";
   }
 
   // Create suggestion chips (context-aware)
