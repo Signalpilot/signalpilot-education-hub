@@ -63,9 +63,9 @@
   <div class="wrap article-grid">
     <div class="prose">
 
-      <p><b>You backtest a strategy. 80% win rate. 3R average winner. It's perfect.</b></p>
+      <p><b>You backtest a strategy. 3.2R expectancy. 2.8 profit factor. It's perfect.</b></p>
 
-      <p>You trade it live. 42% win rate. -0.8R expectancy. Account blown in 6 weeks.</p>
+      <p>You trade it live. -0.8R expectancy. 0.6 profit factor. Account blown in 6 weeks.</p>
 
       <p>What happened? <strong>Your indicator was repainting.</strong></p>
 
@@ -109,9 +109,9 @@
 
       <div class="callout-info">
         <h4>📖 War Story: The $12k Lesson</h4>
-        <p><strong>Trader discovers "holy grail" indicator:</strong> 85% win rate, 4.2R average. Backtested on 2 years of BTC data. Perfection.</p>
+        <p><strong>Trader discovers "holy grail" indicator:</strong> 4.2R expectancy, 3.5 profit factor. Backtested on 2 years of BTC data. Perfection.</p>
         <p><strong>Live trading begins:</strong> First 3 trades hit stops. "Bad luck," he thinks. Next 5 trades? 1 winner, 4 losers.</p>
-        <p><strong>2 months later:</strong> Down $12,000. Win rate: 38%. He reviews his entries in history.</p>
+        <p><strong>2 months later:</strong> Down $12,000. Negative expectancy. He reviews his entries in history.</p>
         <p><strong>The horror:</strong> Every signal he entered? Moved 20-50 points after the bar closed. He was trading signals that never existed.</p>
         <p style="margin-top:1rem"><strong>The indicator was repainting.</strong> His backtest? A hallucination. His losses? Very real.</p>
       </div>
@@ -262,21 +262,21 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
         <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
           <h3 style="margin:0 0 1rem 0">❌ Repainting Indicator</h3>
-          <p><strong>Backtest:</strong> 80% win rate</p>
-          <p><strong>Live trading:</strong> 42% win rate</p>
+          <p><strong>Backtest:</strong> 3.2R expectancy, 2.8 profit factor</p>
+          <p><strong>Live trading:</strong> -0.8R expectancy, 0.6 profit factor</p>
           <p><strong>Problem:</strong> Signals change after bar close</p>
           <p><strong>Result:</strong> Wasted months, blown account</p>
         </div>
         <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
           <h3 style="margin:0 0 1rem 0">✓ Deterministic Indicator</h3>
-          <p><strong>Backtest:</strong> 62% win rate</p>
-          <p><strong>Live trading:</strong> 61% win rate</p>
+          <p><strong>Backtest:</strong> 1.8R expectancy, 1.6 profit factor</p>
+          <p><strong>Live trading:</strong> 1.7R expectancy, 1.5 profit factor</p>
           <p><strong>Integrity:</strong> Signals never change</p>
           <p><strong>Result:</strong> Consistent, profitable edge</p>
         </div>
       </div>
 
-      <p>Notice: The deterministic indicator has a <em>lower</em> backtest win rate. That's because it's honest. It doesn't cheat by using future data.</p>
+      <p>Notice: The deterministic indicator has a <em>lower</em> backtest expectancy. That's because it's honest. It doesn't cheat by using future data.</p>
 
       <p>But live? It actually <strong>works</strong>.</p>
 
@@ -329,7 +329,7 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
           <li><strong>Visual Test:</strong> Screenshot 3 signals. Wait 10 minutes. Refresh. Did signals move or disappear?</li>
           <li><strong>Replay Test:</strong> Use TradingView replay mode. Play forward. Do signals appear BEFORE or AFTER the move?</li>
           <li><strong>Alert Test:</strong> Set alerts on live signals. 1 hour later, check chart. Are alerts still valid?</li>
-          <li><strong>Backtest vs Live:</strong> Paper trade for 20 trades. Compare win rate to backtest. >15% gap = likely repaint</li>
+          <li><strong>Backtest vs Live:</strong> Paper trade for 20 trades. Compare expectancy to backtest. Large gap = likely repaint</li>
           <li>Document your findings: Which indicators passed? Which failed?</li>
           <li>Remove ALL repainting indicators from your charts immediately</li>
         </ol>
@@ -366,7 +366,7 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
         <h4>🎮 Quick Check (No Pressure)</h4>
 
         <div class="quiz-question">
-          <p><strong>You backtest an indicator: 78% win rate. You trade it live: 44% win rate. What's the most likely cause?</strong></p>
+          <p><strong>You backtest an indicator: 2.8R expectancy. You trade it live: -0.5R expectancy. What's the most likely cause?</strong></p>
           <div class="quiz-options">
             <div class="quiz-option" data-correct="false">A) Market conditions changed</div>
             <div class="quiz-option" data-correct="true">B) The indicator repaints (signals changed after bar close)</div>
@@ -374,7 +374,7 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
             <div class="quiz-option" data-correct="false">D) Your execution was bad</div>
           </div>
           <div class="quiz-feedback">
-            <strong>Correct!</strong> A massive gap between backtest and live results (34 percentage points) strongly suggests repainting. The indicator showed perfect signals in history that never existed live.
+            <strong>Correct!</strong> A massive gap between backtest and live results (from profitable to losing) strongly suggests repainting. The indicator showed perfect signals in history that never existed live.
           </div>
         </div>
 

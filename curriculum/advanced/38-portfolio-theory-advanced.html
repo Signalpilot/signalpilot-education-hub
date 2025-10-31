@@ -317,10 +317,10 @@ Result: Portfolio is 90% exposed to stock risk
 
       <p><strong>Answer: Kelly Criterion.</strong></p>
 
-      <pre><code>Kelly % = (Win Rate × Avg Win - Loss Rate × Avg Loss) / Avg Win
+      <pre><code>Kelly % = (Success Rate × Avg Win - Loss Rate × Avg Loss) / Avg Win
 
 Example:
-Win Rate: 65%
+Performance: 65%
 Avg Win: 2.5R
 Loss Rate: 35%
 Avg Loss: 1R
@@ -350,17 +350,17 @@ Interpretation: Allocate 51% of capital to this strategy</code></pre>
           <div class="accordion-header">Strategy Portfolio Example</div>
           <div class="accordion-content">
             <pre><code>Strategy A (Janus Sweeps):
-Win rate: 65%, Avg R: 2.5R
+Success rate: 65%, Avg R: 2.5R
 Kelly: 13% (1/4 Kelly)
 Regime: Works in trending markets
 
 Strategy B (Mean Reversion):
-Win rate: 58%, Avg R: 2.0R
+Success rate: 58%, Avg R: 2.0R
 Kelly: 10%
 Regime: Works in ranging markets
 
 Strategy C (Breakouts):
-Win rate: 52%, Avg R: 3.0R
+Success rate: 52%, Avg R: 3.0R
 Kelly: 8%
 Regime: Works in volatile expansions
 
@@ -411,7 +411,7 @@ Result:
           </li>
           <li><strong>Apply Kelly Criterion to size positions</strong>
             <ul style="margin:.5rem 0">
-              <li>For each strategy: Calculate win rate, avg R, and Kelly %</li>
+              <li>For each strategy: Track effectiveness, avg R, and Kelly %</li>
               <li>Use 1/4 Kelly for conservative sizing</li>
               <li>Example: 60% WR, 2.5R avg win, 1R loss = 44% full Kelly = 11% allocation (1/4 Kelly)</li>
             </ul>
@@ -464,7 +464,7 @@ Result:
         </div>
 
         <div class="quiz-question">
-          <p><strong>Question 2: Your strategy has a 60% win rate, 2R average win, 1R average loss. What's the full Kelly allocation?</strong></p>
+          <p><strong>Question 2: Your strategy has a 60% expectancy, 2R average win, 1R average loss. What's the full Kelly allocation?</strong></p>
           <div class="quiz-options">
             <div class="quiz-option" data-correct="false">
               <strong>A)</strong> 20%
@@ -476,7 +476,7 @@ Result:
               <strong>C)</strong> 40%
             </div>
             <div class="quiz-option" data-correct="false">
-              <strong>D)</strong> 60% (same as win rate)
+              <strong>D)</strong> 60% (same as success rate)
             </div>
           </div>
           <div class="quiz-feedback"></div>

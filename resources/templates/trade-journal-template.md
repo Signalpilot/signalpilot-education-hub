@@ -181,22 +181,22 @@ ________________________________________________
 
 **This Week:**
 - Trades taken: ________
-- Win rate: ________%
 - Average R: ________
 - Total R: ________
+- Profit Factor: ________
 
 **This Month:**
 - Trades taken: ________
-- Win rate: ________%
 - Average R: ________
 - Total R: ________
+- Profit Factor: ________
 - Best trade: ________ R
 - Worst trade: ________ R
 
 **By Setup Type:**
-- Liquidity Sweeps: ________ trades, ________% win rate
-- Divergence: ________ trades, ________% win rate
-- Multi-Timeframe: ________ trades, ________% win rate
+- Liquidity Sweeps: ________ trades, ________ avg R
+- Divergence: ________ trades, ________ avg R
+- Multi-Timeframe: ________ trades, ________ avg R
 
 ---
 

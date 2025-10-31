@@ -26,7 +26,7 @@ Use this checklist to identify and trade divergence setups with Plutus Flow.
 
 - [ ] **Janus Atlas sweep at the level**
   - Liquidity sweep occurred before divergence
-  - Adds 20-30% to win rate
+  - Significantly increases reliability
 
 - [ ] **Footprint absorption visible**
   - Large delta absorption at the extreme
@@ -96,9 +96,9 @@ Use this checklist to identify and trade divergence setups with Plutus Flow.
 - [ ] +1: Regime supports reversal pattern
 
 **Score Interpretation:**
-- **7-8 points**: Extreme confidence setup (70%+ win rate)
-- **5-6 points**: High confidence (60-65% win rate)
-- **3-4 points**: Moderate confidence (50-55% win rate)
+- **7-8 points**: Extreme confidence setup (highly reliable)
+- **5-6 points**: High confidence (very reliable)
+- **3-4 points**: Moderate confidence (moderately reliable)
 - **<3 points**: Skip this trade
 
 **My Setup Score:** ________ / 8
@@ -133,9 +133,9 @@ Use this checklist to identify and trade divergence setups with Plutus Flow.
 
 **Key Reminders:**
 - ✅ Price can lie, but delta can't (someone bought/sold)
-- ✅ Confluence is everything (more factors = higher win rate)
+- ✅ Confluence is everything (more factors = higher reliability)
 - ✅ Regime context matters (divergence fails in strong trends)
-- ✅ Multi-timeframe confirmation adds 15-25% to edge
+- ✅ Multi-timeframe confirmation significantly increases edge
 
 **Educational purposes only. Not financial advice.**
 

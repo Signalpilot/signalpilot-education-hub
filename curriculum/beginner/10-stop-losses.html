@@ -73,7 +73,7 @@
         <li>Why "risk 2% always" is amateur hour (market volatility changes daily)</li>
         <li>ATR-based stops that adapt to market conditions</li>
         <li>Structure-based stops (if stop hits, thesis is DEAD)</li>
-        <li>The 2R minimum rule (40% win rate = profitable)</li>
+        <li>The 2R minimum rule (ensures positive expectancy even with lower accuracy)</li>
         <li>When NOT to use stops (hedged, options, DCA)</li>
       </ul>
 
@@ -241,45 +241,48 @@
 
       <h2>Why You Need at Least 2:1 Risk:Reward</h2>
 
-      <p>Pop quiz: What win rate do you need to be profitable?</p>
+      <p>Pop quiz: What's the minimum risk:reward ratio you need to be profitable?</p>
 
-      <p>Most people say 50%. They're wrong.</p>
+      <p>Most people say 1:1 (50% break-even). Wrong. You need minimum 2:1 for sustainable profitability.</p>
 
       <div class="callout-info">
-        <h4>📊 The Math of 2R</h4>
+        <h4>📊 The Math of 2R (Why It Works)</h4>
         <p><strong>2R = 2× Risk as Reward</strong></p>
         <p><strong>Example:</strong></p>
         <ul>
           <li>Risk: $100 (entry area to stop)</li>
           <li>Reward: $200 (entry area to target) = 2R</li>
         </ul>
-        <p><strong>Win rate needed:</strong> 40%</p>
+        <p><strong>Minimum accuracy needed:</strong> 40% (you can be wrong 60% of the time)</p>
         <hr style="margin:1rem 0;opacity:.3">
         <p><strong>The calculation:</strong></p>
-        <p><code>Expectancy = (Win Rate × Avg Win) - (Loss Rate × Avg Loss)</code></p>
+        <p><code>Expectancy = (Accuracy × Avg Win) - ((1 - Accuracy) × Avg Loss)</code></p>
         <p><code>= (0.40 × 2R) - (0.60 × 1R)</code></p>
         <p><code>= 0.80R - 0.60R = +0.20R per trade</code></p>
         <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px">
-          <strong>Translation:</strong> With 2R targets and 40% win rate, you're profitable. Lose 6 out of 10 trades and STILL make money.
+          <strong>Translation:</strong> With 2R targets and 40% accuracy, you have positive expectancy. Lose 6 out of 10 trades and STILL make money.
         </p>
       </div>
 
       <div style="margin:2rem 0;padding:1.5rem;background:rgba(255,255,255,.04);border-radius:12px">
-        <h3 style="margin-top:0">What Happens Below 2R?</h3>
+        <h3 style="margin-top:0">Minimum Accuracy Required by R:R</h3>
         <p><strong>1:1 Risk:Reward (1R):</strong></p>
         <ul>
-          <li>Need >50% win rate just to break even</li>
-          <li>Need 55-60% win rate to be profitable after fees</li>
+          <li>Need >50% accuracy just to break even</li>
+          <li>Need 55-60% accuracy to be profitable after fees</li>
+          <li>Expectancy at 50%: 0R (break-even before fees)</li>
         </ul>
         <p><strong>1.5:1 Risk:Reward (1.5R):</strong></p>
         <ul>
-          <li>Need 47% win rate to break even</li>
+          <li>Need 47% accuracy to break even</li>
           <li>Still requiring near-coin-flip accuracy</li>
+          <li>Expectancy at 47%: +0.05R (marginal)</li>
         </ul>
         <p><strong>2:1 Risk:Reward (2R):</strong></p>
         <ul>
-          <li>Need only 40% win rate to profit</li>
+          <li>Need only 40% accuracy to profit</li>
           <li>Can be wrong 60% of the time and still win</li>
+          <li>Expectancy at 40%: +0.20R (sustainable)</li>
         </ul>
       </div>
 
@@ -442,7 +445,7 @@
           <li><strong>Percentage stops fail</strong> (market doesn't care about your account)</li>
           <li><strong>ATR-based stops adapt to volatility</strong> (auto-scale to market conditions)</li>
           <li><strong>Structure-based stops invalidate thesis</strong> (if stop hits, setup is broken)</li>
-          <li><strong>2R minimum target</strong> (allows 40% win rate profitability)</li>
+          <li><strong>2R minimum target</strong> (ensures positive expectancy even with lower accuracy)</li>
           <li><strong>Breakeven at +1R</strong> (eliminate risk, play with house money)</li>
           <li><strong>Never move stop away</strong> (only closer—don't give losers "more room")</li>
         </ul>

@@ -49,7 +49,7 @@ Use this framework to analyze setups across three timeframes before every trade.
 **HTF Verdict:** ☐ Bullish  ☐ Bearish  ☐ Neutral
 
 **Trade with HTF?** ☐ Yes (go long if bullish, short if bearish)
-**Counter-trend?** ☐ No (skip this setup - fighting HTF = low win rate)
+**Counter-trend?** ☐ No (skip this setup - fighting HTF = low probability)
 
 ---
 
@@ -135,17 +135,17 @@ Use this framework to analyze setups across three timeframes before every trade.
 **3/3 Alignment** → ⭐⭐⭐ EXCELLENT SETUP
 - High conviction trade
 - Full position size (1% risk)
-- Win rate: 65-75%
+- Reliability: Highly reliable
 
 **2/3 Alignment** → ⭐⭐ GOOD SETUP
 - Proceed with caution
 - Reduced position size (0.5% risk)
-- Win rate: 55-65%
+- Reliability: Moderately reliable
 
 **1/3 or 0/3 Alignment** → ❌ SKIP TRADE
 - Fighting multiple timeframes
 - Gambling, not trading
-- Win rate: 30-45%
+- Reliability: Low probability
 
 **My Setup:** ________ / 3 aligned
 
@@ -175,7 +175,7 @@ Use this framework to analyze setups across three timeframes before every trade.
 
 **Result:** 2/3 bullish BUT fighting HTF → **SKIP THIS TRADE**
 
-*Why skip?* HTF sellers will crush any counter-trend rally. Win rate drops to 30-40%.
+*Why skip?* HTF sellers will crush any counter-trend rally. Success probability is very low.
 
 ---
 
@@ -215,8 +215,8 @@ ________________________________________________
 
 **2. HTF Trumps Everything**
 - Never fight the HTF trend
-- Counter-trend trades have 30-45% win rate
-- With-trend trades have 60-70% win rate
+- Counter-trend trades are low probability
+- With-trend trades are highly reliable
 
 **3. Wait for MTF Confirmation**
 - HTF + MTF alignment = patient entry

@@ -171,7 +171,7 @@ Dark Pools: 75K sold @ $101
 
 **Trade:** Long after sweep + reclaim
 
-**Win Rate:** 65-75%
+**Reliability:** Highly reliable pattern
 
 ---
 
@@ -189,7 +189,7 @@ Dark Pools: 75K sold @ $101
 
 **Trade:** Short after sweep + rejection
 
-**Win Rate:** 65-75%
+**Reliability:** Highly reliable pattern
 
 ---
 
@@ -206,7 +206,7 @@ Dark Pools: 75K sold @ $101
 
 **Trade:** Long continuation (with-trend)
 
-**Win Rate:** 60-70%
+**Reliability:** Reliable pattern
 
 ---
 
@@ -223,7 +223,7 @@ Dark Pools: 75K sold @ $101
 
 **Trade:** Long on reclaim (fade the breakdown)
 
-**Win Rate:** 55-65%
+**Reliability:** Moderately reliable pattern
 
 ---
 

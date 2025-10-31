@@ -43,14 +43,14 @@
       <p><b>"Feed price data into a neural network → profit."</b></p>
       <p>If only. Here's reality: 90% of ML trading strategies fail live. Not because ML doesn't work—because traders misuse it.</p>
       <p>Markets are non-stationary. Low signal-to-noise. ML overfits spectacularly if you're not careful.</p>
-      <div class="callout-warning"><h4>🚨 Real Talk</h4><p>ML isn't a magic money printer. It's pattern recognition on steroids. Use it wrong (data leakage, overfitting, insufficient data) and you'll backtest a 90% win rate that goes 40% live. Use it right? It's a powerful filter for high-probability setups.</p></div>
+      <div class="callout-warning"><h4>🚨 Real Talk</h4><p>ML isn't a magic money printer. It's pattern recognition on steroids. Use it wrong (data leakage, overfitting, insufficient data) and you'll backtest a 90% probability that goes 40% live. Use it right? It's a powerful filter for high-probability setups.</p></div>
       <div class="callout-tip"><h4>🎯 What You'll Gain</h4><p>After this lesson, you'll be able to:</p><ul><li>Build ML trade filters (predict which setups likely to win)</li><li>Engineer features properly (stationary, no look-ahead bias)</li><li>Use walk-forward cross-validation to avoid overfitting</li><li>Choose models wisely (Random Forest > Neural Networks for most cases)</li></ul></div>
-      <div class="callout-key"><h4>💡 The Aha Moment</h4><p>ML isn't a standalone strategy. It's a FILTER. You already have setups (Janus sweeps). ML predicts which ones have 75% vs 50% win rate. Trade the 75% ones, skip the 50%. That's the edge.</p></div>
+      <div class="callout-key"><h4>💡 The Aha Moment</h4><p>ML isn't a standalone strategy. It's a FILTER. You already have setups (Janus sweeps). ML predicts which ones have 75% vs 50% probability. Trade the 75% ones, skip the 50%. That's the edge.</p></div>
 
       <div class="key-takeaway">
         <h4>🎓 Key Takeaways</h4>
         <ul>
-          <li><strong>ML is a filter, not a strategy:</strong> Use it to predict which setups have higher win rates, not to generate trades</li>
+          <li><strong>ML is a filter, not a strategy:</strong> Use it to predict which setups have higher expectancy, not to generate trades</li>
           <li><strong>Feature engineering > model choice:</strong> Good features (RSI, VWAP distance) beat fancy models every time</li>
           <li><strong>Walk-forward validation is mandatory:</strong> Train/test split on time series = data leakage. Use rolling windows</li>
           <li><strong>Optimize for expectancy:</strong> 80% accuracy with bad R:R loses money. 55% accuracy with 3R wins</li>
@@ -61,7 +61,7 @@
 
       <div class="callout-key">
         <h4>🎯 Practice Exercise: Implement ML Feature Engineering for Trade Filtering</h4>
-        <p><strong>Objective:</strong> Build an ML model that filters your existing setups, improving win rate by 10-15% through selective trade-taking.</p>
+        <p><strong>Objective:</strong> Build an ML model that filters your existing setups, improving expectancy by 10-15% through selective trade-taking.</p>
 
         <p><strong>Part 1: Feature Engineering (The Most Important Step)</strong></p>
         <p>For each of your historical trades, calculate these features AT TIME OF SIGNAL (no look-ahead!):</p>
@@ -112,23 +112,23 @@ Train: Jan-Jun 2023 (trades 1-30)
 Test: Jul-Sep 2023 (trades 31-40)
 Model: Random Forest, max_depth=5
 Test Accuracy: ___%
-Test Win Rate: ___%
+Test Performance: ___%
 
 Window 2:
 Train: Apr-Sep 2023 (trades 15-50)
 Test: Oct-Dec 2023 (trades 51-65)
 Model: Re-train on new window
 Test Accuracy: ___%
-Test Win Rate: ___%
+Test Performance: ___%
 
 Window 3:
 Train: Jul-Dec 2023 (trades 35-75)
 Test: Jan-Mar 2024 (trades 76-90)
 Test Accuracy: ___%
-Test Win Rate: ___%
+Test Performance: ___%
 
-Average Test Performance: ___% win rate
-Compare to Baseline (no filter): ___% win rate
+Average Test Performance: ___% success rate
+Compare to Baseline (no filter): ___% success rate
 Improvement: +___% (goal: +10% minimum)</code></pre>
 
         <p><strong>Part 3: Model Selection and Overfitting Prevention</strong></p>
@@ -198,16 +198,16 @@ Probability 0.45-0.65 = Neutral (skip trade)
 Probability < 0.45 = Low confidence (skip or inverse)
 
 Backtest Results by Threshold:
-All Trades (no filter): 55% win rate, 1.8R avg
-Confidence > 0.60: ___% win rate, ___R avg
-Confidence > 0.65: ___% win rate, ___R avg
-Confidence > 0.70: ___% win rate, ___R avg (fewer trades)
+All Trades (no filter): 55% expectancy, 1.8R avg
+Confidence > 0.60: ___% expectancy, ___R avg
+Confidence > 0.65: ___% expectancy, ___R avg
+Confidence > 0.70: ___% expectancy, ___R avg (fewer trades)
 
 Optimal Threshold: 0.___ (maximize expectancy, not accuracy)
 
 YOUR RESULTS:
 Trades Taken with ML Filter: ___ / 100 total signals
-Win Rate Improvement: From ___% → ___% (+___%)
+Success Rate Improvement: From ___% → ___% (+___%)
 Expectancy Improvement: From $___/trade → $___/trade</code></pre>
 
         <p><strong>Part 6: Monitoring and Retraining Protocol</strong></p>
@@ -234,7 +234,7 @@ Retrain Process:
 - Compare new model to old model on same test set
 - Deploy only if new model outperforms by 3%+</code></pre>
 
-        <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.15);border-radius:8px"><strong>Implementation Goal:</strong> Build ML filter over 4-6 weeks using your last 50-100 trades. Deploy in paper trading for 20 signals. Example target: Improve win rate by 10%+ through selective filtering. If successful, ML just added 15-20% to your annual returns by helping you skip low-probability setups. This is how professionals use ML—not as magic, but as systematic edge enhancement.</p>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.15);border-radius:8px"><strong>Implementation Goal:</strong> Build ML filter over 4-6 weeks using your last 50-100 trades. Deploy in paper trading for 20 signals. Example target: Improve expectancy by 10%+ through selective filtering. If successful, ML just added 15-20% to your annual returns by helping you skip low-probability setups. This is how professionals use ML—not as magic, but as systematic edge enhancement.</p>
       </div>
 
       <div style="margin:3rem 0">

@@ -75,7 +75,12 @@
         <a href="#profit-loss" class="btn btn-sm btn-ghost">Profit/Loss</a>
         <a href="#fees" class="btn btn-sm btn-ghost">Fees & Commissions</a>
         <a href="#compound" class="btn btn-sm btn-ghost">Compound Growth</a>
-        <a href="#winrate" class="btn btn-sm btn-ghost">Win Rate & Expectancy</a>
+        <a href="#expectancy" class="btn btn-sm btn-ghost">Expectancy</a>
+        <a href="#drawdown" class="btn btn-sm btn-ghost">Drawdown Recovery</a>
+        <a href="#scaling" class="btn btn-sm btn-ghost">Position Scaling</a>
+        <a href="#slippage" class="btn btn-sm btn-ghost">Slippage Reality</a>
+        <a href="#r-multiple" class="btn btn-sm btn-ghost">R-Multiple Tracker</a>
+        <a href="#breakeven" class="btn btn-sm btn-ghost">Break-Even Recovery</a>
       </div>
     </div>
   </section>
@@ -169,7 +174,7 @@
             <div class="prose">
               <h3>Why Position Sizing is Everything</h3>
 
-              <p>Most traders lose not because they're wrong, but because they're <strong>sized wrong</strong>. You can have a 70% win rate and still blow up if you risk too much on the 30% that fail.</p>
+              <p>Most traders lose not because they're wrong, but because they're <strong>sized wrong</strong>. You can be right most of the time and still blow up if you risk too much when you're wrong.</p>
 
               <div class="callout callout-warning">
                 <h4>⚠️ The Asymmetry of Losses</h4>
@@ -324,9 +329,8 @@
 
               <div class="callout callout-success">
                 <h4>🎯 Kelly Criterion</h4>
-                <p>Advanced position sizing uses the Kelly Criterion formula:</p>
-                <p><strong>Kelly % = (Win Rate × Avg Win - Loss Rate × Avg Loss) / Avg Win</strong></p>
-                <p>Most pros use 1/4 Kelly to account for estimation errors. See our <a href="#winrate">Win Rate Calculator</a> for expectancy calculations.</p>
+                <p>Advanced position sizing uses the Kelly Criterion formula based on your edge and payoff ratio.</p>
+                <p>Most pros use 1/4 Kelly (fractional Kelly) to account for estimation errors and reduce volatility.</p>
               </div>
             </div>
           </div>
@@ -342,7 +346,7 @@
         <div class="calc-number">02</div>
         <div>
           <h2 class="headline md" style="margin:0">⚖️ Risk/Reward Calculator</h2>
-          <p class="calc-tagline">Taking a 1:1 risk/reward trade is like flipping a coin where heads you win $1, tails you lose $1. Even at 60% win rate, fees make you a loser.</p>
+          <p class="calc-tagline">Taking a 1:1 risk/reward trade is like flipping a coin where heads you win $1, tails you lose $1. Even if you're right more often, fees eat your edge.</p>
         </div>
       </div>
 
@@ -393,19 +397,11 @@
                     <span class="result-label">Reward Per Share</span>
                     <span class="result-value" id="rr-reward">-</span>
                   </div>
-                  <div class="result-item">
-                    <span class="result-label">Min Win Rate Needed</span>
-                    <span class="result-value" id="rr-min-wr">-</span>
-                  </div>
                 </div>
 
                 <div class="info-card" style="margin-top:1.5rem">
-                  <h5>💡 Win Rate Requirements</h5>
-                  <ul style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.8">
-                    <li>1:1 R:R = Need 50% win rate</li>
-                    <li>1:2 R:R = Need 34% win rate</li>
-                    <li>1:3 R:R = Need 25% win rate</li>
-                  </ul>
+                  <h5>💡 What Matters</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">Risk/Reward ratio determines your expectancy. Focus on finding setups with 2:1 minimum R:R.</p>
                 </div>
               </div>
             </div>
@@ -414,9 +410,9 @@
           <!-- Why This Matters Tab -->
           <div class="tab-panel">
             <div class="prose">
-              <h3>Why R:R Matters More Than Win Rate</h3>
+              <h3>Why R:R Determines Your Expectancy</h3>
 
-              <p>Retail traders obsess over win rate. Professionals obsess over R:R. You can be profitable with 30% win rate at 3:1 R:R, but you'll lose money with 60% win rate at 1:2 R:R.</p>
+              <p>Professional traders focus on R:R (Risk/Reward) because it directly controls expectancy. You can be right less often and still be highly profitable if your winners are bigger than your losers.</p>
 
               <div class="callout callout-info">
                 <h4>📊 The Casino Principle</h4>
@@ -427,59 +423,61 @@
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
                 <div class="comparison-box bad">
-                  <h5>❌ Trader A: "I win most trades!"</h5>
+                  <h5>❌ Trader A: "I take quick profits"</h5>
                   <ul style="margin:0.5rem 0">
-                    <li>Win Rate: 70%</li>
                     <li>R:R: 1:1</li>
-                    <li>70 wins × $100 = $7,000</li>
-                    <li>30 losses × $100 = $3,000</li>
-                    <li><strong>Net: $4,000</strong></li>
+                    <li>100 trades, 55% success</li>
+                    <li>55 wins × $100 = $5,500</li>
+                    <li>45 losses × $100 = $4,500</li>
+                    <li><strong>Net: $1,000</strong></li>
+                    <li><strong>Expectancy: $10/trade</strong></li>
                   </ul>
                 </div>
 
                 <div class="comparison-box good">
-                  <h5>✓ Trader B: "I lose most trades..."</h5>
+                  <h5>✓ Trader B: "I let winners run"</h5>
                   <ul style="margin:0.5rem 0">
-                    <li>Win Rate: 40%</li>
                     <li>R:R: 1:3</li>
-                    <li>40 wins × $300 = $12,000</li>
-                    <li>60 losses × $100 = $6,000</li>
-                    <li><strong>Net: $6,000</strong></li>
+                    <li>100 trades, 35% success</li>
+                    <li>35 wins × $300 = $10,500</li>
+                    <li>65 losses × $100 = $6,500</li>
+                    <li><strong>Net: $4,000</strong></li>
+                    <li><strong>Expectancy: $40/trade</strong></li>
                   </ul>
                 </div>
               </div>
 
-              <p><strong>Trader B makes 50% MORE despite being "wrong" 60% of the time.</strong></p>
+              <p><strong>Trader B makes 4X MORE with better R:R ratios, even with fewer winning trades.</strong></p>
 
-              <h4>Minimum R:R by Win Rate (Break-Even)</h4>
+              <h4>Professional R:R Standards</h4>
               <table class="comparison-table">
                 <thead>
                   <tr>
-                    <th>Win Rate</th>
-                    <th>Min R:R to Break Even</th>
-                    <th>Comfortable R:R</th>
+                    <th>Setup Type</th>
+                    <th>Minimum R:R</th>
+                    <th>Target R:R</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>30%</td>
-                    <td>1:2.3</td>
-                    <td class="good">1:3+</td>
+                    <td>Scalping</td>
+                    <td>1.5:1</td>
+                    <td class="warn">2:1</td>
                   </tr>
                   <tr>
-                    <td>40%</td>
-                    <td>1:1.5</td>
-                    <td class="good">1:2+</td>
+                    <td>Day Trading</td>
+                    <td>2:1</td>
+                    <td class="good">3:1</td>
                   </tr>
                   <tr>
-                    <td>50%</td>
-                    <td>1:1</td>
-                    <td class="warn">1:1.5+</td>
+                    <td>Swing Trading</td>
+                    <td>2.5:1</td>
+                    <td class="good">4:1+</td>
                   </tr>
                   <tr>
-                    <td>60%</td>
-                    <td>1:0.67</td>
-                    <td class="warn">1:1+</td>
+                    <td>Position Trading</td>
+                    <td>3:1</td>
+                    <td class="good">5:1+</td>
                   </tr>
                 </tbody>
               </table>
@@ -492,7 +490,7 @@
                   <li>They're impatient (target is "too far away")</li>
                   <li>They put stops too close (don't want to risk "that much")</li>
                 </ol>
-                <p><strong>Result:</strong> 55-60% win rate but still losing money after fees.</p>
+                <p><strong>Result:</strong> Poor expectancy even when they're right often, still losing money after fees.</p>
               </div>
             </div>
           </div>
@@ -552,7 +550,7 @@
                 <div>
                   <h4>The 2:1 Minimum Rule</h4>
                   <p>Never take a trade below 2:1 R:R. This single rule will transform your trading.</p>
-                  <p><strong>Why?</strong> At 2:1, you only need 34% win rate to be profitable. Gives massive margin for error.</p>
+                  <p><strong>Why?</strong> At 2:1, you can be wrong twice as often as you're right and still break even. Gives massive margin for error.</p>
                 </div>
               </div>
 
@@ -579,7 +577,7 @@
                 <div>
                   <h4>R:R Filters by Timeframe</h4>
                   <ul style="margin:0.5rem 0">
-                    <li>Scalping: Minimum 1.5:1 (tight R:R, high win rate needed)</li>
+                    <li>Scalping: Minimum 1.5:1 (tight R:R, less room for error)</li>
                     <li>Day Trading: Minimum 2:1</li>
                     <li>Swing Trading: Minimum 2.5:1</li>
                     <li>Position Trading: Minimum 3:1</li>
@@ -738,7 +736,7 @@
                   <li><strong>Dollar P&L:</strong> Pays the bills</li>
                   <li><strong>Percentage Return:</strong> Measures skill</li>
                   <li><strong>R-Multiples:</strong> Normalizes across different setups</li>
-                  <li><strong>Win Rate:</strong> Combined with avg R to calculate expectancy</li>
+                  <li><strong>Expectancy:</strong> Average profit per trade (the most important metric)</li>
                 </ul>
               </div>
             </div>
@@ -789,7 +787,7 @@
                 <ul>
                   <li>Average Winner: +X%</li>
                   <li>Average Loser: -Y%</li>
-                  <li>Win Rate: Z%</li>
+                  <li>Expectancy: $Z per trade</li>
                 </ul>
                 <p>If you can't consistently make 1-2% per winning trade, something's wrong with your execution.</p>
               </div>
@@ -1338,14 +1336,14 @@
     </div>
   </section>
 
-  <!-- Calculator 6: Win Rate & Expectancy -->
-  <section class="wrap" id="winrate" style="margin:4rem auto">
+  <!-- Calculator 6: Expectancy Calculator -->
+  <section class="wrap" id="expectancy" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">06</div>
         <div>
-          <h2 class="headline md" style="margin:0">🎯 Win Rate & Expectancy Calculator</h2>
-          <p class="calc-tagline">You have a 60% win rate? Congratulations, you're either about to blow up or you're profitable. Win rate alone tells me nothing.</p>
+          <h2 class="headline md" style="margin:0">🎯 Expectancy Calculator</h2>
+          <p class="calc-tagline">The ONLY metric that matters. If your expectancy is negative, you're mathematically guaranteed to lose. If it's positive, you print money.</p>
         </div>
       </div>
 
@@ -1362,57 +1360,49 @@
             <div class="calc-grid">
               <div class="calc-inputs">
                 <div class="form-group">
-                  <label>Number of Wins</label>
-                  <input type="number" id="wr-wins" class="calc-input" value="60" min="0" step="1">
+                  <label>Total Wins ($)</label>
+                  <input type="number" id="exp-total-wins" class="calc-input" value="12000" min="0" step="100">
                 </div>
 
                 <div class="form-group">
-                  <label>Number of Losses</label>
-                  <input type="number" id="wr-losses" class="calc-input" value="40" min="0" step="1">
+                  <label>Total Losses ($)</label>
+                  <input type="number" id="exp-total-losses" class="calc-input" value="4000" min="0" step="100">
                 </div>
 
                 <div class="form-group">
-                  <label>Average Win ($)</label>
-                  <input type="number" id="wr-avg-win" class="calc-input" value="200" min="0" step="1">
+                  <label>Number of Trades</label>
+                  <input type="number" id="exp-num-trades" class="calc-input" value="100" min="1" step="1">
                 </div>
 
-                <div class="form-group">
-                  <label>Average Loss ($)</label>
-                  <input type="number" id="wr-avg-loss" class="calc-input" value="100" min="0" step="1">
-                </div>
-
-                <button class="btn btn-primary" onclick="calculateWinRate()">Calculate Expectancy</button>
+                <button class="btn btn-primary" onclick="calculateExpectancy()">Calculate Expectancy</button>
+                <button class="btn btn-secondary" onclick="loadExpectancyExample()">Load Example</button>
               </div>
 
               <div class="calc-results">
-                <div id="wr-result" class="result-box" style="display:none">
+                <div id="exp-result" class="result-box" style="display:none">
                   <h4 style="margin:0 0 1rem 0">Results</h4>
                   <div class="result-item large">
-                    <span class="result-label">Win Rate</span>
-                    <span class="result-value" id="wr-rate">-</span>
-                  </div>
-                  <div id="wr-verdict" class="verdict-box" style="margin:1rem 0"></div>
-                  <div class="result-item large">
                     <span class="result-label">Expectancy Per Trade</span>
-                    <span class="result-value" id="wr-expectancy">-</span>
+                    <span class="result-value" id="exp-value">-</span>
                   </div>
+                  <div id="exp-verdict" class="verdict-box" style="margin:1rem 0"></div>
                   <div class="result-item">
                     <span class="result-label">Profit Factor</span>
-                    <span class="result-value" id="wr-pf">-</span>
+                    <span class="result-value" id="exp-pf">-</span>
                   </div>
                   <div class="result-item">
-                    <span class="result-label">Total Trades</span>
-                    <span class="result-value" id="wr-total">-</span>
+                    <span class="result-label">Average R-Multiple</span>
+                    <span class="result-value" id="exp-avg-r">-</span>
                   </div>
                   <div class="result-item">
-                    <span class="result-label">Average R</span>
-                    <span class="result-value" id="wr-avg-r">-</span>
+                    <span class="result-label">Net Profit</span>
+                    <span class="result-value" id="exp-net">-</span>
                   </div>
                 </div>
 
                 <div class="info-card" style="margin-top:1.5rem">
-                  <h5>💡 What Matters</h5>
-                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">Win rate is vanity. Expectancy is reality. Profit factor is survival.</p>
+                  <h5>💡 What This Means</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">Expectancy is your average profit per trade. If positive, you're printing money. If negative, you're mathematically doomed.</p>
                 </div>
               </div>
             </div>
@@ -1421,64 +1411,54 @@
           <!-- Why This Matters Tab -->
           <div class="tab-panel">
             <div class="prose">
-              <h3>Win Rate is the Most Misunderstood Metric</h3>
+              <h3>Expectancy Is The ONLY Metric That Matters</h3>
 
-              <p>Beginners obsess over win rate ("I need to win more trades!"). Professionals IGNORE it ("I only need 35% with proper R:R"). The ONLY metric that matters is EXPECTANCY—your average expected profit per trade.</p>
+              <p>Forget everything else. Expectancy tells you the average $ you make (or lose) per trade. It's the single number that determines if you're profitable or bankrupt.</p>
 
-              <div class="callout callout-warning">
-                <h4>⚠️ The Win Rate Trap</h4>
-                <p><strong>Trader A: 90% Win Rate</strong></p>
-                <ul>
-                  <li>90 wins × $10 = $900</li>
-                  <li>10 losses × $1,000 = $10,000</li>
-                  <li><strong>Net: -$9,100</strong></li>
-                </ul>
-                <p><strong>Trader B: 30% Win Rate</strong></p>
-                <ul>
-                  <li>30 wins × $500 = $15,000</li>
-                  <li>70 losses × $50 = $3,500</li>
-                  <li><strong>Net: +$11,500</strong></li>
-                </ul>
-                <p style="margin-top:1rem">Trader A has 90% win rate and is bankrupt. Trader B has 30% win rate and is profitable.</p>
+              <div class="callout callout-info">
+                <h4>💎 The Brutal Truth</h4>
+                <p><strong>Positive expectancy = Money printing machine</strong></p>
+                <p><strong>Negative expectancy = Slow death by 1,000 cuts</strong></p>
+                <p>There's no middle ground. The math doesn't care about your feelings.</p>
               </div>
 
-              <h4>The Math That Breaks Retail Traders</h4>
+              <h4>Real Example: Two Traders, 100 Trades Each</h4>
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
                 <div class="comparison-box bad">
-                  <h5>❌ High Win Rate, Negative Expectancy</h5>
+                  <h5>❌ Trader A: Negative Expectancy</h5>
                   <ul style="margin:0.5rem 0">
-                    <li>Win Rate: 70%</li>
-                    <li>Avg Win: $100</li>
-                    <li>Avg Loss: $300</li>
-                    <li>Expectancy: (0.70 × $100) - (0.30 × $300)</li>
-                    <li><strong>= -$20 per trade</strong></li>
+                    <li>Total Wins: $7,000</li>
+                    <li>Total Losses: $9,000</li>
+                    <li>100 trades</li>
+                    <li><strong>Expectancy: -$20/trade</strong></li>
                   </ul>
-                  <p style="margin-top:1rem">Losing money despite "winning most trades."</p>
+                  <p style="margin-top:1rem">After 1,000 trades: <strong>-$20,000</strong></p>
+                  <p>Mathematically guaranteed to lose.</p>
                 </div>
 
                 <div class="comparison-box good">
-                  <h5>✓ Low Win Rate, Positive Expectancy</h5>
+                  <h5>✓ Trader B: Positive Expectancy</h5>
                   <ul style="margin:0.5rem 0">
-                    <li>Win Rate: 35%</li>
-                    <li>Avg Win: $500</li>
-                    <li>Avg Loss: $100</li>
-                    <li>Expectancy: (0.35 × $500) - (0.65 × $100)</li>
-                    <li><strong>= +$110 per trade</strong></li>
+                    <li>Total Wins: $12,000</li>
+                    <li>Total Losses: $4,000</li>
+                    <li>100 trades</li>
+                    <li><strong>Expectancy: +$80/trade</strong></li>
                   </ul>
-                  <p style="margin-top:1rem">Making money despite "losing most trades."</p>
+                  <p style="margin-top:1rem">After 1,000 trades: <strong>+$80,000</strong></p>
+                  <p>Mathematically guaranteed to win.</p>
                 </div>
               </div>
 
-              <div class="callout callout-success">
-                <h4>✓ What Professionals Track</h4>
-                <p><strong>Expectancy:</strong> Average $ per trade (must be positive)</p>
-                <p><strong>Profit Factor:</strong> Gross Profit / Gross Loss</p>
+              <div class="callout callout-warning">
+                <h4>⚠️ Why Most Traders Fail</h4>
+                <p>They track everything EXCEPT expectancy:</p>
                 <ul>
-                  <li>PF < 1.0 = Losing</li>
-                  <li>PF = 1.5-2.0 = Profitable</li>
-                  <li>PF > 3.0 = Elite</li>
+                  <li>Total P&L (misleading—could be luck)</li>
+                  <li>Biggest win (irrelevant if you give it back)</li>
+                  <li>Number of green days (doesn't matter if red days are bigger)</li>
                 </ul>
+                <p><strong>Track expectancy. Nothing else matters.</strong></p>
               </div>
             </div>
           </div>
@@ -1492,153 +1472,124 @@
                 <div class="tip-icon">💎</div>
                 <div>
                   <h4>Expectancy Formula</h4>
-                  <p><strong>Expectancy = (Win Rate × Avg Win) - (Loss Rate × Avg Loss)</strong></p>
-                  <p>This tells you the average $ you can expect per trade over the long run.</p>
-                  <p>Must be POSITIVE or you're statistically guaranteed to lose.</p>
+                  <p><strong>Expectancy = (Total Wins - Total Losses) / Number of Trades</strong></p>
+                  <p>That's it. Dead simple. Your average profit per trade.</p>
                 </div>
               </div>
 
-              <h4>Win Rate Requirements by R:R</h4>
-
-              <table class="comparison-table">
-                <thead>
-                  <tr>
-                    <th>R:R Ratio</th>
-                    <th>Min Win Rate (Break-Even)</th>
-                    <th>Comfortable Win Rate</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1:1</td>
-                    <td>50%</td>
-                    <td class="warn">60%+</td>
-                  </tr>
-                  <tr>
-                    <td>1:2</td>
-                    <td>34%</td>
-                    <td class="good">45%+</td>
-                  </tr>
-                  <tr>
-                    <td>1:3</td>
-                    <td>25%</td>
-                    <td class="good">35%+</td>
-                  </tr>
-                  <tr>
-                    <td>2:1</td>
-                    <td>66%</td>
-                    <td class="bad">75%+</td>
-                  </tr>
-                  <tr>
-                    <td>3:1</td>
-                    <td>75%</td>
-                    <td class="bad">85%+</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <p><strong>Key Insight:</strong> Trading at 1:3 R:R, you only need 25% win rate to BREAK EVEN. At 35% you're PROFITABLE.</p>
+              <h4>Profit Factor (Supporting Metric)</h4>
 
               <div class="callout callout-info">
-                <h4>📊 Profit Factor Breakdown</h4>
-                <p><strong>Formula:</strong> (# Wins × Avg Win) / (# Losses × Avg Loss)</p>
-                <p><strong>Example:</strong> 60 wins @ $200 avg, 40 losses @ $100 avg</p>
+                <h4>📊 Profit Factor = Total Wins / Total Losses</h4>
+                <p>Shows how much you make per dollar lost.</p>
                 <ul>
-                  <li>Gross Profit: 60 × $200 = $12,000</li>
-                  <li>Gross Loss: 40 × $100 = $4,000</li>
-                  <li>Profit Factor: $12,000 / $4,000 = 3.0</li>
+                  <li>PF < 1.0 = Losing system</li>
+                  <li>PF = 1.5-2.0 = Profitable system</li>
+                  <li>PF > 3.0 = Elite system</li>
                 </ul>
-                <p>This is what profitable trading looks like. Not 95% win rate. Just consistent edge executed repeatedly.</p>
+                <p><strong>Example:</strong> $12,000 wins / $4,000 losses = 3.0 Profit Factor</p>
               </div>
+
+              <h4>Average R-Multiple</h4>
+
+              <p>If you track risk in R-units (1R = your initial risk per trade):</p>
 
               <div class="tip-card">
                 <div class="tip-icon">💎</div>
                 <div>
-                  <h4>Consecutive Loss Probability</h4>
-                  <p>Even at 60% win rate, you WILL hit losing streaks:</p>
-                  <ul>
-                    <li>5 losses in a row: 1% chance every 100 trades</li>
-                    <li>10 losses in a row: 0.01% chance (rare but happens)</li>
-                  </ul>
-                  <p>That's not bad luck—that's normal variance. Expect it or quit when it happens.</p>
+                  <p><strong>Average R = Net Profit / (Number of Trades × Risk per Trade)</strong></p>
+                  <p>Normalizes performance across different position sizes.</p>
+                  <p><strong>Target:</strong> +0.5R to +1R per trade = professional level</p>
                 </div>
               </div>
+
+              <h4>Sample Size Matters</h4>
+
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Number of Trades</th>
+                    <th>Confidence Level</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>&lt;30</td>
+                    <td class="bad">Not statistically significant</td>
+                  </tr>
+                  <tr>
+                    <td>30-100</td>
+                    <td class="warn">Marginal confidence</td>
+                  </tr>
+                  <tr>
+                    <td>100-300</td>
+                    <td class="good">Good confidence</td>
+                  </tr>
+                  <tr>
+                    <td>300+</td>
+                    <td class="good">High confidence</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
           <!-- Pro Analysis Tab -->
           <div class="tab-panel">
             <div class="prose">
-              <h3>Professional Performance Analysis</h3>
+              <h3>Professional Expectancy Standards</h3>
 
               <div class="callout callout-success">
                 <h4>✓ What Your Numbers Should Look Like</h4>
-                <p>After 100+ trades, professionals typically have:</p>
-                <ul>
-                  <li><strong>Win Rate:</strong> 40-55% (NOT 70%+)</li>
-                  <li><strong>Average R:</strong> 1.5R-3R on winners</li>
-                  <li><strong>Profit Factor:</strong> 1.5-2.5</li>
-                  <li><strong>Expectancy:</strong> 0.5R-1R per trade</li>
-                </ul>
+                <p><strong>Scalping:</strong> $5-20 expectancy per trade</p>
+                <p><strong>Day Trading:</strong> $20-100 expectancy per trade</p>
+                <p><strong>Swing Trading:</strong> $100-500 expectancy per trade</p>
+                <p><strong>Position Trading:</strong> $500-2,000+ expectancy per trade</p>
               </div>
 
-              <h4>Why Most Profitable Traders Have 40-55% Win Rate</h4>
+              <h4>The Expectancy Improvement Framework</h4>
 
               <div class="tip-card">
                 <div class="tip-icon">💎</div>
                 <div>
-                  <p>They wait for GREAT setups (fewer trades)</p>
-                  <p>They take profits at logical targets (big R multiples)</p>
-                  <p>They cut losses FAST (small R multiples)</p>
-                  <p><strong>Result:</strong> Lower win rate, higher profitability.</p>
+                  <h4>Only 2 Ways to Improve Expectancy:</h4>
+                  <p><strong>1. Increase average winner</strong></p>
+                  <ul>
+                    <li>Let winners run (trail stops)</li>
+                    <li>Take partials at logical targets</li>
+                    <li>Better entry timing (improve R:R)</li>
+                  </ul>
+                  <p><strong>2. Decrease average loser</strong></p>
+                  <ul>
+                    <li>Cut losses faster</li>
+                    <li>Tighter stops at structure</li>
+                    <li>Skip low R:R setups entirely</li>
+                  </ul>
                 </div>
-              </div>
-
-              <div class="callout callout-warning">
-                <h4>⚠️ Warning Signs</h4>
-                <p><strong>If your win rate is >70%, you're probably:</strong></p>
-                <ol>
-                  <li>Overtrading (taking mediocre setups)</li>
-                  <li>Taking profits too early (low R:R)</li>
-                  <li>Moving stops (not honoring original risk)</li>
-                  <li>Cherry-picking closed trades (fooling yourself)</li>
-                </ol>
               </div>
 
               <div class="mistake-card">
-                <div class="mistake-header bad">❌ The Psychology Trap</div>
-                <h4>Cutting Winners, Letting Losers Run</h4>
-                <p>Humans are wired to HATE losing. So we:</p>
-                <ul>
-                  <li>Cut winners early (lock in dopamine hit)</li>
-                  <li>Let losers run (avoid pain of accepting loss)</li>
-                </ul>
-                <p><strong>Result:</strong> High win rate, negative expectancy, eventual bankruptcy.</p>
+                <div class="mistake-header bad">❌ The Expectancy Killer</div>
+                <h4>Taking Profits Too Early</h4>
+                <p>Most traders cut winners at +1R and let losers run to -1R.</p>
+                <p><strong>Result:</strong> Even with 60% accuracy, expectancy is ZERO.</p>
                 <div class="mistake-fix">
-                  <strong>✓ Fix:</strong> Professionals force themselves to do the opposite:
+                  <strong>✓ Fix:</strong> Minimum 2:1 R:R on every trade
                   <ul>
-                    <li>Cut losers FAST (take pain early)</li>
-                    <li>Let winners RUN (delay gratification)</li>
+                    <li>Scale out: Take 50% at 2R, let 50% run to 4R+</li>
+                    <li>Average winner: 3R</li>
+                    <li>Average loser: -1R</li>
+                    <li><strong>Result:</strong> Positive expectancy even at 40% accuracy</li>
                   </ul>
-                  Result: Lower win rate, positive expectancy, long-term profitability.
-                </div>
-              </div>
-
-              <div class="tip-card">
-                <div class="tip-icon">💎</div>
-                <div>
-                  <h4>The 30-Day Challenge</h4>
-                  <p>Don't track win rate for 30 days. ONLY track expectancy.</p>
-                  <p>You'll stop chasing setups with mediocre R:R just to "keep your win rate up."</p>
-                  <p>Focus on average R per trade. That's your real edge.</p>
                 </div>
               </div>
 
               <div class="callout callout-info">
                 <h4>📖 Related Education</h4>
-                <p>For deep dive into expectancy and performance metrics, see:</p>
+                <p>For deep dive into expectancy optimization:</p>
                 <ul>
-                  <li><a href="/curriculum/intermediate/26-trade-journal-mastery.html">Article #26: Journaling & Review Systems</a></li>
+                  <li><a href="/curriculum/beginner/09-position-sizing.html">Article #9: Position Sizing Science</a></li>
+                  <li><a href="/curriculum/intermediate/26-trade-journal-mastery.html">Article #26: Performance Tracking</a></li>
                   <li><a href="/curriculum/advanced/39-performance-attribution.html">Article #39: Performance Attribution</a></li>
                 </ul>
               </div>
@@ -1872,56 +1823,6 @@ function calculateCompoundGrowth() {
   document.getElementById('cg-pct').textContent = '+' + totalReturnPct.toFixed(2) + '%';
   document.getElementById('cg-annual').textContent = annualizedReturn.toFixed(2) + '% per year';
   document.getElementById('cg-result').style.display = 'block';
-}
-
-// Win Rate Calculator
-function calculateWinRate() {
-  const wins = parseInt(document.getElementById('wr-wins').value);
-  const losses = parseInt(document.getElementById('wr-losses').value);
-  const avgWin = parseFloat(document.getElementById('wr-avg-win').value);
-  const avgLoss = parseFloat(document.getElementById('wr-avg-loss').value);
-
-  const totalTrades = wins + losses;
-  const winRate = (wins / totalTrades) * 100;
-
-  const expectancy = (winRate / 100 * avgWin) - ((1 - winRate / 100) * avgLoss);
-  const profitFactor = (wins * avgWin) / (losses * avgLoss);
-  const avgR = avgWin / avgLoss;
-
-  document.getElementById('wr-rate').textContent = winRate.toFixed(2) + '%';
-
-  const expectancyEl = document.getElementById('wr-expectancy');
-  expectancyEl.textContent = '$' + expectancy.toFixed(2);
-  expectancyEl.style.color = expectancy >= 0 ? '#3ed598' : '#ff6b6b';
-
-  const pfEl = document.getElementById('wr-pf');
-  pfEl.textContent = profitFactor.toFixed(2);
-  if (profitFactor >= 2) {
-    pfEl.style.color = '#3ed598';
-  } else if (profitFactor >= 1.5) {
-    pfEl.style.color = '#f9a23c';
-  } else {
-    pfEl.style.color = '#ff6b6b';
-  }
-
-  document.getElementById('wr-total').textContent = totalTrades;
-  document.getElementById('wr-avg-r').textContent = avgR.toFixed(2) + 'R';
-
-  // Verdict
-  const verdictBox = document.getElementById('wr-verdict');
-  let verdictHTML = '';
-  if (expectancy > 50 && profitFactor > 2) {
-    verdictHTML = '<div class="verdict good">✓ Excellent System - Elite expectancy and profit factor</div>';
-  } else if (expectancy > 0 && profitFactor > 1.5) {
-    verdictHTML = '<div class="verdict good">✓ Profitable System - Positive expectancy</div>';
-  } else if (expectancy > 0) {
-    verdictHTML = '<div class="verdict warn">⚠️ Marginal System - Barely profitable, needs improvement</div>';
-  } else {
-    verdictHTML = '<div class="verdict bad">❌ Losing System - Negative expectancy, do not trade this</div>';
-  }
-  verdictBox.innerHTML = verdictHTML;
-
-  document.getElementById('wr-result').style.display = 'block';
 }
 
 // Set current year
