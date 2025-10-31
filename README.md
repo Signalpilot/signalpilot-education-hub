@@ -60,7 +60,7 @@
 - Market microstructure (bid-ask, order book, market making, HFT)
 - Advanced order flow (footprint charts, dark pools, smart money divergence)
 - Multi-timeframe mastery
-- Signal Pilot indicators (Janus Atlas, Plutus Flow, The Volume Oracle)
+- Signal Pilot indicators (Janus Atlas, Plutus Flow, Volume Oracle)
 - Regime detection & portfolio construction
 - Backtesting methodology
 - Trade journal mastery
@@ -76,7 +76,7 @@
 19. Multi-Timeframe Mastery
 20. Janus Atlas Advanced
 21. Plutus Flow Mastery
-22. The Volume Oracle Regimes
+22. Volume Oracle Regimes
 23. Portfolio Construction
 24. Backtesting Reality
 25. Trade Journal Mastery
@@ -186,7 +186,7 @@ xdg-open index.html # Linux
 **Core Indicators:**
 - **Janus Atlas** - Liquidity sweep detection
 - **Plutus Flow** - Volume analysis & delta reading
-- **The Volume Oracle** - Regime detection & market structure
+- **Volume Oracle** - Regime detection & market structure
 - **Harmonic Oscillator** - Timing & momentum
 - **Pentarch** - Complete 8-component cycle-phase system
 
