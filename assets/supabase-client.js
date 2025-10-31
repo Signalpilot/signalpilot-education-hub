@@ -303,6 +303,48 @@
 
   // ========== UI UPDATES ==========
 
+  // Create and inject auth UI elements into header
+  function createAuthUIElements() {
+    const headerCtls = document.querySelector('.header-ctls');
+    if (!headerCtls) {
+      console.log('[Supabase] No header-ctls found, skipping auth UI');
+      return;
+    }
+
+    // Check if already created
+    if (document.getElementById('auth-button')) {
+      return; // Already exists
+    }
+
+    // Create cloud sync indicator
+    const syncIndicator = document.createElement('div');
+    syncIndicator.id = 'cloud-sync-indicator';
+    syncIndicator.className = 'cloud-sync-indicator';
+    syncIndicator.style.display = 'none';
+    syncIndicator.innerHTML = '<span class="sync-icon">☁️</span>';
+    syncIndicator.title = 'Progress synced to cloud';
+
+    // Create auth button
+    const authBtn = document.createElement('button');
+    authBtn.id = 'auth-button';
+    authBtn.className = 'btn btn-primary btn-sm';
+    authBtn.textContent = 'Sign In';
+    authBtn.onclick = showAuthModal;
+
+    // Insert before menu toggle (so it appears before it on mobile)
+    const menuToggle = headerCtls.querySelector('.menu-toggle');
+    if (menuToggle) {
+      headerCtls.insertBefore(syncIndicator, menuToggle);
+      headerCtls.insertBefore(authBtn, menuToggle);
+    } else {
+      // No menu toggle, just append
+      headerCtls.appendChild(syncIndicator);
+      headerCtls.appendChild(authBtn);
+    }
+
+    console.log('[Supabase] Auth UI elements created');
+  }
+
   function updateAuthUI(user) {
     // Update auth button
     const authBtn = document.getElementById('auth-button');
@@ -374,6 +416,9 @@
 
   async function init() {
     try {
+      // Create auth UI elements first
+      createAuthUIElements();
+
       await initSupabase();
 
       if (supabase) {
