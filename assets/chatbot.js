@@ -887,6 +887,11 @@
       button.setAttribute('aria-expanded', isActive);
 
       if (isActive) {
+        // Track chatbot opened
+        if (typeof trackChatbotOpened === 'function') {
+          trackChatbotOpened();
+        }
+
         // First time opening - show context-aware welcome
         const messages = document.getElementById('chatbot-messages');
         if (messages.children.length === 0) {
