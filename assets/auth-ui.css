@@ -31,12 +31,15 @@
   position: relative;
   width: 90%;
   max-width: 450px;
+  max-height: 90vh;
+  overflow-y: auto;
   background: var(--bg-2);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 2.5rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   animation: slideUp 0.3s ease;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes slideUp {
@@ -400,22 +403,109 @@
 }
 
 /* Responsive */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .auth-modal {
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
   .auth-modal-content {
-    width: 95%;
-    padding: 2rem 1.5rem;
+    width: 92%;
+    max-height: calc(100vh - 4rem);
+    padding: 2rem 1.75rem;
   }
 
   .auth-header h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  .form-group input {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-modal {
+    align-items: flex-start;
+    padding-top: 1rem;
+  }
+
+  .auth-modal-content {
+    width: 95%;
+    max-height: calc(100vh - 2rem);
+    padding: 1.5rem 1.25rem;
+    border-radius: 12px;
+  }
+
+  .auth-modal-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 1.25rem;
+    padding: 0.25rem;
+  }
+
+  .auth-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .auth-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .auth-header p {
+    font-size: 0.85rem;
+  }
+
+  .auth-form {
+    gap: 1rem;
+  }
+
+  .form-group {
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .form-group input {
+    padding: 0.75rem 0.85rem;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  .btn-full {
+    padding: 0.875rem;
+    font-size: 0.95rem;
   }
 
   .auth-links {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.5rem;
   }
 
   .auth-links a {
     text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .auth-footer {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+
+  .auth-footer p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .auth-modal-content {
+    width: 96%;
+    padding: 1.25rem 1rem;
+  }
+
+  .auth-header h2 {
+    font-size: 1.25rem;
   }
 }
