@@ -10,7 +10,7 @@
 
 ### ✅ **COMPLETE: 42 Professional Trading Lessons**
 
-**110,000+ words** of institutional-grade trading education across 3 tiers
+**110,000+ words** of comprehensive trading education across 3 tiers
 
 | Tier | Lessons | Status | Word Count |
 |------|---------|--------|------------|
