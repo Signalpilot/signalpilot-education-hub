@@ -183,6 +183,11 @@ Tips:
       const isActive = panel.classList.toggle('active');
       button.setAttribute('aria-expanded', isActive);
       if (isActive) {
+        // Track notes opened
+        if (typeof trackNotesOpened === 'function') {
+          trackNotesOpened();
+        }
+
         textarea.focus();
         // Set cursor to end
         textarea.selectionStart = textarea.value.length;
@@ -210,6 +215,11 @@ Tips:
           lesson_id: lessonId,
           character_count: content.length
         });
+      }
+
+      // Track notes saved
+      if (typeof trackNotesSaved === 'function') {
+        trackNotesSaved();
       }
     }
 
