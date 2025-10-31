@@ -138,6 +138,7 @@
                 </div>
 
                 <button class="btn btn-primary" onclick="calculatePositionSize()">Calculate Position Size</button>
+                <button class="btn btn-secondary" onclick="loadPositionSizeExample()">Load Example</button>
               </div>
 
               <div class="calc-results">
@@ -379,6 +380,7 @@
                 </div>
 
                 <button class="btn btn-primary" onclick="calculateRiskReward()">Calculate R:R</button>
+                <button class="btn btn-secondary" onclick="loadRiskRewardExample()">Load Example</button>
               </div>
 
               <div class="calc-results">
@@ -649,6 +651,7 @@
                 </div>
 
                 <button class="btn btn-primary" onclick="calculateProfitLoss()">Calculate P&L</button>
+                <button class="btn btn-secondary" onclick="loadProfitLossExample()">Load Example</button>
               </div>
 
               <div class="calc-results">
@@ -858,6 +861,7 @@
                 </div>
 
                 <button class="btn btn-primary" onclick="calculateFees()">Calculate Fees</button>
+                <button class="btn btn-secondary" onclick="loadFeesExample()">Load Example</button>
               </div>
 
               <div class="calc-results">
@@ -1088,6 +1092,7 @@
                 </div>
 
                 <button class="btn btn-primary" onclick="calculateCompoundGrowth()">Calculate Growth</button>
+                <button class="btn btn-secondary" onclick="loadCompoundGrowthExample()">Load Example</button>
               </div>
 
               <div class="calc-results">
@@ -1600,6 +1605,972 @@
     </div>
   </section>
 
+  <!-- Calculator 7: Drawdown Recovery Calculator -->
+  <section class="wrap" id="drawdown" style="margin:4rem auto">
+    <div class="card featured">
+      <div class="calc-header">
+        <div class="calc-number">07</div>
+        <div>
+          <h2 class="headline md" style="margin:0">📉 Drawdown Recovery Calculator</h2>
+          <p class="calc-tagline">Down 50%? You need +100% just to break even. This is why risk management isn't optional—it's survival.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Calculator</button>
+          <button>Why This Matters</button>
+          <button>Recovery Reality</button>
+          <button>Prevention Tips</button>
+        </div>
+        <div class="tabs-content">
+          <!-- Calculator Tab -->
+          <div class="tab-panel">
+            <div class="calc-grid">
+              <div class="calc-inputs">
+                <div class="form-group">
+                  <label>Starting Balance ($)</label>
+                  <input type="number" id="dd-start" class="calc-input" value="10000" min="0" step="100">
+                </div>
+
+                <div class="form-group">
+                  <label>Current Balance ($)</label>
+                  <input type="number" id="dd-current" class="calc-input" value="7000" min="0" step="100">
+                </div>
+
+                <div class="form-group">
+                  <label>Average Monthly Return (%)</label>
+                  <input type="number" id="dd-monthly-return" class="calc-input" value="3" min="0.1" max="50" step="0.1">
+                  <span class="input-hint">Realistic expectation: 2-5%</span>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateDrawdown()">Calculate Recovery</button>
+                <button class="btn btn-secondary" onclick="loadDrawdownExample()">Load Example</button>
+              </div>
+
+              <div class="calc-results">
+                <div id="dd-result" class="result-box" style="display:none">
+                  <h4 style="margin:0 0 1rem 0">Recovery Analysis</h4>
+                  <div class="result-item large">
+                    <span class="result-label">Drawdown</span>
+                    <span class="result-value" id="dd-pct">-</span>
+                  </div>
+                  <div id="dd-verdict" class="verdict-box" style="margin:1rem 0"></div>
+                  <div class="result-item">
+                    <span class="result-label">Gain Needed</span>
+                    <span class="result-value" id="dd-gain-needed">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Months to Recover</span>
+                    <span class="result-value" id="dd-months">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Dollar Loss</span>
+                    <span class="result-value" id="dd-loss">-</span>
+                  </div>
+                </div>
+
+                <div class="info-card" style="margin-top:1.5rem">
+                  <h5>⚠️ The Asymmetry</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">Losses hurt exponentially more than gains help. A 50% loss requires a 100% gain to recover. This is why drawdown prevention is critical.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why This Matters Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Why Drawdown Recovery Is Exponentially Harder</h3>
+
+              <p>Most traders underestimate how devastating drawdowns are. Math is brutal: the bigger your drawdown, the exponentially harder it becomes to recover.</p>
+
+              <div class="callout callout-warning">
+                <h4>⚠️ The Brutal Math</h4>
+                <p><strong>10% loss → Need 11% gain to recover</strong></p>
+                <p><strong>20% loss → Need 25% gain to recover</strong></p>
+                <p><strong>30% loss → Need 43% gain to recover</strong></p>
+                <p><strong>50% loss → Need 100% gain to recover</strong></p>
+                <p><strong>70% loss → Need 233% gain to recover (career-ending)</strong></p>
+              </div>
+
+              <h4>Real Example: Two Traders</h4>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+                <div class="comparison-box good">
+                  <h5>✓ Trader A: Controlled Drawdown</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Started: $10,000</li>
+                    <li>Max drawdown: -15% ($8,500)</li>
+                    <li>Recovery needed: +17.6%</li>
+                    <li><strong>3 months @ 5%/month = RECOVERED</strong></li>
+                  </ul>
+                </div>
+
+                <div class="comparison-box bad">
+                  <h5>❌ Trader B: Massive Drawdown</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Started: $10,000</li>
+                    <li>Max drawdown: -50% ($5,000)</li>
+                    <li>Recovery needed: +100%</li>
+                    <li><strong>18 months @ 5%/month = RECOVERED</strong></li>
+                  </ul>
+                  <p style="margin-top:1rem"><strong>Lost 15 months due to poor risk management</strong></p>
+                </div>
+              </div>
+
+              <div class="callout callout-success">
+                <h4>✓ Professional Standard</h4>
+                <p>Institutional traders get FIRED at -20% drawdown. Why? Because recovering is too expensive and time-consuming. Your capital has opportunity cost.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recovery Reality Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Recovery Timeline Reality Check</h3>
+
+              <p>Even with solid monthly returns, drawdown recovery takes TIME. The bigger the hole, the longer you're stuck digging out instead of making new profits.</p>
+
+              <h4>Recovery Time @ Different Return Rates</h4>
+
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Drawdown</th>
+                    <th>@ 3%/month</th>
+                    <th>@ 5%/month</th>
+                    <th>@ 10%/month</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>-10%</td>
+                    <td class="good">4 months</td>
+                    <td class="good">2 months</td>
+                    <td class="good">1 month</td>
+                  </tr>
+                  <tr>
+                    <td>-20%</td>
+                    <td class="warn">8 months</td>
+                    <td class="good">5 months</td>
+                    <td class="good">2 months</td>
+                  </tr>
+                  <tr>
+                    <td>-30%</td>
+                    <td class="bad">13 months</td>
+                    <td class="warn">8 months</td>
+                    <td class="warn">4 months</td>
+                  </tr>
+                  <tr>
+                    <td>-50%</td>
+                    <td class="bad">24 months</td>
+                    <td class="bad">15 months</td>
+                    <td class="warn">7 months</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="callout callout-warning">
+                <h4>⚠️ Reality Check</h4>
+                <p>Notice how even at 10%/month (which is EXCEPTIONAL), a 50% drawdown still takes 7 months to recover. During those 7 months, you're making ZERO new profits—just clawing back to breakeven.</p>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Opportunity Cost</h4>
+                  <p>While you're recovering from a 50% drawdown, a trader who stayed at -10% max is making NEW profits. Drawdown doesn't just cost money—it costs TIME and OPPORTUNITY.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prevention Tips Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Drawdown Prevention Strategies</h3>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Max Daily Drawdown Rule</h4>
+                  <p>Stop trading for the day after -2% account loss. No exceptions.</p>
+                  <p><strong>Why it works:</strong> Prevents emotional revenge trading from turning a bad day into a career-ending week.</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Max Weekly Drawdown Rule</h4>
+                  <p>Stop trading for the week after -5% account loss.</p>
+                  <p><strong>Why it works:</strong> Forces you to reset, analyze what's wrong, and come back fresh instead of digging deeper.</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Position Sizing Scaling</h4>
+                  <p>After any drawdown > 10%, reduce position size by 50% until you recover to within 5% of peak.</p>
+                  <p><strong>Why it works:</strong> Smaller positions = slower recovery but prevents catastrophic losses from continuing.</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Portfolio Heat Limits</h4>
+                  <p>Never have more than 6-8% total portfolio risk across all open positions.</p>
+                  <p><strong>Why it works:</strong> Even if every trade stops out simultaneously (rare but possible), you survive.</p>
+                </div>
+              </div>
+
+              <div class="callout callout-success">
+                <h4>🎯 The Best Recovery Strategy?</h4>
+                <p><strong>Don't have a big drawdown in the first place.</strong></p>
+                <p>Professional traders obsess over drawdown PREVENTION, not recovery. Cut losses aggressively, size conservatively, and respect your max loss rules.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 8: Position Scaling Calculator -->
+  <section class="wrap" id="scaling" style="margin:4rem auto">
+    <div class="card featured">
+      <div class="calc-header">
+        <div class="calc-number">08</div>
+        <div>
+          <h2 class="headline md" style="margin:0">📊 Position Scaling Calculator</h2>
+          <p class="calc-tagline">Want to add to winners? Do it wrong and you'll turn a 3R winner into a 0.5R loser. Math doesn't care about your feelings.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Calculator</button>
+          <button>Scaling Science</button>
+          <button>Common Mistakes</button>
+          <button>Pro Strategies</button>
+        </div>
+        <div class="tabs-content">
+          <!-- Calculator Tab -->
+          <div class="tab-panel">
+            <div class="calc-grid">
+              <div class="calc-inputs">
+                <div class="form-group">
+                  <label>Initial Entry Price ($)</label>
+                  <input type="number" id="scale-entry1" class="calc-input" value="100" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Initial Position Size (shares)</label>
+                  <input type="number" id="scale-size1" class="calc-input" value="100" min="1" step="1">
+                </div>
+
+                <div class="form-group">
+                  <label>Scale-In Price ($)</label>
+                  <input type="number" id="scale-entry2" class="calc-input" value="105" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Additional Size (shares)</label>
+                  <input type="number" id="scale-size2" class="calc-input" value="50" min="1" step="1">
+                </div>
+
+                <div class="form-group">
+                  <label>Exit Price ($)</label>
+                  <input type="number" id="scale-exit" class="calc-input" value="110" min="0" step="0.01">
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateScaling()">Calculate Scaling</button>
+                <button class="btn btn-secondary" onclick="loadScalingExample()">Load Example</button>
+              </div>
+
+              <div class="calc-results">
+                <div id="scale-result" class="result-box" style="display:none">
+                  <h4 style="margin:0 0 1rem 0">Scaling Analysis</h4>
+                  <div class="result-item large">
+                    <span class="result-label">Total P&L</span>
+                    <span class="result-value" id="scale-total-pl">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Average Entry</span>
+                    <span class="result-value" id="scale-avg-entry">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Total Position</span>
+                    <span class="result-value" id="scale-total-size">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">P&L Per Share</span>
+                    <span class="result-value" id="scale-pl-per-share">-</span>
+                  </div>
+                  <div id="scale-verdict" class="verdict-box" style="margin:1rem 0"></div>
+                </div>
+
+                <div class="info-card" style="margin-top:1.5rem">
+                  <h5>💡 Scaling Insight</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">Scaling in raises your average entry price. Only scale if the move justifies paying up. Otherwise, you're just increasing cost basis without proportional upside.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scaling Science Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>The Science of Position Scaling</h3>
+
+              <p>Scaling into positions can amplify wins—or catastrophically destroy good trades. The difference is <strong>WHEN and HOW</strong> you scale.</p>
+
+              <div class="callout callout-info">
+                <h4>💎 The Golden Rule</h4>
+                <p><strong>Only scale into WINNERS after they've proven themselves.</strong></p>
+                <p>Never scale into losers hoping for a reversal. That's called "averaging down" and it's how retail traders blow up.</p>
+              </div>
+
+              <h4>Real Example: Good vs Bad Scaling</h4>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+                <div class="comparison-box good">
+                  <h5>✓ Professional Scaling</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Entry 1: $100 × 100 shares</li>
+                    <li>Stock moves to $105 (+5%)</li>
+                    <li>Entry 2: $105 × 50 shares</li>
+                    <li>Exit: $115</li>
+                    <li><strong>Result: $1,750 profit</strong></li>
+                  </ul>
+                  <p style="margin-top:1rem">Scaled AFTER confirmation. Winner got bigger.</p>
+                </div>
+
+                <div class="comparison-box bad">
+                  <h5>❌ Retail Averaging Down</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Entry 1: $100 × 100 shares</li>
+                    <li>Stock drops to $95 (-5%)</li>
+                    <li>Entry 2: $95 × 100 shares (MORE risk!)</li>
+                    <li>Stop out: $90</li>
+                    <li><strong>Result: -$1,500 loss</strong></li>
+                  </ul>
+                  <p style="margin-top:1rem">Scaled into a loser. Small loss became catastrophic.</p>
+                </div>
+              </div>
+
+              <div class="callout callout-warning">
+                <h4>⚠️ The Trap</h4>
+                <p>Retail traders scale to "lower their average entry." This increases risk on losing trades while hoping for a reversal that rarely comes. Professionals scale to INCREASE exposure on proven winners.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Common Mistakes Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Common Scaling Mistakes</h3>
+
+              <div class="mistake-card">
+                <div class="mistake-header bad">❌ Mistake #1</div>
+                <h4>Scaling Too Soon</h4>
+                <p>Adding immediately after entry without confirmation.</p>
+                <p><strong>Problem:</strong> You're doubling down before the trade proves itself. If it reverses, you've got 2X the loss.</p>
+                <div class="mistake-fix">
+                  <strong>✓ Fix:</strong> Wait for price to move at least 1R (one risk unit) in your favor before scaling.
+                </div>
+              </div>
+
+              <div class="mistake-card">
+                <div class="mistake-header bad">❌ Mistake #2</div>
+                <h4>Scaling Equal Sizes</h4>
+                <p>Adding the same size at each level: 100 shares, then 100, then 100.</p>
+                <p><strong>Problem:</strong> Later entries carry same weight as early entries. Your average entry climbs too fast.</p>
+                <div class="mistake-fix">
+                  <strong>✓ Fix:</strong> Scale smaller amounts. Example: 100 shares, then 50, then 25 (pyramid structure).
+                </div>
+              </div>
+
+              <div class="mistake-card">
+                <div class="mistake-header bad">❌ Mistake #3</div>
+                <h4>Not Adjusting Stop Loss</h4>
+                <p>Add to position but keep stop at original entry level.</p>
+                <p><strong>Problem:</strong> If stopped out, your entire position (including scale-ins) takes full loss from your average entry.</p>
+                <div class="mistake-fix">
+                  <strong>✓ Fix:</strong> Trail stop up as position moves in your favor. Lock in gains on initial entry.
+                </div>
+              </div>
+
+              <div class="callout callout-warning">
+                <h4>⚠️ The Math Reality</h4>
+                <p>Every scale-in raises your average entry price and increases capital at risk. Make sure the setup still has room to run—don't chase.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pro Strategies Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Professional Scaling Strategies</h3>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>The 1-2-3 Pyramid</h4>
+                  <p><strong>Structure:</strong></p>
+                  <ul>
+                    <li>Entry 1: Full position (e.g., 100 shares)</li>
+                    <li>Entry 2 @ +1R: Half size (50 shares)</li>
+                    <li>Entry 3 @ +2R: Quarter size (25 shares)</li>
+                  </ul>
+                  <p>This keeps your average entry low while adding exposure to proven winners.</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>The Breakout Scale</h4>
+                  <p>Start with 50% position at breakout. Add 25% on first retest of breakout level. Add final 25% on confirmation of trend.</p>
+                  <p><strong>Why it works:</strong> Reduces risk if breakout fails, but still captures move if it works.</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>The Pilot Position</h4>
+                  <p>Enter with 25-33% of intended size as "pilot position." If it works, scale to full size. If not, small loss.</p>
+                  <p><strong>Best for:</strong> High conviction but uncertain timing. Lets price action guide you.</p>
+                </div>
+              </div>
+
+              <div class="callout callout-success">
+                <h4>✓ Professional Rules</h4>
+                <ul>
+                  <li><strong>Never</strong> scale into a losing position</li>
+                  <li><strong>Always</strong> reduce size with each scale-in (pyramid shape)</li>
+                  <li><strong>Trail stops</strong> as position grows to protect initial entry</li>
+                  <li><strong>Have a plan</strong> before entering: where will you scale, how much, and why?</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 9: Slippage Reality Check -->
+  <section class="wrap" id="slippage" style="margin:4rem auto">
+    <div class="card featured">
+      <div class="calc-header">
+        <div class="calc-number">09</div>
+        <div>
+          <h2 class="headline md" style="margin:0">⚡ Slippage Reality Check</h2>
+          <p class="calc-tagline">You planned for $100 profit, but slippage and spreads ate $15. Now you need to be right MORE often just to break even.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Calculator</button>
+          <button>Hidden Costs</button>
+          <button>Impact Analysis</button>
+        </div>
+        <div class="tabs-content">
+          <!-- Calculator Tab -->
+          <div class="tab-panel">
+            <div class="calc-grid">
+              <div class="calc-inputs">
+                <div class="form-group">
+                  <label>Target Entry Price ($)</label>
+                  <input type="number" id="slip-target-entry" class="calc-input" value="100.00" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Actual Entry Price ($)</label>
+                  <input type="number" id="slip-actual-entry" class="calc-input" value="100.15" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Target Exit Price ($)</label>
+                  <input type="number" id="slip-target-exit" class="calc-input" value="105.00" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Actual Exit Price ($)</label>
+                  <input type="number" id="slip-actual-exit" class="calc-input" value="104.80" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Position Size (shares)</label>
+                  <input type="number" id="slip-size" class="calc-input" value="100" min="1" step="1">
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateSlippage()">Calculate Impact</button>
+                <button class="btn btn-secondary" onclick="loadSlippageExample()">Load Example</button>
+              </div>
+
+              <div class="calc-results">
+                <div id="slip-result" class="result-box" style="display:none">
+                  <h4 style="margin:0 0 1rem 0">Slippage Impact</h4>
+                  <div class="result-item large">
+                    <span class="result-label">Total Slippage Cost</span>
+                    <span class="result-value" id="slip-total">-</span>
+                  </div>
+                  <div id="slip-verdict" class="verdict-box" style="margin:1rem 0"></div>
+                  <div class="result-item">
+                    <span class="result-label">Planned P&L</span>
+                    <span class="result-value" id="slip-planned-pl">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Actual P&L</span>
+                    <span class="result-value" id="slip-actual-pl">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Slippage %</span>
+                    <span class="result-value" id="slip-pct">-</span>
+                  </div>
+                </div>
+
+                <div class="info-card" style="margin-top:1.5rem">
+                  <h5>💡 The Hidden Tax</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">Slippage is the invisible tax on every trade. Market orders, wide spreads, and low liquidity can destroy edge before you even realize it.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hidden Costs Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>The Hidden Cost of Slippage</h3>
+
+              <p>Slippage is the difference between your expected price and actual execution price. It seems small per trade, but compounds to devastate your edge over time.</p>
+
+              <div class="callout callout-warning">
+                <h4>⚠️ The Brutal Reality</h4>
+                <p>Slippage of just 0.1% per trade (entry + exit = 0.2% round trip) means:</p>
+                <ul>
+                  <li>100 trades = -2% account drag</li>
+                  <li>500 trades = -10% account drag</li>
+                  <li>1,000 trades = -20% account drag</li>
+                </ul>
+                <p><strong>Your strategy might be profitable, but slippage makes it a loser.</strong></p>
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+                <div class="comparison-box good">
+                  <h5>✓ Limit Orders (Patient Trader)</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Target: $100.00</li>
+                    <li>Filled: $100.00</li>
+                    <li>Slippage: $0.00</li>
+                    <li><strong>Edge preserved</strong></li>
+                  </ul>
+                </div>
+
+                <div class="comparison-box bad">
+                  <h5>❌ Market Orders (Impatient Trader)</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Target: $100.00</li>
+                    <li>Filled: $100.20</li>
+                    <li>Slippage: $0.20 (0.2%)</li>
+                    <li><strong>Edge eroded</strong></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact Analysis Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>How Slippage Destroys Edge</h3>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Example: Scalping Strategy</h4>
+                  <p><strong>Strategy edge:</strong> 0.3% per trade</p>
+                  <p><strong>Slippage:</strong> 0.15% entry + 0.15% exit = 0.3%</p>
+                  <p><strong>Net edge:</strong> 0.3% - 0.3% = ZERO</p>
+                  <p>Profitable strategy becomes breakeven due to slippage alone.</p>
+                </div>
+              </div>
+
+              <div class="callout callout-success">
+                <h4>✓ Reducing Slippage</h4>
+                <ul>
+                  <li><strong>Use limit orders</strong> whenever possible</li>
+                  <li><strong>Trade liquid instruments</strong> (tighter spreads)</li>
+                  <li><strong>Avoid market orders</strong> during volatile periods</li>
+                  <li><strong>Check bid-ask spread</strong> before entering</li>
+                  <li><strong>Trade during active hours</strong> (avoid pre-market/after-hours)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 10: R-Multiple Tracker -->
+  <section class="wrap" id="r-multiple" style="margin:4rem auto">
+    <div class="card featured">
+      <div class="calc-header">
+        <div class="calc-number">10</div>
+        <div>
+          <h2 class="headline md" style="margin:0">📈 R-Multiple Performance Tracker</h2>
+          <p class="calc-tagline">Dollar P&L lies. R-multiples tell the truth. A $1,000 win means nothing if you risked $5,000 to get it.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Calculator</button>
+          <button>Why R-Multiples</button>
+          <button>Performance Analysis</button>
+        </div>
+        <div class="tabs-content">
+          <!-- Calculator Tab -->
+          <div class="tab-panel">
+            <div class="calc-grid">
+              <div class="calc-inputs">
+                <div class="form-group">
+                  <label>Entry Price ($)</label>
+                  <input type="number" id="rm-entry" class="calc-input" value="100" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Stop Loss ($)</label>
+                  <input type="number" id="rm-stop" class="calc-input" value="95" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Exit Price ($)</label>
+                  <input type="number" id="rm-exit" class="calc-input" value="110" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Position Size (shares)</label>
+                  <input type="number" id="rm-size" class="calc-input" value="100" min="1" step="1">
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateRMultiple()">Calculate R-Multiple</button>
+                <button class="btn btn-secondary" onclick="loadRMultipleExample()">Load Example</button>
+              </div>
+
+              <div class="calc-results">
+                <div id="rm-result" class="result-box" style="display:none">
+                  <h4 style="margin:0 0 1rem 0">R-Multiple Analysis</h4>
+                  <div class="result-item large">
+                    <span class="result-label">R-Multiple</span>
+                    <span class="result-value" id="rm-value">-</span>
+                  </div>
+                  <div id="rm-verdict" class="verdict-box" style="margin:1rem 0"></div>
+                  <div class="result-item">
+                    <span class="result-label">Initial Risk (1R)</span>
+                    <span class="result-value" id="rm-risk">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Actual P&L</span>
+                    <span class="result-value" id="rm-pl">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Reward:Risk</span>
+                    <span class="result-value" id="rm-ratio">-</span>
+                  </div>
+                </div>
+
+                <div class="info-card" style="margin-top:1.5rem">
+                  <h5>💡 R-Multiple = Truth</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">R-multiples normalize performance. They show how much you made relative to what you risked, making trades comparable regardless of size.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why R-Multiples Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Why R-Multiples Matter More Than Dollars</h3>
+
+              <p>Dollar P&L is misleading. R-multiples show the <strong>quality</strong> of your trades by measuring profit relative to risk.</p>
+
+              <div class="callout callout-info">
+                <h4>💎 What is R?</h4>
+                <p><strong>R = Your initial risk per trade (distance from entry to stop)</strong></p>
+                <p>If you enter at $100 with stop at $95, your 1R = $5 per share.</p>
+                <p>If you exit at $110, you made $10 per share = 2R</p>
+              </div>
+
+              <h4>Real Example: Same $ P&L, Different Quality</h4>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+                <div class="comparison-box good">
+                  <h5>✓ Trade A: High Quality</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Risk: $500 (1R)</li>
+                    <li>Profit: $1,000</li>
+                    <li><strong>R-Multiple: +2R</strong></li>
+                    <li>Quality: Excellent</li>
+                  </ul>
+                </div>
+
+                <div class="comparison-box bad">
+                  <h5>❌ Trade B: Low Quality</h5>
+                  <ul style="margin:0.5rem 0">
+                    <li>Risk: $2,000 (1R)</li>
+                    <li>Profit: $1,000</li>
+                    <li><strong>R-Multiple: +0.5R</strong></li>
+                    <li>Quality: Poor</li>
+                  </ul>
+                </div>
+              </div>
+
+              <p><strong>Both made $1,000, but Trade A is 4X better quality.</strong> R-multiples reveal this truth.</p>
+            </div>
+          </div>
+
+          <!-- Performance Analysis Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>R-Multiple Performance Standards</h3>
+
+              <div class="callout callout-success">
+                <h4>✓ Professional Benchmarks</h4>
+                <ul>
+                  <li><strong>+3R or higher:</strong> Elite trade</li>
+                  <li><strong>+2R to +3R:</strong> Good trade</li>
+                  <li><strong>+1R to +2R:</strong> Acceptable trade</li>
+                  <li><strong>0R to +1R:</strong> Marginal trade</li>
+                  <li><strong>-1R:</strong> Proper loss (followed plan)</li>
+                  <li><strong>Below -1R:</strong> Disaster (didn't follow stop)</li>
+                </ul>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Average R-Multiple Target</h4>
+                  <p><strong>Profitable traders average +0.5R to +1R per trade</strong></p>
+                  <p>This might sound small, but over 100 trades:</p>
+                  <ul>
+                    <li>+0.5R average × 100 trades = +50R total</li>
+                    <li>If 1R = $100, that's $5,000 profit</li>
+                  </ul>
+                  <p>Consistency beats home runs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 11: Break-Even Recovery -->
+  <section class="wrap" id="breakeven" style="margin:4rem auto">
+    <div class="card featured">
+      <div class="calc-header">
+        <div class="calc-number">11</div>
+        <div>
+          <h2 class="headline md" style="margin:0">🎯 Break-Even Recovery Calculator</h2>
+          <p class="calc-tagline">After fees, slippage, and commissions, your "winning" trade needs to move how far just to break even? The answer will surprise you.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Calculator</button>
+          <button>The Break-Even Reality</button>
+          <button>Cost Reduction</button>
+        </div>
+        <div class="tabs-content">
+          <!-- Calculator Tab -->
+          <div class="tab-panel">
+            <div class="calc-grid">
+              <div class="calc-inputs">
+                <div class="form-group">
+                  <label>Entry Price ($)</label>
+                  <input type="number" id="be-entry" class="calc-input" value="100" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Position Size (shares)</label>
+                  <input type="number" id="be-size" class="calc-input" value="100" min="1" step="1">
+                </div>
+
+                <div class="form-group">
+                  <label>Commission Per Trade ($)</label>
+                  <input type="number" id="be-commission" class="calc-input" value="5" min="0" step="0.1">
+                </div>
+
+                <div class="form-group">
+                  <label>Fee Rate (%) - SEC/Exchange</label>
+                  <input type="number" id="be-fee-rate" class="calc-input" value="0.1" min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                  <label>Expected Slippage Per Side (%)</label>
+                  <input type="number" id="be-slippage" class="calc-input" value="0.1" min="0" step="0.01">
+                  <span class="input-hint">Typical: 0.05-0.2%</span>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateBreakEven()">Calculate Break-Even</button>
+                <button class="btn btn-secondary" onclick="loadBreakEvenExample()">Load Example</button>
+              </div>
+
+              <div class="calc-results">
+                <div id="be-result" class="result-box" style="display:none">
+                  <h4 style="margin:0 0 1rem 0">Break-Even Analysis</h4>
+                  <div class="result-item large">
+                    <span class="result-label">Break-Even Price</span>
+                    <span class="result-value" id="be-price">-</span>
+                  </div>
+                  <div id="be-verdict" class="verdict-box" style="margin:1rem 0"></div>
+                  <div class="result-item">
+                    <span class="result-label">Move Required</span>
+                    <span class="result-value" id="be-move">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Total Costs</span>
+                    <span class="result-value" id="be-total-cost">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Cost Breakdown</span>
+                    <span class="result-value" id="be-breakdown">-</span>
+                  </div>
+                </div>
+
+                <div class="info-card" style="margin-top:1.5rem">
+                  <h5>⚠️ The Hidden Hurdle</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">Every trade starts at a loss due to fees, commissions, and slippage. You need price movement just to break even before making any profit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Break-Even Reality Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>The Break-Even Hurdle Nobody Talks About</h3>
+
+              <p>Most traders focus on profit targets but ignore the hidden hurdle: you start EVERY trade in the red due to costs.</p>
+
+              <div class="callout callout-warning">
+                <h4>⚠️ Example: $10,000 Position</h4>
+                <ul>
+                  <li>Entry commission: $5</li>
+                  <li>Exit commission: $5</li>
+                  <li>SEC fees: $10</li>
+                  <li>Entry slippage (0.1%): $10</li>
+                  <li>Exit slippage (0.1%): $10</li>
+                  <li><strong>Total costs: $40</strong></li>
+                </ul>
+                <p><strong>You need $40 profit just to break even.</strong> On a $10,000 position at $100/share, that's $0.40 per share or 0.4% move required.</p>
+              </div>
+
+              <h4>Impact on Different Trading Styles</h4>
+
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Style</th>
+                    <th>Typical Target</th>
+                    <th>Break-Even Cost</th>
+                    <th>Impact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Scalping</td>
+                    <td>0.3%</td>
+                    <td class="bad">0.25%</td>
+                    <td class="bad">Eats 83% of edge</td>
+                  </tr>
+                  <tr>
+                    <td>Day Trading</td>
+                    <td>1%</td>
+                    <td class="warn">0.3%</td>
+                    <td class="warn">Eats 30% of edge</td>
+                  </tr>
+                  <tr>
+                    <td>Swing Trading</td>
+                    <td>5%</td>
+                    <td class="good">0.3%</td>
+                    <td class="good">Eats 6% of edge</td>
+                  </tr>
+                  <tr>
+                    <td>Position Trading</td>
+                    <td>20%</td>
+                    <td class="good">0.3%</td>
+                    <td class="good">Eats 1.5% of edge</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="callout callout-info">
+                <h4>💡 The Math Doesn't Lie</h4>
+                <p>Shorter timeframes = costs eat larger % of edge. This is why most scalpers lose and swing traders have better odds.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cost Reduction Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Reducing Your Break-Even Hurdle</h3>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Use Zero-Commission Brokers</h4>
+                  <p>Switch from $5-10/trade commissions to $0. On 100 trades/year, that's $500-1,000 saved.</p>
+                  <p><strong>Caveat:</strong> Watch for wider spreads and payment for order flow practices.</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Use Limit Orders</h4>
+                  <p>Market orders guarantee slippage. Limit orders eliminate it (but might not fill).</p>
+                  <p><strong>Trade-off:</strong> Better fills vs. missed opportunities. Use limits when possible.</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">💎</div>
+                <div>
+                  <h4>Trade Liquid Instruments</h4>
+                  <p>Tighter bid-ask spreads = less slippage. Compare:</p>
+                  <ul>
+                    <li>SPY spread: $0.01 (0.001%)</li>
+                    <li>Small-cap stock spread: $0.10 (2%)</li>
+                  </ul>
+                  <p>Liquidity matters more than most realize.</p>
+                </div>
+              </div>
+
+              <div class="callout callout-success">
+                <h4>🎯 Bottom Line</h4>
+                <p>Your break-even hurdle determines which strategies are viable. High-frequency strategies need institutional-level cost structures to work. Retail traders should focus on longer timeframes where costs matter less.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Info Section -->
   <section class="wrap" style="margin:4rem auto">
     <div class="card featured">
@@ -1703,7 +2674,6 @@ function calculateRiskReward() {
   document.getElementById('rr-ratio').textContent = '1:' + ratio.toFixed(2);
   document.getElementById('rr-risk').textContent = '$' + risk.toFixed(2) + ' per share';
   document.getElementById('rr-reward').textContent = '$' + reward.toFixed(2) + ' per share';
-  document.getElementById('rr-min-wr').textContent = minWinRate.toFixed(1) + '%';
 
   const resultBox = document.getElementById('rr-result');
   resultBox.style.display = 'block';
@@ -1823,6 +2793,358 @@ function calculateCompoundGrowth() {
   document.getElementById('cg-pct').textContent = '+' + totalReturnPct.toFixed(2) + '%';
   document.getElementById('cg-annual').textContent = annualizedReturn.toFixed(2) + '% per year';
   document.getElementById('cg-result').style.display = 'block';
+}
+
+// Load Example Functions for Calculators 1-5
+function loadPositionSizeExample() {
+  document.getElementById('ps-balance').value = 10000;
+  document.getElementById('ps-risk-pct').value = 2;
+  document.getElementById('ps-entry').value = 50;
+  document.getElementById('ps-stop').value = 48;
+  calculatePositionSize();
+}
+
+function loadRiskRewardExample() {
+  document.getElementById('rr-entry').value = 100;
+  document.getElementById('rr-stop').value = 95;
+  document.getElementById('rr-target').value = 115;
+  calculateRiskReward();
+}
+
+function loadProfitLossExample() {
+  document.getElementById('pl-type').value = 'long';
+  document.getElementById('pl-entry').value = 100;
+  document.getElementById('pl-exit').value = 115;
+  document.getElementById('pl-size').value = 100;
+  calculateProfitLoss();
+}
+
+function loadFeesExample() {
+  document.getElementById('fee-entry').value = 100;
+  document.getElementById('fee-exit').value = 105;
+  document.getElementById('fee-size').value = 100;
+  document.getElementById('fee-commission').value = 5;
+  document.getElementById('fee-rate').value = 0.1;
+  calculateFees();
+}
+
+function loadCompoundGrowthExample() {
+  document.getElementById('cg-balance').value = 10000;
+  document.getElementById('cg-return').value = 5;
+  document.getElementById('cg-months').value = 12;
+  document.getElementById('cg-addition').value = 500;
+  calculateCompoundGrowth();
+}
+
+// Expectancy Calculator (Calculator 6)
+function calculateExpectancy() {
+  const totalWins = parseFloat(document.getElementById('exp-total-wins').value) || 0;
+  const totalLosses = parseFloat(document.getElementById('exp-total-losses').value) || 0;
+  const numTrades = parseInt(document.getElementById('exp-num-trades').value) || 1;
+
+  if (numTrades === 0) {
+    alert('Number of trades must be greater than 0');
+    return;
+  }
+
+  const netProfit = totalWins - totalLosses;
+  const expectancy = netProfit / numTrades;
+  const profitFactor = totalLosses > 0 ? totalWins / totalLosses : totalWins;
+
+  // Calculate average R (assuming each trade risked $100 for simplicity)
+  const avgRisk = 100;
+  const avgR = expectancy / avgRisk;
+
+  document.getElementById('exp-value').textContent = '$' + expectancy.toFixed(2);
+  document.getElementById('exp-value').style.color = expectancy >= 0 ? '#3ed598' : '#ff6b6b';
+
+  document.getElementById('exp-pf').textContent = profitFactor.toFixed(2);
+  document.getElementById('exp-pf').style.color = profitFactor >= 2 ? '#3ed598' : profitFactor >= 1.5 ? '#f9a23c' : '#ff6b6b';
+
+  document.getElementById('exp-avg-r').textContent = avgR.toFixed(2) + 'R';
+  document.getElementById('exp-net').textContent = '$' + netProfit.toFixed(2);
+  document.getElementById('exp-net').style.color = netProfit >= 0 ? '#3ed598' : '#ff6b6b';
+
+  // Verdict
+  const verdictBox = document.getElementById('exp-verdict');
+  let verdictHTML = '';
+  if (expectancy > 50) {
+    verdictHTML = '<div class="verdict good">🚀 Elite expectancy - Money printing machine</div>';
+  } else if (expectancy > 20) {
+    verdictHTML = '<div class="verdict good">✓ Excellent expectancy - Professional level</div>';
+  } else if (expectancy > 0) {
+    verdictHTML = '<div class="verdict good">✓ Positive expectancy - You have an edge</div>';
+  } else if (expectancy === 0) {
+    verdictHTML = '<div class="verdict warn">⚠️ Break-even - No edge, just noise</div>';
+  } else {
+    verdictHTML = '<div class="verdict bad">❌ Negative expectancy - Guaranteed to lose money</div>';
+  }
+  verdictBox.innerHTML = verdictHTML;
+
+  document.getElementById('exp-result').style.display = 'block';
+}
+
+function loadExpectancyExample() {
+  document.getElementById('exp-total-wins').value = 12000;
+  document.getElementById('exp-total-losses').value = 4000;
+  document.getElementById('exp-num-trades').value = 100;
+  calculateExpectancy();
+}
+
+// Drawdown Recovery Calculator (Calculator 7)
+function calculateDrawdown() {
+  const startBalance = parseFloat(document.getElementById('dd-start').value) || 0;
+  const currentBalance = parseFloat(document.getElementById('dd-current').value) || 0;
+  const monthlyReturn = parseFloat(document.getElementById('dd-monthly-return').value) / 100;
+
+  if (startBalance === 0) {
+    alert('Starting balance must be greater than 0');
+    return;
+  }
+
+  const drawdownPct = ((startBalance - currentBalance) / startBalance) * 100;
+  const gainNeeded = ((startBalance - currentBalance) / currentBalance) * 100;
+  const dollarLoss = startBalance - currentBalance;
+
+  // Calculate months to recover
+  let months = 0;
+  let balance = currentBalance;
+  while (balance < startBalance && months < 240) {
+    balance = balance * (1 + monthlyReturn);
+    months++;
+  }
+
+  document.getElementById('dd-pct').textContent = '-' + drawdownPct.toFixed(2) + '%';
+  document.getElementById('dd-pct').style.color = drawdownPct > 30 ? '#ff6b6b' : drawdownPct > 15 ? '#f9a23c' : '#3ed598';
+
+  document.getElementById('dd-gain-needed').textContent = '+' + gainNeeded.toFixed(2) + '%';
+  document.getElementById('dd-months').textContent = months + ' months';
+  document.getElementById('dd-months').style.color = months > 12 ? '#ff6b6b' : months > 6 ? '#f9a23c' : '#3ed598';
+
+  document.getElementById('dd-loss').textContent = '-$' + dollarLoss.toFixed(2);
+  document.getElementById('dd-loss').style.color = '#ff6b6b';
+
+  // Verdict
+  const verdictBox = document.getElementById('dd-verdict');
+  let verdictHTML = '';
+  if (drawdownPct < 10) {
+    verdictHTML = '<div class="verdict good">✓ Manageable drawdown - Quick recovery possible</div>';
+  } else if (drawdownPct < 20) {
+    verdictHTML = '<div class="verdict warn">⚠️ Significant drawdown - Tighten risk management</div>';
+  } else if (drawdownPct < 30) {
+    verdictHTML = '<div class="verdict bad">❌ Major drawdown - This is serious</div>';
+  } else {
+    verdictHTML = '<div class="verdict bad">💀 Catastrophic drawdown - Account in danger</div>';
+  }
+  verdictBox.innerHTML = verdictHTML;
+
+  document.getElementById('dd-result').style.display = 'block';
+}
+
+function loadDrawdownExample() {
+  document.getElementById('dd-start').value = 10000;
+  document.getElementById('dd-current').value = 7000;
+  document.getElementById('dd-monthly-return').value = 3;
+  calculateDrawdown();
+}
+
+// Position Scaling Calculator (Calculator 8)
+function calculateScaling() {
+  const entry1 = parseFloat(document.getElementById('scale-entry1').value) || 0;
+  const size1 = parseFloat(document.getElementById('scale-size1').value) || 0;
+  const entry2 = parseFloat(document.getElementById('scale-entry2').value) || 0;
+  const size2 = parseFloat(document.getElementById('scale-size2').value) || 0;
+  const exitPrice = parseFloat(document.getElementById('scale-exit').value) || 0;
+
+  const totalSize = size1 + size2;
+  const totalCost = (entry1 * size1) + (entry2 * size2);
+  const avgEntry = totalCost / totalSize;
+
+  const totalPL = (exitPrice - avgEntry) * totalSize;
+  const plPerShare = exitPrice - avgEntry;
+
+  document.getElementById('scale-total-pl').textContent = '$' + totalPL.toFixed(2);
+  document.getElementById('scale-total-pl').style.color = totalPL >= 0 ? '#3ed598' : '#ff6b6b';
+
+  document.getElementById('scale-avg-entry').textContent = '$' + avgEntry.toFixed(2);
+  document.getElementById('scale-total-size').textContent = totalSize.toFixed(0) + ' shares';
+  document.getElementById('scale-pl-per-share').textContent = '$' + plPerShare.toFixed(2);
+
+  // Verdict
+  const verdictBox = document.getElementById('scale-verdict');
+  let verdictHTML = '';
+  const scaledUp = entry2 > entry1;
+  if (scaledUp && totalPL > 0) {
+    verdictHTML = '<div class="verdict good">✓ Good scaling - Added to winner successfully</div>';
+  } else if (!scaledUp) {
+    verdictHTML = '<div class="verdict bad">❌ Warning: Scaled into loser (averaging down)</div>';
+  } else {
+    verdictHTML = '<div class="verdict warn">⚠️ Trade went against you after scaling</div>';
+  }
+  verdictBox.innerHTML = verdictHTML;
+
+  document.getElementById('scale-result').style.display = 'block';
+}
+
+function loadScalingExample() {
+  document.getElementById('scale-entry1').value = 100;
+  document.getElementById('scale-size1').value = 100;
+  document.getElementById('scale-entry2').value = 105;
+  document.getElementById('scale-size2').value = 50;
+  document.getElementById('scale-exit').value = 115;
+  calculateScaling();
+}
+
+// Slippage Reality Check Calculator (Calculator 9)
+function calculateSlippage() {
+  const targetEntry = parseFloat(document.getElementById('slip-target-entry').value) || 0;
+  const actualEntry = parseFloat(document.getElementById('slip-actual-entry').value) || 0;
+  const targetExit = parseFloat(document.getElementById('slip-target-exit').value) || 0;
+  const actualExit = parseFloat(document.getElementById('slip-actual-exit').value) || 0;
+  const size = parseFloat(document.getElementById('slip-size').value) || 0;
+
+  const entrySlippage = (actualEntry - targetEntry) * size;
+  const exitSlippage = (targetExit - actualExit) * size;
+  const totalSlippage = entrySlippage + exitSlippage;
+
+  const plannedPL = (targetExit - targetEntry) * size;
+  const actualPL = (actualExit - actualEntry) * size;
+  const slippagePct = (totalSlippage / Math.abs(plannedPL)) * 100;
+
+  document.getElementById('slip-total').textContent = '-$' + Math.abs(totalSlippage).toFixed(2);
+  document.getElementById('slip-total').style.color = '#ff6b6b';
+
+  document.getElementById('slip-planned-pl').textContent = '$' + plannedPL.toFixed(2);
+  document.getElementById('slip-actual-pl').textContent = '$' + actualPL.toFixed(2);
+  document.getElementById('slip-actual-pl').style.color = actualPL >= 0 ? '#3ed598' : '#ff6b6b';
+
+  document.getElementById('slip-pct').textContent = slippagePct.toFixed(2) + '%';
+
+  // Verdict
+  const verdictBox = document.getElementById('slip-verdict');
+  let verdictHTML = '';
+  if (slippagePct < 2) {
+    verdictHTML = '<div class="verdict good">✓ Low slippage - Acceptable execution</div>';
+  } else if (slippagePct < 5) {
+    verdictHTML = '<div class="verdict warn">⚠️ Moderate slippage - Consider limit orders</div>';
+  } else {
+    verdictHTML = '<div class="verdict bad">❌ High slippage - Edge being destroyed</div>';
+  }
+  verdictBox.innerHTML = verdictHTML;
+
+  document.getElementById('slip-result').style.display = 'block';
+}
+
+function loadSlippageExample() {
+  document.getElementById('slip-target-entry').value = 100.00;
+  document.getElementById('slip-actual-entry').value = 100.15;
+  document.getElementById('slip-target-exit').value = 105.00;
+  document.getElementById('slip-actual-exit').value = 104.80;
+  document.getElementById('slip-size').value = 100;
+  calculateSlippage();
+}
+
+// R-Multiple Tracker Calculator (Calculator 10)
+function calculateRMultiple() {
+  const entry = parseFloat(document.getElementById('rm-entry').value) || 0;
+  const stop = parseFloat(document.getElementById('rm-stop').value) || 0;
+  const exit = parseFloat(document.getElementById('rm-exit').value) || 0;
+  const size = parseFloat(document.getElementById('rm-size').value) || 0;
+
+  const initialRisk = Math.abs(entry - stop) * size;
+  const actualPL = (exit - entry) * size;
+  const rMultiple = initialRisk > 0 ? actualPL / initialRisk : 0;
+  const rewardRisk = Math.abs(exit - entry) / Math.abs(entry - stop);
+
+  document.getElementById('rm-value').textContent = rMultiple.toFixed(2) + 'R';
+  document.getElementById('rm-value').style.color = rMultiple >= 2 ? '#3ed598' : rMultiple >= 1 ? '#76ddff' : rMultiple > 0 ? '#f9a23c' : '#ff6b6b';
+
+  document.getElementById('rm-risk').textContent = '$' + initialRisk.toFixed(2);
+  document.getElementById('rm-pl').textContent = '$' + actualPL.toFixed(2);
+  document.getElementById('rm-pl').style.color = actualPL >= 0 ? '#3ed598' : '#ff6b6b';
+  document.getElementById('rm-ratio').textContent = rewardRisk.toFixed(2) + ':1';
+
+  // Verdict
+  const verdictBox = document.getElementById('rm-verdict');
+  let verdictHTML = '';
+  if (rMultiple >= 3) {
+    verdictHTML = '<div class="verdict good">🚀 Elite trade - +3R or higher</div>';
+  } else if (rMultiple >= 2) {
+    verdictHTML = '<div class="verdict good">✓ Good trade - Solid +2R win</div>';
+  } else if (rMultiple >= 1) {
+    verdictHTML = '<div class="verdict good">✓ Acceptable - Positive R-multiple</div>';
+  } else if (rMultiple > 0) {
+    verdictHTML = '<div class="verdict warn">⚠️ Marginal trade - Below 1R target</div>';
+  } else if (rMultiple >= -1) {
+    verdictHTML = '<div class="verdict warn">✓ Controlled loss - Stopped out properly</div>';
+  } else {
+    verdictHTML = '<div class="verdict bad">❌ Disaster - Didn\'t follow stop loss</div>';
+  }
+  verdictBox.innerHTML = verdictHTML;
+
+  document.getElementById('rm-result').style.display = 'block';
+}
+
+function loadRMultipleExample() {
+  document.getElementById('rm-entry').value = 100;
+  document.getElementById('rm-stop').value = 95;
+  document.getElementById('rm-exit').value = 110;
+  document.getElementById('rm-size').value = 100;
+  calculateRMultiple();
+}
+
+// Break-Even Recovery Calculator (Calculator 11)
+function calculateBreakEven() {
+  const entry = parseFloat(document.getElementById('be-entry').value) || 0;
+  const size = parseFloat(document.getElementById('be-size').value) || 0;
+  const commission = parseFloat(document.getElementById('be-commission').value) || 0;
+  const feeRate = parseFloat(document.getElementById('be-fee-rate').value) / 100;
+  const slippagePct = parseFloat(document.getElementById('be-slippage').value) / 100;
+
+  const positionValue = entry * size;
+
+  // Calculate costs
+  const entryCommission = commission;
+  const exitCommission = commission;
+  const entryFees = positionValue * feeRate;
+  const exitFees = positionValue * feeRate;
+  const entrySlippage = positionValue * slippagePct;
+  const exitSlippage = positionValue * slippagePct;
+
+  const totalCosts = entryCommission + exitCommission + entryFees + exitFees + entrySlippage + exitSlippage;
+  const costPerShare = totalCosts / size;
+  const breakEvenPrice = entry + costPerShare;
+  const moveRequired = (costPerShare / entry) * 100;
+
+  document.getElementById('be-price').textContent = '$' + breakEvenPrice.toFixed(2);
+  document.getElementById('be-move').textContent = '+' + moveRequired.toFixed(2) + '% (+$' + costPerShare.toFixed(2) + '/share)';
+  document.getElementById('be-total-cost').textContent = '$' + totalCosts.toFixed(2);
+  document.getElementById('be-breakdown').textContent = 'Comm: $' + (entryCommission + exitCommission).toFixed(2) + ' | Fees: $' + (entryFees + exitFees).toFixed(2) + ' | Slip: $' + (entrySlippage + exitSlippage).toFixed(2);
+
+  // Verdict
+  const verdictBox = document.getElementById('be-verdict');
+  let verdictHTML = '';
+  if (moveRequired < 0.5) {
+    verdictHTML = '<div class="verdict good">✓ Low hurdle - Cost structure supports active trading</div>';
+  } else if (moveRequired < 1.0) {
+    verdictHTML = '<div class="verdict warn">⚠️ Moderate hurdle - Best for swing trading</div>';
+  } else if (moveRequired < 2.0) {
+    verdictHTML = '<div class="verdict bad">❌ High hurdle - Scalping/day trading difficult</div>';
+  } else {
+    verdictHTML = '<div class="verdict bad">💀 Extreme hurdle - Costs eating all edge</div>';
+  }
+  verdictBox.innerHTML = verdictHTML;
+
+  document.getElementById('be-result').style.display = 'block';
+}
+
+function loadBreakEvenExample() {
+  document.getElementById('be-entry').value = 100;
+  document.getElementById('be-size').value = 100;
+  document.getElementById('be-commission').value = 5;
+  document.getElementById('be-fee-rate').value = 0.1;
+  document.getElementById('be-slippage').value = 0.1;
+  calculateBreakEven();
 }
 
 // Set current year
