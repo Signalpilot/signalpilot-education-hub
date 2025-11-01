@@ -52,8 +52,11 @@ html,body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",
   box-shadow:0 2px 8px rgba(0,0,0,0.2)}
 html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
 .sp-header .wrap{display:flex;align-items:center;gap:clamp(0.5rem,2vw,1.5rem);padding:.75rem 0;flex-wrap:nowrap}
-/* Brand styling moved to signalpilot-theme.css for consistency across all properties */
-.brand{flex-shrink:0}
+/* Brand styling - ensure Gugi font is applied (inherited from signalpilot-theme.css) */
+.brand, .brand span{
+  font-family:'Gugi',system-ui,-apple-system,sans-serif !important;
+  flex-shrink:0
+}
 #mainnav{margin-left:auto;margin-right:auto;flex-shrink:1;min-width:0}
 #mainnav ul{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
 #mainnav a{display:inline-flex;align-items:center;padding:.5rem .85rem;border-radius:999px;color:#9fb6e6;font-weight:700;text-decoration:none;white-space:nowrap}
