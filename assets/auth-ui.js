@@ -91,8 +91,18 @@
 
         <div id="auth-message" class="auth-message" style="display: none"></div>
 
+        <div class="auth-benefits">
+          <h4>Why create an account?</h4>
+          <ul>
+            <li><strong>☁️ Cloud Sync</strong> — Access your progress from any device</li>
+            <li><strong>📊 Track Progress</strong> — See your completion stats and learning streaks</li>
+            <li><strong>📝 Save Notes</strong> — Keep your lesson notes synced across devices</li>
+            <li><strong>🎓 Get Certificate</strong> — Earn a completion certificate for all 42 lessons</li>
+          </ul>
+        </div>
+
         <div class="auth-footer">
-          <p>✅ Free forever • ☁️ Cloud sync • 🔒 Secure</p>
+          <p>✅ Free forever • 🔒 Secure • No credit card required</p>
         </div>
       </div>
     `;

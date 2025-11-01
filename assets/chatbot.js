@@ -1,4 +1,15 @@
 // AI Chatbot for Signal Pilot Education
+//
+// MODULARIZATION ROADMAP (Future refactor):
+// This file is 936 lines and should be split into modules:
+// - chatbot-data.js (lessonFiles, knowledgeBase, patterns)
+// - chatbot-context.js (progress tracking, getUserContext)
+// - chatbot-search.js (searchLessons, smartSearch)
+// - chatbot-ui.js (modal, message rendering, animations)
+// - chatbot-main.js (main logic, message handling)
+//
+// Current organization uses PHASE markers for logical separation.
+//
 (function() {
   'use strict';
 

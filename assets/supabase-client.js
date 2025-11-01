@@ -2,9 +2,9 @@
 (function() {
   'use strict';
 
-  // Supabase Configuration
-  const SUPABASE_URL = 'https://cquqncenftgmsiyyctyk.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxdXFuY2VuZnRnbXNpeXljdHlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE5NDQ4MjYsImV4cCI6MjA3NzUyMDgyNn0.7-tLVV3uxoHxhh6nfbw_r0LLZ-prVOf2LirzaUcPu_E';
+  // Supabase Configuration - loaded from config.js
+  const SUPABASE_URL = window.SUPABASE_CONFIG?.url || '';
+  const SUPABASE_ANON_KEY = window.SUPABASE_CONFIG?.anonKey || '';
 
   // Initialize Supabase client
   let supabase = null;
