@@ -6,6 +6,12 @@
   const SUPABASE_URL = window.SUPABASE_CONFIG?.url || '';
   const SUPABASE_ANON_KEY = window.SUPABASE_CONFIG?.anonKey || '';
 
+  // Check if config.js failed to load
+  if (!window.SUPABASE_CONFIG) {
+    console.error('[Supabase] ❌ config.js failed to load. Authentication will not work.');
+    console.error('[Supabase] Make sure /assets/config.js exists and is accessible.');
+  }
+
   // Initialize Supabase client
   let supabase = null;
 
@@ -23,8 +29,11 @@
     }
 
     // Check if credentials are configured
-    if (SUPABASE_URL === 'YOUR_SUPABASE_URL' || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
-      console.log('[Supabase] Not configured. Set credentials in supabase-client.js');
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY ||
+        SUPABASE_URL === 'YOUR_SUPABASE_URL' || SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE' ||
+        SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY' || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY_HERE') {
+      console.error('[Supabase] ❌ Supabase credentials not configured properly.');
+      console.error('[Supabase] Please check that /assets/config.js has valid url and anonKey.');
       return null;
     }
 
