@@ -74,23 +74,50 @@
     // Get current session
     const { data: { session } } = await supabase.auth.getSession();
     if (session?.user) {
+      console.log('[Supabase] 🔄 Found existing session, loading cloud progress...');
       notifyAuthStateChange(session.user);
+
+      // Check if we just reloaded from a cloud load (prevent infinite reload loop)
+      const justReloaded = sessionStorage.getItem('sp_just_loaded_from_cloud');
+      if (justReloaded) {
+        console.log('[Supabase] ℹ️ Already loaded from cloud (preventing reload loop)');
+        sessionStorage.removeItem('sp_just_loaded_from_cloud');
+        return; // Don't load again
+      }
+
+      // CRITICAL FIX: Load cloud progress for existing sessions!
+      // This was missing - only loaded on SIGNED_IN event, not existing sessions
+      const loadResult = await loadProgressFromCloud();
+
+      if (loadResult?.data) {
+        console.log('[Supabase] ✅ Cloud progress loaded from existing session. Reloading...');
+        // Set flag to prevent reload loop
+        sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
+        // Reload page to reflect loaded progress
+        setTimeout(() => window.location.reload(), 500);
+      } else {
+        console.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
+        // No cloud data, sync local progress up
+        await syncProgressToCloud();
+      }
     }
 
-    // Listen for auth changes
+    // Listen for auth changes (NEW sign-ins, sign-outs, etc.)
     supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('[Supabase] Auth event:', event);
 
       if (event === 'SIGNED_IN' || event === 'USER_UPDATED') {
         notifyAuthStateChange(session?.user || null);
 
-        // Load and sync progress after sign in
+        // Load and sync progress after NEW sign in
         if (event === 'SIGNED_IN') {
           // First, try to load cloud progress (if it exists)
           const loadResult = await loadProgressFromCloud();
 
           if (loadResult?.data) {
             console.log('[Supabase] ✅ Cloud progress loaded. Reloading page to show updated progress...');
+            // Set flag to prevent reload loop
+            sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
             // Reload page to reflect loaded progress
             setTimeout(() => window.location.reload(), 500);
           } else {
@@ -226,7 +253,7 @@
   async function syncProgressToCloud() {
     if (!supabase || !currentUser) {
       console.log('[Supabase] Cannot sync: not authenticated');
-      return;
+      return { success: false, error: 'Not authenticated' };
     }
 
     try {
@@ -235,8 +262,14 @@
       const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0, "best": 0}');
       const notes = JSON.parse(localStorage.getItem('sp_lesson_notes') || '{}');
 
+      console.log('[Supabase] 📤 Syncing progress to cloud...', {
+        progressKeys: Object.keys(progress).length,
+        streakCurrent: streak.current,
+        notesCount: Object.keys(notes).length
+      });
+
       // Upsert to database
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('user_progress')
         .upsert({
           user_id: currentUser.id,
@@ -246,16 +279,32 @@
           last_synced: new Date().toISOString()
         }, {
           onConflict: 'user_id'
-        });
+        })
+        .select();
 
-      if (error) throw error;
+      if (error) {
+        console.error('[Supabase] ❌ Sync FAILED:', error);
 
-      console.log('[Supabase] Progress synced to cloud');
+        // Check if table doesn't exist
+        if (error.code === '42P01' || error.message.includes('relation') || error.message.includes('does not exist')) {
+          console.error('[Supabase] ❌ DATABASE TABLE NOT FOUND!');
+          console.error('[Supabase] ⚠️ Please run database-setup.sql in your Supabase SQL Editor');
+          console.error('[Supabase] 📄 See CLOUD_SYNC_SETUP.md for instructions');
+          showSyncError('Database not set up. Please run database-setup.sql in Supabase.');
+        } else {
+          showSyncError(`Sync failed: ${error.message}`);
+        }
+
+        throw error;
+      }
+
+      console.log('[Supabase] ✅ Progress synced to cloud successfully!', data);
+      showSyncSuccess();
 
       // Update last sync time
       localStorage.setItem('sp_last_cloud_sync', Date.now());
 
-      return { success: true };
+      return { success: true, data };
     } catch (error) {
       console.error('[Supabase] Sync error:', error);
       return { success: false, error: error.message };
@@ -266,10 +315,12 @@
   async function loadProgressFromCloud() {
     if (!supabase || !currentUser) {
       console.log('[Supabase] Cannot load: not authenticated');
-      return;
+      return { success: false, error: 'Not authenticated' };
     }
 
     try {
+      console.log('[Supabase] 📥 Loading progress from cloud...');
+
       const { data, error } = await supabase
         .from('user_progress')
         .select('*')
@@ -279,25 +330,41 @@
       if (error) {
         // No data found is ok (new user)
         if (error.code === 'PGRST116') {
-          console.log('[Supabase] No cloud progress found (new user)');
+          console.log('[Supabase] ℹ️ No cloud progress found (new user)');
           return { success: true, data: null };
         }
+
+        // Check if table doesn't exist
+        if (error.code === '42P01' || error.message.includes('relation') || error.message.includes('does not exist')) {
+          console.error('[Supabase] ❌ DATABASE TABLE NOT FOUND!');
+          console.error('[Supabase] ⚠️ Please run database-setup.sql in your Supabase SQL Editor');
+          console.error('[Supabase] 📄 See CLOUD_SYNC_SETUP.md for instructions');
+          showSyncError('Database not set up. Please run database-setup.sql in Supabase.');
+        }
+
         throw error;
       }
 
       if (data) {
+        console.log('[Supabase] 📥 Found cloud progress:', {
+          progressKeys: Object.keys(data.progress || {}).length,
+          streakCurrent: data.streak?.current,
+          notesCount: Object.keys(data.notes || {}).length,
+          lastSynced: data.last_synced
+        });
+
         // Merge with local data (cloud takes precedence)
         localStorage.setItem('sp_progress', JSON.stringify(data.progress || {}));
         localStorage.setItem('sp_learning_streak', JSON.stringify(data.streak || {}));
         localStorage.setItem('sp_lesson_notes', JSON.stringify(data.notes || {}));
         localStorage.setItem('sp_last_cloud_sync', Date.now());
 
-        console.log('[Supabase] Progress loaded from cloud');
+        console.log('[Supabase] ✅ Progress loaded from cloud successfully!');
       }
 
       return { success: true, data };
     } catch (error) {
-      console.error('[Supabase] Load error:', error);
+      console.error('[Supabase] ❌ Load error:', error);
       return { success: false, error: error.message };
     }
   }
@@ -386,6 +453,68 @@
     const syncIndicator = document.getElementById('cloud-sync-indicator');
     if (syncIndicator) {
       syncIndicator.style.display = user ? 'block' : 'none';
+    }
+  }
+
+  // Show sync success indicator
+  function showSyncSuccess() {
+    const syncIndicator = document.getElementById('cloud-sync-indicator');
+    if (syncIndicator) {
+      syncIndicator.innerHTML = '<span class="sync-icon">✅</span>';
+      syncIndicator.title = 'Progress synced successfully';
+
+      // Reset back to cloud icon after 3 seconds
+      setTimeout(() => {
+        syncIndicator.innerHTML = '<span class="sync-icon">☁️</span>';
+        syncIndicator.title = 'Progress synced to cloud';
+      }, 3000);
+    }
+  }
+
+  // Show sync error notification
+  function showSyncError(message) {
+    // Create error notification
+    const notification = document.createElement('div');
+    notification.className = 'sync-error-notification';
+    notification.innerHTML = `
+      <div style="background: rgba(220, 38, 38, 0.95); color: white; padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 500px; margin: 1rem;">
+        <div style="display: flex; align-items: start; gap: 0.75rem;">
+          <span style="font-size: 1.5rem;">⚠️</span>
+          <div style="flex: 1;">
+            <strong style="display: block; margin-bottom: 0.5rem;">Cloud Sync Failed</strong>
+            <p style="margin: 0; font-size: 0.9rem; opacity: 0.95;">${message}</p>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.85rem; opacity: 0.9;">
+              Check browser console (F12) for details.
+            </p>
+          </div>
+          <button onclick="this.closest('.sync-error-notification').remove()" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem; padding: 0; opacity: 0.8;">✕</button>
+        </div>
+      </div>
+    `;
+    notification.style.position = 'fixed';
+    notification.style.top = '80px';
+    notification.style.right = '20px';
+    notification.style.zIndex = '9999';
+    notification.style.animation = 'slideInRight 0.3s ease-out';
+
+    document.body.appendChild(notification);
+
+    // Auto-remove after 10 seconds
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.remove();
+      }
+    }, 10000);
+
+    // Update sync indicator to show error
+    const syncIndicator = document.getElementById('cloud-sync-indicator');
+    if (syncIndicator) {
+      syncIndicator.innerHTML = '<span class="sync-icon" style="filter: grayscale(100%);">☁️</span>';
+      syncIndicator.title = 'Cloud sync failed - click for details';
+      syncIndicator.style.cursor = 'pointer';
+      syncIndicator.onclick = () => {
+        alert(`Cloud Sync Error:\n\n${message}\n\nPlease check the browser console (F12) for more details.`);
+      };
     }
   }
 
