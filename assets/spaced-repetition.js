@@ -266,8 +266,7 @@
 
   // Get lesson ID from URL
   function getLessonIdFromUrl() {
-    const match = window.location.pathname.match(/curriculum\/(.+)\.html/);
-    return match ? match[1] : 'unknown';
+    return window.getLessonId() || 'unknown';
   }
 
   // Add review stats to dashboard

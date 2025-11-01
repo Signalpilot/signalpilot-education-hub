@@ -33,4 +33,11 @@
       originalLog.apply(console, args);
     }
   };
+
+  // Utility: Extract lesson ID from current URL
+  // Returns the lesson path (e.g., 'beginner/01-the-liquidity-lie') or null
+  window.getLessonId = function() {
+    const match = window.location.pathname.match(/curriculum\/(.+)\.html/);
+    return match ? match[1] : null;
+  };
 })();

@@ -8,8 +8,7 @@
 
   // Get lesson ID from URL
   function getLessonId() {
-    const match = window.location.pathname.match(/curriculum\/(.+)\.html/);
-    return match ? match[1] : null;
+    return window.getLessonId();
   }
 
   // Get lesson title from page
