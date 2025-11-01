@@ -40,4 +40,23 @@
     const match = window.location.pathname.match(/curriculum\/(.+)\.html/);
     return match ? match[1] : null;
   };
+
+  // Centralized localStorage keys
+  // Use these constants instead of hardcoded strings
+  window.STORAGE_KEYS = {
+    PROGRESS: 'sp_progress',
+    LESSON_CURRENT: 'sp_lesson_current',
+    LESSON_START_TIME: 'sp_lesson_start_time',
+    LESSON_NOTES: 'sp_lesson_notes',
+    LEARNING_STREAK: 'sp_learning_streak',
+    LAST_ARTICLE: 'sp_edu_last_article',
+    CERTIFICATE_CODE: 'sp_certificate_code',
+    USER_NAME: 'sp_user_name',
+    CHATBOT_HISTORY: 'sp_chatbot_history',
+    CHATBOT_BOOKMARKS: 'sp_chatbot_bookmarks',
+    LAST_CLOUD_SYNC: 'sp_last_cloud_sync',
+    INSTALL_DISMISSED: 'sp_install_dismissed',
+    HIDE_UPDATE_NOTIFICATIONS: 'sp_hide_update_notifications',
+    REVIEW_REMINDER_LAST_SHOWN: 'sp_review_reminder_last_shown'
+  };
 })();
