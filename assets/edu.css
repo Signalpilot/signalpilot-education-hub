@@ -782,3 +782,355 @@ button,. btn{
 *{
   -webkit-tap-highlight-color:rgba(91,138,255,0.2);
 }
+
+/* ============================================
+   COMPREHENSIVE DEVICE OPTIMIZATIONS
+   ============================================ */
+
+/* iOS-Specific Optimizations */
+@supports (-webkit-touch-callout: none){
+  /* iOS Safari specific */
+  body{
+    -webkit-text-size-adjust:100%;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Prevent iOS input zoom */
+  input,textarea,select{
+    font-size:16px !important;
+  }
+
+  /* Better iOS scrolling */
+  .chatbot-messages,.auth-modal-content,.mobile-nav{
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Fix iOS button appearance */
+  button,input[type="submit"],input[type="button"]{
+    -webkit-appearance:none;
+    appearance:none;
+  }
+
+  /* Prevent text inflation on landscape */
+  @media (orientation:landscape){
+    body{
+      -webkit-text-size-adjust:100%;
+    }
+  }
+}
+
+/* Android-Specific Optimizations */
+@media (max-width:767px){
+  /* Prevent Android keyboard from resizing viewport */
+  @supports not (-webkit-touch-callout: none){
+    .sp-header{
+      position:fixed;
+    }
+
+    main{
+      padding-top:60px;
+    }
+  }
+}
+
+/* Tablet Portrait Optimization (iPad, Surface) */
+@media (min-width:768px) and (max-width:1024px) and (orientation:portrait){
+  .wrap{
+    padding:0 2rem;
+  }
+
+  .grid.three-col{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero .headline.xl{
+    font-size:2.25rem;
+  }
+
+  .article-grid{
+    grid-template-columns:1fr;
+  }
+
+  .toc{
+    position:static;
+    margin:2rem 0;
+  }
+
+  /* Larger touch targets for tablets */
+  .btn{
+    min-height:48px;
+    padding:.875rem 1.25rem;
+  }
+
+  .quiz-option{
+    padding:1rem 1.25rem;
+  }
+}
+
+/* Tablet Landscape Optimization */
+@media (min-width:768px) and (max-width:1199px) and (orientation:landscape){
+  .hero{
+    min-height:50vh;
+  }
+
+  .article-grid{
+    grid-template-columns:1fr 280px;
+  }
+
+  .grid.three-col{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* Phone Landscape Optimization */
+@media (max-width:767px) and (orientation:landscape){
+  .hero{
+    min-height:40vh;
+    padding:1rem 0;
+  }
+
+  .hero .headline.xl{
+    font-size:1.75rem;
+  }
+
+  .hero .lead{
+    font-size:.9rem;
+  }
+
+  /* Compact header in landscape */
+  .sp-header .wrap{
+    padding:.5rem 0;
+  }
+
+  /* Reduce vertical spacing */
+  .section-break{
+    margin:2rem 0;
+  }
+
+  .card{
+    padding:1rem;
+  }
+}
+
+/* Large Desktop (2K, 4K displays) */
+@media (min-width:1920px){
+  :root{
+    --max:1400px;
+  }
+
+  .wrap{
+    max-width:1400px;
+  }
+
+  .hero .headline.xl{
+    font-size:3.5rem;
+  }
+
+  .hero .lead{
+    font-size:1.25rem;
+    max-width:800px;
+  }
+
+  .grid{
+    gap:2rem;
+  }
+
+  .card{
+    padding:2rem;
+  }
+}
+
+/* Small Phones (iPhone SE 1st gen, small Android) */
+@media (max-width:375px){
+  .sp-header .wrap{
+    gap:0.25rem;
+  }
+
+  .header-ctls{
+    gap:0.25rem;
+  }
+
+  #auth-button{
+    padding:0.25rem 0.4rem;
+    font-size:0.65rem;
+  }
+
+  .hero .headline.xl{
+    font-size:1.5rem;
+  }
+
+  .progress-stats{
+    gap:0.5rem;
+  }
+
+  .progress-stat{
+    padding:0.75rem;
+  }
+
+  .stat-value{
+    font-size:1.5rem;
+  }
+}
+
+/* Foldable Phones (Galaxy Z Fold, etc.) */
+@media (min-width:768px) and (max-width:884px){
+  /* Unfolded state - optimize for narrow tall display */
+  .article-grid{
+    grid-template-columns:1fr;
+  }
+
+  .grid.three-col,.grid.two-col{
+    grid-template-columns:1fr;
+  }
+}
+
+/* High DPI Displays (Retina, etc.) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){
+  /* Sharper text rendering */
+  body{
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* Better border rendering */
+  .card,.btn,.auth-modal-content{
+    transform:translateZ(0);
+    backface-visibility:hidden;
+  }
+}
+
+/* Touch Device Optimization */
+@media (hover: none) and (pointer: coarse){
+  /* Remove hover states on touch devices */
+  .card:hover{
+    transform:none;
+  }
+
+  /* Larger touch targets */
+  a,button,.quiz-option,.lesson-item{
+    min-height:44px;
+    min-width:44px;
+  }
+
+  /* Add active states instead */
+  .card:active{
+    transform:scale(0.98);
+    transition:transform 0.1s ease;
+  }
+
+  .btn:active{
+    transform:translateY(2px);
+  }
+
+  /* Disable hover animations on touch */
+  *{
+    transition-property:background-color, color, border-color, opacity;
+  }
+}
+
+/* Mouse/Trackpad Device Optimization */
+@media (hover: hover) and (pointer: fine){
+  /* Enable hover effects */
+  .card{
+    transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Subtle cursor changes */
+  .card,.lesson-item,.quiz-option{
+    cursor:pointer;
+  }
+
+  a:not(.btn){
+    cursor:pointer;
+  }
+}
+
+/* Reduced Motion - Respect user preferences */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+
+  .hero::before{
+    animation:none !important;
+  }
+
+  .bg-stars,.bg-aurora{
+    animation:none !important;
+  }
+}
+
+/* Dark Mode Preference (System) */
+@media (prefers-color-scheme: dark){
+  html:not([data-theme]){
+    color-scheme:dark;
+  }
+}
+
+/* Light Mode Preference (System) */
+@media (prefers-color-scheme: light){
+  html:not([data-theme]){
+    color-scheme:light;
+  }
+}
+
+/* Low Bandwidth / Save Data Mode */
+@media (prefers-reduced-data: reduce){
+  /* Disable background animations */
+  .bg-stars,.bg-aurora,.hero::before{
+    display:none !important;
+  }
+
+  /* Reduce image quality needs to be handled by img srcset */
+
+  /* Disable non-essential animations */
+  .card,.module-card,.progress-card{
+    animation:none !important;
+  }
+}
+
+/* Print Optimization */
+@media print{
+  .sp-header,.sp-footer,.chatbot-button,.chatbot-container,
+  .menu-toggle,.mobile-nav,.mobile-nav-backdrop,
+  .social-share-buttons,#auth-button,#cloud-sync-indicator{
+    display:none !important;
+  }
+
+  body{
+    background:#fff !important;
+    color:#000 !important;
+  }
+
+  .wrap{
+    max-width:100% !important;
+    padding:0 !important;
+  }
+
+  .article,.prose{
+    font-size:12pt;
+    line-height:1.5;
+  }
+
+  a{
+    color:#000 !important;
+    text-decoration:underline !important;
+  }
+
+  /* Show URLs after links */
+  a[href]:after{
+    content:" (" attr(href) ")";
+    font-size:0.8em;
+  }
+
+  /* Page breaks */
+  h1,h2,h3,h4{
+    page-break-after:avoid;
+  }
+
+  .card,.key-takeaway,.callout-info{
+    page-break-inside:avoid;
+  }
+}
