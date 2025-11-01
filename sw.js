@@ -185,22 +185,11 @@ async function staleWhileRevalidateStrategy(request, cacheName) {
   return cachedResponse || fetchPromise;
 }
 
-// Background sync for progress (if supported)
-self.addEventListener('sync', (event) => {
-  console.log('[SW] Background sync:', event.tag);
-
-  if (event.tag === 'sync-progress') {
-    event.waitUntil(syncProgressData());
-  }
-});
-
-async function syncProgressData() {
-  // This will be implemented when we add Supabase
-  console.log('[SW] Syncing progress data...');
-
-  // TODO: Get data from IndexedDB and sync to Supabase
-  return Promise.resolve();
-}
+// Note: Progress sync is handled in supabase-client.js (not in service worker)
+// - Auto-sync every 5 minutes when signed in
+// - Sync on page unload (beforeunload event)
+// - Sync on auth state change (sign in/out)
+// Service worker background sync is not needed as localStorage sync is more reliable
 
 // Push notifications (for future use)
 self.addEventListener('push', (event) => {
