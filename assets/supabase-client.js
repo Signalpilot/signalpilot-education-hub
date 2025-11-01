@@ -74,23 +74,50 @@
     // Get current session
     const { data: { session } } = await supabase.auth.getSession();
     if (session?.user) {
+      console.log('[Supabase] 🔄 Found existing session, loading cloud progress...');
       notifyAuthStateChange(session.user);
+
+      // Check if we just reloaded from a cloud load (prevent infinite reload loop)
+      const justReloaded = sessionStorage.getItem('sp_just_loaded_from_cloud');
+      if (justReloaded) {
+        console.log('[Supabase] ℹ️ Already loaded from cloud (preventing reload loop)');
+        sessionStorage.removeItem('sp_just_loaded_from_cloud');
+        return; // Don't load again
+      }
+
+      // CRITICAL FIX: Load cloud progress for existing sessions!
+      // This was missing - only loaded on SIGNED_IN event, not existing sessions
+      const loadResult = await loadProgressFromCloud();
+
+      if (loadResult?.data) {
+        console.log('[Supabase] ✅ Cloud progress loaded from existing session. Reloading...');
+        // Set flag to prevent reload loop
+        sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
+        // Reload page to reflect loaded progress
+        setTimeout(() => window.location.reload(), 500);
+      } else {
+        console.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
+        // No cloud data, sync local progress up
+        await syncProgressToCloud();
+      }
     }
 
-    // Listen for auth changes
+    // Listen for auth changes (NEW sign-ins, sign-outs, etc.)
     supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('[Supabase] Auth event:', event);
 
       if (event === 'SIGNED_IN' || event === 'USER_UPDATED') {
         notifyAuthStateChange(session?.user || null);
 
-        // Load and sync progress after sign in
+        // Load and sync progress after NEW sign in
         if (event === 'SIGNED_IN') {
           // First, try to load cloud progress (if it exists)
           const loadResult = await loadProgressFromCloud();
 
           if (loadResult?.data) {
             console.log('[Supabase] ✅ Cloud progress loaded. Reloading page to show updated progress...');
+            // Set flag to prevent reload loop
+            sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
             // Reload page to reflect loaded progress
             setTimeout(() => window.location.reload(), 500);
           } else {
