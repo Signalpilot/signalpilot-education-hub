@@ -198,11 +198,11 @@
           console.log('[Auth UI] Sign in result:', result);
 
           if (result.success) {
-            showMessage('✅ Signed in successfully!', 'success');
+            showMessage('✅ Signed in successfully! Loading your progress...', 'success');
             setTimeout(() => {
               document.getElementById('auth-modal').remove();
-              // Reload to sync progress
-              window.location.reload();
+              // Page will reload automatically when cloud progress loads
+              // (handled by supabase-client.js auth listener)
             }, 1000);
           } else {
             showMessage(`❌ ${result.error}`, 'error');

@@ -78,15 +78,26 @@
     }
 
     // Listen for auth changes
-    supabase.auth.onAuthStateChange((event, session) => {
+    supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('[Supabase] Auth event:', event);
 
       if (event === 'SIGNED_IN' || event === 'USER_UPDATED') {
         notifyAuthStateChange(session?.user || null);
 
-        // Sync progress after sign in
+        // Load and sync progress after sign in
         if (event === 'SIGNED_IN') {
-          syncProgressToCloud();
+          // First, try to load cloud progress (if it exists)
+          const loadResult = await loadProgressFromCloud();
+
+          if (loadResult?.data) {
+            console.log('[Supabase] ✅ Cloud progress loaded. Reloading page to show updated progress...');
+            // Reload page to reflect loaded progress
+            setTimeout(() => window.location.reload(), 500);
+          } else {
+            console.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
+            // No cloud data, sync local progress up
+            await syncProgressToCloud();
+          }
         }
       } else if (event === 'SIGNED_OUT') {
         notifyAuthStateChange(null);
@@ -449,6 +460,37 @@
     init();
   }
 
+  // Helper: Trigger sync when progress changes
+  // Call this function after completing lessons, updating notes, etc.
+  function onProgressChange() {
+    if (currentUser && supabase) {
+      // Debounced sync - wait 2 seconds before syncing
+      clearTimeout(window._progressSyncTimer);
+      window._progressSyncTimer = setTimeout(() => {
+        console.log('[Supabase] Progress changed, syncing to cloud...');
+        syncProgressToCloud();
+      }, 2000);
+    }
+  }
+
+  // Listen for localStorage changes (for progress updates)
+  window.addEventListener('storage', (e) => {
+    if (e.key && (e.key.includes('sp_progress') || e.key.includes('sp_lesson_notes') || e.key.includes('sp_learning_streak'))) {
+      onProgressChange();
+    }
+  });
+
+  // Override localStorage.setItem to detect progress changes
+  const originalSetItem = localStorage.setItem;
+  localStorage.setItem = function(key, value) {
+    originalSetItem.apply(this, arguments);
+
+    // If progress-related key changed, trigger sync
+    if (key && (key.includes('sp_progress') || key.includes('sp_lesson_notes') || key.includes('sp_learning_streak'))) {
+      onProgressChange();
+    }
+  };
+
   // Export public API
   window.supabaseAuth = {
     signUp,
@@ -458,7 +500,8 @@
     getCurrentUser,
     onAuthStateChange,
     syncProgressToCloud,
-    loadProgressFromCloud
+    loadProgressFromCloud,
+    onProgressChange // Export for manual trigger
   };
 
   console.log('[Supabase] Module loaded');
