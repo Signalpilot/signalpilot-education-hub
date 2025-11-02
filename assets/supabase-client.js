@@ -316,12 +316,20 @@
 
       const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0, "best": 0}');
       const notes = JSON.parse(localStorage.getItem('sp_lesson_notes') || '{}');
+      const bookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]');
+      const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
+      const downloads = JSON.parse(localStorage.getItem('sp_downloads') || '[]');
+      const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
 
       logger.log('[Supabase] 📤 Syncing progress to cloud...', {
         progressKeys: Object.keys(progress).length,
         completedLessons: Object.keys(progress).filter(k => k.includes('_completed')).length,
         streakCurrent: streak.current,
-        notesCount: Object.keys(notes).length
+        notesCount: Object.keys(notes).length,
+        bookmarksCount: bookmarks.length,
+        favoritesCount: favorites.length,
+        downloadsCount: downloads.length,
+        activityDays: Object.keys(activity).length
       });
 
       // Upsert to database
@@ -332,6 +340,10 @@
           progress: progress,
           streak: streak,
           notes: notes,
+          bookmarks: bookmarks,
+          favorites: favorites,
+          downloads: downloads,
+          activity: activity,
           last_synced: new Date().toISOString()
         }, {
           onConflict: 'user_id'
@@ -414,6 +426,10 @@
           completedLessons: completedLessons,
           streakCurrent: data.streak?.current,
           notesCount: Object.keys(data.notes || {}).length,
+          bookmarksCount: (data.bookmarks || []).length,
+          favoritesCount: (data.favorites || []).length,
+          downloadsCount: (data.downloads || []).length,
+          activityDays: Object.keys(data.activity || {}).length,
           lastSynced: data.last_synced
         });
 
@@ -426,12 +442,23 @@
         // Restore streak and notes
         localStorage.setItem('sp_learning_streak', JSON.stringify(data.streak || {}));
         localStorage.setItem('sp_lesson_notes', JSON.stringify(data.notes || {}));
+
+        // Restore bookmarks, favorites, and downloads
+        localStorage.setItem('sp_bookmarks', JSON.stringify(data.bookmarks || []));
+        localStorage.setItem('sp_favorites', JSON.stringify(data.favorites || []));
+        localStorage.setItem('sp_downloads', JSON.stringify(data.downloads || []));
+
+        // Restore activity if it exists in cloud
+        if (data.activity && Object.keys(data.activity).length > 0) {
+          localStorage.setItem('sp_activity', JSON.stringify(data.activity));
+          logger.log('[Supabase] 📊 Restored activity calendar from cloud');
+        }
+
         localStorage.setItem('sp_last_cloud_sync', Date.now());
 
-        // CRITICAL: Clear migration flag so My Library re-migrates with cloud data
+        // CRITICAL: Clear migration flag so My Library re-syncs if needed
         // This ensures all cloud-synced lessons get added to the activity calendar
         localStorage.removeItem('sp_activity_migrated');
-        localStorage.removeItem('sp_activity'); // Clear old activity so migration rebuilds it
         logger.log('[Supabase] 🔄 Cleared migration flag - My Library will re-sync with cloud data on next visit');
 
         logger.log('[Supabase] ✅ Progress loaded from cloud successfully!');
@@ -787,7 +814,8 @@
 
   // Listen for localStorage changes (for progress updates)
   window.addEventListener('storage', (e) => {
-    if (e.key && (e.key.startsWith('sp_edu_') || e.key.startsWith('sp_lesson') || e.key.startsWith('sp_learning'))) {
+    if (e.key && (e.key.startsWith('sp_edu_') || e.key.startsWith('sp_lesson') || e.key.startsWith('sp_learning') ||
+                  e.key === 'sp_bookmarks' || e.key === 'sp_favorites' || e.key === 'sp_downloads' || e.key === 'sp_activity')) {
       onProgressChange();
     }
   });
@@ -798,7 +826,8 @@
     originalSetItem.apply(this, arguments);
 
     // If progress-related key changed, trigger sync
-    if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_lesson') || key.startsWith('sp_learning'))) {
+    if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_lesson') || key.startsWith('sp_learning') ||
+                key === 'sp_bookmarks' || key === 'sp_favorites' || key === 'sp_downloads' || key === 'sp_activity')) {
       onProgressChange();
     }
   };
