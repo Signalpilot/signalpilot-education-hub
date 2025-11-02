@@ -257,13 +257,23 @@
     }
 
     try {
-      // Get local progress
-      const progress = JSON.parse(localStorage.getItem('sp_progress') || '{}');
+      // Collect ALL progress from localStorage
+      const progress = {};
+
+      // Get all sp_edu_* keys (lesson completion, achievements, etc.)
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_learning') || key.startsWith('sp_lesson'))) {
+          progress[key] = localStorage.getItem(key);
+        }
+      }
+
       const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0, "best": 0}');
       const notes = JSON.parse(localStorage.getItem('sp_lesson_notes') || '{}');
 
       console.log('[Supabase] 📤 Syncing progress to cloud...', {
         progressKeys: Object.keys(progress).length,
+        completedLessons: Object.keys(progress).filter(k => k.includes('_completed')).length,
         streakCurrent: streak.current,
         notesCount: Object.keys(notes).length
       });
@@ -346,20 +356,29 @@
       }
 
       if (data) {
+        const completedLessons = Object.keys(data.progress || {}).filter(k => k.includes('_completed')).length;
+
         console.log('[Supabase] 📥 Found cloud progress:', {
           progressKeys: Object.keys(data.progress || {}).length,
+          completedLessons: completedLessons,
           streakCurrent: data.streak?.current,
           notesCount: Object.keys(data.notes || {}).length,
           lastSynced: data.last_synced
         });
 
-        // Merge with local data (cloud takes precedence)
-        localStorage.setItem('sp_progress', JSON.stringify(data.progress || {}));
+        // Restore ALL individual progress keys to localStorage
+        const progress = data.progress || {};
+        for (const key in progress) {
+          localStorage.setItem(key, progress[key]);
+        }
+
+        // Restore streak and notes
         localStorage.setItem('sp_learning_streak', JSON.stringify(data.streak || {}));
         localStorage.setItem('sp_lesson_notes', JSON.stringify(data.notes || {}));
         localStorage.setItem('sp_last_cloud_sync', Date.now());
 
         console.log('[Supabase] ✅ Progress loaded from cloud successfully!');
+        console.log(`[Supabase] ✅ Restored ${completedLessons} completed lessons`);
       }
 
       return { success: true, data };
@@ -604,7 +623,7 @@
 
   // Listen for localStorage changes (for progress updates)
   window.addEventListener('storage', (e) => {
-    if (e.key && (e.key.includes('sp_progress') || e.key.includes('sp_lesson_notes') || e.key.includes('sp_learning_streak'))) {
+    if (e.key && (e.key.startsWith('sp_edu_') || e.key.startsWith('sp_lesson') || e.key.startsWith('sp_learning'))) {
       onProgressChange();
     }
   });
@@ -615,7 +634,7 @@
     originalSetItem.apply(this, arguments);
 
     // If progress-related key changed, trigger sync
-    if (key && (key.includes('sp_progress') || key.includes('sp_lesson_notes') || key.includes('sp_learning_streak'))) {
+    if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_lesson') || key.startsWith('sp_learning'))) {
       onProgressChange();
     }
   };
