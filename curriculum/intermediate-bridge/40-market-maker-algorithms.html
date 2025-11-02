@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Market Maker Algorithms: How They Profit From You — Signal Pilot</title>
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Market Maker Algorithms: The Other Side of Your Trade</h1>
+  <p><b>Every market order you place is filled by a market maker. And they profit from EVERY transaction.</b></p>
+  <p>Market makers aren't charities. They provide liquidity for profit. Understanding HOW they profit—and HOW they manipulate to maximize that profit—is critical to avoiding their traps.</p>
+  <h2>Part 1: Spread Capture</h2>
+  <p><strong>Core strategy:</strong> Buy at bid, sell at ask, pocket the spread</p>
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>Bid: $100.00, Ask: $100.05</li>
+    <li>MM buys from seller at $100.00</li>
+    <li>MM sells to buyer at $100.05</li>
+    <li><strong>Profit:</strong> $0.05 per share (no directional risk)</li>
+  </ul>
+  <p><strong>Scale:</strong> Do this 10,000 times per day = $500,000 profit</p>
+  <h2>Part 2: Adverse Selection</h2>
+  <p><strong>Problem:</strong> Smart traders only hit MMs when they have edge</p>
+  <p><strong>Example of adverse selection:</strong></p>
+  <ul>
+    <li>Informed trader sees news, immediately buys at ask</li>
+    <li>MM fills at $100.05</li>
+    <li>News hits public, price jumps to $101.00</li>
+    <li>MM now holding inventory bought at $100.00, marked at $101 (loss avoided, but sold too early)</li>
+  </ul>
+  <p><strong>MM Defense:</strong> Widen spreads during volatility (higher compensation for adverse selection risk)</p>
+  <h2>Part 3: Inventory Management</h2>
+  <p><strong>Goal:</strong> Stay delta-neutral (no directional exposure)</p>
+  <p><strong>Tactics:</strong></p>
+  <ul>
+    <li><strong>Skew quotes:</strong> If long inventory, lower bid to discourage more buying</li>
+    <li><strong>Quote stuffing:</strong> Flood order book to slow down adverse selection</li>
+    <li><strong>Layering:</strong> Place fake orders to manipulate price toward desired level</li>
+  </ul>
+  <h2>Part 4: How MMs Manipulate</h2>
+  <h3>Tactic #1: Spoofing</h3>
+  <p><strong>What:</strong> Place large fake orders to create false supply/demand, then cancel before fill</p>
+  <p><strong>Example:</strong> Show 50,000 sell order at $100.10 → retail thinks resistance → price drops → MM buys cheaper → cancel fake order</p>
+  <p><strong>Legality:</strong> Illegal, but hard to prove intent. Still happens.</p>
+  <h3>Tactic #2: Quote Stuffing</h3>
+  <p><strong>What:</strong> Rapidly place and cancel orders to slow down competitor algos</p>
+  <p><strong>Impact:</strong> Retail sees messy order book, hesitates, MMs get better fills</p>
+  <h3>Tactic #3: Latency Arbitrage</h3>
+  <p><strong>What:</strong> MMs see your order BEFORE it hits exchange (PFOF), front-run it</p>
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>You send market buy order for 1,000 shares</li>
+    <li>Broker sends to Citadel (PFOF)</li>
+    <li>Citadel buys 1,000 shares at $100.00</li>
+    <li>Citadel sells to you at $100.02</li>
+    <li><strong>Citadel profit:</strong> $20 (risk-free, using latency advantage)</li>
+  </ul>
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>MMs profit from spread capture</strong> (buy bid, sell ask, thousands of times per day)</li>
+      <li><strong>Adverse selection</strong> = informed traders hitting MMs when they have edge</li>
+      <li><strong>Spoofing, quote stuffing, layering</strong> = MM manipulation tactics</li>
+      <li><strong>PFOF enables latency arbitrage</strong> (Citadel sees your order first, front-runs)</li>
+      <li><strong>Defense: Use limit orders,</strong> trade liquid hours, avoid market orders during news</li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>

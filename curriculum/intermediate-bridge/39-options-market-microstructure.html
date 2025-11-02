@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Options Market Microstructure: Dealer Hedging & Max Pain — Signal Pilot</title>
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Options Market Microstructure: How MMs Move Markets</h1>
+  <p><b>Market makers don't just provide liquidity—their delta hedging CREATES price movement.</b></p>
+  <p>When 100,000 SPY calls expire on Friday, market makers who sold those calls must unwind their hedge. That means selling millions of shares into the close—creating downward pressure REGARDLESS of fundamentals.</p>
+  <h2>Part 1: Market Maker Delta Hedging</h2>
+  <p><strong>How it works:</strong></p>
+  <ul>
+    <li>Institution buys 10,000 calls from market maker</li>
+    <li>MM short 10,000 calls (exposed to upside)</li>
+    <li>MM buys underlying stock to hedge (delta × shares per contract)</li>
+    <li>As price moves, delta changes → MM must rehedge → creates price movement</li>
+  </ul>
+  <h3>Gamma Hedging Creates Volatility</h3>
+  <p><strong>High gamma environment:</strong> Delta changes rapidly → MMs rehedge frequently → amplifies moves</p>
+  <p><strong>Example:</strong> SPY rallies $1 → call delta increases → MMs buy more stock → SPY rallies more → repeat</p>
+  <h2>Part 2: Pin Risk & Max Pain</h2>
+  <p><strong>Pin Risk:</strong> Price gravitates toward strike with highest open interest on expiration day</p>
+  <p><strong>Why:</strong> MMs have massive hedges at that strike. Their hedging activity pins price there.</p>
+  <p><strong>Max Pain:</strong> Strike where most options expire worthless (maximum pain for option buyers)</p>
+  <p><strong>Trading it:</strong></p>
+  <ul>
+    <li>Identify max pain strike (highest total OI)</li>
+    <li>On expiration Friday, expect price to drift toward max pain by 3 PM</li>
+    <li>Trade mean reversion if price far from max pain morning</li>
+  </ul>
+  <h2>Part 3: 0DTE Options Impact</h2>
+  <p><strong>0DTE (zero days to expiration):</strong> Options expiring same day</p>
+  <p><strong>Impact:</strong> Extreme gamma → MMs hedging intraday → huge intraday volatility</p>
+  <p><strong>Trading around 0DTE:</strong> Avoid breakout trades on 0DTE expiration days (likely to chop/pin)</p>
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>MM delta hedging creates self-reinforcing price movement</strong></li>
+      <li><strong>Pin risk gravitates price toward max OI strike</strong> on expiration</li>
+      <li><strong>0DTE options = extreme intraday volatility</strong> from MM hedging</li>
+      <li><strong>Trade mean reversion to max pain</strong> on expiration Fridays</li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>
