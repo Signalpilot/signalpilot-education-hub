@@ -778,7 +778,8 @@
     onAuthStateChange,
     syncProgressToCloud,
     loadProgressFromCloud,
-    onProgressChange // Export for manual trigger
+    onProgressChange, // Export for manual trigger
+    showUserMenu // Export for debugging/testing
   };
 
   logger.log('[Supabase] Module loaded');
