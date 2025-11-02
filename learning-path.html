@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Learning Path — Signal Pilot Education</title>
+  <meta name="description" content="Visual roadmap of all 42 trading lessons across 3 tiers. See the complete learning path from beginner to institutional-grade trading.">
+  <link rel="canonical" href="https://education.signalpilot.io/learning-path.html">
+  <meta name="theme-color" content="#05070d">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+  <script src="/assets/structured-data.js" defer></script>
+  <script src="/assets/lazy-load.js" defer></script>
+
+  <style>
+    .learning-path-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .tier-section {
+      margin: 3rem 0;
+      position: relative;
+    }
+
+    .tier-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(91, 138, 255, 0.1), rgba(118, 221, 255, 0.05));
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+    }
+
+    .tier-icon {
+      font-size: 3rem;
+    }
+
+    .tier-info h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.8rem;
+    }
+
+    .tier-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .lesson-card {
+      background: var(--bg-2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lesson-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .lesson-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(91, 138, 255, 0.2);
+    }
+
+    .lesson-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .lesson-card.completed {
+      border-color: rgba(0, 255, 136, 0.3);
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 255, 136, 0.02));
+    }
+
+    .lesson-card.completed::before {
+      background: #00ff88;
+      transform: scaleY(1);
+    }
+
+    .lesson-number {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-card.completed .lesson-number {
+      background: #00ff88;
+    }
+
+    .lesson-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .lesson-description {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .lesson-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .completion-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      background: #00ff88;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 0.9rem;
+    }
+
+    .progress-bar-container {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+    }
+
+    .progress-bar-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #76ddff);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .prerequisites {
+      background: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 6px;
+      padding: 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .prerequisites strong {
+      color: #ffc107;
+    }
+
+    @media (max-width: 768px) {
+      .lessons-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="/">Education</a></li>
+        <li><a aria-current="page" href="/learning-path.html">Learning Path</a></li>
+        <li><a href="/my-library.html">My Library</a></li>
+        <li><a href="/search.html">🔍 Search</a></li>
+      </ul>
+    </nav>
+    <div class="header-ctls">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button>
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero" style="padding: 2rem 0 1rem;">
+    <div class="wrap" style="text-align: center;">
+      <h1 class="headline xl">🗺️ Complete Learning Path</h1>
+      <p class="lead">Visual roadmap of all 42 lessons from beginner to institutional-grade trading</p>
+    </div>
+  </section>
+
+  <!-- Overall Progress -->
+  <section class="wrap" style="max-width: 1200px; margin: 2rem auto;">
+    <div class="progress-bar-container">
+      <div class="progress-bar-label">
+        <span><strong>Your Overall Progress</strong></span>
+        <span id="overall-progress-text">0 of 42 lessons completed (0%)</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="overall-progress-bar" style="width: 0%"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="learning-path-container" id="learning-path"></div>
+</main>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> Signal Pilot Labs, Inc.</div>
+    <div class="links">
+      <a href="https://signalpilot.io/privacy.html">Privacy</a>
+      <a href="https://signalpilot.io/terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+
+<script>
+// Learning Path Data
+(function() {
+  'use strict';
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const learningPath = {
+    beginner: {
+      title: "Beginner Tier",
+      subtitle: "Beyond Retail Thinking",
+      icon: "🟢",
+      description: "12 comprehensive lessons • ~35,000 words • 8-12 weeks",
+      lessons: [
+        { num: 1, title: "The Liquidity Lie", desc: "Why support & resistance is a trap", time: "25 min", url: "/curriculum/beginner/01-the-liquidity-lie.html" },
+        { num: 2, title: "Volume Doesn't Lie", desc: "Read delta and spot absorption", time: "22 min", url: "/curriculum/beginner/02-volume-doesnt-lie.html" },
+        { num: 3, title: "Price Action is Dead", desc: "Why naked charts fail in modern markets", time: "20 min", url: "/curriculum/beginner/03-price-action-is-dead.html" },
+        { num: 4, title: "The Repaint Problem", desc: "Detecting dishonest indicators", time: "18 min", url: "/curriculum/beginner/04-repaint-problem.html" },
+        { num: 5, title: "RSI Extremes", desc: "Why overbought means nothing", time: "20 min", url: "/curriculum/beginner/05-rsi-extremes.html", prereq: [4] },
+        { num: 6, title: "Moving Averages", desc: "EMAs as filters, not support", time: "19 min", url: "/curriculum/beginner/06-moving-averages.html" },
+        { num: 7, title: "Revenge Trading", desc: "Breaking the emotional cycle", time: "17 min", url: "/curriculum/beginner/07-revenge-trading.html" },
+        { num: 8, title: "Confirmation Bias", desc: "Seeing what you want to see", time: "16 min", url: "/curriculum/beginner/08-confirmation-bias.html", prereq: [7] },
+        { num: 9, title: "Position Sizing", desc: "Risk 1% or blow up", time: "21 min", url: "/curriculum/beginner/09-position-sizing.html" },
+        { num: 10, title: "Stop Losses", desc: "Where smart money hunts stops", time: "23 min", url: "/curriculum/beginner/10-stop-losses.html", prereq: [1, 9] },
+        { num: 11, title: "Timeframe Illusion", desc: "Why daily charts lie", time: "19 min", url: "/curriculum/beginner/11-timeframe-illusion.html" },
+        { num: 12, title: "Paper Trading", desc: "Why sim doesn't translate to live", time: "18 min", url: "/curriculum/beginner/12-paper-trading.html", prereq: [9, 10] }
+      ]
+    },
+    intermediate: {
+      title: "Intermediate Tier",
+      subtitle: "Professional Trading Frameworks",
+      icon: "🟡",
+      description: "15 comprehensive lessons • ~42,000 words • 10-15 weeks",
+      lessons: [
+        { num: 13, title: "Bid-Ask Spread Dynamics", desc: "What the spread tells you", time: "24 min", url: "/curriculum/intermediate/13-bid-ask-spread-dynamics.html", prereq: [2] },
+        { num: 14, title: "Order Book Analysis", desc: "Reading Level 2 data", time: "26 min", url: "/curriculum/intermediate/14-order-book-analysis.html", prereq: [13] },
+        { num: 15, title: "Market Making & HFT", desc: "How the game is actually played", time: "28 min", url: "/curriculum/intermediate/15-market-making-hft.html", prereq: [14] },
+        { num: 16, title: "Footprint Charts", desc: "Reading the tape visually", time: "25 min", url: "/curriculum/intermediate/16-footprint-charts.html", prereq: [2, 13] },
+        { num: 17, title: "Dark Pools", desc: "Hidden liquidity and DIX", time: "23 min", url: "/curriculum/intermediate/17-dark-pools.html", prereq: [14] },
+        { num: 18, title: "Smart Money Divergence", desc: "Price vs. delta divergence", time: "27 min", url: "/curriculum/intermediate/18-smart-money-divergence.html", prereq: [2, 16] },
+        { num: 19, title: "Multi-Timeframe Mastery", desc: "HTF guides, MTF indicates, LTF executes", time: "29 min", url: "/curriculum/intermediate/19-multi-timeframe-mastery.html", prereq: [11] },
+        { num: 20, title: "Janus Atlas Advanced", desc: "Confluence scoring system", time: "26 min", url: "/curriculum/intermediate/20-janus-atlas-advanced.html", prereq: [1, 10] },
+        { num: 21, title: "Plutus Flow Mastery", desc: "CVD divergence playbook", time: "28 min", url: "/curriculum/intermediate/21-plutus-flow-mastery.html", prereq: [2, 18] },
+        { num: 22, title: "Minimal Flow Regimes", desc: "Trending vs. ranging markets", time: "24 min", url: "/curriculum/intermediate/22-minimal-flow-regimes.html", prereq: [19] },
+        { num: 23, title: "Portfolio Construction", desc: "Correlation and diversification", time: "25 min", url: "/curriculum/intermediate/23-portfolio-construction.html", prereq: [9] },
+        { num: 24, title: "Backtesting Reality", desc: "Curve fitting and survivorship bias", time: "27 min", url: "/curriculum/intermediate/24-backtesting-reality.html" },
+        { num: 25, title: "Advanced Risk Management", desc: "Kelly Criterion and drawdown math", time: "26 min", url: "/curriculum/intermediate/25-advanced-risk-management.html", prereq: [9, 23] },
+        { num: 26, title: "Trade Journal Mastery", desc: "What to track and why", time: "22 min", url: "/curriculum/intermediate/26-trade-journal-mastery.html", prereq: [24] },
+        { num: 27, title: "Professional Operations", desc: "Trading as a business", time: "24 min", url: "/curriculum/intermediate/27-professional-operations.html", prereq: [25, 26] }
+      ]
+    },
+    advanced: {
+      title: "Advanced Tier",
+      subtitle: "Institutional-Grade Trading",
+      icon: "🔴",
+      description: "15 comprehensive lessons • ~37,000 words • 10-15 weeks",
+      lessons: [
+        { num: 28, title: "Institutional Order Flow", desc: "VWAP, TWAP, and iceberg orders", time: "30 min", url: "/curriculum/advanced/28-institutional-order-flow.html", prereq: [14, 15] },
+        { num: 29, title: "Market Regime Recognition", desc: "Automated regime detection", time: "28 min", url: "/curriculum/advanced/29-market-regime-recognition.html", prereq: [22] },
+        { num: 30, title: "Auction Theory Advanced", desc: "Opening range and FVGs", time: "27 min", url: "/curriculum/advanced/30-auction-theory-advanced.html", prereq: [15] },
+        { num: 31, title: "Cross-Asset Correlations", desc: "DXY, TNX, and VIX relationships", time: "26 min", url: "/curriculum/advanced/31-cross-asset-correlations.html", prereq: [23] },
+        { num: 32, title: "Volatility Trading", desc: "VIX and gamma exposure", time: "29 min", url: "/curriculum/advanced/32-volatility-trading.html", prereq: [31] },
+        { num: 33, title: "Algorithmic Execution", desc: "Slippage and market impact", time: "28 min", url: "/curriculum/advanced/33-algorithmic-execution.html", prereq: [28] },
+        { num: 34, title: "System Development", desc: "Building robust trading systems", time: "31 min", url: "/curriculum/advanced/34-system-development.html", prereq: [24, 29] },
+        { num: 35, title: "Machine Learning Trading", desc: "When ML works and when it doesn't", time: "32 min", url: "/curriculum/advanced/35-machine-learning-trading.html", prereq: [34] },
+        { num: 36, title: "High Frequency Concepts", desc: "Latency and co-location", time: "27 min", url: "/curriculum/advanced/36-high-frequency-concepts.html", prereq: [15, 28] },
+        { num: 37, title: "Trading Automation APIs", desc: "Broker APIs and execution", time: "29 min", url: "/curriculum/advanced/37-trading-automation-apis.html", prereq: [33, 34] },
+        { num: 38, title: "Portfolio Theory Advanced", desc: "Modern Portfolio Theory reality", time: "28 min", url: "/curriculum/advanced/38-portfolio-theory-advanced.html", prereq: [23, 31] },
+        { num: 39, title: "Performance Attribution", desc: "What's skill vs. luck", time: "26 min", url: "/curriculum/advanced/39-performance-attribution.html", prereq: [26, 38] },
+        { num: 40, title: "Tax Optimization", desc: "Wash sales and tax efficiency", time: "24 min", url: "/curriculum/advanced/40-tax-optimization.html", prereq: [27] },
+        { num: 41, title: "Professional Infrastructure", desc: "Tools, data, and workspace", time: "25 min", url: "/curriculum/advanced/41-professional-infrastructure.html", prereq: [27] },
+        { num: 42, title: "Trading Career Path", desc: "Prop firms, funds, and going solo", time: "27 min", url: "/curriculum/advanced/42-trading-career-path.html", prereq: [27, 39, 41] }
+      ]
+    }
+  };
+
+  // Get completed lessons
+  function getCompletedLessons() {
+    return Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed'));
+  }
+
+  // Render learning path
+  function renderLearningPath() {
+    const container = document.getElementById('learning-path');
+    const completed = getCompletedLessons();
+    const completedCount = completed.length;
+
+    // Update overall progress
+    const percentage = Math.round((completedCount / 42) * 100);
+    document.getElementById('overall-progress-text').textContent = `${completedCount} of 42 lessons completed (${percentage}%)`;
+    document.getElementById('overall-progress-bar').style.width = percentage + '%';
+
+    // Render each tier
+    let html = '';
+    for (const [tier, data] of Object.entries(learningPath)) {
+      const tierCompleted = data.lessons.filter(l => {
+        const key = `sp_edu_${tier}_${l.url.split('/').pop().replace('.html', '')}_completed`;
+        return completed.includes(key);
+      }).length;
+
+      const tierPercentage = Math.round((tierCompleted / data.lessons.length) * 100);
+
+      html += `
+        <div class="tier-section">
+          <div class="tier-header">
+            <div class="tier-icon">${data.icon}</div>
+            <div class="tier-info">
+              <h2>${data.title}</h2>
+              <div class="tier-meta">${data.subtitle} • ${data.description}</div>
+            </div>
+          </div>
+
+          <div class="progress-bar-container">
+            <div class="progress-bar-label">
+              <span><strong>Tier Progress</strong></span>
+              <span>${tierCompleted} of ${data.lessons.length} lessons (${tierPercentage}%)</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-bar-fill" style="width: ${tierPercentage}%"></div>
+            </div>
+          </div>
+
+          <div class="lessons-grid">
+            ${data.lessons.map(lesson => {
+              const lessonKey = `sp_edu_${tier}_${lesson.url.split('/').pop().replace('.html', '')}_completed`;
+              const isCompleted = completed.includes(lessonKey);
+
+              let prereqText = '';
+              if (lesson.prereq && lesson.prereq.length > 0) {
+                prereqText = `<div class="prerequisites"><strong>⚠️ Prerequisites:</strong> Complete lesson${lesson.prereq.length > 1 ? 's' : ''} ${lesson.prereq.join(', ')} first</div>`;
+              }
+
+              return `
+                <div class="lesson-card ${isCompleted ? 'completed' : ''}" onclick="window.location.href='${lesson.url}'">
+                  ${isCompleted ? '<div class="completion-badge">✓</div>' : ''}
+                  <div class="lesson-number">${lesson.num}</div>
+                  <div class="lesson-title">${lesson.title}</div>
+                  <div class="lesson-description">${lesson.desc}</div>
+                  <div class="lesson-meta">
+                    <span>📖 ${lesson.time}</span>
+                    <span>${isCompleted ? '✅ Completed' : '⏳ Not started'}</span>
+                  </div>
+                  ${prereqText}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    container.innerHTML = html;
+  }
+
+  // Initialize
+  renderLearningPath();
+
+})();
+</script>
+</body>
+</html>
