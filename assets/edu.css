@@ -515,6 +515,13 @@ html[data-theme="light"] .hero::before{
     align-items:flex-start;
     gap:.25rem;
   }
+
+  /* Fix Related Lessons grid on mobile - override inline styles */
+  .prose ~ div[style*="grid"],
+  div[style*="repeat(auto-fit"]{
+    grid-template-columns:1fr !important;
+    gap:.75rem !important;
+  }
 }
 
 /* Extra small devices */
