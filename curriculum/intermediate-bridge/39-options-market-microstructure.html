@@ -1,51 +1,534 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
   <meta charset="utf-8"/>
-  <title>Options Market Microstructure: Dealer Hedging & Max Pain — Signal Pilot</title>
-  <meta name="description" content="Market makers don't just provide liquidity—their delta hedging CREATES price movement. Learn max pain and pin risk mechanics.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Options Market Microstructure: Dealer Hedging & Max Pain — Signal Pilot Learn</title>
+  <meta name="description" content="Market makers don't just provide liquidity—their delta hedging CREATES price movement. Master max pain theory, pin risk, gamma squeezes, and 0DTE mechanics.">
+  <meta name="sp-level" content="Intermediate-Bridge">
+  <meta name="sp-order" content="39">
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+<script src="/assets/structured-data.js" defer></script>
+<script src="/assets/lazy-load.js" defer></script>
+<script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/my-library.html">📚 My Library</a></li>
+      <li><a href="/search.html">🔍 Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <h1>Options Market Microstructure: How MMs Move Markets</h1>
-  <p><b>Market makers don't just provide liquidity—their delta hedging CREATES price movement.</b></p>
-  <p>When 100,000 SPY calls expire on Friday, market makers who sold those calls must unwind their hedge. That means selling millions of shares into the close—creating downward pressure REGARDLESS of fundamentals.</p>
-  <h2>Part 1: Market Maker Delta Hedging</h2>
-  <p><strong>How it works:</strong></p>
-  <ul>
-    <li>Institution buys 10,000 calls from market maker</li>
-    <li>MM short 10,000 calls (exposed to upside)</li>
-    <li>MM buys underlying stock to hedge (delta × shares per contract)</li>
-    <li>As price moves, delta changes → MM must rehedge → creates price movement</li>
-  </ul>
-  <h3>Gamma Hedging Creates Volatility</h3>
-  <p><strong>High gamma environment:</strong> Delta changes rapidly → MMs rehedge frequently → amplifies moves</p>
-  <p><strong>Example:</strong> SPY rallies $1 → call delta increases → MMs buy more stock → SPY rallies more → repeat</p>
-  <h2>Part 2: Pin Risk & Max Pain</h2>
-  <p><strong>Pin Risk:</strong> Price gravitates toward strike with highest open interest on expiration day</p>
-  <p><strong>Why:</strong> MMs have massive hedges at that strike. Their hedging activity pins price there.</p>
-  <p><strong>Max Pain:</strong> Strike where most options expire worthless (maximum pain for option buyers)</p>
-  <p><strong>Trading it:</strong></p>
-  <ul>
-    <li>Identify max pain strike (highest total OI)</li>
-    <li>On expiration Friday, expect price to drift toward max pain by 3 PM</li>
-    <li>Trade mean reversion if price far from max pain morning</li>
-  </ul>
-  <h2>Part 3: 0DTE Options Impact</h2>
-  <p><strong>0DTE (zero days to expiration):</strong> Options expiring same day</p>
-  <p><strong>Impact:</strong> Extreme gamma → MMs hedging intraday → huge intraday volatility</p>
-  <p><strong>Trading around 0DTE:</strong> Avoid breakout trades on 0DTE expiration days (likely to chop/pin)</p>
-  <div class="key-takeaway">
-    <h4>Key Takeaways</h4>
-    <ul>
-      <li><strong>MM delta hedging creates self-reinforcing price movement</strong></li>
-      <li><strong>Pin risk gravitates price toward max OI strike</strong> on expiration</li>
-      <li><strong>0DTE options = extreme intraday volatility</strong> from MM hedging</li>
-      <li><strong>Trade mean reversion to max pain</strong> on expiration Fridays</li>
-    </ul>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #39</span>
+      </div>
+      <span class="badge">🟡 Intermediate-Bridge • Lesson 39 of 82</span>
+      <h1 class="headline xl">Options Market Microstructure: How Dealers Move Markets</h1>
+      <div class="meta">Reading time ~20-24 min • Delta Hedging, Max Pain, Gamma Squeezes</div>
+
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>SPY is trading at $450.20. There are 200,000 call contracts at the $450 strike expiring Friday. Market makers who sold those calls are hedged with $9 billion in SPY shares. If SPY drops below $450, they'll dump $4.5 billion of stock into the market by close—regardless of fundamentals.</b></p>
+
+      <p>This isn't theory. This is mechanical reality.</p>
+
+      <p>Options market makers don't just provide liquidity—<strong>their hedging activity creates massive, predictable price movements</strong> that most traders never see coming.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Why Most Traders Get Wrecked on OpEx</h4>
+        <p>Friday 3:00 PM: SPY is rallying on good news. You buy calls. At 3:30 PM, SPY inexplicably dumps 1.5% in 15 minutes with NO news. Your calls expire worthless.</p>
+        <p><strong>What happened?</strong> Market maker delta unwind. Dealers had massive call hedges that forced them to sell billions at the close. You got caught in the wave.</p>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 What You'll Master</h4>
+        <ul>
+          <li>How delta hedging creates self-reinforcing price movements</li>
+          <li>Why price gravitates toward max pain on expiration (pin risk)</li>
+          <li>Gamma squeeze mechanics (GME, AMC style)</li>
+          <li>0DTE options impact on intraday volatility</li>
+          <li>How to trade around dealer positioning for edge</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 1: Market Maker Delta Hedging Mechanics</span></div>
+
+      <h2>Why Dealers MUST Hedge (And How It Moves Markets)</h2>
+
+      <p>When you buy a call option, you're usually buying it from a market maker (Citadel, Susquehanna, Optiver, etc.). They don't want directional risk—they want to collect the spread risk-free.</p>
+
+      <p>To stay neutral, they <strong>delta hedge</strong> by buying/selling the underlying stock.</p>
+
+      <h3>Step-by-Step: How Delta Hedging Works</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Example: Institution Buys 10,000 SPY $450 Calls</div>
+          <div class="accordion-content">
+            <p><strong>Trade:</strong> JPMorgan buys 10,000 SPY $450 calls from Citadel</p>
+            <p><strong>Citadel's Position:</strong> Short 10,000 calls (naked short = exposed to unlimited upside)</p>
+            <p><strong>Delta at time of sale:</strong> 0.50 (50% chance of expiring ITM)</p>
+            <p><strong>Hedge Required:</strong> 10,000 contracts × 100 shares × 0.50 delta = 500,000 SPY shares</p>
+            <p><strong>Action:</strong> Citadel buys 500,000 SPY shares to hedge</p>
+            <p style="margin-top:1rem;color:var(--success)"><strong>Result:</strong> Citadel is now delta-neutral (profit from theta decay, not directional movement)</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">What Happens When Price Moves Up</div>
+          <div class="accordion-content">
+            <p><strong>SPY rallies from $448 → $452</strong></p>
+            <p><strong>New Delta:</strong> 0.75 (now 75% ITM probability)</p>
+            <p><strong>New Hedge Required:</strong> 10,000 × 100 × 0.75 = 750,000 shares</p>
+            <p><strong>Current Hedge:</strong> 500,000 shares</p>
+            <p><strong>Action:</strong> Citadel must BUY another 250,000 shares</p>
+            <p style="margin-top:1rem;color:var(--warning)"><strong>Impact:</strong> This buying pushes SPY higher → delta increases more → more buying → gamma squeeze!</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">What Happens When Price Moves Down</div>
+          <div class="accordion-content">
+            <p><strong>SPY drops from $452 → $448</strong></p>
+            <p><strong>New Delta:</strong> 0.30 (now only 30% ITM probability)</p>
+            <p><strong>New Hedge Required:</strong> 10,000 × 100 × 0.30 = 300,000 shares</p>
+            <p><strong>Current Hedge:</strong> 750,000 shares (over-hedged!)</p>
+            <p><strong>Action:</strong> Citadel must SELL 450,000 shares</p>
+            <p style="margin-top:1rem;color:var(--warning)"><strong>Impact:</strong> This selling pushes SPY lower → delta decreases more → more selling → crash amplification!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Key Insight</h4>
+        <p>Market makers are <strong>mechanical hedgers</strong>. They:</p>
+        <ul>
+          <li><strong>Buy when price rises</strong> (to increase hedge)</li>
+          <li><strong>Sell when price falls</strong> (to decrease hedge)</li>
+        </ul>
+        <p>This is <strong>trend-amplifying</strong> behavior. MMs add fuel to the fire in both directions.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: Gamma—The Accelerator of Market Movements</span></div>
+
+      <h2>Why Gamma Matters More Than Delta</h2>
+
+      <p><strong>Delta</strong> tells you how much stock MMs are hedged with RIGHT NOW.<br>
+      <strong>Gamma</strong> tells you how FAST that hedge changes as price moves.</p>
+
+      <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">Gamma = Rate of change of delta</p>
+
+      <p><strong>High gamma environment:</strong></p>
+      <ul>
+        <li>Small price moves → large delta changes → massive rehedging flows</li>
+        <li>MMs constantly buying/selling → amplifies volatility</li>
+        <li>Perfect setup for gamma squeezes (GME, AMC)</li>
+      </ul>
+
+      <h3>Real Example: GameStop Gamma Squeeze (Jan 2021)</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>The Setup</button>
+          <button>The Squeeze</button>
+          <button>The Lesson</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>How GME Became a Gamma Bomb</h3>
+            <p><strong>Initial State (Jan 11, 2021):</strong></p>
+            <ul>
+              <li>GME at $20</li>
+              <li>Retail buys 500K call options (massive gamma exposure for MMs)</li>
+              <li>MMs sold those calls, hedged with ~10M GME shares</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Jan 13:</strong> GME rallies to $30 on WSB hype</p>
+            <ul>
+              <li>Call delta increases from 0.20 → 0.60</li>
+              <li>MMs must buy another 20M shares to stay hedged</li>
+              <li>This buying pushes GME to $40</li>
+            </ul>
+          </div>
+          <div class="tab-panel">
+            <h3>The Gamma Feedback Loop</h3>
+            <p><strong>Jan 15-25:</strong> Exponential acceleration</p>
+            <ul>
+              <li>GME $40 → $60: MMs buy 30M shares</li>
+              <li>GME $60 → $100: MMs buy 50M shares</li>
+              <li>GME $100 → $200: MMs buy 80M shares</li>
+              <li>GME $200 → $483: MMs in PANIC mode</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Peak Absurdity (Jan 28):</strong></p>
+            <ul>
+              <li>GME float: 50M shares</li>
+              <li>MM gamma hedges: 150M+ shares (3× the float!)</li>
+              <li>Short squeeze + gamma squeeze = infinity squeeze</li>
+            </ul>
+          </div>
+          <div class="tab-panel">
+            <h3>What We Learned</h3>
+            <p><strong>Gamma Squeezes Are Real:</strong></p>
+            <ul>
+              <li>High option volume + small float = explosive upside</li>
+              <li>MMs mechanically buy on the way up (no choice)</li>
+              <li>Feedback loop can push price to absurd levels</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>But They're Temporary:</strong></p>
+            <ul>
+              <li>Once options expire, MMs unwind hedges</li>
+              <li>GME dropped from $483 → $40 in 2 weeks</li>
+              <li>Millions of late buyers got wrecked</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 Trading Gamma Squeezes</h4>
+        <p><strong>Entry:</strong> Early when gamma is building (high OI, rising IV)</p>
+        <p><strong>Exit:</strong> Before expiration (MMs will dump their hedges)</p>
+        <p><strong>Risk:</strong> If you hold past OpEx, you're catching a falling knife</p>
+      </div>
+
+      <div class="section-break"><span>Part 3: Max Pain Theory & Pin Risk</span></div>
+
+      <h2>Why Price Gravitates Toward Specific Strikes on Expiration</h2>
+
+      <p><strong>Max Pain</strong> is the strike price where the most options (both calls and puts) expire worthless—causing maximum loss for option buyers and maximum profit for option sellers (market makers).</p>
+
+      <p><strong>Pin Risk</strong> is the phenomenon where price magnetically drifts toward the strike with the highest open interest as expiration approaches.</p>
+
+      <h3>How to Calculate Max Pain</h3>
+
+      <div class="callout-info">
+        <h4>📖 Max Pain Formula</h4>
+        <p>For each strike price, calculate:</p>
+        <p style="font-size:1rem;margin:1rem 0">Total Loss = (Call Loss + Put Loss)</p>
+        <p><strong>Call Loss (for strikes below current price):</strong><br>
+        = (Current Price - Strike) × Call OI</p>
+        <p><strong>Put Loss (for strikes above current price):</strong><br>
+        = (Strike - Current Price) × Put OI</p>
+        <p style="margin-top:1rem"><strong>Max Pain Strike =</strong> Strike where Total Loss is MAXIMIZED</p>
+      </div>
+
+      <h3>Real Example: SPY Expiration Friday</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">SPY Options Chain (Expiring Friday 3 PM)</div>
+          <div class="accordion-content">
+            <p><strong>Current Price:</strong> SPY = $452.50</p>
+            <p><strong>Open Interest by Strike:</strong></p>
+            <ul>
+              <li>$445 Put: 80,000 contracts</li>
+              <li>$448 Put: 120,000 contracts</li>
+              <li>$450 Call: 200,000 contracts</li>
+              <li>$452 Call: 150,000 contracts</li>
+              <li>$455 Call: 100,000 contracts</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Calculate Max Pain:</strong></p>
+            <p>If SPY closes at <strong>$450</strong>:</p>
+            <ul>
+              <li>$445 Put: Worthless (OTM) → $0 loss</li>
+              <li>$448 Put: Worthless (OTM) → $0 loss</li>
+              <li>$450 Call: Worthless (ATM) → $0 loss</li>
+              <li>$452 Call: $200K value lost × 150K contracts = $30M</li>
+              <li>$455 Call: $500K value lost × 100K contracts = $50M</li>
+            </ul>
+            <p style="margin-top:1rem;color:var(--success)"><strong>Total Loss at $450:</strong> $80M → This is MAX PAIN</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Why Price Pins to Max Pain</div>
+          <div class="accordion-content">
+            <p><strong>Morning (10 AM):</strong> SPY at $452.50</p>
+            <ul>
+              <li>MMs are long 200K call contracts at $450 (hedged with stock)</li>
+              <li>As price drops toward $450, delta decreases</li>
+              <li>MMs sell stock to reduce hedge → pushes price down more</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Afternoon (2 PM):</strong> SPY at $450.80</p>
+            <ul>
+              <li>Now close to max pain</li>
+              <li>Any move away from $450 requires massive rehedging</li>
+              <li>Market "pins" near $450 due to offsetting flows</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Close (3:55 PM):</strong> SPY settles at $450.10</p>
+            <ul>
+              <li>Maximum options expire worthless</li>
+              <li>MMs made maximum profit from theta decay</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 Trading Max Pain</h4>
+        <p><strong>Strategy:</strong> On OpEx Friday, if SPY opens far from max pain, trade mean reversion</p>
+        <p><strong>Example:</strong> Max pain = $450, SPY opens at $455</p>
+        <ul>
+          <li>9:30 AM: Sell calls or buy puts targeting $450</li>
+          <li>By 3 PM: Price drifts toward $450 (mechanical dealer flows)</li>
+          <li>Exit by 3:30 PM (don't hold past close)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Win Rate:</strong> 60-70% (not guaranteed, but statistically favorable)</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: 0DTE Options—The New Volatility Driver</span></div>
+
+      <h2>Same-Day Expiration = Extreme Gamma</h2>
+
+      <p><strong>0DTE</strong> (zero days to expiration) options expire the same day. SPX now offers daily expirations—meaning EVERY day has OpEx dynamics.</p>
+
+      <h3>Why 0DTE Amplifies Intraday Volatility</h3>
+
+      <p><strong>Traditional monthly options:</strong> Gamma builds gradually over weeks</p>
+      <p><strong>0DTE options:</strong> Gamma explodes in final hours</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Morning Dynamics</button>
+          <button>Midday Dynamics</button>
+          <button>Final Hour</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>9:30 AM - 11:00 AM: Directional Phase</h3>
+            <p><strong>What's Happening:</strong></p>
+            <ul>
+              <li>0DTE options still have 6.5 hours to expiration</li>
+              <li>Gamma is moderate</li>
+              <li>Market can trend based on news/flows</li>
+            </ul>
+            <p><strong>Trading:</strong> Directional strategies work (follow momentum)</p>
+          </div>
+          <div class="tab-panel">
+            <h3>11:00 AM - 2:00 PM: Compression Phase</h3>
+            <p><strong>What's Happening:</strong></p>
+            <ul>
+              <li>Gamma increasing, delta hedging intensifies</li>
+              <li>Price range compresses around key strikes</li>
+              <li>Choppy, back-and-forth action</li>
+            </ul>
+            <p><strong>Trading:</strong> Range-bound strategies (sell premium, iron condors)</p>
+          </div>
+          <div class="tab-panel">
+            <h3>2:00 PM - 4:00 PM: Pin/Unwind Phase</h3>
+            <p><strong>What's Happening:</strong></p>
+            <ul>
+              <li>Gamma explodes (calls/puts going to 0 or 1 delta)</li>
+              <li>MMs aggressively rehedge</li>
+              <li>Price pins to max pain OR violent move if pin breaks</li>
+            </ul>
+            <p><strong>Trading:</strong> Avoid directional trades (too unpredictable)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 0DTE Trading Rules</h4>
+        <ul>
+          <li><strong>Morning (9:30-11):</strong> Trend-following OK</li>
+          <li><strong>Midday (11-2):</strong> Expect chop, trade range</li>
+          <li><strong>Final hour (3-4):</strong> Stay OUT (extreme dealer flows)</li>
+          <li><strong>Never hold 0DTE past 3 PM</strong> unless you WANT gamma exposure</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 5: Dealer Positioning as a Trading Edge</span></div>
+
+      <h2>How to Use Dealer Gamma for Predictive Edge</h2>
+
+      <p>Tools like <strong>SpotGamma</strong>, <strong>SqueezeMetrics</strong>, and <strong>Vanna-Volga models</strong> estimate dealer positioning. You can use this data to predict mechanical flows.</p>
+
+      <h3>Key Metrics to Track:</h3>
+
+      <ul>
+        <li><strong>Dealer Gamma Exposure (GEX):</strong> Total gamma dealers are short (positive GEX = volatility suppression, negative GEX = volatility amplification)</li>
+        <li><strong>Dealer Delta:</strong> Net stock hedge required (tells you if MMs are net long/short)</li>
+        <li><strong>Gamma Flip Level:</strong> Price where dealer gamma flips from long to short (critical inflection point)</li>
+      </ul>
+
+      <div class="callout-key">
+        <h4>💡 Trading Dealer Positioning</h4>
+        <p><strong>Positive Dealer Gamma (Most Days):</strong></p>
+        <ul>
+          <li>MMs are long gamma → they SELL into rallies, BUY into dips</li>
+          <li>Effect: Volatility suppression (market pins, ranges)</li>
+          <li>Strategy: Sell premium, fade extremes</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Negative Dealer Gamma (Rare, Explosive):</strong></p>
+        <ul>
+          <li>MMs are short gamma → they BUY into rallies, SELL into dips</li>
+          <li>Effect: Volatility amplification (trends accelerate)</li>
+          <li>Strategy: Trend-follow, momentum trades</li>
+        </ul>
+      </div>
+
+      <!-- Quiz Section -->
+      <div class="section-break"><span>Quick Knowledge Check</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Test Your Understanding</h4>
+
+        <div class="quiz-question">
+          <p><strong>SPY is at $455 on Friday morning. Max pain is at $450. 100,000 call contracts at $450 strike expire today. What's likely to happen by 3 PM?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) SPY rallies higher (momentum)</div>
+            <div class="quiz-option" data-correct="true">B) SPY drifts down toward $450 (dealer delta unwind)</div>
+            <div class="quiz-option" data-correct="false">C) SPY stays flat at $455 (no reason to move)</div>
+            <div class="quiz-option" data-correct="false">D) Impossible to predict</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> When price is above max pain on OpEx, dealers holding call hedges will reduce their stock hedge as delta decreases. This creates mechanical selling pressure that drifts price toward max pain ($450) by close.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <!-- Downloadable Resources -->
+      <div class="section-break"><span>Downloadable Resources</span></div>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;border-left:4px solid var(--accent)">
+        <h4 style="margin:0 0 1rem 0">📥 Free Checklist for This Lesson</h4>
+        <p style="margin-bottom:1rem">Use this checklist to identify max pain, track dealer positioning, and avoid getting caught in OpEx dealer flows.</p>
+        <a href="/resources/checklists/options-microstructure-checklist.pdf" download class="btn btn-primary" style="display:inline-block">
+          Download Options Microstructure Checklist (PDF)
+        </a>
+        <p style="margin-top:.75rem;font-size:.9rem;color:var(--muted)">Check this every Friday before OpEx.</p>
+      </div>
+
+      <h2>Next Steps</h2>
+
+      <p>Options microstructure drives more price action than most traders realize. Now you know why SPY inexplicably dumps at 3:30 PM on Fridays—it's not manipulation, it's mechanics.</p>
+
+      <p><strong>Ready to continue?</strong> Move to <a href="/curriculum/intermediate-bridge/40-market-maker-algorithms.html">Lesson #40: Market Maker Algorithms</a> to understand how HFT firms exploit retail order flow.</p>
+
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="article-sidebar">
+      <nav class="nav-article" aria-label="Lesson Navigation">
+        <div class="nav-item prev">
+          <a href="/curriculum/intermediate-bridge/38-game-theory-trading.html">
+            <span class="nav-label">← Previous</span>
+            <span class="nav-title">Game Theory in Trading</span>
+          </a>
+        </div>
+        <div class="nav-item next">
+          <a href="/curriculum/intermediate-bridge/40-market-maker-algorithms.html">
+            <span class="nav-label">Next →</span>
+            <span class="nav-title">Market Maker Algorithms</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="lesson-actions">
+        <button id="mark-complete" class="btn btn-primary w-full">✓ Mark as Complete</button>
+        <button id="bookmark-btn" class="btn btn-ghost w-full">🔖 Bookmark</button>
+        <button id="notes-toggle" class="btn btn-ghost w-full">📝 My Notes</button>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 1rem 0;font-size:1rem">📚 Related Lessons</h3>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li style="margin-bottom:.75rem">
+            <a href="/curriculum/intermediate-bridge/37-options-order-flow.html" style="color:var(--primary);text-decoration:none">
+              #37: Options Order Flow
+            </a>
+          </li>
+          <li style="margin-bottom:.75rem">
+            <a href="/curriculum/intermediate-bridge/40-market-maker-algorithms.html" style="color:var(--primary);text-decoration:none">
+              #40: Market Maker Algorithms
+            </a>
+          </li>
+          <li>
+            <a href="/curriculum/intermediate-bridge/42-volatility-trading-strategies.html" style="color:var(--primary);text-decoration:none">
+              #42: Volatility Trading Strategies
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
   </div>
 </article>
+
+<div id="notes-panel" class="notes-panel">
+  <div class="notes-header">
+    <h3>📝 My Notes</h3>
+    <button id="notes-close" class="btn btn-ghost btn-sm">Close</button>
+  </div>
+  <div class="notes-content">
+    <textarea id="notes-textarea" placeholder="Write your notes here..."></textarea>
+    <button id="notes-save" class="btn btn-primary">Save Notes</button>
+  </div>
+</div>
+
+<div id="chatbot-container"></div>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> Signal Pilot Labs, Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="/assets/article.js"></script>
+<script src="/assets/tabs.js"></script>
+<script src="/assets/accordion.js"></script>
+<script src="/assets/bookmark.js"></script>
+<script src="/assets/notes.js"></script>
+<script src="/assets/progress.js"></script>
+<script src="/assets/chatbot.js"></script>
+<script src="/assets/auth.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
