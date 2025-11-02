@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Market Impact Models: How Large Orders Move Price — Signal Pilot</title>
+  <meta name="description" content="When you buy 100,000 shares, you move the market—and pay far more than you think. Learn market impact models and slippage estimation.">
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Market Impact Models: The Hidden Cost of Size</h1>
+  <p><b>When you buy 100 shares, you pay the ask. When you buy 100,000 shares, you move the market—and pay far more than you think.</b></p>
+  <p>Market impact is the price movement caused by your order. For retail traders buying 100 shares, it's negligible. For institutions buying 500,000 shares, it's the difference between profit and loss. Understanding market impact models lets you predict how large orders move price—and exploit them.</p>
+
+  <h2>Part 1: What Is Market Impact?</h2>
+
+  <h3>Definition & Components</h3>
+  <p><strong>Market impact:</strong> Price change caused by executing a trade</p>
+  <p><strong>Total cost = Commission + Spread + Market Impact</strong></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Description</th>
+        <th>Typical Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Commission</td>
+        <td>Broker fee</td>
+        <td>$0 (zero-commission era)</td>
+      </tr>
+      <tr>
+        <td>Spread</td>
+        <td>Bid-ask difference</td>
+        <td>0.01-0.1% (liquid stocks)</td>
+      </tr>
+      <tr>
+        <td>Market Impact</td>
+        <td>Price movement from order</td>
+        <td>0.1-5% (depends on size/liquidity)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>💡 Key Insight:</strong> For institutional traders, market impact often exceeds spread + commission by 10-100×. A $50M order might cause 0.5-2% slippage = $250K-$1M cost.</p>
+  </div>
+
+  <h3>Temporary vs Permanent Impact</h3>
+  <p><strong>Temporary impact:</strong> Price movement during execution, reverts after (supply/demand imbalance resolves)</p>
+  <p><strong>Permanent impact:</strong> Price movement that persists (information signal—market believes order is informed)</p>
+
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>Institution buys 500K shares of AAPL over 1 hour</li>
+    <li>Price rises from $150.00 → $150.75 during execution (<strong>temporary + permanent impact</strong>)</li>
+    <li>After execution, price settles at $150.40 (<strong>permanent impact = $0.40</strong>)</li>
+    <li>Temporary impact (reverted) = $0.75 - $0.40 = $0.35</li>
+  </ul>
+
+  <h2>Part 2: Market Impact Models</h2>
+
+  <h3>Model #1: Square-Root Law (Simplest)</h3>
+  <p><strong>Formula:</strong> Impact = σ × √(Q / V)</p>
+  <ul>
+    <li><strong>σ:</strong> Daily volatility (standard deviation)</li>
+    <li><strong>Q:</strong> Order size (shares)</li>
+    <li><strong>V:</strong> Daily volume (shares)</li>
+  </ul>
+
+  <details class="accordion">
+    <summary>Square-Root Law Example</summary>
+    <div class="accordion-content">
+      <p><strong>Stock:</strong> AAPL</p>
+      <ul>
+        <li>Daily volatility (σ): 1.5% = 0.015</li>
+        <li>Average daily volume (V): 50M shares</li>
+        <li>Your order size (Q): 500K shares</li>
+      </ul>
+
+      <p><strong>Calculation:</strong></p>
+      <p>Impact = 0.015 × √(500,000 / 50,000,000)</p>
+      <p>= 0.015 × √0.01</p>
+      <p>= 0.015 × 0.1</p>
+      <p>= 0.0015 = 0.15%</p>
+
+      <p><strong>Interpretation:</strong> Buying 500K shares (1% of daily volume) will move price ~0.15%</p>
+      <p><strong>Cost:</strong> If AAPL = $150, impact = $150 × 0.0015 = $0.225/share → total impact cost = 500K × $0.225 = $112,500</p>
+    </div>
+  </details>
+
+  <h3>Model #2: Almgren-Chriss Model (Time-Dependent)</h3>
+  <p><strong>Concept:</strong> Impact depends on HOW FAST you trade (aggressive = high impact, patient = low impact)</p>
+  <p><strong>Formula (simplified):</strong> Impact = θ × (Q / T)</p>
+  <ul>
+    <li><strong>θ:</strong> Temporary impact coefficient</li>
+    <li><strong>Q:</strong> Total order size</li>
+    <li><strong>T:</strong> Time horizon (e.g., trade over 1 hour vs 1 day)</li>
+  </ul>
+
+  <p><strong>Trade-off:</strong></p>
+  <ul>
+    <li><strong>Trade fast (T small):</strong> High market impact, but lower execution risk (less price drift)</li>
+    <li><strong>Trade slow (T large):</strong> Low market impact, but higher execution risk (price might move away)</li>
+  </ul>
+
+  <h3>Model #3: Kyle's Lambda (Information-Based)</h3>
+  <p><strong>Concept:</strong> Market infers information from order flow → permanent impact</p>
+  <p><strong>Formula:</strong> Δp = λ × Q</p>
+  <ul>
+    <li><strong>λ (lambda):</strong> Market's sensitivity to order flow (price impact per share)</li>
+    <li><strong>Q:</strong> Order size</li>
+  </ul>
+
+  <p><strong>Key insight:</strong> If market believes your order is informed (hedge fund buying on insider info), lambda is HIGH → price moves sharply</p>
+  <p><strong>Defense (institutional):</strong> Split orders across time/venues to disguise intent (reduce perceived information content)</p>
+
+  <h2>Part 3: Estimating Market Impact (Practical)</h2>
+
+  <h3>Rule of Thumb: Participation Rate</h3>
+  <p><strong>Participation rate:</strong> Your order size as % of recent volume</p>
+  <p><strong>Impact guidelines:</strong></p>
+  <ul>
+    <li><strong>&lt; 1% of daily volume:</strong> Minimal impact (0.05-0.1%)</li>
+    <li><strong>1-5% of daily volume:</strong> Moderate impact (0.1-0.5%)</li>
+    <li><strong>5-10% of daily volume:</strong> High impact (0.5-2%)</li>
+    <li><strong>&gt; 10% of daily volume:</strong> Extreme impact (2-10%+)</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>⚠️ Professional Limit:</strong> Most institutions avoid exceeding 5-10% of daily volume in single stock to minimize footprint. Larger orders split across multiple days.</p>
+  </div>
+
+  <h3>Volume Curve (Intraday Variation)</h3>
+  <p><strong>Observation:</strong> Volume is NOT constant throughout the day</p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Time (ET)</th>
+        <th>% of Daily Volume</th>
+        <th>Market Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>9:30-10:00 AM</td>
+        <td>~15%</td>
+        <td>Moderate (high vol, but also high volatility)</td>
+      </tr>
+      <tr>
+        <td>10:00 AM-12:00 PM</td>
+        <td>~20%</td>
+        <td>Low (steady institutional flow)</td>
+      </tr>
+      <tr>
+        <td>12:00-2:00 PM</td>
+        <td>~15%</td>
+        <td>High (lowest volume, lunch hour)</td>
+      </tr>
+      <tr>
+        <td>2:00-3:00 PM</td>
+        <td>~20%</td>
+        <td>Low-Moderate (volume picking up)</td>
+      </tr>
+      <tr>
+        <td>3:00-4:00 PM</td>
+        <td>~30%</td>
+        <td>Moderate (closing auction absorbs flow)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Trading implication:</strong> Execute large orders during 10 AM-12 PM or 2-3 PM (minimize impact). Avoid lunch hour (12-2 PM) unless urgent.</p>
+
+  <h2>Part 4: Execution Strategies to Minimize Impact</h2>
+
+  <h3>Strategy #1: TWAP (Time-Weighted Average Price)</h3>
+  <p><strong>How it works:</strong> Split order evenly across time (e.g., 100K shares over 60 mins = 1,667 shares/min)</p>
+  <p><strong>Pros:</strong> Simple, predictable, minimizes impact</p>
+  <p><strong>Cons:</strong> Ignores volume patterns (trades same amount during lunch as during peak volume)</p>
+
+  <h3>Strategy #2: VWAP (Volume-Weighted Average Price)</h3>
+  <p><strong>How it works:</strong> Trade in proportion to market volume (more during high-volume periods, less during low-volume)</p>
+  <p><strong>Pros:</strong> Adapts to market conditions, minimizes impact better than TWAP</p>
+  <p><strong>Cons:</strong> More complex, requires volume forecasting</p>
+
+  <details class="accordion">
+    <summary>VWAP vs TWAP Example</summary>
+    <div class="accordion-content">
+      <p><strong>Goal:</strong> Buy 100K shares of AAPL from 9:30-11:30 AM (120 minutes)</p>
+
+      <p><strong>TWAP approach:</strong></p>
+      <ul>
+        <li>100K / 120 mins = 833 shares/minute (constant rate)</li>
+        <li>Total impact: Moderate (ignores volume patterns)</li>
+      </ul>
+
+      <p><strong>VWAP approach:</strong></p>
+      <ul>
+        <li>9:30-10:00 AM (30% of volume): Buy 30K shares (1,000/min)</li>
+        <li>10:00-11:00 AM (50% of volume): Buy 50K shares (833/min)</li>
+        <li>11:00-11:30 AM (20% of volume): Buy 20K shares (667/min)</li>
+        <li>Total impact: Lower (trades more when liquidity is high)</li>
+      </ul>
+
+      <p><strong>Result:</strong> VWAP typically achieves 10-30% better execution price than TWAP for large orders</p>
+    </div>
+  </details>
+
+  <h3>Strategy #3: Implementation Shortfall (IS)</h3>
+  <p><strong>Concept:</strong> Minimize difference between decision price and execution price</p>
+  <p><strong>How it works:</strong> Trade aggressively at start (lock in decision price), then slow down to reduce impact</p>
+  <p><strong>Use case:</strong> When you have strong conviction (don't want price to run away)</p>
+
+  <h3>Strategy #4: Iceberg Orders</h3>
+  <p><strong>What:</strong> Display small order (e.g., 500 shares) while hiding large reserve (e.g., 50,000 shares)</p>
+  <p><strong>Why:</strong> Prevents market from seeing full size (reduces front-running)</p>
+  <p><strong>Risk:</strong> HFTs detect icebergs via pattern recognition (repeated small fills at same price)</p>
+
+  <h2>Part 5: Using Signal Pilot to Detect Market Impact</h2>
+
+  <h3>Minimal Flow: Large Print Detection</h3>
+  <p><strong>Feature:</strong> Highlight prints &gt;10K shares (institutional orders)</p>
+  <p><strong>Signal:</strong> If 50K share buy print appears, expect temporary impact (0.1-0.3% move up in next few minutes)</p>
+  <p><strong>Trade:</strong> Scalp in direction of large print (institutions likely have more to buy → momentum continues)</p>
+
+  <h3>Pentarch Pilot Line: Cumulative Impact Tracking</h3>
+  <p><strong>Feature:</strong> Track total institutional buying/selling pressure over time windows</p>
+  <p><strong>Signal:</strong> If Pilot Line shows $10M net buying in 1 hour → permanent impact likely (price won't revert fully)</p>
+
+  <h3>Janus Atlas: Volume Profile Analysis</h3>
+  <p><strong>Feature:</strong> Visualize where large orders executed (volume-by-price)</p>
+  <p><strong>Use case:</strong> Identify accumulation zones (institutions building positions) → support levels</p>
+
+  <h2>Quiz: Test Your Understanding</h2>
+  <div class="quiz">
+    <div class="quiz-question">
+      <p><strong>Q1:</strong> You want to buy 200K shares of a stock with 10M daily volume. Using the square-root law (σ = 2%), what's the estimated impact?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Impact = 0.02 × √(200,000 / 10,000,000) = 0.02 × √0.02 = 0.02 × 0.141 = 0.00282 = 0.28%. For a $100 stock, that's $0.28/share impact, or $56,000 total cost on 200K shares.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q2:</strong> You see a 100K share buy print in TSLA (avg volume = 50M/day). What's your expectation for temporary impact?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Participation rate = 100K / 50M = 0.2% (very low). Expect minimal impact (0.05-0.1%). However, if print is first of many (institution starting accumulation), permanent impact could develop as more orders arrive.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q3:</strong> When is market impact HIGHEST during the trading day?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> 12:00-2:00 PM ET (lunch hour). Volume is lowest (~15% of daily), so same order size represents higher participation rate → higher impact. Avoid executing large orders during lunch unless necessary.</p>
+      </details>
+    </div>
+  </div>
+
+  <h2>Practical Checklist</h2>
+  <div class="checklist">
+    <h4>Before Executing Large Orders:</h4>
+    <ul>
+      <li>Check average daily volume (ADV) for stock</li>
+      <li>Calculate participation rate: Order size / ADV (target &lt;5%)</li>
+      <li>Estimate impact using square-root law: σ × √(Q/V)</li>
+      <li>If participation &gt;5%, split order across multiple days or use algo (VWAP/TWAP)</li>
+      <li>Avoid lunch hour (12-2 PM) for large orders (low volume = high impact)</li>
+      <li>Use iceberg orders to hide full size (but beware HFT detection)</li>
+    </ul>
+    <h4>While Executing:</h4>
+    <ul>
+      <li>Monitor temporary impact via Signal Pilot Minimal Flow (are subsequent prints moving price?)</li>
+      <li>If impact exceeds estimate by 2×, slow down execution (market sensing your order)</li>
+      <li>Check Pentarch Pilot Line for cumulative flow (are other institutions also buying?)</li>
+    </ul>
+    <h4>Post-Execution Analysis:</h4>
+    <ul>
+      <li>Calculate actual impact: (Avg fill price - Decision price) / Decision price</li>
+      <li>Compare to estimated impact (square-root model accurate?)</li>
+      <li>Track temporary vs permanent impact (did price revert after execution?)</li>
+    </ul>
+  </div>
+
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Market impact = hidden cost</strong> of large orders (often exceeds spread 10-100×)</li>
+      <li><strong>Square-root law:</strong> Impact ∝ σ × √(Q/V) (simple estimator)</li>
+      <li><strong>Participation rate &gt;5%</strong> of daily volume = high impact (split order)</li>
+      <li><strong>VWAP &gt; TWAP</strong> for minimizing impact (trades more during high-volume periods)</li>
+      <li><strong>Avoid lunch hour</strong> (12-2 PM) for large orders (lowest volume = highest impact)</li>
+    </ul>
+  </div>
+
+  <div class="related-lessons">
+    <h4>Related Lessons</h4>
+    <ul>
+      <li><a href="/curriculum/intermediate-bridge/44-hft-mechanics.html">Lesson 44: High-Frequency Trading Mechanics</a></li>
+      <li><a href="/curriculum/intermediate-bridge/45-auction-theory-imbalances.html">Lesson 45: Auction Theory & Market Imbalances</a></li>
+      <li><a href="70-execution-algorithms-twap-vwap.html">Lesson 70: Execution Algorithms (TWAP, VWAP, POV)</a></li>
+    </ul>
+  </div>
+
+  <div class="downloads">
+    <h4>Downloads</h4>
+    <ul>
+      <li><a href="/downloads/market-impact-calculator.xlsx">Market Impact Calculator (Excel)</a></li>
+      <li><a href="/downloads/execution-strategy-guide.pdf">Execution Strategy Selection Guide (PDF)</a></li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>

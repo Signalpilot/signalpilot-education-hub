@@ -26,6 +26,7 @@
       <a href="https://signalpilot.io/#why">Why Signal Pilot?</a>
       <a href="https://signalpilot.io/#inside">What's inside</a>
       <a href="/">Education</a>
+      <a href="/my-library.html">📚 My Library</a>
       <a href="/search.html">🔍 Search</a>
       <a href="/calculators.html">Calculators</a>
       <a href="https://signalpilot.io/#pricing">Pricing</a>

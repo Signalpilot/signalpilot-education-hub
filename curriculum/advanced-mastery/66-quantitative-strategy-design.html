@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Quantitative Strategy Design: Backtesting, Optimization & Validation — Signal Pilot</title>
+  <meta name="description" content="Discretionary trading is art. Quantitative trading is engineering. Learn to design, backtest, and deploy institutional-grade trading systems.">
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Quantitative Strategy Design: Building Systematic Edge</h1>
+  <p><b>Discretionary trading is art. Quantitative trading is engineering. Both can make money—but only quant strategies scale.</b></p>
+  <p>A properly designed quantitative strategy eliminates emotion, validates edge statistically, and compounds returns systematically. This lesson teaches you how to design, backtest, and deploy institutional-grade trading systems.</p>
+
+  <h2>Part 1: The Quantitative Strategy Development Lifecycle</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Goal</th>
+        <th>Common Pitfalls</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. Hypothesis</td>
+        <td>Define market inefficiency to exploit</td>
+        <td>Vague thesis ("buy dips works")</td>
+      </tr>
+      <tr>
+        <td>2. Data Collection</td>
+        <td>Gather clean, survivorship-bias-free data</td>
+        <td>Using incomplete/biased data</td>
+      </tr>
+      <tr>
+        <td>3. Backtesting</td>
+        <td>Test hypothesis on historical data</td>
+        <td>Overfitting, look-ahead bias</td>
+      </tr>
+      <tr>
+        <td>4. Optimization</td>
+        <td>Tune parameters for robustness</td>
+        <td>Curve-fitting to past data</td>
+      </tr>
+      <tr>
+        <td>5. Validation</td>
+        <td>Out-of-sample testing</td>
+        <td>Skipping this step entirely</td>
+      </tr>
+      <tr>
+        <td>6. Paper Trading</td>
+        <td>Live testing with fake money</td>
+        <td>Ignoring execution costs</td>
+      </tr>
+      <tr>
+        <td>7. Live Deployment</td>
+        <td>Real capital, small size initially</td>
+        <td>Going all-in immediately</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Part 2: Hypothesis Development (The Foundation)</h2>
+
+  <h3>What Makes a Good Trading Hypothesis?</h3>
+  <p><strong>Requirements:</strong></p>
+  <ul>
+    <li><strong>Specific:</strong> "Buy when RSI &lt; 30 and price &gt; 200-day MA"</li>
+    <li><strong>Testable:</strong> Can be quantified and backtested</li>
+    <li><strong>Logical:</strong> Based on market behavior (not random pattern)</li>
+    <li><strong>Exploitable:</strong> Edge persists long enough to profit</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>📚 Example Hypotheses:</strong></p>
+    <ul>
+      <li><strong>Mean reversion:</strong> Stocks oversold (&lt; -2 std dev) revert to mean within 5 days</li>
+      <li><strong>Momentum:</strong> Stocks breaking 52-week highs continue up for 20 days</li>
+      <li><strong>Pairs trading:</strong> XLE/XLF correlation &gt; 0.8 → trade spread mean reversion</li>
+    </ul>
+  </div>
+
+  <h3>Common Hypothesis Sources</h3>
+  <p><strong>1. Academic research:</strong> Read papers (SSRN, Journal of Finance) → test on current data</p>
+  <p><strong>2. Market observations:</strong> Notice pattern (e.g., "tech sells off before earnings") → quantify</p>
+  <p><strong>3. Institutional strategies:</strong> Reverse-engineer dark pool prints, COT positioning</p>
+
+  <h2>Part 3: Backtesting (The Core)</h2>
+
+  <h3>Essential Backtesting Principles</h3>
+
+  <details class="accordion">
+    <summary>Principle #1: Survivorship Bias</summary>
+    <div class="accordion-content">
+      <p><strong>Problem:</strong> Testing only on stocks that STILL EXIST (ignores bankruptcies)</p>
+      <p><strong>Example:</strong> Strategy buys distressed stocks. Backtest shows 20% annual return because it only includes survivors (GM 2008 not in dataset → bankruptcy loss excluded)</p>
+      <p><strong>Solution:</strong> Use datasets with delisted stocks (e.g., Norgate Data, Sharadar)</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Principle #2: Look-Ahead Bias</summary>
+    <div class="accordion-content">
+      <p><strong>Problem:</strong> Using information not available at trade time</p>
+      <p><strong>Example:</strong> Strategy uses "tomorrow's low" to set stop loss (impossible in real trading)</p>
+      <p><strong>Another example:</strong> Using restated earnings data (not available when originally reported)</p>
+      <p><strong>Solution:</strong> Ensure all signals use ONLY point-in-time data</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Principle #3: Slippage & Commissions</summary>
+    <div class="accordion-content">
+      <p><strong>Problem:</strong> Backtests assume perfect fills at mid-price</p>
+      <p><strong>Reality:</strong> You pay spread + market impact + commission</p>
+      <p><strong>Example:</strong> Strategy trades 100 times/month. Without costs = +15% annual return. With $5/trade commission + 0.05% slippage = +3% return (edge destroyed)</p>
+      <p><strong>Solution:</strong> Model realistic costs (0.05-0.1% per trade for liquid stocks, 0.2-0.5% for illiquid)</p>
+    </div>
+  </details>
+
+  <h3>Backtest Performance Metrics</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Formula</th>
+        <th>Good Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CAGR</td>
+        <td>(End / Start)^(1/Years) - 1</td>
+        <td>&gt; 15% (after costs)</td>
+      </tr>
+      <tr>
+        <td>Sharpe Ratio</td>
+        <td>(Return - RFR) / Std Dev</td>
+        <td>&gt; 1.0 (excellent &gt; 2.0)</td>
+      </tr>
+      <tr>
+        <td>Max Drawdown</td>
+        <td>Peak-to-trough decline</td>
+        <td>&lt; 20% (tolerable &lt; 30%)</td>
+      </tr>
+      <tr>
+        <td>Win Rate</td>
+        <td>Wins / Total Trades</td>
+        <td>&gt; 50% (trend) or &gt; 65% (mean rev)</td>
+      </tr>
+      <tr>
+        <td>Profit Factor</td>
+        <td>Gross Profit / Gross Loss</td>
+        <td>&gt; 1.5 (excellent &gt; 2.0)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Part 4: Optimization (The Danger Zone)</h2>
+
+  <h3>The Overfitting Problem</h3>
+  <p><strong>Overfitting:</strong> Strategy performs amazing on historical data but fails live (curve-fitted to noise)</p>
+
+  <p><strong>Example of overfitting:</strong></p>
+  <ul>
+    <li>Test 50 different RSI thresholds (10, 15, 20, 25, 30...)</li>
+    <li>Test 50 different moving averages (50-day, 100-day, 150-day...)</li>
+    <li>Total combinations: 2,500 variations</li>
+    <li>Find that "RSI &lt; 23.5 + 147-day MA" works best (15% annual return)</li>
+    <li><strong>Problem:</strong> Those exact numbers are noise. Strategy will fail live.</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>⚠️ Golden Rule:</strong> If a parameter change of ±10% destroys your strategy, it's overfit. Robust strategies work across parameter ranges (RSI 25-35 all profitable, not just RSI 30.7).</p>
+  </div>
+
+  <h3>Robust Optimization Techniques</h3>
+
+  <details class="accordion">
+    <summary>Technique #1: Walk-Forward Analysis</summary>
+    <div class="accordion-content">
+      <p><strong>Method:</strong></p>
+      <ol>
+        <li>Optimize on 2015-2017 data (in-sample)</li>
+        <li>Test on 2018 data (out-of-sample)</li>
+        <li>Re-optimize on 2016-2018 (rolling window)</li>
+        <li>Test on 2019 data</li>
+        <li>Repeat...</li>
+      </ol>
+      <p><strong>Pass criteria:</strong> Out-of-sample performance should be 70-90% of in-sample (not 10% or 150%)</p>
+      <p><strong>Benefit:</strong> Simulates realistic adaptive strategy (re-optimizes periodically)</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Technique #2: Parameter Heatmaps</summary>
+    <div class="accordion-content">
+      <p><strong>Method:</strong> Test all parameter combinations, visualize as heatmap</p>
+      <p><strong>Example:</strong> RSI threshold (20-40) × MA length (100-200)</p>
+      <p><strong>What to look for:</strong> "Plateau" of profitability (many parameters work), NOT single spike</p>
+      <p><strong>Red flag:</strong> Only ONE combination works (overfit)</p>
+      <p><strong>Green flag:</strong> 30-40% of combinations profitable (robust edge)</p>
+    </div>
+  </details>
+
+  <h2>Part 5: Validation & Stress Testing</h2>
+
+  <h3>Out-of-Sample Testing</h3>
+  <p><strong>Rule:</strong> Reserve 20-30% of data for out-of-sample testing (NEVER look at this data during development)</p>
+  <p><strong>Example:</strong> Use 2010-2020 for development, 2021-2023 for final validation</p>
+  <p><strong>Pass criteria:</strong> Out-of-sample Sharpe ratio ≥ 0.7× in-sample Sharpe</p>
+
+  <h3>Monte Carlo Simulation</h3>
+  <p><strong>Method:</strong> Randomize trade order 10,000 times, check if max drawdown tolerable in 95% of scenarios</p>
+  <p><strong>Use case:</strong> Validate that 15% max drawdown wasn't just "lucky" sequencing</p>
+
+  <h3>Regime Testing</h3>
+  <p><strong>Concept:</strong> Test strategy across different market regimes separately</p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Regime</th>
+        <th>Period</th>
+        <th>Expected Behavior</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bull market</td>
+        <td>2010-2019</td>
+        <td>Long strategies should crush</td>
+      </tr>
+      <tr>
+        <td>Bear market</td>
+        <td>2008, 2022</td>
+        <td>Long strategies should suffer (how much?)</td>
+      </tr>
+      <tr>
+        <td>High volatility</td>
+        <td>2020, 2008</td>
+        <td>Mean reversion should excel</td>
+      </tr>
+      <tr>
+        <td>Low volatility</td>
+        <td>2017</td>
+        <td>Momentum should excel</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Red flag:</strong> Strategy only works in one regime (not robust)</p>
+
+  <h2>Part 6: Common Strategy Types & Characteristics</h2>
+
+  <h3>Mean Reversion Strategies</h3>
+  <p><strong>Hypothesis:</strong> Extreme moves revert to average</p>
+  <p><strong>Typical stats:</strong> Win rate 60-70%, profit factor 1.5-2.0, max drawdown 15-25%</p>
+  <p><strong>Best in:</strong> Range-bound, low-volatility markets</p>
+  <p><strong>Worst in:</strong> Strong trends (buy dips in downtrend = disaster)</p>
+
+  <h3>Momentum Strategies</h3>
+  <p><strong>Hypothesis:</strong> Trends persist (winners keep winning)</p>
+  <p><strong>Typical stats:</strong> Win rate 40-50%, profit factor 2.0-3.0+, max drawdown 20-40%</p>
+  <p><strong>Best in:</strong> Trending markets, breakouts</p>
+  <p><strong>Worst in:</strong> Choppy, range-bound markets (whipsaw)</p>
+
+  <h3>Statistical Arbitrage</h3>
+  <p><strong>Hypothesis:</strong> Related assets revert to equilibrium (pairs trading, correlation)</p>
+  <p><strong>Typical stats:</strong> Win rate 55-65%, Sharpe 1.5-2.5, max drawdown 10-20%</p>
+  <p><strong>Best in:</strong> Normal correlation regimes</p>
+  <p><strong>Worst in:</strong> Correlation breakdowns (2008 = all correlations → 1.0)</p>
+
+  <h2>Part 7: Using Signal Pilot for Quantitative Strategy Development</h2>
+
+  <h3>Janus Atlas: Visual Backtesting</h3>
+  <p><strong>Feature:</strong> Overlay strategy signals on historical charts</p>
+  <p><strong>Use case:</strong> Visually inspect entries/exits to catch look-ahead bias or unrealistic fills</p>
+
+  <h3>Pentarch Pilot Line: Institutional Flow Validation</h3>
+  <p><strong>Feature:</strong> Compare your strategy signals vs institutional order flow</p>
+  <p><strong>Validation:</strong> If your buy signals align with institutional buying (Pilot Line) → edge confirmed</p>
+
+  <h3>Minimal Flow: Execution Realism Check</h3>
+  <p><strong>Feature:</strong> Replay historical tape to see if your size would've filled at assumed price</p>
+  <p><strong>Reality check:</strong> If strategy buys 10K shares but only 2K traded at that price → backtest invalid</p>
+
+  <h2>Quiz: Test Your Understanding</h2>
+  <div class="quiz">
+    <div class="quiz-question">
+      <p><strong>Q1:</strong> Your backtest shows 25% CAGR. Out-of-sample shows 8% CAGR. What's the problem?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Severe overfitting. Out-of-sample should be 70-90% of in-sample (17.5-22.5% CAGR expected). 8% = 32% of in-sample suggests strategy curve-fit to noise. Redesign with fewer parameters or simpler rules.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q2:</strong> Strategy works with RSI &lt; 30 but fails with RSI &lt; 28 or &lt; 32. Is this robust?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> No, this is fragile (overfit). Robust strategies work across parameter ranges. RSI 25-35 should all be profitable if edge is real. Single "magic number" (30.0) that works is red flag for curve-fitting.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q3:</strong> Backtest ignores slippage/commissions. Returns = 12% annual. Realistic estimate after costs?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Depends on trade frequency. If 10 trades/year, cost ≈ 0.5-1% total (11-11.5% net). If 100 trades/year, cost ≈ 5-10% (2-7% net). High-frequency strategies (1000+ trades/year) often have edge destroyed by costs. Always model realistic slippage (0.05-0.1% per trade minimum).</p>
+      </details>
+    </div>
+  </div>
+
+  <h2>Practical Checklist</h2>
+  <div class="checklist">
+    <h4>Before Backtesting:</h4>
+    <ul>
+      <li>Write clear hypothesis (specific entry/exit rules)</li>
+      <li>Obtain clean data (survivorship-bias-free, point-in-time)</li>
+      <li>Define test period (minimum 10 years or 2 full market cycles)</li>
+      <li>Reserve 20-30% of data for out-of-sample validation (don't peek!)</li>
+    </ul>
+    <h4>During Backtesting:</h4>
+    <ul>
+      <li>Model realistic costs: 0.05-0.1% slippage + commissions</li>
+      <li>Check for look-ahead bias (are you using future data?)</li>
+      <li>Limit parameter optimization (max 3-4 parameters)</li>
+      <li>Test across regimes separately (bull, bear, high-vol, low-vol)</li>
+    </ul>
+    <h4>After Backtesting:</h4>
+    <ul>
+      <li>Run out-of-sample test (must be ≥ 70% of in-sample performance)</li>
+      <li>Create parameter heatmap (check for profit plateau, not spike)</li>
+      <li>Monte Carlo simulation (validate drawdown statistics)</li>
+      <li>Paper trade for 3-6 months before risking real capital</li>
+    </ul>
+  </div>
+
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Overfitting is the #1 killer</strong> of quant strategies (curve-fitting to noise)</li>
+      <li><strong>Out-of-sample testing is mandatory</strong> (reserve 20-30% of data, never peek)</li>
+      <li><strong>Robust strategies work across parameter ranges</strong> (not just one "magic number")</li>
+      <li><strong>Model realistic costs:</strong> 0.05-0.1% slippage + commissions (destroys many edges)</li>
+      <li><strong>Test across regimes:</strong> Strategy must survive bear markets, not just bulls</li>
+    </ul>
+  </div>
+
+  <div class="related-lessons">
+    <h4>Related Lessons</h4>
+    <ul>
+      <li><a href="63-statistical-arbitrage.html">Lesson 63: Statistical Arbitrage</a></li>
+      <li><a href="/curriculum/intermediate-bridge/46-advanced-risk-management.html">Lesson 46: Advanced Risk Management</a></li>
+      <li><a href="/curriculum/intermediate-bridge/47-portfolio-construction-kelly.html">Lesson 47: Portfolio Construction & Kelly Criterion</a></li>
+    </ul>
+  </div>
+
+  <div class="downloads">
+    <h4>Downloads</h4>
+    <ul>
+      <li><a href="/downloads/backtest-checklist.pdf">Backtesting Checklist (PDF)</a></li>
+      <li><a href="/downloads/strategy-performance-template.xlsx">Strategy Performance Tracker (Excel)</a></li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>

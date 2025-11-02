@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Time & Sales Mastery: Reading the Tape Like Institutions — Signal Pilot Education</title>
+  <meta name="description" content="The tape doesn't lie. Learn to identify large prints, aggressive vs passive fills, and institutional fingerprints in real-time order flow.">
+  <meta name="sp-level" content="Beginner-Intermediate Bridge">
+  <meta name="sp-order" content="17">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner-bridge/17-time-sales-mastery.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+<script src="/assets/structured-data.js" defer></script>
+<script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand"><span>Signal Pilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/my-library.html">My Library</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner-bridge.html">Beginner Bridge</a> <span>›</span>
+        <span>Lesson #17</span>
+      </div>
+      <span class="badge">🔵 Beginner-Intermediate Bridge • Lesson 17</span>
+      <h1 class="headline xl">Time & Sales Mastery: Reading the Institutional Tape</h1>
+      <div class="meta">16-19 min read • Advanced Order Flow</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>That 5,000-contract print that just flashed by? That wasn't retail.</b></p>
+
+      <p>Let that sink in.</p>
+
+      <p>While retail watches candlesticks update every second, professionals are reading the Time & Sales tape—every single transaction, in real-time, showing WHO is buying and selling, HOW aggressively, and WHERE the big money is positioning.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Candlesticks summarize what happened. The tape shows you what's happening RIGHT NOW. When you see consecutive 2,000+ contract prints hitting the ask price, that's institutional urgency. They're not waiting for a better price—they're TAKING liquidity.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>How to read Time & Sales (the tape) like a professional floor trader</li>
+        <li>Large print identification—when size matters (and when it doesn't)</li>
+        <li>Aggressive vs passive fills—reading institutional urgency vs retail nibbling</li>
+        <li>Institutional fingerprints: How to spot smart money in real-time order flow</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: What Is Time & Sales?</span></div>
+
+      <h2>The Real-Time Transaction Feed</h2>
+
+      <p>Time & Sales (T&S), also called "the tape," shows every transaction that occurs:</p>
+      <ul>
+        <li><strong>Time:</strong> Exact timestamp of the trade</li>
+        <li><strong>Price:</strong> At what price the trade executed</li>
+        <li><strong>Size:</strong> How many contracts/shares traded</li>
+        <li><strong>Side:</strong> Was it a buy (hitting the ask) or sell (hitting the bid)?</li>
+      </ul>
+
+      <div class="callout-key">
+        <h4>💡 Why the Tape Matters</h4>
+        <p><strong>Candlesticks are delayed summaries.</strong> A 1-minute candle aggregates 60 seconds of activity into one bar. The tape shows you EVERY transaction within that minute—and that granularity reveals institutional behavior candlesticks hide.</p>
+      </div>
+
+      <h3>Reading the Tape: Basic Structure</h3>
+
+      <div style="background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Example Time & Sales Print</h4>
+        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;overflow-x:auto;font-family:monospace;font-size:.9rem">
+Time       Price    Size   Side
+14:35:02   4500.25  1,250  BUY  (green - hit the ask)
+14:35:03   4500.00    150  SELL (red - hit the bid)
+14:35:03   4500.25  3,800  BUY  (green - aggressive buy)
+14:35:04   4500.50  2,100  BUY  (green - pushing higher)
+14:35:05   4500.50    800  BUY  (green - continued buying)
+        </pre>
+        <p style="margin-top:1rem"><strong>What you're seeing:</strong> After a small 150-contract sell, aggressive buyers stepped in with 1,250 + 3,800 + 2,100 + 800 contracts = <strong>7,950 contracts bought in 3 seconds.</strong></p>
+        <p><strong>Translation:</strong> Institutions are accumulating. This isn't retail—retail doesn't move 3,800 contracts in one print.</p>
+      </div>
+
+      <h3>Color Coding (Buy vs Sell Side)</h3>
+
+      <ul>
+        <li><strong>Green/White = BUY</strong> — Trade executed at the ask price (aggressor was a buyer, lifted the offer)</li>
+        <li><strong>Red = SELL</strong> — Trade executed at the bid price (aggressor was a seller, hit the bid)</li>
+      </ul>
+
+      <p><strong>Critical insight:</strong> Green doesn't mean "bullish" and red doesn't mean "bearish" on their own. What matters is:</p>
+      <ul>
+        <li><strong>Size:</strong> How large are the prints?</li>
+        <li><strong>Persistence:</strong> Is it consecutive buying/selling or random?</li>
+        <li><strong>Response:</strong> How does price react to large prints?</li>
+      </ul>
+
+      <div class="section-break"><span>Part 2: Large Print Identification</span></div>
+
+      <h2>When Size Matters</h2>
+
+      <p>Not all prints are created equal. A 10-contract print is retail. A 5,000-contract print is institutional.</p>
+
+      <h3>Size Thresholds by Market</h3>
+
+      <div style="overflow-x:auto;margin:2rem 0">
+        <table style="width:100%;border-collapse:collapse">
+          <thead>
+            <tr style="background:rgba(255,255,255,.05)">
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Market</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Retail Size</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Notable Size</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Institutional Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">ES Futures</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1-50</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">100-500</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1,000+</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">NQ Futures</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1-20</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50-200</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">500+</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">SPY Options</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1-10</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50-200</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">500+</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">BTC/USDT</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">0.01-1 BTC</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">5-20 BTC</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50+ BTC</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Liquid Stocks (AAPL, TSLA)</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">100-1,000</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">5,000-20,000</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50,000+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>What Large Prints Tell You</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Signal #1: Consecutive Large Buys (Institutional Accumulation)</div>
+          <div class="accordion-content">
+            <p><strong>Pattern:</strong> Multiple 1,000+ contract buys within seconds</p>
+            <p><strong>Example:</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;font-family:monospace;font-size:.85rem">
+14:22:10   4500.00  1,200  BUY
+14:22:11   4500.25  1,500  BUY
+14:22:12   4500.25  2,100  BUY
+14:22:13   4500.50  1,800  BUY
+            </pre>
+            <p style="margin-top:1rem"><strong>Total:</strong> 6,600 contracts bought in 3 seconds, pushing price from 4500.00 → 4500.50</p>
+            <p><strong>Translation:</strong> Institution is aggressively accumulating, willing to PAY UP to fill the order. This is bullish urgency—they want in NOW.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Action:</strong> Watch for continuation. If price holds above this zone, institutions are defending their entry. Consider long on retracement.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Signal #2: Consecutive Large Sells (Institutional Distribution)</div>
+          <div class="accordion-content">
+            <p><strong>Pattern:</strong> Multiple 1,000+ contract sells hitting the bid</p>
+            <p><strong>Example:</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;font-family:monospace;font-size:.85rem">
+10:15:30   4520.00  2,500  SELL
+10:15:31   4519.75  1,800  SELL
+10:15:32   4519.50  2,200  SELL
+10:15:33   4519.25  1,500  SELL
+            </pre>
+            <p style="margin-top:1rem"><strong>Total:</strong> 8,000 contracts sold in 3 seconds, dropping price from 4520.00 → 4519.25</p>
+            <p><strong>Translation:</strong> Institution is dumping, willing to SELL DOWN to exit. Bearish urgency—they want out NOW.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Action:</strong> Watch for breakdown. If price can't reclaim this zone, institutions are gone. Consider short on rally to this zone.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Signal #3: Iceberg Orders (Hidden Size)</div>
+          <div class="accordion-content">
+            <p><strong>Pattern:</strong> Same size prints repeatedly at one price level</p>
+            <p><strong>Example:</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;font-family:monospace;font-size:.85rem">
+11:40:00   4505.00    500  BUY
+11:40:01   4505.00    500  BUY
+11:40:02   4505.00    500  BUY
+11:40:03   4505.00    500  BUY
+11:40:04   4505.00    500  BUY
+            </pre>
+            <p style="margin-top:1rem"><strong>What's happening:</strong> An institution placed a 10,000-contract buy order at 4505.00, but it's only showing 500 at a time (iceberg order). The "hidden" size gets revealed as each 500-lot fills.</p>
+            <p><strong>Translation:</strong> Large buyer defending 4505.00. This is a STRONG support level backed by institutional capital.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Action:</strong> If price keeps testing 4505 and getting absorbed, institutions are accumulating HARD. Long bias confirmed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: Aggressive vs Passive Fills</span></div>
+
+      <h2>Reading Institutional Intent</h2>
+
+      <p><strong>Aggressive fills:</strong> Buyer hits the ask (or seller hits the bid) — paying the spread to get filled NOW</p>
+      <p><strong>Passive fills:</strong> Buyer places limit on the bid (or seller places limit on the ask) — waiting for price to come to them</p>
+
+      <h3>Why This Matters</h3>
+
+      <p>Aggressive fills show <strong>urgency</strong>. Passive fills show <strong>patience</strong>.</p>
+
+      <p>When institutions are aggressive, they're positioning for an imminent move. When they're passive, they're scaling in slowly without urgency.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">Aggressive Buying (Bullish)</h3>
+          <p><strong>Pattern:</strong> Large prints hitting the ASK</p>
+          <p><strong>Example:</strong> 2,000 contracts BUY at 4500.25 (ask price)</p>
+          <p style="margin-top:1rem"><strong>Translation:</strong> Buyer paid 0.25 points MORE to get filled immediately. They're not waiting—they NEED this position NOW.</p>
+          <p style="margin-top:1rem;padding:.75rem;background:rgba(0,0,0,.2);border-radius:6px"><strong>Signal strength:</strong> Very bullish. Institutions don't pay up unless they expect significant upside.</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0">Aggressive Selling (Bearish)</h3>
+          <p><strong>Pattern:</strong> Large prints hitting the BID</p>
+          <p><strong>Example:</strong> 2,000 contracts SELL at 4519.75 (bid price)</p>
+          <p style="margin-top:1rem"><strong>Translation:</strong> Seller accepted 0.25 points LESS to exit immediately. They're not waiting—they NEED out NOW.</p>
+          <p style="margin-top:1rem;padding:.75rem;background:rgba(0,0,0,.2);border-radius:6px"><strong>Signal strength:</strong> Very bearish. Institutions don't sell down unless they expect significant downside.</p>
+        </div>
+      </div>
+
+      <h3>Combining Tape with Price Action</h3>
+
+      <p><strong>Best setup:</strong> Tape + technical confluence</p>
+
+      <div class="callout-tip">
+        <h4>🎯 Premium Tape Setup (Bullish)</h4>
+        <p><strong>Scenario:</strong> Price approaching mitigation block at $100.00</p>
+        <p><strong>Tape shows:</strong></p>
+        <ul>
+          <li>Consecutive 1,000+ contract BUYS hitting the ask</li>
+          <li>Minimal selling pressure (small retail sells)</li>
+          <li>Price holding above $100.00 despite tests</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Janus Atlas:</strong> Confirms mitigation + FVG at $100.00</p>
+        <p><strong>Plutus Flow:</strong> Shows absorption (buying volume increasing)</p>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Entry:</strong> Long at $100.20 with stop at $99.00. Tape + technicals + indicators = 75-80% win rate.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Institutional Fingerprints</span></div>
+
+      <h2>Patterns That Reveal Smart Money</h2>
+
+      <h3>Fingerprint #1: The "Sweep and Reverse"</h3>
+
+      <p><strong>Pattern:</strong></p>
+      <ol>
+        <li>Large sells hit the bid, pushing price below key level (e.g., $100.00 → $99.80)</li>
+        <li>Immediately followed by MASSIVE buys hitting the ask</li>
+        <li>Price reverses sharply back above $100.00</li>
+      </ol>
+
+      <p><strong>What happened:</strong> Institution swept liquidity below $100 (triggered retail stops), then immediately bought into the forced selling. Classic liquidity grab.</p>
+
+      <h3>Fingerprint #2: The "Absorption Wall"</h3>
+
+      <p><strong>Pattern:</strong></p>
+      <ul>
+        <li>Price testing $105.00 repeatedly</li>
+        <li>Tape shows 500-lot sells hitting the bid at $105.00</li>
+        <li>But immediately absorbed by 1,000-2,000 lot buys</li>
+        <li>Price refuses to break below $105.00</li>
+      </ul>
+
+      <p><strong>Translation:</strong> Institution is absorbing ALL selling at $105.00. They're defending this level with size. This is a floor.</p>
+
+      <h3>Fingerprint #3: The "Quiet Accumulation"</h3>
+
+      <p><strong>Pattern:</strong></p>
+      <ul>
+        <li>Price consolidating in tight range ($100.00-$100.50)</li>
+        <li>Tape shows consistent 200-500 lot buys every few seconds</li>
+        <li>No large prints, just steady accumulation</li>
+        <li>Volume building but price not moving much</li>
+      </ul>
+
+      <p><strong>Translation:</strong> Institution is quietly accumulating without pushing price higher (yet). Once they're full, they'll let price run. This is a coiled spring.</p>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Time & Sales shows real-time transactions</strong>—every buy and sell as it happens</li>
+          <li><strong>Large prints (1,000+ contracts in ES)</strong> signal institutional participation</li>
+          <li><strong>Aggressive fills (hitting ask/bid)</strong> show urgency; passive fills show patience</li>
+          <li><strong>Consecutive large buys/sells</strong> = institutional accumulation or distribution</li>
+          <li><strong>Combine tape with technicals</strong> (Janus, Plutus, market structure) for premium setups</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you now have a skill most retail traders never develop. Reading the tape is like seeing the Matrix—you know what's happening before the candle closes.</p>
+
+      <div class="section-break"><span>Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Quick Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q: What does it mean when you see consecutive 1,500-contract buys hitting the ask?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Retail FOMO</div>
+            <div class="quiz-option" data-correct="true">B) Institutional accumulation with urgency—they're paying up to get filled immediately</div>
+            <div class="quiz-option" data-correct="false">C) Market makers hedging</div>
+            <div class="quiz-option" data-correct="false">D) Nothing meaningful</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Large consecutive buys hitting the ask show institutional urgency. They're willing to pay the spread to get filled NOW, which signals they expect significant upside soon.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <div class="section-break"><span>Practice Exercise</span></div>
+
+      <div class="callout-key">
+        <h4>🎯 Tape Reading Practice</h4>
+        <p><strong>Exercise: Watch the Tape for 30 Minutes</strong></p>
+        <ol style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li>Open Time & Sales on your platform (ES, NQ, or SPY)</li>
+          <li>Watch for large prints (1,000+ contracts in ES, 500+ in NQ)</li>
+          <li>Note: Are they hitting bid or ask? (Aggressive sell or buy?)</li>
+          <li>Document: Does price move in the direction of large aggressive prints?</li>
+          <li>After 30 minutes, review: How often did large prints predict short-term direction?</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Goal:</strong> Train your eye to instinctively spot institutional activity on the tape. After 10+ hours of practice, you'll read it like a second language.</p>
+      </div>
+
+      <div class="section-break"><span>Downloadable Resources</span></div>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;border-left:4px solid var(--accent)">
+        <h4 style="margin:0 0 1rem 0">📥 Free Checklist</h4>
+        <p style="margin-bottom:1rem">Time & Sales analysis checklist for identifying institutional prints and order flow.</p>
+        <a href="/resources/checklists/time-sales-checklist.pdf" download class="btn btn-primary" style="display:inline-block">
+          Download Tape Reading Checklist (PDF)
+        </a>
+      </div>
+
+      <div class="section-break"><span>Related Lessons</span></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:1.5rem 0">
+        <div class="card" style="padding:1rem">
+          <span class="badge">Beginner #3</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Price Action is Dead</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Foundation of order flow and tape reading</p>
+          <a href="/curriculum/beginner/03-price-action-is-dead.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+        <div class="card" style="padding:1rem">
+          <span class="badge">Intermediate #34</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Order Book Analysis</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Level 2 depth and order book reading</p>
+          <a href="/curriculum/intermediate/34-order-book-analysis.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+        <div class="card" style="padding:1rem">
+          <span class="badge">Bridge #19</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Footprint Charts Advanced</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Volume at price + tape reading combined</p>
+          <a href="/curriculum/beginner-bridge/19-footprint-charts-advanced.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #18: Session Liquidity Advanced—The London Kill Zone</strong></p>
+        <p>Asian range engineering for London sweeps, NY reversals, and session-based liquidity strategies.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss.</blockquote>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">What is Time & Sales?</a>
+      <a href="#">Large Print ID</a>
+      <a href="#">Aggressive vs Passive</a>
+      <a href="#">Institutional Fingerprints</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/beginner-bridge/16-market-structure-advanced.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/beginner-bridge/18-session-liquidity-advanced.html">Next Lesson &rarr;</a>
+  </div>
+</article>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
+</body>
+</html>

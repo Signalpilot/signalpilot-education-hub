@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Building a Trading Business: Systems, Scaling, Performance Tracking — Signal Pilot</title>
+  <meta name="description" content="You're not a gambler. You're a business owner. Treat trading like business with systems, tracking, tax optimization, or fail like a gambler.">
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Building a Trading Business: From Hobby to Profession</h1>
+  <p><b>You're not a gambler. You're a business owner. Treat trading like business, or you'll fail like a gambler.</b></p>
+  <p>Professional traders don't "play the market"—they run systematic businesses with documented processes, performance tracking, tax optimization, and scalability plans. This lesson teaches you to build the infrastructure for long-term trading success.</p>
+
+  <h2>Part 1: The Business Mindset Shift</h2>
+
+  <h3>Gambler vs Business Owner</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Characteristic</th>
+        <th>Gambler</th>
+        <th>Business Owner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Capital</td>
+        <td>"Extra money"</td>
+        <td>Business asset (protected, grown)</td>
+      </tr>
+      <tr>
+        <td>Strategy</td>
+        <td>Gut feel, news, tips</td>
+        <td>Documented, backtested, validated</td>
+      </tr>
+      <tr>
+        <td>Risk management</td>
+        <td>Hope and pray</td>
+        <td>1% rule, position sizing, VAR</td>
+      </tr>
+      <tr>
+        <td>Performance tracking</td>
+        <td>P&L (profit/loss only)</td>
+        <td>Sharpe, max DD, win rate, expectancy</td>
+      </tr>
+      <tr>
+        <td>Taxes</td>
+        <td>Afterthought</td>
+        <td>Optimized (entity structure, deductions)</td>
+      </tr>
+      <tr>
+        <td>Scaling</td>
+        <td>Random position sizes</td>
+        <td>Kelly criterion, systematic growth</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>🎯 Critical Shift:</strong> When you treat trading as business, you demand profitability, document everything, and eliminate emotion. This is the difference between 5% who succeed and 95% who fail.</p>
+  </div>
+
+  <h2>Part 2: Building Your Trading System (Documentation)</h2>
+
+  <h3>The Trading Plan (Your Business Operating Manual)</h3>
+
+  <p><strong>A complete trading plan includes:</strong></p>
+
+  <details class="accordion">
+    <summary>Section 1: Market & Instruments</summary>
+    <div class="accordion-content">
+      <p><strong>What you trade:</strong></p>
+      <ul>
+        <li>Asset classes: Equities, options, futures, forex, crypto?</li>
+        <li>Market cap focus: Large-cap (SPY, QQQ) or small-cap (IWM)?</li>
+        <li>Sector restrictions: Avoid biotech (high volatility), focus on tech/financials?</li>
+      </ul>
+      <p><strong>Example:</strong> "I trade large-cap US equities ($10B+ market cap) with average daily volume &gt; 1M shares. I avoid earnings weeks and biotech."</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Section 2: Strategy Definitions</summary>
+    <div class="accordion-content">
+      <p><strong>For EACH strategy, document:</strong></p>
+      <ul>
+        <li><strong>Setup criteria:</strong> "RSI &lt; 30 + price &gt; 200 MA + bullish divergence"</li>
+        <li><strong>Entry trigger:</strong> "Buy when price breaks above prior day high"</li>
+        <li><strong>Stop-loss:</strong> "2× ATR below entry OR below recent swing low"</li>
+        <li><strong>Profit target:</strong> "2:1 R/R minimum (if risking $1, target $2)"</li>
+        <li><strong>Position size:</strong> "1% of account risked per trade"</li>
+        <li><strong>Max positions:</strong> "3 simultaneous trades max"</li>
+      </ul>
+      <p><strong>Why this matters:</strong> Removes discretion. Setup either meets criteria or doesn't (no guessing).</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Section 3: Risk Management Rules</summary>
+    <div class="accordion-content">
+      <ul>
+        <li><strong>Per-trade risk:</strong> 0.5-1% of account</li>
+        <li><strong>Daily loss limit:</strong> -2% (stop trading for day)</li>
+        <li><strong>Weekly loss limit:</strong> -5% (stop trading for week, reassess)</li>
+        <li><strong>Max drawdown threshold:</strong> -15% (pause trading, review strategy validity)</li>
+        <li><strong>Position sizing formula:</strong> (Account × Risk%) / (Entry - Stop)</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Section 4: Performance Review Schedule</summary>
+    <div class="accordion-content">
+      <ul>
+        <li><strong>Daily:</strong> Journal all trades (setup, execution, emotional state)</li>
+        <li><strong>Weekly:</strong> Calculate Sharpe ratio, win rate, expectancy, review violations</li>
+        <li><strong>Monthly:</strong> Full performance audit (what worked, what didn't, regime changes?)</li>
+        <li><strong>Quarterly:</strong> Strategy validation (backtest recent 3 months, still has edge?)</li>
+      </ul>
+    </div>
+  </details>
+
+  <h2>Part 3: Performance Tracking (Metrics That Matter)</h2>
+
+  <h3>Beyond P&L: Professional Metrics</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Formula</th>
+        <th>Target</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sharpe Ratio</td>
+        <td>(Return - RFR) / Std Dev</td>
+        <td>&gt; 1.0 (excellent &gt; 2.0)</td>
+      </tr>
+      <tr>
+        <td>Max Drawdown</td>
+        <td>Peak-to-trough decline</td>
+        <td>&lt; 20% (tolerable &lt; 30%)</td>
+      </tr>
+      <tr>
+        <td>Win Rate</td>
+        <td>Wins / Total Trades</td>
+        <td>&gt; 50% (depends on strategy)</td>
+      </tr>
+      <tr>
+        <td>Profit Factor</td>
+        <td>Gross Profit / Gross Loss</td>
+        <td>&gt; 1.5 (excellent &gt; 2.0)</td>
+      </tr>
+      <tr>
+        <td>Expectancy</td>
+        <td>(Win% × Avg Win) - (Loss% × Avg Loss)</td>
+        <td>&gt; 0 (higher better)</td>
+      </tr>
+      <tr>
+        <td>Average R-multiple</td>
+        <td>Avg profit / Avg loss</td>
+        <td>&gt; 2.0 (minimize losses, maximize wins)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>The Trading Dashboard (Track Weekly)</h3>
+
+  <p><strong>Essential KPIs to monitor:</strong></p>
+  <ul>
+    <li><strong>Total trades:</strong> Are you trading too much (overtrading) or too little (missing setups)?</li>
+    <li><strong>Winning streak / losing streak:</strong> Longest streaks (detect psychological patterns)</li>
+    <li><strong>Largest win / largest loss:</strong> Are you cutting winners and holding losers?</li>
+    <li><strong>Rule violations:</strong> How many trades broke your system rules? (target: 0)</li>
+    <li><strong>Setup performance:</strong> Which setups are working best? (allocate more to those)</li>
+  </ul>
+
+  <h2>Part 4: Scaling Your Capital</h2>
+
+  <h3>The Capital Growth Curve</h3>
+
+  <p><strong>Phase 1: Proof of Concept ($1K-$10K)</strong></p>
+  <ul>
+    <li><strong>Goal:</strong> Validate strategy works live (not just backtest)</li>
+    <li><strong>Position size:</strong> Tiny (10-50 shares)</li>
+    <li><strong>Duration:</strong> 3-6 months, 50-100 trades minimum</li>
+    <li><strong>Success criteria:</strong> Positive expectancy, Sharpe &gt; 1.0, max DD &lt; 15%</li>
+  </ul>
+
+  <p><strong>Phase 2: Skill Development ($10K-$50K)</strong></p>
+  <ul>
+    <li><strong>Goal:</strong> Refine execution, build consistency</li>
+    <li><strong>Position size:</strong> 100-500 shares (still conservative)</li>
+    <li><strong>Duration:</strong> 6-12 months</li>
+    <li><strong>Success criteria:</strong> 12 months of profitability, Sharpe &gt; 1.5</li>
+  </ul>
+
+  <p><strong>Phase 3: Professional Trading ($50K-$250K)</strong></p>
+  <ul>
+    <li><strong>Goal:</strong> Scale capital, optimize strategies</li>
+    <li><strong>Position size:</strong> Kelly criterion (0.25-0.5× Kelly)</li>
+    <li><strong>Success criteria:</strong> Can withdraw living expenses, account growing 15-25% annually</li>
+  </ul>
+
+  <p><strong>Phase 4: Institutional Scale ($250K+)</strong></p>
+  <ul>
+    <li><strong>Goal:</strong> Manage larger capital without degrading returns</li>
+    <li><strong>Challenges:</strong> Market impact, slippage, liquidity constraints</li>
+    <li><strong>Strategies:</strong> Multiple uncorrelated systems, longer timeframes, execution algos</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>⚠️ Scaling Trap:</strong> Most traders try to scale too fast (Phase 1 → Phase 4 in 3 months). This destroys accounts. Respect the curve. Each phase takes 6-12 months MINIMUM.</p>
+  </div>
+
+  <h2>Part 5: Legal & Tax Structure</h2>
+
+  <h3>Entity Structures for Traders</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Entity Type</th>
+        <th>Pros</th>
+        <th>Cons</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Individual (default)</td>
+        <td>Simple, no setup cost</td>
+        <td>Highest tax rate (short-term gains = ordinary income)</td>
+      </tr>
+      <tr>
+        <td>LLC</td>
+        <td>Liability protection, business deductions</td>
+        <td>Still taxed as ordinary income (pass-through)</td>
+      </tr>
+      <tr>
+        <td>S-Corp</td>
+        <td>Reduces self-employment tax</td>
+        <td>Requires payroll, more admin</td>
+      </tr>
+      <tr>
+        <td>Trader Tax Status (TTS)</td>
+        <td>Deduct home office, equipment, education</td>
+        <td>Must qualify (trade 4+ days/week, 720+ trades/year)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Tax Optimization Strategies</h3>
+
+  <details class="accordion">
+    <summary>Strategy #1: Mark-to-Market Election (Section 475)</summary>
+    <div class="accordion-content">
+      <p><strong>What it is:</strong> Treat trading gains/losses as ordinary income (not capital gains)</p>
+      <p><strong>Benefit:</strong> Deduct unlimited losses (capital gains limited to $3K/year), avoid wash sale rules</p>
+      <p><strong>Drawback:</strong> All gains taxed as ordinary income (can't get 15-20% long-term cap gains rate)</p>
+      <p><strong>Best for:</strong> Active day traders with high turnover (hold &lt; 1 day)</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Strategy #2: Trader Tax Status (TTS)</summary>
+    <div class="accordion-content">
+      <p><strong>Qualifications:</strong></p>
+      <ul>
+        <li>Trade 4+ days per week (avg 15+ hours/week)</li>
+        <li>720+ trades per year</li>
+        <li>Holding period &lt; 31 days average</li>
+      </ul>
+      <p><strong>Benefits:</strong> Deduct home office ($5K-15K/year), computer equipment, education, data fees</p>
+      <p><strong>How to claim:</strong> File with CPA specializing in trader taxes (GreenTraderTax, TraderTax.com)</p>
+    </div>
+  </details>
+
+  <h2>Part 6: Building Systems & Automation</h2>
+
+  <h3>System #1: Trade Execution Checklist (Eliminate Discretion)</h3>
+
+  <p><strong>Pre-Market Routine:</strong></p>
+  <ul>
+    <li>Review economic calendar (any Fed speeches, CPI data today?)</li>
+    <li>Check overnight futures (SPY gap up/down?)</li>
+    <li>Scan for setups (use Signal Pilot or screener)</li>
+    <li>Set price alerts for key levels</li>
+  </ul>
+
+  <p><strong>Intraday Execution:</strong></p>
+  <ul>
+    <li>Alert fires → run pre-trade checklist (setup valid? R/R &gt; 2:1?)</li>
+    <li>If yes → calculate position size, enter trade, set stop-loss IMMEDIATELY</li>
+    <li>Log trade in journal (setup type, entry rationale, emotional state)</li>
+  </ul>
+
+  <p><strong>Post-Market Review:</strong></p>
+  <ul>
+    <li>Review all trades (did I follow rules?)</li>
+    <li>Update performance dashboard (win rate, Sharpe, expectancy)</li>
+    <li>Identify improvements (what would I do differently tomorrow?)</li>
+  </ul>
+
+  <h3>System #2: Automated Performance Reporting</h3>
+
+  <p><strong>Tools to use:</strong></p>
+  <ul>
+    <li><strong>Trading journal software:</strong> Edgewonk, TraderVue, TradesViz (automatic metric calculation)</li>
+    <li><strong>Broker reports:</strong> Export monthly statements, analyze in Excel</li>
+    <li><strong>Custom dashboard:</strong> Build in Excel/Google Sheets (templates in downloads)</li>
+  </ul>
+
+  <h2>Part 7: Using Signal Pilot to Systematize Your Business</h2>
+
+  <h3>Janus Atlas: Setup Scanner & Alerts</h3>
+  <p><strong>Feature:</strong> Save custom scans (e.g., "RSI &lt; 30 + volume spike"), run daily at market open</p>
+  <p><strong>Benefit:</strong> Eliminates manual scanning (system finds setups, you just execute)</p>
+
+  <h3>Pentarch Pilot Line: Institutional Flow as Confirmation Filter</h3>
+  <p><strong>Rule:</strong> Only enter setups when Pilot Line confirms (institutional flow aligned)</p>
+  <p><strong>Benefit:</strong> Adds objective filter (reduces false signals, increases win rate)</p>
+
+  <h3>Performance Tracking Integration</h3>
+  <p><strong>Feature:</strong> Export all trades to CSV, import to journal software</p>
+  <p><strong>Workflow:</strong> Signal Pilot → Trade execution → Auto-export → TraderVue → Weekly review</p>
+
+  <h2>Quiz: Test Your Understanding</h2>
+  <div class="quiz">
+    <div class="quiz-question">
+      <p><strong>Q1:</strong> Your account grows from $10K to $50K in 3 months. Should you immediately increase position size to $5K/trade?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> NO. This is scaling trap. 3 months is likely luck, not skill. Continue using 1% risk rule ($500/trade on $50K account). After 12+ months of consistent profitability (Sharpe &gt; 1.5), THEN consider gradual increase using Kelly criterion.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q2:</strong> You have 65% win rate but Sharpe ratio = 0.4. What's wrong?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> High win rate but low Sharpe = inconsistent returns (high volatility). Likely cutting winners too early and letting losers run. Average win probably &lt; average loss. Fix: Let winners run (trailing stops), cut losses faster (tighter stops). Aim for avg win ≥ 2× avg loss.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q3:</strong> When should you qualify for Trader Tax Status (TTS)?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> When you trade 4+ days/week, average 15+ hours/week, execute 720+ trades/year, and hold positions &lt; 31 days average. Benefit: Deduct home office, equipment, education (saves $5K-15K/year). Must document and work with tax professional.</p>
+      </details>
+    </div>
+  </div>
+
+  <h2>Practical Checklist</h2>
+  <div class="checklist">
+    <h4>Building Your Trading Business (Month 1):</h4>
+    <ul>
+      <li>Document trading plan (markets, strategies, risk rules, performance review schedule)</li>
+      <li>Set up trading journal (Edgewonk, TraderVue, or Excel template)</li>
+      <li>Define performance metrics to track (Sharpe, win rate, expectancy, profit factor)</li>
+      <li>Create pre-trade checklist (laminate it, place on desk)</li>
+      <li>Set up accounting system (separate bank account for trading capital)</li>
+    </ul>
+    <h4>Ongoing Operations (Weekly/Monthly):</h4>
+    <ul>
+      <li>Weekly: Review journal, calculate Sharpe/expectancy, identify rule violations</li>
+      <li>Monthly: Full performance audit (what worked, what didn't, regime changes?)</li>
+      <li>Quarterly: Strategy revalidation (backtest recent 3 months, still has edge?)</li>
+      <li>Annually: Tax planning (consult CPA about TTS or 475 election)</li>
+    </ul>
+    <h4>Scaling Checklist (Before Increasing Size):</h4>
+    <ul>
+      <li>Minimum 12 months profitable (no exceptions)</li>
+      <li>Sharpe ratio &gt; 1.5 consistently</li>
+      <li>Max drawdown &lt; 15% (proven risk management)</li>
+      <li>Rule violation rate &lt; 5% (disciplined execution)</li>
+      <li>If ALL criteria met → increase position size by 25% (not 100%)</li>
+    </ul>
+  </div>
+
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Trading is a business,</strong> not gambling (document systems, track metrics)</li>
+      <li><strong>Trading plan = operating manual</strong> (strategies, risk rules, review schedule)</li>
+      <li><strong>Track Sharpe, expectancy, profit factor</strong> (not just P&L)</li>
+      <li><strong>Scale slowly:</strong> 12 months profitability before increasing size</li>
+      <li><strong>Tax optimization:</strong> TTS or 475 election saves $5K-15K/year</li>
+    </ul>
+  </div>
+
+  <div class="related-lessons">
+    <h4>Related Lessons</h4>
+    <ul>
+      <li><a href="/curriculum/intermediate-bridge/46-advanced-risk-management.html">Lesson 46: Advanced Risk Management</a></li>
+      <li><a href="/curriculum/intermediate-bridge/47-portfolio-construction-kelly.html">Lesson 47: Portfolio Construction & Kelly Criterion</a></li>
+      <li><a href="73-behavioral-finance-psychology.html">Lesson 73: Behavioral Finance & Trader Psychology</a></li>
+    </ul>
+  </div>
+
+  <div class="downloads">
+    <h4>Downloads</h4>
+    <ul>
+      <li><a href="/downloads/trading-plan-template.pdf">Complete Trading Plan Template (PDF)</a></li>
+      <li><a href="/downloads/performance-dashboard.xlsx">Performance Dashboard (Excel)</a></li>
+      <li><a href="/downloads/tax-deduction-checklist.pdf">Trader Tax Deduction Checklist (PDF)</a></li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>

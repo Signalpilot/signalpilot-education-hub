@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <!-- AGGRESSIVE CACHE PREVENTION: Forces fresh load every time -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Smart Money Concepts: Order Blocks & Market Structure — Signal Pilot Education</title>
+  <meta name="description" content="Order blocks aren't support and resistance. They're institutional decision points where smart money accumulates or distributes. Learn the difference.">
+  <meta name="sp-level" content="Beginner-Intermediate Bridge">
+  <meta name="sp-order" content="13">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner-bridge/13-smart-money-concepts.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <!-- Logger must load first, before other scripts that use it -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+<script src="/assets/structured-data.js" defer></script>
+<script src="/assets/lazy-load.js" defer></script>
+<script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/my-library.html">My Library</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner-bridge.html">Beginner Bridge</a> <span>›</span>
+        <span>Lesson #13</span>
+      </div>
+      <span class="badge">🔵 Beginner-Intermediate Bridge • Lesson 13</span>
+      <h1 class="headline xl">Smart Money Concepts: Order Blocks & Market Structure</h1>
+      <div class="meta">17-21 min read • Advanced Market Structure</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>Every order block you see is NOT support or resistance—it's a battlefield scar.</b></p>
+
+      <p>Let that sink in.</p>
+
+      <p>You've been drawing horizontal lines on your chart, calling them "support and resistance." The pros are reading order blocks—institutional decision points where smart money made aggressive moves.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Support and resistance are retail concepts. They work... until they don't. Order blocks are institutional footprints—the last candle before price exploded in one direction.</p>
+        <p>One is a fairy tale. The other is evidence.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>What order blocks ACTUALLY are (and why retail's definition is wrong)</li>
+        <li>Breaker blocks and failed auctions—when smart money changes their mind</li>
+        <li>Market structure shifts: BOS vs ChoCH (the only two patterns that matter)</li>
+        <li>How to combine order blocks with Janus Atlas for high-probability setups</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: Order Blocks Aren't What You Think</span></div>
+
+      <h2>The Retail Lie: "Support and Resistance"</h2>
+
+      <p>Retail traders draw lines. Professionals mark zones. There's a difference.</p>
+
+      <p><strong>Retail approach:</strong> <em>"Price bounced here three times, so this is strong support!"</em></p>
+
+      <p><strong>Professional approach:</strong> <em>"Price displaced aggressively from this candle. Institutions left unfilled orders here. If we return, they'll engage again."</em></p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Support/Resistance (Retail)</button>
+          <button>Order Blocks (Professional)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>The Retail Model</h3>
+            <p><strong>Definition:</strong> A level where price "bounced" multiple times</p>
+            <p><strong>Logic:</strong> "Buyers stepped in here before, so they'll step in again"</p>
+            <p><strong>Placement:</strong> Horizontal line at the swing low/high</p>
+            <p><strong>Problem:</strong> Reactive, not predictive. You're trading AFTER everyone else sees it.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Reality check:</strong> If everyone sees it, it's already priced in. Or worse—it's a liquidity trap designed to sweep your stops.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>The Institutional Model</h3>
+            <p><strong>Definition:</strong> The last candle before aggressive displacement—where institutions made a decision</p>
+            <p><strong>Logic:</strong> "Smart money entered here. If price returns, they'll defend their position or add to it"</p>
+            <p><strong>Placement:</strong> Zone marked by the order block candle (open to close, or high to low depending on direction)</p>
+            <p><strong>Advantage:</strong> You're identifying WHERE institutions acted, not where retail got lucky</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Key insight:</strong> Order blocks work because institutions leave UNFILLED LIMIT ORDERS in these zones. When price returns, those orders get filled.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>🎯 The Critical Difference</h4>
+        <p><strong>Support/Resistance:</strong> "Price bounced here before, so it might bounce again" (hope)</p>
+        <p><strong>Order Blocks:</strong> "Institutions made a decision here. Their limit orders still exist. If we return, they engage" (evidence)</p>
+      </div>
+
+      <h3>Anatomy of an Order Block</h3>
+
+      <p>Let's break down what makes a candle an order block:</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Requirement #1: Aggressive Displacement</div>
+          <div class="accordion-content">
+            <p>An order block must be followed by <strong>aggressive, directional price movement</strong>.</p>
+            <p><strong>Example (Bullish Order Block):</strong></p>
+            <ul>
+              <li>Candle #1: Final bearish candle before reversal (this is the order block)</li>
+              <li>Candle #2-5: Strong bullish candles with minimal wicks—displacement</li>
+              <li>No back-and-forth chop. Just straight-line institutional buying.</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Why this matters:</strong> Displacement proves institutions entered aggressively. They weren't nibbling—they were loading the truck. That candle before displacement is where they placed their limit orders.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Requirement #2: Imbalance / Fair Value Gap (FVG)</div>
+          <div class="accordion-content">
+            <p>Most order blocks create <strong>Fair Value Gaps (FVGs)</strong>—price zones skipped due to aggressive buying/selling.</p>
+            <p><strong>How to spot it:</strong></p>
+            <ul>
+              <li>Look at 3 consecutive candles</li>
+              <li>If candle 1's high is below candle 3's low (bullish gap), there's an imbalance</li>
+              <li>The "gap" is the zone candle 2 didn't fill—skipped in the rush</li>
+            </ul>
+            <p><strong>Institutional logic:</strong> When price returns to fill the FVG, it's also returning to the order block. Double confluence.</p>
+            <div class="callout-tip">
+              <h4>🎓 Janus Atlas Integration</h4>
+              <p>Janus Atlas detects FVGs and order blocks automatically. When price returns to an unfilled FVG that aligns with an order block, Janus signals high-probability rebalancing zones.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Requirement #3: Market Structure Alignment</div>
+          <div class="accordion-content">
+            <p>The best order blocks occur at <strong>market structure shifts</strong> (we'll cover this next).</p>
+            <p><strong>Example:</strong></p>
+            <ul>
+              <li>Price was making lower lows and lower highs (downtrend)</li>
+              <li>Then it broke the last lower high (structure shift)</li>
+              <li>The order block is the last bearish candle before that break</li>
+            </ul>
+            <p>This is where downtrend transitions to uptrend—institutions reversed the entire market direction from this zone.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 2: Breaker Blocks—When Smart Money Changes Their Mind</span></div>
+
+      <h2>Failed Order Blocks = New Opportunity</h2>
+
+      <p>Here's what retail doesn't understand: <strong>Order blocks can fail.</strong></p>
+
+      <p>When an order block fails—price blows through it instead of respecting it—it becomes a <strong>breaker block</strong>. And breaker blocks are even more powerful than order blocks.</p>
+
+      <p><strong>Why?</strong> Because institutions just got CAUGHT ON THE WRONG SIDE. Now they need to exit. And that creates explosive moves in the opposite direction.</p>
+
+      <h3>Anatomy of a Breaker Block</h3>
+
+      <div style="background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Step-by-Step Breakdown</h4>
+        <p><strong>Step 1:</strong> Bullish order block forms (institutions went long here)</p>
+        <p><strong>Step 2:</strong> Price returns to the order block (expected reaction)</p>
+        <p><strong>Step 3:</strong> Instead of bouncing, price BREAKS THROUGH and closes below it</p>
+        <p><strong>Step 4:</strong> The order block is now "broken"—it failed</p>
+        <p><strong>Step 5:</strong> That zone flips from support → resistance (now a breaker block)</p>
+        <p style="margin-top:1.5rem"><strong>What happened:</strong> Institutions were long. Price broke their order block. They're now trapped. They'll add sell orders at that zone to exit. Former support becomes resistance.</p>
+      </div>
+
+      <p><strong>Real-world analogy:</strong></p>
+      <p>Imagine you bought a house at $500k (your "order block"). The market crashes, and your house is now worth $400k. If prices ever climb back to $500k, what do you do? <em>You sell to break even</em>. That's exactly what institutions do at breaker blocks—they're desperate to exit at breakeven.</p>
+
+      <h3>Trading Breaker Blocks</h3>
+
+      <p>Breaker blocks often provide <strong>lower-risk entries</strong> than order blocks because you have more confluence:</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(139,92,246,.08);border:2px solid rgba(139,92,246,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">Order Block Reaction</h4>
+          <ul style="margin:0">
+            <li>Institutions defending positions</li>
+            <li>Adding to winning trades</li>
+            <li>Confident accumulation</li>
+          </ul>
+          <p style="margin-top:1rem"><strong>Mindset:</strong> "We were right, let's add more"</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">Breaker Block Reaction</h4>
+          <ul style="margin:0">
+            <li>Institutions trapped and wrong</li>
+            <li>Desperate to exit positions</li>
+            <li>Forced liquidation pressure</li>
+          </ul>
+          <p style="margin-top:1rem"><strong>Mindset:</strong> "We were wrong, get me out at breakeven"</p>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: Market Structure—The Only Patterns That Matter</span></div>
+
+      <h2>BOS vs ChoCH: Reading Institutional Intent</h2>
+
+      <p>Forget head and shoulders. Forget triangles. Forget every chart pattern you learned.</p>
+
+      <p>Institutions only care about two things:</p>
+      <ul>
+        <li><strong>BOS</strong> — Break of Structure (continuation)</li>
+        <li><strong>ChoCH</strong> — Change of Character (reversal)</li>
+      </ul>
+
+      <p>That's it. Everything else is noise.</p>
+
+      <h3>Break of Structure (BOS)—Trend Continues</h3>
+
+      <p><strong>Uptrend BOS:</strong> Price breaks the most recent swing high</p>
+      <p><strong>Downtrend BOS:</strong> Price breaks the most recent swing low</p>
+
+      <p><strong>What it means:</strong> The trend is healthy. Institutions are still in control. Expect continuation.</p>
+
+      <div class="callout-tip">
+        <h4>🎯 Trading BOS</h4>
+        <p><strong>Setup:</strong> After BOS, wait for price to retrace to the order block that caused the BOS</p>
+        <p><strong>Example (Bullish BOS):</strong></p>
+        <ol style="margin:.5rem 0 0 1.5rem">
+          <li>Price breaks previous swing high (BOS confirmed)</li>
+          <li>Price retraces to the bullish order block (last red candle before breakout)</li>
+          <li>Enter long on the retracement with stop below order block</li>
+          <li>Target: Next structural high or liquidity pool above</li>
+        </ol>
+      </div>
+
+      <h3>Change of Character (ChoCH)—Trend is Reversing</h3>
+
+      <p><strong>Uptrend ChoCH:</strong> Price breaks the most recent swing low (failed to make higher low)</p>
+      <p><strong>Downtrend ChoCH:</strong> Price breaks the most recent swing high (failed to make lower high)</p>
+
+      <p><strong>What it means:</strong> The trend is breaking down. Institutions are shifting direction. Prepare for reversal.</p>
+
+      <div style="background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">ChoCH Warning Signs</h4>
+        <p><strong>Before ChoCH happens, you'll often see:</strong></p>
+        <ul>
+          <li>Weakening momentum (smaller moves in trend direction)</li>
+          <li>Divergence on Harmonic Oscillator (price making highs, oscillator making lows)</li>
+          <li>Volume drying up on trend moves (institutions exiting)</li>
+          <li>Spread widening (market makers see something coming)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Pro move:</strong> Don't wait for ChoCH to fully confirm. If you see these warnings, tighten stops or take partial profits.</p>
+      </div>
+
+      <h3>Combining Order Blocks + Market Structure</h3>
+
+      <p>This is where it all comes together:</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Setup #1: BOS + Order Block Retest (High-Probability Continuation)</div>
+          <div class="accordion-content">
+            <p><strong>Complete Setup Checklist:</strong></p>
+            <ul>
+              <li>✓ Price in clear uptrend (higher highs, higher lows)</li>
+              <li>✓ BOS occurs (price breaks most recent swing high)</li>
+              <li>✓ Identify order block: last bearish candle before BOS</li>
+              <li>✓ Price retraces to order block zone</li>
+              <li>✓ Janus Atlas confirms FVG at order block (confluence)</li>
+              <li>✓ Plutus Flow shows absorption, not exhaustion (institutions buying)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Entry:</strong> Limit order within order block zone</p>
+            <p><strong>Stop:</strong> Below order block low</p>
+            <p><strong>Target:</strong> Next structural high or recent swing high + 1.5-2R</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Setup #2: ChoCH + Breaker Block (High-Probability Reversal)</div>
+          <div class="accordion-content">
+            <p><strong>Complete Setup Checklist:</strong></p>
+            <ul>
+              <li>✓ Price was in downtrend (lower lows, lower highs)</li>
+              <li>✓ ChoCH occurs (price breaks most recent swing high—failed to make lower high)</li>
+              <li>✓ Previous bullish order block that got broken is now a breaker block</li>
+              <li>✓ Price rallies, then retraces to breaker block (former support, now resistance)</li>
+              <li>✓ Janus Atlas confirms liquidity sweep above breaker block</li>
+              <li>✓ Harmonic Oscillator showing bearish divergence</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Entry:</strong> Limit short within breaker block zone</p>
+            <p><strong>Stop:</strong> Above breaker block high</p>
+            <p><strong>Target:</strong> Recent structural low or FVG below</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 4: Common Mistakes (And How to Avoid Them)</span></div>
+
+      <h2>Why Your Order Block Trades Keep Failing</h2>
+
+      <h3>Mistake #1: Trading Every Order Block</h3>
+      <p><strong>Bad:</strong> <em>"I see an order block, I'm entering!"</em></p>
+      <p><strong>Why it fails:</strong> Not all order blocks are created equal. Weak order blocks get run through.</p>
+      <p><strong>Fix:</strong> Only trade order blocks that align with:</p>
+      <ul>
+        <li>Higher timeframe structure (daily confirms, 4H order block)</li>
+        <li>BOS or ChoCH (market structure confirmation)</li>
+        <li>Janus Atlas confluence (FVG or liquidity sweep)</li>
+      </ul>
+
+      <h3>Mistake #2: Ignoring Volume</h3>
+      <p><strong>Bad:</strong> <em>"Price touched the order block, going long!"</em></p>
+      <p><strong>Why it fails:</strong> Without volume confirmation, you're guessing.</p>
+      <p><strong>Fix:</strong> Use Plutus Flow to confirm absorption (buying volume) at the order block. If you see exhaustion instead, skip the trade.</p>
+
+      <h3>Mistake #3: Tight Stops Below Order Blocks</h3>
+      <p><strong>Bad:</strong> <em>"Stop 1 tick below the order block low!"</em></p>
+      <p><strong>Why it fails:</strong> Institutions often wick below order blocks to grab liquidity before reversing.</p>
+      <p><strong>Fix:</strong> Use 1.5-2x ATR stops BEYOND the order block, or place stops below a lower timeframe structure within the order block zone.</p>
+
+      <h3>Mistake #4: Confusing Order Blocks with Support/Resistance</h3>
+      <p><strong>Bad:</strong> <em>"This level held twice, so it's an order block!"</em></p>
+      <p><strong>Why it fails:</strong> Order blocks require DISPLACEMENT. No displacement = no order block.</p>
+      <p><strong>Fix:</strong> Look for aggressive, directional candles immediately after the order block candle. If you don't see displacement, it's not an order block—it's just support/resistance.</p>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Order blocks are institutional decision points,</strong> not retail support/resistance</li>
+          <li><strong>Breaker blocks</strong> = failed order blocks that flip polarity (more powerful than regular order blocks)</li>
+          <li><strong>BOS = continuation,</strong> ChoCH = reversal (only two market structure patterns that matter)</li>
+          <li><strong>Combine order blocks + market structure + Janus Atlas</strong> for confluence-based entries</li>
+          <li><strong>Displacement is required</strong>—no aggressive move = not an order block</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you just learned what separates retail traders from institutional thinkers. This is the foundation of reading market structure like a professional.</p>
+
+      <div class="section-break"><span>Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Quick Check (No Pressure)</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q: What makes a candle an order block?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Price bounced there multiple times</div>
+            <div class="quiz-option" data-correct="true">B) It's the last candle before aggressive directional displacement</div>
+            <div class="quiz-option" data-correct="false">C) It has a long wick</div>
+            <div class="quiz-option" data-correct="false">D) It's at a round number level</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Order blocks are identified by the aggressive displacement that follows them. The order block is where institutions placed their limit orders, then price aggressively moved away. No displacement = no order block.
+          </div>
+        </div>
+
+        <div class="quiz-question" style="margin-top:2rem">
+          <p><strong>Q: What's the difference between BOS and ChoCH?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) BOS is for stocks, ChoCH is for forex</div>
+            <div class="quiz-option" data-correct="true">B) BOS = trend continuation (breaking swing high/low in trend direction), ChoCH = trend reversal (breaking swing high/low against trend)</div>
+            <div class="quiz-option" data-correct="false">C) They're the same thing</div>
+            <div class="quiz-option" data-correct="false">D) ChoCH only happens on the daily timeframe</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Exactly!</strong> BOS confirms the trend is continuing (uptrend breaks swing high, downtrend breaks swing low). ChoCH signals trend reversal (uptrend breaks swing low, downtrend breaks swing high). These are the only two structural patterns institutions care about.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <div class="section-break"><span>Practice Exercise</span></div>
+
+      <div class="callout-key">
+        <h4>🎯 Pattern Recognition Practice</h4>
+        <p><strong>Exercise: Identify Order Blocks & Market Structure</strong></p>
+        <p>Before your next trading session:</p>
+        <ol style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li>Open a chart in an active market (ES, BTC, or liquid stock)</li>
+          <li>Identify the current trend direction (higher highs/higher lows or lower highs/lower lows)</li>
+          <li>Mark the most recent BOS or ChoCH on your chart</li>
+          <li>Find the order block that preceded that structural shift</li>
+          <li>Wait for price to retrace to that order block and observe the reaction</li>
+          <li>Journal: Did price respect it? Was there volume confirmation? What was the outcome?</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Goal:</strong> After marking 10-15 order blocks, you'll develop intuition for which ones are high-quality vs low-quality. The best learning comes from observation, not theory.</p>
+      </div>
+
+      <div class="section-break"><span>Downloadable Resources</span></div>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;border-left:4px solid var(--accent)">
+        <h4 style="margin:0 0 1rem 0">📥 Free Checklist for This Lesson</h4>
+        <p style="margin-bottom:1rem">Use this step-by-step checklist to identify high-quality order blocks and breaker blocks with market structure confirmation.</p>
+        <a href="/resources/checklists/smart-money-concepts-checklist.pdf" download class="btn btn-primary" style="display:inline-block">
+          Download Smart Money Concepts Checklist (PDF)
+        </a>
+        <p style="margin-top:.75rem;font-size:.9rem;color:var(--muted)">Print it out, keep it next to your trading desk, use it for every structural setup.</p>
+      </div>
+
+      <div class="section-break"><span>Related Lessons</span></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:1.5rem 0">
+        <div class="card" style="padding:1rem">
+          <span class="badge">Beginner #1</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">The Liquidity Lie</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Foundation for understanding liquidity engineering and sweeps</p>
+          <a href="/curriculum/beginner/01-the-liquidity-lie.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+        <div class="card" style="padding:1rem">
+          <span class="badge">Bridge #15</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Liquidity Pools</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Where smart money hunts stops around order blocks</p>
+          <a href="/curriculum/beginner-bridge/15-liquidity-pools.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+        <div class="card" style="padding:1rem">
+          <span class="badge">Intermediate #30</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Auction Theory Advanced</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Deeper dive into market structure and auction mechanics</p>
+          <a href="/curriculum/intermediate/30-auction-theory-advanced.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #14: The COT Report—Following Big Money</strong></p>
+        <p>Commercial vs non-commercial positioning, extreme readings as reversal signals, and how to use COT divergence with price action.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">Order Blocks vs S/R</a>
+      <a href="#">Anatomy of Order Blocks</a>
+      <a href="#">Breaker Blocks</a>
+      <a href="#">BOS vs ChoCH</a>
+      <a href="#">Market Structure</a>
+      <a href="#">Common Mistakes</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/beginner/12-paper-trading.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/beginner-bridge/14-cot-report.html">Next Lesson &rarr;</a>
+  </div>
+</article>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+  <script src="/assets/library.js"></script>
+  <script src="/assets/lesson-notes.js"></script>
+</body>
+</html>
