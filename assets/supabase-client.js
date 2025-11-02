@@ -596,25 +596,31 @@
 
   function showUserMenu() {
     try {
+      console.log('[Supabase] 1. showUserMenu called');
       logger.log('[Supabase] 1. showUserMenu called');
 
       // Check if user is signed in
       if (!currentUser) {
+        console.warn('[Supabase] No current user, cannot show menu');
         logger.warn('[Supabase] No current user, cannot show menu');
         return;
       }
+      console.log('[Supabase] 2. Current user exists:', currentUser.email);
       logger.log('[Supabase] 2. Current user exists:', currentUser.email);
 
       // Remove any existing menu
       const existingMenu = document.querySelector('.user-menu-dropdown');
+      console.log('[Supabase] 3. Checked for existing menu:', !!existingMenu);
       logger.log('[Supabase] 3. Checked for existing menu:', !!existingMenu);
 
       if (existingMenu) {
+        console.log('[Supabase] Removing existing menu');
         logger.log('[Supabase] Removing existing menu');
         existingMenu.remove();
         return; // Toggle off if already open
       }
 
+      console.log('[Supabase] 4. Creating user menu for:', currentUser.email);
       logger.log('[Supabase] 4. Creating user menu for:', currentUser.email);
 
     // Create dropdown menu with inline styles for guaranteed visibility
@@ -624,12 +630,13 @@
       position: fixed !important;
       top: 70px !important;
       right: 20px !important;
-      background: #ff0000 !important;
-      border: 3px solid #00ff00 !important;
+      background: linear-gradient(135deg, rgba(10, 14, 26, 0.98), rgba(15, 20, 35, 0.98)) !important;
+      backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(91, 138, 255, 0.2) !important;
       border-radius: 12px;
       padding: 0.75rem;
       min-width: 220px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(91, 138, 255, 0.1) !important;
       z-index: 999999 !important;
       display: block !important;
       visibility: visible !important;
@@ -695,12 +702,15 @@
       </button>
     `;
 
+    console.log('[Supabase] 5. Menu HTML created, appending to body...');
     logger.log('[Supabase] 5. Menu HTML created, appending to body...');
     document.body.appendChild(menu);
+    console.log('[Supabase] 6. Menu appended! Should be visible now.');
     logger.log('[Supabase] 6. Menu appended! Should be visible now.');
 
     // Verify it was added
     const verify = document.querySelector('.user-menu-dropdown');
+    console.log('[Supabase] 7. Verification - menu in DOM:', !!verify);
     logger.log('[Supabase] 7. Verification - menu in DOM:', !!verify);
 
     // Close on click outside
