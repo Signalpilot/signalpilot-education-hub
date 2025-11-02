@@ -1,432 +1,271 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
   <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
   <title>Fed Policy & Liquidity Cycles: Macro Trading Edge — Signal Pilot</title>
-  <meta name="description" content="The Federal Reserve controls money supply. When they print, markets rally. When they tighten, markets fall. Learn to trade the liquidity cycle.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Federal Reserve controls money supply. When they print, markets rally. When they tighten, markets fall. Learn to track the liquidity cycle.">
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
-  <link rel="icon" type="image/png" href="/assets/favicon.png">
 </head>
 <body>
-
-<header class="header">
-  <div class="container header-content">
-    <a href="/" class="logo">Signal Pilot</a>
-    <button class="hamburger" aria-label="Toggle menu">☰</button>
-    <nav class="nav">
-      <a href="/#curriculum">Curriculum</a>
-      <a href="/library.html">My Library</a>
-      <a href="/about.html">About</a>
-      <div class="auth-buttons">
-        <button id="login-btn" class="btn btn-secondary">Login</button>
-        <button id="signup-btn" class="btn btn-primary">Sign Up Free</button>
-        <button id="logout-btn" class="btn btn-secondary" style="display:none;">Logout</button>
-      </div>
-    </nav>
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand"><span>Signal Pilot</span></a>
+    <nav id="mainnav"><ul><li><a href="/">Education</a></li><li><a href="/my-library.html">My Library</a></li></ul></nav>
   </div>
 </header>
 
-<div class="breadcrumbs">
-  <div class="container">
-    <a href="/">Home</a> &raquo;
-    <a href="/#curriculum">Curriculum</a> &raquo;
-    <a href="/#tier-2">Intermediate-Bridge</a> &raquo;
-    Lesson 41
-  </div>
-</div>
-
-<main class="container lesson-container">
-  <aside class="lesson-sidebar">
-    <div class="progress-indicator">
-      <div class="progress-ring">
-        <svg width="120" height="120">
-          <circle class="progress-ring-circle-bg" stroke="#2a2a3e" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
-          <circle class="progress-ring-circle" stroke="url(#gradient)" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
-          <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%">
-              <stop offset="0%" style="stop-color:#5b8aff;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <div class="progress-text">
-          <span class="progress-percent">0%</span>
-        </div>
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> › <a href="/intermediate-bridge.html">Int Bridge</a> › <span>Lesson #41</span>
       </div>
-      <p class="progress-label">Lesson Progress</p>
+      <span class="badge">🔵 Intermediate-Advanced Bridge • Lesson 41</span>
+      <h1 class="headline xl">Fed Policy & Liquidity Cycles: The Macro Trading Edge</h1>
+      <div class="meta">24-28 min read • Macro Trading</div>
     </div>
+  </header>
 
-    <div class="lesson-nav">
-      <h4>Quick Navigation</h4>
-      <a href="#part1">QE vs QT Mechanics</a>
-      <a href="#part2">Net Liquidity Indicator</a>
-      <a href="#part3">FOMC Meeting Patterns</a>
-      <a href="#part4">The Fed Put</a>
-      <a href="#part5">Trading the Cycle</a>
-      <a href="#quiz">Quiz</a>
-    </div>
+  <div class="wrap article-grid">
+    <div class="prose">
+      <p><b>When the Fed prints, markets rally. When they tighten, markets fall. It's that simple—and that critical to understand.</b></p>
 
-    <div class="lesson-actions">
-      <button id="bookmark-btn" class="btn btn-secondary btn-block">
-        <span class="bookmark-icon">🔖</span>
-        <span class="bookmark-text">Bookmark</span>
-      </button>
-      <button onclick="window.print()" class="btn btn-secondary btn-block">
-        📄 Save as PDF
-      </button>
-    </div>
-  </aside>
+      <p>The Federal Reserve controls the most important variable in markets: <strong>liquidity</strong>. More money in the system means higher asset prices. Less money means falling prices.</p>
 
-  <article class="article lesson-content">
-    <div class="lesson-header">
-      <div class="lesson-meta">
-        <span class="lesson-tier">🔵 Intermediate-Bridge</span>
-        <span class="lesson-number">Lesson 41 of 82</span>
+      <div class="callout-warning">
+        <h4>🚨 The Harsh Reality</h4>
+        <p><strong>"Don't fight the Fed"</strong> isn't a suggestion—it's a survival rule.</p>
+        <p>In 2022, the Fed raised rates from 0% to 5% while running Quantitative Tightening. The S&P 500 fell 25%, Nasdaq dropped 33%, and crypto crashed 75%.</p>
+        <p><strong>Retail traders who ignored Fed policy lost everything. Institutions who tracked net liquidity went short and profited.</strong></p>
       </div>
-      <h1>Fed Policy & Liquidity Cycles: The Macro Trading Edge</h1>
-      <p class="lesson-subtitle">When the Fed prints, markets rally. When they tighten, markets fall. Understanding the liquidity cycle is the difference between trading with the macro tide or drowning against it.</p>
 
-      <div class="lesson-stats">
-        <span>📖 ~4,800 words</span>
-        <span>⏱️ ~24 min read</span>
-        <span>📊 Intermediate-Bridge</span>
-      </div>
-    </div>
-
-    <div class="section-break"><span>Introduction</span></div>
-
-    <p><strong>The Federal Reserve controls the most important variable in markets: liquidity.</strong></p>
-
-    <p>When the Fed expands its balance sheet (Quantitative Easing), they inject trillions into the financial system. Stocks, bonds, crypto—everything rallies because there's more money chasing the same assets.</p>
-
-    <p>When the Fed contracts (Quantitative Tightening), they drain liquidity. Assets fall because there's less money available to buy them.</p>
-
-    <div class="callout callout-danger">
-      <h4>⚠️ The Harsh Reality</h4>
-      <p><strong>"Don't fight the Fed"</strong> isn't a suggestion—it's a survival rule.</p>
-      <p>In 2022, the Fed raised rates from 0% to 5% while running Quantitative Tightening. The S&P 500 fell 25%, Nasdaq dropped 33%, and crypto crashed 75%.</p>
-      <p><strong>Retail traders who ignored Fed policy lost everything. Institutions who tracked net liquidity went short and profited.</strong></p>
-    </div>
-
-    <p>This lesson teaches you to <strong>track Fed liquidity in real-time</strong> and trade with—not against—the macro tide.</p>
-
-    <div class="section-break"><span id="part1">Part 1: QE vs QT — The Two Regimes</span></div>
-
-    <h2>The Fed's Balance Sheet = Market Direction</h2>
-
-    <p>The Federal Reserve's balance sheet is the <strong>single most important indicator</strong> for macro direction.</p>
-
-    <ul>
-      <li><strong>Quantitative Easing (QE):</strong> Fed buys bonds → injects cash → assets rally</li>
-      <li><strong>Quantitative Tightening (QT):</strong> Fed sells bonds → drains cash → assets fall</li>
-    </ul>
-
-    <div class="tabs">
-      <div class="tabs-nav">
-        <button class="active">QE (Bullish Regime)</button>
-        <button>QT (Bearish Regime)</button>
-      </div>
-      <div class="tabs-content">
-        <div class="tab-panel active">
-          <h3>Quantitative Easing — The Money Printer</h3>
-
-          <p><strong>What the Fed Does:</strong></p>
-          <ul>
-            <li>Buys $80B-$120B in Treasuries and MBS per month</li>
-            <li>Balance sheet expands (from $4T in 2019 → $9T by 2022)</li>
-            <li>Cash floods into the banking system</li>
-          </ul>
-
-          <p><strong>Market Impact:</strong></p>
-          <ul>
-            <li><strong>Stocks rally:</strong> More money → higher valuations (TINA: There Is No Alternative)</li>
-            <li><strong>Bonds rally:</strong> Fed buying pushes yields down</li>
-            <li><strong>Dollar weakens:</strong> Money supply increases → dollar depreciates</li>
-            <li><strong>Commodities rally:</strong> Weak dollar + inflation → gold, oil surge</li>
-            <li><strong>Crypto rallies:</strong> Risk-on sentiment + liquidity → BTC, ETH moon</li>
-          </ul>
-
-          <div class="callout callout-success">
-            <h4>💡 Case Study: 2020 COVID QE</h4>
-            <p><strong>March 2020:</strong> Fed announces unlimited QE ($3 trillion in 3 months)</p>
-            <p><strong>Result:</strong></p>
-            <ul>
-              <li>S&P 500: +70% from March 2020 low to Jan 2022</li>
-              <li>Nasdaq: +120% (tech stocks exploded)</li>
-              <li>Bitcoin: +1,500% (from $5K to $69K)</li>
-            </ul>
-            <p><strong>Lesson:</strong> QE = buy everything. The Fed prints → you profit.</p>
-          </div>
-
-          <p><strong>Trading Rules During QE:</strong></p>
-          <ol>
-            <li><strong>Buy dips aggressively</strong> — every pullback is a gift</li>
-            <li><strong>Hold winners longer</strong> — liquidity keeps pushing prices up</li>
-            <li><strong>Avoid shorts</strong> — fighting the Fed = financial suicide</li>
-            <li><strong>Leverage works</strong> — margin debt is cheap, volatility is low</li>
-          </ol>
-        </div>
-
-        <div class="tab-panel">
-          <h3>Quantitative Tightening — The Liquidity Drain</h3>
-
-          <p><strong>What the Fed Does:</strong></p>
-          <ul>
-            <li>Stops buying bonds (lets them mature and roll off)</li>
-            <li>Balance sheet shrinks ($95B/month runoff in 2022)</li>
-            <li>Cash is removed from the system</li>
-          </ul>
-
-          <p><strong>Market Impact:</strong></p>
-          <ul>
-            <li><strong>Stocks fall:</strong> Less money → lower valuations (P/E compression)</li>
-            <li><strong>Bonds fall:</strong> Yields rise as Fed stops buying</li>
-            <li><strong>Dollar strengthens:</strong> Money supply shrinks → dollar appreciates</li>
-            <li><strong>Commodities fall:</strong> Strong dollar + recession fears</li>
-            <li><strong>Crypto crashes:</strong> Risk-off + liquidity drain → BTC, ETH collapse</li>
-          </ul>
-
-          <div class="callout callout-danger">
-            <h4>⚠️ Case Study: 2022 QT Bear Market</h4>
-            <p><strong>March 2022:</strong> Fed announces QT + rate hikes (most aggressive tightening in 40 years)</p>
-            <p><strong>Result:</strong></p>
-            <ul>
-              <li>S&P 500: -25% (worst year since 2008)</li>
-              <li>Nasdaq: -33% (tech stocks obliterated)</li>
-              <li>Bitcoin: -75% (from $69K to $16K)</li>
-              <li>60/40 portfolio: -18% (worst year in history)</li>
-            </ul>
-            <p><strong>Lesson:</strong> QT = sell rallies. The Fed drains liquidity → you protect capital.</p>
-          </div>
-
-          <p><strong>Trading Rules During QT:</strong></p>
-          <ol>
-            <li><strong>Sell rallies</strong> — every bounce is a short opportunity</li>
-            <li><strong>Cut winners early</strong> — liquidity drain kills momentum</li>
-            <li><strong>Buy puts for hedging</strong> — volatility rises as liquidity falls</li>
-            <li><strong>Avoid leverage</strong> — drawdowns are deeper and longer</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-break"><span id="part2">Part 2: Net Liquidity — The Leading Indicator</span></div>
-
-    <h2>The Real Liquidity Formula</h2>
-
-    <p>The Fed's balance sheet alone doesn't tell the full story. You need to account for <strong>cash sitting idle</strong> in government accounts that doesn't flow into markets.</p>
-
-    <div class="callout callout-primary">
-      <h4>📊 Net Liquidity Formula</h4>
-      <p><strong>Net Liquidity = Fed Balance Sheet - TGA - Reverse Repo</strong></p>
+      <p><strong>In this lesson:</strong></p>
       <ul>
-        <li><strong>Fed Balance Sheet:</strong> Total assets the Fed owns (Treasury bonds, MBS)</li>
-        <li><strong>TGA (Treasury General Account):</strong> The government's checking account at the Fed</li>
-        <li><strong>Reverse Repo (RRP):</strong> Cash parked overnight at the Fed by banks</li>
+        <li>QE vs QT—The Two Liquidity Regimes</li>
+        <li>Net Liquidity Formula (Fed Balance Sheet - TGA - RRP)</li>
+        <li>FOMC Meeting Patterns (pre-drift, chaos window, post-resolution)</li>
+        <li>The Fed Put—Market Psychology & Strike Prices</li>
+        <li>Trading the Liquidity Cycle (3 practical strategies)</li>
       </ul>
-      <p><strong>Why subtract TGA and RRP?</strong> Because that cash is <em>not in the market</em>—it's locked up at the Fed, unavailable to buy stocks, bonds, or crypto.</p>
-    </div>
 
-    <h3>How to Track Net Liquidity</h3>
+      <div class="section-break"><span>Part 1: QE vs QT — The Two Regimes</span></div>
 
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Step 1: Get Fed Balance Sheet Data</strong>
-          <span class="accordion-icon">+</span>
+      <h2>The Fed's Balance Sheet = Market Direction</h2>
+
+      <p>The Federal Reserve's balance sheet is the <strong>single most important indicator</strong> for macro direction.</p>
+
+      <ul>
+        <li><strong>Quantitative Easing (QE):</strong> Fed buys bonds → injects cash → assets rally</li>
+        <li><strong>Quantitative Tightening (QT):</strong> Fed sells bonds → drains cash → assets fall</li>
+      </ul>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">QE (Bullish Regime)</button>
+          <button>QT (Bearish Regime)</button>
         </div>
-        <div class="accordion-content">
-          <p><strong>Source:</strong> <a href="https://fred.stlouisfed.org/series/WALCL" target="_blank">FRED (Federal Reserve Economic Data)</a></p>
-          <p><strong>Ticker:</strong> WALCL (Assets: Total Assets: Total Assets (Less Eliminations from Consolidation): Wednesday Level)</p>
-          <p><strong>Current Value (as of Feb 2024):</strong> ~$7.7 trillion</p>
-          <p><strong>Update Frequency:</strong> Weekly (every Wednesday)</p>
-        </div>
-      </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Quantitative Easing — The Money Printer</h3>
 
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Step 2: Get TGA (Treasury General Account)</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Source:</strong> <a href="https://fred.stlouisfed.org/series/WTREGEN" target="_blank">FRED — TGA Balance</a></p>
-          <p><strong>Ticker:</strong> WTREGEN</p>
-          <p><strong>Current Value:</strong> ~$750 billion</p>
-          <p><strong>What it means:</strong> Cash sitting at the Fed that the Treasury hasn't spent yet. When TGA <em>falls</em>, cash flows into the economy (bullish). When TGA <em>rises</em>, cash is drained from markets (bearish).</p>
-        </div>
-      </div>
+            <p><strong>What the Fed Does:</strong></p>
+            <ul>
+              <li>Buys $80B-$120B in Treasuries and MBS per month</li>
+              <li>Balance sheet expands (from $4T in 2019 → $9T by 2022)</li>
+              <li>Cash floods into the banking system</li>
+            </ul>
 
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Step 3: Get Reverse Repo (RRP)</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Source:</strong> <a href="https://fred.stlouisfed.org/series/RRPONTSYD" target="_blank">FRED — Overnight Reverse Repo</a></p>
-          <p><strong>Ticker:</strong> RRPONTSYD</p>
-          <p><strong>Current Value:</strong> ~$500 billion (down from $2.5T in 2023)</p>
-          <p><strong>What it means:</strong> Money market funds park cash at the Fed overnight instead of investing in markets. When RRP <em>falls</em>, cash flows back into stocks/bonds (bullish). When RRP <em>rises</em>, cash exits markets (bearish).</p>
-        </div>
-      </div>
+            <p><strong>Market Impact:</strong></p>
+            <ul>
+              <li><strong>Stocks rally:</strong> More money → higher valuations (TINA: There Is No Alternative)</li>
+              <li><strong>Bonds rally:</strong> Fed buying pushes yields down</li>
+              <li><strong>Dollar weakens:</strong> Money supply increases → dollar depreciates</li>
+              <li><strong>Commodities rally:</strong> Weak dollar + inflation → gold, oil surge</li>
+              <li><strong>Crypto rallies:</strong> Risk-on sentiment + liquidity → BTC, ETH moon</li>
+            </ul>
 
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Step 4: Calculate Net Liquidity</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Formula:</strong> Net Liquidity = Fed Balance Sheet - TGA - RRP</p>
-          <p><strong>Example Calculation (Feb 2024):</strong></p>
-          <ul>
-            <li>Fed Balance Sheet: $7.7T</li>
-            <li>TGA: $750B</li>
-            <li>RRP: $500B</li>
-            <li><strong>Net Liquidity = $7.7T - $0.75T - $0.5T = $6.45T</strong></li>
-          </ul>
-          <p><strong>Trading Signal:</strong> Track the <em>change</em> in net liquidity week-over-week.</p>
-          <ul>
-            <li><strong>Net liquidity rising for 3+ weeks:</strong> Strong bullish signal → bias long</li>
-            <li><strong>Net liquidity falling for 3+ weeks:</strong> Strong bearish signal → bias defensive</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout callout-info">
-      <h4>💡 Pro Tip: Liquidity Leads Price by 2-4 Weeks</h4>
-      <p>Net liquidity is a <strong>leading indicator</strong>—it typically moves <em>before</em> stock prices respond.</p>
-      <p><strong>Example:</strong> In October 2023, net liquidity started rising (RRP fell from $1.3T → $500B). The S&P 500 rallied +20% over the next 4 months.</p>
-      <p><strong>Why it works:</strong> Liquidity creates demand. More cash in the system → institutions deploy capital → prices rise.</p>
-    </div>
-
-    <div class="section-break"><span id="part3">Part 3: FOMC Meeting Patterns — Trading the Event</span></div>
-
-    <h2>The 8 FOMC Meetings Per Year</h2>
-
-    <p>The Federal Open Market Committee (FOMC) meets 8 times per year to decide interest rates and policy. These meetings create <strong>predictable volatility patterns</strong> that professional traders exploit.</p>
-
-    <h3>The FOMC Trading Pattern</h3>
-
-    <div class="tabs">
-      <div class="tabs-nav">
-        <button class="active">Before FOMC (2 Days Prior)</button>
-        <button>During FOMC (Day-Of)</button>
-        <button>After FOMC (2-3 Days)</button>
-      </div>
-      <div class="tabs-content">
-        <div class="tab-panel active">
-          <h3>Pre-FOMC Drift — The Silent Rally</h3>
-
-          <p><strong>What Happens:</strong></p>
-          <ul>
-            <li>Markets drift <em>higher</em> in the 2 days before the announcement</li>
-            <li>Volatility is <em>compressed</em> (VIX falls)</li>
-            <li>Institutions position ahead of expected news</li>
-          </ul>
-
-          <p><strong>Why It Happens:</strong></p>
-          <p>Market makers hedge gamma exposure by <em>buying</em> stock as volatility compresses. Dealers are long options premium and need to buy the underlying to stay delta-neutral.</p>
-
-          <p><strong>Trading Strategy:</strong></p>
-          <ul>
-            <li><strong>Avoid new positions</strong> — wait for clarity</li>
-            <li><strong>If already long, hold</strong> — pre-FOMC drift is real</li>
-            <li><strong>Don't short</strong> — fighting the drift loses money</li>
-          </ul>
-
-          <div class="callout callout-success">
-            <h4>📊 Stats: Pre-FOMC Drift is Real</h4>
-            <p><strong>Study:</strong> From 2011-2023, the S&P 500 gained an average of <strong>+0.5%</strong> in the 24 hours before FOMC announcements.</p>
-            <p><strong>Win Rate:</strong> 68% positive (41 out of 60 meetings)</p>
-            <p><strong>Lesson:</strong> The drift is statistically significant. Don't fight it.</p>
-          </div>
-        </div>
-
-        <div class="tab-panel">
-          <h3>FOMC Announcement — The Chaos Window</h3>
-
-          <p><strong>What Happens:</strong></p>
-          <ul>
-            <li><strong>2:00 PM ET:</strong> FOMC statement released</li>
-            <li><strong>First 5 minutes:</strong> Algorithmic whipsaw (both directions)</li>
-            <li><strong>2:30 PM ET:</strong> Jerome Powell press conference begins</li>
-            <li><strong>Next 60 minutes:</strong> Wild volatility as traders parse his tone</li>
-          </ul>
-
-          <p><strong>Why It's Dangerous:</strong></p>
-          <ul>
-            <li>HFTs dominate the first 5 minutes (you can't compete)</li>
-            <li>Spreads widen to 5-10x normal (slippage kills you)</li>
-            <li>Stop losses get hunted in both directions</li>
-          </ul>
-
-          <p><strong>Trading Strategy:</strong></p>
-          <ul>
-            <li><strong>Close risky positions 1 day before</strong> — don't gamble</li>
-            <li><strong>If trading, use options</strong> — defined risk only</li>
-            <li><strong>Wait 1-2 hours after Powell speaks</strong> — let the dust settle</li>
-          </ul>
-
-          <div class="callout callout-danger">
-            <h4>⚠️ Real Example: June 2023 FOMC Disaster</h4>
-            <p><strong>Setup:</strong> Fed paused rate hikes (first time in 15 months). Market expected rally.</p>
-            <p><strong>Initial Reaction (2:00-2:15 PM):</strong> S&P surged +1.2%</p>
-            <p><strong>Powell Speaks (2:30 PM):</strong> Says "more hikes likely ahead"</p>
-            <p><strong>Final Result (3:00 PM):</strong> S&P reversed to -0.8%</p>
-            <p><strong>Lesson:</strong> First reaction is often <em>wrong</em>. Wait for confirmation.</p>
-          </div>
-        </div>
-
-        <div class="tab-panel">
-          <h3>Post-FOMC Resolution — The True Move</h3>
-
-          <p><strong>What Happens:</strong></p>
-          <ul>
-            <li>Markets digest the Fed's message over 2-3 days</li>
-            <li>True direction emerges (either sustained rally or selloff)</li>
-            <li>Volatility normalizes by day 3</li>
-          </ul>
-
-          <p><strong>Trading Strategy:</strong></p>
-          <ol>
-            <li><strong>Wait for the dust to settle</strong> (1-2 hours after Powell)</li>
-            <li><strong>Look for technical confirmation:</strong>
+            <div class="callout-success">
+              <h4>💡 Case Study: 2020 COVID QE</h4>
+              <p><strong>March 2020:</strong> Fed announces unlimited QE ($3 trillion in 3 months)</p>
+              <p><strong>Result:</strong></p>
               <ul>
-                <li>Bullish: SPY breaks above pre-FOMC high on volume</li>
-                <li>Bearish: SPY breaks below pre-FOMC low on volume</li>
+                <li>S&P 500: +70% from March 2020 low to Jan 2022</li>
+                <li>Nasdaq: +120% (tech stocks exploded)</li>
+                <li>Bitcoin: +1,500% (from $5K to $69K)</li>
               </ul>
-            </li>
-            <li><strong>Enter on confirmation, not speculation</strong></li>
-            <li><strong>Use tight stops</strong> — if wrong, exit fast</li>
-          </ol>
+              <p><strong>Lesson:</strong> QE = buy everything. The Fed prints → you profit.</p>
+            </div>
 
-          <div class="callout callout-success">
-            <h4>💡 Pro Strategy: The 2-Hour Rule</h4>
-            <p><strong>Rule:</strong> Don't trade until 2 hours after Powell's press conference ends (~4:30 PM ET).</p>
-            <p><strong>Why:</strong> By then, institutions have positioned, headlines are priced in, and the <em>real</em> direction is clear.</p>
-            <p><strong>Entry Signal:</strong> If SPY holds gains into close → buy next morning. If SPY fades into close → short next morning.</p>
+            <p><strong>Trading Rules During QE:</strong></p>
+            <ol>
+              <li><strong>Buy dips aggressively</strong> — every pullback is a gift</li>
+              <li><strong>Hold winners longer</strong> — liquidity keeps pushing prices up</li>
+              <li><strong>Avoid shorts</strong> — fighting the Fed = financial suicide</li>
+              <li><strong>Leverage works</strong> — margin debt is cheap, volatility is low</li>
+            </ol>
+          </div>
+
+          <div class="tab-panel">
+            <h3>Quantitative Tightening — The Liquidity Drain</h3>
+
+            <p><strong>What the Fed Does:</strong></p>
+            <ul>
+              <li>Stops buying bonds (lets them mature and roll off)</li>
+              <li>Balance sheet shrinks ($95B/month runoff in 2022)</li>
+              <li>Cash is removed from the system</li>
+            </ul>
+
+            <p><strong>Market Impact:</strong></p>
+            <ul>
+              <li><strong>Stocks fall:</strong> Less money → lower valuations (P/E compression)</li>
+              <li><strong>Bonds fall:</strong> Yields rise as Fed stops buying</li>
+              <li><strong>Dollar strengthens:</strong> Money supply shrinks → dollar appreciates</li>
+              <li><strong>Commodities fall:</strong> Strong dollar + recession fears</li>
+              <li><strong>Crypto crashes:</strong> Risk-off + liquidity drain → BTC, ETH collapse</li>
+            </ul>
+
+            <div class="callout-warning">
+              <h4>⚠️ Case Study: 2022 QT Bear Market</h4>
+              <p><strong>March 2022:</strong> Fed announces QT + rate hikes (most aggressive tightening in 40 years)</p>
+              <p><strong>Result:</strong></p>
+              <ul>
+                <li>S&P 500: -25% (worst year since 2008)</li>
+                <li>Nasdaq: -33% (tech stocks obliterated)</li>
+                <li>Bitcoin: -75% (from $69K to $16K)</li>
+                <li>60/40 portfolio: -18% (worst year in history)</li>
+              </ul>
+              <p><strong>Lesson:</strong> QT = sell rallies. The Fed drains liquidity → you protect capital.</p>
+            </div>
+
+            <p><strong>Trading Rules During QT:</strong></p>
+            <ol>
+              <li><strong>Sell rallies</strong> — every bounce is a short opportunity</li>
+              <li><strong>Cut winners early</strong> — liquidity drain kills momentum</li>
+              <li><strong>Buy puts for hedging</strong> — volatility rises as liquidity falls</li>
+              <li><strong>Avoid leverage</strong> — drawdowns are deeper and longer</li>
+            </ol>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="section-break"><span id="part4">Part 4: The Fed Put — Market Psychology</span></div>
+      <div class="section-break"><span>Part 2: Net Liquidity — The Leading Indicator</span></div>
 
-    <h2>Why the Fed Rescues Markets</h2>
+      <h2>The Real Liquidity Formula</h2>
 
-    <p>The <strong>"Fed Put"</strong> is the belief that the Federal Reserve will step in to prevent major market crashes by cutting rates or restarting QE.</p>
+      <p>The Fed's balance sheet alone doesn't tell the full story. You need to account for <strong>cash sitting idle</strong> in government accounts that doesn't flow into markets.</p>
 
-    <p><strong>Why the Fed Put exists:</strong></p>
-    <ul>
-      <li><strong>Wealth effect:</strong> Falling stocks → consumers spend less → economy contracts</li>
-      <li><strong>Financial stability:</strong> Crashes cause pension funds, banks, and insurance companies to fail</li>
-      <li><strong>Political pressure:</strong> Crashes hurt voters → politicians demand action</li>
-    </ul>
+      <div class="callout-info">
+        <h4>📊 Net Liquidity Formula</h4>
+        <p><strong>Net Liquidity = Fed Balance Sheet - TGA - Reverse Repo</strong></p>
+        <ul>
+          <li><strong>Fed Balance Sheet:</strong> Total assets the Fed owns (Treasury bonds, MBS)</li>
+          <li><strong>TGA (Treasury General Account):</strong> The government's checking account at the Fed</li>
+          <li><strong>Reverse Repo (RRP):</strong> Cash parked overnight at the Fed by banks</li>
+        </ul>
+        <p><strong>Why subtract TGA and RRP?</strong> Because that cash is <em>not in the market</em>—it's locked up at the Fed, unavailable to buy stocks, bonds, or crypto.</p>
+      </div>
 
-    <div class="callout callout-primary">
-      <h4>📊 Historical Fed Puts</h4>
+      <h3>How to Track Net Liquidity</h3>
+
+      <p><strong>Step 1: Get Fed Balance Sheet Data</strong></p>
+      <p><strong>Source:</strong> <a href="https://fred.stlouisfed.org/series/WALCL" target="_blank">FRED (Federal Reserve Economic Data)</a></p>
+      <p><strong>Ticker:</strong> WALCL</p>
+      <p><strong>Current Value (as of Feb 2024):</strong> ~$7.7 trillion</p>
+      <p><strong>Update Frequency:</strong> Weekly (every Wednesday)</p>
+
+      <p><strong>Step 2: Get TGA (Treasury General Account)</strong></p>
+      <p><strong>Source:</strong> <a href="https://fred.stlouisfed.org/series/WTREGEN" target="_blank">FRED — TGA Balance</a></p>
+      <p><strong>Ticker:</strong> WTREGEN</p>
+      <p><strong>Current Value:</strong> ~$750 billion</p>
+      <p><strong>What it means:</strong> Cash sitting at the Fed that the Treasury hasn't spent yet. When TGA <em>falls</em>, cash flows into the economy (bullish). When TGA <em>rises</em>, cash is drained from markets (bearish).</p>
+
+      <p><strong>Step 3: Get Reverse Repo (RRP)</strong></p>
+      <p><strong>Source:</strong> <a href="https://fred.stlouisfed.org/series/RRPONTSYD" target="_blank">FRED — Overnight Reverse Repo</a></p>
+      <p><strong>Ticker:</strong> RRPONTSYD</p>
+      <p><strong>Current Value:</strong> ~$500 billion (down from $2.5T in 2023)</p>
+      <p><strong>What it means:</strong> Money market funds park cash at the Fed overnight instead of investing in markets. When RRP <em>falls</em>, cash flows back into stocks/bonds (bullish). When RRP <em>rises</em>, cash exits markets (bearish).</p>
+
+      <p><strong>Step 4: Calculate Net Liquidity</strong></p>
+      <p><strong>Formula:</strong> Net Liquidity = Fed Balance Sheet - TGA - RRP</p>
+      <p><strong>Example Calculation (Feb 2024):</strong></p>
+      <ul>
+        <li>Fed Balance Sheet: $7.7T</li>
+        <li>TGA: $750B</li>
+        <li>RRP: $500B</li>
+        <li><strong>Net Liquidity = $7.7T - $0.75T - $0.5T = $6.45T</strong></li>
+      </ul>
+
+      <p><strong>Trading Signal:</strong> Track the <em>change</em> in net liquidity week-over-week.</p>
+      <ul>
+        <li><strong>Net liquidity rising for 3+ weeks:</strong> Strong bullish signal → bias long</li>
+        <li><strong>Net liquidity falling for 3+ weeks:</strong> Strong bearish signal → bias defensive</li>
+      </ul>
+
+      <div class="callout-key">
+        <h4>💡 Pro Tip: Liquidity Leads Price by 2-4 Weeks</h4>
+        <p>Net liquidity is a <strong>leading indicator</strong>—it typically moves <em>before</em> stock prices respond.</p>
+        <p><strong>Example:</strong> In October 2023, net liquidity started rising (RRP fell from $1.3T → $500B). The S&P 500 rallied +20% over the next 4 months.</p>
+        <p><strong>Why it works:</strong> Liquidity creates demand. More cash in the system → institutions deploy capital → prices rise.</p>
+      </div>
+
+      <div class="section-break"><span>Part 3: FOMC Meeting Patterns</span></div>
+
+      <h2>The 8 FOMC Meetings Per Year</h2>
+
+      <p>The Federal Open Market Committee (FOMC) meets 8 times per year to decide interest rates and policy. These meetings create <strong>predictable volatility patterns</strong> that professional traders exploit.</p>
+
+      <h3>The FOMC Trading Pattern</h3>
+
+      <p><strong>Before FOMC (2 Days Prior):</strong> Markets drift <em>higher</em> (pre-FOMC drift is real)</p>
+      <ul>
+        <li>Volatility is <em>compressed</em> (VIX falls)</li>
+        <li>Institutions position ahead of expected news</li>
+        <li>Market makers hedge gamma exposure by buying stock</li>
+      </ul>
+
+      <p><strong>Stats:</strong> From 2011-2023, the S&P 500 gained an average of <strong>+0.5%</strong> in the 24 hours before FOMC announcements (68% win rate).</p>
+
+      <p><strong>During FOMC (Day-Of):</strong> The Chaos Window</p>
+      <ul>
+        <li><strong>2:00 PM ET:</strong> FOMC statement released → algorithmic whipsaw</li>
+        <li><strong>2:30 PM ET:</strong> Jerome Powell press conference → wild volatility</li>
+        <li>HFTs dominate the first 5 minutes (you can't compete)</li>
+        <li>Spreads widen to 5-10x normal (slippage kills you)</li>
+      </ul>
+
+      <p><strong>Real Example (June 2023):</strong> Fed paused rate hikes. S&P surged +1.2% initially, then Powell said "more hikes likely ahead" → S&P reversed to -0.8%. First reaction was <em>wrong</em>.</p>
+
+      <p><strong>After FOMC (2-3 Days):</strong> The True Move</p>
+      <ul>
+        <li>Markets digest the Fed's message over 2-3 days</li>
+        <li>True direction emerges (either sustained rally or selloff)</li>
+        <li>Volatility normalizes by day 3</li>
+      </ul>
+
+      <div class="callout-success">
+        <h4>💡 Pro Strategy: The 2-Hour Rule</h4>
+        <p><strong>Rule:</strong> Don't trade until 2 hours after Powell's press conference ends (~4:30 PM ET).</p>
+        <p><strong>Why:</strong> By then, institutions have positioned, headlines are priced in, and the <em>real</em> direction is clear.</p>
+        <p><strong>Entry Signal:</strong> If SPY holds gains into close → buy next morning. If SPY fades into close → short next morning.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: The Fed Put</span></div>
+
+      <h2>Why the Fed Rescues Markets</h2>
+
+      <p>The <strong>"Fed Put"</strong> is the belief that the Federal Reserve will step in to prevent major market crashes by cutting rates or restarting QE.</p>
+
+      <p><strong>Why the Fed Put exists:</strong></p>
+      <ul>
+        <li><strong>Wealth effect:</strong> Falling stocks → consumers spend less → economy contracts</li>
+        <li><strong>Financial stability:</strong> Crashes cause pension funds, banks, and insurance companies to fail</li>
+        <li><strong>Political pressure:</strong> Crashes hurt voters → politicians demand action</li>
+      </ul>
+
+      <h3>Historical Fed Puts</h3>
       <ul>
         <li><strong>1987 Black Monday:</strong> S&P -20% in 1 day → Fed cuts rates immediately</li>
         <li><strong>1998 LTCM Crisis:</strong> Hedge fund collapse → Fed orchestrates bailout</li>
@@ -434,301 +273,194 @@
         <li><strong>2018 December Crash:</strong> S&P -20% → Fed pivots from hikes to cuts</li>
         <li><strong>2020 COVID Crash:</strong> S&P -35% → Fed unlimited QE ($3T in 3 months)</li>
       </ul>
+
       <p><strong>Pattern:</strong> Every major crash is met with Fed intervention.</p>
-    </div>
 
-    <h3>Where is the Fed Put Strike Price?</h3>
+      <h3>Where is the Fed Put Strike Price?</h3>
 
-    <p><strong>The Fed Put "strike price" = the level at which the Fed will intervene.</strong></p>
+      <p><strong>The Fed Put "strike price" = the level at which the Fed will intervene.</strong></p>
 
-    <p>This isn't an exact number—it's a <strong>pain threshold</strong>:</p>
-    <ul>
-      <li><strong>-10% pullback:</strong> Fed watches, no action</li>
-      <li><strong>-15% correction:</strong> Fed starts talking about "monitoring conditions"</li>
-      <li><strong>-20% bear market:</strong> Fed pivots (cuts rates or restarts QE)</li>
-    </ul>
-
-    <div class="callout callout-info">
-      <h4>💡 Trading the Fed Put</h4>
-      <p><strong>Strategy:</strong> When the S&P 500 falls -15% to -20%, <em>start buying</em>.</p>
-      <p><strong>Why:</strong> The Fed Put becomes more likely with every down day. Once triggered, markets rally hard.</p>
-      <p><strong>Example:</strong> March 2020 — S&P fell -35%. Fed announced unlimited QE. Result: +70% rally over 20 months.</p>
-      <p><strong>Risk:</strong> The Fed Put only activates in <em>systemic</em> crises. In slow bear markets (like 2022), the Fed may stay tight for months.</p>
-    </div>
-
-    <div class="section-break"><span id="part5">Part 5: Trading the Liquidity Cycle — Practical Strategies</span></div>
-
-    <h2>How Professionals Trade Fed Liquidity</h2>
-
-    <p>Now that you understand QE, QT, net liquidity, FOMC patterns, and the Fed Put, here's how to <strong>operationalize</strong> this into a trading strategy.</p>
-
-    <h3>Strategy 1: Net Liquidity Momentum</h3>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Setup: Net Liquidity Rising for 3+ Weeks</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Signal:</strong> Net liquidity (Fed Balance Sheet - TGA - RRP) is rising week-over-week for 3+ weeks</p>
-          <p><strong>Position:</strong> Long SPY, QQQ, or sector ETFs (tech, small caps)</p>
-          <p><strong>Entry:</strong> Buy on any -1% dip</p>
-          <p><strong>Stop Loss:</strong> Below the 50-day MA</p>
-          <p><strong>Take Profit:</strong> When net liquidity stops rising</p>
-          <p><strong>Win Rate:</strong> ~75% (backtested 2010-2023)</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Setup: Net Liquidity Falling for 3+ Weeks</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Signal:</strong> Net liquidity is falling week-over-week for 3+ weeks</p>
-          <p><strong>Position:</strong> Short SPY, buy SPY puts, or cash gang</p>
-          <p><strong>Entry:</strong> Sell on any +1% rally</p>
-          <p><strong>Stop Loss:</strong> Above the 50-day MA</p>
-          <p><strong>Take Profit:</strong> When net liquidity stops falling (or Fed pivots)</p>
-          <p><strong>Win Rate:</strong> ~70% (but drawdowns can be painful if Fed Put activates)</p>
-        </div>
-      </div>
-    </div>
-
-    <h3>Strategy 2: FOMC Avoidance + Post-Event Clarity</h3>
-
-    <p><strong>Rule:</strong> Close risky positions 1 day before FOMC. Re-enter 2 hours after Powell speaks.</p>
-
-    <p><strong>Execution Checklist:</strong></p>
-    <ul>
-      <li><strong>T-1 Day:</strong> Close 50% of positions (keep only high-conviction longs)</li>
-      <li><strong>T-0 Day (FOMC):</strong> Do not trade during 2:00-4:30 PM window</li>
-      <li><strong>T+0 (After 4:30 PM):</strong> Watch closing price action:
-        <ul>
-          <li>If SPY holds gains → bullish → buy next morning</li>
-          <li>If SPY fades gains → bearish → short next morning</li>
-        </ul>
-      </li>
-      <li><strong>T+1 Day:</strong> Enter on confirmation, use tight stops</li>
-    </ul>
-
-    <div class="callout callout-success">
-      <h4>💡 Example: March 2023 FOMC (Banking Crisis)</h4>
-      <p><strong>Setup:</strong> Silicon Valley Bank collapsed. Market feared Fed would keep hiking despite crisis.</p>
-      <p><strong>FOMC Day:</strong> Fed hiked +25 bps (as expected), but Powell said "banking system is sound"</p>
-      <p><strong>Initial Reaction:</strong> SPY rallied +1.5% (relief)</p>
-      <p><strong>Closing Action:</strong> SPY held gains into close</p>
-      <p><strong>Trade:</strong> Buy SPY next morning → +8% rally over next 3 weeks</p>
-      <p><strong>Lesson:</strong> Post-FOMC clarity > gambling during the event.</p>
-    </div>
-
-    <h3>Strategy 3: QE/QT Regime Switching</h3>
-
-    <p><strong>Concept:</strong> Adjust your entire portfolio based on the Fed's liquidity regime.</p>
-
-    <div class="tabs">
-      <div class="tabs-nav">
-        <button class="active">QE Regime Portfolio</button>
-        <button>QT Regime Portfolio</button>
-      </div>
-      <div class="tabs-content">
-        <div class="tab-panel active">
-          <h3>QE = Risk-On Portfolio</h3>
-
-          <p><strong>Equity Allocation:</strong> 80-100%</p>
-          <ul>
-            <li>50% SPY or QQQ (core beta)</li>
-            <li>30% growth stocks (tech, small caps, crypto)</li>
-            <li>20% cash for dip buying</li>
-          </ul>
-
-          <p><strong>Hedging:</strong> None (QE environments have low volatility)</p>
-
-          <p><strong>Leverage:</strong> Acceptable (margin rates are low during QE)</p>
-
-          <p><strong>Options Strategy:</strong> Sell cash-secured puts on dips (collect premium while waiting to buy cheaper)</p>
-
-          <p><strong>Rebalance Trigger:</strong> When Fed signals QT is coming (taper talk)</p>
-        </div>
-
-        <div class="tab-panel">
-          <h3>QT = Risk-Off Portfolio</h3>
-
-          <p><strong>Equity Allocation:</strong> 30-50%</p>
-          <ul>
-            <li>30% SPY (defensive core)</li>
-            <li>20% bonds (TLT for deflation protection)</li>
-            <li>50% cash (waiting for Fed Put to activate)</li>
-          </ul>
-
-          <p><strong>Hedging:</strong> 5-10% in SPY puts (protect against crashes)</p>
-
-          <p><strong>Leverage:</strong> Avoid (QT environments have high volatility)</p>
-
-          <p><strong>Options Strategy:</strong> Buy puts on rallies (cheap downside protection)</p>
-
-          <p><strong>Rebalance Trigger:</strong> When Fed pivots (cuts rates or restarts QE)</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-break"><span id="quiz">Quiz: Test Your Understanding</span></div>
-
-    <div class="quiz">
-      <h4>🎮 Fed Liquidity Mastery Check</h4>
-
-      <div class="quiz-question">
-        <p><strong>1. Net liquidity has been rising for 4 weeks straight (RRP falling from $1T → $600B). What's the correct trade?</strong></p>
-        <div class="quiz-options">
-          <div class="quiz-option" data-correct="false">
-            A) Short SPY — liquidity doesn't matter, technicals do
-          </div>
-          <div class="quiz-option" data-correct="true">
-            B) Long SPY — rising net liquidity is bullish, buy dips
-          </div>
-          <div class="quiz-option" data-correct="false">
-            C) Stay cash — wait for FOMC clarity first
-          </div>
-        </div>
-        <div class="quiz-feedback">
-          <p><strong>Correct!</strong> Net liquidity rising for 3+ weeks is a <strong>strong bullish signal</strong>. The market typically rallies 2-4 weeks after liquidity increases because cash needs somewhere to go.</p>
-          <p><strong>Why A is wrong:</strong> Fighting rising liquidity is financial suicide. Technicals are secondary to macro liquidity.</p>
-          <p><strong>Why C is wrong:</strong> Waiting for FOMC means missing the move—liquidity leads price.</p>
-        </div>
-      </div>
-
-      <div class="quiz-question">
-        <p><strong>2. It's 2:15 PM on FOMC day. SPY just spiked +1.5% in 5 minutes on the Fed statement. What do you do?</strong></p>
-        <div class="quiz-options">
-          <div class="quiz-option" data-correct="false">
-            A) Buy calls immediately — the rally is confirmed
-          </div>
-          <div class="quiz-option" data-correct="true">
-            B) Wait for Powell's press conference and closing action before trading
-          </div>
-          <div class="quiz-option" data-correct="false">
-            C) Short the spike — first reaction is always wrong
-          </div>
-        </div>
-        <div class="quiz-feedback">
-          <p><strong>Correct!</strong> The initial 5-minute reaction is <strong>algorithmic noise</strong>. Jerome Powell's press conference (2:30 PM) and closing price action reveal the <em>real</em> direction.</p>
-          <p><strong>Example:</strong> June 2023 FOMC rallied +1.2% initially, then reversed to -0.8% after Powell spoke.</p>
-          <p><strong>Rule:</strong> Wait 2 hours after Powell speaks before entering new positions.</p>
-        </div>
-      </div>
-
-      <div class="quiz-question">
-        <p><strong>3. The S&P 500 has fallen -18% from all-time highs. Fed Chair Powell says "we will continue tightening until inflation is under control." What's your move?</strong></p>
-        <div class="quiz-options">
-          <div class="quiz-option" data-correct="false">
-            A) Buy aggressively — the Fed Put will save us
-          </div>
-          <div class="quiz-option" data-correct="true">
-            B) Stay defensive — the Fed Put only activates at -20%+ or systemic crisis
-          </div>
-          <div class="quiz-option" data-correct="false">
-            C) Go all-in short — Fed is bearish forever
-          </div>
-        </div>
-        <div class="quiz-feedback">
-          <p><strong>Correct!</strong> The Fed Put typically activates around <strong>-20% drawdowns or systemic crises</strong>, not -18%. Powell's hawkish tone means the Fed is prioritizing inflation over markets.</p>
-          <p><strong>Why A is wrong:</strong> Catching a falling knife before the Fed pivots = losses. Wait for confirmation (rate cuts or QE restart).</p>
-          <p><strong>Why C is wrong:</strong> Going all-in short near -20% is dangerous—the Fed Put could activate any day, causing a violent short squeeze.</p>
-          <p><strong>Best Strategy:</strong> Stay 50% cash, wait for Fed pivot signals (dovish language, rate cuts), <em>then</em> go long.</p>
-        </div>
-      </div>
-
-      <button class="btn btn-primary quiz-submit">Check Answers</button>
-      <div class="quiz-results"></div>
-    </div>
-
-    <div class="section-break"><span>Key Takeaways</span></div>
-
-    <div class="key-takeaway">
-      <h4>💡 Master Fed Liquidity = Master Markets</h4>
+      <p>This isn't an exact number—it's a <strong>pain threshold</strong>:</p>
       <ul>
-        <li><strong>QE = bullish, QT = bearish.</strong> The Fed's balance sheet direction determines market direction.</li>
-        <li><strong>Net Liquidity (Fed BS - TGA - RRP)</strong> is the leading indicator—track it weekly on FRED.</li>
-        <li><strong>Rising net liquidity for 3+ weeks</strong> = strong long bias. Falling for 3+ weeks = defensive/short bias.</li>
-        <li><strong>FOMC meetings create chaos.</strong> Close risky positions 1 day before, re-enter 2 hours after Powell speaks.</li>
-        <li><strong>The Fed Put activates at -20%+ drawdowns</strong> or systemic crises. Don't rely on it prematurely.</li>
-        <li><strong>Adjust portfolio by regime:</strong> QE = risk-on (80% equities), QT = risk-off (50% cash).</li>
+        <li><strong>-10% pullback:</strong> Fed watches, no action</li>
+        <li><strong>-15% correction:</strong> Fed starts talking about "monitoring conditions"</li>
+        <li><strong>-20% bear market:</strong> Fed pivots (cuts rates or restarts QE)</li>
       </ul>
+
+      <div class="callout-info">
+        <h4>💡 Trading the Fed Put</h4>
+        <p><strong>Strategy:</strong> When the S&P 500 falls -15% to -20%, <em>start buying</em>.</p>
+        <p><strong>Why:</strong> The Fed Put becomes more likely with every down day. Once triggered, markets rally hard.</p>
+        <p><strong>Example:</strong> March 2020 — S&P fell -35%. Fed announced unlimited QE. Result: +70% rally over 20 months.</p>
+        <p><strong>Risk:</strong> The Fed Put only activates in <em>systemic</em> crises. In slow bear markets (like 2022), the Fed may stay tight for months.</p>
+      </div>
+
+      <div class="section-break"><span>Part 5: Trading the Liquidity Cycle</span></div>
+
+      <h2>How Professionals Trade Fed Liquidity</h2>
+
+      <p>Now that you understand QE, QT, net liquidity, FOMC patterns, and the Fed Put, here's how to <strong>operationalize</strong> this into a trading strategy.</p>
+
+      <h3>Strategy #1: Net Liquidity Momentum</h3>
+
+      <p><strong>Setup: Net Liquidity Rising for 3+ Weeks</strong></p>
+      <ul>
+        <li><strong>Signal:</strong> Net liquidity (Fed Balance Sheet - TGA - RRP) is rising week-over-week for 3+ weeks</li>
+        <li><strong>Position:</strong> Long SPY, QQQ, or sector ETFs (tech, small caps)</li>
+        <li><strong>Entry:</strong> Buy on any -1% dip</li>
+        <li><strong>Stop Loss:</strong> Below the 50-day MA</li>
+        <li><strong>Take Profit:</strong> When net liquidity stops rising</li>
+        <li><strong>Win Rate:</strong> ~75% (backtested 2010-2023)</li>
+      </ul>
+
+      <p><strong>Setup: Net Liquidity Falling for 3+ Weeks</strong></p>
+      <ul>
+        <li><strong>Signal:</strong> Net liquidity is falling week-over-week for 3+ weeks</li>
+        <li><strong>Position:</strong> Short SPY, buy SPY puts, or cash gang</li>
+        <li><strong>Entry:</strong> Sell on any +1% rally</li>
+        <li><strong>Stop Loss:</strong> Above the 50-day MA</li>
+        <li><strong>Take Profit:</strong> When net liquidity stops falling (or Fed pivots)</li>
+        <li><strong>Win Rate:</strong> ~70% (but drawdowns can be painful if Fed Put activates)</li>
+      </ul>
+
+      <h3>Strategy #2: FOMC Avoidance + Post-Event Clarity</h3>
+
+      <p><strong>Rule:</strong> Close risky positions 1 day before FOMC. Re-enter 2 hours after Powell speaks.</p>
+
+      <p><strong>Execution Checklist:</strong></p>
+      <ul>
+        <li><strong>T-1 Day:</strong> Close 50% of positions (keep only high-conviction longs)</li>
+        <li><strong>T-0 Day (FOMC):</strong> Do not trade during 2:00-4:30 PM window</li>
+        <li><strong>T+0 (After 4:30 PM):</strong> Watch closing price action (if SPY holds gains → bullish, if SPY fades → bearish)</li>
+        <li><strong>T+1 Day:</strong> Enter on confirmation, use tight stops</li>
+      </ul>
+
+      <h3>Strategy #3: QE/QT Regime Switching</h3>
+
+      <p><strong>Concept:</strong> Adjust your entire portfolio based on the Fed's liquidity regime.</p>
+
+      <p><strong>QE Regime Portfolio (Risk-On):</strong></p>
+      <ul>
+        <li>Equity Allocation: 80-100%</li>
+        <li>50% SPY or QQQ (core beta)</li>
+        <li>30% growth stocks (tech, small caps, crypto)</li>
+        <li>20% cash for dip buying</li>
+        <li>Hedging: None (QE environments have low volatility)</li>
+        <li>Leverage: Acceptable (margin rates are low during QE)</li>
+      </ul>
+
+      <p><strong>QT Regime Portfolio (Risk-Off):</strong></p>
+      <ul>
+        <li>Equity Allocation: 30-50%</li>
+        <li>30% SPY (defensive core)</li>
+        <li>20% bonds (TLT for deflation protection)</li>
+        <li>50% cash (waiting for Fed Put to activate)</li>
+        <li>Hedging: 5-10% in SPY puts (protect against crashes)</li>
+        <li>Leverage: Avoid (QT environments have high volatility)</li>
+      </ul>
+
+      <div class="section-break"><span>Quiz: Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Fed Liquidity Mastery Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>1. Net liquidity has been rising for 4 weeks straight (RRP falling from $1T → $600B). What's the correct trade?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Short SPY — liquidity doesn't matter, technicals do</div>
+            <div class="quiz-option" data-correct="true">B) Long SPY — rising net liquidity is bullish, buy dips</div>
+            <div class="quiz-option" data-correct="false">C) Stay cash — wait for FOMC clarity first</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> Net liquidity rising for 3+ weeks is a <strong>strong bullish signal</strong>. The market typically rallies 2-4 weeks after liquidity increases because cash needs somewhere to go.</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>2. It's 2:15 PM on FOMC day. SPY just spiked +1.5% in 5 minutes on the Fed statement. What do you do?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Buy calls immediately — the rally is confirmed</div>
+            <div class="quiz-option" data-correct="true">B) Wait for Powell's press conference and closing action before trading</div>
+            <div class="quiz-option" data-correct="false">C) Short the spike — first reaction is always wrong</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> The initial 5-minute reaction is <strong>algorithmic noise</strong>. Jerome Powell's press conference (2:30 PM) and closing price action reveal the <em>real</em> direction. June 2023 FOMC rallied +1.2% initially, then reversed to -0.8% after Powell spoke.</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>3. The S&P 500 has fallen -18% from all-time highs. Fed Chair Powell says "we will continue tightening until inflation is under control." What's your move?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Buy aggressively — the Fed Put will save us</div>
+            <div class="quiz-option" data-correct="true">B) Stay defensive — the Fed Put only activates at -20%+ or systemic crisis</div>
+            <div class="quiz-option" data-correct="false">C) Go all-in short — Fed is bearish forever</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> The Fed Put typically activates around <strong>-20% drawdowns or systemic crises</strong>, not -18%. Powell's hawkish tone means the Fed is prioritizing inflation over markets. Best strategy: Stay 50% cash, wait for Fed pivot signals (dovish language, rate cuts), <em>then</em> go long.</p>
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
+        <div class="quiz-results"></div>
+      </div>
+
+      <div class="section-break"><span>Key Takeaways</span></div>
+
+      <div class="callout-key">
+        <h4>💡 Master Fed Liquidity = Master Markets</h4>
+        <ul>
+          <li><strong>QE = bullish, QT = bearish.</strong> The Fed's balance sheet direction determines market direction.</li>
+          <li><strong>Net Liquidity (Fed BS - TGA - RRP)</strong> is the leading indicator—track it weekly on FRED.</li>
+          <li><strong>Rising net liquidity for 3+ weeks</strong> = strong long bias. Falling for 3+ weeks = defensive/short bias.</li>
+          <li><strong>FOMC meetings create chaos.</strong> Close risky positions 1 day before, re-enter 2 hours after Powell speaks.</li>
+          <li><strong>The Fed Put activates at -20%+ drawdowns</strong> or systemic crises. Don't rely on it prematurely.</li>
+          <li><strong>Adjust portfolio by regime:</strong> QE = risk-on (80% equities), QT = risk-off (50% cash).</li>
+        </ul>
+      </div>
+
+      <p><strong>📥 Download Checklist:</strong> <a href="/resources/checklists/fed-liquidity-checklist.pdf" download>Fed Liquidity Trading System (PDF)</a></p>
+
+      <div class="section-break"><span>Related Lessons</span></div>
+
+      <div class="related-grid">
+        <a href="/curriculum/intermediate/29-correlation-vs-causation.html" class="related-card">
+          <span class="badge">🟡 Intermediate</span>
+          <h4>Lesson 29: Correlation vs Causation</h4>
+          <p>Understand why VIX spikes don't cause crashes—they're correlated symptoms.</p>
+        </a>
+        <a href="/curriculum/intermediate-bridge/42-volatility-trading-strategies.html" class="related-card">
+          <span class="badge">🔵 Int-Bridge</span>
+          <h4>Lesson 42: VIX & Volatility Trading</h4>
+          <p>Learn how Fed policy changes impact the VIX and how to trade volatility spikes.</p>
+        </a>
+        <a href="/curriculum/advanced/48-institutional-order-flow.html" class="related-card">
+          <span class="badge">🔴 Advanced</span>
+          <h4>Lesson 48: Institutional Order Flow</h4>
+          <p>See how institutions position before Fed announcements using dark pool data.</p>
+        </a>
+      </div>
+
     </div>
 
-    <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;border-left:4px solid var(--accent);margin:2rem 0">
-      <h4 style="margin:0 0 1rem 0;color:var(--accent)">📥 Free Checklist: Fed Liquidity Trading System</h4>
-      <p style="margin-bottom:1rem;color:var(--muted)">Download the complete Fed liquidity tracking checklist—includes FRED tickers, calculation spreadsheet, and FOMC trade plan template.</p>
-      <a href="/resources/checklists/fed-liquidity-checklist.pdf" download class="btn btn-primary" style="display:inline-block">
-        Download Fed Liquidity Checklist (PDF)
-      </a>
-    </div>
+    <aside class="toc-sidebar">
+      <div class="lesson-actions">
+        <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
+        <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
+      </div>
+    </aside>
 
-    <div class="section-break"><span>Related Lessons</span></div>
+  </div>
 
-    <div class="related-lessons">
-      <a href="/curriculum/intermediate/29-correlation-vs-causation.html" class="related-lesson-card">
-        <span class="related-lesson-tier">🟡 Intermediate</span>
-        <h4>Lesson 29: Correlation vs Causation in Trading</h4>
-        <p>Understand why VIX spikes don't <em>cause</em> crashes—they're correlated symptoms.</p>
-      </a>
-
-      <a href="/curriculum/intermediate-bridge/42-vix-volatility-trading.html" class="related-lesson-card">
-        <span class="related-lesson-tier">🔵 Intermediate-Bridge</span>
-        <h4>Lesson 42: VIX & Volatility Trading</h4>
-        <p>Learn how Fed policy changes impact the VIX and how to trade volatility spikes.</p>
-      </a>
-
-      <a href="/curriculum/advanced/48-institutional-order-flow.html" class="related-lesson-card">
-        <span class="related-lesson-tier">🔴 Advanced</span>
-        <h4>Lesson 48: Institutional Order Flow Analysis</h4>
-        <p>See how institutions position <em>before</em> Fed announcements using dark pool data.</p>
-      </a>
-    </div>
-
+  <div class="wrap">
     <div class="nav-article">
-      <a href="/curriculum/intermediate-bridge/40-market-maker-algorithms.html" class="btn btn-secondary">← Previous: Market Maker Algorithms</a>
-      <a href="/curriculum/intermediate-bridge/42-vix-volatility-trading.html" class="btn btn-primary">Next: VIX & Volatility Trading →</a>
-    </div>
-  </article>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Signal Pilot</h4>
-        <p>Professional trading education, designed by institutions, for retail traders who refuse to stay retail.</p>
-      </div>
-      <div class="footer-section">
-        <h4>Curriculum</h4>
-        <ul>
-          <li><a href="/#tier-1">Beginner</a></li>
-          <li><a href="/#tier-2">Intermediate</a></li>
-          <li><a href="/#tier-3">Advanced</a></li>
-          <li><a href="/#tier-4">Professional</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="/library.html">My Library</a></li>
-          <li><a href="/about.html">About</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Signal Pilot. All rights reserved.</p>
+      <a href="/curriculum/intermediate-bridge/40-market-maker-algorithms.html" class="btn btn-secondary">← Prev: Market Maker Algorithms</a>
+      <a href="/curriculum/intermediate-bridge/42-volatility-trading-strategies.html" class="btn btn-primary">Next: VIX & Volatility →</a>
     </div>
   </div>
-</footer>
+</article>
 
-<script src="/assets/article-progress.js"></script>
 <script src="/assets/quiz-enhanced.js"></script>
-<script src="/assets/social-share.js"></script>
-<script src="/assets/pwa-init.js"></script>
-<script src="/assets/config.js"></script>
+<script src="/assets/article-progress.js"></script>
 <script src="/assets/supabase-client.js"></script>
 <script src="/assets/auth-ui.js"></script>
 <script src="/assets/library.js"></script>
