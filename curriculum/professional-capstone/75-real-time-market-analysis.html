@@ -1,59 +1,575 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
   <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
   <title>Real-Time Market Analysis: Reading Live Tape Like a Pro — Signal Pilot</title>
   <meta name="description" content="This is where everything comes together. Synthesize tape reading, order flow, intermarket signals, and macro context simultaneously in real-time.">
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
 </head>
 <body>
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand"><span>Signal Pilot</span></a>
+    <nav id="mainnav"><ul><li><a href="/">Education</a></li><li><a href="/my-library.html">My Library</a></li></ul></nav>
+  </div>
+</header>
+
 <article class="article">
-  <h1>Real-Time Market Analysis: Synthesis in Action</h1>
-  <p><b>This is where everything comes together. You've learned the pieces—now learn to read the market in real-time.</b></p>
-  <p>Professional traders don't analyze in isolation—they synthesize tape reading, order flow, intermarket signals, and macro context simultaneously. This capstone lesson teaches you the professional's workflow for real-time market analysis.</p>
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> › <a href="/professional.html">Professional</a> › <span>Lesson #75</span>
+      </div>
+      <span class="badge">🔴 Professional • Lesson 75</span>
+      <h1 class="headline xl">Real-Time Market Analysis: Synthesis in Action</h1>
+      <div class="meta">28-32 min read • Capstone Integration</div>
+    </div>
+  </header>
 
-  <h2>The 5-Minute Pre-Market Scan</h2>
-  <p><strong>1. Macro check:</strong> Overnight futures (/ES, /NQ), Asian/European markets, DXY, yields, VIX</p>
-  <p><strong>2. Catalyst scan:</strong> Economic calendar (Fed, CPI, earnings), sector news</p>
-  <p><strong>3. Intermarket alignment:</strong> SPY vs TLT vs GLD (risk-on or risk-off?)</p>
-  <p><strong>4. Key levels:</strong> Mark yesterday's high/low, overnight range, VWAP</p>
+  <div class="wrap article-grid">
+    <div class="prose">
+      <p><b>This is where everything comes together. You've learned the pieces—now learn to read the market in real-time.</b></p>
 
-  <h2>The Opening 30 Minutes (9:30-10:00 AM)</h2>
-  <p><strong>What to watch:</strong> Opening auction imbalance (9:28 AM), gap behavior (fill or extend?), volume surge</p>
-  <p><strong>Institutional signal:</strong> If gap fills in first 15 minutes → institutions fading retail panic/FOMO</p>
-  <p><strong>Trend signal:</strong> If gap extends with volume → follow institutional direction</p>
+      <p>Professional traders don't analyze in isolation—they synthesize tape reading, order flow, intermarket signals, and macro context simultaneously.</p>
 
-  <h2>Real-Time Order Flow Analysis</h2>
-  <p><strong>Minimal Flow patterns:</strong> Large prints (10K+ shares), aggressive buying/selling (market orders vs limits)</p>
-  <p><strong>Pentarch Pilot Line:</strong> Cumulative institutional flow (are they accumulating or distributing?)</p>
-  <p><strong>Confirmation:</strong> Only trade when price action + order flow align (e.g., breakout + aggressive buying)</p>
+      <div class="callout-warning">
+        <h4>🚨 The Professional Difference</h4>
+        <p>Retail traders look at one thing at a time: "Let me check the chart. Now the volume. Now the news."</p>
+        <p><strong>Professionals process all signals simultaneously in real-time</strong>—like reading sheet music while playing piano. It becomes instinctive after 10,000+ hours.</p>
+        <p>This lesson teaches you the professional's workflow for real-time market analysis.</p>
+      </div>
 
-  <h2>Intraday Pivots & Session Transitions</h2>
-  <p><strong>10:00 AM:</strong> First institutional wave completes → either continuation or reversal</p>
-  <p><strong>12:00-2:00 PM:</strong> Lunch doldrums (low volume, avoid or scalp only)</p>
-  <p><strong>2:00-3:00 PM:</strong> Late-day momentum (trend resumes or reverses)</p>
-  <p><strong>3:50-4:00 PM:</strong> MOC imbalance trading (Lesson 45 strategies)</p>
+      <p><strong>In this lesson:</strong></p>
+      <ul>
+        <li>The 5-Minute Pre-Market Scan (what pros check before 9:30 AM)</li>
+        <li>Opening 30 Minutes—Reading Institutional Intent</li>
+        <li>Real-Time Order Flow Synthesis (tape + flow + price action)</li>
+        <li>Intraday Session Pivots (10 AM, 2 PM, 3:50 PM strategies)</li>
+        <li>Multi-Signal Confirmation Framework</li>
+      </ul>
 
-  <div class="key-takeaway">
-    <h4>Real-Time Analysis Workflow</h4>
-    <ul>
-      <li><strong>Pre-market:</strong> Macro, catalysts, intermarket, key levels (5 mins)</li>
-      <li><strong>Opening 30 mins:</strong> Institutional direction confirmation</li>
-      <li><strong>Intraday:</strong> Order flow + price action synthesis</li>
-      <li><strong>Session pivots:</strong> 10 AM, 2 PM, 3:50 PM (key decision points)</li>
-      <li><strong>Only trade when 3+ signals align</strong> (higher probability)</li>
-    </ul>
+      <div class="section-break"><span>Part 1: The 5-Minute Pre-Market Scan</span></div>
+
+      <h2>What Professionals Check Before the Open</h2>
+
+      <p>Between 9:25-9:30 AM, professional traders run a systematic scan to understand the macro backdrop and institutional positioning BEFORE the first trade.</p>
+
+      <h3>The Pre-Market Checklist</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Step 1: Macro Context</button>
+          <button>Step 2: Catalysts & News</button>
+          <button>Step 3: Intermarket Alignment</button>
+          <button>Step 4: Key Levels</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Macro Context (60 seconds)</h3>
+
+            <p><strong>Overnight Futures:</strong></p>
+            <ul>
+              <li>/ES (S&P 500 futures): Up or down from yesterday's close?</li>
+              <li>/NQ (Nasdaq futures): Leading or lagging /ES?</li>
+              <li>/RTY (Russell 2000): Risk-on (outperforming) or risk-off (underperforming)?</li>
+            </ul>
+
+            <p><strong>Example:</strong></p>
+            <ul>
+              <li>/ES: +0.8% (bullish)</li>
+              <li>/NQ: +1.2% (outperforming = tech strength)</li>
+              <li>/RTY: +0.3% (underperforming = defensive bias)</li>
+              <li><strong>Read:</strong> Bullish, but selective (large cap tech leading, small caps lagging)</li>
+            </ul>
+
+            <p><strong>Global Markets:</strong></p>
+            <ul>
+              <li>Asia: Nikkei, Hang Seng (did they rally or selloff overnight?)</li>
+              <li>Europe: DAX, FTSE (are they confirming or diverging from US futures?)</li>
+            </ul>
+
+            <p><strong>Key Indicators:</strong></p>
+            <ul>
+              <li><strong>DXY (Dollar Index):</strong> Rising dollar = bearish for stocks/commodities</li>
+              <li><strong>10-Year Yield:</strong> Rising yields = pressure on growth stocks</li>
+              <li><strong>VIX:</strong> Above 20 = elevated fear, below 15 = complacency</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel">
+            <h3>Catalysts & News (90 seconds)</h3>
+
+            <p><strong>Economic Calendar:</strong></p>
+            <ul>
+              <li>Any Fed speakers today? (Check <a href="https://www.federalreserve.gov" target="_blank">federalreserve.gov</a>)</li>
+              <li>Major data releases? (CPI, NFP, GDP, PMI)</li>
+              <li>FOMC meeting this week?</li>
+            </ul>
+
+            <p><strong>Earnings:</strong></p>
+            <ul>
+              <li>Which major companies reported overnight or pre-market?</li>
+              <li>Any mega-cap earnings today (AAPL, MSFT, AMZN, NVDA, GOOGL)?</li>
+              <li>Sector trends (e.g., multiple banks beating = financials strength)</li>
+            </ul>
+
+            <p><strong>Sector News:</strong></p>
+            <ul>
+              <li>Any sector-specific catalysts? (Oil price spike, chip shortage update, etc.)</li>
+              <li>Geopolitical events? (War, sanctions, trade deals)</li>
+            </ul>
+
+            <div class="callout-success">
+              <h4>💡 Pro Tip: News Hierarchy</h4>
+              <p><strong>Tier 1 (Market Moving):</strong> Fed policy, CPI, NFP, major geopolitical events</p>
+              <p><strong>Tier 2 (Sector Moving):</strong> Mega-cap earnings, sector-specific data</p>
+              <p><strong>Tier 3 (Noise):</strong> Random analyst upgrades/downgrades, individual stock news</p>
+              <p><strong>Focus on Tier 1 first. Ignore Tier 3 unless trading that specific stock.</strong></p>
+            </div>
+          </div>
+
+          <div class="tab-panel">
+            <h3>Intermarket Alignment (60 seconds)</h3>
+
+            <p><strong>The Big Three:</strong> SPY, TLT, GLD</p>
+
+            <p><strong>Risk-On Pattern:</strong></p>
+            <ul>
+              <li>SPY: ↑ (stocks rallying)</li>
+              <li>TLT: ↓ (bonds selling off, yields rising)</li>
+              <li>GLD: ↓ (gold selling off, risk appetite high)</li>
+            </ul>
+
+            <p><strong>Risk-Off Pattern:</strong></p>
+            <ul>
+              <li>SPY: ↓ (stocks selling off)</li>
+              <li>TLT: ↑ (bonds rallying, flight to safety)</li>
+              <li>GLD: ↑ (gold rallying, safe haven bid)</li>
+            </ul>
+
+            <p><strong>Divergence (Dangerous):</strong></p>
+            <ul>
+              <li>SPY: ↑ but TLT: ↑ and GLD: ↑ (stocks rallying but bonds/gold also rallying = confusion, likely reversal soon)</li>
+            </ul>
+
+            <div class="callout-warning">
+              <h4>⚠️ When Intermarkets Diverge, Fade the Move</h4>
+              <p><strong>Example:</strong> S&P futures +1%, but bonds and gold also rallying.</p>
+              <p><strong>Read:</strong> Fake rally. Institutions are hedging (buying bonds/gold) while retail chases stocks. Likely reversal within hours.</p>
+              <p><strong>Trade:</strong> Don't buy the rally. Wait for confirmation or short on first sign of weakness.</p>
+            </div>
+          </div>
+
+          <div class="tab-panel">
+            <h3>Key Levels (90 seconds)</h3>
+
+            <p><strong>Yesterday's High/Low:</strong></p>
+            <ul>
+              <li>Mark these levels on your chart</li>
+              <li>If we gap above yesterday's high → bullish continuation likely</li>
+              <li>If we gap below yesterday's low → bearish continuation likely</li>
+            </ul>
+
+            <p><strong>Overnight Range:</strong></p>
+            <ul>
+              <li>High and low from overnight futures session (6 PM - 9:30 AM)</li>
+              <li>Breakout above overnight high = bullish</li>
+              <li>Breakout below overnight low = bearish</li>
+            </ul>
+
+            <p><strong>VWAP:</strong></p>
+            <ul>
+              <li>Volume-Weighted Average Price (resets daily at 9:30 AM)</li>
+              <li>Price above VWAP = bullish, below = bearish</li>
+              <li>VWAP acts as magnet (price tends to revert to it)</li>
+            </ul>
+
+            <p><strong>Major Support/Resistance:</strong></p>
+            <ul>
+              <li>Round numbers (SPY 500, 450, 400)</li>
+              <li>Previous week's high/low</li>
+              <li>50-day and 200-day moving averages</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 2: Opening 30 Minutes — Reading Institutional Intent</span></div>
+
+      <h2>9:30-10:00 AM: The Most Important 30 Minutes</h2>
+
+      <p>The opening 30 minutes reveal institutional intent. Are they accumulating (buying dips) or distributing (selling rips)?</p>
+
+      <h3>The Opening Auction (9:28-9:30 AM)</h3>
+
+      <p><strong>9:28 AM:</strong> NYSE publishes the Opening Auction Imbalance</p>
+      <ul>
+        <li><strong>Buy imbalance > $500M:</strong> Institutions want to buy → bullish open likely</li>
+        <li><strong>Sell imbalance > $500M:</strong> Institutions want to sell → bearish open likely</li>
+        <li><strong>Imbalance < $200M:</strong> Balanced, no strong institutional bias</li>
+      </ul>
+
+      <p><strong>How to use it:</strong></p>
+      <ul>
+        <li>Large buy imbalance + gap up = strong continuation (don't fade)</li>
+        <li>Large sell imbalance + gap down = strong continuation (don't buy dip)</li>
+        <li>Large buy imbalance but gap down = reversal setup (institutions buying weakness)</li>
+      </ul>
+
+      <h3>Gap Behavior (First 15 Minutes)</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Gap Fill (Bearish)</button>
+          <button>Gap Extension (Bullish)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Gap Up → Immediate Fill = Fade the Rally</h3>
+
+            <p><strong>Pattern:</strong></p>
+            <ol>
+              <li>Market gaps up +0.5% at 9:30 AM</li>
+              <li>Within first 15 minutes, price falls back to yesterday's close (gap fills)</li>
+              <li>Volume on the selloff is higher than volume on the rally</li>
+            </ol>
+
+            <p><strong>Read:</strong> Retail chased the gap up. Institutions sold into strength. Bearish reversal.</p>
+
+            <p><strong>Trade:</strong></p>
+            <ul>
+              <li>Short once gap is 50% filled (or buy puts)</li>
+              <li>Target: Yesterday's low</li>
+              <li>Stop: Above the 9:30 AM high</li>
+            </ul>
+
+            <div class="callout-danger">
+              <h4>⚠️ Real Example: Feb 2, 2024 (NFP Day)</h4>
+              <p><strong>Setup:</strong> Strong NFP report → SPY gaps up +0.8% at 9:30 AM</p>
+              <p><strong>9:35 AM:</strong> SPY starts selling off, gap 50% filled by 9:45 AM</p>
+              <p><strong>9:50 AM:</strong> Gap fully filled, SPY back at yesterday's close</p>
+              <p><strong>10:15 AM:</strong> SPY breaks yesterday's low, down -1.2% on the day</p>
+              <p><strong>Lesson:</strong> When retail buys the gap and institutions fade it, the reversal is violent.</p>
+            </div>
+          </div>
+
+          <div class="tab-panel">
+            <h3>Gap Up → Extension = Trend Continuation</h3>
+
+            <p><strong>Pattern:</strong></p>
+            <ol>
+              <li>Market gaps up +0.5% at 9:30 AM</li>
+              <li>Price holds above the gap (doesn't fill)</li>
+              <li>By 9:45 AM, price breaks above 9:30 AM high on volume</li>
+            </ol>
+
+            <p><strong>Read:</strong> Institutions are buying. Retail FOMO hasn't even started yet. Bullish continuation.</p>
+
+            <p><strong>Trade:</strong></p>
+            <ul>
+              <li>Buy breakout above 9:30 AM high (or buy calls)</li>
+              <li>Target: Next resistance level (round number, previous week high, etc.)</li>
+              <li>Stop: Below VWAP or yesterday's close</li>
+            </ul>
+
+            <div class="callout-success">
+              <h4>💡 Real Example: Jan 12, 2024 (CPI Day)</h4>
+              <p><strong>Setup:</strong> Lower-than-expected CPI → SPY gaps up +1.2% at 9:30 AM</p>
+              <p><strong>9:35 AM:</strong> SPY holds above gap, consolidates</p>
+              <p><strong>9:50 AM:</strong> SPY breaks above 9:30 AM high (+1.5% on day)</p>
+              <p><strong>11:00 AM:</strong> SPY +2.3% (rally extends all morning)</p>
+              <p><strong>Lesson:</strong> When institutions confirm the gap with buying, the trend is strong.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Volume Confirmation</h3>
+
+      <p><strong>Rule:</strong> The first 30-minute bar should have <strong>3-5x average volume</strong>.</p>
+
+      <p><strong>Why:</strong> High volume = institutional participation. Low volume = retail-only (unreliable).</p>
+
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>SPY average 30-min volume: 20 million shares</li>
+        <li>Today's 9:30-10:00 AM volume: 80 million shares (4x average)</li>
+        <li><strong>Read:</strong> Institutions are active. Trust the direction.</li>
+      </ul>
+
+      <div class="section-break"><span>Part 3: Real-Time Order Flow Synthesis</span></div>
+
+      <h2>Combining Tape + Flow + Price Action</h2>
+
+      <p>This is where Signal Pilot's tools (Minimal Flow, Pentarch Pilot Line) become critical. You're synthesizing three data streams in real-time:</p>
+
+      <ol>
+        <li><strong>Tape (Time & Sales):</strong> Large prints, aggressive buying/selling</li>
+        <li><strong>Order Flow (Cumulative Delta):</strong> Institutional accumulation/distribution</li>
+        <li><strong>Price Action:</strong> Breakouts, breakdowns, VWAP reactions</li>
+      </ol>
+
+      <h3>The 3-Signal Confirmation Framework</h3>
+
+      <p><strong>Only trade when ALL THREE signals align:</strong></p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Bullish Alignment</button>
+          <button>Bearish Alignment</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>Bullish Setup (All 3 Signals Confirm)</h3>
+
+            <p><strong>Signal #1: Tape (Minimal Flow)</strong></p>
+            <ul>
+              <li>Large buy prints (10K+ shares at ask)</li>
+              <li>Aggressive buying (market orders, not limit orders)</li>
+              <li>Example: 50K share buy at $500.05 (lifting the offer)</li>
+            </ul>
+
+            <p><strong>Signal #2: Order Flow (Pentarch Pilot Line)</strong></p>
+            <ul>
+              <li>Cumulative delta trending UP</li>
+              <li>More buy volume than sell volume over last 15-30 minutes</li>
+              <li>Example: +5 million cumulative delta (institutions accumulating)</li>
+            </ul>
+
+            <p><strong>Signal #3: Price Action</strong></p>
+            <ul>
+              <li>Price breaks above resistance (overnight high, VWAP, previous day high)</li>
+              <li>Breakout on volume (3x average)</li>
+              <li>Example: SPY breaks $500 on 100M volume</li>
+            </ul>
+
+            <p><strong>Trade:</strong></p>
+            <ul>
+              <li><strong>Entry:</strong> Buy breakout (or buy calls)</li>
+              <li><strong>Target:</strong> Next resistance (+1-2%)</li>
+              <li><strong>Stop:</strong> Below breakout level or VWAP</li>
+              <li><strong>Win Rate:</strong> ~70% when all 3 signals confirm</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel">
+            <h3>Bearish Setup (All 3 Signals Confirm)</h3>
+
+            <p><strong>Signal #1: Tape (Minimal Flow)</strong></p>
+            <ul>
+              <li>Large sell prints (10K+ shares at bid)</li>
+              <li>Aggressive selling (market orders hitting bids)</li>
+              <li>Example: 75K share sell at $499.95 (hitting the bid)</li>
+            </ul>
+
+            <p><strong>Signal #2: Order Flow (Pentarch Pilot Line)</strong></p>
+            <ul>
+              <li>Cumulative delta trending DOWN</li>
+              <li>More sell volume than buy volume over last 15-30 minutes</li>
+              <li>Example: -7 million cumulative delta (institutions distributing)</li>
+            </ul>
+
+            <p><strong>Signal #3: Price Action</strong></p>
+            <ul>
+              <li>Price breaks below support (overnight low, VWAP, previous day low)</li>
+              <li>Breakdown on volume (3x average)</li>
+              <li>Example: SPY breaks $495 on 120M volume</li>
+            </ul>
+
+            <p><strong>Trade:</strong></p>
+            <ul>
+              <li><strong>Entry:</strong> Short breakdown (or buy puts)</li>
+              <li><strong>Target:</strong> Next support (-1-2%)</li>
+              <li><strong>Stop:</strong> Above breakdown level or VWAP</li>
+              <li><strong>Win Rate:</strong> ~70% when all 3 signals confirm</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>⚠️ What If Only 1 or 2 Signals Confirm?</h4>
+        <p><strong>Don't trade.</strong> Wait for full alignment.</p>
+        <p><strong>Example:</strong> Price breaks out, but order flow is negative → fake breakout, likely reversal.</p>
+        <p><strong>Example:</strong> Order flow is bullish, but price can't break resistance → distribution, likely selloff.</p>
+        <p><strong>Patience = Edge.</strong> Pros wait for high-probability setups.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Intraday Session Pivots</span></div>
+
+      <h2>The 4 Key Decision Points</h2>
+
+      <p>Professional traders know that market behavior changes at specific times each day. Here's how to trade each session:</p>
+
+      <h3>10:00 AM Pivot — The First Institutional Wave Completes</h3>
+
+      <p><strong>What Happens:</strong></p>
+      <ul>
+        <li>Opening range (9:30-10:00 AM) establishes the day's bias</li>
+        <li>Institutions who wanted to position have done so</li>
+        <li>Market either continues the trend or reverses</li>
+      </ul>
+
+      <p><strong>How to Trade:</strong></p>
+      <ul>
+        <li><strong>If 9:30-10:00 AM was strong trending:</strong> Look for pullback to VWAP, then continuation</li>
+        <li><strong>If 9:30-10:00 AM was choppy/weak:</strong> Likely range-bound until 2 PM, avoid or scalp only</li>
+      </ul>
+
+      <h3>12:00-2:00 PM — Lunch Doldrums</h3>
+
+      <p><strong>What Happens:</strong></p>
+      <ul>
+        <li>Volume drops 40-60%</li>
+        <li>Institutional traders at lunch, only algos active</li>
+        <li>Price tends to chop in a narrow range</li>
+      </ul>
+
+      <p><strong>How to Trade:</strong></p>
+      <ul>
+        <li><strong>Best strategy:</strong> Don't trade. Take a break.</li>
+        <li><strong>If you must trade:</strong> Scalp the range (buy support, sell resistance, tight stops)</li>
+        <li><strong>Avoid:</strong> Directional bets during lunch (low probability)</li>
+      </ul>
+
+      <h3>2:00-3:00 PM — Late-Day Momentum</h3>
+
+      <p><strong>What Happens:</strong></p>
+      <ul>
+        <li>Institutional traders return from lunch</li>
+        <li>Volume picks up again</li>
+        <li>Market either resumes morning trend or reverses</li>
+      </ul>
+
+      <p><strong>How to Trade:</strong></p>
+      <ul>
+        <li><strong>If morning was bullish + 2 PM confirms:</strong> Buy continuation to 4 PM</li>
+        <li><strong>If morning was bullish but 2 PM shows weakness:</strong> Fade the rally (institutions distributing)</li>
+      </ul>
+
+      <h3>3:50-4:00 PM — MOC Imbalance Trading</h3>
+
+      <p><strong>What Happens:</strong></p>
+      <ul>
+        <li>NYSE publishes Market-On-Close (MOC) order imbalance at 3:50 PM</li>
+        <li>Institutions rebalance portfolios at the close</li>
+        <li>Large imbalances create predictable price moves in final 10 minutes</li>
+      </ul>
+
+      <p><strong>How to Trade:</strong></p>
+      <ul>
+        <li><strong>Buy imbalance > $500M:</strong> Buy at 3:50 PM, sell at 3:59 PM (ride the buying pressure)</li>
+        <li><strong>Sell imbalance > $500M:</strong> Short at 3:50 PM, cover at 3:59 PM (ride the selling pressure)</li>
+        <li><strong>See Lesson 45</strong> for full MOC imbalance strategies</li>
+      </ul>
+
+      <div class="section-break"><span>Quiz: Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Real-Time Analysis Mastery Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>1. It's 9:35 AM. SPY gapped up +0.6%, but the gap is now 50% filled. Order flow shows -3M cumulative delta. What's your trade?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Buy the dip — gaps usually extend</div>
+            <div class="quiz-option" data-correct="true">B) Short or buy puts — gap fill + negative flow = reversal</div>
+            <div class="quiz-option" data-correct="false">C) Wait until 10 AM to decide</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> Gap 50% filled + negative cumulative delta = <strong>institutions fading retail FOMO</strong>. Classic reversal setup. Short the gap fill (target: yesterday's low).</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>2. Pre-market scan shows: SPY +0.8%, TLT +0.5%, GLD +1.2%. What does this intermarket divergence tell you?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Strong risk-on — all assets rallying together</div>
+            <div class="quiz-option" data-correct="true">B) Fake rally — stocks up but bonds/gold also rallying (flight to safety)</div>
+            <div class="quiz-option" data-correct="false">C) Doesn't matter — just trade the SPY chart</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> When stocks rally but <strong>bonds AND gold also rally</strong>, it's a fake rally. Institutions are hedging (buying safe havens) while retail chases stocks. Fade the move.</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>3. It's 2:15 PM. Morning was bullish (+1.5% by 10 AM). Now SPY is testing VWAP from above. Order flow just turned negative. What do you do?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Buy the VWAP dip — morning trend was strong</div>
+            <div class="quiz-option" data-correct="true">B) Short if SPY breaks below VWAP — late-day reversal setup</div>
+            <div class="quiz-option" data-correct="false">C) Close all positions — too risky</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> Morning trend + negative afternoon flow = <strong>distribution</strong>. Institutions sold the rally. If VWAP breaks, it's a late-day reversal (target: overnight low or yesterday's close).</p>
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
+        <div class="quiz-results"></div>
+      </div>
+
+      <div class="section-break"><span>Key Takeaways</span></div>
+
+      <div class="callout-key">
+        <h4>💡 Real-Time Analysis = Synthesis</h4>
+        <ul>
+          <li><strong>Pre-market scan (5 mins):</strong> Macro, catalysts, intermarkets, key levels</li>
+          <li><strong>Opening 30 mins:</strong> Gap behavior + volume = institutional intent</li>
+          <li><strong>3-signal confirmation:</strong> Tape + order flow + price action must ALL align</li>
+          <li><strong>Session pivots:</strong> 10 AM (continuation/reversal), 2 PM (late-day momentum), 3:50 PM (MOC imbalance)</li>
+          <li><strong>Patience > Action.</strong> Wait for high-probability setups. Pros trade 2-5 times/day, not 20-50.</li>
+        </ul>
+      </div>
+
+      <p><strong>📥 Download Checklist:</strong> <a href="/resources/checklists/real-time-analysis-checklist.pdf" download>Real-Time Analysis Workflow (PDF)</a></p>
+
+      <div class="section-break"><span>Related Lessons</span></div>
+
+      <div class="related-grid">
+        <a href="/curriculum/beginner/17-time-sales-mastery.html" class="related-card">
+          <span class="badge">🟢 Beginner</span>
+          <h4>Lesson 17: Time & Sales Mastery</h4>
+          <p>Learn to read the tape—the foundation of real-time analysis.</p>
+        </a>
+        <a href="/curriculum/intermediate/45-auction-theory-imbalances.html" class="related-card">
+          <span class="badge">🟡 Intermediate</span>
+          <h4>Lesson 45: Auction Theory & Market Imbalances</h4>
+          <p>Master MOC imbalance trading and opening/closing auction mechanics.</p>
+        </a>
+        <a href="/curriculum/advanced/71-multi-timeframe-confluence.html" class="related-card">
+          <span class="badge">🔴 Advanced</span>
+          <h4>Lesson 71: Multi-Timeframe Confluence</h4>
+          <p>Synthesize signals across 1min, 5min, 15min, daily charts simultaneously.</p>
+        </a>
+      </div>
+
+    </div>
+
+    <aside class="toc-sidebar">
+      <div class="lesson-actions">
+        <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
+        <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
+      </div>
+    </aside>
+
   </div>
 
-  <div class="related-lessons">
-    <h4>Related Lessons</h4>
-    <ul>
-      <li><a href="/curriculum/beginner-bridge/17-time-sales-mastery.html">Lesson 17: Time & Sales Mastery</a></li>
-      <li><a href="/curriculum/intermediate-bridge/45-auction-theory-imbalances.html">Lesson 45: Auction Theory & Market Imbalances</a></li>
-      <li><a href="/curriculum/advanced-mastery/71-multi-timeframe-confluence.html">Lesson 71: Multi-Timeframe Confluence</a></li>
-    </ul>
+  <div class="wrap">
+    <div class="nav-article">
+      <a href="/curriculum/advanced/74-trading-psychology-discipline.html" class="btn btn-secondary">← Prev: Trading Psychology</a>
+      <a href="/curriculum/professional/76-live-trading-case-studies.html" class="btn btn-primary">Next: Live Trading Case Studies →</a>
+    </div>
   </div>
 </article>
+
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/article-progress.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
 </body>
 </html>
