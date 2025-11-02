@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Institutional Order Types: IOC, FOK, MOC, LOC — Signal Pilot</title>
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Institutional Order Types: The Professional's Toolkit</h1>
+  <p><b>Retail uses market orders and limit orders. Institutions use 20+ order types you've never heard of.</b></p>
+  <p>Every order type exists to solve a specific execution problem—minimizing slippage, hiding intent, or timing fills. Understanding institutional order types lets you decode dark pool prints, anticipate intraday moves, and execute like a pro.</p>
+
+  <h2>Part 1: Basic Order Types (Review)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Order Type</th>
+        <th>Execution</th>
+        <th>Use Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Market</td>
+        <td>Immediate, at best available price</td>
+        <td>Urgency &gt; price (bad for retail)</td>
+      </tr>
+      <tr>
+        <td>Limit</td>
+        <td>Only at specified price or better</td>
+        <td>Control price, risk missing fill</td>
+      </tr>
+      <tr>
+        <td>Stop</td>
+        <td>Becomes market order when price hits trigger</td>
+        <td>Risk management, breakout entries</td>
+      </tr>
+      <tr>
+        <td>Stop-Limit</td>
+        <td>Becomes limit order when price hits trigger</td>
+        <td>Controlled breakout entries</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Part 2: Time-In-Force Modifiers</h2>
+
+  <h3>TIF = How Long Order Stays Active</h3>
+
+  <details class="accordion">
+    <summary>GTC (Good Till Canceled)</summary>
+    <div class="accordion-content">
+      <p><strong>Duration:</strong> Remains active until filled or manually canceled (up to 90 days typical)</p>
+      <p><strong>Use case:</strong> Long-term limit orders (e.g., "buy AAPL at $140" when it's currently $150)</p>
+      <p><strong>Risk:</strong> Forget about order, get filled weeks later at stale price</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>DAY</summary>
+    <div class="accordion-content">
+      <p><strong>Duration:</strong> Expires at market close (4:00 PM ET)</p>
+      <p><strong>Use case:</strong> Intraday orders (default for most retail traders)</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>IOC (Immediate-or-Cancel)</summary>
+    <div class="accordion-content">
+      <p><strong>Duration:</strong> Execute immediately, cancel unfilled portion</p>
+      <p><strong>Example:</strong> Order 10,000 shares IOC limit $100. If only 3,000 available at $100, fill 3,000 and cancel remaining 7,000</p>
+      <p><strong>Use case:</strong> Test liquidity without leaving resting order (institutions probe market)</p>
+      <p><strong>Signal Pilot detection:</strong> Multiple small IOC fills = institution testing before deploying full size</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>FOK (Fill-or-Kill)</summary>
+    <div class="accordion-content">
+      <p><strong>Duration:</strong> Fill ENTIRE order immediately or cancel all</p>
+      <p><strong>Example:</strong> Order 10,000 shares FOK limit $100. If only 9,999 available → cancel entire order</p>
+      <p><strong>Use case:</strong> Arbitrage (need exact size filled or trade doesn't work)</p>
+    </div>
+  </details>
+
+  <h2>Part 3: Auction-Specific Orders</h2>
+
+  <h3>MOC (Market-on-Close)</h3>
+  <p><strong>Execution:</strong> Execute at 4:00 PM closing auction price (batched with all other MOC orders)</p>
+  <p><strong>Who uses it:</strong> Mutual funds (NAV = closing price), index trackers (rebalancing)</p>
+  <p><strong>Volume:</strong> 10-20% of daily volume on normal days, 40%+ on rebalancing days</p>
+  
+  <div class="callout">
+    <p><strong>💡 Trading Edge:</strong> NYSE publishes MOC imbalance at 3:50, 3:55, 3:58 PM. Large imbalance (5M+ shares) predicts closing direction. See Lesson 45 for details.</p>
+  </div>
+
+  <h3>LOC (Limit-on-Close)</h3>
+  <p><strong>Execution:</strong> Execute at close ONLY if closing price is at or better than limit</p>
+  <p><strong>Example:</strong> LOC sell $100.50. If close = $100.60 → fill. If close = $100.40 → cancel.</p>
+  <p><strong>Use case:</strong> Want closing price exposure but with price protection</p>
+
+  <h3>MOO (Market-on-Open)</h3>
+  <p><strong>Execution:</strong> Execute at 9:30 AM opening auction price</p>
+  <p><strong>Use case:</strong> React to overnight news, ensure participation in opening volatility</p>
+
+  <h2>Part 4: Advanced Institutional Order Types</h2>
+
+  <h3>Iceberg Orders (Display Size + Hidden Size)</h3>
+  <p><strong>Structure:</strong> Show 500 shares on order book, hide 49,500 shares in reserve</p>
+  <p><strong>Behavior:</strong> As displayed 500 fills, another 500 automatically appears (total 50,000)</p>
+  <p><strong>Purpose:</strong> Hide true order size from predatory HFTs and other institutions</p>
+
+  <p><strong>Detection:</strong></p>
+  <ul>
+    <li>Repeated fills at exact same price (e.g., 10× fills of 500 shares at $100.00)</li>
+    <li>Order book shows 500 bid at $100, gets hit, immediately refills with another 500</li>
+  </ul>
+
+  <p><strong>Implication:</strong> Large institutional accumulation/distribution happening (follow the flow)</p>
+
+  <h3>Pegged Orders (Automatic Price Adjustment)</h3>
+
+  <details class="accordion">
+    <summary>Primary Peg (Peg to NBBO)</summary>
+    <div class="accordion-content">
+      <p><strong>How it works:</strong> Order automatically adjusts to stay at best bid/ask</p>
+      <p><strong>Example:</strong> Peg buy order. If best bid = $100.00, order sits at $100.00. If best bid moves to $100.05, order automatically updates to $100.05</p>
+      <p><strong>Use case:</strong> Be first in line without manually updating order (market-making, HFT)</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Midpoint Peg</summary>
+    <div class="accordion-content">
+      <p><strong>How it works:</strong> Order sits at midpoint of bid-ask spread</p>
+      <p><strong>Example:</strong> Bid $100.00, ask $100.10 → midpoint peg executes at $100.05</p>
+      <p><strong>Use case:</strong> Dark pools (institutions trade at midpoint to split spread savings)</p>
+      <p><strong>Benefit:</strong> Better price than hitting ask ($100.10) or lifting bid ($100.00)</p>
+    </div>
+  </details>
+
+  <h3>Discretionary Orders (Price Improvement Authority)</h3>
+  <p><strong>Structure:</strong> Limit order with discretion range</p>
+  <p><strong>Example:</strong> Buy limit $100, discretion $0.10 → can execute up to $100.10 if needed</p>
+  <p><strong>Use case:</strong> Prevent missing fill by penny (willing to pay slightly more for certainty)</p>
+
+  <h2>Part 5: Algorithmic Order Types</h2>
+
+  <h3>TWAP (Time-Weighted Average Price)</h3>
+  <p><strong>Execution:</strong> Split order evenly across time</p>
+  <p><strong>Example:</strong> Buy 100K shares over 60 minutes → 1,667 shares/minute (constant rate)</p>
+  <p><strong>Pros:</strong> Predictable, minimizes market impact</p>
+  <p><strong>Cons:</strong> Ignores volume patterns (trades same amount during low and high volume)</p>
+
+  <h3>VWAP (Volume-Weighted Average Price)</h3>
+  <p><strong>Execution:</strong> Trade in proportion to market volume</p>
+  <p><strong>Example:</strong> If 30% of daily volume occurs 9:30-10:30 AM, algo trades 30% of order size during that hour</p>
+  <p><strong>Benchmark:</strong> Most institutions judged on VWAP performance (did you beat or lag VWAP?)</p>
+
+  <h3>POV (Percentage of Volume)</h3>
+  <p><strong>Execution:</strong> Trade as fixed % of market volume (e.g., 10% participation rate)</p>
+  <p><strong>Example:</strong> If market trades 1,000 shares/minute, POV 10% algo trades 100 shares/minute</p>
+  <p><strong>Use case:</strong> Maintain consistent market footprint (don't dominate volume)</p>
+
+  <h3>Implementation Shortfall</h3>
+  <p><strong>Goal:</strong> Minimize slippage from decision price to execution price</p>
+  <p><strong>Strategy:</strong> Trade aggressively at start (lock in current price), then slow down to reduce impact</p>
+  <p><strong>Use case:</strong> High conviction trades (don't want price to run away)</p>
+
+  <h2>Part 6: Dark Pool Order Types</h2>
+
+  <h3>Why Dark Pools Exist</h3>
+  <p><strong>Problem:</strong> Institutions can't execute 500K share order on lit exchange without moving price 2-5%</p>
+  <p><strong>Solution:</strong> Dark pools = private exchanges where orders hidden from public</p>
+  <p><strong>Volume:</strong> 40% of US equity volume trades in dark pools</p>
+
+  <h3>Midpoint Match</h3>
+  <p><strong>Execution:</strong> Both sides fill at NBBO midpoint (split spread)</p>
+  <p><strong>Example:</strong> Bid $100.00, ask $100.10 → dark pool fills both at $100.05</p>
+  <p><strong>Benefit:</strong> Buyer saves $0.05, seller gets $0.05 more (vs lit market)</p>
+
+  <h3>Conditional Orders (Size Discovery)</h3>
+  <p><strong>Structure:</strong> "Only execute if counterparty has 10K+ shares"</p>
+  <p><strong>Purpose:</strong> Avoid being picked off by HFTs trading 100 shares at a time</p>
+
+  <h2>Part 7: Using Signal Pilot to Detect Institutional Order Flow</h2>
+
+  <h3>Minimal Flow: Iceberg Detection</h3>
+  <p><strong>Pattern:</strong> 10+ consecutive fills at same price, same size (e.g., 500 shares × 15 times)</p>
+  <p><strong>Signal:</strong> Institution deploying iceberg order (large accumulation/distribution)</p>
+  <p><strong>Trade:</strong> Follow institutional direction (if buying, expect continuation)</p>
+
+  <h3>Pentarch Pilot Line: Algo Execution Patterns</h3>
+  <p><strong>Pattern:</strong> Steady buying over 1-2 hours (VWAP/TWAP algo signature)</p>
+  <p><strong>vs Random buying:</strong> Sporadic large prints (discretionary institutional trader)</p>
+  <p><strong>Implication:</strong> VWAP = planned execution (index rebalancing, passive fund). Random = active conviction (hedge fund taking position).</p>
+
+  <h3>Janus Atlas: MOC Imbalance Visualization</h3>
+  <p><strong>Feature:</strong> Display MOC imbalance updates (3:50, 3:55, 3:58 PM) on chart</p>
+  <p><strong>Alert:</strong> Flash warning if imbalance &gt; 5M shares (expect large closing move)</p>
+
+  <h2>Quiz: Test Your Understanding</h2>
+  <div class="quiz">
+    <div class="quiz-question">
+      <p><strong>Q1:</strong> You see 20 consecutive fills of 500 shares at exactly $100.00 over 10 minutes. What's happening?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Iceberg order. Institution hiding large order (likely 10K-50K total) by only showing 500 shares at a time. This is accumulation/distribution. Trade in same direction—institution likely has more to buy/sell.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q2:</strong> What's the difference between IOC and FOK orders?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> IOC = fill whatever is available immediately, cancel rest. FOK = fill ENTIRE order immediately or cancel ALL. Example: Order 10K shares, only 5K available. IOC fills 5K, cancels 5K. FOK cancels entire 10K order.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q3:</strong> Why do institutions use VWAP algos instead of market orders?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> VWAP minimizes market impact by spreading order across day in proportion to volume. Market order would execute entire size immediately, causing 1-5% slippage on large orders. VWAP achieves better average price by trading patiently.</p>
+      </details>
+    </div>
+  </div>
+
+  <h2>Practical Checklist</h2>
+  <div class="checklist">
+    <h4>When Placing Orders:</h4>
+    <ul>
+      <li>Use limit orders (NEVER market orders for size &gt; 100 shares)</li>
+      <li>For urgent fills: Use IOC limit (test liquidity first)</li>
+      <li>For large orders (&gt; 1% ADV): Use iceberg (hide size) or VWAP algo</li>
+      <li>For closing exposure: Submit MOC by 3:50 PM (can cancel until 3:58 PM)</li>
+    </ul>
+    <h4>Detecting Institutional Flow:</h4>
+    <ul>
+      <li>Use Signal Pilot Minimal Flow to spot iceberg patterns (repeated same-size fills)</li>
+      <li>Check Pentarch Pilot Line for VWAP algo patterns (steady buying over hours)</li>
+      <li>Monitor MOC imbalance at 3:50, 3:55, 3:58 PM (trade direction if &gt; 5M shares)</li>
+      <li>Watch for dark pool prints (large blocks reported after hours)</li>
+    </ul>
+  </div>
+
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Institutions use 20+ order types</strong> beyond basic market/limit</li>
+      <li><strong>IOC = fill available, cancel rest.</strong> FOK = all or nothing</li>
+      <li><strong>MOC orders drive 10-20% of daily volume</strong> (40%+ on rebalancing days)</li>
+      <li><strong>Iceberg orders hide size</strong> (repeated small fills = large accumulation)</li>
+      <li><strong>VWAP/TWAP algos minimize impact</strong> by spreading execution over time</li>
+    </ul>
+  </div>
+
+  <div class="related-lessons">
+    <h4>Related Lessons</h4>
+    <ul>
+      <li><a href="/curriculum/intermediate-bridge/45-auction-theory-imbalances.html">Lesson 45: Auction Theory & Market Imbalances</a></li>
+      <li><a href="65-market-impact-models.html">Lesson 65: Market Impact Models</a></li>
+      <li><a href="70-execution-algorithms-twap-vwap.html">Lesson 70: Execution Algorithms (TWAP, VWAP, POV)</a></li>
+    </ul>
+  </div>
+
+  <div class="downloads">
+    <h4>Downloads</h4>
+    <ul>
+      <li><a href="/downloads/order-type-reference-guide.pdf">Order Type Reference Guide (PDF)</a></li>
+      <li><a href="/downloads/iceberg-detection-patterns.pdf">Iceberg Order Detection Patterns (PDF)</a></li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>
