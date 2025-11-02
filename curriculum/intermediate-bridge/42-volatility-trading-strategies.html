@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Volatility Trading Strategies: VIX, Skew & Dispersion — Signal Pilot</title>
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Volatility Trading: Profiting From Fear & Uncertainty</h1>
+  <p><b>When retail panics and VIX spikes to 40, institutions sell volatility at premium prices. You can too.</b></p>
+  <p>Volatility isn't just a measure of market fear—it's a tradable asset class. Understanding how to trade volatility independently of direction gives you an edge when markets get choppy.</p>
+
+  <h2>Part 1: VIX Mechanics & Mean Reversion</h2>
+  
+  <h3>What VIX Actually Measures</h3>
+  <p><strong>VIX (CBOE Volatility Index):</strong> 30-day implied volatility of SPX options</p>
+  <p><strong>Key insight:</strong> VIX measures expected volatility, not actual market movement</p>
+  
+  <div class="callout">
+    <p><strong>🔍 Reality Check:</strong> VIX 20 = market expects ±1.2% daily moves over next 30 days</p>
+    <p>VIX 40 = market expects ±2.4% daily moves (panic mode)</p>
+    <p>VIX 80+ = market expects ±4.8% daily moves (2008, March 2020 only)</p>
+  </div>
+
+  <h3>VIX Mean Reversion Trading</h3>
+  <p><strong>Historical average:</strong> VIX ~15-20 long-term</p>
+  <p><strong>Spike behavior:</strong> VIX spikes violently (hours/days), decays slowly (weeks/months)</p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>VIX Level</th>
+        <th>Market State</th>
+        <th>Trading Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&lt; 12</td>
+        <td>Complacency</td>
+        <td>Buy VIX calls (cheap lottery ticket for crash)</td>
+      </tr>
+      <tr>
+        <td>12-20</td>
+        <td>Normal</td>
+        <td>No directional vol trade</td>
+      </tr>
+      <tr>
+        <td>20-30</td>
+        <td>Elevated fear</td>
+        <td>Consider selling premium</td>
+      </tr>
+      <tr>
+        <td>&gt; 30</td>
+        <td>Panic</td>
+        <td>Sell volatility (mean reversion play)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Trading VIX Mean Reversion</h3>
+  <p><strong>Strategy:</strong> When VIX &gt; 30, sell VXX calls or buy SVXY (inverse VIX ETF)</p>
+  <p><strong>Why it works:</strong> VIX mathematically mean-reverts (volatility clustering ends)</p>
+  <p><strong>Risk:</strong> "Blowing up picking up pennies in front of steamroller" — VIX can spike 50% in single day</p>
+
+  <h2>Part 2: Volatility Skew & Put/Call Pricing</h2>
+
+  <h3>What Is Skew?</h3>
+  <p><strong>Skew:</strong> Difference in implied volatility between OTM puts vs OTM calls</p>
+  <p><strong>Normal market:</strong> Put IV &gt; Call IV (investors pay more for downside protection)</p>
+  <p><strong>Why:</strong> Markets fall faster than they rise → put buyers willing to overpay</p>
+
+  <details class="accordion">
+    <summary>How to Read CBOE Skew Index</summary>
+    <div class="accordion-content">
+      <p><strong>SKEW Index:</strong> Measures tail risk (black swan probability) priced into options</p>
+      <ul>
+        <li><strong>SKEW = 100:</strong> Normal distribution (no tail risk)</li>
+        <li><strong>SKEW = 135-145:</strong> Typical range (moderate tail risk priced in)</li>
+        <li><strong>SKEW &gt; 150:</strong> Extreme tail risk (market pricing in crash possibility)</li>
+      </ul>
+      <p><strong>Contrarian signal:</strong> SKEW &gt; 150 often precedes volatility compression (crash fears overdone)</p>
+    </div>
+  </details>
+
+  <h3>Trading Skew</h3>
+  <p><strong>High skew (put IV expensive):</strong> Sell OTM puts, buy stock (collect inflated premium)</p>
+  <p><strong>Low skew (put IV cheap):</strong> Buy protective puts (cheap insurance)</p>
+  <p><strong>Skew collapse:</strong> When put IV crashes after fear subsides, put sellers profit</p>
+
+  <h2>Part 3: Dispersion Trading</h2>
+
+  <h3>Index Vol vs Single-Stock Vol</h3>
+  <p><strong>Dispersion:</strong> Difference between index implied vol (VIX) and average single-stock implied vol</p>
+  <p><strong>Key insight:</strong> Index vol &lt; sum of component vols (diversification effect)</p>
+
+  <h3>Dispersion Trade Setup</h3>
+  <p><strong>When to trade:</strong> High correlation regime → components moving in lockstep</p>
+  <p><strong>Thesis:</strong> Correlation will mean-revert → stocks will diverge → single-stock vol rises relative to index vol</p>
+  
+  <p><strong>Trade structure:</strong></p>
+  <ul>
+    <li>Sell SPX straddle (sell index volatility)</li>
+    <li>Buy straddles on 10-20 SPX components (buy single-stock volatility)</li>
+    <li>Profit when correlation breaks down</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>⚠️ Institutional Strategy:</strong> Dispersion trades require significant capital and risk management. Not recommended for retail unless you deeply understand correlation dynamics.</p>
+  </div>
+
+  <h2>Part 4: Volatility Surface & Term Structure</h2>
+
+  <h3>Term Structure of Volatility</h3>
+  <p><strong>Contango (normal):</strong> Far-dated IV &gt; near-dated IV (more uncertainty over time)</p>
+  <p><strong>Backwardation (fear):</strong> Near-dated IV &gt; far-dated IV (immediate panic)</p>
+
+  <details class="accordion">
+    <summary>Trading VIX Futures Term Structure</summary>
+    <div class="accordion-content">
+      <p><strong>Contango strategy:</strong> Sell front-month VIX futures, decay works in your favor</p>
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>Spot VIX: 15</li>
+        <li>1-month VIX futures: 17</li>
+        <li>2-month VIX futures: 19</li>
+      </ul>
+      <p><strong>Thesis:</strong> VIX futures will roll down toward spot VIX as expiration approaches</p>
+      <p><strong>Profit:</strong> Sell futures at 17, buy back at 15.5 when they decay toward spot</p>
+      <p><strong>Risk:</strong> Market crash → term structure inverts → front-month explodes</p>
+    </div>
+  </details>
+
+  <h3>Using Signal Pilot for Volatility Trading</h3>
+  <p><strong>Harmonic Oscillator:</strong> Identifies volatility regime changes (trending → mean-reverting)</p>
+  <p><strong>Pentarch Pilot Line:</strong> Shows institutional volatility positioning via order flow</p>
+  <p><strong>Plutus Flow (VIX):</strong> Tracks unusual VIX options activity (institutions hedging/speculating)</p>
+
+  <h2>Quiz: Test Your Understanding</h2>
+  <div class="quiz">
+    <div class="quiz-question">
+      <p><strong>Q1:</strong> VIX spikes from 15 to 35 in one day. What is the highest-probability trade?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Wait 1-2 days for panic to peak, then sell volatility via short VXX calls or long SVXY. VIX mean-reverts after spikes. Entering immediately can be dangerous if spike continues.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q2:</strong> CBOE Skew Index hits 155. What does this signal?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Extreme tail risk priced in (crash fears overdone). Contrarian signal: skew often peaks before volatility compresses. Consider selling OTM puts or reducing hedges.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q3:</strong> VIX futures are in contango (2-month at 22, 1-month at 18, spot at 16). How do you profit?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Sell front-month VIX futures or short VXX. Contango creates negative roll yield—futures decay toward spot VIX over time. Inverse volatility ETFs (SVXY) profit from this decay.</p>
+      </details>
+    </div>
+  </div>
+
+  <h2>Practical Checklist</h2>
+  <div class="checklist">
+    <h4>Before Trading Volatility:</h4>
+    <ul>
+      <li>Check VIX level: &lt;12 (complacent), 12-20 (normal), 20-30 (elevated), &gt;30 (panic)</li>
+      <li>Review VIX futures term structure: contango or backwardation?</li>
+      <li>Check CBOE Skew Index: &gt;150 = extreme tail risk priced in</li>
+      <li>Identify regime: trending (sell vol) or mean-reverting (buy vol)?</li>
+      <li>Use Signal Pilot Harmonic Oscillator to confirm volatility regime</li>
+      <li>Check Plutus Flow for unusual VIX options activity</li>
+      <li>Size appropriately: volatility trades can gap violently (max 1-2% risk)</li>
+    </ul>
+  </div>
+
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>VIX mean-reverts</strong> from extremes (&gt;30 = sell vol opportunity)</li>
+      <li><strong>Volatility skew</strong> = OTM put IV vs call IV (high skew = sell puts)</li>
+      <li><strong>Dispersion trading:</strong> Profit when single-stock vol diverges from index vol</li>
+      <li><strong>Term structure:</strong> Contango = sell front-month futures for decay profit</li>
+      <li><strong>Risk:</strong> Volatility can spike violently—never over-leverage</li>
+    </ul>
+  </div>
+
+  <div class="related-lessons">
+    <h4>Related Lessons</h4>
+    <ul>
+      <li><a href="37-options-order-flow.html">Lesson 37: Options Order Flow & UOA</a></li>
+      <li><a href="39-options-market-microstructure.html">Lesson 39: Options Market Microstructure</a></li>
+      <li><a href="46-advanced-risk-management.html">Lesson 46: Advanced Risk Management</a></li>
+    </ul>
+  </div>
+
+  <div class="downloads">
+    <h4>Downloads</h4>
+    <ul>
+      <li><a href="/downloads/vix-trading-cheatsheet.pdf">VIX Trading Cheat Sheet (PDF)</a></li>
+      <li><a href="/downloads/volatility-surface-templates.xlsx">Volatility Surface Analysis Template (Excel)</a></li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>

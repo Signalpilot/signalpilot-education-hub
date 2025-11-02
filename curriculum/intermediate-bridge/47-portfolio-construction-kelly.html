@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Portfolio Construction & Kelly Criterion: Optimal Capital Allocation — Signal Pilot</title>
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Portfolio Construction: Building an Edge-Based System</h1>
+  <p><b>Your edge isn't in ONE great trade—it's in how you allocate capital across HUNDREDS of trades.</b></p>
+  <p>Professional traders don't just find good setups. They build portfolios that maximize expected returns while controlling risk. This lesson teaches you how to construct a portfolio like an institutional fund manager.</p>
+
+  <h2>Part 1: Portfolio Construction Philosophies</h2>
+
+  <h3>The Three Approaches</h3>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Approach</th>
+        <th>Goal</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Equal Weight</strong></td>
+        <td>Diversification</td>
+        <td>Index tracking, passive strategies</td>
+      </tr>
+      <tr>
+        <td><strong>Risk Parity</strong></td>
+        <td>Equal risk contribution</td>
+        <td>Multi-asset portfolios (stocks, bonds, commodities)</td>
+      </tr>
+      <tr>
+        <td><strong>Kelly / Edge-Based</strong></td>
+        <td>Maximize growth</td>
+        <td>Active traders with proven edge</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Equal Weight Portfolio</h3>
+  <p><strong>Method:</strong> Allocate same $ amount to each position</p>
+  <p><strong>Example:</strong> $100K portfolio, 10 positions → $10K per position</p>
+  <p><strong>Pros:</strong> Simple, prevents over-concentration</p>
+  <p><strong>Cons:</strong> Ignores edge (treats high-conviction and low-conviction trades equally)</p>
+
+  <h3>Risk Parity Portfolio</h3>
+  <p><strong>Method:</strong> Allocate capital so each position contributes EQUAL risk</p>
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>Stock A (high volatility): $5K position → contributes $500 risk</li>
+    <li>Stock B (low volatility): $15K position → contributes $500 risk</li>
+  </ul>
+  <p><strong>Pros:</strong> Balances risk across uncorrelated assets</p>
+  <p><strong>Cons:</strong> Can over-leverage low-vol assets (dangerous in regime shifts)</p>
+
+  <h3>Kelly / Edge-Based Portfolio (Our Focus)</h3>
+  <p><strong>Method:</strong> Size positions based on statistical edge (win rate × win/loss ratio)</p>
+  <p><strong>Philosophy:</strong> Bet more when edge is higher, less when edge is lower</p>
+  <p><strong>Pros:</strong> Mathematically optimal growth</p>
+  <p><strong>Cons:</strong> Requires accurate edge estimation (garbage in, garbage out)</p>
+
+  <h2>Part 2: Kelly Criterion Deep Dive</h2>
+
+  <h3>The Kelly Formula</h3>
+  <p><strong>f* = (p × b - q) / b</strong></p>
+  <ul>
+    <li><strong>f*:</strong> Optimal fraction of capital to risk</li>
+    <li><strong>p:</strong> Win probability</li>
+    <li><strong>q:</strong> Loss probability (1 - p)</li>
+    <li><strong>b:</strong> Win/loss ratio (average win / average loss)</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>📚 History:</strong> Kelly Criterion developed by John Kelly at Bell Labs (1956) for information theory, later applied to gambling and trading by Ed Thorp (Beat the Dealer, Beat the Market).</p>
+  </div>
+
+  <details class="accordion">
+    <summary>Example: Applying Kelly to a Trading System</summary>
+    <div class="accordion-content">
+      <p><strong>Your backtested system stats:</strong></p>
+      <ul>
+        <li>Total trades: 200</li>
+        <li>Wins: 110 (55%)</li>
+        <li>Losses: 90 (45%)</li>
+        <li>Average win: $600</li>
+        <li>Average loss: $300</li>
+      </ul>
+      
+      <p><strong>Step 1: Calculate inputs</strong></p>
+      <ul>
+        <li>p = 0.55 (win rate)</li>
+        <li>q = 0.45 (loss rate)</li>
+        <li>b = $600 / $300 = 2.0 (win/loss ratio)</li>
+      </ul>
+
+      <p><strong>Step 2: Apply Kelly formula</strong></p>
+      <p>f* = (0.55 × 2 - 0.45) / 2 = (1.10 - 0.45) / 2 = 0.65 / 2 = 0.325</p>
+
+      <p><strong>Step 3: Interpret</strong></p>
+      <p>Kelly says: Risk 32.5% of capital per trade for maximum long-term growth</p>
+
+      <p><strong>Step 4: Reality check</strong></p>
+      <p>32.5% per trade = INSANE volatility (one 3-trade losing streak = -97% of capital)</p>
+      <p><strong>Solution:</strong> Use fractional Kelly (most professionals use 0.25-0.5× Kelly)</p>
+      <ul>
+        <li><strong>Quarter Kelly:</strong> 32.5% / 4 = 8.1% per trade</li>
+        <li><strong>Half Kelly:</strong> 32.5% / 2 = 16.3% per trade</li>
+      </ul>
+      <p><strong>Recommendation:</strong> 8-10% per trade (Quarter Kelly) for reasonable volatility</p>
+    </div>
+  </details>
+
+  <h3>Why Full Kelly Is Too Aggressive</h3>
+  <p><strong>Problem #1: Estimation error</strong></p>
+  <ul>
+    <li>Your 55% win rate might actually be 50% (sample size error)</li>
+    <li>If true edge is lower than estimated, full Kelly over-bets → ruin</li>
+  </ul>
+
+  <p><strong>Problem #2: Volatility</strong></p>
+  <ul>
+    <li>Full Kelly maximizes growth but creates 40-50% drawdowns</li>
+    <li>Most traders can't psychologically handle that volatility</li>
+  </ul>
+
+  <p><strong>Problem #3: Non-independence</strong></p>
+  <ul>
+    <li>Kelly assumes each trade is independent (not true in trading)</li>
+    <li>Losing streaks cluster (market regimes change, edge disappears temporarily)</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>⚠️ Professional Consensus:</strong> Never use full Kelly. Use 0.25-0.5× Kelly for growth with manageable risk. Ed Thorp himself recommends "substantially less than Kelly."</p>
+  </div>
+
+  <h2>Part 3: Multi-Position Kelly (Portfolio Optimization)</h2>
+
+  <h3>The Portfolio Kelly Problem</h3>
+  <p><strong>Question:</strong> You have 5 different setups with different edges. How much to allocate to each?</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Setup</th>
+        <th>Win Rate</th>
+        <th>Win/Loss</th>
+        <th>Kelly %</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Breakout</td>
+        <td>45%</td>
+        <td>3.0</td>
+        <td>27.5%</td>
+      </tr>
+      <tr>
+        <td>Mean Reversion</td>
+        <td>65%</td>
+        <td>1.2</td>
+        <td>37.5%</td>
+      </tr>
+      <tr>
+        <td>Trend Following</td>
+        <td>40%</td>
+        <td>4.0</td>
+        <td>30.0%</td>
+      </tr>
+      <tr>
+        <td>Gap Fade</td>
+        <td>70%</td>
+        <td>1.0</td>
+        <td>40.0%</td>
+      </tr>
+      <tr>
+        <td>Order Flow</td>
+        <td>60%</td>
+        <td>1.5</td>
+        <td>33.3%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Problem:</strong> Sum of Kelly % = 168.3% (over-leveraged!)</p>
+
+  <h3>Solution: Correlation-Adjusted Kelly</h3>
+  <p><strong>Key insight:</strong> If setups are correlated, reduce allocation (they're the same bet)</p>
+  
+  <details class="accordion">
+    <summary>Adjusting for Correlation</summary>
+    <div class="accordion-content">
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>Breakout strategy Kelly = 27.5%</li>
+        <li>Trend Following strategy Kelly = 30.0%</li>
+        <li>Correlation between strategies = 0.7 (high)</li>
+      </ul>
+
+      <p><strong>Naive allocation:</strong> 27.5% + 30% = 57.5% total</p>
+
+      <p><strong>Correlation-adjusted allocation:</strong></p>
+      <p>Adjusted = Individual Kelly × (1 - correlation factor)</p>
+      <p>Breakout: 27.5% × (1 - 0.35) = 17.9%</p>
+      <p>Trend: 30.0% × (1 - 0.35) = 19.5%</p>
+      <p><strong>Total: 37.4%</strong> (vs 57.5% naive)</p>
+
+      <p><strong>Result:</strong> Reduced over-leverage by accounting for strategies betting on same market behavior</p>
+    </div>
+  </details>
+
+  <h3>Practical Portfolio Allocation</h3>
+  <p><strong>Step 1:</strong> Calculate Kelly % for each strategy (use quarter/half Kelly)</p>
+  <p><strong>Step 2:</strong> Identify correlations (which strategies win/lose together?)</p>
+  <p><strong>Step 3:</strong> Reduce allocation to correlated strategies</p>
+  <p><strong>Step 4:</strong> Cap total portfolio leverage at 100% (or your risk tolerance)</p>
+
+  <h2>Part 4: Dynamic Position Sizing</h2>
+
+  <h3>Fixed-Fraction vs Dynamic Kelly</h3>
+  <p><strong>Fixed-Fraction:</strong> Always risk same % (e.g., 1% per trade)</p>
+  <p><strong>Dynamic Kelly:</strong> Adjust size based on recent performance</p>
+
+  <h3>Equity Curve Trading</h3>
+  <p><strong>Concept:</strong> Increase size when winning, decrease when losing</p>
+  <p><strong>Method:</strong></p>
+  <ul>
+    <li>Calculate 20-day moving average of equity curve</li>
+    <li>If equity &gt; MA: Increase position size by 25% (edge working)</li>
+    <li>If equity &lt; MA: Decrease position size by 50% (edge broken or regime shift)</li>
+  </ul>
+
+  <p><strong>Benefit:</strong> Automatically scales risk to match performance (compound winners, limit losers)</p>
+
+  <details class="accordion">
+    <summary>Example: Equity Curve Position Adjustment</summary>
+    <div class="accordion-content">
+      <p><strong>Baseline:</strong> Account = $100K, Standard risk = 1% = $1,000/trade</p>
+
+      <p><strong>Scenario 1: Hot streak (equity &gt; 20-day MA)</strong></p>
+      <ul>
+        <li>Account now: $108K</li>
+        <li>Equity &gt; MA (trending up)</li>
+        <li>Adjusted risk: 1% × 1.25 = 1.25%</li>
+        <li>Risk per trade: $108K × 1.25% = $1,350</li>
+      </ul>
+
+      <p><strong>Scenario 2: Cold streak (equity &lt; 20-day MA)</strong></p>
+      <ul>
+        <li>Account now: $97K</li>
+        <li>Equity &lt; MA (trending down)</li>
+        <li>Adjusted risk: 1% × 0.5 = 0.5%</li>
+        <li>Risk per trade: $97K × 0.5% = $485</li>
+      </ul>
+
+      <p><strong>Result:</strong> Risk more when edge is working, less when it's not (dynamic adaptation)</p>
+    </div>
+  </details>
+
+  <h2>Part 5: Using Signal Pilot for Portfolio Construction</h2>
+
+  <h3>Janus Atlas: Multi-Strategy Overlay</h3>
+  <p><strong>Feature:</strong> Visualize all active strategies on same chart (identify correlation)</p>
+  <p><strong>Use case:</strong> If all your setups trigger on same day → high correlation → reduce total size</p>
+
+  <h3>Pentarch Pilot Line: Edge Validation</h3>
+  <p><strong>Feature:</strong> Compare your entries vs institutional flow</p>
+  <p><strong>Signal:</strong> If Pilot Line confirms your setup (institutional flow aligned) → increase size to Kelly %</p>
+  <p><strong>Warning:</strong> If Pilot Line contradicts setup (institutions selling, you buying) → reduce size to 0.5× Kelly</p>
+
+  <h3>Harmonic Oscillator: Regime Detection for Sizing</h3>
+  <p><strong>Feature:</strong> Identify trending vs mean-reverting regimes</p>
+  <p><strong>Application:</strong> Increase breakout strategy allocation in trending regime, increase mean-reversion allocation in ranging regime</p>
+
+  <h2>Quiz: Test Your Understanding</h2>
+  <div class="quiz">
+    <div class="quiz-question">
+      <p><strong>Q1:</strong> Your system: 60% win rate, $400 avg win, $200 avg loss. What's the Kelly %?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> p = 0.6, q = 0.4, b = $400/$200 = 2. Kelly = (0.6 × 2 - 0.4) / 2 = (1.2 - 0.4) / 2 = 0.4 = 40%. But use quarter Kelly (10%) or half Kelly (20%) in practice to reduce volatility.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q2:</strong> You have 3 strategies with Kelly %: 20%, 25%, 30%. Correlation = 0.8. Should you allocate 75% total?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> No. High correlation (0.8) means strategies are essentially the same bet. Reduce each allocation by ~30-40% to account for correlation. Adjusted total: ~45-50%, not 75%. Otherwise you're over-leveraged to one market regime.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q3:</strong> Your equity curve drops below its 20-day MA. What should you do with position sizing?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Reduce position size by 50% (cut risk from 1% to 0.5% per trade). Equity below MA signals your edge may be impaired or market regime has shifted. Protect capital until equity crosses back above MA, then resume normal sizing.</p>
+      </details>
+    </div>
+  </div>
+
+  <h2>Practical Checklist</h2>
+  <div class="checklist">
+    <h4>Portfolio Construction Workflow:</h4>
+    <ul>
+      <li>Backtest each strategy: Calculate win rate, win/loss ratio</li>
+      <li>Calculate Kelly % for each strategy (use quarter or half Kelly)</li>
+      <li>Identify correlation between strategies (do they win/lose together?)</li>
+      <li>Reduce allocation to highly correlated strategies (correlation &gt;0.6)</li>
+      <li>Cap total portfolio allocation at 100% (or your risk tolerance)</li>
+      <li>Implement equity curve tracking (20-day MA)</li>
+      <li>Adjust sizing based on equity vs MA (increase when above, decrease when below)</li>
+    </ul>
+    <h4>Pre-Trade Kelly Check:</h4>
+    <ul>
+      <li>Identify which strategy this setup belongs to</li>
+      <li>Check remaining allocation for that strategy (have you hit Kelly limit?)</li>
+      <li>Check portfolio heat: Total risk across all positions &lt; 10%?</li>
+      <li>Use Signal Pilot Pentarch Pilot Line to confirm edge (institutional flow aligned?)</li>
+      <li>If edge confirmed, use full (quarter/half) Kelly. If not, use 0.5× Kelly or skip</li>
+    </ul>
+  </div>
+
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Kelly Criterion mathematically optimizes sizing</strong> based on edge (win rate × win/loss ratio)</li>
+      <li><strong>Never use full Kelly</strong> (too volatile) — use 0.25-0.5× Kelly</li>
+      <li><strong>Correlation matters:</strong> Reduce allocation to correlated strategies (they're the same bet)</li>
+      <li><strong>Dynamic sizing:</strong> Increase when equity &gt; MA, decrease when &lt; MA</li>
+      <li><strong>Portfolio heat cap:</strong> Total risk across all positions should never exceed 10%</li>
+    </ul>
+  </div>
+
+  <div class="related-lessons">
+    <h4>Related Lessons</h4>
+    <ul>
+      <li><a href="46-advanced-risk-management.html">Lesson 46: Advanced Risk Management</a></li>
+      <li><a href="20-swing-trading-framework.html">Lesson 20: Swing Trading Framework</a></li>
+      <li><a href="/curriculum/advanced-mastery/66-quantitative-strategy-design.html">Lesson 66: Quantitative Strategy Design</a></li>
+    </ul>
+  </div>
+
+  <div class="downloads">
+    <h4>Downloads</h4>
+    <ul>
+      <li><a href="/downloads/kelly-calculator.xlsx">Kelly Criterion Calculator (Excel)</a></li>
+      <li><a href="/downloads/portfolio-allocation-tracker.xlsx">Portfolio Allocation Tracker (Excel)</a></li>
+      <li><a href="/downloads/equity-curve-monitor.xlsx">Equity Curve Monitor (Excel)</a></li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>

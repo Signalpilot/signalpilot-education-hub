@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Advanced Risk Management: Position Sizing, Correlation & VAR — Signal Pilot</title>
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Advanced Risk Management: Surviving to Trade Another Day</h1>
+  <p><b>Risk management isn't about avoiding losses. It's about ensuring no single loss destroys your account.</b></p>
+  <p>The difference between professional traders and retail traders isn't win rate—it's risk management. Professionals survive 20 losing trades in a row. Retail blows up after 3. This lesson teaches you how to build institutional-grade risk frameworks.</p>
+
+  <h2>Part 1: Position Sizing Methods</h2>
+
+  <h3>Fixed Percentage Risk (The Foundation)</h3>
+  <p><strong>Rule:</strong> Risk a fixed percentage (0.5-2%) of account per trade</p>
+  <p><strong>Formula:</strong> Position Size = (Account × Risk %) / (Entry - Stop Loss)</p>
+  
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>Account: $100,000</li>
+    <li>Risk per trade: 1% = $1,000</li>
+    <li>Entry: $150.00, Stop: $148.00 (risk = $2/share)</li>
+    <li>Position size: $1,000 / $2 = 500 shares</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>🎯 Professional Standard:</strong> Most prop firms limit traders to 1% risk per trade, 5% max daily loss, 10% max monthly loss. Break these rules = fired.</p>
+  </div>
+
+  <h3>Kelly Criterion (Optimal Sizing)</h3>
+  <p><strong>Formula:</strong> f* = (p × b - q) / b</p>
+  <ul>
+    <li><strong>f*:</strong> Fraction of capital to risk</li>
+    <li><strong>p:</strong> Win probability (e.g., 0.55)</li>
+    <li><strong>q:</strong> Loss probability (1 - p = 0.45)</li>
+    <li><strong>b:</strong> Win/loss ratio (avg win / avg loss)</li>
+  </ul>
+
+  <details class="accordion">
+    <summary>Kelly Criterion Example Calculation</summary>
+    <div class="accordion-content">
+      <p><strong>Your trading stats:</strong></p>
+      <ul>
+        <li>Win rate: 55% (p = 0.55, q = 0.45)</li>
+        <li>Average win: $500</li>
+        <li>Average loss: $250</li>
+        <li>Win/loss ratio (b) = $500 / $250 = 2</li>
+      </ul>
+      <p><strong>Kelly calculation:</strong></p>
+      <p>f* = (0.55 × 2 - 0.45) / 2 = (1.10 - 0.45) / 2 = 0.325 = 32.5%</p>
+      <p><strong>Interpretation:</strong> Kelly says risk 32.5% of capital per trade for optimal growth</p>
+      <p><strong>Problem:</strong> This is INSANELY aggressive (one bad streak = -50% drawdown)</p>
+      <p><strong>Solution:</strong> Use "Half Kelly" or "Quarter Kelly" (risk 8-16% instead of 32.5%)</p>
+      <p><strong>Reality:</strong> Most professionals use 0.25-0.5× Kelly to reduce volatility</p>
+    </div>
+  </details>
+
+  <h3>Volatility-Adjusted Sizing</h3>
+  <p><strong>Concept:</strong> Size inversely to volatility (larger size in low-vol stocks, smaller in high-vol)</p>
+  <p><strong>Formula:</strong> Position Size = (Risk $) / (ATR × Multiplier)</p>
+  
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>Risk: $1,000 per trade</li>
+    <li>Stock A: ATR = $1 → Position = $1,000 / (1 × 2) = 500 shares</li>
+    <li>Stock B: ATR = $5 → Position = $1,000 / (5 × 2) = 100 shares</li>
+  </ul>
+  <p><strong>Result:</strong> Equal risk despite different volatility profiles</p>
+
+  <h2>Part 2: Portfolio-Level Risk (Correlation)</h2>
+
+  <h3>The Correlation Problem</h3>
+  <p><strong>Myth:</strong> "I'm diversified—I own 10 stocks"</p>
+  <p><strong>Reality:</strong> If all 10 are tech stocks, you're NOT diversified (correlation = 0.8-0.9)</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Correlation</th>
+        <th>Meaning</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>+1.0</td>
+        <td>Perfect positive</td>
+        <td>SPY vs VOO (same index)</td>
+      </tr>
+      <tr>
+        <td>+0.7 to +0.9</td>
+        <td>High positive</td>
+        <td>AAPL vs MSFT (same sector)</td>
+      </tr>
+      <tr>
+        <td>+0.3 to +0.6</td>
+        <td>Moderate positive</td>
+        <td>SPY vs IWM (different market caps)</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>Uncorrelated</td>
+        <td>SPY vs Gold (sometimes)</td>
+      </tr>
+      <tr>
+        <td>-0.3 to -0.6</td>
+        <td>Moderate negative</td>
+        <td>SPY vs VIX (usually)</td>
+      </tr>
+      <tr>
+        <td>-1.0</td>
+        <td>Perfect negative</td>
+        <td>SPY vs SPXS (3× inverse ETF)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Portfolio Heat (Aggregate Risk)</h3>
+  <p><strong>Concept:</strong> Total risk across all positions (accounts for correlation)</p>
+  <p><strong>Formula (simplified):</strong> Portfolio Risk = √(Σ Individual Risks² + 2 × Correlation × Risk1 × Risk2)</p>
+
+  <details class="accordion">
+    <summary>Portfolio Heat Example</summary>
+    <div class="accordion-content">
+      <p><strong>Scenario:</strong></p>
+      <ul>
+        <li>Position 1: Long AAPL, $1,000 risk (1% of $100K account)</li>
+        <li>Position 2: Long MSFT, $1,000 risk (1% of $100K account)</li>
+        <li>Correlation (AAPL/MSFT): 0.75</li>
+      </ul>
+      <p><strong>Naive calculation:</strong> Total risk = $1,000 + $1,000 = $2,000 (2%)</p>
+      <p><strong>Actual risk (accounting for correlation):</strong></p>
+      <p>Portfolio Risk = √($1,000² + $1,000² + 2 × 0.75 × $1,000 × $1,000)</p>
+      <p>= √(1,000,000 + 1,000,000 + 1,500,000) = √3,500,000 ≈ $1,871</p>
+      <p><strong>True portfolio risk:</strong> 1.87% (not 2%, but not 1% either)</p>
+      <p><strong>Key insight:</strong> High correlation increases true portfolio risk beyond sum of individual risks</p>
+    </div>
+  </details>
+
+  <h3>Maximum Portfolio Heat Rules</h3>
+  <p><strong>Conservative:</strong> Max 3-5% total portfolio risk at any time</p>
+  <p><strong>Moderate:</strong> Max 5-8% total portfolio risk</p>
+  <p><strong>Aggressive:</strong> Max 8-12% total portfolio risk</p>
+  <p><strong>Institutional:</strong> Most hedge funds cap at 5-10% gross exposure risk</p>
+
+  <h2>Part 3: Value at Risk (VAR)</h2>
+
+  <h3>What Is VAR?</h3>
+  <p><strong>Definition:</strong> Maximum expected loss over a time period at a given confidence level</p>
+  <p><strong>Example:</strong> "95% VAR = $5,000 per day" means:</p>
+  <ul>
+    <li>95% of days, you won't lose more than $5,000</li>
+    <li>5% of days (1 in 20), you'll lose MORE than $5,000</li>
+  </ul>
+
+  <h3>VAR Calculation Methods</h3>
+  
+  <details class="accordion">
+    <summary>Method #1: Historical VAR (Simplest)</summary>
+    <div class="accordion-content">
+      <p><strong>Steps:</strong></p>
+      <ol>
+        <li>Calculate daily P&L for last 100 trading days</li>
+        <li>Sort from worst to best</li>
+        <li>Find 5th percentile (for 95% VAR) = 5th worst day out of 100</li>
+      </ol>
+      <p><strong>Example:</strong> Your 5th worst day in last 100 = -$4,200 loss → 95% VAR = $4,200</p>
+      <p><strong>Interpretation:</strong> Expect to lose MORE than $4,200 about 5 times per 100 days (once per month)</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Method #2: Parametric VAR (Assumes Normal Distribution)</summary>
+    <div class="accordion-content">
+      <p><strong>Formula:</strong> VAR = Portfolio Value × σ × Z</p>
+      <ul>
+        <li><strong>σ:</strong> Daily standard deviation (volatility)</li>
+        <li><strong>Z:</strong> Z-score for confidence level (1.65 for 95%, 2.33 for 99%)</li>
+      </ul>
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>Portfolio: $100,000</li>
+        <li>Daily std dev: 1.5%</li>
+        <li>95% confidence (Z = 1.65)</li>
+      </ul>
+      <p><strong>VAR = $100,000 × 0.015 × 1.65 = $2,475</strong></p>
+      <p><strong>Interpretation:</strong> 95% of days, won't lose more than $2,475</p>
+      <p><strong>Limitation:</strong> Assumes normal distribution (markets have fat tails → underestimates crash risk)</p>
+    </div>
+  </details>
+
+  <h3>Using VAR for Position Limits</h3>
+  <p><strong>Rule:</strong> If adding a new position pushes portfolio VAR above limit, don't take the trade</p>
+  <p><strong>Example:</strong> Portfolio VAR = $4,500 (your limit = $5,000). New trade adds $800 VAR → total = $5,300 → SKIP THE TRADE</p>
+
+  <h2>Part 4: Tail Risk & Black Swans</h2>
+
+  <h3>The Problem With VAR</h3>
+  <p><strong>VAR tells you NOTHING about the 5% tail</strong> (the worst-case scenarios)</p>
+  <p><strong>Example:</strong> 95% VAR = $5,000, but on the 1 day out of 100, you could lose $50,000 (10× worse)</p>
+
+  <div class="callout">
+    <p><strong>⚠️ Black Swan Events:</strong> March 2020 = 20% drawdown in 10 days. VAR models predicted max 5% loss. All VAR models failed simultaneously.</p>
+  </div>
+
+  <h3>Conditional VAR (CVAR / Expected Shortfall)</h3>
+  <p><strong>CVAR:</strong> Average loss BEYOND the VAR threshold (tells you how bad the tail is)</p>
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>95% VAR = $5,000</li>
+    <li>95% CVAR = $12,000 (average of 5 worst days out of 100)</li>
+  </ul>
+  <p><strong>Interpretation:</strong> When things go wrong (5% of time), expect to lose $12K on average (not just $5K)</p>
+
+  <h3>Hedging Tail Risk</h3>
+  <p><strong>Strategy #1: Buy far OTM puts</strong> (e.g., SPY 20% OTM puts, 3-6 months out)</p>
+  <p><strong>Cost:</strong> 0.5-1% of portfolio per quarter (insurance premium)</p>
+  <p><strong>Payoff:</strong> 50-100× return if crash happens</p>
+
+  <p><strong>Strategy #2: Reduce size during high-correlation regimes</strong></p>
+  <p><strong>When:</strong> All sectors moving together (correlation → 1.0) = system fragile</p>
+  <p><strong>Action:</strong> Cut position sizes by 30-50% until correlation normalizes</p>
+
+  <h2>Part 5: Using Signal Pilot for Risk Management</h2>
+
+  <h3>Janus Atlas: Correlation Heatmap</h3>
+  <p><strong>Feature:</strong> Visualize correlation matrix across all open positions</p>
+  <p><strong>Alert:</strong> Warning when portfolio correlation &gt; 0.7 (over-concentrated risk)</p>
+
+  <h3>Harmonic Oscillator: Volatility Regime Detection</h3>
+  <p><strong>How to use:</strong> Increase position sizes in low-vol regimes, decrease in high-vol</p>
+  <p><strong>Rule:</strong> If VIX &gt; 30, cut all position sizes by 50%</p>
+
+  <h3>Pentarch Pilot Line: Portfolio Heat Monitor</h3>
+  <p><strong>Feature:</strong> Real-time calculation of total portfolio risk (aggregate heat)</p>
+  <p><strong>Alert:</strong> Flashing warning if portfolio heat &gt; your limit (e.g., 5%)</p>
+
+  <h2>Quiz: Test Your Understanding</h2>
+  <div class="quiz">
+    <div class="quiz-question">
+      <p><strong>Q1:</strong> You have a $100K account. You want to risk 1% on a trade. Entry $200, stop $196. What's your position size?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Risk = $1,000 (1% of $100K). Per-share risk = $200 - $196 = $4. Position size = $1,000 / $4 = 250 shares. Total position value = 250 × $200 = $50,000 (50% of account, but only risking 1%).</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q2:</strong> Your 95% VAR is $5,000. What does this mean?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> On 95% of trading days, you won't lose more than $5,000. On 5% of days (roughly 1 per month), you'll lose MORE than $5,000. VAR doesn't tell you HOW MUCH more—could be $6K or $50K in extreme cases.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q3:</strong> You're long AAPL (1% risk) and MSFT (1% risk). Correlation = 0.8. Is your total portfolio risk 2%?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> No, it's less than 2% but more than 1%. High correlation (0.8) means positions move together, so diversification benefit is reduced. True portfolio risk ≈ 1.8% (use correlation-adjusted formula). If correlation were 1.0, risk would be full 2%. If correlation were 0, risk would be ≈1.4%.</p>
+      </details>
+    </div>
+  </div>
+
+  <h2>Practical Checklist</h2>
+  <div class="checklist">
+    <h4>Before Every Trade:</h4>
+    <ul>
+      <li>Calculate position size using 1% rule (or Kelly/volatility-adjusted)</li>
+      <li>Check portfolio heat: Are you already at max risk limit?</li>
+      <li>Check correlation: Is new position correlated &gt;0.7 with existing positions?</li>
+      <li>If yes, reduce size or skip trade (avoid over-concentration)</li>
+    </ul>
+    <h4>Daily Risk Review:</h4>
+    <ul>
+      <li>Calculate current portfolio VAR (95% confidence level)</li>
+      <li>Review worst daily loss in last 30 days (is it within tolerance?)</li>
+      <li>Check correlation heatmap via Signal Pilot Janus Atlas</li>
+      <li>If VIX &gt; 30 or correlation &gt; 0.8, reduce all position sizes by 50%</li>
+    </ul>
+    <h4>Monthly Review:</h4>
+    <ul>
+      <li>Calculate max drawdown (peak-to-trough decline)</li>
+      <li>Recalculate Kelly % based on updated win rate and win/loss ratio</li>
+      <li>Review tail events: Did any losses exceed 95% VAR? How bad were they?</li>
+    </ul>
+  </div>
+
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Risk 0.5-1% per trade</strong> (institutional standard)</li>
+      <li><strong>Kelly Criterion optimizes size,</strong> but use 0.25-0.5× Kelly to reduce volatility</li>
+      <li><strong>Correlation matters:</strong> 10 correlated positions = 1 bet (not diversified)</li>
+      <li><strong>VAR estimates typical risk,</strong> CVAR estimates tail risk (both needed)</li>
+      <li><strong>Reduce size in high-vol/high-correlation regimes</strong> (VIX &gt;30 or correlation &gt;0.8)</li>
+    </ul>
+  </div>
+
+  <div class="related-lessons">
+    <h4>Related Lessons</h4>
+    <ul>
+      <li><a href="20-swing-trading-framework.html">Lesson 20: Swing Trading Framework</a></li>
+      <li><a href="42-volatility-trading-strategies.html">Lesson 42: Volatility Trading Strategies</a></li>
+      <li><a href="47-portfolio-construction-kelly.html">Lesson 47: Portfolio Construction & Kelly Criterion</a></li>
+    </ul>
+  </div>
+
+  <div class="downloads">
+    <h4>Downloads</h4>
+    <ul>
+      <li><a href="/downloads/position-sizing-calculator.xlsx">Position Sizing Calculator (Excel)</a></li>
+      <li><a href="/downloads/portfolio-var-tracker.xlsx">Portfolio VAR Tracker (Excel)</a></li>
+      <li><a href="/downloads/correlation-matrix-template.xlsx">Correlation Matrix Template (Excel)</a></li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>
