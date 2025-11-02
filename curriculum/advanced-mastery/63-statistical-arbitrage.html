@@ -1,26 +1,534 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
   <meta charset="utf-8"/>
-  <title>Statistical Arbitrage: Mean Reversion Strategies — Signal Pilot</title>
-  <meta name="description" content="When two correlated assets diverge, they eventually converge. Learn pairs trading, cointegration, and statistical arbitrage strategies.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <!-- AGGRESSIVE CACHE PREVENTION: Forces fresh load every time -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Statistical Arbitrage: Quantitative Mean Reversion Trading — Signal Pilot Learn</title>
+  <meta name="description" content="When two correlated assets diverge, they eventually converge. Master pairs trading, cointegration testing, z-score models, and statistical arbitrage strategies.">
+  <meta name="sp-level" content="Advanced-Mastery">
+  <meta name="sp-order" content="63">
+  <!-- SignalPilot Theme System -->
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <!-- Logger must load first, before other scripts that use it -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+<script src="/assets/structured-data.js" defer></script>
+<script src="/assets/lazy-load.js" defer></script>
+<script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/my-library.html">📚 My Library</a></li>
+      <li><a href="/search.html">🔍 Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <h1>Statistical Arbitrage: Quantitative Mean Reversion</h1>
-  <p><b>When two correlated assets diverge, they eventually converge. That's statistical arbitrage.</b></p>
-  <h2>Pairs Trading & Cointegration</h2>
-  <p>Find assets with long-term equilibrium relationship, trade the spread when it diverges.</p>
-  <p><strong>Z-score entry:</strong> |Z| > 2 = trade convergence</p>
-  <div class="key-takeaway">
-    <ul>
-      <li><strong>Cointegration required</strong> for stable arbitrage</li>
-      <li><strong>Z-score > 2</strong> = entry signal</li>
-      <li><strong>Risk: spreads can diverge further</strong></li>
-    </ul>
+  <!-- Article Header -->
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #63</span>
+      </div>
+      <span class="badge">🟣 Advanced-Mastery • Lesson 63 of 82</span>
+      <h1 class="headline xl">Statistical Arbitrage: Quantitative Mean Reversion</h1>
+      <div class="meta">Reading time ~18-22 min • Pairs Trading & Cointegration Analysis</div>
+
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>Two assets walk into a bar. They're historically correlated—when one goes up, the other usually follows. Today? One rallies 5% while the other drops 3%.</b></p>
+
+      <p>Do you panic? Short the strong one? Buy the weak one?</p>
+
+      <p>Or do you recognize this as statistical arbitrage gold—a temporary divergence from long-term equilibrium that will eventually revert. If the relationship is <em>cointegrated</em> (not just correlated), you can trade the spread with quantified edge.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 This Isn't "Buy Dips" Hope Trading</h4>
+        <p>Statistical arbitrage requires rigorous mathematical validation. You can't just eyeball two charts and assume they'll converge. You need cointegration tests, z-score models, and proper risk management—because spreads can diverge further before they converge.</p>
+        <p><strong>Without quantitative validation?</strong> You're gambling, not arbitraging.</p>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 What You'll Master</h4>
+        <p>By the end of this lesson, you'll understand:</p>
+        <ul>
+          <li>The difference between correlation and cointegration (critical!)</li>
+          <li>How to identify viable pairs using Augmented Dickey-Fuller tests</li>
+          <li>Z-score entry/exit models for statistical edge</li>
+          <li>Position sizing based on spread volatility and half-life</li>
+          <li>Real-world stat arb strategies used by hedge funds</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 1: Why Correlation ≠ Cointegration</span></div>
+
+      <h2>The Most Dangerous Misconception in Pairs Trading</h2>
+
+      <p>Retail traders love to find "correlated pairs" and trade the divergence. SPY and QQQ move together, right? Tesla and Lucid? Bitcoin and Ethereum?</p>
+
+      <p>Here's the trap: <strong>Correlation does not guarantee mean reversion</strong>.</p>
+
+      <p>Two assets can be highly correlated yet drift apart permanently. Why? Because correlation measures <em>direction</em>, not <em>equilibrium</em>.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Correlation (Dangerous)</button>
+          <button>Cointegration (Required)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Correlation: Moves Together, Maybe</h3>
+            <p><strong>Definition:</strong> Measures how two assets move in the same direction</p>
+            <p><strong>Range:</strong> -1 (perfect inverse) to +1 (perfect positive)</p>
+            <p><strong>The Problem:</strong> High correlation doesn't mean they'll return to any specific relationship. Example:</p>
+            <ul>
+              <li>Stock A: $100 → $150 (+50%)</li>
+              <li>Stock B: $50 → $75 (+50%)</li>
+              <li><strong>Correlation:</strong> Perfect 1.0</li>
+              <li><strong>Spread:</strong> $50 throughout (no reversion)</li>
+            </ul>
+            <p style="margin-top:1rem;color:var(--warning)"><strong>Danger:</strong> You can't trade a spread that doesn't revert. This is why pure correlation-based pairs fail.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Cointegration: Mean-Reverting Equilibrium</h3>
+            <p><strong>Definition:</strong> A statistically stable long-term relationship where deviations are temporary</p>
+            <p><strong>Test:</strong> Augmented Dickey-Fuller (ADF) test on the spread</p>
+            <p><strong>What It Means:</strong> When the spread deviates, it's pulled back toward equilibrium. Example:</p>
+            <ul>
+              <li>Asset A / Asset B = typical ratio of 2.0</li>
+              <li>Today: ratio = 2.4 (spread widened)</li>
+              <li><strong>Cointegrated pairs:</strong> Ratio reverts toward 2.0</li>
+              <li><strong>Edge:</strong> Sell the expensive one, buy the cheap one</li>
+            </ul>
+            <p style="margin-top:1rem;color:var(--success)"><strong>This Works:</strong> Mean reversion is statistically validated, not hoped for.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Key Insight</h4>
+        <p>Correlation = "They move together"<br>
+        Cointegration = "Their relationship has gravity"</p>
+        <p>Only cointegrated pairs can be traded as statistical arbitrage. Everything else is speculation.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: Finding Cointegrated Pairs</span></div>
+
+      <h2>The Augmented Dickey-Fuller Test</h2>
+
+      <p>To validate cointegration, you need to test whether the spread (or ratio) is stationary—meaning it has a constant mean it reverts to.</p>
+
+      <p>The standard test: <strong>Augmented Dickey-Fuller (ADF) test</strong>.</p>
+
+      <div class="callout-info">
+        <h4>📖 How the ADF Test Works</h4>
+        <p><strong>Step 1:</strong> Calculate the spread or ratio between Asset A and Asset B</p>
+        <p><strong>Step 2:</strong> Run the ADF test on this spread time series</p>
+        <p><strong>Step 3:</strong> Get a p-value:</p>
+        <ul style="margin:.5rem 0">
+          <li><strong>p < 0.05:</strong> Spread is stationary → cointegration likely</li>
+          <li><strong>p > 0.05:</strong> Spread is non-stationary → no cointegration</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Example:</strong> Testing TSLA vs LCID</p>
+        <ul>
+          <li>Spread = (TSLA price) - (β × LCID price)</li>
+          <li>ADF test on spread → p-value = 0.23</li>
+          <li><strong>Result:</strong> NOT cointegrated (don't trade it!)</li>
+        </ul>
+      </div>
+
+      <h3>Calculating the Hedge Ratio (β)</h3>
+
+      <p>The hedge ratio determines how many units of Asset B you need to trade for every unit of Asset A to create a market-neutral position.</p>
+
+      <p>Use <strong>Ordinary Least Squares (OLS) regression</strong>:</p>
+
+      <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">Asset A = β × Asset B + residuals</p>
+
+      <p><strong>β</strong> is your hedge ratio. If β = 1.5, you buy/sell 1.5 units of Asset B for every 1 unit of Asset A.</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Real Example: Coca-Cola (KO) vs Pepsi (PEP)</div>
+          <div class="accordion-content">
+            <p><strong>Historical Relationship:</strong> KO and PEP are in the same industry, similar business models</p>
+            <p><strong>Regression Result:</strong> KO = 0.92 × PEP + noise</p>
+            <p><strong>Hedge Ratio (β):</strong> 0.92</p>
+            <p><strong>What This Means:</strong> For every $1,000 in KO you buy, you sell $920 in PEP (or vice versa)</p>
+            <p><strong>ADF Test on Spread:</strong> p-value = 0.03 → Cointegrated! ✅</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Counter-Example: TSLA vs SPY</div>
+          <div class="accordion-content">
+            <p><strong>Correlation:</strong> 0.75 (high!)</p>
+            <p><strong>Regression:</strong> TSLA = 3.2 × SPY + noise</p>
+            <p><strong>ADF Test on Spread:</strong> p-value = 0.18 → NOT cointegrated ❌</p>
+            <p><strong>Why It Fails:</strong> TSLA can permanently decouple from SPY (and has)</p>
+            <p><strong>Lesson:</strong> High correlation ≠ tradable pair</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: Z-Score Entry & Exit Models</span></div>
+
+      <h2>Trading the Statistical Anomaly</h2>
+
+      <p>Once you've validated cointegration, you need entry/exit rules. The standard model: <strong>z-score triggers</strong>.</p>
+
+      <p><strong>Z-score measures how many standard deviations the spread is from its mean.</strong></p>
+
+      <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">Z-score = (Current Spread - Mean Spread) / Standard Deviation</p>
+
+      <h3>Standard Entry/Exit Thresholds</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Conservative (Hedge Funds)</button>
+          <button>Aggressive (Prop Firms)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Conservative Z-Score Model</h3>
+            <ul>
+              <li><strong>Entry:</strong> |Z| > 2.0 (spread is 2+ std devs from mean)</li>
+              <li><strong>Exit:</strong> Z crosses back through 0 (mean reversion)</li>
+              <li><strong>Stop Loss:</strong> |Z| > 3.5 (spread widening, cut losses)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Why Conservative:</strong></p>
+            <ul>
+              <li>Z > 2 means 95% confidence the spread is abnormal</li>
+              <li>Fewer false signals, higher win rate</li>
+              <li>Lower frequency (fewer trades)</li>
+            </ul>
+          </div>
+          <div class="tab-panel">
+            <h3>Aggressive Z-Score Model</h3>
+            <ul>
+              <li><strong>Entry:</strong> |Z| > 1.5 (more frequent signals)</li>
+              <li><strong>Partial Exit:</strong> Z crosses 0.5 (take some profit)</li>
+              <li><strong>Full Exit:</strong> Z crosses 0 (mean)</li>
+              <li><strong>Stop Loss:</strong> |Z| > 3.0</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Why Aggressive:</strong></p>
+            <ul>
+              <li>More trades = more opportunities</li>
+              <li>Lower threshold = earlier entries</li>
+              <li>Requires tighter risk management</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 Real-World Application</h4>
+        <p><strong>Spread = $5.20</strong><br>
+        <strong>Mean Spread = $5.00</strong><br>
+        <strong>Std Dev = $0.10</strong></p>
+        <p><strong>Z-score = ($5.20 - $5.00) / $0.10 = 2.0</strong></p>
+        <p><strong>Action:</strong> Asset A is relatively expensive, Asset B is relatively cheap</p>
+        <p><strong>Trade:</strong> Short Asset A, Long Asset B (expect convergence)</p>
+      </div>
+
+      <h3>Half-Life: How Long Until Reversion?</h3>
+
+      <p>The half-life tells you how many periods it takes for the spread to revert halfway back to the mean. This informs your holding period.</p>
+
+      <div class="callout-info">
+        <h4>📖 Calculating Half-Life</h4>
+        <p>Use an AR(1) model (autoregressive) on the spread:</p>
+        <p style="text-align:center;margin:1rem 0">Spread<sub>t</sub> = θ × Spread<sub>t-1</sub> + ε</p>
+        <p><strong>Half-Life = -log(2) / log(θ)</strong></p>
+        <p><strong>Example:</strong> If θ = 0.95, Half-Life ≈ 14 days</p>
+        <p><strong>Implication:</strong> Expect mean reversion within ~14 days. If it takes 30+ days, your model may be breaking down.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Position Sizing & Risk Management</span></div>
+
+      <h2>How Much to Allocate Per Trade</h2>
+
+      <p>Statistical arbitrage is NOT "set it and forget it." Spreads can widen before they converge (drawdowns), and some pairs decointegrate over time.</p>
+
+      <h3>Kelly Criterion for Stat Arb</h3>
+
+      <p>Use a modified Kelly approach:</p>
+
+      <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">f* = (p × b - q) / b</p>
+
+      <p>Where:</p>
+      <ul>
+        <li><strong>p</strong> = win rate (historical % of profitable mean reversions)</li>
+        <li><strong>q</strong> = loss rate (1 - p)</li>
+        <li><strong>b</strong> = average win / average loss</li>
+        <li><strong>f*</strong> = optimal fraction of capital to risk</li>
+      </ul>
+
+      <div class="callout-warning">
+        <h4>🚨 Never Risk More Than 2-5% Per Pair</h4>
+        <p>Even if Kelly suggests 10%, stat arb models can fail (decointegration, regime change). Use half-Kelly or quarter-Kelly for safety:</p>
+        <p><strong>Half-Kelly:</strong> f* / 2<br>
+        <strong>Quarter-Kelly:</strong> f* / 4</p>
+        <p>This protects you from model breakdown while still capturing edge.</p>
+      </div>
+
+      <h3>Portfolio of Pairs: Diversification</h3>
+
+      <p>Don't run just one pair. Build a portfolio of 5-10 cointegrated pairs across different sectors to reduce idiosyncratic risk.</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Example Stat Arb Portfolio</div>
+          <div class="accordion-content">
+            <ul>
+              <li><strong>Pair 1:</strong> KO vs PEP (Consumer Staples)</li>
+              <li><strong>Pair 2:</strong> XOM vs CVX (Energy)</li>
+              <li><strong>Pair 3:</strong> JPM vs BAC (Financials)</li>
+              <li><strong>Pair 4:</strong> AAPL vs MSFT (Tech)</li>
+              <li><strong>Pair 5:</strong> UNH vs CVS (Healthcare)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Benefit:</strong> If one pair decointegrates, others can still perform</p>
+            <p><strong>Risk per Pair:</strong> 2% of capital max</p>
+            <p><strong>Total Portfolio Risk:</strong> 10% across 5 uncorrelated pairs</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 5: When Stat Arb Fails</span></div>
+
+      <h2>Regime Changes & Decointegration</h2>
+
+      <p>Statistical arbitrage works—until it doesn't. Pairs can <strong>decointegrate</strong> due to:</p>
+
+      <ul>
+        <li><strong>Corporate Actions:</strong> Mergers, spinoffs, dividend changes</li>
+        <li><strong>Structural Shifts:</strong> One company changes business model</li>
+        <li><strong>Macro Regime Change:</strong> Interest rate shocks, sector rotation</li>
+        <li><strong>Liquidity Drying Up:</strong> Can't exit the position without slippage</li>
+      </ul>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Example: LTCM Collapse (1998)</h4>
+        <p>Long-Term Capital Management was a stat arb hedge fund run by Nobel Prize winners. They traded bond spreads with mathematical precision.</p>
+        <p><strong>What Went Wrong:</strong> Russian debt crisis caused spreads to widen far beyond historical norms. LTCM kept adding to positions (z-score hit 10+), expecting reversion.</p>
+        <p><strong>Result:</strong> $4.6 billion loss. Near collapse of the financial system.</p>
+        <p><strong>Lesson:</strong> Statistical models assume normal distributions. Black swan events break those assumptions. Always have stop losses.</p>
+      </div>
+
+      <h3>Stop Loss Rules for Stat Arb</h3>
+
+      <ul>
+        <li><strong>Z-Score Stop:</strong> Exit if |Z| > 3.5 (spread widening, not reverting)</li>
+        <li><strong>Time Stop:</strong> Exit if position is open > 2× half-life (model failing)</li>
+        <li><strong>Dollar Stop:</strong> Exit if drawdown exceeds 50% of expected profit</li>
+        <li><strong>Correlation Breakdown:</strong> Exit if ADF p-value goes above 0.10 (losing cointegration)</li>
+      </ul>
+
+      <div class="section-break"><span>Part 6: Practical Implementation</span></div>
+
+      <h2>Building Your Stat Arb System</h2>
+
+      <p>Step-by-step process for running statistical arbitrage:</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Step 1: Pair Discovery (Screen for Candidates)</div>
+          <div class="accordion-content">
+            <p><strong>Method:</strong> Screen stocks in the same sector or ETFs tracking similar indices</p>
+            <p><strong>Tools:</strong> Python (statsmodels library for ADF test), QuantConnect, or custom scripts</p>
+            <p><strong>Criteria:</strong></p>
+            <ul>
+              <li>Similar market cap (liquidity)</li>
+              <li>Same industry/sector (fundamental link)</li>
+              <li>High correlation (>0.7) as initial filter</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 2: Cointegration Testing</div>
+          <div class="accordion-content">
+            <p><strong>Run ADF test on the spread:</strong></p>
+            <ul>
+              <li>Use 6-12 months of daily data</li>
+              <li>Calculate spread: Asset A - (β × Asset B)</li>
+              <li>ADF p-value < 0.05 = pass</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Reject pairs with p > 0.05</strong> (not cointegrated)</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 3: Backtesting</div>
+          <div class="accordion-content">
+            <p><strong>Test z-score model on historical data:</strong></p>
+            <ul>
+              <li>Entry at |Z| > 2, exit at Z = 0</li>
+              <li>Calculate win rate, avg profit/loss, Sharpe ratio</li>
+              <li>Verify half-life is reasonable (5-30 days)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>If Sharpe > 1.5 and win rate > 60%, proceed to live testing</strong></p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 4: Live Monitoring</div>
+          <div class="accordion-content">
+            <p><strong>Track daily:</strong></p>
+            <ul>
+              <li>Current z-score (entry/exit signals)</li>
+              <li>Spread volatility (risk sizing)</li>
+              <li>Correlation (warning if dropping)</li>
+              <li>Re-run ADF test monthly (check for decointegration)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 Pro Tip: Use Rolling Windows</h4>
+        <p>Don't calculate cointegration once and assume it's stable forever. Use a <strong>rolling 6-month window</strong> to recalculate β and re-test ADF every month.</p>
+        <p>If p-value drifts above 0.10, exit the pair—it's decointegrating.</p>
+      </div>
+
+      <div class="section-break"><span>Key Takeaways</span></div>
+
+      <div class="callout-key">
+        <h4>💡 Statistical Arbitrage Checklist</h4>
+        <ul>
+          <li><strong>Cointegration > Correlation:</strong> Always validate with ADF test (p < 0.05)</li>
+          <li><strong>Z-Score Entry:</strong> |Z| > 2.0 for conservative, > 1.5 for aggressive</li>
+          <li><strong>Stop Losses:</strong> Exit if |Z| > 3.5 or position open > 2× half-life</li>
+          <li><strong>Position Sizing:</strong> Never more than 2-5% per pair (use Kelly/half-Kelly)</li>
+          <li><strong>Diversify Pairs:</strong> Run 5-10 pairs across different sectors</li>
+          <li><strong>Monitor Continuously:</strong> Re-test cointegration monthly, exit if breaking down</li>
+        </ul>
+      </div>
+
+      <h2>Next Steps</h2>
+
+      <p>Statistical arbitrage is a quantitative edge—but it requires discipline. If you execute this correctly, you're trading with mathematical precision instead of hope.</p>
+
+      <p><strong>Ready to go deeper?</strong> Continue to <a href="/curriculum/advanced-mastery/64-macro-regime-framework.html">Lesson #64: Macro Regime Framework</a> to understand how regime changes affect your stat arb models.</p>
+
+    </div>
+
+    <!-- Sidebar (Navigation + Tools) -->
+    <aside class="article-sidebar">
+      <!-- Lesson Navigation -->
+      <nav class="nav-article" aria-label="Lesson Navigation">
+        <div class="nav-item prev">
+          <a href="/curriculum/advanced/62-trading-career-path.html">
+            <span class="nav-label">← Previous</span>
+            <span class="nav-title">Trading Career Path</span>
+          </a>
+        </div>
+        <div class="nav-item next">
+          <a href="/curriculum/advanced-mastery/64-macro-regime-framework.html">
+            <span class="nav-label">Next →</span>
+            <span class="nav-title">Macro Regime Framework</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="lesson-actions">
+        <button id="mark-complete" class="btn btn-primary w-full">✓ Mark as Complete</button>
+        <button id="bookmark-btn" class="btn btn-ghost w-full">🔖 Bookmark</button>
+        <button id="notes-toggle" class="btn btn-ghost w-full">📝 My Notes</button>
+      </div>
+
+      <!-- Related Lessons -->
+      <div class="card">
+        <h3 style="margin:0 0 1rem 0;font-size:1rem">📚 Related Lessons</h3>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li style="margin-bottom:.75rem">
+            <a href="/curriculum/advanced-mastery/64-macro-regime-framework.html" style="color:var(--primary);text-decoration:none">
+              #64: Macro Regime Framework
+            </a>
+          </li>
+          <li style="margin-bottom:.75rem">
+            <a href="/curriculum/advanced-mastery/66-quantitative-strategy-design.html" style="color:var(--primary);text-decoration:none">
+              #66: Quantitative Strategy Design
+            </a>
+          </li>
+          <li>
+            <a href="/curriculum/advanced-mastery/67-machine-learning-trading.html" style="color:var(--primary);text-decoration:none">
+              #67: Machine Learning in Trading
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
   </div>
 </article>
+
+<!-- Notes Panel (Hidden by default) -->
+<div id="notes-panel" class="notes-panel">
+  <div class="notes-header">
+    <h3>📝 My Notes</h3>
+    <button id="notes-close" class="btn btn-ghost btn-sm">Close</button>
+  </div>
+  <div class="notes-content">
+    <textarea id="notes-textarea" placeholder="Write your notes here..."></textarea>
+    <button id="notes-save" class="btn btn-primary">Save Notes</button>
+  </div>
+</div>
+
+<!-- AI Chatbot -->
+<div id="chatbot-container"></div>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> Signal Pilot Labs, Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="/assets/article.js"></script>
+<script src="/assets/tabs.js"></script>
+<script src="/assets/accordion.js"></script>
+<script src="/assets/bookmark.js"></script>
+<script src="/assets/notes.js"></script>
+<script src="/assets/progress.js"></script>
+<script src="/assets/chatbot.js"></script>
+<script src="/assets/auth.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
