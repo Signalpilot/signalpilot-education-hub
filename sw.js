@@ -172,8 +172,11 @@ async function staleWhileRevalidateStrategy(request, cacheName) {
 
   const fetchPromise = fetch(request).then((networkResponse) => {
     if (networkResponse && networkResponse.status === 200) {
-      const cache = caches.open(cacheName);
-      cache.then(c => c.put(request, networkResponse.clone()));
+      // Clone BEFORE using the response (can only read body once)
+      const responseToCache = networkResponse.clone();
+      caches.open(cacheName).then(cache => {
+        cache.put(request, responseToCache);
+      });
     }
     return networkResponse;
   }).catch(() => {
