@@ -1,29 +1,536 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
   <meta charset="utf-8"/>
-  <title>Crypto Market Microstructure — Signal Pilot</title>
-  <meta name="description" content="Crypto markets never close. Funding rates, MEV, wash trading—everything is different. Learn crypto-specific microstructure mechanics.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <!-- AGGRESSIVE CACHE PREVENTION: Forces fresh load every time -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Crypto Market Microstructure: 24/7 Order Flow & MEV — Signal Pilot Learn</title>
+  <meta name="description" content="Crypto markets never close. Master funding rates, CEX vs DEX mechanics, MEV, wash trading detection, and crypto-specific order flow analysis.">
+  <meta name="sp-level" content="Advanced-Mastery">
+  <meta name="sp-order" content="68">
+  <!-- SignalPilot Theme System -->
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <!-- Logger must load first, before other scripts that use it -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+<script src="/assets/structured-data.js" defer></script>
+<script src="/assets/lazy-load.js" defer></script>
+<script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/my-library.html">📚 My Library</a></li>
+      <li><a href="/search.html">🔍 Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button">Light/Dark</button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
 <article class="article">
-  <h1>Crypto Market Microstructure: 24/7 Order Flow</h1>
-  <p><b>Crypto markets never close. Funding rates, MEV, wash trading—everything is different.</b></p>
-  <h2>CEX vs DEX</h2>
-  <p><strong>CEX:</strong> Order books, maker-taker fees, high leverage</p>
-  <p><strong>DEX:</strong> AMMs, liquidity pools, MEV risk</p>
-  <h2>Funding Rates</h2>
-  <p><strong>Positive funding:</strong> Longs pay shorts (overleveraged long → expect squeeze)</p>
-  <p><strong>Negative funding:</strong> Shorts pay longs (overleveraged short → expect squeeze)</p>
-  <div class="key-takeaway">
-    <ul>
-      <li><strong>Funding rates reveal leverage extremes</strong></li>
-      <li><strong>MEV (front-running) exists on DEXs</strong></li>
-      <li><strong>Wash trading common</strong> — verify via spread</li>
-    </ul>
+  <!-- Article Header -->
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/advanced.html">Advanced</a> <span>›</span>
+        <span>Lesson #68</span>
+      </div>
+      <span class="badge">🟣 Advanced-Mastery • Lesson 68 of 82</span>
+      <h1 class="headline xl">Crypto Market Microstructure: 24/7 Order Flow</h1>
+      <div class="meta">Reading time ~16-20 min • Funding Rates, MEV, CEX vs DEX Mechanics</div>
+
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>Bitcoin funding rate hits +0.08% per 8 hours. ETH perpetual is at -0.02%. SOL shows $250M in wash trading volume. A $500K DEX swap just got front-run for $12K in MEV.</b></p>
+
+      <p>Welcome to crypto market microstructure—where markets never close, leverage never sleeps, and the rules are completely different from traditional finance.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 This Isn't TradFi</h4>
+        <p>If you apply stock/futures order flow analysis directly to crypto, you'll get wrecked. Crypto has funding rates (stocks don't), MEV exploitation (impossible in TradFi), wash trading at industrial scale, and 24/7 volatility with no circuit breakers.</p>
+        <p><strong>You need crypto-specific microstructure knowledge to survive.</strong></p>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 What You'll Master</h4>
+        <p>By the end of this lesson, you'll understand:</p>
+        <ul>
+          <li>How funding rates reveal overleveraged positions (and predict squeezes)</li>
+          <li>CEX vs DEX mechanics: Order books vs AMMs vs order flow auctions</li>
+          <li>MEV (Maximal Extractable Value) and how bots front-run your trades</li>
+          <li>How to detect wash trading and fake volume</li>
+          <li>Crypto-specific order flow signals that TradFi traders miss</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 1: Funding Rates—The Hidden Leverage Indicator</span></div>
+
+      <h2>What Funding Rates Actually Tell You</h2>
+
+      <p>Funding rates are the #1 edge in crypto that doesn't exist in stocks or futures. They reveal <em>leverage extremes</em> in real-time.</p>
+
+      <p><strong>How Funding Works:</strong></p>
+
+      <p>In perpetual futures (most popular crypto derivatives), there's no expiration. To keep the perpetual price anchored to spot, exchanges use <strong>funding payments</strong> every 8 hours.</p>
+
+      <div class="callout-info">
+        <h4>📖 Funding Rate Mechanics</h4>
+        <p><strong>Positive Funding (+0.01% to +0.10%):</strong></p>
+        <ul>
+          <li>Longs pay shorts</li>
+          <li>Means: Perp trading above spot (bullish sentiment)</li>
+          <li>Indicates: Overleveraged long positions</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Negative Funding (-0.01% to -0.10%):</strong></p>
+        <ul>
+          <li>Shorts pay longs</li>
+          <li>Means: Perp trading below spot (bearish sentiment)</li>
+          <li>Indicates: Overleveraged short positions</li>
+        </ul>
+      </div>
+
+      <h3>Using Funding to Predict Squeezes</h3>
+
+      <p>Extreme funding rates are <strong>contrarian signals</strong>. When funding gets too high, it means too many traders are on one side—and they're about to get liquidated.</p>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Long Squeeze Setup</button>
+          <button>Short Squeeze Setup</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Overleveraged Longs → Long Squeeze</h3>
+            <p><strong>Signal:</strong> Funding rate > +0.05% (longs paying 0.36%/day!)</p>
+            <p><strong>What's Happening:</strong> Too many retail traders went long with 20-50x leverage</p>
+            <p><strong>Catalyst:</strong> Any price dip triggers liquidations</p>
+            <p><strong>Result:</strong> Cascade of forced selling = flash crash</p>
+            <p style="margin-top:1rem"><strong>Real Example (May 2021):</strong></p>
+            <ul>
+              <li>BTC funding: +0.12% (extremely high)</li>
+              <li>Open interest: $25B+</li>
+              <li>BTC dropped 10% in 30 minutes</li>
+              <li>$4B in longs liquidated</li>
+            </ul>
+          </div>
+          <div class="tab-panel">
+            <h3>Overleveraged Shorts → Short Squeeze</h3>
+            <p><strong>Signal:</strong> Funding rate < -0.05% (shorts paying heavily)</p>
+            <p><strong>What's Happening:</strong> Too many traders shorting with high leverage</p>
+            <p><strong>Catalyst:</strong> Any price pump triggers liquidations</p>
+            <p><strong>Result:</strong> Cascade of forced buying = violent pump</p>
+            <p style="margin-top:1rem"><strong>Real Example (GME-style, July 2023):</strong></p>
+            <ul>
+              <li>SOL funding: -0.08% (extreme short pressure)</li>
+              <li>Short OI: $800M</li>
+              <li>SOL rallied 25% in 4 hours</li>
+              <li>$200M in shorts liquidated</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 Funding Rate Strategy</h4>
+        <p><strong>When funding > +0.05%:</strong> Look for reversal shorts (longs overleveraged)</p>
+        <p><strong>When funding < -0.05%:</strong> Look for reversal longs (shorts overleveraged)</p>
+        <p><strong>When funding near 0%:</strong> Neutral market, trend-following works better</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: CEX vs DEX—Different Mechanics, Different Edges</span></div>
+
+      <h2>Centralized Exchanges (CEX): Traditional Order Books</h2>
+
+      <p>Binance, Bybit, Coinbase—these work like traditional stock exchanges. Order books, maker-taker fees, limit orders.</p>
+
+      <h3>CEX Advantages:</h3>
+      <ul>
+        <li><strong>High Leverage:</strong> Up to 125x on some platforms</li>
+        <li><strong>Deep Liquidity:</strong> Tight spreads on major pairs</li>
+        <li><strong>Order Book Depth:</strong> You can see bids/asks, analyze absorption</li>
+        <li><strong>Low Slippage:</strong> Large orders execute efficiently</li>
+      </ul>
+
+      <h3>CEX Risks:</h3>
+      <ul>
+        <li><strong>Counterparty Risk:</strong> Exchange can freeze funds (FTX, anyone?)</li>
+        <li><strong>KYC Requirements:</strong> Not anonymous</li>
+        <li><strong>Maker-Taker Fees:</strong> 0.02-0.10% per trade</li>
+        <li><strong>Stop-Hunt Manipulation:</strong> Exchanges can see your stop losses</li>
+      </ul>
+
+      <h2>Decentralized Exchanges (DEX): AMMs & MEV</h2>
+
+      <p>Uniswap, Curve, dYdX—these use Automated Market Makers (AMMs) or on-chain order books. Completely different microstructure.</p>
+
+      <h3>How AMMs Work:</h3>
+
+      <p>Instead of an order book, AMMs use <strong>liquidity pools</strong>. Traders swap against a pool of tokens, and the price adjusts based on the constant product formula:</p>
+
+      <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">x × y = k</p>
+
+      <p>Where x = Token A quantity, y = Token B quantity, k = constant</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Example: Swapping on Uniswap</div>
+          <div class="accordion-content">
+            <p><strong>Pool State:</strong> 1000 ETH × 2,000,000 USDC</p>
+            <p><strong>You want to buy:</strong> 10 ETH</p>
+            <p><strong>AMM calculates:</strong></p>
+            <ul>
+              <li>New ETH in pool: 1000 - 10 = 990 ETH</li>
+              <li>k = 1000 × 2,000,000 = 2,000,000,000</li>
+              <li>New USDC: 2,000,000,000 / 990 = 2,020,202 USDC</li>
+              <li><strong>You pay:</strong> 2,020,202 - 2,000,000 = 20,202 USDC</li>
+              <li><strong>Effective price:</strong> $2,020/ETH (vs $2,000 before)</li>
+            </ul>
+            <p style="margin-top:1rem;color:var(--warning)"><strong>Price Impact:</strong> Your trade moved the price 1% because you're trading against a finite pool</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">DEX Advantages</div>
+          <div class="accordion-content">
+            <ul>
+              <li><strong>No Counterparty Risk:</strong> Your keys, your coins</li>
+              <li><strong>Permissionless:</strong> No KYC, anyone can trade</li>
+              <li><strong>Composability:</strong> Can interact with DeFi protocols directly</li>
+              <li><strong>Transparent:</strong> All transactions on-chain, verifiable</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">DEX Risks</div>
+          <div class="accordion-content">
+            <ul>
+              <li><strong>MEV Exploitation:</strong> Bots can front-run/sandwich your trades</li>
+              <li><strong>High Slippage:</strong> Large trades have significant price impact</li>
+              <li><strong>Gas Fees:</strong> Ethereum L1 can cost $50-200 per swap</li>
+              <li><strong>Impermanent Loss:</strong> If you provide liquidity</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: MEV—The Dark Side of DEX Trading</span></div>
+
+      <h2>What is MEV (Maximal Extractable Value)?</h2>
+
+      <p>MEV is profit that bots extract by reordering, inserting, or censoring transactions within a block. It's <strong>legalized front-running</strong>.</p>
+
+      <p>On traditional exchanges, front-running is illegal. On DEXs, it's built into the protocol.</p>
+
+      <h3>Common MEV Attacks:</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Front-Running</button>
+          <button>Sandwich Attacks</button>
+          <button>Back-Running</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Front-Running (Classic MEV)</h3>
+            <p><strong>How It Works:</strong></p>
+            <ol>
+              <li>You submit a buy order for 100 ETH on Uniswap</li>
+              <li>MEV bot sees your pending transaction in the mempool</li>
+              <li>Bot submits a buy order with higher gas → executes first</li>
+              <li>Price increases from bot's buy</li>
+              <li>Your transaction executes at worse price</li>
+              <li>Bot immediately sells to you at inflated price</li>
+            </ol>
+            <p style="margin-top:1rem;color:var(--warning)"><strong>Your loss:</strong> 0.5-2% slippage (stolen by MEV bot)</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Sandwich Attacks (Worse)</h3>
+            <p><strong>How It Works:</strong></p>
+            <ol>
+              <li>Bot detects your swap in mempool</li>
+              <li>Bot places a buy order BEFORE yours (front-run)</li>
+              <li>Your order executes at inflated price</li>
+              <li>Bot immediately sells AFTER your order (back-run)</li>
+              <li>Bot profits from both sides of the sandwich</li>
+            </ol>
+            <p style="margin-top:1rem"><strong>Example:</strong></p>
+            <ul>
+              <li>You try to buy $100K of UNI</li>
+              <li>Bot buys $200K UNI first (price pumps)</li>
+              <li>Your $100K executes at 3% worse price</li>
+              <li>Bot sells $200K UNI (price dumps)</li>
+              <li><strong>Bot profit:</strong> $4,000+</li>
+              <li><strong>Your loss:</strong> $3,000+ in extra slippage</li>
+            </ul>
+          </div>
+          <div class="tab-panel">
+            <h3>Back-Running (Arbitrage MEV)</h3>
+            <p><strong>How It Works:</strong></p>
+            <ol>
+              <li>Large trade creates price discrepancy between DEXs</li>
+              <li>Bot detects arbitrage opportunity</li>
+              <li>Bot executes arbitrage immediately after your trade</li>
+              <li>Bot captures the price difference</li>
+            </ol>
+            <p style="margin-top:1rem"><strong>This is less harmful</strong> (bots are just doing arb), but still extracts value from the ecosystem.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 How to Protect Yourself from MEV</h4>
+        <ul>
+          <li><strong>Use Private RPCs:</strong> Flashbots Protect, MEV Blocker (hides your tx from public mempool)</li>
+          <li><strong>Set Tight Slippage:</strong> Max 0.5% slippage → MEV bots can't profit</li>
+          <li><strong>Split Large Orders:</strong> Break $1M swap into 10× $100K swaps over time</li>
+          <li><strong>Use Aggregators:</strong> 1inch, CowSwap route through best prices + MEV protection</li>
+          <li><strong>Trade on L2s:</strong> Arbitrum, Optimism have lower MEV (faster block times)</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 4: Wash Trading Detection</span></div>
+
+      <h2>How to Spot Fake Volume</h2>
+
+      <p>Crypto exchanges (especially smaller ones) inflate volume with wash trading to appear more liquid than they are.</p>
+
+      <p><strong>Wash trading = trading with yourself to fake activity</strong></p>
+
+      <h3>Red Flags for Wash Trading:</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Suspiciously Wide Spreads Despite High Volume</div>
+          <div class="accordion-content">
+            <p><strong>Legit Exchange:</strong> $1B daily volume → 0.01% spread</p>
+            <p><strong>Wash Trading:</strong> $1B reported volume → 0.5% spread</p>
+            <p><strong>Why:</strong> Wash trades don't provide real liquidity. If spread is wide despite "high volume," it's fake.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Volume Spikes with No Price Movement</div>
+          <div class="accordion-content">
+            <p><strong>Real Volume:</strong> $500M in BTC volume → price moves 2-5%</p>
+            <p><strong>Wash Volume:</strong> $500M reported → price moves 0.1%</p>
+            <p><strong>Test:</strong> If massive volume doesn't move price, it's wash trading</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Identical Trade Sizes Repeating</div>
+          <div class="accordion-content">
+            <p><strong>Pattern:</strong> 1000 trades of exactly 0.5 BTC every 10 seconds</p>
+            <p><strong>Why Suspicious:</strong> Real traders use varied sizes. Bots wash trading use fixed amounts.</p>
+            <p><strong>Tool:</strong> Check time & sales feed for unnatural patterns</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 How to Verify Real Volume</h4>
+        <p>Use <strong>CoinGecko's "Trust Score"</strong> or <strong>Kaiko's Liquidity Index</strong>:</p>
+        <ul>
+          <li><strong>Binance, Coinbase, Kraken:</strong> High trust (real volume)</li>
+          <li><strong>Random tier-3 exchanges:</strong> Low trust (80%+ wash volume)</li>
+        </ul>
+        <p style="margin-top:1rem">If an exchange isn't on CoinMarketCap's "Verified" list, assume volume is inflated.</p>
+      </div>
+
+      <div class="section-break"><span>Part 5: Crypto-Specific Order Flow Signals</span></div>
+
+      <h2>What Works in Crypto That Doesn't in Stocks</h2>
+
+      <h3>1. Funding Rate + Open Interest Combo</h3>
+
+      <p><strong>Signal:</strong> High positive funding + rising open interest</p>
+      <p><strong>Meaning:</strong> New longs entering at leverage → overcrowded trade</p>
+      <p><strong>Trade:</strong> Wait for first sign of weakness, short the top (long squeeze incoming)</p>
+
+      <h3>2. Exchange Inflows/Outflows</h3>
+
+      <p><strong>Whale Alert:</strong> 10,000 BTC flows into Binance</p>
+      <p><strong>Implication:</strong> Whale preparing to sell (bearish)</p>
+      <p><strong>Whale Alert:</strong> 10,000 BTC flows OUT of exchange to cold storage</p>
+      <p><strong>Implication:</strong> Whale accumulating long-term (bullish)</p>
+
+      <h3>3. Liquidation Heatmaps</h3>
+
+      <p>Tools like <strong>Coinglass</strong> show where liquidation clusters sit. If $500M in longs have liquidations at $60K BTC, that level becomes a magnet (stop hunt).</p>
+
+      <div class="callout-key">
+        <h4>💡 Crypto Microstructure Playbook</h4>
+        <ul>
+          <li><strong>Funding extremes (>0.05%):</strong> Fade the trend, play the squeeze</li>
+          <li><strong>Rising OI + no price move:</strong> Coiling spring (big move coming)</li>
+          <li><strong>Exchange inflows:</strong> Bearish (selling pressure)</li>
+          <li><strong>Exchange outflows:</strong> Bullish (accumulation)</li>
+          <li><strong>Liquidation clusters:</strong> Price magnets (expect wicks to those levels)</li>
+        </ul>
+      </div>
+
+      <!-- Quiz Section -->
+      <div class="section-break"><span>Quick Knowledge Check</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Test Your Understanding</h4>
+
+        <div class="quiz-question">
+          <p><strong>BTC perpetual funding rate is +0.08%. What does this tell you?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Bullish signal—everyone is buying, join them</div>
+            <div class="quiz-option" data-correct="true">B) Contrarian bearish—longs overleveraged, squeeze likely</div>
+            <div class="quiz-option" data-correct="false">C) Neutral—funding doesn't matter</div>
+            <div class="quiz-option" data-correct="false">D) Means BTC will go to zero</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Funding > +0.05% means longs are paying shorts heavily → overleveraged long positions. This is a contrarian bearish signal. Any dip can trigger cascading liquidations (long squeeze).
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <!-- Downloadable Resources -->
+      <div class="section-break"><span>Downloadable Resources</span></div>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;border-left:4px solid var(--accent)">
+        <h4 style="margin:0 0 1rem 0">📥 Free Checklist for This Lesson</h4>
+        <p style="margin-bottom:1rem">Use this checklist to analyze funding rates, detect wash trading, and protect yourself from MEV before trading crypto.</p>
+        <a href="/resources/checklists/crypto-microstructure-checklist.pdf" download class="btn btn-primary" style="display:inline-block">
+          Download Crypto Microstructure Checklist (PDF)
+        </a>
+        <p style="margin-top:.75rem;font-size:.9rem;color:var(--muted)">Keep this next to your desk for every crypto trade.</p>
+      </div>
+
+      <h2>Next Steps</h2>
+
+      <p>Crypto microstructure is wild, but if you understand funding rates, MEV, and wash trading, you're ahead of 95% of crypto traders.</p>
+
+      <p><strong>Ready to continue?</strong> Move to <a href="/curriculum/advanced-mastery/69-institutional-order-types.html">Lesson #69: Institutional Order Types</a> to learn how professionals execute large orders without slippage.</p>
+
+    </div>
+
+    <!-- Sidebar (Navigation + Tools) -->
+    <aside class="article-sidebar">
+      <!-- Lesson Navigation -->
+      <nav class="nav-article" aria-label="Lesson Navigation">
+        <div class="nav-item prev">
+          <a href="/curriculum/advanced-mastery/67-machine-learning-trading.html">
+            <span class="nav-label">← Previous</span>
+            <span class="nav-title">Machine Learning in Trading</span>
+          </a>
+        </div>
+        <div class="nav-item next">
+          <a href="/curriculum/advanced-mastery/69-institutional-order-types.html">
+            <span class="nav-label">Next →</span>
+            <span class="nav-title">Institutional Order Types</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="lesson-actions">
+        <button id="mark-complete" class="btn btn-primary w-full">✓ Mark as Complete</button>
+        <button id="bookmark-btn" class="btn btn-ghost w-full">🔖 Bookmark</button>
+        <button id="notes-toggle" class="btn btn-ghost w-full">📝 My Notes</button>
+      </div>
+
+      <!-- Related Lessons -->
+      <div class="card">
+        <h3 style="margin:0 0 1rem 0;font-size:1rem">📚 Related Lessons</h3>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li style="margin-bottom:.75rem">
+            <a href="/curriculum/advanced-mastery/63-statistical-arbitrage.html" style="color:var(--primary);text-decoration:none">
+              #63: Statistical Arbitrage
+            </a>
+          </li>
+          <li style="margin-bottom:.75rem">
+            <a href="/curriculum/advanced-mastery/69-institutional-order-types.html" style="color:var(--primary);text-decoration:none">
+              #69: Institutional Order Types
+            </a>
+          </li>
+          <li>
+            <a href="/curriculum/advanced/56-high-frequency-concepts.html" style="color:var(--primary);text-decoration:none">
+              #56: High-Frequency Trading Concepts
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
   </div>
 </article>
+
+<!-- Notes Panel (Hidden by default) -->
+<div id="notes-panel" class="notes-panel">
+  <div class="notes-header">
+    <h3>📝 My Notes</h3>
+    <button id="notes-close" class="btn btn-ghost btn-sm">Close</button>
+  </div>
+  <div class="notes-content">
+    <textarea id="notes-textarea" placeholder="Write your notes here..."></textarea>
+    <button id="notes-save" class="btn btn-primary">Save Notes</button>
+  </div>
+</div>
+
+<!-- AI Chatbot -->
+<div id="chatbot-container"></div>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> Signal Pilot Labs, Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="/assets/article.js"></script>
+<script src="/assets/tabs.js"></script>
+<script src="/assets/accordion.js"></script>
+<script src="/assets/bookmark.js"></script>
+<script src="/assets/notes.js"></script>
+<script src="/assets/progress.js"></script>
+<script src="/assets/chatbot.js"></script>
+<script src="/assets/auth.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
