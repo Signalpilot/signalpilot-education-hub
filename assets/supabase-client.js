@@ -236,6 +236,12 @@
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
 
+      // Clear UI and reload to show signed-out state
+      logger.log('[Supabase] Signed out successfully, reloading...');
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+
       return { success: true };
     } catch (error) {
       console.error('[Supabase] Sign out error:', error);
@@ -583,38 +589,99 @@
   }
 
   function showUserMenu() {
-    // Create dropdown menu
+    // Remove any existing menu
+    const existingMenu = document.querySelector('.user-menu-dropdown');
+    if (existingMenu) {
+      existingMenu.remove();
+      return; // Toggle off if already open
+    }
+
+    // Create dropdown menu with inline styles for guaranteed visibility
     const menu = document.createElement('div');
     menu.className = 'user-menu-dropdown';
+    menu.style.cssText = `
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background: var(--bg-2, #0c0f1a);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0.75rem;
+      min-width: 220px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+      animation: slideDown 0.2s ease;
+    `;
+
     menu.innerHTML = `
-      <div class="user-menu-content">
-        <div class="user-menu-header">
-          <strong>${currentUser.user_metadata?.user_name || 'User'}</strong>
-          <p>${currentUser.email}</p>
-        </div>
-        <hr>
-        <button onclick="window.supabaseAuth.syncProgressToCloud()">
-          ☁️ Sync Progress Now
-        </button>
-        <button onclick="window.location.href='/account.html'">
-          ⚙️ Account Settings
-        </button>
-        <button onclick="window.supabaseAuth.signOut()">
-          🚪 Sign Out
-        </button>
+      <style>
+        @keyframes slideDown {
+          from { transform: translateY(-10px); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+        .user-menu-header-info {
+          padding: 0.75rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          margin-bottom: 0.5rem;
+        }
+        .user-menu-header-info strong {
+          display: block;
+          color: var(--text, #ecf1ff);
+          font-size: 1rem;
+          margin-bottom: 0.25rem;
+        }
+        .user-menu-header-info p {
+          color: var(--muted, #b7c2d9);
+          font-size: 0.85rem;
+          margin: 0;
+        }
+        .user-menu-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          width: 100%;
+          padding: 0.75rem;
+          border: none;
+          background: transparent;
+          color: var(--text, #ecf1ff);
+          text-align: left;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background 0.2s ease;
+          font-size: 0.95rem;
+          font-family: inherit;
+        }
+        .user-menu-btn:hover {
+          background: rgba(255, 255, 255, 0.08);
+        }
+        .user-menu-btn.danger:hover {
+          background: rgba(239, 68, 68, 0.1);
+          color: #ef4444;
+        }
+      </style>
+      <div class="user-menu-header-info">
+        <strong>${currentUser.user_metadata?.user_name || 'User'}</strong>
+        <p>${currentUser.email}</p>
       </div>
+      <button class="user-menu-btn" onclick="window.supabaseAuth.syncProgressToCloud(); event.stopPropagation();">
+        ☁️ <span>Sync Progress Now</span>
+      </button>
+      <button class="user-menu-btn danger" onclick="if(confirm('Sign out and reload page?')) { window.supabaseAuth.signOut(); } event.stopPropagation();">
+        🚪 <span>Sign Out</span>
+      </button>
     `;
 
     document.body.appendChild(menu);
 
     // Close on click outside
     setTimeout(() => {
-      document.addEventListener('click', function closeMenu(e) {
-        if (!menu.contains(e.target)) {
+      const closeHandler = (e) => {
+        if (!menu.contains(e.target) && !e.target.closest('#auth-button')) {
           menu.remove();
-          document.removeEventListener('click', closeMenu);
+          document.removeEventListener('click', closeHandler);
         }
-      });
+      };
+      document.addEventListener('click', closeHandler);
     }, 100);
   }
 
