@@ -595,23 +595,27 @@
   }
 
   function showUserMenu() {
-    logger.log('[Supabase] showUserMenu called');
+    try {
+      logger.log('[Supabase] 1. showUserMenu called');
 
-    // Check if user is signed in
-    if (!currentUser) {
-      logger.warn('[Supabase] No current user, cannot show menu');
-      return;
-    }
+      // Check if user is signed in
+      if (!currentUser) {
+        logger.warn('[Supabase] No current user, cannot show menu');
+        return;
+      }
+      logger.log('[Supabase] 2. Current user exists:', currentUser.email);
 
-    // Remove any existing menu
-    const existingMenu = document.querySelector('.user-menu-dropdown');
-    if (existingMenu) {
-      logger.log('[Supabase] Removing existing menu');
-      existingMenu.remove();
-      return; // Toggle off if already open
-    }
+      // Remove any existing menu
+      const existingMenu = document.querySelector('.user-menu-dropdown');
+      logger.log('[Supabase] 3. Checked for existing menu:', !!existingMenu);
 
-    logger.log('[Supabase] Creating user menu for:', currentUser.email);
+      if (existingMenu) {
+        logger.log('[Supabase] Removing existing menu');
+        existingMenu.remove();
+        return; // Toggle off if already open
+      }
+
+      logger.log('[Supabase] 4. Creating user menu for:', currentUser.email);
 
     // Create dropdown menu with inline styles for guaranteed visibility
     const menu = document.createElement('div');
@@ -691,7 +695,13 @@
       </button>
     `;
 
+    logger.log('[Supabase] 5. Menu HTML created, appending to body...');
     document.body.appendChild(menu);
+    logger.log('[Supabase] 6. Menu appended! Should be visible now.');
+
+    // Verify it was added
+    const verify = document.querySelector('.user-menu-dropdown');
+    logger.log('[Supabase] 7. Verification - menu in DOM:', !!verify);
 
     // Close on click outside
     setTimeout(() => {
@@ -703,6 +713,11 @@
       };
       document.addEventListener('click', closeHandler);
     }, 100);
+
+    } catch (error) {
+      console.error('[Supabase] ERROR in showUserMenu:', error);
+      logger.log('[Supabase] Full error:', error.stack);
+    }
   }
 
   function showAuthModal(mode = 'signin') {
