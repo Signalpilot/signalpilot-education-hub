@@ -307,8 +307,8 @@
     }
   }
 
-  // Background sync registration (for future use)
-  if ('sync' in registration) {
+  // Check for background sync support (for future use)
+  if ('serviceWorker' in navigator && 'sync' in ServiceWorkerRegistration.prototype) {
     // Will be used for syncing progress to Supabase
     logger.log('[PWA] Background Sync supported');
   }
