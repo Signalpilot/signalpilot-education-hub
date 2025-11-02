@@ -1,82 +1,257 @@
-// Social Sharing Handler
+// Social Sharing - Enhanced with completion milestones
 (function() {
   'use strict';
 
-  // Get current page info
-  function getShareInfo() {
-    const title = document.querySelector('.headline')?.textContent || document.title;
-    const url = window.location.href;
-    const description = document.querySelector('meta[name="description"]')?.content ||
-                       'Learn institutional trading concepts from Signal Pilot';
+  /**
+   * Share on Twitter
+   * @param {string} text - Text to share
+   * @param {string} url - URL to share
+   */
+  function shareOnTwitter(text, url) {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank', 'width=550,height=420');
 
-    return { title, url, description };
+    // Track analytics
+    if (window.trackEvent) {
+      window.trackEvent('social_share', { platform: 'twitter', type: text.includes('completed') ? 'completion' : 'lesson' });
+    }
   }
 
-  // Share handlers
-  const shareHandlers = {
-    twitter: (info) => {
-      const text = `${info.title}\n\n${info.url}\n\nvia @SignalPilot`;
-      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-    },
+  /**
+   * Share on LinkedIn
+   * @param {string} url - URL to share
+   */
+  function shareOnLinkedIn(url) {
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    window.open(linkedInUrl, '_blank', 'width=550,height=420');
 
-    reddit: (info) => {
-      return `https://reddit.com/submit?url=${encodeURIComponent(info.url)}&title=${encodeURIComponent(info.title)}`;
-    },
+    // Track analytics
+    if (window.trackEvent) {
+      window.trackEvent('social_share', { platform: 'linkedin' });
+    }
+  }
 
-    linkedin: (info) => {
-      return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(info.url)}`;
-    },
+  /**
+   * Copy link to clipboard
+   * @param {string} url - URL to copy
+   */
+  function copyToClipboard(url) {
+    navigator.clipboard.writeText(url).then(() => {
+      showShareToast('✅ Link copied to clipboard!');
 
-    hackernews: (info) => {
-      return `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(info.url)}&t=${encodeURIComponent(info.title)}`;
-    },
+      // Track analytics
+      if (window.trackEvent) {
+        window.trackEvent('social_share', { platform: 'clipboard' });
+      }
+    }).catch(() => {
+      showShareToast('❌ Could not copy link');
+    });
+  }
 
-    copy: async (info) => {
-      try {
-        await navigator.clipboard.writeText(info.url);
+  /**
+   * Show toast notification
+   */
+  function showShareToast(message) {
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, rgba(91, 138, 255, 0.95), rgba(118, 221, 255, 0.95));
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10000;
+      font-weight: 600;
+      animation: slideIn 0.3s ease;
+    `;
+    toast.textContent = message;
 
-        // Show toast
-        const toast = document.getElementById('share-toast');
-        if (toast) {
-          toast.style.display = 'block';
-          setTimeout(() => {
-            toast.style.display = 'none';
-          }, 3000);
-        }
+    document.body.appendChild(toast);
 
-        return null; // Don't open new window
-      } catch (err) {
-        console.error('Failed to copy:', err);
-        return null;
+    setTimeout(() => {
+      toast.style.animation = 'slideIn 0.3s ease reverse';
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+
+  /**
+   * Check for completion milestones and offer sharing
+   */
+  function checkCompletionMilestones() {
+    const completed = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed')).length;
+    const milestones = [1, 5, 12, 21, 27, 42];
+    const milestoneNames = {
+      1: 'first lesson',
+      5: '5 lessons',
+      12: 'Beginner Tier',
+      21: 'halfway through',
+      27: 'Intermediate Tier',
+      42: 'all 42 lessons - Master Trader status'
+    };
+
+    // Check if just hit a milestone
+    if (milestones.includes(completed)) {
+      // Check if haven't shared this milestone yet
+      const sharedKey = `sp_shared_milestone_${completed}`;
+      if (!localStorage.getItem(sharedKey)) {
+        setTimeout(() => {
+          showSharePrompt(completed, milestoneNames[completed]);
+        }, 2000); // Show after 2 seconds
       }
     }
+  }
+
+  /**
+   * Show share prompt for milestones
+   */
+  function showSharePrompt(count, milestoneName) {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      animation: fadeIn 0.3s ease;
+    `;
+
+    const card = document.createElement('div');
+    card.style.cssText = `
+      background: linear-gradient(135deg, #0a0e1a, #1a2332);
+      border: 2px solid rgba(91, 138, 255, 0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    `;
+
+    card.innerHTML = `
+      <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
+      <h2 style="margin: 0 0 1rem 0; color: #5b8aff;">Milestone Achieved!</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">You've completed ${milestoneName}!</p>
+      <p style="color: var(--muted); margin-bottom: 2rem;">Share your progress and inspire others</p>
+
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
+        <button id="share-twitter" class="btn btn-primary">
+          Share on Twitter
+        </button>
+        <button id="share-linkedin" class="btn btn-primary">
+          Share on LinkedIn
+        </button>
+      </div>
+
+      <button id="share-later" class="btn btn-ghost btn-sm">Maybe later</button>
+    `;
+
+    modal.appendChild(card);
+    document.body.appendChild(modal);
+
+    const shareText = `Just completed ${milestoneName} at Signal Pilot Education! 🚀 ${count}/42 lessons down. #Trading #Education`;
+    const shareUrl = 'https://education.signalpilot.io';
+
+    document.getElementById('share-twitter').onclick = () => {
+      shareOnTwitter(shareText, shareUrl);
+      localStorage.setItem(`sp_shared_milestone_${count}`, 'true');
+      modal.remove();
+    };
+
+    document.getElementById('share-linkedin').onclick = () => {
+      shareOnLinkedIn(shareUrl);
+      localStorage.setItem(`sp_shared_milestone_${count}`, 'true');
+      modal.remove();
+    };
+
+    document.getElementById('share-later').onclick = () => {
+      modal.remove();
+    };
+
+    // Close on background click
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.remove();
+      }
+    };
+  }
+
+  /**
+   * Add share buttons to lesson pages
+   */
+  function addShareButtons() {
+    // Only add to lesson pages
+    if (!window.location.pathname.includes('/curriculum/')) return;
+
+    const nav = document.querySelector('.nav-article');
+    if (!nav) return;
+
+    // Create share button group
+    const shareGroup = document.createElement('div');
+    shareGroup.style.cssText = 'display: flex; gap: 0.5rem; align-items: center; margin-left: auto;';
+
+    // Twitter button
+    const twitterBtn = document.createElement('button');
+    twitterBtn.className = 'btn btn-ghost btn-sm';
+    twitterBtn.innerHTML = '🐦 Share';
+    twitterBtn.title = 'Share on Twitter';
+    twitterBtn.onclick = () => {
+      const text = `Just learned about "${document.title.split('—')[0].trim()}" on Signal Pilot Education 📚`;
+      shareOnTwitter(text, window.location.href);
+    };
+
+    // LinkedIn button
+    const linkedinBtn = document.createElement('button');
+    linkedinBtn.className = 'btn btn-ghost btn-sm';
+    linkedinBtn.innerHTML = '💼';
+    linkedinBtn.title = 'Share on LinkedIn';
+    linkedinBtn.onclick = () => shareOnLinkedIn(window.location.href);
+
+    // Copy link button
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'btn btn-ghost btn-sm';
+    copyBtn.innerHTML = '🔗';
+    copyBtn.title = 'Copy link';
+    copyBtn.onclick = () => copyToClipboard(window.location.href);
+
+    shareGroup.appendChild(twitterBtn);
+    shareGroup.appendChild(linkedinBtn);
+    shareGroup.appendChild(copyBtn);
+
+    // Insert before the "Next Lesson" button
+    const nextBtn = nav.querySelector('.btn-primary');
+    if (nextBtn) {
+      nav.insertBefore(shareGroup, nextBtn);
+    } else {
+      nav.appendChild(shareGroup);
+    }
+  }
+
+  // Initialize
+  function init() {
+    addShareButtons();
+    checkCompletionMilestones();
+    logger.log('[Social Share] Initialized');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Export public API
+  window.socialShare = {
+    shareOnTwitter,
+    shareOnLinkedIn,
+    copyToClipboard,
+    checkMilestones: checkCompletionMilestones
   };
 
-  // Attach click handlers
-  document.addEventListener('DOMContentLoaded', () => {
-    const shareButtons = document.querySelectorAll('[data-share]');
-
-    shareButtons.forEach(button => {
-      button.addEventListener('click', async (e) => {
-        e.preventDefault();
-
-        const shareType = button.dataset.share;
-        const handler = shareHandlers[shareType];
-
-        if (handler) {
-          const info = getShareInfo();
-          const url = await handler(info);
-
-          if (url) {
-            window.open(url, '_blank', 'width=600,height=400');
-          }
-
-          // Track share event
-          if (window.plausible) {
-            window.plausible('Social Share', { props: { platform: shareType } });
-          }
-        }
-      });
-    });
-  });
 })();
