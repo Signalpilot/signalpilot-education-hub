@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Professional Risk Management Systems: Institutional Framework — Signal Pilot</title>
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<article class="article">
+  <h1>Professional Risk Management Systems</h1>
+  <p><b>Retail focuses on entries. Professionals focus on risk. This is why they survive and you don't.</b></p>
+
+  <h2>The Professional Risk Stack (5 Layers)</h2>
+
+  <p><strong>Layer 1: Position-Level Risk (Per Trade)</strong></p>
+  <ul>
+    <li>1% max risk per trade</li>
+    <li>Stop-loss placed immediately at entry</li>
+    <li>Position size = (Account × 1%) / (Entry - Stop)</li>
+  </ul>
+
+  <p><strong>Layer 2: Portfolio-Level Risk (Aggregate Heat)</strong></p>
+  <ul>
+    <li>Max 5% total risk across all positions (correlation-adjusted)</li>
+    <li>If adding new position pushes total risk &gt; 5% → skip trade</li>
+  </ul>
+
+  <p><strong>Layer 3: Daily Loss Limit</strong></p>
+  <ul>
+    <li>Stop trading if down 2% in single day</li>
+    <li>Prevents revenge trading spiral</li>
+  </ul>
+
+  <p><strong>Layer 4: Drawdown Threshold</strong></p>
+  <ul>
+    <li>If account down 15% from peak → stop trading, review strategy</li>
+    <li>Either edge is broken or execution is broken (fix before continuing)</li>
+  </ul>
+
+  <p><strong>Layer 5: Black Swan Protection</strong></p>
+  <ul>
+    <li>Always keep 20-30% cash (never full leverage)</li>
+    <li>Buy far OTM puts quarterly (portfolio insurance, 0.5-1% cost)</li>
+    <li>Size down 50% during high-correlation regimes (diversification fails)</li>
+  </ul>
+
+  <h2>The Risk Dashboard (Track Daily)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Formula</th>
+        <th>Action Threshold</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Portfolio Heat</td>
+        <td>Σ position risks (correlation-adjusted)</td>
+        <td>&gt; 5% = stop adding positions</td>
+      </tr>
+      <tr>
+        <td>Daily P&L</td>
+        <td>Today's gains/losses</td>
+        <td>-2% = stop trading today</td>
+      </tr>
+      <tr>
+        <td>Drawdown</td>
+        <td>(Peak - Current) / Peak</td>
+        <td>&gt; 15% = pause, review</td>
+      </tr>
+      <tr>
+        <td>Win Streak</td>
+        <td>Consecutive winners</td>
+        <td>&gt; 5 = check for overconfidence</td>
+      </tr>
+      <tr>
+        <td>Loss Streak</td>
+        <td>Consecutive losers</td>
+        <td>&gt; 3 = check for tilt/revenge trading</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="key-takeaway">
+    <h4>Professional Risk Principles</h4>
+    <ul>
+      <li><strong>5-layer risk system:</strong> Position → Portfolio → Daily → Drawdown → Black Swan</li>
+      <li><strong>1% per trade, 5% total portfolio heat</strong> (correlation-adjusted)</li>
+      <li><strong>Daily loss limit = -2%</strong> (prevents revenge trading)</li>
+      <li><strong>Drawdown threshold = 15%</strong> (pause and review strategy)</li>
+      <li><strong>Always keep 20-30% cash</strong> (never full leverage)</li>
+    </ul>
+  </div>
+
+  <div class="related-lessons">
+    <h4>Related Lessons</h4>
+    <ul>
+      <li><a href="/curriculum/intermediate-bridge/46-advanced-risk-management.html">Lesson 46: Advanced Risk Management</a></li>
+      <li><a href="/curriculum/intermediate-bridge/47-portfolio-construction-kelly.html">Lesson 47: Portfolio Construction & Kelly</a></li>
+    </ul>
+  </div>
+</article>
+</body>
+</html>
