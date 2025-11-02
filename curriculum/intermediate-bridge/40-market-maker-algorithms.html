@@ -1,821 +1,495 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
   <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
   <title>Market Maker Algorithms: How They Profit From You — Signal Pilot</title>
   <meta name="description" content="Every market order you place is filled by a market maker. Learn spread capture, adverse selection, and market maker manipulation tactics.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
-  <link rel="icon" type="image/png" href="/assets/favicon.png">
 </head>
 <body>
-
-<header class="header">
-  <div class="container header-content">
-    <a href="/" class="logo">Signal Pilot</a>
-    <button class="hamburger" aria-label="Toggle menu">☰</button>
-    <nav class="nav">
-      <a href="/#curriculum">Curriculum</a>
-      <a href="/library.html">My Library</a>
-      <a href="/about.html">About</a>
-      <div class="auth-buttons">
-        <button id="login-btn" class="btn btn-secondary">Login</button>
-        <button id="signup-btn" class="btn btn-primary">Sign Up Free</button>
-        <button id="logout-btn" class="btn btn-secondary" style="display:none;">Logout</button>
-      </div>
-    </nav>
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand"><span>Signal Pilot</span></a>
+    <nav id="mainnav"><ul><li><a href="/">Education</a></li><li><a href="/my-library.html">My Library</a></li></ul></nav>
   </div>
 </header>
 
-<div class="breadcrumbs">
-  <div class="container">
-    <a href="/">Home</a> &raquo;
-    <a href="/#curriculum">Curriculum</a> &raquo;
-    <a href="/#tier-2">Intermediate-Bridge</a> &raquo;
-    Lesson 40
-  </div>
-</div>
-
-<main class="container lesson-container">
-  <aside class="lesson-sidebar">
-    <div class="progress-indicator">
-      <div class="progress-ring">
-        <svg width="120" height="120">
-          <circle class="progress-ring-circle-bg" stroke="#2a2a3e" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
-          <circle class="progress-ring-circle" stroke="url(#gradient)" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
-          <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%">
-              <stop offset="0%" style="stop-color:#5b8aff;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <div class="progress-text">
-          <span class="progress-percent">0%</span>
-        </div>
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> › <a href="/intermediate.html">Intermediate</a> › <span>Lesson #40</span>
       </div>
-      <p class="progress-label">Lesson Progress</p>
+      <span class="badge">🟡 Intermediate • Lesson 40</span>
+      <h1 class="headline xl">Market Maker Algorithms: How They Profit From You</h1>
+      <div class="meta">26-30 min read • Market Microstructure</div>
     </div>
+  </header>
 
-    <div class="lesson-nav">
-      <h4>Quick Navigation</h4>
-      <a href="#part1">Spread Capture</a>
-      <a href="#part2">Adverse Selection</a>
-      <a href="#part3">Inventory Management</a>
-      <a href="#part4">Manipulation Tactics</a>
-      <a href="#part5">PFOF & Front-Running</a>
-      <a href="#part6">Trading Against MMs</a>
-      <a href="#quiz">Quiz</a>
-    </div>
+  <div class="wrap article-grid">
+    <div class="prose">
+      <p><b>Every market order you place is filled by a market maker. And they profit from EVERY transaction.</b></p>
 
-    <div class="lesson-actions">
-      <button id="bookmark-btn" class="btn btn-secondary btn-block">
-        <span class="bookmark-icon">🔖</span>
-        <span class="bookmark-text">Bookmark</span>
-      </button>
-      <button onclick="window.print()" class="btn btn-secondary btn-block">
-        📄 Save as PDF
-      </button>
-    </div>
-  </aside>
+      <p>When you hit "Buy Market Order," someone is on the other side: Citadel, Virtu, Jane Street. These firms make billions by being the counterparty to retail trades—whether markets go up, down, or sideways.</p>
 
-  <article class="article lesson-content">
-    <div class="lesson-header">
-      <div class="lesson-meta">
-        <span class="lesson-tier">🔵 Intermediate-Bridge</span>
-        <span class="lesson-number">Lesson 40 of 82</span>
-      </div>
-      <h1>Market Maker Algorithms: The Other Side of Your Trade</h1>
-      <p class="lesson-subtitle">Every market order you place is filled by a market maker. And they profit from EVERY transaction. Understanding how they operate—and manipulate—is the difference between getting fleeced and getting fair fills.</p>
-
-      <div class="lesson-stats">
-        <span>📖 ~5,100 words</span>
-        <span>⏱️ ~26 min read</span>
-        <span>📊 Intermediate-Bridge</span>
-      </div>
-    </div>
-
-    <div class="section-break"><span>Introduction</span></div>
-
-    <p><strong>Market makers provide liquidity. They also profit from your impatience, your market orders, and your lack of understanding.</strong></p>
-
-    <p>When you hit "Buy Market Order," someone is on the other side of that trade: a market maker. Citadel, Virtu, Jane Street, Two Sigma—these firms make billions by being the counterparty to retail trades.</p>
-
-    <div class="callout callout-danger">
-      <h4>⚠️ The Harsh Reality</h4>
-      <p><strong>Citadel Securities made $7.5 billion in revenue in 2022.</strong> They don't make money by hoping stocks go up. They make money on <em>every single trade</em> they facilitate—whether the market goes up, down, or sideways.</p>
-      <p><strong>How?</strong> Spread capture, adverse selection management, inventory manipulation, and Payment for Order Flow (PFOF).</p>
-    </div>
-
-    <p>This lesson breaks down <strong>exactly how market makers profit</strong> and teaches you to trade in ways that minimize their edge over you.</p>
-
-    <div class="section-break"><span id="part1">Part 1: Spread Capture — The Core Business Model</span></div>
-
-    <h2>Buy the Bid, Sell the Ask, Repeat</h2>
-
-    <p>The market maker's core profit strategy is <strong>spread capture</strong>: buy at the bid price, sell at the ask price, pocket the difference.</p>
-
-    <p><strong>Example:</strong></p>
-    <ul>
-      <li><strong>Bid:</strong> $100.00 (the price buyers are willing to pay)</li>
-      <li><strong>Ask:</strong> $100.05 (the price sellers are asking)</li>
-      <li><strong>Spread:</strong> $0.05</li>
-    </ul>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Step-by-Step: How a Market Maker Captures the Spread</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Step 1: Market Maker Posts Quotes</strong></p>
-          <ul>
-            <li>Citadel posts bid: $100.00 (willing to buy 10,000 shares)</li>
-            <li>Citadel posts ask: $100.05 (willing to sell 10,000 shares)</li>
-          </ul>
-
-          <p><strong>Step 2: Retail Trader Sells (Market Order)</strong></p>
-          <ul>
-            <li>You place a market sell order for 500 shares</li>
-            <li>You get filled at the <strong>bid</strong>: $100.00</li>
-            <li>Citadel now owns 500 shares at $100.00</li>
-          </ul>
-
-          <p><strong>Step 3: Another Retail Trader Buys (Market Order)</strong></p>
-          <ul>
-            <li>Another trader places a market buy order for 500 shares</li>
-            <li>They get filled at the <strong>ask</strong>: $100.05</li>
-            <li>Citadel sells them the 500 shares they just bought from you</li>
-          </ul>
-
-          <p><strong>Citadel's Profit:</strong></p>
-          <ul>
-            <li>Bought from you: 500 shares × $100.00 = $50,000</li>
-            <li>Sold to other trader: 500 shares × $100.05 = $50,025</li>
-            <li><strong>Profit: $25 (risk-free, in seconds)</strong></li>
-          </ul>
-
-          <p><strong>Scale:</strong> Citadel does this <em>billions</em> of times per day across thousands of tickers. $0.05 per share × 10 billion shares = <strong>$500 million per day</strong>.</p>
-        </div>
-      </div>
-    </div>
-
-    <h3>Why the Spread Exists</h3>
-
-    <p>The spread compensates market makers for two risks:</p>
-    <ul>
-      <li><strong>Inventory risk:</strong> Holding shares for seconds/minutes before finding a counterparty</li>
-      <li><strong>Adverse selection risk:</strong> Trading with informed traders who know something the MM doesn't</li>
-    </ul>
-
-    <div class="tabs">
-      <div class="tabs-nav">
-        <button class="active">Liquid Stocks (Tight Spreads)</button>
-        <button>Illiquid Stocks (Wide Spreads)</button>
-      </div>
-      <div class="tabs-content">
-        <div class="tab-panel active">
-          <h3>High Liquidity = Narrow Spreads</h3>
-
-          <p><strong>Example: AAPL (Apple)</strong></p>
-          <ul>
-            <li>Bid: $175.00</li>
-            <li>Ask: $175.01</li>
-            <li><strong>Spread: $0.01 (0.006%)</strong></li>
-          </ul>
-
-          <p><strong>Why so tight?</strong></p>
-          <ul>
-            <li>Millions of shares traded per minute → easy to find counterparties</li>
-            <li>Low inventory risk → MMs hold shares for milliseconds</li>
-            <li>High competition among MMs → they compete on price</li>
-          </ul>
-
-          <p><strong>MM Profit Strategy:</strong> Tiny margins, massive volume. Citadel makes $0.01/share but trades 100 million AAPL shares/day = <strong>$1 million/day on AAPL alone</strong>.</p>
-        </div>
-
-        <div class="tab-panel">
-          <h3>Low Liquidity = Wide Spreads</h3>
-
-          <p><strong>Example: Small Cap Stock (Ticker: XYZ)</strong></p>
-          <ul>
-            <li>Bid: $10.00</li>
-            <li>Ask: $10.50</li>
-            <li><strong>Spread: $0.50 (5%)</strong></li>
-          </ul>
-
-          <p><strong>Why so wide?</strong></p>
-          <ul>
-            <li>Low volume → hard to find counterparties</li>
-            <li>High inventory risk → MMs may hold shares for hours/days</li>
-            <li>High adverse selection risk → informed traders target illiquid stocks</li>
-          </ul>
-
-          <p><strong>MM Profit Strategy:</strong> Wide margins, lower volume. The spread compensates for risk of being stuck with inventory.</p>
-
-          <div class="callout callout-warning">
-            <h4>⚠️ Retail Trap: Market Orders on Illiquid Stocks</h4>
-            <p><strong>Scenario:</strong> You see a hot penny stock pumped on Reddit. You place a market buy order for 1,000 shares.</p>
-            <p><strong>Result:</strong> You get filled at the <strong>ask ($10.50)</strong>, but the stock's "real" midpoint is $10.25. You just paid 2.4% above fair value.</p>
-            <p><strong>Lesson:</strong> <em>Always</em> use limit orders on illiquid stocks.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-break"><span id="part2">Part 2: Adverse Selection — The Market Maker's Nightmare</span></div>
-
-    <h2>When Smart Money Trades, Market Makers Lose</h2>
-
-    <p><strong>Adverse selection</strong> happens when informed traders—hedge funds, prop traders, insiders—trade with market makers because they have information the MM doesn't.</p>
-
-    <p><strong>Example:</strong></p>
-    <ul>
-      <li>A hedge fund knows Apple is about to beat earnings (leaked info, proprietary model, etc.)</li>
-      <li>They aggressively buy AAPL at the ask ($175.01) seconds before the announcement</li>
-      <li>Market makers fill the orders (they have no choice—they're posting liquidity)</li>
-      <li>Earnings announced: AAPL jumps to $180</li>
-      <li>Market makers are now <em>short</em> AAPL at $175, bleeding losses</li>
-    </ul>
-
-    <div class="callout callout-danger">
-      <h4>⚠️ Why MMs Hate Informed Flow</h4>
-      <p>When a market maker fills an order from an informed trader, they're <strong>picking up pennies in front of a steamroller</strong>. The spread they earned ($0.01) is wiped out by the adverse move ($5.00).</p>
-      <p><strong>Solution:</strong> MMs use algorithms to <em>detect</em> informed flow and <em>widen spreads</em> or <em>pull liquidity</em> when they sense danger.</p>
-    </div>
-
-    <h3>How Market Makers Detect Informed Traders</h3>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Signal #1: Order Size (Large Orders = Informed)</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Logic:</strong> Retail traders buy 10-100 shares. Institutions buy 10,000-100,000 shares.</p>
-          <p><strong>MM Response:</strong> When a 50,000 share market buy order hits, the MM's algo:</p>
-          <ul>
-            <li>Widens the spread (ask jumps from $100.05 → $100.10)</li>
-            <li>Fills part of the order at higher prices (slippage)</li>
-            <li>Hedges immediately (buys futures to offset risk)</li>
-          </ul>
-          <p><strong>Lesson:</strong> Large market orders get <em>terrible</em> fills. Institutions use algorithms (TWAP, VWAP, iceberg orders) to hide their size.</p>
-        </div>
+      <div class="callout-warning">
+        <h4>🚨 The Harsh Reality</h4>
+        <p><strong>Citadel Securities made $7.5 billion in revenue in 2022.</strong> They don't make money by hoping stocks go up. They make money on <em>every single trade</em> they facilitate.</p>
+        <p><strong>How?</strong> Spread capture, adverse selection management, inventory manipulation, and Payment for Order Flow (PFOF).</p>
       </div>
 
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Signal #2: Order Velocity (Rapid Buying = Informed)</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Logic:</strong> If buy orders spike suddenly, someone knows something.</p>
-          <p><strong>Example:</strong> Normally, AAPL trades 100,000 shares/minute. Suddenly, 500,000 shares are bought in 10 seconds.</p>
-          <p><strong>MM Response:</strong></p>
-          <ul>
-            <li>Algo detects "toxicity" (high adverse selection probability)</li>
-            <li>Pulls liquidity (removes ask quotes temporarily)</li>
-            <li>Reprices higher when liquidity returns</li>
-          </ul>
-          <p><strong>Lesson:</strong> Market makers don't blindly provide liquidity—they adjust in real-time based on order flow.</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Signal #3: Time of Day (Pre-Market = Informed)</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Logic:</strong> Retail traders sleep. If there's heavy trading at 6:00 AM, it's likely institutions reacting to overnight news.</p>
-          <p><strong>MM Response:</strong> Spreads are <em>wider</em> in pre-market and after-hours because:</p>
-          <ul>
-            <li>Lower volume → harder to hedge</li>
-            <li>Higher adverse selection risk → informed traders dominate these hours</li>
-          </ul>
-          <p><strong>Example:</strong> AAPL spread during market hours: $0.01. AAPL spread at 7:00 AM: $0.10 (10x wider).</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-break"><span id="part3">Part 3: Inventory Management — Staying Delta-Neutral</span></div>
-
-    <h2>Market Makers Don't Want Directional Risk</h2>
-
-    <p>Market makers are <strong>not investors</strong>. They don't want to be long or short. They want to be <strong>delta-neutral</strong>—making money on the spread, not on price movements.</p>
-
-    <p><strong>Problem:</strong> Order flow is random. Sometimes more buyers than sellers (MM goes short). Sometimes more sellers than buyers (MM goes long).</p>
-
-    <p><strong>Solution:</strong> Market makers use <strong>inventory management algorithms</strong> to quickly offload unwanted positions.</p>
-
-    <h3>How MMs Rebalance Inventory</h3>
-
-    <div class="tabs">
-      <div class="tabs-nav">
-        <button class="active">When MM is Long (Too Much Inventory)</button>
-        <button>When MM is Short (Negative Inventory)</button>
-      </div>
-      <div class="tabs-content">
-        <div class="tab-panel active">
-          <h3>MM is Long → Need to Sell</h3>
-
-          <p><strong>Scenario:</strong> Citadel bought 100,000 AAPL shares from retail sellers. Now they're long 100,000 shares and want to get flat.</p>
-
-          <p><strong>Tactic #1: Skew Quotes (Make Selling Attractive)</strong></p>
-          <ul>
-            <li><strong>Before:</strong> Bid $175.00, Ask $175.05</li>
-            <li><strong>After (skewed):</strong> Bid $174.95, Ask $175.00</li>
-            <li><strong>Effect:</strong> Ask is now more attractive → retail buys → Citadel offloads inventory</li>
-          </ul>
-
-          <p><strong>Tactic #2: Cross with Dark Pools</strong></p>
-          <ul>
-            <li>Citadel routes the 100,000 shares to their dark pool</li>
-            <li>Matches with another institution's buy order</li>
-            <li>Offloads inventory instantly, no market impact</li>
-          </ul>
-
-          <p><strong>Tactic #3: Hedge with Futures</strong></p>
-          <ul>
-            <li>Citadel sells SPY futures (or AAPL futures if available)</li>
-            <li>Now delta-neutral: long 100K AAPL shares, short equivalent futures</li>
-            <li>Slowly unwinds both positions over time</li>
-          </ul>
-        </div>
-
-        <div class="tab-panel">
-          <h3>MM is Short → Need to Buy</h3>
-
-          <p><strong>Scenario:</strong> Citadel sold 100,000 AAPL shares to retail buyers. Now they're short 100,000 shares and need to cover.</p>
-
-          <p><strong>Tactic #1: Skew Quotes (Make Buying Attractive)</strong></p>
-          <ul>
-            <li><strong>Before:</strong> Bid $175.00, Ask $175.05</li>
-            <li><strong>After (skewed):</strong> Bid $175.05, Ask $175.10</li>
-            <li><strong>Effect:</strong> Bid is now higher → retail sells → Citadel covers short</li>
-          </ul>
-
-          <p><strong>Tactic #2: Internalize with Other Retail Orders</strong></p>
-          <ul>
-            <li>Citadel waits for retail sell orders to come in</li>
-            <li>Matches them internally (doesn't send to exchange)</li>
-            <li>Covers short position without moving the market</li>
-          </ul>
-
-          <p><strong>Tactic #3: Buy from Dark Pools</strong></p>
-          <ul>
-            <li>Citadel buys 100,000 AAPL shares from a dark pool</li>
-            <li>Covers short instantly, no price impact</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout callout-info">
-      <h4>💡 Why This Matters to You</h4>
-      <p><strong>When you see the bid/ask move in real-time, it's not random—it's market makers rebalancing inventory.</strong></p>
-      <p><strong>Example:</strong> You notice AAPL's bid suddenly jumps from $175.00 → $175.05. This likely means a market maker is short and needs to buy. If you're a seller, you might get a better fill by waiting 30 seconds for the skew to normalize.</p>
-    </div>
-
-    <div class="section-break"><span id="part4">Part 4: Market Maker Manipulation Tactics</span></div>
-
-    <h2>The Dark Side of Market Making</h2>
-
-    <p>Not all market maker tactics are legal or ethical. Some firms use <strong>manipulation techniques</strong> to maximize profits at retail's expense.</p>
-
-    <h3>Tactic #1: Spoofing</h3>
-
-    <p><strong>What it is:</strong> Placing large fake orders to create the <em>illusion</em> of supply or demand, then canceling before they execute.</p>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Example: Spoofing to Push Price Down</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Step 1: MM Posts Fake Sell Order</strong></p>
-          <ul>
-            <li>Current ask: $100.05 (500 shares)</li>
-            <li>MM posts: <strong>50,000 shares at $100.10</strong></li>
-          </ul>
-
-          <p><strong>Step 2: Retail Reacts</strong></p>
-          <ul>
-            <li>Retail traders see massive sell wall at $100.10</li>
-            <li>They think: "Resistance ahead, price won't go higher"</li>
-            <li>They sell their shares at $100.00</li>
-          </ul>
-
-          <p><strong>Step 3: MM Cancels Fake Order & Buys</strong></p>
-          <ul>
-            <li>MM cancels the 50,000 share sell order (never intended to sell)</li>
-            <li>MM buys the shares retail just sold at $100.00</li>
-            <li>Price recovers to $100.20</li>
-            <li><strong>MM profit: Bought at $100, sells later at $100.20</strong></li>
-          </ul>
-
-          <p><strong>Legality:</strong> <em>Highly illegal</em> (per Dodd-Frank Act), but hard to prove. Regulators must show <em>intent</em> to deceive.</p>
-        </div>
-      </div>
-    </div>
-
-    <h3>Tactic #2: Layering</h3>
-
-    <p><strong>What it is:</strong> Placing multiple orders on one side of the book to create fake pressure, then trading on the other side.</p>
-
-    <p><strong>Example:</strong></p>
-    <ul>
-      <li>MM posts 10 fake buy orders at $99.90, $99.85, $99.80 (creating fake support)</li>
-      <li>Retail sees "strong buying interest" and buys at $100.05</li>
-      <li>MM sells to retail at $100.05, then cancels all fake buy orders</li>
-      <li><strong>Result:</strong> Retail bought the top, MM sold into strength</li>
-    </ul>
-
-    <div class="callout callout-danger">
-      <h4>⚠️ Real Case: Navinder Singh Sarao (2010 Flash Crash)</h4>
-      <p><strong>Who:</strong> Solo trader operating from his parents' house in London</p>
-      <p><strong>Tactic:</strong> Used layering and spoofing to manipulate S&P 500 futures</p>
-      <p><strong>Impact:</strong> Contributed to the May 6, 2010 Flash Crash (Dow fell 1,000 points in minutes)</p>
-      <p><strong>Punishment:</strong> Arrested in 2015, extradited to the US, sentenced to 1 year home confinement</p>
-      <p><strong>Lesson:</strong> If a guy in his basement can cause a flash crash, imagine what well-funded MMs can do.</p>
-    </div>
-
-    <h3>Tactic #3: Quote Stuffing</h3>
-
-    <p><strong>What it is:</strong> Rapidly placing and canceling thousands of orders to flood the order book and slow down competitors.</p>
-
-    <p><strong>Why MMs do it:</strong></p>
-    <ul>
-      <li>Creates "noise" that confuses HFT algos from competing firms</li>
-      <li>Slows down data feeds → gives the MM's own algos a latency advantage</li>
-      <li>Makes the order book harder to read → retail hesitates → MM gets better fills</li>
-    </ul>
-
-    <p><strong>Example:</strong> In 2010, studies found that <strong>70% of all market orders were canceled</strong> within milliseconds—most attributed to quote stuffing.</p>
-
-    <div class="callout callout-warning">
-      <h4>⚠️ How to Spot Quote Stuffing</h4>
-      <p><strong>Sign #1:</strong> Order book shows huge size at multiple levels, but it keeps disappearing</p>
-      <p><strong>Sign #2:</strong> Bid/ask spread is tight, but orders don't execute (phantom liquidity)</p>
-      <p><strong>Defense:</strong> Use limit orders with longer time-in-force (IOC, FOK avoid getting gamed by quote stuffers)</p>
-    </div>
-
-    <div class="section-break"><span id="part5">Part 5: Payment for Order Flow (PFOF) — How Citadel Wins</span></div>
-
-    <h2>Why "Free" Trading Isn't Free</h2>
-
-    <p><strong>Payment for Order Flow (PFOF)</strong> is the practice where brokers (Robinhood, Webull, TD Ameritrade) sell your order to market makers (Citadel, Virtu) instead of routing it to public exchanges.</p>
-
-    <p><strong>The Deal:</strong></p>
-    <ul>
-      <li>You place a trade on Robinhood (commission-free)</li>
-      <li>Robinhood sells your order to Citadel for $0.002/share</li>
-      <li>Citadel fills your order and pockets the spread</li>
-    </ul>
-
-    <div class="tabs">
-      <div class="tabs-nav">
-        <button class="active">How Robinhood Makes Money (PFOF)</button>
-        <button>How Citadel Makes Money (PFOF)</button>
-        <button>How You Lose Money (PFOF)</button>
-      </div>
-      <div class="tabs-content">
-        <div class="tab-panel active">
-          <h3>Robinhood's Business Model</h3>
-
-          <p><strong>Revenue Source:</strong> Payment for Order Flow (75% of Robinhood's revenue in 2021)</p>
-
-          <p><strong>The Math:</strong></p>
-          <ul>
-            <li>Robinhood has 15 million users</li>
-            <li>Each user trades 100 shares/month on average</li>
-            <li>Total: 1.5 billion shares/month</li>
-            <li>Citadel pays Robinhood $0.002/share</li>
-            <li><strong>Robinhood revenue: $3 million/month = $36 million/year</strong></li>
-          </ul>
-
-          <p><strong>Why Robinhood loves PFOF:</strong> They get paid <em>more</em> when you trade <em>more</em>, which is why they gamify trading (confetti animations, push notifications, "free stock" promotions).</p>
-        </div>
-
-        <div class="tab-panel">
-          <h3>Citadel's Business Model</h3>
-
-          <p><strong>Why Citadel pays for order flow:</strong> Retail order flow is <strong>uninformed</strong> (low adverse selection risk), making it highly profitable.</p>
-
-          <p><strong>The Math:</strong></p>
-          <ul>
-            <li>Citadel buys 1.5 billion shares/month from Robinhood</li>
-            <li>Average spread captured: $0.01/share (bid-ask spread is $0.02, Citadel captures half)</li>
-            <li><strong>Citadel profit: $15 million/month = $180 million/year</strong></li>
-            <li>Minus payment to Robinhood ($3M/month) = <strong>$144M/year net profit</strong></li>
-          </ul>
-
-          <p><strong>Why retail flow is valuable:</strong> Retail traders use market orders, don't hide size, and trade predictably (buy high, sell low). Easy money for MMs.</p>
-        </div>
-
-        <div class="tab-panel">
-          <h3>How You Lose Money</h3>
-
-          <p><strong>The Hidden Cost:</strong> You don't pay commissions, but you pay via <strong>price improvement failure</strong>.</p>
-
-          <p><strong>Example:</strong></p>
-          <ul>
-            <li>NBBO (National Best Bid/Offer): Bid $100.00, Ask $100.02</li>
-            <li>You place a market buy order on Robinhood</li>
-            <li>Robinhood routes to Citadel (doesn't send to public exchange)</li>
-            <li>Citadel fills you at $100.02 (the ask)</li>
-            <li><strong>But:</strong> On the public exchange, there was a seller willing to sell at $100.01</li>
-            <li><strong>You overpaid by $0.01/share</strong></li>
-          </ul>
-
-          <p><strong>Scale:</strong> If you buy 1,000 shares, you overpaid by $10. Over 100 trades/year = <strong>$1,000/year in hidden costs</strong>.</p>
-
-          <div class="callout callout-danger">
-            <h4>⚠️ SEC Study: PFOF Costs Retail $1.5 Billion/Year</h4>
-            <p><strong>Finding:</strong> A 2020 SEC study found that retail traders on PFOF brokers (Robinhood, Webull) received <strong>worse execution quality</strong> than traders on non-PFOF brokers (Fidelity, Vanguard).</p>
-            <p><strong>Cost:</strong> On average, $0.01-$0.02 worse per share—totaling $1.5 billion/year across all retail traders.</p>
-            <p><strong>Lesson:</strong> "Free" trading isn't free. You pay via worse fills.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3>Latency Arbitrage via PFOF</h3>
-
-    <p>The most insidious aspect of PFOF: <strong>market makers see your order before it hits the exchange</strong>, giving them a latency advantage to front-run you.</p>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>Example: How Citadel Front-Runs Your Order</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Step 1: You Place a Market Buy Order</strong></p>
-          <ul>
-            <li>You buy 1,000 shares of AAPL at market on Robinhood</li>
-            <li>Current NBBO: Bid $175.00, Ask $175.02</li>
-          </ul>
-
-          <p><strong>Step 2: Robinhood Sends Order to Citadel</strong></p>
-          <ul>
-            <li>Robinhood doesn't route to NYSE—routes to Citadel instead</li>
-            <li>Citadel receives your order 2 milliseconds before public exchanges</li>
-          </ul>
-
-          <p><strong>Step 3: Citadel Front-Runs</strong></p>
-          <ul>
-            <li>Citadel's algo sees your 1,000 share buy coming</li>
-            <li>Citadel buys 1,000 AAPL shares on NYSE at $175.00 (the bid)</li>
-            <li>Citadel then sells to you at $175.02 (the ask)</li>
-            <li><strong>Citadel profit: $20 risk-free</strong></li>
-          </ul>
-
-          <p><strong>Why it's legal:</strong> Citadel claims they "provided liquidity" and "improved" your price (you paid the NBBO ask, not worse). But they <em>knew</em> your order was coming, which is a form of <strong>information asymmetry</strong>.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-break"><span id="part6">Part 6: How to Trade Against Market Makers</span></div>
-
-    <h2>Defense Strategies for Retail Traders</h2>
-
-    <p>You can't eliminate market maker edge, but you can <strong>minimize</strong> it. Here's how professionals trade to avoid getting fleeced.</p>
-
-    <h3>Strategy #1: Always Use Limit Orders</h3>
-
-    <p><strong>Rule:</strong> Never use market orders unless execution speed matters more than price.</p>
-
-    <p><strong>Why:</strong> Limit orders let <em>you</em> set the price, not the market maker.</p>
-
-    <p><strong>Example:</strong></p>
-    <ul>
-      <li>NBBO: Bid $100.00, Ask $100.05</li>
-      <li><strong>Bad:</strong> Market buy → filled at $100.05</li>
-      <li><strong>Good:</strong> Limit buy at $100.02 → wait for seller, save $0.03/share</li>
-    </ul>
-
-    <div class="callout callout-success">
-      <h4>💡 Pro Tip: Use Midpoint Limit Orders</h4>
-      <p><strong>Tactic:</strong> Place limit orders at the <em>midpoint</em> of the bid-ask spread.</p>
-      <p><strong>Example:</strong> Bid $100.00, Ask $100.04 → Midpoint = $100.02. Place limit buy at $100.02.</p>
-      <p><strong>Benefit:</strong> You split the spread with the MM instead of giving them the entire edge.</p>
-    </div>
-
-    <h3>Strategy #2: Trade During Liquid Hours</h3>
-
-    <p><strong>Rule:</strong> Trade between 10:00 AM - 3:00 PM ET (avoid first/last hour and after-hours).</p>
-
-    <p><strong>Why:</strong></p>
-    <ul>
-      <li>Spreads are tightest during peak liquidity hours</li>
-      <li>More competition among MMs → better fills</li>
-      <li>Lower adverse selection risk → MMs don't widen spreads as much</li>
-    </ul>
-
-    <p><strong>Example:</strong></p>
-    <ul>
-      <li>AAPL spread at 10:00 AM: $0.01</li>
-      <li>AAPL spread at 9:31 AM (market open): $0.05 (5x wider)</li>
-      <li>AAPL spread at 6:00 PM (after-hours): $0.15 (15x wider)</li>
-    </ul>
-
-    <h3>Strategy #3: Avoid PFOF Brokers (Or Route to IEX)</h3>
-
-    <p><strong>Rule:</strong> Use brokers that <em>don't</em> sell order flow (Fidelity, Vanguard, Interactive Brokers).</p>
-
-    <p><strong>Why:</strong> PFOF brokers route to Citadel, giving MMs a latency advantage. Non-PFOF brokers route to public exchanges where you get price priority.</p>
-
-    <p><strong>Alternative:</strong> If stuck with Robinhood, route orders to <strong>IEX (Investors Exchange)</strong>—a public exchange designed to eliminate latency arbitrage.</p>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <strong>How to Route to IEX on Interactive Brokers</strong>
-          <span class="accordion-icon">+</span>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Step 1:</strong> Open order entry ticket</p>
-          <p><strong>Step 2:</strong> Click "Route" dropdown</p>
-          <p><strong>Step 3:</strong> Select "IEX" (Investors Exchange)</p>
-          <p><strong>Step 4:</strong> Place limit order</p>
-          <p><strong>Benefit:</strong> IEX has a "speed bump" (350 microseconds delay) that prevents HFTs and market makers from front-running you.</p>
-        </div>
-      </div>
-    </div>
-
-    <h3>Strategy #4: Don't Chase—Let the Market Come to You</h3>
-
-    <p><strong>Rule:</strong> If your limit order doesn't fill immediately, don't chase by raising your limit price.</p>
-
-    <p><strong>Why:</strong> Market makers <em>want</em> you to chase. They intentionally pull liquidity to force you to pay more.</p>
-
-    <p><strong>Example:</strong></p>
-    <ul>
-      <li>You place limit buy at $100.02</li>
-      <li>Ask jumps to $100.10 (MM pulled liquidity)</li>
-      <li><strong>Bad move:</strong> Cancel and rebuy at $100.10 (you just got played)</li>
-      <li><strong>Good move:</strong> Wait 30 seconds. Ask will likely return to $100.05 once MM realizes you won't chase.</li>
-    </ul>
-
-    <div class="section-break"><span id="quiz">Quiz: Test Your Understanding</span></div>
-
-    <div class="quiz">
-      <h4>🎮 Market Maker Mastery Check</h4>
-
-      <div class="quiz-question">
-        <p><strong>1. AAPL bid/ask is $175.00 / $175.05. You place a market sell order for 500 shares. What price do you get?</strong></p>
-        <div class="quiz-options">
-          <div class="quiz-option" data-correct="true">
-            A) $175.00 (the bid)
-          </div>
-          <div class="quiz-option" data-correct="false">
-            B) $175.05 (the ask)
-          </div>
-          <div class="quiz-option" data-correct="false">
-            C) $175.025 (the midpoint)
-          </div>
-        </div>
-        <div class="quiz-feedback">
-          <p><strong>Correct!</strong> Market sell orders are filled at the <strong>bid price</strong> ($175.00). Market makers buy from you at the bid and sell to others at the ask, capturing the spread.</p>
-          <p><strong>Lesson:</strong> Market orders <em>always</em> give the market maker the edge. Use limit orders to avoid this.</p>
-        </div>
-      </div>
-
-      <div class="quiz-question">
-        <p><strong>2. You see a huge sell order (50,000 shares) appear at $100.10, but it disappears before anyone can fill it. What just happened?</strong></p>
-        <div class="quiz-options">
-          <div class="quiz-option" data-correct="false">
-            A) A large institution changed their mind
-          </div>
-          <div class="quiz-option" data-correct="true">
-            B) Spoofing—a market maker posted a fake order to manipulate price
-          </div>
-          <div class="quiz-option" data-correct="false">
-            C) High-frequency trader testing liquidity
-          </div>
-        </div>
-        <div class="quiz-feedback">
-          <p><strong>Correct!</strong> This is <strong>spoofing</strong>—placing large fake orders to create the illusion of supply/demand, then canceling before execution.</p>
-          <p><strong>Why MMs do it:</strong> The fake sell wall at $100.10 scares retail into selling at $100.00. The MM then buys at $100.00 and cancels the fake order.</p>
-          <p><strong>Legality:</strong> Highly illegal, but hard to prove. The MM can claim they "changed their mind."</p>
-        </div>
-      </div>
-
-      <div class="quiz-question">
-        <p><strong>3. You trade on Robinhood (PFOF broker). NBBO is $100.00 / $100.02. You place a market buy. Citadel fills you at $100.02. Did you get a fair price?</strong></p>
-        <div class="quiz-options">
-          <div class="quiz-option" data-correct="false">
-            A) Yes—you paid the NBBO ask, so it's fair
-          </div>
-          <div class="quiz-option" data-correct="true">
-            B) No—there might have been a better price on a public exchange
-          </div>
-          <div class="quiz-option" data-correct="false">
-            C) Yes—Robinhood is commission-free, so you saved money
-          </div>
-        </div>
-        <div class="quiz-feedback">
-          <p><strong>Correct!</strong> Even though you paid the NBBO ask ($100.02), there might have been sellers at $100.01 on NYSE or Nasdaq. But Robinhood routed to Citadel instead of the exchange, so you <em>didn't get price priority</em>.</p>
-          <p><strong>Hidden cost:</strong> Over hundreds of trades, these $0.01 overages add up to hundreds or thousands of dollars per year.</p>
-          <p><strong>Defense:</strong> Use non-PFOF brokers (Fidelity, Interactive Brokers) or route to IEX.</p>
-        </div>
-      </div>
-
-      <button class="btn btn-primary quiz-submit">Check Answers</button>
-      <div class="quiz-results"></div>
-    </div>
-
-    <div class="section-break"><span>Key Takeaways</span></div>
-
-    <div class="key-takeaway">
-      <h4>💡 Understanding Market Makers = Better Fills</h4>
+      <p><strong>In this lesson:</strong></p>
       <ul>
-        <li><strong>Spread capture</strong> is the MM's core profit model: buy bid, sell ask, repeat billions of times.</li>
-        <li><strong>Adverse selection</strong> = informed traders cost MMs money, so MMs widen spreads when they detect "toxic" flow.</li>
-        <li><strong>Inventory management:</strong> MMs skew quotes, use dark pools, and hedge with futures to stay delta-neutral.</li>
-        <li><strong>Spoofing, layering, quote stuffing</strong> = illegal-but-common manipulation tactics MMs use.</li>
-        <li><strong>PFOF</strong> = "free" trading isn't free. You pay via worse fills and latency arbitrage.</li>
-        <li><strong>Defense:</strong> Use limit orders, trade during liquid hours, avoid PFOF brokers, route to IEX.</li>
+        <li>Spread Capture—The Core Business Model</li>
+        <li>Adverse Selection—When Smart Money Trades</li>
+        <li>Inventory Management—Staying Delta-Neutral</li>
+        <li>Manipulation Tactics (spoofing, layering, quote stuffing)</li>
+        <li>Payment for Order Flow (PFOF)—How Citadel Wins</li>
+        <li>Defense Strategies for Retail Traders</li>
       </ul>
+
+      <div class="section-break"><span>Part 1: Spread Capture — The Core Business Model</span></div>
+
+      <h2>Buy the Bid, Sell the Ask, Repeat</h2>
+
+      <p>The market maker's core profit strategy is <strong>spread capture</strong>: buy at the bid price, sell at the ask price, pocket the difference.</p>
+
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li><strong>Bid:</strong> $100.00 (price buyers are willing to pay)</li>
+        <li><strong>Ask:</strong> $100.05 (price sellers are asking)</li>
+        <li><strong>Spread:</strong> $0.05</li>
+      </ul>
+
+      <p><strong>How It Works:</strong></p>
+      <ol>
+        <li>Citadel posts bid: $100.00 (willing to buy 10,000 shares)</li>
+        <li>Citadel posts ask: $100.05 (willing to sell 10,000 shares)</li>
+        <li>You place market sell order for 500 shares → filled at $100.00</li>
+        <li>Another trader places market buy → filled at $100.05</li>
+        <li><strong>Citadel's profit: $25 (risk-free, in seconds)</strong></li>
+      </ol>
+
+      <p><strong>Scale:</strong> Citadel does this <em>billions</em> of times per day. $0.05 per share × 10 billion shares = <strong>$500 million per day</strong>.</p>
+
+      <h3>Why the Spread Exists</h3>
+
+      <p>The spread compensates market makers for two risks:</p>
+      <ul>
+        <li><strong>Inventory risk:</strong> Holding shares for seconds/minutes before finding a counterparty</li>
+        <li><strong>Adverse selection risk:</strong> Trading with informed traders who know something the MM doesn't</li>
+      </ul>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Liquid Stocks (Tight Spreads)</button>
+          <button>Illiquid Stocks (Wide Spreads)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>High Liquidity = Narrow Spreads</h3>
+            <p><strong>Example: AAPL (Apple)</strong></p>
+            <ul>
+              <li>Bid: $175.00, Ask: $175.01</li>
+              <li><strong>Spread: $0.01 (0.006%)</strong></li>
+            </ul>
+            <p><strong>Why so tight?</strong> Millions of shares traded per minute → easy to find counterparties. MMs compete on price.</p>
+            <p><strong>MM Strategy:</strong> Tiny margins, massive volume. Citadel makes $0.01/share but trades 100M AAPL shares/day = <strong>$1M/day on AAPL alone</strong>.</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Low Liquidity = Wide Spreads</h3>
+            <p><strong>Example: Small Cap Stock</strong></p>
+            <ul>
+              <li>Bid: $10.00, Ask: $10.50</li>
+              <li><strong>Spread: $0.50 (5%)</strong></li>
+            </ul>
+            <p><strong>Why so wide?</strong> Low volume → hard to find counterparties. High inventory risk → MMs may hold shares for hours/days.</p>
+            <div class="callout-warning">
+              <h4>⚠️ Retail Trap: Market Orders on Illiquid Stocks</h4>
+              <p>You see a hot penny stock pumped on Reddit. You place a market buy for 1,000 shares. You get filled at the <strong>ask ($10.50)</strong>, but the midpoint is $10.25. You just paid 2.4% above fair value.</p>
+              <p><strong>Lesson:</strong> Always use limit orders on illiquid stocks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 2: Adverse Selection</span></div>
+
+      <h2>When Smart Money Trades, Market Makers Lose</h2>
+
+      <p><strong>Adverse selection</strong> happens when informed traders—hedge funds, prop traders, insiders—trade with market makers because they have information the MM doesn't.</p>
+
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>Hedge fund knows Apple is about to beat earnings</li>
+        <li>They aggressively buy AAPL at the ask ($175.01) seconds before announcement</li>
+        <li>Market makers fill the orders (they're posting liquidity)</li>
+        <li>Earnings announced: AAPL jumps to $180</li>
+        <li>Market makers are now <em>short</em> AAPL at $175, bleeding losses</li>
+      </ul>
+
+      <div class="callout-danger">
+        <h4>⚠️ Why MMs Hate Informed Flow</h4>
+        <p>The spread they earned ($0.01) is wiped out by the adverse move ($5.00). They're <strong>picking up pennies in front of a steamroller</strong>.</p>
+        <p><strong>Solution:</strong> MMs use algorithms to <em>detect</em> informed flow and <em>widen spreads</em> or <em>pull liquidity</em> when they sense danger.</p>
+      </div>
+
+      <h3>How Market Makers Detect Informed Traders</h3>
+
+      <p><strong>Signal #1: Order Size</strong></p>
+      <p>Retail traders buy 10-100 shares. Institutions buy 10,000-100,000 shares. When a 50,000 share market buy hits, the MM's algo:</p>
+      <ul>
+        <li>Widens the spread (ask jumps from $100.05 → $100.10)</li>
+        <li>Fills part of the order at higher prices (slippage)</li>
+        <li>Hedges immediately (buys futures to offset risk)</li>
+      </ul>
+
+      <p><strong>Signal #2: Order Velocity</strong></p>
+      <p>If buy orders spike suddenly, someone knows something. Example: AAPL normally trades 100,000 shares/minute. Suddenly, 500,000 shares bought in 10 seconds.</p>
+      <p><strong>MM Response:</strong> Algo detects "toxicity" → pulls liquidity → reprices higher.</p>
+
+      <p><strong>Signal #3: Time of Day</strong></p>
+      <p>Retail traders sleep. Heavy trading at 6:00 AM = institutions reacting to overnight news.</p>
+      <p><strong>MM Response:</strong> Spreads are <em>wider</em> in pre-market. Example: AAPL spread during market hours: $0.01. At 7:00 AM: $0.10 (10x wider).</p>
+
+      <div class="section-break"><span>Part 3: Inventory Management</span></div>
+
+      <h2>Market Makers Don't Want Directional Risk</h2>
+
+      <p>Market makers are <strong>not investors</strong>. They want to be <strong>delta-neutral</strong>—making money on the spread, not on price movements.</p>
+
+      <p><strong>Problem:</strong> Order flow is random. Sometimes more buyers (MM goes short). Sometimes more sellers (MM goes long).</p>
+
+      <p><strong>Solution:</strong> Market makers use <strong>inventory management algorithms</strong> to quickly offload unwanted positions.</p>
+
+      <h3>How MMs Rebalance Inventory</h3>
+
+      <p><strong>When MM is Long (Too Much Inventory):</strong></p>
+      <ul>
+        <li><strong>Tactic #1:</strong> Skew quotes (lower ask to encourage buying)</li>
+        <li><strong>Tactic #2:</strong> Cross with dark pools (offload to institutions)</li>
+        <li><strong>Tactic #3:</strong> Hedge with futures (short SPY futures to neutralize)</li>
+      </ul>
+
+      <p><strong>When MM is Short (Negative Inventory):</strong></p>
+      <ul>
+        <li><strong>Tactic #1:</strong> Skew quotes (raise bid to encourage selling)</li>
+        <li><strong>Tactic #2:</strong> Internalize with other retail orders (match internally)</li>
+        <li><strong>Tactic #3:</strong> Buy from dark pools</li>
+      </ul>
+
+      <div class="callout-info">
+        <h4>💡 Why This Matters to You</h4>
+        <p><strong>When you see the bid/ask move in real-time, it's not random—it's market makers rebalancing inventory.</strong></p>
+        <p>Example: AAPL's bid suddenly jumps from $175.00 → $175.05. This likely means a MM is short and needs to buy. If you're a seller, you might get a better fill by waiting 30 seconds.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Market Maker Manipulation Tactics</span></div>
+
+      <h2>The Dark Side of Market Making</h2>
+
+      <p>Not all market maker tactics are legal or ethical. Some firms use <strong>manipulation techniques</strong> to maximize profits at retail's expense.</p>
+
+      <h3>Tactic #1: Spoofing</h3>
+
+      <p><strong>What it is:</strong> Placing large fake orders to create the <em>illusion</em> of supply or demand, then canceling before they execute.</p>
+
+      <p><strong>Example:</strong></p>
+      <ol>
+        <li>MM posts fake sell order: <strong>50,000 shares at $100.10</strong></li>
+        <li>Retail sees massive sell wall → thinks "resistance ahead"</li>
+        <li>Retail sells their shares at $100.00</li>
+        <li>MM cancels the 50,000 share sell order (never intended to sell)</li>
+        <li>MM buys the shares retail just sold at $100.00</li>
+        <li>Price recovers to $100.20</li>
+        <li><strong>MM profit: Bought at $100, sells later at $100.20</strong></li>
+      </ol>
+
+      <p><strong>Legality:</strong> <em>Highly illegal</em> (Dodd-Frank Act), but hard to prove. Regulators must show <em>intent</em> to deceive.</p>
+
+      <h3>Tactic #2: Layering</h3>
+
+      <p><strong>What it is:</strong> Placing multiple orders on one side of the book to create fake pressure, then trading on the other side.</p>
+
+      <p><strong>Example:</strong> MM posts 10 fake buy orders at $99.90, $99.85, $99.80 (creating fake support). Retail sees "strong buying interest" and buys at $100.05. MM sells to retail, then cancels all fake buy orders.</p>
+
+      <div class="callout-danger">
+        <h4>⚠️ Real Case: Navinder Singh Sarao (2010 Flash Crash)</h4>
+        <p><strong>Who:</strong> Solo trader from his parents' house in London</p>
+        <p><strong>Tactic:</strong> Used layering and spoofing to manipulate S&P 500 futures</p>
+        <p><strong>Impact:</strong> Contributed to May 6, 2010 Flash Crash (Dow fell 1,000 points in minutes)</p>
+        <p><strong>Punishment:</strong> Arrested 2015, sentenced to 1 year home confinement</p>
+        <p><strong>Lesson:</strong> If a guy in his basement can cause a flash crash, imagine what well-funded MMs can do.</p>
+      </div>
+
+      <h3>Tactic #3: Quote Stuffing</h3>
+
+      <p><strong>What it is:</strong> Rapidly placing and canceling thousands of orders to flood the order book and slow down competitors.</p>
+
+      <p><strong>Why MMs do it:</strong></p>
+      <ul>
+        <li>Creates "noise" that confuses HFT algos from competing firms</li>
+        <li>Slows down data feeds → gives MM's own algos a latency advantage</li>
+        <li>Makes order book harder to read → retail hesitates → MM gets better fills</li>
+      </ul>
+
+      <p><strong>Stats:</strong> In 2010, studies found <strong>70% of all market orders were canceled</strong> within milliseconds—most attributed to quote stuffing.</p>
+
+      <div class="section-break"><span>Part 5: Payment for Order Flow (PFOF)</span></div>
+
+      <h2>Why "Free" Trading Isn't Free</h2>
+
+      <p><strong>Payment for Order Flow (PFOF)</strong> is the practice where brokers (Robinhood, Webull) sell your order to market makers (Citadel, Virtu) instead of routing it to public exchanges.</p>
+
+      <p><strong>The Deal:</strong></p>
+      <ul>
+        <li>You place a trade on Robinhood (commission-free)</li>
+        <li>Robinhood sells your order to Citadel for $0.002/share</li>
+        <li>Citadel fills your order and pockets the spread</li>
+      </ul>
+
+      <h3>How Robinhood Makes Money</h3>
+
+      <p><strong>Revenue Source:</strong> Payment for Order Flow (75% of Robinhood's revenue in 2021)</p>
+
+      <p><strong>The Math:</strong></p>
+      <ul>
+        <li>Robinhood has 15 million users</li>
+        <li>Each user trades 100 shares/month on average</li>
+        <li>Total: 1.5 billion shares/month</li>
+        <li>Citadel pays Robinhood $0.002/share</li>
+        <li><strong>Robinhood revenue: $3M/month = $36M/year</strong></li>
+      </ul>
+
+      <p><strong>Why Robinhood loves PFOF:</strong> They get paid <em>more</em> when you trade <em>more</em> (confetti animations, push notifications, "free stock" promotions).</p>
+
+      <h3>How Citadel Makes Money</h3>
+
+      <p><strong>Why Citadel pays for order flow:</strong> Retail order flow is <strong>uninformed</strong> (low adverse selection risk), making it highly profitable.</p>
+
+      <p><strong>The Math:</strong></p>
+      <ul>
+        <li>Citadel buys 1.5 billion shares/month from Robinhood</li>
+        <li>Average spread captured: $0.01/share</li>
+        <li><strong>Citadel profit: $15M/month = $180M/year</strong></li>
+        <li>Minus payment to Robinhood ($3M/month) = <strong>$144M/year net profit</strong></li>
+      </ul>
+
+      <h3>How You Lose Money</h3>
+
+      <p><strong>The Hidden Cost:</strong> You don't pay commissions, but you pay via <strong>price improvement failure</strong>.</p>
+
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>NBBO: Bid $100.00, Ask $100.02</li>
+        <li>You place market buy on Robinhood</li>
+        <li>Robinhood routes to Citadel (doesn't send to public exchange)</li>
+        <li>Citadel fills you at $100.02 (the ask)</li>
+        <li><strong>But:</strong> On the public exchange, there was a seller at $100.01</li>
+        <li><strong>You overpaid by $0.01/share</strong></li>
+      </ul>
+
+      <p><strong>Scale:</strong> 1,000 shares = overpaid $10. Over 100 trades/year = <strong>$1,000/year in hidden costs</strong>.</p>
+
+      <div class="callout-danger">
+        <h4>⚠️ SEC Study: PFOF Costs Retail $1.5 Billion/Year</h4>
+        <p>A 2020 SEC study found that retail traders on PFOF brokers received <strong>worse execution quality</strong> than traders on non-PFOF brokers (Fidelity, Vanguard).</p>
+        <p><strong>Cost:</strong> On average, $0.01-$0.02 worse per share—totaling <strong>$1.5 billion/year</strong> across all retail traders.</p>
+      </div>
+
+      <h3>Latency Arbitrage via PFOF</h3>
+
+      <p>The most insidious aspect: <strong>market makers see your order before it hits the exchange</strong>, giving them a latency advantage to front-run you.</p>
+
+      <p><strong>Example:</strong></p>
+      <ol>
+        <li>You buy 1,000 AAPL shares at market on Robinhood</li>
+        <li>Robinhood sends order to Citadel (not NYSE)</li>
+        <li>Citadel receives your order 2 milliseconds before public exchanges</li>
+        <li>Citadel's algo sees your 1,000 share buy coming</li>
+        <li>Citadel buys 1,000 AAPL on NYSE at $175.00 (the bid)</li>
+        <li>Citadel then sells to you at $175.02 (the ask)</li>
+        <li><strong>Citadel profit: $20 risk-free</strong></li>
+      </ol>
+
+      <p><strong>Why it's legal:</strong> Citadel claims they "provided liquidity" and you paid the NBBO ask (not worse). But they <em>knew</em> your order was coming—<strong>information asymmetry</strong>.</p>
+
+      <div class="section-break"><span>Part 6: How to Trade Against Market Makers</span></div>
+
+      <h2>Defense Strategies for Retail Traders</h2>
+
+      <p>You can't eliminate market maker edge, but you can <strong>minimize</strong> it.</p>
+
+      <h3>Strategy #1: Always Use Limit Orders</h3>
+
+      <p><strong>Rule:</strong> Never use market orders unless execution speed matters more than price.</p>
+
+      <p><strong>Why:</strong> Limit orders let <em>you</em> set the price, not the market maker.</p>
+
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>NBBO: Bid $100.00, Ask $100.05</li>
+        <li><strong>Bad:</strong> Market buy → filled at $100.05</li>
+        <li><strong>Good:</strong> Limit buy at $100.02 → wait for seller, save $0.03/share</li>
+      </ul>
+
+      <div class="callout-success">
+        <h4>💡 Pro Tip: Use Midpoint Limit Orders</h4>
+        <p><strong>Tactic:</strong> Place limit orders at the <em>midpoint</em> of the bid-ask spread.</p>
+        <p>Bid $100.00, Ask $100.04 → Midpoint = $100.02. Place limit buy at $100.02.</p>
+        <p><strong>Benefit:</strong> You split the spread with the MM instead of giving them the entire edge.</p>
+      </div>
+
+      <h3>Strategy #2: Trade During Liquid Hours</h3>
+
+      <p><strong>Rule:</strong> Trade between 10:00 AM - 3:00 PM ET (avoid first/last hour and after-hours).</p>
+
+      <p><strong>Why:</strong> Spreads are tightest during peak liquidity hours. More competition among MMs → better fills.</p>
+
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>AAPL spread at 10:00 AM: $0.01</li>
+        <li>AAPL spread at 9:31 AM (market open): $0.05 (5x wider)</li>
+        <li>AAPL spread at 6:00 PM (after-hours): $0.15 (15x wider)</li>
+      </ul>
+
+      <h3>Strategy #3: Avoid PFOF Brokers (Or Route to IEX)</h3>
+
+      <p><strong>Rule:</strong> Use brokers that <em>don't</em> sell order flow (Fidelity, Vanguard, Interactive Brokers).</p>
+
+      <p><strong>Why:</strong> PFOF brokers route to Citadel, giving MMs a latency advantage. Non-PFOF brokers route to public exchanges where you get price priority.</p>
+
+      <p><strong>Alternative:</strong> If stuck with Robinhood, route orders to <strong>IEX (Investors Exchange)</strong>—a public exchange designed to eliminate latency arbitrage.</p>
+
+      <p><strong>How to Route to IEX on Interactive Brokers:</strong></p>
+      <ol>
+        <li>Open order entry ticket</li>
+        <li>Click "Route" dropdown</li>
+        <li>Select "IEX" (Investors Exchange)</li>
+        <li>Place limit order</li>
+      </ol>
+
+      <p><strong>Benefit:</strong> IEX has a "speed bump" (350 microseconds delay) that prevents HFTs and MMs from front-running you.</p>
+
+      <h3>Strategy #4: Don't Chase—Let the Market Come to You</h3>
+
+      <p><strong>Rule:</strong> If your limit order doesn't fill immediately, don't chase by raising your limit price.</p>
+
+      <p><strong>Why:</strong> Market makers <em>want</em> you to chase. They intentionally pull liquidity to force you to pay more.</p>
+
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>You place limit buy at $100.02</li>
+        <li>Ask jumps to $100.10 (MM pulled liquidity)</li>
+        <li><strong>Bad move:</strong> Cancel and rebuy at $100.10 (you got played)</li>
+        <li><strong>Good move:</strong> Wait 30 seconds. Ask will likely return to $100.05</li>
+      </ul>
+
+      <div class="section-break"><span>Quiz: Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Market Maker Mastery Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>1. AAPL bid/ask is $175.00 / $175.05. You place a market sell order for 500 shares. What price do you get?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="true">A) $175.00 (the bid)</div>
+            <div class="quiz-option" data-correct="false">B) $175.05 (the ask)</div>
+            <div class="quiz-option" data-correct="false">C) $175.025 (the midpoint)</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> Market sell orders are filled at the <strong>bid price</strong> ($175.00). Market makers buy from you at the bid and sell to others at the ask, capturing the spread.</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>2. You see a huge sell order (50,000 shares) appear at $100.10, but it disappears before anyone can fill it. What just happened?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) A large institution changed their mind</div>
+            <div class="quiz-option" data-correct="true">B) Spoofing—a market maker posted a fake order to manipulate price</div>
+            <div class="quiz-option" data-correct="false">C) High-frequency trader testing liquidity</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> This is <strong>spoofing</strong>—placing large fake orders to create the illusion of supply/demand, then canceling before execution. The fake sell wall scares retail into selling at $100.00. The MM buys at $100.00 and cancels the fake order.</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>3. You trade on Robinhood (PFOF broker). NBBO is $100.00 / $100.02. You place a market buy. Citadel fills you at $100.02. Did you get a fair price?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Yes—you paid the NBBO ask, so it's fair</div>
+            <div class="quiz-option" data-correct="true">B) No—there might have been a better price on a public exchange</div>
+            <div class="quiz-option" data-correct="false">C) Yes—Robinhood is commission-free, so you saved money</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> Even though you paid the NBBO ask ($100.02), there might have been sellers at $100.01 on NYSE or Nasdaq. But Robinhood routed to Citadel instead, so you <em>didn't get price priority</em>. Over hundreds of trades, these $0.01 overages add up to hundreds or thousands of dollars per year.</p>
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
+        <div class="quiz-results"></div>
+      </div>
+
+      <div class="section-break"><span>Key Takeaways</span></div>
+
+      <div class="callout-key">
+        <h4>💡 Understanding Market Makers = Better Fills</h4>
+        <ul>
+          <li><strong>Spread capture</strong> is the MM's core profit: buy bid, sell ask, repeat billions of times.</li>
+          <li><strong>Adverse selection</strong> = informed traders cost MMs money, so MMs widen spreads when they detect "toxic" flow.</li>
+          <li><strong>Inventory management:</strong> MMs skew quotes, use dark pools, hedge with futures to stay delta-neutral.</li>
+          <li><strong>Spoofing, layering, quote stuffing</strong> = illegal-but-common manipulation tactics.</li>
+          <li><strong>PFOF</strong> = "free" trading isn't free. You pay via worse fills and latency arbitrage.</li>
+          <li><strong>Defense:</strong> Use limit orders, trade during liquid hours, avoid PFOF brokers, route to IEX.</li>
+        </ul>
+      </div>
+
+      <p><strong>📥 Download Checklist:</strong> <a href="/resources/checklists/market-maker-defense-checklist.pdf" download>Trade Execution Optimization (PDF)</a></p>
+
+      <div class="section-break"><span>Related Lessons</span></div>
+
+      <div class="related-grid">
+        <a href="/curriculum/beginner/04-why-market-orders-lose.html" class="related-card">
+          <span class="badge">🟢 Beginner</span>
+          <h4>Lesson 4: Why Market Orders Lose Money</h4>
+          <p>Learn the basics of limit vs market orders and why market orders always favor MMs.</p>
+        </a>
+        <a href="/curriculum/intermediate/22-order-flow-analysis.html" class="related-card">
+          <span class="badge">🟡 Intermediate</span>
+          <h4>Lesson 22: Order Flow Analysis Basics</h4>
+          <p>See how to read Time & Sales data to detect MM inventory imbalances.</p>
+        </a>
+        <a href="/curriculum/advanced/48-institutional-order-flow.html" class="related-card">
+          <span class="badge">🔴 Advanced</span>
+          <h4>Lesson 48: Institutional Order Flow</h4>
+          <p>Advanced dark pool analysis and how institutions avoid MM detection.</p>
+        </a>
+      </div>
+
     </div>
 
-    <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;border-left:4px solid var(--accent);margin:2rem 0">
-      <h4 style="margin:0 0 1rem 0;color:var(--accent)">📥 Free Checklist: Trade Execution Optimization</h4>
-      <p style="margin-bottom:1rem;color:var(--muted)">Download the complete market maker defense checklist—includes order type guide, broker comparison, and IEX routing instructions.</p>
-      <a href="/resources/checklists/market-maker-defense-checklist.pdf" download class="btn btn-primary" style="display:inline-block">
-        Download Market Maker Defense Checklist (PDF)
-      </a>
-    </div>
+    <aside class="toc-sidebar">
+      <div class="lesson-actions">
+        <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
+        <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
+      </div>
+    </aside>
 
-    <div class="section-break"><span>Related Lessons</span></div>
+  </div>
 
-    <div class="related-lessons">
-      <a href="/curriculum/beginner/04-why-market-orders-lose.html" class="related-lesson-card">
-        <span class="related-lesson-tier">🟢 Beginner</span>
-        <h4>Lesson 4: Why Market Orders Lose Money</h4>
-        <p>Learn the basics of limit vs market orders and why market orders always favor MMs.</p>
-      </a>
-
-      <a href="/curriculum/intermediate/22-order-flow-analysis.html" class="related-lesson-card">
-        <span class="related-lesson-tier">🟡 Intermediate</span>
-        <h4>Lesson 22: Order Flow Analysis Basics</h4>
-        <p>See how to read Time & Sales data to detect market maker inventory imbalances.</p>
-      </a>
-
-      <a href="/curriculum/advanced/48-institutional-order-flow.html" class="related-lesson-card">
-        <span class="related-lesson-tier">🔴 Advanced</span>
-        <h4>Lesson 48: Institutional Order Flow</h4>
-        <p>Advanced dark pool analysis and how institutions avoid market maker detection.</p>
-      </a>
-    </div>
-
+  <div class="wrap">
     <div class="nav-article">
-      <a href="/curriculum/intermediate-bridge/39-options-market-microstructure.html" class="btn btn-secondary">← Previous: Options Market Microstructure</a>
-      <a href="/curriculum/intermediate-bridge/41-fed-policy-liquidity.html" class="btn btn-primary">Next: Fed Policy & Liquidity →</a>
-    </div>
-  </article>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Signal Pilot</h4>
-        <p>Professional trading education, designed by institutions, for retail traders who refuse to stay retail.</p>
-      </div>
-      <div class="footer-section">
-        <h4>Curriculum</h4>
-        <ul>
-          <li><a href="/#tier-1">Beginner</a></li>
-          <li><a href="/#tier-2">Intermediate</a></li>
-          <li><a href="/#tier-3">Advanced</a></li>
-          <li><a href="/#tier-4">Professional</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="/library.html">My Library</a></li>
-          <li><a href="/about.html">About</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Signal Pilot. All rights reserved.</p>
+      <a href="/curriculum/intermediate/39-options-market-microstructure.html" class="btn btn-secondary">← Prev: Options Market Microstructure</a>
+      <a href="/curriculum/intermediate/41-fed-policy-liquidity.html" class="btn btn-primary">Next: Fed Policy & Liquidity →</a>
     </div>
   </div>
-</footer>
+</article>
 
-<script src="/assets/article-progress.js"></script>
 <script src="/assets/quiz-enhanced.js"></script>
-<script src="/assets/social-share.js"></script>
-<script src="/assets/pwa-init.js"></script>
-<script src="/assets/config.js"></script>
+<script src="/assets/article-progress.js"></script>
 <script src="/assets/supabase-client.js"></script>
 <script src="/assets/auth-ui.js"></script>
 <script src="/assets/library.js"></script>
