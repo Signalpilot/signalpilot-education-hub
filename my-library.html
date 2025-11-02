@@ -331,6 +331,9 @@
     <div class="wrap" style="text-align: center;">
       <h1 class="headline xl">📚 My Library</h1>
       <p class="lead">Your personal learning hub - all your progress in one place</p>
+      <button id="refresh-library" class="btn btn-ghost btn-sm" style="margin-top: 1rem;" onclick="location.reload()">
+        🔄 Refresh Data
+      </button>
     </div>
   </section>
 
@@ -558,8 +561,8 @@
       renderNotes(notes);
     }
 
-    // Get completed lessons
-    const completedCount = Object.keys(localStorage).filter(k => k.includes('_completed')).length;
+    // Get completed lessons (using correct key pattern: sp_edu_*_completed)
+    const completedCount = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed')).length;
     document.getElementById('stat-completed').textContent = completedCount;
 
     // Get and update streak
@@ -587,6 +590,26 @@
     }
 
     localStorage.setItem('sp_activity', JSON.stringify(activity));
+
+    // Debug: Log what we're tracking
+    logger.log('[My Library] Tracking activity for:', today);
+    logger.log('[My Library] Total visits today:', activity[today].visits);
+  }
+
+  // Debug helper - show what's in localStorage
+  function debugLibraryData() {
+    const completed = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed'));
+    const downloads = JSON.parse(localStorage.getItem('sp_downloads') || '[]');
+    const bookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]');
+    const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
+    const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
+
+    logger.log('[My Library] DEBUG DATA:');
+    logger.log('  - Completed lessons:', completed.length, completed);
+    logger.log('  - Downloads:', downloads.length);
+    logger.log('  - Bookmarks:', bookmarks.length);
+    logger.log('  - Favorites:', favorites.length);
+    logger.log('  - Activity days:', Object.keys(activity).length);
   }
 
   // Update streak based on activity
@@ -1000,7 +1023,23 @@
   // Load on page load
   loadLibraryData();
 
+  // Run debug on page load (can be disabled in production)
+  if (localStorage.getItem('sp_debug_mode') === 'true') {
+    debugLibraryData();
+  }
+
+  // Expose debug function globally for console access
+  window.debugLibrary = debugLibraryData;
+
 })();
+
+// Auto-enable debug on first load to help user
+if (!localStorage.getItem('sp_library_initialized')) {
+  localStorage.setItem('sp_library_initialized', 'true');
+  localStorage.setItem('sp_debug_mode', 'true');
+  console.log('%c📚 My Library Debug Mode Enabled', 'color: #5b8aff; font-size: 14px; font-weight: bold;');
+  console.log('%cType debugLibrary() in console to see your data', 'color: #76ddff;');
+}
 </script>
 </body>
 </html>
