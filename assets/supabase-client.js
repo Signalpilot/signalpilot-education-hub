@@ -512,7 +512,13 @@
           <span style="margin-right: 0.5rem;">👤</span>
           <span>${userName}</span>
         `;
-        authBtn.onclick = showUserMenu;
+        // Use arrow function to ensure proper scope
+        authBtn.onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          logger.log('[Supabase] Auth button clicked, showing user menu...');
+          showUserMenu();
+        };
       } else {
         authBtn.textContent = 'Sign In';
         authBtn.onclick = showAuthModal;
@@ -589,12 +595,23 @@
   }
 
   function showUserMenu() {
+    logger.log('[Supabase] showUserMenu called');
+
+    // Check if user is signed in
+    if (!currentUser) {
+      logger.warn('[Supabase] No current user, cannot show menu');
+      return;
+    }
+
     // Remove any existing menu
     const existingMenu = document.querySelector('.user-menu-dropdown');
     if (existingMenu) {
+      logger.log('[Supabase] Removing existing menu');
       existingMenu.remove();
       return; // Toggle off if already open
     }
+
+    logger.log('[Supabase] Creating user menu for:', currentUser.email);
 
     // Create dropdown menu with inline styles for guaranteed visibility
     const menu = document.createElement('div');
