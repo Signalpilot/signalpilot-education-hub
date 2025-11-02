@@ -695,6 +695,9 @@
         <p>${currentUser.email}</p>
         <p style="font-size: 0.75rem; opacity: 0.7; margin-top: 0.5rem;">☁️ Auto-syncing to cloud</p>
       </div>
+      <button class="user-menu-btn" onclick="window.location.href='/my-library.html'; event.stopPropagation();">
+        📚 <span>My Library</span>
+      </button>
       <button class="user-menu-btn danger" onclick="if(confirm('Sign out and reload page?')) { window.supabaseAuth.signOut(); } event.stopPropagation();">
         🚪 <span>Sign Out</span>
       </button>

@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>My Library — Signal Pilot Education</title>
+  <meta name="description" content="Your personal learning library: downloaded resources, bookmarked lessons, notes, and achievements.">
+  <link rel="canonical" href="https://education.signalpilot.io/my-library.html">
+  <meta name="theme-color" content="#05070d">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+
+  <!-- Logger must load first -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+  <script src="/assets/structured-data.js" defer></script>
+  <script src="/assets/lazy-load.js" defer></script>
+
+  <style>
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .library-section {
+      background: var(--bg-2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .library-section h3 {
+      margin: 0 0 1rem 0;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .library-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .library-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(91, 138, 255, 0.3);
+      transform: translateX(4px);
+    }
+
+    .library-item-info {
+      flex: 1;
+    }
+
+    .library-item-title {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .library-item-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .library-item-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(91, 138, 255, 0.1), rgba(118, 221, 255, 0.1));
+      border: 1px solid rgba(91, 138, 255, 0.2);
+      border-radius: 12px;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #5b8aff, #76ddff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--muted);
+    }
+
+    .empty-state-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .achievement-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 8px;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+
+    .achievement-badge.locked {
+      opacity: 0.4;
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="/">Education</a></li>
+        <li><a aria-current="page" href="/my-library.html">My Library</a></li>
+        <li><a href="/search.html">🔍 Search</a></li>
+      </ul>
+    </nav>
+    <div class="header-ctls">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button>
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero" style="padding: 2rem 0 1rem;">
+    <div class="wrap" style="text-align: center;">
+      <h1 class="headline xl">📚 My Library</h1>
+      <p class="lead">Your personal learning hub - all your progress in one place</p>
+    </div>
+  </section>
+
+  <!-- Stats Overview -->
+  <section class="wrap" style="margin: 2rem auto;">
+    <div class="library-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="stat-completed">0</div>
+        <div class="stat-label">Lessons Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-downloads">0</div>
+        <div class="stat-label">Resources Downloaded</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-bookmarks">0</div>
+        <div class="stat-label">Bookmarked Lessons</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-streak">0</div>
+        <div class="stat-label">Day Streak 🔥</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloaded Resources -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="library-section">
+      <h3>📥 Downloaded Resources</h3>
+      <div id="downloads-list">
+        <div class="empty-state">
+          <div class="empty-state-icon">📥</div>
+          <p>No resources downloaded yet.</p>
+          <p style="font-size: 0.9rem;">Download checklists from lessons to see them here!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bookmarked Lessons -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="library-section">
+      <h3>🔖 Bookmarked Lessons</h3>
+      <div id="bookmarks-list">
+        <div class="empty-state">
+          <div class="empty-state-icon">🔖</div>
+          <p>No bookmarked lessons yet.</p>
+          <p style="font-size: 0.9rem;">Bookmark lessons to save them for later!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Your Notes -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="library-section">
+      <h3>📝 Your Notes</h3>
+      <div id="notes-list">
+        <div class="empty-state">
+          <div class="empty-state-icon">📝</div>
+          <p>No notes yet.</p>
+          <p style="font-size: 0.9rem;">Take notes while studying to see them here!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="library-section">
+      <h3>🏆 Achievements</h3>
+      <div id="achievements-list">
+        <div class="empty-state">
+          <div class="empty-state-icon">🏆</div>
+          <p>No achievements unlocked yet.</p>
+          <p style="font-size: 0.9rem;">Complete lessons to earn achievements!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sp-footer">
+  <div class="wrap">
+    <div>© <span id="year"></span> Signal Pilot Labs, Inc.</div>
+    <div class="links">
+      <a href="https://signalpilot.io/privacy.html">Privacy</a>
+      <a href="https://signalpilot.io/terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+
+<script>
+// My Library functionality
+(function() {
+  'use strict';
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Load library data
+  function loadLibraryData() {
+    // Get downloads
+    const downloads = JSON.parse(localStorage.getItem('sp_downloads') || '[]');
+    document.getElementById('stat-downloads').textContent = downloads.length;
+
+    if (downloads.length > 0) {
+      renderDownloads(downloads);
+    }
+
+    // Get bookmarks
+    const bookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]');
+    document.getElementById('stat-bookmarks').textContent = bookmarks.length;
+
+    if (bookmarks.length > 0) {
+      renderBookmarks(bookmarks);
+    }
+
+    // Get notes
+    const notes = JSON.parse(localStorage.getItem('sp_lesson_notes') || '{}');
+    const noteCount = Object.keys(notes).length;
+
+    if (noteCount > 0) {
+      renderNotes(notes);
+    }
+
+    // Get completed lessons
+    const completedCount = Object.keys(localStorage).filter(k => k.includes('_completed')).length;
+    document.getElementById('stat-completed').textContent = completedCount;
+
+    // Get streak
+    const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0}');
+    document.getElementById('stat-streak').textContent = streak.current || 0;
+
+    // Render achievements
+    renderAchievements(completedCount);
+  }
+
+  function renderDownloads(downloads) {
+    const container = document.getElementById('downloads-list');
+    container.innerHTML = downloads.map(download => `
+      <div class="library-item">
+        <div class="library-item-info">
+          <div class="library-item-title">📄 ${download.title}</div>
+          <div class="library-item-meta">Downloaded ${new Date(download.date).toLocaleDateString()}</div>
+        </div>
+        <div class="library-item-actions">
+          <a href="${download.url}" download class="btn btn-sm btn-primary">Re-download</a>
+          <a href="${download.lessonUrl}" class="btn btn-sm btn-ghost">View Lesson</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderBookmarks(bookmarks) {
+    const container = document.getElementById('bookmarks-list');
+    container.innerHTML = bookmarks.map(bookmark => `
+      <div class="library-item">
+        <div class="library-item-info">
+          <div class="library-item-title">🔖 ${bookmark.title}</div>
+          <div class="library-item-meta">${bookmark.tier} • ${bookmark.readTime || '15 min read'}</div>
+        </div>
+        <div class="library-item-actions">
+          <a href="${bookmark.url}" class="btn btn-sm btn-primary">Read Now</a>
+          <button onclick="window.library.removeBookmark('${bookmark.id}')" class="btn btn-sm btn-ghost">Remove</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderNotes(notes) {
+    const container = document.getElementById('notes-list');
+    const noteEntries = Object.entries(notes);
+
+    container.innerHTML = noteEntries.map(([lessonId, note]) => `
+      <div class="library-item">
+        <div class="library-item-info">
+          <div class="library-item-title">📝 ${note.lessonTitle || lessonId}</div>
+          <div class="library-item-meta">${note.content.substring(0, 100)}${note.content.length > 100 ? '...' : ''}</div>
+        </div>
+        <div class="library-item-actions">
+          <a href="${note.lessonUrl || '#'}" class="btn btn-sm btn-primary">View Lesson</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderAchievements(completedCount) {
+    const achievements = [
+      { id: 'first_lesson', title: '🎯 First Steps', description: 'Complete your first lesson', unlocked: completedCount >= 1 },
+      { id: 'beginner_complete', title: '🟢 Beginner Complete', description: 'Complete all 12 beginner lessons', unlocked: completedCount >= 12 },
+      { id: 'halfway', title: '⚡ Halfway There', description: 'Complete 21 lessons', unlocked: completedCount >= 21 },
+      { id: 'intermediate_complete', title: '🟡 Intermediate Complete', description: 'Complete all intermediate lessons', unlocked: completedCount >= 27 },
+      { id: 'all_lessons', title: '🏆 Master Trader', description: 'Complete all 42 lessons', unlocked: completedCount >= 42 },
+      { id: 'week_streak', title: '🔥 Week Streak', description: '7 day learning streak', unlocked: false },
+      { id: 'note_taker', title: '📝 Note Taker', description: 'Take notes on 5 lessons', unlocked: false }
+    ];
+
+    const container = document.getElementById('achievements-list');
+    const unlocked = achievements.filter(a => a.unlocked);
+
+    if (unlocked.length === 0) {
+      return; // Keep empty state
+    }
+
+    container.innerHTML = achievements.map(achievement => `
+      <div class="achievement-badge ${achievement.unlocked ? '' : 'locked'}">
+        <span style="font-size: 1.5rem;">${achievement.title.split(' ')[0]}</span>
+        <div>
+          <div style="font-weight: 600;">${achievement.title.substring(3)}</div>
+          <div style="font-size: 0.85rem; opacity: 0.8;">${achievement.description}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Public API
+  window.library = {
+    removeBookmark: function(id) {
+      const bookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]');
+      const filtered = bookmarks.filter(b => b.id !== id);
+      localStorage.setItem('sp_bookmarks', JSON.stringify(filtered));
+      loadLibraryData();
+    }
+  };
+
+  // Load on page load
+  loadLibraryData();
+
+})();
+</script>
+</body>
+</html>
