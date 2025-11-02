@@ -428,6 +428,12 @@
         localStorage.setItem('sp_lesson_notes', JSON.stringify(data.notes || {}));
         localStorage.setItem('sp_last_cloud_sync', Date.now());
 
+        // CRITICAL: Clear migration flag so My Library re-migrates with cloud data
+        // This ensures all cloud-synced lessons get added to the activity calendar
+        localStorage.removeItem('sp_activity_migrated');
+        localStorage.removeItem('sp_activity'); // Clear old activity so migration rebuilds it
+        logger.log('[Supabase] 🔄 Cleared migration flag - My Library will re-sync with cloud data on next visit');
+
         logger.log('[Supabase] ✅ Progress loaded from cloud successfully!');
         logger.log(`[Supabase] ✅ Restored ${completedLessons} completed lessons`);
       }

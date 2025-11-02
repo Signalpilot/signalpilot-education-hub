@@ -73,6 +73,20 @@
       const key = `sp_edu_${level}_${articleId}_completed`;
       if (!localStorage.getItem(key)) {
         localStorage.setItem(key, new Date().toISOString());
+
+        // Update activity tracking for My Library
+        const today = new Date().toISOString().split('T')[0];
+        const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
+
+        if (!activity[today]) {
+          activity[today] = { visits: 1, lessonsCompleted: 1 };
+        } else {
+          activity[today].lessonsCompleted = (activity[today].lessonsCompleted || 0) + 1;
+        }
+
+        localStorage.setItem('sp_activity', JSON.stringify(activity));
+        logger.log('[Education] Lesson completed, activity updated:', today);
+
         this.showCompletionBadge(articleId);
         this.checkAchievements();
       }

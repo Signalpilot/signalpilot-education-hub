@@ -313,6 +313,7 @@
       <ul>
         <li><a href="/">Education</a></li>
         <li><a aria-current="page" href="/my-library.html">My Library</a></li>
+        <li><a href="/learning-path.html">🗺️ Learning Path</a></li>
         <li><a href="/search.html">🔍 Search</a></li>
       </ul>
     </nav>
@@ -331,9 +332,14 @@
     <div class="wrap" style="text-align: center;">
       <h1 class="headline xl">📚 My Library</h1>
       <p class="lead">Your personal learning hub - all your progress in one place</p>
-      <button id="refresh-library" class="btn btn-ghost btn-sm" style="margin-top: 1rem;" onclick="location.reload()">
-        🔄 Refresh Data
-      </button>
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;">
+        <a href="/learning-path.html" class="btn btn-primary">
+          🗺️ View Learning Path
+        </a>
+        <button id="refresh-library" class="btn btn-ghost btn-sm" onclick="location.reload()">
+          🔄 Refresh Data
+        </button>
+      </div>
     </div>
   </section>
 
@@ -1080,6 +1086,30 @@
 
   // Load on page load
   loadLibraryData();
+
+  // Listen for localStorage changes (cross-tab sync and real-time updates)
+  window.addEventListener('storage', function(e) {
+    if (e.key && (e.key.startsWith('sp_') || e.key === null)) {
+      logger.log('[My Library] Data changed, reloading...');
+      loadLibraryData();
+    }
+  });
+
+  // Also listen for changes in the same tab (not triggered by storage event)
+  setInterval(function() {
+    // Check if bookmark/favorite count changed
+    const currentBookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]').length;
+    const currentFavorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]').length;
+    const currentCompleted = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed')).length;
+
+    const displayedBookmarks = parseInt(document.getElementById('stat-bookmarks')?.textContent || '0');
+    const displayedCompleted = parseInt(document.getElementById('stat-completed')?.textContent || '0');
+
+    if (currentBookmarks !== displayedBookmarks || currentCompleted !== displayedCompleted) {
+      logger.log('[My Library] Data mismatch detected, reloading...');
+      loadLibraryData();
+    }
+  }, 2000); // Check every 2 seconds
 
   // Run debug on page load (can be disabled in production)
   if (localStorage.getItem('sp_debug_mode') === 'true') {
