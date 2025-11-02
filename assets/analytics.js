@@ -250,5 +250,5 @@
     props: { pageType }
   });
 
-  console.log('📊 Analytics initialized');
+  logger.log('📊 Analytics initialized');
 })();

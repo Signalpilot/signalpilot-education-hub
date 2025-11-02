@@ -290,7 +290,7 @@
         const res = await fetch('/curriculum/index.json');
         this.articles = await res.json();
       } catch (e) {
-        console.warn('Could not load articles index');
+        logger.warn('Could not load articles index');
       }
 
       input.addEventListener('input', (e) => {

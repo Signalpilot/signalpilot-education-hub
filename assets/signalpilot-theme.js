@@ -63,7 +63,7 @@
   function setTheme(theme) {
     // Validate theme
     if (theme !== 'light' && theme !== 'dark') {
-      console.warn(`Invalid theme: ${theme}. Defaulting to dark.`);
+      logger.warn(`Invalid theme: ${theme}. Defaulting to dark.`);
       theme = 'dark';
     }
 
@@ -84,7 +84,7 @@
       detail: { theme }
     }));
 
-    console.log(`Theme changed to: ${theme}`);
+    logger.log(`Theme changed to: ${theme}`);
   }
 
   /**
@@ -141,7 +141,7 @@
       toggleButton.setAttribute('aria-label', 'Toggle theme');
       toggleButton.setAttribute('type', 'button');
     } else {
-      console.warn(`Theme toggle button not found. Expected id="${CONFIG.toggleButtonId}"`);
+      logger.warn(`Theme toggle button not found. Expected id="${CONFIG.toggleButtonId}"`);
     }
 
     // Listen for system theme changes
@@ -224,7 +224,7 @@
   };
 
   // Debug info
-  console.log('SignalPilot Theme System loaded', {
+  logger.log('SignalPilot Theme System loaded', {
     initialTheme: getSavedTheme(),
     systemPreference: getSystemPreference()
   });

@@ -265,7 +265,7 @@
       studyTimer = null;
       studyStartTime = null;
       // Could show a notification here
-      console.log('Study session complete!');
+      logger.log('Study session complete!');
     }, duration);
 
     return `⏱️ <strong>${minutes}-minute study session started!</strong><br><br>Focus on your lesson. I'll let you know when time's up.<br><br>💡 <em>Tip: Use the Pomodoro technique - 25min work, 5min break!</em>`;

@@ -8,7 +8,7 @@ const sourceIcon = path.join(__dirname, 'icon-512x512.png');
 const sizes = [72, 96, 128, 144, 152, 384];
 
 async function generateIcons() {
-  console.log('🎨 Generating PWA icons from 512x512 source...\n');
+  logger.log('🎨 Generating PWA icons from 512x512 source...\n');
 
   if (!fs.existsSync(sourceIcon)) {
     console.error('❌ Source icon not found:', sourceIcon);
@@ -27,16 +27,16 @@ async function generateIcons() {
         .png()
         .toFile(outputPath);
 
-      console.log(`✅ Generated icon-${size}x${size}.png`);
+      logger.log(`✅ Generated icon-${size}x${size}.png`);
     } catch (error) {
       console.error(`❌ Failed to generate ${size}x${size}:`, error.message);
     }
   }
 
-  console.log('\n🎉 Icon generation complete!');
-  console.log('\nGenerated sizes:', sizes.map(s => `${s}x${s}`).join(', '));
-  console.log('Existing sizes: 192x192, 512x512');
-  console.log('\n✅ All PWA icon sizes are now available!');
+  logger.log('\n🎉 Icon generation complete!');
+  logger.log('\nGenerated sizes:', sizes.map(s => `${s}x${s}`).join(', '));
+  logger.log('Existing sizes: 192x192, 512x512');
+  logger.log('\n✅ All PWA icon sizes are now available!');
 }
 
 generateIcons().catch(error => {

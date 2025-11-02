@@ -58,7 +58,7 @@
       img.classList.add(CONFIG.loadedClass);
     });
 
-    console.log('[LazyLoad] Using native lazy loading for', images.length, 'images');
+    logger.log('[LazyLoad] Using native lazy loading for', images.length, 'images');
   }
 
   // Intersection Observer (fallback for older browsers)
@@ -78,7 +78,7 @@
     const images = document.querySelectorAll('img[data-src], iframe[data-src]');
     images.forEach(el => observer.observe(el));
 
-    console.log('[LazyLoad] Observing', images.length, 'elements with Intersection Observer');
+    logger.log('[LazyLoad] Observing', images.length, 'elements with Intersection Observer');
   }
 
   // Handle intersection
@@ -121,7 +121,7 @@
       img.onerror = () => {
         element.classList.remove(CONFIG.placeholderClass);
         element.classList.add(CONFIG.errorClass);
-        console.warn('[LazyLoad] Failed to load image:', src);
+        logger.warn('[LazyLoad] Failed to load image:', src);
       };
 
       img.src = src;
@@ -141,7 +141,7 @@
   function loadAllImages() {
     const elements = document.querySelectorAll('img[data-src], iframe[data-src]');
     elements.forEach(loadElement);
-    console.log('[LazyLoad] Fallback: loaded all', elements.length, 'elements immediately');
+    logger.log('[LazyLoad] Fallback: loaded all', elements.length, 'elements immediately');
   }
 
   // Observe DOM for dynamically added images
@@ -209,7 +209,7 @@
       }
     });
 
-    console.log('[LazyLoad] Converted', images.length, 'images to lazy-load');
+    logger.log('[LazyLoad] Converted', images.length, 'images to lazy-load');
   }
 
   // Initialize when DOM is ready

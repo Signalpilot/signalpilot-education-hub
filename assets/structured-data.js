@@ -228,7 +228,7 @@
       ]));
     }
 
-    console.log('[SEO] Structured data injected');
+    logger.log('[SEO] Structured data injected');
   }
 
   // Initialize when DOM is ready
