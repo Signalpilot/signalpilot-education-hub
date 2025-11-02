@@ -50,7 +50,7 @@
       <ul>
         <li><a href="https://signalpilot.io">← Signal Pilot</a></li>
         <li><a aria-current="page" href="/">Education</a></li>
-        <li><a href="/learning-path.html">🗺️ Learning Path</a></li>
+        <li><a href="/my-library.html">📚 My Library</a></li>
         <li><a href="/search.html">🔍 Search</a></li>
         <li><a href="/calculators.html">Calculators</a></li>
       </ul>
@@ -81,7 +81,19 @@
   <section class="wrap" style="margin:2rem auto">
     <div class="progress-card">
       <h4>📊 Your Progress</h4>
-      <div class="progress-stats">
+
+      <!-- Signed-out state: Encourage sign-in -->
+      <div id="progress-signed-out" style="display:none;text-align:center;padding:2rem 1rem;">
+        <p style="font-size:1.1rem;color:var(--muted);margin-bottom:1rem;">
+          Sign in to track your progress across devices
+        </p>
+        <button onclick="document.getElementById('sign-in-btn')?.click()" class="btn btn-primary">
+          Sign In to Track Progress
+        </button>
+      </div>
+
+      <!-- Signed-in state: Show actual progress -->
+      <div id="progress-signed-in" class="progress-stats">
         <div class="progress-stat">
           <span class="stat-value" id="stat-completed">0</span>
           <span class="stat-label">Lessons Completed</span>
@@ -446,7 +458,23 @@
 <script src="/assets/chatbot.js" defer></script>
 <script>
   // Load user progress and display stats
-  document.addEventListener('DOMContentLoaded', function() {
+  function updateProgressDisplay() {
+    // Check if user is signed in
+    const user = window.supabaseAuth?.getCurrentUser();
+    const signedInDiv = document.getElementById('progress-signed-in');
+    const signedOutDiv = document.getElementById('progress-signed-out');
+
+    if (!user) {
+      // User is signed out - show sign-in prompt
+      signedInDiv.style.display = 'none';
+      signedOutDiv.style.display = 'block';
+      return;
+    }
+
+    // User is signed in - show progress stats
+    signedInDiv.style.display = 'flex';
+    signedOutDiv.style.display = 'none';
+
     // Count completed articles
     let completed = 0;
     for (let i = 0; i < localStorage.length; i++) {
@@ -472,6 +500,18 @@
       if (localStorage.key(i).includes('sp_edu_ach_')) achievements++;
     }
     document.getElementById('stat-achievements').textContent = achievements;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initial load
+    updateProgressDisplay();
+
+    // Listen for auth state changes
+    if (window.supabaseAuth?.onAuthStateChange) {
+      window.supabaseAuth.onAuthStateChange((user) => {
+        updateProgressDisplay();
+      });
+    }
 
     // Unlock achieved badges
     const milestones = [
