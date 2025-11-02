@@ -178,12 +178,12 @@
     if (signinForm) {
       signinForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        console.log('[Auth UI] Sign in form submitted');
+        logger.log('[Auth UI] Sign in form submitted');
 
         const email = document.getElementById('signin-email').value;
         const password = document.getElementById('signin-password').value;
 
-        console.log('[Auth UI] Sign in email:', email);
+        logger.log('[Auth UI] Sign in email:', email);
 
         if (!window.supabaseAuth) {
           console.error('[Auth UI] window.supabaseAuth is not available!');
@@ -195,7 +195,7 @@
 
         try {
           const result = await window.supabaseAuth.signIn(email, password);
-          console.log('[Auth UI] Sign in result:', result);
+          logger.log('[Auth UI] Sign in result:', result);
 
           if (result.success) {
             showMessage('✅ Signed in successfully! Loading your progress...', 'success');
@@ -221,13 +221,13 @@
     if (signupForm) {
       signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        console.log('[Auth UI] Sign up form submitted');
+        logger.log('[Auth UI] Sign up form submitted');
 
         const name = document.getElementById('signup-name').value;
         const email = document.getElementById('signup-email').value;
         const password = document.getElementById('signup-password').value;
 
-        console.log('[Auth UI] Sign up data:', { name, email, passwordLength: password.length });
+        logger.log('[Auth UI] Sign up data:', { name, email, passwordLength: password.length });
 
         if (!window.supabaseAuth) {
           console.error('[Auth UI] window.supabaseAuth is not available!');
@@ -239,7 +239,7 @@
 
         try {
           const result = await window.supabaseAuth.signUp(email, password, name);
-          console.log('[Auth UI] Sign up result:', result);
+          logger.log('[Auth UI] Sign up result:', result);
 
           if (result.success) {
             showMessage('✅ Account created! Check your email to verify.', 'success');
@@ -362,5 +362,5 @@
     createAuthButton();
   }
 
-  console.log('[Auth UI] Module loaded');
+  logger.log('[Auth UI] Module loaded');
 })();

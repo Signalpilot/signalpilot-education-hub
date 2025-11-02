@@ -4,7 +4,7 @@
 
   // Check if service workers are supported
   if (!('serviceWorker' in navigator)) {
-    console.log('[PWA] Service Workers not supported');
+    logger.log('[PWA] Service Workers not supported');
     return;
   }
 
@@ -14,7 +14,7 @@
       scope: '/'
     })
     .then((registration) => {
-      console.log('[PWA] Service Worker registered successfully:', registration.scope);
+      logger.log('[PWA] Service Worker registered successfully:', registration.scope);
 
       // Check for updates periodically
       setInterval(() => {
@@ -34,16 +34,16 @@
       });
     })
     .catch((error) => {
-      console.log('[PWA] Service Worker registration failed:', error);
+      logger.log('[PWA] Service Worker registration failed:', error);
     });
   });
 
   // Handle service worker messages
   navigator.serviceWorker.addEventListener('message', (event) => {
-    console.log('[PWA] Message from SW:', event.data);
+    logger.log('[PWA] Message from SW:', event.data);
 
     if (event.data.type === 'CACHE_UPDATED') {
-      console.log('[PWA] Cache updated for:', event.data.url);
+      logger.log('[PWA] Cache updated for:', event.data.url);
     }
   });
 
@@ -131,7 +131,7 @@
   let deferredPrompt;
 
   window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('[PWA] Install prompt available');
+    logger.log('[PWA] Install prompt available');
 
     // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
@@ -147,7 +147,7 @@
   function showInstallButton() {
     // Check if already installed
     if (window.matchMedia('(display-mode: standalone)').matches) {
-      console.log('[PWA] App already installed');
+      logger.log('[PWA] App already installed');
       return;
     }
 
@@ -253,10 +253,10 @@
 
       // Wait for user choice
       const { outcome } = await deferredPrompt.userChoice;
-      console.log('[PWA] Install outcome:', outcome);
+      logger.log('[PWA] Install outcome:', outcome);
 
       if (outcome === 'accepted') {
-        console.log('[PWA] User accepted install');
+        logger.log('[PWA] User accepted install');
 
         // Track installation
         if (typeof trackAchievement === 'function') {
@@ -285,7 +285,7 @@
 
   // Handle app installed event
   window.addEventListener('appinstalled', () => {
-    console.log('[PWA] App installed successfully');
+    logger.log('[PWA] App installed successfully');
 
     // Track installation
     if (typeof trackAchievement === 'function') {
@@ -298,7 +298,7 @@
 
   // Detect if running as installed app
   if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-    console.log('[PWA] Running as installed app');
+    logger.log('[PWA] Running as installed app');
     document.documentElement.setAttribute('data-pwa-mode', 'standalone');
 
     // Track usage as installed app
@@ -310,8 +310,8 @@
   // Background sync registration (for future use)
   if ('sync' in registration) {
     // Will be used for syncing progress to Supabase
-    console.log('[PWA] Background Sync supported');
+    logger.log('[PWA] Background Sync supported');
   }
 
-  console.log('[PWA] Initialization complete');
+  logger.log('[PWA] Initialization complete');
 })();

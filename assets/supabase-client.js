@@ -15,6 +15,10 @@
   // Initialize Supabase client
   let supabase = null;
 
+  /**
+   * Initialize Supabase client and load library from CDN
+   * @returns {Promise<Object|null>} Supabase client instance or null if failed
+   */
   async function initSupabase() {
     // Load Supabase library from CDN if not already loaded
     if (typeof window.supabase === 'undefined') {
@@ -40,7 +44,7 @@
     // Create Supabase client
     supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    console.log('[Supabase] Client initialized');
+    logger.log('[Supabase] Client initialized');
     return supabase;
   }
 
@@ -49,6 +53,11 @@
   let authStateListeners = [];
 
   // Subscribe to auth state changes
+  /**
+   * Subscribe to authentication state changes
+   * @param {Function} callback - Function called when auth state changes (user) => void
+   * @returns {Function} Unsubscribe function
+   */
   function onAuthStateChange(callback) {
     authStateListeners.push(callback);
 
@@ -74,13 +83,13 @@
     // Get current session
     const { data: { session } } = await supabase.auth.getSession();
     if (session?.user) {
-      console.log('[Supabase] 🔄 Found existing session, loading cloud progress...');
+      logger.log('[Supabase] 🔄 Found existing session, loading cloud progress...');
       notifyAuthStateChange(session.user);
 
       // Check if we just reloaded from a cloud load (prevent infinite reload loop)
       const justReloaded = sessionStorage.getItem('sp_just_loaded_from_cloud');
       if (justReloaded) {
-        console.log('[Supabase] ℹ️ Already loaded from cloud (preventing reload loop)');
+        logger.log('[Supabase] ℹ️ Already loaded from cloud (preventing reload loop)');
         sessionStorage.removeItem('sp_just_loaded_from_cloud');
         return; // Don't load again
       }
@@ -90,13 +99,13 @@
       const loadResult = await loadProgressFromCloud();
 
       if (loadResult?.data) {
-        console.log('[Supabase] ✅ Cloud progress loaded from existing session. Reloading...');
+        logger.log('[Supabase] ✅ Cloud progress loaded from existing session. Reloading...');
         // Set flag to prevent reload loop
         sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
         // Reload page to reflect loaded progress
         setTimeout(() => window.location.reload(), 500);
       } else {
-        console.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
+        logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
         // No cloud data, sync local progress up
         await syncProgressToCloud();
       }
@@ -104,7 +113,7 @@
 
     // Listen for auth changes (NEW sign-ins, sign-outs, etc.)
     supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log('[Supabase] Auth event:', event);
+      logger.log('[Supabase] Auth event:', event);
 
       if (event === 'SIGNED_IN' || event === 'USER_UPDATED') {
         notifyAuthStateChange(session?.user || null);
@@ -115,13 +124,13 @@
           const loadResult = await loadProgressFromCloud();
 
           if (loadResult?.data) {
-            console.log('[Supabase] ✅ Cloud progress loaded. Reloading page to show updated progress...');
+            logger.log('[Supabase] ✅ Cloud progress loaded. Reloading page to show updated progress...');
             // Set flag to prevent reload loop
             sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
             // Reload page to reflect loaded progress
             setTimeout(() => window.location.reload(), 500);
           } else {
-            console.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
+            logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
             // No cloud data, sync local progress up
             await syncProgressToCloud();
           }
@@ -133,9 +142,16 @@
   }
 
   // Sign Up
+  /**
+   * Sign up a new user with email and password
+   * @param {string} email - User's email address
+   * @param {string} password - User's password
+   * @param {string} userName - Display name for the user
+   * @returns {Promise<{success: boolean, data?: Object, error?: string}>} Sign up result
+   */
   async function signUp(email, password, userName) {
     if (!supabase) {
-      console.log('[Supabase] Not initialized, initializing now...');
+      logger.log('[Supabase] Not initialized, initializing now...');
       await initSupabase();
 
       if (!supabase) {
@@ -173,9 +189,15 @@
   }
 
   // Sign In
+  /**
+   * Sign in an existing user with email and password
+   * @param {string} email - User's email address
+   * @param {string} password - User's password
+   * @returns {Promise<{success: boolean, data?: Object, error?: string}>} Sign in result
+   */
   async function signIn(email, password) {
     if (!supabase) {
-      console.log('[Supabase] Not initialized, initializing now...');
+      logger.log('[Supabase] Not initialized, initializing now...');
       await initSupabase();
 
       if (!supabase) {
@@ -203,6 +225,10 @@
   }
 
   // Sign Out
+  /**
+   * Sign out the current user
+   * @returns {Promise<{success: boolean, error?: string}>} Sign out result
+   */
   async function signOut() {
     if (!supabase) return;
 
@@ -218,14 +244,23 @@
   }
 
   // Get Current User
+  /**
+   * Get the currently authenticated user
+   * @returns {Object|null} Current user object or null if not authenticated
+   */
   function getCurrentUser() {
     return currentUser;
   }
 
   // Password Reset
+  /**
+   * Send password reset email to user
+   * @param {string} email - User's email address
+   * @returns {Promise<{success: boolean, error?: string}>} Reset result
+   */
   async function resetPassword(email) {
     if (!supabase) {
-      console.log('[Supabase] Not initialized, initializing now...');
+      logger.log('[Supabase] Not initialized, initializing now...');
       await initSupabase();
 
       if (!supabase) {
@@ -250,9 +285,14 @@
   // ========== PROGRESS SYNC ==========
 
   // Sync progress to cloud
+  /**
+   * Sync local progress data to cloud (Supabase)
+   * Syncs completed lessons, streak data, and notes
+   * @returns {Promise<{success: boolean, data?: Object, error?: string}>} Sync result
+   */
   async function syncProgressToCloud() {
     if (!supabase || !currentUser) {
-      console.log('[Supabase] Cannot sync: not authenticated');
+      logger.log('[Supabase] Cannot sync: not authenticated');
       return { success: false, error: 'Not authenticated' };
     }
 
@@ -271,7 +311,7 @@
       const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0, "best": 0}');
       const notes = JSON.parse(localStorage.getItem('sp_lesson_notes') || '{}');
 
-      console.log('[Supabase] 📤 Syncing progress to cloud...', {
+      logger.log('[Supabase] 📤 Syncing progress to cloud...', {
         progressKeys: Object.keys(progress).length,
         completedLessons: Object.keys(progress).filter(k => k.includes('_completed')).length,
         streakCurrent: streak.current,
@@ -308,7 +348,7 @@
         throw error;
       }
 
-      console.log('[Supabase] ✅ Progress synced to cloud successfully!', data);
+      logger.log('[Supabase] ✅ Progress synced to cloud successfully!', data);
       showSyncSuccess();
 
       // Update last sync time
@@ -322,14 +362,19 @@
   }
 
   // Load progress from cloud
+  /**
+   * Load progress data from cloud to local storage
+   * Restores completed lessons, streak data, and notes
+   * @returns {Promise<{success: boolean, data?: Object, error?: string}>} Load result
+   */
   async function loadProgressFromCloud() {
     if (!supabase || !currentUser) {
-      console.log('[Supabase] Cannot load: not authenticated');
+      logger.log('[Supabase] Cannot load: not authenticated');
       return { success: false, error: 'Not authenticated' };
     }
 
     try {
-      console.log('[Supabase] 📥 Loading progress from cloud...');
+      logger.log('[Supabase] 📥 Loading progress from cloud...');
 
       const { data, error } = await supabase
         .from('user_progress')
@@ -340,7 +385,7 @@
       if (error) {
         // No data found is ok (new user)
         if (error.code === 'PGRST116') {
-          console.log('[Supabase] ℹ️ No cloud progress found (new user)');
+          logger.log('[Supabase] ℹ️ No cloud progress found (new user)');
           return { success: true, data: null };
         }
 
@@ -358,7 +403,7 @@
       if (data) {
         const completedLessons = Object.keys(data.progress || {}).filter(k => k.includes('_completed')).length;
 
-        console.log('[Supabase] 📥 Found cloud progress:', {
+        logger.log('[Supabase] 📥 Found cloud progress:', {
           progressKeys: Object.keys(data.progress || {}).length,
           completedLessons: completedLessons,
           streakCurrent: data.streak?.current,
@@ -377,8 +422,8 @@
         localStorage.setItem('sp_lesson_notes', JSON.stringify(data.notes || {}));
         localStorage.setItem('sp_last_cloud_sync', Date.now());
 
-        console.log('[Supabase] ✅ Progress loaded from cloud successfully!');
-        console.log(`[Supabase] ✅ Restored ${completedLessons} completed lessons`);
+        logger.log('[Supabase] ✅ Progress loaded from cloud successfully!');
+        logger.log(`[Supabase] ✅ Restored ${completedLessons} completed lessons`);
       }
 
       return { success: true, data };
@@ -413,7 +458,7 @@
   function createAuthUIElements() {
     const headerCtls = document.querySelector('.header-ctls');
     if (!headerCtls) {
-      console.log('[Supabase] No header-ctls found, skipping auth UI');
+      logger.log('[Supabase] No header-ctls found, skipping auth UI');
       return;
     }
 
@@ -448,7 +493,7 @@
       headerCtls.appendChild(authBtn);
     }
 
-    console.log('[Supabase] Auth UI elements created');
+    logger.log('[Supabase] Auth UI elements created');
   }
 
   function updateAuthUI(user) {
@@ -592,9 +637,9 @@
       if (supabase) {
         await initAuthListener();
         startAutoSync();
-        console.log('[Supabase] Fully initialized');
+        logger.log('[Supabase] Fully initialized');
       } else {
-        console.log('[Supabase] Running without cloud sync');
+        logger.log('[Supabase] Running without cloud sync');
       }
     } catch (error) {
       console.error('[Supabase] Initialization error:', error);
@@ -615,7 +660,7 @@
       // Debounced sync - wait 2 seconds before syncing
       clearTimeout(window._progressSyncTimer);
       window._progressSyncTimer = setTimeout(() => {
-        console.log('[Supabase] Progress changed, syncing to cloud...');
+        logger.log('[Supabase] Progress changed, syncing to cloud...');
         syncProgressToCloud();
       }, 2000);
     }
@@ -652,5 +697,5 @@
     onProgressChange // Export for manual trigger
   };
 
-  console.log('[Supabase] Module loaded');
+  logger.log('[Supabase] Module loaded');
 })();
