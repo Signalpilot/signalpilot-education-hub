@@ -617,16 +617,19 @@
     const menu = document.createElement('div');
     menu.className = 'user-menu-dropdown';
     menu.style.cssText = `
-      position: fixed;
-      top: 70px;
-      right: 20px;
-      background: var(--bg-2, #0c0f1a);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: fixed !important;
+      top: 70px !important;
+      right: 20px !important;
+      background: #ff0000 !important;
+      border: 3px solid #00ff00 !important;
       border-radius: 12px;
       padding: 0.75rem;
       min-width: 220px;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-      z-index: 9999;
+      z-index: 999999 !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
       animation: slideDown 0.2s ease;
     `;
 
