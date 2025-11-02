@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <title>Swing Trading Framework: Multi-Day Structure — Signal Pilot</title>
+  <meta name="description" content="Daily timeframe order blocks, multi-day position management, and overnight risk strategies for professional swing trading.">
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+</head>
+<body>
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand"><span>Signal Pilot</span></a>
+    <nav id="mainnav"><ul><li><a href="/">Education</a></li></ul></nav>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> › <a href="/beginner-bridge.html">Bridge</a> › <span>Lesson #20</span>
+      </div>
+      <span class="badge">🔵 Bridge • Lesson 20</span>
+      <h1 class="headline xl">Swing Trading Framework: Multi-Day Structure</h1>
+      <div class="meta">16-19 min read • Position Trading</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+      <p><b>Intraday noise vanishes on the daily chart. Swing trading is where technical analysis actually works.</b></p>
+
+      <p>Day trading fights HFT algos and market makers in their domain. Swing trading operates on the timeframe where fundamentals meet technicals—where institutional positioning takes days to build and unwind.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Swing trading isn't slower day trading. It's a different game. Daily order blocks, weekly structure, and position sizing changes. Overnight risk matters. But the edge? Massive. You're trading with institutions, not against them.</p>
+      </div>
+
+      <p><strong>In this lesson:</strong></p>
+      <ul>
+        <li>Daily timeframe structure (where swing traders live)</li>
+        <li>Multi-day order blocks and mitigation zones</li>
+        <li>Position sizing for overnight holds (risk management differences)</li>
+        <li>Swing trade management (entries, scaling, exits)</li>
+      </ul>
+
+      <h2>Part 1: Daily Timeframe Structure</h2>
+
+      <p><strong>Why daily charts?</strong> They filter out intraday noise while capturing institutional flows that take 3-10 days to complete.</p>
+
+      <p><strong>Market structure on daily:</strong></p>
+      <ul>
+        <li><strong>Higher highs, higher lows</strong> = Daily uptrend (swing long bias)</li>
+        <li><strong>Lower highs, lower lows</strong> = Daily downtrend (swing short bias)</li>
+        <li><strong>BOS on daily</strong> = Major trend continuation signal</li>
+        <li><strong>ChoCH on daily</strong> = Trend reversal (huge move incoming)</li>
+      </ul>
+
+      <h3>Daily Order Blocks</h3>
+
+      <p><strong>What's different from intraday?</strong> Daily order blocks represent institutional positioning over multiple days, not hours. They're more reliable but require patience.</p>
+
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>Daily chart shows bullish displacement from $100 → $115 over 5 days</li>
+        <li>Daily order block: $100-$102 (origin of displacement)</li>
+        <li>Price retraces to $103 over 2-3 days (mitigation)</li>
+        <li>Enter swing long at $102, stop at $98, target $120</li>
+        <li>Hold time: 5-15 days</li>
+      </ul>
+
+      <h2>Part 2: Position Sizing for Swing Trades</h2>
+
+      <p><strong>Key difference:</strong> Overnight risk requires smaller position sizes than day trading.</p>
+
+      <p><strong>Day trading:</strong> 1-2% risk per trade (close before market close)</p>
+      <p><strong>Swing trading:</strong> 0.5-1% risk per trade (overnight gaps, news risk)</p>
+
+      <p><strong>Why smaller?</strong></p>
+      <ul>
+        <li>Gap risk (earnings, news, geopolitical events)</li>
+        <li>Holding through sessions (different volatility)</li>
+        <li>Larger stop distances (daily ATR > intraday ATR)</li>
+      </ul>
+
+      <h3>Stop Placement for Swing Trades</h3>
+
+      <p><strong>Use structure, not arbitrary %:</strong></p>
+      <ul>
+        <li>Below daily order block low (for longs)</li>
+        <li>Below weekly swing low (for major positions)</li>
+        <li>Below key daily support (previous week low, monthly open)</li>
+      </ul>
+
+      <p><strong>ATR-based:</strong> 1.5-2x daily ATR beyond entry (gives room for volatility)</p>
+
+      <h2>Part 3: Swing Trade Management</h2>
+
+      <h3>Entry Strategies</h3>
+
+      <p><strong>Strategy 1: Daily order block retest</strong></p>
+      <ul>
+        <li>Wait for daily displacement</li>
+        <li>Mark order block</li>
+        <li>Enter on retracement to order block (may take 3-5 days)</li>
+      </ul>
+
+      <p><strong>Strategy 2: Weekly structure break</strong></p>
+      <ul>
+        <li>Weekly BOS occurs (breaks previous week high)</li>
+        <li>Enter on daily pullback to weekly order block</li>
+        <li>Target: Next weekly high or +20% move</li>
+      </ul>
+
+      <h3>Scaling & Exits</h3>
+
+      <p><strong>Scaling in:</strong></p>
+      <ul>
+        <li>50% position at order block entry</li>
+        <li>25% at OTE zone (if price reaches 70% retracement)</li>
+        <li>25% at deep retracement (if price tests 78.6%)</li>
+      </ul>
+
+      <p><strong>Scaling out:</strong></p>
+      <ul>
+        <li>33% at 1.5R (recent swing high)</li>
+        <li>33% at 3R (major structure level)</li>
+        <li>33% trail with daily ATR stop</li>
+      </ul>
+
+      <h2>Part 4: Overnight Risk Management</h2>
+
+      <p><strong>Gap risk mitigation:</strong></p>
+      <ul>
+        <li>Avoid holding through earnings (unless that's the thesis)</li>
+        <li>Check economic calendar (FOMC, CPI, NFP)</li>
+        <li>Reduce size before major news</li>
+        <li>Use options to hedge (protective puts for long positions)</li>
+      </ul>
+
+      <p><strong>Weekend holds:</strong></p>
+      <ul>
+        <li>Reduce position size by 30-50% before Friday close if concerned about weekend news</li>
+        <li>Only hold full size if weekly structure strongly supports direction</li>
+      </ul>
+
+      <div class="key-takeaway">
+        <h4>Key Takeaways</h4>
+        <ul>
+          <li><strong>Daily timeframe filters noise</strong> and captures institutional multi-day flows</li>
+          <li><strong>Position size smaller</strong> for swing trades (0.5-1% vs 1-2% for day trades)</li>
+          <li><strong>Daily order blocks more reliable</strong> than intraday (institutions positioning)</li>
+          <li><strong>Overnight risk requires</strong> wider stops, smaller size, news awareness</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;margin:2rem 0"><strong>Tier 1.5 Bridge Complete!</strong> You now have advanced market structure, liquidity analysis, and order flow skills bridging beginner to intermediate mastery.</p>
+
+      <div class="callout-info">
+        <h4>⏭️ Next: Intermediate Lessons</h4>
+        <p>Moving into Intermediate tier with signal pilot tool mastery and professional frameworks.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<footer class="sp-footer"><div class="wrap"><div>© 2025 Signal Pilot Labs</div></div></footer>
+<script src="/assets/edu.js"></script>
+</body>
+</html>

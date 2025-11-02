@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Session Liquidity Advanced: The London Kill Zone — Signal Pilot Education</title>
+  <meta name="description" content="Asian session engineers the range. London sweeps it. New York reverses it. Learn session-based liquidity strategies that institutions use daily.">
+  <meta name="sp-level" content="Beginner-Intermediate Bridge">
+  <meta name="sp-order" content="18">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner-bridge/18-session-liquidity-advanced.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+<script src="/assets/structured-data.js" defer></script>
+<script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand"><span>Signal Pilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner-bridge.html">Beginner Bridge</a> <span>›</span>
+        <span>Lesson #18</span>
+      </div>
+      <span class="badge">🔵 Beginner-Intermediate Bridge • Lesson 18</span>
+      <h1 class="headline xl">Session Liquidity Advanced: The London Kill Zone</h1>
+      <div class="meta">18-22 min read • Session-Based Strategy</div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+
+      <p><b>That Asian session consolidation isn't random—it's the setup for the London sweep.</b></p>
+
+      <p>Let that sink in.</p>
+
+      <p>Every night, Asian session trades a tight range. Every morning at 3 AM ET, London opens and immediately sweeps one side of that range. Then at 9:30 AM ET, New York reverses it. This happens EVERY. SINGLE. DAY.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>The sessions aren't independent. They're choreographed. Asian session engineers liquidity pools. London harvests them. New York decides the daily direction. Once you see the pattern, you can't unsee it.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>Why Asian session builds the range (and how to mark it correctly)</li>
+        <li>London Kill Zone (2-5 AM ET)—where 70% of major moves start</li>
+        <li>New York reversal patterns (9:30-11 AM ET)</li>
+        <li>Session overlap strategies for maximum edge</li>
+      </ul>
+
+      <div class="section-break"><span>Part 1: The Three Sessions—Different Players, Different Goals</span></div>
+
+      <h2>Understanding Global Market Flow</h2>
+
+      <p>Markets never sleep. But WHO is trading changes every 8 hours:</p>
+
+      <div style="overflow-x:auto;margin:2rem 0">
+        <table style="width:100%;border-collapse:collapse">
+          <thead>
+            <tr style="background:rgba(255,255,255,.05)">
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Session</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Time (ET)</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Characteristics</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Liquidity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)"><strong>Asian</strong><br/>(Tokyo, Sydney)</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">7 PM - 4 AM ET</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Range-bound, low volatility, consolidation<br/>Builds highs/lows for London to sweep</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">⭐⭐ Low</td>
+            </tr>
+            <tr style="background:rgba(139,92,246,.05)">
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)"><strong>London</strong><br/>(London, Frankfurt)</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">3 AM - 12 PM ET</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">HIGH volatility, sweeps Asian range<br/>Major institutional moves, trend establishment</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">⭐⭐⭐⭐⭐ Very High</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)"><strong>New York</strong><br/>(NYSE, CME)</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">9:30 AM - 4 PM ET</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Highest volume, reversal potential<br/>Confirms or rejects London's direction</td>
+              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">⭐⭐⭐⭐⭐ Highest</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>The Daily Cycle</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Phase 1: Asian Session (Setup)</div>
+          <div class="accordion-content">
+            <p><strong>Time:</strong> 7 PM - 4 AM ET</p>
+            <p><strong>Behavior:</strong> Consolidation and range-building</p>
+            <p><strong>What's happening:</strong></p>
+            <ul>
+              <li>Low volume, tight ranges (often 20-40 point range in ES)</li>
+              <li>Price oscillates between Asian high and Asian low</li>
+              <li>Retail traders asleep (US/Europe), mostly algos and Tokyo flow</li>
+              <li>Institutions KNOW these highs/lows will be tested</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Your job:</strong> Mark the Asian session high and low. These become liquidity targets for London.</p>
+            <div class="callout-tip">
+              <h4>🎯 How to Mark Asian Range</h4>
+              <p><strong>Asian High:</strong> Highest price between 7 PM - 4 AM ET</p>
+              <p><strong>Asian Low:</strong> Lowest price between 7 PM - 4 AM ET</p>
+              <p>Draw horizontal lines at these levels. London will likely sweep one (or both).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Phase 2: London Kill Zone (Sweep)</div>
+          <div class="accordion-content">
+            <p><strong>Time:</strong> 2-5 AM ET (peak: 3-4 AM ET)</p>
+            <p><strong>Behavior:</strong> Aggressive sweeps, high volatility</p>
+            <p><strong>What's happening:</strong></p>
+            <ul>
+              <li>London opens at 3 AM ET with MASSIVE liquidity injection</li>
+              <li>Institutions sweep Asian high OR Asian low (grabbing stops)</li>
+              <li>70% of major daily moves begin during this window</li>
+              <li>This is called the "Kill Zone" because retail stops get slaughtered</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Common patterns:</strong></p>
+            <ul>
+              <li><strong>Sweep Asian Low → Rally:</strong> Price wicks below Asian low, triggers stops, then reverses higher</li>
+              <li><strong>Sweep Asian High → Drop:</strong> Price wicks above Asian high, triggers stops, then reverses lower</li>
+              <li><strong>Double Sweep:</strong> Sweep both highs AND lows, then pick direction</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.1);border-radius:8px"><strong>Pro insight:</strong> Don't trade DURING the sweep. Wait for the sweep to COMPLETE, then trade the reversal with London flow.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Phase 3: London/NY Overlap (Confirmation)</div>
+          <div class="accordion-content">
+            <p><strong>Time:</strong> 8-12 PM ET</p>
+            <p><strong>Behavior:</strong> Highest liquidity of the day</p>
+            <p><strong>What's happening:</strong></p>
+            <ul>
+              <li>Both London and New York traders active</li>
+              <li>Maximum volume and volatility</li>
+              <li>London's direction either confirmed or rejected</li>
+              <li>Major breakouts or reversals occur here</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Trading the overlap:</strong></p>
+            <ul>
+              <li>If London swept low and rallied, watch 9:30 AM open</li>
+              <li>NY confirms = continue long (institutional alignment)</li>
+              <li>NY reverses = fade the London move (institutions disagreed)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Phase 4: New York Afternoon (Fade)</div>
+          <div class="accordion-content">
+            <p><strong>Time:</strong> 12 PM - 4 PM ET</p>
+            <p><strong>Behavior:</strong> Choppy, low conviction</p>
+            <p><strong>What's happening:</strong></p>
+            <ul>
+              <li>London closed, only US traders left</li>
+              <li>Volume declines, ranges compress</li>
+              <li>Often see mean reversion to VWAP or session midpoint</li>
+              <li>Lowest edge of the day (institutions done positioning)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Best practice:</strong> Close trades by 2 PM ET unless holding multi-day positions. Afternoon chop is not worth the stress.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 2: The London Kill Zone Strategy</span></div>
+
+      <h2>Trading the 2-5 AM ET Window</h2>
+
+      <p>The London Kill Zone (LKZ) is where fortunes are made and retail accounts are destroyed. Here's how professionals trade it:</p>
+
+      <h3>Setup Requirements</h3>
+
+      <div style="background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Complete LKZ Setup Checklist</h4>
+        <p><strong>Pre-London (Before 3 AM ET):</strong></p>
+        <ul>
+          <li>[ ] Mark Asian session high (highest price 7 PM - 3 AM)</li>
+          <li>[ ] Mark Asian session low (lowest price 7 PM - 3 AM)</li>
+          <li>[ ] Check higher timeframe bias (daily/4H trend direction)</li>
+          <li>[ ] Identify which side is likely to be swept (equal highs/lows?)</li>
+          <li>[ ] Set alerts for Asian high +10 ticks and Asian low -10 ticks</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>During London Open (3-5 AM ET):</strong></p>
+        <ul>
+          <li>[ ] Watch for sweep (price wicking through Asian high or low)</li>
+          <li>[ ] Confirm with volume spike (Plutus Flow shows absorption)</li>
+          <li>[ ] Wait for rapid reversal back into Asian range</li>
+          <li>[ ] Enter on reversal candle close with confluence</li>
+        </ul>
+      </div>
+
+      <h3>The Three LKZ Patterns</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Pattern #1: Asian Low Sweep → Bullish Reversal</div>
+          <div class="accordion-content">
+            <p><strong>Setup:</strong></p>
+            <ul>
+              <li>Asian session range: 4500 (low) - 4540 (high)</li>
+              <li>London opens at 3:00 AM ET</li>
+              <li>Price immediately drops to 4495 (sweeps Asian low at 4500)</li>
+              <li>Volume spike on Plutus Flow (stop triggers)</li>
+              <li>Price rapidly reverses back above 4500</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Entry:</strong> Long at 4505 (above reclaim of Asian low)</p>
+            <p><strong>Stop:</strong> 4490 (below swept low)</p>
+            <p><strong>Target 1:</strong> Asian high at 4540 (40 points = 2.67R)</p>
+            <p><strong>Target 2:</strong> Previous day high or 4560 (55 points = 3.67R)</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Why it works:</strong> London grabbed liquidity below Asian low, now they're positioned long. You're entering WITH them, not against them.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Pattern #2: Asian High Sweep → Bearish Reversal</div>
+          <div class="accordion-content">
+            <p><strong>Setup:</strong></p>
+            <ul>
+              <li>Asian session range: 4500 (low) - 4540 (high)</li>
+              <li>London opens at 3:00 AM ET</li>
+              <li>Price immediately rallies to 4545 (sweeps Asian high at 4540)</li>
+              <li>Volume spike on Plutus Flow (stop triggers)</li>
+              <li>Price rapidly reverses back below 4540</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Entry:</strong> Short at 4535 (below breakdown of Asian high)</p>
+            <p><strong>Stop:</strong> 4550 (above swept high)</p>
+            <p><strong>Target 1:</strong> Asian low at 4500 (35 points = 2.33R)</p>
+            <p><strong>Target 2:</strong> Previous day low or 4480 (55 points = 3.67R)</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Pattern #3: Double Sweep → Choose Direction</div>
+          <div class="accordion-content">
+            <p><strong>Setup:</strong></p>
+            <ul>
+              <li>Asian session range: 4500-4540</li>
+              <li>London sweeps low first (4495), reverses</li>
+              <li>Then sweeps high (4545), reverses</li>
+              <li>BOTH sides cleared of stops</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Trading the double sweep:</strong></p>
+            <ul>
+              <li>Don't trade the first sweep (could be bait)</li>
+              <li>After BOTH sweeps complete, watch which side price gravitates to</li>
+              <li>If price settles above 4520 (mid-range), bias long</li>
+              <li>If price settles below 4520, bias short</li>
+              <li>Enter on the NY open confirmation (9:30 AM)</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Warning:</strong> Double sweeps are tricky. Lower position size, wider stops. This is advanced pattern recognition.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: New York Reversal Patterns</span></div>
+
+      <h2>The 9:30 AM Open—Confirmation or Rejection</h2>
+
+      <p>New York open at 9:30 AM ET is the MOST important time of day. Why? Because it's when the biggest players (US institutions, hedge funds, pension funds) enter the game.</p>
+
+      <h3>How NY Open Works</h3>
+
+      <div style="background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">The First 30 Minutes (9:30-10:00 AM)</h4>
+        <p><strong>What to watch:</strong></p>
+        <ul>
+          <li><strong>Does NY confirm London's direction?</strong> (bullish after bullish London = strong trend)</li>
+          <li><strong>Does NY reverse London's direction?</strong> (bearish after bullish London = trap)</li>
+          <li><strong>Does NY chop sideways?</strong> (indecision = wait for clarity)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Key levels to watch:</strong></p>
+        <ul>
+          <li>Previous day high/low</li>
+          <li>Overnight high/low (Asian + London combined)</li>
+          <li>Pre-market VWAP</li>
+        </ul>
+      </div>
+
+      <h3>NY Reversal Setup</h3>
+
+      <p><strong>Classic pattern:</strong></p>
+      <ol>
+        <li>London swept Asian low, rallied to 4540</li>
+        <li>Pre-market (9:00-9:30 AM): Price consolidates at 4535-4540</li>
+        <li>9:30 AM: NY opens, price immediately drops below 4530</li>
+        <li>By 10:00 AM: Price back at 4500 (reversed entire London move)</li>
+      </ol>
+
+      <p><strong>What happened:</strong> London sweep was a TRAP. NY institutions disagreed. The real move is DOWN.</p>
+
+      <h3>Trading the NY Reversal</h3>
+
+      <div class="callout-tip">
+        <h4>🎯 High-Probability NY Reversal Entry</h4>
+        <p><strong>Requirements:</strong></p>
+        <ul>
+          <li>London made a large move (30+ points in ES)</li>
+          <li>Pre-market (9:00-9:30 AM) shows weakness (lower highs if bullish London)</li>
+          <li>9:30 AM open breaks the overnight low (or high if bearish London)</li>
+          <li>First 5-minute candle after 9:30 closes OUTSIDE the overnight range</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Entry:</strong> Short at 9:35 AM (if bearish reversal confirmed)</p>
+        <p><strong>Stop:</strong> Above overnight high</p>
+        <p><strong>Target:</strong> Asian low or previous day low</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Complete Session-Based Trading Framework</span></div>
+
+      <h2>Putting It All Together</h2>
+
+      <h3>The Daily Session Playbook</h3>
+
+      <div style="background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Step-by-Step Daily Workflow</h4>
+        <p><strong>6:00 PM ET (Evening Prep):</strong></p>
+        <ul>
+          <li>Review daily chart, note trend direction and key levels</li>
+          <li>Check economic calendar for next day news</li>
+          <li>Identify previous day high/low</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>2:30 AM ET (Pre-London):</strong></p>
+        <ul>
+          <li>Mark Asian session high and low (7 PM - 2:30 AM range)</li>
+          <li>Set alerts for sweeps (+/-10 ticks outside range)</li>
+          <li>Note which side has equal highs/lows (likely sweep target)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>3:00-5:00 AM ET (London Kill Zone):</strong></p>
+        <ul>
+          <li>Watch for Asian range sweep</li>
+          <li>Confirm with volume spike and rapid reversal</li>
+          <li>Enter on reversal with stop beyond swept level</li>
+          <li>Target: Opposite side of Asian range + extension</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>9:00-9:30 AM ET (Pre-Market):</strong></p>
+        <ul>
+          <li>Review overnight price action</li>
+          <li>Check if London move looks strong or weak</li>
+          <li>Prepare for NY confirmation or reversal</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>9:30-10:30 AM ET (NY Open):</strong></p>
+        <ul>
+          <li>Watch first 30 minutes for direction confirmation</li>
+          <li>Enter on clear breakout or reversal pattern</li>
+          <li>Avoid chop—if no clear direction, skip the trade</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>12:00 PM - 4:00 PM ET (Afternoon):</strong></p>
+        <ul>
+          <li>Manage open positions, take profits at targets</li>
+          <li>Avoid new entries (low edge window)</li>
+          <li>Close day trades by 3:00 PM unless holding overnight</li>
+        </ul>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Asian session builds the range</strong> (7 PM - 4 AM ET) — mark the highs/lows</li>
+          <li><strong>London Kill Zone (2-5 AM ET)</strong> sweeps Asian range, starts 70% of major moves</li>
+          <li><strong>NY Open (9:30 AM)</strong> confirms or rejects London's direction</li>
+          <li><strong>Trade the sweep reversal,</strong> not the sweep itself (wait for institutions to position)</li>
+          <li><strong>Session overlap (8 AM-12 PM)</strong> has highest liquidity and best edge</li>
+        </ul>
+      </div>
+
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you now understand session-based trading better than 98% of retail traders. This is how professionals structure their day.</p>
+
+      <div class="section-break"><span>Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Quick Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q: What is the London Kill Zone and why is it called that?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) It's when London traders go to lunch</div>
+            <div class="quiz-option" data-correct="true">B) It's the 2-5 AM ET window when London sweeps the Asian range, triggering retail stops and starting 70% of major daily moves</div>
+            <div class="quiz-option" data-correct="false">C) It's a strategy for scalping</div>
+            <div class="quiz-option" data-correct="false">D) It only works in forex</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> The London Kill Zone (2-5 AM ET, peak 3-4 AM) is when London institutions open with massive liquidity, sweep the Asian session range to grab stops, then establish the daily direction. "Kill Zone" refers to retail stops getting slaughtered during the sweep.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      <div class="section-break"><span>Practice Exercise</span></div>
+
+      <div class="callout-key">
+        <h4>🎯 Session Tracking Exercise</h4>
+        <p><strong>Exercise: Track 5 Days of Session Flow</strong></p>
+        <ol style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li>Each evening, mark the Asian session high and low (7 PM - 3 AM ET)</li>
+          <li>At 3 AM ET, watch for London Kill Zone sweep (which side gets swept?)</li>
+          <li>Note the reversal direction after the sweep</li>
+          <li>At 9:30 AM, observe: Does NY confirm or reverse London?</li>
+          <li>End of day: Document success rate of session patterns</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Goal:</strong> After 5 days, you'll have a clear picture of how sessions interact. This becomes your daily trading roadmap.</p>
+      </div>
+
+      <div class="section-break"><span>Downloadable Resources</span></div>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;border-left:4px solid var(--accent)">
+        <h4 style="margin:0 0 1rem 0">📥 Free Checklist</h4>
+        <p style="margin-bottom:1rem">Session-based trading checklist with Asian range marking and LKZ setup requirements.</p>
+        <a href="/resources/checklists/session-liquidity-checklist.pdf" download class="btn btn-primary" style="display:inline-block">
+          Download Session Liquidity Checklist (PDF)
+        </a>
+      </div>
+
+      <div class="section-break"><span>Related Lessons</span></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:1.5rem 0">
+        <div class="card" style="padding:1rem">
+          <span class="badge">Bridge #15</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Liquidity Pools</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Asian highs/lows are liquidity pools</p>
+          <a href="/curriculum/beginner-bridge/15-liquidity-pools.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+        <div class="card" style="padding:1rem">
+          <span class="badge">Intermediate #37</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Session Analysis (Original)</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Foundation session concepts with Augury Grid</p>
+          <a href="/curriculum/intermediate/37-session-analysis.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+        <div class="card" style="padding:1rem">
+          <span class="badge">Bridge #17</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Time & Sales Mastery</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Read LKZ tape flow in real-time</p>
+          <a href="/curriculum/beginner-bridge/17-time-sales-mastery.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #19: Footprint Charts Advanced—Reading Institutional Intent</strong></p>
+        <p>Stacked imbalances, POC migration, and footprint divergence with price. See WHO is buying and selling at every price level.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss.</blockquote>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3>On this page</h3>
+      <a href="#">Three Sessions</a>
+      <a href="#">London Kill Zone</a>
+      <a href="#">NY Reversal Patterns</a>
+      <a href="#">Complete Framework</a>
+      <a href="#">Knowledge Check</a>
+    </aside>
+  </div>
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/beginner-bridge/17-time-sales-mastery.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/beginner-bridge/19-footprint-charts-advanced.html">Next Lesson &rarr;</a>
+  </div>
+</article>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
+</body>
+</html>
