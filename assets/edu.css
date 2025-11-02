@@ -184,7 +184,16 @@ html[data-theme="light"] .callout{border-color:rgba(10,20,40,.10);background:lin
 .btn-ghost{color:#9fdcff;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06)}
 .btn-sm{padding:.5rem .8rem;font-size:.92rem;line-height:1.1}
 .nav-article{display:flex;justify-content:space-between;align-items:center;gap:.8rem;margin:1.2rem 0 2.4rem;flex-wrap:wrap}
-@media (max-width:480px){.nav-article{gap:.6rem;justify-content:center} .nav-article .btn{flex:1 1 auto;min-width:140px;justify-content:center}}
+@media (max-width:480px){
+  .nav-article{gap:.6rem;justify-content:center}
+  .nav-article .btn{flex:1 1 auto;min-width:140px;justify-content:center}
+  /* Remove auto-margin from share group on mobile */
+  .nav-article > div[style*="margin-left: auto"]{
+    margin-left:0 !important;
+    flex:1 1 100%;
+    justify-content:center;
+  }
+}
 .sp-footer{border-top:1px solid rgba(255,255,255,.08);padding:1.2rem 0 2.2rem;color:#a5b6db}
 .sp-footer .links a{color:inherit;margin-left:1rem;text-decoration:none}
 /* Stars/constellations if not injected by sp-bg.js */
