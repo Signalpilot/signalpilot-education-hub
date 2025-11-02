@@ -192,6 +192,92 @@
   }
 
   /**
+   * Add a favorite (separate from bookmarks - for top picks)
+   * @param {Object} favorite - Favorite details
+   */
+  function addFavorite(favorite) {
+    const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
+
+    // Check if already favorited
+    const exists = favorites.find(f => f.url === favorite.url);
+    if (exists) {
+      logger.log('[Library] Already favorited:', favorite.title);
+      showToast('⭐ Already in favorites!');
+      return;
+    }
+
+    favorites.push({
+      id: favorite.id || generateId(),
+      title: favorite.title,
+      url: favorite.url || window.location.href,
+      tier: favorite.tier || 'Lesson',
+      readTime: favorite.readTime || '15 min read',
+      date: new Date().toISOString()
+    });
+
+    localStorage.setItem('sp_favorites', JSON.stringify(favorites));
+    logger.log('[Library] Favorite added:', favorite.title);
+
+    // Trigger cloud sync
+    if (window.supabaseAuth?.onProgressChange) {
+      window.supabaseAuth.onProgressChange();
+    }
+
+    showToast('⭐ Added to Favorites!');
+    updateFavoriteButton();
+  }
+
+  /**
+   * Remove a favorite
+   * @param {string} url - URL to remove
+   */
+  function removeFavoriteByUrl(url) {
+    const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
+    const filtered = favorites.filter(f => f.url !== (url || window.location.href));
+    localStorage.setItem('sp_favorites', JSON.stringify(filtered));
+    logger.log('[Library] Favorite removed');
+
+    // Trigger cloud sync
+    if (window.supabaseAuth?.onProgressChange) {
+      window.supabaseAuth.onProgressChange();
+    }
+
+    showToast('Removed from favorites');
+    updateFavoriteButton();
+  }
+
+  /**
+   * Check if current page is favorited
+   */
+  function isFavorited() {
+    const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
+    return favorites.some(f => f.url === window.location.href);
+  }
+
+  /**
+   * Update favorite button state
+   */
+  function updateFavoriteButton() {
+    const btn = document.getElementById('favorite-btn');
+    if (!btn) return;
+
+    if (isFavorited()) {
+      btn.innerHTML = '⭐ Favorited';
+      btn.classList.add('btn-secondary');
+      btn.classList.remove('btn-ghost');
+      btn.onclick = () => removeFavoriteByUrl();
+    } else {
+      btn.innerHTML = '★ Favorite';
+      btn.classList.add('btn-ghost');
+      btn.classList.remove('btn-secondary');
+      btn.onclick = () => addFavorite({
+        title: document.title,
+        tier: document.querySelector('[name="sp-level"]')?.content || 'Lesson'
+      });
+    }
+  }
+
+  /**
    * Add bookmark button to lessons
    */
   function addBookmarkButton() {
@@ -215,6 +301,31 @@
     }
 
     updateBookmarkButton();
+  }
+
+  /**
+   * Add favorite button to lessons
+   */
+  function addFavoriteButton() {
+    // Only on lesson pages
+    if (!window.location.pathname.includes('/curriculum/')) return;
+
+    const nav = document.querySelector('.nav-article');
+    if (!nav) return;
+
+    const btn = document.createElement('button');
+    btn.id = 'favorite-btn';
+    btn.className = 'btn btn-ghost';
+
+    // Insert after bookmark button
+    const bookmarkBtn = document.getElementById('bookmark-btn');
+    if (bookmarkBtn && bookmarkBtn.nextSibling) {
+      nav.insertBefore(btn, bookmarkBtn.nextSibling);
+    } else {
+      nav.appendChild(btn);
+    }
+
+    updateFavoriteButton();
   }
 
   /**
@@ -252,6 +363,7 @@
   function init() {
     setupDownloadTracking();
     addBookmarkButton();
+    addFavoriteButton();
     addPrintButton();
     logger.log('[Library] Initialized');
   }
@@ -262,7 +374,10 @@
     trackDownload,
     addBookmark,
     removeBookmark,
-    isBookmarked
+    isBookmarked,
+    addFavorite,
+    removeFavorite: removeFavoriteByUrl,
+    isFavorited
   });
 
 })();

@@ -141,6 +141,162 @@
       background: rgba(255, 255, 255, 0.02);
       border-color: rgba(255, 255, 255, 0.1);
     }
+
+    /* Study Calendar */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(13, 1fr);
+      gap: 4px;
+      margin: 1rem 0;
+    }
+
+    .calendar-day {
+      width: 100%;
+      aspect-ratio: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .calendar-day.active-1 { background: rgba(91, 138, 255, 0.3); }
+    .calendar-day.active-2 { background: rgba(91, 138, 255, 0.5); }
+    .calendar-day.active-3 { background: rgba(91, 138, 255, 0.7); }
+    .calendar-day.active-4 { background: rgba(91, 138, 255, 0.9); }
+    .calendar-day.active-5 { background: rgba(91, 138, 255, 1); }
+
+    .calendar-day:hover {
+      transform: scale(1.2);
+      z-index: 10;
+    }
+
+    .calendar-day:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      margin-bottom: 0.5rem;
+      z-index: 100;
+    }
+
+    /* Streak Calendar */
+    .streak-day {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+    }
+
+    .streak-day.completed {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      border-color: #ff6b35;
+      transform: scale(1.1);
+    }
+
+    .streak-day.today {
+      border-color: #5b8aff;
+      border-width: 3px;
+      box-shadow: 0 0 12px rgba(91, 138, 255, 0.5);
+    }
+
+    /* Progress Chart */
+    .progress-bar-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .progress-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .progress-bar-label {
+      min-width: 80px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .progress-bar-track {
+      flex: 1;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(135deg, #5b8aff, #76ddff);
+      border-radius: 6px;
+      transition: width 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0.5rem;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Certificate Cards */
+    .certificate-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .certificate-card.unlocked {
+      background: linear-gradient(135deg, rgba(91, 138, 255, 0.1), rgba(118, 221, 255, 0.1));
+      border-color: rgba(91, 138, 255, 0.3);
+    }
+
+    .certificate-card.unlocked:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(91, 138, 255, 0.2);
+    }
+
+    .certificate-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .certificate-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .certificate-progress {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .certificate-card .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -200,6 +356,40 @@
     </div>
   </section>
 
+  <!-- Study Calendar -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="library-section">
+      <h3>📅 Study Calendar</h3>
+      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Your activity over the last 90 days</p>
+      <div id="study-calendar"></div>
+    </div>
+  </section>
+
+  <!-- Streak Tracker -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="library-section">
+      <h3>🔥 Streak Tracker - Don't Break the Chain!</h3>
+      <div id="streak-tracker">
+        <div style="text-align: center; margin: 2rem 0;">
+          <div style="font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #ff6b35, #f7931e); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+            <span id="streak-days">0</span> Days
+          </div>
+          <p style="color: var(--muted); margin-top: 0.5rem;">Keep learning every day to maintain your streak!</p>
+        </div>
+        <div id="streak-calendar" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Progress Chart -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="library-section">
+      <h3>📈 Progress Over Time</h3>
+      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Lessons completed each week</p>
+      <div id="progress-chart"></div>
+    </div>
+  </section>
+
   <!-- Downloaded Resources -->
   <section class="wrap" style="margin: 3rem auto;">
     <div class="library-section">
@@ -228,6 +418,21 @@
     </div>
   </section>
 
+  <!-- Starred Favorites -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="library-section">
+      <h3>⭐ Starred Favorites</h3>
+      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Your absolute best lessons - quick access to the gems</p>
+      <div id="favorites-list">
+        <div class="empty-state">
+          <div class="empty-state-icon">⭐</div>
+          <p>No favorites yet.</p>
+          <p style="font-size: 0.9rem;">Star your best lessons for quick access!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Your Notes -->
   <section class="wrap" style="margin: 3rem auto;">
     <div class="library-section">
@@ -237,6 +442,42 @@
           <div class="empty-state-icon">📝</div>
           <p>No notes yet.</p>
           <p style="font-size: 0.9rem;">Take notes while studying to see them here!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="library-section">
+      <h3>🎓 Certificates</h3>
+      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Download completion certificates to showcase your achievements</p>
+      <div id="certificates-list">
+        <div class="library-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+          <div class="certificate-card" data-tier="beginner">
+            <div class="certificate-icon">🟢</div>
+            <div class="certificate-title">Beginner Tier</div>
+            <div class="certificate-progress" id="cert-beginner-progress">0/12 lessons</div>
+            <button class="btn btn-primary btn-sm" id="cert-beginner-btn" disabled>Download Certificate</button>
+          </div>
+          <div class="certificate-card" data-tier="intermediate">
+            <div class="certificate-icon">🟡</div>
+            <div class="certificate-title">Intermediate Tier</div>
+            <div class="certificate-progress" id="cert-intermediate-progress">0/15 lessons</div>
+            <button class="btn btn-primary btn-sm" id="cert-intermediate-btn" disabled>Download Certificate</button>
+          </div>
+          <div class="certificate-card" data-tier="advanced">
+            <div class="certificate-icon">🔴</div>
+            <div class="certificate-title">Advanced Tier</div>
+            <div class="certificate-progress" id="cert-advanced-progress">0/15 lessons</div>
+            <button class="btn btn-primary btn-sm" id="cert-advanced-btn" disabled>Download Certificate</button>
+          </div>
+          <div class="certificate-card" data-tier="master">
+            <div class="certificate-icon">🏆</div>
+            <div class="certificate-title">Master Trader</div>
+            <div class="certificate-progress" id="cert-master-progress">0/42 lessons</div>
+            <button class="btn btn-primary btn-sm" id="cert-master-btn" disabled>Download Certificate</button>
+          </div>
         </div>
       </div>
     </div>
@@ -284,6 +525,9 @@
 
   // Load library data
   function loadLibraryData() {
+    // Track activity for today
+    trackActivity();
+
     // Get downloads
     const downloads = JSON.parse(localStorage.getItem('sp_downloads') || '[]');
     document.getElementById('stat-downloads').textContent = downloads.length;
@@ -300,6 +544,12 @@
       renderBookmarks(bookmarks);
     }
 
+    // Get favorites
+    const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
+    if (favorites.length > 0) {
+      renderFavorites(favorites);
+    }
+
     // Get notes
     const notes = JSON.parse(localStorage.getItem('sp_lesson_notes') || '{}');
     const noteCount = Object.keys(notes).length;
@@ -312,12 +562,74 @@
     const completedCount = Object.keys(localStorage).filter(k => k.includes('_completed')).length;
     document.getElementById('stat-completed').textContent = completedCount;
 
-    // Get streak
-    const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0}');
+    // Get and update streak
+    const streak = updateStreak();
     document.getElementById('stat-streak').textContent = streak.current || 0;
+    document.getElementById('streak-days').textContent = streak.current || 0;
 
-    // Render achievements
+    // Render visualizations
+    renderStudyCalendar();
+    renderStreakCalendar(streak);
+    renderProgressChart();
     renderAchievements(completedCount);
+    renderCertificates(completedCount);
+  }
+
+  // Track daily activity
+  function trackActivity() {
+    const today = new Date().toISOString().split('T')[0];
+    const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
+
+    if (!activity[today]) {
+      activity[today] = { visits: 1, lessonsCompleted: 0 };
+    } else {
+      activity[today].visits++;
+    }
+
+    localStorage.setItem('sp_activity', JSON.stringify(activity));
+  }
+
+  // Update streak based on activity
+  function updateStreak() {
+    const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
+    const dates = Object.keys(activity).sort();
+
+    if (dates.length === 0) {
+      return { current: 0, longest: 0, lastActivity: null };
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    let currentStreak = 0;
+    let longestStreak = 0;
+    let tempStreak = 0;
+
+    // Calculate streak
+    for (let i = 0; i < dates.length; i++) {
+      if (i === 0) {
+        tempStreak = 1;
+      } else {
+        const prevDate = new Date(dates[i - 1]);
+        const currDate = new Date(dates[i]);
+        const diffDays = Math.floor((currDate - prevDate) / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 1) {
+          tempStreak++;
+        } else {
+          tempStreak = 1;
+        }
+      }
+
+      longestStreak = Math.max(longestStreak, tempStreak);
+
+      // If this date chain includes today, it's current streak
+      if (dates[i] === today) {
+        currentStreak = tempStreak;
+      }
+    }
+
+    const streak = { current: currentStreak, longest: longestStreak, lastActivity: dates[dates.length - 1] };
+    localStorage.setItem('sp_learning_streak', JSON.stringify(streak));
+    return streak;
   }
 
   function renderDownloads(downloads) {
@@ -398,12 +710,289 @@
     `).join('');
   }
 
+  // Render Study Calendar (90-day heatmap)
+  function renderStudyCalendar() {
+    const container = document.getElementById('study-calendar');
+    const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
+    const today = new Date();
+    const days = [];
+
+    // Generate last 90 days
+    for (let i = 89; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+      const activityLevel = activity[dateStr] ? Math.min(activity[dateStr].visits, 5) : 0;
+
+      days.push({
+        date: dateStr,
+        level: activityLevel,
+        tooltip: `${dateStr}: ${activityLevel > 0 ? activityLevel + ' visits' : 'No activity'}`
+      });
+    }
+
+    container.innerHTML = `
+      <div class="calendar-grid">
+        ${days.map(day => `
+          <div class="calendar-day ${day.level > 0 ? 'active-' + day.level : ''}"
+               data-tooltip="${day.tooltip}"></div>
+        `).join('')}
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem;">
+        <span>Less</span>
+        <div class="calendar-day" style="width: 12px; height: 12px;"></div>
+        <div class="calendar-day active-1" style="width: 12px; height: 12px;"></div>
+        <div class="calendar-day active-2" style="width: 12px; height: 12px;"></div>
+        <div class="calendar-day active-3" style="width: 12px; height: 12px;"></div>
+        <div class="calendar-day active-4" style="width: 12px; height: 12px;"></div>
+        <div class="calendar-day active-5" style="width: 12px; height: 12px;"></div>
+        <span>More</span>
+      </div>
+    `;
+  }
+
+  // Render Streak Calendar (last 30 days)
+  function renderStreakCalendar(streak) {
+    const container = document.getElementById('streak-calendar');
+    const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
+    const today = new Date();
+    const days = [];
+
+    // Generate last 30 days
+    for (let i = 29; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+      const hasActivity = !!activity[dateStr];
+      const isToday = i === 0;
+
+      days.push({
+        date: dateStr,
+        hasActivity: hasActivity,
+        isToday: isToday,
+        dayName: date.toLocaleDateString('en-US', { weekday: 'short' }).substring(0, 1)
+      });
+    }
+
+    container.innerHTML = days.map(day => `
+      <div class="streak-day ${day.hasActivity ? 'completed' : ''} ${day.isToday ? 'today' : ''}"
+           title="${day.date}">
+        ${day.hasActivity ? '✓' : ''}
+      </div>
+    `).join('');
+  }
+
+  // Render Progress Chart
+  function renderProgressChart() {
+    const container = document.getElementById('progress-chart');
+    const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
+    const today = new Date();
+    const weeks = [];
+
+    // Generate last 8 weeks
+    for (let i = 7; i >= 0; i--) {
+      const weekStart = new Date(today);
+      weekStart.setDate(weekStart.getDate() - (i * 7));
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekEnd.getDate() + 6);
+
+      let weekActivity = 0;
+      for (let d = 0; d < 7; d++) {
+        const checkDate = new Date(weekStart);
+        checkDate.setDate(checkDate.getDate() + d);
+        const dateStr = checkDate.toISOString().split('T')[0];
+        if (activity[dateStr]) {
+          weekActivity += activity[dateStr].visits || 0;
+        }
+      }
+
+      weeks.push({
+        label: i === 0 ? 'This week' : `${i} ${i === 1 ? 'week' : 'weeks'} ago`,
+        value: weekActivity,
+        max: 20 // Max expected visits per week for scaling
+      });
+    }
+
+    const maxValue = Math.max(...weeks.map(w => w.value), 1);
+
+    container.innerHTML = `
+      <div class="progress-bar-container">
+        ${weeks.map(week => `
+          <div class="progress-bar-item">
+            <div class="progress-bar-label">${week.label}</div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" style="width: ${(week.value / maxValue) * 100}%">
+                ${week.value > 0 ? week.value : ''}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  // Render Favorites
+  function renderFavorites(favorites) {
+    const container = document.getElementById('favorites-list');
+    container.innerHTML = favorites.map(fav => `
+      <div class="library-item">
+        <div class="library-item-info">
+          <div class="library-item-title">⭐ ${fav.title}</div>
+          <div class="library-item-meta">${fav.tier} • Starred ${new Date(fav.date).toLocaleDateString()}</div>
+        </div>
+        <div class="library-item-actions">
+          <a href="${fav.url}" class="btn btn-sm btn-primary">Read Now</a>
+          <button onclick="window.library.removeFavorite('${fav.id}')" class="btn btn-sm btn-ghost">Remove</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Render Certificates
+  function renderCertificates(completedCount) {
+    const tiers = {
+      beginner: { completed: 0, total: 12 },
+      intermediate: { completed: 0, total: 15 },
+      advanced: { completed: 0, total: 15 },
+      master: { completed: completedCount, total: 42 }
+    };
+
+    // Count completed by tier (simplified - you can enhance this)
+    // For now, assume sequential completion
+    if (completedCount >= 12) tiers.beginner.completed = 12;
+    else tiers.beginner.completed = Math.min(completedCount, 12);
+
+    if (completedCount > 12) tiers.intermediate.completed = Math.min(completedCount - 12, 15);
+    if (completedCount > 27) tiers.advanced.completed = Math.min(completedCount - 27, 15);
+
+    // Update progress displays
+    document.getElementById('cert-beginner-progress').textContent = `${tiers.beginner.completed}/${tiers.beginner.total} lessons`;
+    document.getElementById('cert-intermediate-progress').textContent = `${tiers.intermediate.completed}/${tiers.intermediate.total} lessons`;
+    document.getElementById('cert-advanced-progress').textContent = `${tiers.advanced.completed}/${tiers.advanced.total} lessons`;
+    document.getElementById('cert-master-progress').textContent = `${tiers.master.completed}/${tiers.master.total} lessons`;
+
+    // Enable/unlock certificates
+    if (tiers.beginner.completed >= tiers.beginner.total) {
+      const card = document.querySelector('[data-tier="beginner"]');
+      const btn = document.getElementById('cert-beginner-btn');
+      card.classList.add('unlocked');
+      btn.disabled = false;
+      btn.onclick = () => generateCertificate('Beginner');
+    }
+
+    if (tiers.intermediate.completed >= tiers.intermediate.total) {
+      const card = document.querySelector('[data-tier="intermediate"]');
+      const btn = document.getElementById('cert-intermediate-btn');
+      card.classList.add('unlocked');
+      btn.disabled = false;
+      btn.onclick = () => generateCertificate('Intermediate');
+    }
+
+    if (tiers.advanced.completed >= tiers.advanced.total) {
+      const card = document.querySelector('[data-tier="advanced"]');
+      const btn = document.getElementById('cert-advanced-btn');
+      card.classList.add('unlocked');
+      btn.disabled = false;
+      btn.onclick = () => generateCertificate('Advanced');
+    }
+
+    if (tiers.master.completed >= tiers.master.total) {
+      const card = document.querySelector('[data-tier="master"]');
+      const btn = document.getElementById('cert-master-btn');
+      card.classList.add('unlocked');
+      btn.disabled = false;
+      btn.onclick = () => generateCertificate('Master Trader');
+    }
+  }
+
+  // Generate Certificate
+  function generateCertificate(tier) {
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const userName = 'Trading Student'; // Get from auth if available
+
+    const certificateHTML = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Certificate of Completion - ${tier}</title>
+        <style>
+          @page { size: landscape; margin: 0; }
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a2332 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+          }
+          .certificate {
+            background: linear-gradient(135deg, #0f1420 0%, #1a2845 100%);
+            border: 8px solid #5b8aff;
+            border-radius: 20px;
+            padding: 4rem;
+            max-width: 900px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+          }
+          .logo { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; background: linear-gradient(135deg, #5b8aff, #76ddff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+          h1 { font-size: 3rem; margin: 2rem 0; letter-spacing: 2px; color: #5b8aff; }
+          .awarded { font-size: 1.2rem; margin: 1rem 0; opacity: 0.9; }
+          .name { font-size: 2.5rem; margin: 2rem 0; padding: 1rem 2rem; border-bottom: 3px solid #5b8aff; display: inline-block; }
+          .achievement { font-size: 1.5rem; margin: 2rem 0; }
+          .tier { font-size: 2rem; color: #76ddff; font-weight: 700; }
+          .date { margin-top: 3rem; font-size: 1rem; opacity: 0.7; }
+          .signature { margin-top: 2rem; padding-top: 2rem; border-top: 2px solid rgba(255,255,255,0.2); display: flex; justify-content: space-around; }
+          .signature div { font-size: 0.9rem; }
+          .signature-line { width: 200px; border-top: 2px solid #5b8aff; margin: 0 auto 0.5rem; }
+        </style>
+      </head>
+      <body>
+        <div class="certificate">
+          <div class="logo">Signal Pilot</div>
+          <h1>Certificate of Completion</h1>
+          <div class="awarded">This is to certify that</div>
+          <div class="name">${userName}</div>
+          <div class="achievement">has successfully completed the</div>
+          <div class="tier">${tier} Tier</div>
+          <div class="achievement">of the Signal Pilot Trading Education Program</div>
+          <div class="date">Awarded on ${today}</div>
+          <div class="signature">
+            <div>
+              <div class="signature-line"></div>
+              <div>Signal Pilot Education</div>
+            </div>
+          </div>
+        </div>
+        <script>
+          window.onload = () => {
+            setTimeout(() => window.print(), 500);
+          };
+        </script>
+      </body>
+      </html>
+    `;
+
+    // Open certificate in new window for printing/download
+    const certWindow = window.open('', '_blank');
+    certWindow.document.write(certificateHTML);
+    certWindow.document.close();
+  }
+
   // Public API
   window.library = {
     removeBookmark: function(id) {
       const bookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]');
       const filtered = bookmarks.filter(b => b.id !== id);
       localStorage.setItem('sp_bookmarks', JSON.stringify(filtered));
+      loadLibraryData();
+    },
+    removeFavorite: function(id) {
+      const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
+      const filtered = favorites.filter(f => f.id !== id);
+      localStorage.setItem('sp_favorites', JSON.stringify(filtered));
       loadLibraryData();
     }
   };
