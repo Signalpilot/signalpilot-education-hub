@@ -151,7 +151,9 @@
   <div class="wrap nav-article"><a class="btn btn-ghost" href="/curriculum/beginner/11-timeframe-illusion.html">&larr; Previous</a><a class="btn btn-primary" href="/beginner.html">Back to Curriculum &rarr;</a></div>
 </article>
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div></div></footer>
-<script src="/assets/dev-utils.js" defer></script>
+<!-- Logger must load first, before other scripts that use it -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
 <script src="/assets/structured-data.js" defer></script>
 <script src="/assets/lazy-load.js" defer></script>
 <script src="/assets/edu.js"></script>
