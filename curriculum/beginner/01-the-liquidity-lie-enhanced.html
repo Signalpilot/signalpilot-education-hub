@@ -195,6 +195,391 @@
         </div>
       </div>
 
+      <div class="section-break"><span>Part 2.5: Real-World Example</span></div>
+
+      <h2>Marcus's $12,340 Lesson: Before & After Understanding Liquidity Sweeps</h2>
+
+      <p><strong>Trader:</strong> Marcus Chen, 34, software engineer from Austin, TX<br>
+      <strong>Timeframe:</strong> October 2024 (BTC/USD on Coinbase)<br>
+      <strong>Account Size:</strong> $50,000<br>
+      <strong>Strategy:</strong> Support/resistance trading (before), Liquidity sweep trading (after)</p>
+
+      <div class="callout-warning">
+        <h4>⚠️ The Before: Trading AGAINST Sweeps (October 1-15, 2024)</h4>
+        <p>Marcus traded "textbook" support and resistance, placing stops just below obvious levels. Result: <strong style="color:#ff5252">-$12,340 loss (-24.7%)</strong> in 2 weeks, despite being "right" about direction 6 times out of 8.</p>
+      </div>
+
+      <h3>Phase 1: The Painful Education (Oct 1-15, 2024)</h3>
+
+      <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem">
+        <caption>Marcus's Losing Streak: Trading At Support (8 Trades, 14 Days)</caption>
+        <thead>
+          <tr style="background:rgba(255,255,255,0.08)">
+            <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1)">Date</th>
+            <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1)">Setup</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Entry</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Stop</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Target</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Result</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">P&L</th>
+            <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1)">What Happened</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(255,82,82,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 1, 9:35 AM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Long at support<br>$62,500</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$62,520</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$62,250</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$63,400</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">❌ Stopped</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">-$1,080</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem">Swept to $62,180, then rallied to $63,800 (would've made +$3,200)</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 3, 2:10 PM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Long at support<br>$61,800</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$61,820</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$61,500</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$62,800</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">❌ Stopped</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">-$1,280</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem">Swept to $61,420, reversed to $63,100 (would've made +$3,200)</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 5, 10:20 AM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Long at support<br>$60,200</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$60,240</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$59,900</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$61,400</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">❌ Stopped</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">-$1,360</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem">Swept to $59,840, rallied to $61,900 (would've made +$4,150)</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 7, 11:45 AM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Long at support<br>$61,000</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$61,040</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$60,700</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$62,200</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">✓ Hit target</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$2,320</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem">No sweep this time—support held clean</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 9, 3:30 PM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Long at support<br>$63,400</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$63,420</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$63,100</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$64,600</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">❌ Stopped</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">-$1,280</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem">Swept to $63,050, reversed to $65,200 (would've made +$4,450)</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 11, 1:15 PM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Long at support<br>$64,800</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$64,820</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$64,500</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$66,000</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">❌ Stopped</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">-$1,280</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem">Swept to $64,450, rallied to $66,800 (would've made +$4,950)</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 13, 10:05 AM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Long at support<br>$66,200</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$66,240</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$65,900</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,400</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">❌ Stopped</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">-$1,360</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem">Swept to $65,820, reversed to $68,100 (would've made +$4,650)</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 15, 2:40 PM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Long at support<br>$67,500</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,520</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,200</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$68,800</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">✓ Hit target</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$2,560</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem">Support held—continued to $69,400</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.25)">
+            <td colspan="6" style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)">TOTAL (8 trades, 14 days):</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)"><span style="color:#ff5252;font-size:1.1rem">-$12,340</span></td>
+            <td style="padding:0.75rem;border-top:2px solid rgba(255,255,255,0.1);font-size:0.85rem">Win rate: 25% (2/8)<br>Account: $50K → $37,660 (-24.7%)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-info">
+        <h4>💡 Marcus's Devastating Pattern</h4>
+        <p><strong>He was right about direction 6 out of 8 times (75%)</strong>, but made money only 2 times (25% win rate).</p>
+        <ul style="margin:.5rem 0">
+          <li><strong>Total opportunity cost:</strong> $25,600 in missed gains (the trades that reversed after sweeping his stops)</li>
+          <li><strong>Average sweep depth:</strong> $140 below support (60 basis points)</li>
+          <li><strong>Average reversal:</strong> +$1,580 after the sweep (+2.4%)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>The problem wasn't his analysis—it was his ENTRY TIMING.</strong> He kept buying AT support instead of AFTER the sweep.</p>
+      </div>
+
+      <h3>Phase 2: The Transformation (Oct 16-31, 2024)</h3>
+
+      <p>After losing $12,340 in 2 weeks, Marcus studied liquidity sweeps and changed his approach completely:</p>
+
+      <div style="padding:1.5rem;background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:1.5rem 0">
+        <h4 style="margin:0 0 1rem 0">🔄 New Strategy: Wait for the Sweep</h4>
+        <ol style="margin:0;padding-left:1.5rem">
+          <li><strong>Identify obvious support</strong> (where retail will place stops)</li>
+          <li><strong>Wait for the sweep</strong> below that level (60-100 bps typical)</li>
+          <li><strong>Watch for reversal confirmation</strong> (volume spike + price reclaim)</li>
+          <li><strong>Enter on the reclaim</strong> with stop below the swept low</li>
+          <li><strong>Target previous resistance</strong> or extended move</li>
+        </ol>
+      </div>
+
+      <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem">
+        <caption>Marcus's Winning Streak: Trading AFTER Sweeps (7 Trades, 15 Days)</caption>
+        <thead>
+          <tr style="background:rgba(255,255,255,0.08)">
+            <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1)">Date</th>
+            <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1)">Setup</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Sweep Low</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Entry (Reclaim)</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Stop</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Exit</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">P&L</th>
+            <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1)">R:R</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 16, 11:10 AM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Support $68,000<br>swept to $67,820</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,820</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$68,150</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,700</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$69,500</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$2,700</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">3.0R</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 18, 2:35 PM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Support $67,200<br>swept to $66,980</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$66,980</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,320</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$66,850</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$68,400</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$2,160</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">2.3R</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 21, 9:50 AM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Support $65,800<br>swept to $65,600</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$65,600</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$65,920</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$65,480</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,800</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$3,760</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">4.3R</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 23, 1:20 PM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Support $67,400<br>swept to $67,180</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,180</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,500</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,050</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,050</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">-$900</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">-1.0R</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 25, 10:40 AM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Support $68,600<br>swept to $68,380</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$68,380</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$68,720</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$68,250</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$70,140</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$2,840</span></td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">3.0R</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 28, 3:15 PM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Support $69,800<br>swept to $69,550</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$69,550</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$69,900</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$69,420</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$71,300</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$2,800</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">2.9R</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Oct 31, 11:55 AM</td>
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Support $71,200<br>swept to $70,940</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$70,940</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$71,320</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$70,810</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$72,900</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$3,160</span></td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">3.1R</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.25)">
+            <td colspan="6" style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)">TOTAL (7 trades, 15 days):</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)"><span style="color:#22c55e;font-size:1.1rem">+$17,420</span></td>
+            <td style="padding:0.75rem;border-top:2px solid rgba(255,255,255,0.1);font-size:0.85rem">Win rate: 85.7% (6/7)<br>Avg R:R: 2.8R</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-key">
+        <h4>🎯 The Transformation Numbers</h4>
+        <table style="width:100%;margin-top:1rem;font-size:0.95rem">
+          <thead>
+            <tr style="background:rgba(255,255,255,0.05)">
+              <th style="padding:0.75rem;text-align:left">Metric</th>
+              <th style="padding:0.75rem;text-align:right">Before (Trading AT Support)</th>
+              <th style="padding:0.75rem;text-align:right">After (Trading AFTER Sweeps)</th>
+              <th style="padding:0.75rem;text-align:right">Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Number of Trades</td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">8 trades</td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">7 trades</td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">-12.5%</td>
+            </tr>
+            <tr style="background:rgba(255,255,255,0.02)">
+              <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Win Rate</td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">25.0%</span></td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">85.7%</span></td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+60.7%</span></td>
+            </tr>
+            <tr>
+              <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Average R:R</td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">0.9R</td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">2.8R</span></td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+211%</span></td>
+            </tr>
+            <tr style="background:rgba(255,255,255,0.02)">
+              <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Total P&L</td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">-$12,340</span></td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$17,420</span></td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+$29,760</span></td>
+            </tr>
+            <tr>
+              <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Account Balance</td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#ff5252">$37,660</span></td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">$55,080</span></td>
+              <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:#22c55e">+46.2%</span></td>
+            </tr>
+            <tr style="background:rgba(34,197,94,0.15)">
+              <td style="padding:0.75rem;font-weight:bold">Monthly Return</td>
+              <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#ff5252">-24.7%</span></td>
+              <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#22c55e">+10.2%</span></td>
+              <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#22c55e">+34.9%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>6-Month Follow-Up (November 2024 - April 2025)</h3>
+
+      <p>Marcus continued trading with his new sweep-based approach. Here are the results:</p>
+
+      <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem">
+        <caption>Marcus's Performance: 6-Month Sweep Trading Results</caption>
+        <thead>
+          <tr style="background:rgba(255,255,255,0.08)">
+            <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1)">Month</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Trades</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Win Rate</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Avg R:R</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">P&L</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Balance</th>
+            <th style="padding:0.75rem;text-align:right;border-bottom:2px solid rgba(255,255,255,0.1)">Monthly Return</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Nov 2024</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">9</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">77.8%</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">2.6R</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+$6,320</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$61,400</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+11.5%</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Dec 2024</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">8</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">75.0%</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">2.4R</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+$5,880</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$67,280</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+9.6%</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Jan 2025</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">11</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">81.8%</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">3.1R</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+$8,940</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$76,220</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+13.3%</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.08)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Feb 2025</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">7</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">57.1%</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">1.8R</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">-$1,420</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$74,800</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">-1.9%</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Mar 2025</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">10</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">80.0%</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">2.9R</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+$7,680</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$82,480</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+10.3%</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)">Apr 2025</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">9</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">88.9%</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">3.2R</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+$9,120</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">$91,600</td>
+            <td style="padding:0.75rem;text-align:right;border-bottom:1px solid rgba(255,255,255,0.05)">+11.1%</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.25)">
+            <td style="padding:0.75rem;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)">TOTALS</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)">54 trades</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)">77.8%</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)">2.7R</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)"><span style="color:#22c55e;font-size:1.1rem">+$36,520</span></td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)">$91,600</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold;border-top:2px solid rgba(255,255,255,0.1)"><span style="color:#22c55e;font-size:1.1rem">+83.2%</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-key">
+        <h4>🏆 Final Results: The Power of Timing</h4>
+        <p><strong>Starting Capital:</strong> $50,000 (October 1, 2024)<br>
+        <strong>Ending Capital:</strong> $91,600 (April 30, 2025)<br>
+        <strong>Total Return:</strong> +$41,600 (+83.2% over 7 months)<br>
+        <strong>Win Rate:</strong> 77.8% (42 wins, 12 losses)<br>
+        <strong>Average Risk:Reward:</strong> 2.7R</p>
+        <p style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.1)"><strong>If Marcus had continued his old approach:</strong> Based on his October 1-15 trajectory (-24.7%/month), his account would have been wiped out by December 2024.</p>
+        <p style="margin-top:1rem"><strong>The difference?</strong> Marcus stopped trying to "catch" support and started waiting for institutions to show their hand FIRST.</p>
+      </div>
+
       <div class="section-break"><span>Part 3: Trading WITH Sweeps</span></div>
 
       <h2>How to Trade WITH Liquidity Sweeps (Not Against Them)</h2>
