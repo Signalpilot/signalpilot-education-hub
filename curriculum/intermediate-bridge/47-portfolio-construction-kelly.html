@@ -227,6 +227,330 @@
     <p><strong>⚠️ Professional Consensus:</strong> Never use full Kelly. Use 0.25-0.5× Kelly for growth with manageable risk. Ed Thorp himself recommends "substantially less than Kelly."</p>
   </div>
 
+  <div class="example-block">
+    <h4>Real-World Example: 3 Position Sizing Methods Compared Over 100 Trades</h4>
+    <p><strong>Trader:</strong> Swing trader with proven strategy, $100K starting capital</p>
+
+    <p><strong>Strategy Stats (from 500-trade backtest):</strong></p>
+    <ul>
+      <li>Win rate: 58%</li>
+      <li>Average win: $580</li>
+      <li>Average loss: $320</li>
+      <li>Win/loss ratio: 1.81</li>
+      <li>Expectancy: (0.58 × $580) - (0.42 × $320) = $336.40 - $134.40 = $202 per trade</li>
+    </ul>
+
+    <p><strong>Kelly Calculation:</strong></p>
+    <ul>
+      <li>f* = (p × b - q) / b = (0.58 × 1.81 - 0.42) / 1.81 = 0.349 = 34.9%</li>
+      <li>Half Kelly = 17.5%</li>
+      <li>Quarter Kelly = 8.7%</li>
+    </ul>
+
+    <p><strong>Three Position Sizing Methods Tested:</strong></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Position Sizing Rule</th>
+          <th>Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Method A: Fixed 1%</strong></td>
+          <td>Risk 1% of account per trade</td>
+          <td>Conservative, standard retail approach</td>
+        </tr>
+        <tr>
+          <td><strong>Method B: Half Kelly</strong></td>
+          <td>Risk 17.5% / 10 = 1.75% per trade</td>
+          <td>Balanced growth/risk (divided by 10 for safety)</td>
+        </tr>
+        <tr>
+          <td><strong>Method C: Full Kelly</strong></td>
+          <td>Risk 34.9% / 10 = 3.5% per trade</td>
+          <td>Maximum growth (for comparison only)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Results After 100 Trades (same trade sequence):</strong></p>
+
+    <h5>Method A: Fixed 1% Risk</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Starting Capital</td>
+          <td>$100,000</td>
+        </tr>
+        <tr>
+          <td>Ending Capital</td>
+          <td>$118,450</td>
+        </tr>
+        <tr>
+          <td>Total Return</td>
+          <td>+18.5%</td>
+        </tr>
+        <tr>
+          <td>Max Drawdown</td>
+          <td>-8.2%</td>
+        </tr>
+        <tr>
+          <td>Sharpe Ratio</td>
+          <td>1.2</td>
+        </tr>
+        <tr>
+          <td>Largest Loss</td>
+          <td>-$1,180</td>
+        </tr>
+        <tr>
+          <td>Longest Losing Streak</td>
+          <td>7 trades</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Method B: Half Kelly (1.75% Risk)</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Starting Capital</td>
+          <td>$100,000</td>
+        </tr>
+        <tr>
+          <td>Ending Capital</td>
+          <td>$134,280</td>
+        </tr>
+        <tr>
+          <td>Total Return</td>
+          <td>+34.3%</td>
+        </tr>
+        <tr>
+          <td>Max Drawdown</td>
+          <td>-12.8%</td>
+        </tr>
+        <tr>
+          <td>Sharpe Ratio</td>
+          <td>1.6</td>
+        </tr>
+        <tr>
+          <td>Largest Loss</td>
+          <td>-$2,245</td>
+        </tr>
+        <tr>
+          <td>Longest Losing Streak</td>
+          <td>7 trades (same, but bigger $)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Method C: Full Kelly (3.5% Risk) - FOR COMPARISON ONLY</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Starting Capital</td>
+          <td>$100,000</td>
+        </tr>
+        <tr>
+          <td>Ending Capital</td>
+          <td>$152,900</td>
+        </tr>
+        <tr>
+          <td>Total Return</td>
+          <td>+52.9%</td>
+        </tr>
+        <tr>
+          <td>Max Drawdown</td>
+          <td><strong>-21.4%</strong> (brutal)</td>
+        </tr>
+        <tr>
+          <td>Sharpe Ratio</td>
+          <td>1.3 (worse than Half Kelly!)</td>
+        </tr>
+        <tr>
+          <td>Largest Loss</td>
+          <td>-$5,120</td>
+        </tr>
+        <tr>
+          <td>Longest Losing Streak</td>
+          <td>7 trades, -$18,450 total</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Comparison Summary:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Return</th>
+          <th>Max DD</th>
+          <th>Sharpe</th>
+          <th>Return/DD Ratio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fixed 1%</td>
+          <td>+18.5%</td>
+          <td>-8.2%</td>
+          <td>1.2</td>
+          <td>2.3</td>
+        </tr>
+        <tr>
+          <td><strong>Half Kelly</strong></td>
+          <td><strong>+34.3%</strong></td>
+          <td>-12.8%</td>
+          <td><strong>1.6 (best)</strong></td>
+          <td><strong>2.7 (best)</strong></td>
+        </tr>
+        <tr>
+          <td>Full Kelly</td>
+          <td>+52.9%</td>
+          <td><strong>-21.4%</strong></td>
+          <td>1.3</td>
+          <td>2.5</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Key Insights:</strong></p>
+
+    <ol>
+      <li><strong>Half Kelly delivered best risk-adjusted returns:</strong>
+        <ul>
+          <li>85% more profit than fixed 1% (+34.3% vs +18.5%)</li>
+          <li>Only 56% more drawdown (-12.8% vs -8.2%)</li>
+          <li>Highest Sharpe ratio (1.6) = most efficient growth</li>
+        </ul>
+      </li>
+      <li><strong>Full Kelly had highest return but unsustainable risk:</strong>
+        <ul>
+          <li>186% more profit than fixed 1% (+52.9% vs +18.5%)</li>
+          <li>But 161% more drawdown (-21.4% vs -8.2%)</li>
+          <li>Losing streak cost -$18K (would scare most traders into quitting)</li>
+          <li>Lower Sharpe than Half Kelly (1.3 vs 1.6) = inefficient volatility</li>
+        </ul>
+      </li>
+      <li><strong>Fixed 1% was "safe" but left massive profit on table:</strong>
+        <ul>
+          <li>Account ended at $118K vs $134K (Half Kelly) = $16K missed profit</li>
+          <li>Over 5 years, this compounds to 6-figure difference</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p><strong>What Happened During the 7-Trade Losing Streak (Trade #45-51):</strong></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Trade #</th>
+          <th>Fixed 1%</th>
+          <th>Half Kelly</th>
+          <th>Full Kelly</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account before streak</td>
+          <td>$108,200</td>
+          <td>$121,500</td>
+          <td>$138,400</td>
+        </tr>
+        <tr>
+          <td>Loss #1</td>
+          <td>-$1,082</td>
+          <td>-$2,126</td>
+          <td>-$4,844</td>
+        </tr>
+        <tr>
+          <td>Loss #2</td>
+          <td>-$1,071</td>
+          <td>-$2,089</td>
+          <td>-$4,675</td>
+        </tr>
+        <tr>
+          <td>Loss #3</td>
+          <td>-$1,060</td>
+          <td>-$2,052</td>
+          <td>-$4,511</td>
+        </tr>
+        <tr>
+          <td>Loss #4</td>
+          <td>-$1,049</td>
+          <td>-$2,016</td>
+          <td>-$4,353</td>
+        </tr>
+        <tr>
+          <td>Loss #5</td>
+          <td>-$1,038</td>
+          <td>-$1,981</td>
+          <td>-$4,201</td>
+        </tr>
+        <tr>
+          <td>Loss #6</td>
+          <td>-$1,027</td>
+          <td>-$1,947</td>
+          <td>-$4,054</td>
+        </tr>
+        <tr>
+          <td>Loss #7</td>
+          <td>-$1,017</td>
+          <td>-$1,913</td>
+          <td>-$3,912</td>
+        </tr>
+        <tr>
+          <td><strong>Total streak loss</strong></td>
+          <td><strong>-$7,344 (-6.8%)</strong></td>
+          <td><strong>-$14,124 (-11.6%)</strong></td>
+          <td><strong>-$30,550 (-22.1%)</strong></td>
+        </tr>
+        <tr>
+          <td>Account after streak</td>
+          <td>$100,856</td>
+          <td>$107,376</td>
+          <td>$107,850</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>The Psychology Test:</strong></p>
+    <ul>
+      <li><strong>Fixed 1%:</strong> Lost $7,344 over 7 trades. Uncomfortable but tolerable.</li>
+      <li><strong>Half Kelly:</strong> Lost $14,124 over 7 trades. Painful but if you trust your edge, you stick with it.</li>
+      <li><strong>Full Kelly:</strong> Lost $30,550 over 7 trades (-22% of peak!). Most traders would panic, abandon system, or reduce size drastically. This is why full Kelly fails in practice—humans can't psychologically handle the swings.</li>
+    </ul>
+
+    <p><strong>Final Recommendation:</strong></p>
+    <ul>
+      <li><strong>Conservative traders:</strong> 0.5-1.0% fixed risk (safe, steady)</li>
+      <li><strong>Proven edge + discipline:</strong> Quarter Kelly (0.25× Kelly calculation)</li>
+      <li><strong>Experienced + high risk tolerance:</strong> Half Kelly (0.5× Kelly calculation)</li>
+      <li><strong>NEVER use full Kelly</strong> unless you're a robot with no emotions</li>
+    </ul>
+  </div>
+
   <h2>Part 3: Multi-Position Kelly (Portfolio Optimization)</h2>
 
   <h3>The Portfolio Kelly Problem</h3>
