@@ -9,98 +9,614 @@
 </head>
 <body>
 <article class="article">
+  <!-- Lesson Header with Badges -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <span class="lesson-badge">Lesson 77</span>
+    <span class="tier-badge tier-professional">Professional</span>
+  </div>
+
   <h1>Building Your Trading Edge: Personalized Strategy Development</h1>
-  <p><b>There is no "best" strategy. There's only the strategy that fits YOUR personality, schedule, and risk tolerance.</b></p>
+  <p class="lead"><b>There is no "best" strategy. There's only the strategy that fits YOUR personality, schedule, and risk tolerance.</b></p>
+
+  <div class="key-insight">
+    <h4>The Edge Paradox</h4>
+    <p>Every profitable trader you admire has a different edge. Some trade breakouts, others fade them. Some hold for months, others seconds. Some use pure technicals, others pure fundamentals. The common thread? They all found strategies that match their psychological makeup, available time, and capital constraints. Your edge isn't about copying theirs—it's about discovering what makes YOU consistently profitable when others aren't.</p>
+  </div>
+
+  <!-- Progress Tracker -->
+  <div class="progress-tracker">
+    <h3>Learning Progress</h3>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-1">
+      <label for="progress-1">Understand the three dimensions of trading edge</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-2">
+      <label for="progress-2">Identify your optimal trading style and timeframe</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-3">
+      <label for="progress-3">Complete the edge development process</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-4">
+      <label for="progress-4">Write your personal edge statement</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-5">
+      <label for="progress-5">Test and validate edge across market conditions</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-6">
+      <label for="progress-6">Build edge diversification strategy</label>
+    </div>
+  </div>
 
   <h2>The Three Dimensions of Edge</h2>
-  <p><strong>1. Informational Edge:</strong> You know something the market doesn't (rare for retail)</p>
-  <p><strong>2. Analytical Edge:</strong> You interpret public information better (multi-timeframe, intermarket, order flow)</p>
-  <p><strong>3. Behavioral Edge:</strong> You execute with discipline when others panic/chase (most achievable)</p>
+
+  <p>Every sustainable trading edge falls into one (or more) of three categories. Understanding which dimension you can realistically exploit determines your entire strategic approach.</p>
+
+  <h3>1. Informational Edge</h3>
+
+  <div class="edge-dimension">
+    <h4>Definition</h4>
+    <p>You know something the market doesn't know yet—or you know it faster than others can act on it.</p>
+
+    <h4>Examples</h4>
+    <ul>
+      <li><strong>Insider information (illegal):</strong> Company exec knows earnings beat before announcement</li>
+      <li><strong>Expert networks (gray area):</strong> Consulting with industry insiders for "mosaic theory" insights</li>
+      <li><strong>Alternative data (legal):</strong> Satellite images of parking lots, credit card transaction data, web scraping</li>
+      <li><strong>Speed advantage (legal):</strong> Co-location servers get market data 3 milliseconds faster (HFT firms)</li>
+    </ul>
+
+    <h4>Reality Check for Retail</h4>
+    <p style="background-color: var(--warning-bg); padding: 1rem; border-left: 4px solid var(--warning-color);">
+      <strong>⚠️ Informational edge is nearly impossible for retail traders.</strong> You're competing against:
+    </p>
+    <ul>
+      <li>Bloomberg terminals ($25K/year) vs your free Yahoo Finance</li>
+      <li>Direct fiber connections to exchanges (microsecond latency) vs your WiFi</li>
+      <li>Teams of analysts vs solo you</li>
+      <li>Alternative data ($100K+/year datasets) vs public news</li>
+    </ul>
+    <p><strong>Verdict:</strong> Don't build strategy around informational edge unless you have institutional resources.</p>
+  </div>
+
+  <h3>2. Analytical Edge</h3>
+
+  <div class="edge-dimension">
+    <h4>Definition</h4>
+    <p>Everyone sees the same public information, but you interpret it better. You connect dots others miss.</p>
+
+    <h4>Examples</h4>
+    <ul>
+      <li><strong>Multi-timeframe analysis:</strong> You see 5-min breakout aligns with daily support + weekly trend (confluence others miss)</li>
+      <li><strong>Intermarket relationships:</strong> You notice USD weakness + gold strength + bond weakness = risk-on regime shift</li>
+      <li><strong>Order flow literacy:</strong> You read dark pool prints and auction imbalances (others just see price)</li>
+      <li><strong>Volume profile mastery:</strong> You identify institutional VPOC levels retail traders ignore</li>
+      <li><strong>Options flow:</strong> You interpret large call sweeps as smart money positioning (others see noise)</li>
+      <li><strong>Regime detection:</strong> You recognize macro shifts (trending → mean-reverting) and adapt strategies accordingly</li>
+    </ul>
+
+    <h4>Why This Edge Persists</h4>
+    <ul>
+      <li>Most traders don't study deeply enough (skip lessons like this one)</li>
+      <li>Requires continuous learning (market structure evolves, lazy traders don't)</li>
+      <li>Hard to systematize (discretionary judgment, not pure algo)</li>
+      <li>Confirmation bias blinds traders (they see what they want to see)</li>
+    </ul>
+
+    <p><strong>Verdict:</strong> ✅ <em>This is where retail can compete.</em> Signal Pilot tools (Pentarch Pilot Line, Minimal Flow, Volume Zones) give you analytical edge others lack.</p>
+  </div>
+
+  <h3>3. Behavioral Edge</h3>
+
+  <div class="edge-dimension">
+    <h4>Definition</h4>
+    <p>You execute with discipline when others panic, FOMO, revenge trade, or freeze. Your edge is psychological resilience.</p>
+
+    <h4>Examples</h4>
+    <ul>
+      <li><strong>Buying panic:</strong> SPY drops 3% in a day, VIX spikes to 40, everyone sells—you buy at oversold support</li>
+      <li><strong>Cutting winners early:</strong> Most traders take profits at +10% because "scared to give it back"—you trail to +50%</li>
+      <li><strong>Following system in drawdown:</strong> Strategy hits 4 losers in a row, most quit—you keep trading (knowing edge plays out over 100+ trades)</li>
+      <li><strong>Waiting for setup:</strong> Market chops sideways for 2 weeks, no A+ setups—you sit on hands (others force trades out of boredom)</li>
+      <li><strong>Avoiding FOMO:</strong> Stock up 20% in a day, retail chasing—you wait for pullback or skip entirely</li>
+      <li><strong>Taking losses:</strong> Hit stop loss, exit immediately—others "give it room" and turn -1R into -5R</li>
+    </ul>
+
+    <h4>Why This Edge Persists</h4>
+    <ul>
+      <li>Human psychology doesn't change (fear/greed hardwired for 200,000 years)</li>
+      <li>Most traders never address psychological leaks (they focus on strategy, ignore execution)</li>
+      <li>Emotional trading is contagious (retail herd behavior creates opportunities)</li>
+      <li>Discipline requires pain tolerance (cutting losers hurts, so most don't)</li>
+    </ul>
+
+    <p><strong>Verdict:</strong> ✅ <em>Most accessible edge for retail.</em> Costs $0, just requires systems and discipline. Studies show 80% of trading failure is psychological, not strategic.</p>
+  </div>
 
   <h2>Finding Your Trading Style</h2>
-  <table>
+
+  <p>Your edge must fit your life constraints and personality. A perfect strategy you can't execute consistently is worthless.</p>
+
+  <table class="comparison-table">
     <thead>
       <tr>
         <th>Style</th>
         <th>Holding Period</th>
+        <th>Screen Time</th>
         <th>Personality Fit</th>
         <th>Capital Needs</th>
+        <th>Stress Level</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Scalping</td>
+        <td><strong>Scalping</strong></td>
         <td>Seconds-Minutes</td>
-        <td>Fast reactions, handle stress</td>
+        <td>100% focus, 6-8 hours</td>
+        <td>Fast reactions, thrive on adrenaline, handle high stress</td>
         <td>$25K+ (PDT rule)</td>
+        <td>🔴🔴🔴 Very High</td>
       </tr>
       <tr>
-        <td>Day Trading</td>
-        <td>Minutes-Hours</td>
-        <td>Focused, full attention 9:30-4 PM</td>
+        <td><strong>Day Trading</strong></td>
+        <td>Minutes-Hours (close by 4PM)</td>
+        <td>Focused 9:30-4PM</td>
+        <td>Patient but active, handle intraday volatility</td>
         <td>$25K+ (PDT rule)</td>
+        <td>🔴🔴 High</td>
       </tr>
       <tr>
-        <td>Swing Trading</td>
+        <td><strong>Swing Trading</strong></td>
         <td>Days-Weeks</td>
-        <td>Patient, handle overnight risk</td>
+        <td>1-2 hours/day</td>
+        <td>Patient, handle overnight risk, not obsessed with ticks</td>
         <td>$5K+ (no PDT)</td>
+        <td>🟡 Medium</td>
       </tr>
       <tr>
-        <td>Position Trading</td>
+        <td><strong>Position Trading</strong></td>
         <td>Weeks-Months</td>
-        <td>Macro-focused, long-term view</td>
+        <td>30 min/day</td>
+        <td>Macro-focused, long-term view, ignore daily noise</td>
         <td>$10K+ (no PDT)</td>
+        <td>🟢 Low</td>
+      </tr>
+      <tr>
+        <td><strong>Algo/Quant</strong></td>
+        <td>Varies (automated)</td>
+        <td>1 hour/week (monitoring)</td>
+        <td>Technical, trust systems, comfortable with code</td>
+        <td>$10K+ (backtesting)</td>
+        <td>🟢 Low (emotional)</td>
       </tr>
     </tbody>
   </table>
 
+  <h3>Self-Assessment: Which Style Fits You?</h3>
+
+  <div class="self-assessment">
+    <h4>Ask Yourself:</h4>
+    <ol>
+      <li><strong>How much capital do I have?</strong>
+        <ul>
+          <li>Under $25K → Swing/position trading (avoid PDT rule)</li>
+          <li>$25K-100K → Day trading possible, but consider swing first</li>
+          <li>$100K+ → Any style works</li>
+        </ul>
+      </li>
+      <li><strong>How much time can I dedicate?</strong>
+        <ul>
+          <li>Full-time (40+ hours/week) → Day trading or scalping</li>
+          <li>Part-time (10-20 hours/week) → Swing trading</li>
+          <li>Minimal (1-5 hours/week) → Position trading or algo</li>
+        </ul>
+      </li>
+      <li><strong>What's my stress tolerance?</strong>
+        <ul>
+          <li>High (thrive under pressure) → Scalping, day trading</li>
+          <li>Medium (handle some volatility) → Swing trading</li>
+          <li>Low (sleep poorly with open positions) → Day trading (flat overnight) or algo</li>
+        </ul>
+      </li>
+      <li><strong>Do I prefer discretion or systems?</strong>
+        <ul>
+          <li>Discretionary (gut feel, adapt in real-time) → Day/swing trading</li>
+          <li>Systematic (follow rules rigidly) → Algo/quant</li>
+        </ul>
+      </li>
+      <li><strong>What's my learning curve tolerance?</strong>
+        <ul>
+          <li>Fast learner, high pattern recognition → Scalping/day trading</li>
+          <li>Analytical, prefer deep research → Swing/position</li>
+          <li>Technical, love data/code → Algo/quant</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
   <h2>The Edge Development Process</h2>
-  <p><strong>Step 1: Test multiple strategies (20-50 trades each)</strong></p>
-  <ul>
-    <li>Breakouts, mean reversion, momentum, pairs trading</li>
-    <li>Track win rate, R-multiple, Sharpe ratio, max drawdown</li>
-  </ul>
 
-  <p><strong>Step 2: Identify what clicked (emotional + statistical)</strong></p>
-  <ul>
-    <li>Which felt natural? (less emotional strain = sustainable)</li>
-    <li>Which had positive expectancy? (math must work)</li>
-  </ul>
+  <p>Building edge is iterative. You won't discover your edge on trade #1. It emerges after 200-500 trades of systematic experimentation.</p>
 
-  <p><strong>Step 3: Specialize and refine (100+ trades)</strong></p>
-  <ul>
-    <li>Focus on 1-2 setups, master them completely</li>
-    <li>Document edge: "I profit because _____" (be specific)</li>
-  </ul>
+  <h3>Step 1: Test Multiple Strategies (20-50 Trades Each)</h3>
 
-  <p><strong>Step 4: Add complementary strategies (diversification)</strong></p>
-  <ul>
-    <li>Once core strategy profitable, add low-correlation strategy</li>
-    <li>Example: Momentum + mean reversion (work in different regimes)</li>
-  </ul>
+  <div class="process-step">
+    <h4>Strategy Archetypes to Test</h4>
+    <ul>
+      <li><strong>Breakouts:</strong> Buy when price breaks above resistance with volume</li>
+      <li><strong>Mean reversion:</strong> Fade extremes (buy oversold, sell overbought)</li>
+      <li><strong>Momentum:</strong> Buy strength, sell weakness (trend following)</li>
+      <li><strong>Range trading:</strong> Buy support, sell resistance in consolidation</li>
+      <li><strong>Event-driven:</strong> Trade earnings, economic data, news catalysts</li>
+      <li><strong>Pairs trading:</strong> Long/short correlated assets when spread diverges</li>
+    </ul>
 
-  <h2>Your Edge Statement</h2>
-  <p><strong>Example 1 (Day Trader):</strong> "My edge is identifying institutional accumulation via order flow (Pentarch Pilot Line) at multi-timeframe support, entering on lower timeframe confirmation, and managing winners to 3-5R."</p>
+    <h4>Metrics to Track (For Each Strategy)</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Formula</th>
+          <th>Good Target</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Win Rate</td>
+          <td>Wins / Total Trades</td>
+          <td>50%+ (breakeven with 1:1 R/R)</td>
+        </tr>
+        <tr>
+          <td>Average R-multiple</td>
+          <td>Avg Win / Avg Loss</td>
+          <td>2.0+ (allows 33% win rate)</td>
+        </tr>
+        <tr>
+          <td>Profit Factor</td>
+          <td>Gross Profit / Gross Loss</td>
+          <td>1.5+ (sustainable)</td>
+        </tr>
+        <tr>
+          <td>Sharpe Ratio</td>
+          <td>(Return - Risk-Free) / StdDev</td>
+          <td>1.0+ (good), 2.0+ (excellent)</td>
+        </tr>
+        <tr>
+          <td>Max Drawdown</td>
+          <td>Peak to trough decline</td>
+          <td>&lt;20% (manageable)</td>
+        </tr>
+        <tr>
+          <td>Expectancy</td>
+          <td>(Win% × AvgWin) - (Loss% × AvgLoss)</td>
+          <td>&gt;0 (positive edge)</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <p><strong>Example 2 (Swing Trader):</strong> "My edge is trading macro regime transitions (Lesson 64) by rotating into assets that historically outperform in the new regime, validated by intermarket divergences."</p>
+    <h4>Paper Trade or Micro Size</h4>
+    <p><strong>NEVER test strategies with full size.</strong> Either:</p>
+    <ul>
+      <li>Paper trade (no real money, track in journal)</li>
+      <li>Trade 1 share (or 1 micro contract for futures)</li>
+      <li>Use $100-500 max risk per strategy test</li>
+    </ul>
+    <p><em>Goal: Learn cheaply. Data, not dollars.</em></p>
+  </div>
 
-  <p><strong>Your edge statement should answer:</strong></p>
-  <ul>
-    <li>What market inefficiency am I exploiting?</li>
-    <li>Why does this edge persist? (Why isn't it arbitraged away?)</li>
-    <li>What's my unique execution advantage?</li>
-  </ul>
+  <h3>Step 2: Identify What Clicked (Emotional + Statistical)</h3>
+
+  <div class="process-step">
+    <h4>Statistical Filter (Objective)</h4>
+    <p>Which strategies had positive expectancy over 20+ trades?</p>
+    <ul>
+      <li>Eliminate any strategy with expectancy ≤ 0</li>
+      <li>Eliminate any strategy with profit factor &lt; 1.3</li>
+      <li>Keep only strategies with Sharpe &gt; 0.8</li>
+    </ul>
+
+    <h4>Emotional Filter (Subjective)</h4>
+    <p>Of the statistically viable strategies, which felt natural?</p>
+    <ul>
+      <li><strong>Energy level:</strong> Did this strategy drain you, or energize you?</li>
+      <li><strong>Stress response:</strong> Could you sleep with positions open? Or did you check phone at 3 AM?</li>
+      <li><strong>Flow state:</strong> Did you enter "the zone" while trading this, or feel constant anxiety?</li>
+      <li><strong>Consistency:</strong> Did you follow rules 90%+ of time, or constantly override system?</li>
+    </ul>
+
+    <p style="background-color: var(--info-bg); padding: 1rem; border-left: 4px solid var(--info-color);">
+      <strong>💡 Key Insight:</strong> A strategy with 55% win rate that you execute perfectly beats a 70% win rate strategy you can't stick to. Sustainability > theoretical edge.
+    </p>
+  </div>
+
+  <h3>Step 3: Specialize and Refine (100+ Trades)</h3>
+
+  <div class="process-step">
+    <h4>Deep Dive Into Your Core Strategy</h4>
+    <p>Pick 1-2 strategies that passed both filters. Now master them:</p>
+    <ul>
+      <li><strong>Refine entry:</strong> Test variations (breakout + volume? Breakout + order flow? Breakout + multi-timeframe?)</li>
+      <li><strong>Optimize stops:</strong> ATR-based? Fixed %? Support-based? Which minimizes whipsaws?</li>
+      <li><strong>Test exits:</strong> Fixed target? Trailing stop? Time-based? Combo?</li>
+      <li><strong>Position sizing:</strong> Fixed risk %? Kelly criterion? Volatility-adjusted?</li>
+      <li><strong>Filter by regime:</strong> Does edge work in all markets, or only trending/choppy?</li>
+    </ul>
+
+    <h4>Document Your Edge</h4>
+    <p>After 100+ trades, you should be able to complete this sentence:</p>
+    <p style="font-size: 1.2rem; font-weight: bold; padding: 1rem; background-color: var(--accent-bg);">
+      "I profit because __________"
+    </p>
+
+    <h4>Examples of Strong Edge Statements</h4>
+    <ul>
+      <li><em>"I profit because I identify institutional accumulation via dark pool order flow (50K+ prints) at multi-timeframe support (daily 200 EMA + 4-hour demand zone), enter on 15-min bullish confirmation, and manage winners to 3-5R by scaling out at predetermined targets."</em></li>
+      <li><em>"I profit because I trade mean reversion on earnings overreactions—when a stock drops 5%+ on minor negative news but fundamentals remain intact (revenue beat + EPS miss &lt;5%), I buy at major technical support (weekly 200 MA) with tight 3% stop, targeting 50% retracement gap fill."</em></li>
+      <li><em>"I profit because I follow macro regime transitions using intermarket divergences (bonds vs stocks, USD vs commodities) to rotate into assets that historically outperform in new regime (e.g., QT environment = long USD + energy, short growth stocks), holding positions 4-12 weeks."</em></li>
+    </ul>
+
+    <p><strong>Your edge statement must answer:</strong></p>
+    <ol>
+      <li>What market inefficiency am I exploiting?</li>
+      <li>Why does this edge persist? (Why isn't it arbitraged away?)</li>
+      <li>What's my unique execution advantage?</li>
+      <li>How do I manage risk and exits?</li>
+    </ol>
+  </div>
+
+  <h3>Step 4: Add Complementary Strategies (Diversification)</h3>
+
+  <div class="process-step">
+    <h4>Why Diversify Edge?</h4>
+    <ul>
+      <li><strong>Regime insurance:</strong> Breakouts fail in choppy markets, mean reversion fails in trends—having both = always have an edge</li>
+      <li><strong>Smoother equity curve:</strong> Low correlation strategies reduce drawdowns</li>
+      <li><strong>Psychological relief:</strong> When one strategy hitting drawdown, other may be thriving (prevents panic)</li>
+    </ul>
+
+    <h4>Low-Correlation Strategy Pairs</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Strategy A</th>
+          <th>Strategy B</th>
+          <th>Why They Complement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Momentum (trend following)</td>
+          <td>Mean reversion (fade extremes)</td>
+          <td>Momentum works in trends, mean reversion works in ranges</td>
+        </tr>
+        <tr>
+          <td>Breakouts (directional)</td>
+          <td>Iron condors (neutral)</td>
+          <td>Breakouts profit from volatility, condors profit from lack of volatility</td>
+        </tr>
+        <tr>
+          <td>Equity long/short</td>
+          <td>Volatility trading (VIX)</td>
+          <td>VIX spikes when equities crash—hedge each other</td>
+        </tr>
+        <tr>
+          <td>Event-driven (earnings)</td>
+          <td>Macro regime (weeks-months)</td>
+          <td>Different timeframes, different catalysts—uncorrelated</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Implementation</h4>
+    <ul>
+      <li><strong>Master core strategy first:</strong> Don't add second strategy until primary is profitable for 6+ months</li>
+      <li><strong>Allocate capital:</strong> Start 80% core / 20% secondary, adjust based on performance</li>
+      <li><strong>Test correlation:</strong> Track if strategies lose money simultaneously (if yes, they're not truly diversifying)</li>
+    </ul>
+  </div>
+
+  <h2>Edge Validation Framework</h2>
+
+  <p>Your edge must survive three tests: statistical, psychological, and regime-adaptive.</p>
+
+  <h3>Statistical Validation</h3>
+
+  <div class="validation-test">
+    <h4>Backtest Requirements</h4>
+    <ul>
+      <li><strong>Sample size:</strong> Minimum 100 trades (200+ ideal)</li>
+      <li><strong>Time period:</strong> 2+ years of data (captures different regimes)</li>
+      <li><strong>Out-of-sample:</strong> Reserve 20-30% of data for final test (don't optimize on it)</li>
+      <li><strong>Walk-forward:</strong> Train on 6 months, test on next 3 months, roll forward</li>
+    </ul>
+
+    <h4>Pass Criteria</h4>
+    <ul>
+      <li>✅ Expectancy &gt; 0 in both in-sample AND out-of-sample</li>
+      <li>✅ Sharpe ratio &gt; 1.0</li>
+      <li>✅ Max drawdown &lt; 25%</li>
+      <li>✅ Profit factor &gt; 1.5</li>
+      <li>✅ Consistent across sub-periods (not just one lucky year)</li>
+    </ul>
+  </div>
+
+  <h3>Psychological Validation</h3>
+
+  <div class="validation-test">
+    <h4>Live Paper Trading Test</h4>
+    <p>Execute strategy with fake money for 50+ trades. Track:</p>
+    <ul>
+      <li><strong>Rule adherence:</strong> Did you follow entry/exit rules &gt;90% of time?</li>
+      <li><strong>Emotional state:</strong> Journal stress levels (1-10) after each trade. Average &lt;6 = sustainable</li>
+      <li><strong>Decision quality:</strong> Mark each trade as "process win" or "process loss" (ignore P&L). Process win rate should be &gt;85%</li>
+    </ul>
+
+    <p><strong>Red flags (strategy won't work for you):</strong></p>
+    <ul>
+      <li>Constantly override stops ("give it more room")</li>
+      <li>Exit winners too early (fear of giving back gains)</li>
+      <li>Freeze at entry (analysis paralysis)</li>
+      <li>Check positions obsessively (10+ times/day for swing trades)</li>
+    </ul>
+  </div>
+
+  <h3>Regime-Adaptive Validation</h3>
+
+  <div class="validation-test">
+    <h4>Test Across Market Conditions</h4>
+    <p>Segment backtest by regime:</p>
+    <ul>
+      <li><strong>Trending up:</strong> 2019-2020, 2023-2024</li>
+      <li><strong>Trending down:</strong> 2022</li>
+      <li><strong>Choppy/range-bound:</strong> 2015-2016</li>
+      <li><strong>High volatility:</strong> March 2020 COVID crash</li>
+      <li><strong>Low volatility:</strong> 2017</li>
+    </ul>
+
+    <h4>Analysis</h4>
+    <ul>
+      <li><strong>If edge works in ALL regimes:</strong> Rare but powerful—trade always</li>
+      <li><strong>If edge works in SOME regimes:</strong> Most common—add regime filter (only trade when conditions favorable)</li>
+      <li><strong>If edge works in NO regimes consistently:</strong> Curve-fitted garbage—abandon strategy</li>
+    </ul>
+
+    <p><strong>Example regime filter:</strong></p>
+    <p><em>"My breakout strategy only works when VIX &lt; 20 and SPY above 200-day MA (trending + low vol). When VIX &gt; 25 or SPY below 200-day MA, I switch to mean reversion strategy."</em></p>
+  </div>
+
+  <h2>Common Edge Pitfalls (And How to Avoid)</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Pitfall</th>
+        <th>Manifestation</th>
+        <th>Solution</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Curve Fitting</strong></td>
+        <td>Strategy works in backtest (90% win rate!), fails live</td>
+        <td>Out-of-sample validation, walk-forward analysis, simplicity (fewer parameters)</td>
+      </tr>
+      <tr>
+        <td><strong>Sample Size Too Small</strong></td>
+        <td>"My strategy is 100% win rate!" (tested on 5 trades)</td>
+        <td>Minimum 100 trades before claiming edge exists</td>
+      </tr>
+      <tr>
+        <td><strong>Survivorship Bias</strong></td>
+        <td>Backtest only stocks that still exist (ignores bankruptcies)</td>
+        <td>Use survivorship-bias-free datasets (QuantConnect, etc.)</td>
+      </tr>
+      <tr>
+        <td><strong>Ignoring Costs</strong></td>
+        <td>Backtest shows 2% annual edge, but commissions eat 1.5%</td>
+        <td>Include realistic slippage (0.05-0.1%) and commissions in backtest</td>
+      </tr>
+      <tr>
+        <td><strong>Regime Blindness</strong></td>
+        <td>Strategy worked 2019-2021 (bull market), died 2022 (bear)</td>
+        <td>Test across regimes, add regime filters</td>
+      </tr>
+      <tr>
+        <td><strong>Overtrading</strong></td>
+        <td>Force trades when no A+ setup (boredom trading)</td>
+        <td>Strict entry checklist, "when in doubt, stay out"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Edge Examples: Real Strategies That Work</h2>
+
+  <h3>Example 1: Day Trader (Order Flow Edge)</h3>
+
+  <div class="strategy-example">
+    <h4>Edge Statement</h4>
+    <p><em>"I profit by identifying institutional buying at technical support via dark pool prints (50K+ shares) and Pentarch Pilot Line confirmation, entering on 15-min bullish engulfing, managing to 3-5R targets."</em></p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li><strong>Analytical edge:</strong> Most retail ignores order flow data—I don't</li>
+      <li><strong>Behavioral edge:</strong> I buy when others panic (support tests), they buy when I sell (targets)</li>
+      <li><strong>Execution edge:</strong> Strict 1% risk prevents blowups, 3-5R targets allow 33% win rate profitability</li>
+    </ul>
+
+    <h4>Regime Adaptation</h4>
+    <ul>
+      <li><strong>Works best:</strong> Trending markets with healthy pullbacks (2023-2024)</li>
+      <li><strong>Avoid:</strong> Extreme chop (VIX &gt; 30), support breaks more often</li>
+    </ul>
+  </div>
+
+  <h3>Example 2: Swing Trader (Macro Regime Edge)</h3>
+
+  <div class="strategy-example">
+    <h4>Edge Statement</h4>
+    <p><em>"I profit by rotating capital into assets that outperform during macro regime transitions, identified via yield curve inversions, Fed policy shifts, and commodity trends. I hold 2-8 weeks, targeting 15-30% moves."</em></p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li><strong>Analytical edge:</strong> I study intermarket relationships retail ignores</li>
+      <li><strong>Behavioral edge:</strong> Patient holding during 2-week consolidations (retail exits prematurely)</li>
+      <li><strong>Information processing edge:</strong> Synthesize macro data into actionable trades</li>
+    </ul>
+
+    <h4>Regime Adaptation</h4>
+    <ul>
+      <li><strong>Works best:</strong> Regime transition periods (QE → QT in 2022, winners = energy/USD)</li>
+      <li><strong>Avoid:</strong> Stable regimes with no policy shifts (fewer rotation opportunities)</li>
+    </ul>
+  </div>
+
+  <h3>Example 3: Options Trader (Volatility Edge)</h3>
+
+  <div class="strategy-example">
+    <h4>Edge Statement</h4>
+    <p><em>"I profit from volatility mean reversion by selling iron condors when VIX spikes above 25 (panic), collecting premium as vol contracts. I manage risk via defined risk spreads (max loss capped) and close at 50% profit."</em></p>
+
+    <h4>Why It Works</h4>
+    <ul>
+      <li><strong>Statistical edge:</strong> VIX above 25 reverts to 15-20 within 30 days 70% of time (historical mean reversion)</li>
+      <li><strong>Behavioral edge:</strong> I sell insurance when others panic-buy it (elevated premiums)</li>
+      <li><strong>Risk management edge:</strong> Defined risk prevents "sell naked options and blow up" disasters</li>
+    </ul>
+
+    <h4>Regime Adaptation</h4>
+    <ul>
+      <li><strong>Works best:</strong> Post-spike environments (March 2020 aftermath, Oct 2022 lows)</li>
+      <li><strong>Avoid:</strong> Persistent high vol environments (prolonged bear markets where VIX stays elevated)</li>
+    </ul>
+  </div>
 
   <div class="key-takeaway">
-    <h4>Building Sustainable Edge</h4>
+    <h4>Building Your Edge: Summary</h4>
     <ul>
-      <li><strong>Edge = Information + Analysis + Behavior</strong> (retail can't compete on info, focus on analysis + discipline)</li>
-      <li><strong>Match strategy to personality</strong> (can't sustain what doesn't fit you)</li>
-      <li><strong>Specialize before diversifying</strong> (master 1 setup, then add more)</li>
-      <li><strong>Document your edge statement</strong> ("I profit because ___")</li>
-      <li><strong>Continuously validate:</strong> Does edge still work? (markets evolve, adapt or die)</li>
+      <li><strong>Three edge dimensions:</strong> Informational (nearly impossible for retail), Analytical (most viable), Behavioral (most accessible)</li>
+      <li><strong>Match style to life:</strong> Capital, time, stress tolerance, discretion vs systems preference</li>
+      <li><strong>Development process:</strong> Test multiple strategies (20-50 trades each) → Filter statistically AND emotionally → Specialize (100+ trades) → Diversify (add complementary strategy)</li>
+      <li><strong>Edge statement:</strong> "I profit because ___" (must explain inefficiency, why it persists, your execution advantage)</li>
+      <li><strong>Triple validation:</strong> Statistical (backtest), Psychological (paper trade), Regime-adaptive (works across market conditions or has filters)</li>
+      <li><strong>Continuous evolution:</strong> Markets change, so must your edge. Quarterly review: Does edge still work? If not, adapt or pivot.</li>
     </ul>
+  </div>
+
+  <div class="practice-exercise">
+    <h4>Action Plan: Discover Your Edge</h4>
+    <ol>
+      <li><strong>Self-assessment (today):</strong> Complete trading style quiz above. Which 2-3 styles fit your constraints?</li>
+      <li><strong>Strategy testing (next 60 days):</strong> Pick 3 strategy archetypes. Paper trade or micro size 20 trades each. Track win rate, R-multiple, emotional response.</li>
+      <li><strong>Data analysis (day 61):</strong> Calculate expectancy for each. Which passed statistical filter (expectancy &gt; 0)? Which felt natural (emotional filter)?</li>
+      <li><strong>Specialization (days 62-150):</strong> Focus on top 1-2 strategies. Execute 100+ trades, refine entry/exit, document edge.</li>
+      <li><strong>Edge statement (day 150):</strong> Write your "I profit because ___" statement. Share with trading community for feedback.</li>
+      <li><strong>Validation (days 151-210):</strong> Backtest 2+ years. Paper trade live 50+ trades. Confirm edge survives statistical + psychological tests.</li>
+      <li><strong>Live trading (day 211+):</strong> Start with 10% of planned position size. Scale up 25% every 3 months if maintaining profitability.</li>
+    </ol>
   </div>
 
   <div class="related-lessons">
@@ -109,8 +625,15 @@
       <li><a href="/curriculum/advanced-mastery/66-quantitative-strategy-design.html">Lesson 66: Quantitative Strategy Design</a></li>
       <li><a href="/curriculum/advanced-mastery/73-behavioral-finance-psychology.html">Lesson 73: Behavioral Finance & Psychology</a></li>
       <li><a href="/curriculum/advanced-mastery/74-building-trading-business.html">Lesson 74: Building a Trading Business</a></li>
+      <li><a href="76-live-trading-case-studies.html">Lesson 76: Live Trading Case Studies</a></li>
+      <li><a href="81-final-capstone-project.html">Lesson 81: Final Capstone Project</a></li>
     </ul>
   </div>
+
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary);">
+    <p><strong>Next:</strong> <a href="78-professional-risk-systems.html">Lesson 78: Professional Risk Systems</a></p>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">Part of the Professional Tier • <a href="/professional-capstone.html">View All Professional Lessons</a></p>
+  </footer>
 </article>
 </body>
 </html>

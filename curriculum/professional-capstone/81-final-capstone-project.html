@@ -9,88 +9,674 @@
 </head>
 <body>
 <article class="article">
+  <!-- Lesson Header with Badges -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <span class="lesson-badge">Lesson 81</span>
+    <span class="tier-badge tier-professional">Professional</span>
+  </div>
+
   <h1>Final Capstone Project: Your Trading System Blueprint</h1>
-  <p><b>You've learned 80 lessons. Now synthesize everything into YOUR complete trading system.</b></p>
+  <p class="lead"><b>You've learned 80 lessons. Now synthesize everything into YOUR complete trading system—strategy, risk management, backtesting, and execution plan.</b></p>
 
-  <h2>Capstone Requirements</h2>
-  <p>Build a complete, documented trading system that includes ALL of the following components:</p>
+  <div class="key-insight">
+    <h4>The Moment of Truth</h4>
+    <p>Everything up to this point has been preparation. You've absorbed concepts, studied examples, learned frameworks. But knowledge without implementation is worthless. This capstone project forces you to make DECISIONS: Which strategy? What risk rules? How will you actually execute? Completing this transforms you from student to practitioner. Your trading plan becomes your business plan—the document you'll follow for the next 12-24 months as you build your edge.</p>
+  </div>
 
-  <h3>Part 1: Strategy Definition Document</h3>
-  <ul>
-    <li><strong>Market & Instruments:</strong> What you trade (stocks, options, futures, crypto?)</li>
-    <li><strong>Trading style:</strong> Scalping, day trading, swing, position?</li>
-    <li><strong>Strategy types:</strong> Breakout, mean reversion, momentum (pick 1-2)</li>
-    <li><strong>Setup criteria:</strong> Exact entry rules (e.g., "RSI &lt; 30 + price &gt; 200 MA + volume &gt; 1.5× avg")</li>
-    <li><strong>Entry trigger:</strong> Specific action that initiates trade</li>
-    <li><strong>Stop-loss placement:</strong> Formula or rule (e.g., "2× ATR below entry")</li>
-    <li><strong>Profit targets:</strong> Minimum R/R ratio, take-profit levels</li>
-  </ul>
+  <!-- Progress Tracker -->
+  <div class="progress-tracker">
+    <h3>Capstone Completion Checklist</h3>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-1">
+      <label for="progress-1">Part 1: Strategy Definition Document (10+ pages)</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-2">
+      <label for="progress-2">Part 2: Risk Management Framework (5+ pages)</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-3">
+      <label for="progress-3">Part 3: Backtest Report (charts + metrics + analysis)</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-4">
+      <label for="progress-4">Part 4: Execution Plan (daily workflow + routines)</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-5">
+      <label for="progress-5">Part 5: Performance Tracking System (journal + dashboard)</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-6">
+      <label for="progress-6">Paper Trading Log (20+ trades following exact rules)</label>
+    </div>
+  </div>
 
-  <h3>Part 2: Risk Management Framework</h3>
-  <ul>
-    <li><strong>Position sizing formula:</strong> How do you calculate shares to buy?</li>
-    <li><strong>Per-trade risk:</strong> % of account risked (typically 0.5-1%)</li>
-    <li><strong>Portfolio heat:</strong> Max total risk across all positions (typically 5%)</li>
-    <li><strong>Daily loss limit:</strong> Max loss in single day before stopping (typically -2%)</li>
-    <li><strong>Drawdown threshold:</strong> Max account decline before pausing (typically -15%)</li>
-  </ul>
+  <h2>Capstone Overview: What You'll Create</h2>
 
-  <h3>Part 3: Backtesting Results</h3>
-  <ul>
-    <li>Test strategy on 2+ years historical data</li>
-    <li>Calculate: Win rate, avg win/loss, Sharpe ratio, max drawdown, profit factor</li>
-    <li>Out-of-sample validation (reserve 20-30% of data)</li>
-    <li>Walk-forward analysis (retrain quarterly, test next quarter)</li>
-  </ul>
+  <p>By the end of this project, you'll have a complete, documented trading business plan consisting of:</p>
 
-  <h3>Part 4: Execution Plan</h3>
-  <ul>
-    <li><strong>Pre-market routine:</strong> What do you check before trading?</li>
-    <li><strong>Intraday workflow:</strong> How do you scan for setups?</li>
-    <li><strong>Order types:</strong> Market, limit, stop-loss automation?</li>
-    <li><strong>Post-trade review:</strong> Journaling process, metrics to track</li>
-  </ul>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Deliverable</th>
+        <th>Purpose</th>
+        <th>Est. Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Trading Plan PDF</strong></td>
+        <td>Your strategy rulebook (what, when, how to trade)</td>
+        <td>10-15 hours</td>
+      </tr>
+      <tr>
+        <td><strong>Backtest Report</strong></td>
+        <td>Statistical proof your edge exists</td>
+        <td>15-20 hours</td>
+      </tr>
+      <tr>
+        <td><strong>Paper Trading Log</strong></td>
+        <td>Validate execution in real-time (psychological test)</td>
+        <td>20-40 hours</td>
+      </tr>
+      <tr>
+        <td><strong>Performance Dashboard</strong></td>
+        <td>Track metrics weekly/monthly (continuous improvement)</td>
+        <td>5-8 hours</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <h3>Part 5: Performance Tracking System</h3>
-  <ul>
-    <li>Trading journal (manual or software like TraderVue)</li>
-    <li>Weekly review checklist (metrics, rule violations, emotional patterns)</li>
-    <li>Monthly audit (strategy validation, regime check, expectancy calculation)</li>
-  </ul>
+  <p><strong>Total estimated time:</strong> 50-80 hours over 4-8 weeks. <em>This is not a weekend project. Treat it like building a business.</em></p>
 
-  <h2>Deliverables (What You Create)</h2>
-  <p><strong>1. Trading Plan PDF</strong> (10-20 pages documenting all 5 parts above)</p>
-  <p><strong>2. Backtest Report</strong> (charts, metrics, equity curve, drawdown analysis)</p>
-  <p><strong>3. Paper Trading Log</strong> (minimum 20 trades following your exact rules)</p>
-  <p><strong>4. Performance Dashboard</strong> (Excel/Google Sheets tracking key metrics)</p>
+  <h2>Part 1: Strategy Definition Document</h2>
 
-  <h2>Success Criteria</h2>
-  <p>Your capstone project is complete when you can answer "YES" to ALL:</p>
-  <ul>
-    <li>✅ My strategy has positive expectancy over 100+ backtested trades</li>
-    <li>✅ My risk management framework protects me from ruin (max 1% per trade)</li>
-    <li>✅ I have documented, specific rules (no discretion allowed)</li>
-    <li>✅ I paper-traded my system for 20+ trades (followed rules 95%+ of time)</li>
-    <li>✅ My Sharpe ratio &gt; 1.0 in backtest and paper trading</li>
-    <li>✅ I can explain my edge in 2 sentences ("I profit because ___")</li>
-  </ul>
+  <p>This is your trading constitution—the immutable rules you follow regardless of market conditions or emotional state.</p>
 
-  <h2>After Capstone: What's Next?</h2>
-  <p><strong>Phase 1: Extended paper trading</strong> (50-100 trades, 3-6 months)</p>
-  <p><strong>Phase 2: Live trading (tiny size)</strong> (10-50 shares, validate execution)</p>
-  <p><strong>Phase 3: Gradual scaling</strong> (increase size 25% every 3 months if profitable)</p>
-  <p><strong>Never skip phases.</strong> Rushing destroys accounts. Patience compounds capital.</p>
+  <h3>Section 1.1: Market Selection</h3>
+
+  <div class="section-detail">
+    <h4>Questions to Answer:</h4>
+    <ul>
+      <li><strong>Which markets will you trade?</strong> (Stocks, futures, forex, crypto, options?)</li>
+      <li><strong>Why these markets?</strong> (Liquidity, hours, capital requirements, familiarity?)</li>
+      <li><strong>Which specific instruments?</strong> (E.g., "Only S&P 500 stocks above $20, avg volume 1M+, or ES/NQ futures")</li>
+      <li><strong>Will you trade all sessions?</strong> (Pre-market, regular hours, after-hours?)</li>
+    </ul>
+
+    <h4>Example:</h4>
+    <blockquote>
+      <p><em>"I trade U.S. large-cap equities exclusively—S&P 500 and Nasdaq 100 components with minimum $50 price, 2M+ avg daily volume, and market cap over $10B. This ensures sufficient liquidity for my $25K-100K account size and minimizes slippage. I only trade regular hours (9:30 AM - 4:00 PM ET) to avoid low-liquidity environments. I do NOT trade pre-market or after-hours."</em></p>
+    </blockquote>
+  </div>
+
+  <h3>Section 1.2: Trading Style & Timeframe</h3>
+
+  <div class="section-detail">
+    <h4>Questions to Answer:</h4>
+    <ul>
+      <li><strong>What's your holding period?</strong> (Scalping: seconds-minutes, Day: hours, Swing: days-weeks, Position: weeks-months)</li>
+      <li><strong>What's your primary timeframe for analysis?</strong> (1-min, 5-min, hourly, daily?)</li>
+      <li><strong>What's your confirmation timeframe?</strong> (Higher timeframe for context)</li>
+      <li><strong>Why this timeframe fits YOU?</strong> (Available time, temperament, capital)</li>
+    </ul>
+
+    <h4>Example:</h4>
+    <blockquote>
+      <p><em>"I am a swing trader holding positions 3-10 days. My primary analysis timeframe is daily charts (identify setups), with 4-hour charts for entry timing, and weekly charts for trend context. This fits my schedule (full-time job, can only check markets 2 hours/day) and temperament (patient, comfortable with overnight risk, prefer fewer high-quality trades over high-frequency trading)."</em></p>
+    </blockquote>
+  </div>
+
+  <h3>Section 1.3: Strategy Type & Setup Criteria</h3>
+
+  <div class="section-detail">
+    <h4>Define Your Core Strategy (Pick 1-2):</h4>
+    <ul>
+      <li><strong>Breakout:</strong> Enter when price breaks above/below key level with volume</li>
+      <li><strong>Mean Reversion:</strong> Fade extremes, buy oversold, sell overbought</li>
+      <li><strong>Momentum:</strong> Buy strength, sell weakness, ride trends</li>
+      <li><strong>Range Trading:</strong> Buy support, sell resistance in consolidation</li>
+      <li><strong>Event-Driven:</strong> Trade earnings, economic data, news catalysts</li>
+      <li><strong>Pairs Trading:</strong> Long/short correlated assets when spread diverges</li>
+    </ul>
+
+    <h4>Setup Criteria (MUST BE SPECIFIC):</h4>
+    <p>List EXACT conditions that must be met. No discretion allowed.</p>
+
+    <h4>Example (Breakout Strategy):</h4>
+    <blockquote>
+      <p><strong>Setup name:</strong> Multi-Timeframe Breakout with Volume Confirmation</p>
+      <p><strong>Entry criteria (ALL must be true):</strong></p>
+      <ol>
+        <li>Daily chart: Price consolidating at resistance for 5+ days in tight range (ATR &lt; 1.5× 20-day avg)</li>
+        <li>Weekly chart: Above 50-week EMA (long-term uptrend intact)</li>
+        <li>4-hour chart: Higher lows forming during consolidation (coiling pressure)</li>
+        <li>Breakout trigger: 15-min candle closes above resistance level with volume 2×+ avg</li>
+        <li>Confirmation: No immediate resistance within 3% above breakout level</li>
+        <li>Order flow: Pentarch Pilot Line green (institutional accumulation) OR dark pool prints 50K+ shares at support</li>
+      </ol>
+      <p><strong>Entry execution:</strong> Buy on close of 15-min confirmation candle, or next candle open (no chasing)</p>
+    </blockquote>
+  </div>
+
+  <h3>Section 1.4: Stop Loss Placement</h3>
+
+  <div class="section-detail">
+    <h4>Stop Loss Formula (Choose ONE, apply consistently):</h4>
+    <ul>
+      <li><strong>ATR-based:</strong> 2× ATR(14) below entry (adapts to volatility)</li>
+      <li><strong>Technical level:</strong> Below recent swing low or support zone</li>
+      <li><strong>Fixed percentage:</strong> -2% from entry (simple but inflexible)</li>
+      <li><strong>Time-based:</strong> If no progress in X days, exit (for swing trades)</li>
+    </ul>
+
+    <h4>Example:</h4>
+    <blockquote>
+      <p><em>"My stop loss is placed at the lower of: (a) 1.5× ATR(14) below entry, OR (b) $0.10 below recent swing low that defined breakout level. This ensures I'm out if breakout fails, while giving trade room to breathe based on volatility. Maximum stop distance: 3% from entry (override formula if wider)."</em></p>
+    </blockquote>
+  </div>
+
+  <h3>Section 1.5: Profit Targets & Exit Rules</h3>
+
+  <div class="section-detail">
+    <h4>Target Strategy (Choose ONE or hybrid):</h4>
+    <ul>
+      <li><strong>Fixed R-multiple:</strong> Exit at 2R, 3R, or 5R (R = initial risk)</li>
+      <li><strong>Technical targets:</strong> Next resistance, measured move, Fibonacci extension</li>
+      <li><strong>Trailing stop:</strong> Move stop to protect profits as trade moves in your favor</li>
+      <li><strong>Scaling out:</strong> Take partial profits at targets, trail remainder</li>
+    </ul>
+
+    <h4>Example (Scaling Strategy):</h4>
+    <blockquote>
+      <p><em>"I scale out in thirds: (1) Exit 33% at 2R, move stop to breakeven on remaining 67%. (2) Exit 33% at 3.5R, trail stop on final 34% to -$0.50 below each new hourly high. (3) Final 34% rides until trailed stop hit or 7R reached (whichever first). This ensures I lock profits early while giving winners room to run."</em></p>
+    </blockquote>
+  </div>
+
+  <h3>Section 1.6: Trade Filters & Invalidation Rules</h3>
+
+  <div class="section-detail">
+    <h4>When NOT to Trade (Market Conditions):</h4>
+    <ul>
+      <li><strong>High volatility:</strong> VIX &gt; 30 (choppy, stops get hit more)</li>
+      <li><strong>Low volatility:</strong> VIX &lt; 12 (ranges too tight, limited profit potential)</li>
+      <li><strong>Against broader market:</strong> Don't long breakouts when SPY below 200-day MA</li>
+      <li><strong>Earnings week:</strong> Avoid trading stocks with earnings in next 5 days (unpredictable gaps)</li>
+      <li><strong>Economic data:</strong> Sit out 30 min before/after major data (FOMC, NFP, CPI)</li>
+    </ul>
+
+    <h4>Example:</h4>
+    <blockquote>
+      <p><em>"I do NOT take new positions when: (1) VIX &gt; 25 (breakouts fail in extreme volatility), (2) Stock has earnings in next 3 days, (3) SPY below 200-day MA (my strategy requires bull market), (4) First/last 15 minutes of trading day (choppy), (5) Major economic data releases (10 AM CPI, 2 PM FOMC)."</em></p>
+    </blockquote>
+  </div>
+
+  <h2>Part 2: Risk Management Framework</h2>
+
+  <p>Your strategy might have positive expectancy, but poor risk management will blow up your account anyway. This section keeps you alive during drawdowns.</p>
+
+  <h3>Section 2.1: Position Sizing Formula</h3>
+
+  <div class="section-detail">
+    <h4>Fixed Fractional Method (Recommended for Beginners):</h4>
+    <p><strong>Formula:</strong> Position Size = (Account Size × Risk %) / (Entry Price - Stop Price)</p>
+
+    <h4>Example Calculation:</h4>
+    <ul>
+      <li>Account size: $50,000</li>
+      <li>Risk per trade: 1% = $500</li>
+      <li>Entry price: $100</li>
+      <li>Stop price: $97 (risk per share = $3)</li>
+      <li><strong>Position size:</strong> $500 / $3 = 166 shares</li>
+      <li><strong>Position value:</strong> 166 × $100 = $16,600 (33% of account, but only risking 1%)</li>
+    </ul>
+
+    <h4>Your Risk Per Trade:</h4>
+    <ul>
+      <li><strong>Conservative:</strong> 0.5% (can survive 200 consecutive losses)</li>
+      <li><strong>Standard:</strong> 1.0% (can survive 100 consecutive losses)</li>
+      <li><strong>Aggressive:</strong> 2.0% (can survive 50 consecutive losses—risky)</li>
+    </ul>
+
+    <p><strong>Document your choice:</strong></p>
+    <blockquote>
+      <p><em>"I risk exactly 1% of my account on every trade, calculated dynamically based on entry-to-stop distance. If stop is wide (volatility high), I buy fewer shares. If stop is tight, I buy more shares. This ensures consistent risk regardless of market conditions."</em></p>
+    </blockquote>
+  </div>
+
+  <h3>Section 2.2: Portfolio Heat (Max Total Risk)</h3>
+
+  <div class="section-detail">
+    <h4>Definition:</h4>
+    <p>Sum of all open position risks. Prevents over-concentration.</p>
+
+    <h4>Example Rules:</h4>
+    <ul>
+      <li><strong>Max 3-5 positions open simultaneously</strong> (5 positions × 1% risk each = 5% portfolio heat)</li>
+      <li><strong>Max 6% total portfolio heat</strong> (if 3 positions at 1% each, can add 3% more risk across 3 new positions)</li>
+      <li><strong>Correlated positions count double</strong> (2 positions in same sector = higher real risk)</li>
+    </ul>
+
+    <p><strong>Document your limits:</strong></p>
+    <blockquote>
+      <p><em>"Maximum 4 positions open at once. Maximum 5% portfolio heat (sum of all position risks). If I have 4 positions at 1% each (4% heat), I cannot add new positions until one closes. If trades move to breakeven (risk eliminated), I can add new positions."</em></p>
+    </blockquote>
+  </div>
+
+  <h3>Section 2.3: Daily Loss Limit</h3>
+
+  <div class="section-detail">
+    <h4>Purpose:</h4>
+    <p>Prevent revenge trading and emotional spirals. If you lose X% in one day, STOP TRADING.</p>
+
+    <h4>Common Limits:</h4>
+    <ul>
+      <li><strong>-2% daily loss:</strong> Stop trading for the day, review what went wrong</li>
+      <li><strong>-3 consecutive losses:</strong> Stop trading for the day (regardless of dollar amount)</li>
+      <li><strong>-5% weekly loss:</strong> Stop trading for the week, review system</li>
+    </ul>
+
+    <p><strong>Document your rule:</strong></p>
+    <blockquote>
+      <p><em>"If I lose 2% of my account in a single day, I immediately stop trading and close my terminal. No exceptions. This prevents me from revenge trading and turning a bad day into a catastrophic week. I journal the losses, identify mistakes, and resume trading next day with clear head."</em></p>
+    </blockquote>
+  </div>
+
+  <h3>Section 2.4: Drawdown Thresholds & Recovery Plan</h3>
+
+  <div class="section-detail">
+    <h4>Drawdown Stages:</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Drawdown Level</th>
+          <th>Action Required</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>-10%</td>
+          <td>Review last 20 trades. Are you following rules? Any pattern in losses?</td>
+        </tr>
+        <tr>
+          <td>-15%</td>
+          <td>Reduce position size by 50% (risk 0.5% instead of 1%) until back to breakeven</td>
+        </tr>
+        <tr>
+          <td>-20%</td>
+          <td>PAUSE TRADING. Full system review. Backtest still valid? Market regime changed?</td>
+        </tr>
+        <tr>
+          <td>-25%</td>
+          <td>STOP TRADING. Return to paper trading. Treat as if starting over.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Document your thresholds:</strong></p>
+    <blockquote>
+      <p><em>"If my account drops 15% from peak, I reduce all position sizes by 50% (risk 0.5% per trade) until I recover to -5% drawdown. If my account drops 20% from peak, I immediately pause live trading and return to 30-day paper trading period to diagnose issues."</em></p>
+    </blockquote>
+  </div>
+
+  <h2>Part 3: Backtesting & Validation</h2>
+
+  <p>Proof your edge exists before risking real capital.</p>
+
+  <h3>Section 3.1: Backtest Design</h3>
+
+  <div class="backtest-requirements">
+    <h4>Minimum Requirements:</h4>
+    <ul>
+      <li><strong>Time period:</strong> 2+ years of historical data (preferably 5+ years to capture different regimes)</li>
+      <li><strong>Sample size:</strong> 100+ trades minimum (200+ ideal for statistical significance)</li>
+      <li><strong>Out-of-sample:</strong> Reserve 20-30% of data for final validation (don't optimize on it)</li>
+      <li><strong>Walk-forward:</strong> Train on 6 months, test on next 3 months, roll forward quarterly</li>
+      <li><strong>Realistic costs:</strong> Include 0.05-0.10% slippage and actual commission costs</li>
+    </ul>
+
+    <h4>Tools for Backtesting:</h4>
+    <ul>
+      <li><strong>Manual:</strong> Pull historical charts, simulate trades in journal (tedious but educational)</li>
+      <li><strong>Excel/Google Sheets:</strong> Download historical data, create formula-based system</li>
+      <li><strong>TradingView:</strong> Pine Script for systematic strategies</li>
+      <li><strong>Python:</strong> Backtrader, Zipline, QuantConnect (most powerful)</li>
+      <li><strong>Paid platforms:</strong> Amibroker, TradeStation, NinjaTrader</li>
+    </ul>
+  </div>
+
+  <h3>Section 3.2: Key Metrics to Calculate</h3>
+
+  <div class="metrics-table">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Formula</th>
+          <th>Good Target</th>
+          <th>Why It Matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Win Rate</strong></td>
+          <td>Wins / Total Trades</td>
+          <td>40%+ (depends on R-multiple)</td>
+          <td>Psychological comfort (higher = easier to stick to system)</td>
+        </tr>
+        <tr>
+          <td><strong>Average R-Multiple</strong></td>
+          <td>Avg Win / Avg Loss</td>
+          <td>2.0+ (allows 33% win rate profitability)</td>
+          <td>Risk/reward efficiency</td>
+        </tr>
+        <tr>
+          <td><strong>Expectancy</strong></td>
+          <td>(Win% × AvgWin) - (Loss% × AvgLoss)</td>
+          <td>&gt; 0 (must be positive)</td>
+          <td>Expected value per trade</td>
+        </tr>
+        <tr>
+          <td><strong>Profit Factor</strong></td>
+          <td>Gross Profit / Gross Loss</td>
+          <td>1.5+ (sustainable), 2.0+ (excellent)</td>
+          <td>Overall profitability ratio</td>
+        </tr>
+        <tr>
+          <td><strong>Sharpe Ratio</strong></td>
+          <td>(Returns - Risk Free) / StdDev</td>
+          <td>1.0+ (good), 2.0+ (excellent)</td>
+          <td>Risk-adjusted returns</td>
+        </tr>
+        <tr>
+          <td><strong>Max Drawdown</strong></td>
+          <td>Peak to trough decline</td>
+          <td>&lt; 20% (tolerable), &lt; 15% (good)</td>
+          <td>Worst-case scenario planning</td>
+        </tr>
+        <tr>
+          <td><strong>Recovery Factor</strong></td>
+          <td>Net Profit / Max Drawdown</td>
+          <td>&gt; 3.0 (recovers quickly from losses)</td>
+          <td>Resilience measure</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Section 3.3: Regime Analysis</h3>
+
+  <div class="regime-analysis">
+    <h4>Test Strategy Across Different Market Conditions:</h4>
+    <p>Segment backtest results by regime to see where edge works best:</p>
+
+    <ul>
+      <li><strong>Bull market (2019-2020, 2023-2024):</strong> How did strategy perform?</li>
+      <li><strong>Bear market (2022):</strong> Profit or loss? Acceptable drawdown?</li>
+      <li><strong>Range-bound (2015-2016):</strong> Whipsaws? Break-even?</li>
+      <li><strong>High volatility (March 2020):</strong> Blowup risk or opportunity?</li>
+      <li><strong>Low volatility (2017):</strong> Limited opportunities?</li>
+    </ul>
+
+    <h4>Document Findings:</h4>
+    <blockquote>
+      <p><em>"My breakout strategy works best in trending bull markets (SPY above 200-day MA, VIX 15-20). It performed well in 2019-2020 (Sharpe 2.1) and 2023-2024 (Sharpe 1.8). However, it failed in 2022 bear market (Sharpe -0.3, max DD 22%). Going forward, I will ONLY trade this strategy when SPY is above 200-day MA, which avoids bear market regime."</em></p>
+    </blockquote>
+  </div>
+
+  <h2>Part 4: Execution Plan (Daily Workflow)</h2>
+
+  <p>Strategy is useless without disciplined execution. This section documents your EXACT daily routine.</p>
+
+  <h3>Section 4.1: Pre-Market Routine (7:00-9:30 AM ET)</h3>
+
+  <div class="routine-checklist">
+    <h4>Checklist:</h4>
+    <ol>
+      <li>☐ Review overnight news (Bloomberg, CNBC, Twitter/X for market-moving events)</li>
+      <li>☐ Check economic calendar (any major data releases today? FOMC, CPI, NFP?)</li>
+      <li>☐ Scan for earnings (which stocks reporting today? Avoid trading them)</li>
+      <li>☐ Review open positions (any stop losses hit? Trailing stops need adjustment?)</li>
+      <li>☐ Check market context (SPY vs 200-day MA, VIX level, sector rotation)</li>
+      <li>☐ Scan for new setups (TradingView screener, Signal Pilot, manual chart review)</li>
+      <li>☐ Create watchlist (5-10 stocks meeting setup criteria, ranked by conviction)</li>
+      <li>☐ Set alerts (price alerts at entry levels, order flow alerts)</li>
+    </ol>
+
+    <p><strong>Time allocation:</strong> 45-60 minutes</p>
+  </div>
+
+  <h3>Section 4.2: Market Hours Execution (9:30 AM - 4:00 PM ET)</h3>
+
+  <div class="execution-workflow">
+    <h4>Trade Entry Process:</h4>
+    <ol>
+      <li><strong>Alert triggers:</strong> Receive notification that setup criteria met</li>
+      <li><strong>Verify checklist:</strong> Re-confirm all 6 entry criteria still valid (no discretion)</li>
+      <li><strong>Calculate position size:</strong> Use formula (Account × 1%) / (Entry - Stop)</li>
+      <li><strong>Enter order:</strong> Limit order at entry price, or market if urgent</li>
+      <li><strong>Set stop loss:</strong> Immediately place stop-loss order (non-negotiable)</li>
+      <li><strong>Log trade:</strong> Record entry price, stop, target, position size, setup notes in journal</li>
+      <li><strong>Walk away:</strong> Don't watch tick-by-tick (especially swing trades)</li>
+    </ol>
+
+    <h4>Position Management:</h4>
+    <ul>
+      <li>Check positions every 2 hours (10 AM, 12 PM, 2 PM, 3:45 PM close)</li>
+      <li>Adjust trailing stops if applicable (hourly for day trades, daily for swing trades)</li>
+      <li>Take partial profits at predetermined targets (no discretion)</li>
+      <li>DO NOT add to losers (no "averaging down")</li>
+      <li>Can add to winners (pyramid) only if new setup forms at higher level</li>
+    </ul>
+  </div>
+
+  <h3>Section 4.3: Post-Market Review (4:00-5:00 PM ET)</h3>
+
+  <div class="review-process">
+    <h4>Daily Review Checklist:</h4>
+    <ol>
+      <li>☐ Journal all trades executed today (screenshots, entry/exit reasoning, emotions)</li>
+      <li>☐ Calculate P&L (both $ and R-multiples)</li>
+      <li>☐ Identify mistakes (did I follow all rules? Any violations?)</li>
+      <li>☐ Update watchlist (remove dead setups, add new ones for tomorrow)</li>
+      <li>☐ Review economic calendar for tomorrow</li>
+      <li>☐ Set reminders for position management tomorrow</li>
+    </ol>
+
+    <p><strong>Time allocation:</strong> 30-45 minutes</p>
+  </div>
+
+  <h3>Section 4.4: Weekly Review (Sunday Evening)</h3>
+
+  <div class="weekly-review">
+    <h4>Deep Dive:</h4>
+    <ul>
+      <li><strong>Performance metrics:</strong> Win rate, avg R, Sharpe ratio for the week</li>
+      <li><strong>Rule adherence:</strong> What % of trades followed checklist 100%?</li>
+      <li><strong>Pattern recognition:</strong> Did certain setups work better than others?</li>
+      <li><strong>Emotional analysis:</strong> FOMO trades? Revenge trading? Fear exits?</li>
+      <li><strong>Market regime check:</strong> Still in bull market? VIX behavior?</li>
+      <li><strong>Adjustments needed:</strong> Any tweaks to strategy based on data?</li>
+    </ul>
+
+    <p><strong>Time allocation:</strong> 1-2 hours</p>
+  </div>
+
+  <h2>Part 5: Performance Tracking System</h2>
+
+  <p>You can't improve what you don't measure. Build a system to track, analyze, and optimize.</p>
+
+  <h3>Section 5.1: Trading Journal (Required)</h3>
+
+  <div class="journal-system">
+    <h4>What to Log (Every Single Trade):</h4>
+    <ul>
+      <li><strong>Pre-trade:</strong> Setup name, entry criteria checklist, conviction level (1-10)</li>
+      <li><strong>Execution:</strong> Entry price, stop price, target price, position size, timestamp</li>
+      <li><strong>Management:</strong> Partial exits, stop adjustments, emotions during trade</li>
+      <li><strong>Exit:</strong> Exit price, exit reason (target hit, stopped out, manual), P&L, R-multiple</li>
+      <li><strong>Post-trade:</strong> What went right? What went wrong? Grade execution (A-F)</li>
+    </ul>
+
+    <h4>Tools:</h4>
+    <ul>
+      <li><strong>Free:</strong> Google Sheets or Excel template (create your own)</li>
+      <li><strong>Paid:</strong> TraderVue ($29/month), Edgewonk ($67 one-time), Trademetria ($19/month)</li>
+    </ul>
+  </div>
+
+  <h3>Section 5.2: Performance Dashboard</h3>
+
+  <div class="dashboard-metrics">
+    <h4>Weekly Metrics to Track:</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Target</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Total trades</td>
+          <td>5-15/week (swing), 20-50/week (day)</td>
+          <td>Activity level</td>
+        </tr>
+        <tr>
+          <td>Win rate</td>
+          <td>40-60% (depends on strategy)</td>
+          <td>Consistency</td>
+        </tr>
+        <tr>
+          <td>Average R</td>
+          <td>2.0+ (aim higher as skill develops)</td>
+          <td>Risk/reward efficiency</td>
+        </tr>
+        <tr>
+          <td>Largest win</td>
+          <td>Track for psychology</td>
+          <td>Confidence builder</td>
+        </tr>
+        <tr>
+          <td>Largest loss</td>
+          <td>Should = -1R (if larger, stop violated)</td>
+          <td>Risk management check</td>
+        </tr>
+        <tr>
+          <td>Rule adherence</td>
+          <td>90%+ (follow checklist)</td>
+          <td>Discipline measure</td>
+        </tr>
+        <tr>
+          <td>Sharpe ratio</td>
+          <td>1.0+ (annualized)</td>
+          <td>Risk-adjusted performance</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Part 6: Paper Trading Validation (Critical Step)</h2>
+
+  <p><strong>DO NOT SKIP THIS.</strong> Paper trade your complete system for minimum 20 trades (ideally 50+) before going live.</p>
+
+  <h3>Paper Trading Requirements:</h3>
+
+  <div class="paper-trading-rules">
+    <ul>
+      <li><strong>Treat it like real money:</strong> Same emotions, same process, same journal entries</li>
+      <li><strong>Follow ALL rules:</strong> 100% adherence to checklist (no "this time is different")</li>
+      <li><strong>Log everything:</strong> Trade journal, screenshots, emotional state after each trade</li>
+      <li><strong>Calculate real metrics:</strong> Win rate, avg R, Sharpe ratio (same as live trading analysis)</li>
+      <li><strong>No selective memory:</strong> Log EVERY trade, including mistakes and skipped setups</li>
+    </ul>
+
+    <h4>Success Criteria (Must Pass ALL):</h4>
+    <ul>
+      <li>✅ Expectancy &gt; 0 over 20+ trades</li>
+      <li>✅ Sharpe ratio &gt; 1.0</li>
+      <li>✅ Rule adherence &gt; 90% (followed checklist 18+ out of 20 trades)</li>
+      <li>✅ Largest loss = -1R (no stop violations)</li>
+      <li>✅ Profit factor &gt; 1.3</li>
+      <li>✅ Emotional stability (no revenge trading, FOMO, panic exits)</li>
+    </ul>
+
+    <p><strong>If you fail ANY criteria:</strong> Continue paper trading until you pass. Rushing to live trading = account blowup.</p>
+  </div>
+
+  <h2>After Capstone: Transition to Live Trading</h2>
+
+  <p>Completing the capstone doesn't mean you immediately trade full size. Scale up gradually.</p>
+
+  <h3>Phased Approach:</h3>
+
+  <div class="phased-trading">
+    <h4>Phase 1: Extended Paper Trading (50-100 Trades)</h4>
+    <ul>
+      <li><strong>Duration:</strong> 3-6 months</li>
+      <li><strong>Goal:</strong> Prove consistency over larger sample</li>
+      <li><strong>Success metric:</strong> Sharpe &gt; 1.0, expectancy &gt; 0, rule adherence &gt; 90%</li>
+    </ul>
+
+    <h4>Phase 2: Micro Live Trading (10% Size)</h4>
+    <ul>
+      <li><strong>Duration:</strong> 3-6 months</li>
+      <li><strong>Position size:</strong> Risk 0.1% per trade (instead of 1%)</li>
+      <li><strong>Goal:</strong> Experience real emotions with minimal capital risk</li>
+      <li><strong>Success metric:</strong> Maintain same win rate and R-multiple as paper trading</li>
+    </ul>
+
+    <h4>Phase 3: Quarter Size (25%)</h4>
+    <ul>
+      <li><strong>Duration:</strong> 3-6 months</li>
+      <li><strong>Position size:</strong> Risk 0.25% per trade</li>
+      <li><strong>Goal:</strong> Scale up while maintaining discipline</li>
+      <li><strong>Success metric:</strong> 6+ months cumulative profitability at Phase 2+3</li>
+    </ul>
+
+    <h4>Phase 4: Half Size (50%)</h4>
+    <ul>
+      <li><strong>Duration:</strong> 6-12 months</li>
+      <li><strong>Position size:</strong> Risk 0.5% per trade</li>
+      <li><strong>Goal:</strong> Prove edge at meaningful size before going full</li>
+      <li><strong>Success metric:</strong> 12+ months cumulative profitability</li>
+    </ul>
+
+    <h4>Phase 5: Full Size (100%)</h4>
+    <ul>
+      <li><strong>When:</strong> Only after 18-24 months of profitable trading (Phases 1-4)</li>
+      <li><strong>Position size:</strong> Risk 1.0% per trade (your documented limit)</li>
+      <li><strong>Mindset:</strong> You've earned this. Trust your process.</li>
+    </ul>
+  </div>
 
   <div class="key-takeaway">
-    <h4>Capstone Project Components</h4>
+    <h4>Capstone Completion Checklist</h4>
+    <p><strong>You're ready to move forward when you can answer "YES" to ALL:</strong></p>
     <ul>
-      <li><strong>1. Strategy Definition:</strong> Markets, setups, entry/exit rules</li>
-      <li><strong>2. Risk Management:</strong> Position sizing, limits, thresholds</li>
-      <li><strong>3. Backtesting:</strong> 2+ years data, out-of-sample validation</li>
-      <li><strong>4. Execution Plan:</strong> Daily workflow, pre-market → post-trade</li>
-      <li><strong>5. Performance Tracking:</strong> Journal, weekly/monthly reviews</li>
-      <li><strong>Success = positive expectancy + documented edge + disciplined execution</strong></li>
+      <li>✅ I have a written trading plan (20+ pages) documenting strategy, risk rules, execution workflow</li>
+      <li>✅ My strategy has positive expectancy over 100+ backtested trades</li>
+      <li>✅ I understand WHY my edge exists and why it should persist</li>
+      <li>✅ My risk management framework limits max drawdown to &lt; 20%</li>
+      <li>✅ I have documented, specific rules with zero discretion allowed</li>
+      <li>✅ I paper-traded 20+ trades following rules 90%+ of time</li>
+      <li>✅ My Sharpe ratio &gt; 1.0 in both backtest AND paper trading</li>
+      <li>✅ I can explain my edge in 2 sentences ("I profit because ___")</li>
+      <li>✅ I have a performance tracking system (journal + dashboard)</li>
+      <li>✅ I'm committed to 18-24 month scaling plan (not rushing to full size)</li>
     </ul>
+  </div>
+
+  <div class="final-message">
+    <h2>Final Words: This Is Where Winners Are Made</h2>
+    <p>Most traders skip this step. They learn concepts, watch videos, read books—but never synthesize it into a SYSTEM. They wing it, trade discretionally, blow up, and quit.</p>
+    <p><strong>You're different.</strong> By completing this capstone, you're building the foundation of a sustainable trading career.</p>
+    <p><strong>Your trading plan is your business plan.</strong> Treat it seriously. Revise quarterly. Update as markets evolve. But once finalized, FOLLOW IT. Trust the process. Patience compounds capital.</p>
+    <p style="font-size: 1.2rem; font-weight: bold; text-align: center; margin-top: 2rem;">
+      🎯 Welcome to the 5% who succeed.
+    </p>
   </div>
 
   <div class="related-lessons">
@@ -100,8 +686,14 @@
       <li><a href="/curriculum/intermediate-bridge/46-advanced-risk-management.html">Lesson 46: Advanced Risk Management</a></li>
       <li><a href="/curriculum/advanced-mastery/74-building-trading-business.html">Lesson 74: Building a Trading Business</a></li>
       <li><a href="77-building-your-edge.html">Lesson 77: Building Your Edge</a></li>
+      <li><a href="76-live-trading-case-studies.html">Lesson 76: Live Trading Case Studies</a></li>
     </ul>
   </div>
+
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary);">
+    <p><strong>Final Lesson:</strong> <a href="82-ongoing-learning-community.html">Lesson 82: Ongoing Learning & Community</a></p>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">Part of the Professional Tier • <a href="/professional-capstone.html">View All Professional Lessons</a></p>
+  </footer>
 </article>
 </body>
 </html>
