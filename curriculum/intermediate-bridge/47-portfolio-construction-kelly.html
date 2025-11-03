@@ -1,15 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
   <meta charset="utf-8"/>
   <title>Portfolio Construction & Kelly Criterion: Optimal Capital Allocation — Signal Pilot</title>
-  <meta name="description" content="Your edge isn't in ONE great trade—it's in how you allocate capital across HUNDREDS of trades. Build an edge-based portfolio system.">
+  <meta name="sp-level" content="intermediate-bridge"><meta name="sp-order" content="47">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <script src="/assets/notes.js" defer></script>
+  <script src="/assets/library.js"></script>
+  <script src="/assets/lesson-notes.js"></script>
+  <script src="/assets/quiz-enhanced.js" defer></script>
+  <script src="/assets/social-share.js" defer></script>
+  <script src="/assets/auth-ui.js"></script>
+  <script src="/assets/supabase-client.js"></script>
+  <script src="/assets/pwa-init.js"></script>
 </head>
 <body>
+<div class="bg-stars" aria-hidden="true"></div>
+<canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+<div class="bg-aurora" aria-hidden="true"></div>
+<header class="sp-header">
+  <div class="container">
+    <div class="sp-branding">
+      <a href="/index.html" class="logo-link" aria-label="Signal Pilot Home">
+        <div class="wordmark">SIGNAL PILOT</div>
+      </a>
+    </div>
+    <nav class="sp-nav" aria-label="Main navigation">
+      <a href="/curriculum/index.html">Curriculum</a>
+      <a href="/library.html">My Library</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="3"/><path d="M10 0v3M10 17v3M20 10h-3M3 10H0M16.364 3.636l-2.121 2.121M5.757 14.243l-2.121 2.121M16.364 16.364l-2.121-2.121M5.757 5.757L3.636 3.636"/></svg>
+      <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+    </button>
+  </div>
+</header>
 <article class="article">
-  <h1>Portfolio Construction: Building an Edge-Based System</h1>
+<h1>Portfolio Construction: Building an Edge-Based System</h1>
   <p><b>Your edge isn't in ONE great trade—it's in how you allocate capital across HUNDREDS of trades.</b></p>
   <p>Professional traders don't just find good setups. They build portfolios that maximize expected returns while controlling risk. This lesson teaches you how to construct a portfolio like an institutional fund manager.</p>
 
@@ -356,5 +390,69 @@
     </ul>
   </div>
 </article>
+<aside class="toc">
+  <h3>On this page</h3>
+  <ul>
+    <li><a href="#part-1-portfolio-construction-philosophies">Part 1: Portfolio Construction Philosophies</a></li>
+    <li><a href="#part-2-kelly-criterion-deep-dive">Part 2: Kelly Criterion Deep Dive</a></li>
+    <li><a href="#part-3-multi-position-kelly-portfolio-optimization">Part 3: Multi-Position Kelly (Portfolio Optimization)</a></li>
+    <li><a href="#part-4-dynamic-position-sizing">Part 4: Dynamic Position Sizing</a></li>
+    <li><a href="#part-5-using-signal-pilot-for-portfolio-construction">Part 5: Using Signal Pilot for Portfolio Construction</a></li>
+    <li><a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a></li>
+    <li><a href="#practical-checklist">Practical Checklist</a></li>
+  </ul>
+</aside>
+<footer class="sp-footer">
+  <div class="container">
+    <p>&copy; 2025 Signal Pilot Labs, Inc. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+document.getElementById('theme-toggle')?.addEventListener('click', () => {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+});
+const canvas = document.getElementById('constellations');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const stars = Array.from({ length: 80 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.2,
+    vy: (Math.random() - 0.5) * 0.2
+  }));
+  function drawConstellations() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        const dx = stars[i].x - stars[j].x;
+        const dy = stars[i].y - stars[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          ctx.beginPath();
+          ctx.moveTo(stars[i].x, stars[i].y);
+          ctx.lineTo(stars[j].x, stars[j].y);
+          ctx.stroke();
+        }
+      }
+      stars[i].x += stars[i].vx;
+      stars[i].y += stars[i].vy;
+      if (stars[i].x < 0 || stars[i].x > canvas.width) stars[i].vx *= -1;
+      if (stars[i].y < 0 || stars[i].y > canvas.height) stars[i].vy *= -1;
+    }
+    requestAnimationFrame(drawConstellations);
+  }
+  drawConstellations();
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+}
+</script>
 </body>
 </html>
