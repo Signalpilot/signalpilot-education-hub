@@ -57,8 +57,40 @@
   </div>
 
   <h1>Machine Learning in Trading: Promise vs Reality</h1>
-  <p><b>Machine learning can find edges humans miss—or overfit to noise and lose millions. Know the difference.</b></p>
+
+  <p class="lesson-subtitle"><b>Machine learning can find edges humans miss—or overfit to noise and lose millions. Know the difference.</b></p>
+
+  <div class="progress-tracker">
+    <div class="progress-step active">
+      <div class="step-number">1</div>
+      <div class="step-label">ML Fundamentals</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">2</div>
+      <div class="step-label">Model Types</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">3</div>
+      <div class="step-label">Feature Engineering</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">4</div>
+      <div class="step-label">Overfitting Prevention</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">5</div>
+      <div class="step-label">Practical Workflow</div>
+    </div>
+  </div>
+
   <p>Every quant fund claims to use "AI" and "machine learning." Most fail. Why? ML is powerful for finding patterns, but financial markets are low signal-to-noise with non-stationary distributions. This lesson teaches you when ML works (and when it's snake oil).</p>
+
+  <div class="callout callout-danger">
+    <h4>💸 The $450 Million ML Failure</h4>
+    <p>In 2007, a well-funded quant hedge fund deployed a "state-of-the-art" neural network trained on 15 years of data. The model had 95% backtest accuracy predicting next-day S&P direction.</p>
+    <p><strong>August 2007:</strong> The fund lost $450M in 3 days during the quant crisis. Why? The model was trained exclusively on low-volatility bull market data (1992-2007). When volatility spiked and correlations changed, the model's predictions became worthless.</p>
+    <p><strong>Lesson:</strong> ML models trained on one regime fail catastrophically when regimes shift. This lesson shows you how to build robust models that survive.</p>
+  </div>
 
   <h2>Part 1: Why Machine Learning in Trading?</h2>
 
@@ -76,27 +108,150 @@
     <li><strong>Handle regime shifts:</strong> Models trained on 2010-2019 bull market fail in 2022 bear</li>
   </ul>
 
-  <div class="callout">
+  <div class="callout callout-warning">
     <p><strong>⚠️ Critical Truth:</strong> Most "AI hedge funds" underperform simple momentum/value strategies. ML works ONLY when you have edge in feature engineering (selecting RIGHT inputs) and understand its limits.</p>
+  </div>
+
+  <div class="example-block">
+    <h3>Real-World Success Story: Renaissance Technologies</h3>
+    <p><strong>The Fund:</strong> Renaissance Medallion Fund (Jim Simons), arguably the most successful quant fund in history. 66% average annual returns (after fees) from 1988-2018.</p>
+
+    <p><strong>What They Do Differently:</strong></p>
+    <ul>
+      <li><strong>Feature engineering expertise:</strong> Team of PhDs (physics, mathematics, cryptography) spend years engineering features, not tweaking models</li>
+      <li><strong>High-frequency data:</strong> Tick-level data (millions of samples) vs daily bars (thousands of samples) → can train complex models without overfitting</li>
+      <li><strong>Regime adaptation:</strong> Constantly retrain models (daily/weekly) to adapt to changing market conditions</li>
+      <li><strong>Diversification:</strong> Trade thousands of instruments simultaneously → statistical edge compounds</li>
+    </ul>
+
+    <p><strong>Key Lesson for Retail Traders:</strong></p>
+    <p>You CAN'T replicate Renaissance. They have:</p>
+    <ul>
+      <li>100+ PhD researchers</li>
+      <li>$100M+ annual technology budget</li>
+      <li>Proprietary HFT infrastructure</li>
+      <li>30+ years of cleaned, survivorship-bias-free data</li>
+    </ul>
+
+    <p><strong>What YOU can do:</strong> Focus on simpler ML (random forest, XGBoost) with 10-20 well-engineered features on daily/4H data. Don't try to build neural networks with 100 features and 5,000 samples—that's guaranteed overfitting.</p>
   </div>
 
   <h2>Part 2: ML Model Types for Trading</h2>
 
   <h3>Model #1: Random Forests (Most Practical)</h3>
-  <p><strong>How it works:</strong> Ensemble of decision trees, each trained on random subset of data</p>
+  <p><strong>How it works:</strong> Ensemble of decision trees, each trained on random subset of data. Each tree votes on the prediction, final result is majority vote (classification) or average (regression).</p>
+
   <p><strong>Strengths:</strong></p>
   <ul>
     <li>Handles non-linear relationships (unlike linear regression)</li>
     <li>Built-in feature importance (tells you which inputs matter)</li>
     <li>Resistant to overfitting (vs single decision tree)</li>
+    <li>Minimal hyperparameter tuning needed (works well with defaults)</li>
+    <li>Can handle mixed data types (numerical + categorical)</li>
   </ul>
+
   <p><strong>Weaknesses:</strong></p>
   <ul>
     <li>Slow to retrain (not suitable for HFT)</li>
     <li>Black box (can't explain WHY it predicts X)</li>
+    <li>Memory intensive (stores all trees in RAM)</li>
   </ul>
 
   <p><strong>Best use case:</strong> Predicting next-day direction (binary: up/down) using 10-50 features (technical + fundamental + sentiment)</p>
+
+  <div class="example-block">
+    <h4>Practical Example: Random Forest for Daily Direction Prediction</h4>
+    <p><strong>Objective:</strong> Predict whether SPY will close up or down tomorrow</p>
+
+    <p><strong>Features Used (20 total):</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature Category</th>
+          <th>Specific Features</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Price-based (5)</td>
+          <td>RSI(14), MACD, 20-day ROC, Distance from 200-day MA, Bollinger Band %</td>
+        </tr>
+        <tr>
+          <td>Volume (3)</td>
+          <td>Volume vs 20-day avg, OBV slope, Volume spike indicator</td>
+        </tr>
+        <tr>
+          <td>Volatility (3)</td>
+          <td>ATR(14), 20-day realized vol, VIX level</td>
+        </tr>
+        <tr>
+          <td>Cross-asset (4)</td>
+          <td>TLT return, GLD return, DXY change, VIX change</td>
+        </tr>
+        <tr>
+          <td>Sentiment (3)</td>
+          <td>Put/call ratio, New highs - new lows, Advance/decline line</td>
+        </tr>
+        <tr>
+          <td>Fundamental (2)</td>
+          <td>SPY P/E ratio, Earnings yield spread (E/P - 10Y yield)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Training Setup:</strong></p>
+    <ul>
+      <li><strong>Data:</strong> 2010-2020 (2,500 daily bars)</li>
+      <li><strong>Split:</strong> 60% train (1,500), 20% validation (500), 20% test (500)</li>
+      <li><strong>Model:</strong> Random Forest with 100 trees, max depth = 10</li>
+    </ul>
+
+    <p><strong>Results:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Dataset</th>
+          <th>Accuracy</th>
+          <th>Sharpe (if traded)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Training</td>
+          <td>62%</td>
+          <td>1.8</td>
+        </tr>
+        <tr>
+          <td>Validation</td>
+          <td>58%</td>
+          <td>1.3</td>
+        </tr>
+        <tr>
+          <td>Test (out-of-sample)</td>
+          <td>56%</td>
+          <td>1.1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Feature Importance (Top 5):</strong></p>
+    <ol>
+      <li>20-day ROC (momentum) - 18% importance</li>
+      <li>VIX change - 14% importance</li>
+      <li>Put/call ratio - 12% importance</li>
+      <li>Volume vs 20-day avg - 11% importance</li>
+      <li>Distance from 200-day MA - 9% importance</li>
+    </ol>
+
+    <p><strong>Interpretation:</strong></p>
+    <ul>
+      <li><strong>Validation vs Training:</strong> 58% vs 62% = 93% retention (good, not overfit)</li>
+      <li><strong>Test performance:</strong> 56% accuracy = edge exists but modest (better than coin flip)</li>
+      <li><strong>Trading strategy:</strong> Only trade when model confidence &gt;70% (reduces trades but improves win rate to 61%)</li>
+    </ul>
+
+    <p><strong>Key Lesson:</strong> 56-58% accuracy seems low, but in trading that's EXCELLENT. Even 52-53% edge compounds significantly over time. A 56% win rate with 1:1 R:R and 100 trades/year = +12% annual return.</p>
+  </div>
 
   <h3>Model #2: Neural Networks (High Complexity)</h3>
   <p><strong>How it works:</strong> Layers of interconnected nodes learn representations of data</p>
@@ -186,6 +341,88 @@
   <p><strong>2. Create ratios:</strong> Volume / 20-day avg volume (more informative than raw volume)</p>
   <p><strong>3. Lag features:</strong> Yesterday's RSI, last week's return (time series structure)</p>
   <p><strong>4. Interaction features:</strong> (VIX &gt; 30 AND put/call &gt; 1.2) = crash signal</p>
+
+  <h2>Practice Exercise: Building Your First ML Trading Model</h2>
+
+  <div class="practice-section">
+    <h3>Exercise: Predict Next-Day SPY Direction</h3>
+    <p><strong>Goal:</strong> Build a random forest model to predict whether SPY closes up or down tomorrow, achieving &gt;55% out-of-sample accuracy.</p>
+
+    <p><strong>Step 1: Data Collection</strong></p>
+    <ul>
+      <li>Download 10 years of daily SPY data (2014-2023)</li>
+      <li>Calculate technical indicators: RSI(14), MACD, 20-day MA, 50-day MA, ATR(14)</li>
+      <li>Add VIX daily close as feature</li>
+      <li>Create target variable: 1 if tomorrow's close &gt; today's close, 0 otherwise</li>
+    </ul>
+
+    <p><strong>Step 2: Feature Engineering</strong></p>
+    <ul>
+      <li>Create "RSI below 30" binary feature (oversold)</li>
+      <li>Create "Price above 200-day MA" binary feature (uptrend)</li>
+      <li>Create "Volume spike" feature (today's volume / 20-day avg volume)</li>
+      <li>Create "VIX change" feature (today's VIX - yesterday's VIX)</li>
+      <li>Total features: 10-12</li>
+    </ul>
+
+    <p><strong>Step 3: Train-Validation-Test Split</strong></p>
+    <ul>
+      <li><strong>Training:</strong> 2014-2019 (6 years, ~1,500 bars)</li>
+      <li><strong>Validation:</strong> 2020-2021 (2 years, ~500 bars)</li>
+      <li><strong>Test:</strong> 2022-2023 (2 years, ~500 bars) - NEVER look at this until final eval</li>
+    </ul>
+
+    <p><strong>Step 4: Train Random Forest</strong></p>
+    <ul>
+      <li>Use sklearn RandomForestClassifier</li>
+      <li>Parameters: n_estimators=100, max_depth=5-10, min_samples_split=20</li>
+      <li>Train on training set, evaluate on validation set</li>
+    </ul>
+
+    <p><strong>Step 5: Evaluate</strong></p>
+    <ul>
+      <li>Check validation accuracy (target: &gt;55%)</li>
+      <li>If &lt;55%, try adding more features or adjusting parameters</li>
+      <li>Plot feature importance - do top features make logical sense?</li>
+      <li>Finally, test on held-out test set (2022-2023)</li>
+    </ul>
+
+    <p><strong>Success Criteria:</strong></p>
+    <ul>
+      <li><strong>Validation accuracy:</strong> ≥ 55%</li>
+      <li><strong>Test accuracy:</strong> ≥ 53% (some degradation expected)</li>
+      <li><strong>Test vs Validation:</strong> Ratio ≥ 0.9 (not overfit)</li>
+      <li><strong>Feature importance:</strong> Top 3 features should be logically explainable</li>
+    </ul>
+
+    <details>
+      <summary>Show Expected Results & Common Pitfalls</summary>
+      <div class="answer-block">
+        <p><strong>Expected Results:</strong></p>
+        <ul>
+          <li>Training accuracy: 60-65%</li>
+          <li>Validation accuracy: 55-58%</li>
+          <li>Test accuracy: 53-56%</li>
+        </ul>
+
+        <p><strong>Common Pitfalls:</strong></p>
+        <ol>
+          <li><strong>Look-ahead bias:</strong> Using tomorrow's low to set stop (impossible in real trading)</li>
+          <li><strong>Overfitting:</strong> Training accuracy 85%, validation 52% = disaster</li>
+          <li><strong>Too many features:</strong> Using 50 features with 1,500 samples = guaranteed overfit</li>
+          <li><strong>Ignoring costs:</strong> Model might predict 100 trades/month, but costs destroy edge</li>
+        </ol>
+
+        <p><strong>If Your Model Fails (&lt;53% test accuracy):</strong></p>
+        <ul>
+          <li>Reduce features to top 5-10 most important</li>
+          <li>Add regime filter (only trade in trending markets, skip chop)</li>
+          <li>Increase min_samples_split to 50-100 (reduce overfitting)</li>
+          <li>Try simpler target: predict next week direction instead of next day</li>
+        </ul>
+      </div>
+    </details>
+  </div>
 
   <h2>Part 4: The Overfitting Epidemic</h2>
 

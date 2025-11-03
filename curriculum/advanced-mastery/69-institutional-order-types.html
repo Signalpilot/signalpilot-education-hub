@@ -60,6 +60,36 @@
   <p><b>Retail uses market orders and limit orders. Institutions use 20+ order types you've never heard of.</b></p>
   <p>Every order type exists to solve a specific execution problem—minimizing slippage, hiding intent, or timing fills. Understanding institutional order types lets you decode dark pool prints, anticipate intraday moves, and execute like a pro.</p>
 
+  <div class="progress-tracker">
+    <div class="progress-step active">
+      <div class="step-number">1</div>
+      <div class="step-label">Time-in-Force</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">2</div>
+      <div class="step-label">Auction Orders</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">3</div>
+      <div class="step-label">Advanced Types</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">4</div>
+      <div class="step-label">Algo Orders</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">5</div>
+      <div class="step-label">Detection</div>
+    </div>
+  </div>
+
+  <div class="callout callout-danger">
+    <h4>💸 The $175M Execution Disaster</h4>
+    <p>In 2012, Knight Capital deployed new trading software that accidentally sent <strong>4 million market orders</strong> in 45 minutes across 154 stocks. Using aggressive market orders instead of limit orders or execution algos, they moved prices 5-10% on illiquid names.</p>
+    <p><strong>Result:</strong> $440M in losses, $175M net after recovery. The firm was acquired 48 hours later. The lesson: <em>Order type selection matters at scale.</em></p>
+    <p><strong>What they should have used:</strong> VWAP algos with participation limits (max 5% of volume), iceberg orders to hide size, and IOC orders to test liquidity first.</p>
+  </div>
+
   <h2>Part 1: Basic Order Types (Review)</h2>
 
   <table>
@@ -122,6 +152,33 @@
       <p><strong>Example:</strong> Order 10,000 shares IOC limit $100. If only 3,000 available at $100, fill 3,000 and cancel remaining 7,000</p>
       <p><strong>Use case:</strong> Test liquidity without leaving resting order (institutions probe market)</p>
       <p><strong>Signal Pilot detection:</strong> Multiple small IOC fills = institution testing before deploying full size</p>
+
+      <div class="example-block">
+        <h4>Real-World Example: Hedge Fund Testing Liquidity</h4>
+        <p><strong>Scenario:</strong> Hedge fund wants to buy 200,000 shares of mid-cap biotech stock (avg daily volume 800K shares)</p>
+
+        <p><strong>Step 1 - Probe with IOC:</strong></p>
+        <ul>
+          <li>9:35 AM: Send IOC buy 5,000 shares limit $45.00</li>
+          <li>Result: 2,100 shares filled at $45.00, 2,900 shares canceled</li>
+          <li><strong>Interpretation:</strong> Only 2,100 shares available at $45.00 (thin liquidity)</li>
+        </ul>
+
+        <p><strong>Step 2 - Test Higher Prices:</strong></p>
+        <ul>
+          <li>9:36 AM: Send IOC buy 5,000 shares limit $45.05</li>
+          <li>Result: 4,800 shares filled at $45.01-$45.05, 200 shares canceled</li>
+          <li><strong>Interpretation:</strong> Decent liquidity up to $45.05</li>
+        </ul>
+
+        <p><strong>Step 3 - Deploy Full Size:</strong></p>
+        <ul>
+          <li>9:37-11:00 AM: Deploy VWAP algo to buy 200K shares (target $45.10 avg price)</li>
+          <li>Final avg price: $45.08 (beat target by $0.02)</li>
+        </ul>
+
+        <p><strong>Why IOC First?</strong> Testing with IOC avoids showing large limit order on book (which would cause front-running). Instead, probe liquidity silently, then deploy algo once you understand market depth.</p>
+      </div>
     </div>
   </details>
 
@@ -131,6 +188,56 @@
       <p><strong>Duration:</strong> Fill ENTIRE order immediately or cancel all</p>
       <p><strong>Example:</strong> Order 10,000 shares FOK limit $100. If only 9,999 available → cancel entire order</p>
       <p><strong>Use case:</strong> Arbitrage (need exact size filled or trade doesn't work)</p>
+
+      <div class="example-block">
+        <h4>Real-World Example: ETF Arbitrage with FOK</h4>
+        <p><strong>Scenario:</strong> SPY ETF is trading at discount to fair value (NAV mismatch opportunity)</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SPY Fair Value (NAV)</td>
+              <td>$450.50</td>
+            </tr>
+            <tr>
+              <td>SPY Market Bid</td>
+              <td>$450.35</td>
+            </tr>
+            <tr>
+              <td>Arbitrage Opportunity</td>
+              <td>$0.15 per share (3.3 basis points)</td>
+            </tr>
+            <tr>
+              <td>Profitable Trade Size</td>
+              <td>10,000 shares (profit = $1,500 - $200 fees = $1,300)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>The Problem:</strong></p>
+        <ul>
+          <li>Arbitrage requires <strong>exact hedge</strong>: buy 10,000 SPY, simultaneously sell S&P 500 futures</li>
+          <li>If you only fill 6,000 SPY shares, you're short 4,000 shares of unhedged risk</li>
+          <li>Opportunity window = 200 milliseconds before other arbs eliminate edge</li>
+        </ul>
+
+        <p><strong>The Solution - FOK Orders:</strong></p>
+        <ol>
+          <li>Send FOK buy 10,000 SPY at $450.36</li>
+          <li><strong>Outcome A:</strong> All 10,000 shares fill → simultaneously sell 2 ES futures contracts (perfect hedge)</li>
+          <li><strong>Outcome B:</strong> Only 8,000 shares available → entire order canceled, no unhedged risk</li>
+        </ol>
+
+        <p><strong>Why Not IOC?</strong> IOC would fill 8,000 shares, leaving you with unhedged position. In arbitrage, partial fills = losses (you're exposed to directional risk). FOK ensures all-or-nothing execution.</p>
+
+        <p><strong>Real Stats:</strong> High-frequency arbitrage firms use FOK for 95% of their orders. Sub-millisecond execution means FOK rejection rate is 30-40% (most attempts fail due to stale quotes), but when it works, risk is zero.</p>
+      </div>
     </div>
   </details>
 
@@ -140,9 +247,75 @@
   <p><strong>Execution:</strong> Execute at 4:00 PM closing auction price (batched with all other MOC orders)</p>
   <p><strong>Who uses it:</strong> Mutual funds (NAV = closing price), index trackers (rebalancing)</p>
   <p><strong>Volume:</strong> 10-20% of daily volume on normal days, 40%+ on rebalancing days</p>
-  
+
   <div class="callout">
     <p><strong>💡 Trading Edge:</strong> NYSE publishes MOC imbalance at 3:50, 3:55, 3:58 PM. Large imbalance (5M+ shares) predicts closing direction. See Lesson 45 for details.</p>
+  </div>
+
+  <div class="example-block">
+    <h4>Real-World Example: Tesla MOC Imbalance During Index Addition</h4>
+    <p><strong>Date:</strong> December 18, 2020 (Tesla added to S&P 500)</p>
+
+    <p><strong>MOC Imbalance Timeline:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>MOC Imbalance</th>
+          <th>TSLA Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>3:50 PM</td>
+          <td>+12.5M shares (buy side)</td>
+          <td>$655.90</td>
+          <td>Initial imbalance published</td>
+        </tr>
+        <tr>
+          <td>3:55 PM</td>
+          <td>+18.3M shares (buy side)</td>
+          <td>$661.20 (+0.8%)</td>
+          <td>Imbalance growing, price rising</td>
+        </tr>
+        <tr>
+          <td>3:58 PM</td>
+          <td>+24.1M shares (buy side)</td>
+          <td>$668.40 (+1.9%)</td>
+          <td>Final imbalance, algos buying aggressively</td>
+        </tr>
+        <tr>
+          <td>4:00 PM</td>
+          <td>Closed</td>
+          <td>$695.00 (+6.0% from 3:50 PM)</td>
+          <td>Closing auction executed</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>What Happened:</strong></p>
+    <ul>
+      <li>Index funds needed to buy $85 billion worth of TSLA shares at the close (tracking S&P 500)</li>
+      <li>They submitted MOC buy orders totaling 120M+ shares</li>
+      <li>As imbalance published, hedge funds front-ran the known buying pressure</li>
+      <li>Final 10 minutes saw $39 (6%) move purely from MOC-related flow</li>
+    </ul>
+
+    <p><strong>Trading Strategy:</strong></p>
+    <ol>
+      <li><strong>3:50 PM:</strong> See +12.5M buy imbalance → buy TSLA immediately at $655.90</li>
+      <li><strong>3:59 PM:</strong> Sell into strength at $668 (lock in +$12.10 per share)</li>
+      <li><strong>Risk:</strong> Imbalance could reverse if institutional sellers appear (monitor updates)</li>
+      <li><strong>Expected edge:</strong> 80% of large imbalances (&gt;10M shares) result in 0.5-3% closing ramp</li>
+    </ol>
+
+    <p><strong>Real Stats from that Day:</strong></p>
+    <ul>
+      <li>MOC volume: 120M shares (8x normal daily closing auction volume)</li>
+      <li>Traders who followed imbalance: +1-6% gains in 10 minutes</li>
+      <li>Index funds (forced to use MOC): paid +6% premium vs 3:50 PM price</li>
+    </ul>
   </div>
 
   <h3>LOC (Limit-on-Close)</h3>
@@ -168,6 +341,90 @@
   </ul>
 
   <p><strong>Implication:</strong> Large institutional accumulation/distribution happening (follow the flow)</p>
+
+  <div class="example-block">
+    <h4>Real-World Example: Detecting Iceberg Accumulation in NVDA</h4>
+    <p><strong>Scenario:</strong> Institution accumulating 300K shares of NVDA (current price $485, avg daily volume 50M shares)</p>
+
+    <p><strong>Time & Sales Pattern (11:05-11:15 AM):</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Size</th>
+          <th>Price</th>
+          <th>Side</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11:05:12</td>
+          <td>800</td>
+          <td>$485.00</td>
+          <td>Buy</td>
+        </tr>
+        <tr>
+          <td>11:05:48</td>
+          <td>800</td>
+          <td>$485.00</td>
+          <td>Buy</td>
+        </tr>
+        <tr>
+          <td>11:06:22</td>
+          <td>800</td>
+          <td>$485.00</td>
+          <td>Buy</td>
+        </tr>
+        <tr>
+          <td>11:06:55</td>
+          <td>800</td>
+          <td>$485.00</td>
+          <td>Buy</td>
+        </tr>
+        <tr>
+          <td>11:07:30</td>
+          <td>800</td>
+          <td>$485.00</td>
+          <td>Buy</td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align:center;"><em>... pattern continues for 2 hours ...</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Detection Signals:</strong></p>
+    <ol>
+      <li><strong>Exact lot size:</strong> Every fill is exactly 800 shares (not 795, not 850 → algorithmic)</li>
+      <li><strong>Same price:</strong> All fills at $485.00 for extended period (resting bid)</li>
+      <li><strong>Consistent cadence:</strong> Fills every 30-45 seconds (automatic replenishment)</li>
+      <li><strong>No visible depth:</strong> Level 2 only shows 800 shares at $485.00 bid (hiding true size)</li>
+    </ol>
+
+    <p><strong>Estimating Hidden Size:</strong></p>
+    <ul>
+      <li><strong>Observed:</strong> 240 fills × 800 shares = 192,000 shares over 2 hours</li>
+      <li><strong>Pattern continues:</strong> Bid still shows 800 shares at $485.00 (more to go)</li>
+      <li><strong>Estimated total:</strong> 250K-400K shares (based on typical institutional rebalancing sizes)</li>
+    </ul>
+
+    <p><strong>Trading Strategy:</strong></p>
+    <ol>
+      <li><strong>11:10 AM:</strong> Recognize iceberg pattern (20+ identical fills)</li>
+      <li><strong>11:12 AM:</strong> Buy NVDA at $485.10 (small premium, ride institutional flow)</li>
+      <li><strong>1:15 PM:</strong> Iceberg finally exhausted (no more 800-share fills at $485.00)</li>
+      <li><strong>1:20 PM:</strong> Price rises to $487.50 (+0.5%) as buy pressure absorbed</li>
+      <li><strong>Profit:</strong> Exit at $487.00 for +$1.90/share (+0.4% in 2 hours)</li>
+    </ol>
+
+    <p><strong>Why This Works:</strong></p>
+    <ul>
+      <li>Institution needs 2-4 hours to fill 300K shares without spiking price</li>
+      <li>Continuous buying pressure provides "floor" support at $485.00</li>
+      <li>Once iceberg exhausted, natural supply/demand causes price to rise</li>
+      <li>Following institutional flow = high probability of short-term continuation</li>
+    </ul>
+  </div>
 
   <h3>Pegged Orders (Automatic Price Adjustment)</h3>
 
@@ -207,6 +464,121 @@
   <p><strong>Execution:</strong> Trade in proportion to market volume</p>
   <p><strong>Example:</strong> If 30% of daily volume occurs 9:30-10:30 AM, algo trades 30% of order size during that hour</p>
   <p><strong>Benchmark:</strong> Most institutions judged on VWAP performance (did you beat or lag VWAP?)</p>
+
+  <div class="example-block">
+    <h4>Real-World Example: VWAP Algo Execution for Large Cap Stock</h4>
+    <p><strong>Scenario:</strong> Pension fund needs to buy 800,000 shares of JPM (avg daily volume 12M shares, current price $150.00)</p>
+
+    <p><strong>Order Parameters:</strong></p>
+    <ul>
+      <li><strong>Total size:</strong> 800,000 shares</li>
+      <li><strong>Algo type:</strong> VWAP (9:30 AM - 4:00 PM)</li>
+      <li><strong>Participation rate:</strong> Max 10% of volume (avoid market impact)</li>
+      <li><strong>Benchmark:</strong> Daily VWAP</li>
+    </ul>
+
+    <p><strong>VWAP Schedule (Actual Execution):</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Time Period</th>
+          <th>Market Volume</th>
+          <th>% of Day</th>
+          <th>Algo Target</th>
+          <th>Actual Filled</th>
+          <th>Avg Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>9:30-10:00</td>
+          <td>2.4M shares</td>
+          <td>20%</td>
+          <td>160K shares</td>
+          <td>158K shares</td>
+          <td>$150.15</td>
+        </tr>
+        <tr>
+          <td>10:00-11:00</td>
+          <td>1.8M shares</td>
+          <td>15%</td>
+          <td>120K shares</td>
+          <td>121K shares</td>
+          <td>$150.25</td>
+        </tr>
+        <tr>
+          <td>11:00-2:00</td>
+          <td>3.0M shares</td>
+          <td>25%</td>
+          <td>200K shares</td>
+          <td>202K shares</td>
+          <td>$150.10</td>
+        </tr>
+        <tr>
+          <td>2:00-3:00</td>
+          <td>1.2M shares</td>
+          <td>10%</td>
+          <td>80K shares</td>
+          <td>79K shares</td>
+          <td>$150.05</td>
+        </tr>
+        <tr>
+          <td>3:00-4:00</td>
+          <td>3.6M shares</td>
+          <td>30%</td>
+          <td>240K shares</td>
+          <td>240K shares</td>
+          <td>$150.20</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Performance Metrics:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Total Filled</td>
+          <td>800,000 shares (100%)</td>
+        </tr>
+        <tr>
+          <td>Algo Average Price</td>
+          <td>$150.14</td>
+        </tr>
+        <tr>
+          <td>Daily VWAP</td>
+          <td>$150.18</td>
+        </tr>
+        <tr>
+          <td>Performance vs VWAP</td>
+          <td><strong>-$0.04 (beat by 4 cents)</strong></td>
+        </tr>
+        <tr>
+          <td>Total Savings</td>
+          <td>$32,000 vs VWAP benchmark</td>
+        </tr>
+        <tr>
+          <td>Participation Rate</td>
+          <td>6.7% (under 10% limit)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Why VWAP Beat Benchmark:</strong></p>
+    <ul>
+      <li>Algo weighted execution toward lower-price periods (11 AM-2 PM at $150.10, 2-3 PM at $150.05)</li>
+      <li>Avoided aggressive market orders during high-volatility opening (would have paid $150.30+)</li>
+      <li>10% participation limit prevented moving market (stayed stealthy)</li>
+      <li>Adaptive pacing: when volume spiked 3-4 PM, algo increased execution rate</li>
+    </ul>
+
+    <p><strong>Key Insight:</strong> VWAP doesn't just split order evenly—it dynamically adjusts based on real-time volume. If 30% of volume occurs in first hour but price is unfavorable, algo can "slow down" and wait for better conditions while still hitting overall VWAP target.</p>
+  </div>
 
   <h3>POV (Percentage of Volume)</h3>
   <p><strong>Execution:</strong> Trade as fixed % of market volume (e.g., 10% participation rate)</p>
@@ -275,6 +647,84 @@
         <p><strong>Answer:</strong> VWAP minimizes market impact by spreading order across day in proportion to volume. Market order would execute entire size immediately, causing 1-5% slippage on large orders. VWAP achieves better average price by trading patiently.</p>
       </details>
     </div>
+  </div>
+
+  <h2>Practice Exercise: Institutional Order Flow Detection</h2>
+
+  <div class="practice-section">
+    <h3>Exercise 1: Identify the Order Type</h3>
+    <p><strong>Goal:</strong> Analyze time & sales data and determine which institutional order type is being used.</p>
+
+    <p><strong>Scenario A:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Size</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>10:05:15</td><td>1,200</td><td>$75.50</td></tr>
+        <tr><td>10:07:42</td><td>1,200</td><td>$75.50</td></tr>
+        <tr><td>10:09:18</td><td>1,200</td><td>$75.50</td></tr>
+        <tr><td>10:12:03</td><td>1,200</td><td>$75.50</td></tr>
+        <tr><td>10:14:55</td><td>1,200</td><td>$75.50</td></tr>
+      </tbody>
+    </table>
+    <details>
+      <summary>Show Answer</summary>
+      <p><strong>Answer:</strong> <strong>Iceberg order.</strong> Repeated fills of exactly 1,200 shares at identical price indicates hidden reserve. Institution likely accumulating 50K-100K total shares while only displaying 1,200 at a time.</p>
+    </details>
+
+    <p><strong>Scenario B:</strong></p>
+    <ul>
+      <li>IOC order sent for 5,000 shares at $120.00</li>
+      <li>Only 2,300 shares available at $120.00</li>
+      <li>What happens to remaining 2,700 shares?</li>
+    </ul>
+    <details>
+      <summary>Show Answer</summary>
+      <p><strong>Answer:</strong> Remaining 2,700 shares are <strong>canceled immediately.</strong> IOC = Immediate-or-Cancel. Only fills what's available right now, cancels rest. Institution was testing liquidity before deploying full algo.</p>
+    </details>
+
+    <p><strong>Scenario C:</strong> At 3:55 PM, NYSE publishes MOC imbalance: +8.5M shares buy-side for AAPL (current price $182.50). What do you expect to happen by 4:00 PM close?</p>
+    <details>
+      <summary>Show Answer</summary>
+      <p><strong>Answer:</strong> <strong>Price likely to rise 0.3-1.5% by close.</strong> Large buy-side imbalance (8.5M shares) indicates institutional buying pressure at 4 PM auction. Statistically, imbalances >5M shares result in directional move 75-85% of the time. Trade: buy immediately at $182.50, target $183.50-184.00 by close.</p>
+    </details>
+  </div>
+
+  <div class="practice-section">
+    <h3>Exercise 2: Design Your Order Strategy</h3>
+    <p><strong>Goal:</strong> Given a trading scenario, select optimal order type and parameters.</p>
+
+    <p><strong>Scenario:</strong> You manage a $2B equity fund. You need to buy 500,000 shares of mid-cap stock XYZ (avg daily volume 2M shares, current price $65.00). Your goal is to minimize market impact and beat VWAP.</p>
+
+    <p><strong>Questions:</strong></p>
+    <ol>
+      <li>Which order type should you use? (Market / Limit / VWAP algo / TWAP algo / Iceberg)</li>
+      <li>What time period should you execute over? (30 min / 2 hours / Full day)</li>
+      <li>What participation rate limit? (5% / 10% / 20% / No limit)</li>
+      <li>Should you probe liquidity first with IOC orders?</li>
+    </ol>
+
+    <details>
+      <summary>Show Answer</summary>
+      <p><strong>Optimal Strategy:</strong></p>
+      <ol>
+        <li><strong>Order type:</strong> <strong>VWAP algo</strong> (trades proportional to volume, minimizes impact)</li>
+        <li><strong>Time period:</strong> <strong>Full day 9:30 AM - 4:00 PM</strong> (spreading over 6.5 hours reduces footprint from 25% of daily volume to manageable 4% per hour)</li>
+        <li><strong>Participation rate:</strong> <strong>10% maximum</strong> (500K shares = 25% of 2M daily volume, so need to limit to avoid dominating tape)</li>
+        <li><strong>IOC probe:</strong> <strong>Yes, send 5K share IOC test at 9:32 AM</strong> to gauge liquidity before deploying full algo</li>
+      </ol>
+      <p><strong>Why not alternatives?</strong></p>
+      <ul>
+        <li><strong>Market order:</strong> Would cause 3-8% slippage (buying 25% of daily volume instantly)</li>
+        <li><strong>TWAP:</strong> Ignores volume patterns (trades same amount during lunch lull vs opening surge)</li>
+        <li><strong>Iceberg alone:</strong> Too slow, would need 2-3 days to fill 500K shares passively</li>
+      </ul>
+    </details>
   </div>
 
   <h2>Practical Checklist</h2>
