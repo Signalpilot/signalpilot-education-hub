@@ -1,23 +1,56 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-  <title>Options Order Flow: Following Smart Money Gamma — Signal Pilot</title>
-  <meta name="description" content="Unusual options activity (UOA), gamma exposure (GEX), and how institutions use options to position before major moves. Learn to read institutional bets.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <!-- AGGRESSIVE CACHE PREVENTION -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Options Order Flow: Following Smart Money Gamma — Signal Pilot Education</title>
+  <meta name="description" content="Options Order Flow: Following Smart Money Gamma">
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="37">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/intermediate-bridge/37-options-order-flow.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <!-- Logger must load first -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+  <script src="/assets/structured-data.js" defer></script>
+  <script src="/assets/lazy-load.js" defer></script>
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
 <header class="sp-header">
   <div class="wrap">
-    <a href="https://signalpilot.io" class="brand"><span>Signal Pilot</span></a>
-    <nav id="mainnav"><ul><li><a href="/">Education</a></li><li><a href="/my-library.html">My Library</a></li></ul></nav>
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
   </div>
 </header>
 
 <article class="article">
+
   <header>
     <div class="wrap">
       <div class="breadcrumbs">
@@ -615,9 +648,43 @@ Total: $1,174 profit on $325 risk = 3.6R
 
     </div>
   </div>
+
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/intermediate-bridge.html">&larr; Back to Intermediate Bridge</a>
+  </div>
 </article>
 
-<footer class="sp-footer"><div class="wrap"><div>© 2025 Signal Pilot Labs</div></div></footer>
+<aside class="toc" aria-label="On this page">
+  <h3>On this page</h3>
+      <a href="#">Part 1: Unusual Options Activity (UOA)</a>
+      <a href="#">Part 2: Gamma Exposure (GEX) & Dealer Hedging Mechanics</a>
+      <a href="#">Part 3: Put/Call Ratio Analysis</a>
+      <a href="#">Part 4: Max Pain & Gamma Pinning</a>
+      <a href="#">Part 5: Trading With Options Flow (Without Trading Options)</a>
+</aside>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
 <script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
 </body>
 </html>

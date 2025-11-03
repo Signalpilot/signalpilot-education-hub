@@ -1,14 +1,56 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
   <meta charset="utf-8"/>
-  <title>High-Frequency Trading Mechanics: Speed, Latency & Colocation — Signal Pilot</title>
-  <meta name="description" content="By the time you click buy, HFT algos have already traded that stock 10,000 times. Learn how HFT works and how to avoid becoming their prey.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <!-- AGGRESSIVE CACHE PREVENTION -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>High-Frequency Trading: The Microsecond Arms Race — Signal Pilot Education</title>
+  <meta name="description" content="High-Frequency Trading: The Microsecond Arms Race">
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="44">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/intermediate-bridge/44-hft-mechanics.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <!-- Logger must load first -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+  <script src="/assets/structured-data.js" defer></script>
+  <script src="/assets/lazy-load.js" defer></script>
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
 <article class="article">
+
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
     <span class="lesson-badge">Lesson 44</span>
     <span class="tier-badge tier-intermediate">Intermediate</span>
@@ -648,6 +690,46 @@
       <li><a href="/downloads/hft-defense-checklist.pdf">Pre-Trade HFT Defense Checklist (PDF)</a></li>
     </ul>
   </div>
+
+
+  <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/intermediate-bridge.html">&larr; Back to Intermediate Bridge</a>
+  </div>
 </article>
+
+<aside class="toc" aria-label="On this page">
+  <h3>On this page</h3>
+      <a href="#">Part 1: What Is HFT?</a>
+      <a href="#">Part 2: The Latency Game</a>
+      <a href="#">Part 3: How HFTs Exploit Retail</a>
+      <a href="#">Part 4: HFT Red Flags & Defense</a>
+      <a href="#">Part 5: Using Signal Pilot to Detect HFT Activity</a>
+      <a href="#">Practice Exercises</a>
+      <a href="#">Quiz: Test Your Understanding</a>
+      <a href="#">Practical Checklist</a>
+</aside>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
 </body>
 </html>
