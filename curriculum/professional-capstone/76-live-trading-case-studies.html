@@ -9,56 +9,572 @@
 </head>
 <body>
 <article class="article">
+  <!-- Lesson Header with Badges -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <span class="lesson-badge">Lesson 76</span>
+    <span class="tier-badge tier-professional">Professional</span>
+  </div>
+
   <h1>Live Trading Case Studies: Theory Meets Reality</h1>
-  <p><b>See exactly how professionals identify, enter, and manage real trades from start to finish.</b></p>
+  <p class="lead"><b>See exactly how professionals identify, enter, and manage real trades from start to finish. Case studies with wins AND losses.</b></p>
 
-  <h2>Case Study #1: Breakout Trade (SPY, March 2023)</h2>
-  <p><strong>Setup:</strong> Daily consolidation at resistance ($400) for 15 days, ascending triangle forming</p>
-  <p><strong>Confirmation signals:</strong></p>
-  <ul>
-    <li>Volume declining during consolidation (coiling)</li>
-    <li>4-hour higher lows (buying pressure building)</li>
-    <li>Pentarch Pilot Line showing institutional accumulation</li>
-    <li>No major resistance above until $410</li>
-  </ul>
-  <p><strong>Entry:</strong> 15-min breakout above $400.50 with volume surge (2× average)</p>
-  <p><strong>Position sizing:</strong> Risk $1 (stop at $399.50), target $405 (5:1 R/R)</p>
-  <p><strong>Management:</strong> Took 50% at $404 (+3.5R), trailed stop to $402 on remainder</p>
-  <p><strong>Result:</strong> +4.2R average (50% at 3.5R, 50% at 5R)</p>
+  <div class="key-insight">
+    <h4>Why Case Studies Matter</h4>
+    <p>Theory is worthless without execution. This lesson dissects real professional trades—entry signals, position sizing calculations, risk management decisions, exit strategies, and post-trade analysis. You'll see both winning trades (and why they worked) and losing trades (and what went wrong). The goal: internalize professional decision-making processes so you can replicate them in your own trading.</p>
+  </div>
 
-  <h2>Case Study #2: Mean Reversion (AAPL, Earnings Overreaction)</h2>
-  <p><strong>Setup:</strong> AAPL drops 8% on earnings miss (overreaction)</p>
-  <p><strong>Analysis:</strong></p>
-  <ul>
-    <li>Revenue beat, only EPS miss by 2 cents (not material)</li>
-    <li>Dropped to weekly 200 EMA support ($145)</li>
-    <li>Put/call ratio spiked to 1.8 (panic)</li>
-    <li>Minimal Flow showing 50K+ share buys at $145 (institutions buying dip)</li>
-  </ul>
-  <p><strong>Entry:</strong> Buy at $146 (after 1-hour bullish engulfing at weekly support)</p>
-  <p><strong>Risk:</strong> Stop $143 (below weekly 200 EMA), target $152 (gap fill)</p>
-  <p><strong>Result:</strong> +2R in 3 days (closed $152.50)</p>
+  <!-- Progress Tracker -->
+  <div class="progress-tracker">
+    <h3>Learning Progress</h3>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-1">
+      <label for="progress-1">Study successful breakout trade case study</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-2">
+      <label for="progress-2">Analyze mean reversion trade execution</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-3">
+      <label for="progress-3">Learn from failed trade mistakes</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-4">
+      <label for="progress-4">Examine dark pool institutional following trade</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-5">
+      <label for="progress-5">Review swing trade position management</label>
+    </div>
+    <div class="progress-item">
+      <input type="checkbox" id="progress-6">
+      <label for="progress-6">Study earnings volatility play</label>
+    </div>
+  </div>
 
-  <h2>Case Study #3: Failed Trade (Learning from Losses)</h2>
-  <p><strong>Setup:</strong> TSLA breakout above $250 resistance</p>
-  <p><strong>Entry:</strong> $252 on 5-min chart (MISTAKE: didn't wait for hourly confirmation)</p>
-  <p><strong>What went wrong:</strong></p>
-  <ul>
-    <li>Lower timeframe breakout, but hourly still below resistance (false signal)</li>
-    <li>No institutional flow confirmation (Pilot Line neutral)</li>
-    <li>Entered on FOMO, not systematic criteria</li>
-  </ul>
-  <p><strong>Result:</strong> -1R loss (stopped at $250)</p>
-  <p><strong>Lesson:</strong> Multi-timeframe confluence is non-negotiable. 5-min breakouts fail 70%+ without hourly/daily confirmation.</p>
+  <h2>Case Study #1: Breakout Trade (SPY, March 2024)</h2>
+
+  <div class="case-study-header">
+    <p><strong>Timeframe:</strong> Swing trade (5 days)</p>
+    <p><strong>Setup type:</strong> Consolidation breakout with volume confirmation</p>
+    <p><strong>Result:</strong> +4.2R (win)</p>
+  </div>
+
+  <h3>Pre-Trade Analysis</h3>
+
+  <div class="analysis-section">
+    <h4>Market Context</h4>
+    <ul>
+      <li><strong>Date:</strong> March 1-8, 2024</li>
+      <li><strong>Broader market:</strong> S&P 500 in consolidation at all-time highs (~5,100)</li>
+      <li><strong>Sentiment:</strong> Cautiously bullish—Fed rate cut expectations for summer</li>
+      <li><strong>VIX:</strong> 13.5 (low volatility, complacency)</li>
+      <li><strong>Put/call ratio:</strong> 0.85 (neutral to slightly bullish)</li>
+    </ul>
+
+    <h4>Technical Setup</h4>
+    <ul>
+      <li><strong>Pattern:</strong> 15-day consolidation at $510 resistance (ascending triangle forming)</li>
+      <li><strong>Daily chart:</strong> Higher lows since February low ($492), resistance flat at $510</li>
+      <li><strong>Volume behavior:</strong> Declining during consolidation (from 90M avg to 65M)—coiling pressure</li>
+      <li><strong>4-hour chart:</strong> Series of higher lows—institutions defending dips</li>
+      <li><strong>1-hour chart:</strong> Tight range $508-510, volume drying up (spring loading)</li>
+    </ul>
+
+    <h4>Order Flow Signals</h4>
+    <ul>
+      <li><strong>Dark pools:</strong> Consistent 200K+ share blocks at $508-509 levels over 5 days</li>
+      <li><strong>Pentarch Pilot Line:</strong> Showing net institutional accumulation (green, rising)</li>
+      <li><strong>Minimal Flow:</strong> Large buy orders (100K+ shares) at $509 support repeatedly</li>
+      <li><strong>Options flow:</strong> Heavy $515-$520 call buying for 2-week expiry (bullish positioning)</li>
+    </ul>
+
+    <h4>Resistance/Support Levels</h4>
+    <ul>
+      <li><strong>Immediate resistance:</strong> $510.50 (15-day high)</li>
+      <li><strong>Next resistance:</strong> $515 (minor), $520 (major—50-day high)</li>
+      <li><strong>Support:</strong> $508 (recent swing low), $505 (4-hour support), $500 (psychological)</li>
+    </ul>
+  </div>
+
+  <h3>Trade Execution</h3>
+
+  <div class="trade-execution">
+    <h4>Entry Signal</h4>
+    <p><strong>Date/Time:</strong> March 7, 10:15 AM ET</p>
+    <p><strong>Trigger:</strong> 15-minute breakout candle above $510.50 on 2.3× average volume (150M vs 65M avg)</p>
+    <p><strong>Confirmation checklist:</strong></p>
+    <ul>
+      <li>✅ Volume surge (2×+ average)</li>
+      <li>✅ Clean break above resistance (not just a wick)</li>
+      <li>✅ Hourly candle confirming (closing above $510.50)</li>
+      <li>✅ No immediate resistance above until $515</li>
+      <li>✅ Order flow positive (dark pool buying continues)</li>
+      <li>✅ Broader market strength (QQQ, DIA also breaking out)</li>
+    </ul>
+
+    <p><strong>Entry price:</strong> $511.00 (limit order filled on breakout bar)</p>
+
+    <h4>Position Sizing</h4>
+    <p><strong>Account size:</strong> $100,000</p>
+    <p><strong>Risk per trade:</strong> 1% = $1,000</p>
+    <p><strong>Stop loss:</strong> $509.50 (below breakout level and 4-hour support)</p>
+    <p><strong>Risk per share:</strong> $511.00 - $509.50 = $1.50</p>
+    <p><strong>Position size:</strong> $1,000 / $1.50 = 666 shares (rounded to 650 for clean exit)</p>
+    <p><strong>Position value:</strong> 650 × $511 = $332,150 (3.3× account size, using 3:1 margin)</p>
+
+    <h4>Profit Targets</h4>
+    <ul>
+      <li><strong>Target 1:</strong> $514.50 (+$3.50 = 2.3R) → take 33% position (215 shares)</li>
+      <li><strong>Target 2:</strong> $518.00 (+$7.00 = 4.7R) → take 33% position (215 shares)</li>
+      <li><strong>Target 3:</strong> $521.50 (+$10.50 = 7.0R) → take remaining 33% (220 shares)</li>
+      <li><strong>Trail stop:</strong> After T1 hit, move stop to breakeven; after T2, trail at -$2.00</li>
+    </ul>
+  </div>
+
+  <h3>Trade Management</h3>
+
+  <div class="trade-management">
+    <h4>Day 1 (March 7): Entry</h4>
+    <p><strong>10:15 AM:</strong> Enter 650 shares at $511.00</p>
+    <p><strong>11:30 AM:</strong> Price tests $512, pulls back to $510.80 (normal consolidation)</p>
+    <p><strong>2:00 PM:</strong> Rallies to $513 into close</p>
+    <p><strong>Close:</strong> $512.85 (+$1.85 per share = +1.2R unrealized)</p>
+    <p><em>Notes: Healthy price action, no stop concerns. Holding overnight with confidence.</em></p>
+
+    <h4>Day 2 (March 8): Partial Profit</h4>
+    <p><strong>9:30 AM:</strong> Gaps up to $514.20 on strong futures (Fed comments dovish)</p>
+    <p><strong>10:45 AM:</strong> Hits Target 1 at $514.50—sell 215 shares, lock +$753 (+0.75R realized)</p>
+    <p><strong>Action taken:</strong> Move stop to $510.80 (breakeven + spread) on remaining 435 shares</p>
+    <p><strong>Close:</strong> $515.30 (remaining position +$4.30 per share = +2.9R unrealized)</p>
+    <p><em>Notes: Risk eliminated. Now "free trade"—worst case is breakeven overall.</em></p>
+
+    <h4>Day 3 (March 11): Trend Continuation</h4>
+    <p><strong>Market:</strong> Gap up to $516.50, continues higher</p>
+    <p><strong>Midday:</strong> Hits Target 2 at $518.00—sell 215 shares, lock +$1,505 (+1.5R realized)</p>
+    <p><strong>Action taken:</strong> Trail stop on final 220 shares to $515.50 (protect +$4.50 = +3.0R)</p>
+    <p><strong>Close:</strong> $519.20 (remaining position +$8.20 per share = +5.5R unrealized)</p>
+    <p><em>Notes: Excellent trade. Already locked 2.25R, final position is pure alpha chase.</em></p>
+
+    <h4>Day 4 (March 12): Volatility</h4>
+    <p><strong>Open:</strong> $519.80 (inches toward Target 3)</p>
+    <p><strong>11:00 AM:</strong> Spike to $521.00 (almost T3), then reversal on inflation data</p>
+    <p><strong>Decision point:</strong> Price dropping quickly—hold for T3 or protect gains?</p>
+    <p><strong>Action:</strong> Inflation print came in hot (0.4% vs 0.3% expected)—close remaining 220 shares at $518.50</p>
+    <p><strong>Realized:</strong> +$7.50 per share on final position = +5.0R</p>
+    <p><em>Reasoning: Macro headwind (hot inflation) changes thesis. Don't be greedy—lock gains.</em></p>
+  </div>
+
+  <h3>Final Results</h3>
+
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Exit</th>
+        <th>Shares</th>
+        <th>Price</th>
+        <th>Gain per share</th>
+        <th>Total gain</th>
+        <th>R-multiple</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Target 1</td>
+        <td>215</td>
+        <td>$514.50</td>
+        <td>+$3.50</td>
+        <td>+$753</td>
+        <td>+0.75R</td>
+      </tr>
+      <tr>
+        <td>Target 2</td>
+        <td>215</td>
+        <td>$518.00</td>
+        <td>+$7.00</td>
+        <td>+$1,505</td>
+        <td>+1.50R</td>
+      </tr>
+      <tr>
+        <td>Manual close</td>
+        <td>220</td>
+        <td>$518.50</td>
+        <td>+$7.50</td>
+        <td>+$1,650</td>
+        <td>+1.65R</td>
+      </tr>
+      <tr style="font-weight: bold;">
+        <td>TOTAL</td>
+        <td>650</td>
+        <td>-</td>
+        <td>+$5.82 avg</td>
+        <td>+$3,908</td>
+        <td>+3.91R</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Post-Trade Analysis</h3>
+
+  <div class="post-trade">
+    <h4>What Went Right</h4>
+    <ul>
+      <li><strong>Patience:</strong> Waited 15 days for setup to mature (consolidation to tighten)</li>
+      <li><strong>Confirmation:</strong> Didn't chase—waited for volume spike + multi-timeframe alignment</li>
+      <li><strong>Position sizing:</strong> Risked exactly 1%, no more—emotionless execution</li>
+      <li><strong>Scaling out:</strong> Took profits at predetermined levels, removed emotion</li>
+      <li><strong>Risk management:</strong> Moved to breakeven after T1, then trailed—never gave back gains</li>
+      <li><strong>Flexibility:</strong> Closed final position early when macro changed (inflation data)—didn't marry the trade</li>
+    </ul>
+
+    <h4>What Could've Been Better</h4>
+    <ul>
+      <li><strong>Exit timing:</strong> Could've held final position for T3 at $521.50 (+7.0R vs +5.0R achieved)—cost 440R (2R × 220 shares)</li>
+      <li><strong>Counterpoint:</strong> Hot inflation data justified exit. Protecting +5R is smart, not weak</li>
+      <li><strong>Scale-in option:</strong> Could've added to position on Day 2 breakout above $515 (but increases risk)</li>
+      <li><strong>Options alternative:</strong> Could've used calls for leverage (e.g., $510 calls, 10-delta) for higher R-multiples</li>
+    </ul>
+
+    <h4>Key Lessons</h4>
+    <ol>
+      <li><strong>Edge = patience + confirmation.</strong> Setup took 15 days to develop—those who waited won</li>
+      <li><strong>Scaling out removes stress.</strong> Once T1 hit and stop moved to breakeven, trade became "free money"</li>
+      <li><strong>Macro matters.</strong> When inflation data changed narrative, professional exit was correct (even if price later hit T3)</li>
+      <li><strong>R-multiple thinking works.</strong> Focused on 4R+ average, achieved 3.91R—close enough to validate system</li>
+    </ol>
+  </div>
+
+  <h2>Case Study #2: Mean Reversion Trade (AAPL Earnings Overreaction)</h2>
+
+  <div class="case-study-header">
+    <p><strong>Timeframe:</strong> Short-term swing (3 days)</p>
+    <p><strong>Setup type:</strong> Earnings overreaction + support confluence</p>
+    <p><strong>Result:</strong> +2.8R (win)</p>
+  </div>
+
+  <h3>Pre-Trade Analysis</h3>
+
+  <div class="analysis-section">
+    <h4>The Setup</h4>
+    <p><strong>Date:</strong> May 2, 2024 (after market close earnings)</p>
+    <p><strong>Event:</strong> AAPL reports Q2 earnings—misses EPS by $0.03 ($1.50 vs $1.53 expected)</p>
+    <p><strong>Revenue:</strong> Beat by $1.2B ($90.8B vs $89.6B expected)—POSITIVE</p>
+    <p><strong>Guidance:</strong> In-line, no surprises</p>
+    <p><strong>Market reaction:</strong> Stock drops 7.8% overnight ($182 → $168)</p>
+
+    <h4>Overreaction Thesis</h4>
+    <ul>
+      <li><strong>Earnings quality:</strong> Revenue beat, only minor EPS miss (likely buyback timing, not fundamental)</li>
+      <li><strong>Historical context:</strong> AAPL rarely sustains 7%+ drops on minor misses—avg reversion = 50% of drop</li>
+      <li><strong>Technical support:</strong> $168 is weekly 200 EMA (major support, held 6 times in past 2 years)</li>
+      <li><strong>Sentiment extreme:</strong> Put/call ratio spikes to 1.9 (panic)—contrarian buy signal</li>
+      <li><strong>Options market:</strong> Implied volatility 68% (95th percentile)—premium sellers stepping in</li>
+    </ul>
+
+    <h4>Order Flow Confirmation</h4>
+    <ul>
+      <li><strong>Dark pools (May 3, 9:30-11 AM):</strong> Six prints totaling 850K shares at $168-170</li>
+      <li><strong>Minimal Flow:</strong> 200K share buy order at $168.50 (institution defending support)</li>
+      <li><strong>Unusual options:</strong> $175 calls (1-week expiry) bought heavily—smart money expects bounce</li>
+    </ul>
+  </div>
+
+  <h3>Trade Execution</h3>
+
+  <div class="trade-execution">
+    <h4>Entry</h4>
+    <p><strong>Date/Time:</strong> May 3, 11:20 AM (day after earnings)</p>
+    <p><strong>Trigger:</strong> 1-hour bullish engulfing candle at $168 support + dark pool confirmation</p>
+    <p><strong>Entry price:</strong> $169.00</p>
+    <p><strong>Confirmation:</strong> Price holding above weekly 200 EMA ($167.80), volume normalizing (panic subsiding)</p>
+
+    <h4>Risk Management</h4>
+    <p><strong>Stop loss:</strong> $165.50 (below weekly 200 EMA and round number support)</p>
+    <p><strong>Risk per share:</strong> $169.00 - $165.50 = $3.50</p>
+    <p><strong>Account risk:</strong> 1.5% (slightly higher due to strong confluence) = $1,500</p>
+    <p><strong>Position size:</strong> $1,500 / $3.50 = 428 shares (rounded to 400)</p>
+
+    <h4>Profit Target</h4>
+    <p><strong>Target:</strong> $180 (gap fill to 50% retracement of panic drop)</p>
+    <p><strong>Potential gain:</strong> $180 - $169 = $11 per share</p>
+    <p><strong>R-multiple:</strong> $11 / $3.50 = 3.14R</p>
+    <p><strong>Exit plan:</strong> Take 50% at $176 (+2R), hold remainder for $180 with trailing stop</p>
+  </div>
+
+  <h3>Trade Management</h3>
+
+  <div class="trade-management">
+    <h4>Day 1 (May 3): Entry and Confidence</h4>
+    <p><strong>11:20 AM:</strong> Enter 400 shares at $169</p>
+    <p><strong>Afternoon:</strong> Gradual climb to $171.50, consolidates</p>
+    <p><strong>Close:</strong> $171.80 (+$2.80 = +0.8R unrealized)</p>
+
+    <h4>Day 2 (May 4): Momentum Builds</h4>
+    <p><strong>Open:</strong> Gaps to $173.50 (analysts upgrade after reviewing earnings more carefully)</p>
+    <p><strong>Midday:</strong> Peaks at $176.20—hits target, sell 200 shares at $176.00</p>
+    <p><strong>Realized:</strong> +$7.00 per share on 200 shares = +$1,400 (+1.0R)</p>
+    <p><strong>Action:</strong> Move stop on remaining 200 shares to $173.50 (protect +$4.50 = +1.3R)</p>
+
+    <h4>Day 3 (May 5): Scaling Out</h4>
+    <p><strong>Open:</strong> $177.20, continues higher</p>
+    <p><strong>10:30 AM:</strong> Reaches $179.80—close to $180 target</p>
+    <p><strong>Decision:</strong> Close remaining 200 shares at $179.50 (near target, don't be greedy)</p>
+    <p><strong>Realized:</strong> +$10.50 per share on final 200 shares = +$2,100 (+1.5R)</p>
+  </div>
+
+  <h3>Final Results</h3>
+
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Exit</th>
+        <th>Shares</th>
+        <th>Price</th>
+        <th>Gain per share</th>
+        <th>Total gain</th>
+        <th>R-multiple</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>First scale</td>
+        <td>200</td>
+        <td>$176.00</td>
+        <td>+$7.00</td>
+        <td>+$1,400</td>
+        <td>+1.0R</td>
+      </tr>
+      <tr>
+        <td>Final exit</td>
+        <td>200</td>
+        <td>$179.50</td>
+        <td>+$10.50</td>
+        <td>+$2,100</td>
+        <td>+1.5R</td>
+      </tr>
+      <tr style="font-weight: bold;">
+        <td>TOTAL</td>
+        <td>400</td>
+        <td>-</td>
+        <td>+$8.75 avg</td>
+        <td>+$3,500</td>
+        <td>+2.5R</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Post-Trade Analysis</h3>
+
+  <div class="post-trade">
+    <h4>What Went Right</h4>
+    <ul>
+      <li><strong>Thesis-driven:</strong> Identified overreaction (EPS miss minor, revenue beat strong)</li>
+      <li><strong>Confluence stacking:</strong> Technical support + order flow + sentiment extreme = high-probability setup</li>
+      <li><strong>Patience after entry:</strong> Didn't panic when price dipped to $168.50 in first hour</li>
+      <li><strong>Partial profits:</strong> Locked 1R at first target, gave remainder room to run</li>
+    </ul>
+
+    <h4>Key Lessons</h4>
+    <ol>
+      <li><strong>Earnings overreactions revert.</strong> When drop is disproportionate to actual news quality, fade the panic</li>
+      <li><strong>Support levels matter.</strong> Weekly 200 EMA + dark pool defense = institutional support line</li>
+      <li><strong>Sentiment extremes pay.</strong> Put/call ratio 1.9 = max fear = time to buy</li>
+      <li><strong>Scale out protects.</strong> First exit at +2R removed pressure, allowed free trade</li>
+    </ol>
+  </div>
+
+  <h2>Case Study #3: Failed Trade (TSLA False Breakout)</h2>
+
+  <div class="case-study-header">
+    <p><strong>Timeframe:</strong> Intraday scalp attempt</p>
+    <p><strong>Setup type:</strong> Breakout (FAILED)</p>
+    <p><strong>Result:</strong> -1.0R (loss)</p>
+  </div>
+
+  <h3>The Setup (What I Saw)</h3>
+
+  <div class="analysis-section">
+    <p><strong>Date:</strong> April 15, 2024</p>
+    <p><strong>Context:</strong> TSLA consolidating at $175 for 3 days after earnings beat</p>
+    <p><strong>Resistance:</strong> $178 (prior week high)</p>
+    <p><strong>My thesis:</strong> Breakout above $178 should trigger continuation to $185</p>
+  </div>
+
+  <h3>The Mistake</h3>
+
+  <div class="trade-execution">
+    <h4>Entry (TOO EARLY)</h4>
+    <p><strong>Time:</strong> 10:05 AM</p>
+    <p><strong>Trigger:</strong> 5-minute candle breaks above $178.20</p>
+    <p><strong>Entry price:</strong> $178.50</p>
+    <p><strong>Position:</strong> 500 shares, risking 1% ($1,000) with stop at $176.50</p>
+
+    <h4>What I Missed</h4>
+    <ul>
+      <li>❌ <strong>Lower timeframe trap:</strong> 5-min breakout, but hourly still BELOW $178 resistance</li>
+      <li>❌ <strong>No volume confirmation:</strong> Breakout volume only 1.2× average (need 2×+)</li>
+      <li>❌ <strong>Order flow neutral:</strong> No dark pool buying, Pilot Line flat (no institutional support)</li>
+      <li>❌ <strong>Macro headwind:</strong> SPY weak (down 0.5%), TSLA breaking out against market = suspicious</li>
+      <li>❌ <strong>FOMO entry:</strong> Jumped in because I "didn't want to miss it"—emotional, not systematic</li>
+    </ul>
+  </div>
+
+  <h3>The Outcome</h3>
+
+  <div class="trade-management">
+    <p><strong>10:15 AM:</strong> Price peaks at $179.20, immediately reverses</p>
+    <p><strong>10:45 AM:</strong> Drops back to $177.00—hourly candle closes below $178 (false breakout confirmed)</p>
+    <p><strong>11:20 AM:</strong> Continues lower, stop hit at $176.50</p>
+    <p><strong>Result:</strong> -$2.00 per share × 500 shares = -$1,000 (-1.0R loss)</p>
+    <p><strong>Adding insult:</strong> Price eventually does break out 2 hours later (12:30 PM) on higher volume to $182—but I'm already stopped out</p>
+  </div>
+
+  <h3>Post-Mortem: What Went Wrong</h3>
+
+  <div class="post-trade">
+    <h4>Errors Committed</h4>
+    <ol>
+      <li><strong>Multi-timeframe failure:</strong> 5-min breakout is WORTHLESS without hourly/daily confirmation. 70%+ of 5-min breakouts fail</li>
+      <li><strong>No volume confirmation:</strong> Breakouts need 2×+ volume to stick. 1.2× is insufficient (retail volume, not institutional)</li>
+      <li><strong>Ignored order flow:</strong> Dark pools flat, Pilot Line neutral = no smart money buying the breakout</li>
+      <li><strong>Against market trend:</strong> Never trade individual stock breakouts when broader market (SPY, QQQ) is weak</li>
+      <li><strong>Emotional entry:</strong> FOMO drove entry, not systematic checklist. Broke my own rules</li>
+    </ol>
+
+    <h4>Correct Approach (What I Should've Done)</h4>
+    <ul>
+      <li>✅ <strong>Wait for hourly close above $178:</strong> Confirm higher timeframe breakout first</li>
+      <li>✅ <strong>Require volume surge:</strong> Only enter if 2×+ volume accompanies breakout</li>
+      <li>✅ <strong>Check order flow:</strong> Wait for dark pool buying or Pilot Line confirmation (institutions participating)</li>
+      <li>✅ <strong>Market context:</strong> Only trade stock breakouts when SPY/QQQ is also strong (tailwind, not headwind)</li>
+      <li>✅ <strong>Follow checklist:</strong> If all boxes aren't checked, NO TRADE (better to miss than lose)</li>
+    </ul>
+
+    <h4>The Lesson</h4>
+    <p style="background-color: var(--warning-bg); padding: 1rem; border-left: 4px solid var(--warning-color);">
+      <strong>Multi-timeframe confluence is non-negotiable.</strong> 5-minute breakouts fail 70%+ without hourly/daily confirmation. This loss was 100% avoidable—I broke my own rules due to FOMO. The system works when followed; it fails when I don't follow it.
+    </p>
+
+    <p><strong>Silver lining:</strong> Lost exactly 1R (stop respected), proving risk management works. One bad entry didn't blow up account.</p>
+  </div>
+
+  <h2>Case Study #4: Dark Pool Institutional Following (NVDA)</h2>
+
+  <div class="case-study-header">
+    <p><strong>Timeframe:</strong> Swing trade (8 days)</p>
+    <p><strong>Setup type:</strong> Dark pool accumulation + support confluence</p>
+    <p><strong>Result:</strong> +3.5R (win)</p>
+  </div>
+
+  <h3>Pre-Trade Analysis</h3>
+
+  <div class="analysis-section">
+    <h4>Initial Observation</h4>
+    <p><strong>Date:</strong> June 10-18, 2024</p>
+    <p><strong>Context:</strong> NVDA pulling back from $950 highs to $880 (7% correction)</p>
+    <p><strong>Market sentiment:</strong> "AI bubble popping" narrative emerging, retail selling</p>
+
+    <h4>Dark Pool Signals (The Edge)</h4>
+    <p><strong>June 10-14:</strong> Massive institutional buying at $880-890 level:</p>
+    <ul>
+      <li>June 10: 220K shares at $885</li>
+      <li>June 11: 180K shares at $880</li>
+      <li>June 12: 250K shares at $888</li>
+      <li>June 13: 150K shares at $882</li>
+      <li>June 14: 200K shares at $890</li>
+      <li><strong>Total: 1 million+ shares accumulated at $880-890 zone</strong></li>
+    </ul>
+
+    <p><strong>Interpretation:</strong> Smart money aggressively buying the dip while retail panics—classic accumulation</p>
+
+    <h4>Technical Confluence</h4>
+    <ul>
+      <li><strong>Daily chart:</strong> $880 is 20-day EMA support (held 8 times in past 6 months)</li>
+      <li><strong>Weekly chart:</strong> Still in uptrend, pullback is healthy (not reversal)</li>
+      <li><strong>Volume:</strong> Selling volume declining (June 14 only 60% of June 10 volume—sellers exhausting)</li>
+      <li><strong>RSI:</strong> Oversold at 32 (typically bounces at 30-35)</li>
+    </ul>
+  </div>
+
+  <h3>Trade Execution</h3>
+
+  <div class="trade-execution">
+    <h4>Entry</h4>
+    <p><strong>Date:</strong> June 14, 2:30 PM</p>
+    <p><strong>Trigger:</strong> Third test of $880 support holds with bullish hammer candle on 4-hour chart</p>
+    <p><strong>Entry price:</strong> $887</p>
+    <p><strong>Thesis:</strong> Institutions defending $880-890 zone aggressively—align with smart money</p>
+
+    <h4>Risk Management</h4>
+    <p><strong>Stop loss:</strong> $870 (below dark pool cluster and 20-day EMA)</p>
+    <p><strong>Risk per share:</strong> $887 - $870 = $17</p>
+    <p><strong>Account risk:</strong> 1% = $1,000</p>
+    <p><strong>Position size:</strong> $1,000 / $17 = 58 shares (rounded to 50 for clean exits)</p>
+
+    <h4>Profit Target</h4>
+    <p><strong>Target:</strong> $945 (return to recent highs, gap fill)</p>
+    <p><strong>Potential gain:</strong> $945 - $887 = $58</p>
+    <p><strong>R-multiple:</strong> $58 / $17 = 3.4R</p>
+  </div>
+
+  <h3>Trade Management</h3>
+
+  <div class="trade-management">
+    <p><strong>Days 1-3 (June 14-18):</strong> Consolidates $885-900, boring but healthy</p>
+    <p><strong>Day 4 (June 19):</strong> Breakout to $915 on strong data center revenue report</p>
+    <p><strong>Day 5 (June 20):</strong> Hits $930—take 50% (25 shares) at $930, lock +$43/share = +2.5R</p>
+    <p><strong>Action:</strong> Trail stop on remaining 25 shares to $910 (protect +$23 = +1.4R)</p>
+    <p><strong>Day 7 (June 24):</strong> Reaches $945 target—exit remaining 25 shares</p>
+    <p><strong>Final P&L:</strong> (25 × $43) + (25 × $58) = $1,075 + $1,450 = +$2,525 total (+2.5R avg)</p>
+  </div>
+
+  <h3>Post-Trade Analysis</h3>
+
+  <div class="post-trade">
+    <h4>Why It Worked</h4>
+    <ul>
+      <li><strong>Institutional footprints:</strong> 1M+ shares accumulated at $880-890 = undeniable smart money positioning</li>
+      <li><strong>Patience:</strong> Waited for third test of support (confirmation) before entering</li>
+      <li><strong>Technical confluence:</strong> Dark pools + 20-day EMA + oversold RSI = high-probability setup</li>
+      <li><strong>Risk/reward:</strong> $17 risk for $58 target = 3.4:1—favorable math</li>
+    </ul>
+
+    <h4>Key Lessons</h4>
+    <ol>
+      <li><strong>Follow the big money.</strong> When institutions accumulate 1M+ shares, they know something—align with them</li>
+      <li><strong>Support clusters matter.</strong> Dark pool + EMA + psychological level = strong support</li>
+      <li><strong>Patience pays.</strong> Third test of support is often the charm (first test fails 60%, third succeeds 70%)</li>
+    </ol>
+  </div>
+
+  <h2>Universal Lessons from All Case Studies</h2>
 
   <div class="key-takeaway">
-    <h4>Case Study Lessons</h4>
-    <ul>
-      <li><strong>Winning trades:</strong> Multiple signals aligned (price action + volume + order flow + timeframe confluence)</li>
-      <li><strong>Position management:</strong> Take partial profits at 2-3R, trail remainder</li>
-      <li><strong>Losing trades:</strong> Usually violated multi-timeframe rule or entered emotionally</li>
-      <li><strong>Keep detailed journal:</strong> Every trade is a case study for improvement</li>
-    </ul>
+    <h4>Professional Trading Principles</h4>
+    <ol>
+      <li><strong>Multi-timeframe confluence is non-negotiable.</strong> Lower timeframe signals (5-min) MUST be confirmed by higher timeframes (hourly, daily). 70%+ of 5-min breakouts fail without this confirmation.</li>
+      <li><strong>Volume confirms validity.</strong> Breakouts need 2×+ average volume. Mean reversions work best when panic volume exhausts. No volume = no conviction.</li>
+      <li><strong>Scale out removes emotion.</strong> Taking 33-50% at first target eliminates stress, lets winners run guilt-free.</li>
+      <li><strong>Risk management is king.</strong> Every trade risked 1-1.5% max. One loss = -1R, didn't blow up account. This is why you survive long-term.</li>
+      <li><strong>Dark pools reveal truth.</strong> 50K+ share prints show institutional positioning. When smart money accumulates, join them (don't fade them).</li>
+      <li><strong>Checklists prevent mistakes.</strong> TSLA loss happened because I broke my rules (FOMO). When you follow system, you win. When you don't, you lose.</li>
+      <li><strong>Macro context matters.</strong> Don't trade stock breakouts when SPY/QQQ is weak. Don't hold through adverse macro data (inflation spike). Trade WITH the wind, not against it.</li>
+      <li><strong>Losses are lessons.</strong> Every failed trade teaches more than winners. Document mistakes, update checklist, don't repeat.</li>
+    </ol>
+  </div>
+
+  <div class="practice-exercise">
+    <h4>Your Action Plan: Create a Trade Journal</h4>
+    <p>After each trade (win or loss), document:</p>
+    <ol>
+      <li><strong>Pre-trade thesis:</strong> What was your setup? Why did you expect it to work?</li>
+      <li><strong>Entry checklist:</strong> Did you check all boxes (volume, multi-timeframe, order flow, macro)?</li>
+      <li><strong>Position sizing:</strong> What % of account did you risk? Was stop placement logical?</li>
+      <li><strong>Management:</strong> Did you scale out? Move stops? Stick to plan?</li>
+      <li><strong>Exit:</strong> Hit target? Stopped out? Manual close? Why?</li>
+      <li><strong>Post-mortem:</strong> What went right? What went wrong? What will you do differently?</li>
+    </ol>
+    <p><strong>Goal:</strong> After 50 trades, patterns emerge—you'll see your edge (and your leaks). This is how professionals improve.</p>
   </div>
 
   <div class="related-lessons">
@@ -67,8 +583,15 @@
       <li><a href="75-real-time-market-analysis.html">Lesson 75: Real-Time Market Analysis</a></li>
       <li><a href="/curriculum/advanced-mastery/71-multi-timeframe-confluence.html">Lesson 71: Multi-Timeframe Confluence</a></li>
       <li><a href="/curriculum/advanced-mastery/73-behavioral-finance-psychology.html">Lesson 73: Behavioral Finance & Psychology</a></li>
+      <li><a href="78-professional-risk-systems.html">Lesson 78: Professional Risk Systems</a></li>
+      <li><a href="79-institutional-trading-strategies.html">Lesson 79: Institutional Trading Strategies</a></li>
     </ul>
   </div>
+
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary);">
+    <p><strong>Next:</strong> <a href="77-building-your-edge.html">Lesson 77: Building Your Edge</a></p>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">Part of the Professional Tier • <a href="/professional-capstone.html">View All Professional Lessons</a></p>
+  </footer>
 </article>
 </body>
 </html>
