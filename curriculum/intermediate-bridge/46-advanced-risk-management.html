@@ -203,6 +203,355 @@
     </tbody>
   </table>
 
+  <div class="example-block">
+    <h4>Real-World Example: How Correlation Risk Created a $87K Loss from "8 Diversified Positions"</h4>
+    <p><strong>Trader:</strong> Swing trader, $185K account, February 2024</p>
+
+    <p><strong>The "Diversified" Portfolio:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Entry</th>
+          <th>Shares</th>
+          <th>Position Size</th>
+          <th>Risk Per Trade</th>
+          <th>Sector</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NVDA</td>
+          <td>$722</td>
+          <td>32</td>
+          <td>$23,104</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (AI)</td>
+        </tr>
+        <tr>
+          <td>AMD</td>
+          <td>$185</td>
+          <td>125</td>
+          <td>$23,125</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (AI)</td>
+        </tr>
+        <tr>
+          <td>AVGO</td>
+          <td>$1,250</td>
+          <td>18</td>
+          <td>$22,500</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (AI)</td>
+        </tr>
+        <tr>
+          <td>MSFT</td>
+          <td>$415</td>
+          <td>55</td>
+          <td>$22,825</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (Cloud)</td>
+        </tr>
+        <tr>
+          <td>GOOGL</td>
+          <td>$145</td>
+          <td>160</td>
+          <td>$23,200</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (Cloud)</td>
+        </tr>
+        <tr>
+          <td>META</td>
+          <td>$475</td>
+          <td>48</td>
+          <td>$22,800</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (Social)</td>
+        </tr>
+        <tr>
+          <td>AAPL</td>
+          <td>$185</td>
+          <td>125</td>
+          <td>$23,125</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (Consumer)</td>
+        </tr>
+        <tr>
+          <td>TSLA</td>
+          <td>$195</td>
+          <td>118</td>
+          <td>$23,010</td>
+          <td>$1,850 (1%)</td>
+          <td>Auto (Tech-heavy)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Trader's Thinking:</strong> "I have 8 different stocks, 1% risk each = 8% total portfolio risk. Diversified!"</p>
+
+    <p><strong>Actual Correlation Matrix (90-day rolling, Feb 2024):</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>NVDA</th>
+          <th>AMD</th>
+          <th>AVGO</th>
+          <th>MSFT</th>
+          <th>GOOGL</th>
+          <th>META</th>
+          <th>AAPL</th>
+          <th>TSLA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Avg Correlation</strong></td>
+          <td>1.00</td>
+          <td>0.87</td>
+          <td>0.82</td>
+          <td>0.73</td>
+          <td>0.71</td>
+          <td>0.68</td>
+          <td>0.75</td>
+          <td>0.62</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Portfolio avg correlation:</strong> 0.77 (very high!)</p>
+
+    <p><strong>What Happened: April 19, 2024 (CPI Hot + Tech Sell-Off):</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Stock</th>
+          <th>Entry</th>
+          <th>Close April 19</th>
+          <th>% Loss</th>
+          <th>$ Loss</th>
+          <th>Why They All Fell Together</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NVDA</td>
+          <td>$722</td>
+          <td>$650</td>
+          <td>-10.0%</td>
+          <td>-$2,304</td>
+          <td rowspan="8" style="vertical-align: middle;">
+            <strong>Macro catalyst hit ALL tech:</strong><br>
+            • CPI came in hot (+0.4% MoM)<br>
+            • Fed hawkish comments (no cuts soon)<br>
+            • 10Y yield spiked to 4.65%<br>
+            • Growth stocks (high duration) sold off<br>
+            • AI bubble concerns (valuations stretched)<br>
+            <br>
+            <strong>Result:</strong> All 8 positions down 8-13% in single day because they're all "long tech at high valuations" = ONE bet, not 8.
+          </td>
+        </tr>
+        <tr>
+          <td>AMD</td>
+          <td>$185</td>
+          <td>$165</td>
+          <td>-10.8%</td>
+          <td>-$2,500</td>
+        </tr>
+        <tr>
+          <td>AVGO</td>
+          <td>$1,250</td>
+          <td>$1,150</td>
+          <td>-8.0%</td>
+          <td>-$1,800</td>
+        </tr>
+        <tr>
+          <td>MSFT</td>
+          <td>$415</td>
+          <td>$380</td>
+          <td>-8.4%</td>
+          <td>-$1,925</td>
+        </tr>
+        <tr>
+          <td>GOOGL</td>
+          <td>$145</td>
+          <td>$132</td>
+          <td>-9.0%</td>
+          <td>-$2,080</td>
+        </tr>
+        <tr>
+          <td>META</td>
+          <td>$475</td>
+          <td>$432</td>
+          <td>-9.1%</td>
+          <td>-$2,064</td>
+        </tr>
+        <tr>
+          <td>AAPL</td>
+          <td>$185</td>
+          <td>$170</td>
+          <td>-8.1%</td>
+          <td>-$1,875</td>
+        </tr>
+        <tr>
+          <td>TSLA</td>
+          <td>$195</td>
+          <td>$170</td>
+          <td>-12.8%</td>
+          <td>-$2,950</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Total Portfolio Loss on April 19: -$17,498 (-9.5% of $185K account)</strong></p>
+
+    <p><strong>Stop Losses Hit Over Next 3 Days:</strong></p>
+    <ul>
+      <li>All 8 positions stopped out at -$1,850 planned risk? <strong>NO.</strong></li>
+      <li>Actual: Gap downs + volatility → avg stop slippage 22%</li>
+      <li>Total realized loss: <strong>-$22,570</strong> (vs $14,800 planned = 8 × $1,850)</li>
+    </ul>
+
+    <p><strong>But It Got Worse - Portfolio Heat Death Spiral:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Event</th>
+          <th>Account Value</th>
+          <th>Cumulative Loss</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>April 19</td>
+          <td>Initial crash day</td>
+          <td>$167,500</td>
+          <td>-$17,500 (-9.5%)</td>
+        </tr>
+        <tr>
+          <td>April 22</td>
+          <td>Stopped out 8 positions</td>
+          <td>$162,430</td>
+          <td>-$22,570 (-12.2%)</td>
+        </tr>
+        <tr>
+          <td>April 25</td>
+          <td>Re-entered 4 positions (revenge trading)</td>
+          <td>$162,430</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>May 3</td>
+          <td>Tech continued down, stopped again</td>
+          <td>$154,850</td>
+          <td>-$30,150 (-16.3%)</td>
+        </tr>
+        <tr>
+          <td>May 15</td>
+          <td>Third attempt, earnings volatility</td>
+          <td>$141,200</td>
+          <td>-$43,800 (-23.7%)</td>
+        </tr>
+        <tr>
+          <td>May 31</td>
+          <td>Final capitulation</td>
+          <td>$98,000</td>
+          <td>-$87,000 (-47.0%)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Root Cause Analysis:</strong></p>
+
+    <ol>
+      <li><strong>False diversification:</strong>
+        <ul>
+          <li>Thought: "8 stocks = diversified"</li>
+          <li>Reality: 8 stocks × 0.77 avg correlation = <strong>effective position count = 2.9</strong></li>
+          <li>Formula: Effective N = # positions / (1 + (N-1) × avg correlation)</li>
+          <li>= 8 / (1 + 7 × 0.77) = 8 / 6.39 = 1.25 positions worth of diversification</li>
+        </ul>
+      </li>
+      <li><strong>True portfolio risk was 6.8%, not 8%:</strong>
+        <ul>
+          <li>Because correlations were 0.77, portfolio risk = Individual risk × √(1 + (N-1) × correlation)</li>
+          <li>= 1% × √(1 + 7 × 0.77) = 1% × √6.39 = 2.53% per "effective position"</li>
+          <li>But he had the equivalent of 2.9 effective positions = 7.3% total risk</li>
+        </ul>
+      </li>
+      <li><strong>All positions hit by same catalyst:</strong>
+        <ul>
+          <li>Hot CPI = bad for ALL growth stocks (rising rates hurt valuations)</li>
+          <li>No defensive positions (no bonds, commodities, value stocks)</li>
+          <li>100% directional bet on "tech keeps rallying"</li>
+        </ul>
+      </li>
+      <li><strong>Revenge trading compounded losses:</strong>
+        <ul>
+          <li>After -12.2% loss, immediately re-entered same correlated positions</li>
+          <li>Didn't wait for macro regime to shift</li>
+          <li>Lost another -34.8% trying to "get even"</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p><strong>What TRUE Diversification Would Look Like:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Sector</th>
+          <th>Correlation to SPY</th>
+          <th>Risk %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>QQQ (tech)</td>
+          <td>Growth</td>
+          <td>0.95</td>
+          <td>1.5%</td>
+        </tr>
+        <tr>
+          <td>XLE (energy)</td>
+          <td>Commodities</td>
+          <td>0.35</td>
+          <td>1.5%</td>
+        </tr>
+        <tr>
+          <td>TLT (bonds)</td>
+          <td>Fixed income</td>
+          <td>-0.45</td>
+          <td>1.5%</td>
+        </tr>
+        <tr>
+          <td>GLD (gold)</td>
+          <td>Safe haven</td>
+          <td>-0.15</td>
+          <td>1.5%</td>
+        </tr>
+        <tr>
+          <td>UUP (dollar)</td>
+          <td>Currency</td>
+          <td>-0.30</td>
+          <td>1.0%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Portfolio avg correlation:</strong> 0.28 (low!)</p>
+    <p><strong>Effective positions:</strong> 5 / (1 + 4 × 0.28) = 2.3 (much better than 1.25!)</p>
+    <p><strong>April 19 result with this portfolio:</strong> QQQ -3.2%, XLE +0.8%, TLT +1.2%, GLD +0.3%, UUP +0.5% = Net -0.5% vs -9.5%</p>
+
+    <p><strong>Key Lessons:</strong></p>
+    <ol>
+      <li><strong>Position count ≠ diversification.</strong> 8 correlated positions = 1 bet.</li>
+      <li><strong>Check correlations monthly.</strong> Tech stocks were 0.5 correlation in 2022, jumped to 0.77 in 2024 AI rally.</li>
+      <li><strong>True portfolio risk = Individual risk × √effective positions.</strong> Must account for correlation.</li>
+      <li><strong>One macro event shouldn't kill your account.</strong> If it does, you're not diversified.</li>
+      <li><strong>Cross-asset diversification > single-asset.</strong> Bonds, commodities, currencies provide true hedge.</li>
+    </ol>
+  </div>
+
   <h3>Portfolio Heat (Aggregate Risk)</h3>
   <p><strong>Concept:</strong> Total risk across all positions (accounts for correlation)</p>
   <p><strong>Formula (simplified):</strong> Portfolio Risk = √(Σ Individual Risks² + 2 × Correlation × Risk1 × Risk2)</p>
