@@ -1,17 +1,99 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
   <meta charset="utf-8"/>
   <title>Market Impact Models: How Large Orders Move Price — Signal Pilot</title>
   <meta name="description" content="When you buy 100,000 shares, you move the market—and pay far more than you think. Learn market impact models and slippage estimation.">
+  <meta name="sp-level" content="advanced-mastery"><meta name="sp-order" content="65">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <script src="/assets/notes.js" defer></script>
+  <script src="/assets/library.js"></script>
+  <script src="/assets/lesson-notes.js"></script>
+  <script src="/assets/quiz-enhanced.js" defer></script>
+  <script src="/assets/social-share.js" defer></script>
+  <script src="/assets/auth-ui.js"></script>
+  <script src="/assets/supabase-client.js"></script>
+  <script src="/assets/pwa-init.js"></script>
 </head>
 <body>
+<div class="bg-stars" aria-hidden="true"></div>
+<canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+<div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="container">
+    <div class="sp-branding">
+      <a href="/index.html" class="logo-link" aria-label="Signal Pilot Home">
+        <div class="wordmark">SIGNAL PILOT</div>
+      </a>
+    </div>
+    <nav class="sp-nav" aria-label="Main navigation">
+      <a href="/curriculum/index.html">Curriculum</a>
+      <a href="/library.html">My Library</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="3"/><path d="M10 0v3M10 17v3M20 10h-3M3 10H0M16.364 3.636l-2.121 2.121M5.757 14.243l-2.121 2.121M16.364 16.364l-2.121-2.121M5.757 5.757L3.636 3.636"/></svg>
+      <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+    </button>
+  </div>
+</header>
+
 <article class="article">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/index.html">Home</a> &gt;
+    <a href="/curriculum/index.html">Curriculum</a> &gt;
+    <a href="/curriculum/advanced-mastery/index.html">Advanced Mastery</a> &gt;
+    <span>Lesson 65</span>
+  </nav>
+
+  <div class="lesson-badges">
+    <span class="badge badge-lesson">LESSON 65</span>
+    <span class="badge badge-tier-advanced">ADVANCED MASTERY</span>
+    <span class="badge badge-time">~50 min</span>
+  </div>
+
   <h1>Market Impact Models: The Hidden Cost of Size</h1>
-  <p><b>When you buy 100 shares, you pay the ask. When you buy 100,000 shares, you move the market—and pay far more than you think.</b></p>
+
+  <p class="lesson-subtitle"><b>When you buy 100 shares, you pay the ask. When you buy 100,000 shares, you move the market—and pay far more than you think.</b></p>
+
+  <div class="progress-tracker">
+    <div class="progress-step active">
+      <div class="step-number">1</div>
+      <div class="step-label">What Is Impact</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">2</div>
+      <div class="step-label">Impact Models</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">3</div>
+      <div class="step-label">Estimation</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">4</div>
+      <div class="step-label">Execution</div>
+    </div>
+    <div class="progress-step">
+      <div class="step-number">5</div>
+      <div class="step-label">Detection</div>
+    </div>
+  </div>
+
   <p>Market impact is the price movement caused by your order. For retail traders buying 100 shares, it's negligible. For institutions buying 500,000 shares, it's the difference between profit and loss. Understanding market impact models lets you predict how large orders move price—and exploit them.</p>
+
+  <div class="callout callout-danger">
+    <h4>💰 The $1 Million Mistake</h4>
+    <p>A hedge fund decides to buy $100M of NVDA (approximately 800K shares @ $125). They submit a market order, thinking the spread ($0.01) is the only cost. Within minutes, their order exhausts the order book, pushing price from $125.00 → $126.25.</p>
+    <p><strong>Cost breakdown:</strong> Commission: $0. Spread: $8,000 (800K × $0.01). Market impact: $1,000,000 (800K × $1.25 average slippage).</p>
+    <p><strong>Lesson:</strong> Market impact exceeds spread by 125× for large orders. Institutions that ignore impact models burn millions.</p>
+  </div>
 
   <h2>Part 1: What Is Market Impact?</h2>
 
@@ -46,21 +128,84 @@
     </tbody>
   </table>
 
-  <div class="callout">
+  <div class="callout callout-info">
     <p><strong>💡 Key Insight:</strong> For institutional traders, market impact often exceeds spread + commission by 10-100×. A $50M order might cause 0.5-2% slippage = $250K-$1M cost.</p>
   </div>
 
   <h3>Temporary vs Permanent Impact</h3>
-  <p><strong>Temporary impact:</strong> Price movement during execution, reverts after (supply/demand imbalance resolves)</p>
-  <p><strong>Permanent impact:</strong> Price movement that persists (information signal—market believes order is informed)</p>
 
-  <p><strong>Example:</strong></p>
-  <ul>
-    <li>Institution buys 500K shares of AAPL over 1 hour</li>
-    <li>Price rises from $150.00 → $150.75 during execution (<strong>temporary + permanent impact</strong>)</li>
-    <li>After execution, price settles at $150.40 (<strong>permanent impact = $0.40</strong>)</li>
-    <li>Temporary impact (reverted) = $0.75 - $0.40 = $0.35</li>
-  </ul>
+  <p><strong>Temporary impact:</strong> Price movement during execution that <strong>reverts after</strong> your order completes. Caused by temporary supply/demand imbalance. Liquidity providers step in to absorb the imbalance, returning price to fair value.</p>
+
+  <p><strong>Permanent impact:</strong> Price movement that <strong>persists</strong> after execution. Market interprets your order as containing information (informed trading), so fair value reprices.</p>
+
+  <div class="example-block">
+    <h4>Real-World Example: Large AAPL Purchase</h4>
+    <p><strong>Scenario:</strong> Fidelity buys 500K shares of AAPL over 1 hour (average daily volume = 50M shares, so 1% of ADV).</p>
+
+    <p><strong>Timeline:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Price</th>
+          <th>Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10:00 AM (Start)</td>
+          <td>$150.00</td>
+          <td>Decision price (Fidelity decides to buy)</td>
+        </tr>
+        <tr>
+          <td>10:15 AM</td>
+          <td>$150.30</td>
+          <td>First 125K shares filled, price rising</td>
+        </tr>
+        <tr>
+          <td>10:30 AM</td>
+          <td>$150.60</td>
+          <td>250K shares filled (halfway), temporary impact building</td>
+        </tr>
+        <tr>
+          <td>10:45 AM</td>
+          <td>$150.75</td>
+          <td>375K shares filled, peak impact (exhausting nearby liquidity)</td>
+        </tr>
+        <tr>
+          <td>11:00 AM (Done)</td>
+          <td>$150.70</td>
+          <td>All 500K shares filled, execution complete</td>
+        </tr>
+        <tr>
+          <td>11:30 AM (After)</td>
+          <td>$150.40</td>
+          <td>Price settles (temporary impact reverts)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Impact Decomposition:</strong></p>
+    <ul>
+      <li><strong>Total impact during execution:</strong> $150.70 (avg fill) - $150.00 (decision price) = $0.70 per share</li>
+      <li><strong>Permanent impact:</strong> $150.40 (settlement price) - $150.00 (decision price) = $0.40 per share</li>
+      <li><strong>Temporary impact (reverted):</strong> $0.70 - $0.40 = $0.30 per share</li>
+    </ul>
+
+    <p><strong>Total Cost:</strong></p>
+    <ul>
+      <li>500K shares × $0.70 average impact = <strong>$350,000</strong> total market impact cost</li>
+      <li>Of which $150,000 was temporary (reverted after), $200,000 was permanent</li>
+    </ul>
+
+    <p><strong>Why Permanent Impact Occurred:</strong> Market saw large sustained buying (1% of ADV in 1 hour = significant). Other participants inferred Fidelity might have positive information (earnings, upgrade, etc.), so fair value repriced upward.</p>
+  </div>
+
+  <div class="callout callout-warning">
+    <h4>⚠️ The Information Leakage Problem</h4>
+    <p>When you execute large orders, the market reverse-engineers your intent. If market thinks you're informed (hedge fund buying on insider info), permanent impact skyrockets. If market thinks you're uninformed (index fund rebalancing), permanent impact is minimal.</p>
+    <p><strong>Defense:</strong> Disguise your orders using randomized timing, splitting across venues (dark pools + lit exchanges), and varying order sizes to look like noise rather than signal.</p>
+  </div>
 
   <h2>Part 2: Market Impact Models</h2>
 
@@ -94,19 +239,61 @@
   </details>
 
   <h3>Model #2: Almgren-Chriss Model (Time-Dependent)</h3>
-  <p><strong>Concept:</strong> Impact depends on HOW FAST you trade (aggressive = high impact, patient = low impact)</p>
-  <p><strong>Formula (simplified):</strong> Impact = θ × (Q / T)</p>
+
+  <p><strong>Concept:</strong> Impact depends on <strong>HOW FAST</strong> you trade. The model balances two competing costs:</p>
+  <ol>
+    <li><strong>Market impact:</strong> Aggressive execution → high temporary impact</li>
+    <li><strong>Execution risk (price drift):</strong> Patient execution → price might move unfavorably</li>
+  </ol>
+
+  <p><strong>Formula (simplified):</strong></p>
+  <p>Total Cost = <strong>Temporary Impact</strong> + <strong>Permanent Impact</strong> + <strong>Execution Risk</strong></p>
+
   <ul>
-    <li><strong>θ:</strong> Temporary impact coefficient</li>
-    <li><strong>Q:</strong> Total order size</li>
-    <li><strong>T:</strong> Time horizon (e.g., trade over 1 hour vs 1 day)</li>
+    <li><strong>Temporary Impact:</strong> θ × (Q / T) where θ is impact coefficient, Q is order size, T is time horizon</li>
+    <li><strong>Permanent Impact:</strong> η × Q (linear in order size)</li>
+    <li><strong>Execution Risk:</strong> σ × √T × Q (volatility × time × size)</li>
   </ul>
 
-  <p><strong>Trade-off:</strong></p>
+  <p><strong>Trade-off (The Central Dilemma):</strong></p>
   <ul>
-    <li><strong>Trade fast (T small):</strong> High market impact, but lower execution risk (less price drift)</li>
-    <li><strong>Trade slow (T large):</strong> Low market impact, but higher execution risk (price might move away)</li>
+    <li><strong>Trade fast (T small):</strong> High temporary impact (θ/T large), but low execution risk (less time for adverse price movement)</li>
+    <li><strong>Trade slow (T large):</strong> Low temporary impact (θ/T small), but high execution risk (price might drift away during slow execution)</li>
   </ul>
+
+  <div class="example-block">
+    <h4>Almgren-Chriss Trade-off Example</h4>
+    <p><strong>Scenario:</strong> Buy 1M shares of TSLA. Daily volume = 100M shares. Current price = $200. Daily volatility = 3%.</p>
+
+    <p><strong>Option 1: Aggressive (Execute in 30 minutes)</strong></p>
+    <ul>
+      <li><strong>Temporary impact:</strong> High (1M shares / 30 min = 33K/min, market can't absorb that fast)</li>
+      <li>Estimated impact: 0.8% × $200 = $1.60/share → <strong>$1.6M impact cost</strong></li>
+      <li><strong>Execution risk:</strong> Low (only 30 min for price to drift, σ × √0.5hr = minimal)</li>
+      <li>Estimated risk cost: $200K</li>
+      <li><strong>Total cost: $1.8M</strong></li>
+    </ul>
+
+    <p><strong>Option 2: Patient (Execute over 4 hours)</strong></p>
+    <ul>
+      <li><strong>Temporary impact:</strong> Low (1M shares / 240 min = 4.2K/min, manageable rate)</li>
+      <li>Estimated impact: 0.25% × $200 = $0.50/share → <strong>$500K impact cost</strong></li>
+      <li><strong>Execution risk:</strong> High (4 hours for TSLA to move 3% × √4 = 6%)</li>
+      <li>Estimated risk cost (adverse movement): $1.5M (if unlucky, TSLA rallies during execution)</li>
+      <li><strong>Total cost: $2M</strong></li>
+    </ul>
+
+    <p><strong>Option 3: Optimal (Almgren-Chriss Solution: 90 minutes)</strong></p>
+    <ul>
+      <li><strong>Temporary impact:</strong> Moderate (1M / 90 min = 11K/min)</li>
+      <li>Estimated impact: 0.45% × $200 = $0.90/share → <strong>$900K impact cost</strong></li>
+      <li><strong>Execution risk:</strong> Moderate (1.5 hours, σ × √1.5hr)</li>
+      <li>Estimated risk cost: $600K</li>
+      <li><strong>Total cost: $1.5M (BEST)</strong></li>
+    </ul>
+
+    <p><strong>Lesson:</strong> There's an <strong>optimal execution speed</strong> that minimizes total cost. Too fast = high impact. Too slow = high risk. Almgren-Chriss finds the balance.</p>
+  </div>
 
   <h3>Model #3: Kyle's Lambda (Information-Based)</h3>
   <p><strong>Concept:</strong> Market infers information from order flow → permanent impact</p>
@@ -316,6 +503,90 @@
       <li><a href="/downloads/execution-strategy-guide.pdf">Execution Strategy Selection Guide (PDF)</a></li>
     </ul>
   </div>
+
+  <div class="lesson-nav">
+    <a href="64-macro-regime-framework.html" class="lesson-nav-prev">← Previous: Macro Regime Framework</a>
+    <a href="66-quantitative-strategy-design.html" class="lesson-nav-next">Next: Quantitative Strategy Design →</a>
+  </div>
 </article>
+
+<aside class="toc">
+  <h3>On this page</h3>
+  <ul>
+    <li><a href="#part-1-what-is-market-impact">Part 1: What Is Market Impact?</a></li>
+    <li><a href="#part-2-market-impact-models">Part 2: Market Impact Models</a></li>
+    <li><a href="#part-3-estimating-market-impact-practical">Part 3: Estimating Market Impact (Practical)</a></li>
+    <li><a href="#part-4-execution-strategies-to-minimize-impact">Part 4: Execution Strategies to Minimize Impact</a></li>
+    <li><a href="#part-5-using-signal-pilot-to-detect-market-impact">Part 5: Using Signal Pilot to Detect Market Impact</a></li>
+    <li><a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a></li>
+    <li><a href="#practical-checklist">Practical Checklist</a></li>
+  </ul>
+</aside>
+
+<footer class="sp-footer">
+  <div class="container">
+    <p>&copy; 2025 Signal Pilot Labs, Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Theme toggle
+document.getElementById('theme-toggle')?.addEventListener('click', () => {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+});
+
+// Constellation animation
+const canvas = document.getElementById('constellations');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const stars = Array.from({ length: 80 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.2,
+    vy: (Math.random() - 0.5) * 0.2
+  }));
+
+  function drawConstellations() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)';
+    ctx.lineWidth = 1;
+
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        const dx = stars[i].x - stars[j].x;
+        const dy = stars[i].y - stars[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 150) {
+          ctx.beginPath();
+          ctx.moveTo(stars[i].x, stars[i].y);
+          ctx.lineTo(stars[j].x, stars[j].y);
+          ctx.stroke();
+        }
+      }
+
+      stars[i].x += stars[i].vx;
+      stars[i].y += stars[i].vy;
+
+      if (stars[i].x < 0 || stars[i].x > canvas.width) stars[i].vx *= -1;
+      if (stars[i].y < 0 || stars[i].y > canvas.height) stars[i].vy *= -1;
+    }
+
+    requestAnimationFrame(drawConstellations);
+  }
+
+  drawConstellations();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+}
+</script>
 </body>
 </html>
