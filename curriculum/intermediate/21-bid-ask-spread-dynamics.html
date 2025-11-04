@@ -80,10 +80,167 @@
       </div>
 
       <div class="callout-warning">
-        <h4>📉 CASE STUDY: Nina's $82K Spread Death by 1000 Cuts (2024)</h4>
-        <p><strong>Trader:</strong> Nina Park, 6-year day trader ($165K account). <strong>Fatal flaw:</strong> High-frequency scalping with market orders, ignored spread costs completely.</p>
-        <p><strong>Disaster (Mar-Jul 2024):</strong> Nina scalped ES futures 15-20 times/day with market orders. Avg spread: $12.50. Per round-trip cost: $25. Daily spread cost: 20 trades × $25 = $500/day. Over 18 weeks (90 trading days): $500 × 90 = $45K in spread costs alone. Combined with losing trades + slippage: -$82K (-49.7%). Never calculated spread as % of stop (it was 35%).</p>
-        <p><strong>Recovery:</strong> Switched to limit orders (90% fill rate). Reduced trade frequency to 5-8/day (higher quality setups). Calculated spread % of stop (kept < 10%). 8 months later: +$59K (+72% recovery). Daily spread costs: $500 → $75 (85% reduction). Lesson: Spread is invisible until you calculate it. Then it's horrifying.</p>
+        <h4>📉 CASE STUDY: Nina's $82K Spread Death by 1000 Cuts (Mar-Jul 2024)</h4>
+
+        <p><strong>Trader Profile:</strong> Nina Park, 29, day trader (6 years experience)</p>
+        <p><strong>Account:</strong> $165,000</p>
+        <p><strong>Strategy:</strong> High-frequency ES futures scalping, 15-20 trades/day</p>
+        <p><strong>Fatal flaw:</strong> Used market orders exclusively, never calculated spread costs, ignored spread as % of stop loss</p>
+
+        <h5>The Disaster Timeline</h5>
+
+        <p><strong>Background:</strong> Nina was a profitable scalper in 2022-2023 (+$71K over 2 years). Her edge: quick tape reading, 1-2 point scalps on ES futures. But in 2024, she ramped up frequency from 8 trades/day to 18 trades/day. "More setups = more profit," she thought. She NEVER calculated her spread costs.</p>
+
+        <p><strong>Week 1 (Mar 4-8): The Invisible Bleed</strong></p>
+        <p>Monday March 4: Nina took 17 ES scalps. Average spread: 0.25 points ($12.50 per contract). Every round-trip (entry + exit) = $25 in spread costs.</p>
+        <ul>
+          <li>Win rate: 65% (11 wins, 6 losses)</li>
+          <li>Gross P&L: +$850</li>
+          <li>Spread costs: 17 trades × $25 = <strong>-$425</strong></li>
+          <li>Net P&L: +$425 (spread ate 50% of profit)</li>
+        </ul>
+        <p>Nina saw +$425 and thought: "Good day." She had NO IDEA she'd paid $425 just to enter/exit positions.</p>
+
+        <p><strong>Week 8 (Apr 22-26): The Reckoning</strong></p>
+        <p>Nina noticed her account hadn't grown despite "winning" most days. She pulled her broker statements:</p>
+        <ul>
+          <li>8 weeks = 40 trading days</li>
+          <li>Average 18 trades/day = 720 trades total</li>
+          <li>Spread cost per round-trip: $25</li>
+          <li><strong>Total spread costs: 720 × $25 = $18,000</strong></li>
+        </ul>
+        <p>Her gross P&L (before spread): +$9,200. Her net P&L (after spread): <strong>-$8,800</strong>. The spread had turned an $9.2K winner into an $8.8K loser.</p>
+
+        <p><strong>Week 12 (May 20-24): The Breaking Point</strong></p>
+        <p>Nina started tracking spread as % of her stop loss. Her typical trade:</p>
+        <ul>
+          <li>Entry: ES 5200.00</li>
+          <li>Stop: 5198.50 (1.5 points = $75 risk)</li>
+          <li>Spread: 0.25 points ($12.50 per side × 2 = $25 round-trip)</li>
+          <li><strong>Spread as % of stop: $25 / $75 = 33.3%</strong></li>
+        </ul>
+        <p>She was giving up 33% of her risk capital to the spread BEFORE the trade even started. To break even, she needed a 65%+ win rate just to cover spread costs.</p>
+
+        <p><strong>Weeks 13-18 (May 27 - Jul 5): The Death Spiral</strong></p>
+        <ul>
+          <li>Week 13: -$3,200 (spread costs: $2,475)</li>
+          <li>Week 14: +$1,100 (spread costs: $2,625)</li>
+          <li>Week 15: -$4,800 (spread costs: $2,750)</li>
+          <li>Week 16: -$2,400 (spread costs: $2,500)</li>
+          <li>Week 17: +$800 (spread costs: $2,400)</li>
+          <li>Week 18: -$5,100 (spread costs: $2,600)</li>
+        </ul>
+        <p><strong>18-week totals:</strong> Gross trading P&L: -$37K. Spread costs: <strong>-$45K</strong>. <strong>Net loss: -$82,000 (-49.7% of account)</strong>.</p>
+
+        <p><strong>Jul 5, 8:23 PM - Journal Entry:</strong></p>
+        <blockquote style="border-left: 4px solid #ff6b6b; padding: 1rem; background: rgba(255,107,107,0.1); margin: 1.5rem 0">
+          "I just calculated my spread costs for 18 weeks. I want to throw up.
+
+          $45,000. FORTY-FIVE THOUSAND DOLLARS. Just to cross the spread. Not commissions. Not fees. Just the cost of using market orders.
+
+          18 trades/day × $25/trade = $450/day in spread costs. × 90 trading days = $40,500. And I NEVER TRACKED THIS.
+
+          I thought I was a good trader. My setups work. My win rate is 61%. But I'm bleeding $450/day to the spread, and my average win is only $120. I need to win 4 trades just to cover ONE day of spread costs.
+
+          The worst part: My stop loss averages $75. My spread cost is $25. I'm giving up 33% of my risk BEFORE THE TRADE STARTS.
+
+          No wonder I'm down $82K. I'm not a bad trader. I'm just paying the market $450/day for the privilege of scalping."
+        </blockquote>
+
+        <h5>Recovery Framework</h5>
+
+        <p><strong>Nina's New Spread-Conscious System:</strong></p>
+        <ol>
+          <li><strong>Limit Orders Only</strong> – No market orders. Place limit at mid-price or better. Accept 88-92% fill rate to save spread costs.</li>
+          <li><strong>Reduce Trade Frequency</strong> – Went from 18 trades/day to 6-8/day. Only A+ setups. Quality > quantity.</li>
+          <li><strong>Calculate Spread % of Stop</strong> – Rule: Spread must be < 10% of stop loss. If ES spread = $25 and stop = $75, skip the trade (33% too high).</li>
+          <li><strong>Wider Stops, Smaller Size</strong> – Increased stop from 1.5 points to 4 points. Reduced size 60%. Same $ risk, but spread now 6% of stop (vs 33%).</li>
+          <li><strong>Track Daily Spread Costs</strong> – Built spreadsheet: (fill price - NBBO mid) × contracts × $50. Target: < $100/day spread costs.</li>
+          <li><strong>Avoid Peak Spread Hours</strong> – No trading 9:30-9:45 AM, 3:50-4:00 PM (spread 2-4× wider). Trade 10 AM-3 PM only.</li>
+          <li><strong>Monthly Spread Audit</strong> – Calculate total spread costs each month. If > 15% of gross profit, reduce frequency or widen stops.</li>
+        </ol>
+
+        <h5>Results: Before vs After</h5>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0">
+          <thead style="background: rgba(255,255,255,0.05)">
+            <tr>
+              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Metric</th>
+              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Before (Mar-Jul)</th>
+              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">After (Aug-Dec)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Account</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$165K → $83K</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$83K → $142K</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Trades per Day</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">18</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">7</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Daily Spread Costs</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$450</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$70</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Spread as % of Stop</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">33%</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">6%</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Order Type</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">100% market</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">92% limit</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Win Rate</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">61%</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">68%</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Monthly Spread Costs</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$9,000</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$1,400</td>
+            </tr>
+            <tr style="background: rgba(0,212,170,0.1)">
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>Total P&L</strong></td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>-$82,000 (-49.7%)</strong></td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>+$59,000 (+71.1%)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h5>Nina's Advice</h5>
+
+        <blockquote style="border-left: 4px solid #00d4aa; padding: 1rem; background: rgba(0,212,170,0.1); margin: 1.5rem 0">
+          "I scalped for 6 years without ONCE calculating my spread costs. That ignorance cost me $82K in 18 weeks.
+
+          <strong>Here's the truth nobody tells you:</strong> The spread is invisible. Your broker doesn't show it as a line item. It's baked into your fill price. And it compounds EVERY SINGLE TRADE.
+
+          <strong>Do this calculation RIGHT NOW:</strong>
+          1. How many round-trips/day do you take?
+          2. What's your average spread? (ES: $12.50/side, SPY: $0.01/share)
+          3. Multiply: trades/day × (spread × 2 for round-trip)
+
+          For me: 18 trades × $25 = $450/day = $9,000/month. I was paying $108K/year in spread costs and didn't even know it.
+
+          <strong>Then calculate spread as % of your stop:</strong> If your stop is $75 and spread is $25, you're giving up 33% of your edge before the trade starts. You need a 65% win rate just to break even after spread costs.
+
+          <strong>My new rule: Spread must be < 10% of stop.</strong> If not, widen your stop, reduce size, or skip the trade. Period.
+
+          <strong>Use limit orders.</strong> Yeah, you'll miss 10-12% of fills. But you'll save 85% on spread costs. I went from $450/day to $70/day. That's $380/day × 20 trading days = $7,600/month saved.
+
+          <strong>Reduce frequency.</strong> I went from 18 trades/day to 7. My win rate jumped from 61% to 68% (better setups). And my monthly spread costs dropped from $9,000 to $1,400.
+
+          The spread is death by 1,000 cuts. You don't notice it on one trade. But over 100 trades? 1,000 trades? It's the difference between profit and ruin.
+
+          I lost $82K learning this. Calculate your spread costs TODAY. You'll be horrified. Then fix it."
+        </blockquote>
+
       </div>
 
       <p><strong>In this lesson, you'll learn:</strong></p>
