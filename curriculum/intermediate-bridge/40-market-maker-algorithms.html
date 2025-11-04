@@ -241,7 +241,7 @@
 
       <div class="section-break"><span>Part 1: Spread Capture — The Core Business Model</span></div>
 
-      <h2>Buy the Bid, Sell the Ask, Repeat</h2>
+      <h2 id="buy-the-bid-sell-the-ask-repeat">Buy the Bid, Sell the Ask, Repeat</h2>
 
       <p>The market maker's core profit strategy is <strong>spread capture</strong>: buy at the bid price, sell at the ask price, pocket the difference.</p>
 
@@ -263,7 +263,7 @@
 
       <p><strong>Scale:</strong> Citadel does this <em>billions</em> of times per day. $0.05 per share × 10 billion shares = <strong>$500 million per day</strong>.</p>
 
-      <h3>Why the Spread Exists</h3>
+      <h3 id="why-the-spread-exists">Why the Spread Exists</h3>
 
       <p>The spread compensates market makers for two risks:</p>
       <ul>
@@ -278,7 +278,7 @@
         </div>
         <div class="tabs-content">
           <div class="tab-panel active">
-            <h3>High Liquidity = Narrow Spreads</h3>
+            <h3 id="high-liquidity-narrow-spreads">High Liquidity = Narrow Spreads</h3>
             <p><strong>Example: AAPL (Apple)</strong></p>
             <ul>
               <li>Bid: $175.00, Ask: $175.01</li>
@@ -288,7 +288,7 @@
             <p><strong>MM Strategy:</strong> Tiny margins, massive volume. Citadel makes $0.01/share but trades 100M AAPL shares/day = <strong>$1M/day on AAPL alone</strong>.</p>
           </div>
           <div class="tab-panel">
-            <h3>Low Liquidity = Wide Spreads</h3>
+            <h3 id="low-liquidity-wide-spreads">Low Liquidity = Wide Spreads</h3>
             <p><strong>Example: Small Cap Stock</strong></p>
             <ul>
               <li>Bid: $10.00, Ask: $10.50</li>
@@ -306,7 +306,7 @@
 
       <div class="section-break"><span>Part 2: Adverse Selection</span></div>
 
-      <h2>When Smart Money Trades, Market Makers Lose</h2>
+      <h2 id="when-smart-money-trades-market-makers-lose">When Smart Money Trades, Market Makers Lose</h2>
 
       <p><strong>Adverse selection</strong> happens when informed traders—hedge funds, prop traders, insiders—trade with market makers because they have information the MM doesn't.</p>
 
@@ -325,7 +325,7 @@
         <p><strong>Solution:</strong> MMs use algorithms to <em>detect</em> informed flow and <em>widen spreads</em> or <em>pull liquidity</em> when they sense danger.</p>
       </div>
 
-      <h3>How Market Makers Detect Informed Traders</h3>
+      <h3 id="how-market-makers-detect-informed-traders">How Market Makers Detect Informed Traders</h3>
 
       <p><strong>Signal #1: Order Size</strong></p>
       <p>Retail traders buy 10-100 shares. Institutions buy 10,000-100,000 shares. When a 50,000 share market buy hits, the MM's algo:</p>
@@ -345,7 +345,7 @@
 
       <div class="section-break"><span>Part 3: Inventory Management</span></div>
 
-      <h2>Market Makers Don't Want Directional Risk</h2>
+      <h2 id="market-makers-dont-want-directional-risk">Market Makers Don't Want Directional Risk</h2>
 
       <p>Market makers are <strong>not investors</strong>. They want to be <strong>delta-neutral</strong>—making money on the spread, not on price movements.</p>
 
@@ -353,7 +353,7 @@
 
       <p><strong>Solution:</strong> Market makers use <strong>inventory management algorithms</strong> to quickly offload unwanted positions.</p>
 
-      <h3>How MMs Rebalance Inventory</h3>
+      <h3 id="how-mms-rebalance-inventory">How MMs Rebalance Inventory</h3>
 
       <p><strong>When MM is Long (Too Much Inventory):</strong></p>
       <ul>
@@ -377,11 +377,11 @@
 
       <div class="section-break"><span>Part 4: Market Maker Manipulation Tactics</span></div>
 
-      <h2>The Dark Side of Market Making</h2>
+      <h2 id="the-dark-side-of-market-making">The Dark Side of Market Making</h2>
 
       <p>Not all market maker tactics are legal or ethical. Some firms use <strong>manipulation techniques</strong> to maximize profits at retail's expense.</p>
 
-      <h3>Tactic #1: Spoofing</h3>
+      <h3 id="tactic-1-spoofing">Tactic #1: Spoofing</h3>
 
       <p><strong>What it is:</strong> Placing large fake orders to create the <em>illusion</em> of supply or demand, then canceling before they execute.</p>
 
@@ -398,7 +398,7 @@
 
       <p><strong>Legality:</strong> <em>Highly illegal</em> (Dodd-Frank Act), but hard to prove. Regulators must show <em>intent</em> to deceive.</p>
 
-      <h3>Tactic #2: Layering</h3>
+      <h3 id="tactic-2-layering">Tactic #2: Layering</h3>
 
       <p><strong>What it is:</strong> Placing multiple orders on one side of the book to create fake pressure, then trading on the other side.</p>
 
@@ -413,7 +413,7 @@
         <p><strong>Lesson:</strong> If a guy in his basement can cause a flash crash, imagine what well-funded MMs can do.</p>
       </div>
 
-      <h3>Tactic #3: Quote Stuffing</h3>
+      <h3 id="tactic-3-quote-stuffing">Tactic #3: Quote Stuffing</h3>
 
       <p><strong>What it is:</strong> Rapidly placing and canceling thousands of orders to flood the order book and slow down competitors.</p>
 
@@ -428,7 +428,7 @@
 
       <div class="section-break"><span>Part 5: Payment for Order Flow (PFOF)</span></div>
 
-      <h2>Why "Free" Trading Isn't Free</h2>
+      <h2 id="why-free-trading-isnt-free">Why "Free" Trading Isn't Free</h2>
 
       <p><strong>Payment for Order Flow (PFOF)</strong> is the practice where brokers (Robinhood, Webull) sell your order to market makers (Citadel, Virtu) instead of routing it to public exchanges.</p>
 
@@ -439,7 +439,7 @@
         <li>Citadel fills your order and pockets the spread</li>
       </ul>
 
-      <h3>How Robinhood Makes Money</h3>
+      <h3 id="how-robinhood-makes-money">How Robinhood Makes Money</h3>
 
       <p><strong>Revenue Source:</strong> Payment for Order Flow (75% of Robinhood's revenue in 2021)</p>
 
@@ -454,7 +454,7 @@
 
       <p><strong>Why Robinhood loves PFOF:</strong> They get paid <em>more</em> when you trade <em>more</em> (confetti animations, push notifications, "free stock" promotions).</p>
 
-      <h3>How Citadel Makes Money</h3>
+      <h3 id="how-citadel-makes-money">How Citadel Makes Money</h3>
 
       <p><strong>Why Citadel pays for order flow:</strong> Retail order flow is <strong>uninformed</strong> (low adverse selection risk), making it highly profitable.</p>
 
@@ -466,7 +466,7 @@
         <li>Minus payment to Robinhood ($3M/month) = <strong>$144M/year net profit</strong></li>
       </ul>
 
-      <h3>How You Lose Money</h3>
+      <h3 id="how-you-lose-money">How You Lose Money</h3>
 
       <p><strong>The Hidden Cost:</strong> You don't pay commissions, but you pay via <strong>price improvement failure</strong>.</p>
 
@@ -488,7 +488,7 @@
         <p><strong>Cost:</strong> On average, $0.01-$0.02 worse per share—totaling <strong>$1.5 billion/year</strong> across all retail traders.</p>
       </div>
 
-      <h3>Latency Arbitrage via PFOF</h3>
+      <h3 id="latency-arbitrage-via-pfof">Latency Arbitrage via PFOF</h3>
 
       <p>The most insidious aspect: <strong>market makers see your order before it hits the exchange</strong>, giving them a latency advantage to front-run you.</p>
 
@@ -507,11 +507,11 @@
 
       <div class="section-break"><span>Part 6: How to Trade Against Market Makers</span></div>
 
-      <h2>Defense Strategies for Retail Traders</h2>
+      <h2 id="defense-strategies-for-retail-traders">Defense Strategies for Retail Traders</h2>
 
       <p>You can't eliminate market maker edge, but you can <strong>minimize</strong> it.</p>
 
-      <h3>Strategy #1: Always Use Limit Orders</h3>
+      <h3 id="strategy-1-always-use-limit-orders">Strategy #1: Always Use Limit Orders</h3>
 
       <p><strong>Rule:</strong> Never use market orders unless execution speed matters more than price.</p>
 
@@ -531,7 +531,7 @@
         <p><strong>Benefit:</strong> You split the spread with the MM instead of giving them the entire edge.</p>
       </div>
 
-      <h3>Strategy #2: Trade During Liquid Hours</h3>
+      <h3 id="strategy-2-trade-during-liquid-hours">Strategy #2: Trade During Liquid Hours</h3>
 
       <p><strong>Rule:</strong> Trade between 10:00 AM - 3:00 PM ET (avoid first/last hour and after-hours).</p>
 
@@ -544,7 +544,7 @@
         <li>AAPL spread at 6:00 PM (after-hours): $0.15 (15x wider)</li>
       </ul>
 
-      <h3>Strategy #3: Avoid PFOF Brokers (Or Route to IEX)</h3>
+      <h3 id="strategy-3-avoid-pfof-brokers-or-route-to-iex">Strategy #3: Avoid PFOF Brokers (Or Route to IEX)</h3>
 
       <p><strong>Rule:</strong> Use brokers that <em>don't</em> sell order flow (Fidelity, Vanguard, Interactive Brokers).</p>
 
@@ -562,7 +562,7 @@
 
       <p><strong>Benefit:</strong> IEX has a "speed bump" (350 microseconds delay) that prevents HFTs and MMs from front-running you.</p>
 
-      <h3>Strategy #4: Don't Chase—Let the Market Come to You</h3>
+      <h3 id="strategy-4-dont-chaselet-the-market-come-to-you">Strategy #4: Don't Chase—Let the Market Come to You</h3>
 
       <p><strong>Rule:</strong> If your limit order doesn't fill immediately, don't chase by raising your limit price.</p>
 
@@ -682,13 +682,13 @@
 </article>
 
 <aside class="toc" aria-label="On this page">
-  <h3>On this page</h3>
-      <a href="#">Buy the Bid, Sell the Ask, Repeat</a>
-      <a href="#">When Smart Money Trades, Market Makers Lose</a>
-      <a href="#">Market Makers Don't Want Directional Risk</a>
-      <a href="#">The Dark Side of Market Making</a>
-      <a href="#">Why "Free" Trading Isn't Free</a>
-      <a href="#">Defense Strategies for Retail Traders</a>
+  <h3 id="on-this-page">On this page</h3>
+      <a href="#buy-the-bid-sell-the-ask-repeat">Buy the Bid, Sell the Ask, Repeat</a>
+      <a href="#when-smart-money-trades-market-makers-lose">When Smart Money Trades, Market Makers Lose</a>
+      <a href="#market-makers-dont-want-directional-risk">Market Makers Don't Want Directional Risk</a>
+      <a href="#the-dark-side-of-market-making">The Dark Side of Market Making</a>
+      <a href="#why-free-trading-isnt-free">Why "Free" Trading Isn't Free</a>
+      <a href="#defense-strategies-for-retail-traders">Defense Strategies for Retail Traders</a>
 </aside>
 
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>

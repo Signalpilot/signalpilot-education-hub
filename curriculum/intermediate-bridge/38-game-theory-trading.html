@@ -72,7 +72,7 @@
       <p>Game theory is the mathematics of strategic decision-making when your outcome depends on others' decisions. In trading, YOUR profit is someone else's loss. That makes trading a zero-sum game—and game theory explains WHY stop hunts work, WHY liquidity sweeps are optimal, and HOW institutions exploit predictable behavior.</p>
 
       <div class="progress-tracker">
-        <h3>Your Progress Through This Lesson</h3>
+        <h3 id="your-progress-through-this-lesson">Your Progress Through This Lesson</h3>
         <div class="progress-step">
           <div class="step-number">1</div>
           <div class="step-content">
@@ -126,13 +126,13 @@
         <li>Real trade examples using adversarial thinking</li>
       </ul>
 
-      <h2>Part 1: Nash Equilibrium in Markets</h2>
+      <h2 id="part-1-nash-equilibrium-in-markets">Part 1: Nash Equilibrium in Markets</h2>
 
       <p><strong>Nash Equilibrium:</strong> A stable state where no player can improve their outcome by changing strategy unilaterally (without others changing).</p>
 
       <p><strong>Named after:</strong> John Nash (mathematician, Nobel Prize 1994). His work proved that every finite game has at least one equilibrium point.</p>
 
-      <h3>Market Auction as a Game</h3>
+      <h3 id="market-auction-as-a-game">Market Auction as a Game</h3>
 
       <p><strong>Players:</strong></p>
       <ul>
@@ -154,7 +154,7 @@
 
       <p><strong>What breaks equilibrium?</strong> New information (news, earnings, macro data, order flow signals) changes players' valuations → new equilibrium sought → price moves to find new balance.</p>
 
-      <h3>Applying Nash Equilibrium to Trading</h3>
+      <h3 id="applying-nash-equilibrium-to-trading">Applying Nash Equilibrium to Trading</h3>
 
       <div style="background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
         <h4 style="margin-top:0">Example: Support Level Game</h4>
@@ -215,7 +215,7 @@
         <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:6px"><strong>Lesson:</strong> Once you know institutions will sweep (dominant strategy), the Nash equilibrium strategy is to WAIT for the sweep. But most retail doesn't adapt—giving institutions the edge. The few retail traders who adapt (Strategy B) significantly improve their win rate (60-70% vs 40-45% for Strategy A).</p>
       </div>
 
-      <h3>Real Example: ES Futures Support Sweep (June 2024)</h3>
+      <h3 id="real-example-es-futures-support-sweep-june-2024">Real Example: ES Futures Support Sweep (June 2024)</h3>
 
       <div class="callout">
         <p><strong>🔍 Setup:</strong></p>
@@ -241,13 +241,13 @@
         <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:6px"><strong>✅ Game Theory Lesson:</strong> Institutions chose dominant strategy (sweep stops) because: (1) Grab liquidity from retail stops (10,000 contracts available), (2) Better entry price ($5235 vs $5250 = 15 points = $750/contract advantage), (3) Retail is predictable (80% place stops just below support). Retail traders who understood game theory (Strategy B) profited +$1,000 per contract while those using textbook strategy (Strategy A) lost -$250 per contract.</p>
       </div>
 
-      <h2>Part 2: Prisoner's Dilemma in Liquidity Provision</h2>
+      <h2 id="part-2-prisoners-dilemma-in-liquidity-provision">Part 2: Prisoner's Dilemma in Liquidity Provision</h2>
 
       <p><strong>Prisoner's Dilemma:</strong> Two players can cooperate for mutual benefit, but rational self-interest leads to suboptimal outcomes for both.</p>
 
       <p><strong>Classic setup:</strong> Two prisoners interrogated separately. If both stay silent (cooperate), both get 1 year. If one confesses (defects) and other stays silent, confessor goes free, silent one gets 10 years. If both confess, both get 5 years. Rational choice: Both confess (Nash equilibrium), even though mutual silence is better for both.</p>
 
-      <h3>The Market Liquidity Dilemma</h3>
+      <h3 id="the-market-liquidity-dilemma">The Market Liquidity Dilemma</h3>
 
       <table style="width:100%;border-collapse:collapse;margin:2rem 0">
         <thead>
@@ -284,7 +284,7 @@
         <li><strong>Avoid being liquidity provider during news:</strong> High adverse selection risk (you'll get picked off by informed traders reacting to news faster)</li>
       </ul>
 
-      <h3>Real Example: Flash Crash Liquidity Withdrawal (May 6, 2010)</h3>
+      <h3 id="real-example-flash-crash-liquidity-withdrawal-may-6-2010">Real Example: Flash Crash Liquidity Withdrawal (May 6, 2010)</h3>
 
       <div class="callout">
         <p><strong>Classic prisoner's dilemma collapse:</strong></p>
@@ -298,11 +298,11 @@
         <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:6px"><strong>Lesson:</strong> When liquidity providers face adverse selection risk (informed selling), rational strategy is to withdraw (defect). All market makers reached same conclusion simultaneously → liquidity crisis. This is why market makers earn premium compensation (they bear risk of being last liquidity provider standing).</p>
       </div>
 
-      <h2>Part 3: Strategic Stop Placement</h2>
+      <h2 id="part-3-strategic-stop-placement">Part 3: Strategic Stop Placement</h2>
 
       <p><strong>The Game:</strong> You vs institutions hunting your stops. Your goal: Protect capital without getting swept unnecessarily. Institution's goal: Grab your stop liquidity before moving price in intended direction.</p>
 
-      <h3>Payoff Matrix for Stop Placement</h3>
+      <h3 id="payoff-matrix-for-stop-placement">Payoff Matrix for Stop Placement</h3>
 
       <div style="background:rgba(139,92,246,.1);padding:1.5rem;border-radius:8px;margin:2rem 0">
         <h4 style="margin-top:0">Your Strategy vs Institution's Strategy</h4>
@@ -347,7 +347,7 @@
         <p style="margin-top:0.5rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:6px"><strong>Math:</strong> If ATR = $2.00, stop 1.5×ATR = $3.00 below entry. If normal position size = 100 shares, reduce to 50 shares. Same dollar risk ($300), but 50% fewer stop-outs from sweeps. Win rate improves from 45% → 65% (fewer false stops).</p>
       </div>
 
-      <h3>Game Theory Stop Placement Framework</h3>
+      <h3 id="game-theory-stop-placement-framework">Game Theory Stop Placement Framework</h3>
 
       <p><strong>Level 1 (Retail thinking):</strong> "Stop below support at $178.50 (textbook says $0.50 below support)"</p>
       <p><strong>Issue:</strong> Predictable, institutions know 80% of retail uses this logic → obvious sweep target</p>
@@ -371,9 +371,9 @@
 
       <p><strong>Why this works:</strong> Stop is based on LOGIC (thesis invalidation + volatility buffer), not arbitrary support levels. If TSLA sweeps to $240 (above $230 stop), thesis still valid (order block holding). If TSLA breaks $230, thesis truly invalid (order block failed + exceeded normal volatility).</p>
 
-      <h2>Part 4: How Institutions Use Game Theory</h2>
+      <h2 id="part-4-how-institutions-use-game-theory">Part 4: How Institutions Use Game Theory</h2>
 
-      <h3>Strategy #1: Dominant Strategy (Always Sweep When Payoff > Cost)</h3>
+      <h3 id="strategy-1-dominant-strategy-always-sweep-when-payoff-cost">Strategy #1: Dominant Strategy (Always Sweep When Payoff > Cost)</h3>
 
       <p><strong>Insight:</strong> Sweeping stops is a dominant strategy for institutions when:</p>
       <ul>
@@ -391,7 +391,7 @@
 
       <p><strong>Retail counter:</strong> Assume sweeps will happen at obvious levels (support/resistance, round numbers, previous day's low/high). Position size smaller, stops wider (1.5-2×ATR), or wait for sweep before entering.</p>
 
-      <h3>Strategy #2: Mixed Strategy (Randomize Timing to Prevent Adaptation)</h3>
+      <h3 id="strategy-2-mixed-strategy-randomize-timing-to-prevent-adaptation">Strategy #2: Mixed Strategy (Randomize Timing to Prevent Adaptation)</h3>
 
       <p><strong>Insight:</strong> If institutions always sweep at same time (e.g., 2 AM every day), retail adapts (stops waiting for 2 AM sweeps). To prevent adaptation, institutions use mixed strategies (randomize sweep timing).</p>
 
@@ -406,7 +406,7 @@
 
       <p><strong>Retail counter:</strong> Don't predict WHEN or IF sweeps happen. Just assume they CAN happen and protect accordingly (wider stops, smaller size, limit orders in sweep zones).</p>
 
-      <h3>Strategy #3: Exploit Coordination Failure</h3>
+      <h3 id="strategy-3-exploit-coordination-failure">Strategy #3: Exploit Coordination Failure</h3>
 
       <p><strong>Insight:</strong> Retail traders can't coordinate their actions (illegal to collude, no communication channels). Institutions can coordinate legally (through prime brokerage relationships, shared research, dark pool order flow visibility).</p>
 
@@ -426,9 +426,9 @@
 
       <p><strong>Retail counter:</strong> Be contrarian. When everyone places stops in one spot (social media shows "everyone's stop is at $449.50"), place yours elsewhere (wider, based on ATR, or don't enter until after sweep). You can't coordinate with other retail traders, but you can avoid being part of the predictable herd.</p>
 
-      <h2>Part 5: Building Robust Adversarial Strategies</h2>
+      <h2 id="part-5-building-robust-adversarial-strategies">Part 5: Building Robust Adversarial Strategies</h2>
 
-      <h3>Adversarial Thinking Framework</h3>
+      <h3 id="adversarial-thinking-framework">Adversarial Thinking Framework</h3>
 
       <p><strong>Core principle:</strong> Assume your opponent (institutions) knows your strategy and will exploit it. Design strategies that remain profitable even when opponent adapts.</p>
 
@@ -443,7 +443,7 @@
 
       <p><strong>Result:</strong> Your strategy works whether opponent sweeps or not (limit orders in sweep zone = better entry if sweep happens, stop based on thesis invalidation = protected if no sweep and real breakdown occurs).</p>
 
-      <h2>Practice Exercises</h2>
+      <h2 id="practice-exercises">Practice Exercises</h2>
 
       <div class="practice-exercise">
         <h4>Exercise 1: Nash Equilibrium Analysis</h4>
@@ -495,7 +495,7 @@
         </details>
       </div>
 
-      <h2>Quiz: Test Your Understanding</h2>
+      <h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
 
       <div class="quiz">
         <div class="quiz-question">
@@ -539,7 +539,7 @@
         </div>
       </div>
 
-      <h2>Practical Checklist</h2>
+      <h2 id="practical-checklist">Practical Checklist</h2>
 
       <div class="checklist">
         <h4>Before Every Trade (Game Theory Mindset):</h4>
@@ -604,15 +604,15 @@
 </article>
 
 <aside class="toc" aria-label="On this page">
-  <h3>On this page</h3>
-      <a href="#">Part 1: Nash Equilibrium in Markets</a>
-      <a href="#">Part 2: Prisoner's Dilemma in Liquidity Provision</a>
-      <a href="#">Part 3: Strategic Stop Placement</a>
-      <a href="#">Part 4: How Institutions Use Game Theory</a>
-      <a href="#">Part 5: Building Robust Adversarial Strategies</a>
-      <a href="#">Practice Exercises</a>
-      <a href="#">Quiz: Test Your Understanding</a>
-      <a href="#">Practical Checklist</a>
+  <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-nash-equilibrium-in-markets">Part 1: Nash Equilibrium in Markets</a>
+      <a href="#part-2-prisoners-dilemma-in-liquidity-provision">Part 2: Prisoner's Dilemma in Liquidity Provision</a>
+      <a href="#part-3-strategic-stop-placement">Part 3: Strategic Stop Placement</a>
+      <a href="#part-4-how-institutions-use-game-theory">Part 4: How Institutions Use Game Theory</a>
+      <a href="#part-5-building-robust-adversarial-strategies">Part 5: Building Robust Adversarial Strategies</a>
+      <a href="#practice-exercises">Practice Exercises</a>
+      <a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a>
+      <a href="#quiz-test-your-understanding">Practical Checklist</a>
 </aside>
 
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>

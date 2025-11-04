@@ -104,7 +104,7 @@
 
       <div class="section-break"><span>Part 1: Why Correlation ≠ Cointegration</span></div>
 
-      <h2>The Most Dangerous Misconception in Pairs Trading</h2>
+      <h2 id="the-most-dangerous-misconception-in-pairs-trading">The Most Dangerous Misconception in Pairs Trading</h2>
 
       <p>Retail traders love to find "correlated pairs" and trade the divergence. SPY and QQQ move together, right? Tesla and Lucid? Bitcoin and Ethereum?</p>
 
@@ -119,7 +119,7 @@
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3>Correlation: Moves Together, Maybe</h3>
+            <h3 id="correlation-moves-together-maybe">Correlation: Moves Together, Maybe</h3>
             <p><strong>Definition:</strong> Measures how two assets move in the same direction</p>
             <p><strong>Range:</strong> -1 (perfect inverse) to +1 (perfect positive)</p>
             <p><strong>The Problem:</strong> High correlation doesn't mean they'll return to any specific relationship. Example:</p>
@@ -132,7 +132,7 @@
             <p style="margin-top:1rem;color:var(--warning)"><strong>Danger:</strong> You can't trade a spread that doesn't revert. This is why pure correlation-based pairs fail.</p>
           </div>
           <div class="tab-panel">
-            <h3>Cointegration: Mean-Reverting Equilibrium</h3>
+            <h3 id="cointegration-mean-reverting-equilibrium">Cointegration: Mean-Reverting Equilibrium</h3>
             <p><strong>Definition:</strong> A statistically stable long-term relationship where deviations are temporary</p>
             <p><strong>Test:</strong> Augmented Dickey-Fuller (ADF) test on the spread</p>
             <p><strong>What It Means:</strong> When the spread deviates, it's pulled back toward equilibrium. Example:</p>
@@ -156,7 +156,7 @@
 
       <div class="section-break"><span>Part 1.5: The $73,400 Lesson—Derek's Correlation Trap</span></div>
 
-      <h2>Case Study: When You Trade Correlation Instead of Cointegration</h2>
+      <h2 id="case-study-when-you-trade-correlation-instead-of-cointegration">Case Study: When You Trade Correlation Instead of Cointegration</h2>
 
       <p><strong>Derek Martinez, quantitative trader, February-May 2024.</strong> $220K account. Thought he found a "perfect pair"—ARKK and QQQ had 0.89 correlation. Lost $73,400 in 3 months.</p>
 
@@ -183,7 +183,7 @@
         </ul>
       </div>
 
-      <h3>The Timeline: How Correlation Without Cointegration Destroys Capital</h3>
+      <h3 id="the-timeline-how-correlation-without-cointegration-destroys-capital">The Timeline: How Correlation Without Cointegration Destroys Capital</h3>
 
       <pre><code>FEBRUARY 12 - MAY 10, 2024: DEREK'S $73,400 CORRELATION DISASTER
 
@@ -376,7 +376,7 @@ I never tested for mean reversion in the first place."
         </ul>
       </div>
 
-      <h3>Derek's Recovery: Learning True Statistical Arbitrage (9 Months Later)</h3>
+      <h3 id="dereks-recovery-learning-true-statistical-arbitrage-9-months-later">Derek's Recovery: Learning True Statistical Arbitrage (9 Months Later)</h3>
 
       <p>After his correlation disaster, Derek spent 6 months studying cointegration theory, ADF tests, and proper stat arb methodology. By February 2025, he was ready to trade again—this time with mathematical rigor.</p>
 
@@ -533,7 +533,7 @@ I trade math, not correlation coefficients."
 
       <div class="section-break"><span>Part 2: Finding Cointegrated Pairs</span></div>
 
-      <h2>The Augmented Dickey-Fuller Test</h2>
+      <h2 id="the-augmented-dickey-fuller-test">The Augmented Dickey-Fuller Test</h2>
 
       <p>To validate cointegration, you need to test whether the spread (or ratio) is stationary—meaning it has a constant mean it reverts to.</p>
 
@@ -556,7 +556,7 @@ I trade math, not correlation coefficients."
         </ul>
       </div>
 
-      <h3>Calculating the Hedge Ratio (β)</h3>
+      <h3 id="calculating-the-hedge-ratio-">Calculating the Hedge Ratio (β)</h3>
 
       <p>The hedge ratio determines how many units of Asset B you need to trade for every unit of Asset A to create a market-neutral position.</p>
 
@@ -592,7 +592,7 @@ I trade math, not correlation coefficients."
 
       <div class="section-break"><span>Part 3: Z-Score Entry & Exit Models</span></div>
 
-      <h2>Trading the Statistical Anomaly</h2>
+      <h2 id="trading-the-statistical-anomaly">Trading the Statistical Anomaly</h2>
 
       <p>Once you've validated cointegration, you need entry/exit rules. The standard model: <strong>z-score triggers</strong>.</p>
 
@@ -600,7 +600,7 @@ I trade math, not correlation coefficients."
 
       <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">Z-score = (Current Spread - Mean Spread) / Standard Deviation</p>
 
-      <h3>Standard Entry/Exit Thresholds</h3>
+      <h3 id="standard-entryexit-thresholds">Standard Entry/Exit Thresholds</h3>
 
       <div class="tabs">
         <div class="tabs-nav">
@@ -609,7 +609,7 @@ I trade math, not correlation coefficients."
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3>Conservative Z-Score Model</h3>
+            <h3 id="conservative-z-score-model">Conservative Z-Score Model</h3>
             <ul>
               <li><strong>Entry:</strong> |Z| > 2.0 (spread is 2+ std devs from mean)</li>
               <li><strong>Exit:</strong> Z crosses back through 0 (mean reversion)</li>
@@ -623,7 +623,7 @@ I trade math, not correlation coefficients."
             </ul>
           </div>
           <div class="tab-panel">
-            <h3>Aggressive Z-Score Model</h3>
+            <h3 id="aggressive-z-score-model">Aggressive Z-Score Model</h3>
             <ul>
               <li><strong>Entry:</strong> |Z| > 1.5 (more frequent signals)</li>
               <li><strong>Partial Exit:</strong> Z crosses 0.5 (take some profit)</li>
@@ -650,7 +650,7 @@ I trade math, not correlation coefficients."
         <p><strong>Trade:</strong> Short Asset A, Long Asset B (expect convergence)</p>
       </div>
 
-      <h3>Half-Life: How Long Until Reversion?</h3>
+      <h3 id="half-life-how-long-until-reversion">Half-Life: How Long Until Reversion?</h3>
 
       <p>The half-life tells you how many periods it takes for the spread to revert halfway back to the mean. This informs your holding period.</p>
 
@@ -665,11 +665,11 @@ I trade math, not correlation coefficients."
 
       <div class="section-break"><span>Part 4: Position Sizing & Risk Management</span></div>
 
-      <h2>How Much to Allocate Per Trade</h2>
+      <h2 id="how-much-to-allocate-per-trade">How Much to Allocate Per Trade</h2>
 
       <p>Statistical arbitrage is NOT "set it and forget it." Spreads can widen before they converge (drawdowns), and some pairs decointegrate over time.</p>
 
-      <h3>Kelly Criterion for Stat Arb</h3>
+      <h3 id="kelly-criterion-for-stat-arb">Kelly Criterion for Stat Arb</h3>
 
       <p>Use a modified Kelly approach:</p>
 
@@ -691,7 +691,7 @@ I trade math, not correlation coefficients."
         <p>This protects you from model breakdown while still capturing edge.</p>
       </div>
 
-      <h3>Portfolio of Pairs: Diversification</h3>
+      <h3 id="portfolio-of-pairs-diversification">Portfolio of Pairs: Diversification</h3>
 
       <p>Don't run just one pair. Build a portfolio of 5-10 cointegrated pairs across different sectors to reduce idiosyncratic risk.</p>
 
@@ -715,7 +715,7 @@ I trade math, not correlation coefficients."
 
       <div class="section-break"><span>Part 5: When Stat Arb Fails</span></div>
 
-      <h2>Regime Changes & Decointegration</h2>
+      <h2 id="regime-changes-decointegration">Regime Changes & Decointegration</h2>
 
       <p>Statistical arbitrage works—until it doesn't. Pairs can <strong>decointegrate</strong> due to:</p>
 
@@ -734,7 +734,7 @@ I trade math, not correlation coefficients."
         <p><strong>Lesson:</strong> Statistical models assume normal distributions. Black swan events break those assumptions. Always have stop losses.</p>
       </div>
 
-      <h3>Stop Loss Rules for Stat Arb</h3>
+      <h3 id="stop-loss-rules-for-stat-arb">Stop Loss Rules for Stat Arb</h3>
 
       <ul>
         <li><strong>Z-Score Stop:</strong> Exit if |Z| > 3.5 (spread widening, not reverting)</li>
@@ -745,7 +745,7 @@ I trade math, not correlation coefficients."
 
       <div class="section-break"><span>Part 6: Practical Implementation</span></div>
 
-      <h2>Building Your Stat Arb System</h2>
+      <h2 id="building-your-stat-arb-system">Building Your Stat Arb System</h2>
 
       <p>Step-by-step process for running statistical arbitrage:</p>
 
@@ -812,11 +812,11 @@ I trade math, not correlation coefficients."
 
       <div class="section-break"><span>Part 7: Advanced Strategies—Intraday Statistical Arbitrage</span></div>
 
-      <h2>High-Frequency Mean Reversion (For Active Traders)</h2>
+      <h2 id="high-frequency-mean-reversion-for-active-traders">High-Frequency Mean Reversion (For Active Traders)</h2>
 
       <p>Most stat arb is swing trading (holding 5-30 days), but cointegration also works on intraday timeframes—if you have the infrastructure.</p>
 
-      <h3>Requirements for Intraday Stat Arb</h3>
+      <h3 id="requirements-for-intraday-stat-arb">Requirements for Intraday Stat Arb</h3>
 
       <ul>
         <li><strong>Low Latency Execution:</strong> Sub-second fills required (DMA or sponsored access)</li>
@@ -888,11 +888,11 @@ I trade math, not correlation coefficients."
 
       <div class="section-break"><span>Part 8: Portfolio Construction for Stat Arb</span></div>
 
-      <h2>Building a Diversified Stat Arb Book</h2>
+      <h2 id="building-a-diversified-stat-arb-book">Building a Diversified Stat Arb Book</h2>
 
       <p>Single-pair trading is risky (decointegration can wipe you out). Professional stat arb traders run portfolios of 10-30 pairs simultaneously.</p>
 
-      <h3>Example Portfolio Allocation</h3>
+      <h3 id="example-portfolio-allocation">Example Portfolio Allocation</h3>
 
       <div class="tabs">
         <div class="tabs-nav">
@@ -902,7 +902,7 @@ I trade math, not correlation coefficients."
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3>Conservative Stat Arb Portfolio ($100K Account)</h3>
+            <h3 id="conservative-stat-arb-portfolio-100k-account">Conservative Stat Arb Portfolio ($100K Account)</h3>
             <p><strong>Strategy:</strong> 5 pairs, 2% risk each, daily timeframe</p>
             <ul>
               <li><strong>Pair 1:</strong> KO/PEP (Consumer Staples) — 2% allocation</li>
@@ -917,7 +917,7 @@ I trade math, not correlation coefficients."
             <p><strong>Max Drawdown:</strong> -8% to -12%</p>
           </div>
           <div class="tab-panel">
-            <h3>Moderate Stat Arb Portfolio ($100K Account)</h3>
+            <h3 id="moderate-stat-arb-portfolio-100k-account">Moderate Stat Arb Portfolio ($100K Account)</h3>
             <p><strong>Strategy:</strong> 10 pairs, 1.5% risk each, mix of daily and intraday</p>
             <ul>
               <li><strong>Daily Pairs (6):</strong> Same as conservative, plus MA/V, DIS/CMCSA</li>
@@ -929,7 +929,7 @@ I trade math, not correlation coefficients."
             <p><strong>Max Drawdown:</strong> -12% to -18%</p>
           </div>
           <div class="tab-panel">
-            <h3>Aggressive Stat Arb Portfolio ($100K Account)</h3>
+            <h3 id="aggressive-stat-arb-portfolio-100k-account">Aggressive Stat Arb Portfolio ($100K Account)</h3>
             <p><strong>Strategy:</strong> 20+ pairs, 1% risk each, heavy intraday focus</p>
             <ul>
               <li><strong>Daily Pairs (8):</strong> High Sharpe blue-chips</li>
@@ -962,7 +962,7 @@ I trade math, not correlation coefficients."
         </ul>
       </div>
 
-      <h3>Rebalancing Your Stat Arb Portfolio</h3>
+      <h3 id="rebalancing-your-stat-arb-portfolio">Rebalancing Your Stat Arb Portfolio</h3>
 
       <div class="callout-info">
         <h4>📖 Monthly Maintenance Checklist</h4>
@@ -986,7 +986,7 @@ I trade math, not correlation coefficients."
 
       <div class="section-break"><span>Part 9: Code Implementation (Python Example)</span></div>
 
-      <h2>Building Your Stat Arb System from Scratch</h2>
+      <h2 id="building-your-stat-arb-system-from-scratch">Building Your Stat Arb System from Scratch</h2>
 
       <p>Here's a practical Python implementation for testing and trading pairs:</p>
 
@@ -1150,7 +1150,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
         </ul>
       </div>
 
-      <h2>Next Steps</h2>
+      <h2 id="next-steps">Next Steps</h2>
 
       <p>Statistical arbitrage is a quantitative edge—but it requires discipline. If you execute this correctly, you're trading with mathematical precision instead of hope.</p>
 
@@ -1185,7 +1185,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
 
       <!-- Related Lessons -->
       <div class="card">
-        <h3 style="margin:0 0 1rem 0;font-size:1rem">📚 Related Lessons</h3>
+        <h3 style="margin:0 0 1rem 0;font-size:1rem" id="-related-lessons">📚 Related Lessons</h3>
         <ul style="list-style:none;padding:0;margin:0">
           <li style="margin-bottom:.75rem">
             <a href="/curriculum/advanced-mastery/64-macro-regime-framework.html" style="color:var(--primary);text-decoration:none">
@@ -1214,14 +1214,14 @@ print(f"Total PnL: ${sum(trades):.2f}")
 </article>
 
 <aside class="toc" aria-label="On this page">
-  <h3>On this page</h3>
-      <a href="#">The Most Dangerous Misconception in Pairs Trading</a>
-      <a href="#">The Augmented Dickey-Fuller Test</a>
-      <a href="#">Trading the Statistical Anomaly</a>
-      <a href="#">How Much to Allocate Per Trade</a>
-      <a href="#">Regime Changes & Decointegration</a>
-      <a href="#">Building Your Stat Arb System</a>
-      <a href="#">Next Steps</a>
+  <h3 id="on-this-page">On this page</h3>
+      <a href="#the-most-dangerous-misconception-in-pairs-trading">The Most Dangerous Misconception in Pairs Trading</a>
+      <a href="#case-study-when-you-trade-correlation-instead-of-cointegration">The Augmented Dickey-Fuller Test</a>
+      <a href="#the-augmented-dickey-fuller-test">Trading the Statistical Anomaly</a>
+      <a href="#trading-the-statistical-anomaly">How Much to Allocate Per Trade</a>
+      <a href="#how-much-to-allocate-per-trade">Regime Changes & Decointegration</a>
+      <a href="#regime-changes-decointegration">Building Your Stat Arb System</a>
+      <a href="#building-your-stat-arb-system">Next Steps</a>
 </aside>
 
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>

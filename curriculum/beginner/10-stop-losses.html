@@ -12,6 +12,7 @@
   <meta http-equiv="Expires" content="0"/>
   <title>Stop Losses Don't Protect You (If Placed Like a Textbook)</title>
   <meta name="description" content="Percentage stops are meaningless. The market doesn't care about your 2%. Learn ATR-based stops, structure invalidation, and the 2R minimum rule.">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner/10-stop-losses.html">
   <meta name="sp-level" content="Beginner"><meta name="sp-order" content="10">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -83,7 +84,7 @@
 
       <div class="section-break"><span>Part 1: Why 2% Stops Fail Consistently</span></div>
 
-      <h2>The Market Doesn't Care About Your Account</h2>
+      <h2 id="the-market-doesnt-care-about-your-account">The Market Doesn't Care About Your Account</h2>
 
       <p>Let me show you the problem:</p>
 
@@ -94,7 +95,7 @@
         </div>
         <div class="tabs-content">
           <div class="tab-panel active">
-            <h3>High Volatility Scenario</h3>
+            <h3 id="high-volatility-scenario">High Volatility Scenario</h3>
             <p><strong>Market state:</strong> ATR = 3% (high volatility)</p>
             <p><strong>Your stop:</strong> 2% below entry area (fixed percentage)</p>
             <p><strong>What happens:</strong></p>
@@ -109,7 +110,7 @@
             </p>
           </div>
           <div class="tab-panel">
-            <h3>Low Volatility Scenario</h3>
+            <h3 id="low-volatility-scenario">Low Volatility Scenario</h3>
             <p><strong>Market state:</strong> ATR = 0.5% (low volatility)</p>
             <p><strong>Your stop:</strong> 2% below entry area (fixed percentage)</p>
             <p><strong>What happens:</strong></p>
@@ -134,7 +135,7 @@
 
       <div class="section-break"><span>Part 2: ATR-Based Stops</span></div>
 
-      <h2>Letting the Market Tell You Where to Stop</h2>
+      <h2 id="letting-the-market-tell-you-where-to-stop">Letting the Market Tell You Where to Stop</h2>
 
       <p>Here's the professional approach:</p>
 
@@ -145,7 +146,7 @@
         <code style="font-size:1.1rem">Stop Distance = Multiplier × ATR</code>
       </div>
 
-      <h3>The ATR Multiplier Guide</h3>
+      <h3 id="the-atr-multiplier-guide">The ATR Multiplier Guide</h3>
 
       <div class="accordion">
         <div class="accordion-item">
@@ -185,7 +186,7 @@
         </div>
       </div>
 
-      <h3>Why This Is Genius</h3>
+      <h3 id="why-this-is-genius">Why This Is Genius</h3>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
         <div style="padding:1.5rem;background:rgba(0,212,170,.1);border-radius:12px">
@@ -206,7 +207,7 @@
 
       <div class="section-break"><span>Part 3: Structure-Based Stops</span></div>
 
-      <h2>Stop Where the Thesis Dies</h2>
+      <h2 id="stop-where-the-thesis-dies">Stop Where the Thesis Dies</h2>
 
       <p>ATR tells you HOW FAR. Structure tells you WHERE.</p>
 
@@ -214,14 +215,14 @@
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
         <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
-          <h3 style="margin:0 0 1rem 0">❌ Bad Stop Placement</h3>
+          <h3 style="margin:0 0 1rem 0" id="-bad-stop-placement">❌ Bad Stop Placement</h3>
           <p><strong>Example entry area:</strong> $100.00</p>
           <p><strong>Example stop:</strong> $99.00 (1% below entry area)</p>
           <p><strong>Why it's bad:</strong> Arbitrary. No structural significance. The market doesn't care about your 1%.</p>
           <p style="margin-top:1rem;font-size:.9rem"><em>If $99.00 is hit, does that invalidate your thesis? No. It's just a random number you picked.</em></p>
         </div>
         <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
-          <h3 style="margin:0 0 1rem 0">✅ Good Stop Placement</h3>
+          <h3 style="margin:0 0 1rem 0" id="-good-stop-placement">✅ Good Stop Placement</h3>
           <p><strong>Example entry area:</strong> $100.20 (above swept low at $99.50)</p>
           <p><strong>Example stop:</strong> $99.00 (below swept low + 0.5× ATR buffer)</p>
           <p><strong>Why it's good:</strong> If $99.00 is hit, the sweep thesis is DEAD. Setup is structurally broken.</p>
@@ -243,7 +244,7 @@
 
       <div class="section-break"><span>Part 4: The 2R Minimum Rule</span></div>
 
-      <h2>Why You Need at Least 2:1 Risk:Reward</h2>
+      <h2 id="why-you-need-at-least-21-riskreward">Why You Need at Least 2:1 Risk:Reward</h2>
 
       <p>Pop quiz: What's the minimum risk:reward ratio required for profitability?</p>
 
@@ -269,7 +270,7 @@
       </div>
 
       <div style="margin:2rem 0;padding:1.5rem;background:rgba(255,255,255,.04);border-radius:12px">
-        <h3 style="margin-top:0">Minimum Accuracy Required by R:R</h3>
+        <h3 style="margin-top:0" id="minimum-accuracy-required-by-rr">Minimum Accuracy Required by R:R</h3>
         <p><strong>1:1 Risk:Reward (1R):</strong></p>
         <ul>
           <li>Need >50% accuracy just to break even</li>
@@ -303,11 +304,11 @@
 
       <div class="section-break"><span>Part 5: Stop Management During the Trade</span></div>
 
-      <h2>It's Not Set-and-Forget</h2>
+      <h2 id="its-not-set-and-forget">It's Not Set-and-Forget</h2>
 
       <p>Okay, you've placed your stop. Now what?</p>
 
-      <h3>Stage 1: Breakeven Stop (At +1R)</h3>
+      <h3 id="stage-1-breakeven-stop-at-1r">Stage 1: Breakeven Stop (At +1R)</h3>
 
       <div style="margin:2rem 0;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px">
         <p><strong>Once your trade is +1R in profit, move stop to breakeven (entry area price).</strong></p>
@@ -323,7 +324,7 @@
         </p>
       </div>
 
-      <h3>Stage 2: Trailing Stop (Pentarch Events)</h3>
+      <h3 id="stage-2-trailing-stop-pentarch-events">Stage 2: Trailing Stop (Pentarch Events)</h3>
 
       <p>Use the Pentarch Pilot Line events to manage stops dynamically:</p>
 
@@ -347,7 +348,7 @@
 
       <div class="section-break"><span>Part 6: When NOT to Use Stops</span></div>
 
-      <h2>Three Scenarios Where Hard Stops Don't Make Sense</h2>
+      <h2 id="three-scenarios-where-hard-stops-dont-make-sense">Three Scenarios Where Hard Stops Don't Make Sense</h2>
 
       <div class="accordion">
         <div class="accordion-item">
@@ -386,10 +387,10 @@
 
       <div class="section-break"><span>Part 7: Complete Stop Placement Framework</span></div>
 
-      <h2>Your Step-by-Step System</h2>
+      <h2 id="your-step-by-step-system">Your Step-by-Step System</h2>
 
       <div style="margin:2rem 0;padding:2rem;background:linear-gradient(135deg, rgba(91,138,255,.12), rgba(118,221,255,.08));border-radius:16px">
-        <h3 style="margin-top:0">📋 Stop Placement Checklist</h3>
+        <h3 style="margin-top:0" id="-stop-placement-checklist">📋 Stop Placement Checklist</h3>
 
         <p><strong>Step 1: Identify Structure Invalidation</strong></p>
         <ul>
@@ -429,7 +430,7 @@
         </ul>
       </div>
 
-      <h3>Common Mistakes (And Fixes)</h3>
+      <h3 id="common-mistakes-and-fixes">Common Mistakes (And Fixes)</h3>
 
       <p><strong>Mistake #1: Using percentage stops</strong></p>
       <p><em>Fix:</em> Use ATR + structure-based stops. Let the market tell you where to stop, not your account size.</p>
@@ -800,14 +801,14 @@
     </div>
 
     <aside class="toc" aria-label="On this page">
-      <h3>On this page</h3>
-      <a href="#">Why 2% Stops Fail</a>
-      <a href="#">ATR-Based Stops</a>
-      <a href="#">Structure-Based Stops</a>
-      <a href="#">The 2R Rule</a>
-      <a href="#">Stop Management</a>
-      <a href="#">When NOT to Stop</a>
-      <a href="#">Complete Framework</a>
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#the-market-doesnt-care-about-your-account">Why 2% Stops Fail</a>
+      <a href="#letting-the-market-tell-you-where-to-stop">ATR-Based Stops</a>
+      <a href="#stop-where-the-thesis-dies">Structure-Based Stops</a>
+      <a href="#why-you-need-at-least-21-riskreward">The 2R Rule</a>
+      <a href="#its-not-set-and-forget">Stop Management</a>
+      <a href="#three-scenarios-where-hard-stops-dont-make-sense">When NOT to Stop</a>
+      <a href="#your-step-by-step-system">Complete Framework</a>
       <a href="#">Knowledge Check</a>
     </aside>
   </div>

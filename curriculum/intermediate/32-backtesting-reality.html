@@ -351,7 +351,7 @@
 
       <div class="section-break"><span>Part 1: The Four Ways Backtests Lie</span></div>
 
-      <h2>Why Your Perfect Strategy Will Fail Live</h2>
+      <h2 id="why-your-perfect-strategy-will-fail-live">Why Your Perfect Strategy Will Fail Live</h2>
 
       <p>Let's start with the uncomfortable truth: If you optimized a strategy to fit historical data, you didn't find an edge. You found noise.</p>
 
@@ -364,7 +364,7 @@
         </div>
         <div class="tabs-content">
           <div class="tab-panel active">
-            <h3>Curve-Fitting to Random Noise</h3>
+            <h3 id="curve-fitting-to-random-noise">Curve-Fitting to Random Noise</h3>
             <p><strong>What it is:</strong> Optimizing parameters until backtest looks perfect</p>
             <p><strong>Example:</strong></p>
             <ul>
@@ -376,7 +376,7 @@
             <p><strong>Fix:</strong> Limit optimization. Use standard parameters. Test on unseen data.</p>
           </div>
           <div class="tab-panel">
-            <h3>Using Future Data (Impossible in Live Trading)</h3>
+            <h3 id="using-future-data-impossible-in-live-trading">Using Future Data (Impossible in Live Trading)</h3>
             <p><strong>What it is:</strong> Code that "peeks" into future candles to make current decisions</p>
             <p><strong>Example:</strong></p>
             <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>if close[0] > high[5]:  # Uses FUTURE 5 candles
@@ -386,7 +386,7 @@
             <p><strong>Fix:</strong> Only use data available at the moment of decision.</p>
           </div>
           <div class="tab-panel">
-            <h3>Assuming Perfect Fills at Perfect Prices</h3>
+            <h3 id="assuming-perfect-fills-at-perfect-prices">Assuming Perfect Fills at Perfect Prices</h3>
             <p><strong>Backtest assumption:</strong> "I buying area at $100.00 exactly"</p>
             <p><strong>Reality:</strong> Market order fills at $100.12 (spread + slippage)</p>
             <p><strong>Impact over 100 trades:</strong></p>
@@ -399,7 +399,7 @@
             <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> Real profit = $3,300 (34% less than backtest)</p>
           </div>
           <div class="tab-panel">
-            <h3>Testing Only on Survivors</h3>
+            <h3 id="testing-only-on-survivors">Testing Only on Survivors</h3>
             <p><strong>What it is:</strong> Backtesting on current S&P 500 stocks only</p>
             <p><strong>The problem:</strong> You're excluding 200+ stocks that got delisted/bankrupted</p>
             <p><strong>Example:</strong></p>
@@ -419,7 +419,7 @@
 
       <div class="section-break"><span>Part 2: Modeling Realistic Costs</span></div>
 
-      <h2>The Hidden Costs That Kill Strategies</h2>
+      <h2 id="the-hidden-costs-that-kill-strategies">The Hidden Costs That Kill Strategies</h2>
 
       <p>Here's what most backtests ignore—and why yours is probably 20-40% too optimistic:</p>
 
@@ -484,7 +484,7 @@
         </div>
       </div>
 
-      <h3>Backtest Adjustment Example</h3>
+      <h3 id="backtest-adjustment-example">Backtest Adjustment Example</h3>
 
       <div style="margin:2rem 0;padding:1.5rem;background:rgba(91,138,255,.08);border-radius:12px">
         <h4>Before vs. After Realistic Costs</h4>
@@ -505,7 +505,7 @@
 
       <div class="section-break"><span>Part 3: In-Sample vs. Out-of-Sample</span></div>
 
-      <h2>The Only Validation That Matters</h2>
+      <h2 id="the-only-validation-that-matters">The Only Validation That Matters</h2>
 
       <p>Here's the professional way to validate a strategy:</p>
 
@@ -533,7 +533,7 @@
         </ul>
       </div>
 
-      <h3>Red Flags of Overfitting</h3>
+      <h3 id="red-flags-of-overfitting">Red Flags of Overfitting</h3>
 
       <div style="margin:2rem 0;padding:1.5rem;background:rgba(255,107,107,.12);border-radius:12px">
         <h4>🚩 Warning Signs Your Strategy Is Curve-Fit</h4>
@@ -549,7 +549,7 @@
 
       <div class="section-break"><span>Part 4: Walk-Forward Analysis</span></div>
 
-      <h2>The Professional Validation Method</h2>
+      <h2 id="the-professional-validation-method">The Professional Validation Method</h2>
 
       <p>In-sample/out-of-sample is good. Walk-forward is better.</p>
 
@@ -674,11 +674,11 @@
     </div>
 
     <aside class="toc" aria-label="On this page">
-      <h3>On this page</h3>
-      <a href="#">Four Backtest Lies</a>
-      <a href="#">Realistic Costs</a>
-      <a href="#">In-Sample vs Out-of-Sample</a>
-      <a href="#">Walk-Forward Analysis</a>
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#why-your-perfect-strategy-will-fail-live">Four Backtest Lies</a>
+      <a href="#the-hidden-costs-that-kill-strategies">Realistic Costs</a>
+      <a href="#the-only-validation-that-matters">In-Sample vs Out-of-Sample</a>
+      <a href="#the-professional-validation-method">Walk-Forward Analysis</a>
       <a href="#">Knowledge Check</a>
     </aside>
   </div>
