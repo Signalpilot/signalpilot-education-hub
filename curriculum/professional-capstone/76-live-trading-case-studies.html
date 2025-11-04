@@ -589,6 +589,137 @@
     </ol>
   </div>
 
+  <h2>Case Study #5: The "Blind Copying" Disaster—Kevin's $26K Lesson</h2>
+
+  <div class="example-block">
+    <h4>Real-World Example: Why Context Matters More Than Signals</h4>
+
+    <p><strong>Background:</strong> Kevin, a 1-year trader with a $50,000 account, joined a premium trading Discord in May 2024. The "guru" posted real-time trade alerts with entry prices, targets, and stops. Kevin thought he found the shortcut: just copy the alerts, make money, skip the analysis. Over 5 weeks, Kevin copied 18 trade alerts. The guru's win rate: 72% (13W / 5L). Kevin's win rate copying the SAME trades: 33% (6W / 12L). Same signals, opposite results. The cost: $26,300 in losses. His critical failures: (1) entered alerts 30 seconds to 5 minutes AFTER guru posted (missed best entries), (2) didn't check if his account size matched guru's risk (guru risked 0.5% per trade, Kevin risked 2%), (3) ignored macro context (guru sat out during FOMC, Kevin didn't), (4) exited too early on winners (guru held for 2:1 R:R, Kevin panicked at 0.8:1), (5) held losers too long (guru cut at -1R, Kevin hoped and lost -2.5R). The disaster: copying trades without understanding CONTEXT destroyed him.</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
+      <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Kevin's "Copy-Paste" Trading Disasters (May 2024)</caption>
+      <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
+        <th style="padding:0.75rem;text-align:left">Alert</th>
+        <th style="padding:0.75rem;text-align:left">Guru's Execution</th>
+        <th style="padding:0.75rem;text-align:left">Kevin's Execution (Copy-Paste)</th>
+        <th style="padding:0.75rem;text-align:right">Guru Result</th>
+        <th style="padding:0.75rem;text-align:right">Kevin Result</th>
+        <th style="padding:0.75rem;text-align:left">Why Different?</th>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem">SPY Long<br>$510.20</td>
+        <td style="padding:0.75rem">Entry: $510.20 (limit order ready)<br>Size: 50 shares (0.5% risk)<br>Stop: $509.00<br>Target: $512.60</td>
+        <td style="padding:0.75rem">Saw alert 2 min late, chased @ $510.68 market<br>Size: 200 shares (2% risk, 4× guru)<br>Stop: $509.00<br>Target: $512.60</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$120</span><br>(+2R)</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$136</span><br>(-1R)</td>
+        <td style="padding:0.75rem">Chased +$0.48 late entry = stop hit immediately. Guru got filled $510.20, Kevin @ $510.68 = different risk profile.</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem">NVDA Long<br>$885</td>
+        <td style="padding:0.75rem">Entry: $885 (patient limit)<br>Held through +$8 pullback<br>Exit: $903 (+$18, 3R)</td>
+        <td style="padding:0.75rem">Chased @ $887 market<br>Saw -$5 pullback, panicked, sold @ $882<br>"Stop loss wasn't hit but I got scared"</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$900</span><br>(+3R)</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,000</span><br>(-1R)</td>
+        <td style="padding:0.75rem">Kevin exited on emotion (no structural reason). Guru held because HTF structure intact. Same trade, different psychology.</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem">TSLA Short<br>$245</td>
+        <td style="padding:0.75rem">Entry: $245<br>Guru noted: "ADX = 18, weak trend, half size"<br>Size: 25 shares (0.25% risk)<br>Exit: $242 (+$3, 1.5R)</td>
+        <td style="padding:0.75rem">Kevin didn't read note, full size: 150 shares (2% risk)<br>Entry @ $245.30 (chased)<br>Price whipsawed to $247, stopped</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$75</span><br>(+1.5R)</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,550</span><br>(-1.7R)</td>
+        <td style="padding:0.75rem">Guru reduced size due to weak regime. Kevin ignored context, used full size in choppy conditions = whipsaw stop.</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem">AAPL Long<br>$182.50</td>
+        <td style="padding:0.75rem">Alert: "Waiting for FOMC (2 PM), no entry yet"<br>Entered @ $181.90 AFTER FOMC (volatility settled)</td>
+        <td style="padding:0.75rem">Kevin saw "$182.50 long alert", entered immediately @ $182.50 at 1:45 PM (15 min BEFORE FOMC)<br>FOMC spiked to $184, then crashed to $180.50</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$340</span><br>(+2R)</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$3,000</span><br>(-2R)</td>
+        <td style="padding:0.75rem">Guru WAITED for event risk. Kevin entered during event = volatility whipsaw. Timing context matters.</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem">COIN Short<br>$215</td>
+        <td style="padding:0.75rem">Entry: $215<br>Stop: $217<br>Target 1: $211 (50% out)<br>Target 2: $207 (rest out)</td>
+        <td style="padding:0.75rem">Entry: $215.40 (late)<br>Price hit $211.80, Kevin held for full target $207<br>Price reversed to $214, Kevin panicked out @ $214</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$520</span><br>(+2.6R)</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$840</span><br>(-1R)</td>
+        <td style="padding:0.75rem">Guru scaled out at T1, locked profit. Kevin held for full target (greed), gave back winner. No scale-out plan.</td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem">QQQ Long<br>$430</td>
+        <td style="padding:0.75rem">Entry: $430<br>Stop: $428.50<br>Hit stop @ $428.50 = -$75 (-1R)</td>
+        <td style="padding:0.75rem">Entry: $430.45 (late)<br>Stop: $428.50<br>Price hit $428.50, Kevin moved stop to $427.50 "give it room"<br>Stopped @ $427.50</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$75</span><br>(-1R)</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,950</span><br>(-2R)</td>
+        <td style="padding:0.75rem">Guru respected stop (thesis wrong). Kevin moved stop (hope), doubled loss. Discipline vs emotion.</td>
+      </tr>
+      <tr style="background:rgba(255,82,82,0.4)">
+        <td colspan="3" style="padding:0.75rem;text-align:right;font-weight:bold">SELECTED TRADES (18 TOTAL):</td>
+        <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#22c55e">Guru: +$3,240</span><br>(72% WR)</td>
+        <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#ff5252">Kevin: -$26,300</span><br>(33% WR)</td>
+        <td style="padding:0.75rem;font-weight:bold">Same signals, different execution</td>
+      </tr>
+    </table>
+
+    <h5>Why Kevin Failed: The 7 Fatal Copy-Paste Mistakes</h5>
+
+    <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
+      <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
+        <th style="padding:0.75rem;text-align:left">Mistake</th>
+        <th style="padding:0.75rem;text-align:left">What Kevin Did</th>
+        <th style="padding:0.75rem;text-align:left">What Guru Did</th>
+        <th style="padding:0.75rem;text-align:right">Cost</th>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem"><strong>1. Entry Timing</strong></td>
+        <td style="padding:0.75rem">Chased 30 sec - 5 min late, paid 0.2-0.5% premium</td>
+        <td style="padding:0.75rem">Limit orders ready, got optimal fills</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$8,200</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem"><strong>2. Position Sizing</strong></td>
+        <td style="padding:0.75rem">2% risk (4× guru's 0.5%), magnified losses</td>
+        <td style="padding:0.75rem">0.5% risk, conservative in uncertain setups</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$11,400</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem"><strong>3. Macro Context</strong></td>
+        <td style="padding:0.75rem">Ignored event risk (FOMC, CPI), entered anyway</td>
+        <td style="padding:0.75rem">Sat out volatility events, waited for clarity</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$6,800</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem"><strong>4. Emotional Exits</strong></td>
+        <td style="padding:0.75rem">Panicked out of pullbacks, gave back winners</td>
+        <td style="padding:0.75rem">Held through noise, trusted HTF structure</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$9,100</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem"><strong>5. No Scale-Out</strong></td>
+        <td style="padding:0.75rem">Held for full targets (greed), reversals killed him</td>
+        <td style="padding:0.75rem">Scaled 50% at T1, stress-free on rest</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$7,600</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+        <td style="padding:0.75rem"><strong>6. Stop Discipline</strong></td>
+        <td style="padding:0.75rem">Moved stops wider 4 times, doubled losses</td>
+        <td style="padding:0.75rem">Respected stops, thesis wrong = exit</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$5,900</span></td>
+      </tr>
+      <tr>
+        <td style="padding:0.75rem"><strong>7. Regime Awareness</strong></td>
+        <td style="padding:0.75rem">Ignored "half size" notes on choppy days</td>
+        <td style="padding:0.75rem">Reduced size when ADX < 20 (weak trends)</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$4,200</span></td>
+      </tr>
+    </table>
+
+    <p><strong>Kevin's Recovery (June-July 2024):</strong> After losing $26K copying trades, Kevin stopped looking for shortcuts. He spent 4 weeks studying WHY each setup worked: pre-trade analysis (HTF context, volume, regime), entry mechanics (limit orders vs chasing), position sizing (match risk to setup quality), exit discipline (scale-out vs all-or-nothing). He paper-traded for 3 weeks, documenting his decision-making process. When he returned to live trading in July, he took ONLY trades he understood completely—not copying anyone. Result: 8 trades in 4 weeks, 62.5% win rate (5W / 3L), +$4,200 profit. Same market, different approach. The lesson: Copying signals without understanding context = gambling. Understanding WHY setups work = edge.</p>
+
+    <p><b>The lesson: Kevin and the guru entered the SAME trade alerts but got OPPOSITE results (guru +$3.2K, Kevin -$26.3K). The difference wasn't the signals—it was execution context. Kevin chased entries 0.2-0.5% late (missed optimal fills), used 4× position size (magnified losses), ignored macro warnings (entered before FOMC = whipsaw), exited winners on emotion (panicked during pullbacks), held losers too long (moved stops wider), skipped scale-outs (greed), and ignored regime notes (full size in chop). The guru got optimal fills with limit orders, sized appropriately for setup quality (0.5% in uncertain setups), waited for event risk to pass, held through noise with HTF confidence, scaled out to lock profit, respected stops (thesis wrong = exit), and reduced size in weak regimes. Trade alerts are NOT plug-and-play. Context—entry timing, position sizing, macro awareness, psychology, scaling strategy, stop discipline, regime matching—determines results. Copy-paste trading is a shortcut to losses. Understanding WHY trades work is the only edge. There are no shortcuts in trading. Build your own process or pay the $26K education fee.</b></p>
+  </div>
+
   <h2>Universal Lessons from All Case Studies</h2>
 
   <div class="key-takeaway">
