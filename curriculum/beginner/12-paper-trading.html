@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>Paper Trading is Lying to You</title>
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner/12-paper-trading.html">
   <meta name="sp-level" content="Beginner"><meta name="sp-order" content="12">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +13,8 @@
   <link rel="stylesheet" href="/assets/notes.css">
   <link rel="stylesheet" href="/assets/auth-ui.css">
   <link rel="stylesheet" href="/assets/chatbot.css">
+  <!-- Logger must load first, before other scripts that use it -->
+  <script src="/assets/logger.js"></script>
   <script src="/assets/notes.js" defer></script>
   <script src="/assets/library.js"></script>
   <script src="/assets/lesson-notes.js"></script>
@@ -59,41 +62,41 @@
   <h1>Paper Trading is Lying to You</h1>
 
   <p><b>Sim fills aren't real. Psychology with play money isn't real.</b> Learn slippage reality, the psychology gap, and the 3-stage graduation system (sim → micro → standard).</p>
-      <h2>The Sim vs. Live Fill Reality</h2>
-      <h3>Paper Trading Fill</h3>
+      <h2 id="the-sim-vs-live-fill-reality">The Sim vs. Live Fill Reality</h2>
+      <h3 id="paper-trading-fill">Paper Trading Fill</h3>
       <p><strong>Order:</strong> Market buy 1,000 shares at $100.00</p>
       <p><strong>Fill:</strong> 1,000 shares @ $100.00 (instant, instant fill)</p>
       <p><strong>Slippage:</strong> $0.00</p>
-      <h3>Live Trading Fill (Same Order)</h3>
+      <h3 id="live-trading-fill-same-order">Live Trading Fill (Same Order)</h3>
       <p><strong>Order:</strong> Market buy 1,000 shares at $100.00</p>
       <p><strong>Fill Potential Breakdown:</strong></p>
       <ul><li>300 @ $100.01</li><li>400 @ $100.02</li><li>300 @ $100.03</li></ul>
       <p><strong>Average Fill:</strong> $100.0187</p>
       <p><strong>Slippage:</strong> $18.70 per 1,000 shares</p>
       <p><b>Your sim showed +$500 profit. Live, you only made $481.30 (slippage killed 3.7%).</b></p>
-      <h2>The Psychology Gap: Why Real Money Changes Everything</h2>
-      <h3>Paper Trading Psychology</h3>
+      <h2 id="the-psychology-gap-why-real-money-changes-everything">The Psychology Gap: Why Real Money Changes Everything</h2>
+      <h3 id="paper-trading-psychology">Paper Trading Psychology</h3>
       <ul><li><b>Loss aversion:</b> None (it's fake money)</li><li><b>Fear:</b> None (can't lose anything real)</li><li><b>Greed:</b> None (can't gain anything real)</li><li><b>Result:</b> Perfect execution, robotic discipline</li></ul>
-      <h3>Live Trading Psychology</h3>
+      <h3 id="live-trading-psychology">Live Trading Psychology</h3>
       <ul><li><b>Loss aversion:</b> INTENSE (this is my rent money)</li><li><b>Fear:</b> Paralyzing (what if I lose it all?)</li><li><b>Greed:</b> Overwhelming (I can make $10k today!)</li><li><b>Result:</b> Emotional hijack, revenge trading, rule-breaking</li></ul>
       <p><b>Your perfect expectancy on sim often degrades significantly live because your brain is different with real money.</b></p>
-      <h2>What Paper Trading CAN'T Teach You</h2>
+      <h2 id="what-paper-trading-cant-teach-you">What Paper Trading CAN'T Teach You</h2>
       <ul><li><b>Real slippage</b> (especially on volatile moves)</li><li><b>Rejection risk</b> (limit orders that don't fill)</li><li><b>Emotional control</b> (fear, greed, revenge)</li><li><b>Position size stress</b> (risking $500 feels different than risking $5)</li><li><b>Loss recovery psychology</b> (how you react to -$2,000 day)</li></ul>
-      <h2>The 3-Stage Graduation System</h2>
-      <h3>Stage 1: Paper Trading (Mechanics Only)</h3>
+      <h2 id="the-3-stage-graduation-system">The 3-Stage Graduation System</h2>
+      <h3 id="stage-1-paper-trading-mechanics-only">Stage 1: Paper Trading (Mechanics Only)</h3>
       <p><strong>Goal:</strong> Learn platform, test strategy mechanics, build checklist.</p>
       <p><strong>Duration:</strong> 50-100 trades (or 1-3 months)</p>
       <p><strong>Success Criteria:</strong></p>
       <ul><li>Positive expectancy (minimum +0.5R average per trade)</li><li>100% checklist adherence</li><li>Documented strategy (written rules)</li></ul>
       <p><b>DON'T EXPECT:</b> Live results to match sim.</p>
-      <h3>Stage 2: Micro Account (Real Money, Small Size)</h3>
+      <h3 id="stage-2-micro-account-real-money-small-size">Stage 2: Micro Account (Real Money, Small Size)</h3>
       <p><strong>Goal:</strong> Experience real psychology with manageable risk.</p>
       <p><strong>Size:</strong> 5-10% of eventual position size</p>
       <p><strong>Example:</strong> If you'll trade $10k positions live, trade $500-$1,000 on micro.</p>
       <p><strong>Duration:</strong> 100-200 trades (or 3-6 months)</p>
       <p><strong>Success Criteria:</strong></p>
       <ul><li>Positive expectancy maintained</li><li>Emotional control (no revenge trading)</li><li>Checklist adherence >90%</li><li>Can handle losses without tilt</li></ul>
-      <h3>Stage 3: Standard Size (Full Capital)</h3>
+      <h3 id="stage-3-standard-size-full-capital">Stage 3: Standard Size (Full Capital)</h3>
       <p><strong>Goal:</strong> Scale to full size after proving profitability.</p>
       <p><strong>Size:</strong> 100% planned position size</p>
       <p><strong>Graduation Rule:</strong> Only move to Stage 3 after 6+ months profitable on Stage 2.</p>
@@ -418,37 +421,37 @@
         <p><b>The micro account stage isn't optional. It's where you pay $100-$300 in tuition to learn real-money psychology instead of paying $5,000-$10,000 learning it on a full-size account.</b></p>
       </div>
 
-      <h2>What You CAN Learn from Paper Trading</h2>
-      <h3>1. Platform Mechanics</h3>
+      <h2 id="what-you-can-learn-from-paper-trading">What You CAN Learn from Paper Trading</h2>
+      <h3 id="1-platform-mechanics">1. Platform Mechanics</h3>
       <ul><li>How to place orders (market, limit, stop)</li><li>How to set alerts</li><li>How to read charts/indicators</li></ul>
-      <h3>2. Strategy Mechanics</h3>
+      <h3 id="2-strategy-mechanics">2. Strategy Mechanics</h3>
       <ul><li>Does setup even work? (basic backtest)</li><li>What's approximate expectancy?</li><li>What's approximate R:R?</li></ul>
-      <h3>3. Checklist Development</h3>
+      <h3 id="3-checklist-development">3. Checklist Development</h3>
       <ul><li>Build pre-trade checklist</li><li>Test if you can follow it consistently</li><li>Refine entry area/exit criteria</li></ul>
-      <h3>4. Signal Pilot Integration</h3>
+      <h3 id="4-signal-pilot-integration">4. Signal Pilot Integration</h3>
       <ul><li>Learn how Janus Atlas signals work</li><li>Practice reading Plutus Flow delta</li><li>Understand Volume Oracle regime shifts</li></ul>
       <p><b>Paper trading teaches mechanics. Live trading teaches psychology.</b></p>
-      <h2>Micro Account Best Practices</h2>
-      <h3>Choose Right Broker</h3>
+      <h2 id="micro-account-best-practices">Micro Account Best Practices</h2>
+      <h3 id="choose-right-broker">Choose Right Broker</h3>
       <ul><li><b>Crypto:</b> Binance, Coinbase (can trade $10 positions)</li><li><b>Stocks:</b> Interactive Brokers, TD Ameritrade (fractional shares)</li><li><b>Futures:</b> Micro contracts (MES, MNQ = 1/10 size of standard)</li></ul>
-      <h3>Track EVERYTHING</h3>
+      <h3 id="track-everything">Track EVERYTHING</h3>
       <p><strong>Mandatory journal fields:</strong></p>
       <ul><li>Entry/exit price</li><li>Slippage (sim fill vs. live fill)</li><li>Emotional state (1-10 before trade)</li><li>Checklist adherence (yes/no)</li><li>Lesson learned</li></ul>
-      <h3>Expect Lower Performance</h3>
+      <h3 id="expect-lower-performance">Expect Lower Performance</h3>
       <p><strong>Sim:</strong> 1.2R expectancy, 2.5R avg winner</p>
       <p><strong>Micro (realistic):</strong> 0.8R expectancy, 2.0R avg winner</p>
       <p><strong>Why?</strong> Slippage, real psychology, occasional rule breaks.</p>
       <p><b>This is NORMAL. If you're profitable on micro, you're doing great.</b></p>
-      <h2>Red Flags to Stay in Stage 2</h2>
+      <h2 id="red-flags-to-stay-in-stage-2">Red Flags to Stay in Stage 2</h2>
       <ul><li><b>Revenge trading after losses</b> → Stay in Stage 2 until eliminated</li><li><b>Checklist adherence <90%</b> → Stay in Stage 2 until >95%</li><li><b>Negative expectancy</b> → Back to Stage 1 (strategy broken)</li><li><b>Emotional volatility</b> → Stay in Stage 2, reduce size further</li><li><b>Inconsistent results</b> (big swings monthly) → Stay in Stage 2, refine strategy</li></ul>
-      <h2>Complete Graduation Framework</h2>
+      <h2 id="complete-graduation-framework">Complete Graduation Framework</h2>
       <p><strong>Stage 1 Requirements (50-100 trades):</strong></p>
       <ul><li>[ ] Positive expectancy</li><li>[ ] 100% checklist adherence</li><li>[ ] Written strategy rules</li><li>[ ] Platform mastery</li></ul>
       <p><strong>Stage 2 Requirements (100-200 trades, 6+ months):</strong></p>
       <ul><li>[ ] Consistently profitable (6/12 months green)</li><li>[ ] >90% checklist adherence</li><li>[ ] No revenge trading incidents</li><li>[ ] Emotional control demonstrated</li><li>[ ] Slippage/spread costs accounted</li></ul>
       <p><strong>Stage 3 Readiness:</strong></p>
       <ul><li>[ ] All Stage 2 requirements met</li><li>[ ] 12+ months of tracked data</li><li>[ ] Drawdown <15% at worst</li><li>[ ] Comfortable with position size psychologically</li></ul>
-      <h2>Key Takeaways</h2>
+      <h2 id="key-takeaways">Key Takeaways</h2>
       <ul><li><strong>Sim fills ≠ live fills</strong> (slippage is real)</li><li><strong>Sim psychology ≠ live psychology</strong> (fear/greed activate with real money)</li><li><strong>3-stage system: Sim → Micro → Standard</strong></li><li><strong>NEVER skip micro stage</strong> (80% blow up from sim to full size)</li><li><strong>Paper trading teaches mechanics, not psychology</strong></li><li><strong>Expect 15-25% performance drop from sim to live</strong></li></ul>
       <div class="section-break"><span>Practice Exercise</span>
 
@@ -521,7 +524,7 @@
 
 </article>
 <aside class="toc">
-  <h3>On this page</h3>
+  <h3 id="on-this-page">On this page</h3>
   <ul>
     <li><a href="#the-sim-vs-live-fill-reality">The Sim vs. Live Fill Reality</a></li>
     <li><a href="#the-psychology-gap-why-real-money-changes-everything">The Psychology Gap: Why Real Money Changes Everything</a></li>

@@ -61,7 +61,7 @@
   <p>High-frequency trading (HFT) accounts for 50%+ of all equity volume. You're not trading against humans—you're trading against machines that execute in microseconds. Understanding how they work is the only way to avoid becoming their prey.</p>
 
   <div class="progress-tracker">
-    <h3>Your Progress Through This Lesson</h3>
+    <h3 id="your-progress-through-this-lesson">Your Progress Through This Lesson</h3>
     <div class="progress-step">
       <div class="step-number">1</div>
       <div class="step-content">
@@ -99,9 +99,9 @@
     </div>
   </div>
 
-  <h2>Part 1: What Is HFT?</h2>
+  <h2 id="part-1-what-is-hft">Part 1: What Is HFT?</h2>
 
-  <h3>Definition & Scale</h3>
+  <h3 id="definition-scale">Definition & Scale</h3>
   <p><strong>HFT:</strong> Algorithmic trading strategies holding positions for seconds to microseconds</p>
   <p><strong>Volume:</strong> 50-70% of US equity volume (varies by market conditions)</p>
   <p><strong>Profit per trade:</strong> Fractions of a penny, scaled across millions of trades</p>
@@ -161,7 +161,7 @@
     <p><strong>Result:</strong> Win rate of 95%+ because they only take statistically favorable trades</p>
   </div>
 
-  <h3>Key HFT Strategies</h3>
+  <h3 id="key-hft-strategies">Key HFT Strategies</h3>
 
   <p><strong>1. Market Making (40% of HFT volume)</strong></p>
   <ul>
@@ -210,9 +210,9 @@
     <li><strong>Example:</strong> Post liquidity on exchange A (earn $0.0020/share), take liquidity on exchange B (pay $0.0030/share) → net $0.0010 loss, but capture spread of $0.05 → total profit $0.047/share</li>
   </ul>
 
-  <h2>Part 2: The Latency Game</h2>
+  <h2 id="part-2-the-latency-game">Part 2: The Latency Game</h2>
 
-  <h3>Why Speed Matters</h3>
+  <h3 id="why-speed-matters">Why Speed Matters</h3>
   <p><strong>Critical insight:</strong> Whoever sees market information first, profits</p>
 
   <div class="callout">
@@ -226,7 +226,7 @@
     <p><strong>Reality:</strong> HFT firms see your order 50,000x-200,000x faster than you see theirs</p>
   </div>
 
-  <h3>Colocation & Infrastructure</h3>
+  <h3 id="colocation-infrastructure">Colocation & Infrastructure</h3>
   <p><strong>Colocation:</strong> Placing servers physically next to exchange matching engines</p>
   <p><strong>Cost:</strong> $10,000-100,000/month per rack at NYSE, Nasdaq data centers</p>
   <p><strong>Why:</strong> Reduces latency from 10ms → 0.5ms (20x faster)</p>
@@ -300,9 +300,9 @@
     </div>
   </details>
 
-  <h2>Part 3: How HFTs Exploit Retail</h2>
+  <h2 id="part-3-how-hfts-exploit-retail">Part 3: How HFTs Exploit Retail</h2>
 
-  <h3>Tactic #1: Order Anticipation</h3>
+  <h3 id="tactic-1-order-anticipation">Tactic #1: Order Anticipation</h3>
   <p><strong>How it works:</strong></p>
   <ol>
     <li>HFT detects large institutional order (10,000 shares buying AAPL across multiple venues)</li>
@@ -325,7 +325,7 @@
     </ul>
   </div>
 
-  <h3>Tactic #2: Latency Arbitrage (Cross-Venue)</h3>
+  <h3 id="tactic-2-latency-arbitrage-cross-venue">Tactic #2: Latency Arbitrage (Cross-Venue)</h3>
   <p><strong>Setup:</strong> Stock trades on 13+ exchanges (NYSE, Nasdaq, BATS, IEX, EDGX, EDGA, CHX, NSX, dark pools)</p>
   <p><strong>Exploit:</strong> Price updates don't arrive simultaneously across all venues</p>
 
@@ -346,7 +346,7 @@
     <p><strong>🎯 Defense:</strong> IEX (Investors Exchange) adds 350-microsecond "speed bump" to prevent latency arbitrage. Route orders through IEX to avoid being HFT prey. The speed bump delays ALL orders equally, so HFT firms can't exploit microsecond advantages.</p>
   </div>
 
-  <h3>Tactic #3: Quote Stuffing</h3>
+  <h3 id="tactic-3-quote-stuffing">Tactic #3: Quote Stuffing</h3>
   <p><strong>What:</strong> Flood market with fake orders, cancel before execution</p>
   <p><strong>Why:</strong> Slow down competitor algos (create processing delays while they parse fake orders)</p>
   <p><strong>Scale:</strong> HFTs can place 10,000-25,000 orders/second, cancel 99.9% before execution</p>
@@ -362,7 +362,7 @@
     <li><strong>Result:</strong> Spread widens to $400.00 bid, $400.10 ask (liquidity providers pull back), retail trader gets worse fill</li>
   </ul>
 
-  <h3>Tactic #4: Maker-Taker Fee Arbitrage</h3>
+  <h3 id="tactic-4-maker-taker-fee-arbitrage">Tactic #4: Maker-Taker Fee Arbitrage</h3>
   <p><strong>How exchanges work:</strong> Makers (provide liquidity) get rebate ($0.0015-0.0030/share), takers (remove liquidity) pay fee ($0.0025-0.0035/share)</p>
   <p><strong>HFT strategy:</strong></p>
   <ol>
@@ -375,7 +375,7 @@
 
   <p><strong>Scale:</strong> 10 million shares/day × $0.009/share = $90,000/day from maker-taker arbitrage</p>
 
-  <h3>Tactic #5: Layering & Spoofing</h3>
+  <h3 id="tactic-5-layering-spoofing">Tactic #5: Layering & Spoofing</h3>
   <p><strong>Layering:</strong> Place large orders on one side to fake demand, trade on other side</p>
   <p><strong>Example:</strong></p>
   <ul>
@@ -388,7 +388,7 @@
   </ul>
   <p><strong>Legality:</strong> Explicitly illegal (Dodd-Frank Act 2010), but detection is hard. SEC fines are rare, typically $1M-5M (low compared to profits).</p>
 
-  <h3>Tactic #6: Liquidity Withdrawal During Volatility</h3>
+  <h3 id="tactic-6-liquidity-withdrawal-during-volatility">Tactic #6: Liquidity Withdrawal During Volatility</h3>
   <p><strong>Strategy:</strong> HFT market makers provide liquidity during calm markets, withdraw during volatility</p>
   <p><strong>Problem for retail:</strong> When you need liquidity most (volatile conditions), it disappears</p>
 
@@ -402,9 +402,9 @@
     <li><strong>Impact:</strong> Retail traders panic-sold at massive losses (SPY filled at $380 instead of $395), HFTs bought at bottom and resold minutes later</li>
   </ul>
 
-  <h2>Part 4: HFT Red Flags & Defense</h2>
+  <h2 id="part-4-hft-red-flags-defense">Part 4: HFT Red Flags & Defense</h2>
 
-  <h3>Signs HFTs Are Active</h3>
+  <h3 id="signs-hfts-are-active">Signs HFTs Are Active</h3>
   <ul>
     <li><strong>Spoofing:</strong> Large orders appearing/disappearing rapidly (50,000-share bid flashes on/off in under 1 second)</li>
     <li><strong>Spread widening during volatility:</strong> Normal $0.01 spread becomes $0.10-0.50 (HFTs pull liquidity)</li>
@@ -457,7 +457,7 @@
     </tbody>
   </table>
 
-  <h3>How to Defend Against HFTs</h3>
+  <h3 id="how-to-defend-against-hfts">How to Defend Against HFTs</h3>
 
   <details class="accordion">
     <summary>Defense #1: Use Limit Orders Only</summary>
@@ -518,9 +518,9 @@
     </div>
   </details>
 
-  <h2>Part 5: Using Signal Pilot to Detect HFT Activity</h2>
+  <h2 id="part-5-using-signal-pilot-to-detect-hft-activity">Part 5: Using Signal Pilot to Detect HFT Activity</h2>
 
-  <h3>Minimal Flow: Sub-Second Order Flow</h3>
+  <h3 id="minimal-flow-sub-second-order-flow">Minimal Flow: Sub-Second Order Flow</h3>
   <p><strong>How to use:</strong> Look for rapid-fire prints (100 shares × 50 times in 5 seconds = HFT activity, not institutional accumulation)</p>
   <p><strong>Signal:</strong> If HFT buying aggressively (50+ small prints per minute), institutions may be accumulating → HFTs detected order flow, front-running</p>
   <p><strong>Interpretation:</strong></p>
@@ -530,7 +530,7 @@
     <li><strong>200 prints of 50-200 shares in 10 seconds:</strong> Likely HFT arbitrage or quote stuffing</li>
   </ul>
 
-  <h3>Pentarch Pilot Line: Institutional vs HFT Volume</h3>
+  <h3 id="pentarch-pilot-line-institutional-vs-hft-volume">Pentarch Pilot Line: Institutional vs HFT Volume</h3>
   <p><strong>Difference:</strong> Institutional prints are large (5,000-50,000 shares), HFT prints are small (10-500 shares)</p>
   <p><strong>What to look for:</strong> If Pilot Line shows large institutional buying but price not moving → HFTs absorbing and reselling (churn), not true demand</p>
   <p><strong>Example:</strong></p>
@@ -541,7 +541,7 @@
     <li><strong>Action:</strong> Wait for HFT absorption to complete (usually 15-30 min), then follow institutional direction once HFTs step aside</li>
   </ul>
 
-  <h3>Time & Sales Timestamp Analysis</h3>
+  <h3 id="time-sales-timestamp-analysis">Time & Sales Timestamp Analysis</h3>
   <p><strong>How to use:</strong> Watch for trades executed in microseconds (timestamps ending in .001, .002, .003 seconds)</p>
   <p><strong>Signal:</strong> Microsecond clustering = HFT latency arbitrage</p>
   <p><strong>Example:</strong></p>
@@ -551,7 +551,7 @@
 10:30:00.124234 - AAPL 400 @ $149.99</code></pre>
   <p><strong>Interpretation:</strong> 4 trades in 0.778 milliseconds (impossible for humans). This is HFT arbitrage across venues or market making.</p>
 
-  <h2>Practice Exercises</h2>
+  <h2 id="practice-exercises">Practice Exercises</h2>
 
   <div class="practice-exercise">
     <h4>Exercise 1: Identify HFT Exploitation</h4>
@@ -599,7 +599,7 @@
     </details>
   </div>
 
-  <h2>Quiz: Test Your Understanding</h2>
+  <h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
   <div class="quiz">
     <div class="quiz-question">
       <p><strong>Q1:</strong> You place a market buy order for 1,000 shares of AAPL (bid $150.00, ask $150.05). You get filled at $150.12. What happened?</p>
@@ -642,7 +642,7 @@
     </div>
   </div>
 
-  <h2>Practical Checklist</h2>
+  <h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>Before Every Trade:</h4>
     <ul>
@@ -698,15 +698,15 @@
 </article>
 
 <aside class="toc" aria-label="On this page">
-  <h3>On this page</h3>
-      <a href="#">Part 1: What Is HFT?</a>
-      <a href="#">Part 2: The Latency Game</a>
-      <a href="#">Part 3: How HFTs Exploit Retail</a>
-      <a href="#">Part 4: HFT Red Flags & Defense</a>
-      <a href="#">Part 5: Using Signal Pilot to Detect HFT Activity</a>
-      <a href="#">Practice Exercises</a>
-      <a href="#">Quiz: Test Your Understanding</a>
-      <a href="#">Practical Checklist</a>
+  <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-what-is-hft">Part 1: What Is HFT?</a>
+      <a href="#part-2-the-latency-game">Part 2: The Latency Game</a>
+      <a href="#part-3-how-hfts-exploit-retail">Part 3: How HFTs Exploit Retail</a>
+      <a href="#part-4-hft-red-flags-defense">Part 4: HFT Red Flags & Defense</a>
+      <a href="#part-5-using-signal-pilot-to-detect-hft-activity">Part 5: Using Signal Pilot to Detect HFT Activity</a>
+      <a href="#practice-exercises">Practice Exercises</a>
+      <a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a>
+      <a href="#quiz-test-your-understanding">Practical Checklist</a>
 </aside>
 
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>

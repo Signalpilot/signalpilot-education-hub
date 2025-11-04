@@ -12,6 +12,7 @@
   <meta http-equiv="Expires" content="0"/>
   <title>Your Indicators Are Lying to You (The Repaint Problem) — Signal Pilot Learn</title>
   <meta name="description" content="60-90% of indicators repaint—showing perfect signals in backtest that never existed real-time. Learn detection methods and why deterministic code matters.">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner/04-repaint-problem.html">
   <meta name="sp-level" content="Beginner">
   <meta name="sp-order" content="4">
   <!-- SignalPilot Theme System -->
@@ -72,7 +73,7 @@
   <div class="wrap article-grid">
     <div class="prose">
 
-      <h2>Jake's $14,700 Repainting Nightmare: When "Perfect" Backtests Destroy Live Accounts</h2>
+      <h2 id="jakes-14700-repainting-nightmare-when-perfect-backtests-destroy-live-accounts">Jake's $14,700 Repainting Nightmare: When "Perfect" Backtests Destroy Live Accounts</h2>
 
       <p><strong>Jake Morrison, 26, Austin, Texas</strong> — Former marketing analyst turned full-time day trader. Smart, disciplined, detail-oriented. $32,000 saved for trading capital.</p>
 
@@ -216,7 +217,7 @@
         </tbody>
       </table>
 
-      <h3>The Breaking Point: April 8, 2024</h3>
+      <h3 id="the-breaking-point-april-8-2024">The Breaking Point: April 8, 2024</h3>
 
       <p><strong>The moment Jake discovered the truth.</strong></p>
 
@@ -280,7 +281,7 @@
         <p style="margin-top:1rem;font-weight:600;color:#ff5252">Verdict: The indicator was HEAVILY repainting. Jake's $14,700 loss was from trading signals that never actually existed.</p>
       </div>
 
-      <h3>The Comparison: Backtest Fantasy vs. Live Reality</h3>
+      <h3 id="the-comparison-backtest-fantasy-vs-live-reality">The Comparison: Backtest Fantasy vs. Live Reality</h3>
 
       <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem">
         <caption>Jake's Ultimate Reversal Pro: The Brutal Truth</caption>
@@ -332,7 +333,7 @@
         </tbody>
       </table>
 
-      <h3>The Rebuild: May-August 2024 (Switching to Deterministic Indicators)</h3>
+      <h3 id="the-rebuild-may-august-2024-switching-to-deterministic-indicators">The Rebuild: May-August 2024 (Switching to Deterministic Indicators)</h3>
 
       <p><strong>April 16-30, 2024:</strong> Jake stops trading. Spends 2 weeks researching deterministic indicators, learning Signal Pilot's non-repainting protocol, and rebuilding his strategy with verified indicators.</p>
 
@@ -406,7 +407,7 @@
         </tbody>
       </table>
 
-      <h3>Jake's Year-End Stats: The Transformation</h3>
+      <h3 id="jakes-year-end-stats-the-transformation">Jake's Year-End Stats: The Transformation</h3>
 
       <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem">
         <caption>Jake Morrison: 2024 Complete Performance (Feb-Aug)</caption>
@@ -512,7 +513,7 @@
 
       <div class="section-break"><span>Part 1: What IS Repainting?</span></div>
 
-      <h2>The Time-Traveling Indicator</h2>
+      <h2 id="the-time-traveling-indicator">The Time-Traveling Indicator</h2>
 
       <p>Imagine this: You're watching a chart live. At 2:15 PM, your indicator shows a potential BUY signal at $45,000. Perfect!</p>
 
@@ -545,7 +546,7 @@
 
       <div class="section-break"><span>Part 2: Why Repainting Happens</span></div>
 
-      <h2>The Three Ways Indicators Lie</h2>
+      <h2 id="the-three-ways-indicators-lie">The Three Ways Indicators Lie</h2>
 
       <p>Repainting isn't always intentional (though some scammers do it on purpose). Often, it's coding mistakes. Here are the three main causes:</p>
 
@@ -592,7 +593,7 @@ htf_close = request.security(syminfo.tickerid, "D", close)
 
       <div class="section-break"><span>Part 3: The 4 Detection Methods</span></div>
 
-      <h2>How to Catch a Repainting Indicator</h2>
+      <h2 id="how-to-catch-a-repainting-indicator">How to Catch a Repainting Indicator</h2>
 
       <p>You don't need to be a coder to detect repainting. Here are 4 methods—use at least 2 for every indicator you trade.</p>
 
@@ -605,7 +606,7 @@ htf_close = request.security(syminfo.tickerid, "D", close)
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3>Method 1: Visual Test (Easiest)</h3>
+            <h3 id="method-1-visual-test-easiest">Method 1: Visual Test (Easiest)</h3>
             <p><strong>Steps:</strong></p>
             <ol>
               <li>Open a live chart with your indicator</li>
@@ -618,7 +619,7 @@ htf_close = request.security(syminfo.tickerid, "D", close)
             <p><strong>Repeat 3-5 times to be sure.</strong></p>
           </div>
           <div class="tab-panel">
-            <h3>Method 2: Replay Test (Most Accurate)</h3>
+            <h3 id="method-2-replay-test-most-accurate">Method 2: Replay Test (Most Accurate)</h3>
             <p><strong>Steps:</strong></p>
             <ol>
               <li>Use TradingView's Bar Replay feature</li>
@@ -630,7 +631,7 @@ htf_close = request.security(syminfo.tickerid, "D", close)
             <p style="margin-top:1rem"><strong>Verdict:</strong> If live signals ≠ historical signals = <span style="color:#ff6b6b;font-weight:700">REPAINTING</span></p>
           </div>
           <div class="tab-panel">
-            <h3>Method 3: Alert Test (Real-World)</h3>
+            <h3 id="method-3-alert-test-real-world">Method 3: Alert Test (Real-World)</h3>
             <p><strong>Steps:</strong></p>
             <ol>
               <li>Set an alert on your indicator's signal</li>
@@ -641,7 +642,7 @@ htf_close = request.security(syminfo.tickerid, "D", close)
             <p style="margin-top:1rem"><strong>Verdict:</strong> If alert prices ≠ signal prices in history = <span style="color:#ff6b6b;font-weight:700">REPAINTING</span></p>
           </div>
           <div class="tab-panel">
-            <h3>Method 4: Code Audit (For Coders)</h3>
+            <h3 id="method-4-code-audit-for-coders">Method 4: Code Audit (For Coders)</h3>
             <p><strong>Red flags in Pine Script:</strong></p>
             <ul>
               <li><code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code></li>
@@ -664,7 +665,7 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
 
       <div class="section-break"><span>Part 4: Signal Pilot's Deterministic Protocol</span></div>
 
-      <h2>What "Deterministic" Means (And Why It Matters)</h2>
+      <h2 id="what-deterministic-means-and-why-it-matters">What "Deterministic" Means (And Why It Matters)</h2>
 
       <p>Here's the thing: Most indicators are built by hobbyists who don't know about repainting. Or worse, by scammers who <em>do</em> know and don't care.</p>
 
@@ -684,14 +685,14 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
         <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
-          <h3 style="margin:0 0 1rem 0">❌ Repainting Indicator</h3>
+          <h3 style="margin:0 0 1rem 0" id="-repainting-indicator">❌ Repainting Indicator</h3>
           <p><strong>Backtest:</strong> 3.2R expectancy, 2.8 profit factor</p>
           <p><strong>Live trading:</strong> -0.8R expectancy, 0.6 profit factor</p>
           <p><strong>Problem:</strong> Signals change after bar close</p>
           <p><strong>Result:</strong> Wasted months, blown account</p>
         </div>
         <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
-          <h3 style="margin:0 0 1rem 0">✓ Deterministic Indicator</h3>
+          <h3 style="margin:0 0 1rem 0" id="-deterministic-indicator">✓ Deterministic Indicator</h3>
           <p><strong>Backtest:</strong> 1.8R expectancy, 1.6 profit factor</p>
           <p><strong>Live trading:</strong> 1.7R expectancy, 1.5 profit factor</p>
           <p><strong>Integrity:</strong> Signals never change</p>
@@ -705,7 +706,7 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
 
       <div class="section-break"><span>Part 5: Complete Audit Framework</span></div>
 
-      <h2>Never Trust, Always Verify</h2>
+      <h2 id="never-trust-always-verify">Never Trust, Always Verify</h2>
 
       <p>Here's your step-by-step framework for auditing ANY indicator before risking real money:</p>
 
@@ -828,19 +829,19 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
 
     <!-- Table of Contents Sidebar -->
     <aside class="toc">
-      <h3>On this page</h3>
-      <a href="#" style="opacity:.6">What IS Repainting?</a>
-      <a href="#">Why Repainting Happens</a>
-      <a href="#">4 Detection Methods</a>
-      <a href="#">Deterministic Protocol</a>
-      <a href="#">Complete Audit Framework</a>
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#jakes-14700-repainting-nightmare-when-perfect-backtests-destroy-live-accounts" style="opacity:.6">What IS Repainting?</a>
+      <a href="#the-time-traveling-indicator">Why Repainting Happens</a>
+      <a href="#the-three-ways-indicators-lie">4 Detection Methods</a>
+      <a href="#how-to-catch-a-repainting-indicator">Deterministic Protocol</a>
+      <a href="#what-deterministic-means-and-why-it-matters">Complete Audit Framework</a>
     </aside>
   </div>
 
   <!-- Bottom Navigation -->
   <div class="wrap nav-article">
     <a class="btn btn-ghost" href="/curriculum/beginner/03-price-action-is-dead.html">← Previous: Order Flow</a>
-    <a class="btn btn-primary" href="/curriculum/beginner/05-rsi-extremes.html">Next Lesson →</a>
+    <a class="btn btn-primary" href="/curriculum/beginner/05-rsi-extremes.html">Next Lesson &rarr;</a>
   </div>
 </article>
 

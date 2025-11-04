@@ -100,13 +100,13 @@
 
       <div class="section-break"><span>Part 1: Market Maker Delta Hedging Mechanics</span></div>
 
-      <h2>Why Dealers MUST Hedge (And How It Moves Markets)</h2>
+      <h2 id="why-dealers-must-hedge-and-how-it-moves-markets">Why Dealers MUST Hedge (And How It Moves Markets)</h2>
 
       <p>When you buy a call option, you're usually buying it from a market maker (Citadel, Susquehanna, Optiver, etc.). They don't want directional risk—they want to collect the spread risk-free.</p>
 
       <p>To stay neutral, they <strong>delta hedge</strong> by buying/selling the underlying stock.</p>
 
-      <h3>Step-by-Step: How Delta Hedging Works</h3>
+      <h3 id="step-by-step-how-delta-hedging-works">Step-by-Step: How Delta Hedging Works</h3>
 
       <div class="accordion">
         <div class="accordion-item">
@@ -158,7 +158,7 @@
 
       <div class="section-break"><span>Part 1.5: The $67,300 Lesson—Kyle's OpEx Disaster</span></div>
 
-      <h2>Case Study: When You Don't Understand Market Maker Hedging</h2>
+      <h2 id="case-study-when-you-dont-understand-market-maker-hedging">Case Study: When You Don't Understand Market Maker Hedging</h2>
 
       <p><strong>Kyle Peterson, options trader, March 15, 2024 (Monthly OpEx).</strong> $95,000 account. Bought SPY calls at 3:00 PM. By 3:45 PM, down $67,300.</p>
 
@@ -172,7 +172,7 @@
         <p><strong>Total loss:</strong> <strong>-$67,300 in 45 minutes</strong></p>
       </div>
 
-      <h3>The Timeline: How Market Maker Unwind Destroyed Kyle</h3>
+      <h3 id="the-timeline-how-market-maker-unwind-destroyed-kyle">The Timeline: How Market Maker Unwind Destroyed Kyle</h3>
 
       <pre><code>MARCH 15, 2024 - MONTHLY OPEX (MASSIVE GAMMA EXPOSURE)
 
@@ -270,7 +270,7 @@ I was swimming against a tsunami."
         <p>Once MM selling finished, natural buying resumed. The $3.45 drop had nothing to do with fundamentals—it was purely mechanical dealer hedging.</p>
       </div>
 
-      <h3>Kyle's Recovery: Learning OpEx Mechanics</h3>
+      <h3 id="kyles-recovery-learning-opex-mechanics">Kyle's Recovery: Learning OpEx Mechanics</h3>
 
       <p>6 months later, Kyle used OpEx knowledge to his advantage:</p>
 
@@ -331,7 +331,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
 
       <div class="section-break"><span>Part 2: Gamma—The Accelerator of Market Movements</span></div>
 
-      <h2>Why Gamma Matters More Than Delta</h2>
+      <h2 id="why-gamma-matters-more-than-delta">Why Gamma Matters More Than Delta</h2>
 
       <p><strong>Delta</strong> tells you how much stock MMs are hedged with RIGHT NOW.<br>
       <strong>Gamma</strong> tells you how FAST that hedge changes as price moves.</p>
@@ -345,7 +345,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
         <li>Perfect setup for gamma squeezes (GME, AMC)</li>
       </ul>
 
-      <h3>Real Example: GameStop Gamma Squeeze (Jan 2021)</h3>
+      <h3 id="real-example-gamestop-gamma-squeeze-jan-2021">Real Example: GameStop Gamma Squeeze (Jan 2021)</h3>
 
       <div class="tabs">
         <div class="tabs-nav">
@@ -355,7 +355,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3>How GME Became a Gamma Bomb</h3>
+            <h3 id="how-gme-became-a-gamma-bomb">How GME Became a Gamma Bomb</h3>
             <p><strong>Initial State (Jan 11, 2021):</strong></p>
             <ul>
               <li>GME at $20</li>
@@ -370,7 +370,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
             </ul>
           </div>
           <div class="tab-panel">
-            <h3>The Gamma Feedback Loop</h3>
+            <h3 id="the-gamma-feedback-loop">The Gamma Feedback Loop</h3>
             <p><strong>Jan 15-25:</strong> Exponential acceleration</p>
             <ul>
               <li>GME $40 → $60: MMs buy 30M shares</li>
@@ -386,7 +386,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
             </ul>
           </div>
           <div class="tab-panel">
-            <h3>What We Learned</h3>
+            <h3 id="what-we-learned">What We Learned</h3>
             <p><strong>Gamma Squeezes Are Real:</strong></p>
             <ul>
               <li>High option volume + small float = explosive upside</li>
@@ -412,13 +412,13 @@ Once I understood their hedging requirements, OpEx became my ATM."
 
       <div class="section-break"><span>Part 3: Max Pain Theory & Pin Risk</span></div>
 
-      <h2>Why Price Gravitates Toward Specific Strikes on Expiration</h2>
+      <h2 id="why-price-gravitates-toward-specific-strikes-on-expiration">Why Price Gravitates Toward Specific Strikes on Expiration</h2>
 
       <p><strong>Max Pain</strong> is the strike price where the most options (both calls and puts) expire worthless—causing maximum loss for option buyers and maximum profit for option sellers (market makers).</p>
 
       <p><strong>Pin Risk</strong> is the phenomenon where price magnetically drifts toward the strike with the highest open interest as expiration approaches.</p>
 
-      <h3>How to Calculate Max Pain</h3>
+      <h3 id="how-to-calculate-max-pain">How to Calculate Max Pain</h3>
 
       <div class="callout-info">
         <h4>📖 Max Pain Formula</h4>
@@ -431,7 +431,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
         <p style="margin-top:1rem"><strong>Max Pain Strike =</strong> Strike where Total Loss is MAXIMIZED</p>
       </div>
 
-      <h3>Real Example: SPY Expiration Friday</h3>
+      <h3 id="real-example-spy-expiration-friday">Real Example: SPY Expiration Friday</h3>
 
       <div class="accordion">
         <div class="accordion-item">
@@ -497,11 +497,11 @@ Once I understood their hedging requirements, OpEx became my ATM."
 
       <div class="section-break"><span>Part 4: 0DTE Options—The New Volatility Driver</span></div>
 
-      <h2>Same-Day Expiration = Extreme Gamma</h2>
+      <h2 id="same-day-expiration-extreme-gamma">Same-Day Expiration = Extreme Gamma</h2>
 
       <p><strong>0DTE</strong> (zero days to expiration) options expire the same day. SPX now offers daily expirations—meaning EVERY day has OpEx dynamics.</p>
 
-      <h3>Why 0DTE Amplifies Intraday Volatility</h3>
+      <h3 id="why-0dte-amplifies-intraday-volatility">Why 0DTE Amplifies Intraday Volatility</h3>
 
       <p><strong>Traditional monthly options:</strong> Gamma builds gradually over weeks</p>
       <p><strong>0DTE options:</strong> Gamma explodes in final hours</p>
@@ -514,7 +514,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3>9:30 AM - 11:00 AM: Directional Phase</h3>
+            <h3 id="930-am-1100-am-directional-phase">9:30 AM - 11:00 AM: Directional Phase</h3>
             <p><strong>What's Happening:</strong></p>
             <ul>
               <li>0DTE options still have 6.5 hours to expiration</li>
@@ -524,7 +524,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
             <p><strong>Trading:</strong> Directional strategies work (follow momentum)</p>
           </div>
           <div class="tab-panel">
-            <h3>11:00 AM - 2:00 PM: Compression Phase</h3>
+            <h3 id="1100-am-200-pm-compression-phase">11:00 AM - 2:00 PM: Compression Phase</h3>
             <p><strong>What's Happening:</strong></p>
             <ul>
               <li>Gamma increasing, delta hedging intensifies</li>
@@ -534,7 +534,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
             <p><strong>Trading:</strong> Range-bound strategies (sell premium, iron condors)</p>
           </div>
           <div class="tab-panel">
-            <h3>2:00 PM - 4:00 PM: Pin/Unwind Phase</h3>
+            <h3 id="200-pm-400-pm-pinunwind-phase">2:00 PM - 4:00 PM: Pin/Unwind Phase</h3>
             <p><strong>What's Happening:</strong></p>
             <ul>
               <li>Gamma explodes (calls/puts going to 0 or 1 delta)</li>
@@ -558,11 +558,11 @@ Once I understood their hedging requirements, OpEx became my ATM."
 
       <div class="section-break"><span>Part 5: Dealer Positioning as a Trading Edge</span></div>
 
-      <h2>How to Use Dealer Gamma for Predictive Edge</h2>
+      <h2 id="how-to-use-dealer-gamma-for-predictive-edge">How to Use Dealer Gamma for Predictive Edge</h2>
 
       <p>Tools like <strong>SpotGamma</strong>, <strong>SqueezeMetrics</strong>, and <strong>Vanna-Volga models</strong> estimate dealer positioning. You can use this data to predict mechanical flows.</p>
 
-      <h3>Key Metrics to Track:</h3>
+      <h3 id="key-metrics-to-track">Key Metrics to Track:</h3>
 
       <ul>
         <li><strong>Dealer Gamma Exposure (GEX):</strong> Total gamma dealers are short (positive GEX = volatility suppression, negative GEX = volatility amplification)</li>
@@ -588,11 +588,11 @@ Once I understood their hedging requirements, OpEx became my ATM."
 
       <div class="section-break"><span>Part 6: Advanced Greeks—Vanna & Charm</span></div>
 
-      <h2>Beyond Delta and Gamma: How Vanna Creates Hidden Dealer Flows</h2>
+      <h2 id="beyond-delta-and-gamma-how-vanna-creates-hidden-dealer-flows">Beyond Delta and Gamma: How Vanna Creates Hidden Dealer Flows</h2>
 
       <p>Most traders stop at delta and gamma. But <strong>vanna</strong> and <strong>charm</strong> are the hidden Greeks that create unpredictable dealer flows—especially around volatility events.</p>
 
-      <h3>Vanna: How Volatility Changes Affect Delta</h3>
+      <h3 id="vanna-how-volatility-changes-affect-delta">Vanna: How Volatility Changes Affect Delta</h3>
 
       <p><strong>Vanna = Change in delta per 1% change in implied volatility</strong></p>
 
@@ -661,7 +661,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
         </div>
       </div>
 
-      <h3>Charm: How Time Decay Affects Delta</h3>
+      <h3 id="charm-how-time-decay-affects-delta">Charm: How Time Decay Affects Delta</h3>
 
       <p><strong>Charm = Change in delta per day of time decay</strong></p>
 
@@ -691,7 +691,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
 
       <div class="section-break"><span>Part 7: OpEx + Earnings Combo Events (The Perfect Storm)</span></div>
 
-      <h2>Case Study: When Earnings Lands on OpEx Friday</h2>
+      <h2 id="case-study-when-earnings-lands-on-opex-friday">Case Study: When Earnings Lands on OpEx Friday</h2>
 
       <p><strong>Background:</strong> Sarah Chen, $180K account, traded NVDA earnings on a monthly OpEx Friday. Lost $64,800 in 6 hours.</p>
 
@@ -715,7 +715,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
         </ul>
       </div>
 
-      <h3>The Timeline: What Sarah Missed</h3>
+      <h3 id="the-timeline-what-sarah-missed">The Timeline: What Sarah Missed</h3>
 
       <pre><code>NOVEMBER 17, 2023 - NVDA OPEX + EARNINGS COMBO
 
@@ -799,7 +799,7 @@ Earnings were bullish, but mechanics were bearish.
         <p style="margin-top:1rem"><strong>Best trade:</strong> Fade the unwind. Sell calls in morning, buy them back at 3:30 PM when dealers finish selling.</p>
       </div>
 
-      <h3>Sarah's Recovery: Trading OpEx Mechanics (8 Months Later)</h3>
+      <h3 id="sarahs-recovery-trading-opex-mechanics-8-months-later">Sarah's Recovery: Trading OpEx Mechanics (8 Months Later)</h3>
 
       <pre><code>✅ SARAH'S NEW STRATEGY (July 19, 2024 - TSLA OpEx + Earnings):
 
@@ -862,7 +862,7 @@ Now I trade with them. OpEx Friday is my favorite day."
 
       <div class="section-break"><span>Part 8: The Complete OpEx Trading Playbook</span></div>
 
-      <h2>Actionable Strategies: How to Trade Every OpEx Scenario</h2>
+      <h2 id="actionable-strategies-how-to-trade-every-opex-scenario">Actionable Strategies: How to Trade Every OpEx Scenario</h2>
 
       <p>Now that you understand the mechanics, here's your complete playbook for trading around dealer positioning.</p>
 
@@ -875,7 +875,7 @@ Now I trade with them. OpEx Friday is my favorite day."
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3>Weekly OpEx Strategy (Every Friday)</h3>
+            <h3 id="weekly-opex-strategy-every-friday">Weekly OpEx Strategy (Every Friday)</h3>
             <p><strong>Setup Checklist:</strong></p>
             <ul>
               <li>Check max pain level (use tools like Maximum-Pain.com)</li>
@@ -906,7 +906,7 @@ Result:
 </code></pre>
           </div>
           <div class="tab-panel">
-            <h3>Monthly OpEx Strategy (3rd Friday)</h3>
+            <h3 id="monthly-opex-strategy-3rd-friday">Monthly OpEx Strategy (3rd Friday)</h3>
             <p><strong>Why It's Different:</strong></p>
             <ul>
               <li>10-20× more contracts than weekly</li>
@@ -943,7 +943,7 @@ Entry 3:00 PM:
 </code></pre>
           </div>
           <div class="tab-panel">
-            <h3>Quarterly OpEx (Quad Witching)</h3>
+            <h3 id="quarterly-opex-quad-witching">Quarterly OpEx (Quad Witching)</h3>
             <p><strong>What Makes It Different:</strong></p>
             <ul>
               <li>Stock options + index options + stock futures + index futures all expire</li>
@@ -980,7 +980,7 @@ Key: Exit before final hour pin crushes all premium
 </code></pre>
           </div>
           <div class="tab-panel">
-            <h3>0DTE Daily Strategy</h3>
+            <h3 id="0dte-daily-strategy">0DTE Daily Strategy</h3>
             <p><strong>How 0DTE Changed OpEx Dynamics:</strong></p>
             <ul>
               <li>EVERY DAY is mini-OpEx now (SPX daily expirations)</li>
@@ -1047,11 +1047,11 @@ Win rate on 0DTE fade: 68% over 6 months
 
       <div class="section-break"><span>Part 9: Tools & Resources for Tracking Dealer Positioning</span></div>
 
-      <h2>How to Monitor Real-Time Dealer Flows</h2>
+      <h2 id="how-to-monitor-real-time-dealer-flows">How to Monitor Real-Time Dealer Flows</h2>
 
       <p>You can't trade what you can't see. These tools make dealer positioning visible:</p>
 
-      <h3>Essential Tools:</h3>
+      <h3 id="essential-tools">Essential Tools:</h3>
 
       <div class="accordion">
         <div class="accordion-item">
@@ -1162,7 +1162,7 @@ Win rate on 0DTE fade: 68% over 6 months
         <p style="margin-top:.75rem;font-size:.9rem;color:var(--muted)">Check this every Friday before OpEx.</p>
       </div>
 
-      <h2>Next Steps</h2>
+      <h2 id="next-steps">Next Steps</h2>
 
       <p>Options microstructure drives more price action than most traders realize. Now you know why SPY inexplicably dumps at 3:30 PM on Fridays—it's not manipulation, it's mechanics.</p>
 
@@ -1194,7 +1194,7 @@ Win rate on 0DTE fade: 68% over 6 months
       </div>
 
       <div class="card">
-        <h3 style="margin:0 0 1rem 0;font-size:1rem">📚 Related Lessons</h3>
+        <h3 style="margin:0 0 1rem 0;font-size:1rem" id="-related-lessons">📚 Related Lessons</h3>
         <ul style="list-style:none;padding:0;margin:0">
           <li style="margin-bottom:.75rem">
             <a href="/curriculum/intermediate-bridge/37-options-order-flow.html" style="color:var(--primary);text-decoration:none">
@@ -1223,13 +1223,13 @@ Win rate on 0DTE fade: 68% over 6 months
 </article>
 
 <aside class="toc" aria-label="On this page">
-  <h3>On this page</h3>
-      <a href="#">Why Dealers MUST Hedge (And How It Moves Markets)</a>
-      <a href="#">Why Gamma Matters More Than Delta</a>
-      <a href="#">Why Price Gravitates Toward Specific Strikes on Expiration</a>
-      <a href="#">Same-Day Expiration = Extreme Gamma</a>
-      <a href="#">How to Use Dealer Gamma for Predictive Edge</a>
-      <a href="#">Next Steps</a>
+  <h3 id="on-this-page">On this page</h3>
+      <a href="#why-dealers-must-hedge-and-how-it-moves-markets">Why Dealers MUST Hedge (And How It Moves Markets)</a>
+      <a href="#case-study-when-you-dont-understand-market-maker-hedging">Why Gamma Matters More Than Delta</a>
+      <a href="#why-gamma-matters-more-than-delta">Why Price Gravitates Toward Specific Strikes on Expiration</a>
+      <a href="#why-price-gravitates-toward-specific-strikes-on-expiration">Same-Day Expiration = Extreme Gamma</a>
+      <a href="#same-day-expiration-extreme-gamma">How to Use Dealer Gamma for Predictive Edge</a>
+      <a href="#how-to-use-dealer-gamma-for-predictive-edge">Next Steps</a>
 </aside>
 
 <footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
