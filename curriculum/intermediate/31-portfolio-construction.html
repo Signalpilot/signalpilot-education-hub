@@ -605,15 +605,279 @@ DANGER: If ANY sector > 60%, you're Rachel pre-Feb-5th
         <li><strong>All positions aligned with regime?</strong> If no, exit misaligned trades.</li>
       </ol>
 
+      <h2>The Monthly Portfolio Rebalancing Protocol</h2>
+
+      <p>Professional traders don't just "set and forget" their portfolios. They actively rebalance to maintain target allocations and manage risk.</p>
+
+      <div style="margin:2rem 0;padding:2rem;background:rgba(91,138,255,.08);border-radius:16px">
+        <h3 style="margin-top:0">📅 Monthly Rebalancing Checklist</h3>
+
+        <p><strong>First Sunday of every month (before market week):</strong></p>
+
+        <ol style="margin:.75rem 0;line-height:1.8">
+          <li><strong>Review last month's performance by sector</strong>
+            <pre><code>Sector Performance Review:
+Tech: +____% (target: 30%, current: ____%)
+Energy: +____% (target: 25%, current: ____%)
+Commodities: +____% (target: 20%, current: ____%)
+Forex: +____% (target: 25%, current: ____%)
+
+Action: If any sector drifted >10% from target, rebalance</code></pre>
+          </li>
+
+          <li><strong>Check correlation drift</strong>
+            <p>Pull up 30-day charts of all positions. Have any become more correlated?</p>
+            <ul style="margin:.5rem 0">
+              <li>If 2 positions now moving together (correlation >0.70), close the weaker one</li>
+              <li>Replace with position in different, uncorrelated sector</li>
+            </ul>
+          </li>
+
+          <li><strong>Portfolio heat audit</strong>
+            <pre><code>Current open positions:
+Position 1: ____% risk
+Position 2: ____% risk
+Position 3: ____% risk
+Position 4: ____% risk
+TOTAL HEAT: ____%
+
+If total >6%: Close lowest-conviction position
+If total <3%: Consider adding position (market giving opportunities)
+</code></pre>
+          </li>
+
+          <li><strong>Regime check and allocation adjustment</strong>
+            <p>Has market regime shifted in last 30 days?</p>
+            <ul style="margin:.5rem 0">
+              <li>Trending → Ranging: Reduce position sizes, tighten targets</li>
+              <li>Ranging → Trending: Increase position sizes, wider targets</li>
+              <li>Any → Volatile: Cut all positions to 50% size or exit entirely</li>
+            </ul>
+          </li>
+
+          <li><strong>Performance vs. expectations</strong>
+            <pre><code>Last month P&L: $______
+Expected (based on setups taken): $______
+Difference: $______ (analyze why)
+
+If underperforming:
+- Was I trading against regime? (biggest cause)
+- Was portfolio too correlated? (positions moved together)
+- Did I exceed 6% heat? (took too much risk)
+- Was I in wrong sectors for current macro?</code></pre>
+          </li>
+        </ol>
+      </div>
+
+      <h3>Real Example: Monthly Rebalancing in Action</h3>
+
+      <pre><code>EXAMPLE: Professional trader with $100,000 account
+
+MARCH 1, 2024 (Start of month):
+Portfolio allocation:
+- Tech (SPY, AAPL): 30% ($30,000)
+- Energy (XLE): 25% ($25,000)
+- Gold (GLD): 20% ($20,000)
+- Forex (EUR/USD): 25% ($25,000)
+
+MARCH 31, 2024 (End of month):
+Actual allocation after market movements:
+- Tech: 38% ($38,000) — rallied +26.7%
+- Energy: 20% ($20,000) — dropped -20%
+- Gold: 18% ($18,000) — dropped -10%
+- Forex: 24% ($24,000) — slight drop -4%
+
+TOTAL ACCOUNT: $100,000 → $100,000 (breakeven on month)
+
+PROBLEM: Tech sector now 38% (exceeded 30% target by 8%)
+RISK: If tech crashes, 38% of portfolio exposed (was 30%)
+
+REBALANCING ACTION (April 1):
+1. Sell $8,000 of tech positions (reduce from 38% → 30%)
+2. Reinvest $4,000 in energy (bring back to 25%)
+3. Reinvest $4,000 in gold (bring back to 20%)
+
+POST-REBALANCE ALLOCATION:
+- Tech: 30% ✓
+- Energy: 25% ✓
+- Gold: 20% ✓
+- Forex: 25% ✓
+
+RESULT: Back to target allocation, risk managed
+
+WHY THIS MATTERS:
+If tech sector crashes 15% in April:
+- Pre-rebalance loss: 38% × 15% = -5.7% account loss
+- Post-rebalance loss: 30% × 15% = -4.5% account loss
+- Savings from rebalancing: 1.2% of account = $1,200
+
+Rebalancing discipline = $1,200 saved (plus reduced future risk)
+</code></pre>
+
+      <h2>Advanced: The Correlation Matrix Tool</h2>
+
+      <p>Professional traders use correlation matrices to visualize portfolio risk. Here's how to build one:</p>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(0,212,170,.08);border-radius:12px">
+        <h4>Build Your Correlation Matrix (Excel/Google Sheets)</h4>
+
+        <p><strong>Step 1: Export 30 days of closing prices for all positions</strong></p>
+        <p>Example data needed:</p>
+        <pre><code>Date       | SPY    | XLE    | GLD    | EUR/USD
+2024-03-01 | 520.00 | 85.50  | 190.00 | 1.0850
+2024-03-02 | 521.50 | 85.30  | 190.50 | 1.0840
+...
+2024-03-30 | 525.00 | 84.00  | 189.00 | 1.0900
+</code></pre>
+
+        <p><strong>Step 2: Calculate daily returns for each asset</strong></p>
+        <pre><code>Formula: (Today's Close - Yesterday's Close) / Yesterday's Close
+
+Example for SPY on March 2:
+(521.50 - 520.00) / 520.00 = 0.29% return
+</code></pre>
+
+        <p><strong>Step 3: Use CORREL() function to calculate correlation between assets</strong></p>
+        <pre><code>In Excel: =CORREL(SPY_returns, XLE_returns)
+
+Result: 0.45 (moderate positive correlation)
+</code></pre>
+
+        <p><strong>Step 4: Build the matrix</strong></p>
+        <pre><code>Correlation Matrix:
+           SPY    XLE    GLD    EUR/USD
+SPY        1.00   0.45   -0.10  -0.25
+XLE        0.45   1.00   0.15   -0.05
+GLD        -0.10  0.15   1.00   0.30
+EUR/USD    -0.25  -0.05  0.30   1.00
+
+Color code:
+- Green (<0.30): Low correlation (GOOD - diversified)
+- Yellow (0.30-0.60): Moderate correlation (OK)
+- Red (>0.60): High correlation (BAD - concentrated risk)
+</code></pre>
+
+        <p><strong>Step 5: Take action on high correlations</strong></p>
+        <ul style="margin:.75rem 0">
+          <li>If any pair shows >0.70 correlation: Close the weaker position</li>
+          <li>Goal: Keep average portfolio correlation <0.40</li>
+          <li>Update matrix monthly to catch correlation drift</li>
+        </ul>
+      </div>
+
+      <h3>The Professional Portfolio Dashboard (Template)</h3>
+
+      <pre><code>MY PORTFOLIO DASHBOARD (Update daily before trading)
+
+═══════════════════════════════════════════════════════════
+POSITION SUMMARY (as of __/__/2024)
+═══════════════════════════════════════════════════════════
+
+Position 1: ________ | Sector: ______ | Risk: ____% | P&L: $______
+Position 2: ________ | Sector: ______ | Risk: ____% | P&L: $______
+Position 3: ________ | Sector: ______ | Risk: ____% | P&L: $______
+Position 4: ________ | Sector: ______ | Risk: ____% | P&L: $______
+
+TOTAL HEAT: ____% (target: <6%)
+TOTAL P&L: $______ (____% account)
+
+═══════════════════════════════════════════════════════════
+SECTOR EXPOSURE
+═══════════════════════════════════════════════════════════
+
+Tech:        ____% (target: 30%)
+Energy:      ____% (target: 25%)
+Commodities: ____% (target: 20%)
+Forex:       ____% (target: 25%)
+
+⚠️ WARNINGS:
+[ ] Any sector >40%? → Reduce immediately
+[ ] Total heat >6%? → Close weakest position
+[ ] 2+ positions same sector? → Check correlation
+
+═══════════════════════════════════════════════════════════
+CORRELATION CHECK (Monthly)
+═══════════════════════════════════════════════════════════
+
+Avg portfolio correlation: _____ (target: <0.40)
+
+Highest correlated pair: ________ ↔ ________ (r = ____)
+Action needed: [ ] Close weaker position if r >0.70
+
+═══════════════════════════════════════════════════════════
+REGIME & ALLOCATION (Daily check)
+═══════════════════════════════════════════════════════════
+
+Current regime: ____________ (Trending / Ranging / Volatile)
+Position sizing: [ ] 2% (trending) [ ] 1% (ranging) [ ] 0.5% (volatile)
+
+All positions aligned with regime? [ ] YES [ ] NO
+If NO: Close misaligned positions today
+
+═══════════════════════════════════════════════════════════
+ACTION ITEMS (Do before next trade)
+═══════════════════════════════════════════════════════════
+
+[ ] Total heat under 6%
+[ ] No sector over 40%
+[ ] Avg correlation under 0.40
+[ ] All positions aligned with regime
+[ ] Portfolio rebalanced in last 30 days
+
+READY TO TRADE: [ ] YES [ ] NO (fix issues first)
+</code></pre>
+
       <div class="key-takeaway">
         <h4>🎓 Key Takeaways</h4>
         <ul>
-          <li><strong>Portfolio heat < 6-8%</strong> (total risk across all positions)</li>
-          <li><strong>Diversify correlation</strong> (don't put all positions in same sector)</li>
-          <li><strong>Max 30-40% per sector</strong> (if sector crashes, only partial exposure)</li>
-          <li><strong>Grade-based sizing:</strong> A-grade = 2%, B-grade = 1%</li>
-          <li><strong>Rebalance daily:</strong> Check heat, correlation, sector exposure</li>
-          <li><strong>Core + Satellite:</strong> 60-70% long-term, 30-40% active trading</li>
+          <li><strong>Portfolio heat < 6-8%</strong> (total risk across all positions)
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Rachel lost 48% in one day with 12% heat across correlated positions</li>
+              <li>Professional limit: Never exceed 6-8% total exposure</li>
+              <li>Calculate before EVERY new trade: Current heat + new trade < 6%?</li>
+            </ul>
+          </li>
+          <li><strong>Diversify by correlation, not just number of stocks</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>8 tech stocks = 1 position (0.95 correlation)</li>
+              <li>4 positions across different sectors = true diversification</li>
+              <li>Target: Average portfolio correlation <0.40</li>
+            </ul>
+          </li>
+          <li><strong>Max 30-40% per sector</strong> (if one sector crashes, limited damage)
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Tech, Energy, Commodities, Forex = 25-30% each</li>
+              <li>Monthly rebalancing prevents sector drift</li>
+              <li>Stress test: "If sector X crashes 15%, what % of my portfolio dies?"</li>
+            </ul>
+          </li>
+          <li><strong>Grade-based sizing</strong> (A-grade = 2%, B-grade = 1%)
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Within portfolio heat limit</li>
+              <li>Better setups get more capital (edge-weighted allocation)</li>
+            </ul>
+          </li>
+          <li><strong>Rebalance monthly</strong> (prevent correlation/sector drift)
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Check sector allocations vs. targets</li>
+              <li>Update correlation matrix</li>
+              <li>Reallocate to maintain diversification</li>
+            </ul>
+          </li>
+          <li><strong>Core + Satellite framework</strong> (60-70% core, 30-40% active)
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Core: Long-term holdings (SPY, passive income)</li>
+              <li>Satellite: Active trading capital (where edge lives)</li>
+              <li>Protects majority of capital during drawdowns</li>
+            </ul>
+          </li>
+          <li><strong>Real-world case studies prove the pattern</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Rachel: -$41K (48% loss) from 100% correlated tech portfolio</li>
+              <li>Recovery: +$14.8K (29.6% gain) with proper diversification</li>
+              <li>Lesson: Portfolio construction matters more than individual trades</li>
+            </ul>
+          </li>
         </ul>
       </div>
 
