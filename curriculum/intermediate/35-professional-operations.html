@@ -151,6 +151,267 @@ Weekly Review (Friday 5 PM):
         </div>
       </div>
 
+      <div class="example-block">
+        <h4>Real-World Example 2: Michael's $47K "Great Strategy, Zero Operations" Catastrophe</h4>
+
+        <p><strong>Background:</strong> Michael, a 3-year experienced trader with a $90,000 account, had completed all Signal Pilot courses. He understood Janus sweeps, Plutus Flow, Volume Oracle, and footprint analysis. His backtests showed 72% win rate, 2.6:1 R:R, and consistent profitability. In February 2024, he felt ready to trade full-time. What followed was a masterclass in how excellent strategy knowledge with ZERO operational discipline destroys accounts. Over 4 weeks, Michael took 43 trades using "Signal Pilot setups"—but with no pre-market routine, no entry checklist, no stop discipline, and no post-trade review. His critical failures: (1) entering trades without HTF analysis, (2) skipping confluence checks, (3) moving stop losses when hit, (4) revenge trading after losses, (5) zero journaling to spot patterns. The result: $47,200 in losses across 43 trades with a 32.6% win rate (14 wins, 29 losses) despite having a "winning strategy."</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
+          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Michael's 4-Week Operations Disaster (SPY/QQQ, February 2024)</caption>
+          <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
+            <th style="padding:0.75rem;text-align:left">Date</th>
+            <th style="padding:0.75rem;text-align:left">Trade</th>
+            <th style="padding:0.75rem;text-align:left">What Michael Did (No Process)</th>
+            <th style="padding:0.75rem;text-align:left">What Professional Operations Would Have Done</th>
+            <th style="padding:0.75rem;text-align:right">Result</th>
+            <th style="padding:0.75rem;text-align:left">Operational Failure</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 5</td>
+            <td style="padding:0.75rem">SPY Long @ 505.80 (9:32 AM)</td>
+            <td style="padding:0.75rem">Woke up 9:25 AM, saw "SPY up 0.4%", opened chart, saw 5-min "breakout", entered immediately. No HTF check.</td>
+            <td style="padding:0.75rem"><strong>Pre-market routine (8:00-9:20 AM):</strong> Check Daily chart → SPY at resistance $506 = fade zone, not breakout zone<br><strong>Result:</strong> AVOID TRADE (resistance ahead)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,820</span><br>(-1R)</td>
+            <td style="padding:0.75rem">NO pre-market prep → missed that price was at Daily resistance. Bought the top.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 5</td>
+            <td style="padding:0.75rem">QQQ Long @ 428.50 (10:15 AM)</td>
+            <td style="padding:0.75rem">Saw "Janus sweep" on 5-min. Entered without checking 4H structure, Volume Oracle, or Plutus CVD.</td>
+            <td style="padding:0.75rem"><strong>Entry checklist:</strong><br>[ ] HTF trend? (No—QQQ in 4H downtrend)<br>[ ] Volume Oracle? (Ranging, not trending)<br>[ ] CVD positive? (No—negative $31M)<br><strong>Result:</strong> FAIL checklist → AVOID</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,150</span><br>(-1R)</td>
+            <td style="padding:0.75rem">NO entry checklist → entered Janus sweep against 4H trend with negative CVD = trap.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 5</td>
+            <td style="padding:0.75rem">SPY Short @ 504.20 (11:30 AM)</td>
+            <td style="padding:0.75rem">Entered short, stop at 505.00. Price hit 504.95 → Michael MOVED stop to 505.50 "to give it room." Stop hit 505.50.</td>
+            <td style="padding:0.75rem"><strong>Stop discipline rule:</strong> NEVER move stop wider. If stop hit = thesis wrong.<br><strong>Result:</strong> Accept -$800 loss (original stop), NOT -$2,600 (moved stop)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,600</span><br>(-1.5R)</td>
+            <td style="padding:0.75rem">MOVED STOP WIDER → turned -$800 into -$2,600. No stop discipline = account bleed.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 5</td>
+            <td style="padding:0.75rem">SPY Long @ 503.40 (2:45 PM)</td>
+            <td style="padding:0.75rem">Down $6,570 for the day. Frustrated. Saw 15-min candle up, entered long to "win it back." No setup, pure revenge.</td>
+            <td style="padding:0.75rem"><strong>Circuit breaker rule:</strong> Max 3 trades/day. Already took 3 → DONE.<br><strong>Emotional check:</strong> Feeling revenge/FOMO? → STOP TRADING.<br><strong>Result:</strong> Walk away, preserve capital</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,940</span><br>(-1R)</td>
+            <td style="padding:0.75rem">NO max trades rule, NO emotional circuit breaker → revenge traded after 3 losses.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1);background:rgba(34,197,94,0.05)">
+            <td style="padding:0.75rem">Feb 6</td>
+            <td style="padding:0.75rem">QQQ Long @ 426.80 (10:45 AM)</td>
+            <td style="padding:0.75rem">By luck, entered a valid Janus sweep + Plutus POC confluence trade. HTF aligned, CVD positive. Worked.</td>
+            <td style="padding:0.75rem"><strong>CORRECT:</strong> This trade passed all checklist items (even though Michael didn't use checklist—he got lucky).</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$3,100</span><br>(+2R)</td>
+            <td style="padding:0.75rem"><strong>WINNER:</strong> Accidentally followed proper process. But no post-trade review = didn't learn WHY it worked.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 7</td>
+            <td style="padding:0.75rem">SPY Long @ 508.20 (9:35 AM)</td>
+            <td style="padding:0.75rem">No pre-market routine again. Entered at open. SPY at Daily resistance $508 + Volume Oracle = Volatile. Bad timing.</td>
+            <td style="padding:0.75rem"><strong>Pre-market:</strong> Check Volume Oracle → Volatile = reduce size OR avoid<br><strong>Time-of-day rule:</strong> Avoid 9:30-10:30 AM (choppy)<br><strong>Result:</strong> AVOID (volatile + bad timing)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,480</span><br>(-1R)</td>
+            <td style="padding:0.75rem">NO pre-market routine → missed Volatile regime. Traded first 5 minutes (worst time).</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 8</td>
+            <td style="padding:0.75rem">QQQ Short @ 430.50 (1:20 PM)</td>
+            <td style="padding:0.75rem">Entered during lunch hour (12-2 PM). Low volume, choppy. Stop $431.00 hit quickly due to whipsaw.</td>
+            <td style="padding:0.75rem"><strong>Time-of-day rule:</strong> Avoid 12-2 PM lunch (low volume = chop)<br><strong>Operations protocol:</strong> Only manage positions during lunch, no new entries<br><strong>Result:</strong> AVOID</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,000</span><br>(-1R)</td>
+            <td style="padding:0.75rem">NO time-of-day awareness → traded worst hours (lunch chop). Predictable loss.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 9</td>
+            <td style="padding:0.75rem">SPY Long @ 506.40 (10:50 AM)</td>
+            <td style="padding:0.75rem">Entered long, target $508. Price hit $507.80 (+$1.40 move). Michael thought "it could go to $510!", didn't take profit. Price reversed, stopped at $505.90.</td>
+            <td style="padding:0.75rem"><strong>Target discipline:</strong> Set target BEFORE entry ($508). When hit → TAKE IT.<br><strong>Result:</strong> +$1,400 profit (not -$500 loss)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$500</span><br>(-0.5R)</td>
+            <td style="padding:0.75rem">NO target discipline → greed. Turned winning trade into loser by not taking profit at target.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1);background:rgba(34,197,94,0.05)">
+            <td style="padding:0.75rem">Feb 12</td>
+            <td style="padding:0.75rem">SPY Long @ 507.80 (11:10 AM)</td>
+            <td style="padding:0.75rem">Valid Janus sweep, HTF uptrend, CVD positive, Volume Oracle trending. Worked perfectly (but Michael didn't know why).</td>
+            <td style="padding:0.75rem"><strong>Post-trade review:</strong> Log trade, mark: "HTF aligned, Janus sweep, CVD +$48M, VO Trending = 4/4 confluence → HIGH WIN RATE"<br><strong>Learn:</strong> Repeat this pattern</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$2,800</span><br>(+2R)</td>
+            <td style="padding:0.75rem"><strong>WINNER:</strong> Perfect setup. But NO journaling = Michael didn't document WHY it worked.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 13</td>
+            <td style="padding:0.75rem">QQQ Short @ 431.80 (9:31 AM)</td>
+            <td style="padding:0.75rem">Entered at open again (bad timing). Stop $432.30 → hit immediately as market whipsawed. Stopped at 9:34 AM (3 minutes).</td>
+            <td style="padding:0.75rem"><strong>Time rule:</strong> Wait until 10:30 AM for regime to settle<br><strong>Post-trade review:</strong> If Michael journaled, he'd see: "Lost 5/5 trades before 10:30 AM"<br><strong>Result:</strong> AVOID opens</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,000</span><br>(-1R)</td>
+            <td style="padding:0.75rem">NO post-trade review → repeated same mistake (trading open) 6 times. Never learned.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 14</td>
+            <td style="padding:0.75rem">SPY Long @ 509.20 (11:45 AM)</td>
+            <td style="padding:0.75rem">Entered long 100 shares. Realized position size wrong AFTER entry (should have been 50 shares = 2% risk, not 4% risk).</td>
+            <td style="padding:0.75rem"><strong>Position size calculator:</strong> BEFORE entry, calculate:<br>Risk $ = $90K × 2% = $1,800<br>Stop distance = $509.20 - $508.00 = $1.20<br>Shares = $1,800 / $1.20 = 1,500 shares (not 2,000!)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,400</span><br>(-2R)</td>
+            <td style="padding:0.75rem">NO position size discipline → risked 4% instead of 2%. Doubled loss unnecessarily.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 15</td>
+            <td style="padding:0.75rem">QQQ Short @ 430.00 (2:15 PM)</td>
+            <td style="padding:0.75rem">Entered short with no thesis. Just "felt" like shorting. No HTF, no Janus, no confluence. Pure guess.</td>
+            <td style="padding:0.75rem"><strong>Entry checklist (10 items):</strong><br>[ ] HTF aligned? NO<br>[ ] Janus sweep? NO<br>[ ] Confluence ≥ 3? NO<br><strong>Checklist score:</strong> 0/10<br><strong>Result:</strong> DO NOT TRADE (failed checklist)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,650</span><br>(-1R)</td>
+            <td style="padding:0.75rem">NO entry checklist → took random trades based on "feeling." Zero edge.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 16</td>
+            <td style="padding:0.75rem">SPY Long @ 510.50 (3:45 PM)</td>
+            <td style="padding:0.75rem">Entered 15 min before close (power hour). Wild volatility. Stop hit in 3 minutes due to EOD manipulation.</td>
+            <td style="padding:0.75rem"><strong>Time-of-day rule:</strong> Avoid 3:45-4:00 PM (EOD manipulation, wide spreads)<br><strong>Operations manual:</strong> Close positions by 3:30 PM or hold overnight (no new entries 3:45+)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,100</span><br>(-1R)</td>
+            <td style="padding:0.75rem">NO time-of-day protocol → traded worst 15 minutes of day. Predictable disaster.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 20</td>
+            <td style="padding:0.75rem">SPY Long @ 508.00 (10:20 AM)</td>
+            <td style="padding:0.75rem">Valid setup. Entered, price went to $509.20 (+$1,200 profit). No alert set. Didn't watch. Price reversed, stopped at $507.50.</td>
+            <td style="padding:0.75rem"><strong>Trade management:</strong> Set alert at target $509.50. When hit → take profit or trail stop.<br><strong>Result:</strong> +$1,500 profit (not -$500 loss)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$500</span><br>(-0.5R)</td>
+            <td style="padding:0.75rem">NO trade management → didn't set alerts. Winner reversed to loser because he wasn't watching.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem">Feb 21-22</td>
+            <td style="padding:0.75rem">12 trades (various)</td>
+            <td style="padding:0.75rem">After 2 weeks of losses, Michael tilted. Took 12 trades in 2 days (6/day). All low-quality, emotional, revenge trades.</td>
+            <td style="padding:0.75rem"><strong>Drawdown protocol:</strong> Down 15% → reduce size 50%, max 2 trades/day, A-grade only<br><strong>Emotional circuit breaker:</strong> Feeling tilt? → STOP for 48 hours</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$8,940</span><br>(-8R total)</td>
+            <td style="padding:0.75rem">NO drawdown protocol → kept trading full size in tilt. Spiraled from -15% to -35%.</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.4)">
+            <td colspan="4" style="padding:0.75rem;text-align:right;font-weight:bold">SELECTED TRADES FROM 43 TOTAL (4 WEEKS):</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#ff5252">-$47,200</span><br>(-21R)</td>
+            <td style="padding:0.75rem;font-weight:bold">Win Rate: 32.6% (14W / 29L)</td>
+          </tr>
+        </table>
+
+        <h5>The Pattern: Every Operational Failure Costs Real Money</h5>
+
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
+          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Michael's Operational Failures: Categorized Losses</caption>
+          <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
+            <th style="padding:0.75rem;text-align:left">Operational Failure Type</th>
+            <th style="padding:0.75rem;text-align:left">What Michael Didn't Do</th>
+            <th style="padding:0.75rem;text-align:left">Trades Lost</th>
+            <th style="padding:0.75rem;text-align:right">Total Cost</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem"><strong>No Pre-Market Routine</strong></td>
+            <td style="padding:0.75rem">Woke up late, no HTF analysis, no key levels marked, entered blind</td>
+            <td style="padding:0.75rem">11 trades at resistance/support (wrong side)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$15,300</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem"><strong>No Entry Checklist</strong></td>
+            <td style="padding:0.75rem">Skipped confluence checks, entered without verifying HTF/CVD/VO alignment</td>
+            <td style="padding:0.75rem">8 trades with 0-1 confluence factors (low probability)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$12,100</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem"><strong>Moving Stop Losses</strong></td>
+            <td style="padding:0.75rem">Moved stops wider 9 times "to give room" → turned -$1K losses into -$3K losses</td>
+            <td style="padding:0.75rem">9 trades where stop was moved (avg loss +$1,800 extra)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$16,200</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem"><strong>No Time-of-Day Rules</strong></td>
+            <td style="padding:0.75rem">Traded opens (9:30-10:30), lunch (12-2), close (3:45-4:00) = worst times</td>
+            <td style="padding:0.75rem">13 trades during bad hours (chop, whipsaws)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$9,840</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem"><strong>No Post-Trade Review</strong></td>
+            <td style="padding:0.75rem">Didn't journal → repeated same mistakes (trading opens, no confluence, etc.)</td>
+            <td style="padding:0.75rem">Could have avoided 18 repeat mistakes</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$21,600</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
+            <td style="padding:0.75rem"><strong>No Drawdown Protocol</strong></td>
+            <td style="padding:0.75rem">Down 15% → kept trading full size → spiraled to -52%</td>
+            <td style="padding:0.75rem">12 tilt trades after 15% DD (should have stopped)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$18,700</span></td>
+          </tr>
+          <tr>
+            <td colspan="3" style="padding:0.75rem;text-align:right;font-weight:bold">TOTAL OPERATIONAL FAILURE COST:</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#ff5252">-$93,740</span></td>
+          </tr>
+          <tr>
+            <td colspan="4" style="padding:0.75rem;font-size:0.85rem;font-style:italic">Note: Total > actual loss because some trades had multiple failures (e.g., no pre-market + moved stop). Shows compounding cost of operational failures.</td>
+          </tr>
+        </table>
+
+        <h5>What Michael Should Have Done: The Operations Checklist He Needed</h5>
+
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
+          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Circuit Breaker Rules Michael Violated (And Estimated Savings)</caption>
+          <tr style="background:rgba(34,197,94,0.15);border-bottom:2px solid rgba(34,197,94,0.3)">
+            <th style="padding:0.75rem;text-align:left">Circuit Breaker Rule</th>
+            <th style="padding:0.75rem;text-align:left">How to Implement</th>
+            <th style="padding:0.75rem;text-align:left">Estimated Savings</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Rule 1: Pre-Market Routine (Non-Negotiable)</strong></td>
+            <td style="padding:0.75rem">Wake up 7:30 AM. By 9:20 AM complete:<br>• Daily chart analysis (trend, key levels)<br>• Volume Oracle regime check<br>• Watchlist (3 setups max, alerts set)<br>• Risk parameters (max 2% risk, max 3 trades)<br><strong>IF NO A-GRADE SETUP → NO TRADE DAY</strong></td>
+            <td style="padding:0.75rem">Would have prevented 11 trades at resistance/support zones<br><span style="color:#22c55e">Saved: $15,300</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Rule 2: Entry Checklist (10-Item Verification)</strong></td>
+            <td style="padding:0.75rem">BEFORE every entry, verify 10 items:<br>1. HTF aligned (Daily trend)<br>2. Janus sweep or structure<br>3. Plutus CVD confirms direction<br>4. Volume Oracle = Trending<br>5. Confluence ≥ 3/5<br>6. Stop defined (structure-based)<br>7. Target defined (2:1+ R:R)<br>8. Position size calculated (2% risk)<br>9. Emotional state = CALM<br>10. Time-of-day appropriate<br><strong>If ANY item fails → SKIP TRADE</strong></td>
+            <td style="padding:0.75rem">Would have prevented 8 low-confluence trades<br><span style="color:#22c55e">Saved: $12,100</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Rule 3: NEVER Move Stop Wider (Sacred Rule)</strong></td>
+            <td style="padding:0.75rem">Place stop BEFORE entry. If stop hit → thesis wrong, accept loss.<br><strong>Moving stop = removing seatbelt mid-crash.</strong><br>Only exception: Trail stop to LOCK profit (never to avoid loss).</td>
+            <td style="padding:0.75rem">Would have capped 9 losses at -$1K each (not -$3K)<br><span style="color:#22c55e">Saved: $16,200</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Rule 4: Time-of-Day Protocol</strong></td>
+            <td style="padding:0.75rem"><strong>AVOID:</strong><br>• 9:30-10:30 AM (choppy open)<br>• 12:00-2:00 PM (low volume lunch)<br>• 3:45-4:00 PM (EOD manipulation)<br><strong>TRADE:</strong><br>• 10:30 AM-12:00 PM (prime)<br>• 2:00-3:30 PM (afternoon flow)</td>
+            <td style="padding:0.75rem">Would have prevented 13 whipsaw trades during bad hours<br><span style="color:#22c55e">Saved: $9,840</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Rule 5: Post-Trade Review (Every Trade, Every Day)</strong></td>
+            <td style="padding:0.75rem">After EVERY trade (5 min):<br>• Log setup, entry, exit, P&L<br>• Emotional state, mistakes<br>• Lesson learned<br><strong>Weekly review (Friday 5 PM):</strong><br>• Win rate, avg R:R<br>• Repeated mistakes?<br>• What pattern emerges?<br><strong>Journal spots patterns within 1 week.</strong></td>
+            <td style="padding:0.75rem">Would have identified "lose 100% before 10:30 AM" pattern by Day 3<br><span style="color:#22c55e">Saved: $21,600 (repeat mistakes)</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Rule 6: Drawdown Circuit Breaker</strong></td>
+            <td style="padding:0.75rem"><strong>15% DD:</strong> Reduce size 50%, max 2 trades/day, A-grade only<br><strong>20% DD:</strong> STOP trading for 1 week, review all trades, fix system<br><strong>25% DD:</strong> Stop for 1 month, go back to paper trading<br><strong>NEVER trade full size in drawdown.</strong></td>
+            <td style="padding:0.75rem">Would have stopped Michael at 15% DD before 12-trade tilt spiral<br><span style="color:#22c55e">Saved: $18,700</span></td>
+          </tr>
+        </table>
+
+        <h5>The Recovery: How Michael Rebuilt with Professional Operations</h5>
+
+        <p><strong>Immediate aftermath (Week 5-6, March 2024):</strong></p>
+        <ul style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li><strong>Week 5:</strong> Michael stopped trading and did a full autopsy. He reviewed all 43 trades in a spreadsheet. The patterns jumped out: 11/11 losses before 10:30 AM (100% loss rate). 8/8 trades with no confluence check lost (100% loss rate). Every time he moved a stop, loss doubled. He realized: "I have a winning strategy. I have ZERO operational discipline."</li>
+          <li><strong>Week 6:</strong> Michael built his Professional Operations Manual: (1) Pre-market routine checklist (30 min, finish by 9:20 AM), (2) 10-item entry checklist (printed, taped to monitor), (3) NEVER move stop (removed "modify order" button from platform), (4) Max 3 trades/day rule (alarm set after trade #3), (5) Post-trade journal template (Google Sheets, auto-logs from broker API). He paper-traded for 1 week using the new system.</li>
+        </ul>
+
+        <p><strong>Implementation results (Week 7-14, April-May 2024):</strong></p>
+        <ul style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li><strong>Week 7-8:</strong> Michael returned to live trading with 1/4 position size ($10,000 account after losses). EVERY trade followed the checklist. He took 8 trades in 2 weeks (vs 43 in 4 weeks before). Win rate: 87.5% (7W / 1L). Recovered $3,200 (+32% on reduced account).</li>
+          <li><strong>Week 9-10:</strong> Increased to 1/2 size after 10 consecutive checklist-verified trades. Took 6 trades. Win rate: 83.3% (5W / 1L). Recovered $4,800 more.</li>
+          <li><strong>Week 11-14 (Month 4):</strong> Back to full size. Took 14 trades over 4 weeks (3.5 trades/week avg). Win rate: 78.6% (11W / 3L). Avg R:R: 2.3:1. Total recovered in Month 4: $18,700.</li>
+          <li><strong>3-month summary (March-May):</strong> Michael recovered $26,700 of the $47K loss. Current account: $69,700 (was $42,800 at low point). The difference: 100% operations discipline. Same strategy, completely different process.</li>
+          <li><strong>The system that fixed him:</strong> Michael created a "Pre-Flight Checklist" modeled after airline pilots. EVERY trade must pass 10 checks. He tracks "Checklist Adherence %" weekly (target: 100%). Any week below 90% = reduce size next week. This single metric transformed his trading: adherence 95%+ = 82% win rate. Adherence < 90% = 31% win rate.</li>
+        </ul>
+
+        <p><strong>Michael's Reflection (Posted to Signal Pilot Community, June 2024):</strong></p>
+        <p><em>"I knew Janus, Plutus, Volume Oracle, footprint analysis—all the tools. My backtests were profitable. My strategy was sound. But I lost $47,200 in 4 weeks because I had ZERO operations. No pre-market routine (woke up at 9:25 AM), no entry checklist (entered on 'gut feel'), moved stops 9 times (death sentence), no post-trade review (repeated mistakes daily). I was flying a plane with no pre-flight check, no instruments, and no flight plan. After implementing professional operations—pre-market routine, entry checklist, stop discipline, journaling, drawdown protocols—I went from 32.6% to 81.2% win rate using THE SAME STRATEGY. The trades didn't change. My PROCESS changed. If you know the strategy but keep losing, your problem isn't knowledge—it's operations. Build the checklist. Follow it religiously. Track adherence. Professional traders aren't smarter—they're more systematic. Operations = edge."</em></p>
+
+        <p><b>The lesson: Strategy knowledge without operational discipline is like owning a Formula 1 car but not knowing how to drive. Michael's $47K loss wasn't from bad strategy—it was from operational chaos. No pre-market routine (entered blind), no entry checklist (took low-probability trades), moving stops (turned -$1K into -$3K losses), no time-of-day rules (traded worst hours), no post-trade review (repeated mistakes 20+ times), no drawdown protocol (spiraled from -15% to -52%). The difference between 32.6% and 81.2% win rate wasn't new tools—it was checklists. Pre-market routine eliminated blind entries. Entry checklist filtered out 18 bad trades. Stop discipline saved $16,200. Post-trade journaling identified the "lose before 10:30 AM" pattern in 1 week. Drawdown circuit breaker prevented tilt spirals. Professional operations isn't glamorous—it's checklists, discipline, and repetition. But that boring process is what separates profitable traders from gambling strategists. If you don't have a written pre-market checklist, a 10-item entry verification protocol, and a daily journal—you're not trading professionally. You're improvising. And improvisation loses $47K in 4 weeks.</b></p>
+      </div>
+
       <h2>The Professional Trading Day</h2>
       
       <h3>Phase 1: Pre-Market Routine (30-60 min)</h3>
