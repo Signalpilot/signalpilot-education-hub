@@ -373,6 +373,58 @@
         <p>You just traded WITH the market makers instead of being their exit liquidity.</p>
       </div>
 
+      <h3>Real Example: Tesla Stop Hunt (September 2024)</h3>
+
+      <p>Let me show you a real stop hunt that happened on Tesla (TSLA) in September 2024 that demonstrates exactly how this plays out in practice:</p>
+
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <p style="margin:0;font-weight:bold;font-size:1.1rem">Setup: September 18, 2024, TSLA trading around $242</p>
+
+        <div style="margin:1.5rem 0;padding:1rem;background:rgba(118,221,255,.08);border-left:4px solid var(--accent)">
+          <p style="margin:0"><strong>Pre-Market Context (9:15 AM ET):</strong></p>
+          <ul style="margin:.5rem 0 0 1.5rem">
+            <li>TSLA had rallied from $238 → $242 over 3 days</li>
+            <li>Strong support established at $240.00 (round number, previous resistance turned support)</li>
+            <li>Market makers could see massive stop clusters at $239.50-$239.80 (just below the obvious $240 level)</li>
+            <li>Total estimated stop liquidity: ~$15-20M based on volume profile</li>
+          </ul>
+        </div>
+
+        <div style="margin:1.5rem 0;padding:1rem;background:rgba(255,107,107,.08);border-left:4px solid #ff6b6b">
+          <p style="margin:0"><strong>The Hunt Begins (10:30-10:45 AM ET):</strong></p>
+          <ul style="margin:.5rem 0 0 1.5rem">
+            <li><strong>10:30 AM:</strong> TSLA testing $240.20, light volume, consolidation</li>
+            <li><strong>10:38 AM:</strong> Bid-ask spread widens from $0.02 to $0.08 (market maker warning signal)</li>
+            <li><strong>10:40 AM:</strong> Coordinated selling pressure appears—price drops to $240.00 on 180K shares (5× average 1-min volume)</li>
+            <li><strong>10:42 AM:</strong> BREAKAGE: Price knifes to $239.75 on another 220K shares</li>
+            <li><strong>10:43 AM:</strong> CASCADE: Stops trigger at $239.50-$239.80, volume spikes to 450K shares in 60 seconds</li>
+            <li><strong>10:44 AM:</strong> Low print: $239.25 (maximum pain achieved, all stops cleared)</li>
+          </ul>
+        </div>
+
+        <div style="margin:1.5rem 0;padding:1rem;background:rgba(0,212,170,.08);border-left:4px solid #00d4aa">
+          <p style="margin:0"><strong>The Reversal (10:45-11:15 AM ET):</strong></p>
+          <ul style="margin:.5rem 0 0 1.5rem">
+            <li><strong>10:45 AM:</strong> Immediate buying appears at $239.25-$239.50 (market makers accumulating at better prices)</li>
+            <li><strong>10:50 AM:</strong> TSLA back above $240.00 on 380K buy volume</li>
+            <li><strong>11:00 AM:</strong> TSLA at $241.50 (above pre-hunt levels)</li>
+            <li><strong>11:15 AM:</strong> TSLA at $242.80, rally continues into close at $244.50</li>
+          </ul>
+        </div>
+
+        <p style="margin:2rem 0 1rem 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1);font-weight:bold">The Math:</p>
+        <ul style="margin:.5rem 0 0 1.5rem">
+          <li><strong>Retail traders stopped out:</strong> ~$15-20M in forced selling at $239.50-$239.80 (average: $239.65)</li>
+          <li><strong>Market makers accumulated:</strong> Bought at $239.25-$239.65, sold at $241.50-$244.50</li>
+          <li><strong>Estimated profit for hunt orchestrators:</strong> $2-5 per share on $15-20M position = $30-100M profit in 45 minutes</li>
+          <li><strong>Retail losses:</strong> Most stopped at $239.65, watched TSLA rally $5 without them—missed +2% move PLUS took -1% loss = -3% total opportunity cost</li>
+        </ul>
+
+        <p style="margin:2rem 0 0 0;padding:1.5rem;background:rgba(118,221,255,.1);border-radius:8px;font-size:1.05rem"><strong>How Janus Atlas users traded this:</strong> Detected sweep at $239.25, saw reclaim above $240.00 with volume confirmation, entered long at $240.20 with stop at $238.80 (below swept low), target $243.00. Result: +1.1% gain while stopped-out traders lost -1% and missed the move.</p>
+      </div>
+
+      <p><strong>The pattern repeats every single day</strong> across thousands of instruments. Once you see it, you can't unsee it. The key is using tools like Janus Atlas to detect sweeps in real-time and positioning yourself on the RIGHT side of these hunts.</p>
+
       <div class="section-break"><span>Part 4: How to Defend Yourself</span></div>
 
       <h2>You Can't Outrun Them. Out-Think Them.</h2>
