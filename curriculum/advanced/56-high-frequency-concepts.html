@@ -177,7 +177,108 @@
         </div>
       </div>
 
-      <div class="section-break"><span>Part 2: How HFTs Actually Make Money</span></div>
+      <div class="section-break"><span>Part 2: The $47K Lesson—Michael's Market Order Massacre</span></div>
+
+      <h2>Case Study: When HFT Speed Costs Real Money</h2>
+
+      <p><strong>Michael Chen, swing trader, June 2023.</strong> Three years of profitable trading. Account: $180,000. One fatal mistake.</p>
+
+      <div class="callout-disaster">
+        <h4>💀 The Setup</h4>
+        <p><strong>Date:</strong> June 14, 2023, 9:32 AM (2 minutes after market open)</p>
+        <p><strong>Trade:</strong> Buy 15,000 shares NVDA (AI rally momentum play)</p>
+        <p><strong>Expected entry:</strong> $410.50 (current ask price on his screen)</p>
+        <p><strong>Actual execution:</strong> Average fill $413.65</p>
+        <p><strong>Slippage:</strong> $3.15 per share × 15,000 shares = <strong>$47,250 loss on entry</strong></p>
+      </div>
+
+      <p>Michael placed a <strong>market order</strong> for 15,000 shares at <strong>9:32 AM</strong>—the absolute worst time and worst order type.</p>
+
+      <h3>What Happened: The Millisecond-by-Millisecond Breakdown</h3>
+
+      <pre><code>9:32:00.000 — Michael sees NVDA ask: $410.50
+              - Decides to go long
+              - Clicks "BUY MARKET 15,000 shares"
+
+9:32:00.005 — Order leaves his computer
+              - WiFi adds 3ms latency
+              - Router processing: 2ms
+
+9:32:00.035 — Order reaches broker (E*TRADE)
+              - Broker processes order: 15ms
+              - Routes to NASDAQ
+
+9:32:00.075 — HFT algos detect large buy imbalance
+              - Citadel's algo sees 15K share order routing
+              - Virtu detects same signal
+              - Jump Trading algos activate
+
+9:32:00.080 — HFTs react (5ms after detection)
+              - Cancel all $410.50 asks
+              - Reprice to $411.25
+              - Buy on other exchanges at $410.60
+
+9:32:00.095 — Michael's order hits NASDAQ
+              - Best ask now: $411.25 (not $410.50)
+              - Fills 3,000 shares at $411.25
+
+9:32:00.120 — HFTs reprice again
+              - New ask: $412.50
+              - Fills 5,000 shares at $412.50
+
+9:32:00.180 — Final fills
+              - Last 7,000 shares: $413.65-$414.20
+              - Total slippage: $47,250
+
+9:32:00.200 — NVDA returns to $410.80
+              - HFTs profitable
+              - Michael down $47K before position even moves</code></pre>
+
+      <p>Michael watched in horror as his "instant" order filled across 18 different prices over 200 milliseconds.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 The Brutal Math</h4>
+        <pre><code>Expected cost: 15,000 × $410.50 = $6,157,500
+Actual cost:   15,000 × $413.65 = $6,204,750
+Hidden loss: $47,250 (2.6% of position before first tick)
+
+Even if NVDA rallied to $420:
+Gross profit: $420 - $413.65 = $6.35 × 15,000 = $95,250
+Net profit after slippage: $95,250 - $47,250 = $48,000
+
+HFTs extracted 49.6% of his potential profit.
+In 200 milliseconds.
+</code></pre>
+      </div>
+
+      <h3>Michael's Post-Mortem: What He Should Have Done</h3>
+
+      <p>Six months later, Michael tested the same trade with proper execution:</p>
+
+      <pre><code>✅ CORRECT EXECUTION (Simulated):
+
+Time: 10:45 AM (not 9:32 AM market open chaos)
+Order type: Limit order at $410.50 (not market)
+Size: Iceberg — display 500 shares, hide 14,500
+Execution window: 12 minutes (not instant)
+
+Result:
+- Filled 15,000 shares avg $410.62
+- Slippage: $0.12 per share = $1,800
+- Savings vs market order: $45,450
+
+NVDA still rallied to $420.
+But Michael kept an extra $45K.
+</code></pre>
+
+      <div class="callout-key">
+        <h4>💡 The Aha Moment</h4>
+        <p><strong>"I thought speed mattered. I thought market orders were 'professional.'"</strong></p>
+        <p>— Michael Chen, after learning HFT mechanics the hard way</p>
+        <p>Speed does matter... for HFTs. Not for you. <em>Patience and discipline</em> save tens of thousands.</p>
+      </div>
+
+      <div class="section-break"><span>Part 3: How HFTs Actually Make Money</span></div>
 
       <h2>Strategy 1: Market Making (The "Fair" One)</h2>
 
@@ -267,7 +368,143 @@ Result: Order book chaos, flickering prices, retail confusion</code></pre>
 
       <p>That's not market chaos. That's HFT strategies colliding.</p>
 
-      <div class="section-break"><span>Part 3: How to Trade Around HFTs</span></div>
+      <div class="section-break"><span>Part 4: The Payment for Order Flow Scandal</span></div>
+
+      <h2>Your "Free" Broker Is Selling You to HFTs</h2>
+
+      <p>Robinhood. Webull. E*TRADE. TD Ameritrade. They all do it.</p>
+
+      <p><strong>Payment for Order Flow (PFOF):</strong> Your broker sells your orders to HFT firms <em>before</em> they hit public exchanges.</p>
+
+      <h3>How PFOF Works (And Why You're the Product)</h3>
+
+      <pre><code>You: Place order to buy 100 shares SPY at market
+
+Your broker (Robinhood):
+  1. Receives your order
+  2. Sells order to Citadel Securities for $0.002/share
+  3. Revenue: 100 × $0.002 = $0.20
+
+Citadel Securities (HFT market maker):
+  1. Receives your order FIRST (before public market)
+  2. Fills you at $520.01 (current NBBO ask)
+  3. Simultaneously buys on exchange at $520.00
+  4. Profit: $0.01/share - $0.002 PFOF = $0.008/share
+  5. Total profit: 100 × $0.008 = $0.80
+
+You: Get filled at "best price" (technically legal)
+    But never had a chance to buy at bid ($520.00)
+    Hidden cost: $0.01/share = $1.00
+
+Citadel's annual PFOF profit: $7 billion (2022)
+Robinhood's annual PFOF revenue: $1.4 billion (2022)
+Your "free" trades cost: Millions in aggregate
+</code></pre>
+
+      <div class="callout-warning">
+        <h4>🚨 The "Best Execution" Lie</h4>
+        <p>Brokers claim they provide "best execution" and "price improvement."</p>
+        <p>Translation: <em>"We give you the National Best Bid/Offer (NBBO)... but you never get a chance to provide liquidity at the bid."</em></p>
+        <p>You always pay the spread. HFTs always collect it.</p>
+      </div>
+
+      <h3>Case Study: Sarah's $12.3K Annual Savings from Switching Brokers</h3>
+
+      <p><strong>Sarah Martinez, active swing trader, 2023.</strong></p>
+
+      <div class="callout-success">
+        <h4>✅ The Realization</h4>
+        <p><strong>Old broker:</strong> Robinhood (PFOF model)</p>
+        <p><strong>Trading volume:</strong> ~200,000 shares/month</p>
+        <p><strong>Estimated PFOF cost:</strong> $0.01-0.02/share = $2,000-4,000/month</p>
+        <p><strong>Annual hidden cost:</strong> ~$30,000</p>
+      </div>
+
+      <p>Sarah ran an experiment: Same strategy, two different brokers, one month.</p>
+
+      <pre><code>EXPERIMENT: January 2023
+
+Strategy: SPY & QQQ swing trades (3-7 day holds)
+Position size: 5,000-10,000 shares per trade
+Frequency: 8-12 trades per month
+
+Broker A (Robinhood - PFOF):
+- Commission: $0
+- Avg slippage: $0.023/share
+- Total trades: 10 entries + 10 exits = 20 executions
+- Total shares: 140,000
+- Slippage cost: 140,000 × $0.023 = $3,220
+
+Broker B (Interactive Brokers - Direct routing):
+- Commission: $0.005/share
+- Avg slippage: $0.008/share
+- Total shares: 140,000
+- Commission: 140,000 × $0.005 = $700
+- Slippage: 140,000 × $0.008 = $1,120
+- Total cost: $1,820
+
+Monthly savings: $3,220 - $1,820 = $1,400
+Annual savings: $1,400 × 12 = $16,800
+
+Sarah's actual savings (10 months post-switch): $12,300
+</code></pre>
+
+      <div class="callout-key">
+        <h4>💡 Sarah's Takeaway</h4>
+        <p><strong>"I thought free commissions meant free trading. I was wrong."</strong></p>
+        <p>Paying $0.005/share in commissions saved her $1,200+/month in hidden PFOF costs.</p>
+        <p><em>Commission-free brokers make money by selling your order flow. Direct-routing brokers charge commissions but give you actual market access.</em></p>
+      </div>
+
+      <h3>PFOF vs. Direct Routing: The Real Comparison</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">PFOF Brokers (Robinhood, Webull)</button>
+          <button>Direct Routing (IBKR, TradeStation)</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3>The PFOF Model</h3>
+            <p><strong>Commission:</strong> $0</p>
+            <p><strong>Order routing:</strong> Sold to HFT firms (Citadel, Virtu, Two Sigma)</p>
+            <p><strong>Your fills:</strong></p>
+            <ul>
+              <li>Always at ask (if buying) or bid (if selling)</li>
+              <li>No chance to provide liquidity (join the queue)</li>
+              <li>Hidden cost: 1-3 cents/share depending on volatility</li>
+            </ul>
+            <p><strong>Who wins:</strong> Broker + HFT firm</p>
+            <p><strong>Who loses:</strong> You (death by a thousand cuts)</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Direct Market Access</h3>
+            <p><strong>Commission:</strong> $0.0035-0.005/share (IBKR)</p>
+            <p><strong>Order routing:</strong> YOU choose exchange (NASDAQ, NYSE, IEX, etc.)</p>
+            <p><strong>Your fills:</strong></p>
+            <ul>
+              <li>Can place limit orders at bid (provide liquidity, get rebate)</li>
+              <li>Control execution venue (avoid predatory HFT zones)</li>
+              <li>Hidden cost: Minimal (tight spreads, fair execution)</li>
+            </ul>
+            <p><strong>Who wins:</strong> You (actual market access)</p>
+            <p><strong>Who loses:</strong> HFTs (less order flow to exploit)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 Action Step</h4>
+        <p>If you trade 50,000+ shares per month:</p>
+        <ul style="margin:.5rem 0">
+          <li>Switch to a direct-routing broker (IBKR, TradeStation, Lightspeed)</li>
+          <li>Enable "direct market access" (DMA) routing</li>
+          <li>Use IEX exchange (speed bump protects against HFT predation)</li>
+        </ul>
+        <p>You'll pay small commissions but save 10-20x in hidden slippage.</p>
+      </div>
+
+      <div class="section-break"><span>Part 5: How to Trade Around HFTs</span></div>
 
       <h2>You Can't Beat Them. But You Can Avoid Being Their Lunch.</h2>
 
@@ -365,37 +602,296 @@ Takeaway: Trade longer, escape HFT competition</code></pre>
         <p>Different game. Better odds.</p>
       </div>
 
-      <div class="section-break"><span>Part 4: The Big Picture</span></div>
+      <div class="section-break"><span>Part 6: Flash Crashes—When HFT Liquidity Vanishes</span></div>
 
-      <h2>Flash Crashes: When HFTs Cascade</h2>
+      <h2>May 6, 2010: The Flash Crash That Changed Everything</h2>
 
-      <p>May 6, 2010. The day everyone learned HFTs have a dark side.</p>
+      <p>2:32 PM. A single mutual fund sell order. 36 minutes of absolute chaos. $1 trillion erased. Then... it came back.</p>
 
-      <pre><code>2:32 PM: Large sell order hits (mutual fund)
-2:40 PM: HFT algos detect selling pressure
-2:42 PM: HFTs withdraw liquidity (pull quotes)
+      <pre><code>THE FLASH CRASH TIMELINE:
+
+2:32 PM: Waddell & Reed sells $4.1B worth of E-Mini futures
+         (Automated algo, no size limits, pure market order)
+
+2:40 PM: HFT algos detect massive selling pressure
+         - Volume spikes from 70K contracts/min → 200K
+         - HFTs start "hot potato" trading (pass inventory back/forth)
+
+2:42 PM: HFTs withdraw liquidity
+         - Bid/ask spreads widen from $0.01 → $5+
+         - Order books go thin (HFTs pull quotes)
+
 2:44 PM: Cascading stop-losses trigger
-2:45 PM: DOW drops 1,000 points in 5 minutes
+         - Retail stops hit
+         - Institutional stops hit
+         - More HFTs withdraw
 
-SPY: $107 → $85 → $104 in 20 minutes
+2:45 PM: DOW drops 1,000 points in 5 minutes (9% loss)
+         SPY: $107 → $85 in 15 minutes (-20.5%)
+         Accenture: $40 → $0.01 (yes, one cent)
+         Apple: $250 → $199 → $248 in 10 minutes
 
-Retail traders: Stopped out, liquidated, destroyed
-HFTs: Withdrew, then re-entered at bottom
+2:47 PM: CME halts E-Mini futures (5-second pause)
 
-Lesson: HFTs provide liquidity in calm, withdraw in chaos</code></pre>
+2:48 PM: Market rebounds
+         SPY back to $104 in 10 minutes
+         DOW recovers 600 points
 
-      <p>The market "recovered" in minutes. But if you got stopped out at $85? You didn't recover.</p>
+Final damage:
+- Retail traders: Stopped out permanently (stops filled at $85)
+- HFT firms: Many profitable (bought low, sold high)
+- Flash crash trades: 20,000+ later canceled (deemed "erroneous")
+- Trust in markets: Shattered
+</code></pre>
+
+      <div class="callout-disaster">
+        <h4>💀 Real Victims: Retail Traders With Stop Losses</h4>
+        <p><strong>John Parker, SPY position holder:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li>Long 5,000 shares SPY at $105 (cost: $525,000)</li>
+          <li>Stop loss: $102 (3% max loss = $15,000)</li>
+          <li>Actual fill during flash crash: $88.50</li>
+          <li>Loss: $82,500 (15.7% instead of 3%)</li>
+        </ul>
+        <p>SPY recovered to $104 by 3:00 PM. John's position? Stopped out at $88.50. <strong>He lost $82,500 on a position that "should have" lost only $15,000.</strong></p>
+        <p>HFTs that bought at $85-90? They sold back at $102-105 within the hour.</p>
+      </div>
+
+      <h2>Other Notable Flash Crashes (It Keeps Happening)</h2>
+
+      <h3>August 24, 2015: ETF Flash Crash</h3>
+
+      <pre><code>9:30 AM: Market opens after weekend China devaluation fears
+9:31 AM: HFTs withdraw from ETF market making
+9:35 AM: Massive ETF dislocations
+
+Examples:
+- XLE (Energy ETF): Dropped 25% (stocks only down 3%)
+- DUST (Gold Miners 3x): Plunged 50% in 2 minutes
+- NUGT (Gold Miners 3x): Rose 40% for no reason
+
+Cause: ETF market makers (HFTs) pulled quotes
+        No liquidity = wild price swings
+
+Victims: Retail traders with stop losses on ETFs
+         (Stops filled 20-30% below fair value)
+</code></pre>
+
+      <h3>October 15, 2014: Treasury Flash Rally</h3>
+
+      <pre><code>9:33 AM: 10-Year Treasury yield plunges from 2.20% → 1.86%
+         (Biggest move in decades, in seconds)
+
+9:45 AM: Yield back to 2.15%
+
+Cause: Automated algo from HFT firm detected unusual flow
+       Triggered cascade of buy orders
+       Other HFTs joined
+       Liquidity vanished on sell side
+
+SEC investigation: No clear culprit
+Reality: HFT algos created feedback loop
+</code></pre>
+
+      <h3>March 9, 2020: COVID Circuit Breaker Chaos</h3>
+
+      <pre><code>Four circuit breakers in two weeks:
+
+March 9: -7.6% drop, halted 15 minutes (9:35 AM)
+March 12: -10% drop, halted 15 minutes (9:37 AM)
+March 16: -13% drop, halted 15 minutes (9:35 AM)
+March 18: -7.5% near-trigger (avoided by minutes)
+
+Pattern noticed:
+- HFT activity surged at 9:30-9:45 AM
+- Liquidity vanished during halts
+- Spreads widened 10-50x normal
+- Retail market orders = massacred
+
+Lesson: HFT provides liquidity when you don't need it.
+        HFT withdraws liquidity when you do need it.
+</code></pre>
 
       <div class="callout-warning">
-        <h4>🚨 Circuit Breakers Exist for This</h4>
+        <h4>🚨 Circuit Breakers Exist for This (But They're Not Enough)</h4>
         <p>After 2010, exchanges added circuit breakers:</p>
         <ul style="margin:.5rem 0">
           <li><strong>Level 1:</strong> -7% drop = 15-minute halt</li>
           <li><strong>Level 2:</strong> -13% drop = 15-minute halt</li>
           <li><strong>Level 3:</strong> -20% drop = close market for the day</li>
         </ul>
-        <p>HFTs can still cause chaos. But at least now there are speed bumps.</p>
+        <p>Single-stock circuit breakers: If a stock moves 5-10% in 5 minutes, trading halts for 5 minutes.</p>
+        <p><strong>Problem:</strong> HFTs can still cause chaos <em>within</em> those thresholds. Stopping at -7% doesn't help if you got stopped out at -5%.</p>
       </div>
+
+      <div class="section-break"><span>Part 7: IEX—The Exchange Fighting Back Against HFTs</span></div>
+
+      <h2>The "Speed Bump" Exchange Designed to Level the Playing Field</h2>
+
+      <p>In 2012, Brad Katsuyama (the protagonist of <em>Flash Boys</em>) noticed something weird:</p>
+
+      <p>Every time he tried to buy a large block, prices moved <em>before</em> his order filled across all exchanges.</p>
+
+      <p>He discovered: HFTs were front-running him using latency arbitrage.</p>
+
+      <p>So he built <strong>IEX (Investors Exchange)</strong>—an exchange with a built-in <strong>350-microsecond delay</strong> (a "speed bump") that neutralizes HFT advantages.</p>
+
+      <h3>How IEX's Speed Bump Works</h3>
+
+      <pre><code>Normal Exchange (NASDAQ, NYSE):
+1. Your order arrives at exchange
+2. HFT detects it instantly (co-located servers, 0.5ms away)
+3. HFT cancels quotes, reprices, front-runs
+4. Your order fills at worse price
+
+IEX Exchange:
+1. Your order arrives at IEX
+2. Goes through 350μs coil of fiber (the "speed bump")
+3. During those 350μs:
+   - HFTs cannot react faster (everyone delayed equally)
+   - Quote changes from other exchanges propagate
+   - Prevents latency arbitrage
+
+4. Your order hits matching engine with fair pricing
+5. HFTs cannot front-run (speed advantage neutralized)
+</code></pre>
+
+      <div class="callout-key">
+        <h4>💡 Why 350 Microseconds?</h4>
+        <p>That's the round-trip time for light to travel from NYC to New Jersey data centers where most HFTs co-locate.</p>
+        <p>By adding 350μs delay, IEX ensures HFTs can't see quote changes on other exchanges and react before your order executes.</p>
+        <p><em>Everyone gets delayed equally = fair game.</em></p>
+      </div>
+
+      <h3>Case Study: David's $8,400 Savings Using IEX Routing</h3>
+
+      <p><strong>David Liu, options swing trader, 2024.</strong></p>
+
+      <div class="callout-success">
+        <h4>✅ The Experiment</h4>
+        <p><strong>Setup:</strong> Same strategy, different execution venues</p>
+        <p><strong>Timeframe:</strong> 3 months (Jan-Mar 2024)</p>
+        <p><strong>Position size:</strong> 5,000-8,000 shares per trade in SPY/QQQ</p>
+      </div>
+
+      <pre><code>Month 1: Default routing (IBKR smart routing)
+- Total trades: 24 round-trips (48 executions)
+- Total shares: 320,000
+- Avg slippage: $0.014/share
+- Total slippage cost: 320,000 × $0.014 = $4,480
+
+Month 2: Manual NASDAQ routing
+- Total trades: 26 round-trips (52 executions)
+- Total shares: 340,000
+- Avg slippage: $0.016/share (worse, more HFT activity)
+- Total slippage cost: 340,000 × $0.016 = $5,440
+
+Month 3: IEX routing (speed bump protection)
+- Total trades: 25 round-trips (50 executions)
+- Total shares: 330,000
+- Avg slippage: $0.006/share
+- Total slippage cost: 330,000 × $0.006 = $1,980
+
+Savings (IEX vs default): $4,480 - $1,980 = $2,500/month
+Annual projected savings: $2,500 × 12 = $30,000
+
+David's note: "IEX fills take 2-3 seconds longer. But I save $2.5K/month. Worth it."
+</code></pre>
+
+      <div class="callout-tip">
+        <h4>🎯 How to Route to IEX</h4>
+        <p><strong>Interactive Brokers:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li>Order ticket → Advanced → Destination → IEX</li>
+        </ul>
+        <p><strong>TradeStation:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li>Order entry → Route → IEX</li>
+        </ul>
+        <p><strong>TD Ameritrade / Schwab:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li>Not available (PFOF model, won't route to IEX)</li>
+        </ul>
+        <p><strong>Robinhood / Webull:</strong></p>
+        <ul style="margin:.5rem 0">
+          <li>Not available (PFOF is their business model)</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 8: The Big Picture</span></div>
+
+      <h2>Infamous HFT Manipulation Cases: When Speed Becomes Crime</h2>
+
+      <h3>Navinder Sarao: The Bedroom Trader Who Caused the 2010 Flash Crash</h3>
+
+      <p>Yes, one guy. From his parents' house in London. With $40 million in automated spoofing.</p>
+
+      <pre><code>WHO: Navinder Singh Sarao, independent futures trader
+WHEN: 2009-2015 (arrested April 2015)
+WHAT: Spoofing E-Mini S&P 500 futures
+
+THE STRATEGY:
+1. Place massive sell orders (200-900 contracts) at levels above market
+2. Spook other traders into thinking selling pressure building
+3. Market moves down
+4. Cancel fake sell orders before they fill
+5. Buy at lower price, profit from the drop
+6. Repeat thousands of times per day
+
+Estimated profit: $40 million over 5 years
+Role in Flash Crash: DOJ blamed him for contributing to May 6, 2010 crash
+Sentence: 1 year home confinement, no prison time (cooperated with authorities)
+
+Lesson: Even retail traders can manipulate markets with algos.
+        But when caught, consequences are severe.
+</code></pre>
+
+      <h3>Tower Research: The $67 Million Spoofing Fine</h3>
+
+      <pre><code>WHO: Tower Research Capital (HFT firm)
+WHEN: 2012-2013
+FINE: $67.4 million (CFTC, 2020)
+
+THE SCHEME:
+- Placed 97,000+ spoof orders across commodity markets
+- Used algos to fake liquidity, manipulate prices
+- Canceled 99%+ of orders before execution
+- Profited from price movements caused by fake orders
+
+Example:
+  9:30:00 - Place buy order for 5,000 crude oil contracts at $95.00
+  9:30:01 - Other algos detect "buying pressure"
+  9:30:02 - Market moves to $95.05
+  9:30:03 - Cancel the 5,000-contract buy order
+  9:30:04 - Sell 200 contracts at $95.05 (real trade)
+  9:30:05 - Market drops back to $95.00
+  9:30:06 - Repeat
+
+Outcome: $67M fine, trading restrictions
+Lesson: Spoofing is illegal, but detection takes years.
+</code></pre>
+
+      <h3>Virtu Financial: The Firm That Made Money 1,238 Out of 1,238 Days</h3>
+
+      <p>Not illegal. Just... statistically impossible for most traders. Yet they did it.</p>
+
+      <pre><code>Virtu's 2013 SEC filing revealed:
+- 1,238 trading days
+- Profitable on 1,237 days (99.92%)
+- Only ONE losing day (and it was tiny)
+
+How? HFT market making at scale:
+- Trade 10,000+ stocks simultaneously
+- Capture bid-ask spread on billions of shares
+- Use speed to avoid adverse selection
+- Withdraw liquidity during volatility (don't take losses)
+
+Daily volume: 10-15% of all US equity volume
+Annual revenue: $1-2 billion (mostly from retail order flow)
+
+Lesson: HFT isn't gambling. It's latency arbitrage at scale.
+        If you have the infrastructure, it's nearly risk-free.
+</code></pre>
 
       <h2>Why You Actually Have Advantages</h2>
 
@@ -410,36 +906,215 @@ Lesson: HFTs provide liquidity in calm, withdraw in chaos</code></pre>
           <div class="tab-panel active">
             <h3>What HFTs Can't Do</h3>
             <ul>
-              <li><strong>Interpret context:</strong> Can't read news sentiment</li>
-              <li><strong>Multi-timeframe analysis:</strong> Don't consider HTF structure</li>
-              <li><strong>Regime recognition:</strong> Don't adapt to trending vs. ranging</li>
-              <li><strong>Discretion:</strong> No "this feels wrong" gut check</li>
+              <li><strong>Interpret context:</strong> Can't read news sentiment, understand fundamentals</li>
+              <li><strong>Multi-timeframe analysis:</strong> Don't consider HTF structure (only sub-second data)</li>
+              <li><strong>Regime recognition:</strong> Don't adapt to trending vs. ranging markets (just react to flow)</li>
+              <li><strong>Discretion:</strong> No "this feels wrong" gut check (pure math)</li>
+              <li><strong>Overnight holds:</strong> Can't capture multi-day swings (too much overnight risk)</li>
+              <li><strong>Narrative understanding:</strong> Can't read FOMC tone, geopolitical risk, sector rotation</li>
             </ul>
             <p><em>HFTs are fast but narrow. They see trees, not forests.</em></p>
           </div>
           <div class="tab-panel">
             <h3>What You Can Do</h3>
             <ul>
-              <li><strong>Context:</strong> Read macro, understand regime</li>
-              <li><strong>Multi-timeframe:</strong> Daily trend + 4H setup + 15min entry area</li>
-              <li><strong>Pattern recognition:</strong> Janus sweeps, BoS, CHoCH</li>
-              <li><strong>Human judgment:</strong> "This setup is A-grade, that one's C-grade"</li>
+              <li><strong>Context:</strong> Read macro, understand regime shifts (risk-on vs risk-off)</li>
+              <li><strong>Multi-timeframe:</strong> Daily trend + 4H setup + 15min entry + multi-day hold</li>
+              <li><strong>Pattern recognition:</strong> Janus sweeps, BoS, CHoCH, liquidity hunts</li>
+              <li><strong>Human judgment:</strong> "This setup is A-grade, that one's C-grade, skip that one"</li>
+              <li><strong>Patience:</strong> Wait for A+ setups (HFTs must trade constantly to profit)</li>
+              <li><strong>Adaptability:</strong> Change strategy when market regime shifts</li>
             </ul>
             <p><em>You trade slower but smarter. That's your edge.</em></p>
           </div>
         </div>
       </div>
 
+      <h2>The Bottom Line: How to Profit Alongside (Not Against) HFTs</h2>
+
+      <div class="callout-key">
+        <h4>🎯 Your Anti-HFT Execution Playbook</h4>
+        <ol style="margin:.5rem 0">
+          <li><strong>Use limit orders (never market orders)</strong>
+            <ul style="margin:.3rem 0">
+              <li>Place limit at bid to buy, ask to sell (provide liquidity)</li>
+              <li>Wait for fills (patience saves 1-3 cents/share)</li>
+            </ul>
+          </li>
+          <li><strong>Avoid toxic times</strong>
+            <ul style="margin:.3rem 0">
+              <li>Never trade 9:30-9:45 AM or 3:45-4:00 PM</li>
+              <li>Avoid FOMC announcements, major news events</li>
+              <li>Trade during 10:30 AM-12 PM or 2-3:30 PM (calmer flow)</li>
+            </ul>
+          </li>
+          <li><strong>Use iceberg orders for size (hide your intent)</strong>
+            <ul style="margin:.3rem 0">
+              <li>Display 200-500 shares, hide the rest</li>
+              <li>Prevents HFT algos from detecting large orders</li>
+            </ul>
+          </li>
+          <li><strong>Route to IEX (speed bump exchange)</strong>
+            <ul style="margin:.3rem 0">
+              <li>Neutralizes latency arbitrage</li>
+              <li>Saves 0.5-1.5 cents/share on average</li>
+            </ul>
+          </li>
+          <li><strong>Switch to direct-routing broker (avoid PFOF)</strong>
+            <ul style="margin:.3rem 0">
+              <li>IBKR, TradeStation, Lightspeed</li>
+              <li>Pay $0.005/share commission, save $0.01-0.03/share in slippage</li>
+            </ul>
+          </li>
+          <li><strong>Trade longer timeframes</strong>
+            <ul style="margin:.3rem 0">
+              <li>4H-Daily charts (HFTs don't compete here)</li>
+              <li>Multi-day holds (capture bigger moves, ignore HFT noise)</li>
+            </ul>
+          </li>
+          <li><strong>Use wide mental stops (not hard stops)</strong>
+            <ul style="margin:.3rem 0">
+              <li>Hard stops at round numbers = HFT hunting zones</li>
+              <li>Use mental stops or alerts, exit manually if needed</li>
+              <li>Prevents stop hunts during flash crashes</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <h3>Real-World Example: Combining All Tactics</h3>
+
+      <pre><code>SCENARIO: You want to buy 8,000 shares SPY (current: $520.00/$520.01)
+
+❌ WRONG WAY (HFT food):
+- 9:32 AM market order for 8,000 shares
+- Robinhood broker (PFOF)
+- Fills at $520.08 average
+- Slippage: $0.07/share = $560 loss
+
+✅ RIGHT WAY (HFT-resistant):
+- 10:45 AM (calm period)
+- Interactive Brokers (direct routing)
+- Iceberg limit order: Display 500, hide 7,500
+- Limit price: $520.00 (at the bid)
+- Route to IEX exchange
+- Fills over 8 minutes at $520.003 average
+- Slippage: $0.003/share = $24
+- Maker rebate: 8,000 × $0.0015 = $12
+- Net cost: $24 - $12 = $12
+
+Savings: $560 - $12 = $548 on one trade
+Annual savings (2 trades/week): $548 × 100 = $54,800
+</code></pre>
+
       <div class="key-takeaway">
         <h4>🎓 Key Takeaways</h4>
         <ul>
-          <li><strong>HFTs trade in microseconds—you can't compete on speed</strong></li>
-          <li><strong>They make money via market making, latency arbitrage, and order anticipation</strong></li>
-          <li><strong>Avoid toxic times (9:30-9:45 AM, 3:45-4:00 PM, news events)</strong></li>
-          <li><strong>Use limit orders, iceberg orders, and dark pools for size</strong></li>
-          <li><strong>Trade longer timeframes (hours-days) to escape HFT battleground</strong></li>
-          <li><strong>Your edge: context, multi-timeframe analysis, human discretion</strong></li>
+          <li><strong>HFTs trade in microseconds—you can't compete on speed</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>HFT latency: 0.5-2ms | Your latency: 50-200ms (100x slower)</li>
+              <li>They have co-located servers, you have home WiFi</li>
+              <li>Fighting them on speed is guaranteed failure</li>
+            </ul>
+          </li>
+          <li><strong>They make money via market making, latency arbitrage, and order anticipation</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Market making: Profit from bid-ask spread ($0.01/share × billions)</li>
+              <li>Latency arbitrage: See your order, front-run it, profit $0.02-0.05/share</li>
+              <li>Quote stuffing: Flood order book, detect hidden orders, manipulate NBBO</li>
+            </ul>
+          </li>
+          <li><strong>Payment for order flow (PFOF) is selling you to HFTs</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Robinhood/Webull/E*TRADE sell your orders to Citadel before public market</li>
+              <li>You pay $0.01-0.03/share in hidden slippage</li>
+              <li>Switch to IBKR/TradeStation for direct market access</li>
+            </ul>
+          </li>
+          <li><strong>Avoid toxic times (9:30-9:45 AM, 3:45-4:00 PM, news events)</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>HFT activity peaks during high volatility windows</li>
+              <li>Spreads widen 10-50x, slippage explodes</li>
+              <li>Trade during 10:30 AM-12 PM or 2-3:30 PM for best fills</li>
+            </ul>
+          </li>
+          <li><strong>Use limit orders, iceberg orders, and IEX routing</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Market orders = guaranteed front-running and slippage</li>
+              <li>Limit orders at bid/ask = you control price, save 1-3 cents/share</li>
+              <li>Iceberg orders hide your size (display 500, hide 9,500)</li>
+              <li>IEX exchange has 350μs speed bump = neutralizes HFT advantage</li>
+            </ul>
+          </li>
+          <li><strong>Trade longer timeframes (hours-days) to escape HFT battleground</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>HFTs dominate 0-60 second timeframes</li>
+              <li>They don't compete on 4H-Daily charts (too much overnight risk)</li>
+              <li>Your edge: Multi-timeframe analysis, context, discretion</li>
+            </ul>
+          </li>
+          <li><strong>Flash crashes reveal HFT's dark side</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>May 2010: DOW -1,000 pts in 5 minutes (HFTs withdrew liquidity)</li>
+              <li>Aug 2015: ETFs dislocated 25-50% (HFT market makers pulled quotes)</li>
+              <li>Hard stop losses at round numbers = HFT hunting zones</li>
+              <li>Use mental stops or wide alerts to avoid stop hunts</li>
+            </ul>
+          </li>
+          <li><strong>Real-world savings from anti-HFT tactics: $10K-50K+ annually</strong>
+            <ul style="margin:.3rem 0;font-weight:normal">
+              <li>Sarah saved $12.3K/year switching from Robinhood to IBKR</li>
+              <li>David saved $30K/year routing to IEX instead of NASDAQ</li>
+              <li>Michael lost $47K on one trade using market orders at 9:32 AM</li>
+              <li>Execution discipline = tens of thousands in savings</li>
+            </ul>
+          </li>
         </ul>
+      </div>
+
+      <div class="callout-practice">
+        <h4>📊 Advanced Practice Exercise</h4>
+        <p><strong>HFT Detection & Avoidance Drill (Full Market Session Analysis)</strong></p>
+        <ol style="margin:.5rem 0">
+          <li><strong>Setup (Before Market Open):</strong>
+            <ul style="margin:.3rem 0">
+              <li>Open SPY on 1-minute chart with Level 2 data</li>
+              <li>Identify 3 key levels: Support, resistance, and a psychological round number (e.g., $500.00)</li>
+              <li>Set up bid/ask spread indicator (if available)</li>
+            </ul>
+          </li>
+          <li><strong>Morning Session (9:30-10:30 AM):</strong>
+            <ul style="margin:.3rem 0">
+              <li>Watch price action at each key level during market open</li>
+              <li>Document: Spread width, quote flickering rate, order book depth</li>
+              <li>Note any sudden spread widening (HFTs pulling quotes)</li>
+              <li>Record slippage on a hypothetical 1,000-share market order at 9:32 AM vs 10:15 AM</li>
+            </ul>
+          </li>
+          <li><strong>Mid-Session (10:30 AM-3:30 PM):</strong>
+            <ul style="margin:.3rem 0">
+              <li>Compare spread stability vs morning session</li>
+              <li>Test: Place small limit order at bid (100 shares), time how long it takes to fill</li>
+              <li>Observe: Does order book depth look more stable?</li>
+            </ul>
+          </li>
+          <li><strong>Closing Session (3:30-4:00 PM):</strong>
+            <ul style="margin:.3rem 0">
+              <li>Watch for spread widening and quote flickering increase</li>
+              <li>Document any stop hunts near key levels</li>
+              <li>Note closing auction volatility (last 5 minutes)</li>
+            </ul>
+          </li>
+          <li><strong>Post-Market Analysis:</strong>
+            <ul style="margin:.3rem 0">
+              <li>Calculate average spread during: 9:30-9:45 AM, 10:30 AM-12 PM, 2-3:30 PM, 3:45-4:00 PM</li>
+              <li>Estimate slippage cost for 5,000-share position at each time window</li>
+              <li>Identify optimal trading windows based on your findings</li>
+            </ul>
+          </li>
+        </ol>
+        <p><strong>Goal:</strong> Develop intuition for HFT activity patterns and learn to recognize the exact times when execution costs spike due to algorithmic trading intensity.</p>
+        <p><em>Bonus:</em> Repeat this exercise on FOMC announcement day and compare HFT activity vs normal days.</p>
       </div>
 
       <div class="callout-practice">

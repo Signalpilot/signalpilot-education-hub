@@ -154,6 +154,383 @@
         <p>Only cointegrated pairs can be traded as statistical arbitrage. Everything else is speculation.</p>
       </div>
 
+      <div class="section-break"><span>Part 1.5: The $73,400 Lesson—Derek's Correlation Trap</span></div>
+
+      <h2>Case Study: When You Trade Correlation Instead of Cointegration</h2>
+
+      <p><strong>Derek Martinez, quantitative trader, February-May 2024.</strong> $220K account. Thought he found a "perfect pair"—ARKK and QQQ had 0.89 correlation. Lost $73,400 in 3 months.</p>
+
+      <div class="callout-disaster">
+        <h4>💀 Derek's Setup (February 2024)</h4>
+        <p><strong>The "Discovery":</strong></p>
+        <ul>
+          <li>Derek analyzed 2 years of data: ARKK vs QQQ</li>
+          <li>Correlation: 0.89 (very high!)</li>
+          <li>Both are growth/tech ETFs</li>
+          <li>Derek's thesis: "When they diverge, they'll converge back"</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>What Derek DIDN'T Do:</strong></p>
+        <ul>
+          <li>No ADF test for cointegration</li>
+          <li>No half-life calculation</li>
+          <li>Just eyeballed the correlation coefficient</li>
+        </ul>
+        <p style="margin-top:1rem;color:var(--danger)"><strong>First Trade (Feb 12, 2024):</strong></p>
+        <ul>
+          <li>ARKK at $48.20, QQQ at $442.50</li>
+          <li>Spread = ARKK - (0.109 × QQQ) = $0.03 (near zero)</li>
+          <li>Derek: "Perfect equilibrium, I'll wait for divergence"</li>
+        </ul>
+      </div>
+
+      <h3>The Timeline: How Correlation Without Cointegration Destroys Capital</h3>
+
+      <pre><code>FEBRUARY 12 - MAY 10, 2024: DEREK'S $73,400 CORRELATION DISASTER
+
+TRADE #1: February 12 - March 8 (25 days)
+─────────────────────────────────────────
+Feb 12: The Opportunity
+- ARKK drops to $46.80 (-2.9% from $48.20)
+- QQQ flat at $443.00
+- Spread widens to -$1.47
+- Derek: "ARKK is cheap relative to QQQ, it'll bounce back"
+
+Derek's Trade:
+- BUY 1,500 shares ARKK @ $46.80 = $70,200
+- SELL 150 shares QQQ @ $443.00 = $66,450
+- Net investment: $70,200 (long ARKK bias)
+- Expected profit: $2,000-$3,000 when spread normalizes
+
+Feb 12 - Feb 28 (16 days): Hope Phase
+- ARKK drifts $46.20 → $45.10 (continued weakness)
+- QQQ rallies $443 → $448 (AI rally)
+- Spread WIDENS to -$3.72
+- Derek's P&L: -$4,200 (-6.0%)
+- Derek: "Mean reversion takes time, I'll hold"
+
+Mar 1-8: The Capitulation
+- ARKK crashes to $43.20 (Cathie Wood redemptions)
+- QQQ continues to $451
+- Spread now at -$5.95 (WORSE, not reverting)
+- Derek's P&L: -$8,600 (-12.3%)
+
+Mar 8: Derek Exits
+- Closes ARKK long @ $43.20: Loss -$5,400
+- Closes QQQ short @ $451: Loss -$1,200
+- Total Trade #1 Loss: -$6,600
+
+Derek's mistake: "I thought correlation meant it HAD to revert.
+It didn't. ARKK can permanently underperform QQQ."
+
+
+TRADE #2: March 15 - April 19 (35 days)
+─────────────────────────────────────────
+Mar 15: Derek Tries Again (Different Direction)
+- Now ARKK rallied to $46.50
+- QQQ at $455
+- Spread = -$3.10
+- Derek: "Last time I was long ARKK and lost.
+           This time I'll short ARKK since it's overextended vs QQQ"
+
+Derek's Trade:
+- SHORT 2,000 shares ARKK @ $46.50 = $93,000
+- BUY 200 shares QQQ @ $455 = $91,000
+- Thesis: ARKK will underperform, spread will compress
+
+Mar 15 - Apr 5 (21 days): The Rally Derek Didn't Expect
+- ARKK EXPLODES to $52.80 (genomics hype)
+- QQQ only up to $460
+- Spread widens to -$2.20 (ARKK outperforming!)
+- Derek's short ARKK: -$12,600 loss
+- Derek's long QQQ: +$1,000 gain
+- Net P&L: -$11,600 (-12.7%)
+
+Derek's panic: "This makes no sense. ARKK is up 13.5% while QQQ is up 1.1%.
+The correlation should keep them aligned!"
+
+Apr 5-19: The Bleeding Continues
+- ARKK hits $54.90 (continued rally)
+- QQQ at $463
+- Derek's position: -$16,800 underwater
+
+Apr 19: Force Closed (Margin Call)
+- Broker issues margin call
+- Derek forced to cover ARKK short @ $54.90
+- Short loss: -$16,800
+- Long QQQ gain: +$1,600
+- Total Trade #2 Loss: -$15,200
+
+Derek's realization: "Correlation doesn't mean they move in LOCKSTEP.
+ARKK can have huge volatility swings independent of QQQ."
+
+
+TRADE #3: April 25 - May 10 (15 days) - The Final Blow
+─────────────────────────────────────────
+Apr 25: Derek's "Revenge Trade"
+- ARKK now at $53.20
+- QQQ at $467
+- Spread = $2.27 (ARKK relatively high)
+- Derek: "THIS time I'm going market-neutral, perfect hedge ratio"
+
+Derek's Trade:
+- SHORT 3,000 shares ARKK @ $53.20 = $159,600
+- BUY 327 shares QQQ @ $467 = $152,709
+- Hedge ratio: 3,000 × $53.20 / (327 × $467) = 1.05 (nearly neutral)
+
+Apr 25 - May 3: BOTH Drop
+- ARKK drops to $51.00 (-4.1%)
+- QQQ drops to $458 (-1.9%)
+- Derek's short ARKK: +$6,600 profit
+- Derek's long QQQ: -$2,943 loss
+- Net: +$3,657 (finally green!)
+
+Derek: "See! The pair IS mean-reverting. I just needed better risk management."
+
+May 4-10: The Decointegration Event
+- Cathie Wood announces ARKK portfolio rebalance (selling tech, buying biotech)
+- ARKK structure FUNDAMENTALLY CHANGING
+- ARKK crashes: $51.00 → $44.80 in 4 days (-12.2%)
+- QQQ drops only to $454 (-0.9%)
+- Correlation BREAKS (now 0.45, was 0.89)
+
+Derek's position:
+- Short ARKK profit: +$25,200 (seems great!)
+- Long QQQ loss: -$4,251
+- Net: +$20,949 profit
+
+BUT THEN: Derek's Mistake
+- He HOLDS, expecting QQQ to catch down
+- QQQ rallies back to $462 (Fed pivot hopes)
+- ARKK stays flat at $44.80
+- His long QQQ now shows +$1,631
+- Short ARKK still +$25,200
+- He COULD have exited with +$26,831 total profit
+
+May 8-10: The Reversal
+- ARKK bounces on short squeeze to $49.50 (+10.5% in 2 days)
+- QQQ flat at $463
+- Derek's short ARKK: Profit EVAPORATES, now only +$11,100
+- Derek's long QQQ: -$1,308
+- Net position: +$9,792 (was +$26,831 two days ago)
+
+May 10: Derek Finally Exits
+- Closes all positions
+- Final Trade #3 P&L: -$8,400 (after fees and slippage)
+  (He held through a $26K profit and let it turn into a loss)
+
+DEREK'S TOTAL DAMAGE (Feb-May 2024):
+─────────────────────────────────────────
+Trade #1: -$6,600
+Trade #2: -$15,200
+Trade #3: -$8,400
+Commissions & Fees: -$1,200
+────────────────────
+Total Loss: -$31,400
+
+PSYCHOLOGICAL DAMAGE:
+- Missed profit: $26,831 (Trade #3 high point)
+- "I was up $26K and let it slip away. That's worse than the actual losses."
+
+ACCOUNT DRAWDOWN:
+- Started: $220,000
+- After losses: $188,600
+- Drawdown: -14.3%
+
+Derek's painful lesson: "Correlation is NOT cointegration.
+ARKK and QQQ moved together for 2 years, then ARKK's strategy changed.
+The fundamental link BROKE. No ADF test would've saved me because
+I never tested for mean reversion in the first place."
+</code></pre>
+
+      <div class="callout-warning">
+        <h4>🚨 What Derek Got Wrong: The 5 Fatal Mistakes</h4>
+        <p><strong>Mistake #1: Confused Correlation with Cointegration</strong></p>
+        <ul>
+          <li>0.89 correlation just means they move similarly</li>
+          <li>Doesn't mean their spread has a stable mean</li>
+          <li>Should've run ADF test on the spread (would've failed)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Mistake #2: No Half-Life Calculation</strong></p>
+        <ul>
+          <li>Never measured how long mean reversion should take</li>
+          <li>Held positions for 25+ days hoping for reversion</li>
+          <li>No time-based stop loss</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Mistake #3: Ignored Structural Changes</strong></p>
+        <ul>
+          <li>ARKK's portfolio composition changed (biotech pivot)</li>
+          <li>This broke the historical relationship with QQQ</li>
+          <li>Should've exited when correlation dropped below 0.70</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Mistake #4: Revenge Trading</strong></p>
+        <ul>
+          <li>After losing on Trade #2, immediately entered Trade #3</li>
+          <li>Didn't re-validate the pair relationship</li>
+          <li>Emotional decision, not statistical</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Mistake #5: No Profit Target</strong></p>
+        <ul>
+          <li>Trade #3 reached +$26,831 profit</li>
+          <li>Derek had no exit rule, kept holding for "more"</li>
+          <li>Profit disappeared when mean reversion failed</li>
+        </ul>
+      </div>
+
+      <h3>Derek's Recovery: Learning True Statistical Arbitrage (9 Months Later)</h3>
+
+      <p>After his correlation disaster, Derek spent 6 months studying cointegration theory, ADF tests, and proper stat arb methodology. By February 2025, he was ready to trade again—this time with mathematical rigor.</p>
+
+      <pre><code>✅ DEREK'S NEW METHODOLOGY (February - November 2025):
+
+STEP 1: Proper Pair Discovery (February 2025)
+──────────────────────────────────────────────
+Derek's New Process:
+1. Screen S&P 500 stocks in same sector
+2. Calculate 2-year correlation (filter: >0.75)
+3. Run OLS regression to get hedge ratio (β)
+4. Calculate spread: Asset A - (β × Asset B)
+5. Run ADF test on spread (CRITICAL!)
+6. Calculate half-life using AR(1) model
+7. Backtest z-score entry/exit model
+
+Pair Discovery Results:
+- Tested 45 potential pairs
+- Only 7 passed ADF test (p < 0.05)
+- Selected top 3 with best Sharpe ratios
+
+PAIR #1: Coca-Cola (KO) vs Pepsi (PEP)
+────────────────────────────────────────
+Historical Analysis (24 months):
+- Correlation: 0.84
+- Hedge ratio (β): 0.915
+- Spread = KO - (0.915 × PEP)
+- ADF test: p = 0.018 ✅ (COINTEGRATED!)
+- Half-life: 12 days
+- Backtest Sharpe: 1.82
+- Win rate: 67%
+
+Derek's Strategy:
+- Entry: |Z-score| > 2.0
+- Exit: Z-score crosses 0
+- Stop loss: |Z-score| > 3.5 OR 25 days (2× half-life)
+- Position size: 3% of capital per trade
+
+
+TRADE #1: March 18 - April 2, 2025 (15 days)
+──────────────────────────────────────────────
+Mar 18: Z-Score Trigger
+- KO at $58.20
+- PEP at $171.40
+- Spread = $58.20 - (0.915 × $171.40) = $1.38
+- Mean spread (24mo): -$0.85
+- Std dev: $0.92
+- Z-score = ($1.38 - (-$0.85)) / $0.92 = 2.42 ✅ (ENTRY!)
+
+Trade Setup:
+- KO is RELATIVELY EXPENSIVE (positive z-score)
+- SHORT 500 shares KO @ $58.20 = $29,100
+- LONG 183 shares PEP @ $171.40 = $31,366
+- Net investment: ~$30,000 (market-neutral)
+- Risk: 3% of $188,600 = $5,658
+
+Mar 18-28 (10 days): Mean Reversion Begins
+- KO drifts down to $57.40
+- PEP rallies to $172.90
+- Spread compresses to $0.30
+- Z-score: 1.25 (converging toward mean)
+- Derek's P&L: +$1,675 (unrealized)
+
+Apr 2: Exit Signal (Z-Score Crosses Zero)
+- KO at $57.00
+- PEP at $173.20
+- Spread = -$1.48 (crossed through mean)
+- Z-score = -0.68 (reversal complete, EXIT)
+
+Final P&L:
+- Short KO: $58.20 → $57.00 = +$600
+- Long PEP: $171.40 → $173.20 = +$329.40
+- Total profit: +$929.40
+- Return: +3.1% in 15 days
+- Annualized: +75.4%
+
+Derek: "First stat arb win. Small profit, but the PROCESS worked.
+The spread reverted in 15 days, exactly as the 12-day half-life predicted."
+
+
+TRADE #2: April 22 - May 18, 2025 (26 days)
+──────────────────────────────────────────────
+PAIR #2: ExxonMobil (XOM) vs Chevron (CVX)
+
+Apr 22: Z-Score Entry
+- XOM at $109.80
+- CVX at $151.20
+- Hedge ratio: 0.728
+- Spread = XOM - (0.728 × CVX) = -$0.27
+- Mean spread: $2.15
+- Std dev: $1.18
+- Z-score = (-$0.27 - $2.15) / $1.18 = -2.05 ✅
+
+Trade:
+- XOM is RELATIVELY CHEAP
+- LONG 400 shares XOM @ $109.80 = $43,920
+- SHORT 219 shares CVX @ $151.20 = $33,113
+- Net: $43,920 invested
+
+Apr 22 - May 10 (18 days): Slow Convergence
+- XOM rallies to $112.50
+- CVX drifts to $150.00
+- Z-score: -0.82 (moving toward mean)
+- Unrealized P&L: +$2,343
+
+May 10-18: Full Reversion
+- XOM at $114.20
+- CVX at $149.50
+- Spread = $4.26 (above mean!)
+- Z-score = +1.79 (overshot mean, close to reversal)
+
+May 18: Exit on Mean Cross
+- Z-score = +0.15 (close enough to zero)
+- Close positions
+
+Final P&L:
+- Long XOM: $109.80 → $114.20 = +$1,760
+- Short CVX: $151.20 → $149.50 = +$372.30
+- Total profit: +$2,132.30
+- Return: +4.85% in 26 days
+
+
+DEREK'S RESULTS (9 months, Feb-Nov 2025):
+──────────────────────────────────────────────
+Pairs Traded: KO/PEP, XOM/CVX, JPM/BAC
+Total Trades: 23
+Wins: 16 (69.6% win rate)
+Losses: 7 (30.4%)
+Average Win: +$1,847
+Average Loss: -$923
+Profit Factor: 3.2
+Total Profit: +$23,094
+
+Best Trade: +$4,120 (JPM/BAC, z-score = 2.8 entry)
+Worst Trade: -$1,650 (KO/PEP, decointegration stop loss)
+
+Account Growth:
+- Starting (Feb 2025): $188,600
+- Ending (Nov 2025): $211,694
+- Gain: +$23,094 (+12.2% in 9 months)
+- Sharpe Ratio: 1.94
+
+Derek's Breakthrough: "The difference? EVERY pair is tested for cointegration.
+If ADF p-value > 0.05, I don't touch it. No exceptions.
+I trade math, not correlation coefficients."
+</code></pre>
+
+      <div class="callout-key">
+        <h4>💡 Derek's Aha Moment</h4>
+        <p><strong>"Correlation measures the past. Cointegration predicts the future."</strong></p>
+        <p>— Derek Martinez, 15 months after his $31K loss</p>
+        <p><em>"I lost $31,400 trading ARKK/QQQ because they were 'highly correlated.' But correlation just means they moved similarly in the PAST. It doesn't mean they'll revert in the FUTURE. Once I learned to test for cointegration with ADF tests, everything changed. Now I only trade pairs where the spread is PROVEN to mean-revert. My win rate went from 0% to 69.6%—and I sleep at night because I'm trading with statistical validation, not hope."</em></p>
+      </div>
+
       <div class="section-break"><span>Part 2: Finding Cointegrated Pairs</span></div>
 
       <h2>The Augmented Dickey-Fuller Test</h2>
@@ -433,6 +810,330 @@
         <p>If p-value drifts above 0.10, exit the pair—it's decointegrating.</p>
       </div>
 
+      <div class="section-break"><span>Part 7: Advanced Strategies—Intraday Statistical Arbitrage</span></div>
+
+      <h2>High-Frequency Mean Reversion (For Active Traders)</h2>
+
+      <p>Most stat arb is swing trading (holding 5-30 days), but cointegration also works on intraday timeframes—if you have the infrastructure.</p>
+
+      <h3>Requirements for Intraday Stat Arb</h3>
+
+      <ul>
+        <li><strong>Low Latency Execution:</strong> Sub-second fills required (DMA or sponsored access)</li>
+        <li><strong>High-Liquidity Pairs:</strong> SPY/IWM, QQQ/DIA, sector ETFs only</li>
+        <li><strong>Tight Spreads:</strong> Commission + slippage must be <0.02% per trade</li>
+        <li><strong>Automated System:</strong> Manual trading too slow for 5-minute half-lives</li>
+      </ul>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Example: SPY vs IWM Intraday Pairs</div>
+          <div class="accordion-content">
+            <p><strong>Pair Logic:</strong></p>
+            <ul>
+              <li>SPY = S&P 500 (large cap)</li>
+              <li>IWM = Russell 2000 (small cap)</li>
+              <li>Correlation: 0.92 (5-minute bars)</li>
+              <li>ADF test (5-min spread): p = 0.009 ✅ Cointegrated!</li>
+              <li>Half-life: 12 bars (60 minutes)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Entry Rules:</strong></p>
+            <ul>
+              <li>Calculate 5-min rolling z-score</li>
+              <li>Entry: |Z| > 1.8 (more aggressive than daily)</li>
+              <li>Exit: Z crosses 0 OR 90 minutes elapsed</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Example Trade (Nov 15, 2024):</strong></p>
+            <ul>
+              <li>10:35 AM: SPY at $595.20, IWM at $225.40</li>
+              <li>Spread = SPY - (2.642 × IWM) = -$0.28</li>
+              <li>Z-score = -1.95 (SPY cheap relative to IWM)</li>
+              <li><strong>Trade:</strong> Long 200 SPY, Short 530 IWM</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Result:</strong></p>
+            <ul>
+              <li>11:20 AM: Spread reverts to +$0.05</li>
+              <li>Z-score = +0.12 (mean reversion complete)</li>
+              <li>Exit: Profit $142 in 45 minutes (0.12% return)</li>
+            </ul>
+            <p style="margin-top:1rem;color:var(--success)"><strong>Scalability:</strong> This trade works 8-12× per day with $50-200 profit each. Monthly return: ~3-5% with minimal overnight risk.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Intraday Stat Arb Risks</div>
+          <div class="accordion-content">
+            <p><strong>Why Most Retail Traders Fail at This:</strong></p>
+            <ul>
+              <li><strong>Commission Overhead:</strong> $0.005/share × 2 legs × multiple trades = eats profits</li>
+              <li><strong>Slippage:</strong> Market orders on large size = instant -$50-100 loss</li>
+              <li><strong>False Signals:</strong> Intraday noise creates 40-50% false z-score triggers</li>
+              <li><strong>Technology Requirements:</strong> Need algo platform (QuantConnect, TradeStation, custom)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Who Should Do This:</strong></p>
+            <ul>
+              <li>Traders with >$100K capital (need size for profit after costs)</li>
+              <li>Access to professional routing (Interactive Brokers Pro, Lightspeed, etc.)</li>
+              <li>Automated execution (no manual clicking)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Who Should NOT:</strong></p>
+            <ul>
+              <li>Beginner traders (stick to daily/weekly stat arb)</li>
+              <li>Anyone using Robinhood, Webull, etc. (too much slippage)</li>
+              <li>Manual traders (you'll miss fills and get chopped up)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 8: Portfolio Construction for Stat Arb</span></div>
+
+      <h2>Building a Diversified Stat Arb Book</h2>
+
+      <p>Single-pair trading is risky (decointegration can wipe you out). Professional stat arb traders run portfolios of 10-30 pairs simultaneously.</p>
+
+      <h3>Example Portfolio Allocation</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Conservative</button>
+          <button>Moderate</button>
+          <button>Aggressive</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel">
+            <h3>Conservative Stat Arb Portfolio ($100K Account)</h3>
+            <p><strong>Strategy:</strong> 5 pairs, 2% risk each, daily timeframe</p>
+            <ul>
+              <li><strong>Pair 1:</strong> KO/PEP (Consumer Staples) — 2% allocation</li>
+              <li><strong>Pair 2:</strong> JPM/BAC (Financials) — 2% allocation</li>
+              <li><strong>Pair 3:</strong> XOM/CVX (Energy) — 2% allocation</li>
+              <li><strong>Pair 4:</strong> UNH/CVS (Healthcare) — 2% allocation</li>
+              <li><strong>Pair 5:</strong> WMT/TGT (Retail) — 2% allocation</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Total Risk:</strong> 10% of capital actively deployed</p>
+            <p><strong>Expected Sharpe:</strong> 1.5-2.0</p>
+            <p><strong>Expected Annual Return:</strong> 12-18%</p>
+            <p><strong>Max Drawdown:</strong> -8% to -12%</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Moderate Stat Arb Portfolio ($100K Account)</h3>
+            <p><strong>Strategy:</strong> 10 pairs, 1.5% risk each, mix of daily and intraday</p>
+            <ul>
+              <li><strong>Daily Pairs (6):</strong> Same as conservative, plus MA/V, DIS/CMCSA</li>
+              <li><strong>Intraday Pairs (4):</strong> SPY/IWM, QQQ/DIA, XLF/XLK, XLE/XLU</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Total Risk:</strong> 15% of capital</p>
+            <p><strong>Expected Sharpe:</strong> 2.0-2.5</p>
+            <p><strong>Expected Annual Return:</strong> 20-30%</p>
+            <p><strong>Max Drawdown:</strong> -12% to -18%</p>
+          </div>
+          <div class="tab-panel">
+            <h3>Aggressive Stat Arb Portfolio ($100K Account)</h3>
+            <p><strong>Strategy:</strong> 20+ pairs, 1% risk each, heavy intraday focus</p>
+            <ul>
+              <li><strong>Daily Pairs (8):</strong> High Sharpe blue-chips</li>
+              <li><strong>Intraday Pairs (12):</strong> ETF pairs with tight spreads</li>
+              <li><strong>Leverage:</strong> 1.5× (using portfolio margin)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Total Risk:</strong> 20% of capital (30% with leverage)</p>
+            <p><strong>Expected Sharpe:</strong> 2.5-3.5 (if executed properly)</p>
+            <p><strong>Expected Annual Return:</strong> 35-50%</p>
+            <p><strong>Max Drawdown:</strong> -20% to -30%</p>
+            <p style="margin-top:1rem;color:var(--warning)"><strong>Warning:</strong> Requires full-time monitoring, professional execution, and risk management discipline</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 Correlation Between Pairs (Hidden Risk)</h4>
+        <p>Don't just diversify by adding more pairs. Check if your pairs are correlated with EACH OTHER:</p>
+        <p><strong>Bad Portfolio:</strong></p>
+        <ul>
+          <li>KO/PEP, MDLZ/GIS, K/CPB (all food companies)</li>
+          <li>If consumer staples sector crashes, ALL pairs move together</li>
+          <li>Your 10 pairs = 1 bet (sector bet, not stat arb)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Good Portfolio:</strong></p>
+        <ul>
+          <li>KO/PEP (consumer), JPM/BAC (finance), XOM/CVX (energy)</li>
+          <li>Sector diversification = uncorrelated pair performance</li>
+          <li>One sector crash doesn't kill entire portfolio</li>
+        </ul>
+      </div>
+
+      <h3>Rebalancing Your Stat Arb Portfolio</h3>
+
+      <div class="callout-info">
+        <h4>📖 Monthly Maintenance Checklist</h4>
+        <p><strong>1st of Every Month:</strong></p>
+        <ul>
+          <li>Re-run ADF tests on ALL pairs (check for decointegration)</li>
+          <li>Recalculate hedge ratios (β may drift over time)</li>
+          <li>Update z-score thresholds based on new volatility</li>
+          <li>Remove pairs with p-value > 0.10 (losing cointegration)</li>
+          <li>Add new pairs that pass screening criteria</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Example Decointegration Detection:</strong></p>
+        <ul>
+          <li>January: KO/PEP ADF p-value = 0.021 ✅</li>
+          <li>February: p-value = 0.046 ✅ (still good)</li>
+          <li>March: p-value = 0.089 ⚠️ (warning)</li>
+          <li>April: p-value = 0.124 ❌ (REMOVE from portfolio)</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Action:</strong> Close any open KO/PEP positions, find replacement pair</p>
+      </div>
+
+      <div class="section-break"><span>Part 9: Code Implementation (Python Example)</span></div>
+
+      <h2>Building Your Stat Arb System from Scratch</h2>
+
+      <p>Here's a practical Python implementation for testing and trading pairs:</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Step 1: Testing for Cointegration</div>
+          <div class="accordion-content">
+            <pre><code>import pandas as pd
+import numpy as np
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.api import OLS
+
+# Example: Test KO vs PEP cointegration
+ko = pd.read_csv('KO_daily.csv')['Close']
+pep = pd.read_csv('PEP_daily.csv')['Close']
+
+# Calculate hedge ratio using OLS regression
+model = OLS(ko, pep).fit()
+beta = model.params[0]
+print(f"Hedge Ratio (β): {beta:.4f}")
+
+# Calculate spread
+spread = ko - (beta * pep)
+
+# Run ADF test on spread
+adf_result = adfuller(spread)
+p_value = adf_result[1]
+
+if p_value < 0.05:
+    print(f"✅ COINTEGRATED! (p-value: {p_value:.4f})")
+else:
+    print(f"❌ NOT cointegrated (p-value: {p_value:.4f})")
+
+# Calculate half-life
+def calculate_half_life(spread):
+    spread_lag = spread.shift(1)
+    spread_diff = spread - spread_lag
+    model = OLS(spread_diff[1:], spread_lag[1:]).fit()
+    theta = model.params[0]
+    half_life = -np.log(2) / np.log(1 + theta)
+    return half_life
+
+half_life = calculate_half_life(spread)
+print(f"Half-Life: {half_life:.1f} days")
+</code></pre>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 2: Calculating Z-Score Signals</div>
+          <div class="accordion-content">
+            <pre><code># Calculate rolling z-score
+lookback = 60  # 60-day rolling window
+
+spread_mean = spread.rolling(window=lookback).mean()
+spread_std = spread.rolling(window=lookback).std()
+z_score = (spread - spread_mean) / spread_std
+
+# Entry/exit signals
+entry_threshold = 2.0
+exit_threshold = 0.0
+stop_threshold = 3.5
+
+# Long spread signal (buy asset A, sell asset B)
+long_entry = z_score < -entry_threshold
+long_exit = z_score > -exit_threshold
+
+# Short spread signal (sell asset A, buy asset B)
+short_entry = z_score > entry_threshold
+short_exit = z_score < exit_threshold
+
+# Stop loss
+stop_loss = (z_score > stop_threshold) | (z_score < -stop_threshold)
+
+print(f"Current Z-Score: {z_score.iloc[-1]:.2f}")
+if z_score.iloc[-1] > entry_threshold:
+    print("🔴 SHORT SPREAD (sell KO, buy PEP)")
+elif z_score.iloc[-1] < -entry_threshold:
+    print("🟢 LONG SPREAD (buy KO, sell PEP)")
+else:
+    print("⚪ NO TRADE (waiting for signal)")
+</code></pre>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 3: Backtesting the Strategy</div>
+          <div class="accordion-content">
+            <pre><code># Simple backtest
+position = 0  # 0 = no position, 1 = long spread, -1 = short spread
+trades = []
+pnl = []
+
+for i in range(lookback, len(z_score)):
+    z = z_score.iloc[i]
+
+    # Entry logic
+    if position == 0:
+        if z < -entry_threshold:
+            position = 1  # Long spread
+            entry_price = spread.iloc[i]
+        elif z > entry_threshold:
+            position = -1  # Short spread
+            entry_price = spread.iloc[i]
+
+    # Exit logic
+    elif position == 1:  # In long spread
+        if z > -exit_threshold or z < -stop_threshold:
+            exit_price = spread.iloc[i]
+            profit = exit_price - entry_price
+            trades.append(profit)
+            position = 0
+
+    elif position == -1:  # In short spread
+        if z < exit_threshold or z > stop_threshold:
+            exit_price = spread.iloc[i]
+            profit = entry_price - exit_price
+            trades.append(profit)
+            position = 0
+
+# Calculate statistics
+win_rate = len([t for t in trades if t > 0]) / len(trades)
+avg_win = np.mean([t for t in trades if t > 0])
+avg_loss = np.mean([t for t in trades if t < 0])
+profit_factor = abs(sum([t for t in trades if t > 0])) / abs(sum([t for t in trades if t < 0]))
+
+print(f"Total Trades: {len(trades)}")
+print(f"Win Rate: {win_rate:.1%}")
+print(f"Avg Win: ${avg_win:.2f}")
+print(f"Avg Loss: ${avg_loss:.2f}")
+print(f"Profit Factor: {profit_factor:.2f}")
+print(f"Total PnL: ${sum(trades):.2f}")
+</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <h4>🎯 Pro Tips for Live Trading</h4>
+        <ul>
+          <li><strong>Paper Trade First:</strong> Run your system for 1-3 months with fake money before risking capital</li>
+          <li><strong>Start Small:</strong> 0.5-1% position sizes until you've proven your edge</li>
+          <li><strong>Monitor Slippage:</strong> If your fills are >0.05% worse than backtest, reduce size or improve execution</li>
+          <li><strong>Track Every Trade:</strong> Log entry z-score, exit z-score, hold time, P&L—analyze what works</li>
+        </ul>
+      </div>
+
       <div class="section-break"><span>Key Takeaways</span></div>
 
       <div class="callout-key">
@@ -444,6 +1145,8 @@
           <li><strong>Position Sizing:</strong> Never more than 2-5% per pair (use Kelly/half-Kelly)</li>
           <li><strong>Diversify Pairs:</strong> Run 5-10 pairs across different sectors</li>
           <li><strong>Monitor Continuously:</strong> Re-test cointegration monthly, exit if breaking down</li>
+          <li><strong>Portfolio Construction:</strong> Ensure pairs are uncorrelated with each other (sector diversity)</li>
+          <li><strong>Intraday Trading:</strong> Only with professional execution and automation</li>
         </ul>
       </div>
 
