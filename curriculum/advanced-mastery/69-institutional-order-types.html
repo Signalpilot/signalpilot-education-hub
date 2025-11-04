@@ -256,7 +256,29 @@
     <p><b>The lesson: James picked the right direction 68% of the time but lost money because of order type selection. Market orders in thin stocks = 0.3-1.2% slippage instantly. Limit orders for exits = missed fills by pennies, turning +$3K winners into -$900 losers. Visible full size orders = HFT front-running costs $0.30-0.60/share. Manual stops = late exits, doubling losses. The difference between profitable and unprofitable trading wasn't his analysis—it was execution mechanics. IOC limit orders for entries (test liquidity, set max price), MIT orders for exits (guarantee fill at target), iceberg orders for size (hide intent, prevent front-running), automated stops (no emotion, instant execution), GTC for swings (capture overnight moves). These order type changes saved $28K over 3 weeks. Execution matters as much as direction. Choose the wrong order type = pay 0.5-2% per trade unnecessarily. That's the difference between winning and losing.</b></p>
   </div>
 
-  <h2>Part 1: Basic Order Types (Review)</h2>
+  
+      <!-- TL;DR Skimmer Summary -->
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <h4 style="margin:0 0 0.75rem 0">What You'll Learn:</h4>
+          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
+      <li>Institutions use 20+ order types beyond basic market/limit</li>
+      <li>IOC = fill available, cancel rest. FOK = all or nothing</li>
+      <li>MOC orders drive 10-20% of daily volume (40%+ on rebalancing days)</li>
+          </ul>
+          <h4 style="margin:1rem 0 0.75rem 0">Action Items:</h4>
+          <ol style="line-height:1.8;margin:0 0 0 1.5rem">
+      <li>9:35 AM: Send IOC buy 5,000 shares limit $45.00</li>
+      <li>Result: 2,100 shares filled at $45.00, 2,900 shares canceled</li>
+      <li>Exact lot size: Every fill is exactly 800 shares (not 795, not 850 → algorithmic)</li>
+          </ol>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for case studies, detailed examples, and common mistakes to avoid.</em></p>
+        </div>
+      </details>
+
+
+<h2>Part 1: Basic Order Types (Review)</h2>
 
   <table>
     <thead>

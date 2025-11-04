@@ -194,7 +194,28 @@
     <p><b>The lesson: Lisa's stock picking was profitable (82% direction accuracy), but retail execution at institutional scale destroyed returns. Market orders for 20,000-share blocks = 0.5-1.2% slippage instantly as HFTs front-run and liquidity exhausts. Visible full-size orders = price pumps before fill. Aggressive execution during low-volume periods = moving your own market. The difference: VWAP algo spreads 20K shares over 4 hours, blends into natural volume flow, participation limits prevent impact (8-12% of volume max), smart routing finds hidden liquidity. Result: 0.05-0.15% slippage vs 0.9% = 6-18× better. On $1M orders, that's $8,500 saved per trade. Execution algorithms aren't optional at scale—they're the difference between profitable and unprofitable institutional trading. If you're trading blocks > 5,000 shares without algos, you're paying 0.5-2% unnecessarily. That's the tax of ignorance.</b></p>
   </div>
 
-  <h2>Part 1: Why Execution Algos Exist</h2>
+  
+      <!-- TL;DR Skimmer Summary -->
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <h4 style="margin:0 0 0.75rem 0">What You'll Learn:</h4>
+          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
+      <li>TWAP = constant rate execution (simple but ignores volume)</li>
+      <li>VWAP = volume-proportional execution (lower impact, institutional standard)</li>
+      <li>POV = % of market volume (adaptive to liquidity conditions)</li>
+          </ul>
+          <h4 style="margin:1rem 0 0.75rem 0">Action Items:</h4>
+          <ol style="line-height:1.8;margin:0 0 0 1.5rem">
+      <li>Strong conviction: PM's analysis was correct—AMD rallied 1% from decision time to close</li>
+      <li>Early aggression: IS algo locked in 40% of order at $145.08 (8 cents above decision price)</li>
+          </ol>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for case studies, detailed examples, and common mistakes to avoid.</em></p>
+        </div>
+      </details>
+
+
+<h2>Part 1: Why Execution Algos Exist</h2>
 
   <h3>The Large Order Problem</h3>
   <p><strong>Scenario:</strong> Hedge fund wants to buy 500,000 shares of AAPL (ADV = 50M)</p>
