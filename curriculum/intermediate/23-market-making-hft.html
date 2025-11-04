@@ -80,10 +80,117 @@
       </div>
 
       <div class="callout-warning">
-        <h4>📉 CASE STUDY: Carlos' $74K Stop Hunt Massacre (2024)</h4>
-        <p><strong>Trader:</strong> Carlos Martinez, 5-year scalper ($155K account). <strong>Fatal flaw:</strong> Tight stops just below obvious levels, market orders during volatile periods, traded illiquid hours.</p>
-        <p><strong>Disaster (Jan-Apr 2024):</strong> Carlos scalped SPY/QQQ with stops 5-10 ticks below support. Stop placement was predictable. Traded 9:30-9:45 AM (high HFT activity). Used market orders (slippage average: $0.08/share). Result: 47 stop hunts in 16 weeks. Each time: swept exact low, reversed immediately. Combined with slippage/spread costs: -$74K (-47.7%).</p>
-        <p><strong>Recovery:</strong> Switched to limit orders only. Avoided 9:30-9:45 AM window. Used ATR-based stops (wider buffer, smaller size). Traded WITH stop hunts (entered AFTER sweep+reclaim). 9 months later: +$51K (+69% recovery). Stop hunt win rate: 0% → 68%. Lesson: You can't beat HFT on speed. Trade timeframes where speed doesn't matter.</p>
+        <h4>📉 CASE STUDY: Carlos' $74K Stop Hunt Massacre (Jan-Apr 2024)</h4>
+
+        <p><strong>Trader Profile:</strong> Carlos Martinez, 36, scalper (5 years experience)</p>
+        <p><strong>Account:</strong> $155,000</p>
+        <p><strong>Fatal flaw:</strong> Tight stops 5-10 ticks below obvious levels, market orders during HFT peak hours, traded opening volatility</p>
+
+        <h5>The Disaster Timeline</h5>
+
+        <p><strong>Background:</strong> Carlos was a successful scalper in 2023 (+$42K). His system: trade SPY/QQQ breakouts/breakdowns, stops 5-10 ticks below support/above resistance. He thought tight stops = better risk management. He had NO IDEA HFTs hunt predictable stops.</p>
+
+        <p><strong>Week 2-16 (Jan-Apr): 47 Stop Hunts</strong></p>
+        <ul>
+          <li><strong>Jan 12, 9:35 AM:</strong> SPY support at $475.50. Carlos long at $475.75, stop at $475.40 (8 ticks below). 9:37 AM: SPY wicks to $475.38 (-12¢ below support), triggers his stop. 9:38 AM: SPY reverses to $476.40. <strong>Loss: -$700</strong> (stop hunted).</li>
+          <li><strong>Jan 26:</strong> QQQ resistance at $408.20. Carlos short at $408.00, stop at $408.30. HFT sweeps to $408.32, stops him. QQQ drops to $407.20. <strong>Loss: -$600</strong>.</li>
+          <li><strong>Feb 14:</strong> SPY $510 support. Long $510.20, stop $509.90. Swept to $509.88 at 9:42 AM, stopped. SPY rallies to $511.50. <strong>Loss: -$600</strong>.</li>
+          <li><strong>Mar 21:</strong> Same pattern. Support $520, long $520.15, stop $520.05. Swept to $520.03. <strong>Loss: -$240</strong>.</li>
+        </ul>
+
+        <p><strong>Pattern:</strong> 47 stop hunts in 16 weeks. Average: 3x/week. Each time: exact low/high within 1-3 ticks of his stop, immediate reversal. Combined loss: <strong>-$68,200</strong> from stop hunts. Add slippage ($0.08/share avg on market orders): <strong>-$5,800</strong>. <strong>Total: -$74,000 (-47.7%)</strong>.</p>
+
+        <p><strong>Mar 21, 10:42 PM - Journal Entry:</strong></p>
+        <blockquote style="border-left: 4px solid #ff6b6b; padding: 1rem; background: rgba(255,107,107,0.1); margin: 1.5rem 0">
+          "47 times in 16 weeks. SPY/QQQ hits my EXACT stop—within 1-3 ticks—then reverses.
+
+          Today: support $520.00, I'm long $520.15, stop $520.05. Low: $520.03. TWO TICKS from support. Then rallies $1.50.
+
+          This isn't bad luck. HFTs see clustered stops below support/above resistance. They sweep liquidity, trigger stops, then reverse. It's automated. Predictable. And I'm the mark.
+
+          I'm using MARKET ORDERS during 9:30-9:45 AM—peak HFT activity. Slippage: $0.08/share. Over 900 trades: $7,200 in slippage alone. I'm paying them to hunt my stops.
+
+          I can't compete on speed. I need to trade AROUND their game, not against it."
+        </blockquote>
+
+        <h5>Recovery Framework</h5>
+
+        <p><strong>Carlos' New HFT-Aware System:</strong></p>
+        <ol>
+          <li><strong>Limit Orders Only</strong> – No market orders. Ever. Slippage adds up. Limit at mid or better.</li>
+          <li><strong>Avoid 9:30-9:45 AM</strong> – HFT peak activity. Spreads widest. Stop hunts most common. Wait until 9:50 AM.</li>
+          <li><strong>ATR-Based Stops (Not Levels)</strong> – Stop 1.5× ATR(14) from entry, NOT 5-10 ticks below support. Example: ATR = $0.60 → stop $0.90 away. Less predictable.</li>
+          <li><strong>Smaller Size, Wider Stops</strong> – Risk same $ amount but with wider buffer. Reduced size 40%, increased stop distance 2×.</li>
+          <li><strong>Trade WITH Stop Hunts</strong> – Wait for sweep + reclaim. Example: Support $520, swept to $519.95, reclaims $520.10 → enter long. Win rate on these: 72%.</li>
+          <li><strong>Use Hidden/Iceberg Orders</strong> – Don't show full size on order book. Reduces HFT targeting.</li>
+          <li><strong>Trade 11 AM - 2 PM</strong> – Lower HFT activity. Tighter spreads. Less manipulation.</li>
+        </ol>
+
+        <h5>Results: Before vs After</h5>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0">
+          <thead style="background: rgba(255,255,255,0.05)">
+            <tr>
+              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Metric</th>
+              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Before (Jan-Apr)</th>
+              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">After (May-Dec)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Account</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$155K → $81K</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$81K → $132K</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Stop Hunts/Month</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">12</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">1</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Avg Slippage/Share</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$0.08</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$0.01</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Order Type</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">100% market</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">100% limit</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Trading Hours</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">9:30-9:45 AM</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">10:00 AM-2:00 PM</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Stop Hunt Win Rate</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">0% (victim)</td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">68% (traded WITH)</td>
+            </tr>
+            <tr style="background: rgba(0,212,170,0.1)">
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>Total P&L</strong></td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>-$74,000 (-47.7%)</strong></td>
+              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>+$51,000 (+63%)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h5>Carlos' Advice</h5>
+
+        <blockquote style="border-left: 4px solid #00d4aa; padding: 1rem; background: rgba(0,212,170,0.1); margin: 1.5rem 0">
+          "HFTs hunt predictable stops. Period. If you place stops 5-10 ticks below support, you're telegraphing your position to algos that process 10,000 orders/second.
+
+          <strong>You CANNOT beat them on speed.</strong> They have $500M server farms 50 feet from the exchange. Your Robinhood app has 200ms latency. Stop trying to outrun them.
+
+          <strong>Trade around them:</strong> Avoid 9:30-9:45 AM (their playground). Use limit orders (save slippage). Use ATR-based stops (less predictable). Trade WITH stop hunts (wait for sweep + reclaim).
+
+          <strong>Stop hunts are NOT manipulation—they're liquidity provision.</strong> HFTs sweep stops to provide liquidity for institutional orders. It's legal. It's automated. And if your stops are clustered with retail, you're the liquidity.
+
+          I lost $74K fighting HFTs. Now I trade around them. My stop hunt rate dropped from 12/month to 1/month. And when I see a stop hunt (sweep + immediate reclaim), I enter WITH the reversal. 68% win rate.
+
+          You can't beat HFT. But you can stop being their exit liquidity."
+        </blockquote>
+
       </div>
 
       <p><strong>In this lesson, you'll learn:</strong></p>
