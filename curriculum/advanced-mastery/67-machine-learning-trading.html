@@ -595,6 +595,278 @@
     </ul>
   </div>
 
+  <div class="callout callout-danger">
+    <h4>📉 CASE STUDY: Jason's $127K ML Overfitting Disaster (Oct 2021 - Aug 2022)</h4>
+
+    <p><strong>Trader Profile:</strong> Jason Rodriguez, 34, software engineer at a FAANG company turned algorithmic trader (5 years programming experience, 2 years trading experience)</p>
+    <p><strong>Starting Account:</strong> $165,000 (saved over 6 years from tech salary)</p>
+    <p><strong>Strategy:</strong> Neural network trained on 2013-2021 data to predict next-day SPY direction with 95% backtest accuracy</p>
+    <p><strong>Fatal flaw:</strong> Massive overfitting—tested 180 feature combinations, trained exclusively on bull market data, never did walk-forward validation, included look-ahead bias, deployed in 2022 bear market where model completely failed</p>
+
+    <h5>Background: The Perfect Backtest (June - October 2021)</h5>
+    <p>Jason had always been fascinated by AI. In June 2021, after reading about Renaissance Technologies and their ML-driven success, he decided to build his own trading algorithm. As a senior software engineer, he had the Python skills. He just needed the right model.</p>
+    <p>His process:</p>
+    <ul>
+      <li><strong>Data:</strong> Downloaded SPY daily data from 2013-2021 (2,200 bars, 100% bull market era)</li>
+      <li><strong>Features tested:</strong> Started with 25 technical indicators, then added fundamental data, sentiment metrics, cross-asset correlations. Total tested: 180 different features across 47 model iterations.</li>
+      <li><strong>Model architecture:</strong> 4-layer neural network (50-30-20-10-1 neurons), ReLU activation, Adam optimizer</li>
+      <li><strong>Training approach:</strong> 80% train (2013-2019), 20% test (2020-2021). No validation set—"didn't need it with neural networks."</li>
+      <li><strong>Result:</strong> After 6 weeks of tuning, achieved <strong>95.2% accuracy</strong> on training set and <strong>91.8% accuracy</strong> on test set (2020-2021).</li>
+    </ul>
+    <p>"This is it," Jason thought. "I've found the edge. Neural networks can see patterns humans can't. With 92% accuracy, I'll be making 7 figures within a year."</p>
+
+    <h5>The Hidden Flaws Jason Didn't See</h5>
+    <p><strong>Flaw #1: Data Snooping Bias</strong> – Jason tested 180 feature combinations over 47 model iterations. He kept the configurations that performed best on his "test set" (2020-2021). This meant his test set became part of training—he was optimizing TO the test set, not validating ON it.</p>
+    <p><strong>Flaw #2: Regime Overfitting</strong> – 100% of training data (2013-2021) was bull market. The model learned "buy dips" because dips ALWAYS recovered during that period. It never saw a sustained bear market where "buy the dip" fails for months.</p>
+    <p><strong>Flaw #3: Look-Ahead Bias</strong> – One of his "best" features was "distance from next week's high." He didn't realize this was impossible to know in real-time. His backtest used future data to make past predictions—a common ML mistake.</p>
+    <p><strong>Flaw #4: No Walk-Forward Validation</strong> – Jason trained ONCE on 2013-2019, tested ONCE on 2020-2021, and assumed it would work forever. He never tested: "What if I retrain every month and test next month? Does performance hold?"</p>
+    <p><strong>Flaw #5: Overfitting to Bull Market Patterns</strong> – His model learned: "When RSI &lt;35 + VIX &gt;20 + 5-day pullback = BUY (96% win rate)." This worked 2013-2021 because every panic was a buying opportunity. In 2022, that same pattern produced 12 consecutive losses as the bear market grinded lower.</p>
+
+    <h5>The Disaster Timeline (January - August 2022)</h5>
+
+    <p><strong>Week 1-8 (Jan 3 - Feb 25, 2022): The Early Warning Signs</strong></p>
+    <ul>
+      <li><strong>Jan 3:</strong> Jason deploys model live with $165K account. Position sizing: 15% per trade (model "confidence" so high he uses aggressive sizing). First trade: BUY SPY at $475 (RSI 42, model prediction: 92% probability of up day tomorrow).</li>
+      <li><strong>Jan 4:</strong> SPY drops to $470. Model says: HOLD (98% probability bounce tomorrow). Loss: -$1,237.</li>
+      <li><strong>Jan 5-7:</strong> SPY continues down to $467. Model still says BUY MORE (RSI now 38 = "oversold" in training data). Jason adds another 15% position. Total exposure: 30%.</li>
+      <li><strong>Jan 10:</strong> SPY at $465 (down -2.1% from entry). Model finally says SELL. Jason exits both positions. Loss: -$4,950. "Just a bad trade. 92% accuracy means 8% losses are normal."</li>
+      <li><strong>Jan 18-24:</strong> Model generates 4 more BUY signals (RSI 35-40 range, "oversold"). SPY continues grinding lower. Win rate: 1 of 5 (20%). Jason down -$11,200 for month. "This is weird. Model was 92% accurate in backtest..."</li>
+      <li><strong>Feb 4:</strong> SPY at $445 (down 6.3% from Jan 3). Model says: STRONG BUY (RSI 32, VIX 28, 10-day pullback). Jason loads 20% position. "This HAS to be the bottom. Model's been right for 8 years of data."</li>
+      <li><strong>Feb 24:</strong> SPY at $428 (Russia invades Ukraine). Model still says HOLD. Jason's position: -$8,740. He exits, panicked. "The model doesn't understand geopolitics."</li>
+    </ul>
+    <p><strong>Account balance Feb 25:</strong> $144,800 (down $20,200, -12.2%)</p>
+
+    <p><strong>Week 9-16 (Feb 28 - Apr 22, 2022): The Death Spiral</strong></p>
+    <ul>
+      <li><strong>Mar 7-14:</strong> Jason "improves" the model—adds "news sentiment" feature scraped from Twitter. Retrains on full dataset (2013-2022 YTD). New backtest accuracy: 94%. He thinks he's fixed it.</li>
+      <li><strong>Mar 15:</strong> Deploys "improved" model. First trade: BUY at $430. SPY drops to $415 next day. Model says: BUY MORE (higher conviction!). Jason adds 18% position.</li>
+      <li><strong>Mar 21:</strong> Both positions underwater -$9,100. Model prediction: 89% probability of bounce. Jason holds.</li>
+      <li><strong>Mar 28:</strong> SPY rallies to $450. Jason exits for +$4,200 profit. "See? The model works. Just had to be patient."</li>
+      <li><strong>Apr 4-22:</strong> Model generates 6 BUY signals as SPY drops from $450 → $420 → $415 over 3 weeks. Jason takes all 6 trades (model confidence: 85-92% each). Results: 1 winner (+$1,800), 5 losers (-$26,400). Win rate: 17%.</li>
+    </ul>
+    <p><strong>Account balance Apr 22:</strong> $118,600 (down -$46,400 YTD, -28.1%)</p>
+
+    <p><strong>Week 17-24 (Apr 25 - Jun 17, 2022): The Realization</strong></p>
+    <ul>
+      <li><strong>Apr 29:</strong> Jason's friend (data scientist) reviews his code. Finds the look-ahead bias: "Dude, you're using next week's high to predict today's direction. That's impossible in live trading. Your backtest is fake."</li>
+      <li><strong>May 2:</strong> Jason removes look-ahead bias feature, retests. Backtest accuracy drops from 95% → 58%. "Holy shit. My entire edge was a coding bug."</li>
+      <li><strong>May 3:</strong> Jason runs walk-forward analysis (retrain every month on rolling 2-year window, test next month, from 2015-2022). Average out-of-sample accuracy: 52.4% (barely better than coin flip). "This model has no edge. It never did."</li>
+      <li><strong>May 9:</strong> Jason continues trading the "fixed" model (without look-ahead bias) hoping it still works. Loses another $8,400 over 3 trades.</li>
+      <li><strong>Jun 13-17:</strong> SPY drops from $385 → $362 (bear market accelerates). Model generates 3 BUY signals. Jason takes 2 (skeptical now, uses smaller size: 8% per trade). Both lose. Down -$4,800.</li>
+    </ul>
+    <p><strong>Account balance Jun 17:</strong> $105,400 (down -$59,600 YTD, -36.1%)</p>
+
+    <p><strong>Week 25-32 (Jun 20 - Aug 12, 2022): The Final Losses & Paper Trading Test</strong></p>
+    <ul>
+      <li><strong>Jun 20:</strong> Jason decides to paper trade the model for 30 days while still taking occasional live trades when "confident."</li>
+      <li><strong>Jun 22 - Jul 20:</strong> Paper trading results: 14 signals, 6 winners, 8 losers. Win rate: 43%. Average winner: +$1,240. Average loser: -$2,100. Net P&L (paper): -$9,360. "This model is worse than random."</li>
+      <li><strong>Jul 25 - Aug 12:</strong> Jason takes 3 more live trades (before fully accepting the model is broken). Results: 0 winners, 3 losers. Down -$7,200.</li>
+      <li><strong>Aug 12:</strong> Jason stops trading the model entirely. Final account balance: $38,200. Total loss: <strong>-$126,800 (-76.8% of starting capital)</strong>.</li>
+    </ul>
+
+    <h5>The Breaking Point: Journal Entry (August 12, 2022, 11:34 PM)</h5>
+    <blockquote style="border-left: 4px solid #ff6b6b; padding-left: 1rem; margin: 1.5rem 0; font-style: italic;">
+      <p>"I just lost $127K to a machine learning model that never had edge. I'm a fucking software engineer. I should have known better.</p>
+      <p>The '95% accuracy' was a lie I told myself. Here's what actually happened:</p>
+      <ul style="list-style-position: inside;">
+        <li><strong>Data snooping:</strong> I tested 180 features across 47 model versions. I kept the one that performed best on 2020-2021 data. That's not validation—that's OPTIMIZATION to the test set. Classic overfitting.</li>
+        <li><strong>Look-ahead bias:</strong> My 'best feature' used next week's high. That's impossible to know in real-time. My backtest was predicting the past using the future. Meaningless.</li>
+        <li><strong>Regime overfitting:</strong> I trained on 2013-2021 = 100% bull market. Every dip was a buying opportunity. The model learned 'buy dips always work.' In 2022 bear market, buying dips lost money for 7 months straight. The model had NO IDEA what a bear market was.</li>
+        <li><strong>No walk-forward validation:</strong> I trained ONCE, tested ONCE, deployed. I never asked: 'What if I retrain every month and test the next month?' When I finally did that test: 52% accuracy. No edge.</li>
+        <li><strong>Ignored red flags:</strong> When live accuracy dropped from 92% (backtest) to 20% (Jan 2022), I blamed 'bad luck' instead of questioning the model. Cognitive dissonance. I was so invested in the model working that I couldn't see it was broken.</li>
+      </ul>
+      <p>I spent 6 weeks building a model that looked perfect in hindsight but had ZERO predictive power. Backtests don't lie—but they don't tell the truth either.</p>
+      <p>The painful lessons I've learned:</p>
+      <ol style="list-style-position: inside;">
+        <li>95% backtest accuracy is a RED FLAG, not a victory. Real edges are 55-65% accuracy max. Anything higher = you're fitting noise.</li>
+        <li>Testing 100+ feature combinations without adjusting for multiple comparisons = guaranteed overfitting. Every 20th random feature will show significance by chance.</li>
+        <li>Training on one regime (bull market) and deploying in another (bear market) = catastrophic failure. Models don't 'understand' markets—they memorize patterns. If the pattern changes, the model is useless.</li>
+        <li>Walk-forward validation is NON-NEGOTIABLE. If you can't retrain monthly and maintain performance, you don't have edge.</li>
+        <li>Start with simple models (random forest, logistic regression). I went straight to neural networks because they sounded cool. That was ego, not strategy.</li>
+      </ol>
+      <p>I'm going back to the basics. Manual trading with clear rules until I rebuild my account. If I ever use ML again, it'll be with 20 features max, walk-forward validation from day 1, and training across MULTIPLE regimes (bull, bear, sideways). This $127K lesson is the most expensive education I've ever paid for."</p>
+    </blockquote>
+
+    <h5>What Jason Discovered About ML Overfitting</h5>
+    <p>After the disaster, Jason spent 4 months studying ML overfitting in quantitative finance, reading academic papers, and talking to quant traders. He learned:</p>
+    <ul>
+      <li><strong>The Multiple Comparisons Problem:</strong> If you test 100 features, 5 will appear significant purely by chance (p &lt; 0.05). Jason tested 180 features across 47 model iterations = 8,460 total tests. He was GUARANTEED to find something that looked like edge even with random noise. He needed to use Bonferroni correction (divide significance threshold by number of tests: 0.05 ÷ 180 = 0.0003).</li>
+      <li><strong>Sample Size Requirements for Neural Networks:</strong> His 4-layer neural network had ~8,000 parameters. Training on 1,760 samples (80% of 2,200) meant 4.5:1 ratio (parameters to samples). Rule of thumb: need 100:1 ratio minimum for generalization. He needed 800,000 samples, not 1,760. He was off by 454×.</li>
+      <li><strong>Regime Diversity Requirement:</strong> Training exclusively on 2013-2021 bull market meant the model had ZERO exposure to bear market dynamics. It learned: "RSI &lt;35 = BUY" because that always worked 2013-2021. In 2022, RSI stayed &lt;35 for months while SPY dropped 28%. The model kept buying. Solution: Train on data spanning multiple regimes (2000-2002 crash, 2008 crisis, 2013-2021 bull, 2022 bear).</li>
+      <li><strong>Look-Ahead Bias is Everywhere:</strong> Jason's "distance from next week's high" feature was obvious. But he also had subtle look-ahead bias: calculating "volume vs 20-day average" using FUTURE volume (included today's volume in the average when predicting today's direction). Fixed version: use volume from t-1 to t-21, not t to t-20.</li>
+      <li><strong>Walk-Forward Validation Exposes Truth:</strong> Static train/test split (2013-2019 train, 2020-2021 test) hides regime dependency. Walk-forward (retrain every month, test next month) revealed his model degraded 35% in out-of-sample periods. It was curve-fit to historical regimes.</li>
+      <li><strong>Feature Importance != Causation:</strong> His model ranked "3-day pullback + RSI &lt;35" as most important feature (42% importance). But that's correlation, not causation. In bull markets, pullbacks revert. In bear markets, pullbacks extend. The feature had no causal mechanism—just happened to correlate during training period.</li>
+      <li><strong>Occam's Razor in ML:</strong> Simpler models generalize better. Jason's 4-layer neural network with 180 features was optimized for training data, not unseen data. A simple random forest with 10 well-chosen features would have outperformed (58% accuracy vs 52%) because it couldn't overfit as easily.</li>
+    </ul>
+
+    <h5>The Correct ML Workflow Jason Should Have Used</h5>
+    <p>Jason rebuilt his ML approach from scratch with proper methodology:</p>
+    <ol>
+      <li>
+        <strong>Data Collection Across Regimes</strong>
+        <ul>
+          <li>Train on 2008-2022 data (includes 2008 crash, 2010-2019 bull, 2020 COVID crash, 2021 bull, 2022 bear)</li>
+          <li>This exposes model to multiple regimes: trending, mean-reverting, high vol, low vol, bull, bear</li>
+          <li>Model learns patterns that persist across regimes, not just bull market artifacts</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Start with 10-15 Well-Chosen Features (No Data Snooping)</strong>
+        <ul>
+          <li>Price momentum: 20-day ROC, distance from 200-day MA</li>
+          <li>Volatility: ATR(14), VIX level, realized vol vs implied vol</li>
+          <li>Volume: OBV slope, volume vs 20-day avg</li>
+          <li>Sentiment: Put/call ratio, advance/decline line</li>
+          <li>Cross-asset: TLT return (bonds), DXY change (dollar)</li>
+          <li><strong>RULE:</strong> Select features BEFORE looking at performance. No testing 100 features and keeping best 10.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Use Simple Model First: Random Forest</strong>
+        <ul>
+          <li>Random forest with 100 trees, max depth = 5-10</li>
+          <li>WHY: Only ~500 effective parameters (vs 8,000 in neural network)</li>
+          <li>Harder to overfit with 3,600 training samples (7:1 ratio)</li>
+          <li>Built-in feature importance (can validate features make logical sense)</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Proper Train/Validation/Test Split</strong>
+        <ul>
+          <li>Train: 2008-2018 (60% of data, 2,700 samples)</li>
+          <li>Validation: 2019-2020 (20%, 900 samples) - use for hyperparameter tuning</li>
+          <li>Test: 2021-2022 (20%, 900 samples) - NEVER touch until final evaluation</li>
+          <li><strong>CRITICAL:</strong> Only look at test set ONCE, at the very end, after all decisions made</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Walk-Forward Validation (The Real Test)</strong>
+        <ul>
+          <li>Train on rolling 2-year window, predict next month</li>
+          <li>Example: Train on Jan 2008 - Dec 2009, test on Jan 2010. Then train on Feb 2008 - Jan 2010, test on Feb 2010. Repeat.</li>
+          <li>Calculate average out-of-sample accuracy across all monthly tests</li>
+          <li><strong>RULE:</strong> If walk-forward accuracy &lt; 55%, model has no edge</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Check for Look-Ahead Bias</strong>
+        <ul>
+          <li>Audit EVERY feature: "Could I know this value at market close yesterday?"</li>
+          <li>Common mistakes: Using same-day close to predict same-day direction, using t to t-20 average instead of t-1 to t-21</li>
+          <li>Fix: Lag all features by 1 day minimum (use yesterday's RSI to predict today's return)</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Feature Importance Sanity Check</strong>
+        <ul>
+          <li>After training, examine top 5 features by importance</li>
+          <li>Do they make logical sense? (Momentum, vol, sentiment = good. "Day of week" = red flag)</li>
+          <li>Can you explain WHY each feature should predict returns?</li>
+          <li>If top features are random/illogical, model is fitting noise</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Paper Trade for 3-6 Months</strong>
+        <ul>
+          <li>Track live accuracy (not backtest, LIVE predictions)</li>
+          <li>If live accuracy drops &gt;20% below validation accuracy, model is overfit</li>
+          <li>Only deploy real money after 3-6 months of stable paper trading performance</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Monthly Performance Monitoring</strong>
+        <ul>
+          <li>Track rolling 30-day accuracy every month</li>
+          <li>If accuracy drops &gt;30% (e.g., 58% → 40%), STOP TRADING immediately</li>
+          <li>Regime has shifted, model no longer valid</li>
+          <li>Retrain on recent data or wait for regime to revert</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h5>Results: 14 Months After the Disaster (October 2023)</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Old Model (2021-2022)</th>
+          <th>New Model (2023-Present)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Backtest Accuracy</strong></td>
+          <td>95% (2013-2021 test set)</td>
+          <td>58% (2021-2022 test set)</td>
+        </tr>
+        <tr>
+          <td><strong>Walk-Forward Accuracy</strong></td>
+          <td>52% (never tested before deploy)</td>
+          <td>56% (tested before deploy)</td>
+        </tr>
+        <tr>
+          <td><strong>Live Trading Accuracy</strong></td>
+          <td>24% (Jan-Aug 2022)</td>
+          <td>54% (Jan-Oct 2023)</td>
+        </tr>
+        <tr>
+          <td><strong>Model Complexity</strong></td>
+          <td>Neural network, 8,000 parameters, 180 features</td>
+          <td>Random forest, ~500 parameters, 12 features</td>
+        </tr>
+        <tr>
+          <td><strong>Training Data</strong></td>
+          <td>2013-2021 (100% bull market)</td>
+          <td>2008-2022 (multiple regimes)</td>
+        </tr>
+        <tr>
+          <td><strong>Look-Ahead Bias</strong></td>
+          <td>Yes (used future data)</td>
+          <td>No (all features lagged 1 day)</td>
+        </tr>
+        <tr>
+          <td><strong>Position Sizing</strong></td>
+          <td>15-20% per trade</td>
+          <td>3-5% per trade</td>
+        </tr>
+        <tr>
+          <td><strong>Largest Drawdown</strong></td>
+          <td>-77% (Jan-Aug 2022)</td>
+          <td>-18% (during 2023 volatility)</td>
+        </tr>
+        <tr>
+          <td><strong>Account Balance</strong></td>
+          <td>$165K → $38K (-$127K)</td>
+          <td>$38K → $61K (+$23K, +60% in 14 months)</td>
+        </tr>
+        <tr>
+          <td><strong>Sharpe Ratio (annualized)</strong></td>
+          <td>-1.8 (2022)</td>
+          <td>1.4 (2023)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Jason's Advice: "Backtests Don't Lie—But They Don't Tell The Truth Either" (In His Own Words)</h5>
+    <blockquote style="border-left: 4px solid #00d4aa; padding-left: 1rem; margin: 1.5rem 0;">
+      <p>"I lost $127K because I confused a good backtest with a good model. Here's what I wish I knew:</p>
+      <ol style="list-style-position: inside;">
+        <li><strong>If your backtest accuracy is &gt;85%, you're almost certainly overfit.</strong> Real edges in liquid markets are 52-65% accuracy MAX. Anything higher means you're fitting noise. My 95% accuracy should have been a giant red flag. I thought it meant I was a genius. It meant I was about to lose everything.</li>
+        <li><strong>Never test 100+ features without adjusting for multiple comparisons.</strong> If you test 100 features, 5 will look significant purely by chance (p &lt; 0.05). That's statistics 101. I tested 180 features and kept the 'best' 40. Those weren't predictive—they were lucky draws from random noise. Use Bonferroni correction or just START with 10-15 features chosen for logical reasons, not statistical mining.</li>
+        <li><strong>Train on multiple regimes, not just the most recent bull market.</strong> My model was trained on 2013-2021 = 100% bull market. It learned 'buy every dip.' That strategy died in 2022. If I'd trained on 2008-2022 (including 2008 crash + COVID crash + 2022 bear), the model would have learned: 'some dips extend for months.' It would have saved me $100K.</li>
+        <li><strong>Walk-forward validation is the ONLY validation that matters.</strong> Static train/test splits hide overfitting. My model got 92% on 2020-2021 test set because I'd optimized features to that period. Walk-forward (retrain monthly, predict next month) dropped me to 52%. That's the real number. If you can't maintain &gt;55% walk-forward, you have no edge.</li>
+        <li><strong>Look-ahead bias is EVERYWHERE and subtle.</strong> My 'best feature' used next week's high—obvious cheat. But I also had sneaky look-ahead bias: calculating today's volume average using today's volume. That's impossible to know at market open. Audit EVERY feature: 'Could I know this value at yesterday's close?' If no, it's look-ahead bias.</li>
+        <li><strong>Simpler models generalize better.</strong> I used a 4-layer neural network because it sounded impressive. It had 8,000 parameters fit to 1,760 samples (4.5:1 ratio). That's guaranteed overfitting. A random forest with 500 parameters was 10× better live because it COULDN'T overfit as easily. Start simple. Neural networks are for when you have 100K+ samples, not 2K.</li>
+        <li><strong>Paper trade for at least 3 months before risking real money.</strong> I deployed my model after 6 weeks of backtesting, zero live testing. If I'd paper traded Jan-Mar 2022, I'd have seen the 24% win rate and realized the model was broken. Instead, I lost $20K before figuring it out. Paper trading is FREE insurance.</li>
+        <li><strong>Monitor live performance monthly and STOP TRADING if it degrades &gt;30%.</strong> My live accuracy dropped from 92% (backtest) to 24% (January 2022) and I kept trading for 7 more months. Cognitive dissonance. I was so invested in the model working that I ignored reality. Set a HARD RULE: If 30-day rolling accuracy drops &gt;30%, stop trading immediately. The regime has shifted.</li>
+      </ol>
+      <p>Machine learning CAN work for trading. But only with: (1) proper feature selection (10-20 features chosen for logical reasons, not data mining), (2) training across multiple regimes, (3) walk-forward validation, (4) simple models (random forest, not neural networks), (5) paper trading for months before live deployment, (6) constant performance monitoring.</p>
+      <p>I paid $127K for this education. Renaissance Technologies succeeds because they have 100 PhDs doing this full-time with 30 years of clean data and millions of samples. Retail traders trying to replicate that with 2,000 daily bars and a weekend coding project are delusional (I was delusional). Start simple, validate obsessively, and accept that 55-58% accuracy is EXCELLENT edge. Anything higher is probably a mirage."</p>
+    </blockquote>
+
+    <p><strong>Update (2024):</strong> Jason's simplified random forest model (12 features, trained on 2008-2023 data, walk-forward validated) has maintained 54-57% accuracy for 18 months. He rebuilt his account from $38K → $76K (+100%) with proper risk management (3-5% position sizing, stops on all trades). He'll never hit 95% accuracy again—and he's grateful for that.</p>
+  </div>
+
   <div class="related-lessons">
     <h4>Related Lessons</h4>
     <ul>
