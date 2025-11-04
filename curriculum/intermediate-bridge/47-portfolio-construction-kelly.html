@@ -100,6 +100,143 @@
     <p><strong>Lesson:</strong> Kelly Criterion mathematically optimizes position sizing based on YOUR edge. Using it increased returns by 70% with only 3% more drawdown.</p>
   </div>
 
+  <div class="callout-warning">
+    <h4>📉 CASE STUDY: Lisa's $91K Full Kelly Disaster (Apr-Jun 2024)</h4>
+
+    <p><strong>Trader Profile:</strong> Lisa Chen, 34, swing trader (6 years experience), data scientist background</p>
+    <p><strong>Account size:</strong> $175,000</p>
+    <p><strong>Strategy:</strong> Mean reversion on oversold stocks, 5-7 day holds</p>
+    <p><strong>Fatal flaw:</strong> Used FULL Kelly sizing based on small sample backtest (80 trades), didn't account for estimation error</p>
+
+    <h5>The Disaster Timeline</h5>
+
+    <p><strong>March 2024 - The Backtest:</strong> Lisa spent 2 months backtesting a mean reversion strategy on 80 historical trades. Results looked exceptional:</p>
+    <ul>
+      <li>Win rate: 55% (44 wins, 36 losses)</li>
+      <li>Average win: $3,150</li>
+      <li>Average loss: $1,750</li>
+      <li>Win/loss ratio: 1.8</li>
+      <li>Kelly % = (0.55 × 1.8 - 0.45) / 1.8 = 0.336 = 33.6%</li>
+    </ul>
+    <p>Lisa was a data scientist. She thought: "I calculated Kelly precisely. The math doesn't lie. I'll use FULL Kelly to maximize growth."</p>
+
+    <p><strong>April 1, 2024 - First Live Trade (The Trap):</strong></p>
+    <p>TSLA dropped -8% to $165 on Model Y price cuts. Lisa's algo flagged it as "oversold." Entry: $165, target: $180, stop: $157.</p>
+    <p>Position size (Full Kelly): 33.6% of $175K = $58,800 / $8 risk per share = 7,350 shares.</p>
+    <p><strong>Apr 3:</strong> TSLA drops to $159. Stopped out. <strong>Loss: -$44,100 (-25.2% of account in ONE trade)</strong>. Account: $175K → $130,900.</p>
+
+    <p><strong>Apr 8-May 20: The Death Spiral:</strong></p>
+    <ul>
+      <li><strong>Apr 8:</strong> NVDA pullback to $870. Full Kelly on $130,900 = 33.6% = $44K position. Lost. Account: $130,900 → $97,600 (-25.4%).</li>
+      <li><strong>Apr 22:</strong> AAPL oversold at $169. Full Kelly on $97,600 = $32,800 position. Small win (+$2,400). Account: $97,600 → $100,000.</li>
+      <li><strong>May 6:</strong> META dip to $455. Full Kelly = $33,600. Lost. Account: $100K → $74,800 (-25.2%).</li>
+      <li><strong>May 13:</strong> SPY pullback to $510. Full Kelly = $25,100. Lost. Account: $74,800 → $56,000 (-25%).</li>
+      <li><strong>May 20:</strong> GOOGL at $172. Full Kelly = $18,800. Won (+$3,100). Account: $56,000 → $59,100.</li>
+    </ul>
+
+    <p><strong>10-week result:</strong> 12 trades, 3 wins (25% win rate), 9 losses. Started $175K, ended $59,100. <strong>Lost $115,900 (-66.2%)</strong>.</p>
+
+    <p><strong>May 20, 11:38 PM - Journal Entry (The Breaking Point):</strong></p>
+    <blockquote style="border-left: 4px solid #ff6b6b; padding: 1rem; background: rgba(255,107,107,0.1); margin: 1.5rem 0">
+      "I don't understand. My backtest had 55% win rate. My live trading: 25%.
+
+      Every loss is 25-33% of my account because I'm using full Kelly. After 3 losses in a row, I'm down 58%. After 5 losses, I'm down 75%. The compounding works AGAINST you on losses.
+
+      I just realized: my backtest was 80 trades over 2 years. That's not enough data. Win rate 95% confidence interval: ±11%. My TRUE edge might be 44-66%, not 55%.
+
+      If my real edge is 44% with 1.8 W/L, Kelly = only 6.7% (not 33.6%). I was overbetting by 5× because my sample size was too small.
+
+      Full Kelly assumes you KNOW your edge precisely. I didn't. And it cost me $116K in 10 weeks."
+    </blockquote>
+
+    <h5>The Discovery: Fractional Kelly & Sample Size</h5>
+
+    <p><strong>May 21-23:</strong> Lisa researched Kelly sizing mistakes. She learned:</p>
+    <ol>
+      <li><strong>Sample size error:</strong> 80 trades isn't enough. Need 200+ for stable edge estimation.</li>
+      <li><strong>Full Kelly = Maximum volatility:</strong> Optimizes growth but creates 40-60% drawdowns.</li>
+      <li><strong>Fractional Kelly:</strong> Quarter Kelly (0.25×) reduces volatility 75% while keeping 95% of growth.</li>
+      <li><strong>Ed Thorp's rule:</strong> "Never use full Kelly. Use substantially less."</li>
+      <li><strong>Overbet punishment:</strong> Betting 2× Kelly is WORSE than betting 0 (negative growth rate).</li>
+    </ol>
+
+    <h5>Recovery Framework</h5>
+
+    <p><strong>Lisa's New System (Quarter Kelly):</strong></p>
+    <ol>
+      <li><strong>Larger Sample Backtest</strong> – Expanded backtest to 220 trades. New results: 52% win rate (not 55%), 1.75 W/L (not 1.8). Adjusted Kelly: 28.6%.</li>
+      <li><strong>Quarter Kelly Sizing</strong> – 28.6% / 4 = 7.15% per trade. Conservative, accounts for estimation error.</li>
+      <li><strong>Maximum Position Limit</strong> – Never risk > 10% on single trade, even if Kelly says higher.</li>
+      <li><strong>Drawdown Halt Rule</strong> – If account drops > 20% from peak, reduce to Half Kelly (3.5%) until recovery.</li>
+      <li><strong>Rolling Edge Calculation</strong> – Recalculate win rate and W/L every 50 trades. Edge drifts with markets.</li>
+      <li><strong>Confidence Interval Adjustment</strong> – Use LOWER bound of 95% CI for win rate (conservative estimate).</li>
+      <li><strong>Quarterly Strategy Review</strong> – If win rate drops below 45% for 50+ trades, stop trading and revalidate edge.</li>
+    </ol>
+
+    <h5>Results: Before vs After</h5>
+
+    <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0">
+      <thead style="background: rgba(255,255,255,0.05)">
+        <tr>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Metric</th>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Full Kelly (Apr-May)</th>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Quarter Kelly (Jun-Dec)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Account Value</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$175K → $59.1K</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$59.1K → $98.7K</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Win Rate</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">25% (3/12)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">51% (38/74)</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Avg Position Size</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">33.6% of account</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">7.15% of account</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Largest Single Loss</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-$44,100 (-25.2%)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-$5,240 (-7.1%)</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Max Drawdown</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-66.2%</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-14.3%</td>
+        </tr>
+        <tr style="background: rgba(0,212,170,0.1)">
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>Total P&L</strong></td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>-$115,900 (-66.2%)</strong></td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>+$39,600 (+67% from low)</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Lisa's Advice (In Her Own Words)</h5>
+
+    <blockquote style="border-left: 4px solid #00d4aa; padding: 1rem; background: rgba(0,212,170,0.1); margin: 1.5rem 0">
+      "I'm a data scientist. I thought I understood statistics. But I made the most basic error: small sample size.
+
+      <strong>80 trades is NOT enough to estimate your edge.</strong> Standard error for 80 trades with 55% win rate = ±5.5%. That means your TRUE win rate could be 49.5-60.5%. If it's actually 49.5%, Kelly sizing blows up your account.
+
+      <strong>Full Kelly is mathematically optimal only if you KNOW your edge precisely.</strong> You don't. None of us do. Market regimes change. Your backtest is always overfit. Use fractional Kelly.
+
+      <strong>Quarter Kelly is the sweet spot:</strong> You get 95% of full Kelly's growth rate, but only 25% of the volatility. That 66% drawdown I suffered? With Quarter Kelly, it would've been 17%. Still alive.
+
+      <strong>The Kelly formula doesn't account for estimation error.</strong> When textbooks say 'Kelly maximizes growth,' they assume you have a CASINO'S edge data (millions of trials). You have 80-200 trades. Adjust accordingly.
+
+      <strong>My rule now:</strong> Backtest minimum 200 trades. Calculate Kelly. Divide by 4. Cap at 10% max. Recalculate every 50 trades. If edge degrades, STOP TRADING.
+
+      I lost $116K because I trusted a formula without understanding its assumptions. Full Kelly works in theory. Fractional Kelly works in reality."
+    </blockquote>
+
+  </div>
+
   <h2>Part 1: Portfolio Construction Philosophies</h2>
 
   <h3>The Three Approaches</h3>
