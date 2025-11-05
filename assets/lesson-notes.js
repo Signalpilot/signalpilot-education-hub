@@ -101,8 +101,12 @@
 
   /**
    * Create notes UI
+   * DISABLED: Redundant with notes button in header
    */
   function createNotesUI() {
+    // Disabled - notes functionality exists in header/sidebar already
+    return;
+
     // Only on lesson pages
     if (!window.location.pathname.includes('/curriculum/')) return;
 
