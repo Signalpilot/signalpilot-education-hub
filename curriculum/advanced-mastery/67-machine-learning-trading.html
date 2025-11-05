@@ -125,7 +125,7 @@
         <p style="margin-top:0.75rem">✅ If you've completed these, you're ready. Otherwise, start with the foundational lessons first.</p>
       </div>
 
-<h2>Part 1: Why Machine Learning in Trading?</h2>
+<h2 id="part-1-why-machine-learning-in-trading">Part 1: Why Machine Learning in Trading?</h2>
 
   <h3>What ML Can Do Better Than Humans</h3>
   <ul>
@@ -169,7 +169,7 @@
     <p><strong>What YOU can do:</strong> Focus on simpler ML (random forest, XGBoost) with 10-20 well-engineered features on daily/4H data. Don't try to build neural networks with 100 features and 5,000 samples—that's guaranteed overfitting.</p>
   </div>
 
-  <h2>Part 2: ML Model Types for Trading</h2>
+  <h2 id="part-2-ml-model-types-for-trading">Part 2: ML Model Types for Trading</h2>
 
   <h3>Model #1: Random Forests (Most Practical)</h3>
   <p><strong>How it works:</strong> Ensemble of decision trees, each trained on random subset of data. Each tree votes on the prediction, final result is majority vote (classification) or average (regression).</p>
@@ -322,7 +322,7 @@
 
   <p><strong>Best use case:</strong> Competitions (Kaggle winners), production systems with proper validation</p>
 
-  <h2>Part 3: Feature Engineering (The Real Edge)</h2>
+  <h2 id="part-3-feature-engineering-the-real-edge">Part 3: Feature Engineering (The Real Edge)</h2>
 
   <h3>What Are Features?</h3>
   <p><strong>Features = inputs to ML model</strong> (price, volume, volatility, sentiment, etc.)</p>
@@ -375,7 +375,7 @@
   <p><strong>3. Lag features:</strong> Yesterday's RSI, last week's return (time series structure)</p>
   <p><strong>4. Interaction features:</strong> (VIX &gt; 30 AND put/call &gt; 1.2) = crash signal</p>
 
-  <h2>Practice Exercise: Building Your First ML Trading Model</h2>
+  <h2 id="practice-exercise-building-your-first-ml-trading-model">Practice Exercise: Building Your First ML Trading Model</h2>
 
   <div class="practice-section">
     <h3>Exercise: Predict Next-Day SPY Direction</h3>
@@ -457,7 +457,7 @@
     </details>
   </div>
 
-  <h2>Part 4: The Overfitting Epidemic</h2>
+  <h2 id="part-4-the-overfitting-epidemic">Part 4: The Overfitting Epidemic</h2>
 
   <h3>How Overfitting Happens in ML Trading</h3>
   <p><strong>Scenario:</strong></p>
@@ -508,7 +508,7 @@
   <p><strong>4. Ensemble models:</strong> Average predictions from multiple models (reduces variance)</p>
   <p><strong>5. Walk-forward validation:</strong> Retrain every month on rolling 2-year window, test on next month</p>
 
-  <h2>Part 5: Practical ML Trading Workflow</h2>
+  <h2 id="part-5-practical-ml-trading-workflow">Part 5: Practical ML Trading Workflow</h2>
 
   <h3>Step-by-Step Process</h3>
 
@@ -546,7 +546,7 @@
     <li>If performance degrades &gt; 30%, stop trading (regime shifted)</li>
   </ul>
 
-  <h2>Part 6: Using Signal Pilot with ML Models</h2>
+  <h2 id="part-6-using-signal-pilot-with-ml-models">Part 6: Using Signal Pilot with ML Models</h2>
 
   <h3>Pentarch Pilot Line: Institutional Flow as Feature</h3>
   <p><strong>Use case:</strong> Add "net institutional buying (last hour)" as ML feature</p>
@@ -564,7 +564,7 @@
   <p><strong>Use case:</strong> Train separate models for trending vs mean-reverting regimes</p>
   <p><strong>Process:</strong> Use Harmonic Oscillator to label historical data (trending/ranging), train 2 models, deploy based on current regime</p>
 
-  <h2>Quiz: Test Your Understanding</h2>
+  <h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
   <div class="quiz">
     <div class="quiz-question">
       <p><strong>Q1:</strong> You have 2,000 daily bars. How many features should you use maximum?</p>
@@ -591,7 +591,7 @@
     </div>
   </div>
 
-  <h2>Practical Checklist</h2>
+  <h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>Before Training ML Model:</h4>
     <ul>
@@ -917,19 +917,17 @@
     </ul>
   </div>
 </article>
-<aside class="toc">
-  <h3>On this page</h3>
-  <ul>
-    <li><a href="#part-1-why-machine-learning-in-trading">Part 1: Why Machine Learning in Trading?</a></li>
-    <li><a href="#part-2-ml-model-types-for-trading">Part 2: ML Model Types for Trading</a></li>
-    <li><a href="#part-3-feature-engineering-the-real-edge">Part 3: Feature Engineering (The Real Edge)</a></li>
-    <li><a href="#part-4-the-overfitting-epidemic">Part 4: The Overfitting Epidemic</a></li>
-    <li><a href="#part-5-practical-ml-trading-workflow">Part 5: Practical ML Trading Workflow</a></li>
-    <li><a href="#part-6-using-signal-pilot-with-ml-models">Part 6: Using Signal Pilot with ML Models</a></li>
-    <li><a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a></li>
-    <li><a href="#practical-checklist">Practical Checklist</a></li>
-  </ul>
-</aside>
+    <aside class="toc" aria-label="On this page">
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-why-machine-learning-in-trading">Part 1: Why Machine Learning in Trading?</a>
+      <a href="#part-2-ml-model-types-for-trading">Part 2: ML Model Types for Trading</a>
+      <a href="#part-3-feature-engineering-the-real-edge">Part 3: Feature Engineering (The Real Edge)</a>
+      <a href="#practice-exercise-building-your-first-ml-trading-model">Practice Exercise: Building Your First ML Trading Model</a>
+      <a href="#part-4-the-overfitting-epidemic">Part 4: The Overfitting Epidemic</a>
+      <a href="#part-5-practical-ml-trading-workflow">Part 5: Practical ML Trading Workflow</a>
+      <a href="#part-6-using-signal-pilot-with-ml-models">Part 6: Using Signal Pilot with ML Models</a>
+      <a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a>
+    </aside>
 <footer class="sp-footer">
   <div class="container">
     <p>&copy; 2025 Signal Pilot Labs, Inc. All rights reserved.</p>
