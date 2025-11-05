@@ -95,7 +95,30 @@
 
       <div class="section-break"><span>Part 1: The Four Regimes (And Why You Keep Trading the Wrong One)</span></div>
 
-      <h2 id="markets-have-moodsreading-them-is-essential">Markets Have Moods—Reading Them Is Essential</h2>
+      
+      <!-- TL;DR Skimmer Summary -->
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <h4 style="margin:0 0 0.75rem 0">What You'll Learn:</h4>
+          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
+      <li>Your setup doesn't exist in a vacuum. A "perfect" Janus sweep in a compressed regime has a 50% probability. The SAME setup in a trending regime? 75%+.</li>
+      <li>Objective: Create a real-time regime detection dashboard and backtest your classification accuracy.</li>
+      <li>Four regimes: Trending, range-bound, volatile, compressed—each demands a different approach</li>
+      <li>ADX + ATR + BB Width: Your regime detection toolkit (quantify, don't guess)</li>
+          </ul>
+          <h4 style="margin:1rem 0 0.75rem 0">Action Items:</h4>
+          <ol style="line-height:1.8;margin:0 0 0 1.5rem">
+      <li>Identify the four core market regimes in real-time</li>
+      <li>Build a multi-indicator regime detection system (ADX, ATR, Bollinger Width)</li>
+      <li>Week 9: Sarah stopped trading and did a painful autopsy. She plotted all 38 trades on a chart with ADX overlay. The patt</li>
+          </ol>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for case studies, detailed examples, and common mistakes to avoid.</em></p>
+        </div>
+      </details>
+
+
+<h2 id="markets-have-moodsreading-them-is-essential">Markets Have Moods—Reading Them Is Essential</h2>
 
       <p>Think of markets like weather. You wouldn't wear shorts in a blizzard, right?</p>
 
@@ -513,7 +536,21 @@ Total Score:
         <p><b>The lesson: Having a winning strategy means NOTHING if you use it in the wrong regime. Sarah's pullback strategy had a 75% win rate in trending markets (ADX > 25) but a 19% win rate in ranging/volatile markets (ADX < 25). She lost $39,300 not because her strategy was bad—but because she used it 89% of the time when the market regime didn't match. Trend-following in ranges = death by whipsaws. Full sizing in volatility = stop loss massacres. Trading compression = zero edge in tight ranges. The pros don't just have ONE strategy—they have regime detection FIRST, strategy selection SECOND. Check ADX (> 25 = trending, < 20 = ranging), check ATR ratio (> 1.5x = volatile, < 0.8x = compressed), check Volume Oracle (green = trend, yellow = range, red = volatile). If regime ≠ your strategy's requirement → NO TRADE. Sarah's recovery came from trading 70% less but hitting 76% win rate by ONLY trading her edge in the correct regime. One dashboard check (ADX, ATR, VO, BB Width) before every trade = saved $41,700. Regime detection isn't a "nice to have"—it's the master switch. Wrong regime = turn off strategy. Right regime = green light. That's the difference between professional trading and blind gambling.</b></p>
       </div>
 
-      <div class="section-break"><span>Part 4: Regime-Adaptive Strategy Selection</span></div>
+      
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p>You're now at the halfway point. You've learned the key strategies.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
+      </div>
+
+
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p>You now understand the core concepts.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
+      </div>
+
+<div class="section-break"><span>Part 4: Regime-Adaptive Strategy Selection</span></div>
 
       <h2 id="match-your-weapon-to-the-fight">Match Your Weapon to the Fight</h2>
 
@@ -585,7 +622,14 @@ Compression: 0% (wait for regime shift)</code></pre>
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3 id="volume-oracle-automated-regime-detection">Volume Oracle: Automated Regime Detection</h3>
+            
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p>Almost done! You've mastered the complete framework.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
+      </div>
+
+<h3 id="volume-oracle-automated-regime-detection">Volume Oracle: Automated Regime Detection</h3>
             <p><strong>Volume Oracle classifies regime in real-time for you.</strong></p>
             <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Volume Oracle Signals:
 - Trending Up: Green (trade pullback longs)

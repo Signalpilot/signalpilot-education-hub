@@ -62,11 +62,52 @@
       </div>
       <h1 class="headline xl">Auction Theory & Market Imbalances: Opening & Closing Auctions</h1>
       <div class="meta">28-32 min read • Auction Mechanics & Institutional Trading</div>
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
     </div>
   </header>
 
   <div class="wrap article-grid">
     <div class="prose">
+      <!-- TL;DR Skimmer Summary -->
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <h4 style="margin:0 0 0.75rem 0">What You'll Learn:</h4>
+          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
+      <li>Auctions process 30-40% of daily volume at open (9:30 AM) and close (4:00 PM)—missing this data = trading blind</li>
+      <li>MOO imbalance (9:28 AM) predicts gap direction—1.5-3M shares = actionable signal for momentum or fade trades</li>
+      <li>MOC imbalance (3:50-3:58 PM) creates exploitable moves—&gt;5M shares = high-probability directional edge into close</li>
+          </ul>
+          <h4 style="margin:1rem 0 0.75rem 0">Action Items:</h4>
+          <ol style="line-height:1.8;margin:0 0 0 1.5rem">
+      <li>Auction vs Continuous Trading: How batch auctions differ from normal order matching and why they matter for price discov</li>
+      <li>Opening Imbalance Signals: Reading MOO data at 9:28 AM to predict gap direction and first-hour momentum</li>
+          </ol>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for case studies, detailed examples, and common mistakes to avoid.</em></p>
+        </div>
+      </details>
+
+
+
+
+      <!-- Prerequisites Warning -->
+      <div class="callout-warning" style="margin:2rem 0;background:rgba(255,193,7,0.1);border-left:4px solid #ffc107">
+        <h4>📋 Prerequisites</h4>
+        <p>This lesson builds on concepts from:</p>
+        <ul style="margin:0.5rem 0 0.75rem 1.5rem;line-height:1.8">
+            <li><a href="/curriculum/beginner/01-the-liquidity-lie.html" style="color:#00d4aa;text-decoration:underline">Lesson 01: The Liquidity Lie</a> — Understand institutional liquidity engineering</li>
+            <li><a href="/curriculum/beginner/02-volume-doesnt-lie.html" style="color:#00d4aa;text-decoration:underline">Lesson 02: Volume Doesn't Lie</a> — Master delta analysis and absorption patterns</li>
+            <li><a href="/curriculum/beginner/03-price-action-is-dead.html" style="color:#00d4aa;text-decoration:underline">Lesson 03: Price Action is Dead</a> — Learn order flow and tape reading basics</li>
+        </ul>
+        <p style="margin-top:0.75rem">✅ If you've completed these, you're ready. Otherwise, start with the foundational lessons first.</p>
+      </div>
 
       <div class="progress-tracker">
         <div class="progress-step">
@@ -475,7 +516,14 @@ Paired Volume:     8,000,000 shares
 
       <h2 id="part-3-closing-auction-mechanics-moc-trading">Part 3: Closing Auction Mechanics & MOC Trading</h2>
 
-      <h3 id="why-the-close-is-the-most-important-auction">Why the Close Is the Most Important Auction</h3>
+      
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p>You now understand the core concepts.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
+      </div>
+
+<h3 id="why-the-close-is-the-most-important-auction">Why the Close Is the Most Important Auction</h3>
 
       <p><strong>The closing price isn't just "end of day." It's THE reference price for:</strong></p>
       <ul>
@@ -715,7 +763,14 @@ Buy Nov 16 at $410, sell Dec 21 close at $700 = +71% in 5 weeks
 
       <h2 id="part-5-using-signal-pilot-for-auction-trading">Part 5: Using Signal Pilot for Auction Trading</h2>
 
-      <h3 id="janus-atlas-pre-market-vs-futures-divergence">Janus Atlas: Pre-Market vs Futures Divergence</h3>
+      
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p>You're now at the halfway point. You've learned the key strategies.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
+      </div>
+
+<h3 id="janus-atlas-pre-market-vs-futures-divergence">Janus Atlas: Pre-Market vs Futures Divergence</h3>
 
       <p><strong>Use Case:</strong> Compare SPY pre-market price action to ES futures.</p>
       <p><strong>Signal:</strong> If ES futures +0.5% but SPY pre-market flat → expect opening auction to gap-fill upward (futures lead cash).</p>
