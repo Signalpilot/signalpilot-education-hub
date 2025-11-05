@@ -716,6 +716,8 @@
   // Add message to chat
   function addMessage(text, isUser = false) {
     const messagesContainer = document.getElementById('chatbot-messages');
+    if (!messagesContainer) return;
+
     const messageDiv = document.createElement('div');
     messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
 
@@ -731,6 +733,8 @@
   // Show typing indicator
   function showTyping() {
     const messagesContainer = document.getElementById('chatbot-messages');
+    if (!messagesContainer) return null;
+
     const typingDiv = document.createElement('div');
     typingDiv.className = 'chatbot-message bot typing-indicator';
     typingDiv.innerHTML = `
@@ -772,6 +776,8 @@
   // Create suggestion chips (context-aware)
   function createSuggestions() {
     const container = document.getElementById('chatbot-suggestions');
+    if (!container) return;
+
     container.innerHTML = '';
 
     const suggestions = getDynamicSuggestions();
@@ -796,7 +802,9 @@
 
     // Hide suggestions
     const suggestionsContainer = document.getElementById('chatbot-suggestions');
-    suggestionsContainer.style.display = 'none';
+    if (suggestionsContainer) {
+      suggestionsContainer.style.display = 'none';
+    }
 
     // Add user message
     addMessage(message, true);
@@ -867,9 +875,19 @@
   // Initialize chatbot
   function init() {
     const { button, container } = createChatbot();
+    if (!button || !container) {
+      console.error('[Chatbot] Failed to create chatbot elements');
+      return;
+    }
+
     const closeBtn = container.querySelector('.chatbot-close');
     const input = document.getElementById('chatbot-input');
     const sendBtn = document.getElementById('chatbot-send');
+
+    if (!closeBtn || !input || !sendBtn) {
+      console.error('[Chatbot] Missing required chatbot elements');
+      return;
+    }
 
     // ===== PHASE 1: KEYBOARD SHORTCUTS =====
 
