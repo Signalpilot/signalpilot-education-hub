@@ -216,7 +216,7 @@
         <p style="margin-top:0.75rem">✅ If you've completed these, you're ready. Otherwise, start with the foundational lessons first.</p>
       </div>
 
-<h2>Part 1: Why Execution Algos Exist</h2>
+<h2 id="part-1-why-execution-algos-exist">Part 1: Why Execution Algos Exist</h2>
 
   <h3>The Large Order Problem</h3>
   <p><strong>Scenario:</strong> Hedge fund wants to buy 500,000 shares of AAPL (ADV = 50M)</p>
@@ -255,7 +255,7 @@
     </tbody>
   </table>
 
-  <h2>Part 2: TWAP (Time-Weighted Average Price)</h2>
+  <h2 id="part-2-twap-time-weighted-average-price">Part 2: TWAP (Time-Weighted Average Price)</h2>
 
   <h3>How TWAP Works</h3>
   <p><strong>Concept:</strong> Split order evenly across time (constant rate)</p>
@@ -411,7 +411,7 @@
     </ul>
   </div>
 
-  <h2>Part 3: VWAP (Volume-Weighted Average Price)</h2>
+  <h2 id="part-3-vwap-volume-weighted-average-price">Part 3: VWAP (Volume-Weighted Average Price)</h2>
 
   <h3>How VWAP Works</h3>
   <p><strong>Concept:</strong> Trade in proportion to market volume (more during high-volume, less during low-volume)</p>
@@ -525,7 +525,7 @@
     </tbody>
   </table>
 
-  <h2>Part 4: POV (Percentage of Volume)</h2>
+  <h2 id="part-4-pov-percentage-of-volume">Part 4: POV (Percentage of Volume)</h2>
 
   <h3>How POV Works</h3>
   <p><strong>Concept:</strong> Trade as fixed % of market volume (participation rate)</p>
@@ -547,7 +547,7 @@
     <p><strong>⚠️ POV Risk:</strong> In low-volume stocks, POV can fail to complete order if volume dries up. Set maximum duration (e.g., "POV 10% but finish in 4 hours no matter what").</p>
   </div>
 
-  <h2>Part 5: Implementation Shortfall (IS)</h2>
+  <h2 id="part-5-implementation-shortfall-is">Part 5: Implementation Shortfall (IS)</h2>
 
   <h3>The IS Problem</h3>
   <p><strong>Scenario:</strong> Portfolio manager decides to buy AAPL at 10:00 AM (decision price = $150.00)</p>
@@ -741,7 +741,7 @@
     </tbody>
   </table>
 
-  <h2>Part 6: Adaptive Algos (Next Generation)</h2>
+  <h2 id="part-6-adaptive-algos-next-generation">Part 6: Adaptive Algos (Next Generation)</h2>
 
   <h3>Smart Order Routing (SOR)</h3>
   <p><strong>Problem:</strong> Stock trades on 13+ exchanges (NYSE, Nasdaq, BATS, IEX, etc.)</p>
@@ -753,7 +753,7 @@
   <p><strong>Example:</strong> ML detects momentum acceleration → algo speeds up execution to front-run trend</p>
   <p><strong>Risk:</strong> Overfitting (algo works in backtest, fails live)</p>
 
-  <h2>Part 7: Detecting Algos with Signal Pilot</h2>
+  <h2 id="part-7-detecting-algos-with-signal-pilot">Part 7: Detecting Algos with Signal Pilot</h2>
 
   <h3>Pentarch Pilot Line: VWAP Signature</h3>
   <p><strong>Pattern:</strong> Steady, consistent buying over 2-4 hours (no sudden bursts)</p>
@@ -769,7 +769,7 @@
   <p><strong>Pattern:</strong> VWAP buying for 3 hours, then stops abruptly</p>
   <p><strong>Implication:</strong> Algo finished, no more buying pressure → potential reversal</p>
 
-  <h2>Quiz: Test Your Understanding</h2>
+  <h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
   <div class="quiz">
     <div class="quiz-question">
       <p><strong>Q1:</strong> You need to buy 100K shares. Market VWAP forecast: 9:30-10 AM = 20% of volume. How many shares should you target during that period?</p>
@@ -796,7 +796,7 @@
     </div>
   </div>
 
-  <h2>Practice Exercise: Algo Selection & Detection</h2>
+  <h2 id="practice-exercise-algo-selection-detection">Practice Exercise: Algo Selection & Detection</h2>
 
   <div class="practice-section">
     <h3>Exercise 1: Choose the Right Algo</h3>
@@ -895,7 +895,7 @@
     </details>
   </div>
 
-  <h2>Practical Checklist</h2>
+  <h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>Choosing Execution Algo:</h4>
     <ul>
@@ -942,19 +942,17 @@
     </ul>
   </div>
 </article>
-<aside class="toc">
-  <h3>On this page</h3>
-  <ul>
-    <li><a href="#part-1-why-execution-algos-exist">Part 1: Why Execution Algos Exist</a></li>
-    <li><a href="#part-2-twap-time-weighted-average-price">Part 2: TWAP (Time-Weighted Average Price)</a></li>
-    <li><a href="#part-3-vwap-volume-weighted-average-price">Part 3: VWAP (Volume-Weighted Average Price)</a></li>
-    <li><a href="#part-4-pov-percentage-of-volume">Part 4: POV (Percentage of Volume)</a></li>
-    <li><a href="#part-5-implementation-shortfall-is">Part 5: Implementation Shortfall (IS)</a></li>
-    <li><a href="#part-6-adaptive-algos-next-generation">Part 6: Adaptive Algos (Next Generation)</a></li>
-    <li><a href="#part-7-detecting-algos-with-signal-pilot">Part 7: Detecting Algos with Signal Pilot</a></li>
-    <li><a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a></li>
-  </ul>
-</aside>
+    <aside class="toc" aria-label="On this page">
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-why-execution-algos-exist">Part 1: Why Execution Algos Exist</a>
+      <a href="#part-2-twap-time-weighted-average-price">Part 2: TWAP (Time-Weighted Average Price)</a>
+      <a href="#part-3-vwap-volume-weighted-average-price">Part 3: VWAP (Volume-Weighted Average Price)</a>
+      <a href="#part-4-pov-percentage-of-volume">Part 4: POV (Percentage of Volume)</a>
+      <a href="#part-5-implementation-shortfall-is">Part 5: Implementation Shortfall (IS)</a>
+      <a href="#part-6-adaptive-algos-next-generation">Part 6: Adaptive Algos (Next Generation)</a>
+      <a href="#part-7-detecting-algos-with-signal-pilot">Part 7: Detecting Algos with Signal Pilot</a>
+      <a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a>
+    </aside>
 <footer class="sp-footer">
   <div class="container">
     <p>&copy; 2025 Signal Pilot Labs, Inc. All rights reserved.</p>

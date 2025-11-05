@@ -278,7 +278,7 @@
         <p style="margin-top:0.75rem">✅ If you've completed these, you're ready. Otherwise, start with the foundational lessons first.</p>
       </div>
 
-<h2>Part 1: Basic Order Types (Review)</h2>
+<h2 id="part-1-basic-order-types-review">Part 1: Basic Order Types (Review)</h2>
 
   <table>
     <thead>
@@ -312,7 +312,7 @@
     </tbody>
   </table>
 
-  <h2>Part 2: Time-In-Force Modifiers</h2>
+  <h2 id="part-2-time-in-force-modifiers">Part 2: Time-In-Force Modifiers</h2>
 
   <h3>TIF = How Long Order Stays Active</h3>
 
@@ -429,7 +429,7 @@
     </div>
   </details>
 
-  <h2>Part 3: Auction-Specific Orders</h2>
+  <h2 id="part-3-auction-specific-orders">Part 3: Auction-Specific Orders</h2>
 
   <h3>MOC (Market-on-Close)</h3>
   <p><strong>Execution:</strong> Execute at 4:00 PM closing auction price (batched with all other MOC orders)</p>
@@ -515,7 +515,7 @@
   <p><strong>Execution:</strong> Execute at 9:30 AM opening auction price</p>
   <p><strong>Use case:</strong> React to overnight news, ensure participation in opening volatility</p>
 
-  <h2>Part 4: Advanced Institutional Order Types</h2>
+  <h2 id="part-4-advanced-institutional-order-types">Part 4: Advanced Institutional Order Types</h2>
 
   <h3>Iceberg Orders (Display Size + Hidden Size)</h3>
   <p><strong>Structure:</strong> Show 500 shares on order book, hide 49,500 shares in reserve</p>
@@ -640,7 +640,7 @@
   <p><strong>Example:</strong> Buy limit $100, discretion $0.10 → can execute up to $100.10 if needed</p>
   <p><strong>Use case:</strong> Prevent missing fill by penny (willing to pay slightly more for certainty)</p>
 
-  <h2>Part 5: Algorithmic Order Types</h2>
+  <h2 id="part-5-algorithmic-order-types">Part 5: Algorithmic Order Types</h2>
 
   <h3>TWAP (Time-Weighted Average Price)</h3>
   <p><strong>Execution:</strong> Split order evenly across time</p>
@@ -778,7 +778,7 @@
   <p><strong>Strategy:</strong> Trade aggressively at start (lock in current price), then slow down to reduce impact</p>
   <p><strong>Use case:</strong> High conviction trades (don't want price to run away)</p>
 
-  <h2>Part 6: Dark Pool Order Types</h2>
+  <h2 id="part-6-dark-pool-order-types">Part 6: Dark Pool Order Types</h2>
 
   <h3>Why Dark Pools Exist</h3>
   <p><strong>Problem:</strong> Institutions can't execute 500K share order on lit exchange without moving price 2-5%</p>
@@ -794,7 +794,7 @@
   <p><strong>Structure:</strong> "Only execute if counterparty has 10K+ shares"</p>
   <p><strong>Purpose:</strong> Avoid being picked off by HFTs trading 100 shares at a time</p>
 
-  <h2>Part 7: Using Signal Pilot to Detect Institutional Order Flow</h2>
+  <h2 id="part-7-using-signal-pilot-to-detect-institutional-order-flow">Part 7: Using Signal Pilot to Detect Institutional Order Flow</h2>
 
   <h3>Minimal Flow: Iceberg Detection</h3>
   <p><strong>Pattern:</strong> 10+ consecutive fills at same price, same size (e.g., 500 shares × 15 times)</p>
@@ -810,7 +810,7 @@
   <p><strong>Feature:</strong> Display MOC imbalance updates (3:50, 3:55, 3:58 PM) on chart</p>
   <p><strong>Alert:</strong> Flash warning if imbalance &gt; 5M shares (expect large closing move)</p>
 
-  <h2>Quiz: Test Your Understanding</h2>
+  <h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
   <div class="quiz">
     <div class="quiz-question">
       <p><strong>Q1:</strong> You see 20 consecutive fills of 500 shares at exactly $100.00 over 10 minutes. What's happening?</p>
@@ -837,7 +837,7 @@
     </div>
   </div>
 
-  <h2>Practice Exercise: Institutional Order Flow Detection</h2>
+  <h2 id="practice-exercise-institutional-order-flow-detection">Practice Exercise: Institutional Order Flow Detection</h2>
 
   <div class="practice-section">
     <h3>Exercise 1: Identify the Order Type</h3>
@@ -915,7 +915,7 @@
     </details>
   </div>
 
-  <h2>Practical Checklist</h2>
+  <h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>When Placing Orders:</h4>
     <ul>
@@ -961,19 +961,17 @@
     </ul>
   </div>
 </article>
-<aside class="toc">
-  <h3>On this page</h3>
-  <ul>
-    <li><a href="#part-1-basic-order-types-review">Part 1: Basic Order Types (Review)</a></li>
-    <li><a href="#part-2-time-in-force-modifiers">Part 2: Time-In-Force Modifiers</a></li>
-    <li><a href="#part-3-auction-specific-orders">Part 3: Auction-Specific Orders</a></li>
-    <li><a href="#part-4-advanced-institutional-order-types">Part 4: Advanced Institutional Order Types</a></li>
-    <li><a href="#part-5-algorithmic-order-types">Part 5: Algorithmic Order Types</a></li>
-    <li><a href="#part-6-dark-pool-order-types">Part 6: Dark Pool Order Types</a></li>
-    <li><a href="#part-7-using-signal-pilot-to-detect-institutional-order-flow">Part 7: Using Signal Pilot to Detect Institutional Order Flow</a></li>
-    <li><a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a></li>
-  </ul>
-</aside>
+    <aside class="toc" aria-label="On this page">
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-basic-order-types-review">Part 1: Basic Order Types (Review)</a>
+      <a href="#part-2-time-in-force-modifiers">Part 2: Time-In-Force Modifiers</a>
+      <a href="#part-3-auction-specific-orders">Part 3: Auction-Specific Orders</a>
+      <a href="#part-4-advanced-institutional-order-types">Part 4: Advanced Institutional Order Types</a>
+      <a href="#part-5-algorithmic-order-types">Part 5: Algorithmic Order Types</a>
+      <a href="#part-6-dark-pool-order-types">Part 6: Dark Pool Order Types</a>
+      <a href="#part-7-using-signal-pilot-to-detect-institutional-order-flow">Part 7: Using Signal Pilot to Detect Institutional Order ...</a>
+      <a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a>
+    </aside>
 <footer class="sp-footer">
   <div class="container">
     <p>&copy; 2025 Signal Pilot Labs, Inc. All rights reserved.</p>

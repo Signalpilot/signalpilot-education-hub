@@ -128,7 +128,7 @@
         <p style="margin-top:0.75rem">✅ If you've completed these, you're ready. Otherwise, start with the foundational lessons first.</p>
       </div>
 
-<h2>Part 1: What Is Market Impact?</h2>
+<h2 id="part-1-what-is-market-impact">Part 1: What Is Market Impact?</h2>
 
   <h3>Definition & Components</h3>
   <p><strong>Market impact:</strong> Price change caused by executing a trade</p>
@@ -240,7 +240,7 @@
     <p><strong>Defense:</strong> Disguise your orders using randomized timing, splitting across venues (dark pools + lit exchanges), and varying order sizes to look like noise rather than signal.</p>
   </div>
 
-  <h2>Part 1.5: The $427,000 Lesson—Michael's Market Order Disaster</h2>
+  <h2 id="part-15-the-427000-lessonmichaels-market-order-disaster">Part 1.5: The $427,000 Lesson—Michael's Market Order Disaster</h2>
 
   <p><strong>Michael Rodriguez, portfolio manager at a $50M hedge fund, March 2024.</strong> Needed to build a $5M position in NVDA (approximately 38,500 shares @ $130). Used market orders. Lost $427,000 to market impact in 45 minutes.</p>
 
@@ -609,7 +609,7 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
     <p><em>"I lost $427,000 in one day because I didn't respect market microstructure. I thought 0.02% of daily volume meant 'no impact.' Wrong. Intraday volume fluctuates massively. My 'small' order was 5% of the 5-minute volume, which exhausted the order book and triggered HFT predators. Once I learned to use square-root models, VWAP algos, and avoid low-volume periods, my execution costs dropped 95%. I've saved $800K+ in 6 months just by executing intelligently. That $427K loss was the best education I ever bought."</em></p>
   </div>
 
-  <h2>Part 2: Market Impact Models</h2>
+  <h2 id="part-2-market-impact-models">Part 2: Market Impact Models</h2>
 
   <h3>Model #1: Square-Root Law (Simplest)</h3>
   <p><strong>Formula:</strong> Impact = σ × √(Q / V)</p>
@@ -708,7 +708,7 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
   <p><strong>Key insight:</strong> If market believes your order is informed (hedge fund buying on insider info), lambda is HIGH → price moves sharply</p>
   <p><strong>Defense (institutional):</strong> Split orders across time/venues to disguise intent (reduce perceived information content)</p>
 
-  <h2>Part 3: Estimating Market Impact (Practical)</h2>
+  <h2 id="part-3-estimating-market-impact-practical">Part 3: Estimating Market Impact (Practical)</h2>
 
   <h3>Rule of Thumb: Participation Rate</h3>
   <p><strong>Participation rate:</strong> Your order size as % of recent volume</p>
@@ -766,7 +766,7 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
 
   <p><strong>Trading implication:</strong> Execute large orders during 10 AM-12 PM or 2-3 PM (minimize impact). Avoid lunch hour (12-2 PM) unless urgent.</p>
 
-  <h2>Part 4: Execution Strategies to Minimize Impact</h2>
+  <h2 id="part-4-execution-strategies-to-minimize-impact">Part 4: Execution Strategies to Minimize Impact</h2>
 
   <h3>Strategy #1: TWAP (Time-Weighted Average Price)</h3>
   <p><strong>How it works:</strong> Split order evenly across time (e.g., 100K shares over 60 mins = 1,667 shares/min)</p>
@@ -893,7 +893,7 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
     <p style="margin-top:1rem"><strong>Trade-off:</strong> Higher execution risk (price might rally during 5 days), but much lower market impact. Use when conviction is high and time horizon is long.</p>
   </div>
 
-  <h2>Part 4.5: Detecting and Avoiding HFT Predators</h2>
+  <h2 id="part-45-detecting-and-avoiding-hft-predators">Part 4.5: Detecting and Avoiding HFT Predators</h2>
 
   <h3>How HFTs Detect Large Orders</h3>
   <p>High-frequency trading firms use pattern recognition to identify institutional orders, then front-run them for profit.</p>
@@ -978,7 +978,7 @@ Result: 10-20% lower impact vs standard TWAP
     </div>
   </details>
 
-  <h2>Part 5: Using Signal Pilot to Detect Market Impact</h2>
+  <h2 id="part-5-using-signal-pilot-to-detect-market-impact">Part 5: Using Signal Pilot to Detect Market Impact</h2>
 
   <h3>Minimal Flow: Large Print Detection</h3>
   <p><strong>Feature:</strong> Highlight prints &gt;10K shares (institutional orders)</p>
@@ -993,7 +993,7 @@ Result: 10-20% lower impact vs standard TWAP
   <p><strong>Feature:</strong> Visualize where large orders executed (volume-by-price)</p>
   <p><strong>Use case:</strong> Identify accumulation zones (institutions building positions) → support levels</p>
 
-  <h2>Quiz: Test Your Understanding</h2>
+  <h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
   <div class="quiz">
     <div class="quiz-question">
       <p><strong>Q1:</strong> You want to buy 200K shares of a stock with 10M daily volume. Using the square-root law (σ = 2%), what's the estimated impact?</p>
@@ -1020,7 +1020,7 @@ Result: 10-20% lower impact vs standard TWAP
     </div>
   </div>
 
-  <h2>Practical Checklist</h2>
+  <h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>Before Executing Large Orders:</h4>
     <ul>
@@ -1079,18 +1079,17 @@ Result: 10-20% lower impact vs standard TWAP
   </div>
 </article>
 
-<aside class="toc">
-  <h3>On this page</h3>
-  <ul>
-    <li><a href="#part-1-what-is-market-impact">Part 1: What Is Market Impact?</a></li>
-    <li><a href="#part-2-market-impact-models">Part 2: Market Impact Models</a></li>
-    <li><a href="#part-3-estimating-market-impact-practical">Part 3: Estimating Market Impact (Practical)</a></li>
-    <li><a href="#part-4-execution-strategies-to-minimize-impact">Part 4: Execution Strategies to Minimize Impact</a></li>
-    <li><a href="#part-5-using-signal-pilot-to-detect-market-impact">Part 5: Using Signal Pilot to Detect Market Impact</a></li>
-    <li><a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a></li>
-    <li><a href="#practical-checklist">Practical Checklist</a></li>
-  </ul>
-</aside>
+    <aside class="toc" aria-label="On this page">
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-what-is-market-impact">Part 1: What Is Market Impact?</a>
+      <a href="#part-15-the-427000-lessonmichaels-market-order-disaster">Part 1.5: The $427,000 Lesson—Michael's Market Order Disa...</a>
+      <a href="#part-2-market-impact-models">Part 2: Market Impact Models</a>
+      <a href="#part-3-estimating-market-impact-practical">Part 3: Estimating Market Impact (Practical)</a>
+      <a href="#part-4-execution-strategies-to-minimize-impact">Part 4: Execution Strategies to Minimize Impact</a>
+      <a href="#part-45-detecting-and-avoiding-hft-predators">Part 4.5: Detecting and Avoiding HFT Predators</a>
+      <a href="#part-5-using-signal-pilot-to-detect-market-impact">Part 5: Using Signal Pilot to Detect Market Impact</a>
+      <a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a>
+    </aside>
 
 <footer class="sp-footer">
   <div class="container">
