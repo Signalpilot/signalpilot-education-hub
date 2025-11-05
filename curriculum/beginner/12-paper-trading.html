@@ -75,16 +75,18 @@
       <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
         <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
         <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">What You'll Learn:</h4>
+          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
           <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-      <li>Exercise: Full Paper Trading Documentation Before Going Live</li>
+            <li>Paper trading hides: Slippage (market orders), emotional pressure (fear/greed with real money), execution delays, spread costs</li>
+            <li>Sim success doesn't predict live success—78% sim WR → 41% live WR is common due to emotional pressure + slippage</li>
+            <li>Add realistic slippage to sim: Subtract 0.1-0.2% from entries, add to exits—mimics market orders instead of perfect limit fills</li>
+            <li>Start live with TINY size (10-20% of intended size) to experience emotional pressure gradually before scaling up</li>
+            <li>Framework: Paper trade 90 days minimum → Add slippage to sim → Start live with mini size ($5K not $50K) → Scale up after 3 months</li>
+            <li>Common mistake: Jumping from sim to full-size live trading—emotions destroy performance immediately</li>
+            <li>Validation: Track sim vs live performance gap—if >20% difference, emotional control is the issue (stay small longer)</li>
+            <li>Case study: Sophia jumped from sim (78% WR) to live $50K (lost $16.8K in 6 weeks, 41% WR); rebuilt with $5K start + realistic sim</li>
           </ul>
-          <h4 style="margin:1rem 0 0.75rem 0">Action Items:</h4>
-          <ol style="line-height:1.8;margin:0 0 0 1.5rem">
-      <li>Open a paper trading account and commit to 50 trades minimum before risking real money</li>
-      <li>For EVERY trade, document in a spreadsheet: Entry price, exit price, stop loss, target, timeframe used, setup type (swee</li>
-          </ol>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for case studies, detailed examples, and common mistakes to avoid.</em></p>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
         </div>
       </details>
 
@@ -118,7 +120,7 @@
       <p><strong>Slippage:</strong> $0.00</p>
       <h3 id="live-trading-fill-same-order">Live Trading Fill (Same Order)</h3>
       <p><strong>Order:</strong> Market buy 1,000 shares at $100.00</p>
-      <p><strong>Fill breakdown:</strong></p>
+      <p><strong>Fill potential breakdown:</strong></p>
       <ul><li>300 @ $100.01</li><li>400 @ $100.02</li><li>300 @ $100.03</li></ul>
       <p><strong>Average Fill:</strong> $100.0187</p>
       <p><strong>Slippage:</strong> $18.70 per 1,000 shares</p>
@@ -199,7 +201,7 @@
         <ul>
           <li><strong>Jan 2, Trade #1:</strong> AAPL support bounce at $130.20. Paper trading simulation: fill at $130.20, target at $133.40. Live reality: filled at $130.28 (slippage $0.08 × 200 shares = $16 immediately lost). "Wait, why didn't I get filled at my price?"</li>
           <li><strong>Jan 3:</strong> TSLA reversal. Sim fill: $107.50. Live fill: $107.64. Slippage: $28 on 200 shares. Exit at target $109.80 (sim) vs $109.94 (live, slippage again $28). Winner, but $56 less than paper trading showed. "I'm making money but it's not matching my expectations."</li>
-          <li><strong>Jan 4:</strong> First real loss. NVDA long at $222. Stop at $219.40. Sim showed -$520 loss. Live: entry slipped to $222.18, stop hit at $219.32 (slipped through) = -$572. Extra $52 lost to slippage. Mark's heart racing: "This is MY MONEY. Not fake sim dollars."</li>
+          <li><strong>Jan 4:</strong> First real loss. NVDA long at $222. Stop at $219.40. Sim showed -$520 loss. Live: potential entry slipped to $222.18, stop hit at $219.32 (slipped through) = -$572. Extra $52 lost to slippage. Mark's heart racing: "This is MY MONEY. Not fake sim dollars."</li>
           <li><strong>Jan 6:</strong> 5 trades, 3 winners (60%). But net P&L: -$380 vs paper trading expectation of +$620. Gap: $1,000. Slippage cost: $142. Emotional cost: first experience of loss aversion anxiety.</li>
         </ul>
         <p><strong>Account balance Jan 6:</strong> $14,620 (down -2.5%)</p>
@@ -208,7 +210,7 @@
         <ul>
           <li><strong>Jan 9:</strong> Two losses in a row. Down -$1,120. Mark's thought: "I need to make this back TODAY." Takes 3 more trades outside his checklist. All losers. Down -$1,710 for day. First revenge trading spiral. "What am I doing? I never traded like this on sim."</li>
           <li><strong>Jan 12:</strong> Perfect A+ setup appears. SPY support at $391.80. Mark's hands tremble as he clicks BUY. "What if I'm wrong? That's $520 of real money I'll lose." He hesitates 45 seconds. Setup triggers without him. SPY rallies to $394.20 (his target). Missed +$480 profit. Paralyzed by fear he never felt on paper.</li>
-          <li><strong>Jan 16-20:</strong> 12 trades. Pattern: See setup → Feel fear → Either (A) skip trade and watch it work, or (B) take trade but exit early from anxiety. Result: 5 missed winners (watching from sideline), 4 early exits that would've hit target. Checklist adherence: 58%.</li>
+          <li><strong>Jan 16-20:</strong> 12 trades. Pattern: See setup → Feel fear → Either (A) skip trade and watch it work, or (B) take trade but potential exit early from anxiety. Result: 5 missed winners (watching from sideline), 4 early potential exits that would've hit target. Checklist adherence: 58%.</li>
         </ul>
         <p><strong>Account balance Jan 20:</strong> $13,410 (down -10.6%)</p>
 
@@ -318,7 +320,7 @@
             <tr>
               <td style="padding:0.75rem"><strong>R:R Actual</strong></td>
               <td style="padding:0.75rem">2.3:1</td>
-              <td style="padding:0.75rem">1.4:1 (early exits from fear)</td>
+              <td style="padding:0.75rem">1.4:1 (early potential exits from fear)</td>
               <td style="padding:0.75rem">2.1:1 (learned to hold)</td>
             </tr>
             <tr>
@@ -360,7 +362,7 @@
             <tr>
               <td style="padding:0.75rem"><strong>Emotional Stability</strong></td>
               <td style="padding:0.75rem">Perfect (no real risk)</td>
-              <td style="padding:0.75rem">Complete breakdown</td>
+              <td style="padding:0.75rem">Complete potential breakdown</td>
               <td style="padding:0.75rem">Stable, trained under real pressure</td>
             </tr>
           </tbody>
@@ -476,7 +478,7 @@
       <h3 id="2-strategy-mechanics">2. Strategy Mechanics</h3>
       <ul><li>Does setup even work? (basic backtest)</li><li>What's approximate expectancy?</li><li>What's approximate R:R?</li></ul>
       <h3 id="3-checklist-development">3. Checklist Development</h3>
-      <ul><li>Build pre-trade checklist</li><li>Test if you can follow it consistently</li><li>Refine entry/exit criteria</li></ul>
+      <ul><li>Build pre-trade checklist</li><li>Test if you can follow it consistently</li><li>Refine potential entry/potential exit criteria</li></ul>
       <h3 id="4-signal-pilot-integration">4. Signal Pilot Integration</h3>
       <ul><li>Learn how Janus Atlas signals work</li><li>Practice reading Plutus Flow delta</li><li>Understand Volume Oracle regime shifts</li></ul>
       <p><b>Paper trading teaches mechanics. Live trading teaches psychology.</b></p>
@@ -512,7 +514,7 @@
           <li>Open a paper trading account and commit to <strong>50 trades minimum</strong> before risking real money</li>
           <li>For EVERY trade, document in a spreadsheet: Entry price, exit price, stop loss, target, timeframe used, setup type (sweep, BOS, etc.)</li>
           <li>Record <strong>checklist adherence</strong>: Did you follow your pre-trade checklist 100%? If not, why did you break it?</li>
-          <li>Track <strong>emotional notes</strong>: How did you feel before entry? After exit? Did you feel FOMO, revenge, greed, or discipline?</li>
+          <li>Track <strong>emotional notes</strong>: How did you feel before potential entry? After potential exit? Did you feel FOMO, revenge, greed, or discipline?</li>
           <li>After every 10 trades, review your <strong>expectancy, average R:R, and biggest mistakes</strong></li>
           <li>Graduate to Stage 2 (micro account) ONLY after: 50+ trades, positive expectancy, >90% checklist adherence, and documented strategy rules</li>
         </ol>

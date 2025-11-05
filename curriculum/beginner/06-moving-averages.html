@@ -71,19 +71,18 @@
       <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
         <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
         <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">What You'll Learn:</h4>
+          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
           <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-      <li>After reviewing all 29 losing trades, David discovered the truth:</li>
-      <li>If EMAs predicted the future, every trader would be rich. They don't. They lag.</li>
-      <li>Exercise: Testing MA Crossovers vs. Regime-Aware MA Usage</li>
+            <li>Moving average crossovers are LAGGING signals—entry after 60-80% of move is done, poor risk:reward</li>
+            <li>In ranging markets, MA crossovers whipsaw constantly—6-8 false signals per month, death by 1000 cuts</li>
+            <li>Use MAs as trend FILTERS only (price above/below 200 EMA = bias), NOT as entry triggers</li>
+            <li>Pilot Line (adaptive trend reference in Pentarch/Omnideck) = MA done right—no whipsaw spam, adapts to volatility</li>
+            <li>Framework: Use higher TF MA for bias → Wait for pullback TO the MA (not crossover) → Enter on bounce with confirmation</li>
+            <li>Common mistake: Trading crossovers as entries—late entries, tight stops, constant whipsaws in chop</li>
+            <li>Validation: Track MA crossover trades vs pullback-to-MA trades—pullbacks should have 2-3x better R:R</li>
+            <li>Case study: David lost $15.6K trading 50/200 EMA crossovers (28% WR); recovered $12.2K using Pilot Line + pullbacks (58% WR)</li>
           </ul>
-          <h4 style="margin:1rem 0 0.75rem 0">Action Items:</h4>
-          <ol style="line-height:1.8;margin:0 0 0 1.5rem">
-      <li>Chart BTC or your preferred asset with 3 timeframes: Daily (HTF), 4H (MTF), and 1H (LTF)</li>
-      <li>Add a 21 EMA to all three timeframes and identify current alignment (all above = bullish, all below = bearish, mixed = r</li>
-      <li>Scroll back 3 months and identify 5 instances where price crossed above the 50 EMA on Daily (simple Golden Cross approac</li>
-          </ol>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for case studies, detailed examples, and common mistakes to avoid.</em></p>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
         </div>
       </details>
 
@@ -105,7 +104,7 @@
         <h4>🚨 What David Learned The Hard Way</h4>
         <p>"I bought every 50 EMA touch like clockwork. Price would touch, I'd enter, then watch it slice straight through the MA like it didn't exist."</p>
         <p style="margin-top:0.75rem">"Moving averages aren't support. They're DESCRIPTIVE, not PREDICTIVE. They tell you what happened, not what's about to happen. I was buying a lagging line and calling it an edge."</p>
-        <p style="margin-top:0.75rem"><em>— David Martinez, March 2024 journal entry</em></p>
+        <p style="margin-top:0.75rem"><em>— David Martinez, March 2024 journal potential entry</em></p>
       </div>
 
       <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem">
@@ -314,7 +313,7 @@
           <li><strong>23 out of 29 losses</strong> — Bought MA "support" touches that immediately broke</li>
           <li><strong>Golden Cross signals:</strong> Appeared 18-24 days AFTER trends started (20-30% of move missed!)</li>
           <li><strong>MA "support" in ranging markets:</strong> 8 whipsaws in 2 weeks (Feb 5-16)</li>
-          <li><strong>MA crossovers as exits:</strong> Triggered 15-20% late on average</li>
+          <li><strong>MA crossovers as potential exits:</strong> Triggered 15-20% late on average</li>
         </ul>
         <p style="margin-top:1rem;font-weight:600;color:#ff5252">Moving averages LAG. They describe what happened, not what's about to happen. David was trading history, not the future.</p>
       </div>
@@ -370,7 +369,7 @@
             <td style="padding:0.75rem;text-align:right;">5</td>
             <td style="padding:0.75rem;text-align:right;">68.8%</td>
             <td style="padding:0.75rem;text-align:right;"><span style="color:#22c55e">+$4,780</span></td>
-            <td style="padding:0.75rem;">MA alignment = trend filter, not entry trigger</td>
+            <td style="padding:0.75rem;">MA alignment = trend filter, not potential entry trigger</td>
           </tr>
           <tr style="background:rgba(34,197,94,0.18);border-top:2px solid rgba(34,197,94,0.4)">
             <td style="padding:0.75rem;"><strong>TOTAL (3 mo)</strong></td>
@@ -460,7 +459,7 @@
           <li><em><strong>MA whipsaws:</strong> Multi-timeframe alignment filters chop</em></li>
         </ul>
         <p><em>My win rate went from 36% to 68%. I stopped buying lagging lines and started using MAs for what they actually do: confirm trend direction across timeframes.</em></p>
-        <p><em>The lesson? MAs describe the past. Use them to filter trend direction, not as entry triggers. For actual entries, use real-time signals like Pentarch's TD/RUN events.</em></p>
+        <p><em>The lesson? MAs describe the past. Use them to filter trend direction, not as potential entry triggers. For actual entries, use real-time signals like Pentarch's TD/RUN events.</em></p>
         <p><em>I lost $9,800 learning this. You don't have to."</em></p>
         <p style="margin-top:1rem"><strong>— David Martinez, June 30, 2024</strong></p>
       </div>
@@ -600,7 +599,7 @@
           <div class="accordion-header">LTF (Lower Timeframe): Execution Timing</div>
           <div class="accordion-content">
             <p><strong>Timeframe:</strong> 15min or 1H</p>
-            <p><strong>Purpose:</strong> Pinpoint specific entry after HTF and MTF align</p>
+            <p><strong>Purpose:</strong> Pinpoint specific potential entry after HTF and MTF align</p>
             <p><strong>Question:</strong> "What's the specific entry price?"</p>
             <p><strong>Rule:</strong></p>
             <ul>
@@ -676,7 +675,7 @@
         <div style="padding:1.5rem;background:rgba(91,138,255,.08);border-left:4px solid #5b8aff;border-radius:12px">
           <h4 style="margin:0 0 1rem 0">IGN Event (Ignition)</h4>
           <p><strong>What it means:</strong> Price accelerating away from EMA</p>
-          <p><strong>Common approach:</strong> Many traders consider entry here. Momentum indicated. This is often viewed as a entry signal.</p>
+          <p><strong>Common approach:</strong> Many traders consider potential entry here. Momentum indicated. This is often viewed as a entry signal.</p>
           <p><em>Think: "Rocket launching. Potential opportunity."</em></p>
         </div>
       </div>
@@ -699,8 +698,8 @@
       <div style="padding:1.5rem;background:rgba(255,107,107,.08);border-left:4px solid #ff6b6b;border-radius:12px;margin:2rem 0">
         <h4 style="margin:0 0 1rem 0">BRK Event (Break)</h4>
         <p><strong>What it means:</strong> Price crossed back through EMA (trend failure)</p>
-        <p><strong>Common approach:</strong> Professional traders typically exit promptly. Trend likely over.</p>
-        <p><em>Think: "Party's over. Time to exit."</em></p>
+        <p><strong>Common approach:</strong> Professional traders typically potential exit promptly. Trend likely over.</p>
+        <p><em>Think: "Party's over. Time to potential exit."</em></p>
       </div>
 
       <div class="section-break"><span>Part 5: Complete MA Framework</span></div>
@@ -726,7 +725,7 @@
 
         <p><strong>Step 3: Structural + Volume Confirmation</strong></p>
         <ul>
-          <li>Janus Atlas: Sweep or breakout confirmation</li>
+          <li>Janus Atlas: Sweep or potential breakout confirmation</li>
           <li>Plutus Flow: Delta supporting your direction</li>
           <li>Volume Oracle: Regime = trending (not ranging)</li>
         </ul>
@@ -736,7 +735,7 @@
           <li><strong>Initial stop:</strong> Commonly placed below/above EMA (depending on direction)</li>
           <li><strong>RUN event:</strong> Stops often trailed to previous swing low/high</li>
           <li><strong>EXT event:</strong> Many traders take 20-30% profits and tighten stops</li>
-          <li><strong>BRK event:</strong> Professional traders typically exit all positions promptly</li>
+          <li><strong>BRK event:</strong> Professional traders typically potential exit all positions promptly</li>
         </ul>
       </div>
 
@@ -752,7 +751,7 @@
       <p><em>Fix:</em> Always check multi-timeframe alignment. Require 2/3 minimum (HTF + MTF + LTF).</p>
 
       <p><strong>Mistake #4: Ignoring BRK events</strong></p>
-      <p><em>Fix:</em> When price breaks back through your EMA (BRK event), exit immediately. Don't hope. Don't wait. Exit.</p>
+      <p><em>Fix:</em> When price breaks back through your EMA (BRK event), potential exit immediately. Don't hope. Don't wait. Exit.</p>
 
       <div class="key-takeaway">
         <h4>🎓 Key Takeaways</h4>
@@ -761,7 +760,7 @@
           <li><strong>Golden Cross lags 20-30%</strong> (late entry signal)</li>
           <li><strong>Multi-timeframe alignment = high probability</strong> (HTF + MTF + LTF)</li>
           <li><strong>Pentarch 5 events = actionable framework</strong> (TD, IGN, RUN, EXT, BRK)</li>
-          <li><strong>Watch for IGN, hold through RUN, watch for exit BRK</strong></li>
+          <li><strong>Watch for IGN, hold through RUN, watch for potential exit BRK</strong></li>
           <li><strong>MAs are filters, not triggers</strong> (require structure + volume confirmation)</li>
         </ul>
       </div>
@@ -797,7 +796,7 @@
         <div class="card">
           <span class="badge">Beginner #3</span>
           <h4>Price Action Is Dead</h4>
-          <p>Discover why structural confirmation (sweeps, breakouts) must align with EMA trend filters before entry—MAs alone aren't enough.</p>
+          <p>Discover why structural confirmation (sweeps, breakouts) must align with EMA trend filters before potential entry—MAs alone aren't enough.</p>
           <a href="/curriculum/beginner/03-price-action-is-dead.html" class="btn btn-ghost btn-sm">Read Lesson &rarr;</a>
         </div>
         <div class="card">
@@ -818,7 +817,7 @@
           <div class="quiz-options">
             <div class="quiz-option" data-correct="false">A) Buy immediately (trend just started!)</div>
             <div class="quiz-option" data-correct="true">B) Wait for IGN event (price accelerating away) to indicate momentum</div>
-            <div class="quiz-option" data-correct="false">C) Short it (fade the breakout)</div>
+            <div class="quiz-option" data-correct="false">C) Short it (fade the potential breakout)</div>
             <div class="quiz-option" data-correct="false">D) Check the Golden Cross first</div>
           </div>
           <div class="quiz-feedback">

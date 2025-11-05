@@ -96,7 +96,7 @@
         <ul>
           <li>The difference between correlation and cointegration (critical!)</li>
           <li>How to identify viable pairs using Augmented Dickey-Fuller tests</li>
-          <li>Z-score entry/exit models for statistical edge</li>
+          <li>Z-score potential entry/potential exit models for statistical edge</li>
           <li>Position sizing based on spread volatility and half-life</li>
           <li>Real-world stat arb strategies used by hedge funds</li>
         </ul>
@@ -367,7 +367,7 @@ BUT THEN: Derek's Mistake
 - ARKK stays flat at $44.80
 - His long QQQ now shows +$1,631
 - Short ARKK still +$25,200
-- He COULD have exited with +$26,831 total profit
+- He COULD have potential exited with +$26,831 total profit
 
 May 8-10: The Reversal
 - ARKK bounces on short squeeze to $49.50 (+10.5% in 2 days)
@@ -423,7 +423,7 @@ I never tested for mean reversion in the first place."
         <ul>
           <li>ARKK's portfolio composition changed (biotech pivot)</li>
           <li>This broke the historical relationship with QQQ</li>
-          <li>Should've exited when correlation dropped below 0.70</li>
+          <li>Should've potential exited when correlation dropped below 0.70</li>
         </ul>
         <p style="margin-top:1rem"><strong>Mistake #4: Revenge Trading</strong></p>
         <ul>
@@ -434,7 +434,7 @@ I never tested for mean reversion in the first place."
         <p style="margin-top:1rem"><strong>Mistake #5: No Profit Target</strong></p>
         <ul>
           <li>Trade #3 reached +$26,831 profit</li>
-          <li>Derek had no exit rule, kept holding for "more"</li>
+          <li>Derek had no potential exit rule, kept holding for "more"</li>
           <li>Profit disappeared when mean reversion failed</li>
         </ul>
       </div>
@@ -454,7 +454,7 @@ Derek's New Process:
 4. Calculate spread: Asset A - (β × Asset B)
 5. Run ADF test on spread (CRITICAL!)
 6. Calculate half-life using AR(1) model
-7. Backtest z-score entry/exit model
+7. Backtest z-score potential entry/potential exit model
 
 Pair Discovery Results:
 - Tested 45 potential pairs
@@ -573,7 +573,7 @@ Average Loss: -$923
 Profit Factor: 3.2
 Total Profit: +$23,094
 
-Best Trade: +$4,120 (JPM/BAC, z-score = 2.8 entry)
+Best Trade: +$4,120 (JPM/BAC, z-score = 2.8 potential entry)
 Worst Trade: -$1,650 (KO/PEP, decointegration stop loss)
 
 Account Growth:
@@ -657,13 +657,13 @@ I trade math, not correlation coefficients."
 
       <h2 id="trading-the-statistical-anomaly">Trading the Statistical Anomaly</h2>
 
-      <p>Once you've validated cointegration, you need entry/exit rules. The standard model: <strong>z-score triggers</strong>.</p>
+      <p>Once you've validated cointegration, you need potential entry/potential exit rules. The standard model: <strong>z-score triggers</strong>.</p>
 
       <p><strong>Z-score measures how many standard deviations the spread is from its mean.</strong></p>
 
       <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">Z-score = (Current Spread - Mean Spread) / Standard Deviation</p>
 
-      <h3 id="standard-entryexit-thresholds">Standard Entry/Exit Thresholds</h3>
+      <h3 id="standard-potential entrypotential exit-thresholds">Standard Entry/Exit Thresholds</h3>
 
       <div class="tabs">
         <div class="tabs-nav">
@@ -751,7 +751,7 @@ I trade math, not correlation coefficients."
         <p>Even if Kelly suggests 10%, stat arb models can fail (decointegration, regime change). Use half-Kelly or quarter-Kelly for safety:</p>
         <p><strong>Half-Kelly:</strong> f* / 2<br>
         <strong>Quarter-Kelly:</strong> f* / 4</p>
-        <p>This protects you from model breakdown while still capturing edge.</p>
+        <p>This protects you from model potential breakdown while still capturing edge.</p>
       </div>
 
       <h3 id="portfolio-of-pairs-diversification">Portfolio of Pairs: Diversification</h3>
@@ -786,7 +786,7 @@ I trade math, not correlation coefficients."
         <li><strong>Corporate Actions:</strong> Mergers, spinoffs, dividend changes</li>
         <li><strong>Structural Shifts:</strong> One company changes business model</li>
         <li><strong>Macro Regime Change:</strong> Interest rate shocks, sector rotation</li>
-        <li><strong>Liquidity Drying Up:</strong> Can't exit the position without slippage</li>
+        <li><strong>Liquidity Drying Up:</strong> Can't potential exit the position without slippage</li>
       </ul>
 
       <div class="callout-warning">
@@ -852,7 +852,7 @@ I trade math, not correlation coefficients."
           <div class="accordion-content">
             <p><strong>Test z-score model on historical data:</strong></p>
             <ul>
-              <li>Entry at |Z| > 2, exit at Z = 0</li>
+              <li>Entry at |Z| > 2, potential exit at Z = 0</li>
               <li>Calculate win rate, avg profit/loss, Sharpe ratio</li>
               <li>Verify half-life is reasonable (5-30 days)</li>
             </ul>
@@ -865,7 +865,7 @@ I trade math, not correlation coefficients."
           <div class="accordion-content">
             <p><strong>Track daily:</strong></p>
             <ul>
-              <li>Current z-score (entry/exit signals)</li>
+              <li>Current z-score (potential entry/exit signals)</li>
               <li>Spread volatility (risk sizing)</li>
               <li>Correlation (warning if dropping)</li>
               <li>Re-run ADF test monthly (check for decointegration)</li>
@@ -877,7 +877,7 @@ I trade math, not correlation coefficients."
       <div class="callout-tip">
         <h4>🎯 Pro Tip: Use Rolling Windows</h4>
         <p>Don't calculate cointegration once and assume it's stable forever. Use a <strong>rolling 6-month window</strong> to recalculate β and re-test ADF every month.</p>
-        <p>If p-value drifts above 0.10, exit the pair—it's decointegrating.</p>
+        <p>If p-value drifts above 0.10, potential exit the pair—it's decointegrating.</p>
       </div>
 
       <div class="section-break"><span>Part 7: Advanced Strategies—Intraday Statistical Arbitrage</span></div>
@@ -1116,25 +1116,25 @@ spread_std = spread.rolling(window=lookback).std()
 z_score = (spread - spread_mean) / spread_std
 
 # Entry/exit signals
-entry_threshold = 2.0
-exit_threshold = 0.0
+potential entry_threshold = 2.0
+potential exit_threshold = 0.0
 stop_threshold = 3.5
 
 # Long spread signal (buy asset A, sell asset B)
-long_entry = z_score < -entry_threshold
-long_exit = z_score > -exit_threshold
+long_potential entry = z_score < -potential entry_threshold
+long_potential exit = z_score > -potential exit_threshold
 
 # Short spread signal (sell asset A, buy asset B)
-short_entry = z_score > entry_threshold
-short_exit = z_score < exit_threshold
+short_potential entry = z_score > potential entry_threshold
+short_potential exit = z_score < potential exit_threshold
 
 # Stop loss
 stop_loss = (z_score > stop_threshold) | (z_score < -stop_threshold)
 
 print(f"Current Z-Score: {z_score.iloc[-1]:.2f}")
-if z_score.iloc[-1] > entry_threshold:
+if z_score.iloc[-1] > potential entry_threshold:
     print("🔴 SHORT SPREAD (sell KO, buy PEP)")
-elif z_score.iloc[-1] < -entry_threshold:
+elif z_score.iloc[-1] < -potential entry_threshold:
     print("🟢 LONG SPREAD (buy KO, sell PEP)")
 else:
     print("⚪ NO TRADE (waiting for signal)")
@@ -1155,25 +1155,25 @@ for i in range(lookback, len(z_score)):
 
     # Entry logic
     if position == 0:
-        if z < -entry_threshold:
+        if z < -potential entry_threshold:
             position = 1  # Long spread
-            entry_price = spread.iloc[i]
-        elif z > entry_threshold:
+            potential entry_price = spread.iloc[i]
+        elif z > potential entry_threshold:
             position = -1  # Short spread
-            entry_price = spread.iloc[i]
+            potential entry_price = spread.iloc[i]
 
     # Exit logic
     elif position == 1:  # In long spread
-        if z > -exit_threshold or z < -stop_threshold:
-            exit_price = spread.iloc[i]
-            profit = exit_price - entry_price
+        if z > -potential exit_threshold or z < -stop_threshold:
+            potential exit_price = spread.iloc[i]
+            profit = potential exit_price - potential entry_price
             trades.append(profit)
             position = 0
 
     elif position == -1:  # In short spread
-        if z < exit_threshold or z > stop_threshold:
-            exit_price = spread.iloc[i]
-            profit = entry_price - exit_price
+        if z < potential exit_threshold or z > stop_threshold:
+            potential exit_price = spread.iloc[i]
+            profit = potential entry_price - potential exit_price
             trades.append(profit)
             position = 0
 
@@ -1200,7 +1200,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
           <li><strong>Paper Trade First:</strong> Run your system for 1-3 months with fake money before risking capital</li>
           <li><strong>Start Small:</strong> 0.5-1% position sizes until you've proven your edge</li>
           <li><strong>Monitor Slippage:</strong> If your fills are >0.05% worse than backtest, reduce size or improve execution</li>
-          <li><strong>Track Every Trade:</strong> Log entry z-score, exit z-score, hold time, P&L—analyze what works</li>
+          <li><strong>Track Every Trade:</strong> Log potential entry z-score, potential exit z-score, hold time, P&L—analyze what works</li>
         </ul>
       </div>
 
@@ -1214,7 +1214,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
           <li><strong>Stop Losses:</strong> Exit if |Z| > 3.5 or position open > 2× half-life</li>
           <li><strong>Position Sizing:</strong> Never more than 2-5% per pair (use Kelly/half-Kelly)</li>
           <li><strong>Diversify Pairs:</strong> Run 5-10 pairs across different sectors</li>
-          <li><strong>Monitor Continuously:</strong> Re-test cointegration monthly, exit if breaking down</li>
+          <li><strong>Monitor Continuously:</strong> Re-test cointegration monthly, potential exit if breaking down</li>
           <li><strong>Portfolio Construction:</strong> Ensure pairs are uncorrelated with each other (sector diversity)</li>
           <li><strong>Intraday Trading:</strong> Only with professional execution and automation</li>
         </ul>

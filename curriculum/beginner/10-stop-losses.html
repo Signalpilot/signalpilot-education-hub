@@ -71,30 +71,28 @@
       <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
         <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
         <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">What You'll Learn:</h4>
+          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
           <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-      <li>Volatility changes daily. Your stop placement often too.</li>
-      <li>Exercise: Calculate Structure + ATR Stops for Your Next 10 Trades</li>
-      <li>Percentage stops fail (market doesn't care about your account)</li>
-      <li>ATR-based stops adapt to volatility (auto-scale to market conditions)</li>
+            <li>ATR-based stops: Place stops 1.5-2× ATR (14-period) from entry—accounts for normal volatility + sweep buffer</li>
+            <li>Swing structure stops: Place below swing low + 0.2-0.5% buffer—avoids obvious level where everyone else's stops are</li>
+            <li>Tight stops (0.3-0.5% from entry) get hunted—you're providing liquidity for smart money entries</li>
+            <li>If required stop is too wide for 2% risk, reduce position size (don't tighten stop to fit)</li>
+            <li>Framework: Measure ATR → Calculate 1.5-2× ATR from entry → Add 0.2-0.5% buffer below swing structure → That's your stop</li>
+            <li>Common mistake: Arbitrary tight stops or stops exactly at obvious swing lows—both get swept constantly</li>
+            <li>Validation: Track "stopped then reversed" rate—if >50%, stops too tight or too obvious (widen and add buffer)</li>
+            <li>Case study: Michelle lost $24.6K with tight stops (67 trades stopped then reversed); recovered $16.8K using ATR-based stops (win rate 31% → 58%)</li>
           </ul>
-          <h4 style="margin:1rem 0 0.75rem 0">Action Items:</h4>
-          <ol style="line-height:1.8;margin:0 0 0 1.5rem">
-      <li>Before each trade, identify the structure level where your thesis breaks (swing low for longs, swing high for shorts)</li>
-      <li>Measure current ATR on your timeframe (use 14-period ATR)</li>
-      <li>Calculate stop: Structure level ± (1.5-2× ATR) for buffer</li>
-          </ol>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for case studies, detailed examples, and common mistakes to avoid.</em></p>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
         </div>
       </details>
 
 
 
-      <p><b>"I'll risk 2% per trade. Stop is 2% below my entry."</b></p>
+      <p><b>"I'll risk 2% per trade. Stop is 2% below my potential entry."</b></p>
 
       <p>Sounds disciplined, right? Actually, it's arbitrary nonsense.</p>
 
-      <p>The market doesn't care that you want to risk 2%. It doesn't care where your entry is. It moves based on volatility, structure, and liquidity—none of which respect your neat percentage.</p>
+      <p>The market doesn't care that you want to risk 2%. It doesn't care where your potential entry is. It moves based on volatility, structure, and liquidity—none of which respect your neat percentage.</p>
 
       <div class="callout-warning">
         <h4>🚨 Real Talk</h4>
@@ -127,7 +125,7 @@
           <div class="tab-panel active">
             <h3 id="high-volatility-scenario">High Volatility Scenario</h3>
             <p><strong>Market state:</strong> ATR = 3% (high volatility)</p>
-            <p><strong>Your stop:</strong> 2% below entry (fixed percentage)</p>
+            <p><strong>Your stop:</strong> 2% below potential entry (fixed percentage)</p>
             <p><strong>What happens:</strong></p>
             <ul>
               <li>Normal intraday swing = 2-3%</li>
@@ -142,7 +140,7 @@
           <div class="tab-panel">
             <h3 id="low-volatility-scenario">Low Volatility Scenario</h3>
             <p><strong>Market state:</strong> ATR = 0.5% (low volatility)</p>
-            <p><strong>Your stop:</strong> 2% below entry (fixed percentage)</p>
+            <p><strong>Your stop:</strong> 2% below potential entry (fixed percentage)</p>
             <p><strong>What happens:</strong></p>
             <ul>
               <li>Normal intraday swing = 0.3-0.7%</li>
@@ -184,7 +182,7 @@
           <div class="accordion-content">
             <p><strong>When to use:</strong> Scalping, mean reversion trades, very tight ranges</p>
             <p><strong>Risk level:</strong> Higher stop-out rate, but tighter risk control</p>
-            <p><strong>Example:</strong> BTC ATR = $500. Stop = 1.5 × $500 = $750 below entry</p>
+            <p><strong>Example:</strong> BTC ATR = $500. Stop = 1.5 × $500 = $750 below potential entry</p>
             <p style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.08);border-radius:8px">
               <strong>Warning:</strong> Tight stops get swept more often. Only use if setup quality is A+ and you're managing actively.
             </p>
@@ -196,7 +194,7 @@
           <div class="accordion-content">
             <p><strong>When to use:</strong> Swing trades, trend following, most setups</p>
             <p><strong>Risk level:</strong> Balanced—gives market room to breathe without excessive risk</p>
-            <p><strong>Example:</strong> BTC ATR = $500. Stop = 2.0 × $500 = $1,000 below entry</p>
+            <p><strong>Example:</strong> BTC ATR = $500. Stop = 2.0 × $500 = $1,000 below potential entry</p>
             <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px">
               <strong>Sweet spot:</strong> This is the default for most professional swing traders. Enough room, not excessive.
             </p>
@@ -208,7 +206,7 @@
           <div class="accordion-content">
             <p><strong>When to use:</strong> Position trades, volatile assets, holding through noise</p>
             <p><strong>Risk level:</strong> Lowest stop-out rate, but larger losses if wrong</p>
-            <p><strong>Example:</strong> BTC ATR = $500. Stop = 3.0 × $500 = $1,500 below entry</p>
+            <p><strong>Example:</strong> BTC ATR = $500. Stop = 3.0 × $500 = $1,500 below potential entry</p>
             <p style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
               <strong>Use case:</strong> When you want to hold through volatility spikes. Reduce position SIZE to compensate for wider stop.
             </p>
@@ -247,7 +245,7 @@
         <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
           <h3 style="margin:0 0 1rem 0" id="-bad-stop-placement">❌ Bad Stop Placement</h3>
           <p><strong>Example entry:</strong> $100.00</p>
-          <p><strong>Example stop:</strong> $99.00 (1% below entry)</p>
+          <p><strong>Example stop:</strong> $99.00 (1% below potential entry)</p>
           <p><strong>Why it's bad:</strong> Arbitrary. No structural significance. The market doesn't care about your 1%.</p>
           <p style="margin-top:1rem;font-size:.9rem"><em>If $99.00 is hit, does that invalidate your thesis? No. It's just a random number you picked.</em></p>
         </div>
@@ -285,8 +283,8 @@
         <p><strong>2R = 2× Risk as Reward</strong></p>
         <p><strong>Example:</strong></p>
         <ul>
-          <li>Risk: $100 (entry to stop)</li>
-          <li>Reward: $200 (entry to target) = 2R</li>
+          <li>Risk: $100 (potential entry to stop)</li>
+          <li>Reward: $200 (potential entry to target) = 2R</li>
         </ul>
         <p><strong>Minimum accuracy needed:</strong> 40% (you can be wrong 60% of the time)</p>
         <hr style="margin:1rem 0;opacity:.3">
@@ -402,7 +400,7 @@
           <div class="accordion-content">
             <p><strong>Setup:</strong> You bought call/put options (premium paid upfront)</p>
             <p><strong>Why no hard stop:</strong> Max loss = premium paid. Risk is already defined and capped.</p>
-            <p><strong>Management:</strong> Let theta decay work against you or exit based on time/delta, not price stop.</p>
+            <p><strong>Management:</strong> Let theta decay work against you or potential exit based on time/delta, not price stop.</p>
           </div>
         </div>
 
@@ -490,7 +488,7 @@
       <p><em>Fix:</em> Tight stops = more stop-outs. Control risk via position SIZE, not stop distance. Wider stop + smaller size > tight stop + large size.</p>
 
       <p><strong>Mistake #3: Moving stop FURTHER away</strong></p>
-      <p><em>Fix:</em> NEVER move stop away from entry (only closer or to breakeven). If price isn't working, exit. Don't give it "more room."</p>
+      <p><em>Fix:</em> NEVER move stop away from potential entry (only closer or to breakeven). If price isn't working, potential exit. Don't give it "more room."</p>
 
       <p><strong>Mistake #4: No stop at all ("I'll watch it")</strong></p>
       <p><em>Fix:</em> ALWAYS use hard stop-loss orders. Mental stops fail when emotions kick in. Set it and trust your plan.</p>
@@ -504,12 +502,12 @@
         <p><strong>Fatal flaw:</strong> Used arbitrary percentage stops that ignored market volatility and structure. Got stopped out repeatedly in volatile markets (stops too tight), then widened stops to 5-8% thinking "more room" would help—took massive losses (stops too wide). Never used ATR or structure-based stops.</p>
 
         <h5>Background: The "2% Rule" Follower (Jan-Mar 2023)</h5>
-        <p>Kevin discovered trading in 2021 during the crypto bull run. He read three popular trading books, all of which preached the same gospel: "Never risk more than 2% per trade." He took this literally—every trade, every asset, every market condition: 2% stop below entry.</p>
+        <p>Kevin discovered trading in 2021 during the crypto bull run. He read three popular trading books, all of which preached the same gospel: "Never risk more than 2% per trade." He took this literally—every trade, every asset, every market condition: 2% stop below potential entry.</p>
         <p>His methodology:</p>
         <ul>
-          <li>Identify setup (breakout, reversal, trendline bounce)</li>
+          <li>Identify setup (potential breakout, reversal, trendline bounce)</li>
           <li>Enter at confirmation candle close</li>
-          <li>Place stop 2% below entry (fixed percentage, always)</li>
+          <li>Place stop 2% below potential entry (fixed percentage, always)</li>
           <li>Target: "3× my stop" (6% gain = 3:1 risk:reward)</li>
           <li><strong>Stop adjustment:</strong> Never. "2% is the rule. Discipline is everything."</li>
         </ul>
@@ -520,7 +518,7 @@
         <p><strong>Week 1-8 (Apr 3 - May 26, 2023): The Stop-Out Epidemic</strong></p>
         <ul>
           <li><strong>Apr 3:</strong> Market volatility spikes (VIX jumps from 15 → 24). Kevin doesn't adjust—still uses 2% stops.</li>
-          <li><strong>Apr 5, Trade #1:</strong> NVDA breakout at $268. Kevin buys. 2% stop: $262.64. ATR (14-period): $11.20 (4.2% of price). His 2% stop = 0.48× ATR (WAY too tight for volatility). Stopped out 3 hours later at $262.58. NVDA continues to $285 the next day. Loss: -$2,300.</li>
+          <li><strong>Apr 5, Trade #1:</strong> NVDA potential breakout at $268. Kevin buys. 2% stop: $262.64. ATR (14-period): $11.20 (4.2% of price). His 2% stop = 0.48× ATR (WAY too tight for volatility). Stopped out 3 hours later at $262.58. NVDA continues to $285 the next day. Loss: -$2,300.</li>
           <li><strong>Apr 12, Trade #2:</strong> Crypto reversal setup. BTC at $30,500. 2% stop: $29,890. ATR: $1,840 (6% of price). His 2% stop = 0.33× ATR. Stopped out on normal volatility at $29,880. BTC rallies to $32,100 next week. Loss: -$2,100. "That setup was PERFECT. Just bad luck."</li>
           <li><strong>Apr 17-May 26:</strong> 14 more setups. ATR averaging 3-5% on volatile assets. Kevin still uses 2% stops (0.4-0.67× ATR). Results: 11 of 14 stopped out, 9 of those 11 then moved to target after stopping him out. Win rate: 21%.</li>
           <li>Kevin's realization: "I'm getting stopped out on NOISE. My setups are good but my stops are too tight."</li>
@@ -530,18 +528,18 @@
         <p><strong>Week 9-16 (May 29 - Jul 21, 2023): The Overcorrection (Stops Too Wide)</strong></p>
         <ul>
           <li><strong>May 29:</strong> Kevin's solution: "I need MORE ROOM. I'll use 5% stops instead of 2%. That'll fix it."</li>
-          <li><strong>Jun 5, Trade #15:</strong> Small-cap stock breakout. Entry: $8.40. 5% stop: $7.98. Setup fails immediately—drops to $7.20 (company announced earnings miss). Kevin holds, waiting for "reversal." Stock continues to $6.80. Finally stops out at $7.98. Loss: -$4,800. If he'd used structure-based stop (below $8.20 support), loss would've been -$2,200. His wide 5% stop cost him an extra $2,600.</li>
-          <li><strong>Jun 19:</strong> Altcoin reversal. Entry: $2.50. 5% stop: $2.375. Altcoin crashes on FUD (regulation news). Drops to $1.92. Kevin's 5% stop finally triggers at $2.375. Loss: -$5,900. <strong>Reality:</strong> Structure was broken at $2.30 (swept low). He should've exited there. His wide stop let the loss run an extra $0.075/coin = $3,150 additional loss.</li>
-          <li><strong>Jul 9:</strong> High-cap stock short. Entry: $142. 5% stop: $149.10. Stock squeezes on earnings beat. Rips to $156. Stop triggers at $149.10. Loss: -$8,200. <strong>Key mistake:</strong> He ignored structure—stock broke above $145 resistance (his thesis invalidated). Should've exited at $145. His 5% stop let loss run $4.10 higher = $4,800 extra loss.</li>
+          <li><strong>Jun 5, Trade #15:</strong> Small-cap stock potential breakout. Entry: $8.40. 5% stop: $7.98. Setup fails immediately—drops to $7.20 (company announced earnings miss). Kevin holds, waiting for "reversal." Stock continues to $6.80. Finally stops out at $7.98. Loss: -$4,800. If he'd used structure-based stop (below $8.20 support), loss would've been -$2,200. His wide 5% stop cost him an extra $2,600.</li>
+          <li><strong>Jun 19:</strong> Altcoin reversal. Entry: $2.50. 5% stop: $2.375. Altcoin crashes on FUD (regulation news). Drops to $1.92. Kevin's 5% stop finally triggers at $2.375. Loss: -$5,900. <strong>Reality:</strong> Structure was broken at $2.30 (swept low). He should've potential exited there. His wide stop let the loss run an extra $0.075/coin = $3,150 additional loss.</li>
+          <li><strong>Jul 9:</strong> High-cap stock short. Entry: $142. 5% stop: $149.10. Stock squeezes on earnings beat. Rips to $156. Stop triggers at $149.10. Loss: -$8,200. <strong>Key mistake:</strong> He ignored structure—stock broke above $145 resistance (his thesis invalidated). Should've potential exited at $145. His 5% stop let loss run $4.10 higher = $4,800 extra loss.</li>
           <li><strong>Jul 12-21:</strong> Three more wide-stop disasters. Total losses: -$14,300. Pattern: Kevin's 5% stops let losing trades run FAR beyond structure invalidation. His "more room" strategy was bleeding account faster than tight stops did.</li>
         </ul>
         <p><strong>Account balance Jul 21:</strong> $68,200 (down -$46,800 YTD, -40.7%)</p>
 
         <p><strong>Week 17-24 (Jul 24 - Sep 8, 2023): The Mental Stop Experiment (Complete Failure)</strong></p>
         <ul>
-          <li><strong>Jul 24:</strong> Kevin's new plan: "Fixed percentage stops don't work. I'll use MENTAL stops. I'll watch the trade and exit when it 'feels wrong.'"</li>
-          <li><strong>Aug 1:</strong> BTC long at $29,200. Mental stop: "I'll exit if it drops below $28,500." BTC drops to $28,400. Kevin: "It's just a shakeout. I'll hold." BTC drops to $27,800. Kevin: "This is the bottom. Hold." BTC drops to $26,900. Kevin finally exits at $27,100. Loss: -$6,400. <strong>If he'd used a HARD stop at $28,500: loss would've been -$2,800.</strong> His mental stop cost him $3,600 extra.</li>
-          <li><strong>Aug 14:</strong> TSLA reversal short. Entry: $242. Mental stop: "I'll exit if it breaks $248." TSLA gaps to $251 on news. Kevin: "Gap fills happen. I'll wait." TSLA continues to $258. Kevin exits at $254 (panic). Loss: -$7,800. Hard stop at $248 would've been -$3,900. Mental stop cost him $3,900 extra.</li>
+          <li><strong>Jul 24:</strong> Kevin's new plan: "Fixed percentage stops don't work. I'll use MENTAL stops. I'll watch the trade and potential exit when it 'feels wrong.'"</li>
+          <li><strong>Aug 1:</strong> BTC long at $29,200. Mental stop: "I'll potential exit if it drops below $28,500." BTC drops to $28,400. Kevin: "It's just a shakeout. I'll hold." BTC drops to $27,800. Kevin: "This is the bottom. Hold." BTC drops to $26,900. Kevin finally potential exits at $27,100. Loss: -$6,400. <strong>If he'd used a HARD stop at $28,500: loss would've been -$2,800.</strong> His mental stop cost him $3,600 extra.</li>
+          <li><strong>Aug 14:</strong> TSLA reversal short. Entry: $242. Mental stop: "I'll potential exit if it breaks $248." TSLA gaps to $251 on news. Kevin: "Gap fills happen. I'll wait." TSLA continues to $258. Kevin potential exits at $254 (panic). Loss: -$7,800. Hard stop at $248 would've been -$3,900. Mental stop cost him $3,900 extra.</li>
           <li><strong>Aug 22-Sep 8:</strong> Four more mental stop failures. Pattern: Kevin ALWAYS held longer than his "mental stop" said. Emotions overruled logic every time. Total extra losses from not using hard stops: -$11,600.</li>
         </ul>
         <p><strong>Account balance Sep 8:</strong> $42,900 (down -$72,100 YTD, -62.7%)</p>
@@ -587,7 +585,7 @@
         <ul>
           <li><strong>Percentage Stops Are Arbitrary:</strong> The market doesn't know or care about your 2%. A stock with 5% ATR needs more room than a stock with 1% ATR. Using fixed 2% on both = too tight on the first (false stop-outs), too wide on the second (excessive risk). ATR-based stops ADAPT to each asset's volatility.</li>
           <li><strong>Tight Stops Don't Reduce Risk—They Increase It:</strong> Kevin thought "tighter stop = less risk." Wrong. Tight stops (< 1.5× ATR) get hit by NOISE, not thesis invalidation. He was stopped out 11 times on setups that then hit target. Those weren't "bad luck"—they were bad stops. True risk control = position SIZING + structure-based stop, not arbitrary tight stops.</li>
-          <li><strong>Wide Stops Without Structure = Slow Bleed:</strong> When Kevin widened to 5%, he thought he was "giving trades room." Reality: He was letting losers run past structure invalidation. His thesis broke at specific price levels (support/resistance), but his 5% stops were placed BELOW that. Result: Extra $3-5K loss per trade. Structure-based stops = exit when thesis dies, not when arbitrary percentage hits.</li>
+          <li><strong>Wide Stops Without Structure = Slow Bleed:</strong> When Kevin widened to 5%, he thought he was "giving trades room." Reality: He was letting losers run past structure invalidation. His thesis broke at specific price levels (support/resistance), but his 5% stops were placed BELOW that. Result: Extra $3-5K loss per trade. Structure-based stops = potential exit when thesis dies, not when arbitrary percentage hits.</li>
           <li><strong>Mental Stops Fail 100% of the Time:</strong> Kevin's mental stop experiment: 8 trades, 8 times he held longer than planned. Why? Loss aversion bias. When faced with realizing a loss, emotions say "just give it 5 more minutes." Those "5 minutes" cost him $11.6K total. Hard stop-loss orders remove emotion. Set it, forget it.</li>
           <li><strong>ATR × 2 Is the Sweet Spot for Most Trades:</strong> Kevin learned 2× ATR gives assets room for normal volatility without excessive risk. Example: Stock with $2 ATR needs $4 stop distance (2× ATR). This adapts: if ATR widens to $4 (volatility spike), stop widens to $8 automatically. If ATR tightens to $1 (calm market), stop tightens to $2. The stop BREATHES with the market.</li>
           <li><strong>Structure + ATR Combine for Perfect Stops:</strong> Structure tells you WHERE thesis dies. ATR tells you HOW MUCH buffer to add. Formula: Stop = Structure level ± (1.5-2× ATR). Long example: Swept low at $100, ATR $2 → Stop at $100 - ($2 × 2) = $96. This stop is tied to thesis (if $96 breaks, swept low failed) AND accounts for volatility ($4 buffer below structure).</li>
@@ -648,7 +646,7 @@
             <ul>
               <li>Use exchange's stop-loss feature (not mental stop)</li>
               <li>Stop type: Stop-limit with limit 0.5-1% below stop price (prevents slippage gaps)</li>
-              <li><strong>RULE:</strong> Once set, NEVER move stop away from entry. Only move closer (to breakeven or trailing).</li>
+              <li><strong>RULE:</strong> Once set, NEVER move stop away from potential entry. Only move closer (to breakeven or trailing).</li>
             </ul>
           </li>
           <li>
@@ -740,13 +738,13 @@
           <p>"I lost $72K in 5 months because I placed stops based on my account size instead of market conditions. Here's what I wish I knew:</p>
           <ol style="list-style-position: inside;">
             <li><strong>Percentage stops are amateur hour.</strong> The market doesn't care about your 2%. A volatile stock needs 5-8% of room (2× ATR). A calm stock needs 1-2%. Using fixed 2% on both = you get stopped on noise in the volatile one and risk too much in the calm one. ATR-based stops ADAPT to each asset's natural volatility. I got stopped 11 times on setups that hit target because my 2% stops were 0.3-0.5× ATR. That's placing stops INSIDE normal noise.</li>
-            <li><strong>Wide stops without structure = slow death.</strong> I thought "5% stops give me more room" would fix my problems. It made them worse. My thesis broke at specific structure levels ($2.30 support, $145 resistance), but my 5% stops were placed WAY below/above that. Result: I held losing trades $0.10-0.20 past thesis invalidation = $3-5K extra loss per trade. Structure-based stops exit you WHEN THE THESIS DIES, not when some arbitrary percentage hits.</li>
-            <li><strong>Mental stops are pure fantasy.</strong> I tried mental stops for 8 trades. 8 times, I held longer than planned. Why? Loss aversion. Your brain says "just 5 more minutes, it'll reverse." Those "5 minutes" cost me $11,600 total. Set HARD stop-loss orders on the exchange. Emotion-proof your exits.</li>
+            <li><strong>Wide stops without structure = slow death.</strong> I thought "5% stops give me more room" would fix my problems. It made them worse. My thesis broke at specific structure levels ($2.30 support, $145 resistance), but my 5% stops were placed WAY below/above that. Result: I held losing trades $0.10-0.20 past thesis invalidation = $3-5K extra loss per trade. Structure-based stops potential exit you WHEN THE THESIS DIES, not when some arbitrary percentage hits.</li>
+            <li><strong>Mental stops are pure fantasy.</strong> I tried mental stops for 8 trades. 8 times, I held longer than planned. Why? Loss aversion. Your brain says "just 5 more minutes, it'll reverse." Those "5 minutes" cost me $11,600 total. Set HARD stop-loss orders on the exchange. Emotion-proof your potential exits.</li>
             <li><strong>ATR × 2 is the sweet spot.</strong> After testing 1.5×, 2×, and 3× ATR multipliers, I found 2× ATR works for 80% of trades. It gives assets room for normal volatility swings without letting losses run. Stock with $2 ATR? Use $4 stop distance. When market volatility spikes and ATR widens to $4, your stops automatically widen to $8. When market calms and ATR drops to $1, stops tighten to $2. Stops breathe with the market.</li>
             <li><strong>Structure + ATR = perfect stops.</strong> Structure tells you WHERE your thesis dies. ATR tells you HOW MUCH buffer to add for volatility. Combine them: Stop = Structure ± (2× ATR). Example: Long at $50, swept low at $47, ATR $1.50 → Stop at $47 - ($1.50 × 2) = $44. This stop is tied to thesis (below swept low) AND accounts for volatility ($3 buffer). If $44 breaks, your thesis is ACTUALLY wrong.</li>
             <li><strong>Enforce 2R minimum—no exceptions.</strong> I used to take trades with 1R or 1.5R targets thinking "I'll manage it." Disaster. Even with 60% win rate, I had negative expectancy because my risk:reward sucked. After enforcing 2R minimum (skip trade if no clear 2R target), my expectancy turned positive. Math: 2R + 40% accuracy = +0.20R per trade. You can lose 60% and still profit. Without 2R, you need 60%+ accuracy just to break even.</li>
             <li><strong>Move stop to breakeven at +1R.</strong> This one change eliminated 80% of my "winner turned loser" pain. Old way: Trade up $2K, I'd watch it reverse to -$1K. Agony. New way: Once trade hits +1R, move stop to entry price (breakeven). Worst case = $0 loss. I've had 12 trades hit +1R, reverse, and stop me at breakeven. Zero loss instead of 12 losses. That's $26K saved in 8 months.</li>
-            <li><strong>Never move stop AWAY from entry.</strong> I broke this rule 6 times during my mental stop phase. "Let me give it more room." Every time, the trade got worse. If price isn't working and is approaching your stop, the market is telling you the thesis is wrong. Accept it. Don't fight it by widening the stop. That's how -$2K losses become -$8K disasters.</li>
+            <li><strong>Never move stop AWAY from potential entry.</strong> I broke this rule 6 times during my mental stop phase. "Let me give it more room." Every time, the trade got worse. If price isn't working and is approaching your stop, the market is telling you the thesis is wrong. Accept it. Don't fight it by widening the stop. That's how -$2K losses become -$8K disasters.</li>
           </ol>
           <p>Stop placement isn't about your account—it's about the MARKET. Let volatility (ATR) and structure (thesis invalidation) guide you. Stop placing arbitrary percentage stops. Start placing market-based, thesis-based stops.</p>
           <p>I paid $72K to learn this. You're getting it for free."</p>
@@ -817,7 +815,7 @@
         <div class="quiz-question">
           <p><strong>Q: You observe at $100. ATR = $2. You want to risk 2% ($200). Where often your stop be?</strong></p>
           <div class="quiz-options">
-            <div class="quiz-option" data-correct="false">A) $98 (fixed 2% below entry)</div>
+            <div class="quiz-option" data-correct="false">A) $98 (fixed 2% below potential entry)</div>
             <div class="quiz-option" data-correct="true">B) Below key structure - (2× ATR) = structure dependent</div>
             <div class="quiz-option" data-correct="false">C) $99 (tight stop to reduce risk)</div>
             <div class="quiz-option" data-correct="false">D) No stop needed (I'll watch it)</div>

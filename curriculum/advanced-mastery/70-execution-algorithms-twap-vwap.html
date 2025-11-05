@@ -104,7 +104,7 @@
   <div class="example-block">
     <h4>Real-World Example: Lisa's $34K "No Algo" Slippage Massacre</h4>
 
-    <p><strong>Background:</strong> Lisa, a portfolio manager at a $20M family office with a $200,000 trading account, transitioned from small retail trades (100-500 shares) to institutional-size blocks (10K-50K shares) in May 2024. Her analysis was sound—she identified undervalued mid-cap stocks before they ran. But her execution was retail-level: she clicked "market order" for 20,000-share blocks the same way she did for 200-share trades. No TWAP, no VWAP, no participation limits, no algo execution. The result: over 4 weeks, Lisa's analysis was correct on 9 of 11 trades (82% directional accuracy), but she lost $34,200 due to slippage, market impact, and front-running. Her avg slippage: 0.9% per entry (should be 0.05-0.15% with algos). The difference between profitable and unprofitable wasn't her stock picks—it was execution mechanics at scale.</p>
+    <p><strong>Background:</strong> Lisa, a portfolio manager at a $20M family office with a $200,000 trading account, transitioned from small retail trades (100-500 shares) to institutional-size blocks (10K-50K shares) in May 2024. Her analysis was sound—she identified undervalued mid-cap stocks before they ran. But her execution was retail-level: she clicked "market order" for 20,000-share blocks the same way she did for 200-share trades. No TWAP, no VWAP, no participation limits, no algo execution. The result: over 4 weeks, Lisa's analysis was correct on 9 of 11 trades (82% directional accuracy), but she lost $34,200 due to slippage, market impact, and front-running. Her avg slippage: 0.9% per potential entry (should be 0.05-0.15% with algos). The difference between profitable and unprofitable wasn't her stock picks—it was execution mechanics at scale.</p>
 
     <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
       <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Lisa's Execution Algorithm Failures (May 2024)</caption>
@@ -527,7 +527,7 @@
         <td>Varies with volume</td>
       </tr>
       <tr>
-        <td>Complexity</td>
+        <td>Complpotential exity</td>
         <td>Simple</td>
         <td>Requires volume forecasting</td>
       </tr>
@@ -729,14 +729,14 @@
 
     <p><strong>When IS Fails:</strong></p>
     <ul>
-      <li><strong>False breakout:</strong> If AMD reversed after 2:15 PM and fell to $144, IS would have overpaid early</li>
+      <li><strong>False potential breakout:</strong> If AMD reversed after 2:15 PM and fell to $144, IS would have overpaid early</li>
       <li><strong>Wrong directional view:</strong> IS assumes you're RIGHT about near-term direction. If wrong, aggressive start = losses.</li>
       <li><strong>Choppy markets:</strong> In sideways action, VWAP's patient approach outperforms IS</li>
     </ul>
 
     <p><strong>Use IS When:</strong></p>
     <ul>
-      <li>High conviction directional trade (strong catalyst, breakout, news)</li>
+      <li>High conviction directional trade (strong catalyst, potential breakout, news)</li>
       <li>Momentum accelerating (don't want price to run away)</li>
       <li>Time-sensitive (must be filled before close, event, etc.)</li>
     </ul>
@@ -864,7 +864,7 @@
     <p><strong>Scenario C:</strong> You detect TWAP buying in SHOP: 400 shares every 90 seconds for past 2 hours. What's your trade?</p>
     <details>
       <summary>Show Answer</summary>
-      <p><strong>Answer: Buy SHOP now, hold until TWAP algo completes, then exit.</strong></p>
+      <p><strong>Answer: Buy SHOP now, hold until TWAP algo completes, then potential exit.</strong></p>
       <p><strong>Rationale:</strong></p>
       <ul>
         <li>TWAP = institutional planned order (rebalancing, passive flow)</li>

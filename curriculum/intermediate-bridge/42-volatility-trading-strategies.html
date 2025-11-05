@@ -162,7 +162,7 @@
           <li><strong>Volatility Skew:</strong> Why OTM puts trade at higher IV than calls and how to profit from skew compression/expansion</li>
           <li><strong>Dispersion Trading:</strong> Exploiting the gap between index volatility and single-stock volatility</li>
           <li><strong>Term Structure Arbitrage:</strong> Profiting from VIX futures contango and backwardation patterns</li>
-          <li><strong>Real Trade Frameworks:</strong> Concrete setups with entry/exit rules and risk parameters</li>
+          <li><strong>Real Trade Frameworks:</strong> Concrete setups with potential entry/potential exit rules and risk parameters</li>
         </ul>
       </div>
 
@@ -268,7 +268,7 @@
         <li><strong>Wait 1-2 days after initial spike</strong> (let panic peak—don't catch falling knife)</li>
         <li><strong>Entry:</strong> Short VXX calls (2-4 weeks out, ATM or slightly OTM)</li>
         <li><strong>Alternative:</strong> Buy SVXY shares (inverse VIX ETF, profits as VIX falls)</li>
-        <li><strong>Stop:</strong> If VIX spikes another 20% (e.g., VIX 35 → 42), exit immediately</li>
+        <li><strong>Stop:</strong> If VIX spikes another 20% (e.g., VIX 35 → 42), potential exit immediately</li>
         <li><strong>Target:</strong> VIX back to 20-25 range (usually 10-20 days)</li>
       </ol>
 
@@ -792,7 +792,7 @@ blown up shorting volatility without risk controls.
           <li>
             <strong>Journal Every Trade: Probability vs Magnitude</strong>
             <ul>
-              <li>Before entry, write: "Win probability: X%. If wrong, max loss: $Y. If right, max gain: $Z."</li>
+              <li>Before potential entry, write: "Win probability: X%. If wrong, max loss: $Y. If right, max gain: $Z."</li>
               <li>This forces expectancy calculation BEFORE trade</li>
               <li>If expectancy isn't at least 2:1 positive, skip the trade</li>
             </ul>
@@ -875,7 +875,7 @@ blown up shorting volatility without risk controls.
           <ol style="list-style-position: inside;">
             <li><strong>Win rate doesn't matter if position sizing is wrong.</strong> I had 84% win rate and still lost 72% of my account in one day. Why? Because I was risking 30% per trade to make 2-3%. Math: Win 30 trades × 2% = +60%. Lose 1 trade × -30% = -30%. Net: +30% over 31 trades. Sounds good... until you lose 3 trades in a row and you're broke.</li>
             <li><strong>The steamroller only needs to hit you ONCE.</strong> Institutions survive volatility blow-ups because they risk 0.1-0.5% per trade. They can lose 100 trades in a row and still be in business. Retail traders risk 5-20% per trade. They lose 3-5 times and they're done. Size like you're going to be wrong 10 times in a row, because eventually you will be.</li>
-            <li><strong>VIX spikes faster than you can react.</strong> Feb 5, VIX went from 18 → 37 in 2 hours. I couldn't exit—spreads were bid/ask $2.50 wide, no liquidity. By the time I could close, I was at max loss. Your stop loss is worthless if there's no liquidity. Account for gap risk by sizing tiny.</li>
+            <li><strong>VIX spikes faster than you can react.</strong> Feb 5, VIX went from 18 → 37 in 2 hours. I couldn't potential exit—spreads were bid/ask $2.50 wide, no liquidity. By the time I could close, I was at max loss. Your stop loss is worthless if there's no liquidity. Account for gap risk by sizing tiny.</li>
             <li><strong>Never sell volatility below VIX 20.</strong> When VIX is 10-15, your max gain is capped at maybe $1-2 credit, but your max loss is $20-50 if VIX spikes to 30-50. Asymmetric risk/reward in the WRONG direction. Only sell volatility after it spikes to 20-30+, when you have mean reversion edge AND favorable risk/reward.</li>
             <li><strong>Hedge with long vol when VIX is complacent.</strong> Spend 0.5-1% per month buying OTM VIX calls when VIX &lt;12. They're cheap lottery tickets. 95% of the time they expire worthless, but 5% of the time they 10x and save your account. Think of it as insurance, not a trade.</li>
             <li><strong>Journal your expectancy math BEFORE every trade.</strong> I never calculated expected value—I just looked at win rate. Bad math. Force yourself to write: 'I have 85% chance to make $300 and 15% chance to lose $3,000. Expectancy: (0.85 × 300) + (0.15 × -3000) = +$255 - $450 = -$195. NEGATIVE expectancy. Skip trade.' If I'd done this, I'd still have my $124K.</li>

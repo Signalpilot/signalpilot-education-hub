@@ -104,7 +104,7 @@
   <div class="example-block">
     <h4>Real-World Example: James's $28K "Wrong Order Type" Destruction</h4>
 
-    <p><strong>Background:</strong> James, a 4-year prop trader with a $150,000 account, specialized in momentum trading mid-cap stocks ($2-10B market cap). His strategy worked in theory: buy breakouts, ride momentum, exit at targets. But in April 2024, he lost $28,400 over 3 weeks despite having good trade ideas. The problem wasn't his analysis—it was his order execution. James used the same order types for every trade: market orders for entries (fast execution), limit orders at targets for exits (precision), and "let it ride" for stops (hoping). He never considered IOC, FOK, iceberg orders, or participation rates. His critical failures: (1) market orders in thin stocks moved price 0.5-2% against him instantly, (2) limit exit orders never filled as price blew through, (3) visible full size on entries got front-run by HFTs, (4) no liquidity testing before large orders. The result: $28,400 in losses across 22 trades with a 36.4% win rate (8 wins, 14 losses) despite picking direction correctly 68% of the time.</p>
+    <p><strong>Background:</strong> James, a 4-year prop trader with a $150,000 account, specialized in momentum trading mid-cap stocks ($2-10B market cap). His strategy worked in theory: buy breakouts, ride momentum, potential exit at targets. But in April 2024, he lost $28,400 over 3 weeks despite having good trade ideas. The problem wasn't his analysis—it was his order execution. James used the same order types for every trade: market orders for entries (fast execution), limit orders at targets for potential exits (precision), and "let it ride" for stops (hoping). He never considered IOC, FOK, iceberg orders, or participation rates. His critical failures: (1) market orders in thin stocks moved price 0.5-2% against him instantly, (2) limit potential exit orders never filled as price blew through, (3) visible full size on entries got front-run by HFTs, (4) no liquidity testing before large orders. The result: $28,400 in losses across 22 trades with a 36.4% win rate (8 wins, 14 losses) despite picking direction correctly 68% of the time.</p>
 
     <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
       <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">James's Order Type Disasters (Mid-Cap Stocks, April 2024)</caption>
@@ -120,13 +120,13 @@
         <td style="padding:0.75rem"><strong>Market Order:</strong> "Buy 5,000 shares at market"<br>Thin book: only 1,200 shares at $10.20</td>
         <td style="padding:0.75rem">Order filled across 5 price levels:<br>1,200 @ $10.20<br>1,500 @ $10.24<br>1,200 @ $10.28<br>900 @ $10.32<br>200 @ $10.38<br><strong>Avg fill: $10.26 (+0.6% slippage = -$300 instantly)</strong></td>
         <td style="padding:0.75rem"><strong>IOC Limit:</strong> "Buy 5,000 @ $10.22 IOC" (Immediate Or Cancel)<br>Tests liquidity, cancels if not available<br>OR: <strong>Iceberg:</strong> Show 500 shares, hide 4,500</td>
-        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,840</span><br>(lost trade due to bad entry)</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,840</span><br>(lost trade due to bad potential entry)</td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
         <td style="padding:0.75rem">Apr 3<br>PLTR<br>$22.50</td>
         <td style="padding:0.75rem"><strong>Limit Order Exit:</strong> "Sell 3,000 @ $23.50 GTC"<br>Target $23.50 (+$1.00 profit)</td>
         <td style="padding:0.75rem">Price action: $22.50 → $23.48 → reversed to $22.20<br><strong>Limit never filled (missed by $0.02!)</strong><br>Exit at $22.20 = -$900 instead of +$3,000</td>
-        <td style="padding:0.75rem"><strong>Market If Touched (MIT):</strong> "If $23.45 touched, sell at market"<br>Guarantees exit when profit zone hit<br>OR: <strong>Trailing stop:</strong> Lock profit as price moves</td>
+        <td style="padding:0.75rem"><strong>Market If Touched (MIT):</strong> "If $23.45 touched, sell at market"<br>Guarantees potential exit when profit zone hit<br>OR: <strong>Trailing stop:</strong> Lock profit as price moves</td>
         <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$3,900</span><br>(+$3K winner → -$900 loser)</td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
@@ -138,7 +138,7 @@
       </tr>
       <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
         <td style="padding:0.75rem">Apr 8<br>ROKU<br>$62.80</td>
-        <td style="padding:0.75rem"><strong>No Stop Loss Order:</strong> "I'll watch it and exit manually if drops"</td>
+        <td style="padding:0.75rem"><strong>No Stop Loss Order:</strong> "I'll watch it and potential exit manually if drops"</td>
         <td style="padding:0.75rem">9:45 AM: Entered long @ $62.80<br>10:15 AM: Flash crash to $60.20 (earnings miss leak)<br>James in meeting, didn't see<br>10:45 AM: Noticed, panic sold @ $60.40<br><strong>Loss: -$2.40/share = -$4,800 on 2,000 shares</strong></td>
         <td style="padding:0.75rem"><strong>Stop-Loss Order:</strong> "Sell 2,000 @ $62.00 stop"<br>Auto-executes, no emotion<br>OR: <strong>Trailing Stop:</strong> Moves with price, locks profit</td>
         <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$4,800</span><br>(should've been -$1,600)</td>
@@ -155,7 +155,7 @@
         <td style="padding:0.75rem"><strong>Market Order in Fast Market:</strong> Earnings beat, volatility spiking</td>
         <td style="padding:0.75rem">Bid: $41.20, Ask: $41.28 (8¢ spread, normally 2¢)<br>Market order filled @ $41.35 (skipped 3 levels)<br>Price immediately dropped to $41.10<br><strong>Paid $0.15 premium in panic, lost $0.25 more</strong></td>
         <td style="padding:0.75rem"><strong>Limit Order with IOC:</strong> "Buy @ $41.25 IOC"<br>Sets max price, cancels if not available<br>Avoids paying extreme spread in volatility</td>
-        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,600</span><br>(bad entry + immediate reversal)</td>
+        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,600</span><br>(bad potential entry + immediate reversal)</td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
         <td style="padding:0.75rem">Apr 15<br>RIVN<br>$11.80</td>
@@ -199,7 +199,7 @@
       </tr>
       <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
         <td style="padding:0.75rem"><strong>No Stop Loss Auto-Execute</strong></td>
-        <td style="padding:0.75rem">3 trades with manual stops (late exit)</td>
+        <td style="padding:0.75rem">3 trades with manual stops (late potential exit)</td>
         <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$7,800</span></td>
       </tr>
       <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
@@ -239,7 +239,7 @@
       </tr>
       <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
         <td style="padding:0.75rem"><strong>Stop Loss Protection</strong></td>
-        <td style="padding:0.75rem">Mental stop (late exit)</td>
+        <td style="padding:0.75rem">Mental stop (late potential exit)</td>
         <td style="padding:0.75rem"><strong>Stop-Loss Order:</strong> Auto-executes at price<br><strong>Stop-Limit:</strong> Stops at X, sells at limit Y</td>
         <td style="padding:0.75rem"><span style="color:#22c55e">$7,800</span></td>
       </tr>
@@ -251,9 +251,9 @@
       </tr>
     </table>
 
-    <p><strong>James's Recovery (May-June 2024):</strong> After losing $28K in 3 weeks, James rebuilt his execution playbook: (1) <strong>No more market orders</strong> in stocks with spread > 0.1% or ADV < 2M shares, (2) <strong>Iceberg orders</strong> for any size > 1,000 shares (show 200-500 max), (3) <strong>MIT orders</strong> for profit targets instead of limits (guarantees fill when touched), (4) <strong>Automated stop-loss</strong> on every entry (no mental stops), (5) <strong>GTC by default</strong> for swing trades (no more missed fills). Result: Win rate jumped from 36% to 71%, slippage reduced from 0.6% avg to 0.08% avg, front-running eliminated. Over 8 weeks, recovered $19,200 of the $28K loss—same strategy, better execution.</p>
+    <p><strong>James's Recovery (May-June 2024):</strong> After losing $28K in 3 weeks, James rebuilt his execution playbook: (1) <strong>No more market orders</strong> in stocks with spread > 0.1% or ADV < 2M shares, (2) <strong>Iceberg orders</strong> for any size > 1,000 shares (show 200-500 max), (3) <strong>MIT orders</strong> for profit targets instead of limits (guarantees fill when touched), (4) <strong>Automated stop-loss</strong> on every potential entry (no mental stops), (5) <strong>GTC by default</strong> for swing trades (no more missed fills). Result: Win rate jumped from 36% to 71%, slippage reduced from 0.6% avg to 0.08% avg, front-running eliminated. Over 8 weeks, recovered $19,200 of the $28K loss—same strategy, better execution.</p>
 
-    <p><b>The lesson: James picked the right direction 68% of the time but lost money because of order type selection. Market orders in thin stocks = 0.3-1.2% slippage instantly. Limit orders for exits = missed fills by pennies, turning +$3K winners into -$900 losers. Visible full size orders = HFT front-running costs $0.30-0.60/share. Manual stops = late exits, doubling losses. The difference between profitable and unprofitable trading wasn't his analysis—it was execution mechanics. IOC limit orders for entries (test liquidity, set max price), MIT orders for exits (guarantee fill at target), iceberg orders for size (hide intent, prevent front-running), automated stops (no emotion, instant execution), GTC for swings (capture overnight moves). These order type changes saved $28K over 3 weeks. Execution matters as much as direction. Choose the wrong order type = pay 0.5-2% per trade unnecessarily. That's the difference between winning and losing.</b></p>
+    <p><b>The lesson: James picked the right direction 68% of the time but lost money because of order type selection. Market orders in thin stocks = 0.3-1.2% slippage instantly. Limit orders for potential exits = missed fills by pennies, turning +$3K winners into -$900 losers. Visible full size orders = HFT front-running costs $0.30-0.60/share. Manual stops = late potential exits, doubling losses. The difference between profitable and unprofitable trading wasn't his analysis—it was execution mechanics. IOC limit orders for entries (test liquidity, set max price), MIT orders for potential exits (guarantee fill at target), iceberg orders for size (hide intent, prevent front-running), automated stops (no emotion, instant execution), GTC for swings (capture overnight moves). These order type changes saved $28K over 3 weeks. Execution matters as much as direction. Choose the wrong order type = pay 0.5-2% per trade unnecessarily. That's the difference between winning and losing.</b></p>
   </div>
 
   
@@ -327,12 +327,12 @@
       <tr>
         <td>Stop</td>
         <td>Becomes market order when price hits trigger</td>
-        <td>Risk management, breakout entries</td>
+        <td>Risk management, potential breakout entries</td>
       </tr>
       <tr>
         <td>Stop-Limit</td>
         <td>Becomes limit order when price hits trigger</td>
-        <td>Controlled breakout entries</td>
+        <td>Controlled potential breakout entries</td>
       </tr>
     </tbody>
   </table>

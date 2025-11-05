@@ -121,31 +121,31 @@
         </ul>
 
         <p><strong>Background: Perfect Strategy, Broken Execution</strong></p>
-        <p>Mike was a profitable manual trader (68% WR, +$38K in 2023). His problem: emotional execution. He'd skip A-grade setups (fear), chase C-grade setups (FOMO), exit winners early (anxiety). His solution: automate. "Remove emotion, code executes perfectly." He spent 2 months building a trading bot in Python (ccxt for crypto, alpaca-py for stocks). March 2024: Bot was "ready." He deployed it to live trading. No paper testing phase ("I tested the logic manually"). Disaster followed.</p>
+        <p>Mike was a profitable manual trader (68% WR, +$38K in 2023). His problem: emotional execution. He'd skip A-grade setups (fear), chase C-grade setups (FOMO), potential exit winners early (anxiety). His solution: automate. "Remove emotion, code executes perfectly." He spent 2 months building a trading bot in Python (ccxt for crypto, alpaca-py for stocks). March 2024: Bot was "ready." He deployed it to live trading. No paper testing phase ("I tested the logic manually"). Disaster followed.</p>
 
         <p><strong>Disaster Timeline:</strong></p>
 
         <p><strong>March 18: The Runaway Loop (Lost $23K in 1 Hour)</strong></p>
-        <p>Mike's bot had a bug: when API returned "order pending" (neither filled nor rejected), bot didn't wait—it RE-SENT the order. At 9:45 AM, SPY breakout triggered. Bot sent buy order for 500 shares. API response: "pending" (exchange delay, 2-sec lag). Bot logic: "No confirmation = resend order." Bot resent order 47 times in 90 seconds. By 9:47 AM: Mike had 11,750 shares of SPY (intended 500, got 23.5× that). He was overleveraged 15× his normal position size. SPY reversed -0.8% by 10:15 AM. His P&L: -$23,400. He manually closed all at 10:18 AM to stop bleeding. Root cause: No order ID tracking, no duplicate order prevention. Lost $23K in 1 hour.</p>
+        <p>Mike's bot had a bug: when API returned "order pending" (neither filled nor rejected), bot didn't wait—it RE-SENT the order. At 9:45 AM, SPY potential breakout triggered. Bot sent buy order for 500 shares. API response: "pending" (exchange delay, 2-sec lag). Bot logic: "No confirmation = resend order." Bot resent order 47 times in 90 seconds. By 9:47 AM: Mike had 11,750 shares of SPY (intended 500, got 23.5× that). He was overleveraged 15× his normal position size. SPY reversed -0.8% by 10:15 AM. His P&L: -$23,400. He manually closed all at 10:18 AM to stop bleeding. Root cause: No order ID tracking, no duplicate order prevention. Lost $23K in 1 hour.</p>
 
         <p><strong>April 8: The API Rate Limit Ban (Missed $12K Opportunity)</strong></p>
-        <p>Mike fixed the duplicate bug. Deployed v2.0. New problem: His bot checked prices every 100ms (10 times/second). Alpaca API limit: 200 requests/minute. At 9:35 AM, bot hit rate limit after 3.3 minutes (200 requests). API returned 429 error ("Too Many Requests"). Mike's code: No rate limit handling. Bot crashed. Restarted automatically (he'd set up auto-restart). Crashed again (still hitting rate limit). This loop continued 18 times from 9:35-10:12 AM. Meanwhile, perfect setups triggered (QQQ breakout, TSLA sweep). Bot was offline. Missed +$12,400 in trades that fit his system. He manually entered at 10:15 AM (late), caught reversals, lost -$3,200. Total cost: $12.4K opportunity + $3.2K loss = -$15.6K.</p>
+        <p>Mike fixed the duplicate bug. Deployed v2.0. New problem: His bot checked prices every 100ms (10 times/second). Alpaca API limit: 200 requests/minute. At 9:35 AM, bot hit rate limit after 3.3 minutes (200 requests). API returned 429 error ("Too Many Requests"). Mike's code: No rate limit handling. Bot crashed. Restarted automatically (he'd set up auto-restart). Crashed again (still hitting rate limit). This loop continued 18 times from 9:35-10:12 AM. Meanwhile, perfect setups triggered (QQQ potential breakout, TSLA sweep). Bot was offline. Missed +$12,400 in trades that fit his system. He manually entered at 10:15 AM (late), caught reversals, lost -$3,200. Total cost: $12.4K opportunity + $3.2K loss = -$15.6K.</p>
 
         <p><strong>May 14: The No-Kill-Switch Margin Call (Lost $38K)</strong></p>
         <p>Mike added rate limiting (v3.0). Deployed May 12. May 14, 2:15 PM: Fed announcement (unexpected hawkish language). Market gapped down -1.8% in 3 minutes. Mike's bot: continued executing longs (no macro filter, no kill switch for volatility spikes). Took 6 long positions 2:16-2:21 PM while market was free-falling. Total exposure: $142K (86% of account). All 6 positions immediately underwater. By 2:45 PM: Down -$31,200 (-18.9%). Mike tried to manually stop bot—couldn't access server (was on commute, only had phone). Bot kept trading. Took 3 MORE longs 2:50-3:05 PM (saw "dips" as buy opportunities). Now 9 positions, total exposure $198K (120% of account, using margin). Margin call at 3:20 PM. Forced liquidation of 5 positions at 3:22 PM (near session lows). Realized loss: -$38,700. Root cause: No kill switch for drawdown limit, no volatility circuit breaker, no remote access to stop bot.</p>
 
         <p><strong>June 3: The Overfitting Reality Check (Strategy Stopped Working)</strong></p>
-        <p>After May disaster, Mike added kill switches (v4.0): stop trading if daily loss >-2%, if VIX >30, if portfolio heat >5%. Deployed June 1. June 1-30: Bot traded 127 times. Win rate: 48% (vs 68% manual, vs 74% backtest). Avg R: 1.2:1 (vs 2.1:1 manual). Monthly result: -$8,400 (-8.2% of remaining account). Mike analyzed: His bot was overfitted to 2023 data. He'd optimized params for 2023 (RSI thresholds, volume multiples, breakout %) that worked in low-vol bull market. 2024 was higher-vol, choppier. Bot entered breakouts that failed (2024 had more fakeouts). His manual trading adapted to new regime (he'd skip chop days). Bot couldn't—it executed rules rigidly. Overfitting tax: -$8.4K.</p>
+        <p>After May disaster, Mike added kill switches (v4.0): stop trading if daily loss >-2%, if VIX >30, if portfolio heat >5%. Deployed June 1. June 1-30: Bot traded 127 times. Win rate: 48% (vs 68% manual, vs 74% backtest). Avg R: 1.2:1 (vs 2.1:1 manual). Monthly result: -$8,400 (-8.2% of remaining account). Mike analyzed: His bot was overfitted to 2023 data. He'd optimized params for 2023 (RSI thresholds, volume multiples, potential breakout %) that worked in low-vol bull market. 2024 was higher-vol, choppier. Bot entered breakouts that failed (2024 had more fakeouts). His manual trading adapted to new regime (he'd skip chop days). Bot couldn't—it executed rules rigidly. Overfitting tax: -$8.4K.</p>
 
         <p><strong>July 12: The Slippage He Didn't Account For (Lost $11.5K)</strong></p>
-        <p>Mike spent June retraining bot on 2024 data (v5.0). Deployed July 8. New problem: His backtest assumed ZERO slippage (bought at exact breakout price). Reality: His bot used market orders. On volatile moves, slippage averaged $0.15-0.40/share (0.3-0.8% on SPY/QQQ). Example: SPY breakout at $550.00, bot sent market buy, filled at $550.32 (+$0.32 slippage). On 200-share position = -$64 slippage (unaccounted cost). July 8-12: Bot took 34 trades. Avg slippage: $0.24/share. Avg position: 380 shares. Slippage per trade: -$91. Total slippage over 34 trades: -$3,094. Plus: 18 of 34 trades had slippage push entry past his "max acceptable entry price," turning would-be 2R winners into 1.2R winners or breakeven/small losses. Cost: -$8,400 in reduced profits + increased losses. Total slippage cost: -$11,494 in 5 days.</p>
+        <p>Mike spent June retraining bot on 2024 data (v5.0). Deployed July 8. New problem: His backtest assumed ZERO slippage (bought at exact potential breakout price). Reality: His bot used market orders. On volatile moves, slippage averaged $0.15-0.40/share (0.3-0.8% on SPY/QQQ). Example: SPY potential breakout at $550.00, bot sent market buy, filled at $550.32 (+$0.32 slippage). On 200-share position = -$64 slippage (unaccounted cost). July 8-12: Bot took 34 trades. Avg slippage: $0.24/share. Avg position: 380 shares. Slippage per trade: -$91. Total slippage over 34 trades: -$3,094. Plus: 18 of 34 trades had slippage push potential entry past his "max acceptable entry price," turning would-be 2R winners into 1.2R winners or breakeven/small losses. Cost: -$8,400 in reduced profits + increased losses. Total slippage cost: -$11,494 in 5 days.</p>
 
         <p><strong>Total Damage: $165,000 → $67,900 (-58.9%) in 4 months</strong></p>
 
         <blockquote style="border-left: 4px solid #ef4444; background-color: rgba(239, 68, 68, 0.1); padding: 1rem; margin: 1.5rem 0;">
         <p><strong>Mike's Journal Entry - July 13, 2024</strong></p>
         <p>"I've lost $97,100 in 4 months. $165K → $67.9K. I destroyed 59% of my capital trying to automate a profitable strategy.</p>
-        <p>Here's the brutal breakdown:</p>
+        <p>Here's the brutal potential breakdown:</p>
         <p>• March 18 runaway loop: -$23K (no order deduplication)<br>
         • April 8 API ban: -$15.6K (no rate limit handling, missed opportunities)<br>
         • May 14 no-kill-switch margin call: -$38.7K (no drawdown circuit breaker)<br>
@@ -153,7 +153,7 @@
         • July slippage: -$11.5K (used market orders, didn't account for slippage)</p>
         <p>Total: -$97.1K from automation failures.</p>
         <p>My manual strategy had 68% WR, made +$38K in 2023. I thought: 'Automate this, remove emotion, profit automatically.' I was dead wrong.</p>
-        <p>Automation AMPLIFIES mistakes. Manual trading: I make 1 bad entry, lose -$800. Automated trading: Bug makes 47 bad entries in 90 seconds, lose -$23K.</p>
+        <p>Automation AMPLIFIES mistakes. Manual trading: I make 1 bad potential entry, lose -$800. Automated trading: Bug makes 47 bad entries in 90 seconds, lose -$23K.</p>
         <p>What I learned the hard way:</p>
         <p>1. <strong>No production deployment without paper testing.</strong> I deployed v1.0 straight to live trading with real money. No sim account phase. First bug cost me $23K in 1 hour.</p>
         <p>2. <strong>Kill switches are mandatory.</strong> May 14: Bot lost -$38K because it had no drawdown limit, no volatility filter, no way to stop it remotely. It just kept trading into a falling knife. A -2% daily loss limit would've stopped it at -$3K, saved $35K.</p>
@@ -170,8 +170,8 @@
           <li><strong>Automation amplifies mistakes exponentially:</strong> Manual trading: 1 mistake = 1 bad trade. Automated trading: 1 bug = 47 duplicate orders in 90 seconds, -$23K in 1 hour. Mike's duplicate order bug turned intended 500-share position into 11,750 shares (23.5× leverage). In manual trading, he'd never accidentally buy 11,750 shares. In automation, one missing IF statement did exactly that.</li>
           <li><strong>Kill switches prevent catastrophic losses:</strong> May 14 disaster: -$38K because bot had no circuit breakers (no max daily loss, no drawdown limit, no volatility filter, no remote kill switch). Proper system: If daily loss > -2%, stop trading. If VIX > 30, reduce size or stop. If can't access system remotely, have SMS/email kill switch. Mike added these AFTER losing $38K. Should've been there from Day 1.</li>
           <li><strong>Order management is complex—duplicates, rate limits, error handling:</strong> Mike's March bug: API returned "pending," bot assumed "no fill," resent order 47 times. Solution: Track order IDs, wait for definitive status (filled/rejected), implement deduplication. His April issue: Hit API rate limit (200 req/min), got banned, crashed. Solution: Implement rate limiting BEFORE hitting API limits (150 req/min max, queue excess requests, exponential backoff on errors).</li>
-          <li><strong>Backtests lie if you don't account for slippage/fees:</strong> Mike's backtest: 74% WR, 2.5R avg. Live: 48% WR, 1.2R avg. Difference: (1) Slippage ($0.24/share avg on market orders, -$91/trade), (2) Fees ($2.50/trade average), (3) Execution timing (backtest bought at exact breakout price, live got filled 1-3 seconds later after slippage). Real trading has friction. Backtests without friction are fantasy. Cost: -$11.5K in 5 days.</li>
-          <li><strong>Overfitting is silent—you don't see it until live trading:</strong> Mike optimized bot params for 2023 data (RSI thresholds, volume multiples, breakout %). Backtest WR: 74%. June 2024 live WR: 48%. Why? 2023 was low-vol bull market, breakouts worked 70%+ of time. 2024 was higher-vol chop market, breakouts failed 55% of time (more fakeouts). His bot was trained for 2023, executed in 2024. Cost: -$8.4K. Solution: Walk-forward optimization (train on Period 1, test on Period 2, train on Period 2, test on Period 3, etc.). Ensures params work across different market regimes.</li>
+          <li><strong>Backtests lie if you don't account for slippage/fees:</strong> Mike's backtest: 74% WR, 2.5R avg. Live: 48% WR, 1.2R avg. Difference: (1) Slippage ($0.24/share avg on market orders, -$91/trade), (2) Fees ($2.50/trade average), (3) Execution timing (backtest bought at exact potential breakout price, live got filled 1-3 seconds later after slippage). Real trading has friction. Backtests without friction are fantasy. Cost: -$11.5K in 5 days.</li>
+          <li><strong>Overfitting is silent—you don't see it until live trading:</strong> Mike optimized bot params for 2023 data (RSI thresholds, volume multiples, potential breakout %). Backtest WR: 74%. June 2024 live WR: 48%. Why? 2023 was low-vol bull market, breakouts worked 70%+ of time. 2024 was higher-vol chop market, breakouts failed 55% of time (more fakeouts). His bot was trained for 2023, executed in 2024. Cost: -$8.4K. Solution: Walk-forward optimization (train on Period 1, test on Period 2, train on Period 2, test on Period 3, etc.). Ensures params work across different market regimes.</li>
           <li><strong>Paper trading phase is mandatory—catch bugs with fake money:</strong> Mike deployed v1.0 straight to live trading. First bug: -$23K in 1 hour. If he'd run bot on paper account for 2 weeks first, he'd have caught: (1) Duplicate order bug (would've seen 47 paper orders, realized something was wrong), (2) Rate limit issue (would've hit limit on paper, no real consequence), (3) Slippage reality (paper trading shows actual fills vs intended fills). Paper trading costs $0, finds bugs that cost $23K in live.</li>
           <li><strong>Remote monitoring/control is essential:</strong> May 14: Mike on commute (phone only), bot executing runaway losses, couldn't access server to kill bot. Lost -$38K. Solution: SMS alerts for big losses, remote kill switch (endpoint to stop bot via phone), cloud deployment with dashboard access. Never deploy bot you can't stop remotely. Your bot WILL misbehave at the worst time (Murphy's Law). You need kill switch access 24/7.</li>
         </ul>
@@ -209,7 +209,7 @@
         <p>1. <strong>Paper trade for 2-4 weeks minimum.</strong> I lost $23K in 1 hour deploying untested bot. My v6.0: paper traded 6 weeks, found 8 bugs, cost $0. Those bugs would've cost $30K+ in live. Paper trading is free insurance.</p>
         <p>2. <strong>Kill switches are mandatory.</strong> I lost $38K on May 14 because bot had no circuit breaker. It just kept trading into losses. v6.0: -2% daily loss = stop, VIX >30 = stop, can't access server = SMS 'STOP' command kills bot. Haven't had runaway loss since.</p>
         <p>3. <strong>Walk-forward optimization prevents overfitting.</strong> My v1.0-v5.0: optimized for 2023, failed in 2024 (48% WR live vs 74% backtest). v6.0: walk-forward tested (train 2022, test 2023, train 2023, test early-2024). Predicted 62-66% live WR. Actual: 64%. Now backtest matches reality.</p>
-        <p>Automation removes emotion (no FOMO, no fear). But it adds complexity (bugs, API failures, overfitting). Trade-off is worth it IF you build it right. Build it wrong = lose $97K in 4 months (my tuition). Build it right = 64% consistent WR, trade 24/7, sleep well."</p>
+        <p>Automation removes emotion (no FOMO, no fear). But it adds complpotential exity (bugs, API failures, overfitting). Trade-off is worth it IF you build it right. Build it wrong = lose $97K in 4 months (my tuition). Build it right = 64% consistent WR, trade 24/7, sleep well."</p>
         </blockquote>
 
         <p><strong>Where Mike Is Now (March 2025):</strong></p>
@@ -429,7 +429,7 @@ def check_sweep(current_price, current_low, swing_low):
 
       <h3>Step 4: Calculate Position Size (Risk Management)</h3>
 
-      <pre><code>def calculate_position_size(api, entry, stop):
+      <pre><code>def calculate_position_size(api, potential entry, stop):
     """
     Risk 2% of account per trade
     Position size = (Account × Risk%) / (Entry - Stop)
@@ -438,12 +438,12 @@ def check_sweep(current_price, current_low, swing_low):
     equity = float(account.equity)
     risk_amount = equity * 0.02  # 2% risk
 
-    stop_distance = abs(entry - stop)
+    stop_distance = abs(potential entry - stop)
     size = int(risk_amount / stop_distance)
 
     return size
 
-# Example: $100K account, $520 entry, $518 stop
+# Example: $100K account, $520 potential entry, $518 stop
 # Risk: $100K × 2% = $2,000
 # Stop distance: $520 - $518 = $2
 # Size: $2,000 / $2 = 1,000 shares</code></pre>
@@ -452,9 +452,9 @@ def check_sweep(current_price, current_low, swing_low):
 
       <h3>Step 5: Place Bracket Order (Entry + Stop + Target)</h3>
 
-      <pre><code>def place_bracket_order(api, symbol, size, entry, stop, target):
+      <pre><code>def place_bracket_order(api, symbol, size, potential entry, stop, target):
     """
-    Bracket order = entry + stop-loss + take-profit
+    Bracket order = potential entry + stop-loss + take-profit
     All three orders placed simultaneously
     """
     try:
@@ -463,14 +463,14 @@ def check_sweep(current_price, current_low, swing_low):
             qty=size,
             side='buy',
             type='limit',
-            limit_price=entry,
+            limit_price=potential entry,
             time_in_force='gtc',  # Good till canceled
             order_class='bracket',
             stop_loss={'stop_price': stop},
             take_profit={'limit_price': target}
         )
 
-        print(f"✓ Order placed: {size} shares at ${entry}")
+        print(f"✓ Order placed: {size} shares at ${potential entry}")
         print(f"  Example stop: ${stop} | Example target: ${target}")
         return order
 
@@ -509,17 +509,17 @@ def run_bot():
                 if check_sweep(current_price, current_low, swing_low):
                     print(f"\n🎯 Sweep detected at ${current_price}!")
 
-                    # Calculate entry, stop, target
-                    entry = current_price
+                    # Calculate potential entry, stop, target
+                    potential entry = current_price
                     stop = swing_low * 0.995  # Below sweep
-                    target = entry + (entry - stop) * 3  # 3R target
+                    target = potential entry + (potential entry - stop) * 3  # 3R target
 
                     # Calculate size
-                    size = calculate_position_size(api, entry, stop)
+                    size = calculate_position_size(api, potential entry, stop)
 
                     # Place trade
                     position = place_bracket_order(
-                        api, 'SPY', size, entry, stop, target
+                        api, 'SPY', size, potential entry, stop, target
                     )
 
             # Sleep 60 seconds (check every minute)
@@ -740,7 +740,7 @@ except Exception as e:
             <ul>
               <li>Is the market still in a regime your strategy favors?</li>
               <li>VIX elevated? Consider pausing or reducing size.</li>
-              <li>Low volatility? Your breakout strategy might struggle.</li>
+              <li>Low volatility? Your potential breakout strategy might struggle.</li>
             </ul>
             <p><em>Turn off strategies that don't fit current regime.</em></p>
           </div>
