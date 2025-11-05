@@ -382,18 +382,15 @@ Closing Auction:  40-50%  (← MASSIVE)
       </pre>
 
       <p><strong>Implication:</strong> If you're not monitoring auction data, you're missing where the LARGEST institutional orders execute. That's like trading stocks without looking at volume—you're flying blind.</p>
-
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🔴 CHECKPOINT (5 minutes)</h4>
-        <p>You've completed the first third of this lesson.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
-      </div>
-
-
 <h2 id="part-2-opening-auction-mechanics-moo-trading">Part 2: Opening Auction Mechanics & MOO Trading</h2>
 
       <h3 id="how-the-opening-auction-works-step-by-step">How the Opening Auction Works (Step-by-Step)</h3>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p>You now understand the core concepts.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
+      </div>
+
 
       <p><strong>4:00-9:30 AM (Pre-Market):</strong></p>
       <ul>
@@ -526,24 +523,7 @@ Paired Volume:     8,000,000 shares
       </ul>
 
       <p><strong>Why This Works:</strong> Extreme imbalances often represent forced buying/selling (rebalancing, expiration-related), not sustainable demand. Once forced flow completes, price mean-reverts.</p>
-
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟡 CHECKPOINT (10 minutes)</h4>
-        <p>You're now at the halfway point. You've learned the key strategies.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
-      </div>
-
-
 <h2 id="part-3-closing-auction-mechanics-moc-trading">Part 3: Closing Auction Mechanics & MOC Trading</h2>
-
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🔴 CHECKPOINT (5 minutes)</h4>
-        <p>You now understand the core concepts.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
-      </div>
-
 <h3 id="why-the-close-is-the-most-important-auction">Why the Close Is the Most Important Auction</h3>
 
       <p><strong>The closing price isn't just "end of day." It's THE reference price for:</strong></p>
@@ -555,160 +535,13 @@ Paired Volume:     8,000,000 shares
       </ul>
 
       <p><strong>Volume Concentration:</strong> On normal days, 10-15% of daily volume executes at 4:00 PM. On rebalancing days (Russell reconstitution, S&P 500 additions), this jumps to 40-50%.</p>
-
-      <div class="callout-info">
-        <h4>💡 The Close Is Predictable (If You Watch Imbalances)</h4>
-        <p>Unlike intraday price action (which can whipsaw randomly), the closing auction is HIGHLY predictable. Why? Because NYSE publishes MOC (Market-on-Close) imbalance data at 3:50, 3:55, and 3:58 PM—BEFORE the auction. If there's a 10M buy imbalance at 3:55 PM, you KNOW upward pressure is coming. That's not speculation—it's math.</p>
-      </div>
-
-      <h3 id="moc-imbalance-publication-timeline">MOC Imbalance Publication Timeline</h3>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Event</th>
-            <th>Data Released</th>
-            <th>Trading Window</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>3:50 PM</strong></td>
-            <td>First MOC imbalance update</td>
-            <td>Preliminary buy/sell imbalance</td>
-            <td>10 mins to 4:00 PM (risky—data can change)</td>
-          </tr>
-          <tr>
-            <td><strong>3:55 PM</strong></td>
-            <td>Second MOC update</td>
-            <td>Refined imbalance (more accurate)</td>
-            <td>5 mins to close (sweet spot for potential entry)</td>
-          </tr>
-          <tr>
-            <td><strong>3:58 PM</strong></td>
-            <td>Final MOC update</td>
-            <td>Near-final imbalance</td>
-            <td>2 mins to close (most accurate, but less time)</td>
-          </tr>
-          <tr>
-            <td><strong>3:59:50 PM</strong></td>
-            <td>MOC order cutoff</td>
-            <td>No more MOC orders accepted</td>
-            <td>Too late to enter</td>
-          </tr>
-          <tr>
-            <td><strong>4:00:00 PM</strong></td>
-            <td>Closing auction executes</td>
-            <td>Official closing price set</td>
-            <td>Exit immediately after (4:00:05 PM)</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3 id="reading-moc-imbalance-data">Reading MOC Imbalance Data</h3>
-
-      <p><strong>Example MOC Report (3:55 PM):</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
-<strong>SPY - 3:55 PM MOC Imbalance</strong>
-Imbalance Side:    BUY
-Imbalance Size:    8,200,000 shares
-Current Price:     $450.80
-Indicative Close:  $451.10
-Paired Volume:     25,000,000 shares
-
-<strong>Translation:</strong>
-- 8.2M MORE buy orders than sell orders
-- Market makers must BUY 8.2M shares to balance auction
-- Upward price pressure expected into close
-- Indicative close suggests +$0.30 move
-      </pre>
-
-      <p><strong>Imbalance Sizing for Closing Auction:</strong></p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Imbalance Size (SPY)</th>
-            <th>Expected Move into Close</th>
-            <th>Trading Strategy</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>&lt; 1M shares</td>
-            <td>&lt; $0.10</td>
-            <td>No edge, too small</td>
-          </tr>
-          <tr>
-            <td>1-3M shares</td>
-            <td>$0.10-$0.25</td>
-            <td>Moderate signal, scalp opportunity</td>
-          </tr>
-          <tr>
-            <td>3-7M shares</td>
-            <td>$0.25-$0.50</td>
-            <td>Strong signal, high-probability trade</td>
-          </tr>
-          <tr>
-            <td>&gt; 7M shares</td>
-            <td>$0.50-$1.00+</td>
-            <td>Extreme signal, very high confidence</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3 id="moc-imbalance-trading-strategy">MOC Imbalance Trading Strategy</h3>
-
-      <p><strong>Step-by-Step Execution:</strong></p>
-
-      <ol>
-        <li><strong>3:50 PM:</strong> Check first MOC imbalance (preliminary data)</li>
-        <li><strong>3:55 PM:</strong> Check second update—THIS is your entry signal
-          <ul>
-            <li>If imbalance &gt;5M shares = strong signal</li>
-            <li>If imbalance flipped from 3:50 PM = red flag (spoofing risk)</li>
-          </ul>
-        </li>
-        <li><strong>3:56-3:58 PM:</strong> Enter position in direction of imbalance
-          <ul>
-            <li>8M buy imbalance = buy SPY</li>
-            <li>8M sell imbalance = sell SPY (or buy puts)</li>
-          </ul>
-        </li>
-        <li><strong>3:58 PM:</strong> Check final update to confirm imbalance didn't flip</li>
-        <li><strong>4:00 PM:</strong> Auction executes</li>
-        <li><strong>4:00:05-4:00:30 PM:</strong> Exit position (capture auction move, avoid after-hours risk)</li>
-      </ol>
-
-      <p><strong>Real Example: SPY Buy Imbalance (Nov 30, 2023)</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
-<strong>3:50 PM Imbalance:</strong> 6.5M BUY
-<strong>3:55 PM Imbalance:</strong> 9.2M BUY (increased = strong signal)
-<strong>3:58 PM Imbalance:</strong> 9.0M BUY (confirmed)
-
-<strong>Trade:</strong>
-3:56 PM: Buy SPY at $453.85
-4:00 PM: SPY closes at $454.45
-4:00:10 PM: Sell SPY at $454.40
-
-<strong>Result:</strong> $453.85 → $454.40 = $0.55 profit (0.12% in 4 mins)
-<strong>Risk:</strong> $0.20 (if imbalance flipped)
-<strong>R:R:</strong> 1:2.75
-
-<strong>Why it worked:</strong> 9M buy imbalance = institutions MUST buy
-at close. Price mechanically rises to absorb imbalance.
-      </pre>
-
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟢 CHECKPOINT (15 minutes)</h4>
-        <p>Almost done! You've mastered the complete framework.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
-      </div>
-
-
 <h2 id="part-4-advanced-auction-strategies">Part 4: Advanced Auction Strategies</h2>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p>You're now at the halfway point. You've learned the key strategies.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
+      </div>
+
 
       <h3 id="strategy-1-index-rebalancing-front-running">Strategy 1: Index Rebalancing Front-Running</h3>
 
@@ -791,12 +624,10 @@ Buy Nov 16 at $410, sell Dec 21 close at $700 = +71% in 5 weeks
       <p><strong>Why Confluence Matters:</strong> Imbalance alone has ~65% win rate. Imbalance + technical level has ~75-80% win rate.</p>
 
       <h2 id="part-5-using-signal-pilot-for-auction-trading">Part 5: Using Signal Pilot for Auction Trading</h2>
-
-      
       <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟡 CHECKPOINT (10 minutes)</h4>
-        <p>You're now at the halfway point. You've learned the key strategies.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p>Almost done! You've mastered the complete framework.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
       </div>
 
 <h3 id="janus-atlas-pre-market-vs-futures-divergence">Janus Atlas: Pre-Market vs Futures Divergence</h3>
