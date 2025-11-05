@@ -188,7 +188,10 @@ html[data-theme="light"] .callout{border-color:rgba(10,20,40,.10);background:lin
 .btn-primary{background:linear-gradient(115deg,var(--brand),var(--brand-2));color:#fff}
 .btn-ghost{color:#9fdcff;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06)}
 .btn-sm{padding:.5rem .8rem;font-size:.92rem;line-height:1.1}
-.nav-article{display:flex;justify-content:space-between;align-items:center;gap:.8rem;margin:1.2rem 0 2.4rem;flex-wrap:wrap}
+.nav-article{display:flex;justify-content:flex-start;align-items:center;gap:.8rem;margin:1.2rem 0 2.4rem;flex-wrap:wrap;flex-direction:row}
+.nav-article .btn,.nav-article > div{display:inline-flex;flex-shrink:0}
+.nav-article > div > .btn{display:inline-flex}
+.lesson-actions{display:flex;flex-direction:column;gap:.75rem;margin:1.5rem 0}
 @media (max-width:480px){
   .nav-article{gap:.6rem;justify-content:center}
   .nav-article .btn{flex:1 1 auto;min-width:140px;justify-content:center}
@@ -655,6 +658,7 @@ html[data-theme="light"] .hero::before{
 .text-center{text-align:center}
 .text-muted{color:var(--muted)}
 .text-accent{color:var(--accent)}
+.w-full{width:100%}
 .mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mt-3{margin-top:1.5rem}.mt-4{margin-top:2rem}
 .mb-1{margin-bottom:.5rem}.mb-2{margin-bottom:1rem}.mb-3{margin-bottom:1.5rem}.mb-4{margin-bottom:2rem}
 .p-1{padding:.5rem}.p-2{padding:1rem}.p-3{padding:1.5rem}.p-4{padding:2rem}
