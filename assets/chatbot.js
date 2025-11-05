@@ -1,965 +1,664 @@
-// AI Chatbot for Signal Pilot Education
-//
-// MODULARIZATION ROADMAP (Future refactor):
-// This file is 936 lines and should be split into modules:
-// - chatbot-data.js (lessonFiles, knowledgeBase, patterns)
-// - chatbot-context.js (progress tracking, getUserContext)
-// - chatbot-search.js (searchLessons, smartSearch)
-// - chatbot-ui.js (modal, message rendering, animations)
-// - chatbot-main.js (main logic, message handling)
-//
-// Current organization uses PHASE markers for logical separation.
-//
-(function() {
-  'use strict';
+/**
+ * SignalPilot Education Hub Chatbot
+ * Simple pattern-matching chatbot (no API required)
+ *
+ * Adapted from signalpilot-docs with education-focused knowledge base
+ */
 
-  // ========== PHASE 1: CONTEXT & PROGRESS ==========
+class SignalPilotChatbot {
+    constructor() {
+        this.isOpen = false;
+        this.messageHistory = [];
+        this.knowledgeBase = this.initKnowledgeBase();
+        this.patterns = this.initPatterns();
 
-  // Accurate lesson file mapping
-  const lessonFiles = {
-    1: '/curriculum/beginner/01-the-liquidity-lie.html',
-    2: '/curriculum/beginner/02-volume-doesnt-lie.html',
-    3: '/curriculum/beginner/03-price-action-is-dead.html',
-    4: '/curriculum/beginner/04-repaint-problem.html',
-    5: '/curriculum/beginner/05-rsi-extremes.html',
-    6: '/curriculum/beginner/06-moving-averages.html',
-    7: '/curriculum/beginner/07-revenge-trading.html',
-    8: '/curriculum/beginner/08-confirmation-bias.html',
-    9: '/curriculum/beginner/09-position-sizing.html',
-    10: '/curriculum/beginner/10-stop-losses.html',
-    11: '/curriculum/beginner/11-timeframe-illusion.html',
-    12: '/curriculum/beginner/12-paper-trading.html',
-    13: '/curriculum/intermediate/13-bid-ask-spread-dynamics.html',
-    14: '/curriculum/intermediate/14-order-book-analysis.html',
-    15: '/curriculum/intermediate/15-market-making-hft.html',
-    16: '/curriculum/intermediate/16-footprint-charts.html',
-    17: '/curriculum/intermediate/17-dark-pools.html',
-    18: '/curriculum/intermediate/18-smart-money-divergence.html',
-    19: '/curriculum/intermediate/19-multi-timeframe-mastery.html',
-    20: '/curriculum/intermediate/20-janus-atlas-advanced.html',
-    21: '/curriculum/intermediate/21-plutus-flow-mastery.html',
-    22: '/curriculum/intermediate/22-minimal-flow-regimes.html',
-    23: '/curriculum/intermediate/23-portfolio-construction.html',
-    24: '/curriculum/intermediate/24-backtesting-reality.html',
-    25: '/curriculum/intermediate/25-advanced-risk-management.html',
-    26: '/curriculum/intermediate/26-trade-journal-mastery.html',
-    27: '/curriculum/intermediate/27-professional-operations.html',
-    28: '/curriculum/advanced/28-institutional-order-flow.html',
-    29: '/curriculum/advanced/29-market-regime-recognition.html',
-    30: '/curriculum/advanced/30-auction-theory-advanced.html',
-    31: '/curriculum/advanced/31-cross-asset-correlations.html',
-    32: '/curriculum/advanced/32-volatility-trading.html',
-    33: '/curriculum/advanced/33-algorithmic-execution.html',
-    34: '/curriculum/advanced/34-system-development.html',
-    35: '/curriculum/advanced/35-machine-learning-trading.html',
-    36: '/curriculum/advanced/36-high-frequency-concepts.html',
-    37: '/curriculum/advanced/37-trading-automation-apis.html',
-    38: '/curriculum/advanced/38-portfolio-theory-advanced.html',
-    39: '/curriculum/advanced/39-performance-attribution.html',
-    40: '/curriculum/advanced/40-tax-optimization.html',
-    41: '/curriculum/advanced/41-professional-infrastructure.html',
-    42: '/curriculum/advanced/42-trading-career-path.html'
-  };
-
-  // Detect current lesson from URL
-  function getCurrentLesson() {
-    const path = window.location.pathname;
-    const match = path.match(/\/curriculum\/(beginner|intermediate|advanced)\/(\d+)-(.+)\.html/);
-    if (match) {
-      return {
-        tier: match[1],
-        number: parseInt(match[2]),
-        slug: match[3],
-        title: match[3].split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
-      };
-    }
-    return null;
-  }
-
-  // Get user progress from localStorage
-  function getUserProgress() {
-    try {
-      const progress = JSON.parse(localStorage.getItem('sp_progress') || '{}');
-      const completed = Object.keys(progress).filter(key => progress[key].completed).length;
-      const total = 42;
-      const percentage = Math.round((completed / total) * 100);
-
-      // Calculate tier breakdown
-      const beginnerCompleted = Object.keys(progress).filter(k => {
-        const num = parseInt(k.replace('lesson-', ''));
-        return num >= 1 && num <= 12 && progress[k].completed;
-      }).length;
-
-      const intermediateCompleted = Object.keys(progress).filter(k => {
-        const num = parseInt(k.replace('lesson-', ''));
-        return num >= 13 && num <= 27 && progress[k].completed;
-      }).length;
-
-      const advancedCompleted = Object.keys(progress).filter(k => {
-        const num = parseInt(k.replace('lesson-', ''));
-        return num >= 28 && num <= 42 && progress[k].completed;
-      }).length;
-
-      return {
-        completed,
-        total,
-        percentage,
-        beginner: { completed: beginnerCompleted, total: 12 },
-        intermediate: { completed: intermediateCompleted, total: 15 },
-        advanced: { completed: advancedCompleted, total: 15 },
-        data: progress
-      };
-    } catch (e) {
-      return { completed: 0, total: 42, percentage: 0 };
-    }
-  }
-
-  // Learning streak tracker
-  function updateStreak() {
-    try {
-      const today = new Date().toDateString();
-      const streakData = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0, "best": 0, "lastDate": null}');
-
-      if (streakData.lastDate !== today) {
-        const yesterday = new Date(Date.now() - 86400000).toDateString();
-
-        if (streakData.lastDate === yesterday) {
-          // Continuing streak
-          streakData.current++;
-        } else if (streakData.lastDate === null || streakData.lastDate < yesterday) {
-          // New streak or broken streak
-          streakData.current = 1;
-        }
-
-        streakData.lastDate = today;
-        streakData.best = Math.max(streakData.best, streakData.current);
-        localStorage.setItem('sp_learning_streak', JSON.stringify(streakData));
-      }
-
-      return streakData;
-    } catch (e) {
-      return { current: 0, best: 0, lastDate: null };
-    }
-  }
-
-  // Get next recommended lesson
-  function getNextLesson(progress) {
-    for (let i = 1; i <= 42; i++) {
-      const key = `lesson-${i}`;
-      if (!progress.data[key] || !progress.data[key].completed) {
-        let tier = 'beginner';
-        let tierNum = i;
-        if (i >= 28) { tier = 'advanced'; tierNum = i; }
-        else if (i >= 13) { tier = 'intermediate'; tierNum = i; }
-
-        return { number: i, tier, tierNum };
-      }
-    }
-    return null; // All completed!
-  }
-
-  // ========== PHASE 2: QUICK ACTIONS ==========
-
-  // Navigate to next lesson (using accurate file mapping)
-  function navigateToNextLesson() {
-    const progress = getUserProgress();
-    const next = getNextLesson(progress);
-
-    if (!next) {
-      return "You've completed all 42 lessons! 🎓";
+        this.init();
     }
 
-    const lessonUrl = lessonFiles[next.number];
-    if (lessonUrl) {
-      window.location.href = lessonUrl;
-      return `Taking you to Lesson #${next.number}... 🚀`;
-    } else {
-      return `Lesson #${next.number} URL not found. Please navigate manually.`;
+    initKnowledgeBase() {
+        return {
+            // Lesson tiers
+            beginner: `**Beginner Tier** (12 lessons) - Essential foundations for trading
+
+📚 [View All Beginner Lessons](/beginner.html)
+
+**What you'll learn:**
+• Why RSI >70 isn't always overbought
+• The truth about liquidity (it's engineered, not natural)
+• Order flow basics and market microstructure
+• Volume analysis fundamentals
+• Regime-based indicator interpretation
+
+**Key Lessons:**
+• Lesson 1: The Liquidity Lie
+• Lesson 2: Volume Doesn't Lie
+• Lesson 5: RSI >70 Is Often a BUY Signal
+• Lesson 6: Moving Averages Truth
+
+**Duration:** 12-15 min per lesson
+**Best for:** New traders or those learning institutional concepts`,
+
+            intermediate: `**Intermediate Tier** (27 lessons) - Market microstructure & order flow
+
+📚 [View All Intermediate Lessons](/intermediate.html)
+
+**What you'll learn:**
+• Bid-ask spread dynamics as a leading indicator
+• Order book analysis (absorption vs exhaustion)
+• Footprint charts and volume profiling
+• Dark pool activity and institutional flow
+• Market making and HFT mechanics
+
+**Key Lessons:**
+• Lesson 21: Bid-Ask Spread Dynamics
+• Lesson 22: Order Book Analysis
+• Lesson 24: Footprint Charts
+• Lesson 25: Dark Pool Detection
+
+**Duration:** 12-15 min per lesson
+**Best for:** Traders ready for advanced order flow concepts`,
+
+            advanced: `**Advanced Tier** (15+ lessons) - Implementation & automation
+
+📚 [View All Advanced Lessons](/advanced.html)
+
+**What you'll learn:**
+• Trading automation (APIs, bots, execution)
+• Backtesting systems and walk-forward optimization
+• Position sizing and risk management frameworks
+• Kill switches and circuit breakers
+• Multi-timeframe analysis
+
+**Key Lessons:**
+• Lesson 57: Trading Automation & APIs
+• Advanced Risk Management
+• System Development & Testing
+• Professional Trading Infrastructure
+
+**Duration:** 15-20 min per lesson
+**Best for:** Experienced traders building systematic strategies`,
+
+            progress: `**Your Progress:**
+
+Your learning progress is automatically tracked as you read lessons!
+
+**How tracking works:**
+✅ Progress saved locally (no account needed)
+✅ Syncs across devices (coming soon via Supabase)
+✅ Completion badges unlocked per tier
+✅ Streak tracking for daily lessons
+
+**View your progress:**
+• Home page shows overall completion %
+• Each tier page shows lessons completed
+• Green checkmarks = completed lessons
+
+**Pro tip:** Complete at least 1 lesson/day to build a learning streak! 🔥`,
+
+            curriculum: `**SignalPilot Education Hub Curriculum:**
+
+**7-Tier Progressive System:**
+
+🟢 **Tier 1-2: Foundations** (12 lessons)
+→ Beginner concepts, debunking myths
+
+🟡 **Tier 3-4: Market Mechanics** (27 lessons)
+→ Order flow, microstructure, volume
+
+🔴 **Tier 5-7: Advanced Implementation** (40+ lessons)
+→ Automation, backtesting, professional systems
+
+**Total:** 82+ comprehensive lessons
+
+📚 [View Full Curriculum](/)
+
+**Recommended path:**
+1. Start with Beginner (Lessons 1-12)
+2. Move to Intermediate when comfortable
+3. Advanced tier for implementation
+
+**Time commitment:** ~12-20 min per lesson`,
+
+            rsi: `**RSI Lessons:**
+
+**Main Lesson:** [Lesson 5: RSI >70 Is Often a BUY Signal](/curriculum/beginner/05-rsi-extremes.html)
+
+**Key Concepts:**
+• RSI >70 in uptrends = continuation (not reversal)
+• RSI <30 in downtrends = continuation (not reversal)
+• Regime determines interpretation (trending vs ranging)
+• Harmonic Oscillator = 5-indicator voting system
+
+**Real example:** Sarah lost $11,400 selling "overbought" RSI in trends, then made +$13,000 back using regime-based RSI interpretation
+
+**Practical framework:**
+1. Identify regime FIRST (trending or ranging)
+2. Trending: RSI >70 = stay long, RSI pullback to 40-50 = add
+3. Ranging: RSI >70 = sell, RSI <30 = buy
+
+**Common mistake:** Fading RSI extremes without checking market regime`,
+
+            spread: `**Bid-Ask Spread Lessons:**
+
+**Main Lesson:** [Lesson 21: Bid-Ask Spread Dynamics](/curriculum/intermediate/21-bid-ask-spread-dynamics.html)
+
+**Key Concepts:**
+• Spread is a tax on impatience (not a fixed cost)
+• Spread changes predict price moves (leading indicator)
+• Spread widening = market makers see hidden flow
+• Spread must be <10% of stop loss
+
+**Real example:** Nina paid $45K in spread costs over 18 weeks (18 trades/day × $25/round-trip) without tracking it
+
+**Practical rules:**
+1. Calculate: Spread ÷ Stop Loss = % (must be <10%)
+2. Use limit orders (save 85% on spread costs)
+3. Reduce frequency if spread >10% of stop
+4. Never trade illiquid hours (spread 4-8× wider)
+
+**Spread as signal:** Widening without news = something's coming (market makers protecting themselves)`,
+
+            automation: `**Trading Automation:**
+
+**Main Lesson:** [Lesson 57: Trading Automation & APIs](/curriculum/advanced/57-trading-automation-apis.html)
+
+**Key Concepts:**
+• Automation amplifies mistakes (1 bug = 47 orders in 90 sec)
+• Kill switches are mandatory (max loss, volatility filters, remote stop)
+• Paper trading REQUIRED before live (2-4 weeks minimum)
+• Slippage must be in backtests (real-world friction)
+
+**Real example:** Mike lost $97K in 4 months due to: runaway loop ($23K), API bans ($15K), no kill switches ($38K), overfitting ($8K), slippage ($11K)
+
+**7-Step Framework:**
+1. Paper trade 2-4 weeks (find bugs with fake money)
+2. Multi-layer kill switches (5 circuit breakers)
+3. Order management (track IDs, prevent duplicates)
+4. Rate limit management (stay at 70% of API max)
+5. Walk-forward optimization (not curve-fitting)
+6. Slippage/fees in backtest (-0.15% market orders)
+7. Monitoring dashboard + alerts
+
+**Rule:** Never deploy without kill switches`,
+
+            chatbot: `**About This Chatbot:**
+
+I'm a pattern-matching assistant (no AI API needed!) built to help you navigate the 82 lessons.
+
+**I can help with:**
+• Lesson recommendations ("What should I learn first?")
+• Concept explanations ("Explain RSI regime interpretation")
+• Finding lessons ("Lessons about spread costs")
+• Progress tracking ("How do I track progress?")
+
+**What I can't do:**
+• Trade recommendations
+• Real-time market analysis
+• Account-specific advice
+• Execute trades
+
+**How I work:**
+• Pattern matching (instant responses)
+• Knowledge base from all 82 lessons
+• No data sent to external APIs
+• Conversation history saved locally
+
+**Pro tip:** Try asking full questions like "How does bid-ask spread work as a leading indicator?" for best results!`,
+
+            start: `**Getting Started:**
+
+**Recommended Learning Path:**
+
+**Week 1-2: Beginner Foundations** (12 lessons)
+→ Start: [Lesson 1: The Liquidity Lie](/curriculum/beginner/01-the-liquidity-lie.html)
+→ Focus: Debunking retail myths, understanding liquidity engineering
+
+**Week 3-4: Order Flow Basics**
+→ [Lesson 2: Volume Doesn't Lie](/curriculum/beginner/02-volume-doesnt-lie.html)
+→ [Lesson 3: Price Action is Dead](/curriculum/beginner/03-price-action-is-dead.html)
+
+**Week 5-8: Intermediate Microstructure** (27 lessons)
+→ Bid-ask spreads, order books, footprint charts
+
+**Week 9+: Advanced Implementation** (when ready)
+→ Automation, backtesting, professional systems
+
+**Time commitment:** 12-20 min/lesson
+**Goal:** 1 lesson per day (build a streak!)
+
+**Quick actions:**
+• [Browse All Lessons](/)
+• [Search Lessons](/search.html)
+• [View Progress](/) (homepage shows completion %)`,
+
+            lessons: `**About Our Lessons:**
+
+**Structure:** Each lesson includes:
+• TL;DR Summary (3-minute version)
+• Real trader case study (with P&L numbers)
+• Multi-part content (5-7 sections)
+• Checkpoints every 5-10 minutes
+• Practice exercise (hands-on)
+• Interactive quiz
+• Downloadable checklist (PDF)
+
+**Length:** 12-20 minutes per lesson (900-1000 lines)
+
+**Style:** Professional trading education (institutional concepts, not retail hype)
+
+**Total:** 82+ comprehensive lessons across 7 tiers
+
+**What makes them different:**
+✅ Story-driven (real trader mistakes)
+✅ Data-heavy (actual P&L tables, metrics)
+✅ Mistake-focused (learn from failures)
+✅ Implementation details (checklists, frameworks)
+✅ No fluff (institutional-grade content)
+
+📚 [Browse All Lessons](/)`,
+
+            help: `**I can help you with:**
+
+📚 **Lessons:** "Beginner lessons" | "RSI lessons" | "Spread lessons"
+🎯 **Getting Started:** "How do I start?" | "Learning path"
+📊 **Concepts:** "Explain RSI" | "What is spread dynamics?"
+🔧 **Features:** "Track progress" | "How does the chatbot work?"
+🚀 **Automation:** "Trading automation" | "Kill switches"
+
+**Try asking:**
+• "What are the beginner lessons?"
+• "Explain RSI regime interpretation"
+• "How does bid-ask spread work?"
+• "Show me automation lessons"
+• "What should I learn first?"
+• "How do I track my progress?"
+
+**Popular topics:**
+• RSI myths (Lesson 5)
+• Spread costs (Lesson 21)
+• Automation (Lesson 57)
+• Volume analysis (Lesson 2)
+
+Just type your question naturally! 💬`,
+
+            default: `I'm not sure about that specific question.
+
+Try asking about:
+📚 **Lessons:** Beginner, Intermediate, Advanced tiers
+🎯 **Concepts:** RSI, spreads, automation, volume, order flow
+📊 **Getting Started:** Learning path, progress tracking
+🔧 **Features:** Chatbot, search, curriculum
+
+Type **"help"** to see all available topics!
+
+💡 **Tip:** Use the search bar at the top to search all 82 lessons, or browse by tier on the homepage.
+
+**Quick links:**
+• [Beginner Lessons](/beginner.html)
+• [Intermediate Lessons](/intermediate.html)
+• [Advanced Lessons](/advanced.html)
+• [Search All Lessons](/search.html)`
+        };
     }
-  }
 
-  // Scroll to quiz section
-  function scrollToQuiz() {
-    const quizSection = document.querySelector('.quiz-section, #quiz, [class*="quiz"]');
-    if (quizSection) {
-      quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      return "Scrolling to the quiz section... 📝";
-    }
-    return "I don't see a quiz section on this page. Make sure you're on a lesson page!";
-  }
+    initPatterns() {
+        return [
+            // Help/Meta
+            { regex: /^(help|what can you do|commands|menu)$/i, key: 'help' },
+            { regex: /(about|chatbot|how.*work|what are you)/i, key: 'chatbot' },
 
-  // Scroll to key takeaways
-  function scrollToTakeaways() {
-    // Try class selector first (most common - note: singular "key-takeaway")
-    let takeaways = document.querySelector('.key-takeaway, #key-takeaways');
+            // Lesson tiers
+            { regex: /(beginner|foundation|start|tier 1|tier 2|basic)/i, key: 'beginner' },
+            { regex: /(intermediate|order flow|microstructure|tier 3|tier 4)/i, key: 'intermediate' },
+            { regex: /(advanced|automation|professional|tier 5|tier 6|tier 7)/i, key: 'advanced' },
+            { regex: /(curriculum|all lessons|lesson list|tiers|structure)/i, key: 'curriculum' },
+            { regex: /(lesson|lessons|course|content|what.*learn)/i, key: 'lessons' },
 
-    // If not found, search for headings containing "Key Takeaway"
-    if (!takeaways) {
-      const headings = document.querySelectorAll('h2, h3, h4');
-      for (const heading of headings) {
-        if (heading.textContent.match(/key\s+takeaway/i)) {
-          takeaways = heading;
-          break;
-        }
-      }
-    }
+            // Specific concepts
+            { regex: /(rsi|relative strength|overbought|oversold|70|30)/i, key: 'rsi' },
+            { regex: /(spread|bid.ask|bid ask|market maker|liquidity cost)/i, key: 'spread' },
+            { regex: /(automation|bot|api|kill switch|paper trad|backtest)/i, key: 'automation' },
 
-    if (takeaways) {
-      takeaways.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      return "Scrolling to Key Takeaways... 📌";
-    }
-    return "I don't see a Key Takeaways section on this page. Try scrolling down manually to find it!";
-  }
+            // Getting started
+            { regex: /(start|begin|new|first|how do i|learning path|where.*start)/i, key: 'start' },
+            { regex: /(progress|track|completion|streak|badge)/i, key: 'progress' },
 
-  // Toggle notes panel
-  function openNotes() {
-    const notesToggle = document.querySelector('[data-notes-toggle], .notes-toggle, #notesToggle');
-    if (notesToggle) {
-      notesToggle.click();
-      return "Opening notes panel... 📝";
-    }
-    return "Notes feature not available on this page. Try opening a lesson!";
-  }
-
-  // Bookmark management
-  function saveBookmark(message, response) {
-    try {
-      const bookmarks = JSON.parse(localStorage.getItem('sp_chatbot_bookmarks') || '[]');
-      bookmarks.push({
-        timestamp: Date.now(),
-        question: message,
-        answer: response,
-        date: new Date().toLocaleDateString()
-      });
-      // Keep last 20 bookmarks
-      if (bookmarks.length > 20) bookmarks.shift();
-      localStorage.setItem('sp_chatbot_bookmarks', JSON.stringify(bookmarks));
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function getBookmarks() {
-    try {
-      return JSON.parse(localStorage.getItem('sp_chatbot_bookmarks') || '[]');
-    } catch (e) {
-      return [];
-    }
-  }
-
-  // ========== PHASE 3: STUDY TIMER ==========
-
-  let studyTimer = null;
-  let studyStartTime = null;
-
-  function startStudyTimer(minutes = 25) {
-    if (studyTimer) {
-      return `Timer already running! ${getRemainingTime()} remaining.`;
+            // Fallback
+            { regex: /.*/, key: 'default' }
+        ];
     }
 
-    studyStartTime = Date.now();
-    const duration = minutes * 60 * 1000;
-
-    studyTimer = setTimeout(() => {
-      studyTimer = null;
-      studyStartTime = null;
-      // Could show a notification here
-      logger.log('Study session complete!');
-    }, duration);
-
-    return `⏱️ <strong>${minutes}-minute study session started!</strong><br><br>Focus on your lesson. I'll let you know when time's up.<br><br>💡 <em>Tip: Use the Pomodoro technique - 25min work, 5min break!</em>`;
-  }
-
-  function getRemainingTime() {
-    if (!studyTimer || !studyStartTime) return null;
-
-    const elapsed = Date.now() - studyStartTime;
-    const remaining = Math.max(0, Math.ceil((25 * 60 * 1000 - elapsed) / 60000));
-    return `${remaining} minute${remaining !== 1 ? 's' : ''}`;
-  }
-
-  function stopStudyTimer() {
-    if (!studyTimer) {
-      return `No timer running. Start one with "start study timer"!`;
+    init() {
+        this.createChatWidget();
+        this.bindEvents();
+        this.loadConversationHistory();
     }
 
-    const elapsed = Math.floor((Date.now() - studyStartTime) / 60000);
-    clearTimeout(studyTimer);
-    studyTimer = null;
-    studyStartTime = null;
+    createChatWidget() {
+        const chatbotHTML = `
+            <div id="sp-chatbot-container" class="sp-chatbot-container sp-chatbot-closed">
+                <!-- Chat Toggle Button -->
+                <button id="sp-chatbot-toggle" class="sp-chatbot-toggle" aria-label="Open Learning Assistant">
+                    <svg class="sp-chatbot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                    </svg>
+                    <svg class="sp-chatbot-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
 
-    return `⏱️ Timer stopped! You studied for ${elapsed} minute${elapsed !== 1 ? 's' : ''}. Great work! 🎉`;
-  }
+                <!-- Chat Window -->
+                <div id="sp-chatbot-window" class="sp-chatbot-window">
+                    <!-- Header -->
+                    <div class="sp-chatbot-header">
+                        <div class="sp-chatbot-header-content">
+                            <div class="sp-chatbot-avatar">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                                </svg>
+                            </div>
+                            <div class="sp-chatbot-title">
+                                <h3>Learning Assistant</h3>
+                                <p class="sp-chatbot-status">Online • Ready to help</p>
+                            </div>
+                        </div>
+                        <div class="sp-chatbot-actions">
+                            <button class="sp-chatbot-action-btn" id="sp-chatbot-clear" title="Clear conversation">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
-  // ========== PHASE 3: SMART SEARCH ==========
+                    <!-- Messages Container -->
+                    <div id="sp-chatbot-messages" class="sp-chatbot-messages">
+                        <div class="sp-chatbot-message sp-chatbot-bot-message">
+                            <div class="sp-chatbot-message-avatar">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                                </svg>
+                            </div>
+                            <div class="sp-chatbot-message-content">
+                                <p><strong>Hi! 👋</strong> I'm your SignalPilot Learning Assistant.</p>
+                                <p>I can help you navigate our 82 trading lessons, explain concepts, and guide your learning path!</p>
+                                <p><em>Try: "What should I learn first?" or "Explain RSI regime interpretation"</em></p>
+                            </div>
+                        </div>
+                    </div>
 
-  function searchLessons(query) {
-    const results = [];
+                    <!-- Quick Actions -->
+                    <div class="sp-chatbot-quick-actions" id="sp-chatbot-quick-actions">
+                        <button class="sp-chatbot-quick-btn" data-query="What should I learn first?">
+                            🚀 Getting Started
+                        </button>
+                        <button class="sp-chatbot-quick-btn" data-query="Beginner lessons">
+                            📚 Beginner
+                        </button>
+                        <button class="sp-chatbot-quick-btn" data-query="Explain RSI">
+                            📊 RSI Myths
+                        </button>
+                        <button class="sp-chatbot-quick-btn" data-query="Trading automation">
+                            🤖 Automation
+                        </button>
+                    </div>
 
-    // Search in knowledge base
-    const lowerQuery = query.toLowerCase();
+                    <!-- Input Area -->
+                    <div class="sp-chatbot-input-container">
+                        <div class="sp-chatbot-input-wrapper">
+                            <textarea
+                                id="sp-chatbot-input"
+                                class="sp-chatbot-input"
+                                placeholder="Ask about lessons or concepts..."
+                                rows="1"
+                                aria-label="Message input"
+                            ></textarea>
+                            <button id="sp-chatbot-send" class="sp-chatbot-send-btn" aria-label="Send message">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="sp-chatbot-footer-text">
+                            Powered by pattern matching • SignalPilot Education
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
 
-    // Check indicator keywords (ALL 7 INDICATORS - CORRECT v10 URLs!)
-    if (lowerQuery.includes('janus')) results.push({ type: 'indicator', name: 'Janus Atlas', lesson: 20, docs: 'https://docs.signalpilot.io/janus-atlas-v10/' });
-    if (lowerQuery.includes('plutus')) results.push({ type: 'indicator', name: 'Plutus Flow', lesson: 21, docs: 'https://docs.signalpilot.io/plutus-flow-v10/' });
-    if (lowerQuery.includes('minimal')) results.push({ type: 'indicator', name: 'Volume Oracle', lesson: 22, docs: 'https://docs.signalpilot.io/minimal-flow-v10/' });
-    if (lowerQuery.includes('pentarch')) results.push({ type: 'indicator', name: 'Pentarch', external: 'https://docs.signalpilot.io/pentarch-v10/', note: 'Reversal Events System' });
-    if (lowerQuery.includes('omnideck')) results.push({ type: 'indicator', name: 'Omnideck', external: 'https://docs.signalpilot.io/omnideck-v10/', note: 'Everything Indicator Dashboard' });
-    if (lowerQuery.includes('augury') || lowerQuery.includes('grid')) results.push({ type: 'indicator', name: 'Augury Grid', external: 'https://docs.signalpilot.io/augury-grid-v10/', note: 'Multi-Symbol Screener' });
-    if (lowerQuery.includes('harmonic') || lowerQuery.includes('oscillator')) results.push({ type: 'indicator', name: 'Harmonic Oscillator', external: 'https://docs.signalpilot.io/harmonic-oscillator-v10/', note: 'Composite Momentum' });
+        document.body.insertAdjacentHTML('beforeend', chatbotHTML);
 
-    // Check concept keywords
-    if (lowerQuery.includes('order') && lowerQuery.includes('flow')) results.push({ type: 'concept', name: 'Order Flow', lessons: [2, 3] });
-    if (lowerQuery.includes('liquidity')) results.push({ type: 'concept', name: 'Liquidity Engineering', lesson: 1 });
-    if (lowerQuery.includes('repaint')) results.push({ type: 'concept', name: 'Repainting', lesson: 4 });
-    if (lowerQuery.includes('dark') && lowerQuery.includes('pool')) results.push({ type: 'concept', name: 'Dark Pools', lesson: 17 });
-    if (lowerQuery.includes('footprint')) results.push({ type: 'concept', name: 'Footprint Charts', lesson: 16 });
-    if (lowerQuery.includes('regime')) results.push({ type: 'concept', name: 'Market Regimes', lesson: 22 });
-
-    if (results.length === 0) {
-      return `No results found for "${query}". Try searching for:<br><br><strong>Indicators:</strong> Janus, Plutus, Minimal, Pentarch, Omnideck, Augury, Harmonic<br><strong>Concepts:</strong> order flow, liquidity, dark pools, regime<br><br>🔍 <a href='/search.html'>Use full search →</a>`;
+        this.elements = {
+            container: document.getElementById('sp-chatbot-container'),
+            toggle: document.getElementById('sp-chatbot-toggle'),
+            window: document.getElementById('sp-chatbot-window'),
+            messages: document.getElementById('sp-chatbot-messages'),
+            input: document.getElementById('sp-chatbot-input'),
+            sendBtn: document.getElementById('sp-chatbot-send'),
+            clearBtn: document.getElementById('sp-chatbot-clear'),
+            quickActions: document.getElementById('sp-chatbot-quick-actions')
+        };
     }
 
-    let msg = `🔍 <strong>Search Results for "${query}"</strong><br><br>`;
-    results.forEach(r => {
-      if (r.external) {
-        msg += `📚 <a href='${r.external}' target='_blank'>${r.name} Documentation</a> - ${r.note}<br>`;
-      } else if (r.lessons) {
-        r.lessons.forEach(num => {
-          msg += `📖 <a href='${lessonFiles[num]}'>${r.name} - Lesson #${num}</a><br>`;
+    bindEvents() {
+        // Toggle chat window
+        this.elements.toggle.addEventListener('click', () => this.toggleChat());
+
+        // Send message
+        this.elements.sendBtn.addEventListener('click', () => this.sendMessage());
+
+        // Enter to send (Shift+Enter for new line)
+        this.elements.input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                this.sendMessage();
+            }
         });
-      } else if (r.docs && r.lesson) {
-        // Indicator with both docs and lesson
-        msg += `📚 <a href='${r.docs}' target='_blank'>${r.name} Documentation</a><br>`;
-        msg += `📖 <a href='${lessonFiles[r.lesson]}'>${r.name} - Lesson #${r.lesson}</a><br>`;
-      } else if (r.lesson) {
-        msg += `📖 <a href='${lessonFiles[r.lesson]}'>${r.name} - Lesson #${r.lesson}</a><br>`;
-      }
-    });
-    msg += `<br>🔍 <a href='/search.html'>Advanced search →</a>`;
 
-    return msg;
-  }
-
-  // Knowledge base for the chatbot
-  const knowledgeBase = {
-    greeting: [
-      "Hi! I'm the Signal Pilot Learning Assistant. I can help you navigate the curriculum, answer questions about lessons, and guide your learning journey. What would you like to know?",
-      "Hello! Welcome to Signal Pilot Education. I'm here to help you master institutional trading. Ask me anything about the lessons!",
-      "Hey there! Ready to learn how markets really work? I can guide you through our 42-lesson curriculum. What interests you?"
-    ],
-
-    curriculum: {
-      beginner: "The Beginner tier has 12 lessons covering fundamental concepts like liquidity engineering, order flow, indicator truth, and risk management. It's designed to unlearn retail myths and build a professional foundation.<br><br>📖 <a href='/beginner.html'>View Beginner Curriculum →</a><br>🚀 <a href='/curriculum/beginner/01-the-liquidity-lie.html'>Start with Lesson #1 →</a>",
-      intermediate: "The Intermediate tier contains 15 lessons on market microstructure, advanced order flow, Signal Pilot indicators (Janus Atlas, Plutus Flow, Volume Oracle), and professional frameworks. Complete the Beginner tier first!<br><br>📖 <a href='/intermediate.html'>View Intermediate Curriculum →</a><br>🚀 <a href='/curriculum/intermediate/13-bid-ask-spread-dynamics.html'>Start with Lesson #13 →</a>",
-      advanced: "The Advanced tier has 15 lessons covering institutional order flow, machine learning, trading automation, and professional infrastructure. This is for traders ready to think probabilistically. Prerequisites: Complete Beginner and Intermediate tiers.<br><br>📖 <a href='/advanced.html'>View Advanced Curriculum →</a><br>🚀 <a href='/curriculum/advanced/28-institutional-order-flow.html'>Start with Lesson #28 →</a>"
-    },
-
-    indicators: {
-      janus: "Janus Atlas is our levels system that detects liquidity sweeps and key price levels. It shows when price and flow don't agree.<br><br>📚 <a href='https://docs.signalpilot.io/janus-atlas-v10/' target='_blank' rel='noopener'>View Janus Atlas Documentation →</a><br>📖 <a href='/curriculum/intermediate/20-janus-atlas-advanced.html'>Read Lesson #20: Janus Atlas Advanced →</a>",
-      plutus: "Plutus Flow is our advanced OBV indicator that tracks cumulative delta and absorption patterns. Essential for understanding institutional accumulation.<br><br>📚 <a href='https://docs.signalpilot.io/plutus-flow-v10/' target='_blank' rel='noopener'>View Plutus Flow Documentation →</a><br>📖 <a href='/curriculum/intermediate/21-plutus-flow-mastery.html'>Read Lesson #21: Plutus Flow Mastery →</a>",
-      minimal: "Volume Oracle is our volume strategy and regime detection system. It identifies market conditions and structure.<br><br>📚 <a href='https://docs.signalpilot.io/minimal-flow-v10/' target='_blank' rel='noopener'>View Volume Oracle Documentation →</a><br>📖 <a href='/curriculum/intermediate/22-minimal-flow-regimes.html'>Read Lesson #22: Volume Oracle Regimes →</a>",
-      pentarch: "Pentarch is our reversal events system with 5 event signals (TD, IGN, CAP, WRN, BDN) plus 3 supporting components. It shows where you are in the market cycle.<br><br>📚 <a href='https://docs.signalpilot.io/pentarch-v10/' target='_blank' rel='noopener'>View Pentarch Documentation →</a><br>💡 <em>Note: Pentarch is covered in the official documentation. Check lessons on regime detection and market cycles!</em>",
-      omnideck: "Omnideck is our 'Everything Indicator' - a comprehensive dashboard that displays all Signal Pilot indicators across multiple timeframes in one view.<br><br>📚 <a href='https://docs.signalpilot.io/omnideck-v10/' target='_blank' rel='noopener'>View Omnideck Documentation →</a><br>💡 <em>Perfect for multi-timeframe analysis and getting the complete market picture!</em>",
-      augury: "Augury Grid is our multi-symbol screener that monitors multiple assets simultaneously. It helps you spot opportunities across your watchlist.<br><br>📚 <a href='https://docs.signalpilot.io/augury-grid-v10/' target='_blank' rel='noopener'>View Augury Grid Documentation →</a><br>💡 <em>Ideal for scanning multiple markets and finding the best setups!</em>",
-      harmonic: "Harmonic Oscillator is our composite momentum indicator that combines multiple momentum signals for timing entries and exits.<br><br>📚 <a href='https://docs.signalpilot.io/harmonic-oscillator-v10/' target='_blank' rel='noopener'>View Harmonic Oscillator Documentation →</a><br>💡 <em>Use for precise timing and momentum confirmation!</em>"
-    },
-
-    concepts: {
-      orderflow: "Order flow is the study of real buying and selling pressure. Unlike price action, it shows you ACTUAL transactions.<br><br>📖 <a href='/curriculum/beginner/03-price-action-is-dead.html'>Read Lesson #3: Price Action is Dead →</a><br>📖 <a href='/curriculum/beginner/02-volume-doesnt-lie.html'>Read Lesson #2: Volume Doesn't Lie →</a>",
-      liquidity: "Liquidity engineering is how institutions manipulate price to trigger stops and hunt orders.<br><br>📖 <a href='/curriculum/beginner/01-the-liquidity-lie.html'>Read Lesson #1: The Liquidity Lie →</a>",
-      repainting: "60-90% of indicators repaint (change historical values). Signal Pilot indicators NEVER repaint.<br><br>📖 <a href='/curriculum/beginner/04-repaint-problem.html'>Read Lesson #4: The Repaint Problem →</a>",
-      regime: "Market regimes are different market conditions (trending, ranging, volatile, calm). Trade the regime, not just the signal!<br><br>📖 <a href='/curriculum/intermediate/22-minimal-flow-regimes.html'>Read Lesson #22: Volume Oracle Regimes →</a>",
-      darkpool: "Dark pools are private exchanges where institutions trade without moving the market.<br><br>📖 <a href='/curriculum/intermediate/17-dark-pools.html'>Read Lesson #17: Dark Pools →</a>",
-      footprint: "Footprint charts show volume at each price level, revealing where buyers and sellers actually transacted.<br><br>📖 <a href='/curriculum/intermediate/16-footprint-charts.html'>Read Lesson #16: Footprint Charts →</a>"
-    },
-
-    help: {
-      start: "Start with the Beginner tier! Begin with Lesson #1: 'The Liquidity Lie'. Complete lessons in order for best results.<br><br>🚀 <a href='/beginner.html'>View Beginner Curriculum →</a><br>📖 <a href='/curriculum/beginner/01-the-liquidity-lie.html'>Start Learning Now →</a>",
-      study: "Study tip: Complete one lesson per day. Take the quiz at the end. Make notes on key concepts. Review previous lessons before moving to the next tier.<br><br>📥 <a href='/resources.html'>Download Study Resources →</a>",
-      stuck: "Feeling stuck? Re-read the lesson, try the quiz again, and check the 'Key Takeaways' section. Remember: institutional thinking takes time to develop.<br><br>💬 Need help? Join our community for support!",
-      time: "Each lesson takes 15-25 minutes to read. Plan 30-40 minutes including the quiz. The full curriculum is about 30-40 hours total.<br><br>📖 <a href='/'>See All 42 Lessons →</a>"
-    },
-
-    links: {
-      docs: "📚 <strong>Signal Pilot Documentation</strong><br><br>Browse the full documentation for all indicators and features.<br><br>📚 <a href='https://docs.signalpilot.io/' target='_blank' rel='noopener'>View Documentation →</a>",
-      pricing: "💰 <strong>Signal Pilot Pricing</strong><br><br>View our plans and get started with Signal Pilot indicators.<br><br>💳 <a href='https://signalpilot.io/#pricing' target='_blank' rel='noopener'>View Pricing Plans →</a>",
-      resources: "📥 <strong>Free Resources</strong><br><br>Downloadable checklists, templates, and frameworks to accelerate your learning.<br><br>📥 <a href='/resources.html'>Browse All Resources →</a>",
-      search: "🔍 <strong>Search Lessons</strong><br><br>Find lessons by topic, concept, or keyword across all 42 lessons.<br><br>🔍 <a href='/search.html'>Search Now →</a>"
-    }
-  };
-
-  // Pattern matching for responses
-  const patterns = [
-    // Greetings
-    { regex: /^(hi|hello|hey|greetings)/i, response: 'greeting' },
-
-    // ===== PHASE 1: CONTEXT-AWARE RESPONSES =====
-
-    // Progress queries (enhanced with actual data)
-    { regex: /(my.?progress|how.?am.?i.?doing|show.?progress|progress.?report)/i, response: () => {
-      const progress = getUserProgress();
-      const streak = updateStreak();
-
-      let msg = `📊 <strong>Your Learning Progress</strong><br><br>`;
-      msg += `🎯 Overall: ${progress.completed}/${progress.total} lessons (${progress.percentage}%)<br>`;
-      msg += `📚 Beginner: ${progress.beginner.completed}/${progress.beginner.total}<br>`;
-      msg += `📚 Intermediate: ${progress.intermediate.completed}/${progress.intermediate.total}<br>`;
-      msg += `📚 Advanced: ${progress.advanced.completed}/${progress.advanced.total}<br><br>`;
-
-      if (streak.current > 0) {
-        msg += `🔥 Current streak: ${streak.current} day${streak.current > 1 ? 's' : ''}!<br>`;
-        msg += `🏆 Best streak: ${streak.best} day${streak.best > 1 ? 's' : ''}<br><br>`;
-      }
-
-      const next = getNextLesson(progress);
-      if (next) {
-        const lessonUrl = lessonFiles[next.number];
-        msg += `➡️ <strong>Up next:</strong> <a href='${lessonUrl}'>Lesson #${next.number}</a>`;
-      } else {
-        msg += `🎓 <strong>Congratulations!</strong> You've completed all 42 lessons!`;
-      }
-
-      return msg;
-    }},
-
-    // Streak queries
-    { regex: /(streak|consecutive|daily|habit)/i, response: () => {
-      const streak = updateStreak();
-      let msg = `🔥 <strong>Learning Streak</strong><br><br>`;
-
-      if (streak.current === 0) {
-        msg += `You haven't started a learning streak yet. Complete a lesson today to start your streak!<br><br>`;
-        msg += `💡 <strong>Tip:</strong> Learning consistently (even 20 minutes daily) is more effective than cramming!`;
-      } else if (streak.current === 1) {
-        msg += `Current streak: 1 day 🌱<br>`;
-        msg += `Come back tomorrow to keep it growing!<br><br>`;
-        msg += `Your best streak: ${streak.best} day${streak.best > 1 ? 's' : ''}`;
-      } else if (streak.current >= 7) {
-        msg += `🎉 Amazing! ${streak.current}-day streak!<br>`;
-        msg += `You're building a solid learning habit!<br><br>`;
-        msg += `🏆 Best streak: ${streak.best} day${streak.best > 1 ? 's' : ''}`;
-      } else {
-        msg += `Current streak: ${streak.current} days 🔥<br>`;
-        msg += `Keep going! Consistency is key.<br><br>`;
-        msg += `🏆 Best streak: ${streak.best} day${streak.best > 1 ? 's' : ''}`;
-      }
-
-      return msg;
-    }},
-
-    // Next lesson query
-    { regex: /(next.?lesson|what.?next|where.?should.?i.?go|recommend)/i, response: () => {
-      const progress = getUserProgress();
-      const next = getNextLesson(progress);
-
-      if (!next) {
-        return `🎓 You've completed all 42 lessons! Time to apply your knowledge to live trading. Consider reviewing lessons or exploring our advanced resources.`;
-      }
-
-      const tierName = next.tier.charAt(0).toUpperCase() + next.tier.slice(1);
-      const lessonUrl = lessonFiles[next.number];
-      return `➡️ <strong>Next up: Lesson #${next.number}</strong><br><br>This is in the ${tierName} tier. Ready to continue?<br><br>📖 <a href='${lessonUrl}'>Start Lesson #${next.number} →</a>`;
-    }},
-
-    // Current lesson help (context-aware)
-    { regex: /(this.?lesson|current.?lesson|help.?with.?this)/i, response: () => {
-      const currentLesson = getCurrentLesson();
-      if (!currentLesson) {
-        return `You're not currently on a lesson page. Need help finding a specific lesson? Try asking "What's my next lesson?" or browse the curriculum pages.`;
-      }
-
-      return `📖 <strong>You're on Lesson #${currentLesson.number}: ${currentLesson.title}</strong><br><br>Need help with this lesson? I can:<br>• Explain key concepts<br>• Point you to related lessons<br>• Give quiz hints<br>• Suggest study tips<br><br>What would you like to know?`;
-    }},
-
-    // ===== PHASE 2: QUICK ACTIONS =====
-
-    // Navigate actions
-    { regex: /(take.?me.?to.?next|go.?to.?next|next.?lesson.?please|start.?next)/i, response: () => navigateToNextLesson() },
-
-    // Scroll actions
-    { regex: /(start.?quiz|take.?quiz|quiz.?time|show.?quiz)/i, response: () => scrollToQuiz() },
-    { regex: /(key.?takeaways|show.?takeaways|takeaways|summary)/i, response: () => scrollToTakeaways() },
-
-    // Panel actions
-    { regex: /(open.?notes|show.?notes|notes.?panel)/i, response: () => openNotes() },
-
-    // ===== PHASE 3: STUDY TIMER =====
-
-    // Timer actions
-    { regex: /(start.?(study.?)?timer|start.?pomodoro|set.?timer)/i, response: (match) => {
-      // Check for custom duration
-      const customMatch = match.input.match(/(\d+).?min/i);
-      const minutes = customMatch ? parseInt(customMatch[1]) : 25;
-      return startStudyTimer(Math.min(minutes, 60)); // Max 60 min
-    }},
-
-    { regex: /(stop.?timer|end.?timer|cancel.?timer|timer.?off)/i, response: () => stopStudyTimer() },
-
-    { regex: /(check.?timer|timer.?status|time.?remaining|how.?much.?time)/i, response: () => {
-      const remaining = getRemainingTime();
-      if (!remaining) {
-        return `⏱️ No timer running. Start one with "start study timer"!<br><br>💡 Pomodoro technique: 25min focus, 5min break, repeat 4x, then 15-30min break!`;
-      }
-      return `⏱️ <strong>${remaining} remaining</strong> in your study session. Stay focused! 💪`;
-    }},
-
-    // ===== PHASE 3: SMART SEARCH =====
-
-    // Search query pattern
-    { regex: /search.?(for)?[\s:]+([\w\s]+)/i, response: (match) => {
-      const query = match[2] || match[1];
-      return searchLessons(query);
-    }},
-
-    // Bookmark actions
-    { regex: /(show.?bookmarks|my.?bookmarks|saved.?responses)/i, response: () => {
-      const bookmarks = getBookmarks();
-      if (bookmarks.length === 0) {
-        return `📚 You don't have any bookmarks yet!<br><br>When you get a helpful response, type "bookmark this" to save it for later.`;
-      }
-
-      let msg = `📚 <strong>Your Bookmarks</strong> (${bookmarks.length})<br><br>`;
-      bookmarks.slice(-5).reverse().forEach((bm, i) => {
-        msg += `<strong>${bm.date}</strong>: ${bm.question}<br>`;
-      });
-      msg += `<br>💡 Type "bookmark this" after any helpful response to save it!`;
-      return msg;
-    }},
-
-    { regex: /(bookmark.?this|save.?this|remember.?this)/i, response: () => {
-      return `To bookmark a response, I'll need to save the last helpful answer. Try asking a question first, then say "bookmark this"!<br><br>📌 <em>(Bookmark feature will save your last conversation)</em>`;
-    }},
-
-    // Quiz help system
-    { regex: /(quiz.?hint|give.?hint|help.?quiz|stuck.?quiz)/i, response: () => {
-      const currentLesson = getCurrentLesson();
-      if (!currentLesson) {
-        return `I can help with quiz questions, but you need to be on a lesson page first!<br><br>💡 <strong>Tip:</strong> Read the lesson carefully before taking the quiz. The answers are all in the content!`;
-      }
-
-      return `💡 <strong>Quiz Help</strong><br><br>Here's how to approach quizzes:<br><br>1️⃣ <strong>Read carefully:</strong> Questions test concepts from the lesson<br>2️⃣ <strong>Eliminate wrong answers:</strong> Often 2 answers are obviously wrong<br>3️⃣ <strong>Re-read the section:</strong> If stuck, go back to the relevant part<br>4️⃣ <strong>Think practically:</strong> How would this apply to real trading?<br><br>Stuck on a specific concept? Ask me to explain it!`;
-    }},
-
-    // Motivational responses
-    { regex: /(struggling|frustrated|giving.?up|too.?hard|can't.?do)/i, response: () => {
-      const progress = getUserProgress();
-      const streak = updateStreak();
-
-      let msg = `💪 <strong>You've got this!</strong><br><br>`;
-
-      if (progress.completed > 0) {
-        msg += `You've already completed ${progress.completed} lesson${progress.completed > 1 ? 's' : ''}! That's real progress. 📈<br><br>`;
-      }
-
-      if (streak.current > 1) {
-        msg += `You're on a ${streak.current}-day streak! That kind of consistency will pay off. 🔥<br><br>`;
-      }
-
-      msg += `Remember:<br>`;
-      msg += `• Institutional thinking takes time to develop<br>`;
-      msg += `• Confusion means you're learning something new<br>`;
-      msg += `• Every expert was once a beginner<br><br>`;
-      msg += `Take a break if needed, then come back fresh. You're building skills that 95% of traders don't have! 🚀`;
-
-      return msg;
-    }},
-
-    { regex: /(encourage|motivation|keep.?going)/i, response: () => {
-      const progress = getUserProgress();
-
-      const encouragements = [
-        `💎 You're learning what institutions don't want retail traders to know!`,
-        `🎯 Every lesson completed is a step closer to trading like a professional.`,
-        `🔥 Consistency beats intensity. Keep showing up!`,
-        `📊 The concepts you're learning now will compound over time.`,
-        `🚀 You're on a journey that most traders never take. That's powerful!`
-      ];
-
-      let msg = encouragements[Math.floor(Math.random() * encouragements.length)];
-
-      if (progress.percentage >= 50) {
-        msg += `<br><br>You're over halfway there (${progress.percentage}%)! The finish line is in sight! 🏁`;
-      } else if (progress.completed > 0) {
-        msg += `<br><br>You've completed ${progress.completed} lessons. Each one makes you sharper! 📈`;
-      }
-
-      return msg;
-    }},
-
-    // Indicator questions (ALL 7 INDICATORS - check BEFORE general docs)
-    { regex: /janus/i, response: () => knowledgeBase.indicators.janus },
-    { regex: /plutus/i, response: () => knowledgeBase.indicators.plutus },
-    { regex: /minimal/i, response: () => knowledgeBase.indicators.minimal },
-    { regex: /pentarch/i, response: () => knowledgeBase.indicators.pentarch },
-    { regex: /omnideck/i, response: () => knowledgeBase.indicators.omnideck },
-    { regex: /(augury|grid)/i, response: () => knowledgeBase.indicators.augury },
-    { regex: /(harmonic|oscillator)/i, response: () => knowledgeBase.indicators.harmonic },
-
-    // General links and documentation
-    { regex: /(docs|documentation|manual|guide|link|url|website)/i, response: () => knowledgeBase.links.docs },
-    { regex: /(pricing|price|cost|subscription|plan|buy|purchase)/i, response: () => knowledgeBase.links.pricing },
-    { regex: /(resource|download|template|checklist|framework)/i, response: () => knowledgeBase.links.resources },
-    { regex: /(search|find|lookup)/i, response: () => knowledgeBase.links.search },
-
-    // Curriculum questions
-    { regex: /(beginner|start|first|new)/i, response: () => knowledgeBase.curriculum.beginner },
-    { regex: /intermediate/i, response: () => knowledgeBase.curriculum.intermediate },
-    { regex: /advanced/i, response: () => knowledgeBase.curriculum.advanced },
-
-    // Concept questions
-    { regex: /(order.?flow|buying.?pressure|selling.?pressure)/i, response: () => knowledgeBase.concepts.orderflow },
-    { regex: /(liquidity|stop.?hunt|sweep)/i, response: () => knowledgeBase.concepts.liquidity },
-    { regex: /(repaint|repainting)/i, response: () => knowledgeBase.concepts.repainting },
-    { regex: /(regime|condition|trend|range)/i, response: () => knowledgeBase.concepts.regime },
-    { regex: /dark.?pool/i, response: () => knowledgeBase.concepts.darkpool },
-    { regex: /footprint/i, response: () => knowledgeBase.concepts.footprint },
-
-    // Help questions
-    { regex: /(where.?(start|begin)|how.?start)/i, response: () => knowledgeBase.help.start },
-    { regex: /(how.?study|study.?tip|best.?way)/i, response: () => knowledgeBase.help.study },
-    { regex: /(stuck|difficult|hard|confused)/i, response: () => knowledgeBase.help.stuck },
-    { regex: /(how.?long|time|duration)/i, response: () => knowledgeBase.help.time },
-
-    // Lesson navigation
-    { regex: /lesson.?(\d+)/i, response: (match) => {
-      const num = parseInt(match[1]);
-      if (num >= 1 && num <= 12) return `Lesson #${num} is in the Beginner tier. Check the curriculum page to access it!`;
-      if (num >= 13 && num <= 27) return `Lesson #${num} is in the Intermediate tier. Make sure you've completed the Beginner tier first!`;
-      if (num >= 28 && num <= 42) return `Lesson #${num} is in the Advanced tier. Complete Beginner and Intermediate tiers before attempting!`;
-      return "We have 42 lessons total. Which tier are you interested in: Beginner, Intermediate, or Advanced?";
-    }},
-
-    // Quiz questions
-    { regex: /(quiz|test|assessment)/i, response: () => "Each lesson has a quiz at the end to test your understanding. You need to pass to mark the lesson as complete. Pro tip: Take notes while reading!" }
-  ];
-
-  // Dynamic suggestions based on context (PHASE 2: Enhanced with actions)
-  function getDynamicSuggestions() {
-    const currentLesson = getCurrentLesson();
-    const progress = getUserProgress();
-
-    if (currentLesson) {
-      // On a lesson page - show lesson-specific ACTION suggestions
-      return [
-        "Start quiz",
-        "Show takeaways",
-        "Open notes",
-        "Quiz hint",
-        "Take me to next",
-        "What's my progress?"
-      ];
-    } else if (progress.completed === 0) {
-      // New user - show getting started suggestions
-      return [
-        "Where should I start?",
-        "What is Pentarch?",
-        "What's order flow?",
-        "Show me the docs",
-        "How much does it cost?",
-        "Free resources"
-      ];
-    } else if (progress.completed > 0 && progress.percentage < 100) {
-      // Returning user - show progress-focused suggestions with actions
-      return [
-        "Take me to next",
-        "What's my progress?",
-        "My learning streak",
-        "Show bookmarks",
-        "Keep going",
-        "Free resources"
-      ];
-    } else {
-      // Completed all lessons!
-      return [
-        "What's my progress?",
-        "My learning streak",
-        "Show bookmarks",
-        "What is Pentarch?",
-        "Show me the docs",
-        "Free resources"
-      ];
-    }
-  }
-
-  // Create chatbot UI
-  function createChatbot() {
-    // Chatbot button
-    const button = document.createElement('button');
-    button.className = 'chatbot-button';
-    button.setAttribute('aria-label', 'Open AI assistant');
-    button.innerHTML = '🤖';
-
-    // Chatbot container
-    const container = document.createElement('div');
-    container.className = 'chatbot-container';
-    container.innerHTML = `
-      <div class="chatbot-header">
-        <h3>🤖 Learning Assistant</h3>
-        <button class="chatbot-close" aria-label="Close">&times;</button>
-      </div>
-      <div class="chatbot-messages" id="chatbot-messages"></div>
-      <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
-      <div class="chatbot-input-area">
-        <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Ask me anything about the lessons..." />
-        <button class="chatbot-send" id="chatbot-send">Send</button>
-      </div>
-    `;
-
-    document.body.appendChild(button);
-    document.body.appendChild(container);
-
-    return { button, container };
-  }
-
-  // Add message to chat
-  function addMessage(text, isUser = false) {
-    const messagesContainer = document.getElementById('chatbot-messages');
-    if (!messagesContainer) return;
-
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
-
-    messageDiv.innerHTML = `
-      <div class="chatbot-avatar">${isUser ? '👤' : '🤖'}</div>
-      <div class="chatbot-bubble">${text}</div>
-    `;
-
-    messagesContainer.appendChild(messageDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
-
-  // Show typing indicator
-  function showTyping() {
-    const messagesContainer = document.getElementById('chatbot-messages');
-    if (!messagesContainer) return null;
-
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'chatbot-message bot typing-indicator';
-    typingDiv.innerHTML = `
-      <div class="chatbot-avatar">🤖</div>
-      <div class="chatbot-typing">
-        <span></span><span></span><span></span>
-      </div>
-    `;
-    messagesContainer.appendChild(typingDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    return typingDiv;
-  }
-
-  // Remove typing indicator
-  function hideTyping() {
-    const typing = document.querySelector('.typing-indicator');
-    if (typing) typing.remove();
-  }
-
-  // Get bot response
-  function getBotResponse(userMessage) {
-    // Check patterns
-    for (const pattern of patterns) {
-      const match = userMessage.match(pattern.regex);
-      if (match) {
-        if (typeof pattern.response === 'function') {
-          return pattern.response(match);
-        } else if (pattern.response === 'greeting') {
-          return knowledgeBase.greeting[Math.floor(Math.random() * knowledgeBase.greeting.length)];
-        }
-        return pattern.response;
-      }
+        // Auto-resize textarea
+        this.elements.input.addEventListener('input', (e) => {
+            e.target.style.height = 'auto';
+            e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px';
+        });
+
+        // Quick action buttons
+        document.querySelectorAll('.sp-chatbot-quick-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const query = e.currentTarget.dataset.query;
+                this.elements.input.value = query;
+                this.sendMessage();
+            });
+        });
+
+        // Clear conversation
+        this.elements.clearBtn.addEventListener('click', () => this.clearConversation());
     }
 
-    // Default response
-    return "I'm not sure about that specific question. Try asking about:<br><br>• The curriculum (Beginner, Intermediate, Advanced)<br>• Indicators (Janus, Plutus, Minimal, Pentarch, Omnideck, Augury, Harmonic)<br>• Concepts (order flow, liquidity, dark pools, regime)<br>• How to get started<br><br>Or pick a suggestion below!";
-  }
+    toggleChat() {
+        this.isOpen = !this.isOpen;
 
-  // Create suggestion chips (context-aware)
-  function createSuggestions() {
-    const container = document.getElementById('chatbot-suggestions');
-    if (!container) return;
-
-    container.innerHTML = '';
-
-    const suggestions = getDynamicSuggestions();
-    suggestions.forEach(text => {
-      const chip = document.createElement('button');
-      chip.className = 'chatbot-suggestion';
-      chip.textContent = text;
-      chip.addEventListener('click', () => {
-        handleUserMessage(text);
-      });
-      container.appendChild(chip);
-    });
-  }
-
-  // Handle user message
-  function handleUserMessage(message) {
-    if (!message.trim()) return;
-
-    // Clear input
-    const input = document.getElementById('chatbot-input');
-    if (input) input.value = '';
-
-    // Hide suggestions
-    const suggestionsContainer = document.getElementById('chatbot-suggestions');
-    if (suggestionsContainer) {
-      suggestionsContainer.style.display = 'none';
-    }
-
-    // Add user message
-    addMessage(message, true);
-
-    // Show typing
-    const typing = showTyping();
-
-    // Simulate AI thinking delay
-    setTimeout(() => {
-      hideTyping();
-      const response = getBotResponse(message);
-      addMessage(response);
-
-      // Save conversation to localStorage
-      saveConversation(message, response);
-    }, 800 + Math.random() * 400);
-  }
-
-  // Save conversation history
-  function saveConversation(userMsg, botMsg) {
-    const history = JSON.parse(localStorage.getItem('sp_chatbot_history') || '[]');
-    history.push({
-      timestamp: Date.now(),
-      user: userMsg,
-      bot: botMsg
-    });
-    // Keep last 20 messages
-    if (history.length > 20) history.shift();
-    localStorage.setItem('sp_chatbot_history', JSON.stringify(history));
-  }
-
-  // Load conversation history
-  function loadConversation() {
-    const history = JSON.parse(localStorage.getItem('sp_chatbot_history') || '[]');
-    history.forEach(msg => {
-      addMessage(msg.user, true);
-      addMessage(msg.bot, false);
-    });
-  }
-
-  // Get context-aware greeting
-  function getContextGreeting() {
-    const currentLesson = getCurrentLesson();
-    const progress = getUserProgress();
-    const streak = updateStreak();
-
-    let greeting = knowledgeBase.greeting[Math.floor(Math.random() * knowledgeBase.greeting.length)];
-
-    // Add context
-    if (currentLesson) {
-      greeting += `<br><br>📖 I see you're on <strong>Lesson #${currentLesson.number}: ${currentLesson.title}</strong>. Need help with this lesson?`;
-    } else if (progress.completed > 0) {
-      greeting += `<br><br>📊 You've completed ${progress.completed}/${progress.total} lessons (${progress.percentage}%)!`;
-
-      if (streak.current > 0) {
-        greeting += ` 🔥 ${streak.current}-day streak!`;
-      }
-
-      const next = getNextLesson(progress);
-      if (next) {
-        greeting += `<br>➡️ Ready for Lesson #${next.number}?`;
-      }
-    }
-
-    return greeting;
-  }
-
-  // Initialize chatbot
-  function init() {
-    const { button, container } = createChatbot();
-    if (!button || !container) {
-      console.error('[Chatbot] Failed to create chatbot elements');
-      return;
-    }
-
-    const closeBtn = container.querySelector('.chatbot-close');
-    const input = document.getElementById('chatbot-input');
-    const sendBtn = document.getElementById('chatbot-send');
-
-    if (!closeBtn || !input || !sendBtn) {
-      console.error('[Chatbot] Missing required chatbot elements');
-      return;
-    }
-
-    // ===== PHASE 1: KEYBOARD SHORTCUTS =====
-
-    // Global keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-      // Ctrl+K or Cmd+K to open chatbot
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        if (!container.classList.contains('active')) {
-          button.click();
+        if (this.isOpen) {
+            this.elements.container.classList.remove('sp-chatbot-closed');
+            this.elements.container.classList.add('sp-chatbot-open');
+            this.elements.input.focus();
         } else {
-          input.focus();
+            this.elements.container.classList.remove('sp-chatbot-open');
+            this.elements.container.classList.add('sp-chatbot-closed');
         }
-      }
+    }
 
-      // Escape to close chatbot
-      if (e.key === 'Escape' && container.classList.contains('active')) {
-        container.classList.remove('active');
-        button.setAttribute('aria-expanded', 'false');
-      }
-    });
+    async sendMessage() {
+        const userMessage = this.elements.input.value.trim();
 
-    // Toggle chatbot
-    button.addEventListener('click', () => {
-      const isActive = container.classList.toggle('active');
-      button.setAttribute('aria-expanded', isActive);
+        if (!userMessage) return;
 
-      if (isActive) {
-        // Track chatbot opened
-        if (typeof trackChatbotOpened === 'function') {
-          trackChatbotOpened();
+        // Clear input
+        this.elements.input.value = '';
+        this.elements.input.style.height = 'auto';
+
+        // Hide quick actions after first message
+        if (this.elements.quickActions) {
+            this.elements.quickActions.style.display = 'none';
         }
 
-        // First time opening - show context-aware welcome
-        const messages = document.getElementById('chatbot-messages');
-        if (messages.children.length === 0) {
-          addMessage(getContextGreeting());
-          createSuggestions();
+        // Add user message to chat
+        this.addMessage(userMessage, 'user');
+
+        // Add to history
+        this.messageHistory.push({ role: 'user', content: userMessage });
+
+        // Show typing indicator
+        const typingId = this.showTypingIndicator();
+
+        // Simulate typing delay (800ms)
+        setTimeout(() => {
+            this.removeTypingIndicator(typingId);
+
+            // Get bot response
+            const response = this.getBotResponse(userMessage);
+
+            // Add bot response
+            this.addMessage(response, 'bot');
+
+            // Add to history
+            this.messageHistory.push({ role: 'assistant', content: response });
+
+            // Save to localStorage
+            this.saveConversationHistory();
+        }, 800);
+    }
+
+    getBotResponse(userMessage) {
+        const msg = userMessage.toLowerCase().trim();
+
+        // Find matching pattern
+        for (const pattern of this.patterns) {
+            if (pattern.regex.test(msg)) {
+                return this.knowledgeBase[pattern.key];
+            }
         }
-        input.focus();
-      }
+
+        return this.knowledgeBase.default;
+    }
+
+    addMessage(content, sender) {
+        const messageHTML = `
+            <div class="sp-chatbot-message sp-chatbot-${sender}-message">
+                ${sender === 'bot' ? `
+                    <div class="sp-chatbot-message-avatar">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                        </svg>
+                    </div>
+                ` : ''}
+                <div class="sp-chatbot-message-content">
+                    ${this.formatMessage(content)}
+                </div>
+            </div>
+        `;
+
+        this.elements.messages.insertAdjacentHTML('beforeend', messageHTML);
+        this.scrollToBottom();
+    }
+
+    formatMessage(content) {
+        // Convert markdown-like formatting to HTML
+        let formatted = content
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/`(.*?)`/g, '<code>$1</code>')
+            .replace(/\n/g, '<br>');
+
+        // Convert [text](url) to links
+        formatted = formatted.replace(
+            /\[([^\]]+)\]\(([^)]+)\)/g,
+            '<a href="$2" target="_blank" rel="noopener">$1</a>'
+        );
+
+        // Convert bare URLs to links
+        formatted = formatted.replace(
+            /(https?:\/\/[^\s<]+)/g,
+            '<a href="$1" target="_blank" rel="noopener">$1</a>'
+        );
+
+        return `<p>${formatted}</p>`;
+    }
+
+    showTypingIndicator() {
+        const id = 'typing-' + Date.now();
+        const typingHTML = `
+            <div id="${id}" class="sp-chatbot-message sp-chatbot-bot-message sp-chatbot-typing">
+                <div class="sp-chatbot-message-avatar">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                    </svg>
+                </div>
+                <div class="sp-chatbot-message-content">
+                    <div class="sp-chatbot-typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        `;
+        this.elements.messages.insertAdjacentHTML('beforeend', typingHTML);
+        this.scrollToBottom();
+        return id;
+    }
+
+    removeTypingIndicator(id) {
+        const indicator = document.getElementById(id);
+        if (indicator) {
+            indicator.remove();
+        }
+    }
+
+    scrollToBottom() {
+        this.elements.messages.scrollTop = this.elements.messages.scrollHeight;
+    }
+
+    clearConversation() {
+        if (confirm('Clear conversation history?')) {
+            this.messageHistory = [];
+            this.elements.messages.innerHTML = '';
+            this.elements.quickActions.style.display = 'flex';
+            localStorage.removeItem('sp-chatbot-history');
+
+            // Re-add welcome message
+            this.addMessage(
+                `<strong>Hi! 👋</strong> I'm your SignalPilot Learning Assistant.<br><br>I can help you navigate our 82 trading lessons, explain concepts, and guide your learning path!<br><br><em>Try: "What should I learn first?" or "Explain RSI regime interpretation"</em>`,
+                'bot'
+            );
+        }
+    }
+
+    saveConversationHistory() {
+        try {
+            localStorage.setItem('sp-chatbot-history', JSON.stringify(this.messageHistory.slice(-20)));
+        } catch (e) {
+            console.error('Failed to save conversation history:', e);
+        }
+    }
+
+    loadConversationHistory() {
+        try {
+            const saved = localStorage.getItem('sp-chatbot-history');
+            if (saved) {
+                this.messageHistory = JSON.parse(saved);
+            }
+        } catch (e) {
+            console.error('Failed to load conversation history:', e);
+        }
+    }
+}
+
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        window.signalpilotChatbot = new SignalPilotChatbot();
     });
-
-    // Close chatbot
-    closeBtn.addEventListener('click', () => {
-      container.classList.remove('active');
-      button.setAttribute('aria-expanded', 'false');
-    });
-
-    // Send message
-    sendBtn.addEventListener('click', () => {
-      handleUserMessage(input.value);
-    });
-
-    // Enter key to send
-    input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        handleUserMessage(input.value);
-      }
-    });
-
-    // Update streak on page load (track daily activity)
-    updateStreak();
-
-    // Load previous conversation
-    // loadConversation(); // Commented out - start fresh each session
-  }
-
-  // Start when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
+} else {
+    window.signalpilotChatbot = new SignalPilotChatbot();
+}
