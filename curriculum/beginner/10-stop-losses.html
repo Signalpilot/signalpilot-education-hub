@@ -71,20 +71,18 @@
       <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
         <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
         <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">What You'll Learn:</h4>
+          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
           <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-      <li>Volatility changes daily. Your stop placement often too.</li>
-      <li>Exercise: Calculate Structure + ATR Stops for Your Next 10 Trades</li>
-      <li>Percentage stops fail (market doesn't care about your account)</li>
-      <li>ATR-based stops adapt to volatility (auto-scale to market conditions)</li>
+            <li>ATR-based stops: Place stops 1.5-2× ATR (14-period) from entry—accounts for normal volatility + sweep buffer</li>
+            <li>Swing structure stops: Place below swing low + 0.2-0.5% buffer—avoids obvious level where everyone else's stops are</li>
+            <li>Tight stops (0.3-0.5% from entry) get hunted—you're providing liquidity for smart money entries</li>
+            <li>If required stop is too wide for 2% risk, reduce position size (don't tighten stop to fit)</li>
+            <li>Framework: Measure ATR → Calculate 1.5-2× ATR from entry → Add 0.2-0.5% buffer below swing structure → That's your stop</li>
+            <li>Common mistake: Arbitrary tight stops or stops exactly at obvious swing lows—both get swept constantly</li>
+            <li>Validation: Track "stopped then reversed" rate—if >50%, stops too tight or too obvious (widen and add buffer)</li>
+            <li>Case study: Michelle lost $24.6K with tight stops (67 trades stopped then reversed); recovered $16.8K using ATR-based stops (win rate 31% → 58%)</li>
           </ul>
-          <h4 style="margin:1rem 0 0.75rem 0">Action Items:</h4>
-          <ol style="line-height:1.8;margin:0 0 0 1.5rem">
-      <li>Before each trade, identify the structure level where your thesis breaks (swing low for longs, swing high for shorts)</li>
-      <li>Measure current ATR on your timeframe (use 14-period ATR)</li>
-      <li>Calculate stop: Structure level ± (1.5-2× ATR) for buffer</li>
-          </ol>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for case studies, detailed examples, and common mistakes to avoid.</em></p>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
         </div>
       </details>
 

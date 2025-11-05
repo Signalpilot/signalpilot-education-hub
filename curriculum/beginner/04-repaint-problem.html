@@ -78,19 +78,18 @@
       <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
         <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
         <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">What You'll Learn:</h4>
+          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
           <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-      <li>Over the next week (April 9-15), Jake ran systematic tests on "Ultimate Reversal Pro":</li>
-      <li>An indicator that changes its past signals or values after the bar closes. What you saw live either moves, disappears, or transforms in hindsight.</li>
-      <li>Every SignalPilot indicator follows strict deterministic rules:</li>
+            <li>Repainting = indicator signals appear during bar, then disappear after bar closes—makes backtests fantasy</li>
+            <li>80%+ of retail indicators on TradingView repaint—perfect backtests, disaster live trading</li>
+            <li>Non-repainting test: Screenshot signal during bar → check after close → if gone, it repaints</li>
+            <li>All SignalPilot indicators are non-repainting: signals final at bar close, never disappear, backtests = live results</li>
+            <li>Framework: ONLY use non-repainting indicators—repaint = worthless for live trading regardless of backtest</li>
+            <li>Common mistake: Trusting backtests without verifying non-repaint—73% backtest WR becomes 31% live</li>
+            <li>Validation: Walk-forward test on live data for 2-4 weeks before trusting any indicator</li>
+            <li>Case study: Emily lost $9.8K in 6 weeks using repainting indicators; recovered after switching to non-repainting tools</li>
           </ul>
-          <h4 style="margin:1rem 0 0.75rem 0">Action Items:</h4>
-          <ol style="line-height:1.8;margin:0 0 0 1.5rem">
-      <li>Visual Test: Screenshot 3 signals. Wait 10 minutes. Refresh. Did signals move or disappear?</li>
-      <li>Replay Test: Use TradingView replay mode. Play forward. Do signals appear BEFORE or AFTER the move?</li>
-      <li>Alert Test: Set alerts on live signals. 1 hour later, check chart. Are alerts still valid?</li>
-          </ol>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for case studies, detailed examples, and common mistakes to avoid.</em></p>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
         </div>
       </details>
 
