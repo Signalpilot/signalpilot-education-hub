@@ -486,6 +486,12 @@ Example entry: When price reclaims opening price</code></pre>
           </div>
           <div class="tab-panel">
             <h3 id="-open-rejection-reverse-false-direction">⛔ Open-Rejection-Reverse (False Direction)</h3>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p>You now understand the core concepts.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
+      </div>
+
             <p><strong>Market rallies strong at open, gets rejected at resistance, reverses violently.</strong></p>
             <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Example:
 Open: $520.00
@@ -524,15 +530,6 @@ Strategy:
       </div>
 
       <div class="section-break"><span>Part 2: Fair Value Gaps (The Market's Magnets)</span></div>
-
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🔴 CHECKPOINT (5 minutes)</h4>
-        <p>You've completed the first third of this lesson.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
-      </div>
-
-
 <h2 id="price-skipped-51980-to-52020guess-where-its-going-back">Price Skipped $519.80 to $520.20—Guess Where It's Going Back?</h2>
 
       <p>Fair Value Gaps (FVGs) are price zones that got skipped due to imbalance.</p>
@@ -620,8 +617,7 @@ R:R: 2.1R</code></pre>
       </div>
 
       <div class="section-break"><span>Part 3: Value Area & POC</span></div>
-
-      
+<h2 id="price-reverts-to-fair-value-like-a-rubber-band">Price Reverts to Fair Value Like a Rubber Band</h2>
       <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
         <h4>🟡 CHECKPOINT (10 minutes)</h4>
         <p>You're now at the halfway point. You've learned the key strategies.</p>
@@ -629,65 +625,11 @@ R:R: 2.1R</code></pre>
       </div>
 
 
-<h2 id="price-reverts-to-fair-value-like-a-rubber-band">Price Reverts to Fair Value Like a Rubber Band</h2>
-
       <p>The Point of Control (POC) is where MOST volume traded—aka fair value.</p>
 
       <p>Above POC? Price is expensive. Below POC? Price is cheap.</p>
 
       <p>Markets love mean reversion. And the POC is the mean.</p>
-
-      <div class="callout-info">
-        <h4>📖 Case Study: Value Area Reversion</h4>
-        <p><strong>Setup:</strong></p>
-        <ul>
-          <li>VAH (Value Area High): $521.00</li>
-          <li>POC (Point of Control): $520.00</li>
-          <li>VAL (Value Area Low): $519.00</li>
-          <li>Current Price: $518.50 (below VAL = "cheap")</li>
-        </ul>
-        <p style="margin-top:1rem"><strong>Trade Logic:</strong></p>
-        <p>Price is trading below fair value. Institutions see this as a discount. They'll accumulate here, pushing price back to POC.</p>
-        <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;margin-top:1rem;overflow-x:auto"><code>Example entry: Long $518.60
-Example target: $520.00 (POC, fair value)
-Example stop: $518.00 (below VAL, invalidation)
-R:R: ($520 - $518.60) / ($518.60 - $518) = 2.3R</code></pre>
-        <p style="margin-top:1rem"><strong>Result:</strong> Price reverts to $520.00 within 2 hours. POC acts as magnet. Trade wins at 2.3R.</p>
-      </div>
-
-      <table style="width:100%; border-collapse: collapse; margin:2rem 0">
-        <tr style="border-bottom:2px solid rgba(255,255,255,.2)">
-          <th style="padding:.75rem;text-align:left">Price Location</th>
-          <th style="padding:.75rem;text-align:left">Interpretation</th>
-          <th style="padding:.75rem;text-align:left">Strategy</th>
-        </tr>
-        <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
-          <td style="padding:.75rem">Above VAH</td>
-          <td style="padding:.75rem">Expensive (above value)</td>
-          <td style="padding:.75rem">Fade or wait for acceptance</td>
-        </tr>
-        <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
-          <td style="padding:.75rem">Inside Value Area</td>
-          <td style="padding:.75rem">Fair value (balanced)</td>
-          <td style="padding:.75rem">Range trade or wait</td>
-        </tr>
-        <tr>
-          <td style="padding:.75rem">Below VAL</td>
-          <td style="padding:.75rem">Cheap (below value)</td>
-          <td style="padding:.75rem">Buy for reversion to POC</td>
-        </tr>
-      </table>
-
-      <div class="section-break"><span>Part 4: Plutus Flow Integration</span></div>
-
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟢 CHECKPOINT (15 minutes)</h4>
-        <p>Almost done! You've mastered the complete framework.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
-      </div>
-
-
 <h2 id="auction-theory-meets-institutional-flow">Auction Theory Meets Institutional Flow</h2>
 
       <p>Now the real power: layering auction concepts with Plutus Flow volume analysis.</p>
@@ -700,19 +642,6 @@ R:R: ($520 - $518.60) / ($518.60 - $518) = 2.3R</code></pre>
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟡 CHECKPOINT (10 minutes)</h4>
-        <p>You're now at the halfway point. You've learned the key strategies.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
-      </div>
-
-
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🔴 CHECKPOINT (5 minutes)</h4>
-        <p>You now understand the core concepts.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
-      </div>
 
 <h3 id="plutus-flow-poc-volume-absorption">Plutus Flow: POC + Volume Absorption</h3>
             <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Setup:
@@ -734,6 +663,12 @@ R:R: 2.75R</code></pre>
           </div>
           <div class="tab-panel">
             <h3 id="janus-atlas-opening-range-sweep">Janus Atlas: Opening Range Sweep</h3>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p>Almost done! You've mastered the complete framework.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
+      </div>
+
             <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:8px;overflow-x:auto"><code>Setup:
 Opening Range: $519.50 - $520.50 (9:30-10:00 AM)
 

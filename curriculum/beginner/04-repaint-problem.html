@@ -133,21 +133,6 @@
           <li>Walk-forward test on live data for 2-4 weeks before trusting any indicator</li>
         </ul>
       </div>
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🔴 CHECKPOINT (5 minutes)</h4>
-        <p>You've completed the first third of this lesson.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
-      </div>
-
-
-
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟡 CHECKPOINT (10 minutes)</h4>
-        <p>You're now at the halfway point. You've learned the key strategies.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
-      </div>
-
 
 <h2 id="jakes-14700-repainting-nightmare-when-perfect-backtests-destroy-live-accounts">Jake's $14,700 Repainting Nightmare: When "Perfect" Backtests Destroy Live Accounts</h2>
 
@@ -292,14 +277,6 @@
           </tr>
         </tbody>
       </table>
-
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🔴 CHECKPOINT (5 minutes)</h4>
-        <p>You now understand the core concepts.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
-      </div>
-
 <h3 id="the-breaking-point-april-8-2024">The Breaking Point: April 8, 2024</h3>
 
       <p><strong>The moment Jake discovered the truth.</strong></p>
@@ -365,6 +342,12 @@
       </div>
 
       <h3 id="the-comparison-backtest-fantasy-vs-live-reality">The Comparison: Backtest Fantasy vs. Live Reality</h3>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p>You now understand the core concepts.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
+      </div>
+
 
       <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem">
         <caption>Jake's Ultimate Reversal Pro: The Brutal Truth</caption>
@@ -491,6 +474,12 @@
       </table>
 
       <h3 id="jakes-year-end-stats-the-transformation">Jake's Year-End Stats: The Transformation</h3>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p>You're now at the halfway point. You've learned the key strategies.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
+      </div>
+
 
       <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem">
         <caption>Jake Morrison: 2024 Complete Performance (Feb-Aug)</caption>
@@ -559,203 +548,6 @@
           </tr>
         </tbody>
       </table>
-
-      <div class="callout-info">
-        <h4>📝 Jake's August 31, 2024 Journal Entry</h4>
-        <p><em>"I lost $14,700 in 10 weeks trading an indicator with a 71% backtest win rate. My live win rate? 34%. I thought I was doing something wrong. Turns out, the indicator was lying to me.</em></p>
-        <p><em>Repainting is the silent account killer. You think you found the holy grail because the backtest looks perfect. But those signals never existed in real-time. You're trading a fantasy, and your losses are very real.</em></p>
-        <p><em>Switching to deterministic indicators changed everything. My win rate is 59%—not the 71% the repainting indicator promised, but it's REAL. My backtest results now match my live results. I can trust the signals.</em></p>
-        <p><em>The lesson? Test EVERY indicator for repainting. Visual test. Alert test. Replay test. Code audit. Don't trust backtest results until you verify the signals are deterministic.</em></p>
-        <p><em>I lost $14,700 learning this lesson. You don't have to."</em></p>
-        <p style="margin-top:1rem"><strong>— Jake Morrison, August 31, 2024</strong></p>
-      </div>
-
-      <p><b>You backtest a strategy. 3.2R expectancy. 2.8 profit factor. It's perfect.</b></p>
-
-      <p>You trade it live. -0.8R expectancy. 0.6 profit factor. Account blown in 6 weeks.</p>
-
-      <p>What happened? <strong>Your indicator was repainting.</strong></p>
-
-      <div class="callout-warning">
-        <h4>🚨 The Brutal Truth</h4>
-        <p>60-90% of indicators on TradingView <em>repaint</em>. That means they show signals in history that <strong>never existed</strong> when the bar was forming.</p>
-        <p>Your backtest was a fantasy. Your live results? Those are real.</p>
-      </div>
-
-      <div class="callout-tip">
-        <h4>🎯 What You'll Gain</h4>
-        <p>After this lesson, you'll be able to:</p>
-        <ul>
-          <li>Understand exactly what repainting is (and why it destroys strategies)</li>
-          <li>Use 4 proven methods to detect repainting in ANY indicator</li>
-          <li>Audit Pine Script code for repaint vulnerabilities</li>
-          <li>Understand why Signal Pilot's deterministic protocol matters</li>
-          <li>Never waste months on a fake strategy again</li>
-        </ul>
-      </div>
-
-      <div class="section-break"><span>Part 1: What IS Repainting?</span></div>
-
-      <h2 id="the-time-traveling-indicator">The Time-Traveling Indicator</h2>
-
-      <p>Imagine this: You're watching a chart live. At 2:15 PM, your indicator shows a potential BUY signal at $45,000. Perfect!</p>
-
-      <p>You a long position might be considered at $45,010.</p>
-
-      <p>At 2:20 PM, the candle closes. You refresh the chart to review your potential entry.</p>
-
-      <p>The potential BUY signal? <em>It's now at $44,850.</em></p>
-
-      <p>Or worse—it <strong>disappeared completely</strong>.</p>
-
-      <div class="callout-key">
-        <h4>💡 Definition: Repainting</h4>
-        <p>An indicator that <strong>changes its past signals or values</strong> after the bar closes. What you saw live either moves, disappears, or transforms in hindsight.</p>
-        <p>It's like time travel—except only the indicator gets to go back. You're stuck with your potential entry.</p>
-      </div>
-
-      <div class="callout-info">
-        <h4>📖 War Story: The $12k Lesson</h4>
-        <p><strong>Trader discovers "holy grail" indicator:</strong> 4.2R expectancy, 3.5 profit factor. Backtested on 2 years of BTC data. Perfection.</p>
-        <p><strong>Live trading begins:</strong> First 3 trades hit stops. "Bad luck," he thinks. Next 5 trades? 1 winner, 4 losers.</p>
-        <p><strong>2 months later:</strong> Down $12,000. Negative expectancy. He reviews his entries in history.</p>
-        <p><strong>The horror:</strong> Every signal he entered? Moved 20-50 points after the bar closed. He was trading signals that never existed.</p>
-        <p style="margin-top:1rem"><strong>The indicator was repainting.</strong> His backtest? A hallucination. His losses? Very real.</p>
-      </div>
-
-      <p>Here's what makes this devastating: <strong>Repainting indicators look perfect in backtest</strong> because they cheat. They use future information to paint ideal signals in the past.</p>
-
-      <p>It's like taking a test where you see the answers afterward, then going back and filling them in. Yeah, you'll score 100%. But you learned nothing.</p>
-
-      <div class="section-break"><span>Part 2: Why Repainting Happens</span></div>
-
-      <h2 id="the-three-ways-indicators-lie">The Three Ways Indicators Lie</h2>
-
-      <p>Repainting isn't always intentional (though some scammers do it on purpose). Often, it's coding mistakes. Here are the three main causes:</p>
-
-      <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">1. Future Data Leakage</div>
-          <div class="accordion-content">
-            <p><strong>What it is:</strong> The indicator pulls data from future bars into the current calculation.</p>
-            <p><strong>How it happens in code:</strong> Using <code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code>.</p>
-            <p><strong>Example:</strong></p>
-            <pre style="background:rgba(255,255,255,.05);padding:1rem;border-radius:8px;overflow-x:auto"><code>// REPAINTING CODE (bad):
-htf_close = request.security(syminfo.tickerid, "D", close)
-
-// This pulls the CURRENT daily close, which hasn't finished yet.
-// In backtest, it sees the COMPLETED daily close. Cheating.</code></pre>
-            <p><strong>Why it's evil:</strong> In backtest, it sees finished daily bars. Live? It sees incomplete bars that change every minute.</p>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <div class="accordion-header">2. Non-Deterministic Calculations</div>
-          <div class="accordion-content">
-            <p><strong>What it is:</strong> The indicator recalculates past values when new data arrives, changing history.</p>
-            <p><strong>How it happens:</strong> Using <code>var</code> variables incorrectly, or loops that reprocess historical bars.</p>
-            <p><strong>Why it's bad:</strong> Your signal at bar 50 changes when bar 100 closes. You can't trust anything.</p>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <div class="accordion-header">3. HTF (Higher Timeframe) Repainting</div>
-          <div class="accordion-content">
-            <p><strong>What it is:</strong> Using data from a higher timeframe bar that <em>hasn't closed yet</em>.</p>
-            <p><strong>Example:</strong> You're on 15-minute chart. Indicator uses daily data. But the daily bar doesn't close until 5 PM. At 2 PM, that daily bar's values are still changing.</p>
-            <p><strong>The trap:</strong> In backtest, all daily bars are finished. Live? The current daily bar is incomplete.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="callout-warning">
-        <h4>🚨 Real Talk</h4>
-        <p>Most traders never check for repainting. They backtest, see great results, and jump in. Months later, they're confused why they're losing.</p>
-        <p>Don't be that trader. <strong>Test everything.</strong></p>
-      </div>
-
-      <div class="section-break"><span>Part 3: The 4 Detection Methods</span></div>
-
-      <h2 id="how-to-catch-a-repainting-indicator">How to Catch a Repainting Indicator</h2>
-
-      <p>You don't need to be a coder to detect repainting. Here are 4 methods—use at least 2 for every indicator you trade.</p>
-
-      <div class="tabs">
-        <div class="tabs-nav">
-          <button>Visual Test</button>
-          <button>Replay Test</button>
-          <button>Alert Test</button>
-          <button>Code Audit</button>
-        </div>
-        <div class="tabs-content">
-          <div class="tab-panel">
-            <h3 id="method-1-visual-test-easiest">Method 1: Visual Test (Easiest)</h3>
-            <p><strong>Steps:</strong></p>
-            <ol>
-              <li>Open a live chart with your indicator</li>
-              <li>Screenshot or note where signals appear (specific price + time)</li>
-              <li>Wait for the bar to close</li>
-              <li>Refresh your browser</li>
-              <li>Check if signals moved or disappeared</li>
-            </ol>
-            <p style="margin-top:1rem"><strong>Verdict:</strong> If signals changed = <span style="color:#ff6b6b;font-weight:700">REPAINTING</span></p>
-            <p><strong>Repeat 3-5 times to be sure.</strong></p>
-          </div>
-          <div class="tab-panel">
-            <h3 id="method-2-replay-test-most-accurate">Method 2: Replay Test (Most Accurate)</h3>
-            <p><strong>Steps:</strong></p>
-            <ol>
-              <li>Use TradingView's Bar Replay feature</li>
-              <li>Go back 100+ bars</li>
-              <li>Play forward bar-by-bar</li>
-              <li>Mark where signals appear AS THEY APPEAR</li>
-              <li>Finish replay, compare to historical signals</li>
-            </ol>
-            <p style="margin-top:1rem"><strong>Verdict:</strong> If live signals ≠ historical signals = <span style="color:#ff6b6b;font-weight:700">REPAINTING</span></p>
-          </div>
-          <div class="tab-panel">
-            <h3 id="method-3-alert-test-real-world">Method 3: Alert Test (Real-World)</h3>
-            <p><strong>Steps:</strong></p>
-            <ol>
-              <li>Set an alert on your indicator's signal</li>
-              <li>Track 20+ alerts over 1-2 weeks</li>
-              <li>Record: Alert time + price</li>
-              <li>Compare alert entries to historical signal locations</li>
-            </ol>
-            <p style="margin-top:1rem"><strong>Verdict:</strong> If alert prices ≠ signal prices in history = <span style="color:#ff6b6b;font-weight:700">REPAINTING</span></p>
-          </div>
-          <div class="tab-panel">
-            <h3 id="method-4-code-audit-for-coders">Method 4: Code Audit (For Coders)</h3>
-            <p><strong>Red flags in Pine Script:</strong></p>
-            <ul>
-              <li><code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code></li>
-              <li><code>security()</code> without <code>[1]</code> offset for HTF data</li>
-              <li>No <code>barstate.isconfirmed</code> check for signals</li>
-              <li><code>var</code> variables changing past values</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Safe code example:</strong></p>
-            <pre style="background:rgba(255,255,255,.05);padding:1rem;border-radius:8px;overflow-x:auto"><code>// NON-REPAINTING (good):
-htf_close = request.security(syminfo.tickerid, "D", close[1],
-             lookahead = barmerge.lookahead_off)</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <div class="callout-tip">
-        <h4>🎓 Pro Tip</h4>
-        <p>Use <strong>at least 2 methods</strong> to audit any indicator. Visual + Alert test is the easiest combo for non-coders.</p>
-      </div>
-
-      <div class="section-break"><span>Part 4: Signal Pilot's Deterministic Protocol</span></div>
-
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟢 CHECKPOINT (15 minutes)</h4>
-        <p>Almost done! You've mastered the complete framework.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
-      </div>
-
-
 <h2 id="what-deterministic-means-and-why-it-matters">What "Deterministic" Means (And Why It Matters)</h2>
 
       <p>Here's the thing: Most indicators are built by hobbyists who don't know about repainting. Or worse, by scammers who <em>do</em> know and don't care.</p>
@@ -776,13 +568,6 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
         <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
-          
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟡 CHECKPOINT (10 minutes)</h4>
-        <p>You're now at the halfway point. You've learned the key strategies.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
-      </div>
-
 <h3 style="margin:0 0 1rem 0" id="-repainting-indicator">❌ Repainting Indicator</h3>
           <p><strong>Backtest:</strong> 3.2R expectancy, 2.8 profit factor</p>
           <p><strong>Live trading:</strong> -0.8R expectancy, 0.6 profit factor</p>
@@ -805,6 +590,12 @@ htf_close = request.security(syminfo.tickerid, "D", close[1],
       <div class="section-break"><span>Part 5: Complete Audit Framework</span></div>
 
       <h2 id="never-trust-always-verify">Never Trust, Always Verify</h2>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p>Almost done! You've mastered the complete framework.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
+      </div>
+
 
       <p>Here's your step-by-step framework for auditing ANY indicator before risking real money:</p>
 
