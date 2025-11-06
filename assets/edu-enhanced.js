@@ -105,6 +105,9 @@
     },
 
     checkAchievements() {
+      // Achievement popups disabled - causing incorrect lesson attribution
+      return;
+
       const completed = this.getCompletedArticles();
       const achievements = [
         { count: 1, name: 'First Steps', icon: '🎯' },
