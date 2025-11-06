@@ -482,6 +482,11 @@ html[data-theme="light"] .hero::before{
 @media (max-width:480px){
   body{font-size:15px;line-height:1.65}
 
+  /* Prevent any horizontal overflow */
+  *{max-width:100%}
+  html,body{overflow-x:hidden;width:100%}
+  .wrap{max-width:100%;box-sizing:border-box}
+
   /* Hero mobile optimization */
   .hero{
     padding:1.5rem 0 1rem;
@@ -489,7 +494,7 @@ html[data-theme="light"] .hero::before{
 
   .hero::before{
     filter:blur(30px);
-    inset:-40%;
+    inset:-20%;
   }
 
   .hero .headline.xl{
@@ -518,7 +523,9 @@ html[data-theme="light"] .hero::before{
   .module-card{padding:1.25rem;margin:1.25rem 0}
   .module-card .module-title h3{font-size:1.15rem}
   .continue-reading{padding:1.5rem}
+  .continue-reading::before{font-size:3rem;right:10px;top:-5px}
   .key-takeaway{padding:1.25rem}
+  .key-takeaway::before{font-size:1.5rem;left:10px}
   .article-progress{flex-direction:column;text-align:center}
   .progress-circle{margin:0 auto .5rem auto}
   .search-input{font-size:16px}
