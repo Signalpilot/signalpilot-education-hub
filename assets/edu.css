@@ -494,8 +494,8 @@ html[data-theme="light"] .hero::before{
   html,body{overflow-x:hidden !important;width:100%;position:relative}
   .wrap{max-width:100%;padding:0 1rem}
 
-  /* Mobile table accordion-style - show key info, tap to expand */
-  table{
+  /* Mobile table accordion-style - ONLY for lessons 1-2 (testing) */
+  .table-accordions-mobile table{
     display:block;
     width:100%;
     max-width:100%;
@@ -504,18 +504,18 @@ html[data-theme="light"] .hero::before{
   }
 
   /* Hide table header on mobile */
-  table thead{
+  .table-accordions-mobile table thead{
     display:none;
   }
 
   /* Table body becomes container */
-  table tbody{
+  .table-accordions-mobile table tbody{
     display:block;
     width:100%;
   }
 
   /* Each row becomes an accordion-style card */
-  table tr{
+  .table-accordions-mobile table tr{
     display:block;
     margin-bottom:0.75rem;
     border:1px solid rgba(255,255,255,0.1);
@@ -526,15 +526,15 @@ html[data-theme="light"] .hero::before{
   }
 
   /* First 2 cells are always visible (the "header") */
-  table td:nth-child(1),
-  table td:nth-child(2){
+  .table-accordions-mobile table td:nth-child(1),
+  .table-accordions-mobile table td:nth-child(2){
     display:block;
     padding:1rem 1.25rem;
     font-weight:600;
     background:rgba(255,255,255,0.04);
   }
 
-  table td:nth-child(1){
+  .table-accordions-mobile table td:nth-child(1){
     font-size:1rem;
     color:var(--accent);
     border-bottom:1px solid rgba(255,255,255,0.05);
@@ -542,14 +542,14 @@ html[data-theme="light"] .hero::before{
     padding-right:3rem;
   }
 
-  table td:nth-child(2){
+  .table-accordions-mobile table td:nth-child(2){
     font-size:0.9rem;
     color:var(--text);
     padding-right:7rem;
   }
 
   /* Remaining cells hidden by default */
-  table td:nth-child(n+3){
+  .table-accordions-mobile table td:nth-child(n+3){
     display:none;
     padding:0.75rem 1.25rem;
     font-size:0.875rem;
@@ -559,7 +559,7 @@ html[data-theme="light"] .hero::before{
   }
 
   /* Add expand indicator to first cell */
-  table td:nth-child(1)::after{
+  .table-accordions-mobile table td:nth-child(1)::after{
     content:' ▼';
     position:absolute;
     right:1rem;
@@ -570,23 +570,23 @@ html[data-theme="light"] .hero::before{
   }
 
   /* When row is expanded, show all cells */
-  table tr.expanded td:nth-child(n+3){
+  .table-accordions-mobile table tr.expanded td:nth-child(n+3){
     display:block;
   }
 
   /* Change indicator when expanded */
-  table tr.expanded td:nth-child(1)::after{
+  .table-accordions-mobile table tr.expanded td:nth-child(1)::after{
     content:' ▲';
     color:var(--accent);
   }
 
   /* Make row clickable */
-  table tr{
+  .table-accordions-mobile table tr{
     cursor:pointer;
     transition:all 0.2s ease;
   }
 
-  table tr:hover{
+  .table-accordions-mobile table tr:hover{
     background:rgba(255,255,255,0.06);
   }
 

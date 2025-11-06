@@ -350,12 +350,13 @@
   };
 
   // ============================================
-  // MOBILE TABLE ACCORDIONS
+  // MOBILE TABLE ACCORDIONS (LESSONS 1-2 ONLY - TESTING)
   // ============================================
   const TableAccordions = {
     init() {
-      // Only on mobile
+      // Only on mobile AND only on pages with table-accordions-mobile class
       if (window.innerWidth > 480) return;
+      if (!document.body.classList.contains('table-accordions-mobile')) return;
 
       document.querySelectorAll('table tr').forEach(row => {
         // Skip header rows
