@@ -187,10 +187,13 @@ Tips:
           trackNotesOpened();
         }
 
-        textarea.focus();
-        // Set cursor to end
-        textarea.selectionStart = textarea.value.length;
-        textarea.selectionEnd = textarea.value.length;
+        // Only auto-focus on desktop, not mobile (prevents keyboard from opening on mobile)
+        if (window.innerWidth > 768) {
+          textarea.focus();
+          // Set cursor to end
+          textarea.selectionStart = textarea.value.length;
+          textarea.selectionEnd = textarea.value.length;
+        }
       }
     }
 
