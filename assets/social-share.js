@@ -145,17 +145,27 @@
       card.style.padding = '2rem';
     }
 
+    // Stack buttons vertically on very small screens
+    const isMobile = window.innerWidth < 380;
+    const buttonContainer = isMobile
+      ? 'display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;'
+      : 'display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap;';
+
+    const buttonStyle = isMobile
+      ? 'width: 100%; font-size: 0.95rem; padding: 0.75rem 1rem;'
+      : 'flex: 1; min-width: 130px; max-width: 200px; font-size: clamp(0.85rem, 3vw, 1rem); padding: 0.75rem 1rem;';
+
     card.innerHTML = `
       <div style="font-size: clamp(3rem, 8vw, 4rem); margin-bottom: 1rem;">🎉</div>
       <h2 style="margin: 0 0 1rem 0; color: #5b8aff; font-size: clamp(1.5rem, 5vw, 2rem);">Milestone Achieved!</h2>
       <p style="font-size: clamp(1rem, 3.5vw, 1.2rem); margin-bottom: 1.5rem;">You've completed ${milestoneName}!</p>
       <p style="color: var(--muted); margin-bottom: 2rem; font-size: clamp(0.9rem, 3vw, 1rem);">Share your progress and inspire others</p>
 
-      <div style="display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; padding: 0 0.5rem;">
-        <button id="share-twitter" class="btn btn-primary" style="flex: 1; min-width: 130px; max-width: 200px; font-size: clamp(0.85rem, 3vw, 1rem); padding: 0.75rem 1rem;">
+      <div style="${buttonContainer}">
+        <button id="share-twitter" class="btn btn-primary" style="${buttonStyle}">
           Share on Twitter
         </button>
-        <button id="share-linkedin" class="btn btn-primary" style="flex: 1; min-width: 130px; max-width: 200px; font-size: clamp(0.85rem, 3vw, 1rem); padding: 0.75rem 1rem;">
+        <button id="share-linkedin" class="btn btn-primary" style="${buttonStyle}">
           Share on LinkedIn
         </button>
       </div>
