@@ -24,6 +24,13 @@ table{
   max-width:100%;
   overflow-x:auto;
   display:block;
+  border-collapse:collapse;
+}
+
+/* Ensure tables don't cause page overflow */
+.prose table{
+  margin:1.5rem 0;
+  font-size:0.9rem;
 }
 
 /* Code blocks shouldn't break layout */
@@ -482,10 +489,37 @@ html[data-theme="light"] .hero::before{
 @media (max-width:480px){
   body{font-size:15px;line-height:1.65}
 
-  /* Prevent any horizontal overflow */
-  *{max-width:100%}
+  /* Prevent any horizontal overflow except for scrollable tables */
+  *:not(table):not(thead):not(tbody):not(tr):not(th):not(td){max-width:100%}
   html,body{overflow-x:hidden;width:100%}
   .wrap{max-width:100%;box-sizing:border-box}
+
+  /* Mobile table handling - allow horizontal scroll */
+  table{
+    display:block;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    max-width:100%;
+    width:100%;
+  }
+
+  table tbody{
+    display:table;
+    width:100%;
+  }
+
+  table thead,
+  table tr{
+    display:table-row;
+  }
+
+  table th,
+  table td{
+    display:table-cell;
+    padding:0.4rem 0.3rem;
+    font-size:0.7rem;
+    white-space:nowrap;
+  }
 
   /* Hero mobile optimization */
   .hero{
