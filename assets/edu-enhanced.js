@@ -354,18 +354,36 @@
   // ============================================
   const TableAccordions = {
     init() {
-      // Only on mobile AND only on pages with table-accordions-mobile class
-      if (window.innerWidth > 480) return;
-      if (!document.body.classList.contains('table-accordions-mobile')) return;
+      console.log('[TableAccordions] Init called');
+      console.log('[TableAccordions] Window width:', window.innerWidth);
+      console.log('[TableAccordions] Has class:', document.body.classList.contains('table-accordions-mobile'));
 
-      document.querySelectorAll('table tr').forEach(row => {
+      // Only on mobile AND only on pages with table-accordions-mobile class
+      if (window.innerWidth > 480) {
+        console.log('[TableAccordions] Skipping - not mobile viewport');
+        return;
+      }
+      if (!document.body.classList.contains('table-accordions-mobile')) {
+        console.log('[TableAccordions] Skipping - missing class');
+        return;
+      }
+
+      const rows = document.querySelectorAll('table tr');
+      console.log('[TableAccordions] Found', rows.length, 'table rows');
+
+      let addedCount = 0;
+      rows.forEach(row => {
         // Skip header rows
         if (row.closest('thead')) return;
 
         row.addEventListener('click', () => {
+          console.log('[TableAccordions] Row clicked, toggling expanded');
           row.classList.toggle('expanded');
         });
+        addedCount++;
       });
+
+      console.log('[TableAccordions] Added click handlers to', addedCount, 'rows');
     }
   };
 
