@@ -494,70 +494,44 @@ html[data-theme="light"] .hero::before{
   html,body{overflow-x:hidden;width:100%}
   .wrap{max-width:100%;box-sizing:border-box}
 
-  /* Mobile table transformation - stack rows as cards, NO horizontal scroll */
+  /* Mobile table - compact layout, NO horizontal scroll */
   table{
-    display:block;
     width:100%;
     max-width:100%;
-    border:none;
+    display:table;
+    font-size:0.65rem;
+    border-collapse:collapse;
     margin:1rem 0;
   }
 
-  /* Hide table headers on mobile */
   table thead{
-    display:none;
+    display:table-header-group;
   }
 
-  /* Each row becomes a card */
   table tbody{
-    display:block;
-    width:100%;
+    display:table-row-group;
   }
 
   table tr{
-    display:block;
-    margin-bottom:1rem;
-    padding:1rem;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:8px;
+    display:table-row;
   }
 
-  /* Each cell becomes a full-width block */
+  table th,
   table td{
-    display:block;
-    width:100%;
-    padding:0.4rem 0;
-    border:none;
-    text-align:left;
-    font-size:0.8rem;
-    line-height:1.4;
+    display:table-cell;
+    padding:0.3rem 0.2rem;
+    font-size:0.65rem;
+    line-height:1.3;
     word-wrap:break-word;
     overflow-wrap:break-word;
     white-space:normal;
+    vertical-align:top;
   }
 
-  /* Add spacing between cells */
-  table td:not(:last-child){
-    border-bottom:1px solid rgba(255,255,255,0.05);
-    padding-bottom:0.4rem;
-    margin-bottom:0.4rem;
-  }
-
-  /* First cell in each row (usually the label/identifier) */
-  table td:first-child{
+  table th{
+    font-size:0.7rem;
     font-weight:600;
-    color:var(--accent);
-    font-size:0.9rem;
-    margin-bottom:0.5rem;
-  }
-
-  /* Style for cells with strong/bold content */
-  table td strong{
-    display:inline-block;
-    color:var(--text);
-    font-weight:600;
-    margin-right:0.5rem;
+    padding:0.4rem 0.2rem;
   }
 
   /* Hero mobile optimization */
