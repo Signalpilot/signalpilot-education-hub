@@ -131,23 +131,31 @@
       background: linear-gradient(135deg, #0a0e1a, #1a2332);
       border: 2px solid rgba(91, 138, 255, 0.3);
       border-radius: 16px;
-      padding: 2rem;
+      padding: 1.5rem;
       max-width: 500px;
+      width: calc(100vw - 2rem);
+      margin: 0 1rem;
       text-align: center;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      box-sizing: border-box;
     `;
 
-    card.innerHTML = `
-      <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
-      <h2 style="margin: 0 0 1rem 0; color: #5b8aff;">Milestone Achieved!</h2>
-      <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">You've completed ${milestoneName}!</p>
-      <p style="color: var(--muted); margin-bottom: 2rem;">Share your progress and inspire others</p>
+    // Add responsive padding for larger screens
+    if (window.innerWidth > 480) {
+      card.style.padding = '2rem';
+    }
 
-      <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
-        <button id="share-twitter" class="btn btn-primary">
+    card.innerHTML = `
+      <div style="font-size: clamp(3rem, 8vw, 4rem); margin-bottom: 1rem;">🎉</div>
+      <h2 style="margin: 0 0 1rem 0; color: #5b8aff; font-size: clamp(1.5rem, 5vw, 2rem);">Milestone Achieved!</h2>
+      <p style="font-size: clamp(1rem, 3.5vw, 1.2rem); margin-bottom: 1.5rem;">You've completed ${milestoneName}!</p>
+      <p style="color: var(--muted); margin-bottom: 2rem; font-size: clamp(0.9rem, 3vw, 1rem);">Share your progress and inspire others</p>
+
+      <div style="display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; padding: 0 0.5rem;">
+        <button id="share-twitter" class="btn btn-primary" style="flex: 1; min-width: 130px; max-width: 200px; font-size: clamp(0.85rem, 3vw, 1rem); padding: 0.75rem 1rem;">
           Share on Twitter
         </button>
-        <button id="share-linkedin" class="btn btn-primary">
+        <button id="share-linkedin" class="btn btn-primary" style="flex: 1; min-width: 130px; max-width: 200px; font-size: clamp(0.85rem, 3vw, 1rem); padding: 0.75rem 1rem;">
           Share on LinkedIn
         </button>
       </div>
@@ -174,12 +182,14 @@
     };
 
     document.getElementById('share-later').onclick = () => {
+      localStorage.setItem(`sp_shared_milestone_${count}`, 'true');
       modal.remove();
     };
 
     // Close on background click
     modal.onclick = (e) => {
       if (e.target === modal) {
+        localStorage.setItem(`sp_shared_milestone_${count}`, 'true');
         modal.remove();
       }
     };
