@@ -489,49 +489,81 @@ html[data-theme="light"] .hero::before{
 @media (max-width:480px){
   body{font-size:15px;line-height:1.65}
 
-  /* Prevent any horizontal overflow except for scrollable tables */
-  *:not(table):not(thead):not(tbody):not(tr):not(th):not(td){max-width:100%}
-  html,body{overflow-x:hidden;width:100%}
-  .wrap{max-width:100%;box-sizing:border-box}
+  /* Prevent ANY horizontal overflow - absolute containment */
+  *{max-width:100%;box-sizing:border-box}
+  html,body{overflow-x:hidden !important;width:100%;position:relative}
+  .wrap{max-width:100%;padding:0 1rem}
 
-  /* Mobile table - compact layout, NO horizontal scroll */
+  /* Mobile table transformation - ALL tables become vertical cards */
   table{
+    display:block;
     width:100%;
     max-width:100%;
-    display:table;
-    font-size:0.65rem;
-    border-collapse:collapse;
-    margin:1rem 0;
+    margin:1.5rem 0;
+    border:none;
   }
 
+  /* Hide table header on mobile */
   table thead{
-    display:table-header-group;
+    display:none;
   }
 
+  /* Table body becomes container for cards */
   table tbody{
-    display:table-row-group;
+    display:block;
+    width:100%;
   }
 
+  /* Each row becomes a card */
   table tr{
-    display:table-row;
+    display:block;
+    margin-bottom:1.25rem;
+    padding:1rem;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(118,221,255,0.2);
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.2);
   }
 
-  table th,
+  /* Each cell becomes full-width block */
   table td{
-    display:table-cell;
-    padding:0.3rem 0.2rem;
-    font-size:0.65rem;
-    line-height:1.3;
+    display:block;
+    width:100%;
+    padding:0.6rem 0;
+    border:none;
+    text-align:left;
+    font-size:0.875rem;
+    line-height:1.5;
     word-wrap:break-word;
     overflow-wrap:break-word;
-    white-space:normal;
-    vertical-align:top;
   }
 
-  table th{
-    font-size:0.7rem;
-    font-weight:600;
-    padding:0.4rem 0.2rem;
+  /* Separator between cells */
+  table td:not(:last-child){
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding-bottom:0.6rem;
+    margin-bottom:0.6rem;
+  }
+
+  /* Highlight first cell as card title */
+  table td:first-child{
+    font-size:1rem;
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:0.75rem;
+    padding-bottom:0.75rem;
+    border-bottom:2px solid rgba(118,221,255,0.3);
+  }
+
+  /* Ensure prose and content containers don't overflow */
+  .prose,
+  .article-content,
+  main,
+  article{
+    max-width:100%;
+    overflow-x:hidden;
+    word-wrap:break-word;
+    overflow-wrap:break-word;
   }
 
   /* Hero mobile optimization */
