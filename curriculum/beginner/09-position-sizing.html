@@ -129,198 +129,243 @@
         <p><strong>Alex's Approach:</strong> "Risk 1% on every trade, no matter what" (fixed percentage trap)</p>
         <p><strong>Jamie's Approach:</strong> Setup-quality-based sizing + ATR stops + portfolio heat management</p>
 
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">The Same 10 Trades: Fixed 1% vs. Smart Sizing (October 2024)</caption>
-          <tr style="background:rgba(118,221,255,0.15);border-bottom:2px solid rgba(118,221,255,0.3)">
-            <th style="padding:0.75rem;text-align:left">Trade</th>
-            <th style="padding:0.75rem;text-align:left">Setup Grade</th>
-            <th style="padding:0.75rem;text-align:center">Result</th>
-            <th style="padding:0.75rem;text-align:left">Alex (1% always)</th>
-            <th style="padding:0.75rem;text-align:right">Alex P&L</th>
-            <th style="padding:0.75rem;text-align:left">Jamie (smart sizing)</th>
-            <th style="padding:0.75rem;text-align:right">Jamie P&L</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">1. NVDA long</td>
-            <td style="padding:0.75rem"><span style="color:#22c55e;font-weight:bold">A-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">✅ +2.5R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1,250</span></td>
-            <td style="padding:0.75rem">Risk 2% ($1,000) — A-grade</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$2,500</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">2. TSLA long</td>
-            <td style="padding:0.75rem"><span style="color:#fbbf24;font-weight:bold">B-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">❌ -1R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$500</span></td>
-            <td style="padding:0.75rem">Risk 1% ($500) — B-grade</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$500</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">3. SPY short</td>
-            <td style="padding:0.75rem"><span style="color:#22c55e;font-weight:bold">A-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">✅ +3.2R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1,600</span></td>
-            <td style="padding:0.75rem">Risk 2% ($1,000) — A-grade</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$3,200</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">4. AAPL long</td>
-            <td style="padding:0.75rem"><span style="color:#ff5252;font-weight:bold">C-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">❌ -1R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$500</span></td>
-            <td style="padding:0.75rem">SKIPPED (C-grade)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#888">$0</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">5. META long</td>
-            <td style="padding:0.75rem"><span style="color:#fbbf24;font-weight:bold">B-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">✅ +1.8R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$900</span></td>
-            <td style="padding:0.75rem">Risk 1% ($500) — B-grade</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$900</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">6. AMZN short</td>
-            <td style="padding:0.75rem"><span style="color:#ff5252;font-weight:bold">C-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">❌ -1R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$500</span></td>
-            <td style="padding:0.75rem">SKIPPED (C-grade)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#888">$0</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">7. MSFT long</td>
-            <td style="padding:0.75rem"><span style="color:#22c55e;font-weight:bold">A-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">✅ +2.8R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1,400</span></td>
-            <td style="padding:0.75rem">Risk 2% ($1,000) — A-grade</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$2,800</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">8. GOOGL long</td>
-            <td style="padding:0.75rem"><span style="color:#fbbf24;font-weight:bold">B-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">❌ -1R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$500</span></td>
-            <td style="padding:0.75rem">Risk 1% ($500) — B-grade</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$500</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">9. AMD short</td>
-            <td style="padding:0.75rem"><span style="color:#22c55e;font-weight:bold">A-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">❌ -1R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$500</span></td>
-            <td style="padding:0.75rem">Risk 2% ($1,000) — A-grade</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$1,000</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">10. JPM long</td>
-            <td style="padding:0.75rem"><span style="color:#fbbf24;font-weight:bold">B-grade</span></td>
-            <td style="padding:0.75rem;text-align:center">✅ +2.1R</td>
-            <td style="padding:0.75rem">Risk 1% ($500)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1,050</span></td>
-            <td style="padding:0.75rem">Risk 1% ($500) — B-grade</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1,050</span></td>
-          </tr>
-          <tr style="background:rgba(118,221,255,0.2)">
-            <td colspan="3" style="padding:0.75rem;text-align:right;font-weight:bold">TOTALS (10 trades, 2 weeks):</td>
-            <td style="padding:0.75rem;font-weight:bold">10 trades taken</td>
-            <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#22c55e">+$3,700</span><br>(+7.4%)</td>
-            <td style="padding:0.75rem;font-weight:bold">8 trades taken (2 skipped)</td>
-            <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#22c55e">+$8,450</span><br>(+16.9%)</td>
-          </tr>
-        </table>
+        <div class="story-summary">
+          <h3>📊 The Same 10 Trades: Fixed 1% vs. Smart Sizing (October 2024)</h3>
+          <div class="summary-stats">
+            <div class="stat-box">
+              <span class="stat-label">Alex (Fixed 1%)</span>
+              <span class="stat-value">+$3,700</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">Jamie (Smart Sizing)</span>
+              <span class="stat-value">+$8,450</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">Difference</span>
+              <span class="stat-value">+$4,750</span>
+            </div>
+          </div>
+          <div class="key-insight">
+            <strong>Same Strategy, Same Entries, Same Exits:</strong> The ONLY difference was position sizing. Jamie risked 2% on A-grades, 1% on B-grades, and skipped C-grades. Alex risked 1% on everything. The result: Jamie made 128% more profit in just 2 weeks.
+          </div>
+        </div>
+
+        <div class="trading-timeline">
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.10);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Trade 1: NVDA long (A-grade) • +2.5R ✅</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong>+$1,250</strong> | Jamie: Risk 2% ($1,000) = <strong style="color:#22c55e">+$2,500</strong></div>
+            <div class="week-issue">💰 <strong>+$1,250 advantage to Jamie</strong> — A-grade setup deserved bigger position</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.08)">
+            <div class="week-header">
+              <span class="week-label">Trade 2: TSLA long (B-grade) • -1R ❌</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong>-$500</strong> | Jamie: Risk 1% ($500) = <strong>-$500</strong></div>
+            <div class="week-issue">↔️ <strong>Equal loss</strong> — Both sized appropriately for B-grade</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.12);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Trade 3: SPY short (A-grade) • +3.2R ✅</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong>+$1,600</strong> | Jamie: Risk 2% ($1,000) = <strong style="color:#22c55e">+$3,200</strong></div>
+            <div class="week-issue">💰 <strong>+$1,600 advantage to Jamie</strong> — Another A-grade, another doubled win</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(255,193,7,0.08)">
+            <div class="week-header">
+              <span class="week-label">Trade 4: AAPL long (C-grade) • -1R ❌</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong style="color:#ff5252">-$500</strong> | Jamie: <strong>SKIPPED</strong> = $0</div>
+            <div class="week-issue">✋ <strong>+$500 saved by Jamie</strong> — C-grade filtering avoided loss</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.08)">
+            <div class="week-header">
+              <span class="week-label">Trade 5: META long (B-grade) • +1.8R ✅</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong>+$900</strong> | Jamie: Risk 1% ($500) = <strong>+$900</strong></div>
+            <div class="week-issue">↔️ <strong>Equal win</strong> — Both sized appropriately for B-grade</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(255,193,7,0.08)">
+            <div class="week-header">
+              <span class="week-label">Trade 6: AMZN short (C-grade) • -1R ❌</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong style="color:#ff5252">-$500</strong> | Jamie: <strong>SKIPPED</strong> = $0</div>
+            <div class="week-issue">✋ <strong>+$500 saved by Jamie</strong> — Second C-grade filtered out</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.10);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Trade 7: MSFT long (A-grade) • +2.8R ✅</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong>+$1,400</strong> | Jamie: Risk 2% ($1,000) = <strong style="color:#22c55e">+$2,800</strong></div>
+            <div class="week-issue">💰 <strong>+$1,400 advantage to Jamie</strong> — Third A-grade, third double-sized win</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.08)">
+            <div class="week-header">
+              <span class="week-label">Trade 8: GOOGL long (B-grade) • -1R ❌</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong>-$500</strong> | Jamie: Risk 1% ($500) = <strong>-$500</strong></div>
+            <div class="week-issue">↔️ <strong>Equal loss</strong> — Both sized appropriately for B-grade</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.10)">
+            <div class="week-header">
+              <span class="week-label">Trade 9: AMD short (A-grade) • -1R ❌</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong>-$500</strong> | Jamie: Risk 2% ($1,000) = <strong style="color:#ff5252">-$1,000</strong></div>
+            <div class="week-issue">⚠️ <strong>-$500 disadvantage to Jamie</strong> — A-grades don't always win, but the math still works over time</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.08)">
+            <div class="week-header">
+              <span class="week-label">Trade 10: JPM long (B-grade) • +2.1R ✅</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% ($500) = <strong>+$1,050</strong> | Jamie: Risk 1% ($500) = <strong>+$1,050</strong></div>
+            <div class="week-issue">↔️ <strong>Equal win</strong> — Both sized appropriately for B-grade</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(118,221,255,0.15);border-left:4px solid #76ddff;font-weight:600">
+            <div class="week-header">
+              <span class="week-label">2-Week Totals</span>
+            </div>
+            <div class="week-stats">Alex: 10 trades taken • 5W-5L • <strong>+$3,700</strong> (+7.4%) | Jamie: 8 trades taken (2 skipped) • 5W-3L • <strong style="color:#22c55e">+$8,450</strong> (+16.9%)</div>
+            <div class="week-issue">🎯 <strong>$4,750 difference (128% more profit)</strong> — Same strategy, same entries, different position sizing = 2.3× the return</div>
+          </div>
+        </div>
 
         <h5>The Math Breakdown: Why Jamie Crushed It</h5>
 
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Performance Analysis</caption>
-          <tr style="background:rgba(118,221,255,0.15);border-bottom:2px solid rgba(118,221,255,0.3)">
-            <th style="padding:0.75rem;text-align:left">Metric</th>
-            <th style="padding:0.75rem;text-align:right">Alex (Fixed 1%)</th>
-            <th style="padding:0.75rem;text-align:right">Jamie (Smart Sizing)</th>
-            <th style="padding:0.75rem;text-align:left">Explanation</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Total Trades</td>
-            <td style="padding:0.75rem;text-align:right">10</td>
-            <td style="padding:0.75rem;text-align:right">8</td>
-            <td style="padding:0.75rem">Jamie skipped 2 C-grade setups (avoided -$1,000 in losses)</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Win Rate</td>
-            <td style="padding:0.75rem;text-align:right">50% (5W / 5L)</td>
-            <td style="padding:0.75rem;text-align:right">62.5% (5W / 3L)</td>
-            <td style="padding:0.75rem">Higher win rate by skipping low-quality setups</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Avg Win</td>
-            <td style="padding:0.75rem;text-align:right">+$1,240</td>
-            <td style="padding:0.75rem;text-align:right">+$2,090</td>
-            <td style="padding:0.75rem">Jamie's A-grade wins at 2% were 2× larger</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Avg Loss</td>
-            <td style="padding:0.75rem;text-align:right">-$500</td>
-            <td style="padding:0.75rem;text-align:right">-$667</td>
-            <td style="padding:0.75rem">Jamie's A-grade loss was 2%, but only 1 A-grade failed</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Total Profit</td>
-            <td style="padding:0.75rem;text-align:right">+$3,700</td>
-            <td style="padding:0.75rem;text-align:right">+$8,450</td>
-            <td style="padding:0.75rem"><strong>+$4,750 difference (+128% more profit)</strong></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">ROI (2 weeks)</td>
-            <td style="padding:0.75rem;text-align:right">+7.4%</td>
-            <td style="padding:0.75rem;text-align:right">+16.9%</td>
-            <td style="padding:0.75rem">Jamie's approach generated <strong>2.3× the return</strong></td>
-          </tr>
-          <tr>
-            <td style="padding:0.75rem">Ending Balance</td>
-            <td style="padding:0.75rem;text-align:right">$53,700</td>
-            <td style="padding:0.75rem;text-align:right">$58,450</td>
-            <td style="padding:0.75rem">$4,750 more in just 2 weeks</td>
-          </tr>
-        </table>
+        <div class="story-summary">
+          <h3>📈 Performance Analysis</h3>
+          <div class="summary-stats">
+            <div class="stat-box">
+              <span class="stat-label">Alex: Ending Balance</span>
+              <span class="stat-value">$53,700</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">Jamie: Ending Balance</span>
+              <span class="stat-value">$58,450</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">2-Week Difference</span>
+              <span class="stat-value">+$4,750</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trading-timeline">
+          <div class="timeline-week" style="background:rgba(118,221,255,0.08)">
+            <div class="week-header">
+              <span class="week-label">Total Trades</span>
+            </div>
+            <div class="week-stats">Alex: 10 trades | Jamie: 8 trades (skipped 2 C-grades)</div>
+            <div class="week-issue">✅ Jamie avoided -$1,000 in losses by skipping low-quality setups</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(118,221,255,0.08)">
+            <div class="week-header">
+              <span class="week-label">Win Rate</span>
+            </div>
+            <div class="week-stats">Alex: 50% (5W / 5L) | Jamie: 62.5% (5W / 3L)</div>
+            <div class="week-issue">✅ Higher win rate by skipping low-quality setups</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.08)">
+            <div class="week-header">
+              <span class="week-label">Avg Win</span>
+            </div>
+            <div class="week-stats">Alex: +$1,240 | Jamie: +$2,090</div>
+            <div class="week-issue">💰 <strong>+$850 larger wins</strong> — Jamie's A-grade wins at 2% were 2× larger</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(255,193,7,0.08)">
+            <div class="week-header">
+              <span class="week-label">Avg Loss</span>
+            </div>
+            <div class="week-stats">Alex: -$500 | Jamie: -$667</div>
+            <div class="week-issue">⚠️ Jamie's A-grade loss was 2%, but only 1 A-grade failed (acceptable tradeoff)</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.10);border-left:4px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Total Profit</span>
+            </div>
+            <div class="week-stats">Alex: +$3,700 | Jamie: +$8,450</div>
+            <div class="week-issue">🎯 <strong>+$4,750 difference (+128% more profit)</strong> — Position sizing made all the difference</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.10);border-left:4px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">ROI (2 weeks)</span>
+            </div>
+            <div class="week-stats">Alex: +7.4% | Jamie: +16.9%</div>
+            <div class="week-issue">🎯 <strong>2.3× the return</strong> — Same strategy, dramatically different results</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(118,221,255,0.15);border-left:4px solid #76ddff;font-weight:600">
+            <div class="week-header">
+              <span class="week-label">Final Outcome</span>
+            </div>
+            <div class="week-stats">Alex: $53,700 ending balance | Jamie: $58,450 ending balance</div>
+            <div class="week-issue">💰 <strong>$4,750 more in just 2 weeks</strong> — The power of setup-quality-based position sizing</div>
+          </div>
+        </div>
 
         <h5>The Three Key Differences That Changed Everything</h5>
 
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <tr style="background:rgba(118,221,255,0.15);border-bottom:2px solid rgba(118,221,255,0.3)">
-            <th style="padding:0.75rem;text-align:left">Decision</th>
-            <th style="padding:0.75rem;text-align:left">Alex's Approach</th>
-            <th style="padding:0.75rem;text-align:left">Jamie's Approach</th>
-            <th style="padding:0.75rem;text-align:right">Impact</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem"><strong>1. A-Grade Sizing</strong></td>
-            <td style="padding:0.75rem">Risk 1% on all A-grades (treated same as B/C)</td>
-            <td style="padding:0.75rem">Risk 2% on A-grades (bet bigger with edge)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$4,700</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem"><strong>2. C-Grade Discipline</strong></td>
-            <td style="padding:0.75rem">Took all setups (2 C-grades lost -$1,000)</td>
-            <td style="padding:0.75rem">Skipped C-grades (avoided losses)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1,000</span></td>
-          </tr>
-          <tr>
-            <td style="padding:0.75rem"><strong>3. Total Discipline</strong></td>
-            <td style="padding:0.75rem">Emotional consistency ("1% is safe")</td>
-            <td style="padding:0.75rem">Strategic aggression (bet more on quality)</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+128% ROI</span></td>
-          </tr>
-        </table>
+        <div class="story-summary">
+          <h3>🔑 The Three Key Differences That Changed Everything</h3>
+          <div class="summary-stats">
+            <div class="stat-box win">
+              <span class="stat-label">A-Grade Impact</span>
+              <span class="stat-value">+$4,700</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">C-Grade Filtering</span>
+              <span class="stat-value">+$1,000</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">Total ROI Gain</span>
+              <span class="stat-value">+128%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trading-timeline">
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.10);border-left:4px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">1. A-Grade Sizing</span>
+              <span class="week-pnl win">+$4,700</span>
+            </div>
+            <div class="week-stats">Alex: Risk 1% on all A-grades (treated same as B/C) | Jamie: Risk 2% on A-grades (bet bigger with edge)</div>
+            <div class="week-issue">💰 <strong>Biggest impact:</strong> Sizing up on highest-quality setups generated most of the profit differential</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.08)">
+            <div class="week-header">
+              <span class="week-label">2. C-Grade Discipline</span>
+              <span class="week-pnl win">+$1,000</span>
+            </div>
+            <div class="week-stats">Alex: Took all setups (2 C-grades lost -$1,000) | Jamie: Skipped C-grades (avoided losses)</div>
+            <div class="week-issue">✋ <strong>Loss prevention:</strong> Not taking bad trades is just as important as sizing up good ones</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(118,221,255,0.15);border-left:4px solid #76ddff;font-weight:600">
+            <div class="week-header">
+              <span class="week-label">3. Total Discipline</span>
+              <span class="week-pnl" style="color:#22c55e">+128% ROI</span>
+            </div>
+            <div class="week-stats">Alex: Emotional consistency ("1% is safe") | Jamie: Strategic aggression (bet more on quality)</div>
+            <div class="week-issue">🎯 <strong>The philosophy:</strong> Fixed 1% feels safe but caps upside. Smart sizing feels aggressive but is actually more disciplined—it aligns risk with opportunity.</div>
+          </div>
+        </div>
 
         <h5>What Happened Over the Next 6 Months</h5>
 
@@ -342,34 +387,55 @@
         </ul>
 
         <p><strong>The Final Comparison:</strong></p>
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <tr style="background:rgba(34,197,94,0.15);border-bottom:2px solid rgba(34,197,94,0.3)">
-            <th style="padding:0.75rem;text-align:left">Trader</th>
-            <th style="padding:0.75rem;text-align:right">Starting Balance</th>
-            <th style="padding:0.75rem;text-align:right">6-Month Ending</th>
-            <th style="padding:0.75rem;text-align:right">Total Gain</th>
-            <th style="padding:0.75rem;text-align:right">ROI</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-            <td style="padding:0.75rem">Alex (Fixed 1%)</td>
-            <td style="padding:0.75rem;text-align:right">$50,000</td>
-            <td style="padding:0.75rem;text-align:right">$68,400</td>
-            <td style="padding:0.75rem;text-align:right">+$18,400</td>
-            <td style="padding:0.75rem;text-align:right">+36.8%</td>
-          </tr>
-          <tr style="background:rgba(34,197,94,0.2)">
-            <td style="padding:0.75rem"><strong>Jamie (Smart Sizing)</strong></td>
-            <td style="padding:0.75rem;text-align:right"><strong>$50,000</strong></td>
-            <td style="padding:0.75rem;text-align:right"><strong>$87,200</strong></td>
-            <td style="padding:0.75rem;text-align:right"><strong>+$37,200</strong></td>
-            <td style="padding:0.75rem;text-align:right"><strong>+74.4%</strong></td>
-          </tr>
-          <tr style="background:rgba(255,221,87,0.15)">
-            <td colspan="3" style="padding:0.75rem;text-align:right;font-weight:bold">DIFFERENCE:</td>
-            <td style="padding:0.75rem;text-align:right;font-weight:bold">+$18,800 more</td>
-            <td style="padding:0.75rem;text-align:right;font-weight:bold">+102% better ROI</td>
-          </tr>
-        </table>
+
+        <div class="story-summary">
+          <h3>📊 6-Month Final Results</h3>
+          <div class="summary-stats">
+            <div class="stat-box">
+              <span class="stat-label">Alex (Fixed 1%)</span>
+              <span class="stat-value">$68,400</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">Jamie (Smart Sizing)</span>
+              <span class="stat-value">$87,200</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">6-Month Difference</span>
+              <span class="stat-value">+$18,800</span>
+            </div>
+          </div>
+          <div class="key-insight">
+            <strong>The Compounding Effect:</strong> Over 6 months, the difference exploded from $4,750 to $18,800. Position sizing isn't a detail—it's THE difference between mediocre and exceptional returns.
+          </div>
+        </div>
+
+        <div class="trading-timeline">
+          <div class="timeline-week" style="background:rgba(118,221,255,0.08)">
+            <div class="week-header">
+              <span class="week-label">Alex (Fixed 1%) - 6 Months</span>
+              <span class="week-pnl">+$18,400</span>
+            </div>
+            <div class="week-stats">Starting: $50,000 → Ending: $68,400 • ROI: +36.8%</div>
+            <div class="week-issue">Consistent but underwhelming • Took 120 trades (including 18 C-grades that lost -$9,000) • "Working twice as hard for half the results"</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.12);border-left:4px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Jamie (Smart Sizing) - 6 Months</span>
+              <span class="week-pnl win">+$37,200</span>
+            </div>
+            <div class="week-stats">Starting: $50,000 → Ending: $87,200 • ROI: +74.4%</div>
+            <div class="week-issue">✅ Explosive compounding • Took 94 trades, skipped 26 C-grades (avoided -$13K losses) • A-grade setups at 2% generated 68% of total profits • Portfolio heat rule prevented 3 potential blowup sessions</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(255,221,87,0.15);border-left:4px solid #fdd835;font-weight:600">
+            <div class="week-header">
+              <span class="week-label">6-Month Difference</span>
+            </div>
+            <div class="week-stats">Total Gain Difference: +$18,800 more | ROI Difference: +102% better</div>
+            <div class="week-issue">🎯 <strong>Same strategy. Same entries. Same exits. Different position sizing = $18,800 difference in 6 months.</strong> Position sizing isn't a detail—it's THE difference between mediocre and exceptional returns.</div>
+          </div>
+        </div>
 
         <p><b>The lesson: Same strategy. Same entries. Same potential exits. Different position sizing = $18,800 difference in 6 months. Position sizing isn't a detail—it's THE difference between mediocre and exceptional returns.</b></p>
       </div>
