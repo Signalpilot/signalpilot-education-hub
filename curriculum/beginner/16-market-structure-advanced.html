@@ -289,7 +289,7 @@ Result: +$2,800 profit (Win)</code></pre>
 
       <h3 id="the-problem-vs-the-solution">The Problem vs The Solution</h3>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin:2rem 0">
         <div style="background:rgba(255,107,107,.05);border:2px solid rgba(255,107,107,.2);border-radius:12px;padding:1.5rem">
           <h4>❌ David's Old Approach (Lost $61K)</h4>
           <p><strong>Pattern:</strong> Chase displacement candles after 80% of move was done</p>
@@ -305,6 +305,7 @@ Win rate: 21% (6/28)
 Avg entry: After 80% of move already happened
 Avg loss per trade: -$2,179
 Account drawdown: -40.7% ($150K → $89K)</code></pre>
+        </div>
 
         <div style="background:rgba(0,212,170,.08);border:2px solid rgba(0,212,170,.3);border-radius:12px;padding:1.5rem">
           <h4>✅ David's New Approach (Gained $38K)</h4>
@@ -380,57 +381,73 @@ RULE: If displacement happens and price NEVER retraces to OTE,
 
       <div class="callout-key">
         <h4>✅ The Results: Before vs After</h4>
-        <table style="width:100%;margin:1rem 0;border-collapse:collapse">
-          <thead>
-            <tr style="background:rgba(139,92,246,.1)">
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Metric</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Chasing Displacement (Weeks 1-8)</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Waiting for Mitigation (Weeks 10-15)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Win Rate</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">21% (6/28 trades)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">81% (17/21 trades)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Avg Entry Timing</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">After 80% of move done (late)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">At 38% retracement / OTE zone (optimal)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Avg Risk:Reward</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">0.8:1 (poor, tight stops)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">2.7:1 (excellent, room to breathe)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Avg Win</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$1,800 (small moves, entered late)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$2,800 (captured full move)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Avg Loss</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-$2,179 (quick stop-outs)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-$1,400 (better entries, wider stops)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Total P&L</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-$61,000 (-40.7%)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$38,000 (+42.7% from low)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Account Value</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$150K → $89K (destroyed)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$89K → $127K (recovering)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Biggest Mistake</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Entering AFTER displacement, at worst prices</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Fixed: Waiting for mitigation to OTE</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin:2rem 0">
+          <div style="background:rgba(255,107,107,.05);border:2px solid rgba(255,107,107,.2);border-radius:12px;padding:1.5rem">
+            <h4 style="margin:0 0 1rem 0;color:#ff5252">❌ Chasing Displacement (Weeks 1-8)</h4>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Win Rate</div>
+              <div style="font-size:1.1rem;font-weight:600;color:#ff5252">21% (6/28 trades)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Avg Entry Timing</div>
+              <div style="font-size:1rem;font-weight:600">After 80% of move done (late)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Avg Risk:Reward</div>
+              <div style="font-size:1rem;font-weight:600;color:#ff5252">0.8:1 (poor, tight stops)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Avg Win / Loss</div>
+              <div style="font-size:1rem;font-weight:600">+$1,800 / -$2,179</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Total P&L</div>
+              <div style="font-size:1.3rem;font-weight:700;color:#ff5252">-$61,000 (-40.7%)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Account Value</div>
+              <div style="font-size:1.1rem;font-weight:600;color:#ff5252">$150K → $89K (destroyed)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding-top:0.5rem;border-top:1px solid rgba(255,107,107,.2)">
+              <div style="font-size:0.85rem;color:var(--muted)">Biggest Mistake</div>
+              <div style="font-size:0.95rem;font-weight:600">Entering AFTER displacement, at worst prices</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(0,212,170,.08);border:2px solid rgba(0,212,170,.3);border-radius:12px;padding:1.5rem">
+            <h4 style="margin:0 0 1rem 0;color:#00d4aa">✅ Waiting for Mitigation (Weeks 10-15)</h4>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Win Rate</div>
+              <div style="font-size:1.1rem;font-weight:600;color:#22c55e">81% (17/21 trades)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Avg Entry Timing</div>
+              <div style="font-size:1rem;font-weight:600">At 38% retracement / OTE zone (optimal)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Avg Risk:Reward</div>
+              <div style="font-size:1rem;font-weight:600;color:#22c55e">2.7:1 (excellent, room to breathe)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Avg Win / Loss</div>
+              <div style="font-size:1rem;font-weight:600">+$2,800 / -$1,400</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Total P&L</div>
+              <div style="font-size:1.3rem;font-weight:700;color:#22c55e">+$38,000 (+42.7%)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Account Value</div>
+              <div style="font-size:1.1rem;font-weight:600;color:#22c55e">$89K → $127K (recovering)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding-top:0.5rem;border-top:1px solid rgba(0,212,170,.2)">
+              <div style="font-size:0.85rem;color:var(--muted)">Key Fix</div>
+              <div style="font-size:0.95rem;font-weight:600">Waiting for mitigation to OTE zone</div>
+            </div>
+          </div>
+        </div>
+
         <p style="margin-top:1.5rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
           <strong>David's advice (April 30, 2024):</strong><br>
           "I lost $61,000 in 8 weeks chasing displacement candles. I thought I was trading 'momentum,' but I was actually providing EXIT LIQUIDITY for institutions. They had already moved 80-90% of the intended distance by the time I entered. The move was OVER.<br><br>
@@ -543,7 +560,7 @@ RULE: If displacement happens and price NEVER retraces to OTE,
 
       <h3 id="mitigation-vs-order-blocks-the-difference">Mitigation vs Order Blocks (The Difference)</h3>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0">
         <div style="padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px">
           <h3 style="margin:0 0 1rem 0" id="order-block">Order Block</h3>
           <p><strong>Definition:</strong> Last opposite-colored candle BEFORE displacement</p>
