@@ -478,32 +478,34 @@ Jessica's 2024 (Continuing Daily/4H):
 
         <h5>What the 5-Minute Chart Shows:</h5>
         <p><strong>Pattern:</strong> Bullish potential breakout! AAPL broke above $225 resistance at 9:45 AM.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Price</th>
-              <th>Signal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>9:30 AM</td>
-              <td>$224.80</td>
-              <td>Testing $225 resistance (3rd touch)</td>
-            </tr>
-            <tr>
-              <td>9:45 AM</td>
-              <td>$225.15</td>
-              <td>BREAKOUT! Volume spike, +0.15% move</td>
-            </tr>
-            <tr>
-              <td>9:50 AM</td>
-              <td>$225.35</td>
-              <td>Holding above $225, looks strong</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="trading-timeline">
+          <div class="timeline-week" style="background:rgba(255,193,7,0.06)">
+            <div class="week-header">
+              <span class="week-label">9:30 AM</span>
+              <span class="week-pnl" style="color:#fbbf24">$224.80</span>
+            </div>
+            <div class="week-stats">Testing $225 resistance (3rd touch)</div>
+            <div class="week-issue">⚠️ Price approaching key resistance level</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.10);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">9:45 AM</span>
+              <span class="week-pnl win">$225.15</span>
+            </div>
+            <div class="week-stats">BREAKOUT! Volume spike, +0.15% move</div>
+            <div class="week-issue">✅ <strong>5-min view says:</strong> "This looks like a valid breakout!"</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.08)">
+            <div class="week-header">
+              <span class="week-label">9:50 AM</span>
+              <span class="week-pnl win">$225.35</span>
+            </div>
+            <div class="week-stats">Holding above $225, looks strong</div>
+            <div class="week-issue">✅ Confirmation: Price sustaining above breakout level</div>
+          </div>
+        </div>
         <p><strong>Your 5-min decision:</strong> "Breakout confirmed! Buy at $225.20, stop at $224.90, target $226.00."</p>
         <ul>
           <li>Risk: $0.30 per share = $150 (100 shares)</li>
@@ -513,42 +515,52 @@ Jessica's 2024 (Continuing Daily/4H):
 
         <h5>What the 1-Hour Chart Shows:</h5>
         <p><strong>Pattern:</strong> Bearish trend! AAPL has been falling for 3 days, currently testing resistance.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Date/Time</th>
-              <th>Price</th>
-              <th>Trend</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Sept 12 (3 days ago)</td>
-              <td>$229.50</td>
-              <td>Peak (started downtrend)</td>
-            </tr>
-            <tr>
-              <td>Sept 13</td>
-              <td>$227.00</td>
-              <td>Lower high (-$2.50)</td>
-            </tr>
-            <tr>
-              <td>Sept 14</td>
-              <td>$224.20</td>
-              <td>Lower low (-$5.30 from peak)</td>
-            </tr>
-            <tr>
-              <td>Sept 15, 9:30 AM</td>
-              <td>$224.80</td>
-              <td>Bouncing into $225 resistance zone</td>
-            </tr>
-            <tr>
-              <td>Sept 15, 9:45 AM</td>
-              <td>$225.15</td>
-              <td>Testing resistance (not a potential breakout, it's a REJECTION setup!)</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="trading-timeline">
+          <div class="timeline-week" style="background:rgba(255,82,82,0.06)">
+            <div class="week-header">
+              <span class="week-label">Sept 12 (3 days ago)</span>
+              <span class="week-pnl">$229.50</span>
+            </div>
+            <div class="week-stats">Peak (started downtrend)</div>
+            <div class="week-issue">📍 Top formed - beginning of decline</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.08)">
+            <div class="week-header">
+              <span class="week-label">Sept 13</span>
+              <span class="week-pnl loss">$227.00</span>
+            </div>
+            <div class="week-stats">Lower high (-$2.50)</div>
+            <div class="week-issue">⬇️ Downtrend signal: failing to make new highs</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.10)">
+            <div class="week-header">
+              <span class="week-label">Sept 14</span>
+              <span class="week-pnl loss">$224.20</span>
+            </div>
+            <div class="week-stats">Lower low (-$5.30 from peak)</div>
+            <div class="week-issue">⬇️ Downtrend confirmed: lower highs AND lower lows</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(255,193,7,0.08)">
+            <div class="week-header">
+              <span class="week-label">Sept 15, 9:30 AM</span>
+              <span class="week-pnl" style="color:#fbbf24">$224.80</span>
+            </div>
+            <div class="week-stats">Bouncing into $225 resistance zone</div>
+            <div class="week-issue">⚠️ Approaching previous support turned resistance</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.12);border-left:3px solid #ff5252">
+            <div class="week-header">
+              <span class="week-label">Sept 15, 9:45 AM</span>
+              <span class="week-pnl loss">$225.15</span>
+            </div>
+            <div class="week-stats">Testing resistance (not a breakout, it's a REJECTION setup!)</div>
+            <div class="week-issue">❌ <strong>1-hour view says:</strong> "This is a bull trap in a downtrend. Skip or SHORT!"</div>
+          </div>
+        </div>
         <p><strong>Your 1-hour decision:</strong> "AAPL is in a downtrend. $225 is resistance, not support. This 'potential breakout' is a bull trap. I should SKIP or even SHORT."</p>
         <ul>
           <li>Downtrend: 3 days, lower highs, lower lows</li>
@@ -558,107 +570,131 @@ Jessica's 2024 (Continuing Daily/4H):
 
         <h5>What the Daily Chart Shows:</h5>
         <p><strong>Pattern:</strong> Major bearish potential breakdown! AAPL broke below 50-day moving average, heading toward 200-day MA.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Price</th>
-              <th>Key Level</th>
-              <th>Trend</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Sept 1</td>
-              <td>$229.00</td>
-              <td>Above 50-day MA ($228)</td>
-              <td>Uptrend intact</td>
-            </tr>
-            <tr>
-              <td>Sept 8</td>
-              <td>$227.50</td>
-              <td>Testing 50-day MA</td>
-              <td>Breakdown starting</td>
-            </tr>
-            <tr>
-              <td>Sept 12</td>
-              <td>$224.00</td>
-              <td>Broke below 50-day MA</td>
-              <td>DOWNTREND CONFIRMED</td>
-            </tr>
-            <tr>
-              <td>Sept 15 (today)</td>
-              <td>$224.80</td>
-              <td>Heading toward 200-day MA ($218)</td>
-              <td>Bearish, expect $218 test</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="trading-timeline">
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.06)">
+            <div class="week-header">
+              <span class="week-label">Sept 1</span>
+              <span class="week-pnl win">$229.00</span>
+            </div>
+            <div class="week-stats">Above 50-day MA ($228) • Uptrend intact</div>
+            <div class="week-issue">✅ Bull market structure: price above key moving average</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(255,193,7,0.08)">
+            <div class="week-header">
+              <span class="week-label">Sept 8</span>
+              <span class="week-pnl" style="color:#fbbf24">$227.50</span>
+            </div>
+            <div class="week-stats">Testing 50-day MA • Breakdown starting</div>
+            <div class="week-issue">⚠️ Warning: critical support being tested</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.12);border-left:3px solid #ff5252">
+            <div class="week-header">
+              <span class="week-label">Sept 12</span>
+              <span class="week-pnl loss">$224.00</span>
+            </div>
+            <div class="week-stats">Broke below 50-day MA • DOWNTREND CONFIRMED</div>
+            <div class="week-issue">🔴 Major support broken - trend has changed</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.14);border-left:3px solid #ff5252">
+            <div class="week-header">
+              <span class="week-label">Sept 15 (today)</span>
+              <span class="week-pnl loss">$224.80</span>
+            </div>
+            <div class="week-stats">Heading toward 200-day MA ($218) • Bearish, expect $218 test</div>
+            <div class="week-issue">❌ <strong>Daily view says:</strong> "Trend is DOWN. Look for shorts, not longs. That 5-min breakout is a trap!"</div>
+          </div>
+        </div>
         <p><strong>Your daily chart decision:</strong> "AAPL just broke its 50-day MA support. The trend is DOWN. I should be looking for SHORT entries, not longs. Avoid all long setups until price reclaims $228 (50-day MA)."</p>
 
         <h5>What Actually Happened (The Truth):</h5>
-        <table>
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Price</th>
-              <th>What Happened</th>
-              <th>5-Min Trader</th>
-              <th>1-Hour/Daily Trader</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>9:45 AM</td>
-              <td>$225.15</td>
-              <td>"Breakout"</td>
-              <td>Bought at $225.20</td>
-              <td>Stayed out (wrong direction)</td>
-            </tr>
-            <tr>
-              <td>10:15 AM</td>
-              <td>$225.45</td>
-              <td>Peak (30 min hold)</td>
-              <td>Still holding (+$0.25 profit)</td>
-              <td>Stayed out</td>
-            </tr>
-            <tr>
-              <td>10:30 AM</td>
-              <td>$224.95</td>
-              <td>Fakeout reversal starts</td>
-              <td>Still holding (back to breakeven)</td>
-              <td>Stayed out</td>
-            </tr>
-            <tr>
-              <td>10:45 AM</td>
-              <td>$224.60</td>
-              <td>Breaking down</td>
-              <td>Stopped out at $224.90 (-$0.30 = -$150)</td>
-              <td>Stayed out</td>
-            </tr>
-            <tr>
-              <td>12:00 PM</td>
-              <td>$223.80</td>
-              <td>Downtrend continues</td>
-              <td>Out (lost $150)</td>
-              <td>Stayed out (no loss)</td>
-            </tr>
-            <tr>
-              <td>2:00 PM</td>
-              <td>$222.50</td>
-              <td>Accelerating lower</td>
-              <td>Out (lost $150)</td>
-              <td>Could've shorted at $225 for +$2.50 gain</td>
-            </tr>
-            <tr>
-              <td>4:00 PM Close</td>
-              <td>$221.80</td>
-              <td>Closed -1.3% for day</td>
-              <td><strong>Lost $150</strong></td>
-              <td><strong>Made $0 (or +$250 if shorted)</strong></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="story-summary">
+          <h3>📊 The Reality Check: What Actually Happened</h3>
+          <div class="summary-stats">
+            <div class="stat-box loss">
+              <span class="stat-label">5-Min Trader</span>
+              <span class="stat-value">-$150</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">1-Hour Trader</span>
+              <span class="stat-value">$0</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">Daily Trader (shorted)</span>
+              <span class="stat-value">+$250</span>
+            </div>
+          </div>
+          <div class="key-insight">
+            <strong>Timeframe Matters:</strong> Same stock, same day, three completely different outcomes based purely on which timeframe you analyzed.
+          </div>
+        </div>
+
+        <div class="trading-timeline">
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.08)">
+            <div class="week-header">
+              <span class="week-label">9:45 AM • $225.15</span>
+              <span class="week-pnl">"Breakout"</span>
+            </div>
+            <div class="week-stats">5-Min Trader: Bought at $225.20 | 1-Hour/Daily Trader: Stayed out (wrong direction)</div>
+            <div class="week-issue">📍 Entry point: 5-min trader sees breakout, higher timeframe traders see bull trap</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(255,193,7,0.06)">
+            <div class="week-header">
+              <span class="week-label">10:15 AM • $225.45</span>
+              <span class="week-pnl" style="color:#fbbf24">Peak (30 min hold)</span>
+            </div>
+            <div class="week-stats">5-Min Trader: Still holding (+$0.25 profit) | 1-Hour/Daily Trader: Stayed out</div>
+            <div class="week-issue">⚠️ Brief profit moment - maximum extension before reversal</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(255,193,7,0.08)">
+            <div class="week-header">
+              <span class="week-label">10:30 AM • $224.95</span>
+              <span class="week-pnl" style="color:#fbbf24">Fakeout reversal starts</span>
+            </div>
+            <div class="week-stats">5-Min Trader: Still holding (back to breakeven) | 1-Hour/Daily Trader: Stayed out</div>
+            <div class="week-issue">⚠️ The trap springs: price reversing back through breakout level</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.10)">
+            <div class="week-header">
+              <span class="week-label">10:45 AM • $224.60</span>
+              <span class="week-pnl loss">Breaking down</span>
+            </div>
+            <div class="week-stats">5-Min Trader: Stopped out at $224.90 (-$0.30 = -$150) | 1-Hour/Daily Trader: Stayed out</div>
+            <div class="week-issue">❌ Stop hit: 5-min trader takes loss, higher timeframe traders avoided the trap</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.12)">
+            <div class="week-header">
+              <span class="week-label">12:00 PM • $223.80</span>
+              <span class="week-pnl loss">Downtrend continues</span>
+            </div>
+            <div class="week-stats">5-Min Trader: Out (lost $150) | 1-Hour/Daily Trader: Stayed out (no loss)</div>
+            <div class="week-issue">📉 Continued decline validates the higher timeframe analysis</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.14)">
+            <div class="week-header">
+              <span class="week-label">2:00 PM • $222.50</span>
+              <span class="week-pnl loss">Accelerating lower</span>
+            </div>
+            <div class="week-stats">5-Min Trader: Out (lost $150) | Daily Trader: Could've shorted at $225 for +$2.50 gain</div>
+            <div class="week-issue">💰 Daily trader had the right bias - could've profited from the move down</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(118,221,255,0.12);border-left:4px solid #76ddff;font-weight:600">
+            <div class="week-header">
+              <span class="week-label">4:00 PM Close • $221.80</span>
+              <span class="week-pnl loss">Closed -1.3% for day</span>
+            </div>
+            <div class="week-stats">5-Min Trader: <strong style="color:#ff5252">Lost $150</strong> | 1-Hour Trader: <strong>$0</strong> (avoided) | Daily Trader: <strong style="color:#22c55e">+$250</strong> (if shorted)</div>
+            <div class="week-issue">🎯 <strong>The lesson:</strong> The 5-min "breakout" was a bull trap in a larger downtrend. Higher timeframes saved you from the loss—or helped you profit.</div>
+          </div>
+        </div>
 
         <p><strong>The Brutal Truth:</strong></p>
         <ul>
@@ -676,36 +712,63 @@ Jessica's 2024 (Continuing Daily/4H):
         </ol>
 
         <p><strong>The Same Stock, 3 Completely Different Realities:</strong></p>
-        <table>
-          <thead>
-            <tr>
-              <th>Timeframe</th>
-              <th>What You See</th>
-              <th>Your Decision</th>
-              <th>Outcome</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>5-Minute</td>
-              <td>Bullish breakout above $225</td>
-              <td>BUY (looks strong)</td>
-              <td>-$150 loss</td>
-            </tr>
-            <tr>
-              <td>1-Hour</td>
-              <td>3-day downtrend testing resistance</td>
-              <td>SKIP (wrong direction)</td>
-              <td>$0 (avoided trap)</td>
-            </tr>
-            <tr>
-              <td>Daily</td>
-              <td>Major potential breakdown below 50-day MA</td>
-              <td>SHORT (or stay out)</td>
-              <td>+$320 profit (or $0)</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="story-summary">
+          <h3>🔍 The Same Stock, 3 Completely Different Realities</h3>
+          <div class="summary-stats">
+            <div class="stat-box loss">
+              <span class="stat-label">5-Minute View</span>
+              <span class="stat-value">-$150</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">1-Hour View</span>
+              <span class="stat-value">$0</span>
+            </div>
+            <div class="stat-box win">
+              <span class="stat-label">Daily View</span>
+              <span class="stat-value">+$320</span>
+            </div>
+          </div>
+          <div class="key-insight">
+            <strong>The Illusion:</strong> Timeframe determines reality. Lower timeframe = more noise, less signal. Higher timeframe = less noise, clearer trend.
+          </div>
+        </div>
+
+        <div class="trading-timeline">
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.10);border-left:3px solid #ff5252">
+            <div class="week-header">
+              <span class="week-label">5-Minute Timeframe</span>
+              <span class="week-pnl loss">-$150 loss</span>
+            </div>
+            <div class="week-stats">What You See: Bullish breakout above $225</div>
+            <div class="week-issue">❌ <strong>Decision: BUY</strong> (looks strong) → Got trapped in noise, stopped out 1 hour later</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(118,221,255,0.08)">
+            <div class="week-header">
+              <span class="week-label">1-Hour Timeframe</span>
+              <span class="week-pnl">$0 (avoided trap)</span>
+            </div>
+            <div class="week-stats">What You See: 3-day downtrend testing resistance</div>
+            <div class="week-issue">✋ <strong>Decision: SKIP</strong> (wrong direction) → Recognized it as resistance, not support. Saved $150.</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.10);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Daily Timeframe</span>
+              <span class="week-pnl win">+$320 profit</span>
+            </div>
+            <div class="week-stats">What You See: Major breakdown below 50-day MA</div>
+            <div class="week-issue">✅ <strong>Decision: SHORT</strong> (or stay out) → Saw the bigger picture, either profited or avoided the trap entirely</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(255,193,7,0.10);border-left:4px solid #fbbf24;font-weight:600">
+            <div class="week-header">
+              <span class="week-label">The Core Lesson</span>
+            </div>
+            <div class="week-stats">Lower timeframe = more noise, less signal | Higher timeframe = less noise, clearer trend</div>
+            <div class="week-issue">🎯 <strong>The trap:</strong> 5-min chart showed 20+ "setups" that day (mostly noise). Daily chart showed 1 clear signal: downtrend in progress, avoid longs.</div>
+          </div>
+        </div>
 
         <p><strong>The Lesson: Lower Timeframe = More Noise, Less Signal</strong></p>
         <ul>
