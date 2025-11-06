@@ -1,69 +1,59 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
   <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <!-- AGGRESSIVE CACHE PREVENTION: Forces fresh load every time -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
   <title>Paper Trading is Lying to You</title>
+  <meta name="description" content="Sim fills aren't real. Psychology with play money isn't real. Learn slippage reality, the psychology gap, and the 3-stage graduation system (sim → micro → standard).">
   <link rel="canonical" href="https://education.signalpilot.io/curriculum/beginner/12-paper-trading.html">
   <meta name="sp-level" content="Beginner"><meta name="sp-order" content="12">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
   <link rel="stylesheet" href="/assets/notes.css">
   <link rel="stylesheet" href="/assets/auth-ui.css">
-  <link rel="stylesheet" href="/assets/chatbot.css">
-  <!-- Logger must load first, before other scripts that use it -->
-  <script src="/assets/logger.js"></script>
-  <script src="/assets/notes.js" defer></script>
-  <script src="/assets/library.js"></script>
-  <script src="/assets/lesson-notes.js"></script>
-  <script src="/assets/quiz-enhanced.js" defer></script>
-  <script src="/assets/social-share.js" defer></script>
-  <script src="/assets/auth-ui.js"></script>
-  <script src="/assets/supabase-client.js"></script>
-  <script src="/assets/pwa-init.js"></script>
 </head>
 <body>
-<div class="bg-stars" aria-hidden="true"></div>
-<canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
-<div class="bg-aurora" aria-hidden="true"></div>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
 <header class="sp-header">
-  <div class="container">
-    <div class="sp-branding">
-      <a href="/index.html" class="logo-link" aria-label="Signal Pilot Home">
-        <div class="wordmark">SIGNAL PILOT</div>
-      </a>
-    </div>
-    <nav class="sp-nav" aria-label="Main navigation">
-      <a href="/">Curriculum</a>
-      <a href="/my-library.html">My Library</a>
-    </nav>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-      <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="3"/><path d="M10 0v3M10 17v3M20 10h-3M3 10H0M16.364 3.636l-2.121 2.121M5.757 14.243l-2.121 2.121M16.364 16.364l-2.121-2.121M5.757 5.757L3.636 3.636"/></svg>
-      <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
-    </button>
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
   </div>
 </header>
+
 <article class="article">
   <header>
     <div class="wrap">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/index.html">Home</a> &gt;
-        <a href="/">Curriculum</a> &gt;
-        <a href="/beginner.html">Beginner</a> &gt;
-        <span>Lesson 12</span>
-      </nav>
-
-      <div class="lesson-badges">
-        <span class="badge">🟢 Beginner • Lesson 12 of 20</span>
-        <span class="badge badge-lesson">LESSON 12</span>
-        <span class="badge badge-tier-beginner">BEGINNER</span>
-        <span class="badge badge-time">~30 min</span>
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/beginner.html">Beginner</a> <span>›</span>
+        <span>Lesson #12</span>
       </div>
-
-      <h1>Paper Trading is Lying to You</h1>
-      <p><b>Sim fills aren't real. Psychology with play money isn't real.</b> Learn slippage reality, the psychology gap, and the 3-stage graduation system (sim → micro → standard).</p>
+      <span class="badge">🟢 Beginner • Lesson 12 of 12</span>
+      <h1 class="headline xl">Paper Trading is Lying to You</h1>
+      <div class="meta">13 min read • Trading Psychology</div>
 
       <!-- Article Progress Indicator -->
       <div class="article-progress" style="--progress:0%">
