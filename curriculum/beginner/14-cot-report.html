@@ -227,44 +227,34 @@
 
         <p>Tyler kept trading technicals, kept ignoring COT. Commercials kept winning:</p>
 
-        <table style="width:100%;margin:1.5rem 0;border-collapse:collapse">
-          <thead>
-            <tr style="background:rgba(139,92,246,.1)">
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Trade</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Date</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Asset</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Tyler's Signal</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">COT Warning He Missed</th>
-              <th style="padding:.75rem;text-align:right;border:1px solid rgba(139,92,246,.3)">Result</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#2</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Feb 8</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Crude Oil</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Breakout $79.50</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Commercials 12th %ile short (refineries hedging DOWN)</td>
-              <td style="padding:.75rem;text-align:right;border:1px solid rgba(139,92,246,.2)">-$42,300</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#3</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Mar 17</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Gold</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Bull flag $1,912</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Commercials 6th %ile short (EXTREME), non-comm 94th %ile long</td>
-              <td style="padding:.75rem;text-align:right;border:1px solid rgba(139,92,246,.2)">-$37,600</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#4</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Apr 21</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Silver</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Support bounce $25.10</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Commercials 89th %ile short (betting DOWN), divergence with price</td>
-              <td style="padding:.75rem;text-align:right;border:1px solid rgba(139,92,246,.2)">-$31,200</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="trading-timeline">
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.12);border-left:3px solid #ff5252">
+            <div class="week-header">
+              <span class="week-label">Trade #2: Feb 8 - Crude Oil Breakout</span>
+              <span class="week-pnl loss">-$42,300</span>
+            </div>
+            <div class="week-stats"><strong>Tyler's Signal:</strong> Breakout $79.50</div>
+            <div class="week-issue">❌ <strong>COT Warning Missed:</strong> Commercials 12th %ile short (refineries hedging DOWN) — institutions betting AGAINST Tyler</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.14);border-left:3px solid #ff5252">
+            <div class="week-header">
+              <span class="week-label">Trade #3: Mar 17 - Gold Bull Flag</span>
+              <span class="week-pnl loss">-$37,600</span>
+            </div>
+            <div class="week-stats"><strong>Tyler's Signal:</strong> Bull flag $1,912</div>
+            <div class="week-issue">❌ <strong>COT Warning Missed:</strong> Commercials 6th %ile short (EXTREME), non-comm 94th %ile long — perfect trap setup</div>
+          </div>
+
+          <div class="timeline-week loss" style="background:rgba(255,82,82,0.16);border-left:3px solid #ff5252">
+            <div class="week-header">
+              <span class="week-label">Trade #4: Apr 21 - Silver Support Bounce</span>
+              <span class="week-pnl loss">-$31,200</span>
+            </div>
+            <div class="week-stats"><strong>Tyler's Signal:</strong> Support bounce $25.10</div>
+            <div class="week-issue">❌ <strong>COT Warning Missed:</strong> Commercials 89th %ile short (betting DOWN), divergence with price — smart money positioned opposite</div>
+          </div>
+        </div>
 
         <p><strong>Pattern Emerging:</strong></p>
         <ul>
@@ -424,42 +414,44 @@ TRADE DECISION:
         </ul>
 
         <p><strong>Trade Progression:</strong></p>
-        <table style="width:100%;margin:1.5rem 0;border-collapse:collapse">
-          <thead>
-            <tr style="background:rgba(139,92,246,.1)">
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Date</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Gold Price</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">COT Update</th>
-              <th style="padding:.75rem;text-align:right;border:1px solid rgba(139,92,246,.3)">Tyler's P&L</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Jun 7 (Entry)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$1,963</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. 4th %ile short</td>
-              <td style="padding:.75rem;text-align:right;border:1px solid rgba(139,92,246,.2)">$0</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Jun 12</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$1,947</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Still adding shorts</td>
-              <td style="padding:.75rem;text-align:right;border:1px solid rgba(139,92,246,.2)">+$19,200</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Jun 20</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$1,928</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. now 8th %ile (covering)</td>
-              <td style="padding:.75rem;text-align:right;border:1px solid rgba(139,92,246,.2)">+$42,000</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Jun 28 (EXIT)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$1,901</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. 18th %ile (neutral)</td>
-              <td style="padding:.75rem;text-align:right;border:1px solid rgba(139,92,246,.2)">+$74,400</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div class="trading-timeline">
+          <div class="timeline-week" style="background:rgba(118,221,255,0.08);border-left:3px solid #76ddff">
+            <div class="week-header">
+              <span class="week-label">Jun 7 (Entry): Gold $1,963</span>
+              <span class="week-pnl">$0</span>
+            </div>
+            <div class="week-stats">COT Signal: Comm. 4th %ile short</div>
+            <div class="week-issue">🎯 <strong>Entry triggered:</strong> Extreme COT + technical confirmation = SHORT position</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.08);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Jun 12: Gold $1,947</span>
+              <span class="week-pnl win">+$19,200</span>
+            </div>
+            <div class="week-stats">COT Update: Still adding shorts</div>
+            <div class="week-issue">✅ <strong>Conviction confirmed:</strong> Commercials doubling down, Tyler holds through noise</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.12);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Jun 20: Gold $1,928</span>
+              <span class="week-pnl win">+$42,000</span>
+            </div>
+            <div class="week-stats">COT Update: Comm. now 8th %ile (covering)</div>
+            <div class="week-issue">💰 <strong>Profit building:</strong> Price dropping as predicted, commercials starting to cover</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.16);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Jun 28 (EXIT): Gold $1,901</span>
+              <span class="week-pnl win">+$74,400</span>
+            </div>
+            <div class="week-stats">COT Update: Comm. 18th %ile (neutral)</div>
+            <div class="week-issue">🎉 <strong>Perfect exit:</strong> COT no longer extreme, Tyler locks in +$74.4K profit</div>
+          </div>
+        </div>
 
         <p><strong>Exit Trigger:</strong> COT report June 23 showed commercials now at 18th percentile (no longer extreme). Tyler potential exited at $1,901, locking in profit.</p>
 
@@ -484,76 +476,70 @@ TRADE DECISION:
       <div style="background:rgba(0,212,170,.08);border:2px solid rgba(0,212,170,.3);border-radius:12px;padding:2rem;margin:2rem 0">
         <h4>Tyler's Recovery Results (June 7 - December 29, 2023)</h4>
 
-        <table style="width:100%;margin:1.5rem 0;border-collapse:collapse">
-          <thead>
-            <tr style="background:rgba(139,92,246,.1)">
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Trade</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Date</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Asset</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">COT Signal</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Result</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Key Lesson</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#5</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Jun 7</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Gold</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. 4th %ile short + divergence</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$74,400</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Extreme COT = reversal</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#6</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Jul 18</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Crude Oil</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. 87th %ile long (bullish)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$38,900</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Trade WITH commercials</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#7</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Aug 22</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Silver</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. neutral (45th %ile) - SKIPPED</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$0 (no trade)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Avoid neutral COT</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#8</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Sep 15</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Gold</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. 91st %ile long (very bullish)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$51,200</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Miners accumulating = long</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#9</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Oct 31</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Natural Gas</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. 9th %ile short - SKIPPED</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$0 (outside expertise)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Stick to familiar markets</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#10</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Nov 17</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Crude Oil</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. 14th %ile short + divergence</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$44,700</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Divergence = high prob</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">#11</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Dec 8</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Gold</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Comm. 83rd %ile long</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$29,100</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Year-end rally confirmed</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="trading-timeline">
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.12);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Trade #5: Jun 7 - Gold</span>
+              <span class="week-pnl win">+$74,400</span>
+            </div>
+            <div class="week-stats"><strong>COT Signal:</strong> Comm. 4th %ile short + divergence</div>
+            <div class="week-issue">🎯 <strong>Extreme COT = reversal:</strong> First COT-based trade, perfect execution</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.10);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Trade #6: Jul 18 - Crude Oil</span>
+              <span class="week-pnl win">+$38,900</span>
+            </div>
+            <div class="week-stats"><strong>COT Signal:</strong> Comm. 87th %ile long (bullish)</div>
+            <div class="week-issue">✅ <strong>Trade WITH commercials:</strong> Following smart money pays off again</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(118,221,255,0.08);border-left:3px solid #76ddff">
+            <div class="week-header">
+              <span class="week-label">Trade #7: Aug 22 - Silver (SKIPPED)</span>
+              <span class="week-pnl">$0</span>
+            </div>
+            <div class="week-stats"><strong>COT Signal:</strong> Comm. neutral (45th %ile)</div>
+            <div class="week-issue">⏭️ <strong>Avoid neutral COT:</strong> Discipline to skip non-extreme setups</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.14);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Trade #8: Sep 15 - Gold</span>
+              <span class="week-pnl win">+$51,200</span>
+            </div>
+            <div class="week-stats"><strong>COT Signal:</strong> Comm. 91st %ile long (very bullish)</div>
+            <div class="week-issue">💰 <strong>Miners accumulating = long:</strong> Strong commercial conviction confirmed</div>
+          </div>
+
+          <div class="timeline-week" style="background:rgba(118,221,255,0.08);border-left:3px solid #76ddff">
+            <div class="week-header">
+              <span class="week-label">Trade #9: Oct 31 - Natural Gas (SKIPPED)</span>
+              <span class="week-pnl">$0</span>
+            </div>
+            <div class="week-stats"><strong>COT Signal:</strong> Comm. 9th %ile short</div>
+            <div class="week-issue">⏭️ <strong>Stick to familiar markets:</strong> Good signal but outside expertise, passed</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.13);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Trade #10: Nov 17 - Crude Oil</span>
+              <span class="week-pnl win">+$44,700</span>
+            </div>
+            <div class="week-stats"><strong>COT Signal:</strong> Comm. 14th %ile short + divergence</div>
+            <div class="week-issue">🔥 <strong>Divergence = high prob:</strong> Price/COT divergence strikes again</div>
+          </div>
+
+          <div class="timeline-week win" style="background:rgba(34,197,94,0.11);border-left:3px solid #22c55e">
+            <div class="week-header">
+              <span class="week-label">Trade #11: Dec 8 - Gold</span>
+              <span class="week-pnl win">+$29,100</span>
+            </div>
+            <div class="week-stats"><strong>COT Signal:</strong> Comm. 83rd %ile long</div>
+            <div class="week-issue">🎉 <strong>Year-end rally confirmed:</strong> Perfect way to close out the recovery year</div>
+          </div>
+        </div>
 
         <p><strong>7-Month Recovery Results (Jun-Dec 2023):</strong></p>
         <ul>
@@ -565,47 +551,64 @@ TRADE DECISION:
         </ul>
 
         <p><strong>Key Statistics Comparison:</strong></p>
-        <table style="width:100%;margin:1.5rem 0;border-collapse:collapse">
-          <thead>
-            <tr style="background:rgba(139,92,246,.1)">
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Metric</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Jan-May (No COT)</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Jun-Dec (With COT)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Trades Taken</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">4</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">5</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Win Rate</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">0% (0/4)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">100% (5/5)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Avg COT Percentile (Entry)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">N/A (didn't check)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Extreme: 11th %ile avg</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Total P&L</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-$139,900</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$238,300</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Max Drawdown</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-29.5%</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-4.1%</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Trades Skipped (Avoided)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">0</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">2 (neutral COT = no edge)</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin:2rem 0">
+          <div style="background:rgba(255,107,107,.05);border:2px solid rgba(255,107,107,.2);border-radius:12px;padding:1.5rem">
+            <h4 style="margin:0 0 1rem 0;color:#ff5252">❌ Jan-May (No COT)</h4>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Trades Taken</div>
+              <div style="font-size:1.1rem;font-weight:600">4</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Win Rate</div>
+              <div style="font-size:1.1rem;font-weight:600;color:#ff5252">0% (0/4)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Avg COT Percentile</div>
+              <div style="font-size:1.1rem;font-weight:600">N/A (didn't check)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Total P&L</div>
+              <div style="font-size:1.3rem;font-weight:700;color:#ff5252">-$139,900</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Max Drawdown</div>
+              <div style="font-size:1.1rem;font-weight:600;color:#ff5252">-29.5%</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Trades Skipped</div>
+              <div style="font-size:1.1rem;font-weight:600">0</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(0,212,170,.08);border:2px solid rgba(0,212,170,.3);border-radius:12px;padding:1.5rem">
+            <h4 style="margin:0 0 1rem 0;color:#00d4aa">✅ Jun-Dec (With COT)</h4>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Trades Taken</div>
+              <div style="font-size:1.1rem;font-weight:600">5</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Win Rate</div>
+              <div style="font-size:1.1rem;font-weight:600;color:#22c55e">100% (5/5)</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Avg COT Percentile</div>
+              <div style="font-size:1.1rem;font-weight:600">Extreme: 11th %ile avg</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Total P&L</div>
+              <div style="font-size:1.3rem;font-weight:700;color:#22c55e">+$238,300</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Max Drawdown</div>
+              <div style="font-size:1.1rem;font-weight:600;color:#22c55e">-4.1%</div>
+            </div>
+            <div style="margin:0.75rem 0">
+              <div style="font-size:0.85rem;color:var(--muted)">Trades Skipped</div>
+              <div style="font-size:1.1rem;font-weight:600">2 (neutral COT = no edge)</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="callout-key">
