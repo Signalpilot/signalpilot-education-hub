@@ -494,8 +494,8 @@ html[data-theme="light"] .hero::before{
   html,body{overflow-x:hidden !important;width:100%;position:relative}
   .wrap{max-width:100%;padding:0 1rem}
 
-  /* Mobile table transformation - ALL tables become vertical cards */
-  table{
+  /* Mobile table accordion-style - ONLY for lessons 1-2 (testing) */
+  .table-accordions-mobile table{
     display:block;
     width:100%;
     max-width:100%;
@@ -504,55 +504,90 @@ html[data-theme="light"] .hero::before{
   }
 
   /* Hide table header on mobile */
-  table thead{
+  .table-accordions-mobile table thead{
     display:none;
   }
 
-  /* Table body becomes container for cards */
-  table tbody{
+  /* Table body becomes container */
+  .table-accordions-mobile table tbody{
     display:block;
     width:100%;
   }
 
-  /* Each row becomes a card */
-  table tr{
+  /* Each row becomes an accordion-style card */
+  .table-accordions-mobile table tr{
     display:block;
-    margin-bottom:1.25rem;
-    padding:1rem;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(118,221,255,0.2);
+    margin-bottom:0.75rem;
+    border:1px solid rgba(255,255,255,0.1);
     border-radius:12px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.2);
+    overflow:hidden;
+    background:rgba(255,255,255,0.03);
+    position:relative;
   }
 
-  /* Each cell becomes full-width block */
-  table td{
+  /* First 2 cells are always visible (the "header") */
+  .table-accordions-mobile table td:nth-child(1),
+  .table-accordions-mobile table td:nth-child(2){
     display:block;
-    width:100%;
-    padding:0.6rem 0;
-    border:none;
-    text-align:left;
+    padding:1rem 1.25rem;
+    font-weight:600;
+    background:rgba(255,255,255,0.04);
+  }
+
+  .table-accordions-mobile table td:nth-child(1){
+    font-size:1rem;
+    color:var(--accent);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    position:relative;
+    padding-right:3rem;
+  }
+
+  .table-accordions-mobile table td:nth-child(2){
+    font-size:0.9rem;
+    color:var(--text);
+    padding-right:7rem;
+  }
+
+  /* Remaining cells hidden by default */
+  .table-accordions-mobile table td:nth-child(n+3){
+    display:none;
+    padding:0.75rem 1.25rem;
     font-size:0.875rem;
     line-height:1.5;
-    word-wrap:break-word;
-    overflow-wrap:break-word;
+    border-top:1px solid rgba(255,255,255,0.05);
+    background:rgba(255,255,255,0.02);
   }
 
-  /* Separator between cells */
-  table td:not(:last-child){
-    border-bottom:1px solid rgba(255,255,255,0.08);
-    padding-bottom:0.6rem;
-    margin-bottom:0.6rem;
+  /* Add expand indicator to first cell */
+  .table-accordions-mobile table td:nth-child(1)::after{
+    content:' ▼';
+    position:absolute;
+    right:1rem;
+    top:1rem;
+    font-size:0.8rem;
+    color:var(--muted);
+    opacity:0.6;
   }
 
-  /* Highlight first cell as card title */
-  table td:first-child{
-    font-size:1rem;
-    font-weight:700;
+  /* When row is expanded, show all cells */
+  .table-accordions-mobile table tr.expanded td:nth-child(n+3){
+    display:block;
+  }
+
+  /* Change indicator when expanded */
+  .table-accordions-mobile table tr.expanded td:nth-child(1)::after{
+    content:' ▲';
     color:var(--accent);
-    margin-bottom:0.75rem;
-    padding-bottom:0.75rem;
-    border-bottom:2px solid rgba(118,221,255,0.3);
+  }
+
+  /* Make row clickable */
+  .table-accordions-mobile table tr{
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+
+  .table-accordions-mobile table tr:hover{
+    background:rgba(255,255,255,0.06);
   }
 
   /* Ensure prose and content containers don't overflow */
