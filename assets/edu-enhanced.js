@@ -350,6 +350,25 @@
   };
 
   // ============================================
+  // MOBILE TABLE ACCORDIONS
+  // ============================================
+  const TableAccordions = {
+    init() {
+      // Only on mobile
+      if (window.innerWidth > 480) return;
+
+      document.querySelectorAll('table tr').forEach(row => {
+        // Skip header rows
+        if (row.closest('thead')) return;
+
+        row.addEventListener('click', () => {
+          row.classList.toggle('expanded');
+        });
+      });
+    }
+  };
+
+  // ============================================
   // INITIALIZE ALL FEATURES
   // ============================================
   function initAll() {
@@ -358,6 +377,7 @@
     Accordion.init();
     Quiz.init();
     Search.init();
+    TableAccordions.init();
   }
 
   // Run on DOM ready
