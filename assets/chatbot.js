@@ -481,7 +481,10 @@ Type **"help"** to see all available topics!
         if (this.isOpen) {
             this.elements.container.classList.remove('sp-chatbot-closed');
             this.elements.container.classList.add('sp-chatbot-open');
-            this.elements.input.focus();
+            // Only auto-focus on desktop, not mobile (prevents keyboard from opening on mobile)
+            if (window.innerWidth > 768) {
+                this.elements.input.focus();
+            }
         } else {
             this.elements.container.classList.remove('sp-chatbot-open');
             this.elements.container.classList.add('sp-chatbot-closed');
