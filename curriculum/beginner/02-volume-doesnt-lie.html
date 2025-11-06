@@ -182,52 +182,71 @@
 
         <h5>Results: Before vs After</h5>
 
-        <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0">
-          <thead style="background: rgba(255,255,255,0.05)">
-            <tr>
-              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Metric</th>
-              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Before (Feb-May)</th>
-              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">After (Jun-Dec)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Account</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$185K → $92K</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$92K → $157K</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Breakout Win Rate</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">17% (8/47)</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">74% (43/58)</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Checked Volume Delta</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">0% (didn't know it existed)</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">100% (every trade)</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Avg Delta on Entries</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-74% (exhaustion)</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">+68% (absorption)</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Trades per Month</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">12</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">9</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Avg Win</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">+$680</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">+$2,140</td>
-            </tr>
-            <tr style="background: rgba(0,212,170,0.1)">
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>Total P&L</strong></td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>-$93,000 (-50.3%)</strong></td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>+$65,000 (+70.7%)</strong></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="story-summary">
+          <h3>🔄 Derek's Volume Delta Transformation</h3>
+          <div class="key-insight">
+            <strong>Same trader. Same strategy (breakouts). Different volume analysis.</strong>
+          </div>
+        </div>
+
+        <div class="trading-timeline">
+          <div class="timeline-week loss">
+            <div class="week-header">
+              <span class="week-label">❌ Before Volume Delta (Feb-May)</span>
+              <span class="week-pnl loss">-$93,000</span>
+            </div>
+            <div class="week-stats">Account: $185K → $92K • 50.3% loss</div>
+            <div class="week-issue">
+              <strong>The Numbers:</strong><br>
+              • Breakout Win Rate: 17% (8/47 trades)<br>
+              • Checked Volume Delta: 0% (didn't know it existed)<br>
+              • Average Delta on Entries: -74% (exhaustion)<br>
+              • Trades per Month: 12<br>
+              • Average Win: +$680
+            </div>
+          </div>
+
+          <div class="timeline-week win">
+            <div class="week-header">
+              <span class="week-label">✅ After Volume Delta (Jun-Dec)</span>
+              <span class="week-pnl win">+$65,000</span>
+            </div>
+            <div class="week-stats">Account: $92K → $157K • 70.7% gain</div>
+            <div class="week-issue">
+              <strong>The Numbers:</strong><br>
+              • Breakout Win Rate: 74% (43/58 trades)<br>
+              • Checked Volume Delta: 100% (every trade)<br>
+              • Average Delta on Entries: +68% (absorption)<br>
+              • Trades per Month: 9 (more selective)<br>
+              • Average Win: +$2,140
+            </div>
+          </div>
+        </div>
+
+        <div class="story-summary">
+          <h3>💰 The Transformation</h3>
+          <div class="summary-stats">
+            <div class="stat-box">
+              <span class="stat-label">Total Swing</span>
+              <span class="stat-value win">$158,000</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Win Rate Improvement</span>
+              <span class="stat-value win">+335%</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Delta Shift</span>
+              <span class="stat-value win">-74% → +68%</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Avg Win Increase</span>
+              <span class="stat-value win">+215%</span>
+            </div>
+          </div>
+          <div class="key-insight">
+            <strong>What Changed?</strong> Derek stopped trading breakouts blindly and started checking volume delta first. His 47 failed breakouts ALL had negative delta—he was buying institutional distribution into retail FOMO.
+          </div>
+        </div>
 
         <h5>Derek's Advice (In His Own Words)</h5>
 
