@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <title>Advanced Risk Management: Position Sizing, Correlation & VAR — Signal Pilot</title>
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/46-advanced-risk-management.html">
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="46">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <!-- Logger must load first, before other scripts that use it -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/notes.js" defer></script>
+  <script src="/assets/library.js"></script>
+  <script src="/assets/lesson-notes.js"></script>
+  <script src="/assets/quiz-enhanced.js" defer></script>
+  <script src="/assets/social-share.js" defer></script>
+  <script src="/assets/auth-ui.js"></script>
+  <script src="/assets/supabase-client.js"></script>
+  <script src="/assets/pwa-init.js"></script>
+</head>
+<body>
+<div class="bg-stars" aria-hidden="true"></div>
+<canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+<div class="bg-aurora" aria-hidden="true"></div>
+<header class="sp-header">
+  <div class="container">
+    <div class="sp-branding">
+      <a href="/index.html" class="logo-link" aria-label="Signal Pilot Home">
+        <div class="wordmark">SIGNAL PILOT</div>
+      </a>
+    </div>
+    <nav class="sp-nav" aria-label="Main navigation">
+      <a href="/">Curriculum</a>
+      <a href="/my-library.html">My Library</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="3"/><path d="M10 0v3M10 17v3M20 10h-3M3 10H0M16.364 3.636l-2.121 2.121M5.757 14.243l-2.121 2.121M16.364 16.364l-2.121-2.121M5.757 5.757L3.636 3.636"/></svg>
+      <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+    </button>
+  </div>
+</header>
+<article class="article">
+  <header>
+    <div class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/index.html">Home</a> &gt;
+    <a href="/">Curriculum</a> &gt;
+    <a href="/advanced.html">Advanced</a> &gt;
+    <span>Lesson 46</span>
+  </nav>
+  <div class="lesson-badges">
+    <span class="badge badge-lesson">LESSON 46</span>
+    <span class="badge badge-tier-intermediatebridge">INTERMEDIATE BRIDGE</span>
+    <span class="badge badge-time">~40 min</span>
+  </div>
+  <h1>Advanced Risk Management: Surviving to Trade Another Day</h1>
+  <p><b>Risk management isn't about avoiding losses. It's about ensuring no single loss destroys your account.</b></p>
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+  <p>The difference between professional traders and retail traders isn't win rate—it's risk management. Professionals survive 20 losing trades in a row. Retail blows up after 3. This lesson teaches you how to build institutional-grade risk frameworks.</p>
+  <div class="callout callout-danger">
+    <h4>💸 The $1.8M Correlation Disaster</h4>
+    <p>In March 2020, a swing trader had 8 "diversified" positions: AAPL, MSFT, GOOGL, AMZN, FB, NVDA, TSLA, NFLX. He thought: "8 stocks = diversification, risk controlled."</p>
+    <p><strong>The Problem:</strong> All 8 stocks were mega-cap tech with 0.85+ correlation. When COVID crashed markets, ALL fell together.</p>
+    <p><strong>Result:</strong></p>
+    <ul>
+      <li><strong>March 12, 2020:</strong> All 8 positions down 8-12% in single day</li>
+      <li><strong>Portfolio loss:</strong> -$145K in ONE day (9.8% account drawdown)</li>
+      <li><strong>By March 23:</strong> Total drawdown -$287K (19.4%), forced to liquidate</li>
+    </ul>
+    <p><strong>What went wrong:</strong> 1% risk per trade × 8 positions = 8% total risk...but only if positions are UNCORRELATED. With 0.85 correlation, effective risk was 6.8% on a SINGLE bet (tech sector).</p>
+    <p><strong>Lesson:</strong> Position count ≠ diversification. Correlation determines true risk. 8 correlated positions = 1 giant bet.</p>
+  </div>
+  <div class="callout callout-warning">
+    <h4>📉 CASE STUDY: Mark's $79K Correlation Blindness Disaster (May 2024)</h4>
+    <p><strong>Trader Profile:</strong> Mark Stevens, 38, swing trader (5 years experience), mechanical engineer by training</p>
+    <p><strong>Account size:</strong> $160,000</p>
+    <p><strong>Markets:</strong> US equities, swing trades (3-10 day holds)</p>
+    <p><strong>Strategy:</strong> Technical breakouts + fundamental momentum, 4-8 concurrent positions</p>
+    <p><strong>Fatal flaw:</strong> Ignored correlation risk, treated 6 tech positions as "diversified," never calculated effective risk exposure</p>
+    <h5>The Disaster Timeline (May 2024)</h5>
+    <p><strong>Background:</strong> Mark was a disciplined trader. He'd read all the books: position size at 2% risk per trade, max 5 positions, stop losses at -8% from potential entry. His 2023 performance: +$47K (+29% return, 14% max drawdown). But in May 2024, he saw "too many good setups" and broke his 5-position rule. "They're different stocks," he reasoned. "I'm diversified."</p>
+    <p><strong>May 1, 2024: Building the House of Cards</strong></p>
+    <ul>
+      <li><strong>May 1, 10:15 AM:</strong> SPY breaks above $515 resistance. Mark enters 100 shares at $515.20. Stop: $505.20 ($10 risk/share = $1,000 risk = 0.625% of account). Position 1/6.</li>
+      <li><strong>May 2, 2:30 PM:</strong> QQQ breaks out above $440. Mark adds 50 shares at $440.50. Stop: $432.50 ($8 risk/share = $400 risk = 0.25% account). "This is NASDAQ, different from SPY." Position 2/6.</li>
+      <li><strong>May 6, 11:00 AM:</strong> NVDA earnings beat, gaps to $930. Mark chases at $932. Stop: $902 ($30 risk × 15 shares = $450 = 0.28%). "Semiconductors are different sector." Position 3/6.</li>
+      <li><strong>May 8, 9:45 AM:</strong> TSLA breaks $180 after Cybertruck news. Buys 30 shares at $181. Stop: $172 ($9 × 30 = $270 = 0.17%). "EV sector, not same as chips." Position 4/6.</li>
+      <li><strong>May 10, 1:20 PM:</strong> AAPL launches new iPad, rallies to $185. Buys 40 shares at $185.50. Stop: $177.50 ($8 × 40 = $320 = 0.2%). "Consumer tech, totally different." Position 5/6.</li>
+      <li><strong>May 13, 10:30 AM:</strong> MSFT cloud revenue strong, at $425. Buys 20 shares at $425.50. Stop: $409.50 ($16 × 20 = $320 = 0.2%). "Enterprise software." Position 6/6.</li>
+    </ul>
+    <p><strong>Mark's mental model:</strong> 6 positions, total risk = 0.625% + 0.25% + 0.28% + 0.17% + 0.2% + 0.2% = <strong>1.735% portfolio risk</strong>. "Very conservative. I can handle this."</p>
+    <p><strong>May 13, 8:47 PM - The Calculation He Never Did:</strong></p>
+    <blockquote style="border-left: 4px solid #ff6b6b; padding: 1rem; background: rgba(255,107,107,0.1); margin: 1.5rem 0">
+      <strong>What Mark SHOULD have calculated (but didn't):</strong>
+      Correlation matrix of his 6 positions:
+      - SPY ↔ QQQ: 0.94
+      - SPY ↔ NVDA: 0.82
+      - SPY ↔ TSLA: 0.76
+      - SPY ↔ AAPL: 0.88
+      - SPY ↔ MSFT: 0.91
+      - Average correlation: 0.82
+      <strong>Effective portfolio risk (correlation-adjusted):</strong>
+      With 0.82 correlation, these 6 positions act like 1.8 independent positions (not 6).
+      True risk exposure = 1.735% × √(correlation factor) = 1.735% × 2.8 = <strong>4.86% on a SINGLE market move</strong>
+      But Mark thought he had 1.735% risk. He was actually risking 4.86%—almost 3× more than he believed.
+    </blockquote>
+    <p><strong>May 15, 2024: The Trap Springs</strong></p>
+    <ul>
+      <li><strong>May 15, 9:30 AM:</strong> CPI data comes in hotter than expected. Fed hawkish pivot feared.</li>
+      <li><strong>9:31 AM:</strong> SPY gaps down -2.1% to $504.50 (Mark's stop: $505.20). Fills at $503.80 due to slippage.</li>
+      <li><strong>9:31 AM:</strong> QQQ gaps down -2.8% to $428 (Mark's stop: $432.50). Fills at $427.20.</li>
+      <li><strong>9:32 AM:</strong> NVDA opens -4.2% at $893 (below Mark's $902 stop). Fills at $889.50.</li>
+      <li><strong>9:32 AM:</strong> TSLA opens -3.7% at $174 (below $172 stop). Fills at $172.80.</li>
+      <li><strong>9:33 AM:</strong> AAPL opens -2.9% at $179.60 (above $177.50 stop—SAFE!)...but then drops to $176.20 by 9:45 AM. Stop triggered.</li>
+      <li><strong>9:33 AM:</strong> MSFT opens -3.1% at $412 (below $409.50 stop). Fills at $410.30.</li>
+    </ul>
+    <p><strong>Carnage Summary (May 15, 9:30-9:50 AM):</strong></p>
+    <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0">
+      <thead style="background: rgba(255,255,255,0.05)">
+        <tr>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Position</th>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Entry</th>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Exit (Stop)</th>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Loss</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">SPY (100 shares)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$515.20</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$503.80</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-$1,140</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">QQQ (50 shares)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$440.50</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$427.20</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-$665</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">NVDA (15 shares)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$932.00</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$889.50</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-$637.50</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">TSLA (30 shares)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$181.00</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$172.80</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-$246</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">AAPL (40 shares)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$185.50</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$176.20</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-$372</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">MSFT (20 shares)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$425.50</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$410.30</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-$304</td>
+        </tr>
+        <tr style="background: rgba(255,107,107,0.2)">
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>TOTAL (20 minutes)</strong></td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">—</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">—</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>-$3,364.50</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Account after stops:</strong> $160,000 → $156,635.50 (-2.1% in 20 minutes)</p>
+    <p><strong>May 15, 10:20 AM - Mark's Fatal Mistake:</strong></p>
+    <p>Mark looked at his -$3.4K loss and thought: "That was just bad luck. All my setups were good. I'll reload—tech will recover."</p>
+    <ul>
+      <li><strong>10:25 AM:</strong> SPY bouncing to $507. Mark re-enters 120 shares at $507. "Buying the dip."</li>
+      <li><strong>10:40 AM:</strong> QQQ at $430. Re-enters 60 shares.</li>
+      <li><strong>11:15 AM:</strong> NVDA "recovering" to $905. Re-enters 18 shares.</li>
+      <li><strong>1:30 PM:</strong> AAPL at $180. Re-enters 45 shares.</li>
+    </ul>
+    <p><strong>New exposure:</strong> 4 positions, bigger sizes. "I'm dollar-cost averaging. This is smart."</p>
+    <p><strong>May 16-17, 2024: The Collapse Continues</strong></p>
+    <ul>
+      <li><strong>May 16:</strong> Fed officials confirm hawkish stance. Tech selloff accelerates. SPY -1.8%, QQQ -2.4%, NVDA -3.1%, AAPL -2.2%.</li>
+      <li><strong>May 17:</strong> Yields spike. Another -2.1% day for QQQ.</li>
+      <li><strong>May 17, 3:52 PM:</strong> Mark potential exits all positions. Can't handle the pain anymore.</li>
+    </ul>
+    <p><strong>Final damage (May 1-17):</strong></p>
+    <ul>
+      <li>Started: $160,000</li>
+      <li>Ended: $81,300</li>
+      <li><strong>Total loss: -$78,700 (-49.2% of account)</strong></li>
+      <li>Time to disaster: 17 days</li>
+    </ul>
+    <p><strong>May 17, 9:14 PM - Journal Entry (The Breaking Point):</strong></p>
+    <blockquote style="border-left: 4px solid #ff6b6b; padding: 1rem; background: rgba(255,107,107,0.1); margin: 1.5rem 0">
+      "I followed my rules. 2% risk per position. Stops at -8%. Diversified across 6 stocks. Everything I learned, I applied.
+      So why did I lose HALF my account in 2 weeks?
+      I just spent 4 hours analyzing what happened. The answer makes me sick:
+      ALL 6 stocks moved together. SPY, QQQ, NVDA, TSLA, AAPL, MSFT—they're all the same trade. They all rise with Fed dovishness. They all fall with rate fears. The correlation is 0.82.
+      When I thought I was risking 1.7% of my account, I was actually risking 4.9%. And when I 'doubled down' after the first loss, I was betting 8-9% on THE SAME MOVE.
+      I had 6 positions, but I effectively had 1 position. And I leveraged it 2× by averaging down.
+      Diversification by ticker count is meaningless. I need to diversify by CORRELATION. Tech, energy, healthcare, bonds—THAT'S diversification. Six tech stocks? That's concentration with extra steps.
+      I'm an engineer. I should have calculated this. I didn't. And it cost me $79K."
+    </blockquote>
+    <h5>The Discovery: Correlation-Adjusted Position Sizing</h5>
+    <p><strong>May 18-20, 2024:</strong> Mark spent 3 days researching modern portfolio theory, correlation matrices, and institutional risk management. He discovered:</p>
+    <ol>
+      <li><strong>Correlation coefficient:</strong> Measures how assets move together (-1 to +1). 0.7+ = highly correlated (treat as same bet).</li>
+      <li><strong>Effective N:</strong> Number of independent bets in portfolio. With high correlation, 6 positions ≈ 1-2 independent bets.</li>
+      <li><strong>Portfolio heat:</strong> True risk = individual position risks × correlation adjustment factor.</li>
+      <li><strong>Sector limits:</strong> Institutional funds cap single-sector exposure at 20-30% of portfolio.</li>
+      <li><strong>60-day rolling correlation:</strong> Must recalculate monthly—correlations change with regime shifts.</li>
+    </ol>
+    <p><strong>The Revelation:</strong> "Position sizing isn't just about individual trade risk. It's about AGGREGATE risk after accounting for correlation. I was managing 6 trades individually, but the market was treating them as 1 trade. I need a portfolio-level risk framework, not trade-level."</p>
+    <h5>The Recovery Framework (June 2024 - Present)</h5>
+    <p><strong>Mark's New Correlation-Aware Risk System:</strong></p>
+    <ol>
+      <li><strong>Calculate Correlation Matrix Weekly</strong> – Use 60-day rolling correlation for all open positions + watchlist. If correlation between two positions > 0.7, treat as SAME position for risk purposes.</li>
+      <li><strong>Sector Exposure Limits</strong> – Max 25% of portfolio in any single sector (tech, healthcare, energy, etc.). Max 40% in equities total (rest in bonds, commodities, cash).</li>
+      <li><strong>Correlation-Adjusted Position Sizing</strong> – Formula: Effective risk = Σ(individual risks) × √(average correlation). Cap effective risk at 5% portfolio.</li>
+      <li><strong>Uncorrelated Assets Mandatory</strong> – Must hold at least 3 uncorrelated positions (correlation < 0.3). Example: SPY (equity), TLT (bonds), GLD (gold) have 0.1-0.3 correlation.</li>
+      <li><strong>No Averaging Down on Correlated Positions</strong> – If position stopped out, check correlation before re-entering. If correlation > 0.7 with other holdings, SKIP the trade.</li>
+      <li><strong>Quarterly Correlation Review</strong> – Recalculate all correlations quarterly. Market regimes change—2023 correlations ≠ 2024 correlations.</li>
+      <li><strong>Position Sizing Reduction for Correlation</strong> – High correlation (>0.7) → reduce position size 50%. Medium correlation (0.5-0.7) → reduce 25%. Low correlation (<0.3) → full size.</li>
+    </ol>
+    <h5>Results: Before vs After</h5>
+    <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0">
+      <thead style="background: rgba(255,255,255,0.05)">
+        <tr>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Metric</th>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Before (May 2024)</th>
+          <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">After (Jun-Nov 2024)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Account Value</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$160K → $81.3K</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$81.3K → $131K</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Avg Correlation (Open Positions)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">0.82</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">0.38</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Max Single-Sector Exposure</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">100% (all tech)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">25%</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Perceived Risk vs True Risk</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">1.7% vs 4.9% (2.9× underestimate)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">2.1% vs 2.4% (1.14× error)</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Largest Drawdown (Single Event)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-49.2% (May selloff)</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">-8.4% (Aug selloff)</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Typical Portfolio Composition</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">6 tech stocks</td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">2 tech, 1 energy, 1 healthcare, TLT, GLD</td>
+        </tr>
+        <tr style="background: rgba(0,212,170,0.1)">
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>Total P&L (6 months)</strong></td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>-$78,700 (-49.2%)</strong></td>
+          <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>+$49,700 (+61.1%)</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <h5>Mark's Advice (In His Own Words)</h5>
+    <blockquote style="border-left: 4px solid #00d4aa; padding: 1rem; background: rgba(0,212,170,0.1); margin: 1.5rem 0">
+      "I thought I understood risk management. I read Van Tharp. I calculated position sizes. I used stops. But I missed the most important variable: correlation.
+      Here's what I learned the $79K way:
+      <strong>1. Ticker count ≠ diversification.</strong> I had 6 positions. But with 0.82 correlation, I effectively had 1.2 positions. Six highly correlated stocks is just leverage on ONE trade. True diversification requires LOW correlation (< 0.3).
+      <strong>2. Measure correlation, don't assume it.</strong> I thought 'SPY vs TSLA = different sectors.' Wrong. 60-day correlation was 0.76. Use free tools (Portfolio Visualizer, Python libraries) to calculate actual correlation. Don't guess.
+      <strong>3. If correlation > 0.7, it's the SAME trade.</strong> This is my hard rule now. If I'm long AAPL and considering MSFT, I check correlation. If > 0.7, I treat it as adding to my AAPL position (requires reducing size or skipping entirely).
+      <strong>4. Sector limits are not optional.</strong> Cap any single sector at 25% of portfolio. Tech can't be 100% of your book. You need uncorrelated sectors: energy, healthcare, utilities, bonds, gold. When tech crashes, you want SOMETHING that doesn't crash.
+      <strong>5. Correlation changes with market regime.</strong> 2023: Tech stocks had 0.60 correlation. 2024: 0.82+. Why? Rate regime shifted. Recalculate every quarter. Last year's correlations don't apply.
+      <strong>6. Averaging down is suicide with correlated positions.</strong> I doubled my exposure after losing 2% because 'I was buying the dip.' But I was doubling down on THE SAME BET. If you get stopped out of a correlated position, WAIT. Don't revenge trade into more correlation.
+      <strong>7. Use correlation-adjusted position sizing formula:</strong>
+      True Risk = Σ(individual position risks) × √(avg correlation)
+      Example: 4 positions at 1.5% risk each = 6% total IF uncorrelated. But at 0.8 correlation, true risk = 6% × √0.8 = 5.37%. Know your REAL exposure.
+      <strong>Bottom line:</strong> Every trader knows about position sizing. But almost no retail traders calculate correlation-adjusted portfolio heat. Institutions do this DAILY. They cap sector exposure. They measure correlation matrices. They know their aggregate risk.
+      Retail traders add up individual position risks and call it 'risk management.' That's not risk management—that's accounting.
+      Real risk management accounts for how positions move TOGETHER. Because when the shit hits the fan, correlated positions all hit stops simultaneously. And your '2% per trade' becomes 10% portfolio loss in 20 minutes.
+      I lost $79K learning this. Calculate your correlations TODAY. If they're > 0.7, you're not diversified. You're leveraged."
+    </blockquote>
+  </div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+<!-- TL;DR Skimmer Summary -->
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
+          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
+            <li>Risk management layers: Trade risk (2% max), daily risk (4% max), weekly risk (8% max)</li>
+            <li>Correlation risk: 5 "different" setups that correlate 0.8+ = one big bet</li>
+            <li>Drawdown protocol: -10% = reduce 25%, -20% = reduce 50%, -30% = stop and review</li>
+            <li>Black swan hedge: 1-2% in far OTM puts as catastrophic insurance</li>
+            <li>Framework: Set risk limits at all timeframes → Monitor correlation → Execute drawdown protocol mechanically</li>
+            <li>Validation: Proper risk management reduces max drawdown 40-60%</li>
+          </ul>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
+        </div>
+      </details>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
+        <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
+        <ul style="line-height:1.8;margin:0 0 0 1.5rem">
+          <li>Risk management layers: Trade risk (2% max), daily risk (4% max), weekly risk (8% max)</li>
+          <li>Correlation risk: 5 "different" setups that correlate 0.8+ = one big bet</li>
+          <li>Drawdown protocol: -10% = reduce 25%, -20% = reduce 50%, -30% = stop and review</li>
+          <li>Black swan hedge: 1-2% in far OTM puts as catastrophic insurance</li>
+        </ul>
+      </div>
+      <!-- Prerequisites Warning -->
+      <div class="callout-warning" style="margin:2rem 0;background:rgba(255,193,7,0.1);border-left:4px solid #ffc107">
+        <h4>📋 Prerequisites</h4>
+        <p>This lesson builds on concepts from:</p>
+        <ul style="margin:0.5rem 0 0.75rem 1.5rem;line-height:1.8">
+            <li><a href="/curriculum/beginner/01-the-liquidity-lie.html" style="color:#00d4aa;text-decoration:underline">Lesson 01: The Liquidity Lie</a> — Understand institutional liquidity engineering</li>
+            <li><a href="/curriculum/beginner/02-volume-doesnt-lie.html" style="color:#00d4aa;text-decoration:underline">Lesson 02: Volume Doesn't Lie</a> — Master delta analysis and absorption patterns</li>
+            <li><a href="/curriculum/beginner/03-price-action-is-dead.html" style="color:#00d4aa;text-decoration:underline">Lesson 03: Price Action is Dead</a> — Learn order flow and tape reading basics</li>
+        </ul>
+        <p style="margin-top:0.75rem">✅ If you've completed these, you're ready. Otherwise, start with the foundational lessons first.</p>
+      </div>
+
+<h2 id="part-1-position-sizing-methods">Part 1: Position Sizing Methods</h2>
+
+  <h3>Fixed Percentage Risk (The Foundation)</h3>
+  <p><strong>Rule:</strong> Risk a fixed percentage (0.5-2%) of account per trade</p>
+  <p><strong>Formula:</strong> Position Size = (Account × Risk %) / (Entry - Stop Loss)</p>
+  
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>Account: $100,000</li>
+    <li>Risk per trade: 1% = $1,000</li>
+    <li>Entry: $150.00, Stop: $148.00 (risk = $2/share)</li>
+    <li>Position size: $1,000 / $2 = 500 shares</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>🎯 Professional Standard:</strong> Most prop firms limit traders to 1% risk per trade, 5% max daily loss, 10% max monthly loss. Break these rules = fired.</p>
+  </div>
+
+  <h3>Kelly Criterion (Optimal Sizing)</h3>
+  <p><strong>Formula:</strong> f* = (p × b - q) / b</p>
+  <ul>
+    <li><strong>f*:</strong> Fraction of capital to risk</li>
+    <li><strong>p:</strong> Win probability (e.g., 0.55)</li>
+    <li><strong>q:</strong> Loss probability (1 - p = 0.45)</li>
+    <li><strong>b:</strong> Win/loss ratio (avg win / avg loss)</li>
+  </ul>
+
+  <details class="accordion">
+    <summary>Kelly Criterion Example Calculation</summary>
+    <div class="accordion-content">
+      <p><strong>Your trading stats:</strong></p>
+      <ul>
+        <li>Win rate: 55% (p = 0.55, q = 0.45)</li>
+        <li>Average win: $500</li>
+        <li>Average loss: $250</li>
+        <li>Win/loss ratio (b) = $500 / $250 = 2</li>
+      </ul>
+      <p><strong>Kelly calculation:</strong></p>
+      <p>f* = (0.55 × 2 - 0.45) / 2 = (1.10 - 0.45) / 2 = 0.325 = 32.5%</p>
+      <p><strong>Interpretation:</strong> Kelly says risk 32.5% of capital per trade for optimal growth</p>
+      <p><strong>Problem:</strong> This is INSANELY aggressive (one bad streak = -50% drawdown)</p>
+      <p><strong>Solution:</strong> Use "Half Kelly" or "Quarter Kelly" (risk 8-16% instead of 32.5%)</p>
+      <p><strong>Reality:</strong> Most professionals use 0.25-0.5× Kelly to reduce volatility</p>
+    </div>
+  </details>
+
+  <h3>Volatility-Adjusted Sizing</h3>
+  <p><strong>Concept:</strong> Size inversely to volatility (larger size in low-vol stocks, smaller in high-vol)</p>
+  <p><strong>Formula:</strong> Position Size = (Risk $) / (ATR × Multiplier)</p>
+  
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>Risk: $1,000 per trade</li>
+    <li>Stock A: ATR = $1 → Position = $1,000 / (1 × 2) = 500 shares</li>
+    <li>Stock B: ATR = $5 → Position = $1,000 / (5 × 2) = 100 shares</li>
+  </ul>
+  <p><strong>Result:</strong> Equal risk despite different volatility profiles</p>
+
+  <h2 id="part-2-portfolio-level-risk-correlation">Part 2: Portfolio-Level Risk (Correlation)</h2>
+
+  <h3>The Correlation Problem</h3>
+  <p><strong>Myth:</strong> "I'm diversified—I own 10 stocks"</p>
+  <p><strong>Reality:</strong> If all 10 are tech stocks, you're NOT diversified (correlation = 0.8-0.9)</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Correlation</th>
+        <th>Meaning</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>+1.0</td>
+        <td>Perfect positive</td>
+        <td>SPY vs VOO (same index)</td>
+      </tr>
+      <tr>
+        <td>+0.7 to +0.9</td>
+        <td>High positive</td>
+        <td>AAPL vs MSFT (same sector)</td>
+      </tr>
+      <tr>
+        <td>+0.3 to +0.6</td>
+        <td>Moderate positive</td>
+        <td>SPY vs IWM (different market caps)</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>Uncorrelated</td>
+        <td>SPY vs Gold (sometimes)</td>
+      </tr>
+      <tr>
+        <td>-0.3 to -0.6</td>
+        <td>Moderate negative</td>
+        <td>SPY vs VIX (usually)</td>
+      </tr>
+      <tr>
+        <td>-1.0</td>
+        <td>Perfect negative</td>
+        <td>SPY vs SPXS (3× inverse ETF)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="example-block">
+    <h4>Real-World Example: How Correlation Risk Created a $87K Loss from "8 Diversified Positions"</h4>
+    <p><strong>Trader:</strong> Swing trader, $185K account, February 2024</p>
+
+    <p><strong>The "Diversified" Portfolio:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Entry</th>
+          <th>Shares</th>
+          <th>Position Size</th>
+          <th>Risk Per Trade</th>
+          <th>Sector</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NVDA</td>
+          <td>$722</td>
+          <td>32</td>
+          <td>$23,104</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (AI)</td>
+        </tr>
+        <tr>
+          <td>AMD</td>
+          <td>$185</td>
+          <td>125</td>
+          <td>$23,125</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (AI)</td>
+        </tr>
+        <tr>
+          <td>AVGO</td>
+          <td>$1,250</td>
+          <td>18</td>
+          <td>$22,500</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (AI)</td>
+        </tr>
+        <tr>
+          <td>MSFT</td>
+          <td>$415</td>
+          <td>55</td>
+          <td>$22,825</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (Cloud)</td>
+        </tr>
+        <tr>
+          <td>GOOGL</td>
+          <td>$145</td>
+          <td>160</td>
+          <td>$23,200</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (Cloud)</td>
+        </tr>
+        <tr>
+          <td>META</td>
+          <td>$475</td>
+          <td>48</td>
+          <td>$22,800</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (Social)</td>
+        </tr>
+        <tr>
+          <td>AAPL</td>
+          <td>$185</td>
+          <td>125</td>
+          <td>$23,125</td>
+          <td>$1,850 (1%)</td>
+          <td>Tech (Consumer)</td>
+        </tr>
+        <tr>
+          <td>TSLA</td>
+          <td>$195</td>
+          <td>118</td>
+          <td>$23,010</td>
+          <td>$1,850 (1%)</td>
+          <td>Auto (Tech-heavy)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Trader's Thinking:</strong> "I have 8 different stocks, 1% risk each = 8% total portfolio risk. Diversified!"</p>
+
+    <p><strong>Actual Correlation Matrix (90-day rolling, Feb 2024):</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>NVDA</th>
+          <th>AMD</th>
+          <th>AVGO</th>
+          <th>MSFT</th>
+          <th>GOOGL</th>
+          <th>META</th>
+          <th>AAPL</th>
+          <th>TSLA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Avg Correlation</strong></td>
+          <td>1.00</td>
+          <td>0.87</td>
+          <td>0.82</td>
+          <td>0.73</td>
+          <td>0.71</td>
+          <td>0.68</td>
+          <td>0.75</td>
+          <td>0.62</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Portfolio avg correlation:</strong> 0.77 (very high!)</p>
+
+    <p><strong>What Happened: April 19, 2024 (CPI Hot + Tech Sell-Off):</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Stock</th>
+          <th>Entry</th>
+          <th>Close April 19</th>
+          <th>% Loss</th>
+          <th>$ Loss</th>
+          <th>Why They All Fell Together</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NVDA</td>
+          <td>$722</td>
+          <td>$650</td>
+          <td>-10.0%</td>
+          <td>-$2,304</td>
+          <td rowspan="8" style="vertical-align: middle;">
+            <strong>Macro catalyst hit ALL tech:</strong><br>
+            • CPI came in hot (+0.4% MoM)<br>
+            • Fed hawkish comments (no cuts soon)<br>
+            • 10Y yield spiked to 4.65%<br>
+            • Growth stocks (high duration) sold off<br>
+            • AI bubble concerns (valuations stretched)<br>
+            <br>
+            <strong>Result:</strong> All 8 positions down 8-13% in single day because they're all "long tech at high valuations" = ONE bet, not 8.
+          </td>
+        </tr>
+        <tr>
+          <td>AMD</td>
+          <td>$185</td>
+          <td>$165</td>
+          <td>-10.8%</td>
+          <td>-$2,500</td>
+        </tr>
+        <tr>
+          <td>AVGO</td>
+          <td>$1,250</td>
+          <td>$1,150</td>
+          <td>-8.0%</td>
+          <td>-$1,800</td>
+        </tr>
+        <tr>
+          <td>MSFT</td>
+          <td>$415</td>
+          <td>$380</td>
+          <td>-8.4%</td>
+          <td>-$1,925</td>
+        </tr>
+        <tr>
+          <td>GOOGL</td>
+          <td>$145</td>
+          <td>$132</td>
+          <td>-9.0%</td>
+          <td>-$2,080</td>
+        </tr>
+        <tr>
+          <td>META</td>
+          <td>$475</td>
+          <td>$432</td>
+          <td>-9.1%</td>
+          <td>-$2,064</td>
+        </tr>
+        <tr>
+          <td>AAPL</td>
+          <td>$185</td>
+          <td>$170</td>
+          <td>-8.1%</td>
+          <td>-$1,875</td>
+        </tr>
+        <tr>
+          <td>TSLA</td>
+          <td>$195</td>
+          <td>$170</td>
+          <td>-12.8%</td>
+          <td>-$2,950</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Total Portfolio Loss on April 19: -$17,498 (-9.5% of $185K account)</strong></p>
+
+    <p><strong>Stop Losses Hit Over Next 3 Days:</strong></p>
+    <ul>
+      <li>All 8 positions stopped out at -$1,850 planned risk? <strong>NO.</strong></li>
+      <li>Actual: Gap downs + volatility → avg stop slippage 22%</li>
+      <li>Total realized loss: <strong>-$22,570</strong> (vs $14,800 planned = 8 × $1,850)</li>
+    </ul>
+
+    <p><strong>But It Got Worse - Portfolio Heat Death Spiral:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Event</th>
+          <th>Account Value</th>
+          <th>Cumulative Loss</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>April 19</td>
+          <td>Initial crash day</td>
+          <td>$167,500</td>
+          <td>-$17,500 (-9.5%)</td>
+        </tr>
+        <tr>
+          <td>April 22</td>
+          <td>Stopped out 8 positions</td>
+          <td>$162,430</td>
+          <td>-$22,570 (-12.2%)</td>
+        </tr>
+        <tr>
+          <td>April 25</td>
+          <td>Re-entered 4 positions (revenge trading)</td>
+          <td>$162,430</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>May 3</td>
+          <td>Tech continued down, stopped again</td>
+          <td>$154,850</td>
+          <td>-$30,150 (-16.3%)</td>
+        </tr>
+        <tr>
+          <td>May 15</td>
+          <td>Third attempt, earnings volatility</td>
+          <td>$141,200</td>
+          <td>-$43,800 (-23.7%)</td>
+        </tr>
+        <tr>
+          <td>May 31</td>
+          <td>Final capitulation</td>
+          <td>$98,000</td>
+          <td>-$87,000 (-47.0%)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Root Cause Analysis:</strong></p>
+
+    <ol>
+      <li><strong>False diversification:</strong>
+        <ul>
+          <li>Thought: "8 stocks = diversified"</li>
+          <li>Reality: 8 stocks × 0.77 avg correlation = <strong>effective position count = 2.9</strong></li>
+          <li>Formula: Effective N = # positions / (1 + (N-1) × avg correlation)</li>
+          <li>= 8 / (1 + 7 × 0.77) = 8 / 6.39 = 1.25 positions worth of diversification</li>
+        </ul>
+      </li>
+      <li><strong>True portfolio risk was 6.8%, not 8%:</strong>
+        <ul>
+          <li>Because correlations were 0.77, portfolio risk = Individual risk × √(1 + (N-1) × correlation)</li>
+          <li>= 1% × √(1 + 7 × 0.77) = 1% × √6.39 = 2.53% per "effective position"</li>
+          <li>But he had the equivalent of 2.9 effective positions = 7.3% total risk</li>
+        </ul>
+      </li>
+      <li><strong>All positions hit by same catalyst:</strong>
+        <ul>
+          <li>Hot CPI = bad for ALL growth stocks (rising rates hurt valuations)</li>
+          <li>No defensive positions (no bonds, commodities, value stocks)</li>
+          <li>100% directional bet on "tech keeps rallying"</li>
+        </ul>
+      </li>
+      <li><strong>Revenge trading compounded losses:</strong>
+        <ul>
+          <li>After -12.2% loss, immediately re-entered same correlated positions</li>
+          <li>Didn't wait for macro regime to shift</li>
+          <li>Lost another -34.8% trying to "get even"</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p><strong>What TRUE Diversification Would Look Like:</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Sector</th>
+          <th>Correlation to SPY</th>
+          <th>Risk %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>QQQ (tech)</td>
+          <td>Growth</td>
+          <td>0.95</td>
+          <td>1.5%</td>
+        </tr>
+        <tr>
+          <td>XLE (energy)</td>
+          <td>Commodities</td>
+          <td>0.35</td>
+          <td>1.5%</td>
+        </tr>
+        <tr>
+          <td>TLT (bonds)</td>
+          <td>Fixed income</td>
+          <td>-0.45</td>
+          <td>1.5%</td>
+        </tr>
+        <tr>
+          <td>GLD (gold)</td>
+          <td>Safe haven</td>
+          <td>-0.15</td>
+          <td>1.5%</td>
+        </tr>
+        <tr>
+          <td>UUP (dollar)</td>
+          <td>Currency</td>
+          <td>-0.30</td>
+          <td>1.0%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Portfolio avg correlation:</strong> 0.28 (low!)</p>
+    <p><strong>Effective positions:</strong> 5 / (1 + 4 × 0.28) = 2.3 (much better than 1.25!)</p>
+    <p><strong>April 19 result with this portfolio:</strong> QQQ -3.2%, XLE +0.8%, TLT +1.2%, GLD +0.3%, UUP +0.5% = Net -0.5% vs -9.5%</p>
+
+    <p><strong>Key Lessons:</strong></p>
+    <ol>
+      <li><strong>Position count ≠ diversification.</strong> 8 correlated positions = 1 bet.</li>
+      <li><strong>Check correlations monthly.</strong> Tech stocks were 0.5 correlation in 2022, jumped to 0.77 in 2024 AI rally.</li>
+      <li><strong>True portfolio risk = Individual risk × √effective positions.</strong> Must account for correlation.</li>
+      <li><strong>One macro event shouldn't kill your account.</strong> If it does, you're not diversified.</li>
+      <li><strong>Cross-asset diversification > single-asset.</strong> Bonds, commodities, currencies provide true hedge.</li>
+    </ol>
+  </div>
+
+  <h3>Portfolio Heat (Aggregate Risk)</h3>
+  <p><strong>Concept:</strong> Total risk across all positions (accounts for correlation)</p>
+  <p><strong>Formula (simplified):</strong> Portfolio Risk = √(Σ Individual Risks² + 2 × Correlation × Risk1 × Risk2)</p>
+
+  <details class="accordion">
+    <summary>Portfolio Heat Example</summary>
+    <div class="accordion-content">
+      <p><strong>Scenario:</strong></p>
+      <ul>
+        <li>Position 1: Long AAPL, $1,000 risk (1% of $100K account)</li>
+        <li>Position 2: Long MSFT, $1,000 risk (1% of $100K account)</li>
+        <li>Correlation (AAPL/MSFT): 0.75</li>
+      </ul>
+      <p><strong>Naive calculation:</strong> Total risk = $1,000 + $1,000 = $2,000 (2%)</p>
+      <p><strong>Actual risk (accounting for correlation):</strong></p>
+      <p>Portfolio Risk = √($1,000² + $1,000² + 2 × 0.75 × $1,000 × $1,000)</p>
+      <p>= √(1,000,000 + 1,000,000 + 1,500,000) = √3,500,000 ≈ $1,871</p>
+      <p><strong>True portfolio risk:</strong> 1.87% (not 2%, but not 1% either)</p>
+      <p><strong>Key insight:</strong> High correlation increases true portfolio risk beyond sum of individual risks</p>
+    </div>
+  </details>
+
+  <h3>Maximum Portfolio Heat Rules</h3>
+  <p><strong>Conservative:</strong> Max 3-5% total portfolio risk at any time</p>
+  <p><strong>Moderate:</strong> Max 5-8% total portfolio risk</p>
+  <p><strong>Aggressive:</strong> Max 8-12% total portfolio risk</p>
+  <p><strong>Institutional:</strong> Most hedge funds cap at 5-10% gross exposure risk</p>
+
+  <h2 id="part-3-value-at-risk-var">Part 3: Value at Risk (VAR)</h2>
+
+  <h3>What Is VAR?</h3>
+  <p><strong>Definition:</strong> Maximum expected loss over a time period at a given confidence level</p>
+  <p><strong>Example:</strong> "95% VAR = $5,000 per day" means:</p>
+  <ul>
+    <li>95% of days, you won't lose more than $5,000</li>
+    <li>5% of days (1 in 20), you'll lose MORE than $5,000</li>
+  </ul>
+
+  <h3>VAR Calculation Methods</h3>
+  
+  <details class="accordion">
+    <summary>Method #1: Historical VAR (Simplest)</summary>
+    <div class="accordion-content">
+      <p><strong>Steps:</strong></p>
+      <ol>
+        <li>Calculate daily P&L for last 100 trading days</li>
+        <li>Sort from worst to best</li>
+        <li>Find 5th percentile (for 95% VAR) = 5th worst day out of 100</li>
+      </ol>
+      <p><strong>Example:</strong> Your 5th worst day in last 100 = -$4,200 loss → 95% VAR = $4,200</p>
+      <p><strong>Interpretation:</strong> Expect to lose MORE than $4,200 about 5 times per 100 days (once per month)</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>Method #2: Parametric VAR (Assumes Normal Distribution)</summary>
+    <div class="accordion-content">
+      <p><strong>Formula:</strong> VAR = Portfolio Value × σ × Z</p>
+      <ul>
+        <li><strong>σ:</strong> Daily standard deviation (volatility)</li>
+        <li><strong>Z:</strong> Z-score for confidence level (1.65 for 95%, 2.33 for 99%)</li>
+      </ul>
+      <p><strong>Example:</strong></p>
+      <ul>
+        <li>Portfolio: $100,000</li>
+        <li>Daily std dev: 1.5%</li>
+        <li>95% confidence (Z = 1.65)</li>
+      </ul>
+      <p><strong>VAR = $100,000 × 0.015 × 1.65 = $2,475</strong></p>
+      <p><strong>Interpretation:</strong> 95% of days, won't lose more than $2,475</p>
+      <p><strong>Limitation:</strong> Assumes normal distribution (markets have fat tails → underestimates crash risk)</p>
+    </div>
+  </details>
+
+  <h3>Using VAR for Position Limits</h3>
+  <p><strong>Rule:</strong> If adding a new position pushes portfolio VAR above limit, don't take the trade</p>
+  <p><strong>Example:</strong> Portfolio VAR = $4,500 (your limit = $5,000). New trade adds $800 VAR → total = $5,300 → SKIP THE TRADE</p>
+
+  <h2 id="part-4-tail-risk-black-swans">Part 4: Tail Risk & Black Swans</h2>
+
+  <h3>The Problem With VAR</h3>
+  <p><strong>VAR tells you NOTHING about the 5% tail</strong> (the worst-case scenarios)</p>
+  <p><strong>Example:</strong> 95% VAR = $5,000, but on the 1 day out of 100, you could lose $50,000 (10× worse)</p>
+
+  <div class="callout">
+    <p><strong>⚠️ Black Swan Events:</strong> March 2020 = 20% drawdown in 10 days. VAR models predicted max 5% loss. All VAR models failed simultaneously.</p>
+  </div>
+
+  <h3>Conditional VAR (CVAR / Expected Shortfall)</h3>
+  <p><strong>CVAR:</strong> Average loss BEYOND the VAR threshold (tells you how bad the tail is)</p>
+  <p><strong>Example:</strong></p>
+  <ul>
+    <li>95% VAR = $5,000</li>
+    <li>95% CVAR = $12,000 (average of 5 worst days out of 100)</li>
+  </ul>
+  <p><strong>Interpretation:</strong> When things go wrong (5% of time), expect to lose $12K on average (not just $5K)</p>
+
+  <h3>Hedging Tail Risk</h3>
+  <p><strong>Strategy #1: Buy far OTM puts</strong> (e.g., SPY 20% OTM puts, 3-6 months out)</p>
+  <p><strong>Cost:</strong> 0.5-1% of portfolio per quarter (insurance premium)</p>
+  <p><strong>Payoff:</strong> 50-100× return if crash happens</p>
+
+  <p><strong>Strategy #2: Reduce size during high-correlation regimes</strong></p>
+  <p><strong>When:</strong> All sectors moving together (correlation → 1.0) = system fragile</p>
+  <p><strong>Action:</strong> Cut position sizes by 30-50% until correlation normalizes</p>
+
+  <h2 id="part-5-using-signal-pilot-for-risk-management">Part 5: Using Signal Pilot for Risk Management</h2>
+
+  <h3>Janus Atlas: Correlation Heatmap</h3>
+  <p><strong>Feature:</strong> Visualize correlation matrix across all open positions</p>
+  <p><strong>Alert:</strong> Warning when portfolio correlation &gt; 0.7 (over-concentrated risk)</p>
+
+  <h3>Harmonic Oscillator: Volatility Regime Detection</h3>
+  <p><strong>How to use:</strong> Increase position sizes in low-vol regimes, decrease in high-vol</p>
+  <p><strong>Rule:</strong> If VIX &gt; 30, cut all position sizes by 50%</p>
+
+  <h3>Pentarch Pilot Line: Portfolio Heat Monitor</h3>
+  <p><strong>Feature:</strong> Real-time calculation of total portfolio risk (aggregate heat)</p>
+  <p><strong>Alert:</strong> Flashing warning if portfolio heat &gt; your limit (e.g., 5%)</p>
+
+  <h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
+  <div class="quiz">
+    <div class="quiz-question">
+      <p><strong>Q1:</strong> You have a $100K account. You want to risk 1% on a trade. Entry $200, stop $196. What's your position size?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> Risk = $1,000 (1% of $100K). Per-share risk = $200 - $196 = $4. Position size = $1,000 / $4 = 250 shares. Total position value = 250 × $200 = $50,000 (50% of account, but only risking 1%).</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q2:</strong> Your 95% VAR is $5,000. What does this mean?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> On 95% of trading days, you won't lose more than $5,000. On 5% of days (roughly 1 per month), you'll lose MORE than $5,000. VAR doesn't tell you HOW MUCH more—could be $6K or $50K in extreme cases.</p>
+      </details>
+    </div>
+
+    <div class="quiz-question">
+      <p><strong>Q3:</strong> You're long AAPL (1% risk) and MSFT (1% risk). Correlation = 0.8. Is your total portfolio risk 2%?</p>
+      <details>
+        <summary>Show Answer</summary>
+        <p><strong>Answer:</strong> No, it's less than 2% but more than 1%. High correlation (0.8) means positions move together, so diversification benefit is reduced. True portfolio risk ≈ 1.8% (use correlation-adjusted formula). If correlation were 1.0, risk would be full 2%. If correlation were 0, risk would be ≈1.4%.</p>
+      </details>
+    </div>
+  </div>
+
+  <h2 id="practical-checklist">Practical Checklist</h2>
+  <div class="checklist">
+    <h4>Before Every Trade:</h4>
+    <ul>
+      <li>Calculate position size using 1% rule (or Kelly/volatility-adjusted)</li>
+      <li>Check portfolio heat: Are you already at max risk limit?</li>
+      <li>Check correlation: Is new position correlated &gt;0.7 with existing positions?</li>
+      <li>If yes, reduce size or skip trade (avoid over-concentration)</li>
+    </ul>
+    <h4>Daily Risk Review:</h4>
+    <ul>
+      <li>Calculate current portfolio VAR (95% confidence level)</li>
+      <li>Review worst daily loss in last 30 days (is it within tolerance?)</li>
+      <li>Check correlation heatmap via Signal Pilot Janus Atlas</li>
+      <li>If VIX &gt; 30 or correlation &gt; 0.8, reduce all position sizes by 50%</li>
+    </ul>
+    <h4>Monthly Review:</h4>
+    <ul>
+      <li>Calculate max drawdown (peak-to-trough decline)</li>
+      <li>Recalculate Kelly % based on updated win rate and win/loss ratio</li>
+      <li>Review tail events: Did any losses exceed 95% VAR? How bad were they?</li>
+    </ul>
+  </div>
+
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Risk 0.5-1% per trade</strong> (institutional standard)</li>
+      <li><strong>Kelly Criterion optimizes size,</strong> but use 0.25-0.5× Kelly to reduce volatility</li>
+      <li><strong>Correlation matters:</strong> 10 correlated positions = 1 bet (not diversified)</li>
+      <li><strong>VAR estimates typical risk,</strong> CVAR estimates tail risk (both needed)</li>
+      <li><strong>Reduce size in high-vol/high-correlation regimes</strong> (VIX &gt;30 or correlation &gt;0.8)</li>
+    </ul>
+  </div>
+
+  <div class="related-lessons">
+    <h4>Related Lessons</h4>
+    <ul>
+      <li><a href="/curriculum/intermediate/20-swing-trading-framework.html">Lesson 20: Swing Trading Framework</a></li>
+      <li><a href="42-volatility-trading-strategies.html">Lesson 42: Volatility Trading Strategies</a></li>
+      <li><a href="47-portfolio-construction-kelly.html">Lesson 47: Portfolio Construction & Kelly Criterion</a></li>
+    </ul>
+  </div>
+
+  <div class="downloads">
+    <h4>Downloads</h4>
+    <ul>
+      <li><a href="/downloads/position-sizing-calculator.xlsx">Position Sizing Calculator (Excel)</a></li>
+      <li><a href="/downloads/portfolio-var-tracker.xlsx">Portfolio VAR Tracker (Excel)</a></li>
+      <li><a href="/downloads/correlation-matrix-template.xlsx">Correlation Matrix Template (Excel)</a></li>
+    </ul>
+  </div>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-position-sizing-methods">Part 1: Position Sizing Methods</a>
+      <a href="#part-2-portfolio-level-risk-correlation">Part 2: Portfolio-Level Risk (Correlation)</a>
+      <a href="#part-3-value-at-risk-var">Part 3: Value at Risk (VAR)</a>
+      <a href="#part-4-tail-risk-black-swans">Part 4: Tail Risk & Black Swans</a>
+      <a href="#part-5-using-signal-pilot-for-risk-management">Part 5: Using Signal Pilot for Risk Management</a>
+      <a href="#quiz-test-your-understanding">Quiz: Test Your Understanding</a>
+      <a href="#practical-checklist">Practical Checklist</a>
+    </aside>
+  </div>
+
+
+
+  <div class="wrap nav-article">
+  <a class="btn btn-ghost" href="/curriculum/advanced/45-auction-theory-imbalances.html">← Previous: Auction Theory</a>
+  <a class="btn btn-primary" href="/curriculum/advanced/47-portfolio-construction-kelly.html">Next Lesson &rarr;</a>
+  </div>
+</article>
+<footer class="sp-footer">
+  <div class="container">
+    <p>&copy; 2025 Signal Pilot Labs, Inc. All rights reserved.</p>
+  </div>
+</footer>
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/toc-active.js"></script>
+<script>
+document.getElementById('theme-toggle')?.addEventListener('click', () => {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+});
+const canvas = document.getElementById('constellations');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const stars = Array.from({ length: 80 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.2,
+    vy: (Math.random() - 0.5) * 0.2
+  }));
+  function drawConstellations() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        const dx = stars[i].x - stars[j].x;
+        const dy = stars[i].y - stars[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          ctx.beginPath();
+          ctx.moveTo(stars[i].x, stars[i].y);
+          ctx.lineTo(stars[j].x, stars[j].y);
+          ctx.stroke();
+        }
+      }
+      stars[i].x += stars[i].vx;
+      stars[i].y += stars[i].vy;
+      if (stars[i].x < 0 || stars[i].x > canvas.width) stars[i].vx *= -1;
+      if (stars[i].y < 0 || stars[i].y > canvas.height) stars[i].vy *= -1;
+    }
+    requestAnimationFrame(drawConstellations);
+  }
+  drawConstellations();
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+}
+</script>
+  <!-- Enhanced Analytics & A/B Testing -->
+  <script src="/assets/enhanced-analytics.js" defer></script>
+  <script src="/assets/ab-test-tldr.js" defer></script>
+</body>
+</html>

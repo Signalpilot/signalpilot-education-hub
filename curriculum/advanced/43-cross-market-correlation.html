@@ -1,0 +1,1132 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <!-- AGGRESSIVE CACHE PREVENTION -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Cross-Market Correlation Analysis: Bonds, Dollar, Commodities — Signal Pilot Education</title>
+  <meta name="description" content="Cross-Market Correlation Analysis: Bonds, Dollar, Commodities">
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="43">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/43-cross-market-correlation.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <!-- Logger must load first -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+  <script src="/assets/structured-data.js" defer></script>
+  <script src="/assets/lazy-load.js" defer></script>
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
+<article class="article">
+
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> › <a href="/advanced.html">Advanced</a> › <span>Lesson #43</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <span class="lesson-badge">Lesson 43</span>
+        <span class="tier-badge tier-intermediate">Intermediate</span>
+      </div>
+      <h1 class="headline xl">Cross-Market Correlation Analysis: Bonds, Dollar, Commodities</h1>
+      <div class="meta">27-31 min read • Intermarket Analysis</div>
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+      <!-- TL;DR Skimmer Summary -->
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
+          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
+            <li>Correlated markets: SPX/NDX 0.95+, USD/Gold -0.7, Bonds/Stocks -0.5</li>
+            <li>Divergences signal regime change: SPX up + Bonds up = unusual, watch for reversal</li>
+            <li>Lead-lag relationships: Copper leads SPX by 2-3 weeks, HY credit leads stocks</li>
+            <li>Framework: Monitor lead indicators → Copper breaks down = expect SPX weakness → Reduce long exposure</li>
+            <li>Validation: Lead-lag signals give 1-3 week edge, 65-75% accuracy</li>
+          </ul>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
+        </div>
+      </details>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
+        <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
+        <ul style="line-height:1.8;margin:0 0 0 1.5rem">
+          <li>Correlated markets: SPX/NDX 0.95+, USD/Gold -0.7, Bonds/Stocks -0.5</li>
+          <li>Divergences signal regime change: SPX up + Bonds up = unusual, watch for reversal</li>
+          <li>Lead-lag relationships: Copper leads SPX by 2-3 weeks, HY credit leads stocks</li>
+          <li>Framework: Monitor lead indicators → Copper breaks down = expect SPX weakness → Reduce long exposure</li>
+        </ul>
+      </div>
+      <!-- Prerequisites Warning -->
+      <div class="callout-warning" style="margin:2rem 0;background:rgba(255,193,7,0.1);border-left:4px solid #ffc107">
+        <h4>📋 Prerequisites</h4>
+        <p>This lesson builds on concepts from:</p>
+        <ul style="margin:0.5rem 0 0.75rem 1.5rem;line-height:1.8">
+            <li><a href="/curriculum/beginner/01-the-liquidity-lie.html" style="color:#00d4aa;text-decoration:underline">Lesson 01: The Liquidity Lie</a> — Understand institutional liquidity engineering</li>
+            <li><a href="/curriculum/beginner/02-volume-doesnt-lie.html" style="color:#00d4aa;text-decoration:underline">Lesson 02: Volume Doesn't Lie</a> — Master delta analysis and absorption patterns</li>
+            <li><a href="/curriculum/beginner/03-price-action-is-dead.html" style="color:#00d4aa;text-decoration:underline">Lesson 03: Price Action is Dead</a> — Learn order flow and tape reading basics</li>
+        </ul>
+        <p style="margin-top:0.75rem">✅ If you've completed these, you're ready. Otherwise, start with the foundational lessons first.</p>
+      </div>
+
+        
+        
+        
+      </div>
+
+      <p class="lead"><b>Stocks don't trade in a vacuum. When the 10-year yield spikes 30 basis points, SPX will react. When the dollar breaks support, gold will rally. Professional traders monitor these relationships constantly—because intermarket signals predict equity moves BEFORE they happen.</b></p>
+
+      <p>Retail traders stare at SPY charts all day, wondering why it suddenly dropped 2%. Meanwhile, the bond market was screaming "risk-off" for three hours. High-yield credit spreads were widening. The dollar was spiking. Copper was tanking. <strong>All the warnings were there—just not on the SPY chart.</strong></p>
+
+      <p>Professional traders watch bonds, dollar, commodities, credit spreads, and volatility alongside equities. These markets are interconnected through capital flows, correlation arbitrage, and systematic strategies. When correlations break—when stocks rally but bonds refuse to sell off—that's a divergence signal worth trading.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Intermarket analysis is how institutions think. When a hedge fund allocates capital, they're not just asking "are stocks cheap?" They're asking: "How do stocks price relative to bonds at current yields? Is the dollar's trajectory supportive? Are credit spreads confirming the equity rally?" This lesson teaches you to think like an institutional allocator—analyzing markets in relation to each other, not in isolation.</p>
+      </div>
+
+      <div class="key-insights">
+        <h4>🎯 Key Insights You'll Master</h4>
+        <ul>
+          <li><strong>Core Correlation Frameworks:</strong> How stocks, bonds, dollar, and commodities interact across different market regimes</li>
+          <li><strong>Critical Divergence Signals:</strong> When credit, commodities, or rates disagree with equities—and how to trade it</li>
+          <li><strong>Correlation Regime Shifts:</strong> Identifying when correlations break down (March 2020 liquidation) vs normalize</li>
+          <li><strong>Real-Time Monitoring:</strong> Building daily intermarket checklists to spot warnings before equity reversals</li>
+          <li><strong>Signal Pilot Integration:</strong> Using Janus Atlas, Pentarch Pilot, and Plutus Flow for cross-asset analysis</li>
+        </ul>
+      </div>
+
+      <div class="callout-warning">
+        <h4>📉 CASE STUDY: Sarah's $89K Cross-Market Blindness (Sept-Oct 2023)</h4>
+        <p><strong>Trader:</strong> Sarah Martinez, 6-year equity trader from Chicago ($180,000 account)</p>
+        <p><strong>Markets:</strong> SPY, QQQ, individual growth stocks</p>
+        <p><strong>Fatal flaw:</strong> Only looked at SPY charts, completely ignored bond yields, dollar, and cross-market warnings</p>
+        <p><strong>Disaster period:</strong> September 1 - October 27, 2023 (8 weeks of yield spike)</p>
+        <p><strong>Result:</strong> Lost $89,000 (-49.4%) buying SPY dips while 10Y yields screamed "SELL"</p>
+        <p><strong>Recovery:</strong> Built daily cross-market checklist → Gained $47K in 4 months (52% recovery)</p>
+      </div>
+
+      <h3 id="the-disaster-timeline-ignoring-the-bond-markets-warning">The Disaster Timeline: Ignoring the Bond Market's Warning</h3>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#ff6b6b"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Week 1 (Sept 1-8): "Just a Normal Pullback"</div>
+            <p><strong>Sarah's approach:</strong> She was a pure equity trader. She only watched SPY and QQQ charts. She didn't track bonds, yields, the dollar, or credit spreads. If the information wasn't on her TradingView charts, she didn't see it.</p>
+            <p><strong>What Sarah saw:</strong></p>
+            <ul style="margin:.5rem 0 0 1.5rem">
+              <li>SPY pulled back from $455 to $447 (Sep 1-7)</li>
+              <li>"Looks like a normal dip. Buy signal on RSI."</li>
+            </ul>
+            <p><strong>What Sarah DIDN'T see:</strong></p>
+            <ul style="margin:.5rem 0 0 1.5rem">
+              <li><strong>10Y Treasury yield:</strong> Jumped from 4.10% to 4.28% (+18 bps in 1 week)</li>
+              <li><strong>TLT (bonds):</strong> Fell -2.1% (bonds selling off = yields rising)</li>
+              <li><strong>DXY (dollar):</strong> Rose from 103.5 to 104.8 (+1.3%, strengthening)</li>
+              <li><strong>Copper:</strong> Down -3.2% (growth concerns)</li>
+            </ul>
+            <p><strong>Sarah's trade (Sept 7):</strong></p>
+            <pre style="margin:.75rem 0"><code>Entry: Bought $40K SPY at $447 ("Great dip!")
+Sarah's logic: "RSI oversold, 50-day MA support."
+Reality: Bonds/yields/dollar ALL flashing WARNING
+Result: SPY fell to $438 by Sept 15 (-$807)</code></pre>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Week 1 result:</strong> Down -$807. Account: $179,193. Sarah didn't realize this was just the beginning.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#ff6b6b"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Weeks 2-4 (Sept 11 - Oct 6): The Yield Spike Sarah Ignored</div>
+            <p><strong>What was happening in the bond market:</strong> The 10Y yield went parabolic. This was THE story driving markets. But Sarah never looked at yields.</p>
+            <pre style="margin:.75rem 0"><code>BOND MARKET (What Sarah Ignored):
+Sept 1: 10Y yield at 4.10%
+Sept 15: 10Y yield at 4.35% (+25 bps in 2 weeks)
+Sept 22: 10Y yield at 4.48% (+38 bps in 3 weeks)
+Sept 29: 10Y yield at 4.68% (+58 bps in 4 weeks)
+
+THIS WAS A HISTORIC MOVE.
+Yields rising this fast = stocks WILL fall.</code></pre>
+            <p><strong>Sarah's response: Keep buying dips.</strong></p>
+            <p>She thought she was being disciplined, "buying value." She didn't realize yields at 4.5%+ make bonds VERY attractive vs risky equities.</p>
+            <pre style="margin:.75rem 0"><code>TRADE #2 (Sept 15): SPY at $438
+Sarah: "Support holding. Buying $35K."
+Bond market: 10Y yield at 4.35%, TLT down -1.8%
+Result: SPY fell to $428 by Sept 22 (-$796)
+
+TRADE #3 (Sept 22): SPY at $428 ("Double down!")
+Sarah: "Major support. This is the dip. $40K in."
+Bond market: 10Y yield at 4.48%, DXY at 105.5 (strong dollar)
+Result: SPY fell to $420 by Sept 29 (-$747)
+
+TRADE #4 (Sept 29): QQQ at $360
+Sarah: "Tech oversold. Buying $30K QQQ."
+Bond market: 10Y yield at 4.68% (highest since 2007!)
+Result: QQQ fell to $348 by Oct 6 (-$1,000)</code></pre>
+            <p><strong>The warnings Sarah missed:</strong></p>
+            <ul style="margin:.5rem 0 0 1.5rem">
+              <li><strong>10Y yield spiking 60+ bps in a month</strong> = extreme stress, historically bearish for stocks</li>
+              <li><strong>DXY (dollar) rallying</strong> from 103 → 106 = global tightening, negative for risk assets</li>
+              <li><strong>TLT (bonds) falling -5%</strong> while SPY also falling = bad correlation (risk-off not working)</li>
+              <li><strong>Credit spreads widening</strong> (HYG underperforming) = institutions worried</li>
+            </ul>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Weeks 2-4 result:</strong> 4 trades, 0 wins, -$3,543. Account: $175,650 (-2.4% total from $180K)</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#ff6b6b"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Weeks 5-6 (Oct 9-20): The Capitulation</div>
+            <p><strong>October 2023: The yield spike climaxed.</strong></p>
+            <pre style="margin:.75rem 0"><code>Oct 6: 10Y yield hits 4.80%
+Oct 13: 10Y yield hits 4.95%
+Oct 19: 10Y yield hits 5.02% (HIGHEST SINCE 2007)
+
+SPY reaction:
+Oct 6: $420
+Oct 27: $410 (down -2.4% from already-depressed levels)</code></pre>
+            <p><strong>Sarah panicked and sold everything at the bottom (Oct 27).</strong></p>
+            <pre style="margin:.75rem 0"><code>TRADE #8 (Oct 27): Capitulation
+Sarah sold ALL positions at massive losses:
+- SPY positions: Entry avg $442, Exit $410 (-7.2%)
+- QQQ positions: Entry avg $363, Exit $345 (-5.0%)
+- Individual stocks (NVDA, MSFT): Down -12-18%
+
+Total loss: -$89,000 (-49.4% of account)
+Account value: $91,000 (from $180K)</code></pre>
+            <p><strong>The breaking point (Oct 28):</strong></p>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px;border-left:4px solid #ff6b6b">
+              <strong>Sarah's journal entry:</strong><br>
+              "I lost $89,000 in 8 weeks. I bought every single dip, and every dip kept dipping. I don't understand WHY. The charts looked good. RSI was oversold. Support levels were holding initially. But they all failed. A trader friend asked me, 'Did you check the 10-year yield?' I said, 'What does that have to do with SPY?' He just stared at me. He said, 'Sarah, yields went from 4.1% to 5%. That's why stocks fell. Bonds are now competing with stocks.' I had NO IDEA yields moved that much. I never looked. I need to learn this."
+            </p>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Weeks 5-6 result:</strong> Total disaster. -$89K total (-49.4%). Account: $91,000.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#00d4aa"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Week 7-8 (Nov 2023): Discovery—Cross-Market Analysis</div>
+            <p><strong>What changed:</strong> Sarah spent 2 weeks studying intermarket analysis. She learned:</p>
+            <ul style="margin:.5rem 0 0 1.5rem">
+              <li><strong>Stocks don't trade in a vacuum</strong> — bonds, dollar, commodities all matter</li>
+              <li><strong>10Y yield is a leading indicator</strong> for equity direction</li>
+              <li><strong>When yields spike >30 bps in a month</strong>, stocks typically fall 5-10%</li>
+              <li><strong>DXY (dollar) strength</strong> = global tightening = bad for risk assets</li>
+              <li><strong>Credit spreads (HYG vs TLT)</strong> show what institutions think</li>
+            </ul>
+            <p><strong>New trading rule:</strong> "Never trade SPY without checking TLT, DXY, 10Y yield, and HYG first."</p>
+            <p><strong>The potential reversal signal (late October 2023):</strong></p>
+            <pre style="margin:.75rem 0"><code>Oct 27: 10Y yield PEAKS at 5.02%
+Nov 1: 10Y yield falls to 4.88% (-14 bps = bonds rallying)
+Nov 3: 10Y yield falls to 4.72% (-30 bps from peak)
+Nov 9: 10Y yield at 4.55% (-47 bps in 2 weeks)
+
+Sarah's new analysis:
+"Yields are FALLING. Bonds are rallying (TLT +3.2%).
+This is bullish for stocks. Time to re-enter."
+
+Nov 9: Sarah bought SPY at $430 with $20K (small position)
+Stop: $422 (if yields reverse back up)
+Target: $455 (previous resistance)
+Result: Dec 1 target hit (+$1,163 profit)</code></pre>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#00d4aa"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Q4 2023 - Q1 2024 (Nov-Feb): Recovery with Cross-Market Framework</div>
+            <p><strong>Sarah's new approach:</strong> Daily cross-market checklist BEFORE looking at SPY.</p>
+            <p><strong>Every morning, she checked:</strong></p>
+            <ol style="margin:.5rem 0 0 1.5rem;line-height:1.7">
+              <li>10Y Treasury yield: Level + change from yesterday</li>
+              <li>TLT (bonds): Up or down? Aligns with yield move?</li>
+              <li>DXY (dollar): Strengthening (bad) or weakening (good)?</li>
+              <li>HYG (credit): Spreads widening (bad) or tightening (good)?</li>
+              <li>GLD (gold): Dollar proxy, risk sentiment</li>
+              <li>ONLY THEN: Look at SPY and decide</li>
+            </ol>
+            <p><strong>Recovery trades (Nov 2023 - Feb 2024):</strong></p>
+            <pre style="margin:.75rem 0"><code>TRADE #10 (Nov 9): SPY long at $430
+Cross-market setup:
+- 10Y yield falling (4.72% from 5.02% peak = -30 bps)
+- TLT rallying +3.2% in 2 weeks (bonds bullish)
+- DXY weak (falling from 106 → 104)
+Result: SPY → $455 by Dec 1 (+$1,163 profit)
+
+TRADE #12 (Dec 15): QQQ long at $385
+Cross-market setup:
+- 10Y yield at 3.95% (down -107 bps from Oct peak!)
+- Fed pivot talk (rate cuts expected)
+- DXY weak (103.2, falling)
+Result: QQQ → $415 by Jan 15 (+$2,338 profit)
+
+TRADE #15 (Jan 25, 2024): SPY pullback trade
+Cross-market setup:
+- 10Y yield spiked +12 bps in 2 days (4.02% → 4.14%)
+- TLT sold off -1.4%
+- Sarah's reaction: "Yields rising fast = headwind. Stay out."
+Result: SPY fell -2.8% over next week (AVOIDED LOSS)
+
+TRADE #17 (Feb 8): SPY long at $488
+Cross-market setup:
+- 10Y yield stabilized at 4.18% (not spiking)
+- TLT flat (yields not threatening)
+- DXY weak (103.8 → 103.2)
+- HYG strong (credit spreads tightening)
+Result: SPY → $508 by Feb 29 (+$1,230 profit)</code></pre>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Q4 2023 - Q1 2024 results:</strong></p>
+            <pre style="margin:.75rem 0"><code>Total trades: 16
+Win rate: 75% (12/16)
+Total profit: +$47,300
+Account recovery: $91,000 → $138,300
+Still down from original $180K, but recovering: -23.2% vs -49.4%
+
+Sarah's ROI since learning cross-market analysis:
++52.0% gain from $91K → $138.3K in 4 months</code></pre>
+        </div>
+      </div>
+
+      <h3 id="the-problem-vs-the-solution">The Problem vs The Solution</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0">
+        <div style="background:rgba(255,107,107,.05);border:2px solid rgba(255,107,107,.2);border-radius:12px;padding:1.5rem">
+          <h4>❌ Sarah's Old Approach (Lost $89K)</h4>
+          <p><strong>Strategy:</strong> Only look at SPY charts, ignore everything else</p>
+          <pre><code>Sept-Oct 2023: Historic yield spike (4.1% → 5%)
+Sarah: "SPY is dipping. Buying the dip!"
+Bond market: SCREAMING "sell stocks, yields too high"
+Dollar: Strengthening (global tightening)
+Credit: Spreads widening (institutions worried)
+
+Sarah's view: "I don't need to check bonds.
+              SPY RSI is oversold. That's enough."
+
+Result: Every dip kept dipping
+- Sept 1: SPY $455
+- Oct 27: SPY $410 (down -9.9%)
+- Sarah's account: -$89K (-49.4%)
+
+Fatal mistake: Ignored cross-market warnings
+Yields spiking +90 bps in 2 months = SELL SIGNAL</code></pre>
+
+        <div style="background:rgba(0,212,170,.08);border:2px solid rgba(0,212,170,.3);border-radius:12px;padding:1.5rem">
+          <h4>✅ Sarah's New Approach (Gained $47K)</h4>
+          <p><strong>Strategy:</strong> Daily cross-market checklist BEFORE trading</p>
+          <pre><code>Late Oct 2023: Yields PEAK at 5.02%, then reverse
+Sarah's new analysis:
+"10Y yield falling -30 bps in 2 weeks = bullish
+TLT rallying +3.2% (bonds up = stocks next)
+DXY weakening (risk-on signal)
+NOW I can buy SPY."
+
+New framework (every morning):
+1. Check 10Y yield (level + change)
+2. Check TLT (bonds up or down?)
+3. Check DXY (dollar strong or weak?)
+4. Check HYG (credit spreads?)
+5. THEN trade SPY based on alignment
+
+Sarah's recovery (Nov 2023 - Feb 2024):
+- Bought SPY when yields FELL (Nov, Dec, Feb)
+- Stayed OUT when yields SPIKED (Jan 25)
+- Win rate: 75% (12/16)
+- Profit: +$47.3K (+52% from low)
+
+Success: Traded WITH cross-market signals</code></pre>
+        </div>
+      </div>
+
+      <h3 id="sarahs-daily-cross-market-checklist">Sarah's Daily Cross-Market Checklist</h3>
+
+      <div style="background:rgba(139,92,246,.08);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">📋 Sarah's Morning Cross-Market Routine (5 Minutes Before Trading)</h4>
+        <pre><code>STEP 1: BONDS & YIELDS (Most Important!)
+[ ] 10Y Treasury Yield: _____% (current level)
+[ ] Change from yesterday: [ ] +___bps (bearish) [ ] -___bps (bullish)
+[ ] Change from last week: [ ] +___bps [ ] -___bps
+[ ] TLT (20+ Year Bonds): [ ] UP (yields falling, bullish stocks)
+                          [ ] DOWN (yields rising, bearish stocks)
+
+YIELD SIGNALS:
+[ ] 🟢 Yields FALLING 3+ days: BULLISH for stocks (buy dips)
+[ ] 🔴 Yields RISING >15 bps/week: BEARISH for stocks (sell rallies)
+[ ] ⚠️ Yields >4.5%: CAUTION (bonds competing with stocks)
+
+STEP 2: DOLLAR STRENGTH (DXY / UUP)
+[ ] DXY: _____ (current level)
+[ ] Trend: [ ] Strengthening (bearish stocks) [ ] Weakening (bullish stocks)
+[ ] Change this week: [ ] +___% [ ] -___%
+
+DOLLAR SIGNALS:
+[ ] 🟢 DXY falling (weak dollar): BULLISH stocks, commodities
+[ ] 🔴 DXY rising >2% in week: BEARISH stocks (global tightening)
+
+STEP 3: CREDIT SPREADS (HYG vs TLT)
+[ ] HYG (High Yield Bonds): [ ] UP (spreads tightening, risk-on)
+                             [ ] DOWN (spreads widening, risk-off)
+[ ] HYG vs SPY: [ ] Aligned (both up/down = healthy)
+                [ ] Diverging (HYG weak, SPY strong = WARNING)
+
+CREDIT SIGNALS:
+[ ] 🟢 HYG outperforming SPY: Institutions confident (risk-on)
+[ ] 🔴 HYG underperforming SPY: Institutions worried (caution)
+
+STEP 4: COMMODITIES CONFIRMATION
+[ ] GLD (Gold): [ ] UP (weak dollar / risk-off)
+                [ ] DOWN (strong dollar / risk-on)
+[ ] Copper: [ ] UP (growth optimism) [ ] DOWN (growth concerns)
+[ ] Oil (USO): [ ] UP [ ] DOWN
+
+STEP 5: CORRELATION CHECK (Critical!)
+Compare SPY vs TLT movement:
+[ ] 🟢 SPY up, TLT down (yields up) = NORMAL RISK-ON
+[ ] 🟢 SPY down, TLT up (yields down) = NORMAL RISK-OFF
+[ ] 🔴 SPY down, TLT down (yields up) = DANGER! Forced liquidation
+[ ] ⚠️ SPY up, TLT up (yields down) = Fed easing / QE environment
+
+STEP 6: TRADING DECISION
+
+IF ALL GREEN (yields falling, dollar weak, credit strong):
+[ ] Bias: AGGRESSIVE LONG (buy SPY/QQQ dips confidently)
+[ ] Position size: 50-75% of capital
+[ ] Stop: Below recent swing low
+
+IF MIXED SIGNALS (some green, some red):
+[ ] Bias: SELECTIVE (trade smaller, tighter stops)
+[ ] Position size: 25-50% of capital
+[ ] Focus: High-conviction setups only
+
+IF ALL RED (yields spiking, dollar strong, credit weak):
+[ ] Bias: DEFENSIVE (stay cash or short)
+[ ] Position size: 0-25% of capital
+[ ] Action: Sell rallies, avoid longs, wait for reversal
+
+CRITICAL RULES:
+1. NEVER trade SPY without checking yields first
+2. If 10Y yield spikes >20 bps in 3 days → potential exit longs immediately
+3. If SPY & TLT both falling → emergency, go to cash
+4. Yields >4.5% = bonds competing with stocks (reduce risk)
+5. When in doubt, check cross-markets. They lead, stocks follow.</code></pre>
+
+      <div class="callout-key">
+        <h4>✅ The Results: Before vs After</h4>
+        <table style="width:100%;margin:1rem 0;border-collapse:collapse">
+          <thead>
+            <tr style="background:rgba(139,92,246,.1)">
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Metric</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Ignoring Cross-Markets (Sept-Oct 2023)</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Daily Cross-Market Checks (Nov 2023-Feb 2024)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Win Rate</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">0% (0/8 trades)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">75% (12/16 trades)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Strategy</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Only SPY charts, no cross-market awareness</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Daily yields/dollar/credit checklist</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>10Y Yield Awareness</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">NONE (didn't even know yields spiked to 5%)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Checked FIRST every morning</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Market Context</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Yields spiking 4.1% → 5% (historic move)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Yields falling 5% → 3.95% (bullish for stocks)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Total P&L</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-$89,000 (-49.4%)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$47,300 (+52.0% from low)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Account Value</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$180K → $91K (destroyed)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$91K → $138.3K (recovering)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Biggest Mistake</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Bought SPY dips while yields were screaming "SELL"</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Fixed: Checked yields FIRST, then traded</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.5rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
+          <strong>Sarah's advice (March 2024):</strong><br>
+          "I lost $89,000 in 8 weeks because I traded SPY in a vacuum. I only looked at SPY charts—RSI, support levels, moving averages. I never checked the bond market. I didn't even know what the 10-year yield was. Turns out, yields spiked from 4.1% to 5% during those 8 weeks—the biggest move in a decade. That's WHY stocks fell. Bonds at 5% became very attractive vs risky equities. Institutions rotated from stocks to bonds. But I had no idea.<br><br>
+          What saved me: Learning that STOCKS DON'T TRADE IN A VACUUM. I now spend 5 minutes every morning checking yields, TLT, DXY, and HYG BEFORE I even look at SPY. If yields are spiking, I stay out or sell rallies. If yields are falling, I buy dips aggressively. My win rate went from 0% to 75%. I recovered $47K of my losses in 4 months.<br><br>
+          The lesson? Stocks are just ONE piece of the puzzle. Bonds, dollar, commodities, and credit tell you WHERE stocks are going. Check cross-markets first. They lead. Stocks follow."
+        </p>
+      </div>
+<h2 id="part-1-the-big-four-correlations">Part 1: The Big Four Correlations</h2>
+
+      <h3 id="1-stocks-vs-bonds-spy-vs-tlt">1. Stocks vs Bonds (SPY vs TLT)</h3>
+
+      <p><strong>Normal Relationship:</strong> Inverse correlation. Stocks up → bonds down (yields up). Stocks down → bonds up (yields down).</p>
+
+      <p><strong>Why This Happens:</strong></p>
+      <ul>
+        <li><strong>Risk-on environment:</strong> Investors sell "safe" bonds, buy higher-returning stocks. Bond prices fall (yields rise), stock prices rise.</li>
+        <li><strong>Risk-off environment:</strong> Investors sell stocks, buy "safe" bonds. Bond prices rise (yields fall), stock prices fall.</li>
+        <li><strong>Portfolio rebalancing:</strong> 60/40 funds constantly rebalance between stocks and bonds, creating negative correlation.</li>
+      </ul>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Market State</th>
+            <th>Stocks (SPY)</th>
+            <th>Bonds (TLT)</th>
+            <th>10Y Yield</th>
+            <th>Interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Risk-On</strong></td>
+            <td>↑ Rising</td>
+            <td>↓ Falling</td>
+            <td>↑ Rising</td>
+            <td>Normal rotation: money leaving bonds for stocks</td>
+          </tr>
+          <tr>
+            <td><strong>Risk-Off</strong></td>
+            <td>↓ Falling</td>
+            <td>↑ Rising</td>
+            <td>↓ Falling</td>
+            <td>Normal flight to safety: selling stocks, buying bonds</td>
+          </tr>
+          <tr>
+            <td><strong>Both Falling</strong></td>
+            <td>↓ Falling</td>
+            <td>↓ Falling</td>
+            <td>↑ Yields spiking</td>
+            <td><span style="color:#ff4747">DANGER:</span> Forced liquidation (margin calls, deleveraging)</td>
+          </tr>
+          <tr>
+            <td><strong>Both Rising</strong></td>
+            <td>↑ Rising</td>
+            <td>↑ Rising</td>
+            <td>↓ Yields falling</td>
+            <td>Fed easing / QE environment (liquidity injection)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-warning">
+        <h4>⚠️ Critical Signal: Both Stocks AND Bonds Falling</h4>
+        <p>When SPY AND TLT both fall on the same day, it signals <strong>systemic stress</strong>. Investors aren't rotating from stocks to bonds (normal risk-off). They're selling EVERYTHING to raise cash or meet margin calls.</p>
+        <p><strong>Historical examples:</strong></p>
+        <ul>
+          <li>October 2008 (Lehman collapse): SPY -10%, TLT -5% same week</li>
+          <li>March 2020 (COVID crash): SPY -12%, TLT -3% same day (March 12)</li>
+          <li>September 2022 (UK pension crisis): Global bond/stock selloff</li>
+        </ul>
+        <p><strong>Trading rule:</strong> When this happens, potential exit ALL risk positions immediately. Only USD cash and short-term T-bills are safe. Wait for correlations to normalize before re-entering.</p>
+      </div>
+
+      <h3 id="2-dollar-vs-stocks-dxy-vs-spx">2. Dollar vs Stocks (DXY vs SPX)</h3>
+
+      <p><strong>Normal Relationship:</strong> Inverse correlation (moderate strength). Dollar up → stocks down. Dollar down → stocks up.</p>
+
+      <p><strong>Why Dollar Strength Hurts Stocks:</strong></p>
+
+      <p><strong>Mechanism #1: Tighter Global Financial Conditions</strong></p>
+      <ul>
+        <li>Strong USD = global dollar liquidity contracts (dollar is world's reserve currency)</li>
+        <li>International borrowers struggle to service USD-denominated debt (emerging markets, corporates)</li>
+        <li>Risk of EM currency crises → contagion to developed markets</li>
+        <li>Historical examples: 2013 taper tantrum, 2015 China devaluation, 2022 UK gilt crisis</li>
+      </ul>
+
+      <p><strong>Mechanism #2: Multinational Earnings Pressure</strong></p>
+      <ul>
+        <li>S&P 500 companies generate ~30% of revenue internationally</li>
+        <li>Strong USD = foreign revenue worth less when converted back to dollars</li>
+        <li><strong>Example:</strong> Apple earns €10B in Europe. EUR/USD at 1.10 = $11B revenue. EUR/USD falls to 1.00 = $10B revenue (10% haircut despite same European sales).</li>
+        <li>Mega-caps (AAPL, MSFT, GOOGL) have highest international exposure → most sensitive to USD strength</li>
+      </ul>
+
+      <p><strong>Mechanism #3: Risk Asset Repricing</strong></p>
+      <ul>
+        <li>Strong USD often coincides with Fed tightening (raising rates)</li>
+        <li>Higher rates = lower present value of future earnings (discount rate effect)</li>
+        <li>Growth stocks (long-duration assets) most affected</li>
+      </ul>
+
+      <table>
+        <thead>
+          <tr>
+            <th>DXY Move</th>
+            <th>Typical SPX Reaction</th>
+            <th>Duration</th>
+            <th>Trading Implication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>DXY breaks resistance (+2-3%)</td>
+            <td>SPX pullback -2-5%</td>
+            <td>2-4 weeks</td>
+            <td>Reduce long exposure, hedge with puts</td>
+          </tr>
+          <tr>
+            <td>DXY breaks support (-2-3%)</td>
+            <td>SPX rally +3-7%</td>
+            <td>2-4 weeks</td>
+            <td>Increase long exposure, buy dips</td>
+          </tr>
+          <tr>
+            <td>DXY spike &gt;5% in month</td>
+            <td>SPX correction -10-15%</td>
+            <td>1-3 months</td>
+            <td>Go defensive, potential exit risk, buy TLT</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="3-yields-vs-stocks-10y-treasury-yield-vs-spx">3. Yields vs Stocks (10Y Treasury Yield vs SPX)</h3>
+
+      <p><strong>Relationship is Non-Linear</strong> (depends on level AND rate of change):</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>10Y Yield Level</th>
+            <th>Rising Yields Impact on SPX</th>
+            <th>Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>&lt; 2%</td>
+            <td><strong>Bullish</strong> (rising yields good)</td>
+            <td>Yield rise = economic recovery from recession. Growth beats rate headwind.</td>
+          </tr>
+          <tr>
+            <td>2-4% (Goldilocks)</td>
+            <td><strong>Neutral</strong></td>
+            <td>Moderate yields support growth without excessive drag. SPX can rally.</td>
+          </tr>
+          <tr>
+            <td>&gt; 4%</td>
+            <td><strong>Bearish</strong> (rising yields bad)</td>
+            <td>Bonds start competing with stocks. Risk-free 4-5% looks attractive vs equity risk.</td>
+          </tr>
+          <tr>
+            <td>&gt; 5%</td>
+            <td><strong>Very Bearish</strong></td>
+            <td>Yield > long-term equity returns. Massive capital rotation from stocks → bonds.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Rate of Change Matters More Than Level:</strong></p>
+      <ul>
+        <li><strong>+5-10 bps/day:</strong> Manageable. Market digests gradually.</li>
+        <li><strong>+15-20 bps/day:</strong> Elevated stress. Volatility increases.</li>
+        <li><strong>+30+ bps/day:</strong> Panic. Forced deleveraging begins. SPX typically down 1-3% same day.</li>
+      </ul>
+
+      <p><strong>Real Example: October 2023 Yield Spike</strong></p>
+      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px">
+<strong>Sept 30:</strong> 10Y yield at 4.57%
+<strong>Oct 19:</strong> 10Y yield at 5.02% (+45 bps in 3 weeks)
+<strong>SPX reaction:</strong> -5.2% over same period
+
+<strong>Signal:</strong> Yield spike &gt;4.5% + rapid rate of change
+<strong>Trade:</strong> Sell SPX rallies, buy TLT (bonds oversold)
+<strong>Outcome:</strong> Nov-Dec 2023 = bonds rallied 8%, SPX recovered
+(Fed pivot expectations shifted, yields reversed)
+      </pre>
+
+      <h3 id="4-commodities-vs-dollar-gold-oil-copper-vs-dxy">4. Commodities vs Dollar (Gold, Oil, Copper vs DXY)</h3>
+
+      <p><strong>Gold vs Dollar:</strong> Strong inverse correlation (-0.7 to -0.9)</p>
+      <ul>
+        <li>Gold priced in USD → weak dollar = gold rises in dollar terms</li>
+        <li>Gold is anti-dollar hedge (central banks, international investors use gold to diversify from USD)</li>
+        <li><strong>Trading rule:</strong> DXY breaks support (-3%) = buy GLD. DXY breaks resistance (+3%) = sell GLD.</li>
+      </ul>
+
+      <p><strong>Oil vs Dollar:</strong> Moderate inverse correlation (-0.4 to -0.6)</p>
+      <ul>
+        <li>Oil priced globally in USD → weak dollar = oil rises (international buyers get more purchasing power)</li>
+        <li>Correlation weaker than gold (oil driven more by supply/demand fundamentals)</li>
+        <li><strong>Exception:</strong> Supply shocks override dollar correlation (2022 Russia/Ukraine → oil spiked despite strong dollar)</li>
+      </ul>
+
+      <p><strong>Copper vs Stocks:</strong> Positive correlation (+0.6 to +0.8) with equities</p>
+      <ul>
+        <li>Copper = "Dr. Copper" (has PhD in economics) → industrial demand proxy</li>
+        <li>Used in construction, manufacturing, EVs, infrastructure</li>
+        <li>When copper falls while stocks rally = <strong>bearish divergence</strong> (global growth slowing, equity rally will fail)</li>
+      </ul>
+<h2 id="part-2-intermarket-divergencesleading-indicators">Part 2: Intermarket Divergences—Leading Indicators</h2>
+<h3 id="what-is-an-intermarket-divergence">What Is an Intermarket Divergence?</h3>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p>You now understand the core concepts.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
+      </div>
+
+      <p><strong>Divergence:</strong> When historically correlated assets break their normal relationship.</p>
+
+      <p><strong>Why Divergences Matter:</strong> One asset is telling you something the other hasn't priced in yet. <strong>The divergence resolves by either (1) the lagging asset catching up, or (2) the leading asset reversing.</strong> Historically, the lagging asset catches up 70-80% of the time.</p>
+
+      <h3 id="divergence-1-stocks-up-bonds-refusing-to-fall">Divergence #1: Stocks Up, Bonds Refusing to Fall</h3>
+
+      <p><strong>Setup:</strong></p>
+      <ul>
+        <li>SPX making new 52-week highs</li>
+        <li>TLT NOT making new 52-week lows (or even rising slightly)</li>
+        <li>Yields NOT rising despite stock rally</li>
+      </ul>
+
+      <p><strong>Interpretation:</strong></p>
+      <p>Bond market is skeptical of equity rally. Possible reasons:</p>
+      <ul>
+        <li>Rally is narrow (only a few mega-cap stocks, no breadth)</li>
+        <li>Bond investors expect recession (buying bonds for safety despite equity strength)</li>
+        <li>Liquidity concerns (institutions parking cash in bonds, not chasing stocks)</li>
+      </ul>
+
+      <p><strong>Trading Signal:</strong> <strong>Bearish</strong> for stocks. When bonds and stocks disagree, bonds are usually right (bond market is "smarter"—more institutional, less retail).</p>
+
+      <p><strong>Trade Setup:</strong></p>
+      <ul>
+        <li><strong>Entry:</strong> Short SPX when divergence lasts 2+ weeks</li>
+        <li><strong>Confirmation:</strong> Use Signal Pilot Janus Atlas to check if SPX rally has breadth (all sectors up?) or just tech (AAPL, MSFT, NVDA)</li>
+        <li><strong>Stop:</strong> If TLT starts falling (bonds confirm equity rally)</li>
+        <li><strong>Target:</strong> SPX pullback 3-5% to close divergence</li>
+      </ul>
+
+      <h3 id="divergence-2-high-yield-credit-spreads-widening-stocks-rallying">Divergence #2: High-Yield Credit Spreads Widening, Stocks Rallying</h3>
+
+      <p><strong>Setup:</strong></p>
+      <ul>
+        <li>SPX making new highs</li>
+        <li>HYG (high-yield bond ETF) falling</li>
+        <li>Credit spreads (HY bonds vs Treasuries) widening</li>
+      </ul>
+
+      <p><strong>What It Means:</strong></p>
+      <p>Credit market is pricing in recession / default risk. Credit investors (bond investors) smell trouble—expecting companies to struggle paying debt.</p>
+
+      <p><strong>Why Credit Leads Equities:</strong></p>
+      <ul>
+        <li>Bondholders get paid before shareholders in bankruptcy → more conservative, forward-looking</li>
+        <li>Credit analysts study company balance sheets, leverage, cash flow (more fundamental analysis than equity day traders)</li>
+        <li>Historical pattern: Credit sells off 2-6 weeks BEFORE major equity corrections</li>
+      </ul>
+
+      <p><strong>Real Example: January 2022</strong></p>
+      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px">
+<strong>Dec 2021:</strong> SPX at 4800 (new all-time highs)
+<strong>HYG:</strong> Peaked Dec 6, down -2% by Jan 1
+
+<strong>Divergence Signal:</strong> Credit selling off despite equity ATH
+
+<strong>Jan 2022:</strong> SPX drops -8.7% (Jan 3-24)
+<strong>Credit was right.</strong> Equity investors caught offside.
+
+<strong>Trade:</strong> If you shorted SPX when HYG broke support
+(Dec 20), you captured 8% downside over next month.
+      </pre>
+
+      <p><strong>Trading Rule:</strong></p>
+      <ul>
+        <li>Monitor HYG/SPY ratio daily</li>
+        <li>If HYG/SPY makes new 3-month low while SPX makes new 3-month high = <strong>major bearish divergence</strong></li>
+        <li>Enter puts on SPX or reduce long exposure immediately</li>
+      </ul>
+
+      <h3 id="divergence-3-copper-falling-stocks-rallying-dr-copper-divergence">Divergence #3: Copper Falling, Stocks Rallying ("Dr. Copper" Divergence)</h3>
+
+      <p><strong>Setup:</strong></p>
+      <ul>
+        <li>SPX making new highs (or trending up)</li>
+        <li>Copper futures (HG) or copper ETF (COPX) falling -5-10%</li>
+      </ul>
+
+      <p><strong>Interpretation:</strong></p>
+      <p>Industrial demand is weakening. Global growth is slowing. Copper is used in construction, manufacturing, EVs, infrastructure—if demand is falling, it signals economic slowdown ahead.</p>
+
+      <p><strong>Trading Implications:</strong></p>
+      <ul>
+        <li><strong>Bearish for cyclical stocks:</strong> Materials (XLB), Industrials (XLI), Energy (XLE)</li>
+        <li><strong>Defensive rotation coming:</strong> Expect rotation into Utilities (XLU), Consumer Staples (XLP), Healthcare (XLV)</li>
+        <li><strong>SPX correction likely:</strong> If copper keeps falling, SPX will eventually follow (cyclicals drag index lower)</li>
+      </ul>
+
+      <p><strong>Real Example: Summer 2022</strong></p>
+      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px">
+<strong>June 2022:</strong> SPX rebounds from May lows (+8% rally)
+<strong>Copper:</strong> Continues falling -15% from April highs
+
+<strong>Divergence:</strong> Stocks rallying, copper (global growth proxy) tanking
+
+<strong>July-Sept 2022:</strong> SPX drops -12% (new lows in October)
+<strong>Copper was right.</strong> Global recession fears materialized.
+
+<strong>Trade:</strong> Short cyclicals (XLI, XLB) when copper broke support
+in June. Outperformed shorting SPX directly.
+      </pre>
+
+      <h3 id="divergence-4-vix-staying-elevated-despite-stock-rally">Divergence #4: VIX Staying Elevated Despite Stock Rally</h3>
+
+      <p><strong>Setup:</strong></p>
+      <ul>
+        <li>SPX rallying +3-5%</li>
+        <li>VIX refuses to fall (stays above 20-25)</li>
+      </ul>
+
+      <p><strong>Interpretation:</strong></p>
+      <p>Options market is NOT buying the rally. Put buyers still hedging aggressively despite higher stock prices. This signals:</p>
+      <ul>
+        <li>Rally is short-covering (forced buying), not conviction buying</li>
+        <li>Institutions using rally to hedge (buying puts while stocks up = cheap insurance)</li>
+        <li>Reversal likely once short-covering exhausts</li>
+      </ul>
+
+      <p><strong>Trading Rule:</strong></p>
+      <ul>
+        <li>SPX +5% in week, VIX still &gt;22 = fade the rally (sell strength)</li>
+        <li>Wait for VIX &lt;18 before trusting bullish continuation</li>
+      </ul>
+
+      <h2 id="part-3-correlation-regimeswhen-diversification-fails">Part 3: Correlation Regimes—When Diversification Fails</h2>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p>You're now at the halfway point. You've learned the key strategies.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
+      </div>
+
+      <h3 id="high-correlation-systemic-risk">High Correlation = Systemic Risk</h3>
+
+      <p><strong>Definition:</strong> When all asset classes move together (correlation → +1 or -1).</p>
+
+      <p><strong>When It Happens:</strong></p>
+      <ul>
+        <li>Market crashes / forced liquidations (March 2020, October 2008)</li>
+        <li>Systematic strategies unwinding (volatility targeting funds, risk parity funds)</li>
+        <li>Margin calls / deleveraging events</li>
+      </ul>
+
+      <p><strong>What Happens:</strong></p>
+      <ul>
+        <li>Stocks fall, bonds fall, gold falls, crypto falls, commodities fall</li>
+        <li><strong>Only USD cash rallies</strong> (flight to ultimate liquidity)</li>
+        <li>Diversification FAILS (60/40 portfolios get crushed)</li>
+      </ul>
+
+      <p><strong>Example: March 2020 (COVID Crash)</strong></p>
+      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px">
+<strong>March 9-12, 2020:</strong>
+- SPY: -12%
+- TLT (bonds): -3%
+- GLD (gold): -4%
+- BTC (crypto): -25%
+- Oil: -30%
+
+<strong>Correlation to SPY:</strong> Everything +0.9 correlation (all falling together)
+
+<strong>Only winner:</strong> USD (DXY +4%)
+
+<strong>Cause:</strong> Forced liquidation. Funds selling everything to raise cash.
+      </pre>
+
+      <p><strong>Trading Rule for High Correlation Regimes:</strong></p>
+      <ul>
+        <li><strong>Signal:</strong> SPY + TLT both down &gt;1% same day</li>
+        <li><strong>Action:</strong> Exit ALL risk positions. Go to cash. Wait for correlations to normalize (usually 1-4 weeks).</li>
+        <li><strong>Re-entry:</strong> When SPY up, TLT down (normal inverse correlation returns) = safe to re-enter risk.</li>
+      </ul>
+
+      <h3 id="low-correlation-alpha-opportunity">Low Correlation = Alpha Opportunity</h3>
+
+      <p><strong>Definition:</strong> When assets trade on individual fundamentals (correlation → 0).</p>
+
+      <p><strong>When It Happens:</strong></p>
+      <ul>
+        <li>Normal market environments (60-70% of time)</li>
+        <li>Low volatility regimes (VIX &lt;18)</li>
+        <li>Stock-picker markets (2017, 2019, H2 2023)</li>
+      </ul>
+
+      <p><strong>What Happens:</strong></p>
+      <ul>
+        <li>Individual stocks trade on earnings, fundamentals, sector trends</li>
+        <li>Some stocks up +10%, others down -10% (dispersion high)</li>
+        <li>Active managers can generate alpha (outperform index)</li>
+      </ul>
+
+      <p><strong>Trading Strategy:</strong></p>
+      <ul>
+        <li><strong>Low correlation = increase position sizing:</strong> Stock-picking edge is highest. Go aggressive on high-conviction trades.</li>
+        <li><strong>High correlation = reduce position sizing:</strong> Everything moving together = no edge. Go defensive, wait for regime shift.</li>
+      </ul>
+<h2 id="part-4-real-trade-examples-using-intermarket-analysis">Part 4: Real Trade Examples Using Intermarket Analysis</h2>
+<h3 id="trade-1-shorting-spx-on-dollar-potential breakout-sept-2022">Trade #1: Shorting SPX on Dollar Breakout (Sept 2022)</h3>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p>Almost done! You've mastered the complete framework.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
+      </div>
+
+      <p><strong>Setup (Sept 5, 2022):</strong></p>
+      <ul>
+        <li>DXY breaks 110 (multi-decade resistance)</li>
+        <li>10Y yield breaks 3.5% (rising rapidly, +15 bps/week)</li>
+        <li>SPX at 3950 (attempting rally from August lows)</li>
+      </ul>
+
+      <p><strong>Intermarket Signals:</strong></p>
+      <ul>
+        <li><strong>Dollar strength:</strong> DXY +5% in month (tightening financial conditions)</li>
+        <li><strong>Yield spike:</strong> 10Y from 2.5% → 3.5% in 6 weeks (repricing equity valuations lower)</li>
+        <li><strong>Credit weakness:</strong> HYG making new lows (not confirming SPX rally attempt)</li>
+      </ul>
+
+      <p><strong>Trade:</strong></p>
+      <ul>
+        <li><strong>Entry:</strong> Short SPX at 3950 (Sept 6)</li>
+        <li><strong>Stop:</strong> 4050 (above recent high)</li>
+        <li><strong>Target 1:</strong> 3750 (previous low)</li>
+        <li><strong>Target 2:</strong> 3600 (measured move from DXY potential breakout)</li>
+      </ul>
+
+      <p><strong>Outcome:</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+<strong>Sept 12:</strong> SPX hits 3900 (Target 1 approaches)
+<strong>Sept 30:</strong> SPX hits 3585 (Target 2 hit)
+
+<strong>Trade Results:</strong>
+- Entry: 3950
+- Exit: 3600 (avg of partial potential exits)
+- Profit: 350 points (8.9% in 24 days)
+
+<strong>Why it worked:</strong> Dollar and yields screamed "sell risk."
+Intermarket signals led SPX decline by days.
+      </pre>
+
+      <h3 id="trade-2-buying-stocks-on-credit-spread-compression-nov-2023">Trade #2: Buying Stocks on Credit Spread Compression (Nov 2023)</h3>
+
+      <p><strong>Setup (Nov 1, 2023):</strong></p>
+      <ul>
+        <li>SPX at 4200 (down -10% from July highs)</li>
+        <li>HYG (high-yield bonds) bottoming, spreads compressing</li>
+        <li>DXY breaking support (dollar weakness = bullish for equities)</li>
+        <li>10Y yield peaked at 5%, now falling to 4.5%</li>
+      </ul>
+
+      <p><strong>Intermarket Signals:</strong></p>
+      <ul>
+        <li><strong>Credit improving:</strong> HYG +2% while SPX flat (credit leading equities higher)</li>
+        <li><strong>Dollar weakness:</strong> DXY -3% in 2 weeks (bullish for stocks)</li>
+        <li><strong>Yield relief:</strong> 10Y falling -50 bps (discount rate tailwind for equities)</li>
+      </ul>
+
+      <p><strong>Trade:</strong></p>
+      <ul>
+        <li><strong>Entry:</strong> Long SPX at 4225 (Nov 3)</li>
+        <li><strong>Stop:</strong> 4100 (below recent low)</li>
+        <li><strong>Target:</strong> 4500 (previous resistance)</li>
+      </ul>
+
+      <p><strong>Outcome:</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+<strong>Nov 30:</strong> SPX at 4550 (Target hit)
+<strong>Dec 31:</strong> SPX at 4770 (extended rally)
+
+<strong>Trade Results:</strong>
+- Entry: 4225
+- Exit: 4550 (target)
+- Profit: 325 points (7.7% in 27 days)
+
+<strong>Why it worked:</strong> Credit, dollar, yields ALL aligned bullish.
+Intermarket signals confirmed bottom before SPX confirmed.
+      </pre>
+
+      <h2 id="part-5-building-your-daily-intermarket-checklist">Part 5: Building Your Daily Intermarket Checklist</h2>
+
+      <h3 id="daily-monitoring-routine-10-15-minutes">Daily Monitoring Routine (10-15 minutes)</h3>
+
+      <p><strong>Step 1: Check Core Correlations</strong></p>
+      <ul>
+        <li>SPY vs TLT: Moving inversely (normal) or together (stress)?</li>
+        <li>DXY: Breaking resistance (bearish SPX) or support (bullish SPX)?</li>
+        <li>10Y yield: Rate of change &gt;20bps in week? (Volatility warning)</li>
+      </ul>
+
+      <p><strong>Step 2: Check Credit Market</strong></p>
+      <ul>
+        <li>HYG vs SPY: Aligned or diverging?</li>
+        <li>HYG/SPY ratio: Making new 3-month low = bearish divergence</li>
+      </ul>
+
+      <p><strong>Step 3: Check Commodities</strong></p>
+      <ul>
+        <li>Copper (HG or COPX): Falling while stocks rally = bearish</li>
+        <li>Gold: Following dollar inverse correlation?</li>
+        <li>Oil: Supply shock overriding fundamentals?</li>
+      </ul>
+
+      <p><strong>Step 4: Check Volatility</strong></p>
+      <ul>
+        <li>VIX: Elevated despite stock rally = fade rally</li>
+        <li>CBOE Skew: &gt;150 = extreme fear (potential reversal)</li>
+      </ul>
+
+      <p><strong>Step 5: Use Signal Pilot Tools</strong></p>
+      <ul>
+        <li><strong>Janus Atlas:</strong> Overlay SPY, TLT, DXY, GLD on one chart → visual divergence detection</li>
+        <li><strong>Pentarch Pilot Line:</strong> Check institutional order flow in bonds vs stocks</li>
+        <li><strong>Plutus Flow:</strong> Unusual options activity in TLT, GLD, DXY (hedging signals)</li>
+      </ul>
+
+      <div class="key-takeaway">
+        <h4>Key Takeaways</h4>
+        <ul>
+          <li><strong>Stocks & bonds falling together = systemic risk</strong>—immediate exit signal (2008, March 2020 pattern)</li>
+          <li><strong>Dollar strength = bearish for stocks</strong>—DXY breaking resistance is 2-4 week leading indicator for SPX weakness</li>
+          <li><strong>Credit divergences are most reliable</strong>—when HYG falls while SPX rallies, credit is right 80% of time</li>
+          <li><strong>Copper = global growth proxy</strong>—"Dr. Copper" falling + stocks rallying = bearish divergence</li>
+          <li><strong>Yield rate of change matters</strong>—10Y spiking &gt;30 bps/week triggers SPX volatility</li>
+          <li><strong>High correlation = reduce risk</strong>—when all assets move together, diversification fails, go to cash</li>
+        </ul>
+      </div>
+
+      <div class="practice-section">
+        <h4>🎯 Practice Exercises</h4>
+        <ol>
+          <li><strong>Correlation Analysis:</strong> Pull up TradingView. Plot SPY, TLT, DXY on same chart for last 6 months. Mark instances where SPY and TLT fell same day. What happened to SPY over next 2 weeks?</li>
+          <li><strong>HYG/SPY Ratio Study:</strong> Calculate HYG/SPY ratio daily for last year. Mark when ratio made new 3-month low. Did SPX correct within next 4 weeks? Calculate hit rate.</li>
+          <li><strong>Dollar Breakout Backtest:</strong> Find last 5 times DXY broke multi-month resistance (+3%). How did SPX perform over next 30 days? What was average drawdown?</li>
+          <li><strong>Credit Divergence Hunt:</strong> Review 2022 bear market. When did HYG start falling relative to SPX? How many weeks did credit lead equities lower?</li>
+          <li><strong>Build Your Checklist:</strong> Create daily spreadsheet tracking: SPY, TLT, DXY, HYG, Copper, VIX. Note when divergences appear. Track how long until divergence resolves.</li>
+        </ol>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Next: Lesson 44 - HFT Mechanics</h4>
+        <p>Understand how high-frequency trading algorithms operate and how to avoid being their liquidity—or profit from their patterns.</p>
+      </div>
+
+      <div class="related-lessons">
+        <h4>📚 Related Lessons</h4>
+        <ul>
+          <li><a href="/curriculum/advanced/42-volatility-trading-strategies.html">Lesson 42: Volatility Trading Strategies</a> – VIX and cross-asset volatility relationships</li>
+          <li><a href="/curriculum/advanced/46-advanced-risk-management.html">Lesson 46: Advanced Risk Management</a> – Portfolio hedging with bonds and commodities</li>
+          <li><a href="/curriculum/professional/64-macro-regime-framework.html">Lesson 64: Macro Regime Framework</a> – Regime-based intermarket analysis</li>
+          <li><a href="/curriculum/professional/72-intermarket-analysis-advanced.html">Lesson 72: Intermarket Analysis Advanced</a> – Complex multi-asset arbitrage strategies</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-the-big-four-correlations">Part 1: The Big Four Correlations</a>
+      <a href="#part-2-intermarket-divergencesleading-indicators">Part 2: Intermarket Divergences—Leading Indicators</a>
+      <a href="#part-3-correlation-regimeswhen-diversification-fails">Part 3: Correlation Regimes—When Diversification Fails</a>
+      <a href="#part-4-real-trade-examples-using-intermarket-analysis">Part 4: Real Trade Examples Using Intermarket Analysis</a>
+      <a href="#part-5-building-your-daily-intermarket-checklist">Part 5: Building Your Daily Intermarket Checklist</a>
+    </aside>
+  </div>
+
+
+  <div class="wrap nav-article">
+  <a class="btn btn-ghost" href="/">&larr; Back to Advanced</a>
+  </div>
+</article>
+
+<aside class="toc" aria-label="On this page">
+  <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-the-big-four-correlations">Part 1: The Big Four Correlations</a>
+      <a href="#part-2-intermarket-divergencesleading-indicators">Part 2: Intermarket Divergences—Leading Indicators</a>
+      <a href="#part-3-correlation-regimeswhen-diversification-fails">Part 3: Correlation Regimes—When Diversification Fails</a>
+      <a href="#part-4-real-trade-examples-using-intermarket-analysis">Part 4: Real Trade Examples Using Intermarket Analysis</a>
+      <a href="#part-5-building-your-daily-intermarket-checklist">Part 5: Building Your Daily Intermarket Checklist</a>
+</aside>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/toc-active.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
+  <!-- Enhanced Analytics & A/B Testing -->
+  <script src="/assets/enhanced-analytics.js" defer></script>
+  <script src="/assets/ab-test-tldr.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1164 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <!-- AGGRESSIVE CACHE PREVENTION -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Swing Trading Framework: Multi-Day Structure — Signal Pilot Education</title>
+  <meta name="description" content="Swing Trading Framework: Multi-Day Structure">
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="20">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/intermediate/20-swing-trading-framework.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- SignalPilot Theme System -->
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <!-- Logger must load first -->
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+  <script src="/assets/structured-data.js" defer></script>
+  <script src="/assets/lazy-load.js" defer></script>
+  <script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
+<article class="article">
+
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> › <a href="/intermediate.html">Intermediate</a> › <span>Lesson #20</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <span class="lesson-badge">Lesson 20</span>
+        <span class="tier-badge tier-intermediate">Intermediate</span>
+      </div>
+      <h1 class="headline xl">Swing Trading Framework: Multi-Day Structure</h1>
+      <div class="meta">28-32 min read • Position Trading Mastery</div>
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+      <!-- TL;DR Skimmer Summary -->
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
+          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
+            <li>Swing trading holds 2-7 days, targeting 3-8% moves—requires higher timeframe analysis (4H/Daily) vs intraday</li>
+            <li>Framework: Daily trend bias → Wait for 4H pullback to support/MA → Enter on 1H confirmation candle → Hold for swing</li>
+            <li>Position management: Wider stops (1.5-2% from entry), fewer trades (2-4/week), less screen time</li>
+            <li>Common mistake: Using intraday tactics for swing trades—too tight stops, too much monitoring, exiting too early</li>
+            <li>Validation: Track trades held 2-7 days vs closed same day—proper swings should have better R:R (2:1 minimum)</li>
+          </ul>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
+        </div>
+      </details>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
+        <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
+        <ul style="line-height:1.8;margin:0 0 0 1.5rem">
+          <li>Swing trading holds 2-7 days, targeting 3-8% moves</li>
+          <li>Framework: Daily trend bias → Wait for 4H pullback to support/MA → Enter on 1H confirmation candle → Hold for swing</li>
+          <li>Position management: Wider stops (1.5-2% from entry), fewer trades (2-4/week), less screen time</li>
+          <li>Common mistake: Using intraday tactics for swing trades</li>
+        </ul>
+      </div>
+
+        
+        
+        
+      </div>
+
+      <p class="lead"><b>Intraday noise vanishes on the daily chart. Swing trading is where technical analysis actually works—and where retail can compete with institutions.</b></p>
+
+      <p>Day trading means fighting HFT algos and market makers in their domain: millisecond execution, sub-penny spreads, rebate games. You're the slowest player at the table. <strong>Swing trading flips the script.</strong></p>
+
+      <p>On daily charts, you trade on the same timeframe where institutional positioning takes days to build and unwind. Where fundamentals meet technicals. Where order blocks last weeks, not minutes. Where a single trade can run 10-30% while you sleep. This is the battlefield where retail traders actually have edge.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Swing trading isn't "slower day trading." It's a different game with different rules. Daily order blocks replace 5-minute zones. Position sizing shrinks (overnight risk is real). Hold times extend to 5-20 days. But the edge? <strong>Massive.</strong> You're trading WITH institutions as they reposition, not against HFT algos frontrunning your stops. If you can handle overnight volatility, swing trading is the highest win-rate strategy retail has access to.</p>
+      </div>
+
+      <div class="key-insights">
+        <h4>🎯 Key Insights You'll Master</h4>
+        <ul>
+          <li><strong>Daily Timeframe Structure:</strong> How HH/HL and order blocks on daily charts provide institutional-level positioning insights</li>
+          <li><strong>Position Sizing Framework:</strong> Risk management adjustments for overnight holds, gap risk, and multi-day volatility</li>
+          <li><strong>Entry Strategies:</strong> Daily order block retests, weekly structure breaks, and high-probability swing setups</li>
+          <li><strong>Trade Management:</strong> Scaling in/out, trailing stops, and managing positions across multiple days/weeks</li>
+          <li><strong>Overnight Risk Control:</strong> Hedging strategies, news-event management, and when to reduce exposure</li>
+        </ul>
+      </div>
+
+      <div class="example-block">
+        <h4>Real-World Example: Monica's $34K "Day Trading Position Size in Swing Trades" Disaster</h4>
+
+        <p><strong>Background:</strong> Monica, a profitable day trader (58% win rate, $92,000 account) decided to try swing trading in June 2024. She used the SAME position sizing (2% risk per trade) she used for day trading—forgetting that swing trades have overnight gap risk, wider stops, and multi-day exposure. Over 6 weeks, 8 swing trades with oversized positions destroyed $34,200 of her account.</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
+          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Oversized Swing Positions: 6-Week Account Destruction (June 10-July 19, 2024)</caption>
+          <tr style="background:rgba(118,221,255,0.15);border-bottom:2px solid rgba(118,221,255,0.3)">
+            <th style="padding:0.75rem;text-align:left">Date</th>
+            <th style="padding:0.75rem;text-align:left">Trade</th>
+            <th style="padding:0.75rem;text-align:left">Position Size ($ Risk)</th>
+            <th style="padding:0.75rem;text-align:left">What Went Wrong</th>
+            <th style="padding:0.75rem;text-align:right">Result</th>
+            <th style="padding:0.75rem;text-align:left">Monica's Mistake</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1);background:rgba(255,82,82,0.05)">
+            <td style="padding:0.75rem">Jun 10</td>
+            <td style="padding:0.75rem">TSLA long<br>Entry: $180<br>Stop: $172</td>
+            <td style="padding:0.75rem">100 shares<br><strong>$1,840 risk (2%)</strong><br><span style="color:#fbbf24">Should: $460 (0.5%)</span></td>
+            <td style="padding:0.75rem">Gapped down to $165 on earnings miss (overnight)</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,950</span><br>(+60% worse than planned)</td>
+            <td style="padding:0.75rem">Used day-trading 2% risk. Overnight gap blew through stop.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1);background:rgba(255,82,82,0.08)">
+            <td style="padding:0.75rem">Jun 17</td>
+            <td style="padding:0.75rem">NVDA long<br>Entry: $920<br>Stop: $902</td>
+            <td style="padding:0.75rem">95 shares<br><strong>$1,710 risk (2%)</strong><br><span style="color:#fbbf24">Should: $430 (0.5%)</span></td>
+            <td style="padding:0.75rem">Fed hawkish, gapped down $28 overnight</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$3,420</span><br>(+100% worse)</td>
+            <td style="padding:0.75rem">Held through FOMC (should have potential exited or reduced 50%)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1);background:rgba(255,82,82,0.11)">
+            <td style="padding:0.75rem">Jun 24</td>
+            <td style="padding:0.75rem">SPY long<br>Entry: $540<br>Stop: $532</td>
+            <td style="padding:0.75rem">200 shares<br><strong>$1,600 risk (2%)</strong><br><span style="color:#fbbf24">Should: $400 (0.5%)</span></td>
+            <td style="padding:0.75rem">Weekend geopolitical news, gapped down Monday to $525</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$3,000</span><br>(+88% worse)</td>
+            <td style="padding:0.75rem">Held full position into weekend (should have reduced 30-50%)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1);background:rgba(255,82,82,0.14)">
+            <td style="padding:0.75rem">Jul 1</td>
+            <td style="padding:0.75rem">AAPL long<br>Entry: $215<br>Stop: $209</td>
+            <td style="padding:0.75rem">260 shares<br><strong>$1,560 risk (2%)</strong><br><span style="color:#fbbf24">Should: $390 (0.5%)</span></td>
+            <td style="padding:0.75rem">Stop hit, moved stop to $206 ("give it room"), finally out at $204</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,860</span><br>(moved stop = disaster)</td>
+            <td style="padding:0.75rem">Moved stop in swing trade (NEVER). Day-trading habit applied to swing.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1);background:rgba(255,82,82,0.17)">
+            <td style="padding:0.75rem">Jul 5</td>
+            <td style="padding:0.75rem">META long<br>Entry: $505<br>Stop: $495</td>
+            <td style="padding:0.75rem">150 shares<br><strong>$1,500 risk (2%)</strong><br><span style="color:#fbbf24">Should: $375 (0.5%)</span></td>
+            <td style="padding:0.75rem">Held through earnings (why?!), gapped down $32 to $473</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$4,800</span><br>(+220% worse)</td>
+            <td style="padding:0.75rem">Held through earnings with full size. Should have closed or 75% reduction.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1);background:rgba(255,82,82,0.2)">
+            <td style="padding:0.75rem">Jul 8</td>
+            <td style="padding:0.75rem">AMZN long<br>Entry: $185<br>Stop: $178</td>
+            <td style="padding:0.75rem">210 shares<br><strong>$1,470 risk (2%)</strong><br><span style="color:#fbbf24">Should: $370 (0.5%)</span></td>
+            <td style="padding:0.75rem">CPI print hot, market sold off, gapped down $11</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,940</span><br>(+100% worse)</td>
+            <td style="padding:0.75rem">Held into CPI. Should have reduced 50% before major economic data.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1);background:rgba(255,82,82,0.23)">
+            <td style="padding:0.75rem">Jul 12</td>
+            <td style="padding:0.75rem">TSLA short<br>Entry: $245<br>Stop: $252</td>
+            <td style="padding:0.75rem">240 shares<br><strong>$1,680 risk (2%)</strong><br><span style="color:#fbbf24">Should: $420 (0.5%)</span></td>
+            <td style="padding:0.75rem">Held over weekend, Musk tweet Sunday, gapped up $18 Monday</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$4,320</span><br>(+157% worse)</td>
+            <td style="padding:0.75rem">Short into weekend on TSLA (high news risk). No risk management.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,82,82,0.1);background:rgba(255,82,82,0.26)">
+            <td style="padding:0.75rem">Jul 19</td>
+            <td style="padding:0.75rem">QQQ long<br>Entry: $480<br>Stop: $472</td>
+            <td style="padding:0.75rem">190 shares<br><strong>$1,520 risk (2%)</strong><br><span style="color:#fbbf24">Should: $380 (0.5%)</span></td>
+            <td style="padding:0.75rem">Tech sector rotation, gapped down $15, panic sold at $462</td>
+            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$3,420</span><br>(+125% worse)</td>
+            <td style="padding:0.75rem">Oversized + panic = sold at worst price. Should have been 0.5% risk to survive.</td>
+          </tr>
+          <tr style="background:rgba(255,82,82,0.3)">
+            <td colspan="6" style="padding:0.75rem;text-align:center;font-weight:bold">
+              <strong>6-WEEK DAMAGE: -$27,710 actual loss (vs -$12,060 if proper 0.5% sizing) = $15,650 EXTRA loss from oversizing</strong><br>
+              <strong>Account: $92,000 → $64,290 (-30.1%)</strong><br>
+              <span style="color:#fbbf24">⚠️ Monica used day-trading position sizing (2%) in swing trades. Overnight gaps + wider stops = account destruction.</span>
+            </td>
+          </tr>
+        </table>
+
+        <h5>The Position Sizing Disaster: Day Trading vs Swing Trading Risk</h5>
+
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
+          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Why Day Trading Position Sizing Destroys Swing Traders</caption>
+          <tr style="background:rgba(118,221,255,0.15);border-bottom:2px solid rgba(118,221,255,0.3)">
+            <th style="padding:0.75rem;text-align:left">Factor</th>
+            <th style="padding:0.75rem;text-align:left">Day Trading</th>
+            <th style="padding:0.75rem;text-align:left">Swing Trading</th>
+            <th style="padding:0.75rem;text-align:left">Monica's Mistake</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
+            <td style="padding:0.75rem"><strong>Risk per Trade</strong></td>
+            <td style="padding:0.75rem">1-2% (can manage intraday)</td>
+            <td style="padding:0.75rem">0.5-1% (overnight gap risk)</td>
+            <td style="padding:0.75rem">Used 2% on all swings = 2-4x oversized</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
+            <td style="padding:0.75rem"><strong>Gap Risk</strong></td>
+            <td style="padding:0.75rem">Zero (close before market close)</td>
+            <td style="padding:0.75rem">HIGH (held through overnight, weekends, events)</td>
+            <td style="padding:0.75rem">Ignored. 5/8 trades gapped through stops.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
+            <td style="padding:0.75rem"><strong>Stop Movement</strong></td>
+            <td style="padding:0.75rem">Can micro-manage (bad habit, but survivable)</td>
+            <td style="padding:0.75rem">NEVER MOVE (no second chances)</td>
+            <td style="padding:0.75rem">Moved stops (day-trading habit). $2,860 loss on AAPL.</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
+            <td style="padding:0.75rem"><strong>Event Risk</strong></td>
+            <td style="padding:0.75rem">Exit before earnings/FOMC</td>
+            <td style="padding:0.75rem">MUST reduce size 50-75% OR potential exit entirely</td>
+            <td style="padding:0.75rem">Held full size through 3 earnings, 1 FOMC, 1 CPI. Carnage.</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Weekend Risk</strong></td>
+            <td style="padding:0.75rem">N/A (no overnight holds)</td>
+            <td style="padding:0.75rem">Reduce 30-50% OR potential exit if uncertain</td>
+            <td style="padding:0.75rem">Held full positions into 2 weekends. Both gapped against her.</td>
+          </tr>
+        </table>
+
+        <h5>What Monica Should Have Done: Swing Position Sizing Framework</h5>
+
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
+          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Proper Swing Trading Position Sizing (What Would Have Saved $15,650)</caption>
+          <tr style="background:rgba(34,197,94,0.15);border-bottom:2px solid rgba(34,197,94,0.3)">
+            <th style="padding:0.75rem;text-align:left">Rule</th>
+            <th style="padding:0.75rem;text-align:left">Correct Practice</th>
+            <th style="padding:0.75rem;text-align:left">Outcome if Followed</th>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Base Risk: 0.5-0.75%</strong></td>
+            <td style="padding:0.75rem">Swing trades = HALF the risk of day trades (0.5% vs 2%)</td>
+            <td style="padding:0.75rem">All 8 trades would have lost $12,060 total (vs $27,710). <strong>Saved $15,650.</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Pre-Earnings: 0%</strong></td>
+            <td style="padding:0.75rem">CLOSE position 1-2 days before earnings OR reduce 75%</td>
+            <td style="padding:0.75rem">TSLA (Jun 10) and META (Jul 5) would have been 0% or 25% size. <strong>Saved $5,150.</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Pre-FOMC/CPI: 50%</strong></td>
+            <td style="padding:0.75rem">Reduce position by 50% before major economic events</td>
+            <td style="padding:0.75rem">NVDA (FOMC) and AMZN (CPI) would have lost HALF. <strong>Saved $3,180.</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>Weekend Holds: 30-50% reduction</strong></td>
+            <td style="padding:0.75rem">Reduce swing positions 30-50% before Friday close if geopolitical/news risk</td>
+            <td style="padding:0.75rem">SPY (geopolitical) and TSLA short (Musk risk) would have lost 50%. <strong>Saved $3,660.</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
+            <td style="padding:0.75rem"><strong>NEVER Move Stops</strong></td>
+            <td style="padding:0.75rem">Stop = ABSOLUTE. No "give it room." Exit at stop, no exceptions.</td>
+            <td style="padding:0.75rem">AAPL would have lost $1,560 (not $2,860). <strong>Saved $1,300.</strong></td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.2)">
+            <td colspan="3" style="padding:0.75rem;text-align:center;font-weight:bold">
+              <strong>Total Potential Savings: $15,650 (prevented by proper swing sizing + event risk management)</strong><br>
+              <span style="color:#22c55e">✅ Account would have been $79,940 (vs actual $64,290) = +24% better outcome</span>
+            </td>
+          </tr>
+        </table>
+
+        <h5>The Aftermath: Monica's Swing Trading Redemption</h5>
+
+        <p><strong>Immediate aftermath (late July 2024):</strong></p>
+        <ul style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li>Stopped swing trading for 3 weeks (reviewed every mistake)</li>
+          <li>Realized: "I imported my day-trading habits into swing trading. 2% risk works intraday because I control potential exits. Swing trades? I'm BLIND overnight. Gaps don't care about my stop."</li>
+          <li>Created <strong>SWING POSITION SIZING RULES</strong>:
+            <ul style="margin:.5rem 0 .5rem 1.5rem">
+              <li>Base risk: 0.5% (never 2%)</li>
+              <li>Before earnings: CLOSE or 75% reduction</li>
+              <li>Before FOMC/CPI: 50% reduction</li>
+              <li>Weekend holds: 30% reduction if any news risk</li>
+              <li>NEVER move stops (rule written in red ink, taped to monitor)</li>
+            </ul>
+          </li>
+          <li>Implemented broker API limit: <strong>Max $400 risk per swing trade</strong> (forced 0.62% max at $64K account)</li>
+        </ul>
+
+        <p><strong>5 months later (Aug-Dec 2024):</strong></p>
+        <ul style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li>Rebuilt account from $64,290 → $87,600 (+36.3%)</li>
+          <li>Took 34 swing trades:
+            <ul style="margin:.5rem 0 .5rem 1.5rem">
+              <li>22 winners, 12 losers (64.7% win rate)</li>
+              <li>Avg win: +$1,240 | Avg loss: -$410 (proper sizing capped losses)</li>
+              <li>Largest loss: -$520 (was -$4,800 before)</li>
+            </ul>
+          </li>
+          <li>Survived 6 overnight gaps (3 positive, 3 negative). None destroyed account due to 0.5% sizing.</li>
+          <li>Exited or reduced BEFORE 4 earnings, 2 FOMC meetings, 1 NFP. Avoided $8K+ in prevented losses.</li>
+          <li>Moved stop ZERO times (tempted 11 times, resisted all 11)</li>
+        </ul>
+
+        <p><strong>Monica's Reflection:</strong> <em>"I was a profitable day trader (58% win rate, $92K account). Then I tried swing trading with THE SAME position sizing. Disaster. I lost $27,710 in 6 weeks because I treated swing trades like day trades. The difference? Day trading = I control potential exits every second. Swing trading = I'm BLIND for 16 hours (overnight) or 64 hours (weekend). Gaps don't respect stops. Earnings don't care about your plan. News happens when markets are closed. My 2% risk sizing was INSANE for swing trading. It should have been 0.5%. That ONE change—cutting position size to 25% of day-trading size—saved me. Now when I take a swing trade, I ask: 'Can I survive a 10% overnight gap?' If answer is no, position is too big. I haven't had a loss over $600 in 5 months. Compare that to the $4,800 META disaster. Position sizing isn't sexy. But it's the difference between survival and destruction in swing trading. Swing trades = 0.5% risk. No exceptions. That's the rule that saved my account."</em></p>
+
+        <p><b>The lesson: Day trading position sizing (2% risk) DESTROYS swing traders because you can't control overnight gaps, weekend news, or earnings surprises. Swing trades require HALF the position size (0.5% risk) to survive multi-day holds. Monica was profitable at day trading, but the same habits killed her swing account in 6 weeks. The problem wasn't her strategy—it was her position sizing. Wider stops + overnight risk + 2% risk per trade = account death. Cut position size in HALF when transitioning from day to swing trading. Your stops are wider. Your exposure is longer. Your risk MUST be smaller. Otherwise, one bad gap erases weeks of profits.</b></p>
+      </div>
+
+      <h2 id="part-1-daily-timeframe-structure-analysis">Part 1: Daily Timeframe Structure Analysis</h2>
+
+      <h3 id="why-daily-charts">Why Daily Charts?</h3>
+
+      <p>Daily charts occupy the sweet spot between noise and lag:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Timeframe</th>
+            <th>Signal Quality</th>
+            <th>Edge Source</th>
+            <th>Problem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1-min, 5-min</strong></td>
+            <td>Low (HFT noise)</td>
+            <td>Speed execution</td>
+            <td>Retail always slowest player</td>
+          </tr>
+          <tr>
+            <td><strong>15-min, 1-hour</strong></td>
+            <td>Medium (intraday structure)</td>
+            <td>Order flow + structure</td>
+            <td>Still requires all-day monitoring</td>
+          </tr>
+          <tr>
+            <td><strong>Daily</strong></td>
+            <td><strong>High</strong> (institutional flows)</td>
+            <td>Multi-day positioning, structure, fundamentals alignment</td>
+            <td>Overnight risk (manageable)</td>
+          </tr>
+          <tr>
+            <td><strong>Weekly</strong></td>
+            <td>Very high (macro trends)</td>
+            <td>Long-term fundamentals</td>
+            <td>Too slow for trading, better for investing</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Daily charts filter intraday noise while capturing institutional flows that take 3-10 days to complete.</strong> A hedge fund building a 5,000-share position in AAPL doesn't do it in one 5-minute candle—they accumulate over days. That accumulation shows up as daily order blocks.</p>
+
+      <h3 id="daily-market-structure-the-foundation">Daily Market Structure: The Foundation</h3>
+
+      <p>Market structure rules apply identically to daily charts, but signals carry more weight:</p>
+
+      <p><strong>Bullish Daily Structure (Long Bias):</strong></p>
+      <ul>
+        <li>Higher highs, higher lows on daily chart</li>
+        <li>Each pullback finds support at higher level than previous</li>
+        <li>Daily BOS (Break of Structure) = major trend continuation signal</li>
+        <li>Daily ChoCH (Change of Character) = potential multi-week reversal</li>
+      </ul>
+
+      <p><strong>Bearish Daily Structure (Short Bias):</strong></p>
+      <ul>
+        <li>Lower highs, lower lows on daily chart</li>
+        <li>Each rally meets resistance at lower level than previous</li>
+        <li>Daily BOS downward = strong bearish continuation</li>
+        <li>Daily ChoCH upward = reversal (cover shorts, consider longs)</li>
+      </ul>
+
+      <p><strong>Example: SPY Daily Uptrend (Oct-Nov 2024)</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+Oct 10: Low at $560 (higher low vs Sept)
+Oct 18: High at $585 (higher high)
+Oct 25: Pullback to $572 (higher low ✓)
+Nov 1:  Break to $595 (BOS = continuation confirmed)
+Nov 8:  Pullback to $580 (higher low ✓)
+Nov 15: Break to $605 (BOS again)
+
+= Daily uptrend intact (HH, HL pattern)
+= Swing long bias at every pullback
+= Target next BOS higher
+      </pre>
+
+      <h3 id="daily-order-blocks-institutional-positioning-zones">Daily Order Blocks: Institutional Positioning Zones</h3>
+
+      <p><strong>What makes daily order blocks different?</strong></p>
+
+      <ul>
+        <li><strong>They represent multi-day accumulation/distribution</strong> (not single-candle algos)</li>
+        <li><strong>Institutions have large positions there</strong> (they'll defend these levels)</li>
+        <li><strong>They're visible to all market participants</strong> (self-fulfilling support/resistance)</li>
+        <li><strong>They last weeks or months</strong> (vs intraday blocks lasting hours)</li>
+      </ul>
+
+      <p><strong>Identifying Daily Order Blocks:</strong></p>
+      <ol>
+        <li>Find strong displacement on daily chart (big move, 5-15% in 3-7 days)</li>
+        <li>Identify last opposite-colored candle before displacement</li>
+        <li>Mark that candle's body as order block zone</li>
+        <li>Wait for price to retrace back to zone (may take 1-3 weeks)</li>
+        <li>Enter on retest with tight stop below/above zone</li>
+      </ol>
+
+      <p><strong>Example: TSLA Bullish Daily Order Block (Real Trade)</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+Nov 5-12: TSLA rallies $242 → $320 (+32% in 5 days)
+         (Displacement = bullish institutional positioning)
+
+Nov 4:   Last down-day before rally: $238-$245
+         Daily order block = $238-$245
+
+Nov 18-20: Price retraces to $248 (tests order block)
+           Watch for bullish reaction
+
+Entry:   $250 (order block retest confirmed)
+Stop:    $236 (below order block)
+Target 1: $280 (previous pivot)
+Target 2: $320 (previous high)
+Target 3: Trail daily 8 EMA
+
+Risk: $14 | Reward: $30-70 | R:R: 1:2.1 to 1:5
+      </pre>
+
+      <h3 id="weekly-structure-for-swing-bias">Weekly Structure for Swing Bias</h3>
+
+      <p>Use weekly charts to determine overall bias, daily charts for entries:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Weekly Structure</th>
+            <th>Daily Structure</th>
+            <th>Swing Bias</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bullish (HH, HL)</td>
+            <td>Bullish (HH, HL)</td>
+            <td><strong>LONG ONLY</strong> – best edge</td>
+          </tr>
+          <tr>
+            <td>Bullish (HH, HL)</td>
+            <td>Bearish correction</td>
+            <td>Wait for daily ChoCH bullish, then long</td>
+          </tr>
+          <tr>
+            <td>Bearish (LH, LL)</td>
+            <td>Bearish (LH, LL)</td>
+            <td><strong>SHORT ONLY</strong> – best edge</td>
+          </tr>
+          <tr>
+            <td>Bearish (LH, LL)</td>
+            <td>Bullish correction</td>
+            <td>Wait for daily ChoCH bearish, then short</td>
+          </tr>
+          <tr>
+            <td>Ranging / unclear</td>
+            <td>Any</td>
+            <td>AVOID – no edge</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-info">
+        <h4>💡 Multi-Timeframe Alignment</h4>
+        <p>The highest-probability swing trades occur when weekly, daily, and 4-hour timeframes ALL show the same structure (all bullish or all bearish). When timeframes align, trend continuation has 70-80% win rate. When timeframes conflict, win rate drops to 40-50%—avoid those setups.</p>
+      </div>
+
+      <h2 id="part-2-position-sizing-for-swing-trades">Part 2: Position Sizing for Swing Trades</h2>
+
+      <h3 id="the-overnight-risk-problem">The Overnight Risk Problem</h3>
+
+      <p>Day traders close positions before market close, eliminating overnight gap risk. Swing traders hold through multiple sessions, accepting gaps, earnings, news events. <strong>This requires different position sizing.</strong></p>
+
+      <p><strong>Day Trading Risk:</strong></p>
+      <ul>
+        <li>1-2% account risk per trade</li>
+        <li>No overnight gaps</li>
+        <li>Can potential exit immediately if setup fails</li>
+        <li>Tight stops (5-20 ticks on ES)</li>
+      </ul>
+
+      <p><strong>Swing Trading Risk:</strong></p>
+      <ul>
+        <li>0.5-1% account risk per trade (HALF of day trading)</li>
+        <li>Overnight gap risk (can gap through stop)</li>
+        <li>Must hold through intraday noise</li>
+        <li>Wider stops (daily ATR = 2-5% for stocks)</li>
+      </ul>
+
+      <h3 id="position-sizing-formula-for-swing-trades">Position Sizing Formula for Swing Trades</h3>
+
+      <p><strong>Step 1: Determine Account Risk</strong></p>
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px">
+Account Size: $50,000
+Risk per swing trade: 0.75% (conservative)
+$ Risk = $50,000 × 0.0075 = $375
+      </pre>
+
+      <p><strong>Step 2: Calculate Stop Distance</strong></p>
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px">
+Entry: $250.00 (TSLA at order block)
+Stop:  $236.00 (below order block)
+Stop Distance = $250 - $236 = $14.00 per share
+      </pre>
+
+      <p><strong>Step 3: Calculate Position Size</strong></p>
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px">
+Position Size = $ Risk ÷ Stop Distance
+              = $375 ÷ $14
+              = 26.78 shares
+              → Round down to 26 shares
+      </pre>
+
+      <p><strong>Step 4: Verify Max Position Value</strong></p>
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px">
+Position Value = 26 shares × $250 = $6,500
+% of Account = $6,500 ÷ $50,000 = 13%
+
+This is within acceptable range (10-25% for swing trades)
+      </pre>
+
+      <h3 id="position-sizing-by-account-size">Position Sizing by Account Size</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Account Size</th>
+            <th>Risk per Trade</th>
+            <th>Max $ Risk</th>
+            <th>Example Position (SPY $600, $12 stop)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$10,000</td>
+            <td>0.5%</td>
+            <td>$50</td>
+            <td>4 shares ($2,400 position)</td>
+          </tr>
+          <tr>
+            <td>$25,000</td>
+            <td>0.75%</td>
+            <td>$188</td>
+            <td>15 shares ($9,000 position)</td>
+          </tr>
+          <tr>
+            <td>$50,000</td>
+            <td>1%</td>
+            <td>$500</td>
+            <td>41 shares ($24,600 position)</td>
+          </tr>
+          <tr>
+            <td>$100,000</td>
+            <td>1%</td>
+            <td>$1,000</td>
+            <td>83 shares ($49,800 position)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="stop-placement-rules-for-swing-trades">Stop Placement Rules for Swing Trades</h3>
+
+      <p><strong>Use structure, not arbitrary percentages:</strong></p>
+      <ul>
+        <li><strong>For longs:</strong> Stop below daily order block low (or previous daily swing low)</li>
+        <li><strong>For shorts:</strong> Stop above daily order block high (or previous daily swing high)</li>
+        <li><strong>Weekly holds:</strong> Stop below/above weekly swing point</li>
+        <li><strong>Earnings risk:</strong> Tighten stop or reduce size before earnings</li>
+      </ul>
+
+      <p><strong>ATR-Based Stops (Alternative Method):</strong></p>
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px">
+Calculate 14-day ATR (Average True Range)
+Stop Distance = 1.5× to 2× ATR
+
+Example: SPY daily ATR = $8
+         Entry: $600
+         Stop: $600 - (2 × $8) = $584
+
+This gives price room to move without stopping you out on normal volatility
+      </pre>
+
+      <div class="callout-warning">
+        <h4>⚠️ The #1 Swing Trading Mistake</h4>
+        <p>New swing traders use day-trading position sizes (2% risk) with wider daily stops. Result: One bad trade wipes out 5-8% of account. <strong>Cut position size in HALF when transitioning from day trading to swing trading.</strong> Overnight risk is real—gaps can blow through stops. Smaller positions = longer survival.</p>
+      </div>
+
+      <h2 id="part-3-swing-potential entry-strategies">Part 3: Swing Entry Strategies</h2>
+
+      
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p>You now understand the core concepts.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
+      </div>
+
+<h3 id="strategy-1-daily-order-block-retest">Strategy 1: Daily Order Block Retest</h3>
+
+      <p><strong>Setup Requirements:</strong></p>
+      <ul>
+        <li>Clear daily displacement (5-15% move in 3-7 days)</li>
+        <li>Identified daily order block (last opposite candle before move)</li>
+        <li>Price retraces to order block zone (may take 1-3 weeks)</li>
+        <li>Daily structure remains intact (HH/HL for longs, LH/LL for shorts)</li>
+      </ul>
+
+      <p><strong>Entry Timing:</strong></p>
+      <ol>
+        <li>Wait for price to enter order block zone</li>
+        <li>Watch for bullish reaction (for longs): strong up-day, high volume</li>
+        <li>Enter next day's open or on 4H BOS confirmation</li>
+        <li>Stop just below order block (give 2-5% room)</li>
+        <li>Target: Previous high (or trail with daily 8 EMA)</li>
+      </ol>
+
+      <p><strong>Real Example: NVDA Long (Jan 2024)</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+Jan 3-10:  NVDA rallies $485 → $560 (+15.5% in 5 days)
+Jan 2:     Last down-day before rally: $475-$485
+           Daily order block = $475-$485
+
+Jan 22:    Price retraces to $490 (order block retest)
+Jan 23:    Strong bounce: $490 → $510 on high volume (confirmation)
+
+Entry:     $512 (next day after confirmation)
+Stop:      $470 (below order block)
+Target 1:  $560 (previous high)
+Target 2:  Trail with daily 8 EMA
+
+Actual outcome: $512 → $615 over 3 weeks (+20.1%)
+Risk: $42 | Reward: $103 | R:R: 1:2.45 (actual)
+      </pre>
+
+      <h3 id="strategy-2-weekly-structure-break-momentum-play">Strategy 2: Weekly Structure Break (Momentum Play)</h3>
+
+      <p><strong>Setup Requirements:</strong></p>
+      <ul>
+        <li>Weekly BOS occurs (price breaks previous week's high/low)</li>
+        <li>Confirms trend continuation on weekly timeframe</li>
+        <li>Wait for daily pullback into weekly order block</li>
+        <li>Enter on daily structure confirmation</li>
+      </ul>
+
+      <p><strong>Entry Timing:</strong></p>
+      <ol>
+        <li>Mark weekly BOS level</li>
+        <li>Wait for 2-5 day pullback</li>
+        <li>Enter when price retests weekly order block OR daily BOS occurs</li>
+        <li>Stop below weekly swing low</li>
+        <li>Target: +10-20% move (or next weekly high)</li>
+      </ol>
+
+      <p><strong>Real Example: AAPL Long (Nov 2024)</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+Nov 11:    Weekly BOS at $230 (breaks previous week high of $228)
+Nov 12-15: Pullback to $225 (daily consolidation)
+Nov 18:    Daily BOS at $227 (confirms continuation)
+
+Entry:     $228 (daily BOS confirmed)
+Stop:      $220 (below weekly order block)
+Target 1:  $245 (psychological resistance)
+Target 2:  $255 (measured move from weekly structure)
+
+Actual outcome: $228 → $252 over 2 weeks (+10.5%)
+Risk: $8 | Reward: $24 | R:R: 1:3
+      </pre>
+
+      <h3 id="strategy-3-gap-fill-reversion">Strategy 3: Gap Fill Reversion</h3>
+
+      <p>When stocks gap up/down on news but structure doesn't support it, gaps often fill. This creates mean-reversion swing setups.</p>
+
+      <p><strong>Bullish Gap Fill Setup:</strong></p>
+      <ul>
+        <li>Stock gaps down 5-15% on earnings or news</li>
+        <li>BUT daily structure remains bullish (no ChoCH)</li>
+        <li>Gap creates "fair value gap" (unfilled price range)</li>
+        <li>Enter long at daily order block BELOW gap</li>
+        <li>Target: Gap fill + previous high</li>
+      </ul>
+
+      <p><strong>Bearish Gap Fill Setup:</strong></p>
+      <ul>
+        <li>Stock gaps up 5-15% on news</li>
+        <li>BUT daily structure remains bearish (or hitting resistance)</li>
+        <li>Enter short at daily order block ABOVE gap</li>
+        <li>Target: Gap fill + previous low</li>
+      </ul>
+
+      <div class="callout-info">
+        <h4>💡 Gap Statistics (Why This Works)</h4>
+        <p>According to studies of S&P 500 stocks: <strong>72% of gaps over 3% fill within 10 trading days.</strong> Institutions use gaps to engineer better entry prices—retail panic sells on gap downs (institutions accumulate), retail FOMO buys on gap ups (institutions distribute). Swing traders profit by fading the retail reaction.</p>
+      </div>
+
+      <h2 id="part-4-swing-trade-management">Part 4: Swing Trade Management</h2>
+
+      <h3 id="scaling-in-building-positions-over-time">Scaling In: Building Positions Over Time</h3>
+
+      <p>Instead of entering full position at once, scale in as setup confirms:</p>
+
+      <p><strong>3-Tier Entry System:</strong></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>% of Position</th>
+            <th>Entry Trigger</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tier 1</strong></td>
+            <td>40%</td>
+            <td>Initial order block touch</td>
+            <td>Get positioned early with lower risk</td>
+          </tr>
+          <tr>
+            <td><strong>Tier 2</strong></td>
+            <td>30%</td>
+            <td>4H BOS or strong daily candle reaction</td>
+            <td>Add on confirmation</td>
+          </tr>
+          <tr>
+            <td><strong>Tier 3</strong></td>
+            <td>30%</td>
+            <td>Deep retest (78.6% Fib or OTE zone)</td>
+            <td>Maximize position if price gives deeper discount</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Example: Scaling Into SPY Long</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+Order Block: $590-$595
+Full Position: 50 shares
+Stop: $587
+
+Tier 1 (40%): 20 shares at $594 (first touch of order block)
+Tier 2 (30%): 15 shares at $592 (if price dips to OTE 62%)
+Tier 3 (30%): 15 shares at $590 (if price tests deep order block)
+
+Average Entry: $592.40 (vs. $594 all-in)
+Total Position: 50 shares
+Stop: $587 (same for all tiers)
+      </pre>
+
+      <h3 id="scaling-out-locking-in-profits">Scaling Out: Locking In Profits</h3>
+
+      <p>As trade moves in your favor, scale out to lock gains while leaving room for home runs:</p>
+
+      <p><strong>3-Tier Exit System:</strong></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>% to Exit</th>
+            <th>Exit Trigger</th>
+            <th>R Multiple</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Target 1</strong></td>
+            <td>33%</td>
+            <td>1.5-2R (recent swing high or daily pivot)</td>
+            <td>1.5-2R</td>
+          </tr>
+          <tr>
+            <td><strong>Target 2</strong></td>
+            <td>33%</td>
+            <td>3-4R (major structure level or previous high)</td>
+            <td>3-4R</td>
+          </tr>
+          <tr>
+            <td><strong>Target 3</strong></td>
+            <td>33%</td>
+            <td>Trail with daily 8 EMA or 2× ATR trailing stop</td>
+            <td>5-10R+</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Example: Scaling Out of TSLA Long</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+Entry: $250 (50 shares)
+Stop: $236
+Risk: $14 per share
+
+Target 1: $271 (1.5R = $21 gain)
+  → Exit 16 shares, lock $336 profit
+
+Target 2: $292 (3R = $42 gain)
+  → Exit 17 shares, lock $714 profit
+
+Target 3: Trail remaining 17 shares with daily 8 EMA
+  → Exits at $310 when 8 EMA breaks (4.3R = $60 gain)
+  → Final profit on last 17 shares: $1,020
+
+Total Profit: $336 + $714 + $1,020 = $2,070
+Total Risk: 50 × $14 = $700
+Actual R: $2,070 ÷ $700 = 2.96R
+      </pre>
+
+      <h3 id="trailing-stop-strategies">Trailing Stop Strategies</h3>
+
+      <p><strong>Method 1: Daily 8 EMA Trailing Stop</strong></p>
+      <ul>
+        <li>Once trade is 2R+ profitable, trail stop below daily 8 EMA</li>
+        <li>Exit when daily close breaks below 8 EMA</li>
+        <li>Pros: Catches most of trend, simple to implement</li>
+        <li>Cons: Can give back 5-10% on whipsaw</li>
+      </ul>
+
+      <p><strong>Method 2: ATR Trailing Stop</strong></p>
+      <ul>
+        <li>Trail stop at Entry + (2× daily ATR)</li>
+        <li>As price rises, stop rises but never falls</li>
+        <li>Exit when price hits trailing stop</li>
+        <li>Pros: Volatility-adjusted, tighter than EMA</li>
+        <li>Cons: More likely to potential exit early on volatile swings</li>
+      </ul>
+
+      <p><strong>Method 3: Structure-Based Trail</strong></p>
+      <ul>
+        <li>Trail stop below each new daily higher low</li>
+        <li>Exit when daily structure breaks (makes lower low)</li>
+        <li>Pros: Stays in trade until structure breaks</li>
+        <li>Cons: Requires daily chart monitoring</li>
+      </ul>
+
+      <h3 id="when-to-potential exit-early-cut-winners-short">When to Exit Early (Cut Winners Short)</h3>
+
+      <p>Sometimes structure changes before hitting targets. Exit immediately if:</p>
+      <ul>
+        <li><strong>Daily ChoCH against your position</strong> (trend reversal confirmed)</li>
+        <li><strong>Weekly structure breaks</strong> (higher timeframe trend change)</li>
+        <li><strong>Major news event</strong> (FOMC, earnings, geopolitical shock)</li>
+        <li><strong>Volatility spike</strong> (VIX +20% in single day = potential exit risk-on positions)</li>
+        <li><strong>Target already hit 80%</strong> of expected move (diminishing returns)</li>
+      </ul>
+
+      <h2 id="part-5-overnight-risk-management">Part 5: Overnight Risk Management</h2>
+
+      
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p>You're now at the halfway point. You've learned the key strategies.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
+      </div>
+
+<h3 id="the-4-types-of-overnight-risk">The 4 Types of Overnight Risk</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Risk Type</th>
+            <th>Description</th>
+            <th>Mitigation Strategy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Gap Risk</strong></td>
+            <td>Price gaps through your stop (no fill at stop price)</td>
+            <td>Use smaller position size (0.5-1% risk vs 2%)</td>
+          </tr>
+          <tr>
+            <td><strong>Earnings Risk</strong></td>
+            <td>Company reports earnings, stock gaps 10-30%</td>
+            <td>Close or reduce position before earnings, or use options hedge</td>
+          </tr>
+          <tr>
+            <td><strong>News Risk</strong></td>
+            <td>Unexpected news (Fed, geopolitical, regulation)</td>
+            <td>Check economic calendar, reduce size before FOMC/CPI</td>
+          </tr>
+          <tr>
+            <td><strong>Weekend Risk</strong></td>
+            <td>News over weekend when markets closed</td>
+            <td>Reduce position 30-50% before Friday close if concerned</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="earnings-risk-management">Earnings Risk Management</h3>
+
+      <p><strong>Never hold through earnings unless that's your thesis.</strong> Earnings gaps are 50/50 coin flips. Your edge is structure, not guessing earnings.</p>
+
+      <p><strong>Options for Managing Earnings:</strong></p>
+      <ol>
+        <li><strong>Close Position Entirely</strong> (1-2 days before earnings)
+          <ul>
+            <li>Safest approach</li>
+            <li>Lock in gains, re-enter after earnings if structure holds</li>
+          </ul>
+        </li>
+        <li><strong>Reduce Position by 50-75%</strong>
+          <ul>
+            <li>Keep small position for upside capture</li>
+            <li>Minimize downside risk</li>
+          </ul>
+        </li>
+        <li><strong>Hedge with Options</strong>
+          <ul>
+            <li>Long stock? Buy ATM or slightly OTM put (protective put)</li>
+            <li>Short stock? Buy ATM or slightly OTM call (protective call)</li>
+            <li>Cost: 2-5% of position, but caps risk to that cost</li>
+          </ul>
+        </li>
+      </ol>
+
+      <p><strong>Example: NVDA Earnings Hedge</strong></p>
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px">
+Position: Long 100 shares NVDA at $500 (swing trade in profit)
+Earnings: Tomorrow after close
+Risk: Stock could gap down 10-20% on earnings miss
+
+Hedge Option:
+Buy 1× NVDA $500 put expiring in 2 weeks
+Cost: $15 per share = $1,500 total
+
+Outcome if gap down: Put gains $50+ per share, offsets stock loss
+Outcome if gap up: Lose $1,500 on put, but stock gains $50-100 per share
+Net result: Downside capped at -$1,500, upside unlimited
+      </pre>
+
+      <h3 id="news-economic-event-management">News & Economic Event Management</h3>
+
+      <p><strong>High-Impact Events (Reduce Size or Exit):</strong></p>
+      <ul>
+        <li>FOMC meetings (Fed rate decisions)</li>
+        <li>CPI / PPI (inflation data)</li>
+        <li>NFP (Non-Farm Payrolls, jobs report)</li>
+        <li>Geopolitical crises (war, sanctions, political instability)</li>
+        <li>Major tech earnings (AAPL, MSFT, GOOGL, AMZN move entire market)</li>
+      </ul>
+
+      <p><strong>Event Management Rules:</strong></p>
+      <ol>
+        <li><strong>Check economic calendar every Sunday</strong> (mark FOMC, CPI, NFP dates)</li>
+        <li><strong>Reduce swing positions by 30-50% before major events</strong></li>
+        <li><strong>Don't enter new swing trades 1-2 days before FOMC</strong></li>
+        <li><strong>After event: Re-enter if structure holds, potential exit if structure breaks</strong></li>
+      </ol>
+
+      <h3 id="weekend-hold-strategy">Weekend Hold Strategy</h3>
+
+      <p><strong>Full Weekend Hold (100% position):</strong></p>
+      <ul>
+        <li>Weekly structure strongly supports direction</li>
+        <li>No major news expected over weekend</li>
+        <li>Trade already 2R+ profitable (house money)</li>
+      </ul>
+
+      <p><strong>Partial Weekend Hold (50% position):</strong></p>
+      <ul>
+        <li>Trade is profitable but less than 2R</li>
+        <li>Structure is intact but not confirmed on weekly</li>
+        <li>Geopolitical uncertainty present</li>
+      </ul>
+
+      <p><strong>No Weekend Hold (close Friday):</strong></p>
+      <ul>
+        <li>Trade in drawdown (below potential entry)</li>
+        <li>Major geopolitical risk (war, elections, crisis)</li>
+        <li>Weekly structure showing weakness</li>
+      </ul>
+
+      <div class="callout-warning">
+        <h4>⚠️ The "Sunday Night Disaster" Scenario</h4>
+        <p>Futures open Sunday 6 PM ET. If major news breaks over weekend, stock futures can gap 3-5% before cash market opens Monday 9:30 AM. If you're holding a full-size swing position against that gap, you're stopped out at worst price with no control. <strong>This is why swing traders use 0.5-1% risk instead of 2%.</strong> One Sunday gap won't kill your account.</p>
+      </div>
+
+      <h2 id="part-6-complete-swing-trade-checklist">Part 6: Complete Swing Trade Checklist</h2>
+
+      
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p>Almost done! You've mastered the complete framework.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
+      </div>
+
+<h3 id="before-potential entry">Before Entry</h3>
+      <ul>
+        <li>✓ Weekly structure supports direction (HH/HL or LH/LL)</li>
+        <li>✓ Daily structure supports direction (aligned with weekly)</li>
+        <li>✓ Valid daily order block identified (from clear displacement)</li>
+        <li>✓ Price has retraced to order block zone</li>
+        <li>✓ No earnings for at least 5 days</li>
+        <li>✓ No major economic events (FOMC, CPI, NFP) in next 3 days</li>
+        <li>✓ Position size calculated (0.5-1% account risk)</li>
+        <li>✓ Stop placement below/above order block (structure-based)</li>
+        <li>✓ Targets identified (T1 at 1.5-2R, T2 at 3-4R, T3 trail)</li>
+      </ul>
+
+      <h3 id="during-trade">During Trade</h3>
+      <ul>
+        <li>✓ Check daily structure each evening (still HH/HL?)</li>
+        <li>✓ Monitor economic calendar for surprise events</li>
+        <li>✓ Scale out at targets (don't get greedy)</li>
+        <li>✓ Trail stop once 2R+ profitable</li>
+        <li>✓ Exit immediately if daily ChoCH against position</li>
+        <li>✓ Reduce size before earnings or major news</li>
+      </ul>
+
+      <h3 id="after-potential exit">After Exit</h3>
+      <ul>
+        <li>✓ Journal trade: Entry reason, potential exit reason, R achieved</li>
+        <li>✓ Review what worked: Did structure hold? Was timing good?</li>
+        <li>✓ Review what failed: Stopped out? Why? Structure break? News event?</li>
+        <li>✓ Calculate win rate and average R over last 20 swing trades</li>
+        <li>✓ Adjust strategy if win rate &lt;50% or avg R &lt;2R</li>
+      </ul>
+
+      <div class="key-takeaway">
+        <h4>Key Takeaways</h4>
+        <ul>
+          <li><strong>Daily charts filter intraday noise and capture institutional multi-day flows</strong>—trade where institutions position, not where HFT algos hunt stops</li>
+          <li><strong>Position size MUST be smaller for swing trades</strong>—use 0.5-1% risk (vs 1-2% day trading) due to overnight gap risk</li>
+          <li><strong>Daily order blocks are more reliable than intraday</strong>—they represent multi-day institutional accumulation/distribution, not single-candle algo activity</li>
+          <li><strong>Overnight risk requires active management</strong>—check earnings calendar, reduce size before FOMC/CPI, use options hedges when appropriate</li>
+          <li><strong>Scale in and scale out</strong>—build positions as setup confirms, lock profits at milestones, trail remainder for home runs</li>
+          <li><strong>Weekly + Daily alignment = highest edge</strong>—when both timeframes bullish/bearish, win rate 70-80%; when conflicting, avoid trade</li>
+        </ul>
+      </div>
+
+      <div class="practice-section">
+        <h4>🎯 Practice Exercises</h4>
+        <ol>
+          <li><strong>Daily Structure Analysis:</strong> Open TradingView and analyze SPY, QQQ, and 3 individual stocks on daily chart. Mark HH/HL or LH/LL patterns. Determine current daily bias for each.</li>
+          <li><strong>Order Block Hunt:</strong> Find 3 recent daily displacements (5-15% moves in 3-7 days) on different stocks. Mark the daily order blocks. Check if price has retested them yet. If yes, did it hold or break?</li>
+          <li><strong>Position Size Calculator:</strong> Using your account size, calculate exact position sizes for 3 different swing setups with varying stop distances ($10, $20, $30 stops). Practice the formula until it's automatic.</li>
+          <li><strong>Backtest Swing Setups:</strong> Review last 3 months of daily charts on 5 stocks. Find 10 clear daily order block retests. Mark entries, stops, targets. Calculate what R:R each would have achieved. What was win rate?</li>
+          <li><strong>Earnings Calendar Drill:</strong> Check the upcoming week's earnings calendar. List all companies reporting earnings. If you held swing positions in those stocks, when would you potential exit or reduce? Practice this weekly.</li>
+        </ol>
+      </div>
+
+      <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 2rem; border-radius: 8px; margin: 3rem 0; border-left: 4px solid #00d4aa;">
+        <h3 style="color: #00d4aa; margin-top: 0;" id="-bridge-tier-complete">🎓 Bridge Tier Complete!</h3>
+        <p style="font-size: 1.15rem; margin-bottom: 1rem;">You've now completed the <strong>Bridge tier</strong> of Signal Pilot Education Hub. You've mastered:</p>
+        <ul style="margin: 1rem 0;">
+          <li>Advanced market structure (order blocks, liquidity grabs, BOS/ChoCH)</li>
+          <li>Volume analysis (profile, footprint, delta divergence)</li>
+          <li>Order flow reading (institutional positioning, imbalances, POC migration)</li>
+          <li>Multi-timeframe analysis (daily/weekly structure for swing trading)</li>
+          <li>Risk management frameworks (position sizing, overnight risk, scaling)</li>
+        </ul>
+        <p style="font-size: 1.1rem; color: #00d4aa; margin-bottom: 0;"><strong>You are no longer a beginner.</strong> You have professional-grade tools. The next tier (Intermediate) will teach you how to build complete trading systems around these concepts.</p>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Next: Intermediate Tier</h4>
+        <p>Moving into Intermediate tier with Signal Pilot platform mastery, advanced scanner setups, algorithmic pattern recognition, and building your first complete trading system.</p>
+      </div>
+
+      <div class="related-lessons">
+        <h4>📚 Related Lessons</h4>
+        <ul>
+          <li><a href="/curriculum/intermediate/15-liquidity-pools.html">Lesson 15: Order Blocks Deep Dive</a> – Intraday vs daily order block mechanics</li>
+          <li><a href="/curriculum/intermediate/19-footprint-charts-advanced.html">Lesson 19: Footprint Charts Advanced</a> – Order flow confirmation for swing entries</li>
+          <li><a href="/curriculum/intermediate/27-multi-timeframe-mastery.html">Lesson 35: Multi-Timeframe Trading System</a> – Building complete swing systems</li>
+          <li><a href="/curriculum/intermediate/20-swing-trading-framework.html">Lesson 52: Portfolio Swing Trading</a> – Managing multiple swing positions</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <aside class="toc" aria-label="On this page">
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-daily-timeframe-structure-analysis">Part 1: Daily Timeframe Structure Analysis</a>
+      <a href="#part-2-position-sizing-for-swing-trades">Part 2: Position Sizing for Swing Trades</a>
+      <a href="#part-3-swing-potential entry-strategies">Part 3: Swing Entry Strategies</a>
+      <a href="#part-4-swing-trade-management">Part 4: Swing Trade Management</a>
+      <a href="#part-5-overnight-risk-management">Part 5: Overnight Risk Management</a>
+      <a href="#part-6-complete-swing-trade-checklist">Part 6: Complete Swing Trade Checklist</a>
+    </aside>
+  </div>
+
+
+  <div class="wrap nav-article">
+  <div class="wrap nav-article">
+  <a class="btn btn-ghost" href="/curriculum/intermediate/19-footprint-charts-advanced.html">&larr; Previous Lesson</a>
+  <a class="btn btn-primary" href="/curriculum/intermediate/21-bid-ask-spread-dynamics.html">Next Lesson &rarr;</a>
+  </div>
+  </div>
+</article>
+
+<aside class="toc" aria-label="On this page">
+  <h3 id="on-this-page">On this page</h3>
+      <a href="#part-1-daily-timeframe-structure-analysis">Part 1: Daily Timeframe Structure Analysis</a>
+      <a href="#part-2-position-sizing-for-swing-trades">Part 2: Position Sizing for Swing Trades</a>
+      <a href="#part-3-swing-potential entry-strategies">Part 3: Swing Entry Strategies</a>
+      <a href="#part-4-swing-trade-management">Part 4: Swing Trade Management</a>
+      <a href="#part-5-overnight-risk-management">Part 5: Overnight Risk Management</a>
+      <a href="#part-6-complete-swing-trade-checklist">Part 6: Complete Swing Trade Checklist</a>
+</aside>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/toc-active.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
+  <!-- Enhanced Analytics & A/B Testing -->
+  <script src="/assets/enhanced-analytics.js" defer></script>
+  <script src="/assets/ab-test-tldr.js" defer></script>
+</body>
+</html>

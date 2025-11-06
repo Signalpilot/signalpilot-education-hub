@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/icon-180x180.png">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Market Structure Advanced: Displacement & Mitigation — Signal Pilot Education</title>
+  <meta name="description" content="Displacement candles reveal institutional urgency. Mitigation blocks show rebalancing zones. Learn to read market structure like institutions do.">
+  <meta name="sp-level" content="Intermediate">
+  <meta name="sp-order" content="16">
+  <link rel="canonical" href="https://education.signalpilot.io/curriculum/intermediate/16-market-structure-advanced.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Gugi&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/signalpilot-theme.css">
+  <link rel="stylesheet" href="/assets/edu.css">
+  <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/notes.css">
+  <link rel="stylesheet" href="/assets/auth-ui.css">
+  <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
+<script src="/assets/structured-data.js" defer></script>
+<script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+<header class="sp-header">
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand"><span>Signal Pilot</span></a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/my-library.html">My Library</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <div class="wrap">
+      <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span>
+        <a href="/intermediate.html">Intermediate</a> <span>›</span>
+        <span>Lesson #16</span>
+      </div>
+      <span class="badge">🟡 Intermediate • Lesson 16</span>
+      <h1 class="headline xl">Market Structure Advanced: Displacement & Mitigation</h1>
+      <div class="meta">17-20 min read • Advanced Market Structure</div>
+      <!-- Article Progress Indicator -->
+      <div class="article-progress" style="--progress:0%">
+        <div class="progress-circle"><span>0%</span></div>
+        <div class="progress-text">
+          <strong>You're making progress!</strong>
+          <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap article-grid">
+    <div class="prose">
+      <!-- TL;DR Skimmer Summary -->
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
+          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
+            <li>Market structure = pattern of higher highs + higher lows (uptrend) or lower highs + lower lows (downtrend)</li>
+            <li>BOS (Break of Structure) = price breaks swing high in uptrend (or swing low in downtrend)—confirms trend continuation</li>
+            <li>CHoCH (Change of Character) = price breaks counter-trend structure—warning of potential trend reversal (weaker than BOS)</li>
+            <li>Framework: Mark swing highs/lows → Wait for BOS (continuation) or CHoCH (reversal warning) → Enter on pullback after break</li>
+            <li>Common mistake: Trading against structure breaks—trying to fade BOS because "it's extended"</li>
+            <li>Validation: BOS in direction of trend should have 65-75% follow-through rate—if lower, you're marking wrong structure</li>
+          </ul>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
+        </div>
+      </details>
+
+      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
+        <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
+        <ul style="line-height:1.8;margin:0 0 0 1.5rem">
+          <li>Market structure = pattern of higher highs + higher lows (uptrend) or lower highs + lower lows (downtrend)</li>
+          <li>BOS (Break of Structure) = price breaks swing high in uptrend (or swing low in downtrend)</li>
+          <li>CHoCH (Change of Character) = price breaks counter-trend structure</li>
+          <li>Framework: Mark swing highs/lows → Wait for BOS (continuation) or CHoCH (reversal warning) → Enter on pullback after break</li>
+        </ul>
+      </div>
+
+        
+        
+        
+        
+      </div>
+
+      <p><b>That massive green candle that just appeared? That's not retail buying. That's institutional urgency.</b></p>
+
+      <p>Let that sink in.</p>
+
+      <p>Retail traders see a big candle and think "momentum!" Professionals see displacement—institutions moving aggressively because they KNOW something is about to happen. And when price returns to where that displacement started? That's a mitigation block—institutions rebalancing their position before the next leg.</p>
+
+      <div class="callout-warning">
+        <h4>🚨 Real Talk</h4>
+        <p>Displacement isn't random volatility. It's institutional fingerprints. When you see 5+ candles moving in one direction with minimal retracement, that's smart money loading positions. The mitigation back to where it started? That's them adding MORE.</p>
+      </div>
+
+      <p><strong>In this lesson, you'll learn:</strong></p>
+      <ul>
+        <li>What displacement actually means (institutional urgency, not retail momentum)</li>
+        <li>Mitigation blocks vs order blocks (subtle but critical difference)</li>
+        <li>Optimal Trade Entry (OTE) zones—the 61.8%-78.6% sweet spot</li>
+        <li>How to combine displacement + mitigation + FVGs for confluence entries</li>
+      </ul>
+
+      <div class="callout-warning">
+        <h4>📉 CASE STUDY: David's $61K Mitigation Block Ignorance (2024)</h4>
+        <p><strong>Trader:</strong> David Lee, 2-year trader from Seattle ($150,000 account)</p>
+        <p><strong>Markets:</strong> ES Futures (E-mini S&P 500), NQ Futures (E-mini NASDAQ-100)</p>
+        <p><strong>Fatal flaw:</strong> Chased displacement candles after 80% of move was done, never waited for mitigation zones</p>
+        <p><strong>Disaster period:</strong> January 15 - March 10, 2024 (8 weeks)</p>
+        <p><strong>Result:</strong> Lost $61,000 (-40.7% of account) on 28 trades, 21% win rate</p>
+        <p><strong>Recovery:</strong> Waited for mitigation back to OTE zones → Gained $38K in 6 weeks (81% win rate, 17/21 trades)</p>
+      </div>
+
+      <h3 id="the-disaster-timeline-chasing-displacement-after-its-over">The Disaster Timeline: Chasing Displacement After It's Over</h3>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#ff6b6b"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Week 1 (Jan 15-19): "This is easy!"</div>
+            <p><strong>David's approach:</strong> Trading ES Futures on the 5-minute chart. Watching for "momentum" (big green/red candles). Entering immediately when he sees 5+ candles in a row.</p>
+            <p><strong>Trade #1 (Monday, Jan 15):</strong> ES displaces from 4,800 → 4,845 in 7 consecutive 5-minute candles (45 points in 35 minutes). David sees the 6th candle and thinks "This is a potential breakout!"</p>
+            <pre style="margin:.75rem 0"><code>10:15 AM: ES displaces from 4,800 → 4,842 (6 candles)
+10:20 AM: David enters LONG at 4,845 (7th candle)
+10:45 AM: ES reverses to 4,838
+11:00 AM: David stopped out at 4,833
+Loss: -$3,000 (5 ES contracts × 12 points × $50/point)
+
+David's notes: "Bad luck. Entered too early."</code></pre>
+            <p><strong>What David missed:</strong> The displacement was OVER. Institutions had moved from 4,800 → 4,845 and were now taking profit. By the time David entered at 4,845, 80% of the move was done. He was buying at the TOP.</p>
+            <p><strong>Trades #2-5 (rest of week 1):</strong> Same pattern repeated 4 more times. David chased displacement candles on ES and NQ, entering after 70-85% of the move was complete.</p>
+            <ul style="margin:.5rem 0 0 1.5rem">
+              <li>Trade #2: NQ 17,200 → 17,280, entered 17,275, stopped at 17,250 (-$3,125)</li>
+              <li>Trade #3: ES 4,820 → 4,862, entered 4,860, stopped at 4,848 (-$3,000)</li>
+              <li>Trade #4: NQ 17,150 → 17,210 (bearish displacement), shorted 17,155, stopped at 17,180 (-$2,500)</li>
+              <li>Trade #5: ES 4,835 → 4,878, entered 4,875, stopped at 4,862 (-$3,250)</li>
+            </ul>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Week 1 result:</strong> 5 trades, 1 win (20% win rate), -$14,125. Account: $135,875</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#ff6b6b"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Weeks 2-5 (Jan 22 - Feb 23): The Spiral</div>
+            <p><strong>The pattern continued:</strong> David kept chasing displacement candles. Every time he saw 5-7 consecutive candles moving in one direction, he entered. But he was ALWAYS late.</p>
+            <p><strong>Why it kept failing:</strong></p>
+            <ul style="margin:.5rem 0 0 1.5rem">
+              <li><strong>Timing:</strong> By the time David identified "momentum," institutions had already moved 70-90% of the intended distance</li>
+              <li><strong>Retracements:</strong> Price would immediately reverse after his potential entry, pulling back 30-50% (mitigation)</li>
+              <li><strong>Stop placement:</strong> David placed stops too close (10-15 points), getting stopped out before price resumed</li>
+              <li><strong>No framework:</strong> Never considered WHERE displacement started or where it might retrace to</li>
+            </ul>
+            <p><strong>Notable disasters:</strong></p>
+            <pre style="margin:.75rem 0"><code>TRADE #12 (Feb 2): ES bullish displacement 4,788 → 4,835
+David entered: 4,832 (after 94% of move)
+ES immediately retraced to 4,810 (mitigation)
+David stopped out at 4,820 (-$3,000)
+ES then rallied to 4,850 (David missed +$9,000 move)
+
+TRADE #18 (Feb 14): NQ bearish displacement 17,450 → 17,310
+David shorted: 17,318 (near the END of displacement)
+NQ mitigated back to 17,385 (50% retracement)
+David stopped out at 17,360 (-$4,200)
+NQ then dropped to 17,280 (David missed +$10,500 profit)</code></pre>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Weeks 2-5 result:</strong> 18 trades, 4 wins (22% win rate), -$38,200. Account: $97,675 (-34.9% total)</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#ff6b6b"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Weeks 6-8 (Feb 26 - Mar 10): Rock Bottom</div>
+            <p><strong>David's emotional state:</strong> Frustrated, confused, starting to tilt. He KNEW displacement indicated strong moves, but couldn't figure out why he kept losing.</p>
+            <p><strong>The worst trade (March 6):</strong></p>
+            <pre style="margin:.75rem 0"><code>9:45 AM: ES displaces from 5,100 → 5,155 (11 candles, 55 points in 55 minutes)
+10:40 AM: David sees the move, enters LONG at 5,152
+        Entry logic: "11 consecutive candles! This is STRONG!"
+10:55 AM: ES retraces to 5,128 (mitigation to 61.8% level)
+11:05 AM: David stopped out at 5,138
+Loss: -$3,500 (5 contracts × 14 points × $50)
+
+What happened next:
+11:30 AM: ES found support at 5,128 (exactly the mitigation zone)
+12:15 PM: ES rallied to 5,170 (new highs)
+David missed: +$4,500 profit (potential entry at 5,128 vs his 5,152)</code></pre>
+            <p><strong>The breaking point (March 8):</strong> David had lost $61,000 in 8 weeks. His $150K account was down to $89,000. He took 2 days off and reviewed every single trade.</p>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px;border-left:4px solid #ff6b6b">
+              <strong>David's journal potential entry (March 8):</strong><br>
+              "I've been trading for 2 years. I understand order blocks, BOS/ChoCH, and FVGs. But I keep losing. Tonight I printed out all 28 trades and laid them on my kitchen table. The pattern is OBVIOUS now. Every single loss followed the same script: I entered AFTER the displacement was done. I was chasing moves that were 80-90% complete. Institutions were EXITING, and I was entering. I'm the potential exit liquidity. I need to learn WHERE these displacements start and wait for price to come BACK to those zones."
+            </p>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Weeks 6-8 result:</strong> 5 trades, 1 win (20% win rate), -$8,675. Account: $89,000 (-40.7% total)</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#00d4aa"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Week 9 (Mar 11-15): Discovery—Mitigation Blocks & OTE</div>
+            <p><strong>What changed:</strong> David spent a weekend studying mitigation blocks and the concept of Optimal Trade Entry (OTE). He learned:</p>
+            <ul style="margin:.5rem 0 0 1.5rem">
+              <li><strong>Displacement shows direction</strong>, but NOT the entry point</li>
+              <li><strong>Mitigation = rebalancing zone</strong> where institutions ADD to positions</li>
+              <li><strong>OTE (61.8%-78.6%)</strong> is where price typically retraces after displacement</li>
+              <li><strong>Wait for price to RETURN</strong> to the origin of displacement before entering</li>
+            </ul>
+            <p><strong>New rule:</strong> "Mark displacement. Calculate OTE zone (61.8%-78.6% retracement). Wait for price to retrace. Enter at mitigation, NOT at the end of displacement."</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker" style="background:#00d4aa"></div>
+          <div class="timeline-content">
+            <div style="font-weight:700;margin-bottom:.25rem">Weeks 10-15 (Mar 18 - Apr 28): Recovery with Mitigation Framework</div>
+            <p><strong>David's new approach:</strong></p>
+            <ol style="margin:.5rem 0 0 1.5rem;line-height:1.7">
+              <li>Identify displacement (5-7+ consecutive candles, one direction)</li>
+              <li>Mark the origin zone (where displacement started)</li>
+              <li>Calculate OTE levels (61.8% and 78.6% retracement)</li>
+              <li>Set alerts at OTE zones</li>
+              <li>Wait for price to retrace (DO NOT enter during displacement)</li>
+              <li>Enter when price reaches OTE + shows confirmation (FVG, order block, Janus signal)</li>
+            </ol>
+            <p><strong>First recovery trade (March 18):</strong></p>
+            <pre style="margin:.75rem 0"><code>9:30 AM: ES displaces from 5,080 → 5,128 (48 points in 8 candles)
+David's reaction: "Displacement noted. Marking origin at 5,080."
+David calculates OTE:
+  - 61.8% retracement: 5,128 - (48 × 0.618) = 5,098.4
+  - 78.6% retracement: 5,128 - (48 × 0.786) = 5,090.3
+  - OTE zone: 5,090-5,098
+
+10:45 AM: ES retraces to 5,095 (within OTE zone)
+David's entry: LONG at 5,096 (limit order in OTE zone)
+Stop: Below mitigation block at 5,088 (8 points risk)
+Target: Recent high 5,128 + extension to 5,140
+
+2:15 PM: Target hit at 5,138
+Profit: +$4,200 (5 contracts × 42 points × $50/point)
+
+David's notes: "This is it. I entered where INSTITUTIONS were adding, not where they were potential exiting."</code></pre>
+            <p><strong>Weeks 10-15 results:</strong></p>
+            <ul style="margin:.5rem 0 0 1.5rem">
+              <li>21 total trades, 17 wins (81% win rate)</li>
+              <li>Average entry: Within OTE zone (35-40% retracement from displacement high/low)</li>
+              <li>Average R:R: 2.7:1 (much better than before)</li>
+              <li>Total profit: +$38,000</li>
+              <li>Account recovery: $89,000 → $127,000 (still down $23K from original $150K, but recovering)</li>
+            </ul>
+            <p style="margin-top:.75rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Notable recovery trades:</strong></p>
+            <pre style="margin:.75rem 0"><code>TRADE #32 (Mar 22): NQ displacement 17,680 → 17,520 (bearish)
+OTE zone: 17,620-17,640 (61.8%-78.6% retracement UP)
+David shorted at 17,632 (mitigation to OTE)
+Target: 17,500
+Result: +$6,600 profit (Win)
+
+TRADE #38 (Apr 9): ES displacement 5,210 → 5,268 (bullish)
+OTE zone: 5,232-5,240
+David entered LONG at 5,236
+Target: 5,275
+Result: +$3,900 profit (Win)
+
+TRADE #41 (Apr 18): ES displacement 5,190 → 5,145 (bearish)
+OTE zone: 5,163-5,172 (retracement UP to OTE)
+David shorted at 5,168
+Target: 5,140
+Result: +$2,800 profit (Win)</code></pre>
+        </div>
+      </div>
+
+      <h3 id="the-problem-vs-the-solution">The Problem vs The Solution</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0">
+        <div style="background:rgba(255,107,107,.05);border:2px solid rgba(255,107,107,.2);border-radius:12px;padding:1.5rem">
+          <h4>❌ David's Old Approach (Lost $61K)</h4>
+          <p><strong>Pattern:</strong> Chase displacement candles after 80% of move was done</p>
+          <pre><code>ES displaces from 4,800 → 4,845 (7 candles)
+David: "Momentum! Going long at 4,845!"
+Reality: Displacement DONE, institutions taking profit
+Result: Price retraces to 4,820 (mitigation)
+David stopped out at 4,838 (-$3,500)
+Then ES rallies to 4,860 WITHOUT David
+
+This happened 28 times in 8 weeks.
+Win rate: 21% (6/28)
+Avg entry: After 80% of move already happened
+Avg loss per trade: -$2,179
+Account drawdown: -40.7% ($150K → $89K)</code></pre>
+
+        <div style="background:rgba(0,212,170,.08);border:2px solid rgba(0,212,170,.3);border-radius:12px;padding:1.5rem">
+          <h4>✅ David's New Approach (Gained $38K)</h4>
+          <p><strong>Pattern:</strong> Wait for mitigation back to OTE zone (61.8%-78.6%)</p>
+          <pre><code>ES displaces from 4,800 → 4,845 (7 candles)
+David: "Displacement noted. Calculating OTE..."
+OTE zone: 4,817-4,828 (61.8%-78.6%)
+David sets alert at 4,820
+
+ES retraces to 4,818 (within OTE, 60% retracement)
+David: "Mitigation to OTE zone. Long at 4,818."
+Stop: 4,808 (below mitigation block)
+Target: 4,850 (recent high)
+Result: Target hit → +$3,200 profit
+
+This pattern worked 17/21 times (81% win rate).
+Avg entry: At 38% retracement (optimal timing)
+Avg profit per win: +$2,800
+Account recovery: +42.7% ($89K → $127K)</code></pre>
+        </div>
+      </div>
+
+      <h3 id="davids-complete-mitigation-framework">David's Complete Mitigation Framework</h3>
+
+      <div style="background:rgba(139,92,246,.08);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">📋 David's Pre-Trade Checklist (Mitigation + OTE)</h4>
+        <pre><code>STEP 1: IDENTIFY DISPLACEMENT (Do NOT enter yet!)
+[ ] 5-7+ consecutive candles in same direction
+[ ] Large candle bodies (not wicks/indecision)
+[ ] Fair Value Gaps created (price skipped zones)
+[ ] High volume on Plutus Flow (institutional participation)
+→ Note: Displacement = DIRECTION, not entry signal
+
+STEP 2: MARK THE ORIGIN ZONE (Mitigation Block)
+[ ] Identify where displacement STARTED
+[ ] Mark low-to-high (bullish) or high-to-low (bearish)
+[ ] Note if zone contains FVG or order block
+→ This is where institutions will ADD to positions
+
+STEP 3: CALCULATE OTE ZONE (Optimal Trade Entry)
+Displacement distance: _____ points (e.g., 50 points)
+[ ] 61.8% retracement: High - (distance × 0.618) = _____
+[ ] 78.6% retracement: High - (distance × 0.786) = _____
+[ ] OTE zone marked: _____ to _____ (this is entry zone)
+
+STEP 4: SET ALERTS & WAIT (Most important!)
+[ ] Alert set at 61.8% level (conservative potential entry)
+[ ] Alert set at 78.6% level (aggressive potential entry)
+[ ] Position size calculated (2% risk max)
+→ DO NOT FOMO into displacement—wait for retracement!
+
+STEP 5: ENTRY CONFIRMATION (When price hits OTE zone)
+[ ] Price has retraced into OTE zone
+[ ] OTE overlaps with mitigation block or FVG
+[ ] Janus Atlas confirms zone (high-probability setup)
+[ ] Bullish/bearish price action within OTE (engulfing, hammer)
+[ ] Higher timeframe supports direction (Daily/4H aligned)
+
+STEP 6: EXECUTION
+Entry: Limit order within OTE zone (_____ price)
+Stop: Below/above mitigation block (_____ price)
+  → Stop placement: 1.5× ATR from mitigation block edge
+Target 1: Recent swing high/low (_____ price, 1.5-2R)
+Target 2: Extension/next structure (_____ price, 3-5R)
+
+FINAL CHECK BEFORE ENTRY:
+[ ] ✅ ALL boxes checked above: Take trade (A-grade setup)
+[ ] ❌ ANY box unchecked: SKIP (no edge, wait for next setup)
+
+RULE: If displacement happens and price NEVER retraces to OTE,
+      that's OK. Better to miss a trade than chase and lose.</code></pre>
+      </div>
+
+      <div class="callout-key">
+        <h4>✅ The Results: Before vs After</h4>
+        <table style="width:100%;margin:1rem 0;border-collapse:collapse">
+          <thead>
+            <tr style="background:rgba(139,92,246,.1)">
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Metric</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Chasing Displacement (Weeks 1-8)</th>
+              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Waiting for Mitigation (Weeks 10-15)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Win Rate</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">21% (6/28 trades)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">81% (17/21 trades)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Avg Entry Timing</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">After 80% of move done (late)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">At 38% retracement / OTE zone (optimal)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Avg Risk:Reward</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">0.8:1 (poor, tight stops)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">2.7:1 (excellent, room to breathe)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Avg Win</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$1,800 (small moves, entered late)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$2,800 (captured full move)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Avg Loss</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-$2,179 (quick stop-outs)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-$1,400 (better entries, wider stops)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Total P&L</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-$61,000 (-40.7%)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$38,000 (+42.7% from low)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Account Value</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$150K → $89K (destroyed)</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$89K → $127K (recovering)</td>
+            </tr>
+            <tr>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Biggest Mistake</strong></td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Entering AFTER displacement, at worst prices</td>
+              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Fixed: Waiting for mitigation to OTE</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.5rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
+          <strong>David's advice (April 30, 2024):</strong><br>
+          "I lost $61,000 in 8 weeks chasing displacement candles. I thought I was trading 'momentum,' but I was actually providing EXIT LIQUIDITY for institutions. They had already moved 80-90% of the intended distance by the time I entered. The move was OVER.<br><br>
+          What saved me: Learning that displacement shows DIRECTION, but mitigation blocks show ENTRY. After displacement, price ALWAYS retraces 30-60%. That retracement to the 61.8%-78.6% OTE zone? That's where institutions ADD to winners.<br><br>
+          Now I wait. I mark the displacement origin, calculate OTE, set alerts, and WAIT for price to come back. My win rate went from 21% to 81%. I'm not chasing anymore—I'm entering where the smart money enters. Patience beats FOMO every single time."
+        </p>
+      </div>
+
+      <div class="section-break"><span>Part 1: Displacement—Reading Institutional Urgency</span></div>
+
+      <h2 id="not-all-candles-are-created-equal">Not All Candles Are Created Equal</h2>
+
+      <p>Displacement is when price moves aggressively in one direction, leaving gaps (Fair Value Gaps) and showing institutional conviction.</p>
+
+      <p><strong>Key characteristics of true displacement:</strong></p>
+      <ul>
+        <li>Multiple consecutive candles in same direction (3-7+ candles)</li>
+        <li>Large candle bodies with small wicks (conviction, not indecision)</li>
+        <li>Fair Value Gaps created (price skipped zones due to speed)</li>
+        <li>High volume on Plutus Flow (institutional participation confirmed)</li>
+      </ul>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button class="active">Retail Momentum</button>
+          <button>Institutional Displacement</button>
+        </div>
+        <div class="tabs-content">
+          <div class="tab-panel active">
+            <h3 id="fake-momentum-retail-chasing">Fake Momentum (Retail Chasing)</h3>
+            <p><strong>Pattern:</strong> One or two large green candles after a period of consolidation</p>
+            <p><strong>Volume:</strong> Low to moderate (retail FOMO, not smart money)</p>
+            <p><strong>Follow-through:</strong> Price stalls, reverses, or chops sideways</p>
+            <p><strong>Why it fails:</strong> No institutional conviction. Retail bought the move, but institutions aren't participating. Without smart money, there's no fuel for continuation.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Common trap:</strong> Retail buys the second or third green candle, gets trapped at the top, then watches price reverse.</p>
+          </div>
+          <div class="tab-panel">
+            <h3 id="true-displacement-smart-money-flow">True Displacement (Smart Money Flow)</h3>
+            <p><strong>Pattern:</strong> 5-7+ consecutive candles with large bodies and minimal wicks</p>
+            <p><strong>Volume:</strong> High and sustained (Plutus Flow shows institutional accumulation/distribution)</p>
+            <p><strong>Follow-through:</strong> After retracement (mitigation), price continues in displacement direction</p>
+            <p><strong>Why it works:</strong> Institutions don't move like this unless they're positioning for a major move. They have information (fundamentals, order flow, positioning data) that retail doesn't.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Pro insight:</strong> When you see displacement, don't chase it. Wait for the retracement to the mitigation block, THEN enter with institutions.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 id="types-of-displacement">Types of Displacement</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Bullish Displacement (Institutional Buying)</div>
+          <div class="accordion-content">
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+              <li>5+ consecutive bullish candles with large bodies</li>
+              <li>Price moves from $100 → $105 with minimal pullbacks</li>
+              <li>Multiple Fair Value Gaps created (skipped price levels)</li>
+              <li>High volume throughout the move</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>What it means:</strong> Institutions are aggressively accumulating. They're not nibbling—they're loading the truck. This urgency suggests they expect significant upside.</p>
+            <p><strong>What happens next:</strong></p>
+            <ol>
+              <li>Price retraces 30-60% of the displacement (mitigation)</li>
+              <li>Returns to a Fair Value Gap or mitigation block</li>
+              <li>Institutions add to positions (more buying)</li>
+              <li>Price resumes upward, often breaking recent highs</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Bearish Displacement (Institutional Selling)</div>
+          <div class="accordion-content">
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+              <li>5+ consecutive bearish candles with large bodies</li>
+              <li>Price moves from $200 → $190 rapidly</li>
+              <li>Creates bearish Fair Value Gaps (imbalances)</li>
+              <li>High selling volume (institutions distributing)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>What it means:</strong> Institutions are dumping positions. This isn't profit-taking—it's full distribution. They see something bearish coming.</p>
+            <p><strong>What happens next:</strong></p>
+            <ol>
+              <li>Price retraces 30-60% upward (mitigation rally)</li>
+              <li>Returns to a bearish FVG or mitigation block</li>
+              <li>Institutions add shorts (more selling)</li>
+              <li>Price continues lower, often breaking recent lows</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 The Critical Insight</h4>
+        <p><strong>Displacement = Direction.</strong> When institutions move with urgency, they're telling you where price is GOING. Don't fight it. Wait for the retracement, then join them.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: Mitigation Blocks—Institutional Rebalancing</span></div>
+<h2 id="where-institutions-add-to-winners">Where Institutions Add to Winners</h2>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p>You now understand the core concepts.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
+      </div>
+
+      <p>After displacement, price doesn't just continue forever. It retraces. And that retracement to a specific zone is called <strong>mitigation</strong>.</p>
+
+      <p><strong>Mitigation block:</strong> The zone where displacement originated, often containing a Fair Value Gap. This is where institutions RE-ENTER to add to their position before the next leg.</p>
+
+      <h3 id="mitigation-vs-order-blocks-the-difference">Mitigation vs Order Blocks (The Difference)</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0" id="order-block">Order Block</h3>
+          <p><strong>Definition:</strong> Last opposite-colored candle BEFORE displacement</p>
+          <p><strong>Example (Bullish):</strong> Last red candle before 7 green candles (displacement)</p>
+          <p><strong>Purpose:</strong> Initial entry zone—where institutions first entered</p>
+          <p><strong>When to trade:</strong> First retracement after BOS or ChoCH</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h3 style="margin:0 0 1rem 0" id="mitigation-block">Mitigation Block</h3>
+          <p><strong>Definition:</strong> Zone where displacement STARTED, often contains unfilled FVG</p>
+          <p><strong>Example (Bullish):</strong> The $100-$101 zone where the 7-candle rally began</p>
+          <p><strong>Purpose:</strong> Rebalancing zone—where institutions add to existing positions</p>
+          <p><strong>When to trade:</strong> After displacement, during retracement to the origin</p>
+        </div>
+      </div>
+
+      <p><strong>Simple rule:</strong> Order blocks are for INITIAL entries. Mitigation blocks are for ADDING to winners.</p>
+
+      <h3 id="how-to-identify-mitigation-blocks">How to Identify Mitigation Blocks</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Step 1: Identify Displacement</div>
+          <div class="accordion-content">
+            <p>Look for 5-7+ consecutive candles moving in one direction with:</p>
+            <ul>
+              <li>Large candle bodies (conviction)</li>
+              <li>Fair Value Gaps (imbalances left behind)</li>
+              <li>High volume on Plutus Flow</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Example:</strong> Price displaces from $100 → $107 in 6 candles</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 2: Mark the Origin Zone</div>
+          <div class="accordion-content">
+            <p>The mitigation block is where the displacement STARTED:</p>
+            <ul>
+              <li>Identify the first candle of the displacement move</li>
+              <li>Mark from its low to its high (bullish) or high to low (bearish)</li>
+              <li>This zone often contains a Fair Value Gap</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Example:</strong> Displacement started at candle with low=$100.00, high=$101.50. Mitigation block = $100.00-$101.50</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 3: Wait for Retracement</div>
+          <div class="accordion-content">
+            <p>Price will retrace 30-60% of the displacement move:</p>
+            <ul>
+              <li><strong>Shallow retracement:</strong> 30-40% (strong trend, institutions very bullish)</li>
+              <li><strong>Standard retracement:</strong> 50% (typical institutional rebalancing)</li>
+              <li><strong>Deep retracement:</strong> 60-70% (may reach mitigation block or deeper FVG)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Example:</strong> Displacement: $100 → $107 (7 points). 50% retracement = $103.50. Mitigation block at $100-$101.50 is deeper, but higher probability.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Step 4: Enter at Mitigation + FVG Confluence</div>
+          <div class="accordion-content">
+            <p><strong>Ideal potential entry setup:</strong></p>
+            <ul>
+              <li>✓ Price retraces into mitigation block</li>
+              <li>✓ Mitigation block contains unfilled Fair Value Gap</li>
+              <li>✓ Janus Atlas confirms the zone</li>
+              <li>✓ Plutus Flow shows absorption (buying), not exhaustion</li>
+              <li>✓ Higher timeframe supports direction (daily uptrend for bullish mitigation)</li>
+            </ul>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Entry:</strong> Limit order within mitigation block. <strong>Stop:</strong> Below mitigation block low. <strong>Target:</strong> Recent high + 1.5-2R.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-break"><span>Part 3: Optimal Trade Entry (OTE)—The Sweet Spot</span></div>
+<h2 id="the-618-786-retracement-zone">The 61.8%-78.6% Retracement Zone</h2>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p>You're now at the halfway point. You've learned the key strategies.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
+      </div>
+
+      <p>Institutions don't just enter anywhere. They target specific Fibonacci levels for retracements: <strong>61.8% (golden ratio) to 78.6%</strong>.</p>
+
+      <p>This is called the <strong>Optimal Trade Entry (OTE)</strong> zone. It's where the probability is highest that institutions will defend their position and add more.</p>
+<h3 id="why-ote-works">Why OTE Works</h3>
+
+      <p><strong>Mathematical basis:</strong> 61.8% and 78.6% are derived from the Fibonacci sequence—ratios that appear throughout nature, markets, and institutional algo trading.</p>
+
+      <p><strong>Institutional behavior:</strong> Algos are programmed to rebalance at these levels. When price hits 61.8%-78.6% retracement after displacement, institutional buy/sell algorithms trigger.</p>
+
+      <h3 id="how-to-use-ote">How to Use OTE</h3>
+
+      <div style="background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Complete OTE Setup (Bullish Example)</h4>
+        <p><strong>Step 1:</strong> Identify bullish displacement ($100 → $110)</p>
+        <p><strong>Step 2:</strong> Measure the displacement (10 points)</p>
+        <p><strong>Step 3:</strong> Calculate OTE zone:</p>
+        <ul>
+          <li><strong>61.8% retracement:</strong> $110 - (10 × 0.618) = $103.82</li>
+          <li><strong>78.6% retracement:</strong> $110 - (10 × 0.786) = $102.14</li>
+          <li><strong>OTE zone:</strong> $102.14 - $103.82</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Step 4:</strong> Check if OTE zone overlaps with:</p>
+        <ul>
+          <li>Mitigation block ✓</li>
+          <li>Fair Value Gap ✓</li>
+          <li>Order block ✓</li>
+        </ul>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px"><strong>If all align:</strong> This is a PREMIUM potential entry. Confluence of OTE + mitigation + FVG = 70-80% win rate setup.</p>
+      </div>
+
+      <h3 id="ote-janus-atlas-confirmation">OTE + Janus Atlas Confirmation</h3>
+      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p>Almost done! You've mastered the complete framework.</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
+      </div>
+
+      <p>Don't blindly buy the OTE zone. Wait for confirmation:</p>
+
+      <ul>
+        <li><strong>Janus Atlas:</strong> Marks the OTE/mitigation zone as high-probability</li>
+        <li><strong>Plutus Flow:</strong> Shows absorption (buying volume increasing as price enters OTE)</li>
+        <li><strong>Price action:</strong> Bullish engulfing or hammer candle within OTE zone</li>
+      </ul>
+
+      <div class="callout-tip">
+        <h4>🎯 Pro Entry Technique</h4>
+        <p><strong>Layer your entries:</strong></p>
+        <ul>
+          <li>25% position at 61.8% (conservative)</li>
+          <li>50% position at 70.0% (mid-OTE)</li>
+          <li>25% position at 78.6% (aggressive, best R:R)</li>
+        </ul>
+        <p>This way, you're filled at the average OTE level even if price doesn't reach the deep 78.6% level.</p>
+      </div>
+
+      <div class="section-break"><span>Part 4: Complete Trading Framework</span></div>
+<h2 id="displacement-mitigation-ote-confluence">Displacement + Mitigation + OTE = Confluence</h2>
+
+      <h3 id="the-complete-checklist">The Complete Checklist</h3>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Bullish Setup (Long Entry)</div>
+          <div class="accordion-content">
+            <p><strong>Pre-conditions:</strong></p>
+            <ul>
+              <li>[ ] Higher timeframe in uptrend (daily/4H making higher highs)</li>
+              <li>[ ] BOS occurred recently (broke previous swing high)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Setup identification:</strong></p>
+            <ul>
+              <li>[ ] Bullish displacement identified (5-7+ green candles)</li>
+              <li>[ ] Fair Value Gaps created during displacement</li>
+              <li>[ ] Mitigation block marked (origin of displacement)</li>
+              <li>[ ] OTE zone calculated (61.8%-78.6% retracement)</li>
+              <li>[ ] OTE overlaps with mitigation block and/or FVG</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Entry confirmation:</strong></p>
+            <ul>
+              <li>[ ] Price retraces into OTE/mitigation zone</li>
+              <li>[ ] Janus Atlas confirms high-probability zone</li>
+              <li>[ ] Plutus Flow shows absorption (buying)</li>
+              <li>[ ] Bullish price action within zone (engulfing, hammer)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Execution:</strong></p>
+            <ul>
+              <li><strong>Entry:</strong> Limit buy within OTE zone</li>
+              <li><strong>Stop:</strong> 1.5x ATR below mitigation block low</li>
+              <li><strong>Target 1:</strong> Recent swing high (1.5-2R)</li>
+              <li><strong>Target 2:</strong> Next structural high (3-5R)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">Bearish Setup (Short Entry)</div>
+          <div class="accordion-content">
+            <p><strong>Pre-conditions:</strong></p>
+            <ul>
+              <li>[ ] Higher timeframe in downtrend (daily/4H making lower lows)</li>
+              <li>[ ] BOS occurred recently (broke previous swing low)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Setup identification:</strong></p>
+            <ul>
+              <li>[ ] Bearish displacement identified (5-7+ red candles)</li>
+              <li>[ ] Bearish Fair Value Gaps created</li>
+              <li>[ ] Mitigation block marked (origin of bearish displacement)</li>
+              <li>[ ] OTE zone calculated (61.8%-78.6% retracement UP from low)</li>
+              <li>[ ] OTE overlaps with mitigation block and/or bearish FVG</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Entry confirmation:</strong></p>
+            <ul>
+              <li>[ ] Price retraces UP into OTE/mitigation zone</li>
+              <li>[ ] Janus Atlas confirms distribution zone</li>
+              <li>[ ] Plutus Flow shows exhaustion (selling pressure)</li>
+              <li>[ ] Bearish price action within zone (bearish engulfing, shooting star)</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Execution:</strong></p>
+            <ul>
+              <li><strong>Entry:</strong> Limit short within OTE zone</li>
+              <li><strong>Stop:</strong> 1.5x ATR above mitigation block high</li>
+              <li><strong>Target 1:</strong> Recent swing low (1.5-2R)</li>
+              <li><strong>Target 2:</strong> Next structural low (3-5R)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-takeaway">
+        <h4>🎓 Key Takeaways</h4>
+        <ul>
+          <li><strong>Displacement = institutional urgency</strong> (5-7+ consecutive candles with FVGs)</li>
+          <li><strong>Mitigation blocks are rebalancing zones</strong> where institutions add to positions</li>
+          <li><strong>OTE (61.8%-78.6%)</strong> is the optimal entry zone for high-probability setups</li>
+          <li><strong>Confluence is king:</strong> OTE + mitigation + FVG + Janus confirmation = premium potential entry</li>
+          <li><strong>Don't chase displacement</strong>—wait for retracement, then enter with institutions</li>
+        </ul>
+      </div>
+
+<div class="section-break"><span>Practice Exercise</span></div>
+
+      <div class="callout-key">
+        <h4>🎯 Displacement & OTE Practice</h4>
+        <p><strong>Exercise: Identify 5 Displacement Moves</strong></p>
+        <ol style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li>Find 5 recent displacement moves on your charts (5-7+ consecutive candles)</li>
+          <li>Mark the mitigation block (origin of displacement)</li>
+          <li>Calculate OTE zone (61.8%-78.6% retracement)</li>
+          <li>Note if OTE overlaps with mitigation block or FVG</li>
+          <li>Track: Did price retrace to OTE? Did it reverse from there?</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Goal:</strong> Build intuition for reading displacement and predicting where retracements will end. After 20+ examples, you'll instinctively know where institutions will defend.</p>
+      </div>
+
+      
+
+<div class="section-break"><span>Test Your Understanding</span></div>
+
+      <div class="quiz">
+        <h4>🎮 Quick Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q: What's the difference between an order block and a mitigation block?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) They're the same thing</div>
+            <div class="quiz-option" data-correct="true">B) Order block = last opposite candle before displacement; Mitigation block = origin zone of displacement where institutions add to positions</div>
+            <div class="quiz-option" data-correct="false">C) Mitigation blocks are only for bearish setups</div>
+            <div class="quiz-option" data-correct="false">D) Order blocks are stronger</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Order blocks are for initial entries (last red candle before bullish displacement). Mitigation blocks are for adding to winners (the zone where displacement originated, where institutions rebalance during retracements).
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answer</button>
+      </div>
+
+      
+
+<div class="section-break"><span>Related Lessons</span></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:1.5rem 0">
+        <div class="card" style="padding:1rem">
+          <span class="badge">Intermediate #13</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Smart Money Concepts</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Foundation: Order blocks and BOS/ChoCH</p>
+          <a href="/curriculum/intermediate/13-smart-money-concepts.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+        <div class="card" style="padding:1rem">
+          <span class="badge">Intermediate #15</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Liquidity Pools</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Combine with displacement for premium setups</p>
+          <a href="/curriculum/intermediate/15-liquidity-pools.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+        <div class="card" style="padding:1rem">
+          <span class="badge">Advanced #50</span>
+          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Auction Theory Advanced</h4>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Deep dive into market structure mechanics</p>
+          <a href="/curriculum/advanced/50-auction-theory-advanced.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
+        </div>
+      </div>
+
+      <div class="callout-info">
+        <h4>⏭️ Coming Up Next</h4>
+        <p><strong>Lesson #17: Time & Sales Mastery—Advanced Tape Reading</strong></p>
+        <p>Large prints, aggressive vs passive fills, and reading institutional fingerprints in real-time order flow.</p>
+      </div>
+
+      <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss.</blockquote>
+
+    </div>
+
+        <aside class="toc" aria-label="On this page">
+      <h3 id="on-this-page">On this page</h3>
+      <a href="#not-all-candles-are-created-equal">Not All Candles Are Created Equal</a>
+      <a href="#where-institutions-add-to-winners">Where Institutions Add to Winners</a>
+      <a href="#the-618-786-retracement-zone">The 61.8%-78.6% Retracement Zone</a>
+      <a href="#displacement-mitigation-ote-confluence">Displacement + Mitigation + OTE = Confluence</a>
+    </aside>
+  </div>
+
+<p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you now understand advanced market structure better than 95% of traders. This is institutional-level analysis.</p>
+
+      <div class="wrap nav-article">
+    <a class="btn btn-ghost" href="/curriculum/intermediate/15-liquidity-pools.html">&larr; Previous Lesson</a>
+    <a class="btn btn-primary" href="/curriculum/intermediate/17-time-sales-mastery.html">Next Lesson &rarr;</a>
+  </div>
+</article>
+
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
+<script src="/assets/edu.js"></script>
+<script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/toc-active.js"></script>
+<script src="/assets/sp-bg.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
+<script src="/assets/lesson-notes.js"></script>
+  <!-- Enhanced Analytics & A/B Testing -->
+  <script src="/assets/enhanced-analytics.js" defer></script>
+  <script src="/assets/ab-test-tldr.js" defer></script>
+</body>
+</html>
