@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
 Consolidate to 4 tiers only:
-- beginner (1-12)
-- intermediate (13-35)
-- advanced (36-63)
-- professional (64-82)
+- beginner (1-20)
+- intermediate (21-47)
+- advanced (48-74)
+- professional (75-82)
 
-This merges advanced-mastery and professional-capstone into professional.
+This merges the bridge lessons into their respective tiers.
 """
 
 import os

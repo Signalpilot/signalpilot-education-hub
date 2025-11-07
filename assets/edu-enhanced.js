@@ -105,19 +105,13 @@
     },
 
     checkAchievements() {
-      // Achievement popups disabled - causing incorrect lesson attribution
-      return;
-
       const completed = this.getCompletedArticles();
       const achievements = [
         { count: 1, name: 'First Steps', icon: '🎯' },
         { count: 5, name: 'Dedicated Learner', icon: '📚' },
-        { count: 12, name: 'Beginner Master', icon: '🏅' },
-        { count: 20, name: 'Bridge Builder', icon: '🌉' },
-        { count: 27, name: 'Intermediate Pro', icon: '⭐' },
-        { count: 42, name: 'Advanced Scholar', icon: '🏆' },
-        { count: 62, name: 'Institutional Mastery', icon: '💎' },
-        { count: 74, name: 'Professional Trader', icon: '👑' },
+        { count: 20, name: 'Beginner Master', icon: '🏅' },
+        { count: 47, name: 'Intermediate Pro', icon: '⭐' },
+        { count: 74, name: 'Advanced Scholar', icon: '🏆' },
         { count: 82, name: 'Complete Mastery', icon: '🔥' }
       ];
 

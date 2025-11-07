@@ -81,16 +81,13 @@
    */
   function checkCompletionMilestones() {
     const completed = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed')).length;
-    const milestones = [1, 5, 12, 20, 27, 42, 62, 74, 82];
+    const milestones = [1, 5, 20, 47, 74, 82];
     const milestoneNames = {
       1: 'your first lesson',
       5: '5 lessons',
-      12: 'Beginner Tier (12 lessons)',
-      20: 'Bridge Tier (20 lessons)',
-      27: 'Intermediate Tier (27 lessons)',
-      42: 'Advanced Tier (42 lessons)',
-      62: 'Institutional Mastery (62 lessons)',
-      74: 'Professional Tier (74 lessons)',
+      20: 'Beginner Tier Complete (20 lessons)',
+      47: 'Intermediate Tier Complete (47 lessons)',
+      74: 'Advanced Tier Complete (74 lessons)',
       82: 'all 82 lessons - Complete Mastery'
     };
 

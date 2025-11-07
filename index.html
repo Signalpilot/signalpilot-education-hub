@@ -513,32 +513,17 @@
       <div class="card text-center" style="opacity:.4">
         <div style="font-size:3rem;margin-bottom:.5rem">🏅</div>
         <strong>Beginner Master</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete all Beginner tier</p>
+        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 20 lessons (Beginner tier)</p>
       </div>
       <div class="card text-center" style="opacity:.4">
         <div style="font-size:3rem;margin-bottom:.5rem">⭐</div>
         <strong>Intermediate Pro</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete all Intermediate</p>
-      </div>
-      <div class="card text-center" style="opacity:.4">
-        <div style="font-size:3rem;margin-bottom:.5rem">🌉</div>
-        <strong>Bridge Builder</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 20 lessons</p>
+        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 47 lessons (Intermediate tier)</p>
       </div>
       <div class="card text-center" style="opacity:.4">
         <div style="font-size:3rem;margin-bottom:.5rem">🏆</div>
         <strong>Advanced Scholar</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 42 lessons</p>
-      </div>
-      <div class="card text-center" style="opacity:.4">
-        <div style="font-size:3rem;margin-bottom:.5rem">💎</div>
-        <strong>Institutional Mastery</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 62 lessons</p>
-      </div>
-      <div class="card text-center" style="opacity:.4">
-        <div style="font-size:3rem;margin-bottom:.5rem">👑</div>
-        <strong>Professional Trader</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 74 lessons</p>
+        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 74 lessons (Advanced tier)</p>
       </div>
       <div class="card text-center" style="opacity:.4">
         <div style="font-size:3rem;margin-bottom:.5rem">🔥</div>
@@ -645,11 +630,12 @@
 
     // Unlock achieved badges
     const milestones = [
-      { count: 1, index: 0 },
-      { count: 5, index: 1 },
-      { count: 12, index: 2 },
-      { count: 27, index: 3 },
-      { count: 42, index: 4 }
+      { count: 1, index: 0 },   // First Steps
+      { count: 5, index: 1 },   // Dedicated Learner
+      { count: 20, index: 2 },  // Beginner Master (Beginner tier complete)
+      { count: 47, index: 3 },  // Intermediate Pro (Intermediate tier complete)
+      { count: 74, index: 4 },  // Advanced Scholar (Advanced tier complete)
+      { count: 82, index: 5 }   // Complete Mastery (All lessons)
     ];
 
     milestones.forEach(m => {
