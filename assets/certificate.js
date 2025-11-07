@@ -43,7 +43,7 @@
       };
     } catch (e) {
       return {
-        completed: 42,
+        completed: 82,
         bestStreak: 0,
         completionDate: new Date().toLocaleDateString('en-US', {
           year: 'numeric',

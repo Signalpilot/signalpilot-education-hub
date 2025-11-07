@@ -940,19 +940,19 @@
   // Render Certificates
   function renderCertificates(completedCount) {
     const tiers = {
-      beginner: { completed: 0, total: 12 },
-      intermediate: { completed: 0, total: 15 },
-      advanced: { completed: 0, total: 15 },
-      master: { completed: completedCount, total: 42 }
+      beginner: { completed: 0, total: 20 },
+      intermediate: { completed: 0, total: 27 },
+      advanced: { completed: 0, total: 27 },
+      master: { completed: completedCount, total: 82 }
     };
 
     // Count completed by tier (simplified - you can enhance this)
     // For now, assume sequential completion
-    if (completedCount >= 12) tiers.beginner.completed = 12;
-    else tiers.beginner.completed = Math.min(completedCount, 12);
+    if (completedCount >= 20) tiers.beginner.completed = 20;
+    else tiers.beginner.completed = Math.min(completedCount, 20);
 
-    if (completedCount > 12) tiers.intermediate.completed = Math.min(completedCount - 12, 15);
-    if (completedCount > 27) tiers.advanced.completed = Math.min(completedCount - 27, 15);
+    if (completedCount > 20) tiers.intermediate.completed = Math.min(completedCount - 20, 27);
+    if (completedCount > 47) tiers.advanced.completed = Math.min(completedCount - 47, 27);
 
     // Update progress displays
     document.getElementById('cert-beginner-progress').textContent = `${tiers.beginner.completed}/${tiers.beginner.total} lessons`;

@@ -28,7 +28,7 @@
     "@type": "EducationalOrganization",
     "name": "Signal Pilot Education Hub",
     "url": "https://education.signalpilot.io",
-    "description": "Learn institutional trading concepts from Signal Pilot. 42 comprehensive lessons covering order flow, liquidity engineering, and professional trading frameworks.",
+    "description": "Learn institutional trading concepts from Signal Pilot. 82 comprehensive lessons covering order flow, liquidity engineering, and professional trading frameworks.",
     "provider": {
       "@type": "Organization",
       "name": "Signal Pilot"
