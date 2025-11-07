@@ -316,7 +316,7 @@ Jake's ROI since learning absorption patterns:
         <div style="background:rgba(255,107,107,.05);border:2px solid rgba(255,107,107,.2);border-radius:12px;padding:1.5rem">
           <h4>❌ Jake's Old Approach (Lost $72K)</h4>
           <p><strong>Strategy:</strong> Trade visible walls and imbalances</p>
-          <pre><code>Order book: 15,000 share bid at $125 (HUGE!)
+          <pre style="white-space:pre-wrap;overflow-wrap:break-word"><code>Order book: 15,000 share bid at $125 (HUGE!)
 Jake: "Massive support! Going long above it."
 Entry: $125.05
 
@@ -340,7 +340,7 @@ Fatal mistakes:
         <div style="background:rgba(0,212,170,.08);border:2px solid rgba(0,212,170,.3);border-radius:12px;padding:1.5rem">
           <h4>✅ Jake's New Approach (Gained $41K)</h4>
           <p><strong>Strategy:</strong> Wait for absorption confirmation</p>
-          <pre><code>Order book: 18,000 bid at $135 (big wall)
+          <pre style="white-space:pre-wrap;overflow-wrap:break-word"><code>Order book: 18,000 bid at $135 (big wall)
 Jake: "Interesting. Let's SEE if it's real."
 
 10:05 AM: Price tests $135
@@ -371,7 +371,7 @@ Success: Traded REAL money, not theater</code></pre>
 
       <div style="background:rgba(139,92,246,.08);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
         <h4 style="margin-top:0">📋 Jake's Order Book Reality Check</h4>
-        <pre><code>STEP 1: IDENTIFY POTENTIAL WALL
+        <pre style="white-space:pre-wrap;overflow-wrap:break-word"><code>STEP 1: IDENTIFY POTENTIAL WALL
 [ ] Large order visible (>10,000 shares for SPY, >5,000 for individual stocks)
 [ ] Price approaching the wall
 → DO NOT TRADE YET. This is theater until proven real.
@@ -431,52 +431,71 @@ CRITICAL RULES:
 
       <div class="callout-key">
         <h4>✅ The Results: Before vs After</h4>
-        <table style="width:100%;margin:1rem 0;border-collapse:collapse">
-          <thead>
-            <tr style="background:rgba(139,92,246,.1)">
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Metric</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Trading Visible Walls (Jul-Sep 2024)</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(139,92,246,.3)">Waiting for Absorption (Oct-Nov 2024)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Win Rate</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">17% (6/35 trades)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">71% (15/21 trades)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Strategy</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Enter when big wall appears</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Wait for absorption confirmation</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Wall Reality Check</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Assumed all walls were real</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Tested walls, 60% were FAKE (spoofs)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Absorption Awareness</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">None (didn't wait for volume test)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Required 5K+ share absorption before potential entry</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Total P&L</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">-$72,000 (-43.6%)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">+$41,200 (+44.4% from low)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Account Value</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$165K → $92.8K (destroyed)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">$92.8K → $134K (recovering)</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)"><strong>Biggest Mistake</strong></td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Trusted order book theater (fake walls)</td>
-              <td style="padding:.75rem;border:1px solid rgba(139,92,246,.2)">Fixed: Waited for absorption proof</td>
-            </tr>
-          </tbody>
-        </table>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin:1rem 0">
+          <div style="background:rgba(255,82,82,0.08);border:2px solid rgba(255,82,82,0.3);border-radius:8px;padding:1.5rem">
+            <h4 style="margin:0 0 1rem 0;color:#ff5252">❌ Trading Visible Walls (Jul-Sep 2024)</h4>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(255,82,82,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Win Rate</div>
+              <div style="font-weight:600">17% (6/35 trades)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(255,82,82,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Strategy</div>
+              <div style="font-weight:600">Enter when big wall appears</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(255,82,82,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Wall Reality Check</div>
+              <div style="font-weight:600">Assumed all walls were real</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(255,82,82,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Absorption Awareness</div>
+              <div style="font-weight:600">None (didn't wait for volume test)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(255,82,82,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Total P&L</div>
+              <div style="font-weight:700;color:#ff5252;font-size:1.1rem">-$72,000 (-43.6%)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(255,82,82,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Account Value</div>
+              <div style="font-weight:600;color:#ff5252">$165K → $92.8K (destroyed)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Biggest Mistake</div>
+              <div style="font-weight:600">Trusted order book theater (fake walls)</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(34,197,94,0.08);border:2px solid rgba(34,197,94,0.3);border-radius:8px;padding:1.5rem">
+            <h4 style="margin:0 0 1rem 0;color:#22c55e">✅ Waiting for Absorption (Oct-Nov 2024)</h4>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(34,197,94,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Win Rate</div>
+              <div style="font-weight:600">71% (15/21 trades)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(34,197,94,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Strategy</div>
+              <div style="font-weight:600">Wait for absorption confirmation</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(34,197,94,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Wall Reality Check</div>
+              <div style="font-weight:600">Tested walls, 60% were FAKE (spoofs)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(34,197,94,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Absorption Awareness</div>
+              <div style="font-weight:600">Required 5K+ share absorption before potential entry</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(34,197,94,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Total P&L</div>
+              <div style="font-weight:700;color:#22c55e;font-size:1.1rem">+$41,200 (+44.4% from low)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(34,197,94,0.2)">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Account Value</div>
+              <div style="font-weight:600;color:#22c55e">$92.8K → $134K (recovering)</div>
+            </div>
+            <div style="margin:0.75rem 0;padding:0.5rem 0">
+              <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Biggest Mistake</div>
+              <div style="font-weight:600">Fixed: Waited for absorption proof</div>
+            </div>
+          </div>
+        </div>
         <p style="margin-top:1.5rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
           <strong>Jake's advice (December 2024):</strong><br>
           "I lost $72,000 in 12 weeks because I trusted the order book. I thought big walls meant real support. I was wrong. 60% of the 'massive walls' I traded VANISHED before price arrived—they were spoofs, market manipulation. The order book is THEATER.<br><br>
@@ -576,36 +595,67 @@ CRITICAL RULES:
 
       <h3 id="the-simple-framework">The Simple Framework</h3>
 
-      <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
-        <thead>
-          <tr style="background:rgba(255,255,255,.05)">
-            <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Bid/Ask Ratio</th>
-            <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Imbalance</th>
-            <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Bias</th>
-            <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">› 1.5</td>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Heavy Bid</td>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Bullish</td>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Long opportunities may be observed (IF indicated by context)</td>
-          </tr>
-          <tr>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">0.9 - 1.1</td>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Balanced</td>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Neutral</td>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Wait for catalyst</td>
-          </tr>
-          <tr>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">‹ 0.67</td>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Heavy Ask</td>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Bearish</td>
-            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Short opportunities may be observed (IF indicated by context)</td>
-          </tr>
-        </tbody>
-      </table>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:1.5rem 0">
+        <div style="background:rgba(34,197,94,0.08);border:2px solid rgba(34,197,94,0.3);border-radius:8px;padding:1.5rem">
+          <h4 style="margin:0 0 1rem 0;color:#22c55e">📈 Heavy Bid (Bullish)</h4>
+          <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(34,197,94,0.2)">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Bid/Ask Ratio</div>
+            <div style="font-weight:700;font-size:1.1rem;color:#22c55e">› 1.5</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(34,197,94,0.2)">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Imbalance</div>
+            <div style="font-weight:600">Heavy Bid</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(34,197,94,0.2)">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Bias</div>
+            <div style="font-weight:600">Bullish</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.5rem 0">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Action</div>
+            <div style="font-weight:600">Long opportunities may be observed (IF indicated by context)</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(139,92,246,0.08);border:2px solid rgba(139,92,246,0.3);border-radius:8px;padding:1.5rem">
+          <h4 style="margin:0 0 1rem 0;color:#8b5cf6">⚖️ Balanced (Neutral)</h4>
+          <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(139,92,246,0.2)">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Bid/Ask Ratio</div>
+            <div style="font-weight:700;font-size:1.1rem;color:#8b5cf6">0.9 - 1.1</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(139,92,246,0.2)">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Imbalance</div>
+            <div style="font-weight:600">Balanced</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(139,92,246,0.2)">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Bias</div>
+            <div style="font-weight:600">Neutral</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.5rem 0">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Action</div>
+            <div style="font-weight:600">Wait for catalyst</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,82,82,0.08);border:2px solid rgba(255,82,82,0.3);border-radius:8px;padding:1.5rem">
+          <h4 style="margin:0 0 1rem 0;color:#ff5252">📉 Heavy Ask (Bearish)</h4>
+          <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(255,82,82,0.2)">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Bid/Ask Ratio</div>
+            <div style="font-weight:700;font-size:1.1rem;color:#ff5252">‹ 0.67</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(255,82,82,0.2)">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Imbalance</div>
+            <div style="font-weight:600">Heavy Ask</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.5rem 0;border-bottom:1px solid rgba(255,82,82,0.2)">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Bias</div>
+            <div style="font-weight:600">Bearish</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.5rem 0">
+            <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem">Action</div>
+            <div style="font-weight:600">Short opportunities may be observed (IF indicated by context)</div>
+          </div>
+        </div>
+      </div>
 
       <p><strong>Key word:</strong> IF indicated by context. Never trade imbalance alone.</p>
 
@@ -950,8 +1000,9 @@ CRITICAL RULES:
         <p><strong>Article #15: Market Making & HFT</strong> — Ever wonder who's on the other side of your trade? Spoiler: They're faster, better capitalized, and playing a totally different game. Learn their playbook.</p>
       </div>
 
+    </div>
   </div>
-
+</div>
 
   <div class="wrap nav-article">
   <a class="btn btn-ghost" href="/curriculum/intermediate/21-bid-ask-spread-dynamics.html">&larr; Previous Lesson</a>
