@@ -77,126 +77,117 @@
 
         <p><strong>Background:</strong> Jordan, an intermediate trader with a $25,000 account, decided to master POC (Point of Control) trading using Plutus Flow after reading about Volume Profile. Over 5 trading days in October 2024, they took 7 trades based purely on POC migration, CVD divergence, and HVN/LVN levels. Here's the complete potential breakdown.</p>
 
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">5-Day POC Trading Journal (SPY, October 21-25, 2024)</caption>
-          <tr style="background:rgba(118,221,255,0.15);border-bottom:2px solid rgba(118,221,255,0.3)">
-            <th style="padding:0.75rem;text-align:left">Date</th>
-            <th style="padding:0.75rem;text-align:left">Trade</th>
-            <th style="padding:0.75rem;text-align:left">Setup</th>
-            <th style="padding:0.75rem;text-align:left">Entry/Exit</th>
-            <th style="padding:0.75rem;text-align:right">Result</th>
-            <th style="padding:0.75rem;text-align:left">POC Analysis</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Mon 10/21</td>
-            <td style="padding:0.75rem">SPY long</td>
-            <td style="padding:0.75rem">POC at $428.50<br>Price pulled to $428.30<br>CVD: +$14M (absorption)</td>
-            <td style="padding:0.75rem">Entry: $428.40<br>Target: $430.00 (prev HVN)<br>Exit: $430.10</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$850</span><br>(+1.7R)</td>
-            <td style="padding:0.75rem"><strong>POC Bounce:</strong> Price respected POC as support. CVD showed +$14M absorption confirming buyers stepping in.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Tue 10/22</td>
-            <td style="padding:0.75rem">SPY long</td>
-            <td style="padding:0.75rem">POC migrated to $429.80<br>Price at $429.70<br>CVD: +$22M (strong buy)</td>
-            <td style="padding:0.75rem">Entry: $429.75<br>Target: $431.50 (HVN)<br>Exit: $431.65</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$950</span><br>(+1.9R)</td>
-            <td style="padding:0.75rem"><strong>POC Migration:</strong> POC moved from $428.50 → $429.80 overnight = trend strength. Traded pullback to new POC.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Wed 10/23</td>
-            <td style="padding:0.75rem">SPY short</td>
-            <td style="padding:0.75rem">POC at $431.20<br>Price at $433.80 (above value area)<br>CVD divergence: -$8M</td>
-            <td style="padding:0.75rem">Entry: $433.60<br>Target: $431.20 (POC magnet)<br>Exit: $431.10</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1,250</span><br>(+2.5R)</td>
-            <td style="padding:0.75rem"><strong>Overextension:</strong> Price 2.60 pts above POC (overvalued). CVD showed distribution. Shorted for mean reversion to POC.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1);background:rgba(255,82,82,0.05)">
-            <td style="padding:0.75rem">Wed 10/23</td>
-            <td style="padding:0.75rem">SPY long</td>
-            <td style="padding:0.75rem">POC at $431.20<br>Price tested $431.00<br>CVD: -$3M (weak)</td>
-            <td style="padding:0.75rem">Entry: $431.10<br>Stop: $430.50<br>Stopped: $430.50</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$300</span><br>(-1R)</td>
-            <td style="padding:0.75rem"><strong>POC Failure:</strong> CVD was negative (no absorption). POC broke down. Lesson: CVD must confirm POC holds.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Thu 10/24</td>
-            <td style="padding:0.75rem">SPY long</td>
-            <td style="padding:0.75rem">POC stayed at $431.20 (static)<br>Price at $429.50<br>LVN at $429.80 (thin)</td>
-            <td style="padding:0.75rem">Entry: $429.60<br>Target: $431.20 (POC)<br>Exit: $431.30</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$850</span><br>(+1.7R)</td>
-            <td style="padding:0.75rem"><strong>POC Magnet:</strong> Price below POC with LVN between = fast move expected. Bought for reversion to POC.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Fri 10/25</td>
-            <td style="padding:0.75rem">SPY long</td>
-            <td style="padding:0.75rem">POC at $431.90<br>Price at HVN $431.80<br>CVD: +$18M (absorption)</td>
-            <td style="padding:0.75rem">Entry: $431.85<br>Target: $433.50<br>Exit: $433.60</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$875</span><br>(+1.75R)</td>
-            <td style="padding:0.75rem"><strong>HVN + POC:</strong> POC coincided with HVN = highest probability support. CVD confirmed. Textbook setup.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Fri 10/25</td>
-            <td style="padding:0.75rem">SPY short</td>
-            <td style="padding:0.75rem">POC at $432.50<br>Price at LVN $435.20<br>CVD: -$11M (distribution)</td>
-            <td style="padding:0.75rem">Entry: $435.00<br>Target: $432.50 (POC)<br>Exit: $432.40</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1,300</span><br>(+2.6R)</td>
-            <td style="padding:0.75rem"><strong>LVN Rejection:</strong> Price at LVN (thin volume) with negative CVD = rejection likely. Shorted for reversion to POC.</td>
-          </tr>
-          <tr style="background:rgba(118,221,255,0.2)">
-            <td colspan="4" style="padding:0.75rem;text-align:right;font-weight:bold">WEEKLY TOTALS (7 trades, 5 days):</td>
-            <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#22c55e">+$5,775</span><br>(+11.6R)</td>
-            <td style="padding:0.75rem;font-weight:bold">Win Rate: 85.7% (6W / 1L)</td>
-          </tr>
-        </table>
+        <h5 style="margin:1.5rem 0 1rem 0">5-Day POC Trading Journal (SPY, October 21-25, 2024)</h5>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin:1.5rem 0">
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.75rem">
+              <strong style="color:#22c55e">Mon 10/21 - LONG</strong>
+              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$850</span>
+            </div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC at $428.50, Price $428.30, CVD +$14M</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $428.40 → <strong>Exit:</strong> $430.10</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC Bounce: Price respected POC support. CVD confirmed buyers (+1.7R)</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.75rem">
+              <strong style="color:#22c55e">Tue 10/22 - LONG</strong>
+              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$950</span>
+            </div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC migrated to $429.80, Price $429.70, CVD +$22M</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $429.75 → <strong>Exit:</strong> $431.65</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC Migration: POC moved $428.50→$429.80 = trend strength (+1.9R)</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.75rem">
+              <strong style="color:#22c55e">Wed 10/23 - SHORT</strong>
+              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$1,250</span>
+            </div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC $431.20, Price $433.80 (overextended), CVD -$8M</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $433.60 → <strong>Exit:</strong> $431.10</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Overextension: 2.60 pts above POC, CVD distribution. Mean reversion (+2.5R)</div>
+          </div>
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.75rem">
+              <strong style="color:#ff5252">Wed 10/23 - LONG</strong>
+              <span style="color:#ff5252;font-size:1.1rem;font-weight:600">-$300</span>
+            </div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.08);border-radius:4px"><strong>Setup:</strong> POC $431.20, Price $431.00, CVD -$3M (weak)</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $431.10 → <strong>Stop:</strong> $430.50</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC Failure: Negative CVD = no absorption. POC broke down (-1R)</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.75rem">
+              <strong style="color:#22c55e">Thu 10/24 - LONG</strong>
+              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$850</span>
+            </div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC static $431.20, Price $429.50, LVN $429.80</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $429.60 → <strong>Exit:</strong> $431.30</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC Magnet: Below POC with LVN = fast move expected (+1.7R)</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.75rem">
+              <strong style="color:#22c55e">Fri 10/25 - LONG</strong>
+              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$875</span>
+            </div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC $431.90, Price at HVN $431.80, CVD +$18M</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $431.85 → <strong>Exit:</strong> $433.60</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">HVN+POC: Highest probability support, CVD confirmed (+1.75R)</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.75rem">
+              <strong style="color:#22c55e">Fri 10/25 - SHORT</strong>
+              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$1,300</span>
+            </div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC $432.50, Price at LVN $435.20, CVD -$11M</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $435.00 → <strong>Exit:</strong> $432.40</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">LVN Rejection: Thin volume + negative CVD. Reversion to POC (+2.6R)</div>
+          </div>
+        </div>
+        <div style="background:rgba(118,221,255,0.15);border:2px solid rgba(118,221,255,0.3);border-radius:8px;padding:1.5rem;margin:1rem 0;text-align:center">
+          <strong style="font-size:1.1rem">WEEKLY TOTALS (7 trades, 5 days):</strong>
+          <div style="font-size:1.3rem;margin:0.5rem 0;color:#22c55e;font-weight:bold">+$5,775 (+11.6R)</div>
+          <div style="font-weight:600">Win Rate: 85.7% (6W / 1L)</div>
+        </div>
 
         <h5>POC Migration Analysis: The Week's Story</h5>
-
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Daily POC Movement (October 21-25, 2024)</caption>
-          <tr style="background:rgba(118,221,255,0.15);border-bottom:2px solid rgba(118,221,255,0.3)">
-            <th style="padding:0.75rem;text-align:left">Date</th>
-            <th style="padding:0.75rem;text-align:right">POC Level</th>
-            <th style="padding:0.75rem;text-align:right">Change</th>
-            <th style="padding:0.75rem;text-align:left">Interpretation</th>
-            <th style="padding:0.75rem;text-align:left">Trading Implication</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Mon 10/21</td>
-            <td style="padding:0.75rem;text-align:right">$428.50</td>
-            <td style="padding:0.75rem;text-align:right">—</td>
-            <td style="padding:0.75rem">Baseline</td>
-            <td style="padding:0.75rem">Trade pullbacks to POC (did, +$850)</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Tue 10/22</td>
-            <td style="padding:0.75rem;text-align:right">$429.80</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1.30</span></td>
-            <td style="padding:0.75rem"><strong>Migrating upward</strong> = bullish trend confirmed</td>
-            <td style="padding:0.75rem">Buy pullbacks to new POC (did, +$950)</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Wed 10/23</td>
-            <td style="padding:0.75rem;text-align:right">$431.20</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$1.40</span></td>
-            <td style="padding:0.75rem"><strong>Still migrating</strong> = trend continuation</td>
-            <td style="padding:0.75rem">Price above POC = overextended, short back to POC (+$1,250, then -$300 on reversal attempt)</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(118,221,255,0.1)">
-            <td style="padding:0.75rem">Thu 10/24</td>
-            <td style="padding:0.75rem;text-align:right">$431.20</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#fbbf24">$0.00</span></td>
-            <td style="padding:0.75rem"><strong>Static POC</strong> = consolidation/ranging</td>
-            <td style="padding:0.75rem">Mean reversion trades work (bought below POC, +$850)</td>
-          </tr>
-          <tr>
-            <td style="padding:0.75rem">Fri 10/25</td>
-            <td style="padding:0.75rem;text-align:right">$431.90</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$0.70</span></td>
-            <td style="padding:0.75rem"><strong>Resuming migration</strong> = trend resuming</td>
-            <td style="padding:0.75rem">Buy at POC +HVN (+$875), short from LVN (+$1,300)</td>
-          </tr>
-        </table>
+        <p style="font-weight:600;margin:1rem 0 0.5rem 0">Daily POC Movement (October 21-25, 2024)</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1.5rem 0">
+          <div style="background:rgba(118,221,255,0.08);border:1px solid rgba(118,221,255,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;margin-bottom:0.75rem">Mon 10/21</div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$428.50</strong></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(118,221,255,0.2)"><span style="font-size:0.85rem">Change:</span><strong>—</strong></div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Baseline</strong></div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Trade pullbacks to POC (did, +$850)</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;margin-bottom:0.75rem;color:#22c55e">Tue 10/22</div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$429.80</strong></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(34,197,94,0.2)"><span style="font-size:0.85rem">Change:</span><strong style="color:#22c55e">+$1.30</strong></div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Migrating upward</strong> = bullish trend confirmed</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Buy pullbacks to new POC (did, +$950)</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;margin-bottom:0.75rem;color:#22c55e">Wed 10/23</div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$431.20</strong></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(34,197,94,0.2)"><span style="font-size:0.85rem">Change:</span><strong style="color:#22c55e">+$1.40</strong></div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Still migrating</strong> = trend continuation</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Overextended, short to POC (+$1,250, -$300)</div>
+          </div>
+          <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;margin-bottom:0.75rem;color:#fbbf24">Thu 10/24</div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$431.20</strong></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(251,191,36,0.2)"><span style="font-size:0.85rem">Change:</span><strong style="color:#fbbf24">$0.00</strong></div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Static POC</strong> = consolidation/ranging</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Mean reversion works (bought below POC, +$850)</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;margin-bottom:0.75rem;color:#22c55e">Fri 10/25</div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$431.90</strong></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(34,197,94,0.2)"><span style="font-size:0.85rem">Change:</span><strong style="color:#22c55e">+$0.70</strong></div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Resuming migration</strong> = trend resuming</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Buy POC+HVN (+$875), short LVN (+$1,300)</div>
+          </div>
+        </div>
 
         <p><strong>Key Insight:</strong> Mon-Wed = migrating POC = trending market (trade WITH trend on pullbacks). Thu = static POC = ranging (mean reversion). Fri = POC migrates again = trend resumes.</p>
 
@@ -204,32 +195,26 @@
 
         <p><strong>Wednesday 10/23 Afternoon – The Failed Long (-$300):</strong></p>
 
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
-            <th style="padding:0.75rem;text-align:left">Time</th>
-            <th style="padding:0.75rem;text-align:left">What Happened</th>
-            <th style="padding:0.75rem;text-align:left">CVD Reading</th>
-            <th style="padding:0.75rem;text-align:left">Jordan's Mistake</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">2:15 PM</td>
-            <td style="padding:0.75rem">Price tested POC at $431.00</td>
-            <td style="padding:0.75rem">CVD: -$3M (negative)</td>
-            <td style="padding:0.75rem">Ignored CVD, assumed POC would hold</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">2:20 PM</td>
-            <td style="padding:0.75rem">Entered long at $431.10</td>
-            <td style="padding:0.75rem">CVD still negative (-$5M cumulative)</td>
-            <td style="padding:0.75rem">Entered without absorption confirmation</td>
-          </tr>
-          <tr>
-            <td style="padding:0.75rem">2:35 PM</td>
-            <td style="padding:0.75rem">POC broke, stopped at $430.50</td>
-            <td style="padding:0.75rem">CVD: -$9M by break</td>
-            <td style="padding:0.75rem"><strong>Lesson learned:</strong> POC needs CVD confirmation. No absorption = no trade.</td>
-          </tr>
-        </table>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1.5rem 0">
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">2:15 PM</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>What Happened:</strong> Price tested POC at $431.00</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>CVD:</strong> -$3M (negative)</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Mistake: Ignored CVD, assumed POC would hold</div>
+          </div>
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">2:20 PM</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>What Happened:</strong> Entered long at $431.10</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>CVD:</strong> -$5M cumulative</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Mistake: Entered without absorption confirmation</div>
+          </div>
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">2:35 PM</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>What Happened:</strong> POC broke, stopped at $430.50</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>CVD:</strong> -$9M by break</div>
+            <div style="font-size:0.85rem;font-style:italic;font-weight:600;color:#ff5252">Lesson: POC needs CVD confirmation. No absorption = no trade</div>
+          </div>
+        </div>
 
         <p><strong>What Jordan Should Have Done:</strong> When CVD is negative at POC test, it means sellers are in control. Wait for CVD to flip positive (+absorption) before entering. The POC itself isn't enough—you need BOTH POC + positive CVD.</p>
 
@@ -237,38 +222,31 @@
 
         <p><strong>Why this was the highest-probability trade of the week:</strong></p>
 
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <tr style="background:rgba(34,197,94,0.15);border-bottom:2px solid rgba(34,197,94,0.3)">
-            <th style="padding:0.75rem;text-align:left">Confluence Factor</th>
-            <th style="padding:0.75rem;text-align:left">Value</th>
-            <th style="padding:0.75rem;text-align:left">Why It Mattered</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-            <td style="padding:0.75rem"><strong>1. POC Level</strong></td>
-            <td style="padding:0.75rem">$431.90</td>
-            <td style="padding:0.75rem">Fair value price—where most volume traded</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-            <td style="padding:0.75rem"><strong>2. HVN (High Volume Node)</strong></td>
-            <td style="padding:0.75rem">$431.70-$432.00</td>
-            <td style="padding:0.75rem">Price accepted here previously = strong support zone</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-            <td style="padding:0.75rem"><strong>3. CVD Absorption</strong></td>
-            <td style="padding:0.75rem">+$18M in 15 min</td>
-            <td style="padding:0.75rem">Massive buying pressure = institutions absorbing supply</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-            <td style="padding:0.75rem"><strong>4. POC Migration</strong></td>
-            <td style="padding:0.75rem">$431.20 → $431.90</td>
-            <td style="padding:0.75rem">POC moving higher = trend strength confirmed</td>
-          </tr>
-          <tr>
-            <td colspan="3" style="padding:0.75rem;background:rgba(34,197,94,0.2);font-weight:bold">
-              <strong>Result:</strong> 4 confluences = textbook setup. Entry $431.85, target $433.50, potential exit $433.60. +$875 (+1.75R) in 2 hours.
-            </td>
-          </tr>
-        </table>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1.5rem 0">
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">1. POC Level</div>
+            <div style="font-size:0.9rem;margin-bottom:0.5rem"><strong>Value:</strong> $431.90</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Fair value price—where most volume traded</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">2. HVN (High Volume Node)</div>
+            <div style="font-size:0.9rem;margin-bottom:0.5rem"><strong>Value:</strong> $431.70-$432.00</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Price accepted here previously = strong support zone</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">3. CVD Absorption</div>
+            <div style="font-size:0.9rem;margin-bottom:0.5rem"><strong>Value:</strong> +$18M in 15 min</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Massive buying pressure = institutions absorbing supply</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">4. POC Migration</div>
+            <div style="font-size:0.9rem;margin-bottom:0.5rem"><strong>Value:</strong> $431.20 → $431.90</div>
+            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC moving higher = trend strength confirmed</div>
+          </div>
+        </div>
+        <div style="background:rgba(34,197,94,0.15);border:2px solid rgba(34,197,94,0.3);border-radius:8px;padding:1.5rem;margin:1rem 0;text-align:center">
+          <strong>Result:</strong> 4 confluences = textbook setup. Entry $431.85, target $433.50, exit $433.60. <span style="color:#22c55e;font-weight:bold">+$875 (+1.75R)</span> in 2 hours.
+        </div>
 
         <h5>Position Sizing & Risk Management</h5>
 
@@ -298,196 +276,199 @@
 
         <p><strong>Background:</strong> Brandon, a 2-year intermediate trader with a $65,000 account, spent 3 weeks studying Volume Profile theory. He understood POC migration, HVN/LVN concepts, and CVD divergence on paper. In March 2024, he felt confident enough to trade NQ futures using ONLY Plutus Flow signals. What followed was a masterclass in how theoretical knowledge without pattern recognition destroys accounts. Over 3 weeks, Brandon made 12 trades based on "Volume Profile setups" that violated every principle Jordan followed. His critical mistake: he saw the POC levels but ignored POC MIGRATION patterns, confused HVN support with LVN rejection zones, and completely dismissed CVD divergence warnings. The result: $31,450 in losses across 12 trades with a 16.7% win rate (2 wins, 10 losses).</p>
 
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Brandon's 3-Week Volume Profile Disaster (NQ Futures, March 2024)</caption>
-          <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
-            <th style="padding:0.75rem;text-align:left">Date</th>
-            <th style="padding:0.75rem;text-align:left">Trade</th>
-            <th style="padding:0.75rem;text-align:left">Brandon's "Setup"</th>
-            <th style="padding:0.75rem;text-align:left">What Volume Profile ACTUALLY Said</th>
-            <th style="padding:0.75rem;text-align:right">Result</th>
-            <th style="padding:0.75rem;text-align:left">Brandon's Mistake</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 4</td>
-            <td style="padding:0.75rem">NQ Long @ 18,020</td>
-            <td style="padding:0.75rem">"POC at 18,000—price pulled back to POC, BUY!"<br>CVD: -$42M (ignored)</td>
-            <td style="padding:0.75rem"><strong>POC STATIC 4 days:</strong> 18,000 → 18,000 → 18,000 = RANGING, not trending<br><strong>CVD -$42M:</strong> Massive distribution = sellers in control<br><strong>Reality:</strong> POC will break down</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,800</span><br>(-1R)</td>
-            <td style="padding:0.75rem">Bought at static POC with negative CVD. Thought "POC = support" but ignored that POC hasn't migrated = weak structure.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 5</td>
-            <td style="padding:0.75rem">NQ Long @ 17,950</td>
-            <td style="padding:0.75rem">"HVN at 17,950—high volume = support!"<br>POC now at 17,900</td>
-            <td style="padding:0.75rem"><strong>NOT an HVN—it's an LVN:</strong> 17,950 had THIN volume = rejection zone, not support<br><strong>POC MIGRATED DOWN:</strong> 18,000 → 17,900 = downtrend confirmed<br><strong>Reality:</strong> Should SHORT, not buy</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$3,100</span><br>(-1R)</td>
-            <td style="padding:0.75rem">Confused LVN with HVN. LVN = fast rejection. Also ignored POC migrating DOWN = bearish trend.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 6</td>
-            <td style="padding:0.75rem">NQ Short @ 17,820</td>
-            <td style="padding:0.75rem">"POC at 17,850—price BELOW POC, must fall more!"</td>
-            <td style="padding:0.75rem"><strong>POC MIGRATED UP:</strong> 17,900 → 17,850 = still moving = strong downtrend REVERSING<br><strong>CVD: +$68M:</strong> Huge absorption = buyers stepping in<br><strong>Price at LVN 17,820:</strong> No resistance below = fast move UP likely</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$4,200</span><br>(-1.5R)</td>
-            <td style="padding:0.75rem">Shorted AFTER POC started migrating up. Ignored +$68M CVD absorption. Shorted at LVN = no support for his short thesis.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1);background:rgba(34,197,94,0.05)">
-            <td style="padding:0.75rem">Mar 7</td>
-            <td style="padding:0.75rem">NQ Long @ 17,880</td>
-            <td style="padding:0.75rem">"POC at 17,900—close enough, and CVD +$55M = BUY!"</td>
-            <td style="padding:0.75rem"><strong>CORRECT:</strong> POC migrating up, positive CVD, price near POC<br><strong>Setup aligned:</strong> All 3 factors bullish</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$2,400</span><br>(+1R)</td>
-            <td style="padding:0.75rem"><strong>WINNER:</strong> Finally followed the checklist—POC + CVD + price location all aligned.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 8</td>
-            <td style="padding:0.75rem">NQ Long @ 18,150</td>
-            <td style="padding:0.75rem">"Price at HVN 18,150—support! POC at 18,000, but HVN is stronger!"</td>
-            <td style="padding:0.75rem"><strong>Price 150 pts ABOVE POC:</strong> Overextended = mean reversion to POC likely<br><strong>CVD: -$31M:</strong> Distribution at highs = exhaustion<br><strong>"HVN":</strong> Actually OLD HVN from 2 days ago = stale level</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$3,600</span><br>(-1R)</td>
-            <td style="padding:0.75rem">Bought 150 pts above POC thinking HVN would hold. Ignored CVD divergence. Used STALE volume profile data.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 11</td>
-            <td style="padding:0.75rem">NQ Short @ 18,200</td>
-            <td style="padding:0.75rem">"Way above POC (18,050)—OVERVALUED, must revert!"</td>
-            <td style="padding:0.75rem"><strong>POC MIGRATING UP:</strong> 18,000 → 18,050 → 18,080 (3 days) = TRENDING<br><strong>CVD: +$89M:</strong> Persistent buying = trend continuation<br><strong>Reality:</strong> Price will pull to NEW POC, not old one</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$5,100</span><br>(-1.5R)</td>
-            <td style="padding:0.75rem">Shorted in a migrating POC trend. Ignored that POC MIGRATION = trend strength. Fought the trend.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 12</td>
-            <td style="padding:0.75rem">NQ Long @ 18,380</td>
-            <td style="padding:0.75rem">"POC at 18,350—buying pullback to POC!"<br>CVD: -$22M (dismissed)</td>
-            <td style="padding:0.75rem"><strong>POC STATIC 2 days:</strong> 18,350 → 18,350 = rally losing momentum<br><strong>CVD -$22M:</strong> Distribution = sellers taking profits<br><strong>Price ABOVE value area:</strong> Overextended</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$2,900</span><br>(-1R)</td>
-            <td style="padding:0.75rem">Bought "pullback" but POC wasn't migrating = rally was fake. Ignored CVD warning of distribution.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 13</td>
-            <td style="padding:0.75rem">NQ Long @ 18,280</td>
-            <td style="padding:0.75rem">"LVN at 18,250—thin volume, price will blow through, BUY BEFORE IT RIPS!"</td>
-            <td style="padding:0.75rem"><strong>LVN = REJECTION ZONE:</strong> Thin volume = price doesn't accept here<br><strong>CVD: -$47M:</strong> Selling into the level<br><strong>Reality:</strong> LVN will reject DOWN, not break UP</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$3,400</span><br>(-1R)</td>
-            <td style="padding:0.75rem">Completely backward: LVN with negative CVD = REJECTION, not potential breakout. Bought into a trap.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 14</td>
-            <td style="padding:0.75rem">NQ Short @ 18,100</td>
-            <td style="padding:0.75rem">"POC at 18,200—price below POC = undervalued, but trend is down, SHORT!"</td>
-            <td style="padding:0.75rem"><strong>POC MIGRATION PAUSED:</strong> 18,200 → 18,200 (static) = trend exhaustion<br><strong>CVD: +$71M:</strong> Massive absorption = buyers coming in<br><strong>Price at HVN 18,100:</strong> High acceptance zone = support likely</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$4,800</span><br>(-1.5R)</td>
-            <td style="padding:0.75rem">Shorted at HVN with +$71M CVD absorption. Ignored static POC = trend ending. Shorted the bottom.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1);background:rgba(34,197,94,0.05)">
-            <td style="padding:0.75rem">Mar 15</td>
-            <td style="padding:0.75rem">NQ Long @ 18,180</td>
-            <td style="padding:0.75rem">"POC at 18,200, CVD +$88M, HVN support at 18,180—ALL 3 align!"</td>
-            <td style="padding:0.75rem"><strong>CORRECT:</strong> Confluence trade—POC near HVN + positive CVD + price at support<br><strong>Setup perfect:</strong> All Volume Profile factors aligned</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#22c55e">+$3,200</span><br>(+1R)</td>
-            <td style="padding:0.75rem"><strong>WINNER:</strong> Second correct trade. Used POC + CVD + HVN confluence properly.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 18</td>
-            <td style="padding:0.75rem">NQ Long @ 18,420</td>
-            <td style="padding:0.75rem">"POC migrating up fast (18,200 → 18,350 → 18,400)—TREND STRONG, BUY!"</td>
-            <td style="padding:0.75rem"><strong>POC migrating TOO FAST:</strong> +200 pts in 3 days = parabolic = exhaustion coming<br><strong>CVD DIVERGENCE:</strong> Price up, but CVD flat (0 change) = no new buyers<br><strong>Price 20 pts above POC:</strong> Overextended</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$4,100</span><br>(-1R)</td>
-            <td style="padding:0.75rem">Chased parabolic POC migration. Ignored CVD DIVERGENCE (price up, CVD flat = trap). Bought at exhaustion.</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem">Mar 19</td>
-            <td style="padding:0.75rem">NQ Short @ 18,250</td>
-            <td style="padding:0.75rem">"POC crashed from 18,400 to 18,300—MIGRATION REVERSING, SHORT!"<br>CVD: +$94M (ignored)</td>
-            <td style="padding:0.75rem"><strong>POC pullback ≠ reversal:</strong> POC at 18,300 still 100 pts higher than 3 days ago = still bullish<br><strong>CVD +$94M:</strong> HUGE buying pressure = dip being bought<br><strong>Price at NEW POC:</strong> Perfect long potential entry, not short</td>
-            <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$5,950</span><br>(-2R)</td>
-            <td style="padding:0.75rem">Shorted a healthy POC pullback in an uptrend. Ignored +$94M CVD. Mistook consolidation for reversal.</td>
-          </tr>
-          <tr style="background:rgba(255,82,82,0.4)">
-            <td colspan="4" style="padding:0.75rem;text-align:right;font-weight:bold">3-WEEK DAMAGE:</td>
-            <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#ff5252">-$31,450</span><br>(-11.6R)</td>
-            <td style="padding:0.75rem;font-weight:bold">Win Rate: 16.7% (2W / 10L)</td>
-          </tr>
-        </table>
+        <h5 style="margin:1.5rem 0 1rem 0">Brandon's 3-Week Volume Profile Disaster (NQ Futures, March 2024)</h5>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin:1.5rem 0">
+          <!-- Trade 1 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 4 - Long @18,020</strong>
+              <span style="color:#ff5252;font-weight:600">-$2,800</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> Bought at static POC with negative CVD (-$42M). Ignored POC hasn't migrated = weak structure.
+            </div>
+          </div>
+          <!-- Trade 2 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 5 - Long @17,950</strong>
+              <span style="color:#ff5252;font-weight:600">-$3,100</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> Confused LVN with HVN. LVN = rejection. Also ignored POC migrating DOWN = bearish.
+            </div>
+          </div>
+          <!-- Trade 3 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 6 - Short @17,820</strong>
+              <span style="color:#ff5252;font-weight:600">-$4,200</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> Shorted AFTER POC started migrating up. Ignored +$68M CVD absorption.
+            </div>
+          </div>
+          <!-- Trade 4 - WIN -->
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 7 - Long @17,880</strong>
+              <span style="color:#22c55e;font-weight:600">+$2,400</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Winner:</strong> Finally followed checklist—POC + CVD + price location all aligned.
+            </div>
+          </div>
+          <!-- Trade 5 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 8 - Long @18,150</strong>
+              <span style="color:#ff5252;font-weight:600">-$3,600</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> Bought 150 pts above POC. Ignored CVD divergence. Used STALE volume profile data.
+            </div>
+          </div>
+          <!-- Trade 6 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 11 - Short @18,200</strong>
+              <span style="color:#ff5252;font-weight:600">-$5,100</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> Shorted in a migrating POC trend. POC MIGRATION = trend strength. Fought the trend.
+            </div>
+          </div>
+          <!-- Trade 7 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 12 - Long @18,380</strong>
+              <span style="color:#ff5252;font-weight:600">-$2,900</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> Bought "pullback" but POC wasn't migrating = rally was fake. Ignored CVD distribution.
+            </div>
+          </div>
+          <!-- Trade 8 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 13 - Long @18,280</strong>
+              <span style="color:#ff5252;font-weight:600">-$3,400</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> LVN with negative CVD = REJECTION, not breakout. Bought into a trap.
+            </div>
+          </div>
+          <!-- Trade 9 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 14 - Short @18,100</strong>
+              <span style="color:#ff5252;font-weight:600">-$4,800</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> Shorted at HVN with +$71M CVD absorption. Ignored static POC. Shorted the bottom.
+            </div>
+          </div>
+          <!-- Trade 10 - WIN -->
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 15 - Long @18,180</strong>
+              <span style="color:#22c55e;font-weight:600">+$3,200</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Winner:</strong> Used POC + CVD + HVN confluence properly. All factors aligned.
+            </div>
+          </div>
+          <!-- Trade 11 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 18 - Long @18,420</strong>
+              <span style="color:#ff5252;font-weight:600">-$4,100</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> Chased parabolic POC migration. Ignored CVD DIVERGENCE. Bought at exhaustion.
+            </div>
+          </div>
+          <!-- Trade 12 -->
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem">
+              <strong>Mar 19 - Short @18,250</strong>
+              <span style="color:#ff5252;font-weight:600">-$5,950</span>
+            </div>
+            <div style="font-size:0.85rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px;margin-bottom:0.5rem">
+              <strong>Mistake:</strong> Shorted POC pullback in uptrend. Ignored +$94M CVD. Mistook consolidation for reversal.
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(255,82,82,0.2);border:2px solid rgba(255,82,82,0.4);border-radius:8px;padding:1.5rem;margin:1rem 0;text-align:center">
+          <strong style="font-size:1.1rem">3-WEEK DAMAGE:</strong>
+          <div style="font-size:1.3rem;margin:0.5rem 0;color:#ff5252;font-weight:bold">-$31,450 (-11.6R)</div>
+          <div style="font-weight:600">Win Rate: 16.7% (2W / 10L)</div>
+        </div>
 
         <h5>The Pattern: Volume Profile Theory vs Volume Profile Reality</h5>
-
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Brandon's Misunderstandings: What He Read vs What He Did</caption>
-          <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
-            <th style="padding:0.75rem;text-align:left">Volume Profile Concept</th>
-            <th style="padding:0.75rem;text-align:left">What Brandon Read (Theory)</th>
-            <th style="padding:0.75rem;text-align:left">What Brandon Did (Reality)</th>
-            <th style="padding:0.75rem;text-align:left">Cost of Mistake</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem"><strong>POC Migration</strong></td>
-            <td style="padding:0.75rem">"POC migrating = trend strength"</td>
-            <td style="padding:0.75rem">Saw POC levels but ignored MIGRATION DIRECTION. Bought at POC without checking if POC was moving up/down/static.</td>
-            <td style="padding:0.75rem"><span style="color:#ff5252">-$13,800</span><br>(5 trades)</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem"><strong>CVD Divergence</strong></td>
-            <td style="padding:0.75rem">"CVD confirms price action"</td>
-            <td style="padding:0.75rem">Completely dismissed CVD readings. Entered trades with NEGATIVE CVD (distribution) thinking "POC is enough."</td>
-            <td style="padding:0.75rem"><span style="color:#ff5252">-$10,400</span><br>(4 trades)</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem"><strong>HVN vs LVN</strong></td>
-            <td style="padding:0.75rem">"HVN = support, LVN = fast moves"</td>
-            <td style="padding:0.75rem">Confused the two. Bought at LVN thinking it was HVN. Shorted at HVN thinking it was LVN. Backward logic.</td>
-            <td style="padding:0.75rem"><span style="color:#ff5252">-$11,200</span><br>(4 trades)</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-            <td style="padding:0.75rem"><strong>Static POC</strong></td>
-            <td style="padding:0.75rem">"Static POC = ranging market"</td>
-            <td style="padding:0.75rem">Ignored static POC warnings. Thought "POC = support" regardless of migration. Bought into failing structure.</td>
-            <td style="padding:0.75rem"><span style="color:#ff5252">-$5,700</span><br>(2 trades)</td>
-          </tr>
-          <tr>
-            <td style="padding:0.75rem"><strong>Confluence Trades</strong></td>
-            <td style="padding:0.75rem">"POC + CVD + HVN = best setup"</td>
-            <td style="padding:0.75rem">Only used 1-2 factors per trade. When he used ALL 3 (trades #4 and #10), he won. Otherwise, he lost.</td>
-            <td style="padding:0.75rem"><span style="color:#22c55e">+$5,600</span><br>(2 wins)<br><span style="color:#ff5252">-$37,050</span><br>(10 losses)</td>
-          </tr>
-        </table>
+        <p style="font-weight:600;margin:1rem 0 0.5rem 0">Brandon's Misunderstandings: What He Read vs What He Did</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin:1.5rem 0">
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">POC Migration</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(139,92,246,0.1);border-radius:4px"><strong>Theory:</strong> "POC migrating = trend strength"</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>Reality:</strong> Saw POC levels but ignored migration direction. Bought without checking if POC moving up/down/static.</div>
+            <div style="font-weight:600;text-align:center;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(255,82,82,0.2)"><span style="color:#ff5252">-$13,800</span> (5 trades)</div>
+          </div>
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">CVD Divergence</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(139,92,246,0.1);border-radius:4px"><strong>Theory:</strong> "CVD confirms price action"</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>Reality:</strong> Dismissed CVD readings. Entered with NEGATIVE CVD thinking "POC is enough."</div>
+            <div style="font-weight:600;text-align:center;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(255,82,82,0.2)"><span style="color:#ff5252">-$10,400</span> (4 trades)</div>
+          </div>
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">HVN vs LVN</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(139,92,246,0.1);border-radius:4px"><strong>Theory:</strong> "HVN = support, LVN = fast moves"</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>Reality:</strong> Confused the two. Bought at LVN thinking HVN. Shorted at HVN thinking LVN. Backward logic.</div>
+            <div style="font-weight:600;text-align:center;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(255,82,82,0.2)"><span style="color:#ff5252">-$11,200</span> (4 trades)</div>
+          </div>
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">Static POC</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(139,92,246,0.1);border-radius:4px"><strong>Theory:</strong> "Static POC = ranging market"</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>Reality:</strong> Ignored static POC warnings. Thought "POC = support" regardless of migration. Bought failing structure.</div>
+            <div style="font-weight:600;text-align:center;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(255,82,82,0.2)"><span style="color:#ff5252">-$5,700</span> (2 trades)</div>
+          </div>
+          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">Confluence Trades</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(139,92,246,0.1);border-radius:4px"><strong>Theory:</strong> "POC + CVD + HVN = best setup"</div>
+            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>Reality:</strong> Only used 1-2 factors per trade. When he used ALL 3 (trades #4, #10), he won. Otherwise lost.</div>
+            <div style="font-weight:600;text-align:center;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(255,82,82,0.2)"><span style="color:#22c55e">+$5,600</span> (2 wins) / <span style="color:#ff5252">-$37,050</span> (10 losses)</div>
+          </div>
+        </div>
 
         <h5>What Brandon Should Have Done: The Volume Profile Checklist</h5>
-
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-          <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Circuit Breaker Rules Brandon Violated (And How They Would Have Saved $31K)</caption>
-          <tr style="background:rgba(34,197,94,0.15);border-bottom:2px solid rgba(34,197,94,0.3)">
-            <th style="padding:0.75rem;text-align:left">Circuit Breaker Rule</th>
-            <th style="padding:0.75rem;text-align:left">How to Check</th>
-            <th style="padding:0.75rem;text-align:left">Trades Saved</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-            <td style="padding:0.75rem"><strong>Rule 1: POC Migration Check</strong></td>
-            <td style="padding:0.75rem">Before potential entry, compare POC levels over last 3-5 days:<br>• POC moving UP = buy pullbacks<br>• POC moving DOWN = sell rallies<br>• POC STATIC = mean reversion only<br><strong>NEVER</strong> buy at POC without checking migration first.</td>
-            <td style="padding:0.75rem">Would have prevented trades #1, #2, #6, #7, #12<br><span style="color:#22c55e">Saved: $18,950</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-            <td style="padding:0.75rem"><strong>Rule 2: CVD Confirmation (Non-Negotiable)</strong></td>
-            <td style="padding:0.75rem">Before EVERY potential entry, check CVD:<br>• Long trade = CVD MUST be positive (+absorption)<br>• Short trade = CVD MUST be negative (distribution)<br>• If CVD contradicts price, DO NOT TRADE.<br><strong>CVD > Price Location.</strong></td>
-            <td style="padding:0.75rem">Would have prevented trades #1, #5, #8, #12<br><span style="color:#22c55e">Saved: $13,400</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-            <td style="padding:0.75rem"><strong>Rule 3: HVN ≠ LVN (Know the Difference)</strong></td>
-            <td style="padding:0.75rem">Check Plutus Volume Profile histogram:<br>• <strong>HVN:</strong> Wide bars = high acceptance = support/resistance<br>• <strong>LVN:</strong> Thin bars = rejection = fast moves<br>Do NOT buy at LVN thinking it's support. Do NOT short at HVN thinking it's resistance.</td>
-            <td style="padding:0.75rem">Would have prevented trades #2, #8, #9<br><span style="color:#22c55e">Saved: $11,700</span></td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-            <td style="padding:0.75rem"><strong>Rule 4: Confluence or No Trade</strong></td>
-            <td style="padding:0.75rem">Only enter when 3 factors align:<br>1. POC location + migration direction<br>2. CVD confirms direction<br>3. HVN/LVN supports thesis<br>If ANY factor is missing or contradicts, skip the trade.</td>
-            <td style="padding:0.75rem">Would have prevented 8 of 10 losses<br><span style="color:#22c55e">Saved: $29,050</span></td>
-          </tr>
-          <tr>
-            <td style="padding:0.75rem"><strong>Rule 5: CVD Divergence = Immediate Exit</strong></td>
-            <td style="padding:0.75rem">If in a trade and CVD diverges from price:<br>• Long trade + CVD falling = EXIT NOW<br>• Short trade + CVD rising = EXIT NOW<br>Divergence means your thesis is wrong. Don't wait for stop loss.</td>
-            <td style="padding:0.75rem">Would have reduced loss on trades #11, #12<br><span style="color:#22c55e">Saved: $4,200</span></td>
-          </tr>
-        </table>
+        <p style="font-weight:600;margin:1rem 0 0.5rem 0">Circuit Breaker Rules Brandon Violated (And How They Would Have Saved $31K)</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin:1.5rem 0">
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">Rule 1: POC Migration Check</div>
+            <div style="font-size:0.85rem;margin-bottom:0.75rem;line-height:1.6">Before entry, compare POC levels over last 3-5 days:<br>• POC moving UP = buy pullbacks<br>• POC moving DOWN = sell rallies<br>• POC STATIC = mean reversion only<br><strong>NEVER</strong> buy at POC without checking migration first.</div>
+            <div style="font-size:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(34,197,94,0.2);font-weight:600;text-align:center">Prevented trades #1, #2, #6, #7, #12<br><span style="color:#22c55e">Saved: $18,950</span></div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">Rule 2: CVD Confirmation (Non-Negotiable)</div>
+            <div style="font-size:0.85rem;margin-bottom:0.75rem;line-height:1.6">Before EVERY entry, check CVD:<br>• Long trade = CVD MUST be positive<br>• Short trade = CVD MUST be negative<br>• If CVD contradicts price, DO NOT TRADE<br><strong>CVD > Price Location</strong></div>
+            <div style="font-size:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(34,197,94,0.2);font-weight:600;text-align:center">Prevented trades #1, #5, #8, #12<br><span style="color:#22c55e">Saved: $13,400</span></div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">Rule 3: HVN ≠ LVN (Know the Difference)</div>
+            <div style="font-size:0.85rem;margin-bottom:0.75rem;line-height:1.6">Check Plutus Volume Profile histogram:<br>• <strong>HVN:</strong> Wide bars = support/resistance<br>• <strong>LVN:</strong> Thin bars = fast moves<br>Do NOT buy at LVN. Do NOT short at HVN.</div>
+            <div style="font-size:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(34,197,94,0.2);font-weight:600;text-align:center">Prevented trades #2, #8, #9<br><span style="color:#22c55e">Saved: $11,700</span></div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">Rule 4: Confluence or No Trade</div>
+            <div style="font-size:0.85rem;margin-bottom:0.75rem;line-height:1.6">Only enter when 3 factors align:<br>1. POC location + migration direction<br>2. CVD confirms direction<br>3. HVN/LVN supports thesis<br>If ANY factor missing, skip the trade.</div>
+            <div style="font-size:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(34,197,94,0.2);font-weight:600;text-align:center">Prevented 8 of 10 losses<br><span style="color:#22c55e">Saved: $29,050</span></div>
+          </div>
+          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
+            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">Rule 5: CVD Divergence = Immediate Exit</div>
+            <div style="font-size:0.85rem;margin-bottom:0.75rem;line-height:1.6">If in a trade and CVD diverges from price:<br>• Long trade + CVD falling = EXIT NOW<br>• Short trade + CVD rising = EXIT NOW<br>Divergence means your thesis is wrong.</div>
+            <div style="font-size:0.85rem;padding-top:0.75rem;border-top:1px solid rgba(34,197,94,0.2);font-weight:600;text-align:center">Reduced loss on trades #11, #12<br><span style="color:#22c55e">Saved: $4,200</span></div>
+          </div>
+        </div>
 
         <h5>The Aftermath: Brandon's Recovery Journey</h5>
 
@@ -767,11 +748,7 @@ Action: Trade pullbacks to POC</code></pre>
       <blockquote><strong>Educational only.</strong> Trading involves risk.</blockquote>
       <p><em>"Volume Profile shows where price was accepted. Trade toward fair value, away from rejection."</em></p>
       <p><strong>— Signal Pilot Education Team</strong></p>
-    </div></div>
     </div>
-
-  </div>
-
 
   <div class="wrap nav-article">
   <a class="btn btn-ghost" href="/curriculum/intermediate/28-janus-atlas-advanced.html">&larr; Previous Lesson</a>
