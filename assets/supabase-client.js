@@ -81,75 +81,81 @@
   async function initAuthListener() {
     if (!supabase) return;
 
-    // Get current session
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session?.user) {
-      logger.log('[Supabase] 🔄 Found existing session, loading cloud progress...');
-      notifyAuthStateChange(session.user);
+    // Check if we just reloaded from a cloud load (prevent ANY reload logic)
+    const justReloaded = sessionStorage.getItem('sp_just_loaded_from_cloud');
+    if (justReloaded) {
+      logger.log('[Supabase] ℹ️ Already loaded from cloud - skipping all reload logic');
+      sessionStorage.removeItem('sp_just_loaded_from_cloud');
 
-      // CRITICAL: Mark that we've handled an existing session BEFORE any other checks
-      // This prevents the SIGNED_IN event handler from running on subsequent reloads
-      hasHandledExistingSession = true;
-
-      // Check if we just reloaded from a cloud load (prevent infinite reload loop)
-      const justReloaded = sessionStorage.getItem('sp_just_loaded_from_cloud');
-      if (justReloaded) {
-        logger.log('[Supabase] ℹ️ Already loaded from cloud (preventing reload loop)');
-        sessionStorage.removeItem('sp_just_loaded_from_cloud');
-        return; // Don't load again
+      // Still need to set up UI and auto-sync for the session
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        notifyAuthStateChange(session.user);
       }
 
-      // CRITICAL FIX: Load cloud progress for existing sessions!
-      // This was missing - only loaded on SIGNED_IN event, not existing sessions
-      const loadResult = await loadProgressFromCloud();
+      // Set up auth listener for future changes (sign out, etc.) but don't reload
+      supabase.auth.onAuthStateChange(async (event, session) => {
+        logger.log('[Supabase] Auth event:', event);
 
-      if (loadResult?.data) {
-        logger.log('[Supabase] ✅ Cloud progress loaded from existing session. Reloading...');
-        // Set flag to prevent reload loop
-        sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
-        // Reload page to reflect loaded progress
-        setTimeout(() => window.location.reload(), 500);
-      } else {
-        logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
-        // No cloud data, sync local progress up
-        await syncProgressToCloud();
-      }
+        if (event === 'SIGNED_OUT') {
+          notifyAuthStateChange(null);
+        } else if (event === 'USER_UPDATED') {
+          notifyAuthStateChange(session?.user || null);
+        }
+        // Ignore SIGNED_IN events after reload
+      });
+
+      return; // Exit early - no reload logic
     }
 
-    // Listen for auth changes (NEW sign-ins, sign-outs, etc.)
+    // Regular flow for first load
+    const { data: { session } } = await supabase.auth.getSession();
+
+    // Set up auth listener FIRST before any async operations
     supabase.auth.onAuthStateChange(async (event, session) => {
       logger.log('[Supabase] Auth event:', event);
 
-      if (event === 'SIGNED_IN' || event === 'USER_UPDATED') {
+      if (event === 'SIGNED_IN') {
         notifyAuthStateChange(session?.user || null);
 
-        // Load and sync progress after NEW sign in
-        if (event === 'SIGNED_IN') {
-          // Skip if we already handled an existing session (prevents double reload)
-          if (hasHandledExistingSession) {
-            logger.log('[Supabase] ℹ️ Skipping SIGNED_IN event - already handled existing session');
-            return;
-          }
-
-          // First, try to load cloud progress (if it exists)
+        // Only handle NEW sign-ins (not existing sessions)
+        if (!hasHandledExistingSession) {
+          logger.log('[Supabase] 📝 New sign-in detected, loading cloud progress...');
           const loadResult = await loadProgressFromCloud();
 
           if (loadResult?.data) {
-            logger.log('[Supabase] ✅ Cloud progress loaded. Reloading page to show updated progress...');
-            // Set flag to prevent reload loop
+            logger.log('[Supabase] ✅ Cloud progress loaded from new sign-in. Reloading...');
             sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
-            // Reload page to reflect loaded progress
             setTimeout(() => window.location.reload(), 500);
           } else {
             logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
-            // No cloud data, sync local progress up
             await syncProgressToCloud();
           }
         }
+      } else if (event === 'USER_UPDATED') {
+        notifyAuthStateChange(session?.user || null);
       } else if (event === 'SIGNED_OUT') {
         notifyAuthStateChange(null);
       }
     });
+
+    // Handle existing session
+    if (session?.user) {
+      logger.log('[Supabase] 🔄 Found existing session, loading cloud progress...');
+      notifyAuthStateChange(session.user);
+      hasHandledExistingSession = true;
+
+      const loadResult = await loadProgressFromCloud();
+
+      if (loadResult?.data) {
+        logger.log('[Supabase] ✅ Cloud progress loaded from existing session. Reloading...');
+        sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
+        setTimeout(() => window.location.reload(), 500);
+      } else {
+        logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
+        await syncProgressToCloud();
+      }
+    }
   }
 
   // Sign Up
