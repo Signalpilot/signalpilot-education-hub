@@ -20,7 +20,7 @@
     // Extract lesson ID from URL: /curriculum/beginner/01-the-liquidity-lie.html → beginner-01
     // Now supports all 7 tiers including bridges and mastery tiers
     const path = window.location.pathname;
-    const match = path.match(/curriculum\/(beginner-bridge|intermediate-bridge|advanced-mastery|professional-capstone|beginner|intermediate|advanced)\/(\d+)-/);
+    const match = path.match(/curriculum\/(beginner|intermediate|advanced|professional)\/(\d+)-/);
 
     if (match) {
       currentLessonId = `${match[1]}-${match[2]}`;

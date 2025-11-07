@@ -58,7 +58,7 @@ class SignalPilotChatbot {
 **Duration:** 12-15 min per lesson
 **Best for:** Traders ready for advanced order flow concepts`,
 
-            advanced: `**Advanced Tier** (15+ lessons) - Implementation & automation
+            advanced: `**Advanced Tier** (27 lessons) - Implementation & automation
 
 📚 [View All Advanced Lessons](/advanced.html)
 
