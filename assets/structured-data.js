@@ -53,7 +53,7 @@
       "courseWorkload": "PT40H"
     },
     "educationalLevel": "Beginner to Advanced",
-    "numberOfCredits": 42,
+    "numberOfCredits": 82,
     "about": [
       "Trading",
       "Order Flow",
