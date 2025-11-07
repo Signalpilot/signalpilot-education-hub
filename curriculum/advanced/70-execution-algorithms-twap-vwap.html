@@ -162,7 +162,12 @@
       </tr>
     </table>
     <p><strong>Lisa's Recovery (June-July 2024):</strong> After $34K in avoidable slippage, Lisa implemented execution algos: (1) <strong>VWAP algo</strong> for orders > 5,000 shares with ADV < 10M (participation limit 8-12%), (2) <strong>TWAP algo</strong> for time-sensitive entries (spread over 2-4 hours), (3) <strong>Iceberg orders</strong> for all blocks > 2,000 shares (display 10% max), (4) <strong>No execution during lunch</strong> (12-2 PM = low liquidity), (5) <strong>Smart routing</strong> across 4 venues to find best liquidity. Result: Avg slippage dropped from 0.9% to 0.11% (8× improvement). Over 8 weeks with 14 trades, saved $22,400 in slippage vs old method. Same analysis, 8× better execution.</p>
-    <p><b>The lesson: Lisa's stock picking was profitable (82% direction accuracy), but retail execution at institutional scale destroyed returns. Market orders for 20,000-share blocks = 0.5-1.2% slippage instantly as HFTs front-run and liquidity exhausts. Visible full-size orders = price pumps before fill. Aggressive execution during low-volume periods = moving your own market. The difference: VWAP algo spreads 20K shares over 4 hours, blends into natural volume flow, participation limits prevent impact (8-12% of volume max), smart routing finds hidden liquidity. Result: 0.05-0.15% slippage vs 0.9% = 6-18× better. On $1M orders, that's $8,500 saved per trade. Execution algorithms aren't optional at scale—they're the difference between profitable and unprofitable institutional trading. If you're trading blocks > 5,000 shares without algos, you're paying 0.5-2% unnecessarily. That's the tax of ignorance.</b></p>
+    <p><b>The lesson: Lisa's stock picking was profitable (82% direction accuracy), but retail execution at institutional scale destroyed returns. Market orders for 20,000-share blocks = 0.5-1.2% slippage instantly as HFTs front-run and liquidity exhausts. Visible full-size orders = price pumps before fill. Aggressive execution during low-volume periods = moving your own market. The difference: VWAP algo spreads 20K shares over 4 hours, blends into natural volume flow, participation limits prevent impact (8-12% of volume max), smart routing finds hidden liquidity. Result: 0.05-0.15% slippage vs 0.9% = 6-18× better. On $1M orders, that's $8,500 saved per trade. Execution algorithms aren't optional at scale—they're the difference between profitable and unprofitable institutional trading. If you're trading blocks > 5,000 shares without algos, you're paying 0.5-2% unnecessarily. That's the tax of ignorance.</b></p>      <div class="callout-info">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p><strong>Quick Check:</strong> Can you explain the key concept in your own words? If not, reread the section above.</p>
+      </div>
+
+
   </div>
     </div>
   </header>
@@ -521,7 +526,12 @@
 
   <h3>How POV Works</h3>
   <p><strong>Concept:</strong> Trade as fixed % of market volume (participation rate)</p>
-  <p><strong>Example:</strong> POV 10% → if market trades 1,000 shares/minute, algo trades 100 shares/minute</p>
+  <p><strong>Example:</strong> POV 10% → if market trades 1,000 shares/minute, algo trades 100 shares/minute</p>      <div class="callout-info">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p><strong>Halfway There:</strong> You're making progress. Take a 2-minute break, then review your notes.</p>
+      </div>
+
+
 
   <h3>POV Execution Behavior</h3>
   <p><strong>High volume period:</strong> Market trading 5,000 shares/min → POV trades 500 shares/min</p>
@@ -814,7 +824,12 @@
       </ul>
     </details>
 
-    <p><strong>Scenario B:</strong> Bullish earnings report just released for NVDA at 4:05 PM. You want to buy 150K shares at open tomorrow (conviction trade, expect gap up). Which algo?</p>
+    <p><strong>Scenario B:</strong> Bullish earnings report just released for NVDA at 4:05 PM. You want to buy 150K shares at open tomorrow (conviction trade, expect gap up). Which algo?</p>      <div class="callout-info">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p><strong>Almost Done:</strong> You're in the final stretch. Focus on how you'll apply this knowledge.</p>
+      </div>
+
+
     <details>
       <summary>Show Answer</summary>
       <p><strong>Answer: Implementation Shortfall (IS) algo, 50% in first 30 minutes, complete within 2 hours.</strong></p>
