@@ -380,32 +380,25 @@ $99.50       200 |     900  = -700    Sellers at low
 
       <h3 id="three-types-of-footprint-volume">Three Types of Footprint Volume</h3>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Volume Type</th>
-            <th>What It Measures</th>
-            <th>Trading Interpretation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Ask Volume</strong></td>
-            <td>Market buy orders hitting the ask (lifting offers)</td>
-            <td>Buying aggression—institutions willing to pay UP for position</td>
-          </tr>
-          <tr>
-            <td><strong>Bid Volume</strong></td>
-            <td>Market sell orders hitting the bid (taking bids)</td>
-            <td>Selling aggression—institutions willing to sell DOWN for potential exit</td>
-          </tr>
-          <tr>
-            <td><strong>Delta</strong></td>
-            <td>Ask volume minus bid volume at each price level</td>
-            <td>Net aggressor direction—who controlled that price level</td>
-          </tr>
-        </tbody>
-      </table>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0">
+        <div style="background:rgba(91,138,255,.08);border:2px solid rgba(91,138,255,.2);border-radius:12px;padding:1.5rem">
+          <div style="font-weight:700;margin-bottom:1rem;color:#5b8aff">Ask Volume</div>
+          <div style="margin-bottom:1rem"><strong>What It Measures:</strong> Market buy orders hitting the ask (lifting offers)</div>
+          <div><strong>Trading Interpretation:</strong> Buying aggression—institutions willing to pay UP for position</div>
+        </div>
+
+        <div style="background:rgba(91,138,255,.08);border:2px solid rgba(91,138,255,.2);border-radius:12px;padding:1.5rem">
+          <div style="font-weight:700;margin-bottom:1rem;color:#5b8aff">Bid Volume</div>
+          <div style="margin-bottom:1rem"><strong>What It Measures:</strong> Market sell orders hitting the bid (taking bids)</div>
+          <div><strong>Trading Interpretation:</strong> Selling aggression—institutions willing to sell DOWN for exit</div>
+        </div>
+
+        <div style="background:rgba(91,138,255,.08);border:2px solid rgba(91,138,255,.2);border-radius:12px;padding:1.5rem">
+          <div style="font-weight:700;margin-bottom:1rem;color:#5b8aff">Delta</div>
+          <div style="margin-bottom:1rem"><strong>What It Measures:</strong> Ask volume minus bid volume at each price level</div>
+          <div><strong>Trading Interpretation:</strong> Net aggressor direction—who controlled that price level</div>
+        </div>
+      </div>
 
       <h3 id="delta-interpretation-framework">Delta Interpretation Framework</h3>
 
@@ -465,42 +458,35 @@ $104.50      500 |    2200   4.4:1    Imbalance ✓
 
       <p>Not all imbalances are bullish. Context determines whether imbalances signal continuation (absorption) or reversal (exhaustion).</p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Pattern</th>
-            <th>Market Context</th>
-            <th>Interpretation</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Bullish Absorption</strong></td>
-            <td>Stacked buying imbalances at support after pullback</td>
-            <td>Institutions accumulating, retail selling into support</td>
-            <td>Enter long at imbalance zone, stop below low</td>
-          </tr>
-          <tr>
-            <td><strong>Bullish Exhaustion</strong></td>
-            <td>Stacked buying imbalances at resistance after rally</td>
-            <td>Retail FOMO buying, institutions distributing opposite side</td>
-            <td>Wait for reversal, enter short on potential breakdown</td>
-          </tr>
-          <tr>
-            <td><strong>Bearish Absorption</strong></td>
-            <td>Stacked selling imbalances at resistance after rally</td>
-            <td>Institutions distributing, retail buying "potential breakout"</td>
-            <td>Enter short at imbalance zone, stop above high</td>
-          </tr>
-          <tr>
-            <td><strong>Bearish Exhaustion</strong></td>
-            <td>Stacked selling imbalances at support after decline</td>
-            <td>Retail panic selling, institutions absorbing opposite side</td>
-            <td>Wait for reversal, enter long on recovery</td>
-          </tr>
-        </tbody>
-      </table>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0">
+        <div style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.2);border-radius:12px;padding:1.5rem">
+          <div style="font-weight:700;margin-bottom:1rem;color:#22c55e">Bullish Absorption</div>
+          <div style="margin-bottom:0.75rem"><strong>Context:</strong> Stacked buying imbalances at support after pullback</div>
+          <div style="margin-bottom:0.75rem"><strong>Interpretation:</strong> Institutions accumulating, retail selling into support</div>
+          <div><strong>Action:</strong> Enter long at imbalance zone, stop below low</div>
+        </div>
+
+        <div style="background:rgba(255,82,82,.08);border:2px solid rgba(255,82,82,.2);border-radius:12px;padding:1.5rem">
+          <div style="font-weight:700;margin-bottom:1rem;color:#ff5252">Bullish Exhaustion</div>
+          <div style="margin-bottom:0.75rem"><strong>Context:</strong> Stacked buying imbalances at resistance after rally</div>
+          <div style="margin-bottom:0.75rem"><strong>Interpretation:</strong> Retail FOMO buying, institutions distributing opposite side</div>
+          <div><strong>Action:</strong> Wait for reversal, enter short on breakdown</div>
+        </div>
+
+        <div style="background:rgba(255,82,82,.08);border:2px solid rgba(255,82,82,.2);border-radius:12px;padding:1.5rem">
+          <div style="font-weight:700;margin-bottom:1rem;color:#ff5252">Bearish Absorption</div>
+          <div style="margin-bottom:0.75rem"><strong>Context:</strong> Stacked selling imbalances at resistance after rally</div>
+          <div style="margin-bottom:0.75rem"><strong>Interpretation:</strong> Institutions distributing, retail buying "breakout"</div>
+          <div><strong>Action:</strong> Enter short at imbalance zone, stop above high</div>
+        </div>
+
+        <div style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.2);border-radius:12px;padding:1.5rem">
+          <div style="font-weight:700;margin-bottom:1rem;color:#22c55e">Bearish Exhaustion</div>
+          <div style="margin-bottom:0.75rem"><strong>Context:</strong> Stacked selling imbalances at support after decline</div>
+          <div style="margin-bottom:0.75rem"><strong>Interpretation:</strong> Retail panic selling, institutions absorbing opposite side</div>
+          <div><strong>Action:</strong> Wait for reversal, enter long on recovery</div>
+        </div>
+      </div>
 <h3 id="what-is-the-point-of-control-poc">What Is the Point of Control (POC)?</h3>
 
       <p>The <strong>Point of Control</strong> is the price level with the highest total volume within a given period (candle, session, or profile). It represents where the most trading activity occurred—where institutions did the most business.</p>
