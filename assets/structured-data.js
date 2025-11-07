@@ -40,7 +40,7 @@
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Signal Pilot Trading Education",
-    "description": "Interactive trading course with 42 lessons across 3 tiers: Beginner, Intermediate, and Advanced. Learn market structure, institutional order flow, and professional trading frameworks.",
+    "description": "Interactive trading course with 82 lessons across 4 tiers: Beginner, Intermediate, Advanced, and Professional. Learn market structure, institutional order flow, and professional trading frameworks.",
     "provider": {
       "@type": "Organization",
       "name": "Signal Pilot",
@@ -116,7 +116,7 @@
     "@type": "WebSite",
     "name": "Signal Pilot Education Hub",
     "url": "https://education.signalpilot.io",
-    "description": "Interactive trading education platform with 42 lessons, quizzes, and progress tracking.",
+    "description": "Interactive trading education platform with 82 lessons, quizzes, and progress tracking.",
     "publisher": {
       "@type": "Organization",
       "name": "Signal Pilot"

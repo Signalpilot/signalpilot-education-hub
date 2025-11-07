@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache"/>
   <meta http-equiv="Expires" content="0"/>
   <title>Learning Path — Signal Pilot Education</title>
-  <meta name="description" content="Visual roadmap of all 42 trading lessons across 3 tiers. See the complete learning path from beginner to institutional-grade trading.">
+  <meta name="description" content="Visual roadmap of all 82 trading lessons across 4 tiers. See the complete learning path from beginner to institutional-grade trading.">
   <link rel="canonical" href="https://education.signalpilot.io/learning-path.html">
   <meta name="theme-color" content="#05070d">
   <link rel="manifest" href="/manifest.json">
@@ -257,7 +257,7 @@
   <section class="hero" style="padding: 2rem 0 1rem;">
     <div class="wrap" style="text-align: center;">
       <h1 class="headline xl">🗺️ Complete Learning Path</h1>
-      <p class="lead">Visual roadmap of all 42 lessons from beginner to institutional-grade trading</p>
+      <p class="lead">Visual roadmap of all 82 lessons from beginner to institutional-grade trading</p>
     </div>
   </section>
 
@@ -266,7 +266,7 @@
     <div class="progress-bar-container">
       <div class="progress-bar-label">
         <span><strong>Your Overall Progress</strong></span>
-        <span id="overall-progress-text">0 of 42 lessons completed (0%)</span>
+        <span id="overall-progress-text">0 of 82 lessons completed (0%)</span>
       </div>
       <div class="progress-bar">
         <div class="progress-bar-fill" id="overall-progress-bar" style="width: 0%"></div>
@@ -383,8 +383,8 @@
     const completedCount = completed.length;
 
     // Update overall progress
-    const percentage = Math.round((completedCount / 42) * 100);
-    document.getElementById('overall-progress-text').textContent = `${completedCount} of 42 lessons completed (${percentage}%)`;
+    const percentage = Math.round((completedCount / 82) * 100);
+    document.getElementById('overall-progress-text').textContent = `${completedCount} of 82 lessons completed (${percentage}%)`;
     document.getElementById('overall-progress-bar').style.width = percentage + '%';
 
     // Render each tier
