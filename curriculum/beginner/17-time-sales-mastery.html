@@ -546,49 +546,86 @@ Time       Price    Size   Side
       <p>Not all prints are created equal. A 10-contract print is retail. A 5,000-contract print is institutional.</p>
 <h3 id="size-thresholds-by-market">Size Thresholds by Market</h3>
 
-      <div style="overflow-x:auto;margin:2rem 0">
-        <table style="width:100%;border-collapse:collapse">
-          <thead>
-            <tr style="background:rgba(255,255,255,.05)">
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Market</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Retail Size</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Notable Size</th>
-              <th style="padding:.75rem;text-align:left;border:1px solid rgba(255,255,255,.1)">Institutional Size</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">ES Futures</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1-50</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">100-500</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1,000+</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">NQ Futures</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1-20</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50-200</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">500+</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">SPY Options</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1-10</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50-200</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">500+</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">BTC/USDT</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">0.01-1 BTC</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">5-20 BTC</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50+ BTC</td>
-            </tr>
-            <tr>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Liquid Stocks (AAPL, TSLA)</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">100-1,000</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">5,000-20,000</td>
-              <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50,000+</td>
-            </tr>
-          </tbody>
-        </table>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0">
+        <div style="background:rgba(91,138,255,.08);border:2px solid rgba(91,138,255,.2);border-radius:12px;padding:1.5rem">
+          <h4 style="margin:0 0 1rem 0;color:#5b8aff">📈 ES Futures</h4>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Retail Size</div>
+            <div style="font-size:1.1rem;font-weight:600">1-50</div>
+          </div>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Notable Size</div>
+            <div style="font-size:1.1rem;font-weight:600">100-500</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.75rem;background:rgba(91,138,255,.15);border-radius:8px">
+            <div style="font-size:0.85rem;color:var(--muted)">Institutional Size</div>
+            <div style="font-size:1.2rem;font-weight:700;color:#5b8aff">1,000+</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(91,138,255,.08);border:2px solid rgba(91,138,255,.2);border-radius:12px;padding:1.5rem">
+          <h4 style="margin:0 0 1rem 0;color:#5b8aff">📊 NQ Futures</h4>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Retail Size</div>
+            <div style="font-size:1.1rem;font-weight:600">1-20</div>
+          </div>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Notable Size</div>
+            <div style="font-size:1.1rem;font-weight:600">50-200</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.75rem;background:rgba(91,138,255,.15);border-radius:8px">
+            <div style="font-size:0.85rem;color:var(--muted)">Institutional Size</div>
+            <div style="font-size:1.2rem;font-weight:700;color:#5b8aff">500+</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(91,138,255,.08);border:2px solid rgba(91,138,255,.2);border-radius:12px;padding:1.5rem">
+          <h4 style="margin:0 0 1rem 0;color:#5b8aff">🎯 SPY Options</h4>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Retail Size</div>
+            <div style="font-size:1.1rem;font-weight:600">1-10</div>
+          </div>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Notable Size</div>
+            <div style="font-size:1.1rem;font-weight:600">50-200</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.75rem;background:rgba(91,138,255,.15);border-radius:8px">
+            <div style="font-size:0.85rem;color:var(--muted)">Institutional Size</div>
+            <div style="font-size:1.2rem;font-weight:700;color:#5b8aff">500+</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(91,138,255,.08);border:2px solid rgba(91,138,255,.2);border-radius:12px;padding:1.5rem">
+          <h4 style="margin:0 0 1rem 0;color:#5b8aff">₿ BTC/USDT</h4>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Retail Size</div>
+            <div style="font-size:1.1rem;font-weight:600">0.01-1 BTC</div>
+          </div>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Notable Size</div>
+            <div style="font-size:1.1rem;font-weight:600">5-20 BTC</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.75rem;background:rgba(91,138,255,.15);border-radius:8px">
+            <div style="font-size:0.85rem;color:var(--muted)">Institutional Size</div>
+            <div style="font-size:1.2rem;font-weight:700;color:#5b8aff">50+ BTC</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(91,138,255,.08);border:2px solid rgba(91,138,255,.2);border-radius:12px;padding:1.5rem">
+          <h4 style="margin:0 0 1rem 0;color:#5b8aff">🏢 Liquid Stocks (AAPL, TSLA)</h4>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Retail Size</div>
+            <div style="font-size:1.1rem;font-weight:600">100-1,000</div>
+          </div>
+          <div style="margin:0.75rem 0">
+            <div style="font-size:0.85rem;color:var(--muted)">Notable Size</div>
+            <div style="font-size:1.1rem;font-weight:600">5,000-20,000</div>
+          </div>
+          <div style="margin:0.75rem 0;padding:0.75rem;background:rgba(91,138,255,.15);border-radius:8px">
+            <div style="font-size:0.85rem;color:var(--muted)">Institutional Size</div>
+            <div style="font-size:1.2rem;font-weight:700;color:#5b8aff">50,000+</div>
+          </div>
+        </div>
       </div>
 
       <h3 id="what-large-prints-tell-you">What Large Prints Tell You</h3>
