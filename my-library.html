@@ -467,25 +467,25 @@
           <div class="certificate-card" data-tier="beginner">
             <div class="certificate-icon">🟢</div>
             <div class="certificate-title">Beginner Tier</div>
-            <div class="certificate-progress" id="cert-beginner-progress">0/12 lessons</div>
+            <div class="certificate-progress" id="cert-beginner-progress">0/20 lessons</div>
             <button class="btn btn-primary btn-sm" id="cert-beginner-btn" disabled>Download Certificate</button>
           </div>
           <div class="certificate-card" data-tier="intermediate">
             <div class="certificate-icon">🟡</div>
             <div class="certificate-title">Intermediate Tier</div>
-            <div class="certificate-progress" id="cert-intermediate-progress">0/15 lessons</div>
+            <div class="certificate-progress" id="cert-intermediate-progress">0/27 lessons</div>
             <button class="btn btn-primary btn-sm" id="cert-intermediate-btn" disabled>Download Certificate</button>
           </div>
           <div class="certificate-card" data-tier="advanced">
             <div class="certificate-icon">🔴</div>
             <div class="certificate-title">Advanced Tier</div>
-            <div class="certificate-progress" id="cert-advanced-progress">0/15 lessons</div>
+            <div class="certificate-progress" id="cert-advanced-progress">0/27 lessons</div>
             <button class="btn btn-primary btn-sm" id="cert-advanced-btn" disabled>Download Certificate</button>
           </div>
           <div class="certificate-card" data-tier="master">
             <div class="certificate-icon">🏆</div>
             <div class="certificate-title">Master Trader</div>
-            <div class="certificate-progress" id="cert-master-progress">0/42 lessons</div>
+            <div class="certificate-progress" id="cert-master-progress">0/82 lessons</div>
             <button class="btn btn-primary btn-sm" id="cert-master-btn" disabled>Download Certificate</button>
           </div>
         </div>
@@ -772,10 +772,11 @@
   function renderAchievements(completedCount) {
     const achievements = [
       { id: 'first_lesson', title: '🎯 First Steps', description: 'Complete your first lesson', unlocked: completedCount >= 1 },
-      { id: 'beginner_complete', title: '🟢 Beginner Complete', description: 'Complete all 12 beginner lessons', unlocked: completedCount >= 12 },
-      { id: 'halfway', title: '⚡ Halfway There', description: 'Complete 21 lessons', unlocked: completedCount >= 21 },
-      { id: 'intermediate_complete', title: '🟡 Intermediate Complete', description: 'Complete all intermediate lessons', unlocked: completedCount >= 27 },
-      { id: 'all_lessons', title: '🏆 Master Trader', description: 'Complete all 42 lessons', unlocked: completedCount >= 42 },
+      { id: 'five_lessons', title: '📚 Dedicated Learner', description: 'Complete 5 lessons', unlocked: completedCount >= 5 },
+      { id: 'beginner_complete', title: '🟢 Beginner Complete', description: 'Complete all 20 beginner lessons', unlocked: completedCount >= 20 },
+      { id: 'intermediate_complete', title: '🟡 Intermediate Complete', description: 'Complete all 47 lessons (through Intermediate)', unlocked: completedCount >= 47 },
+      { id: 'advanced_complete', title: '🔴 Advanced Complete', description: 'Complete all 74 lessons (through Advanced)', unlocked: completedCount >= 74 },
+      { id: 'all_lessons', title: '🏆 Master Trader', description: 'Complete all 82 lessons', unlocked: completedCount >= 82 },
       { id: 'week_streak', title: '🔥 Week Streak', description: '7 day learning streak', unlocked: false },
       { id: 'note_taker', title: '📝 Note Taker', description: 'Take notes on 5 lessons', unlocked: false }
     ];
