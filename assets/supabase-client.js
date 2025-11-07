@@ -51,6 +51,7 @@
   // Auth State Management
   let currentUser = null;
   let authStateListeners = [];
+  let hasHandledExistingSession = false; // Track if we already processed an existing session on page load
 
   // Subscribe to auth state changes
   /**
@@ -98,6 +99,9 @@
       // This was missing - only loaded on SIGNED_IN event, not existing sessions
       const loadResult = await loadProgressFromCloud();
 
+      // Mark that we've handled an existing session to prevent duplicate reload from auth event
+      hasHandledExistingSession = true;
+
       if (loadResult?.data) {
         logger.log('[Supabase] ✅ Cloud progress loaded from existing session. Reloading...');
         // Set flag to prevent reload loop
@@ -120,6 +124,12 @@
 
         // Load and sync progress after NEW sign in
         if (event === 'SIGNED_IN') {
+          // Skip if we already handled an existing session (prevents double reload)
+          if (hasHandledExistingSession) {
+            logger.log('[Supabase] ℹ️ Skipping SIGNED_IN event - already handled existing session');
+            return;
+          }
+
           // First, try to load cloud progress (if it exists)
           const loadResult = await loadProgressFromCloud();
 
