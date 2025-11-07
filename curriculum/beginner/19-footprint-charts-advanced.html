@@ -364,7 +364,7 @@
       </ul>
 
       <p><strong>Footprint Chart View (Same Bar):</strong></p>
-      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;font-family:monospace;font-size:0.9em">
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;font-family:monospace;font-size:0.9em;white-space:pre-wrap;overflow-wrap:break-word">
 Price    Ask Vol | Bid Vol   Delta    Analysis
 $100.50     1200 |     300  = +900    Buying aggression at high
 $100.25     2500 |     400  = +2100   <span style="color:#00d4aa">STRONG BUYING</span> ⚡
@@ -445,7 +445,7 @@ $99.50       200 |     900  = -700    Sellers at low
       <p>A <strong>stacked imbalance</strong> is multiple consecutive price levels showing same-sided imbalances. This pattern reveals institutional absorption (accumulation or distribution happening across a zone).</p>
 
       <p><strong>Example: Bullish Stacked Imbalance (Accumulation)</strong></p>
-      <pre style="background:rgba(0,212,170,.1);padding:1rem;border-radius:6px;font-family:monospace">
+      <pre style="background:rgba(0,212,170,.1);padding:1rem;border-radius:6px;font-family:monospace;white-space:pre-wrap;overflow-wrap:break-word">
 Price    Ask Vol | Bid Vol   Ratio    Signal
 $101.00     2800 |     300   9.3:1    Imbalance ✓
 $100.75     3200 |     450   7.1:1    Imbalance ✓
@@ -458,7 +458,7 @@ $100.25     2100 |     500   4.2:1    Imbalance ✓
       <p><strong>Translation:</strong> Institutions absorbed ALL selling across $100.25-$101.00 (75 cents). Retail traders sold into this zone expecting resistance. Institutions bought everything, building a long position. <strong>Expect continuation higher.</strong></p>
 
       <p><strong>Example: Bearish Stacked Imbalance (Distribution)</strong></p>
-      <pre style="background:rgba(255,71,71,.1);padding:1rem;border-radius:6px;font-family:monospace">
+      <pre style="background:rgba(255,71,71,.1);padding:1rem;border-radius:6px;font-family:monospace;white-space:pre-wrap;overflow-wrap:break-word">
 Price    Ask Vol | Bid Vol   Ratio    Signal
 $105.00      400 |    3100   7.8:1    Imbalance ✓
 $104.75      350 |    2800   8.0:1    Imbalance ✓
@@ -518,7 +518,7 @@ $104.50      500 |    2200   4.4:1    Imbalance ✓
       <h3 id="poc-migration-patterns">POC Migration Patterns</h3>
 
       <p><strong>Bullish POC Migration (Institutions Accumulating Higher):</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
 Candle 1: POC at 4500 (accumulation begins)
 Candle 2: POC at 4510 (moved up +10 points)
 Candle 3: POC at 4522 (moved up +12 points)
@@ -530,7 +530,7 @@ Expect continuation upward.
       </pre>
 
       <p><strong>Bearish POC Migration (Institutions Distributing Lower):</strong></p>
-      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px">
+      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
 Candle 1: POC at 4600 (distribution begins)
 Candle 2: POC at 4585 (moved down -15 points)
 Candle 3: POC at 4570 (moved down -15 points)
@@ -606,7 +606,7 @@ Expect continuation downward.
       <p><strong>Setup:</strong> Price makes new high, but footprint shows LESS buying volume than previous high.</p>
 
       <p><strong>Example:</strong></p>
-      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px">
+      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
 <strong>First High: $105.00</strong>
   Peak candle delta: +2500 (strong institutional buying)
   Total ask volume at top 3 levels: 6,800 contracts
@@ -635,7 +635,7 @@ Institutions NOT participating = TRAP.
       <p><strong>Setup:</strong> Price makes new low, but footprint shows LESS selling volume than previous low.</p>
 
       <p><strong>Example:</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
 <strong>First Low: $98.00</strong>
   Low candle delta: -2800 (strong institutional selling)
   Total bid volume at bottom 3 levels: 7,200 contracts
@@ -721,7 +721,7 @@ Institutions NOT participating = TRAP.
       </ul>
 
       <p><strong>Footprint Analysis at 4555 Order Block:</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px">
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
 4558: 1800 ask | 200 bid = +1600 (imbalance ✓)
 4557: 2200 ask | 350 bid = +1850 (imbalance ✓)
 4556: 2900 ask | 300 bid = +2600 (imbalance ✓)
@@ -761,7 +761,7 @@ POC migrating UP ✓
       </ul>
 
       <p><strong>Footprint Analysis at 15,480 High:</strong></p>
-      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px">
+      <pre style="background:rgba(255,71,71,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
 Previous high (15,450):
   Peak candle delta: +1800
   Ask volume at top: 4,200 contracts
