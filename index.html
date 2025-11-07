@@ -233,7 +233,7 @@
       <p style="margin-bottom:1.5rem;color:var(--muted)">Deep dive into market microstructure, advanced order flow, multi-timeframe analysis, and Signal Pilot tool mastery. Build professional trading frameworks that work across all market conditions.</p>
 
       <div style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
-        <p style="margin:0;font-size:.9rem"><strong>Prerequisites:</strong> Complete Beginner tier first (Articles 1-12)</p>
+        <p style="margin:0;font-size:.9rem"><strong>Prerequisites:</strong> Complete Beginner tier first (Lessons 1-20)</p>
       </div>
 
       <div class="tabs">
@@ -330,7 +330,7 @@
       <p style="margin-bottom:1.5rem;color:var(--muted)">Master institutional order flow, algorithmic execution, machine learning, portfolio theory, and professional infrastructure. Learn what separates retail from professional traders.</p>
 
       <div style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
-        <p style="margin:0;font-size:.9rem"><strong>Prerequisites:</strong> Complete Intermediate tier (Articles 1-27)</p>
+        <p style="margin:0;font-size:.9rem"><strong>Prerequisites:</strong> Complete Intermediate tier (Lessons 1-47)</p>
       </div>
 
       <div class="tabs">
@@ -429,7 +429,7 @@
       <p style="margin-bottom:1.5rem;color:var(--muted)">Real-time market analysis, live trading case studies, building your personalized edge, professional risk systems, and completing your trading system capstone project.</p>
 
       <div style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
-        <p style="margin:0;font-size:.9rem"><strong>Prerequisites:</strong> Complete Advanced tier (Articles 1-74)</p>
+        <p style="margin:0;font-size:.9rem"><strong>Prerequisites:</strong> Complete Advanced tier (Lessons 1-74)</p>
       </div>
 
       <div class="tabs">
@@ -604,9 +604,10 @@
     // Determine current tier
     let tier = '—';
     if (completed === 0) tier = 'Not Started';
-    else if (completed <= 12) tier = 'Beginner';
-    else if (completed <= 27) tier = 'Intermediate';
-    else tier = 'Advanced';
+    else if (completed <= 20) tier = 'Beginner';
+    else if (completed <= 47) tier = 'Intermediate';
+    else if (completed <= 74) tier = 'Advanced';
+    else tier = 'Professional';
     document.getElementById('stat-tier').textContent = tier;
 
     // Count achievements
