@@ -97,25 +97,29 @@ Your learning progress is automatically tracked as you read lessons!
 
             curriculum: `**SignalPilot Education Hub Curriculum:**
 
-**7-Tier Progressive System:**
+**4-Tier Progressive System:**
 
-🟢 **Tier 1-2: Foundations** (12 lessons)
-→ Beginner concepts, debunking myths
+🟢 **Tier 1: Beginner** (20 lessons)
+→ Foundations, debunking myths, core concepts
 
-🟡 **Tier 3-4: Market Mechanics** (27 lessons)
-→ Order flow, microstructure, volume
+🟡 **Tier 2: Intermediate** (27 lessons)
+→ Order flow, microstructure, volume analysis
 
-🔴 **Tier 5-7: Advanced Implementation** (40+ lessons)
-→ Automation, backtesting, professional systems
+🔴 **Tier 3: Advanced** (27 lessons)
+→ Institutional tactics, automation, algorithms
 
-**Total:** 82+ comprehensive lessons
+⚫ **Tier 4: Professional** (8 lessons)
+→ Trading business, career paths, mastery
+
+**Total:** 82 comprehensive lessons
 
 📚 [View Full Curriculum](/)
 
 **Recommended path:**
-1. Start with Beginner (Lessons 1-12)
+1. Start with Beginner (Lessons 1-20)
 2. Move to Intermediate when comfortable
 3. Advanced tier for implementation
+4. Professional tier for career development
 
 **Time commitment:** ~12-20 min per lesson`,
 
@@ -209,19 +213,19 @@ I'm a pattern-matching assistant (no AI API needed!) built to help you navigate 
 
 **Recommended Learning Path:**
 
-**Week 1-2: Beginner Foundations** (12 lessons)
+**Week 1-3: Beginner Foundations** (20 lessons)
 → Start: [Lesson 1: The Liquidity Lie](/curriculum/beginner/01-the-liquidity-lie.html)
 → Focus: Debunking retail myths, understanding liquidity engineering
 
-**Week 3-4: Order Flow Basics**
-→ [Lesson 2: Volume Doesn't Lie](/curriculum/beginner/02-volume-doesnt-lie.html)
-→ [Lesson 3: Price Action is Dead](/curriculum/beginner/03-price-action-is-dead.html)
+**Week 4-7: Intermediate Microstructure** (27 lessons)
+→ [Lesson 21: Bid-Ask Spread Dynamics](/curriculum/intermediate/21-bid-ask-spread-dynamics.html)
+→ Order flow, order books, footprint charts, institutional flow
 
-**Week 5-8: Intermediate Microstructure** (27 lessons)
-→ Bid-ask spreads, order books, footprint charts
+**Week 8-11: Advanced Implementation** (27 lessons)
+→ Automation, backtesting, algorithms, professional systems
 
-**Week 9+: Advanced Implementation** (when ready)
-→ Automation, backtesting, professional systems
+**Week 12+: Professional Development** (8 lessons)
+→ Trading business, career pathways, ongoing mastery
 
 **Time commitment:** 12-20 min/lesson
 **Goal:** 1 lesson per day (build a streak!)
