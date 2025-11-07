@@ -81,14 +81,14 @@
    */
   function checkCompletionMilestones() {
     const completed = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed')).length;
-    const milestones = [1, 5, 12, 21, 27, 42];
+    const milestones = [1, 5, 20, 47, 74, 82];
     const milestoneNames = {
       1: 'first lesson',
       5: '5 lessons',
-      12: 'Beginner Tier',
-      21: 'halfway through',
-      27: 'Intermediate Tier',
-      42: 'all 42 lessons - Master Trader status'
+      20: 'Beginner Tier Complete (20 lessons)',
+      47: 'Intermediate Tier Complete (47 lessons)',
+      74: 'Advanced Tier Complete (74 lessons)',
+      82: 'all 82 lessons - Master Trader status'
     };
 
     // Check if just hit a milestone
@@ -155,7 +155,7 @@
     modal.appendChild(card);
     document.body.appendChild(modal);
 
-    const shareText = `Just completed ${milestoneName} at Signal Pilot Education! 🚀 ${count}/42 lessons down. #Trading #Education`;
+    const shareText = `Just completed ${milestoneName} at Signal Pilot Education! 🚀 ${count}/82 lessons down. #Trading #Education`;
     const shareUrl = 'https://education.signalpilot.io';
 
     document.getElementById('share-twitter').onclick = () => {
