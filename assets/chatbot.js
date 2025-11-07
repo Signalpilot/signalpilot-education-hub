@@ -18,7 +18,7 @@ class SignalPilotChatbot {
     initKnowledgeBase() {
         return {
             // Lesson tiers
-            beginner: `**Beginner Tier** (12 lessons) - Essential foundations for trading
+            beginner: `**Beginner Tier** (20 lessons) - Essential foundations for trading
 
 📚 [View All Beginner Lessons](/beginner.html)
 

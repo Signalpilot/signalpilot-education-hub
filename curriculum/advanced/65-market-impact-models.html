@@ -5,7 +5,7 @@
   <title>Market Impact Models: How Large Orders Move Price — Signal Pilot</title>
   <meta name="description" content="When you buy 100,000 shares, you move the market—and pay far more than you think. Learn market impact models and slippage estimation.">
   <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/65-market-impact-models.html">
-  <meta name="sp-level" content="advanced-mastery"><meta name="sp-order" content="65">
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="65">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/assets/chatbot.css">
   <!-- Logger must load first, before other scripts that use it -->
   <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
   <script src="/assets/notes.js" defer></script>
   <script src="/assets/library.js"></script>
   <script src="/assets/lesson-notes.js"></script>
@@ -58,7 +59,7 @@
     <span>Lesson 65</span>
   </nav>
   <div class="lesson-badges">
-        <span class="badge">🔴 Advanced • Lesson 65 of 27</span>
+        <span class="badge">🔴 Advanced • Lesson 65</span>
     <span class="badge badge-lesson">LESSON 65</span>
     <span class="badge badge-tier-advanced">ADVANCED MASTERY</span>
     <span class="badge badge-time">~50 min</span>
@@ -436,7 +437,12 @@ COMBINED TOTAL: $427,000 lost to market impact in ONE DAY
 
   <div class="callout callout-warning">
     <h4>🚨 What Michael Got Wrong: The 5 Fatal Execution Mistakes</h4>
-    <p><strong>Mistake #1: Confused Daily Volume with Intraday Volume</strong></p>
+    <p><strong>Mistake #1: Confused Daily Volume with Intraday Volume</strong></p>      <div class="callout-info">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p><strong>Quick Check:</strong> Can you explain the key concept in your own words? If not, reread the section above.</p>
+      </div>
+
+
     <ul>
       <li>Used daily volume (250M shares) to calculate participation rate</li>
       <li>Ignored that most volume happens at open/close, not mid-morning</li>
@@ -600,7 +606,12 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
 
   <div class="callout callout-success">
     <h4>💡 Michael's Aha Moment</h4>
-    <p><strong>"Market impact isn't the enemy. Ignorance of market impact is the enemy."</strong></p>
+    <p><strong>"Market impact isn't the enemy. Ignorance of market impact is the enemy."</strong></p>      <div class="callout-info">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p><strong>Halfway There:</strong> You're making progress. Take a 2-minute break, then review your notes.</p>
+      </div>
+
+
     <p>— Michael Rodriguez, 10 months after his $427K loss</p>
     <p><em>"I lost $427,000 in one day because I didn't respect market microstructure. I thought 0.02% of daily volume meant 'no impact.' Wrong. Intraday volume fluctuates massively. My 'small' order was 5% of the 5-minute volume, which exhausted the order book and triggered HFT predators. Once I learned to use square-root models, VWAP algos, and avoid low-volume periods, my execution costs dropped 95%. I've saved $800K+ in 6 months just by executing intelligently. That $427K loss was the best education I ever bought."</em></p>
   </div>
@@ -681,7 +692,12 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
       <li><strong>Total cost: $2M</strong></li>
     </ul>
 
-    <p><strong>Option 3: Optimal (Almgren-Chriss Solution: 90 minutes)</strong></p>
+    <p><strong>Option 3: Optimal (Almgren-Chriss Solution: 90 minutes)</strong></p>      <div class="callout-info">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p><strong>Almost Done:</strong> You're in the final stretch. Focus on how you'll apply this knowledge.</p>
+      </div>
+
+
     <ul>
       <li><strong>Temporary impact:</strong> Moderate (1M / 90 min = 11K/min)</li>
       <li>Estimated impact: 0.45% × $200 = $0.90/share → <strong>$900K impact cost</strong></li>
@@ -1150,6 +1166,7 @@ if (canvas) {
   });
 }
 </script>
+  <script src="/assets/chatbot.js" defer></script>
   <!-- Enhanced Analytics & A/B Testing -->
   <script src="/assets/enhanced-analytics.js" defer></script>
   <script src="/assets/ab-test-tldr.js" defer></script>

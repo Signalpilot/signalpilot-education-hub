@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <title>Quantitative Strategy Design: Backtesting, Optimization & Validation — Signal Pilot</title>
   <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/66-quantitative-strategy-design.html">
-  <meta name="sp-level" content="advanced-mastery"><meta name="sp-order" content="66">
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="66">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/chatbot.css">
   <!-- Logger must load first, before other scripts that use it -->
   <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
   <script src="/assets/notes.js" defer></script>
   <script src="/assets/library.js"></script>
   <script src="/assets/lesson-notes.js"></script>
@@ -55,7 +56,7 @@
     <span>Lesson 66</span>
   </nav>
   <div class="lesson-badges">
-        <span class="badge">🔴 Advanced • Lesson 66 of 27</span>
+        <span class="badge">🔴 Advanced • Lesson 66</span>
     <span class="badge badge-lesson">LESSON 66</span>
     <span class="badge badge-tier-advanced">ADVANCED MASTERY</span>
     <span class="badge badge-time">~55 min</span>
@@ -349,7 +350,12 @@
       <li><strong>Realistic cost modeling</strong> (0.07% actual slippage vs 0.05% assumed)</li>
       <li><strong>Regime testing</strong> showed strategy would suffer in extreme bears (accepted risk)</li>
     </ul>
-    <p><b>The lesson: 95% of strategies fail because traders skip steps 4-7. This trader spent 11 months validating before deployment. The result: $2.1M profit and a strategy that still works 5+ years later.</b></p>
+    <p><b>The lesson: 95% of strategies fail because traders skip steps 4-7. This trader spent 11 months validating before deployment. The result: $2.1M profit and a strategy that still works 5+ years later.</b></p>      <div class="callout-info">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p><strong>Quick Check:</strong> Can you explain the key concept in your own words? If not, reread the section above.</p>
+      </div>
+
+
   </div>
     </div>
   </header>
@@ -642,7 +648,12 @@
   <p><strong>Hypothesis:</strong> Extreme moves revert to average</p>
   <p><strong>Typical stats:</strong> Win rate 60-70%, profit factor 1.5-2.0, max drawdown 15-25%</p>
   <p><strong>Best in:</strong> Range-bound, low-volatility markets</p>
-  <p><strong>Worst in:</strong> Strong trends (buy dips in downtrend = disaster)</p>
+  <p><strong>Worst in:</strong> Strong trends (buy dips in downtrend = disaster)</p>      <div class="callout-info">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p><strong>Halfway There:</strong> You're making progress. Take a 2-minute break, then review your notes.</p>
+      </div>
+
+
 
   <h3>Momentum Strategies</h3>
   <p><strong>Hypothesis:</strong> Trends persist (winners keep winning)</p>
@@ -817,6 +828,7 @@ if (canvas) {
   });
 }
 </script>
+  <script src="/assets/chatbot.js" defer></script>
   <!-- Enhanced Analytics & A/B Testing -->
   <script src="/assets/enhanced-analytics.js" defer></script>
   <script src="/assets/ab-test-tldr.js" defer></script>

@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <title>Portfolio Construction & Kelly Criterion: Optimal Capital Allocation — Signal Pilot</title>
   <link rel="canonical" href="https://education.signalpilot.io/curriculum/intermediate/47-portfolio-construction-kelly.html">
-  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="47">
+  <meta name="sp-level" content="Intermediate"><meta name="sp-order" content="47">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/chatbot.css">
   <!-- Logger must load first, before other scripts that use it -->
   <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
   <script src="/assets/notes.js" defer></script>
   <script src="/assets/library.js"></script>
   <script src="/assets/lesson-notes.js"></script>
@@ -51,11 +52,11 @@
 <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/index.html">Home</a> &gt;
     <a href="/">Curriculum</a> &gt;
-    <a href="/advanced.html">Advanced</a> &gt;
+    <a href="/intermediate.html">Intermediate</a> &gt;
     <span>Lesson 47</span>
   </nav>
   <div class="lesson-badges">
-        <span class="badge">🟡 Intermediate • Lesson 47 of 27</span>
+        <span class="badge">🟡 Intermediate • Lesson 47</span>
     <span class="badge badge-lesson">LESSON 47</span>
     <span class="badge badge-tier-intermediatebridge">INTERMEDIATE BRIDGE</span>
     <span class="badge badge-time">~40 min</span>
@@ -215,7 +216,12 @@
             <li>Common mistake: Using full Kelly = 50%+ drawdowns even with edge</li>
             <li>Validation: Half-Kelly provides 75% of full-Kelly growth with 50% of the volatility</li>
           </ul>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
+          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>      <div class="callout-info">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p><strong>Quick Check:</strong> Can you explain the key concept in your own words? If not, reread the section above.</p>
+      </div>
+
+
         </div>
       </details>
 
@@ -539,7 +545,12 @@
       </tbody>
     </table>
 
-    <p><strong>Comparison Summary:</strong></p>
+    <p><strong>Comparison Summary:</strong></p>      <div class="callout-info">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p><strong>Halfway There:</strong> You're making progress. Take a 2-minute break, then review your notes.</p>
+      </div>
+
+
     <table>
       <thead>
         <tr>
@@ -844,7 +855,12 @@
       <p><strong>Q2:</strong> You have 3 strategies with Kelly %: 20%, 25%, 30%. Correlation = 0.8. Should you allocate 75% total?</p>
       <details>
         <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> No. High correlation (0.8) means strategies are essentially the same bet. Reduce each allocation by ~30-40% to account for correlation. Adjusted total: ~45-50%, not 75%. Otherwise you're over-leveraged to one market regime.</p>
+        <p><strong>Answer:</strong> No. High correlation (0.8) means strategies are essentially the same bet. Reduce each allocation by ~30-40% to account for correlation. Adjusted total: ~45-50%, not 75%. Otherwise you're over-leveraged to one market regime.</p>      <div class="callout-info">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p><strong>Almost Done:</strong> You're in the final stretch. Focus on how you'll apply this knowledge.</p>
+      </div>
+
+
       </details>
     </div>
 
@@ -968,6 +984,7 @@ if (canvas) {
   });
 }
 </script>
+  <script src="/assets/chatbot.js" defer></script>
   <!-- Enhanced Analytics & A/B Testing -->
   <script src="/assets/enhanced-analytics.js" defer></script>
   <script src="/assets/ab-test-tldr.js" defer></script>

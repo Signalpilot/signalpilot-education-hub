@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <title>Machine Learning in Trading: Neural Networks, Random Forests & Overfitting — Signal Pilot</title>
   <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/67-machine-learning-trading.html">
-  <meta name="sp-level" content="advanced-mastery"><meta name="sp-order" content="67">
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="67">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/chatbot.css">
   <!-- Logger must load first, before other scripts that use it -->
   <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
   <script src="/assets/notes.js" defer></script>
   <script src="/assets/library.js"></script>
   <script src="/assets/lesson-notes.js"></script>
@@ -55,7 +56,7 @@
     <span>Lesson 67</span>
   </nav>
   <div class="lesson-badges">
-        <span class="badge">🔴 Advanced • Lesson 67 of 27</span>
+        <span class="badge">🔴 Advanced • Lesson 67</span>
     <span class="badge badge-lesson">LESSON 67</span>
     <span class="badge badge-tier-advanced">ADVANCED MASTERY</span>
     <span class="badge badge-time">~45 min</span>
@@ -279,7 +280,12 @@
       <li><strong>Trading strategy:</strong> Only trade when model confidence &gt;70% (reduces trades but improves win rate to 61%)</li>
     </ul>
 
-    <p><strong>Key Lesson:</strong> 56-58% accuracy seems low, but in trading that's EXCELLENT. Even 52-53% edge compounds significantly over time. A 56% win rate with 1:1 R:R and 100 trades/year = +12% annual return.</p>
+    <p><strong>Key Lesson:</strong> 56-58% accuracy seems low, but in trading that's EXCELLENT. Even 52-53% edge compounds significantly over time. A 56% win rate with 1:1 R:R and 100 trades/year = +12% annual return.</p>      <div class="callout-info">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p><strong>Quick Check:</strong> Can you explain the key concept in your own words? If not, reread the section above.</p>
+      </div>
+
+
   </div>
 
   <h3>Model #2: Neural Networks (High Complpotential exity)</h3>
@@ -529,7 +535,12 @@
     <li>Evaluate final performance on test set (NEVER touched during training)</li>
   </ul>
 
-  <p><strong>Step 4: Feature importance analysis</strong></p>
+  <p><strong>Step 4: Feature importance analysis</strong></p>      <div class="callout-info">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p><strong>Halfway There:</strong> You're making progress. Take a 2-minute break, then review your notes.</p>
+      </div>
+
+
   <ul>
     <li>Which features actually matter? (remove low-importance features)</li>
     <li>Do important features make logical sense? (if "day of week" is #1 feature → red flag)</li>
@@ -663,7 +674,12 @@
       <li><strong>Feb 4:</strong> SPY at $445 (down 6.3% from Jan 3). Model says: STRONG BUY (RSI 32, VIX 28, 10-day pullback). Jason loads 20% position. "This HAS to be the bottom. Model's been right for 8 years of data."</li>
       <li><strong>Feb 24:</strong> SPY at $428 (Russia invades Ukraine). Model still says HOLD. Jason's position: -$8,740. He potential exits, panicked. "The model doesn't understand geopolitics."</li>
     </ul>
-    <p><strong>Account balance Feb 25:</strong> $144,800 (down $20,200, -12.2%)</p>
+    <p><strong>Account balance Feb 25:</strong> $144,800 (down $20,200, -12.2%)</p>      <div class="callout-info">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p><strong>Almost Done:</strong> You're in the final stretch. Focus on how you'll apply this knowledge.</p>
+      </div>
+
+
 
     <p><strong>Week 9-16 (Feb 28 - Apr 22, 2022): The Death Spiral</strong></p>
     <ul>
@@ -980,6 +996,7 @@ if (canvas) {
   });
 }
 </script>
+  <script src="/assets/chatbot.js" defer></script>
   <!-- Enhanced Analytics & A/B Testing -->
   <script src="/assets/enhanced-analytics.js" defer></script>
   <script src="/assets/ab-test-tldr.js" defer></script>

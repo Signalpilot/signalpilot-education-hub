@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <title>Building a Trading Business: Systems, Scaling, Performance Tracking — Signal Pilot</title>
   <link rel="canonical" href="https://education.signalpilot.io/curriculum/advanced/74-building-trading-business.html">
-  <meta name="sp-level" content="advanced-mastery"><meta name="sp-order" content="74">
+  <meta name="sp-level" content="Advanced"><meta name="sp-order" content="74">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gugi&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/chatbot.css">
   <!-- Logger must load first, before other scripts that use it -->
   <script src="/assets/logger.js"></script>
+  <script src="/assets/dev-utils.js" defer></script>
   <script src="/assets/notes.js" defer></script>
   <script src="/assets/library.js"></script>
   <script src="/assets/lesson-notes.js"></script>
@@ -55,7 +56,7 @@
     <span>Lesson 74</span>
   </nav>
   <div class="lesson-badges">
-        <span class="badge">🔴 Advanced • Lesson 74 of 27</span>
+        <span class="badge">🔴 Advanced • Lesson 74</span>
     <span class="badge badge-lesson">LESSON 74</span>
     <span class="badge badge-tier-advanced">ADVANCED MASTERY</span>
     <span class="badge badge-time">~45 min</span>
@@ -124,7 +125,12 @@
     <p>David didn't tell investors about the -$47K loss. "It's just a drawdown, I'll recover it." No monthly statements. No transparency. Red flag #2.</p>
     <p><strong>November 2022: No Risk Management for External Capital (Lost $38K in 1 Trade)</strong></p>
     <p>David wanted to recover the -$47K loss quickly. Took oversized position: 40 SPY iron condors ($390-$395 call side, $370-$375 put side) expiring Nov 18. Position size: $200K buying power (52% of account). His personal trading rule: Never exceed 30% buying power in one position. But now? "I need to make it back."</p>
-    <p>Nov 10: CPI data released (inflation hotter than expected). SPY dropped -3.7% in one day (from $395 to $380). David's iron condors: Put side breached. He didn't close. "It'll bounce." It didn't.</p>
+    <p>Nov 10: CPI data released (inflation hotter than expected). SPY dropped -3.7% in one day (from $395 to $380). David's iron condors: Put side breached. He didn't close. "It'll bounce." It didn't.</p>      <div class="callout-info">
+        <h4>🔴 CHECKPOINT (5 minutes)</h4>
+        <p><strong>Quick Check:</strong> Can you explain the key concept in your own words? If not, reread the section above.</p>
+      </div>
+
+
     <p>Nov 18 expiration: SPY at $378. David's 40 iron condors all assigned max loss ($5 wide spreads × 40 contracts × 100 shares = -$20K on put side). Plus assignment fees, margin interest, slippage: <strong>Total loss: -$38,400.</strong></p>
     <p>Account balance: $338K → $299.6K. David's personal capital: $218K → $179.6K. Investor capital: Still $120K (no losses yet). But David's cushion almost gone.</p>
     <p><strong>December 2022-January 2023: The Death Spiral (Lost Another $62K)</strong></p>
@@ -191,7 +197,12 @@
       <li><strong>Lying about performance destroys trust permanently:</strong> When David hid the 38% drawdown from investors for 6 months, he destroyed decades of family relationships. Transparency is non-negotiable. If you can't be honest about losses, don't manage others' money.</li>
       <li><strong>Risk management must account for external capital psychology:</strong> David took oversized positions (52% buying power, 12% account on single trade) trying to recover losses to protect investors. This violated his own 30% rule. Managing OPM (Other People's Money) requires STRICTER risk rules, not looser ones, due to psychological pressure.</li>
     </ul>
-    <p><strong>David's 7-Step Recovery Framework: "Building a Legal, Profitable Trading Business"</strong></p>
+    <p><strong>David's 7-Step Recovery Framework: "Building a Legal, Profitable Trading Business"</strong></p>      <div class="callout-info">
+        <h4>🟡 CHECKPOINT (10 minutes)</h4>
+        <p><strong>Halfway There:</strong> You're making progress. Take a 2-minute break, then review your notes.</p>
+      </div>
+
+
     <p><strong>Step 1: Legal Cleanup + Settlements (March-June 2023, Cost: $87.6K)</strong></p>
     <ul>
       <li><strong>SEC Settlement:</strong> Hired securities lawyer ($18K). Negotiated settlement: $45K fine + $14.6K disgorgement (return of all fees) = $59.6K. No criminal charges. Agreement: David CANNOT manage others' money until properly registered. Paid via payment plan over 24 months.</li>
@@ -235,7 +246,12 @@
       <li><strong>Separate accounts:</strong> Each investor has separate account at Interactive Brokers. David has Master Account with view-only access + trade execution authority (no custody of funds = less regulatory burden).</li>
       <li><strong>Written agreements:</strong> Every investor signs Investment Advisory Agreement reviewed by securities attorney. Covers: fee structure, risk disclosures, performance expectations (no guarantees), withdrawal terms (30-day notice), dispute resolution.</li>
     </ul>
-    <p><strong>Step 7: Strict Risk Management for External Capital (Ongoing)</strong></p>
+    <p><strong>Step 7: Strict Risk Management for External Capital (Ongoing)</strong></p>      <div class="callout-info">
+        <h4>🟢 CHECKPOINT (15 minutes)</h4>
+        <p><strong>Almost Done:</strong> You're in the final stretch. Focus on how you'll apply this knowledge.</p>
+      </div>
+
+
     <ul>
       <li><strong>Conservative position sizing:</strong> 0.5% risk per trade (not 1%, due to managing OPM). Max 3 simultaneous positions. Max 25% buying power used at any time.</li>
       <li><strong>Daily loss limit:</strong> -1.5% account (vs -2% when trading own money). If hit, stop trading, notify investors same day.</li>
@@ -1122,6 +1138,7 @@ if (canvas) {
   });
 }
 </script>
+  <script src="/assets/chatbot.js" defer></script>
   <!-- Enhanced Analytics & A/B Testing -->
   <script src="/assets/enhanced-analytics.js" defer></script>
   <script src="/assets/ab-test-tldr.js" defer></script>
