@@ -87,6 +87,10 @@
       logger.log('[Supabase] 🔄 Found existing session, loading cloud progress...');
       notifyAuthStateChange(session.user);
 
+      // CRITICAL: Mark that we've handled an existing session BEFORE any other checks
+      // This prevents the SIGNED_IN event handler from running on subsequent reloads
+      hasHandledExistingSession = true;
+
       // Check if we just reloaded from a cloud load (prevent infinite reload loop)
       const justReloaded = sessionStorage.getItem('sp_just_loaded_from_cloud');
       if (justReloaded) {
@@ -98,9 +102,6 @@
       // CRITICAL FIX: Load cloud progress for existing sessions!
       // This was missing - only loaded on SIGNED_IN event, not existing sessions
       const loadResult = await loadProgressFromCloud();
-
-      // Mark that we've handled an existing session to prevent duplicate reload from auth event
-      hasHandledExistingSession = true;
 
       if (loadResult?.data) {
         logger.log('[Supabase] ✅ Cloud progress loaded from existing session. Reloading...');
