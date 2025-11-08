@@ -997,7 +997,16 @@
   // Generate Certificate
   function generateCertificate(tier) {
     const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    const userName = localStorage.getItem('sp_user_name') || 'Trading Professional';
+
+    // Get user name from Supabase auth or localStorage
+    let userName = 'Trading Professional';
+    if (window.supabaseAuth && window.supabaseAuth.currentUser) {
+      userName = window.supabaseAuth.currentUser.user_metadata?.user_name ||
+                 window.supabaseAuth.currentUser.email?.split('@')[0] ||
+                 userName;
+    } else {
+      userName = localStorage.getItem('sp_user_name') || userName;
+    }
 
     const certificateHTML = `
       <!DOCTYPE html>
@@ -1048,10 +1057,10 @@
           .certificate {
             position: relative;
             background: linear-gradient(135deg, rgba(15,20,32,0.95) 0%, rgba(26,40,69,0.95) 100%);
-            border: 12px double #5b8aff;
-            border-radius: 24px;
-            padding: 4rem;
-            max-width: 1000px;
+            border: 10px double #5b8aff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 900px;
             width: 100%;
             text-align: center;
             box-shadow:
@@ -1089,8 +1098,8 @@
 
           .logo {
             font-family: 'Gugi', cursive;
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.25rem;
             font-weight: 400;
             background: linear-gradient(135deg, #5b8aff 0%, #76ddff 50%, #00d4aa 100%);
             -webkit-background-clip: text;
@@ -1102,18 +1111,18 @@
 
           .tagline {
             font-family: 'Space Grotesk', monospace;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             color: rgba(118,221,255,0.7);
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
           }
 
           h1 {
             font-family: 'Space Grotesk', monospace;
-            font-size: 3.5rem;
-            margin: 2rem 0 1rem;
-            letter-spacing: 3px;
+            font-size: 2.5rem;
+            margin: 1rem 0 0.5rem;
+            letter-spacing: 2px;
             color: #fff;
             font-weight: 700;
             text-transform: uppercase;
@@ -1121,17 +1130,17 @@
           }
 
           .divider {
-            width: 300px;
-            height: 3px;
+            width: 250px;
+            height: 2px;
             background: linear-gradient(90deg, transparent, #5b8aff, #76ddff, #5b8aff, transparent);
-            margin: 1.5rem auto;
+            margin: 1rem auto;
             border-radius: 2px;
             box-shadow: 0 0 20px rgba(91,138,255,0.5);
           }
 
           .awarded {
-            font-size: 1.1rem;
-            margin: 2rem 0 1rem;
+            font-size: 0.95rem;
+            margin: 1.25rem 0 0.75rem;
             opacity: 0.8;
             font-weight: 300;
             letter-spacing: 1px;
@@ -1139,12 +1148,12 @@
 
           .name {
             font-family: 'Space Grotesk', monospace;
-            font-size: 3.5rem;
-            margin: 1.5rem 0;
-            padding: 1.5rem 3rem;
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            padding: 1rem 2rem;
             background: linear-gradient(135deg, rgba(91,138,255,0.15), rgba(118,221,255,0.15));
             border: 2px solid rgba(91,138,255,0.4);
-            border-radius: 16px;
+            border-radius: 12px;
             display: inline-block;
             font-weight: 700;
             text-shadow: 0 0 20px rgba(91,138,255,0.4);
@@ -1152,8 +1161,8 @@
           }
 
           .achievement {
-            font-size: 1.3rem;
-            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            margin: 1rem 0;
             font-weight: 300;
             opacity: 0.9;
             letter-spacing: 0.5px;
@@ -1161,12 +1170,12 @@
 
           .tier {
             font-family: 'Gugi', cursive;
-            font-size: 3rem;
+            font-size: 2.25rem;
             background: linear-gradient(135deg, #76ddff 0%, #00d4aa 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 1rem 0;
+            margin: 0.75rem 0;
             font-weight: 400;
             letter-spacing: 2px;
             text-shadow: 0 0 40px rgba(118,221,255,0.6);
@@ -1174,28 +1183,28 @@
 
           .program-name {
             font-family: 'Space Grotesk', monospace;
-            font-size: 1.4rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: rgba(255,255,255,0.9);
-            margin: 1rem 0 2rem;
+            margin: 0.75rem 0 1.5rem;
             letter-spacing: 1px;
           }
 
           .date {
-            margin-top: 3rem;
-            font-size: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
             opacity: 0.6;
             font-weight: 400;
             letter-spacing: 1px;
           }
 
           .signature {
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 2px solid rgba(91,138,255,0.2);
             display: flex;
             justify-content: center;
-            gap: 4rem;
+            gap: 3rem;
           }
 
           .signature-block {
@@ -1238,11 +1247,11 @@
 
           .stamp {
             position: absolute;
-            bottom: 45px;
-            left: 45px;
-            width: 180px;
-            height: 180px;
-            border: 6px solid rgba(91,138,255,0.2);
+            bottom: 30px;
+            left: 30px;
+            width: 140px;
+            height: 140px;
+            border: 5px solid rgba(91,138,255,0.2);
             border-radius: 50%;
             display: flex;
             flex-direction: column;
@@ -1256,8 +1265,8 @@
           }
 
           .stamp-inner {
-            width: 150px;
-            height: 150px;
+            width: 115px;
+            height: 115px;
             border: 3px solid rgba(91,138,255,0.3);
             border-radius: 50%;
             display: flex;
@@ -1269,18 +1278,18 @@
 
           .stamp-logo {
             font-family: 'Gugi', cursive;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             background: linear-gradient(135deg, #5b8aff, #76ddff);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             letter-spacing: 1px;
           }
 
           .stamp-text {
             font-family: 'Space Grotesk', monospace;
-            font-size: 0.65rem;
+            font-size: 0.55rem;
             color: rgba(91,138,255,0.7);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -1290,7 +1299,7 @@
 
           .stamp-year {
             font-family: 'Space Grotesk', monospace;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: rgba(91,138,255,0.6);
             font-weight: 700;
           }
