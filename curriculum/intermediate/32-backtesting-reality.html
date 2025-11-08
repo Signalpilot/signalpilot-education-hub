@@ -32,7 +32,7 @@
     /* Mobile-friendly code blocks and tables - prevent horizontal scroll */
     @media (max-width: 768px) {
       .prose pre {
-        overflow-x: auto;
+        overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
         white-space: pre;
         max-width: 100%;
@@ -41,6 +41,21 @@
         padding: 0.75rem;
       }
       .prose pre code {
+        white-space: pre;
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+      /* Tabs content code blocks */
+      .tab-panel pre {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        white-space: pre;
+        max-width: 100%;
+        font-size: 0.75rem;
+        line-height: 1.4;
+        padding: 0.75rem !important;
+      }
+      .tab-panel pre code {
         white-space: pre;
         word-break: normal;
         overflow-wrap: normal;
