@@ -71,8 +71,16 @@
 
     markArticleCompleted(level, articleId) {
       const key = `sp_edu_${level}_${articleId}_completed`;
+
+      // Only mark as complete if not already done
       if (!localStorage.getItem(key)) {
         localStorage.setItem(key, new Date().toISOString());
+
+        logger.log('[Education] 📖 Lesson completed:', {
+          level: level,
+          articleId: articleId,
+          key: key
+        });
 
         // Update activity tracking for My Library
         const today = new Date().toISOString().split('T')[0];
@@ -85,10 +93,12 @@
         }
 
         localStorage.setItem('sp_activity', JSON.stringify(activity));
-        logger.log('[Education] Lesson completed, activity updated:', today);
+        logger.log('[Education] Activity updated for today:', today);
 
         this.showCompletionBadge(articleId);
         this.checkAchievements();
+      } else {
+        logger.log('[Education] Lesson already completed, skipping:', key);
       }
     },
 
@@ -106,6 +116,13 @@
 
     checkAchievements() {
       const completed = this.getCompletedArticles();
+      const count = completed.length;
+
+      logger.log('[Achievements] Checking achievements...', {
+        completedCount: count,
+        completedArticles: completed
+      });
+
       const achievements = [
         { count: 1, name: 'First Steps', icon: '🎯' },
         { count: 5, name: 'Dedicated Learner', icon: '📚' },
@@ -115,13 +132,18 @@
         { count: 82, name: 'Complete Mastery', icon: '🔥' }
       ];
 
+      // Check each achievement level
       achievements.forEach(ach => {
-        if (completed.length === ach.count) {
-          const achKey = `sp_edu_ach_${ach.count}`;
-          if (!localStorage.getItem(achKey)) {
-            localStorage.setItem(achKey, new Date().toISOString());
-            this.showAchievement(ach);
-          }
+        const achKey = `sp_edu_ach_${ach.count}`;
+        const alreadyUnlocked = localStorage.getItem(achKey);
+
+        // Only unlock if:
+        // 1. User has reached this milestone (>=)
+        // 2. Achievement hasn't been unlocked yet
+        if (count >= ach.count && !alreadyUnlocked) {
+          logger.log('[Achievements] 🏆 Unlocking achievement:', ach.name);
+          localStorage.setItem(achKey, new Date().toISOString());
+          this.showAchievement(ach);
         }
       });
     },
@@ -143,12 +165,21 @@
 
     getCompletedArticles() {
       const completed = [];
+      const seen = new Set(); // Deduplicate in case of any edge cases
+
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (key.includes('sp_edu_') && key.includes('_completed')) {
-          completed.push(key);
+
+        // Match completion keys like: sp_edu_beginner_1_completed, sp_edu_intermediate_5_completed
+        // But NOT achievement keys like: sp_edu_ach_1
+        if (key && key.startsWith('sp_edu_') && key.endsWith('_completed') && !key.includes('_ach_')) {
+          if (!seen.has(key)) {
+            seen.add(key);
+            completed.push(key);
+          }
         }
       }
+
       return completed;
     },
 
