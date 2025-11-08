@@ -125,22 +125,26 @@
 
         // Handle cloud sync ONLY if we haven't already processed a reload
         if (!isReloadingForCloudSync) {
-          logger.log('[Supabase] 📝 SIGNED_IN event - loading cloud progress...');
+          try {
+            logger.log('[Supabase] 📝 SIGNED_IN event - loading cloud progress...');
 
-          // Set flag immediately to prevent any duplicate reload attempts
-          isReloadingForCloudSync = true;
+            const loadResult = await loadProgressFromCloud();
 
-          const loadResult = await loadProgressFromCloud();
-
-          if (loadResult?.data) {
-            logger.log('[Supabase] ✅ Cloud progress loaded. Reloading page...');
-            sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
-            setTimeout(() => window.location.reload(), 500);
-          } else {
-            // No cloud data, reset flag and sync local to cloud
-            logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
-            isReloadingForCloudSync = false;
-            await syncProgressToCloud();
+            if (loadResult?.data) {
+              // Set flag only right before reload to prevent race conditions
+              isReloadingForCloudSync = true;
+              logger.log('[Supabase] ✅ Cloud progress loaded. Reloading page...');
+              sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
+              setTimeout(() => window.location.reload(), 500);
+            } else {
+              // No cloud data, sync local to cloud
+              logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
+              await syncProgressToCloud();
+            }
+          } catch (error) {
+            console.error('[Supabase] Error during sign-in cloud sync:', error);
+            // Don't block the user - they're signed in even if sync failed
+            // Flag remains false so they can try again
           }
         } else {
           logger.log('[Supabase] ℹ️ Skipping SIGNED_IN - reload already in progress');
