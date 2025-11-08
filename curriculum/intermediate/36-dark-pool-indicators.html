@@ -102,6 +102,31 @@
         width: 100% !important;
       }
 
+      /* First column (indicator/label) - make it prominent */
+      table td:first-child {
+        font-weight: 700;
+        font-size: 0.95rem !important;
+        color: rgba(91, 138, 255, 0.9);
+        margin-bottom: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      /* Add labels to 2nd and 3rd columns */
+      table td:nth-child(2)::before {
+        content: "📊 Retail PFOF: ";
+        font-weight: 600;
+        color: rgba(255,107,107,0.8);
+        display: inline;
+      }
+
+      table td:nth-child(3)::before {
+        content: "🏦 Institutional: ";
+        font-weight: 600;
+        color: rgba(0,212,170,0.8);
+        display: inline;
+      }
+
       table td span {
         font-size: 0.8rem !important;
       }
