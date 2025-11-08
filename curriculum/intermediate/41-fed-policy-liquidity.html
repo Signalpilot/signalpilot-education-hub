@@ -35,13 +35,30 @@
       body {
         overflow-x: hidden !important;
         max-width: 100vw !important;
+        width: 100% !important;
       }
 
       .wrap,
       .prose,
       .article,
       article {
-        max-width: 100vw !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        width: 100% !important;
+      }
+
+      /* Fix article-grid layout on mobile - force single column */
+      .article-grid {
+        display: block !important;
+        grid-template-columns: unset !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      /* Ensure all direct children respect mobile width */
+      .article-grid > * {
+        max-width: 100% !important;
+        width: 100% !important;
         overflow-x: hidden !important;
       }
 
@@ -51,12 +68,14 @@
         overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
         white-space: pre !important;
-        max-width: calc(100vw - 3rem) !important;
+        max-width: 100% !important;
+        width: calc(100vw - 2rem) !important;
         font-size: 0.7rem !important;
         line-height: 1.3;
         padding: 0.75rem !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+        box-sizing: border-box !important;
       }
 
       .prose pre code,
@@ -67,6 +86,7 @@
         font-size: 0.7rem !important;
         display: block;
         max-width: 100%;
+        width: 100%;
       }
 
       /* Convert grid layouts to single column on mobile */
@@ -167,9 +187,50 @@
       /* Prevent callout boxes from breaking */
       .callout-info,
       .callout-warning,
-      .callout-key {
+      .callout-key,
+      .callout-tip,
+      .callout-disaster,
+      .callout-success {
         max-width: 100% !important;
+        width: 100% !important;
         overflow-x: hidden !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Accordion and tabs - force to fit */
+      .accordion,
+      .tabs,
+      .accordion-item,
+      .tab-panel {
+        max-width: 100% !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Timeline items */
+      .timeline,
+      .timeline-item,
+      .timeline-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Quiz and related grids */
+      .quiz,
+      .quiz-question,
+      .related-grid {
+        max-width: 100% !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Any element with explicit width */
+      * {
+        max-width: 100vw !important;
       }
     }
   </style>
