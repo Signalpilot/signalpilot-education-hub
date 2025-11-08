@@ -52,6 +52,17 @@
         overflow-x: hidden;
       }
 
+      /* Convert grid layouts to single column on mobile */
+      div[style*="display:grid"] {
+        display: block !important;
+        grid-template-columns: unset !important;
+      }
+
+      div[style*="display:grid"] > div {
+        margin-bottom: 1.5rem !important;
+        max-width: 100% !important;
+      }
+
       /* Mobile table styling - convert to stacked cards (NO horizontal scroll) */
       table {
         border: 0;
