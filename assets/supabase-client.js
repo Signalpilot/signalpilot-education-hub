@@ -52,6 +52,7 @@
   let currentUser = null;
   let authStateListeners = [];
   let hasHandledExistingSession = false; // Track if we already processed an existing session on page load
+  let isReloadingForCloudSync = false; // Prevent multiple simultaneous reloads
 
   // Subscribe to auth state changes
   /**
@@ -127,20 +128,22 @@
         notifyAuthStateChange(session?.user || null);
 
         // Only handle NEW sign-ins (not existing sessions)
-        if (!hasHandledExistingSession) {
+        if (!hasHandledExistingSession && !isReloadingForCloudSync) {
           logger.log('[Supabase] 📝 New sign-in detected, loading cloud progress...');
+          hasHandledExistingSession = true; // Mark as handled immediately
           const loadResult = await loadProgressFromCloud();
 
-          if (loadResult?.data) {
+          if (loadResult?.data && !isReloadingForCloudSync) {
             logger.log('[Supabase] ✅ Cloud progress loaded from new sign-in. Reloading...');
+            isReloadingForCloudSync = true;
             sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
             setTimeout(() => window.location.reload(), 500);
-          } else {
+          } else if (!loadResult?.data) {
             logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
             await syncProgressToCloud();
           }
         } else {
-          logger.log('[Supabase] ℹ️ Skipping SIGNED_IN event - existing session already handled');
+          logger.log('[Supabase] ℹ️ Skipping SIGNED_IN event - existing session already handled or reload in progress');
         }
       } else if (event === 'USER_UPDATED') {
         notifyAuthStateChange(session?.user || null);
@@ -149,18 +152,20 @@
       }
     });
 
-    // Handle existing session
-    if (session?.user) {
+    // Handle existing session AFTER listener is set up
+    // This ensures we only handle the session once
+    if (session?.user && hasHandledExistingSession && !isReloadingForCloudSync) {
       logger.log('[Supabase] 🔄 Loading cloud progress for existing session...');
       notifyAuthStateChange(session.user);
 
       const loadResult = await loadProgressFromCloud();
 
-      if (loadResult?.data) {
+      if (loadResult?.data && !isReloadingForCloudSync) {
         logger.log('[Supabase] ✅ Cloud progress loaded from existing session. Reloading...');
+        isReloadingForCloudSync = true;
         sessionStorage.setItem('sp_just_loaded_from_cloud', 'true');
         setTimeout(() => window.location.reload(), 500);
-      } else {
+      } else if (!loadResult?.data) {
         logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
         await syncProgressToCloud();
       }
