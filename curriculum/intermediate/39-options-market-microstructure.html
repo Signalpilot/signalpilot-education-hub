@@ -31,31 +31,42 @@
   <style>
     /* Mobile-friendly responsive layout - prevent horizontal scroll */
     @media (max-width: 768px) {
+      /* Aggressive overflow prevention on containers */
+      body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+      }
+
+      .wrap,
+      .prose,
+      .article,
+      article {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+      }
+
+      /* Code blocks - ensure they scroll internally, not the page */
       .prose pre,
       pre {
         overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
-        white-space: pre;
-        max-width: 100%;
-        font-size: 0.75rem !important;
-        line-height: 1.4;
+        white-space: pre !important;
+        max-width: calc(100vw - 3rem) !important;
+        font-size: 0.7rem !important;
+        line-height: 1.3;
         padding: 0.75rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
       }
+
       .prose pre code,
       pre code {
-        white-space: pre;
+        white-space: pre !important;
         word-break: normal;
         overflow-wrap: normal;
-        font-size: 0.75rem !important;
-      }
-      /* Prevent body horizontal scroll */
-      body {
-        overflow-x: hidden;
-      }
-      .wrap,
-      .prose {
-        max-width: 100vw;
-        overflow-x: hidden;
+        font-size: 0.7rem !important;
+        display: block;
+        max-width: 100%;
       }
 
       /* Convert grid layouts to single column on mobile */
@@ -67,6 +78,14 @@
       div[style*="display:grid"] > div {
         margin-bottom: 1.5rem !important;
         max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      /* Ensure all divs with padding/borders don't overflow */
+      div[style*="padding"],
+      div[style*="border"] {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
       }
 
       /* Mobile table styling - convert to stacked cards (NO horizontal scroll) */
