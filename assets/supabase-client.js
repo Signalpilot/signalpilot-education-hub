@@ -111,7 +111,15 @@
     // Regular flow for first load
     const { data: { session } } = await supabase.auth.getSession();
 
-    // Set up auth listener FIRST before any async operations
+    // CRITICAL: Set flag BEFORE registering listener to prevent race condition
+    // If there's an existing session, mark it as handled so the SIGNED_IN event
+    // (which fires immediately when listener is registered) doesn't cause a reload
+    if (session?.user) {
+      hasHandledExistingSession = true;
+      logger.log('[Supabase] 🔄 Found existing session, marking as handled BEFORE listener registration');
+    }
+
+    // Set up auth listener
     supabase.auth.onAuthStateChange(async (event, session) => {
       logger.log('[Supabase] Auth event:', event);
 
@@ -131,6 +139,8 @@
             logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
             await syncProgressToCloud();
           }
+        } else {
+          logger.log('[Supabase] ℹ️ Skipping SIGNED_IN event - existing session already handled');
         }
       } else if (event === 'USER_UPDATED') {
         notifyAuthStateChange(session?.user || null);
@@ -141,9 +151,8 @@
 
     // Handle existing session
     if (session?.user) {
-      logger.log('[Supabase] 🔄 Found existing session, loading cloud progress...');
+      logger.log('[Supabase] 🔄 Loading cloud progress for existing session...');
       notifyAuthStateChange(session.user);
-      hasHandledExistingSession = true;
 
       const loadResult = await loadProgressFromCloud();
 
