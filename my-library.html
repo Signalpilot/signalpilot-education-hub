@@ -1000,10 +1000,13 @@
 
     // Get user name from Supabase auth or localStorage
     let userName = 'Trading Professional';
-    if (window.supabaseAuth && window.supabaseAuth.currentUser) {
-      userName = window.supabaseAuth.currentUser.user_metadata?.user_name ||
-                 window.supabaseAuth.currentUser.email?.split('@')[0] ||
-                 userName;
+    if (window.supabaseAuth && window.supabaseAuth.getCurrentUser) {
+      const user = window.supabaseAuth.getCurrentUser();
+      if (user) {
+        userName = user.user_metadata?.user_name ||
+                   user.email?.split('@')[0] ||
+                   userName;
+      }
     } else {
       userName = localStorage.getItem('sp_user_name') || userName;
     }
