@@ -997,7 +997,7 @@
   // Generate Certificate
   function generateCertificate(tier) {
     const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    const userName = 'Trading Student'; // Get from auth if available
+    const userName = localStorage.getItem('sp_user_name') || 'Trading Professional';
 
     const certificateHTML = `
       <!DOCTYPE html>
