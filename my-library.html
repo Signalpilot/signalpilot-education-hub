@@ -22,6 +22,9 @@
   <link rel="stylesheet" href="/assets/chatbot.css">
   <link rel="stylesheet" href="/assets/auth-ui.css">
 
+  <!-- html2canvas for certificate image generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
   <!-- Logger must load first -->
   <script src="/assets/logger.js"></script>
   <script src="/assets/dev-utils.js" defer></script>
@@ -1011,7 +1014,7 @@
   }
 
   // Share Certificate on Social Media
-  function shareCertificate(tier) {
+  async function shareCertificate(tier) {
     // Get user name
     let userName = 'Trading Professional';
     if (window.supabaseAuth && window.supabaseAuth.getCurrentUser) {
@@ -1026,22 +1029,223 @@
     }
 
     const shareText = `🎓 Just completed the ${tier} Tier at Signal Pilot Education! Professional trading education that actually works. #TradingEducation #SignalPilot`;
-    const shareUrl = 'https://education.signalpilot.io';
 
-    // Try Web Share API first (works on mobile)
-    if (navigator.share) {
-      navigator.share({
-        title: `${tier} Trading Certification`,
-        text: shareText,
-        url: shareUrl
-      }).catch(err => console.log('Share cancelled'));
-    } else {
-      // Fallback: Show share options modal
-      showShareModal(tier, userName, shareText, shareUrl);
+    // Show loading indicator
+    const shareButton = event?.target;
+    const originalText = shareButton?.textContent;
+    if (shareButton) {
+      shareButton.disabled = true;
+      shareButton.textContent = '⏳ Generating...';
+    }
+
+    try {
+      // Generate certificate image
+      const certificateBlob = await generateCertificateImage(tier, userName);
+
+      // Try Web Share API with image file (works on mobile)
+      if (navigator.canShare && navigator.canShare({ files: [new File([certificateBlob], 'certificate.png', { type: 'image/png' })] })) {
+        const file = new File([certificateBlob], `signal-pilot-${tier.toLowerCase().replace(/\s+/g, '-')}-certificate.png`, { type: 'image/png' });
+        await navigator.share({
+          title: `${tier} Trading Certification`,
+          text: shareText,
+          files: [file]
+        });
+      } else {
+        // Fallback: Show share options modal with download
+        showShareModal(tier, userName, shareText, certificateBlob);
+      }
+    } catch (error) {
+      console.error('Error generating certificate:', error);
+      alert('Error generating certificate image. Please try the Download Certificate button instead.');
+    } finally {
+      // Reset button
+      if (shareButton) {
+        shareButton.disabled = false;
+        shareButton.textContent = originalText;
+      }
     }
   }
 
-  function showShareModal(tier, userName, shareText, shareUrl) {
+  // Generate Certificate as Image Blob
+  async function generateCertificateImage(tier, userName) {
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    // Create temporary container
+    const container = document.createElement('div');
+    container.style.cssText = 'position: fixed; left: -9999px; top: 0; width: 1200px; height: 800px;';
+    document.body.appendChild(container);
+
+    // Certificate HTML (simplified for image generation)
+    container.innerHTML = `
+      <div class="certificate" style="
+        font-family: 'DM Sans', sans-serif;
+        background: linear-gradient(135deg, rgba(15,20,32,0.95) 0%, rgba(26,40,69,0.95) 100%);
+        border: 10px double #5b8aff;
+        border-radius: 20px;
+        padding: 3rem;
+        width: 1200px;
+        height: 800px;
+        text-align: center;
+        box-shadow: 0 0 60px rgba(91,138,255,0.3), 0 20px 80px rgba(0,0,0,0.6);
+        position: relative;
+        color: white;
+        box-sizing: border-box;
+      ">
+        <div style="
+          font-family: 'Gugi', cursive;
+          font-size: 3rem;
+          margin-bottom: 0.5rem;
+          background: linear-gradient(135deg, #5b8aff 0%, #76ddff 50%, #00d4aa 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          letter-spacing: 2px;
+        ">SIGNAL PILOT</div>
+
+        <div style="
+          font-family: 'Space Grotesk', monospace;
+          font-size: 0.9rem;
+          color: rgba(118,221,255,0.7);
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          margin-bottom: 2rem;
+        ">Institutional Trading Education</div>
+
+        <h1 style="
+          font-family: 'Space Grotesk', monospace;
+          font-size: 3rem;
+          margin: 2rem 0 1rem;
+          letter-spacing: 2px;
+          font-weight: 700;
+          text-transform: uppercase;
+        ">Certificate of Completion</h1>
+
+        <div style="
+          width: 250px;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, #5b8aff, #76ddff, #5b8aff, transparent);
+          margin: 1.5rem auto;
+        "></div>
+
+        <div style="font-size: 1.1rem; margin: 1.5rem 0; opacity: 0.8;">This certifies that</div>
+
+        <div style="
+          font-family: 'Space Grotesk', monospace;
+          font-size: 3rem;
+          margin: 1.5rem 0;
+          padding: 1.5rem 3rem;
+          background: linear-gradient(135deg, rgba(91,138,255,0.15), rgba(118,221,255,0.15));
+          border: 2px solid rgba(91,138,255,0.4);
+          border-radius: 12px;
+          display: inline-block;
+          font-weight: 700;
+        ">${userName}</div>
+
+        <div style="font-size: 1.2rem; margin: 1.5rem 0; opacity: 0.9;">has successfully completed the</div>
+
+        <div style="
+          font-family: 'Gugi', cursive;
+          font-size: 2.5rem;
+          background: linear-gradient(135deg, #76ddff 0%, #00d4aa 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin: 1rem 0;
+          letter-spacing: 2px;
+        ">${tier} Tier</div>
+
+        <div style="
+          font-family: 'Space Grotesk', monospace;
+          font-size: 1.3rem;
+          font-weight: 600;
+          margin: 1rem 0 2rem;
+        ">Signal Pilot Trading Education Program</div>
+
+        <div style="margin-top: 3rem; font-size: 1rem; opacity: 0.6;">Awarded ${today}</div>
+
+        <div style="
+          position: absolute;
+          bottom: 40px;
+          right: 50px;
+          width: 110px;
+          height: 110px;
+          border: 4px double rgba(0,212,170,0.6);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Gugi', cursive;
+          font-size: 0.9rem;
+          color: rgba(0,212,170,0.8);
+          text-align: center;
+          line-height: 1.3;
+        ">VERIFIED<br/>${new Date().getFullYear()}</div>
+
+        <div style="
+          position: absolute;
+          bottom: 40px;
+          left: 40px;
+          width: 150px;
+          height: 150px;
+          border: 5px solid rgba(91,138,255,0.3);
+          border-radius: 50%;
+          transform: rotate(-15deg);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        ">
+          <div style="
+            font-family: 'Gugi', cursive;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #5b8aff, #76ddff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+          ">SIGNAL<br/>PILOT</div>
+          <div style="
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.65rem;
+            color: rgba(91,138,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+          ">Official</div>
+          <div style="
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.85rem;
+            color: rgba(91,138,255,0.6);
+            font-weight: 700;
+          ">${new Date().getFullYear()}</div>
+        </div>
+      </div>
+    `;
+
+    // Wait for fonts to load
+    await document.fonts.ready;
+
+    // Generate image using html2canvas
+    const canvas = await html2canvas(container.firstElementChild, {
+      backgroundColor: '#05070d',
+      scale: 2, // Higher quality
+      logging: false,
+      width: 1200,
+      height: 800
+    });
+
+    // Remove temporary container
+    document.body.removeChild(container);
+
+    // Convert to blob
+    return new Promise((resolve) => {
+      canvas.toBlob((blob) => {
+        resolve(blob);
+      }, 'image/png', 1.0);
+    });
+  }
+
+  function showShareModal(tier, userName, shareText, certificateBlob) {
     // Create modal
     const modal = document.createElement('div');
     modal.style.cssText = `
@@ -1063,38 +1267,66 @@
       border: 1px solid rgba(91,138,255,0.3);
       border-radius: 12px;
       padding: 2rem;
-      max-width: 500px;
+      max-width: 550px;
       width: 90%;
     `;
 
+    // Create download URL for certificate
+    const certificateUrl = URL.createObjectURL(certificateBlob);
+    const fileName = `signal-pilot-${tier.toLowerCase().replace(/\s+/g, '-')}-certificate.png`;
+
+    // For social sharing, we'll provide instructions since we can't directly upload
+    const shareUrl = 'https://education.signalpilot.io';
     const encodedText = encodeURIComponent(shareText);
     const encodedUrl = encodeURIComponent(shareUrl);
 
     modalContent.innerHTML = `
       <h3 style="margin:0 0 1rem 0;color:var(--primary)">📤 Share Your Achievement</h3>
-      <p style="margin-bottom:1.5rem;opacity:0.8">Completed ${tier} Tier - Share on social media:</p>
+      <p style="margin-bottom:1.5rem;opacity:0.8">Congratulations on completing the ${tier} Tier!</p>
 
       <div style="display:flex;flex-direction:column;gap:0.75rem">
-        <a href="https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}"
+        <button class="btn btn-primary" id="download-cert-btn" style="display:block;width:100%">
+          ⬇️ Download Certificate Image
+        </button>
+
+        <div style="
+          background: rgba(91,138,255,0.1);
+          border: 1px solid rgba(91,138,255,0.2);
+          border-radius: 8px;
+          padding: 1rem;
+          margin: 0.5rem 0;
+        ">
+          <div style="font-size:0.9rem;opacity:0.8;margin-bottom:0.5rem">
+            <strong>How to share:</strong>
+          </div>
+          <div style="font-size:0.85rem;opacity:0.7;line-height:1.5">
+            1. Download the certificate image above<br/>
+            2. Click a social platform below<br/>
+            3. Upload the downloaded image to your post
+          </div>
+        </div>
+
+        <a href="https://twitter.com/intent/tweet?text=${encodedText}"
            target="_blank"
-           class="btn btn-primary"
+           class="btn btn-ghost"
            style="text-decoration:none;text-align:center;display:block">
-          🐦 Share on Twitter/X
+          🐦 Post on Twitter/X
         </a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}"
+        <a href="https://www.linkedin.com/feed/"
            target="_blank"
-           class="btn btn-primary"
+           class="btn btn-ghost"
            style="text-decoration:none;text-align:center;display:block">
-          💼 Share on LinkedIn
+          💼 Post on LinkedIn
         </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}"
+        <a href="https://www.facebook.com/"
            target="_blank"
-           class="btn btn-primary"
+           class="btn btn-ghost"
            style="text-decoration:none;text-align:center;display:block">
-          📘 Share on Facebook
+          📘 Post on Facebook
         </a>
-        <button class="btn btn-ghost" onclick="this.closest('[style*=fixed]').remove()">
-          Cancel
+
+        <button class="btn btn-ghost" onclick="this.closest('[style*=fixed]').remove()" style="margin-top:0.5rem">
+          Close
         </button>
       </div>
     `;
@@ -1102,10 +1334,40 @@
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
 
+    // Add download functionality
+    document.getElementById('download-cert-btn').addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = certificateUrl;
+      a.download = fileName;
+      a.click();
+
+      // Show success message
+      const btn = document.getElementById('download-cert-btn');
+      const originalText = btn.textContent;
+      btn.textContent = '✅ Downloaded!';
+      btn.style.background = 'rgba(0,212,170,0.2)';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 2000);
+    });
+
     // Close modal on background click
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.remove();
+      if (e.target === modal) {
+        modal.remove();
+        URL.revokeObjectURL(certificateUrl);
+      }
     });
+
+    // Cleanup when modal is removed
+    const observer = new MutationObserver(() => {
+      if (!document.body.contains(modal)) {
+        URL.revokeObjectURL(certificateUrl);
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   // Generate Certificate
