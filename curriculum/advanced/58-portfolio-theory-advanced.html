@@ -53,11 +53,11 @@
 <article class="article">
   <header>
     <div class="wrap">
-      <div class="breadcrumbs">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> <span>›</span>
         <a href="/advanced.html">Advanced</a> <span>›</span>
         <span>Lesson #58</span>
-      </div>
+      </nav>
       <span class="badge">🔴 Advanced • Lesson 58</span>
       <h1 class="headline xl">Portfolio Theory Reality: Why "Diversification" Fails Most Traders</h1>
       <div class="meta">14 min read • Modern Portfolio Theory & Construction</div>
@@ -99,12 +99,6 @@
           <li>Sharpe ratio: (Return - Risk-free rate) ÷ Volatility</li>
           <li>Framework: Calculate Sharpe for each strategy → Allocate capital to highest Sharpe → Rebalance quarterly</li>
         </ul>
-      </div>
-
-        
-        
-        
-        
       </div>
 
       <p><b>"I'm diversified—I hold AAPL, MSFT, GOOGL, AMZN, and NVDA."</b></p>
@@ -641,7 +635,7 @@
 
       <h3>Understanding Correlation</h3>
 
-      <pre><code>Correlation Coefficient (-1.0 to +1.0):
+      <pre style="overflow-x:auto"><code>Correlation Coefficient (-1.0 to +1.0):
 
 +1.0 = Perfect positive (move together exactly)
 +0.7 = Strong positive (usually move together)
@@ -668,7 +662,7 @@ Correlation < 0.0 = Excellent (negative correlation = hedge)</code></pre>
         <div class="accordion-item">
           <div class="accordion-header">The Math (Simple Version)</div>
           <div class="accordion-content">
-            <pre><code>Asset A: 20% return, 25% volatility
+            <pre style="overflow-x:auto"><code>Asset A: 20% return, 25% volatility
 Asset B: 15% return, 20% volatility
 Correlation: 0.3 (low)
 
@@ -685,7 +679,7 @@ Result: Higher return per unit of risk</code></pre>
         <div class="accordion-item">
           <div class="accordion-header">Real Example: Stocks + Bonds</div>
           <div class="accordion-content">
-            <pre><code>100% SPY:
+            <pre style="overflow-x:auto"><code>100% SPY:
 Return: 12% avg
 Volatility: 18%
 Sharpe: 0.67
@@ -722,7 +716,7 @@ Magic: -0.40 correlation = diversification benefit</code></pre>
         <p>Portfolios ON the frontier = optimal. Portfolios BELOW = suboptimal (can improve without adding risk).</p>
       </div>
 
-      <pre><code>Example Efficient Frontier:
+      <pre style="overflow-x:auto"><code>Example Efficient Frontier:
 
 Risk (Volatility) → Return
 10%                  5%  (low risk, low return)
@@ -737,7 +731,7 @@ Your goal: Pick a point on the frontier based on risk tolerance</code></pre>
 
       <p>The best portfolio on the frontier? The one with the highest Sharpe ratio (return per unit of risk).</p>
 
-      <pre><code>Sharpe Ratio = (Portfolio Return - Risk-Free Rate) / Volatility
+      <pre style="overflow-x:auto"><code>Sharpe Ratio = (Portfolio Return - Risk-Free Rate) / Volatility
 
 Example:
 Portfolio A: 12% return, 18% volatility → Sharpe = 0.67
@@ -756,7 +750,7 @@ Winner: Portfolio C (best risk-adjusted return)</code></pre>
 
       <p>Let me show you:</p>
 
-      <pre><code>60/40 Portfolio:
+      <pre style="overflow-x:auto"><code>60/40 Portfolio:
 60% SPY (volatility: 18%)
 40% TLT (volatility: 12%)
 
@@ -824,7 +818,7 @@ Result: Portfolio is 90% exposed to stock risk
 
       <p><strong>Answer: Kelly Criterion.</strong></p>
 
-      <pre><code>Kelly % = (Success Rate × Avg Win - Loss Rate × Avg Loss) / Avg Win
+      <pre style="overflow-x:auto"><code>Kelly % = (Success Rate × Avg Win - Loss Rate × Avg Loss) / Avg Win
 
 Example:
 Performance: 65%
@@ -856,7 +850,7 @@ Interpretation: Allocate 51% of capital to this strategy</code></pre>
         <div class="accordion-item">
           <div class="accordion-header">Strategy Portfolio Example</div>
           <div class="accordion-content">
-            <pre><code>Strategy A (Janus Sweeps):
+            <pre style="overflow-x:auto"><code>Strategy A (Janus Sweeps):
 Success rate: 65%, Avg R: 2.5R
 Kelly: 13% (1/4 Kelly)
 Regime: Works in trending markets
@@ -1008,8 +1002,8 @@ Result:
         <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
       </div>
 
-</div>
-
+    </div>
+    </div>
   </div>
 
 
