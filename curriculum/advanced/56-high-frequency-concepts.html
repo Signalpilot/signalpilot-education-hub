@@ -53,11 +53,11 @@
 <article class="article">
   <header>
     <div class="wrap">
-      <div class="breadcrumbs">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> <span>›</span>
         <a href="/advanced.html">Advanced</a> <span>›</span>
         <span>Lesson #56</span>
-      </div>
+      </nav>
       <span class="badge">🔴 Advanced • Lesson 56</span>
       <h1 class="headline xl">HFT Reality Check: Why You Can't Compete (And Don't Need To)</h1>
       <div class="meta">14 min read • High-Frequency Trading Mechanics</div>
@@ -99,12 +99,6 @@
           <li>HFT impact on retail: Wider spreads during uncertainty, front-running large orders</li>
           <li>Framework: Understand HFT behavior → Avoid trading when spreads widen (HFTs pulling quotes)</li>
         </ul>
-      </div>
-
-        
-        
-        
-        
       </div>
 
       <p><b>They trade in microseconds. You trade in seconds.</b></p>
@@ -237,7 +231,7 @@
 
       <h3>What Happened: The Millisecond-by-Millisecond Breakdown</h3>
 
-      <pre><code>9:32:00.000 — Michael sees NVDA ask: $410.50
+      <pre style="overflow-x:auto"><code>9:32:00.000 — Michael sees NVDA ask: $410.50
               - Decides to go long
               - Clicks "BUY MARKET 15,000 shares"
 
@@ -279,7 +273,7 @@
 
       <div class="callout-warning">
         <h4>🚨 The Brutal Math</h4>
-        <pre><code>Expected cost: 15,000 × $410.50 = $6,157,500
+        <pre style="overflow-x:auto"><code>Expected cost: 15,000 × $410.50 = $6,157,500
 Actual cost:   15,000 × $413.65 = $6,204,750
 Hidden loss: $47,250 (2.6% of position before first tick)
 
@@ -295,7 +289,7 @@ In 200 milliseconds.
 
       <p>Six months later, Michael tested the same trade with proper execution:</p>
 
-      <pre><code>✅ CORRECT EXECUTION (Simulated):
+      <pre style="overflow-x:auto"><code>✅ CORRECT EXECUTION (Simulated):
 
 Time: 10:45 AM (not 9:32 AM market open chaos)
 Order type: Limit order at $410.50 (not market)
@@ -328,7 +322,7 @@ But Michael kept an extra $45K.
 
       <p>Here's how it works:</p>
 
-      <pre><code>HFT Market Maker:
+      <pre style="overflow-x:auto"><code>HFT Market Maker:
 Bid: $520.00 (willing to buy 1,000 shares)
 Ask: $520.01 (willing to sell 1,000 shares)
 Spread: $0.01 per share
@@ -358,7 +352,7 @@ Scale: 1 million round-turns per day = $14 million per day</code></pre>
 
       <p>HFTs can see your order coming <em>before</em> it hits the exchange. Here's the play:</p>
 
-      <pre><code>Scenario: You're about to buy 10,000 shares of SPY
+      <pre style="overflow-x:auto"><code>Scenario: You're about to buy 10,000 shares of SPY
 
 0ms: HFT detects your order routing to Exchange A
      (SPY bid: $520.00, ask: $520.01)
@@ -397,7 +391,7 @@ From YOUR order. In 2 milliseconds.</code></pre>
 
       <p><strong>Quote stuffing:</strong> Flood the order book with fake orders to slow competitors and probe for hidden liquidity.</p>
 
-      <pre><code>HFT places 10,000 orders in 1 second:
+      <pre style="overflow-x:auto"><code>HFT places 10,000 orders in 1 second:
 
 Bid $520.00 (100 shares) → Cancel
 Bid $520.01 (100 shares) → Cancel
@@ -425,7 +419,7 @@ Result: Order book chaos, flickering prices, retail confusion</code></pre>
 
       <h3>How PFOF Works (And Why You're the Product)</h3>
 
-      <pre><code>You: Place order to buy 100 shares SPY at market
+      <pre style="overflow-x:auto"><code>You: Place order to buy 100 shares SPY at market
 
 Your broker (Robinhood):
   1. Receives your order
@@ -469,7 +463,7 @@ Your "free" trades cost: Millions in aggregate
 
       <p>Sarah ran an experiment: Same strategy, two different brokers, one month.</p>
 
-      <pre><code>EXPERIMENT: January 2023
+      <pre style="overflow-x:auto"><code>EXPERIMENT: January 2023
 
 Strategy: SPY & QQQ swing trades (3-7 day holds)
 Position size: 5,000-10,000 shares per trade
@@ -603,7 +597,7 @@ Sarah's actual savings (10 months post-switch): $12,300
 
       <p>Market orders = guaranteed slippage. Limit orders = you control the price.</p>
 
-      <pre><code>Bad: Market order to buy SPY
+      <pre style="overflow-x:auto"><code>Bad: Market order to buy SPY
 - Pays whatever ask is when order arrives
 - HFTs can front-run, reprice
 - Slippage: $0.02-0.10 per share
@@ -620,7 +614,7 @@ Good: Limit order at bid ($520.00)
 
       <p>Big orders get detected and front-run. Hide your size.</p>
 
-      <pre><code>Scenario: Want to buy 10,000 shares SPY
+      <pre style="overflow-x:auto"><code>Scenario: Want to buy 10,000 shares SPY
 
 Bad: Single 10,000-share market order
 - Visible to HFTs
@@ -639,7 +633,7 @@ Good: Iceberg order (display 500, hide 9,500)
 
       <p>HFTs dominate sub-second to minutes. They don't compete at hours-to-days.</p>
 
-      <pre><code>HFT battleground: 0-60 seconds (scalping)
+      <pre style="overflow-x:auto"><code>HFT battleground: 0-60 seconds (scalping)
 
 Your edge: Hours to days (swing trading)
 - Fundamentals matter
@@ -662,7 +656,7 @@ Takeaway: Trade longer, escape HFT competition</code></pre>
 
       <p>2:32 PM. A single mutual fund sell order. 36 minutes of absolute chaos. $1 trillion erased. Then... it came back.</p>
 
-      <pre><code>THE FLASH CRASH TIMELINE:
+      <pre style="overflow-x:auto"><code>THE FLASH CRASH TIMELINE:
 
 2:32 PM: Waddell & Reed sells $4.1B worth of E-Mini futures
          (Automated algo, no size limits, pure market order)
@@ -715,7 +709,7 @@ Final damage:
 
       <h3>August 24, 2015: ETF Flash Crash</h3>
 
-      <pre><code>9:30 AM: Market opens after weekend China devaluation fears
+      <pre style="overflow-x:auto"><code>9:30 AM: Market opens after weekend China devaluation fears
 9:31 AM: HFTs withdraw from ETF market making
 9:35 AM: Massive ETF dislocations
 
@@ -733,7 +727,7 @@ Victims: Retail traders with stop losses on ETFs
 
       <h3>October 15, 2014: Treasury Flash Rally</h3>
 
-      <pre><code>9:33 AM: 10-Year Treasury yield plunges from 2.20% → 1.86%
+      <pre style="overflow-x:auto"><code>9:33 AM: 10-Year Treasury yield plunges from 2.20% → 1.86%
          (Biggest move in decades, in seconds)
 
 9:45 AM: Yield back to 2.15%
@@ -749,7 +743,7 @@ Reality: HFT algos created feedback loop
 
       <h3>March 9, 2020: COVID Circuit Breaker Chaos</h3>
 
-      <pre><code>Four circuit breakers in two weeks:
+      <pre style="overflow-x:auto"><code>Four circuit breakers in two weeks:
 
 March 9: -7.6% drop, halted 15 minutes (9:35 AM)
 March 12: -10% drop, halted 15 minutes (9:37 AM)
@@ -799,7 +793,7 @@ Lesson: HFT provides liquidity when you don't need it.
 
 <h3>How IEX's Speed Bump Works</h3>
 
-      <pre><code>Normal Exchange (NASDAQ, NYSE):
+      <pre style="overflow-x:auto"><code>Normal Exchange (NASDAQ, NYSE):
 1. Your order arrives at exchange
 2. HFT detects it instantly (co-located servers, 0.5ms away)
 3. HFT cancels quotes, reprices, front-runs
@@ -835,7 +829,7 @@ IEX Exchange:
         <p><strong>Position size:</strong> 5,000-8,000 shares per trade in SPY/QQQ</p>
       </div>
 
-      <pre><code>Month 1: Default routing (IBKR smart routing)
+      <pre style="overflow-x:auto"><code>Month 1: Default routing (IBKR smart routing)
 - Total trades: 24 round-trips (48 executions)
 - Total shares: 320,000
 - Avg slippage: $0.014/share
@@ -887,7 +881,7 @@ David's note: "IEX fills take 2-3 seconds longer. But I save $2.5K/month. Worth 
 
       <p>Yes, one guy. From his parents' house in London. With $40 million in automated spoofing.</p>
 
-      <pre><code>WHO: Navinder Singh Sarao, independent futures trader
+      <pre style="overflow-x:auto"><code>WHO: Navinder Singh Sarao, independent futures trader
 WHEN: 2009-2015 (arrested April 2015)
 WHAT: Spoofing E-Mini S&P 500 futures
 
@@ -909,7 +903,7 @@ Lesson: Even retail traders can manipulate markets with algos.
 
       <h3>Tower Research: The $67 Million Spoofing Fine</h3>
 
-      <pre><code>WHO: Tower Research Capital (HFT firm)
+      <pre style="overflow-x:auto"><code>WHO: Tower Research Capital (HFT firm)
 WHEN: 2012-2013
 FINE: $67.4 million (CFTC, 2020)
 
@@ -936,7 +930,7 @@ Lesson: Spoofing is illegal, but detection takes years.
 
       <p>Not illegal. Just... statistically impossible for most traders. Yet they did it.</p>
 
-      <pre><code>Virtu's 2013 SEC filing revealed:
+      <pre style="overflow-x:auto"><code>Virtu's 2013 SEC filing revealed:
 - 1,238 trading days
 - Profitable on 1,237 days (99.92%)
 - Only ONE losing day (and it was tiny)
@@ -1045,7 +1039,7 @@ Lesson: HFT isn't gambling. It's latency arbitrage at scale.
 
       <h3>Real-World Example: Combining All Tactics</h3>
 
-      <pre><code>SCENARIO: You want to buy 8,000 shares SPY (current: $520.00/$520.01)
+      <pre style="overflow-x:auto"><code>SCENARIO: You want to buy 8,000 shares SPY (current: $520.00/$520.01)
 
 ❌ WRONG WAY (HFT food):
 - 9:32 AM market order for 8,000 shares
@@ -1281,8 +1275,8 @@ Annual savings (2 trades/week): $548 × 100 = $54,800
 
       </div>
 
+    </div>
   </div>
-
 
   <div class="wrap nav-article">
   <a class="btn btn-ghost" href="/curriculum/advanced/55-machine-learning-trading.html">&larr; Previous Lesson</a>
