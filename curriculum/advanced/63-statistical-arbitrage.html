@@ -55,11 +55,11 @@
   <!-- Article Header -->
   <header>
     <div class="wrap">
-      <div class="breadcrumbs">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> <span>›</span>
         <a href="/advanced.html">Advanced</a> <span>›</span>
         <span>Lesson #63</span>
-      </div>
+      </nav>
       <span class="badge">🔴 Advanced • Lesson 63 of 82</span>
       <h1 class="headline xl">Statistical Arbitrage: Quantitative Mean Reversion</h1>
       <div class="meta">Reading time ~18-22 min • Pairs Trading & Cointegration Analysis</div>
@@ -131,12 +131,6 @@
           <li>Z-score: Measures standard deviations from mean</li>
           <li>Framework: Find 0.7+ correlated pairs → Trade when z-score >2 → Exit at mean</li>
         </ul>
-      </div>
-
-        
-        
-        
-        
       </div>
 
       <!-- Prerequisites Warning -->
@@ -246,7 +240,7 @@
 
 <h3 id="the-timeline-how-correlation-without-cointegration-destroys-capital">The Timeline: How Correlation Without Cointegration Destroys Capital</h3>
 
-      <pre><code>FEBRUARY 12 - MAY 10, 2024: DEREK'S $73,400 CORRELATION DISASTER
+      <pre style="overflow-x:auto"><code>FEBRUARY 12 - MAY 10, 2024: DEREK'S $73,400 CORRELATION DISASTER
 
 TRADE #1: February 12 - March 8 (25 days)
 ─────────────────────────────────────────
@@ -439,7 +433,7 @@ I never tested for mean reversion in the first place."
 
       <p>After his correlation disaster, Derek spent 6 months studying cointegration theory, ADF tests, and proper stat arb methodology. By February 2025, he was ready to trade again—this time with mathematical rigor.</p>
 
-      <pre><code>✅ DEREK'S NEW METHODOLOGY (February - November 2025):
+      <pre style="overflow-x:auto"><code>✅ DEREK'S NEW METHODOLOGY (February - November 2025):
 
 STEP 1: Proper Pair Discovery (February 2025)
 ──────────────────────────────────────────────
@@ -1057,7 +1051,7 @@ I trade math, not correlation coefficients."
         <div class="accordion-item">
           <div class="accordion-header">Step 1: Testing for Cointegration</div>
           <div class="accordion-content">
-            <pre><code>import pandas as pd
+            <pre style="overflow-x:auto"><code>import pandas as pd
 import numpy as np
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.api import OLS
@@ -1100,7 +1094,7 @@ print(f"Half-Life: {half_life:.1f} days")
         <div class="accordion-item">
           <div class="accordion-header">Step 2: Calculating Z-Score Signals</div>
           <div class="accordion-content">
-            <pre><code># Calculate rolling z-score
+            <pre style="overflow-x:auto"><code># Calculate rolling z-score
 lookback = 60  # 60-day rolling window
 
 spread_mean = spread.rolling(window=lookback).mean()
@@ -1136,7 +1130,7 @@ else:
         <div class="accordion-item">
           <div class="accordion-header">Step 3: Backtesting the Strategy</div>
           <div class="accordion-content">
-            <pre><code># Simple backtest
+            <pre style="overflow-x:auto"><code># Simple backtest
 position = 0  # 0 = no position, 1 = long spread, -1 = short spread
 trades = []
 pnl = []
@@ -1266,8 +1260,8 @@ print(f"Total PnL: ${sum(trades):.2f}")
       </div>
     </aside>
   </div>
-    </div>
-
+  </div>
+  </div>
   </div>
 
 
