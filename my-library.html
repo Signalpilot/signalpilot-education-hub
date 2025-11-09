@@ -469,24 +469,28 @@
             <div class="certificate-title">Beginner Tier</div>
             <div class="certificate-progress" id="cert-beginner-progress">0/20 lessons</div>
             <button class="btn btn-primary btn-sm" id="cert-beginner-btn" disabled>Download Certificate</button>
+            <button class="btn btn-ghost btn-sm" id="share-beginner-btn" disabled style="margin-left:0.5rem">📤 Share</button>
           </div>
           <div class="certificate-card" data-tier="intermediate">
             <div class="certificate-icon">🟡</div>
             <div class="certificate-title">Intermediate Tier</div>
             <div class="certificate-progress" id="cert-intermediate-progress">0/27 lessons</div>
             <button class="btn btn-primary btn-sm" id="cert-intermediate-btn" disabled>Download Certificate</button>
+            <button class="btn btn-ghost btn-sm" id="share-intermediate-btn" disabled style="margin-left:0.5rem">📤 Share</button>
           </div>
           <div class="certificate-card" data-tier="advanced">
             <div class="certificate-icon">🔴</div>
             <div class="certificate-title">Advanced Tier</div>
             <div class="certificate-progress" id="cert-advanced-progress">0/27 lessons</div>
             <button class="btn btn-primary btn-sm" id="cert-advanced-btn" disabled>Download Certificate</button>
+            <button class="btn btn-ghost btn-sm" id="share-advanced-btn" disabled style="margin-left:0.5rem">📤 Share</button>
           </div>
           <div class="certificate-card" data-tier="master">
             <div class="certificate-icon">🏆</div>
             <div class="certificate-title">Master Trader</div>
             <div class="certificate-progress" id="cert-master-progress">0/82 lessons</div>
             <button class="btn btn-primary btn-sm" id="cert-master-btn" disabled>Download Certificate</button>
+            <button class="btn btn-ghost btn-sm" id="share-master-btn" disabled style="margin-left:0.5rem">📤 Share</button>
           </div>
         </div>
       </div>
@@ -964,34 +968,144 @@
     if (tiers.beginner.completed >= tiers.beginner.total) {
       const card = document.querySelector('[data-tier="beginner"]');
       const btn = document.getElementById('cert-beginner-btn');
+      const shareBtn = document.getElementById('share-beginner-btn');
       card.classList.add('unlocked');
       btn.disabled = false;
+      shareBtn.disabled = false;
       btn.onclick = () => generateCertificate('Beginner');
+      shareBtn.onclick = () => shareCertificate('Beginner');
     }
 
     if (tiers.intermediate.completed >= tiers.intermediate.total) {
       const card = document.querySelector('[data-tier="intermediate"]');
       const btn = document.getElementById('cert-intermediate-btn');
+      const shareBtn = document.getElementById('share-intermediate-btn');
       card.classList.add('unlocked');
       btn.disabled = false;
+      shareBtn.disabled = false;
       btn.onclick = () => generateCertificate('Intermediate');
+      shareBtn.onclick = () => shareCertificate('Intermediate');
     }
 
     if (tiers.advanced.completed >= tiers.advanced.total) {
       const card = document.querySelector('[data-tier="advanced"]');
       const btn = document.getElementById('cert-advanced-btn');
+      const shareBtn = document.getElementById('share-advanced-btn');
       card.classList.add('unlocked');
       btn.disabled = false;
+      shareBtn.disabled = false;
       btn.onclick = () => generateCertificate('Advanced');
+      shareBtn.onclick = () => shareCertificate('Advanced');
     }
 
     if (tiers.master.completed >= tiers.master.total) {
       const card = document.querySelector('[data-tier="master"]');
       const btn = document.getElementById('cert-master-btn');
+      const shareBtn = document.getElementById('share-master-btn');
       card.classList.add('unlocked');
       btn.disabled = false;
+      shareBtn.disabled = false;
       btn.onclick = () => generateCertificate('Master Trader');
+      shareBtn.onclick = () => shareCertificate('Master Trader');
     }
+  }
+
+  // Share Certificate on Social Media
+  function shareCertificate(tier) {
+    // Get user name
+    let userName = 'Trading Professional';
+    if (window.supabaseAuth && window.supabaseAuth.getCurrentUser) {
+      const user = window.supabaseAuth.getCurrentUser();
+      if (user) {
+        userName = user.user_metadata?.user_name ||
+                   user.email?.split('@')[0] ||
+                   userName;
+      }
+    } else {
+      userName = localStorage.getItem('sp_user_name') || userName;
+    }
+
+    const shareText = `🎓 Just completed the ${tier} Tier at Signal Pilot Education! Professional trading education that actually works. #TradingEducation #SignalPilot`;
+    const shareUrl = 'https://education.signalpilot.io';
+
+    // Try Web Share API first (works on mobile)
+    if (navigator.share) {
+      navigator.share({
+        title: `${tier} Trading Certification`,
+        text: shareText,
+        url: shareUrl
+      }).catch(err => console.log('Share cancelled'));
+    } else {
+      // Fallback: Show share options modal
+      showShareModal(tier, userName, shareText, shareUrl);
+    }
+  }
+
+  function showShareModal(tier, userName, shareText, shareUrl) {
+    // Create modal
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    `;
+
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+      background: var(--bg-2);
+      border: 1px solid rgba(91,138,255,0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+    `;
+
+    const encodedText = encodeURIComponent(shareText);
+    const encodedUrl = encodeURIComponent(shareUrl);
+
+    modalContent.innerHTML = `
+      <h3 style="margin:0 0 1rem 0;color:var(--primary)">📤 Share Your Achievement</h3>
+      <p style="margin-bottom:1.5rem;opacity:0.8">Completed ${tier} Tier - Share on social media:</p>
+
+      <div style="display:flex;flex-direction:column;gap:0.75rem">
+        <a href="https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}"
+           target="_blank"
+           class="btn btn-primary"
+           style="text-decoration:none;text-align:center;display:block">
+          🐦 Share on Twitter/X
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}"
+           target="_blank"
+           class="btn btn-primary"
+           style="text-decoration:none;text-align:center;display:block">
+          💼 Share on LinkedIn
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}"
+           target="_blank"
+           class="btn btn-primary"
+           style="text-decoration:none;text-align:center;display:block">
+          📘 Share on Facebook
+        </a>
+        <button class="btn btn-ghost" onclick="this.closest('[style*=fixed]').remove()">
+          Cancel
+        </button>
+      </div>
+    `;
+
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+
+    // Close modal on background click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
   }
 
   // Generate Certificate
