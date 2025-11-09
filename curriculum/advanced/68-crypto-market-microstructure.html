@@ -55,11 +55,11 @@
   <!-- Article Header -->
   <header>
     <div class="wrap">
-      <div class="breadcrumbs">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> <span>›</span>
         <a href="/advanced.html">Advanced</a> <span>›</span>
         <span>Lesson #68</span>
-      </div>
+      </nav>
       <span class="badge">🔴 Advanced • Lesson 68 of 82</span>
       <h1 class="headline xl">Crypto Market Microstructure: 24/7 Order Flow</h1>
       <div class="meta">Reading time ~16-20 min • Funding Rates, MEV, CEX vs DEX Mechanics</div>
@@ -129,12 +129,6 @@
           <li>Funding rates: Perpetual swaps charge/pay longs/shorts</li>
           <li>Framework: Monitor funding rates → High positive = too many longs, expect reversal</li>
         </ul>
-      </div>
-
-        
-        
-        
-        
       </div>
 
       <!-- Prerequisites Warning -->
@@ -274,7 +268,7 @@
 
 <h3 id="the-timeline-how-funding-squeeze-destroyed-189k-in-6-hours">The Timeline: How Funding Squeeze Destroyed $189K in 6 Hours</h3>
 
-      <pre><code>NOVEMBER 12-13, 2023: JAKE'S ETH FUNDING RATE MASSACRE
+      <pre style="overflow-x:auto"><code>NOVEMBER 12-13, 2023: JAKE'S ETH FUNDING RATE MASSACRE
 
 6:00 PM UTC: Jake Enters Long Position
 ─────────────────────────────────────────
@@ -468,7 +462,7 @@ liquidate $7 billion in overleveraged longs. I was the potential exit liquidity.
 
       <p>After his $189K disaster, Jake spent 8 months studying funding rates, liquidation mechanics, and proper risk management. By September 2024, he had rebuilt his strategy.</p>
 
-      <pre><code>✅ JAKE'S NEW FUNDING RATE METHODOLOGY (September 2024):
+      <pre style="overflow-x:auto"><code>✅ JAKE'S NEW FUNDING RATE METHODOLOGY (September 2024):
 
 RULE #1: Funding > +0.05% = NEVER GO LONG
 Instead: Short the overleveraged longs
@@ -762,7 +756,7 @@ I'm buying. Market makers and liquidation engines do the rest."
 
 <h3 id="the-transaction-how-mev-bots-stole-47k">The Transaction: How MEV Bots Stole $47K</h3>
 
-      <pre><code>AUGUST 8, 2024 - 2:15 PM: LISA'S MEV SANDWICH ATTACK
+      <pre style="overflow-x:auto"><code>AUGUST 8, 2024 - 2:15 PM: LISA'S MEV SANDWICH ATTACK
 
 2:15:03 PM: Lisa Submits Transaction
 ─────────────────────────────────────────
@@ -956,7 +950,7 @@ Bot's transaction details on Etherscan:
 
       <h3 id="lisas-recovery-learning-mev-protection-3-months-later">Lisa's Recovery: Learning MEV Protection (3 Months Later)</h3>
 
-      <pre><code>✅ LISA'S NEW DEX TRADING METHODOLOGY (November 2024):
+      <pre style="overflow-x:auto"><code>✅ LISA'S NEW DEX TRADING METHODOLOGY (November 2024):
 
 RULE #1: Never large DEX swaps without MEV protection
 
@@ -1199,10 +1193,6 @@ the table if you don't use these tools."
       </div>
     </aside>
   </div>
-    </div>
-
-  </div>
-
 
   <div class="wrap nav-article">
   <a class="btn btn-ghost" href="/curriculum/advanced/67-machine-learning-trading.html">&larr; Previous Lesson</a>
