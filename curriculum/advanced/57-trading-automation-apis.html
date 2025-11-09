@@ -53,11 +53,11 @@
 <article class="article">
   <header>
     <div class="wrap">
-      <div class="breadcrumbs">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> <span>›</span>
         <a href="/advanced.html">Advanced</a> <span>›</span>
         <span>Lesson #57</span>
-      </div>
+      </nav>
       <span class="badge">🔴 Advanced • Lesson 57</span>
       <h1 class="headline xl">Trading Automation: Code Your Edge, Remove Emotion</h1>
       <div class="meta">15 min read • Automated Execution & APIs</div>
@@ -101,12 +101,6 @@
           <li>Paper trade 2-4 weeks minimum before live</li>
           <li>Add slippage to backtests: -0.15% per trade for market orders (real-world friction)</li>
         </ul>
-      </div>
-
-        
-        
-        
-        
       </div>
 
       <p><b>3 AM. Your sweep setup triggers. You're asleep.</b></p>
@@ -379,7 +373,7 @@
 
 <h3>Step 1: Connect to Alpaca API</h3>
 
-      <pre><code>import alpaca_trade_api as tradeapi
+      <pre style="overflow-x:auto"><code>import alpaca_trade_api as tradeapi
 import os
 
 # NEVER hardcode credentials! Use environment variables
@@ -398,7 +392,7 @@ print(f"Connected! Buying power: ${float(account.buying_power):,.2f}")</code></p
 
       <h3>Step 2: Fetch Market Data</h3>
 
-      <pre><code># Get latest price for SPY
+      <pre style="overflow-x:auto"><code># Get latest price for SPY
 barset = api.get_barset('SPY', 'minute', limit=50)
 bars = barset['SPY']
 
@@ -414,7 +408,7 @@ print(f"Current low: ${current_low}")</code></pre>
 
       <h3>Step 3: Detect Sweep Potential Reversal Setup</h3>
 
-      <pre><code>def get_swing_low(bars, lookback=20):
+      <pre style="overflow-x:auto"><code>def get_swing_low(bars, lookback=20):
     """Find swing low over last N bars"""
     lows = [bar.l for bar in bars[-lookback:]]
     return min(lows)
@@ -442,7 +436,7 @@ def check_sweep(current_price, current_low, swing_low):
 
       <h3>Step 4: Calculate Position Size (Risk Management)</h3>
 
-      <pre><code>def calculate_position_size(api, potential entry, stop):
+      <pre style="overflow-x:auto"><code>def calculate_position_size(api, potential entry, stop):
     """
     Risk 2% of account per trade
     Position size = (Account × Risk%) / (Entry - Stop)
@@ -465,7 +459,7 @@ def check_sweep(current_price, current_low, swing_low):
 
       <h3>Step 5: Place Bracket Order (Entry + Stop + Target)</h3>
 
-      <pre><code>def place_bracket_order(api, symbol, size, potential entry, stop, target):
+      <pre style="overflow-x:auto"><code>def place_bracket_order(api, symbol, size, potential entry, stop, target):
     """
     Bracket order = potential entry + stop-loss + take-profit
     All three orders placed simultaneously
@@ -495,7 +489,7 @@ def check_sweep(current_price, current_low, swing_low):
 
       <h3>Step 6: Put It All Together (The Main Loop)</h3>
 
-      <pre><code>import time
+      <pre style="overflow-x:auto"><code>import time
 
 def run_bot():
     """Main bot loop"""
@@ -596,7 +590,7 @@ run_bot()</code></pre>
 
       <h3>Retry Logic (Essential)</h3>
 
-      <pre><code>def place_order_with_retry(api, **order_params):
+      <pre style="overflow-x:auto"><code>def place_order_with_retry(api, **order_params):
     """Retry order placement up to 3 times"""
     max_retries = 3
 
@@ -624,7 +618,7 @@ run_bot()</code></pre>
 
       <p><strong>Answer:</strong> Alerts.</p>
 
-      <pre><code>import smtplib
+      <pre style="overflow-x:auto"><code>import smtplib
 from email.mime.text import MIMEText
 
 def send_alert(subject, message):
