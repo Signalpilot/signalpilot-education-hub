@@ -29,20 +29,18 @@
 <canvas id="constellations" class="sp-constellations" aria-hidden="true"></canvas>
 <div class="bg-aurora" aria-hidden="true"></div>
 <header class="sp-header">
-  <div class="container">
-    <div class="sp-branding">
-      <a href="/index.html" class="logo-link" aria-label="Signal Pilot Home">
-        <div class="wordmark">SIGNAL PILOT</div>
-      </a>
-    </div>
-    <nav class="sp-nav" aria-label="Main navigation">
-      <a href="/">Curriculum</a>
-      <a href="/my-library.html">My Library</a>
-    </nav>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-      <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="3"/><path d="M10 0v3M10 17v3M20 10h-3M3 10H0M16.364 3.636l-2.121 2.121M5.757 14.243l-2.121 2.121M16.364 16.364l-2.121-2.121M5.757 5.757L3.636 3.636"/></svg>
-      <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
-    </button>
+  <div class="wrap">
+    <a href="https://signalpilot.io" class="brand">
+      <span>Signal Pilot</span>
+    </a>
+    <nav id="mainnav" aria-label="Main"><ul>
+      <li><a href="/">Education</a></li>
+      <li><a href="/search.html">Search</a></li>
+      <li><a href="/my-library.html">📚 My Library</a></li>
+    </ul></nav>
+    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
   </div>
 </header>
 <article class="article">
