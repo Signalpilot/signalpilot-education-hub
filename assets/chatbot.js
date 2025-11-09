@@ -447,7 +447,10 @@ Type **"help"** to see all available topics!
 
     bindEvents() {
         // Toggle chat window
-        this.elements.toggle.addEventListener('click', () => this.toggleChat());
+        this.elements.toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.toggleChat();
+        });
 
         // Send message
         this.elements.sendBtn.addEventListener('click', () => this.sendMessage());
