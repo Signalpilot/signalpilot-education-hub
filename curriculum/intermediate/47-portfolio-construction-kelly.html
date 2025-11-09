@@ -16,13 +16,9 @@
   <!-- Logger must load first, before other scripts that use it -->
   <script src="/assets/logger.js"></script>
   <script src="/assets/dev-utils.js" defer></script>
-  <script src="/assets/notes.js" defer></script>
-  <script src="/assets/library.js"></script>
-    <script src="/assets/quiz-enhanced.js" defer></script>
-  <script src="/assets/social-share.js" defer></script>
-  <script src="/assets/auth-ui.js"></script>
-  <script src="/assets/supabase-client.js"></script>
-  <script src="/assets/pwa-init.js"></script>
+<script src="/assets/structured-data.js" defer></script>
+<script src="/assets/lazy-load.js" defer></script>
+<script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 <div class="bg-stars" aria-hidden="true"></div>
@@ -245,6 +241,7 @@
 
   <h3>The Three Approaches</h3>
   
+  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
   <table>
     <thead>
       <tr>
@@ -271,6 +268,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 
   <h3>Equal Weight Portfolio</h3>
   <p><strong>Method:</strong> Allocate same $ amount to each position</p>
@@ -390,6 +388,7 @@
 
     <p><strong>Three Position Sizing Methods Tested:</strong></p>
 
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -416,10 +415,12 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <p><strong>Results After 100 Trades (same trade sequence):</strong></p>
 
     <h5>Method A: Fixed 1% Risk</h5>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -458,8 +459,10 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <h5>Method B: Half Kelly (1.75% Risk)</h5>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -498,8 +501,10 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <h5>Method C: Full Kelly (3.5% Risk) - FOR COMPARISON ONLY</h5>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -538,8 +543,10 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <p><strong>Comparison Summary:</strong></p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -574,6 +581,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <p><strong>Key Insights:</strong></p>
 
@@ -603,6 +611,7 @@
 
     <p><strong>What Happened During the 7-Trade Losing Streak (Trade #45-51):</strong></p>
 
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -675,6 +684,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <p><strong>The Psychology Test:</strong></p>
     <ul>
@@ -697,6 +707,7 @@
   <h3>The Portfolio Kelly Problem</h3>
   <p><strong>Question:</strong> You have 5 different setups with different edges. How much to allocate to each?</p>
 
+  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
   <table>
     <thead>
       <tr>
@@ -739,6 +750,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 
   <p><strong>Problem:</strong> Sum of Kelly % = 168.3% (over-leveraged!)</p>
 
@@ -917,62 +929,28 @@
   <a class="btn btn-primary" href="/curriculum/advanced/48-institutional-order-flow.html">Next Lesson &rarr;</a>
   </div>
 </article>
-<footer class="sp-footer">
-  <div class="container">
-    <p>&copy; 2025 Signal Pilot Labs, Inc. All rights reserved.</p>
-  </div>
-</footer>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
 <script src="/assets/edu.js"></script>
 <script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
 <script>
-document.getElementById('theme-toggle')?.addEventListener('click', () => {
-  const html = document.documentElement;
-  const currentTheme = html.getAttribute('data-theme');
-  html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
-});
-const canvas = document.getElementById('constellations');
-if (canvas) {
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const stars = Array.from({ length: 80 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.2,
-    vy: (Math.random() - 0.5) * 0.2
-  }));
-  function drawConstellations() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)';
-    ctx.lineWidth = 1;
-    for (let i = 0; i < stars.length; i++) {
-      for (let j = i + 1; j < stars.length; j++) {
-        const dx = stars[i].x - stars[j].x;
-        const dy = stars[i].y - stars[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 150) {
-          ctx.beginPath();
-          ctx.moveTo(stars[i].x, stars[i].y);
-          ctx.lineTo(stars[j].x, stars[j].y);
-          ctx.stroke();
-        }
-      }
-      stars[i].x += stars[i].vx;
-      stars[i].y += stars[i].vy;
-      if (stars[i].x < 0 || stars[i].x > canvas.width) stars[i].vx *= -1;
-      if (stars[i].y < 0 || stars[i].y > canvas.height) stars[i].vy *= -1;
-    }
-    requestAnimationFrame(drawConstellations);
-  }
-  drawConstellations();
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-}
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-  <script src="/assets/chatbot.js" defer></script>
-  <!-- Enhanced Analytics & A/B Testing -->
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+  <script src="/assets/library.js"></script>
+    <!-- Enhanced Analytics & A/B Testing -->
   <script src="/assets/enhanced-analytics.js" defer></script>
   <script src="/assets/ab-test-tldr.js" defer></script>
 </body>

@@ -16,13 +16,9 @@
   <!-- Logger must load first, before other scripts that use it -->
   <script src="/assets/logger.js"></script>
   <script src="/assets/dev-utils.js" defer></script>
-  <script src="/assets/notes.js" defer></script>
-  <script src="/assets/library.js"></script>
-    <script src="/assets/quiz-enhanced.js" defer></script>
-  <script src="/assets/social-share.js" defer></script>
-  <script src="/assets/auth-ui.js"></script>
-  <script src="/assets/supabase-client.js"></script>
-  <script src="/assets/pwa-init.js"></script>
+<script src="/assets/structured-data.js" defer></script>
+<script src="/assets/lazy-load.js" defer></script>
+<script defer data-domain="signalpilot.io" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 <div class="bg-stars" aria-hidden="true"></div>
@@ -414,6 +410,7 @@
   <p><strong>Myth:</strong> "I'm diversified—I own 10 stocks"</p>
   <p><strong>Reality:</strong> If all 10 are tech stocks, you're NOT diversified (correlation = 0.8-0.9)</p>
 
+  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
   <table>
     <thead>
       <tr>
@@ -455,12 +452,14 @@
       </tr>
     </tbody>
   </table>
+  </div>
 
   <div class="example-block">
     <h4>Real-World Example: How Correlation Risk Created a $87K Loss from "8 Diversified Positions"</h4>
     <p><strong>Trader:</strong> Swing trader, $185K account, February 2024</p>
 
     <p><strong>The "Diversified" Portfolio:</strong></p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -539,10 +538,12 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <p><strong>Trader's Thinking:</strong> "I have 8 different stocks, 1% risk each = 8% total portfolio risk. Diversified!"</p>
 
     <p><strong>Actual Correlation Matrix (90-day rolling, Feb 2024):</strong></p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -571,9 +572,11 @@
         </tr>
       </tbody>
     </table>
+    </div>
     <p><strong>Portfolio avg correlation:</strong> 0.77 (very high!)</p>
 
     <p><strong>What Happened: April 19, 2024 (CPI Hot + Tech Sell-Off):</strong></p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -654,6 +657,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <p><strong>Total Portfolio Loss on April 19: -$17,498 (-9.5% of $185K account)</strong></p>
 
@@ -665,6 +669,7 @@
     </ul>
 
     <p><strong>But It Got Worse - Portfolio Heat Death Spiral:</strong></p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -713,6 +718,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <p><strong>Root Cause Analysis:</strong></p>
 
@@ -749,6 +755,7 @@
     </ol>
 
     <p><strong>What TRUE Diversification Would Look Like:</strong></p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table>
       <thead>
         <tr>
@@ -791,6 +798,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
     <p><strong>Portfolio avg correlation:</strong> 0.28 (low!)</p>
     <p><strong>Effective positions:</strong> 5 / (1 + 4 × 0.28) = 2.3 (much better than 1.25!)</p>
     <p><strong>April 19 result with this portfolio:</strong> QQQ -3.2%, XLE +0.8%, TLT +1.2%, GLD +0.3%, UUP +0.5% = Net -0.5% vs -9.5%</p>
@@ -1013,62 +1021,28 @@
   <a class="btn btn-primary" href="/curriculum/intermediate/47-portfolio-construction-kelly.html">Next Lesson &rarr;</a>
   </div>
 </article>
-<footer class="sp-footer">
-  <div class="container">
-    <p>&copy; 2025 Signal Pilot Labs, Inc. All rights reserved.</p>
-  </div>
-</footer>
+<footer class="sp-footer"><div class="wrap"><div>© <span id="year"></span> Signal Pilot Labs, Inc.</div><div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div></div></footer>
+
 <script src="/assets/edu.js"></script>
 <script src="/assets/edu-enhanced.js"></script>
+<script src="/assets/sp-bg.js"></script>
 <script>
-document.getElementById('theme-toggle')?.addEventListener('click', () => {
-  const html = document.documentElement;
-  const currentTheme = html.getAttribute('data-theme');
-  html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
-});
-const canvas = document.getElementById('constellations');
-if (canvas) {
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const stars = Array.from({ length: 80 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.2,
-    vy: (Math.random() - 0.5) * 0.2
-  }));
-  function drawConstellations() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)';
-    ctx.lineWidth = 1;
-    for (let i = 0; i < stars.length; i++) {
-      for (let j = i + 1; j < stars.length; j++) {
-        const dx = stars[i].x - stars[j].x;
-        const dy = stars[i].y - stars[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 150) {
-          ctx.beginPath();
-          ctx.moveTo(stars[i].x, stars[i].y);
-          ctx.lineTo(stars[j].x, stars[j].y);
-          ctx.stroke();
-        }
-      }
-      stars[i].x += stars[i].vx;
-      stars[i].y += stars[i].vy;
-      if (stars[i].x < 0 || stars[i].x > canvas.width) stars[i].vx *= -1;
-      if (stars[i].y < 0 || stars[i].y > canvas.height) stars[i].vy *= -1;
-    }
-    requestAnimationFrame(drawConstellations);
-  }
-  drawConstellations();
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-}
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-  <script src="/assets/chatbot.js" defer></script>
-  <!-- Enhanced Analytics & A/B Testing -->
+<!-- SignalPilot Theme Switcher -->
+<script src="/assets/signalpilot-theme.js"></script>
+<script src="/assets/spaced-repetition.js" defer></script>
+<script src="/assets/chatbot.js" defer></script>
+<script src="/assets/notes.js" defer></script>
+<script src="/assets/analytics.js"></script>
+<script src="/assets/quiz-enhanced.js"></script>
+<script src="/assets/social-share.js"></script>
+<script src="/assets/pwa-init.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/supabase-client.js"></script>
+<script src="/assets/auth-ui.js"></script>
+  <script src="/assets/library.js"></script>
+    <!-- Enhanced Analytics & A/B Testing -->
   <script src="/assets/enhanced-analytics.js" defer></script>
   <script src="/assets/ab-test-tldr.js" defer></script>
 </body>
