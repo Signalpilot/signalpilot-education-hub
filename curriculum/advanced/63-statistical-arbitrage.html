@@ -1091,8 +1091,8 @@ print(f"Half-Life: {half_life:.1f} days")
 </code></pre>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 2: Calculating Z-Score Signals</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 2: Calculating Z-Score Signals</summary>
           <div class="accordion-content">
             <pre style="overflow-x:auto"><code># Calculate rolling z-score
 lookback = 60  # 60-day rolling window
@@ -1127,8 +1127,8 @@ else:
 </code></pre>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 3: Backtesting the Strategy</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 3: Backtesting the Strategy</summary>
           <div class="accordion-content">
             <pre style="overflow-x:auto"><code># Simple backtest
 position = 0  # 0 = no position, 1 = long spread, -1 = short spread
@@ -1260,7 +1260,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
       </div>
     </aside>
   </div>
-  </div>
+        </details>
   </div>
   </div>
 
