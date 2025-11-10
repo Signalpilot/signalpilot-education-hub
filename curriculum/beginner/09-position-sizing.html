@@ -527,28 +527,28 @@
       <p>Let's break that down with a real example:</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Step 1: Your Account Size and Risk</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 1: Your Account Size and Risk</summary>
           <div class="accordion-content">
             <p><strong>Account:</strong> $10,000</p>
             <p><strong>Risk %:</strong> 2% (A-grade setup)</p>
             <p><strong>Dollar risk:</strong> $10,000 × 0.02 = $200</p>
             <p>You're willing to lose $200 on this trade if stopped out.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 2: Calculate Your Stop Distance</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 2: Calculate Your Stop Distance</summary>
           <div class="accordion-content">
             <p><strong>ATR (14-period):</strong> $1.00</p>
             <p><strong>Stop placement:</strong> 2× ATR beyond structure = $2.00</p>
             <p>Why 2× ATR? Because 1× ATR gets you swept. 2× ATR gives you breathing room.</p>
             <p><strong>So your stop is $2.00 away from potential entry.</strong></p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 3: Calculate Position Size</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 3: Calculate Position Size</summary>
           <div class="accordion-content">
             <p><code>Position Size = $200 / $2.00 = 100 shares</code></p>
             <p><strong>Example entry:</strong> $100.00</p>
@@ -556,7 +556,7 @@
             <p><strong>Position size:</strong> 100 shares</p>
             <p><strong>If stopped:</strong> 100 shares × $2.00 loss = $200 loss (exactly 2% of account)</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-tip">
