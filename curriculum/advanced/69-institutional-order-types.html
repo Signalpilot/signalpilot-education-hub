@@ -58,7 +58,6 @@
       <h1 class="headline xl">Institutional Order Types: The Professional's Toolkit</h1>
       <div class="meta">Reading time ~40-45 min • Professional Order Execution</div>
 
-      
       <!-- Article Progress Indicator -->
       <div class="article-progress" style="--progress:0%">
         <div class="progress-circle"><span>0%</span></div>
@@ -68,8 +67,8 @@
         </div>
       </div>
     </div>
-    </div>
   </header>
+
 
   <div class="wrap article-grid">
     <div class="prose">
@@ -99,7 +98,97 @@
           <li>Framework: Detect institutional order patterns → Position ahead of large flow</li>
         </ul>
       </div>
-      
+
+<h2 id="part-1-basic-order-types-review">Part 1: Basic Order Types (Review)</h2>
+
+  <table style="width:100%">
+    <thead>
+      <tr>
+        <th>Order Type</th>
+        <th>Execution</th>
+        <th>Use Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Market</td>
+        <td>Immediate, at best available price</td>
+        <td>Urgency &gt; price (bad for retail)</td>
+      </tr>
+      <tr>
+        <td>Limit</td>
+        <td>Only at specified price or better</td>
+        <td>Control price, risk missing fill</td>
+      </tr>
+      <tr>
+        <td>Stop</td>
+        <td>Becomes market order when price hits trigger</td>
+        <td>Risk management, potential breakout entries</td>
+      </tr>
+      <tr>
+        <td>Stop-Limit</td>
+        <td>Becomes limit order when price hits trigger</td>
+        <td>Controlled potential breakout entries</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="part-2-time-in-force-modifiers">Part 2: Time-In-Force Modifiers</h2>
+
+  <h3>TIF = How Long Order Stays Active</h3>
+
+  <details class="accordion">
+    <summary>GTC (Good Till Canceled)</summary>
+    <div class="accordion-content">
+      <p><strong>Duration:</strong> Remains active until filled or manually canceled (up to 90 days typical)</p>
+      <p><strong>Use case:</strong> Long-term limit orders (e.g., "buy AAPL at $140" when it's currently $150)</p>
+      <p><strong>Risk:</strong> Forget about order, get filled weeks later at stale price</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>DAY</summary>
+    <div class="accordion-content">
+      <p><strong>Duration:</strong> Expires at market close (4:00 PM ET)</p>
+      <p><strong>Use case:</strong> Intraday orders (default for most retail traders)</p>
+    </div>
+  </details>
+
+  <details class="accordion">
+    <summary>IOC (Immediate-or-Cancel)</summary>
+    <div class="accordion-content">
+      <p><strong>Duration:</strong> Execute immediately, cancel unfilled portion</p>
+      <p><strong>Example:</strong> Order 10,000 shares IOC limit $100. If only 3,000 available at $100, fill 3,000 and cancel remaining 7,000</p>
+      <p><strong>Use case:</strong> Test liquidity without leaving resting order (institutions probe market)</p>
+      <p><strong>Signal Pilot detection:</strong> Multiple small IOC fills = institution testing before deploying full size</p>
+
+      <div class="example-block">
+        <h4>Real-World Example: Hedge Fund Testing Liquidity</h4>
+        <p><strong>Scenario:</strong> Hedge fund wants to buy 200,000 shares of mid-cap biotech stock (avg daily volume 800K shares)</p>
+
+        <p><strong>Step 1 - Probe with IOC:</strong></p>
+        <ul>
+          <li>9:35 AM: Send IOC buy 5,000 shares limit $45.00</li>
+          <li>Result: 2,100 shares filled at $45.00, 2,900 shares canceled</li>
+          <li><strong>Interpretation:</strong> Only 2,100 shares available at $45.00 (thin liquidity)</li>
+        </ul>
+
+        <p><strong>Step 2 - Test Higher Prices:</strong></p>
+        <ul>
+          <li>9:36 AM: Send IOC buy 5,000 shares limit $45.05</li>
+          <li>Result: 4,800 shares filled at $45.01-$45.05, 200 shares canceled</li>
+          <li><strong>Interpretation:</strong> Decent liquidity up to $45.05</li>
+        </ul>
+
+        <p><strong>Step 3 - Deploy Full Size:</strong></p>
+        <ul>
+          <li>9:37-11:00 AM: Deploy VWAP algo to buy 200K shares (target $45.10 avg price)</li>
+          <li>Final avg price: $45.08 (beat target by $0.02)</li>
+        </ul>
+
+        <p><strong>Why IOC First?</strong> Testing with IOC avoids showing large limit order on book (which would cause front-running). Instead, probe liquidity silently, then deploy algo once you understand market depth.</p>
+      </div>
+    </div>
   </details>
 
   <details class="accordion">
@@ -731,9 +820,8 @@
   </div>
 </article>
 <footer class="sp-footer">
-  <div class="wrap">
-    <div>© <span id="year"></span> Signal Pilot Labs, Inc. All rights reserved.</div>
-    <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
+  <div class="container">
+    <p>&copy; 2025 Signal Pilot Labs, Inc. All rights reserved.</p>
   </div>
 </footer>
 <script src="/assets/edu.js"></script>
