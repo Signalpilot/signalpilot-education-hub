@@ -49,7 +49,7 @@
     <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
         <span id="theme-icon">🌙</span>
       </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
-  </div>
+  </details>
 </header>
 
 <article class="article">
@@ -73,7 +73,7 @@
         <div class="progress-text">
           <strong>You're diving deep!</strong>
           <div style="font-size:.85rem;color:var(--muted)">Advanced institutional tactics ahead</div>
-        </div>
+        </details>
       </div>
     </div>
   </header>
@@ -317,7 +317,7 @@
         
         
         
-      </div>
+      </details>
 
       <h2 id="why-execution-is-harder-with-size">Why Execution is Harder with Size</h2>
 
@@ -369,7 +369,7 @@
             <p><strong>Example:</strong> If you buy 5,000 shares every 15 minutes like clockwork, HFTs will front-run minute 14.</p>
             <p><strong>Defense:</strong> Randomize size, timing, and venue.</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="section-break"><span>Part 2: VWAP Execution (The Gold Standard)</span></div>
@@ -392,8 +392,8 @@
       <p>The algo doesn't buy all at once. It slices the order based on historical volume patterns:</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">9:30-10:30 AM: Morning Rush (25% of Daily Volume)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">9:30-10:30 AM: Morning Rush (25% of Daily Volume)</summary>
           <div class="accordion-content">
             <p>Algo buys 25,000 shares during this window.</p>
             <p>It breaks this into small clips—maybe 500 shares every 2-3 minutes.</p>
@@ -401,35 +401,35 @@
             <div style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-left:3px solid var(--primary)">
               <strong>For retail traders:</strong> This is why the first hour is choppy. Algos are fighting for fills, creating volatility.
             </div>
-          </div>
+          </details>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">10:30 AM-12:00 PM: Mid-Morning (30% of Volume)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">10:30 AM-12:00 PM: Mid-Morning (30% of Volume)</summary>
           <div class="accordion-content">
             <p>Algo buys 30,000 shares.</p>
             <p>This period is typically more stable—less retail panic, fewer headlines.</p>
             <p><strong>Pattern:</strong> VWAP algos are aggressive here because liquidity is good and impact is low.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">12:00-2:00 PM: Lunch Lull (15% of Volume)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">12:00-2:00 PM: Lunch Lull (15% of Volume)</summary>
           <div class="accordion-content">
             <p>Algo buys only 15,000 shares.</p>
             <p><strong>Why less?</strong> Volume dries up during lunch. Buying aggressively here would spike price (higher impact).</p>
             <p>Algos slow down, wait for better opportunities.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">2:00-4:00 PM: Afternoon Rally (30% of Volume)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">2:00-4:00 PM: Afternoon Rally (30% of Volume)</summary>
           <div class="accordion-content">
             <p>Algo buys final 30,000 shares.</p>
             <p>Volume picks back up as funds reposition before close.</p>
             <p><strong>Key detail:</strong> By 3:30 PM, algos get more aggressive to ensure they finish the order.</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <h3 id="detecting-vwap-algos-in-action">Detecting VWAP Algos in Action</h3>
@@ -471,7 +471,7 @@
             <p>This happens 10 times. 5,000+ shares absorbed at $100. Price never drops.</p>
             <p><strong>Conclusion:</strong> Iceberg buy order! Massive hidden support. Bullish.</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-key">
@@ -675,7 +675,7 @@ Result: Institutions were right. SPY rallied back to $524 in 3 days.</code></pre
             <div style="font-size:.9rem;opacity:.8">Layer institutional flow analysis with regime detection for highest-probability trades</div>
           </a>
         </div>
-      </div>
+      </details>
 
       <div class="section-break"><span>Test Your Understanding</span></div>
 
@@ -690,11 +690,11 @@ Result: Institutions were right. SPY rallied back to $524 in 3 days.</code></pre
             <div class="quiz-option" data-correct="false">B) Bearish—distribution at highs</div>
             <div class="quiz-option" data-correct="false">C) Neutral—could go either way</div>
             <div class="quiz-option" data-correct="false">D) Retail FOMO (ignore it)</div>
-          </div>
+          </details>
           <div class="quiz-feedback">
             <strong>Exactly!</strong> A block buy ABOVE VWAP means institutions are willing to pay a premium. That's conviction. It's not retail—retail doesn't trade 150K-share blocks. Follow the smart money.
           </div>
-        </div>
+        </details>
 
         <button class="btn btn-primary quiz-submit">Check Answer</button>
       </div>
@@ -706,7 +706,7 @@ Result: Institutions were right. SPY rallied back to $524 in 3 days.</code></pre
         <p><strong>Article #29: Market Regime Recognition</strong> — Learn to detect regime shifts in real-time and adapt your strategy before you get chopped up. Trending vs. ranging vs. volatile—each needs different tactics.</p>
       </div>
 
-      </div>
+      </details>
 
     <!-- Table of Contents Sidebar -->
       <!-- Bottom Navigation -->
@@ -721,7 +721,7 @@ Result: Institutions were right. SPY rallied back to $524 in 3 days.</code></pre
   <div class="wrap">
     <div>© <span id="year"></span> Signal Pilot Labs, Inc. All rights reserved.</div>
     <div class="links"><a href="https://signalpilot.io/privacy.html">Privacy</a><a href="https://signalpilot.io/terms.html">Terms</a></div>
-  </div>
+  </details>
 </footer>
 
 <script src="/assets/edu.js"></script>

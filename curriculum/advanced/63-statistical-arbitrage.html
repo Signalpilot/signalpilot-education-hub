@@ -47,7 +47,7 @@
     <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
         <span id="theme-icon">🌙</span>
       </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
-  </div>
+  </details>
 </header>
 
 <article class="article">
@@ -70,7 +70,7 @@
         <div class="progress-text">
           <strong>You're making progress!</strong>
           <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
-        </div>
+        </details>
       </div>
     </div>
   </header>
@@ -186,7 +186,7 @@
             </ul>
             <p style="margin-top:1rem;color:var(--success)"><strong>This Works:</strong> Mean reversion is statistically validated, not hoped for.</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-key">
@@ -617,8 +617,8 @@ I trade math, not correlation coefficients."
       <p><strong>β</strong> is your hedge ratio. If β = 1.5, you buy/sell 1.5 units of Asset B for every 1 unit of Asset A.</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Real Example: Coca-Cola (KO) vs Pepsi (PEP)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Real Example: Coca-Cola (KO) vs Pepsi (PEP)</summary>
           <div class="accordion-content">
             <p><strong>Historical Relationship:</strong> KO and PEP are in the same industry, similar business models</p>
             <p><strong>Regression Result:</strong> KO = 0.92 × PEP + noise</p>
@@ -626,10 +626,10 @@ I trade math, not correlation coefficients."
             <p><strong>What This Means:</strong> For every $1,000 in KO you buy, you sell $920 in PEP (or vice versa)</p>
             <p><strong>ADF Test on Spread:</strong> p-value = 0.03 → Cointegrated! ✅</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Counter-Example: TSLA vs SPY</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Counter-Example: TSLA vs SPY</summary>
           <div class="accordion-content">
             <p><strong>Correlation:</strong> 0.75 (high!)</p>
             <p><strong>Regression:</strong> TSLA = 3.2 × SPY + noise</p>
@@ -637,7 +637,7 @@ I trade math, not correlation coefficients."
             <p><strong>Why It Fails:</strong> TSLA can permanently decouple from SPY (and has)</p>
             <p><strong>Lesson:</strong> High correlation ≠ tradable pair</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="section-break"><span>Part 3: Z-Score Entry & Exit Models</span></div>
@@ -687,7 +687,7 @@ I trade math, not correlation coefficients."
               <li>Requires tighter risk management</li>
             </ul>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-key">
@@ -746,8 +746,8 @@ I trade math, not correlation coefficients."
       <p>Don't run just one pair. Build a portfolio of 5-10 cointegrated pairs across different sectors to reduce idiosyncratic risk.</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Example Stat Arb Portfolio</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Example Stat Arb Portfolio</summary>
           <div class="accordion-content">
             <ul>
               <li><strong>Pair 1:</strong> KO vs PEP (Consumer Staples)</li>
@@ -760,7 +760,7 @@ I trade math, not correlation coefficients."
             <p><strong>Risk per Pair:</strong> 2% of capital max</p>
             <p><strong>Total Portfolio Risk:</strong> 10% across 5 uncorrelated pairs</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="section-break"><span>Part 5: When Stat Arb Fails</span></div>
@@ -807,8 +807,8 @@ I trade math, not correlation coefficients."
       <p>Step-by-step process for running statistical arbitrage:</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Step 1: Pair Discovery (Screen for Candidates)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 1: Pair Discovery (Screen for Candidates)</summary>
           <div class="accordion-content">
             <p><strong>Method:</strong> Screen stocks in the same sector or ETFs tracking similar indices</p>
             <p><strong>Tools:</strong> Python (statsmodels library for ADF test), QuantConnect, or custom scripts</p>
@@ -819,10 +819,10 @@ I trade math, not correlation coefficients."
               <li>High correlation (>0.7) as initial filter</li>
             </ul>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 2: Cointegration Testing</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 2: Cointegration Testing</summary>
           <div class="accordion-content">
             <p><strong>Run ADF test on the spread:</strong></p>
             <ul>
@@ -832,10 +832,10 @@ I trade math, not correlation coefficients."
             </ul>
             <p style="margin-top:1rem"><strong>Reject pairs with p > 0.05</strong> (not cointegrated)</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 3: Backtesting</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 3: Backtesting</summary>
           <div class="accordion-content">
             <p><strong>Test z-score model on historical data:</strong></p>
             <ul>
@@ -845,10 +845,10 @@ I trade math, not correlation coefficients."
             </ul>
             <p style="margin-top:1rem"><strong>If Sharpe > 1.5 and win rate > 60%, proceed to live testing</strong></p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 4: Live Monitoring</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 4: Live Monitoring</summary>
           <div class="accordion-content">
             <p><strong>Track daily:</strong></p>
             <ul>
@@ -858,7 +858,7 @@ I trade math, not correlation coefficients."
               <li>Re-run ADF test monthly (check for decointegration)</li>
             </ul>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-tip">
@@ -883,8 +883,8 @@ I trade math, not correlation coefficients."
       </ul>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Example: SPY vs IWM Intraday Pairs</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Example: SPY vs IWM Intraday Pairs</summary>
           <div class="accordion-content">
             <p><strong>Pair Logic:</strong></p>
             <ul>
@@ -915,10 +915,10 @@ I trade math, not correlation coefficients."
             </ul>
             <p style="margin-top:1rem;color:var(--success)"><strong>Scalability:</strong> This trade works 8-12× per day with $50-200 profit each. Monthly return: ~3-5% with minimal overnight risk.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Intraday Stat Arb Risks</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Intraday Stat Arb Risks</summary>
           <div class="accordion-content">
             <p><strong>Why Most Retail Traders Fail at This:</strong></p>
             <ul>
@@ -940,7 +940,7 @@ I trade math, not correlation coefficients."
               <li>Manual traders (you'll miss fills and get chopped up)</li>
             </ul>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="section-break"><span>Part 8: Portfolio Construction for Stat Arb</span></div>
@@ -999,7 +999,7 @@ I trade math, not correlation coefficients."
             <p><strong>Max Drawdown:</strong> -20% to -30%</p>
             <p style="margin-top:1rem;color:var(--warning)"><strong>Warning:</strong> Requires full-time monitoring, professional execution, and risk management discipline</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-warning">
@@ -1048,8 +1048,8 @@ I trade math, not correlation coefficients."
       <p>Here's a practical Python implementation for testing and trading pairs:</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Step 1: Testing for Cointegration</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 1: Testing for Cointegration</summary>
           <div class="accordion-content">
             <pre style="overflow-x:auto"><code>import pandas as pd
 import numpy as np
@@ -1091,8 +1091,8 @@ print(f"Half-Life: {half_life:.1f} days")
 </code></pre>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 2: Calculating Z-Score Signals</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 2: Calculating Z-Score Signals</summary>
           <div class="accordion-content">
             <pre style="overflow-x:auto"><code># Calculate rolling z-score
 lookback = 60  # 60-day rolling window
@@ -1127,8 +1127,8 @@ else:
 </code></pre>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 3: Backtesting the Strategy</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 3: Backtesting the Strategy</summary>
           <div class="accordion-content">
             <pre style="overflow-x:auto"><code># Simple backtest
 position = 0  # 0 = no position, 1 = long spread, -1 = short spread
@@ -1176,7 +1176,7 @@ print(f"Profit Factor: {profit_factor:.2f}")
 print(f"Total PnL: ${sum(trades):.2f}")
 </code></pre>
         </div>
-      </div>
+      </details>
 
       <div class="callout-tip">
         <h4>🎯 Pro Tips for Live Trading</h4>
@@ -1260,7 +1260,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
       </div>
     </aside>
   </div>
-  </div>
+  </details>
   </div>
   </div>
 
