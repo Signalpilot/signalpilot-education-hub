@@ -401,7 +401,7 @@
       </ul>
 
       <p><strong>Example: SPY Daily Uptrend (Oct-Nov 2024)</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Oct 10: Low at $560 (higher low vs Sept)
 Oct 18: High at $585 (higher high)
 Oct 25: Pullback to $572 (higher low ✓)
@@ -435,7 +435,7 @@ Nov 15: Break to $605 (BOS again)
       </ol>
 
       <p><strong>Example: TSLA Bullish Daily Order Block (Real Trade)</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Nov 5-12: TSLA rallies $242 → $320 (+32% in 5 days)
          (Displacement = bullish institutional positioning)
 
@@ -533,21 +533,21 @@ Risk: $14 | Reward: $30-70 | R:R: 1:2.1 to 1:5
       <h3 id="position-sizing-formula-for-swing-trades">Position Sizing Formula for Swing Trades</h3>
 
       <p><strong>Step 1: Determine Account Risk</strong></p>
-      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Account Size: $50,000
 Risk per swing trade: 0.75% (conservative)
 $ Risk = $50,000 × 0.0075 = $375
       </pre>
 
       <p><strong>Step 2: Calculate Stop Distance</strong></p>
-      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Entry: $250.00 (TSLA at order block)
 Stop:  $236.00 (below order block)
 Stop Distance = $250 - $236 = $14.00 per share
       </pre>
 
       <p><strong>Step 3: Calculate Position Size</strong></p>
-      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Position Size = $ Risk ÷ Stop Distance
               = $375 ÷ $14
               = 26.78 shares
@@ -555,7 +555,7 @@ Position Size = $ Risk ÷ Stop Distance
       </pre>
 
       <p><strong>Step 4: Verify Max Position Value</strong></p>
-      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Position Value = 26 shares × $250 = $6,500
 % of Account = $6,500 ÷ $50,000 = 13%
 
@@ -605,7 +605,7 @@ This is within acceptable range (10-25% for swing trades)
       </ul>
 
       <p><strong>ATR-Based Stops (Alternative Method):</strong></p>
-      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Calculate 14-day ATR (Average True Range)
 Stop Distance = 1.5× to 2× ATR
 
@@ -642,7 +642,7 @@ This gives price room to move without stopping you out on normal volatility
       </ol>
 
       <p><strong>Real Example: NVDA Long (Jan 2024)</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Jan 3-10:  NVDA rallies $485 → $560 (+15.5% in 5 days)
 Jan 2:     Last down-day before rally: $475-$485
            Daily order block = $475-$485
@@ -679,7 +679,7 @@ Risk: $42 | Reward: $103 | R:R: 1:2.45 (actual)
       </ol>
 
       <p><strong>Real Example: AAPL Long (Nov 2024)</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Nov 11:    Weekly BOS at $230 (breaks previous week high of $228)
 Nov 12-15: Pullback to $225 (daily consolidation)
 Nov 18:    Daily BOS at $227 (confirms continuation)
@@ -758,7 +758,7 @@ Risk: $8 | Reward: $24 | R:R: 1:3
       </div>
 
       <p><strong>Example: Scaling Into SPY Long</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Order Block: $590-$595
 Full Position: 50 shares
 Stop: $587
@@ -801,7 +801,7 @@ Stop: $587 (same for all tiers)
       </div>
 
       <p><strong>Example: Scaling Out of TSLA Long</strong></p>
-      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Entry: $250 (50 shares)
 Stop: $236
 Risk: $14 per share
@@ -916,7 +916,7 @@ Actual R: $2,070 ÷ $700 = 2.96R
       </ol>
 
       <p><strong>Example: NVDA Earnings Hedge</strong></p>
-      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word">
+      <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
 Position: Long 100 shares NVDA at $500 (swing trade in profit)
 Earnings: Tomorrow after close
 Risk: Stock could gap down 10-20% on earnings miss
