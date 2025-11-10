@@ -604,7 +604,7 @@
       
       <h3 id="level-1-per-trade-risk-foundation">Level 1: Per-Trade Risk (Foundation)</h3>
       <p><strong>Rule: Never risk > 1-2% per trade.</strong></p>
-      <pre style="overflow-x:auto"><code>$10,000 account
+      <pre><code>$10,000 account
 Max risk: 1% = $100/trade
 
 Example entry: $100, Example stop: $99
@@ -612,7 +612,7 @@ Shares: $100 risk / $1 stop = 100 shares</code></pre>
 
       <h3 id="level-2-portfolio-heat-total-risk">Level 2: Portfolio Heat (Total Risk)</h3>
       <p><strong>Rule: Never exceed 6-8% total portfolio risk.</strong></p>
-      <pre style="overflow-x:auto"><code>Trade 1: 2% risk ($200)
+      <pre><code>Trade 1: 2% risk ($200)
 Trade 2: 2% risk ($200)
 Trade 3: 1.5% risk ($150)
 Trade 4: 1.5% risk ($150)
@@ -623,7 +623,7 @@ Next trade must wait (at heat limit)</code></pre>
 
       <h3 id="level-3-drawdown-control-survival">Level 3: Drawdown Control (Survival)</h3>
       <p><strong>Rule: Reduce size or stop trading if drawdown > 15-20%.</strong></p>
-      <pre style="overflow-x:auto"><code>Account peak: $12,000
+      <pre><code>Account peak: $12,000
 Current: $10,200
 Drawdown: ($12,000 - $10,200) / $12,000 = 15%
 
@@ -633,7 +633,7 @@ Action: Reduce size by 50% until recovery to < 10% drawdown</code></pre>
       
       <h3 id="kelly-formula">Kelly Formula</h3>
       <p><strong>Optimal % to risk = (Success Rate × Avg R - (1 - Success Rate)) / Avg R</strong></p>
-      <pre style="overflow-x:auto"><code>Strategy Stats:
+      <pre><code>Strategy Stats:
 Success Rate: 60%
 Avg R:R: 2:1
 
@@ -645,14 +645,14 @@ Kelly % = (0.60 × 2 - 0.40) / 2
 
       <h3 id="fractional-kelly-conservative">Fractional Kelly (Conservative)</h3>
       <p><strong>Use 25-50% of Kelly result.</strong></p>
-      <pre style="overflow-x:auto"><code>Full Kelly: 40%
+      <pre><code>Full Kelly: 40%
 Half Kelly: 20% (still aggressive)
 Quarter Kelly: 10% (conservative, recommended)
 
 Most professionals: Use 1/4 to 1/2 Kelly</code></pre>
 
       <h3 id="practical-kelly-example">Practical Kelly Example</h3>
-      <pre style="overflow-x:auto"><code>Strategy: 55% expectancy, 2.5:1 avg R:R
+      <pre><code>Strategy: 55% expectancy, 2.5:1 avg R:R
 Kelly = (0.55 × 2.5 - 0.45) / 2.5 = 0.34 = 34%
 Quarter Kelly = 8.5%
 
@@ -665,7 +665,7 @@ Use LOWER of the two → $200/trade</code></pre>
       
       <h3 id="method-1-equity-based-sizing">Method 1: Equity-Based Sizing</h3>
       <p><strong>Size adjusts with account value.</strong></p>
-      <pre style="overflow-x:auto"><code>Rule: Risk 2% of CURRENT equity
+      <pre><code>Rule: Risk 2% of CURRENT equity
 
 Starting: $10,000 × 2% = $200 risk
 After profit: $12,000 × 2% = $240 risk (scaled up)
@@ -675,7 +675,7 @@ Benefit: Automatically reduces size during drawdowns</code></pre>
 
       <h3 id="method-2-volatility-adjusted-sizing">Method 2: Volatility-Adjusted Sizing</h3>
       <p><strong>Size inversely proportional to volatility (ATR).</strong></p>
-      <pre style="overflow-x:auto"><code>Target risk: $200
+      <pre><code>Target risk: $200
 Asset A: ATR = $2.00 → Size = $200 / $2 = 100 shares
 Asset B: ATR = $5.00 → Size = $200 / $5 = 40 shares
 
@@ -705,7 +705,7 @@ Higher volatility = smaller position (same $ risk)</code></pre>
 
       <h3 id="recovery-protocol">Recovery Protocol</h3>
       <p><strong>Don't immediately scale back to full size after recovery.</strong></p>
-      <pre style="overflow-x:auto"><code>Drawdown: 18% → Reduced to 50% size
+      <pre><code>Drawdown: 18% → Reduced to 50% size
 Account recovers to 5% drawdown
 
 Recovery Plan:
@@ -715,7 +715,7 @@ Week 5+: 100% size (if back to profitable)</code></pre>
 
       <h3 id="psychological-drawdown-limits">Psychological Drawdown Limits</h3>
       <p><b>Research shows: 20-25% drawdown = psychological breaking point.</b></p>
-      <pre style="overflow-x:auto"><code>$10,000 account → $7,500 (25% DD)
+      <pre><code>$10,000 account → $7,500 (25% DD)
 Feels like: "I lost 3 months of profits"
 
 Result: Emotional trading, revenge trades, spirals to 40%+ DD
@@ -726,7 +726,7 @@ Prevention: HARD STOP at 20% DD (mandatory break)</code></pre>
       
       <h3 id="what-is-risk-of-ruin">What is Risk of Ruin?</h3>
       <p><strong>Probability of losing entire account.</strong></p>
-      <pre style="overflow-x:auto"><code>Performance: 50%
+      <pre><code>Performance: 50%
 Risk per trade: 10% (way too high!)
 Risk of Ruin: ~50% (coin flip to blow account)
 
@@ -736,7 +736,7 @@ Risk of Ruin: < 1% (safe)</code></pre>
 
       <h3 id="risk-of-ruin-formula-simplified">Risk of Ruin Formula (Simplified)</h3>
       <p><strong>RoR ≈ ((1 - Success Rate) / Success Rate) ^ (Max Trades)</strong></p>
-      <pre style="overflow-x:auto"><code>Example:
+      <pre><code>Example:
 Success Rate: 60%
 Max consecutive losses before ruin: 20
 
@@ -752,14 +752,14 @@ RoR = (0.40 / 0.60)^20 ≈ 0.0001 = 0.01% (very safe)</code></pre>
 
       <h2 id="regime-based-risk-adjustment">Regime-Based Risk Adjustment</h2>
 <h3 id="trending-regime-low-risk">Trending Regime (Low Risk)</h3>
-      <pre style="overflow-x:auto"><code>Volume Oracle: Trending Up
+      <pre><code>Volume Oracle: Trending Up
 Strategy: Pullback longs (aligned with trend)
 
 Risk: 2% per trade (normal)
 Confidence: High (with trend = edge)</code></pre>
 
       <h3 id="ranging-regime-moderate-risk">Ranging Regime (Moderate Risk)</h3>
-      <pre style="overflow-x:auto"><code>Volume Oracle: Ranging
+      <pre><code>Volume Oracle: Ranging
 Strategy: Fade extremes
 
 Risk: 1% per trade (reduced, lower R targets)
@@ -774,7 +774,7 @@ Confidence: Moderate (tight targets, lower R)</code></pre>
 
 
 <h3 id="volatile-regime-high-risk">Volatile Regime (High Risk)</h3>
-      <pre style="overflow-x:auto"><code>Volume Oracle: Volatile
+      <pre><code>Volume Oracle: Volatile
 Strategy: Sit out OR only A+ setups
 
 Risk: 0.5% per trade (drastically reduced)
@@ -784,7 +784,7 @@ OR: 0% (no trades, wait for regime shift)</code></pre>
       
       <h3 id="strategy-1-atr-based-stops">Strategy 1: ATR-Based Stops</h3>
       <p><strong>Stop = Entry ± (1.5-2.0 × ATR)</strong></p>
-      <pre style="overflow-x:auto"><code>Example entry: $100 long
+      <pre><code>Example entry: $100 long
 ATR: $2.00
 Example stop: $100 - (1.5 × $2) = $97.00
 
@@ -792,7 +792,7 @@ Why: Gives room for normal volatility, doesn't get stopped by noise</code></pre>
 
       <h3 id="strategy-2-structure-based-stops">Strategy 2: Structure-Based Stops</h3>
       <p><strong>Stop area below/above key structure (swing low/high).</strong></p>
-      <pre style="overflow-x:auto"><code>Example entry: $100.50 long (after sweep to $99.80)
+      <pre><code>Example entry: $100.50 long (after sweep to $99.80)
 Structure: Swept low at $99.80
 Example stop: $99.50 (below swept low + buffer)
 
@@ -800,7 +800,7 @@ Why: If breaks structure, setup invalidated</code></pre>
 
       <h3 id="strategy-3-time-based-stops">Strategy 3: Time-Based Stops</h3>
       <p><strong>Exit if trade doesn't move within X candles/hours.</strong></p>
-      <pre style="overflow-x:auto"><code>Example entry: $100 long
+      <pre><code>Example entry: $100 long
 Expectation: Move to $102 within 10 candles
 
 Reality: 10 candles later, price at $100.20 (stalled)
@@ -808,7 +808,7 @@ Action: Exit (setup not playing out, capital trapped)</code></pre>
 
       <h3 id="strategy-4-trailing-stops">Strategy 4: Trailing Stops</h3>
       <p><strong>Move stop to lock in profit as trade moves in favor.</strong></p>
-      <pre style="overflow-x:auto"><code>Example entry: $100, Example stop: $98, Example target: $105
+      <pre><code>Example entry: $100, Example stop: $98, Example target: $105
 
 Price hits $103:
 - Move stop to $100.50 (breakeven + buffer)
@@ -853,7 +853,7 @@ Price reverses to $102 → Stopped with $2 profit (vs. holding to $100)</code></
       <h2 id="institutional-risk-rules">Institutional Risk Rules</h2>
       
       <h3 id="rule-1-maximum-daily-loss">Rule 1: Maximum Daily Loss</h3>
-      <pre style="overflow-x:auto"><code>Firm rule: If lose 3% in single day → Stop trading
+      <pre><code>Firm rule: If lose 3% in single day → Stop trading
 
 $100,000 account
 Max daily loss: $3,000
@@ -861,31 +861,31 @@ Max daily loss: $3,000
 If down $3,000 by 11am → Close all positions, done for day</code></pre>
 
       <h3 id="rule-2-maximum-weekly-loss">Rule 2: Maximum Weekly Loss</h3>
-      <pre style="overflow-x:auto"><code>Max weekly loss: 5%
+      <pre><code>Max weekly loss: 5%
 
 If hit 5% by Wednesday → No new trades until next week</code></pre>
 
       <h3 id="rule-3-monthly-drawdown-limit">Rule 3: Monthly Drawdown Limit</h3>
-      <pre style="overflow-x:auto"><code>Max monthly drawdown: 10%
+      <pre><code>Max monthly drawdown: 10%
 
 If hit 10% DD → Reduce to 50% size for rest of month</code></pre>
 
       <h2 id="signal-pilot-risk-integration">Signal Pilot Risk Integration</h2>
       
       <h3 id="janus-atlas-structure-based-stops">Janus Atlas: Structure-Based Stops</h3>
-      <pre style="overflow-x:auto"><code>Janus sweep to $99.50
+      <pre><code>Janus sweep to $99.50
 Example entry: $100.20
 Example stop: $99.20 (below swept low + ATR buffer)
 
 R:R: ($105 target - $100.20) / ($100.20 - $99.20) = 4.8R</code></pre>
 
       <h3 id="volume-oracle-regime-risk-adjustment">Volume Oracle: Regime Risk Adjustment</h3>
-      <pre style="overflow-x:auto"><code>Trending: 2% risk/trade
+      <pre><code>Trending: 2% risk/trade
 Ranging: 1% risk/trade
 Volatile: 0.5% risk/trade OR sit out</code></pre>
 
       <h3 id="plutus-flow-atr-based-sizing">Plutus Flow: ATR-Based Sizing</h3>
-      <pre style="overflow-x:auto"><code>Asset: BTC, ATR = $500
+      <pre><code>Asset: BTC, ATR = $500
 Target risk: $400
 
 Position: $400 / $500 ATR = 0.8 BTC (~$36,000 notional)</code></pre>
