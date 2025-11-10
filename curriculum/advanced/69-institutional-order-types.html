@@ -72,7 +72,17 @@
 
   <div class="wrap article-grid">
     <div class="prose">
-<!-- TL;DR Skimmer Summary -->
+
+      <p>Every order type exists to solve a specific execution problem—minimizing slippage, hiding intent, or timing fills. Understanding institutional order types lets you decode dark pool prints, anticipate intraday moves, and execute like a pro.</p>
+
+      <div class="callout callout-danger">
+        <h4>💸 The $175M Execution Disaster</h4>
+        <p>In 2012, Knight Capital deployed new trading software that accidentally sent <strong>4 million market orders</strong> in 45 minutes across 154 stocks. Using aggressive market orders instead of limit orders or execution algos, they moved prices 5-10% on illiquid names.</p>
+        <p><strong>Result:</strong> $440M in losses, $175M net after recovery. The firm was acquired 48 hours later. The lesson: <em>Order type selection matters at scale.</em></p>
+        <p><strong>What they should have used:</strong> VWAP algos with participation limits (max 5% of volume), iceberg orders to hide size, and IOC orders to test liquidity first.</p>
+      </div>
+
+      <!-- TL;DR Skimmer Summary -->
       <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
         <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
         <div style="margin-top:1rem">
