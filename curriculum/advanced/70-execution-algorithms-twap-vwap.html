@@ -72,7 +72,17 @@
 
   <div class="wrap article-grid">
     <div class="prose">
-<!-- TL;DR Skimmer Summary -->
+
+      <p>Execution algorithms (algos) are the secret weapon of institutional traders. They break large orders into thousands of small pieces, time fills to minimize impact, and adapt to market conditions in real-time. This lesson teaches you how they work—and how to exploit their patterns.</p>
+
+      <div class="callout callout-danger">
+        <h4>💸 The $2.3M Slippage Disaster</h4>
+        <p>In 2018, a portfolio manager at a mid-sized hedge fund wanted to buy 1.2M shares of a mid-cap stock (ADV = 3M shares). Instead of using a VWAP algo, he submitted a <strong>single 1.2M share market order</strong> at 9:35 AM.</p>
+        <p><strong>Result:</strong> Price spiked 6.2% in 90 seconds as HFTs detected the order and front-ran. Average fill price was $0.19 higher than decision price. <strong>Total slippage cost: $228K.</strong> By 11 AM, stock had drifted back down 4% as buying pressure disappeared.</p>
+        <p><strong>What he should have done:</strong> Use VWAP algo over 4-6 hours with 10% participation limit. Expected slippage: $0.02-$0.04 per share = $24K-$48K cost (5-10× better).</p>
+      </div>
+
+      <!-- TL;DR Skimmer Summary -->
       <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
         <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
         <div style="margin-top:1rem">
