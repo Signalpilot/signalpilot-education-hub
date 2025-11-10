@@ -93,7 +93,7 @@
     <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
         <span id="theme-icon">🌙</span>
       </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
-  </div>
+  </details>
 </header>
 
 <article class="article">
@@ -111,7 +111,7 @@
         <div class="progress-text">
           <strong>You're making progress!</strong>
           <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
-        </div>
+        </details>
       </div>
     </div>
   </header>
@@ -511,7 +511,7 @@
             </ul>
             <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.15);border-radius:8px"><strong>Reality:</strong> Your expectancy excludes catastrophic losses from delistings. Real expectancy: -0.2R (losing system).</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-key">
@@ -525,8 +525,8 @@
       <p>Here's what most backtests ignore—and why yours is probably 20-40% too optimistic:</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Step 1: Model Bid-Ask Spread</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 1: Model Bid-Ask Spread</summary>
           <div class="accordion-content">
             <p><strong>What it is:</strong> The difference between buy price and sell price</p>
             <p><strong>Example:</strong></p>
@@ -539,10 +539,10 @@
             <p><strong>For 1,000 shares:</strong> $0.01 × 1,000 = $10 per trade</p>
             <p><strong>100 trades:</strong> $1,000 in spread costs</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 2: Model Slippage</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 2: Model Slippage</summary>
           <div class="accordion-content">
             <p><strong>What it is:</strong> Difference between intended price and actual fill</p>
             <p><strong>Realistic slippage by condition:</strong></p>
@@ -555,10 +555,10 @@
             <p><strong>Conservative assumption:</strong> 0.05% per trade</p>
             <p>$10,000 position × 0.05% = $5 slippage per side = $10 round trip</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 3: Model Commissions</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 3: Model Commissions</summary>
           <div class="accordion-content">
             <p><strong>Example: Interactive Brokers</strong></p>
             <ul>
@@ -568,10 +568,10 @@
             </ul>
             <p><strong>100 trades:</strong> $200 in commissions</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 4: Total Realistic Cost</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 4: Total Realistic Cost</summary>
           <div class="accordion-content">
             <p><strong>Per trade (round trip):</strong></p>
             <ul>
@@ -582,7 +582,7 @@
             <p><strong>Total: $22 per trade</strong></p>
             <p style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.15);border-radius:8px">If your strategy makes $50/trade gross → $28 net (44% reduction!)</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <h3 id="backtest-adjustment-example">Backtest Adjustment Example</h3>
@@ -721,7 +721,7 @@
           <p>Test your strategy across all regimes — regime-dependent strategies fail live</p>
           <a href="/curriculum/intermediate/30-minimal-flow-regimes.html" class="btn btn-ghost btn-sm">Read Lesson &rarr;</a>
         </div>
-      </div>
+      </details>
 
       <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">In backtesting, perfection is suspicion. Realism is edge. Model costs, avoid overfitting, forward test—or fail live.</p>
 
@@ -737,11 +737,11 @@
             <div class="quiz-option" data-correct="true">B) All of it: Sample size too small, Sharpe & expectancy too high, EMA(47) is curve-fit</div>
             <div class="quiz-option" data-correct="false">C) Just the expectancy is too high</div>
             <div class="quiz-option" data-correct="false">D) Just the sample size is too small</div>
-          </div>
+          </details>
           <div class="quiz-feedback">
             <strong>Correct!</strong> Three major red flags: (1) Only 25 trades = statistically insignificant, (2) Sharpe 4.2 = suspiciously high (likely overfit), (3) EMA(47) found by testing 100 periods = curve-fit to noise. This strategy will fail live. Need: 100+ trades, realistic Sharpe (1.5-2.5), standard parameters.
           </div>
-        </div>
+        </details>
 
         <button class="btn btn-primary quiz-submit">Check Answer</button>
       </div>
@@ -756,7 +756,7 @@
 
     </div>
 
-  </div>
+  </details>
 
 
   <div class="wrap nav-article">

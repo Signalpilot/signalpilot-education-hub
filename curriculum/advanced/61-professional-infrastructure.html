@@ -47,7 +47,7 @@
     <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
         <span id="theme-icon">🌙</span>
       </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
-  </div>
+  </details>
 </header>
 
 <article class="article">
@@ -67,7 +67,7 @@
         <div class="progress-text">
           <strong>You're making progress!</strong>
           <div style="font-size:.85rem;color:var(--muted)">Keep reading to mark this lesson complete</div>
-        </div>
+        </details>
       </div>
     </div>
   </header>
@@ -652,7 +652,7 @@
             </ul>
             <p><em>Cost: $4,000. Edge: Significant.</em></p>
           </div>
-        </div>
+        </details>
       </div>
 
       <h3>Computer Specs (Don't Cheap Out)</h3>
@@ -679,33 +679,33 @@ Why it matters: No lag, no crashes, 99.9% uptime</code></pre>
       <p>Professional? Automatic failover to 4G hotspot.</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Primary: Fiber Internet</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Primary: Fiber Internet</summary>
           <div class="accordion-content">
             <p><strong>Speed:</strong> 1Gbps down, 500Mbps up</p>
             <p><strong>Latency:</strong> 10-20ms</p>
             <p><strong>Cost:</strong> $80/month</p>
             <p><em>Fastest consumer option. Use this as primary.</em></p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">Backup: 4G/5G Hotspot</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">Backup: 4G/5G Hotspot</summary>
           <div class="accordion-content">
             <p><strong>Speed:</strong> 20-100Mbps</p>
             <p><strong>Failover:</strong> Automatic (if configured)</p>
             <p><strong>Cost:</strong> $50/month</p>
             <p><em>Critical backup. Worth every dollar.</em></p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">UPS (Uninterruptible Power Supply)</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">UPS (Uninterruptible Power Supply)</summary>
           <div class="accordion-content">
             <p><strong>Runtime:</strong> 30+ minutes (1500VA minimum)</p>
             <p><strong>Purpose:</strong> Prevents data loss, gives time to close positions</p>
             <p><strong>Cost:</strong> $150-300</p>
             <p><em>Power outage? You have 30 min to potential exit cleanly.</em></p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-tip">
@@ -725,8 +725,8 @@ Why it matters: No lag, no crashes, 99.9% uptime</code></pre>
       <h2 id="the-tools-professionals-use">The Tools Professionals Use</h2>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Trading Platform</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Trading Platform</summary>
           <div class="accordion-content">
             <p><strong>Options:</strong></p>
             <ul>
@@ -737,9 +737,9 @@ Why it matters: No lag, no crashes, 99.9% uptime</code></pre>
             </ul>
             <p><em>Recommendation: TradingView for charts + broker platform for execution.</em></p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">Data Feeds</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">Data Feeds</summary>
           <div class="accordion-content">
             <p><strong>Real-time data:</strong></p>
             <ul>
@@ -749,9 +749,9 @@ Why it matters: No lag, no crashes, 99.9% uptime</code></pre>
             </ul>
             <p><em>Level 1 sufficient for swing trading. Level 2 for scalping.</em></p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">Backtesting & Analytics</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">Backtesting & Analytics</summary>
           <div class="accordion-content">
             <p><strong>Options:</strong></p>
             <ul>
@@ -761,9 +761,9 @@ Why it matters: No lag, no crashes, 99.9% uptime</code></pre>
             </ul>
             <p><em>Python for programmers. QuantConnect for non-coders.</em></p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">Journaling</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">Journaling</summary>
           <div class="accordion-content">
             <p><strong>Options:</strong></p>
             <ul>
@@ -773,7 +773,7 @@ Why it matters: No lag, no crashes, 99.9% uptime</code></pre>
             </ul>
             <p><em>Any journal is better than no journal. Pick one, use it.</em></p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="section-break"><span>Part 4: Monitoring & Alerts</span></div>
@@ -827,7 +827,7 @@ System Health:
               <li>API errors > 10/hour (critical)</li>
             </ul>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="section-break"><span>Part 5: Cost potential breakdown</span></div>
@@ -939,7 +939,7 @@ Break-even: If edge = 2R/month, need ~2.8 trades/month
             <p>Professional journaling software is part of your stack</p>
           </a>
         </div>
-      </div>
+      </details>
 
       <div class="quiz">
         <h4>🎮 Test Your Understanding (No Pressure)</h4>
@@ -959,13 +959,13 @@ Break-even: If edge = 2R/month, need ~2.8 trades/month
             <div class="quiz-option" data-correct="false">
               <strong>D)</strong> Accept the loss and move on
             </div>
-          </div>
+          </details>
           <div class="quiz-feedback"></div>
-        </div>
+        </details>
 
         <button class="btn btn-primary quiz-submit">Check Answer</button>
         <div class="quiz-results"></div>
-      </div>
+      </details>
 
       <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">
         If you made it this far, you understand that infrastructure is the foundation of consistency. Amateurs focus on setups. Professionals build systems. Which one are you?
@@ -983,7 +983,7 @@ Break-even: If edge = 2R/month, need ~2.8 trades/month
         <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break...</p>
       </div>
 
-</div>
+</details>
 
   </div>
 
