@@ -287,8 +287,8 @@
       <p>Market makers make money three ways. Most traders only know about one.</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Revenue Stream #1: The Spread (The Obvious One)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Revenue Stream #1: The Spread (The Obvious One)</summary>
           <div class="accordion-content">
             <p><strong>The setup:</strong></p>
             <div style="background:rgba(255,255,255,.04);border-radius:8px;padding:1rem;margin:1rem 0;font-family:monospace">
@@ -305,10 +305,10 @@
             <p><strong>The math:</strong> On 1M shares per day = $50,000/day = <strong>$12.5M/year</strong></p>
             <p>And that's just ONE revenue stream.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Revenue Stream #2: Exchange Rebates (The Hidden One)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Revenue Stream #2: Exchange Rebates (The Hidden One)</summary>
           <div class="accordion-content">
             <p>Here's what they don't tell you: <strong>Exchanges PAY market makers to provide liquidity.</strong></p>
             <p><strong>The Maker-Taker Model:</strong></p>
@@ -323,11 +323,11 @@
               <h4>💡 The Aha Moment</h4>
               <p>Every time you use a market order, you're paying the exchange fee AND giving the market maker a rebate. You're literally paying them twice to take the other side of your trade.</p>
             </div>
-          </div>
+        </details>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Revenue Stream #3: Information Advantage (The Scary One)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Revenue Stream #3: Information Advantage (The Scary One)</summary>
           <div class="accordion-content">
             <p><strong>Market makers see order flow in real-time.</strong></p>
             <p>They know what's coming before it hits the tape.</p>
@@ -339,7 +339,7 @@
             <p><strong>They front-run the market. Legally.</strong> (It's called "latency advantage," not "front-running.")</p>
             <p style="margin-top:1rem;padding:1rem;background:rgba(255,107,107,.1);border-radius:8px"><strong>Your market order?</strong> They saw it 10 microseconds before it filled. They adjusted the price. You got the worst fill.</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="section-break"><span>Part 2: HFT Strategies (Why You Keep Getting Burned)</span></div>
@@ -559,8 +559,8 @@
 <h3 id="the-complete-defense-playbook">The Complete Defense Playbook</h3>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Defense #1: Use Limit Orders (Always)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Defense #1: Use Limit Orders (Always)</summary>
           <div class="accordion-content">
             <p><strong>Why:</strong> Market orders guarantee the worst fill. Limit orders guarantee YOUR price (or no fill).</p>
             <p><strong>Example:</strong></p>
@@ -570,10 +570,10 @@
             </ul>
             <p><strong>Result:</strong> Better fills. Or no trade (which is also fine—missed trade ≠ loss).</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Defense #2: Avoid Obvious Stop Placement</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Defense #2: Avoid Obvious Stop Placement</summary>
           <div class="accordion-content">
             <p><strong>Bad stop placement:</strong> Support at $100.00, stop at $99.95</p>
             <p><strong>Why it's bad:</strong> Everyone does this. Stops cluster. They get hunted.</p>
@@ -581,10 +581,10 @@
             <p><strong>Why it's better:</strong> ATR buffer. Below obvious cluster. Based on structure, not round numbers.</p>
             <p><strong>Yes, wider stop = smaller position size.</strong> That's the trade-off. But you won't get swept as often.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Defense #3: Trade High Liquidity Hours</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Defense #3: Trade High Liquidity Hours</summary>
           <div class="accordion-content">
             <p><strong>HFT works best in thin markets.</strong> When liquidity is low, they can move price with less capital.</p>
             <p><strong>Avoid:</strong></p>
@@ -595,17 +595,17 @@
             </ul>
             <p><strong>Trade:</strong> 9:45 AM - 3:45 PM ET (liquid hours, tight spreads, harder to manipulate)</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Defense #4: Use IEX (Speed Bump Exchange)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Defense #4: Use IEX (Speed Bump Exchange)</summary>
           <div class="accordion-content">
             <p><strong>What is IEX?</strong> An exchange with a 350-microsecond speed bump on ALL orders.</p>
             <p><strong>Why it helps:</strong> Neutralizes HFT latency advantage. Everyone gets the same speed.</p>
             <p><strong>Trade-off:</strong> Lower volume (less popular exchange). But fairer fills.</p>
             <p><strong>When to use:</strong> Large orders on liquid stocks.</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="section-break"><span>Part 5: Trading WITH Market Makers</span></div>
