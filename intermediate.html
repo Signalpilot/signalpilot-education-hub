@@ -126,6 +126,78 @@
 
   <section class="grid-sec">
     <div class="wrap">
+      <h2 class="headline md" style="margin-bottom: 1.5rem;">Complete Curriculum (27 Articles)</h2>
+      <div id="curriculum-list"></div>
+    </div>
+  </section>
+
+  <script>
+  (async function(){
+    const list = document.getElementById('curriculum-list');
+    try {
+      const res = await fetch('/curriculum/index.json', { cache: 'no-store' });
+      const allArticles = await res.json();
+
+      // Filter for intermediate articles (orders 21-47)
+      const articles = allArticles.filter(a => a.level === 'Intermediate' && a.order >= 21 && a.order <= 47);
+
+      // Group by category
+      const categories = {
+        'Market Microstructure': [],
+        'Advanced Order Flow': [],
+        'Signal Pilot Mastery': [],
+        'Professional Frameworks': [],
+        'Intermediate': []
+      };
+
+      articles.forEach(a => {
+        if (categories[a.category]) {
+          categories[a.category].push(a);
+        }
+      });
+
+      let html = '';
+      Object.keys(categories).forEach(cat => {
+        const catArticles = categories[cat];
+        if (catArticles.length > 0) {
+          html += `
+            <div class="card" style="margin-bottom: 2rem;">
+              <h3 class="headline sm" style="color: var(--primary); margin-bottom: 1rem;">${cat}</h3>
+              <div class="grid auto-300">
+          `;
+
+          catArticles.forEach(a => {
+            const statusBadge = a.status === 'complete' ? '✅' : '📝';
+            html += `
+              <article class="card post" style="background: var(--surface-2);">
+                <div class="kicker">${statusBadge} Article ${a.order}</div>
+                <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">${a.title}</h4>
+                <p class="note">${a.description}</p>
+                <div style="font-size: 0.85rem; color: var(--text-2); margin: 0.5rem 0;">
+                  📖 ${a.readingTime} • ${a.wordCount.toLocaleString()} words
+                </div>
+                ${a.spIndicators && a.spIndicators.length > 0 ?
+                  `<div style="font-size: 0.85rem; color: var(--primary); margin: 0.5rem 0;">
+                    🔧 ${a.spIndicators.join(', ')}
+                  </div>` : ''}
+                <a class="btn btn-primary btn-sm" href="${a.href}">Read Now →</a>
+              </article>
+            `;
+          });
+
+          html += `</div></div>`;
+        }
+      });
+
+      list.innerHTML = html;
+    } catch (err) {
+      list.innerHTML = '<div class="card"><p class="note">Error loading curriculum: ' + err.message + '</p></div>';
+    }
+  })();
+  </script>
+
+  <section class="grid-sec">
+    <div class="wrap">
       <div class="card" style="text-align: center; padding: 3rem 2rem; margin-bottom: 2rem;">
         <h2 class="headline md">Start Intermediate Tier</h2>
         <p class="lead">Begin with Article #21: Bid-Ask Spread Dynamics</p>
