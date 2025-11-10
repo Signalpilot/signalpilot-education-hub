@@ -187,8 +187,8 @@
       <h3 id="the-atr-multiplier-guide">The ATR Multiplier Guide</h3>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">1.5× ATR: Tight Stops (Scalping)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">1.5× ATR: Tight Stops (Scalping)</summary>
           <div class="accordion-content">
             <p><strong>When to use:</strong> Scalping, mean reversion trades, very tight ranges</p>
             <p><strong>Risk level:</strong> Higher stop-out rate, but tighter risk control</p>
@@ -197,10 +197,10 @@
               <strong>Warning:</strong> Tight stops get swept more often. Only use if setup quality is A+ and you're managing actively.
             </p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">2.0× ATR: Standard Stops (Swing Trading)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">2.0× ATR: Standard Stops (Swing Trading)</summary>
           <div class="accordion-content">
             <p><strong>When to use:</strong> Swing trades, trend following, most setups</p>
             <p><strong>Risk level:</strong> Balanced—gives market room to breathe without excessive risk</p>
@@ -209,10 +209,10 @@
               <strong>Sweet spot:</strong> This is the default for most professional swing traders. Enough room, not excessive.
             </p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">3.0× ATR: Wide Stops (Position Trading)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">3.0× ATR: Wide Stops (Position Trading)</summary>
           <div class="accordion-content">
             <p><strong>When to use:</strong> Position trades, volatile assets, holding through noise</p>
             <p><strong>Risk level:</strong> Lowest stop-out rate, but larger losses if wrong</p>
@@ -221,7 +221,7 @@
               <strong>Use case:</strong> When you want to hold through volatility spikes. Reduce position SIZE to compensate for wider stop.
             </p>
           </div>
-        </div>
+        </details>
       </div>
 
       <h3 id="why-this-is-genius">Why This Is Genius</h3>
@@ -396,32 +396,32 @@
       <h2 id="three-scenarios-where-hard-stops-dont-make-sense">Three Scenarios Where Hard Stops Don't Make Sense</h2>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Scenario 1: Hedged Positions</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Scenario 1: Hedged Positions</summary>
           <div class="accordion-content">
             <p><strong>Setup:</strong> You're long spot + short futures (delta-neutral or partially hedged)</p>
             <p><strong>Why no hard stop:</strong> Your hedge limits loss. If spot drops, futures profit offsets.</p>
             <p><strong>Management:</strong> Monitor delta imbalance. Rebalance hedge as needed.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Scenario 2: Options (Defined Risk)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Scenario 2: Options (Defined Risk)</summary>
           <div class="accordion-content">
             <p><strong>Setup:</strong> You bought call/put options (premium paid upfront)</p>
             <p><strong>Why no hard stop:</strong> Max loss = premium paid. Risk is already defined and capped.</p>
             <p><strong>Management:</strong> Let theta decay work against you or potential exit based on time/delta, not price stop.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Scenario 3: Dollar-Cost Averaging (Long-Term Investing)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Scenario 3: Dollar-Cost Averaging (Long-Term Investing)</summary>
           <div class="accordion-content">
             <p><strong>Setup:</strong> DCA into BTC/ETH for long-term hold (5+ years)</p>
             <p><strong>Why no hard stop:</strong> Temporary drawdowns are expected. Stops would lock in losses during volatility.</p>
             <p><strong>Management:</strong> Continue planned scale-ins regardless of price. This is INVESTING, not trading.</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-warning">
