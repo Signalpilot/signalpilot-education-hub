@@ -392,8 +392,8 @@
       <p>The algo doesn't buy all at once. It slices the order based on historical volume patterns:</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">9:30-10:30 AM: Morning Rush (25% of Daily Volume)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">9:30-10:30 AM: Morning Rush (25% of Daily Volume)</summary>
           <div class="accordion-content">
             <p>Algo buys 25,000 shares during this window.</p>
             <p>It breaks this into small clips—maybe 500 shares every 2-3 minutes.</p>
@@ -401,35 +401,35 @@
             <div style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-left:3px solid var(--primary)">
               <strong>For retail traders:</strong> This is why the first hour is choppy. Algos are fighting for fills, creating volatility.
             </div>
-          </div>
+        </details>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header">10:30 AM-12:00 PM: Mid-Morning (30% of Volume)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">10:30 AM-12:00 PM: Mid-Morning (30% of Volume)</summary>
           <div class="accordion-content">
             <p>Algo buys 30,000 shares.</p>
             <p>This period is typically more stable—less retail panic, fewer headlines.</p>
             <p><strong>Pattern:</strong> VWAP algos are aggressive here because liquidity is good and impact is low.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">12:00-2:00 PM: Lunch Lull (15% of Volume)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">12:00-2:00 PM: Lunch Lull (15% of Volume)</summary>
           <div class="accordion-content">
             <p>Algo buys only 15,000 shares.</p>
             <p><strong>Why less?</strong> Volume dries up during lunch. Buying aggressively here would spike price (higher impact).</p>
             <p>Algos slow down, wait for better opportunities.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">2:00-4:00 PM: Afternoon Rally (30% of Volume)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">2:00-4:00 PM: Afternoon Rally (30% of Volume)</summary>
           <div class="accordion-content">
             <p>Algo buys final 30,000 shares.</p>
             <p>Volume picks back up as funds reposition before close.</p>
             <p><strong>Key detail:</strong> By 3:30 PM, algos get more aggressive to ensure they finish the order.</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <h3 id="detecting-vwap-algos-in-action">Detecting VWAP Algos in Action</h3>

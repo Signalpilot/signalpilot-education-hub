@@ -605,8 +605,8 @@ I'm buying. Market makers and liquidation engines do the rest."
       <p>Where x = Token A quantity, y = Token B quantity, k = constant</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Example: Swapping on Uniswap</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Example: Swapping on Uniswap</summary>
           <div class="accordion-content">
             <p><strong>Pool State:</strong> 1000 ETH × 2,000,000 USDC</p>
             <p><strong>You want to buy:</strong> 10 ETH</p>
@@ -620,10 +620,10 @@ I'm buying. Market makers and liquidation engines do the rest."
             </ul>
             <p style="margin-top:1rem;color:var(--warning)"><strong>Price Impact:</strong> Your trade moved the price 1% because you're trading against a finite pool</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">DEX Advantages</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">DEX Advantages</summary>
           <div class="accordion-content">
             <ul>
               <li><strong>No Counterparty Risk:</strong> Your keys, your coins</li>
@@ -632,10 +632,10 @@ I'm buying. Market makers and liquidation engines do the rest."
               <li><strong>Transparent:</strong> All transactions on-chain, verifiable</li>
             </ul>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">DEX Risks</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">DEX Risks</summary>
           <div class="accordion-content">
             <ul>
               <li><strong>MEV Exploitation:</strong> Bots can front-run/sandwich your trades</li>
@@ -644,7 +644,7 @@ I'm buying. Market makers and liquidation engines do the rest."
               <li><strong>Impermanent Loss:</strong> If you provide liquidity</li>
             </ul>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="section-break"><span>Part 3: MEV—The Dark Side of DEX Trading</span></div>
@@ -1044,32 +1044,32 @@ the table if you don't use these tools."
       <h3 id="red-flags-for-wash-trading">Red Flags for Wash Trading:</h3>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Suspiciously Wide Spreads Despite High Volume</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Suspiciously Wide Spreads Despite High Volume</summary>
           <div class="accordion-content">
             <p><strong>Legit Exchange:</strong> $1B daily volume → 0.01% spread</p>
             <p><strong>Wash Trading:</strong> $1B reported volume → 0.5% spread</p>
             <p><strong>Why:</strong> Wash trades don't provide real liquidity. If spread is wide despite "high volume," it's fake.</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Volume Spikes with No Price Movement</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Volume Spikes with No Price Movement</summary>
           <div class="accordion-content">
             <p><strong>Real Volume:</strong> $500M in BTC volume → price moves 2-5%</p>
             <p><strong>Wash Volume:</strong> $500M reported → price moves 0.1%</p>
             <p><strong>Test:</strong> If massive volume doesn't move price, it's wash trading</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Identical Trade Sizes Repeating</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Identical Trade Sizes Repeating</summary>
           <div class="accordion-content">
             <p><strong>Pattern:</strong> 1000 trades of exactly 0.5 BTC every 10 seconds</p>
             <p><strong>Why Suspicious:</strong> Real traders use varied sizes. Bots wash trading use fixed amounts.</p>
             <p><strong>Tool:</strong> Check time & sales feed for unnatural patterns</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-tip">

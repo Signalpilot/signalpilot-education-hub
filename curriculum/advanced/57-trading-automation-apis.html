@@ -303,8 +303,8 @@
       <h3>Top Broker APIs for Automation</h3>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Alpaca (Stocks & Crypto — Best for Beginners)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Alpaca (Stocks & Crypto — Best for Beginners)</summary>
           <div class="accordion-content">
             <p><strong>Why use it:</strong></p>
             <ul>
@@ -317,9 +317,9 @@
             <p><strong>Assets:</strong> US stocks, ETFs, crypto</p>
             <p><em>Verdict: Best starting point for algo traders.</em></p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">Interactive Brokers (Multi-Asset — Pro Level)</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">Interactive Brokers (Multi-Asset — Pro Level)</summary>
           <div class="accordion-content">
             <p><strong>Why use it:</strong></p>
             <ul>
@@ -332,9 +332,9 @@
             <p><strong>Learning curve:</strong> Steep (documentation is... dense)</p>
             <p><em>Verdict: Pro-level API. Worth learning if you need multi-asset.</em></p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">Binance (Crypto Only — High Volume)</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">Binance (Crypto Only — High Volume)</summary>
           <div class="accordion-content">
             <p><strong>Why use it:</strong></p>
             <ul>
@@ -347,7 +347,7 @@
             <p><strong>Assets:</strong> Crypto only (BTC, ETH, 600+ altcoins)</p>
             <p><em>Verdict: Best for crypto automation. 24/7 markets.</em></p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-tip">
@@ -718,8 +718,8 @@ except Exception as e:
 <h3>Monthly Bot Maintenance Checklist</h3>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Review Performance Metrics</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Review Performance Metrics</summary>
           <div class="accordion-content">
             <ul>
               <li>Success rate: Is it within 5% of backtest?</li>
@@ -729,9 +729,9 @@ except Exception as e:
             </ul>
             <p><em>If metrics diverge from backtest, investigate why.</em></p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">Check Error Logs</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">Check Error Logs</summary>
           <div class="accordion-content">
             <ul>
               <li>Connection errors: How many?</li>
@@ -740,9 +740,9 @@ except Exception as e:
             </ul>
             <p><em>Fix recurring errors. Improve retry logic.</em></p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">Regime Check</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">Regime Check</summary>
           <div class="accordion-content">
             <ul>
               <li>Is the market still in a regime your strategy favors?</li>
@@ -751,7 +751,7 @@ except Exception as e:
             </ul>
             <p><em>Turn off strategies that don't fit current regime.</em></p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="key-takeaway">

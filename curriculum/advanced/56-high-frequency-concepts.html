@@ -132,45 +132,45 @@
       <p>Here's what happens in the next 50 milliseconds:</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">0ms: You Click Buy</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">0ms: You Click Buy</summary>
           <div class="accordion-content">
             <p>Your order is generated on your computer.</p>
             <p><strong>Current bid/ask:</strong> $520.00 / $520.01</p>
             <p>You expect to pay $520.01 (the ask).</p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">5ms: Order Hits Your Router</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">5ms: Order Hits Your Router</summary>
           <div class="accordion-content">
             <p>Your WiFi or ethernet sends the order to your internet router.</p>
             <p>If you're on WiFi: Add 2-5ms latency right here.</p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">20ms: Order Reaches Your Broker</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">20ms: Order Reaches Your Broker</summary>
           <div class="accordion-content">
             <p>Your order travels through your ISP to your broker's servers.</p>
             <p>HFT firms detected unusual buying pressure 15ms ago.</p>
             <p>They've already started adjusting.</p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">45ms: Order Reaches Exchange</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">45ms: Order Reaches Exchange</summary>
           <div class="accordion-content">
             <p>Your broker routes your order to the exchange.</p>
             <p><strong>New bid/ask:</strong> $520.01 / $520.03</p>
             <p>The HFT canceled the $520.01 ask and repriced to $520.03.</p>
           </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-header">50ms: Your Order Fills</div>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-header">50ms: Your Order Fills</summary>
           <div class="accordion-content">
             <p>You bought at $520.03 instead of $520.01.</p>
             <p><strong>Slippage:</strong> $0.02 per share</p>
             <p>On 1,000 shares? That's $20. Not much. But multiply by billions of trades. That's the HFT business model.</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-key">
