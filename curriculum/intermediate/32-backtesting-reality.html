@@ -525,8 +525,8 @@
       <p>Here's what most backtests ignore—and why yours is probably 20-40% too optimistic:</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Step 1: Model Bid-Ask Spread</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 1: Model Bid-Ask Spread</summary>
           <div class="accordion-content">
             <p><strong>What it is:</strong> The difference between buy price and sell price</p>
             <p><strong>Example:</strong></p>
@@ -539,10 +539,10 @@
             <p><strong>For 1,000 shares:</strong> $0.01 × 1,000 = $10 per trade</p>
             <p><strong>100 trades:</strong> $1,000 in spread costs</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 2: Model Slippage</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 2: Model Slippage</summary>
           <div class="accordion-content">
             <p><strong>What it is:</strong> Difference between intended price and actual fill</p>
             <p><strong>Realistic slippage by condition:</strong></p>
@@ -555,10 +555,10 @@
             <p><strong>Conservative assumption:</strong> 0.05% per trade</p>
             <p>$10,000 position × 0.05% = $5 slippage per side = $10 round trip</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 3: Model Commissions</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 3: Model Commissions</summary>
           <div class="accordion-content">
             <p><strong>Example: Interactive Brokers</strong></p>
             <ul>
@@ -568,10 +568,10 @@
             </ul>
             <p><strong>100 trades:</strong> $200 in commissions</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Step 4: Total Realistic Cost</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Step 4: Total Realistic Cost</summary>
           <div class="accordion-content">
             <p><strong>Per trade (round trip):</strong></p>
             <ul>
@@ -582,7 +582,7 @@
             <p><strong>Total: $22 per trade</strong></p>
             <p style="margin-top:1rem;padding:1rem;background:rgba(255,193,7,.15);border-radius:8px">If your strategy makes $50/trade gross → $28 net (44% reduction!)</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <h3 id="backtest-adjustment-example">Backtest Adjustment Example</h3>

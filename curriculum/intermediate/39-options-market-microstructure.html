@@ -348,8 +348,8 @@
       <h3 id="step-by-step-how-delta-hedging-works">Step-by-Step: How Delta Hedging Works</h3>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Example: Institution Buys 10,000 SPY $450 Calls</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Example: Institution Buys 10,000 SPY $450 Calls</summary>
           <div class="accordion-content">
             <p><strong>Trade:</strong> JPMorgan buys 10,000 SPY $450 calls from Citadel</p>
             <p><strong>Citadel's Position:</strong> Short 10,000 calls (naked short = exposed to unlimited upside)</p>
@@ -358,10 +358,10 @@
             <p><strong>Action:</strong> Citadel buys 500,000 SPY shares to hedge</p>
             <p style="margin-top:1rem;color:var(--success)"><strong>Result:</strong> Citadel is now delta-neutral (profit from theta decay, not directional movement)</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">What Happens When Price Moves Up</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">What Happens When Price Moves Up</summary>
           <div class="accordion-content">
             <p><strong>SPY rallies from $448 → $452</strong></p>
             <p><strong>New Delta:</strong> 0.75 (now 75% ITM probability)</p>
@@ -370,10 +370,10 @@
             <p><strong>Action:</strong> Citadel must BUY another 250,000 shares</p>
             <p style="margin-top:1rem;color:var(--warning)"><strong>Impact:</strong> This buying pushes SPY higher → delta increases more → more buying → gamma squeeze!</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">What Happens When Price Moves Down</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">What Happens When Price Moves Down</summary>
           <div class="accordion-content">
             <p><strong>SPY drops from $452 → $448</strong></p>
             <p><strong>New Delta:</strong> 0.30 (now only 30% ITM probability)</p>
@@ -382,7 +382,7 @@
             <p><strong>Action:</strong> Citadel must SELL 450,000 shares</p>
             <p style="margin-top:1rem;color:var(--warning)"><strong>Impact:</strong> This selling pushes SPY lower → delta decreases more → more selling → crash amplification!</p>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-key">
@@ -680,8 +680,8 @@ Once I understood their hedging requirements, OpEx became my ATM."
       <h3 id="real-example-spy-expiration-friday">Real Example: SPY Expiration Friday</h3>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">SPY Options Chain (Expiring Friday 3 PM)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">SPY Options Chain (Expiring Friday 3 PM)</summary>
           <div class="accordion-content">
             <p><strong>Current Price:</strong> SPY = $452.50</p>
             <p><strong>Open Interest by Strike:</strong></p>
@@ -703,10 +703,10 @@ Once I understood their hedging requirements, OpEx became my ATM."
             </ul>
             <p style="margin-top:1rem;color:var(--success)"><strong>Total Loss at $450:</strong> $80M → This is MAX PAIN</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Why Price Pins to Max Pain</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Why Price Pins to Max Pain</summary>
           <div class="accordion-content">
             <p><strong>Morning (10 AM):</strong> SPY at $452.50</p>
             <ul>
@@ -726,7 +726,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
               <li>MMs made maximum profit from theta decay</li>
             </ul>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-tip">
@@ -852,8 +852,8 @@ Once I understood their hedging requirements, OpEx became my ATM."
       <p>When IV spikes, delta changes—even if price doesn't move. This forces market makers to rehedge based on volatility alone.</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">Real Example: Tesla Earnings Vanna Flow</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Real Example: Tesla Earnings Vanna Flow</summary>
           <div class="accordion-content">
             <p><strong>Setup (Oct 18, 2023 - Day Before Earnings):</strong></p>
             <ul>
@@ -884,10 +884,10 @@ Once I understood their hedging requirements, OpEx became my ATM."
               <li><strong>The vanna unwind amplified the selloff</strong></li>
             </ul>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Trading Vanna: The Post-Earnings Fade</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Trading Vanna: The Post-Earnings Fade</summary>
           <div class="accordion-content">
             <p><strong>Strategy:</strong> Fade the vanna unwind when IV crush is severe</p>
             <p><strong>Setup Requirements:</strong></p>
@@ -911,7 +911,7 @@ Once I understood their hedging requirements, OpEx became my ATM."
               <li>Profit driver: Vanna unwind complete, natural buyers return</li>
             </ul>
           </div>
-        </div>
+        </details>
       </div>
 
       <h3 id="charm-how-time-decay-affects-delta">Charm: How Time Decay Affects Delta</h3>
@@ -1310,8 +1310,8 @@ Win rate on 0DTE fade: 68% over 6 months
       <h3 id="essential-tools">Essential Tools:</h3>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header">SpotGamma (Dealer Gamma Exposure)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">SpotGamma (Dealer Gamma Exposure)</summary>
           <div class="accordion-content">
             <p><strong>What it shows:</strong> Real-time dealer gamma positioning</p>
             <p><strong>Key metrics:</strong></p>
@@ -1329,10 +1329,10 @@ Win rate on 0DTE fade: 68% over 6 months
             </ul>
             <p style="margin-top:1rem"><strong>Cost:</strong> $99/month (worth it for active OpEx traders)</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">SqueezeMetrics (Dark Pool & Gamma)</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">SqueezeMetrics (Dark Pool & Gamma)</summary>
           <div class="accordion-content">
             <p><strong>What it shows:</strong> Dark pool indicator (DIX) + dealer gamma exposure (GEX)</p>
             <p><strong>Key insight:</strong> DIX shows smart money positioning vs dealer hedging needs</p>
@@ -1349,10 +1349,10 @@ Win rate on 0DTE fade: 68% over 6 months
             </ul>
             <p style="margin-top:1rem"><strong>Cost:</strong> $49/month</p>
           </div>
-        </div>
+        </details>
 
-        <div class="accordion-item">
-          <div class="accordion-header">Free Tools: CBOE & TradingView</div>
+        <details class="accordion-item">
+          <summary class="accordion-header">Free Tools: CBOE & TradingView</summary>
           <div class="accordion-content">
             <p><strong>CBOE Put/Call Ratio:</strong></p>
             <ul>
@@ -1374,7 +1374,7 @@ Win rate on 0DTE fade: 68% over 6 months
               <li>Shows expected pin level for OpEx</li>
             </ul>
           </div>
-        </div>
+        </details>
       </div>
 
       <div class="callout-warning">
