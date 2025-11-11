@@ -72,14 +72,14 @@
         <div style="margin-top:1rem">
           <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
           <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>ATR-based stops: Place stops 1.5-2× ATR (14-period) from entry—accounts for normal volatility + sweep buffer</li>
-            <li>Swing structure stops: Place below swing low + 0.2-0.5% buffer—avoids obvious level where everyone else's stops are</li>
-            <li>Tight stops (0.3-0.5% from entry) get hunted—you're providing liquidity for smart money entries</li>
-            <li>If required stop is too wide for 2% risk, reduce position size (don't tighten stop to fit)</li>
-            <li>Framework: Measure ATR → Calculate 1.5-2× ATR from entry → Add 0.2-0.5% buffer below swing structure → That's your stop</li>
-            <li>Common mistake: Arbitrary tight stops or stops exactly at obvious swing lows—both get swept constantly</li>
-            <li>Validation: Track "stopped then reversed" rate—if >50%, stops too tight or too obvious (widen and add buffer)</li>
-            <li>Case study: Michelle lost $24.6K with tight stops (67 trades stopped then reversed); recovered $16.8K using ATR-based stops (win rate 31% → 58%)</li>
+            <li>ATR-based stops 1.5-2x ATR from entry volatility buffer</li>
+            <li>Swing stops below low plus buffer avoids obvious levels</li>
+            <li>Tight stops get hunted providing smart money entry liquidity</li>
+            <li>Stop too wide reduce position size not stop distance</li>
+            <li>Measure ATR calculate buffer below swing that is your stop</li>
+            <li>Arbitrary tight stops at obvious lows get swept constantly</li>
+            <li>Track stopped then reversed over 50% means too tight</li>
+            <li>Michelle: -$24.6K tight stops, +$16.8K ATR stops 31% to 58% WR</li>
           </ul>
           <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
         </div>
