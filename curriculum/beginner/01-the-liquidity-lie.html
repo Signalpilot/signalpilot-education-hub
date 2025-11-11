@@ -78,20 +78,17 @@
         <div style="margin-top:1rem">
           <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
           <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>Liquidity is engineered, not natural—institutions target obvious stop levels to fill large orders at better prices</li>
-            <li>Support/resistance "breaks" are intentional sweeps, not failures—they harvest retail stops before reversing</li>
-            <li>Liquidity sweep pattern: Price wicks through level (0.3-0.8% past) → triggers stops → immediately reverses with volume</li>
-            <li>Framework: Identify obvious levels where stops cluster → Wait for sweep → Enter on reclaim with volume spike confirmation</li>
-            <li>Common mistake: Buying AT support with stop just below—you're the liquidity being swept</li>
-            <li>Validation: Track "stopped then reversed" rate—if >50%, your stops are in sweep zones (move them 1.5-2% below obvious levels)</li>
-            <li>Case study: Marcus lost $8.2K (47 trades, 34% WR) buying support; made $31.4K (125 trades, 68% WR) waiting for sweeps first</li>
+            <li>Institutions engineer liquidity by targeting obvious stop levels</li>
+            <li>Support breaks are intentional sweeps harvesting retail stops</li>
+            <li>Sweep pattern: wick through level → trigger stops → reverse</li>
+            <li>Framework: identify levels → wait for sweep → enter on reclaim</li>
+            <li>Common mistake: buying AT support with tight stops below</li>
+            <li>Track "stopped then reversed" rate to identify sweep zones</li>
+            <li>Marcus: -$8.2K buying support → +$31.4K waiting for sweeps</li>
           </ul>
           <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
         </div>
       </details>
-
-
-
 
       <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
         <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
@@ -106,18 +103,16 @@
 
 <h2 id="marcuss-8200-wake-up-call-when-perfect-support-levels-failed-47-times">Marcus's $8,200 Wake-Up Call: When "Perfect" Support Levels Failed 47 Times</h2>
 
-      <p><strong>Marcus Chen, 29, San Francisco</strong> — Software engineer by day, aspiring trader by night. Smart guy. Great job at a tech company. $45,000 saved for trading capital.</p>
+      <p><strong>Marcus Chen, 29, San Francisco</strong> — Software engineer turned trader with $45,000 saved for trading capital.</p>
 
-      <p>January 2024, Marcus was confident. He'd read three trading books. Completed two Udemy courses. Spent 6 months paper trading with "solid" results.</p>
+      <p>January 2024: Marcus was confident after 6 months of paper trading. His strategy? Textbook support/resistance trading on the 15-minute chart. Buy support, sell resistance, stops just beyond the levels.</p>
 
-      <p><strong>His strategy?</strong> Textbook support/resistance trading on the 15-minute chart. Buy support, sell resistance, stops just beyond the levels. Simple. Logical. <em>Wrong.</em></p>
-
-      <p>By February 28th, Marcus had been stopped out <strong>47 times</strong> in 8 weeks. Win rate: 34%. Total loss: <strong>$8,200</strong> (18.2% of capital).</p>
+      <p>By February 28th: <strong>47 losing trades</strong> in 8 weeks. Win rate: 34%. Total loss: <strong>$8,200</strong> (18.2% of capital).</p>
 
       <div class="callout-warning">
         <h4>🚨 What Marcus Learned The Hard Way</h4>
         <p>"I was right about the direction 31 times out of 47. The market DID bounce at support—just AFTER stopping me out first. I thought I was unlucky. Turns out, I was the liquidity."</p>
-        <p style="margin-top:0.75rem"><em>— Marcus Chen, March 2024 journal potential entry</em></p>
+        <p style="margin-top:0.75rem"><em>— Marcus Chen, March 2024 journal entry</em></p>
       </div>
 
       <div class="story-summary">
@@ -127,10 +122,6 @@
           <div class="stat-box">
             <span class="stat-label">Total Trades</span>
             <span class="stat-value">47</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Winners</span>
-            <span class="stat-value">16</span>
           </div>
           <div class="stat-box">
             <span class="stat-label">Win Rate</span>
@@ -143,173 +134,17 @@
         </div>
 
         <div class="key-insight">
-          <strong>The Cruel Reality:</strong> Marcus was right about direction 31/47 times (66% directional accuracy), but kept getting stopped out BEFORE the bounce happened. He thought he was unlucky. He was actually the liquidity.
+          <strong>The Cruel Reality:</strong> Marcus was right about direction 66% of the time, but kept getting stopped out BEFORE the bounce happened. He wasn't unlucky—he was the liquidity.
         </div>
       </div>
 
-      <div class="trading-timeline">
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">Week 1 • Jan 2-5</span>
-            <span class="week-pnl loss">-$940</span>
-          </div>
-          <div class="week-stats">6 trades • 2 winners / 4 losers • 33% win rate</div>
-          <div class="week-issue">💔 Stopped below support, watched rally</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">Week 2 • Jan 8-12</span>
-            <span class="week-pnl loss">-$620</span>
-          </div>
-          <div class="week-stats">7 trades • 3 winners / 4 losers • 43% win rate</div>
-          <div class="week-issue">💔 3 winners small, 4 losers swept full stop</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">Week 3 • Jan 15-19</span>
-            <span class="week-pnl loss">-$1,280</span>
-          </div>
-          <div class="week-stats">5 trades • 1 winner / 4 losers • 20% win rate</div>
-          <div class="week-issue">💔 Worst week: Every support swept</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">Week 4 • Jan 22-26</span>
-            <span class="week-pnl loss">-$1,050</span>
-          </div>
-          <div class="week-stats">6 trades • 2 winners / 4 losers • 33% win rate</div>
-          <div class="week-issue">💔 "Double bottom = strong support" (wrong)</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">Week 5 • Jan 29-Feb 2</span>
-            <span class="week-pnl loss">-$1,170</span>
-          </div>
-          <div class="week-stats">6 trades • 2 winners / 4 losers • 33% win rate</div>
-          <div class="week-issue">💔 Tighter stops = easier to sweep</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">Week 6 • Feb 5-9</span>
-            <span class="week-pnl loss">-$890</span>
-          </div>
-          <div class="week-stats">5 trades • 2 winners / 3 losers • 40% win rate</div>
-          <div class="week-issue">💔 BTC $50K sweep disaster (3 stops hit)</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">Week 7 • Feb 12-16</span>
-            <span class="week-pnl loss">-$1,140</span>
-          </div>
-          <div class="week-stats">6 trades • 2 winners / 4 losers • 33% win rate</div>
-          <div class="week-issue">💔 ES futures: Every entry swept</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">Week 8 • Feb 19-23</span>
-            <span class="week-pnl loss">-$1,110</span>
-          </div>
-          <div class="week-stats">6 trades • 2 winners / 4 losers • 33% win rate</div>
-          <div class="week-issue">💔 Frustration trading, bigger size = bigger losses</div>
-        </div>
-      </div>
 <h3 id="the-breaking-point-february-14th-2024">The Breaking Point: February 14th, 2024</h3>
 
-      <p><strong>The trade that changed everything.</strong></p>
+      <p><strong>February 14, 9:25 AM:</strong> BTC at "perfect support" around $50,000. Marcus enters long at $50,080 with stop at $49,785.</p>
 
-      <div class="story-summary">
-        
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🔴 CHECKPOINT</h4>
-        <p>You've completed the first quarter of this lesson.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
-      </div>
+      <p><strong>9:43 AM:</strong> Price sweeps to $49,785, stops him out for -$148 loss.</p>
 
-
-<h3>⚡ The $1,128 BTC Sweep That Opened Marcus's Eyes</h3>
-        <p style="margin:1rem 0">February 14, 2024 • A minute-by-minute breakdown of how "perfect support" became perfect liquidity</p>
-      </div>
-
-      <div class="trading-timeline">
-        <div class="timeline-week" style="border-left-color:#ffc107">
-          <div class="week-header">
-            <span class="week-label">9:20 AM • Setup Phase</span>
-            <span class="week-pnl" style="color:var(--muted)">$50,150</span>
-          </div>
-          <div class="week-stats">BTC at obvious support • Watching setup develop</div>
-          <div class="week-issue">😌 Marcus: "This is textbook. Clear support level."</div>
-        </div>
-
-        <div class="timeline-week" style="border-left-color:#ffc107">
-          <div class="week-header">
-            <span class="week-label">9:25 AM • LONG ENTRY</span>
-            <span class="week-pnl" style="color:var(--muted)">$50,080</span>
-          </div>
-          <div class="week-stats">Position: Long 0.5 BTC • Entry: $50,080 • P&L: $0</div>
-          <div class="week-issue">💪 Marcus: "Perfect support! This is going to $52K."</div>
-        </div>
-
-        <div class="timeline-week" style="border-left-color:#ffc107">
-          <div class="week-header">
-            <span class="week-label">9:26 AM • Stop Placed</span>
-            <span class="week-pnl" style="color:var(--muted)">$50,065</span>
-          </div>
-          <div class="week-stats">Stop loss: $49,785 (below support) • Risk: $148</div>
-          <div class="week-issue">🎯 Marcus: "Tight stop, great risk-reward ratio!"</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">9:42 AM • Pressure Builds</span>
-            <span class="week-pnl loss">-$80 (unrealized)</span>
-          </div>
-          <div class="week-stats">Price: $49,920 • Sudden selling pressure</div>
-          <div class="week-issue">😰 Marcus: "Just a fakeout... support will hold."</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">9:43 AM • STOP HIT</span>
-            <span class="week-pnl loss">-$148</span>
-          </div>
-          <div class="week-stats">Price: $49,785 • Position: CLOSED • Status: OUT</div>
-          <div class="week-issue">😡 Marcus: "Damn it. Again. I was so close to being right."</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">9:46 AM • The Sweep Complete</span>
-            <span class="week-pnl" style="color:var(--muted)">$50,120</span>
-          </div>
-          <div class="week-stats">Price reclaims support in 3 minutes • Marcus watching from sidelines</div>
-          <div class="week-issue">🤔 Marcus: "Wait... it bounced EXACTLY where I said it would..."</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">10:15 AM • Rally Begins</span>
-            <span class="week-pnl" style="color:var(--muted)">$51,450</span>
-          </div>
-          <div class="week-stats">Price: $51,450 • Move: +$1,370 from support</div>
-          <div class="week-issue">😤 Marcus: "I WAS RIGHT! They swept my stop on purpose!"</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">11:30 AM • Peak Reached</span>
-            <span class="week-pnl" style="color:var(--muted)">$52,040</span>
-          </div>
-          <div class="week-stats">Price: $52,040 • Move: +$1,960 from sweep low</div>
-          <div class="week-issue">💔 <strong>Marcus's Breaking Point:</strong> "31 out of 31 losses followed this exact pattern."</div>
-        </div>
-      </div>
+      <p><strong>9:46 AM:</strong> Price immediately reclaims $50,120 and rallies to $52,040 (+$1,960 from sweep low).</p>
 
       <div class="story-summary">
         <h3>📊 The Brutal Math</h3>
@@ -329,37 +164,35 @@
         </div>
 
         <div class="key-insight">
-          <strong>The Pattern That Couldn't Be Ignored:</strong> Marcus was right about the direction. He was right about the support level. He was right about the rally to $52K. But he was wrong about ONE thing: thinking he was trading AGAINST the market. He was actually trading WITH it — as the liquidity provider.
+          <strong>The Pattern That Couldn't Be Ignored:</strong> Marcus was right about direction, the support level, and the rally. He was wrong about ONE thing: entry timing. He entered BEFORE the sweep instead of after.
         </div>
       </div>
 
       <div class="callout-key">
         <h4>💡 Marcus's Realization</h4>
-        <p>After that trade, Marcus opened a spreadsheet. He reviewed all 47 losing trades.</p>
-        <p><strong>The pattern was undeniable:</strong></p>
+        <p>After reviewing all 47 losing trades, the pattern was undeniable:</p>
         <ul style="margin:0.75rem 0">
           <li><strong>31 out of 31 losses</strong> — Stopped out, then price reversed in his favor</li>
           <li><strong>Average sweep depth:</strong> 0.6% below support (his stops were 0.5% below)</li>
           <li><strong>Average rally after sweep:</strong> 2.8% above entry level</li>
           <li><strong>If he'd entered AFTER sweeps:</strong> +$11,400 instead of -$8,200</li>
         </ul>
-        <p style="margin-top:1rem;font-weight:600;color:#00d4aa">That's a $19,600 difference. From changing potential entry timing by 3 minutes.</p>
+        <p style="margin-top:1rem;font-weight:600;color:#00d4aa">That's a $19,600 difference from changing entry timing by 3 minutes.</p>
       </div>
 
       <h3 id="the-rebuild-march-december-2024">The Rebuild: March-December 2024</h3>
 
-      <p><strong>March 2024:</strong> Marcus stopped trading. Spent 4 weeks studying liquidity sweeps, reading about market microstructure, and paper trading the "new way."</p>
+      <p><strong>March 2024:</strong> Marcus stopped trading and spent 4 weeks studying liquidity sweeps and market microstructure.</p>
 
-      <p><strong>April 2024:</strong> Back to live trading. New rules:</p>
+      <p><strong>April 2024:</strong> Back to live trading with new rules:</p>
       <ol>
         <li><strong>NEVER</strong> buy support—wait for it to sweep</li>
         <li><strong>ALWAYS</strong> require volume spike confirmation</li>
         <li><strong>ONLY</strong> enter after price reclaims the swept level</li>
-        <li><strong>STOPS</strong> go 1.5% below the swept low (not the original support)</li>
+        <li><strong>STOPS</strong> go 1.5% below the swept low</li>
       </ol>
 
-      <div class="story-summary">
-        
+
       <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
         <h4>🟡 CHECKPOINT</h4>
         <p>You're now at the halfway point. You've learned the key concepts.</p>
@@ -367,15 +200,12 @@
       </div>
 
 
-<h3>📈 Marcus's 9-Month Rebuild: April-December 2024</h3>
+      <div class="story-summary">
+        <h3>📈 Marcus's 9-Month Transformation</h3>
         <div class="summary-stats">
           <div class="stat-box">
             <span class="stat-label">Total Trades</span>
             <span class="stat-value win">125</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Winners / Losers</span>
-            <span class="stat-value">85 / 40</span>
           </div>
           <div class="stat-box">
             <span class="stat-label">Win Rate</span>
@@ -387,251 +217,12 @@
           </div>
         </div>
         <div class="key-insight">
-          <strong>The Transformation:</strong> Entry timing = everything. Marcus went from losing -$4,820 in 8 weeks to gaining +$31,400 in 9 months by waiting for liquidity sweeps.
+          <strong>The Transformation:</strong> Entry timing = everything. Marcus went from -$8,200 in 8 weeks to +$31,400 in 9 months by waiting for liquidity sweeps.
         </div>
       </div>
 
-      <div class="trading-timeline">
-        <div class="timeline-week" style="border-left-color:#ffc107">
-          <div class="week-header">
-            <span class="week-label">April 2024 • Learning Phase</span>
-            <span class="week-pnl" style="color:#ffc107">+$120</span>
-          </div>
-          <div class="week-stats">8 trades • 5 winners / 3 losers • 62.5% win rate</div>
-          <div class="week-issue">💡 Small size, testing system</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">May 2024 • First Wins</span>
-            <span class="week-pnl win">+$1,940</span>
-          </div>
-          <div class="week-stats">12 trades • 8 winners / 4 losers • 66.7% win rate</div>
-          <div class="week-issue">✅ First profitable month! Confidence building</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">June 2024 • Volume Matters</span>
-            <span class="week-pnl win">+$2,680</span>
-          </div>
-          <div class="week-stats">14 trades • 9 winners / 5 losers • 64.3% win rate</div>
-          <div class="week-issue">🔊 Volume confirmation critical</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">July 2024 • Breakthrough</span>
-            <span class="week-pnl win">+$3,820</span>
-          </div>
-          <div class="week-stats">16 trades • 11 winners / 5 losers • 68.8% win rate</div>
-          <div class="week-issue">🚀 Best month: 3 BTC sweeps nailed</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">August 2024 • Conviction</span>
-            <span class="week-pnl win">+$4,150</span>
-          </div>
-          <div class="week-stats">15 trades • 10 winners / 5 losers • 66.7% win rate</div>
-          <div class="week-issue">💪 Double sweeps = highest conviction</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">September 2024 • Expansion</span>
-            <span class="week-pnl win">+$3,590</span>
-          </div>
-          <div class="week-stats">13 trades • 9 winners / 4 losers • 69.2% win rate</div>
-          <div class="week-issue">📊 ES futures sweeps more reliable than BTC</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">October 2024 • Record</span>
-            <span class="week-pnl win">+$5,240</span>
-          </div>
-          <div class="week-stats">17 trades • 12 winners / 5 losers • 70.6% win rate</div>
-          <div class="week-issue">🏆 Record month: $60K → $65K account</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">November 2024 • Mastery</span>
-            <span class="week-pnl win">+$4,680</span>
-          </div>
-          <div class="week-stats">14 trades • 10 winners / 4 losers • 71.4% win rate</div>
-          <div class="week-issue">🎯 Multi-timeframe confirmation key</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">December 2024 • Validation</span>
-            <span class="week-pnl win">+$5,180</span>
-          </div>
-          <div class="week-stats">16 trades • 11 winners / 5 losers • 68.8% win rate</div>
-          <div class="week-issue">✨ Year-end: System validated, mind cleared</div>
-        </div>
-      </div>
-
-      <h3 id="three-trades-that-show-the-difference">Three Trades That Show The Difference</h3>
-
-      <p><strong>Let's examine Marcus's technique with specific examples from his second half of 2024:</strong></p>
-
-      <div class="story-summary">
-        <h3>⚡ Marcus's Best Sweep Trades: July-October 2024</h3>
-        <div class="summary-stats">
-          <div class="stat-box">
-            <span class="stat-label">Total Profit (3 Trades)</span>
-            <span class="stat-value win">+$5,360</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Average R:R</span>
-            <span class="stat-value">1:3.0</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Success Rate</span>
-            <span class="stat-value win">100%</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="trading-timeline">
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">July 18 • BTC/USD</span>
-            <span class="week-pnl win">+$1,220</span>
-          </div>
-          <div class="week-stats">Support: $64,000 → Sweep: $63,780 → Entry: $64,140 → Exit: $66,580</div>
-          <div class="week-stats">Stop: $63,420 • Risk:Reward: 1:3.4</div>
-          <div class="week-issue">
-            <strong>Setup:</strong> BTC consolidated at $64K for 6 hours. Sweep at 2:14 PM, volume spike 4.2x average. Reclaimed $64K at 2:18 PM. Marcus entered $64,140 at 2:22 PM after confirmation candle closed. Held 4.5 hours, exited on resistance.
-          </div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">August 9 • ES (S&P Futures)</span>
-            <span class="week-pnl win">+$1,640</span>
-          </div>
-          <div class="week-stats">Support: 5,400 → Sweep: 5,388 → Entry: 5,408 → Exit: 5,490</div>
-          <div class="week-stats">Stop: 5,375 • Risk:Reward: 1:2.5 • Position: 2 ES contracts</div>
-          <div class="week-issue">
-            <strong>Setup:</strong> ES double bottom at 5,400 (triple sweep target!). Swept at 9:48 AM, volume 6.1x. Marcus waited for 15-min close above 5,400. Entered 5,408 at 10:05 AM. Trailed stop, exited on momentum fade at 1:20 PM.
-          </div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">October 3 • BTC/USD</span>
-            <span class="week-pnl win">+$2,500</span>
-          </div>
-          <div class="week-stats">Support: $60,000 → Sweep: $59,640 → Entry: $60,220 → Exit: $62,720</div>
-          <div class="week-stats">Stop: $59,380 • Risk:Reward: 1:3.0 • Position: 1 BTC</div>
-          <div class="week-issue">
-            <strong>Setup:</strong> $60K psychological level (huge liquidity pool). Swept at 11:32 AM, volume 7.8x average + order book absorption visible. Marcus entered $60,220 after aggressive reclaim. Held overnight (rare), exited next day at resistance.
-          </div>
-        </div>
-      </div>
-
-      <div class="callout-key">
-        <h4>🎯 What Changed For Marcus?</h4>
-        <p><strong>Old Approach (Jan-Feb 2024):</strong></p>
-        <ul style="margin:0.5rem 0">
-          <li>Entry: AT support ($64,000)</li>
-          <li>Stop: Below support ($63,680) — 0.5% risk</li>
-          <li>Result: Stopped out, watched rally from sidelines</li>
-          <li>Win rate: 34% | Total P&L: <span style="color:#ff5252"><strong>-$8,200</strong></span></li>
-        </ul>
-        <p style="margin-top:1rem"><strong>New Approach (Apr-Dec 2024):</strong></p>
-        <ul style="margin:0.5rem 0">
-          <li>Observation: Support at $64,000</li>
-          <li><strong>WAIT</strong> for sweep to $63,780 (volume spike confirms)</li>
-          <li>Entry: AFTER reclaim at $64,140</li>
-          <li>Stop: Below swept low ($63,420) — 1.1% risk, wider but safer</li>
-          <li>Result: Trades WITH smart money, not against them</li>
-          <li>Win rate: 68% | Total P&L: <span style="color:#22c55e"><strong>+$31,400</strong></span></li>
-        </ul>
-        <p style="margin-top:1rem;font-weight:600;color:#00d4aa">Same trader. Same markets. Same timeframe. Different timing. $39,600 difference.</p>
-      </div>
-
-      <h3 id="marcuss-year-end-stats-the-transformation">Marcus's Year-End Stats: The Transformation</h3>
-
-      <div class="story-summary">
-        
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟠 CHECKPOINT</h4>
-        <p>Three-quarters done! You're mastering the advanced strategies.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Almost there - stay focused...</p>
-      </div>
-
-
-<h3>🔄 Marcus Chen: 2024 Complete Transformation</h3>
-        <div class="key-insight">
-          <strong>Same trader. Same markets. Same timeframe. Different timing.</strong>
-        </div>
-      </div>
-
-      <div class="trading-timeline">
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">❌ Old Way (Jan-Feb 2024)</span>
-            <span class="week-pnl loss">-$8,200</span>
-          </div>
-          <div class="week-stats">47 trades • 34.0% win rate • Account: $36,800</div>
-          <div class="week-issue">
-            <strong>The Numbers:</strong><br>
-            • Average Win: $146 | Average Loss: -$229<br>
-            • Risk:Reward: 0.64:1 (losing more than winning)<br>
-            • Max Drawdown: -18.2%<br>
-            • Longest Losing Streak: 7 trades<br>
-            • Emotional State: Frustrated, angry
-          </div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">✅ New Way (Apr-Dec 2024)</span>
-            <span class="week-pnl win">+$31,400</span>
-          </div>
-          <div class="week-stats">125 trades • 68.0% win rate • Account: $68,200</div>
-          <div class="week-issue">
-            <strong>The Numbers:</strong><br>
-            • Average Win: $512 (+251%) | Average Loss: -$184 (-20% smaller)<br>
-            • Risk:Reward: 2.8:1 (+337% improvement)<br>
-            • Max Drawdown: -4.8% (-74% smaller)<br>
-            • Longest Losing Streak: 3 trades (-57% shorter)<br>
-            • Emotional State: Calm, confident
-          </div>
-        </div>
-      </div>
-
-      <div class="story-summary">
-        <h3>💰 The Bottom Line</h3>
-        <div class="summary-stats">
-          <div class="stat-box">
-            <span class="stat-label">Total Swing</span>
-            <span class="stat-value win">$39,600</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Win Rate Improvement</span>
-            <span class="stat-value win">+100%</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">9-Month ROI</span>
-            <span class="stat-value win">+85.3%</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Peace of Mind</span>
-            <span class="stat-value">Priceless</span>
-          </div>
-        </div>
-        <div class="key-insight">
-          <strong>What Changed?</strong> Marcus stopped fighting liquidity sweeps and started trading WITH them. He went from buying support to waiting for it to get swept, then entering AFTER the reclaim with volume confirmation.
-        </div>
-      </div>
 <h2 id="the-old-way-vs-the-new-way">The Old Way vs. The New Way</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0">
         <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
 <h3 style="margin:0 0 1rem 0;color:#ff6b6b" id="-the-retail-trap">❌ The Retail Trap</h3>
           <p><strong>Pattern:</strong> Buying support, stop below it</p>
@@ -641,7 +232,7 @@
         </div>
         <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
           <h3 style="margin:0 0 1rem 0;color:#00d4aa" id="-the-institutional-pattern">✅ The Institutional Pattern</h3>
-          <p><strong>Approach:</strong> Waiting for sweep, entering on potential reversal</p>
+          <p><strong>Approach:</strong> Waiting for sweep, entering on reversal</p>
           <p><strong>Observation:</strong> Price sweeps $99.40</p>
           <p><strong>Example entry:</strong> $100.20 (on reclaim)</p>
           <p><strong>Example stop:</strong> $99.00 (below swept low)</p>
@@ -649,9 +240,7 @@
         </div>
       </div>
 
-      <p><strong>The difference?</strong> Timing. A trader enters AFTER they grab liquidity, not before.</p>
-
-      <p>You're trading WITH the flow, not against it.</p>
+      <p><strong>The difference?</strong> Timing. Enter AFTER they grab liquidity, not before. Trade WITH the flow, not against it.</p>
 
       <h3 id="using-janus-atlas">Using Janus Atlas</h3>
 
@@ -690,14 +279,6 @@
       <p><strong>What:</strong> Price breaks ascending/descending trendline</p>
       <p><strong>Why:</strong> Trendline traders place stops just beyond the line</p>
       <p><strong>Example:</strong> Uptrend support line → Stops clustered below it</p>
-
-      
-      <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-        <h4>🟢 CHECKPOINT</h4>
-        <p>Almost done! You've mastered the complete framework.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Final stretch - you're doing great...</p>
-      </div>
-
 
 <h3 id="4-round-number-sweep">4. Round Number Sweep</h3>
       <p><strong>What:</strong> Price sweeps psychological levels</p>
@@ -755,7 +336,7 @@
         <p style="margin-top:1rem"><strong>Goal:</strong> Train your eye to spot liquidity pools before they get swept. After identifying 10-15 examples, you'll start seeing them everywhere.</p>
       </div>
 
-      
+
 
 <div class="section-break"><span>Test Your Understanding</span></div>
 
@@ -778,7 +359,7 @@
         <button class="btn btn-primary quiz-submit">Check Answer</button>
       </div>
 
-      
+
 
 <div class="section-break"><span>Related Lessons</span></div>
 
@@ -823,7 +404,7 @@
     </aside>
   </div>
 
-      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you're in the potential top 5% of serious traders. Most people never learn this. You just did.</p>
+      <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">If you made it this far, you're in the top 5% of serious traders. Most people never learn this. You just did.</p>
 
       <div class="wrap nav-article">
   <a class="btn btn-primary" href="/curriculum/beginner/02-volume-doesnt-lie.html">Next Lesson &rarr;</a>
