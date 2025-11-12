@@ -572,43 +572,24 @@
   <div class="example-block">
     <h4>Real-World Example: Greg's $24K "Retail Playing Institutional" Disaster</h4>
 
-    <p><strong>Background:</strong> Greg, a 2-year retail trader with a $40,000 account, discovered institutional strategies (Wyckoff accumulation, index rebalancing, merger arb) and thought: "This is how the pros win—I'll copy them." In May 2024, he attempted to trade like an institution without institutional resources. Result: $24,200 in losses over 5 weeks trying to front-run index rebalancing (lost $8K—missed timing by 2 days), play merger arbitrage (lost $11K—deal broke, no hedge), and follow dark pool prints (lost $5.2K—chased stale data). His critical failure: institutional strategies require institutional RESOURCES. Greg had retail capital ($40K vs hedge fund $500M), retail data (15-min delayed dark pool vs real-time), retail execution (market orders vs VWAP algos), and NO risk hedging (naked directional vs market-neutral). The result: strategies designed for institutions destroyed his retail account.</p>
+    <p><strong>Background:</strong> Greg, a 2-year retail trader with $40,000, discovered institutional strategies and thought: "This is how pros win—I'll copy them." Over 5 weeks in May 2024, he lost $24,200 attempting to trade like institutions without institutional resources.</p>
 
-    <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-      <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Greg's Institutional Strategy Failures (Retail Execution)</caption>
-      <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
-        <th style="padding:0.75rem">Strategy</th>
-        <th style="padding:0.75rem">What Institutions Do</th>
-        <th style="padding:0.75rem">What Greg Did (Retail)</th>
-        <th style="padding:0.75rem;text-align:right">Result</th>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-        <td style="padding:0.75rem"><strong>Index Rebalancing</strong></td>
-        <td style="padding:0.75rem">Front-run with: (1) Real-time index constituent data, (2) $50M+ capital to move markets, (3) Execution algos to buy over 2-3 days BEFORE rebalancing</td>
-        <td style="padding:0.75rem">Greg read "TSLA being added to S&P 500 Dec 21" (public news). Bought $40K TSLA Dec 18 (3 days early) expecting spike. TSLA dropped 2% Dec 18-20, Greg stopped out. TSLA spiked +5% Dec 21 (AFTER Greg potential exited).</td>
-        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$3,200</span><br>(stopped out too early)</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-        <td style="padding:0.75rem"><strong>Merger Arbitrage</strong></td>
-        <td style="padding:0.75rem">Hedged position: Long target stock ($10M), short acquirer stock ($10M), collect spread (risk-neutral). PLUS: Legal team, deal analysis, regulatory risk modeling.</td>
-        <td style="padding:0.75rem">Greg read "Company A acquiring Company B for $55/share, B trading @ $52." Bought $20K of B (naked long, no hedge). Deal BROKE (antitrust), B crashed to $38. Lost $13,400. No hedge = full downside.</td>
-        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$13,400</span><br>(no hedge, naked risk)</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-        <td style="padding:0.75rem"><strong>Dark Pool Following</strong></td>
-        <td style="padding:0.75rem">Real-time dark pool data ($5K+/month), analyze 50K+ share institutional prints, confirm with order flow, enter with algos over hours.</td>
-        <td style="padding:0.75rem">Greg used free 15-min delayed dark pool scanner. Saw "NVDA 100K share print @ $880" at 10:45 AM. Data was from 10:30 AM (15 min stale). Greg chased @ $883 at 10:48 AM. NVDA reversed to $877 by 11:30 AM.</td>
-        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$5,200</span><br>(chased stale data)</td>
-      </tr>
-      <tr style="background:rgba(255,82,82,0.4)">
-        <td colspan="3" style="padding:0.75rem;text-align:right;font-weight:bold">TOTAL COST (5 WEEKS):</td>
-        <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#ff5252">-$24,200</span></td>
-      </tr>
-    </table>
+    <p><strong>The Critical Failures:</strong></p>
+    <ul>
+      <li><strong>Index Rebalancing Front-Running (-$3,200):</strong> Bought TSLA 3 days before S&P 500 addition using public news and $40K retail capital. Institutions use $50M+ positions, proprietary constituent data, and multi-day VWAP algos. Greg got stopped out at -8% two days before the spike. <em>The gap: Retail capital can't move markets; public news is priced in instantly.</em></li>
 
-    <p><strong>Greg's Recovery (June-July 2024):</strong> After losing $24K playing institutional with retail resources, Greg switched to RETAIL-appropriate strategies: (1) Swing trading SPY/QQQ (doesn't require special data), (2) Gap-and-go setups (public scanner, no proprietary data needed), (3) Simple trend-following (retail execution sufficient). Over 8 weeks: 16 trades, 62.5% win rate, +$6,400 profit. Same trader, strategies matched to resources. The key: He stopped trying to be an institution and played to his retail strengths—agility (small size = fast in/out), simplicity (no complex hedging needed), publicly available data. Result: Profitable.</p>
+      <li><strong>Merger Arbitrage Naked Long (-$13,400):</strong> Read about Company B acquisition at $55/share, bought at $52 expecting $3 spread. Deal broke (antitrust), stock crashed to $38. Institutions hedge by shorting the acquirer (market-neutral) and employ legal teams for deal risk analysis. Greg went naked long with no hedge. <em>The gap: Merger arb requires hedging infrastructure, not directional bets.</em></li>
 
-    <p><b>The lesson: Institutional strategies require institutional RESOURCES. Index rebalancing needs $50M+ capital to move markets + proprietary constituent data + multi-day execution timeframes. Merger arb requires hedged positions (long target, short acquirer) + legal teams + risk modeling—NOT naked longs that blow up when deals break. Dark pool following needs real-time data ($5K+/month) + order flow confirmation + algo execution—NOT 15-min delayed free scanners. Greg tried to front-run with $40K retail capital (institutions use $500M+), played merger arb without hedges (naked directional vs market-neutral), and chased stale dark pool data (15-min delay vs real-time). Retail traders can't compete with institutional strategies using retail tools. The edge: Play to retail strengths—small size agility, simple execution, publicly available data. Greg's recovery came from swing trading and gap setups (no special resources needed). Result: -$24K losses became +$6.4K profits in 8 weeks. Don't bring a knife to a gunfight. Use strategies designed for your resources.</b></p>
+      <li><strong>Dark Pool Print Chasing (-$5,200):</strong> Used free 15-minute delayed scanner, saw "NVDA 100K print @ $880," chased at $883. Data was stale; NVDA reversed to $877. Institutions use real-time data ($5K+/month) and confirm with order flow before algo execution over hours. <em>The gap: Delayed data = chasing ghosts.</em></li>
+
+      <li><strong>Wrong Execution Infrastructure:</strong> Market orders (institutions use VWAP algos), no hedging capability (institutions run market-neutral books), 15-min delayed data (institutions pay $60K+/year for real-time feeds).</li>
+
+      <li><strong>Capital Mismatch:</strong> His $40K couldn't influence price discovery like institutional $500M positions. Index front-running requires scale; he had none.</li>
+    </ul>
+
+    <p><strong>Greg's Recovery (June-July 2024):</strong> Switched to retail-appropriate strategies requiring no special resources: swing trading SPY/QQQ (public data), gap-and-go setups (free scanners), simple trend-following. Over 8 weeks: 16 trades, 62.5% win rate, +$6,400 profit. Same trader, strategies matched to resources. His edge: small size agility (instant execution with no slippage), simplicity (no hedging needed), publicly available data.</p>
+
+    <p><b>The lesson: Institutional strategies require institutional RESOURCES. Index rebalancing demands $50M+ scale and proprietary data feeds. Merger arb requires hedging infrastructure (long target, short acquirer) plus legal teams—NOT naked longs that implode when deals break. Dark pool following needs real-time data ($5K+/month) and order flow confirmation—NOT 15-min delayed free scanners. Greg tried copying institutions with retail tools: $40K capital (vs $500M), delayed data (vs real-time), market orders (vs algos), naked directional trades (vs hedged market-neutral). You can't compete with institutional strategies using retail tools. The edge: Play to retail strengths—size agility, simple execution, public data. Greg's recovery came from strategies requiring no special infrastructure. Result: -$24K became +$6.4K in 8 weeks. Don't bring a knife to a gunfight. Match your strategy to your resources.</b></p>
   </div>
 
   
