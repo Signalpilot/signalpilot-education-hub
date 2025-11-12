@@ -82,202 +82,46 @@
       <p><b>Plutus Flow combines spike-clipped OBV, CVD tracking, and Volume Profile in one tool.</b> Learn advanced POC trading, delta divergence strategies, and complete Volume Profile frameworks.</p>
 
       <div class="example-block">
-        <h4>Real-World Example: 5 Days of POC Trading on SPY – How One Trader Made $3,840 Using Volume Profile</h4>
+        <h4>Real-World Example: Jordan's $5,775 POC Trading Success (5 Days, SPY)</h4>
 
-        <p><strong>Background:</strong> Jordan, an intermediate trader with a $25,000 account, decided to master POC (Point of Control) trading using Plutus Flow after reading about Volume Profile. Over 5 trading days in October 2024, they took 7 trades based purely on POC migration, CVD divergence, and HVN/LVN levels. Here's the complete potential breakdown.</p>
+        <p><strong>Background:</strong> Jordan, an intermediate trader with a $25,000 account, mastered POC (Point of Control) trading using Plutus Flow. Over 5 trading days in October 2024, they took 7 trades based on POC migration, CVD divergence, and HVN/LVN levels. Result: +$5,775 profit (+23.1% weekly return) with an 85.7% win rate (6W/1L).</p>
 
-        <h5 style="margin:1.5rem 0 1rem 0">5-Day POC Trading Journal (SPY, October 21-25, 2024)</h5>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0">
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem">
-              <strong style="color:#22c55e">Mon 10/21 - LONG</strong>
-              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$850</span>
-            </div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC at $428.50, Price $428.30, CVD +$14M</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $428.40 → <strong>Exit:</strong> $430.10</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC Bounce: Price respected POC support. CVD confirmed buyers (+1.7R)</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem">
-              <strong style="color:#22c55e">Tue 10/22 - LONG</strong>
-              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$950</span>
-            </div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC migrated to $429.80, Price $429.70, CVD +$22M</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $429.75 → <strong>Exit:</strong> $431.65</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC Migration: POC moved $428.50→$429.80 = trend strength (+1.9R)</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem">
-              <strong style="color:#22c55e">Wed 10/23 - SHORT</strong>
-              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$1,250</span>
-            </div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC $431.20, Price $433.80 (overextended), CVD -$8M</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $433.60 → <strong>Exit:</strong> $431.10</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Overextension: 2.60 pts above POC, CVD distribution. Mean reversion (+2.5R)</div>
-          </div>
-          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
-            <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem">
-              <strong style="color:#ff5252">Wed 10/23 - LONG</strong>
-              <span style="color:#ff5252;font-size:1.1rem;font-weight:600">-$300</span>
-            </div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.08);border-radius:4px"><strong>Setup:</strong> POC $431.20, Price $431.00, CVD -$3M (weak)</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $431.10 → <strong>Stop:</strong> $430.50</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC Failure: Negative CVD = no absorption. POC broke down (-1R)</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem">
-              <strong style="color:#22c55e">Thu 10/24 - LONG</strong>
-              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$850</span>
-            </div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC static $431.20, Price $429.50, LVN $429.80</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $429.60 → <strong>Exit:</strong> $431.30</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC Magnet: Below POC with LVN = fast move expected (+1.7R)</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem">
-              <strong style="color:#22c55e">Fri 10/25 - LONG</strong>
-              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$875</span>
-            </div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC $431.90, Price at HVN $431.80, CVD +$18M</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $431.85 → <strong>Exit:</strong> $433.60</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">HVN+POC: Highest probability support, CVD confirmed (+1.75R)</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem">
-              <strong style="color:#22c55e">Fri 10/25 - SHORT</strong>
-              <span style="color:#22c55e;font-size:1.1rem;font-weight:600">+$1,300</span>
-            </div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(34,197,94,0.1);border-radius:4px"><strong>Setup:</strong> POC $432.50, Price at LVN $435.20, CVD -$11M</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Entry:</strong> $435.00 → <strong>Exit:</strong> $432.40</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">LVN Rejection: Thin volume + negative CVD. Reversion to POC (+2.6R)</div>
-          </div>
-        </div>
-        <div style="background:rgba(118,221,255,0.15);border:2px solid rgba(118,221,255,0.3);border-radius:8px;padding:1.5rem;margin:1rem 0;text-align:center">
-          <strong style="font-size:1.1rem">WEEKLY TOTALS (7 trades, 5 days):</strong>
-          <div style="font-size:1.3rem;margin:0.5rem 0;color:#22c55e;font-weight:bold">+$5,775 (+11.6R)</div>
-          <div style="font-weight:600">Win Rate: 85.7% (6W / 1L)</div>
-        </div>
+        <h5 style="margin:1.5rem 0 1rem 0">Key Trades & Patterns</h5>
 
-        <h5>POC Migration Analysis: The Week's Story</h5>
-        <p style="font-weight:600;margin:1rem 0 0.5rem 0">Daily POC Movement (October 21-25, 2024)</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0">
-          <div style="background:rgba(118,221,255,0.08);border:1px solid rgba(118,221,255,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;margin-bottom:0.75rem">Mon 10/21</div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$428.50</strong></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(118,221,255,0.2)"><span style="font-size:0.85rem">Change:</span><strong>—</strong></div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Baseline</strong></div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Trade pullbacks to POC (did, +$850)</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;margin-bottom:0.75rem;color:#22c55e">Tue 10/22</div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$429.80</strong></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(34,197,94,0.2)"><span style="font-size:0.85rem">Change:</span><strong style="color:#22c55e">+$1.30</strong></div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Migrating upward</strong> = bullish trend confirmed</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Buy pullbacks to new POC (did, +$950)</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;margin-bottom:0.75rem;color:#22c55e">Wed 10/23</div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$431.20</strong></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(34,197,94,0.2)"><span style="font-size:0.85rem">Change:</span><strong style="color:#22c55e">+$1.40</strong></div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Still migrating</strong> = trend continuation</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Overextended, short to POC (+$1,250, -$300)</div>
-          </div>
-          <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;margin-bottom:0.75rem;color:#fbbf24">Thu 10/24</div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$431.20</strong></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(251,191,36,0.2)"><span style="font-size:0.85rem">Change:</span><strong style="color:#fbbf24">$0.00</strong></div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Static POC</strong> = consolidation/ranging</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Mean reversion works (bought below POC, +$850)</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;margin-bottom:0.75rem;color:#22c55e">Fri 10/25</div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:0.85rem">POC Level:</span><strong>$431.90</strong></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(34,197,94,0.2)"><span style="font-size:0.85rem">Change:</span><strong style="color:#22c55e">+$0.70</strong></div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>Resuming migration</strong> = trend resuming</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Buy POC+HVN (+$875), short LVN (+$1,300)</div>
-          </div>
-        </div>
-
-        <p><strong>Key Insight:</strong> Mon-Wed = migrating POC = trending market (trade WITH trend on pullbacks). Thu = static POC = ranging (mean reversion). Fri = POC migrates again = trend resumes.</p>
-
-        <h5>CVD Divergence: The One Loss Explained</h5>
-
-        <p><strong>Wednesday 10/23 Afternoon – The Failed Long (-$300):</strong></p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0">
-          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">2:15 PM</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>What Happened:</strong> Price tested POC at $431.00</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>CVD:</strong> -$3M (negative)</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Mistake: Ignored CVD, assumed POC would hold</div>
-          </div>
-          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">2:20 PM</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>What Happened:</strong> Entered long at $431.10</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>CVD:</strong> -$5M cumulative</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Mistake: Entered without absorption confirmation</div>
-          </div>
-          <div style="background:rgba(255,82,82,0.08);border:1px solid rgba(255,82,82,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;color:#ff5252;margin-bottom:0.75rem">2:35 PM</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem"><strong>What Happened:</strong> POC broke, stopped at $430.50</div>
-            <div style="font-size:0.85rem;margin-bottom:0.5rem;padding:0.5rem;background:rgba(255,82,82,0.1);border-radius:4px"><strong>CVD:</strong> -$9M by break</div>
-            <div style="font-size:0.85rem;font-style:italic;font-weight:600;color:#ff5252">Lesson: POC needs CVD confirmation. No absorption = no trade</div>
-          </div>
-        </div>
-
-        <p><strong>What Jordan Should Have Done:</strong> When CVD is negative at POC test, it means sellers are in control. Wait for CVD to flip positive (+absorption) before entering. The POC itself isn't enough—you need BOTH POC + positive CVD.</p>
-
-        <h5>The HVN + POC Perfect Setup (Friday Morning, +$875)</h5>
-
-        <p><strong>Why this was the highest-probability trade of the week:</strong></p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0">
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">1. POC Level</div>
-            <div style="font-size:0.9rem;margin-bottom:0.5rem"><strong>Value:</strong> $431.90</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Fair value price—where most volume traded</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">2. HVN (High Volume Node)</div>
-            <div style="font-size:0.9rem;margin-bottom:0.5rem"><strong>Value:</strong> $431.70-$432.00</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Price accepted here previously = strong support zone</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">3. CVD Absorption</div>
-            <div style="font-size:0.9rem;margin-bottom:0.5rem"><strong>Value:</strong> +$18M in 15 min</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">Massive buying pressure = institutions absorbing supply</div>
-          </div>
-          <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:1rem">
-            <div style="font-weight:600;color:#22c55e;margin-bottom:0.75rem">4. POC Migration</div>
-            <div style="font-size:0.9rem;margin-bottom:0.5rem"><strong>Value:</strong> $431.20 → $431.90</div>
-            <div style="font-size:0.85rem;font-style:italic;color:var(--muted)">POC moving higher = trend strength confirmed</div>
-          </div>
-        </div>
-        <div style="background:rgba(34,197,94,0.15);border:2px solid rgba(34,197,94,0.3);border-radius:8px;padding:1.5rem;margin:1rem 0;text-align:center">
-          <strong>Result:</strong> 4 confluences = textbook setup. Entry $431.85, target $433.50, exit $433.60. <span style="color:#22c55e;font-weight:bold">+$875 (+1.75R)</span> in 2 hours.
-        </div>
-
-        <h5>Position Sizing & Risk Management</h5>
-
-        <p><strong>Jordan's approach:</strong></p>
+        <p><strong>POC Migration = Trend Strength:</strong></p>
         <ul style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
-          <li><strong>Account size:</strong> $25,000</li>
-          <li><strong>Risk per trade:</strong> 2% ($500) for A-grade setups (POC + CVD + HVN)</li>
-          <li><strong>Risk per trade:</strong> 1% ($250) for B-grade setups (POC only)</li>
-          <li><strong>Position sizes:</strong> 500 shares SPY (@ $430 = $215K notional, but using options or 4:1 margin)</li>
-          <li><strong>Stop distance:</strong> $0.60-$1.00 (1.5× ATR beyond POC)</li>
+          <li><strong>Mon-Wed:</strong> POC migrated from $428.50 → $429.80 → $431.20 = confirmed uptrend. Jordan bought pullbacks to POC with positive CVD (+$850, +$950 wins)</li>
+          <li><strong>Wednesday:</strong> Price overextended 2.60 pts above POC with negative CVD (-$8M) = mean reversion short opportunity (+$1,250 win)</li>
+          <li><strong>Thursday:</strong> POC static at $431.20 = ranging market. Bought below POC at $429.60, rode magnet effect back to POC (+$850 win)</li>
+          <li><strong>Friday:</strong> POC resumed migration to $431.90 = trend resumption. Took 2 trades: POC+HVN confluence long (+$875), and LVN rejection short with negative CVD (+$1,300)</li>
         </ul>
 
-        <p><strong>Weekly Summary:</strong></p>
+        <p><strong>The One Loss (-$300): CVD Ignored</strong></p>
         <ul style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
-          <li>7 trades, 6 winners, 1 loser = 85.7% win rate</li>
-          <li>Total profit: +$5,775 (+23.1% weekly return on $25K account)</li>
-          <li>Average R per trade: +1.65R</li>
-          <li>Max drawdown: -$300 (1 trade, -1.2%)</li>
-          <li><strong>Key to success:</strong> POC migration awareness + CVD confirmation + HVN/LVN levels</li>
+          <li>Wednesday afternoon: Jordan entered long at POC $431.10, but CVD was negative (-$3M)</li>
+          <li><strong>Critical mistake:</strong> Assumed POC support would hold without checking CVD confirmation</li>
+          <li>POC broke down because sellers were in control (CVD went to -$9M)</li>
+          <li><strong>Lesson:</strong> POC alone isn't enough—you need BOTH POC + positive CVD for longs</li>
         </ul>
 
-        <p><b>The lesson: Volume Profile isn't just theory. POC acts as a magnet (7/7 times price moved toward POC). CVD shows WHO is in control (positive = buyers, negative = sellers). When POC + CVD + HVN align, you have institutional-grade setups. Jordan's $5,775 profit in 5 days proves it works—when you respect the data.</b></p>
+        <p><strong>The Perfect Setup: POC + HVN + CVD Confluence (Friday)</strong></p>
+        <ul style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li><strong>POC:</strong> $431.90 (fair value price)</li>
+          <li><strong>HVN:</strong> $431.70-$432.00 (high volume acceptance zone = strong support)</li>
+          <li><strong>CVD:</strong> +$18M in 15 minutes (institutional absorption)</li>
+          <li><strong>POC Migration:</strong> Moving higher from $431.20 → $431.90 (trend strength)</li>
+          <li><strong>Result:</strong> 4 confluences aligned = textbook setup. Entry $431.85 → exit $433.60 = +$875 (+1.75R) in 2 hours</li>
+        </ul>
+
+        <p><strong>Jordan's Framework:</strong></p>
+        <ul style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+          <li><strong>Risk management:</strong> 2% risk on A-grade setups (POC+CVD+HVN), 1% on B-grade (POC only)</li>
+          <li><strong>Pre-trade checklist:</strong> (1) POC migration direction, (2) CVD reading at entry level, (3) HVN/LVN identification</li>
+          <li><strong>Stop placement:</strong> 1.5× ATR beyond POC ($0.60-$1.00 distance)</li>
+          <li><strong>Key insight:</strong> Migrating POC = trending market (trade pullbacks WITH trend). Static POC = ranging market (mean reversion only)</li>
+        </ul>
+
+        <p><b>The lesson: Volume Profile isn't just theory. POC acts as a price magnet (7/7 times price moved toward POC this week). CVD shows WHO is in control (positive = buyers, negative = sellers). When POC + CVD + HVN/LVN align, you have institutional-grade setups. Jordan's 85.7% win rate proves it works—but only when you respect ALL three factors, not just one.</b></p>
       </div>
 <div class="example-block">
         <h4>Real-World Example 2: Brandon's $31K "Volume Profile Theory Without Practice" Disaster</h4>
