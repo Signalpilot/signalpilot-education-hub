@@ -570,79 +570,21 @@
   <div class="example-block">
     <h4>Real-World Example: Tom's $32K "Wrong Edge" Catastrophe</h4>
 
-    <p><strong>Background:</strong> Tom, a full-time engineer with a $70,000 trading account, read about a prop trader making $500K/year scalping ES futures (5-second chart, 40-80 trades/day). Tom thought: "That's my edge—high frequency, small profits, compounding." He spent 3 months learning scalping: Level 2 order book, tape reading, sub-second entries. In April 2024, he went live while working his 9-5 job. The result: complete disaster. Over 6 weeks, Tom took 340 scalp trades while AT WORK (bathroom breaks, lunch, hiding phone under desk). Win rate: 48% (163W / 177L). Total losses: $32,100. His critical failure: he forced a strategy (scalping = requires 100% attention) onto a lifestyle (full-time job = fragmented attention). The strategy wasn't bad—it was INCOMPATIBLE with his reality. Tom had NO edge because his chosen strategy required resources (time, focus, low latency) he didn't have.</p>
+    <p><strong>Background:</strong> Tom, a full-time engineer with a $70,000 trading account, read about a prop trader making $500K/year scalping ES futures (5-second chart, 40-80 trades/day). Tom thought: "That's my edge—high frequency, small profits, compounding." He spent 3 months learning scalping: Level 2 order book, tape reading, sub-second entries. In April 2024, he went live while working his 9-5 job. Over 6 weeks, Tom took 340 scalp trades while AT WORK (bathroom breaks, lunch, hiding phone under desk). Win rate: 48% (163W / 177L). Total losses: $32,100. His critical failure: he forced a strategy (scalping = requires 100% attention) onto a lifestyle (full-time job = fragmented attention). The strategy wasn't bad—it was INCOMPATIBLE with his reality.</p>
 
-    <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-      <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Tom's Edge Mismatch Failures (April-May 2024)</caption>
-      <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
-        <th style="padding:0.75rem;text-align:left">Edge Dimension</th>
-        <th style="padding:0.75rem;text-align:left">Strategy Requirement</th>
-        <th style="padding:0.75rem;text-align:left">Tom's Reality</th>
-        <th style="padding:0.75rem;text-align:right">Cost</th>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-        <td style="padding:0.75rem"><strong>Time Available</strong></td>
-        <td style="padding:0.75rem">Scalping requires: 6-8 hours/day, full attention, no interruptions</td>
-        <td style="padding:0.75rem">Tom had: 30 min lunch, 10 min bathroom breaks, distracted during meetings. Avg trade hold: 45 seconds = needs constant monitoring.</td>
-        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$14,200</span><br>(missed potential exits, late entries)</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-        <td style="padding:0.75rem"><strong>Latency</strong></td>
-        <td style="padding:0.75rem">Scalping requires: Co-location servers (< 5ms latency), direct market access</td>
-        <td style="padding:0.75rem">Tom had: Phone WiFi (150-400ms latency), retail broker platform. Orders filled 200-350ms slower than pros = front-run every time.</td>
-        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$8,900</span><br>(slippage, front-running)</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-        <td style="padding:0.75rem"><strong>Psychological Fit</strong></td>
-        <td style="padding:0.75rem">Scalping requires: Emotionless robot, accept 48-52% win rate, 1:1 R:R, volume game</td>
-        <td style="padding:0.75rem">Tom's personality: Anxious, needs 70%+ win rate for confidence. 48% felt like "constant losing." Stress caused mistakes.</td>
-        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$6,400</span><br>(revenge trades, emotional potential exits)</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(255,82,82,0.1)">
-        <td style="padding:0.75rem"><strong>Capital Efficiency</strong></td>
-        <td style="padding:0.75rem">Scalping requires: $25K+ (PDT rule), high leverage (4:1+), tight stops ($50-$200/trade risk)</td>
-        <td style="padding:0.75rem">Tom had: $70K account BUT risked $500-$1,200/trade (too large for scalps). His "scalps" were actually day trades with scalper stops = instant losses.</td>
-        <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252">-$9,600</span><br>(oversized positions)</td>
-      </tr>
-      <tr style="background:rgba(255,82,82,0.4)">
-        <td colspan="3" style="padding:0.75rem;text-align:right;font-weight:bold">TOTAL MISMATCH COST (6 WEEKS, 340 TRADES):</td>
-        <td style="padding:0.75rem;text-align:right;font-weight:bold"><span style="color:#ff5252">-$32,100</span></td>
-      </tr>
-    </table>
+    <p><strong>Four Fatal Edge Mismatches:</strong></p>
+    <ul style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+      <li><strong>Time Available ($14,200 loss):</strong> Scalping requires 6-8 hours/day full attention with no interruptions. Tom had 30-minute lunch breaks and 10-minute bathroom breaks, distracted during meetings. Average trade hold was 45 seconds, requiring constant monitoring. Result: missed exits, late entries, constant losses.</li>
+      <li><strong>Latency ($8,900 loss):</strong> Scalping requires co-location servers with sub-5ms latency and direct market access. Tom traded on phone WiFi with 150-400ms latency through retail broker platform. Orders filled 200-350ms slower than pros—he was front-run on every trade.</li>
+      <li><strong>Psychological Fit ($6,400 loss):</strong> Scalping requires emotionless robot mentality, accepting 48-52% win rate and 1:1 R:R as volume game. Tom's personality was anxious, needing 70%+ win rate for confidence. The 48% win rate felt like "constant losing" and stress caused revenge trades and emotional exits.</li>
+      <li><strong>Capital Efficiency ($9,600 loss):</strong> Scalping requires tight stops ($50-$200/trade risk) with high volume. Tom risked $500-$1,200/trade (too large for scalps). His "scalps" were actually day trades with scalper stops—instant losses from position sizing mismatch.</li>
+    </ul>
 
-    <h5>What Tom Should Have Done: Match Strategy to Lifestyle</h5>
+    <p><strong>Tom's Recovery (June-August 2024):</strong> After $32K in losses, Tom did an "edge audit" listing his constraints: Time = 2.5 hours/day max, Attention = fragmented, Latency = retail, Personality = analytical/patient/risk-averse. He tested swing trading SPY/QQQ: 1 setup/day pre-market, hold 3-7 days, check 2×/day. Over 8 weeks: 14 trades, 71% win rate (10W / 4L), +$8,400 profit. Same trader, different strategy. He aligned his edge to his REALITY, not his fantasy.</p>
 
-    <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-      <tr style="background:rgba(34,197,94,0.15);border-bottom:2px solid rgba(34,197,94,0.3)">
-        <th style="padding:0.75rem;text-align:left">Tom's Reality</th>
-        <th style="padding:0.75rem;text-align:left">Compatible Strategies</th>
-        <th style="padding:0.75rem;text-align:left">Why It Fits</th>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-        <td style="padding:0.75rem"><strong>Time:</strong> 30 min lunch, 1 hour pre-market, 1 hour evening</td>
-        <td style="padding:0.75rem"><strong>Swing trading:</strong> 1-2 setups/day, hold 3-10 days, check 2×/day</td>
-        <td style="padding:0.75rem">Requires 30 min analysis pre-market, set alerts, check at lunch + evening. No intraday monitoring needed.</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-        <td style="padding:0.75rem"><strong>Personality:</strong> Analytical, patient, hates rapid decisions</td>
-        <td style="padding:0.75rem"><strong>Position trading:</strong> Fundamental + technical, hold weeks-months, 5-10 trades/year</td>
-        <td style="padding:0.75rem">Plays to Tom's analytical strengths (research-driven), avoids his weakness (split-second decisions).</td>
-      </tr>
-      <tr style="border-bottom:1px solid rgba(34,197,94,0.1)">
-        <td style="padding:0.75rem"><strong>Capital:</strong> $70K account, can't monitor intraday</td>
-        <td style="padding:0.75rem"><strong>Options strategies:</strong> Credit spreads, covered calls, 30-60 DTE, theta decay edge</td>
-        <td style="padding:0.75rem">High probability (70-80%), defined risk, autopilot (no monitoring), time decay works while he's at work.</td>
-      </tr>
-      <tr>
-        <td style="padding:0.75rem"><strong>Goal:</strong> $2K-$5K/month supplemental income</td>
-        <td style="padding:0.75rem"><strong>Gap trading:</strong> 3-5 pre-market setups/week, enter 9:30-9:45 AM, potential exit by 10:30 AM</td>
-        <td style="padding:0.75rem">Condenses trading to 1 hour/day (pre-work), 60-90 min research evening before. Matches available time.</td>
-      </tr>
-    </table>
+    <p><strong>Compatible Strategies for Full-Time Workers:</strong> Swing trading (hold 3-10 days, minimal monitoring), position trading (hold weeks-months, research-driven), options strategies (credit spreads, autopilot, time decay works during work hours), gap trading (1 hour/day pre-work).</p>
 
-    <p><strong>Tom's Recovery (June-August 2024):</strong> After $32K in losses forcing scalping onto a full-time job, Tom did an "edge audit." He listed his constraints: (1) Time = 2.5 hours/day max, (2) Attention = fragmented (meetings, emails), (3) Latency = retail (not pro), (4) Personality = analytical, patient, risk-averse. He tested swing trading SPY/QQQ: 1 setup/day pre-market, hold 3-7 days, check 2×/day (lunch + evening). Over 8 weeks: 14 trades, 71% win rate (10W / 4L), +$8,400 profit. Same trader, different strategy. The key: He aligned his edge to his REALITY, not his fantasy. Swing trading matched his time (minimal monitoring), personality (patient holds), and resources (no special tech needed). Result: Profitable.</p>
-
-    <p><b>The lesson: Tom lost $32,100 not because he was a bad trader—but because he forced an INCOMPATIBLE edge. Scalping requires 6-8 hours/day full attention, sub-10ms latency, emotionless 48-52% win rate acceptance, and 80+ trades/day volume. Tom had: 30-minute fragmented breaks, 200-400ms phone WiFi, anxious personality needing 70%+ win rate, and a full-time job. The strategy wasn't wrong—the FIT was wrong. Your edge must match THREE dimensions: (1) Time available (scalping = 6-8 hours, swing = 2 hours, position = 30 min/day), (2) Personality (patient vs impulsive, analytical vs intuitive, risk-seeking vs risk-averse), (3) Resources (capital, technology, latency, data access). Tom's recovery came from choosing swing trading—2 hours/day, analytical setups, patient holds, retail-friendly execution. His win rate jumped from 48% to 71%, losses of -$32K became profits of +$8.4K over 8 weeks. Same trader, aligned edge. There is NO universal best strategy. There's only the strategy that fits YOUR life. Force-fitting someone else's edge onto your reality = guaranteed losses. Build your edge around your constraints, not your fantasies.</b></p>
+    <p><b>The lesson: Tom lost $32,100 not because he was a bad trader—but because he forced an INCOMPATIBLE edge. Scalping requires 6-8 hours/day full attention, sub-10ms latency, emotionless 48-52% win rate acceptance, and 80+ trades/day volume. Tom had 30-minute fragmented breaks, 200-400ms phone WiFi, anxious personality, and a full-time job. Your edge must match THREE dimensions: (1) Time available, (2) Personality, (3) Resources (capital, technology, latency, data access). Tom's recovery came from swing trading—win rate jumped from 48% to 71%, losses of -$32K became profits of +$8.4K over 8 weeks. Same trader, aligned edge. There is NO universal best strategy. There's only the strategy that fits YOUR life. Build your edge around your constraints, not your fantasies.</b></p>
   </div>
 
   
