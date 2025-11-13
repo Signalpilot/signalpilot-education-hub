@@ -301,8 +301,20 @@
         }
       }
 
+      // Collect all notes (sp_notes_* format)
+      const notes = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('sp_notes_')) {
+          try {
+            notes[key] = JSON.parse(localStorage.getItem(key));
+          } catch (e) {
+            console.error('[Supabase] Error parsing note:', key, e);
+          }
+        }
+      }
+
       const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0, "best": 0}');
-      const notes = JSON.parse(localStorage.getItem('sp_lesson_notes') || '{}');
       const bookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]');
       const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
       const downloads = JSON.parse(localStorage.getItem('sp_downloads') || '[]');
@@ -426,9 +438,14 @@
           localStorage.setItem(key, progress[key]);
         }
 
-        // Restore streak and notes
+        // Restore streak
         localStorage.setItem('sp_learning_streak', JSON.stringify(data.streak || {}));
-        localStorage.setItem('sp_lesson_notes', JSON.stringify(data.notes || {}));
+
+        // Restore notes (sp_notes_* format)
+        const notes = data.notes || {};
+        for (const key in notes) {
+          localStorage.setItem(key, JSON.stringify(notes[key]));
+        }
 
         // Restore bookmarks, favorites, and downloads
         localStorage.setItem('sp_bookmarks', JSON.stringify(data.bookmarks || []));
@@ -802,6 +819,7 @@
   // Listen for localStorage changes (for progress updates)
   window.addEventListener('storage', (e) => {
     if (e.key && (e.key.startsWith('sp_edu_') || e.key.startsWith('sp_lesson') || e.key.startsWith('sp_learning') ||
+                  e.key.startsWith('sp_notes_') ||
                   e.key === 'sp_bookmarks' || e.key === 'sp_favorites' || e.key === 'sp_downloads' || e.key === 'sp_activity')) {
       onProgressChange();
     }
@@ -814,6 +832,7 @@
 
     // If progress-related key changed, trigger sync
     if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_lesson') || key.startsWith('sp_learning') ||
+                key.startsWith('sp_notes_') ||
                 key === 'sp_bookmarks' || key === 'sp_favorites' || key === 'sp_downloads' || key === 'sp_activity')) {
       onProgressChange();
     }
