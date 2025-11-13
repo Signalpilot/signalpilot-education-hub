@@ -564,76 +564,7 @@ I trade math, not correlation coefficients."
 
       <p>The standard test: <strong>Augmented Dickey-Fuller (ADF) test</strong>.</p>
 
-      <div class="callout-info">
-        <h4>📖 How the ADF Test Works</h4>
-        <p><strong>Step 1:</strong> Calculate the spread or ratio between Asset A and Asset B</p>
-        <p><strong>Step 2:</strong> Run the ADF test on this spread time series</p>
-        <p><strong>Step 3:</strong> Get a p-value:</p>
-        <ul style="margin:.5rem 0">
-          <li><strong>p < 0.05:</strong> Spread is stationary → cointegration likely</li>
-          <li><strong>p > 0.05:</strong> Spread is non-stationary → no cointegration</li>
-        </ul>
-        <p style="margin-top:1rem"><strong>Example:</strong> Testing TSLA vs LCID</p>
-        <ul>
-          <li>Spread = (TSLA price) - (β × LCID price)</li>
-          <li>ADF test on spread → p-value = 0.23</li>
-          <li><strong>Result:</strong> NOT cointegrated (don't trade it!)</li>
-        </ul>
-      </div>
-
-      <h3 id="calculating-the-hedge-ratio-">Calculating the Hedge Ratio (β)</h3>
-
-      <p>The hedge ratio determines how many units of Asset B you need to trade for every unit of Asset A to create a market-neutral position.</p>
-
-      <p>Use <strong>Ordinary Least Squares (OLS) regression</strong>:</p>
-
-      <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">Asset A = β × Asset B + residuals</p>
-
-      <p><strong>β</strong> is your hedge ratio. If β = 1.5, you buy/sell 1.5 units of Asset B for every 1 unit of Asset A.</p>
-
-      <div class="accordion">
-        <details class="accordion-item">
-          <summary class="accordion-header">Real Example: Coca-Cola (KO) vs Pepsi (PEP)</summary>
-          <div class="accordion-content">
-            <p><strong>Historical Relationship:</strong> KO and PEP are in the same industry, similar business models</p>
-            <p><strong>Regression Result:</strong> KO = 0.92 × PEP + noise</p>
-            <p><strong>Hedge Ratio (β):</strong> 0.92</p>
-            <p><strong>What This Means:</strong> For every $1,000 in KO you buy, you sell $920 in PEP (or vice versa)</p>
-            <p><strong>ADF Test on Spread:</strong> p-value = 0.03 → Cointegrated! ✅</p>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary class="accordion-header">Counter-Example: TSLA vs SPY</summary>
-          <div class="accordion-content">
-            <p><strong>Correlation:</strong> 0.75 (high!)</p>
-            <p><strong>Regression:</strong> TSLA = 3.2 × SPY + noise</p>
-            <p><strong>ADF Test on Spread:</strong> p-value = 0.18 → NOT cointegrated ❌</p>
-            <p><strong>Why It Fails:</strong> TSLA can permanently decouple from SPY (and has)</p>
-            <p><strong>Lesson:</strong> High correlation ≠ tradable pair</p>
-          </div>
-        </details>
-      </div>
-
-      <div class="section-break"><span>Part 3: Z-Score Entry & Exit Models</span></div>
-
-  <h4>🟡 CHECKPOINT</h4>
-      <h2 id="trading-the-statistical-anomaly">Trading the Statistical Anomaly</h2>
-
-      <p>Once you've validated cointegration, you need potential entry/potential exit rules. The standard model: <strong>z-score triggers</strong>.</p>
-
-      <p><strong>Z-score measures how many standard deviations the spread is from its mean.</strong></p>
-
-      <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">Z-score = (Current Spread - Mean Spread) / Standard Deviation</p>
-
-      <h3 id="standard-potential entrypotential exit-thresholds">Standard Entry/Exit Thresholds</h3>
-
-      <div class="tabs">
-        <div class="tabs-nav">
-          <button>Conservative (Hedge Funds)</button>
-          <button>Aggressive (Prop Firms)</button>
-        </div>
-        <div class="tabs-content">
+      <div class="tabs-content">
           <div class="tab-panel">
             <h3 id="conservative-z-score-model">Conservative Z-Score Model</h3>
             <ul>

@@ -445,7 +445,8 @@
     isBookmarked,
     addFavorite,
     removeFavorite: removeFavoriteByUrl,
-    isFavorited
+    isFavorited,
+    displayNotes
   });
 
 })();

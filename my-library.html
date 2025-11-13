@@ -532,6 +532,7 @@
 <script src="/assets/config.js"></script>
 <script src="/assets/supabase-client.js"></script>
 <script src="/assets/auth-ui.js"></script>
+<script src="/assets/library.js"></script>
 
 <script>
 // My Library functionality
@@ -585,6 +586,11 @@
     renderProgressChart();
     renderAchievements(completedCount);
     renderCertificates(completedCount);
+
+    // Display notes (if displayNotes function is available from library.js)
+    if (window.library && typeof window.library.displayNotes === 'function') {
+      window.library.displayNotes();
+    }
   }
 
   // Track daily activity
