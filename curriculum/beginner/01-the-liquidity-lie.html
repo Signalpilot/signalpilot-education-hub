@@ -294,7 +294,7 @@
       <h3 id="mistake-3-ignoring-volume">Mistake #3: Ignoring Volume</h3>
       <p><strong>Bad:</strong> <em>"Price touched support and bounced, going long!"</em></p>
       <p><strong>Why it fails:</strong> Without volume spike, it's not a sweep (just a test)</p>
-      <p><strong>Fix:</strong> Require volume confirmation via Janus Atlas</p>
+      <p><strong>Fix:</strong> Look for volume at least 50% higher than recent bars. Janus Atlas highlights this automatically with bright green bars.</p>
 
       <h3 id="mistake-4-trading-every-sweep">Mistake #4: Trading Every Sweep</h3>
       <p><strong>Bad:</strong> <em>"Sweep detected, entering immediately!"</em></p>
