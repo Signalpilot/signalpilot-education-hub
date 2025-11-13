@@ -273,6 +273,92 @@
         <p><strong>Statistical reality:</strong> Dark pool volume has grown from 15% (2008) to 40%+ (2024) of total equity volume. If you're only watching lit exchanges, you're missing more than HALF the institutional story.</p>
       </div>
 
+      <div style="margin:2rem 0;text-align:center">
+        <svg viewBox="0 0 800 500" style="width:100%;max-width:800px;margin:0 auto;display:block">
+          <!-- Title -->
+          <text x="400" y="25" text-anchor="middle" style="font-size:18px;font-weight:600;fill:currentColor">Dark Pool Order Flow & Tape Print Lifecycle</text>
+          <text x="400" y="45" text-anchor="middle" style="font-size:13px;fill:currentColor;opacity:0.7">How institutional trades hide, execute, then surface on the tape</text>
+
+          <!-- Step 1: Order Placed -->
+          <rect x="60" y="80" width="180" height="70" fill="#8b5cf6" opacity="0.15" rx="6" stroke="#8b5cf6" stroke-width="2"/>
+          <text x="150" y="105" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">1. Order Placed</text>
+          <text x="150" y="122" text-anchor="middle" style="font-size:10px;fill:currentColor">Institution wants to buy</text>
+          <text x="150" y="137" text-anchor="middle" style="font-size:10px;fill:currentColor">500K shares AAPL</text>
+          <text x="150" y="150" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">t=0 sec</text>
+
+          <!-- Arrow 1 -->
+          <path d="M 240,115 L 290,115" stroke="currentColor" opacity="0.4" stroke-width="2" marker-end="url(#arrow1)"/>
+          <text x="265" y="105" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.6">Routed to</text>
+
+          <!-- Step 2: Dark Pool Routing -->
+          <rect x="290" y="80" width="180" height="70" fill="#fbbf24" opacity="0.15" rx="6" stroke="#fbbf24" stroke-width="2"/>
+          <text x="380" y="105" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">2. Dark Pool Routing</text>
+          <text x="380" y="122" text-anchor="middle" style="font-size:10px;fill:currentColor">Order sent to UBS ATS</text>
+          <text x="380" y="137" text-anchor="middle" style="font-size:10px;fill:currentColor">Hidden from public book</text>
+          <text x="380" y="150" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">t=0.1 sec</text>
+
+          <!-- Arrow 2 -->
+          <path d="M 470,115 L 520,115" stroke="currentColor" opacity="0.4" stroke-width="2" marker-end="url(#arrow1)"/>
+          <text x="495" y="105" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.6">Matched</text>
+
+          <!-- Step 3: Execution (off-exchange) -->
+          <rect x="520" y="80" width="220" height="70" fill="#22c55e" opacity="0.15" rx="6" stroke="#22c55e" stroke-width="2"/>
+          <text x="630" y="105" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#22c55e">3. Execution (Off-Exchange)</text>
+          <text x="630" y="122" text-anchor="middle" style="font-size:10px;fill:currentColor">500K shares @ $180.25</text>
+          <text x="630" y="137" text-anchor="middle" style="font-size:10px;fill:currentColor">ZERO public visibility</text>
+          <text x="630" y="150" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">t=0.5 sec</text>
+
+          <!-- Vertical arrow down -->
+          <path d="M 630,150 L 630,190" stroke="currentColor" opacity="0.4" stroke-width="2" marker-end="url(#arrow1)"/>
+          <text x="650" y="175" text-anchor="start" style="font-size:9px;fill:currentColor;opacity:0.6">Must report</text>
+          <text x="650" y="187" text-anchor="start" style="font-size:9px;fill:currentColor;opacity:0.6">within 10 sec</text>
+
+          <!-- Step 4: Tape Report (10 sec delay) -->
+          <rect x="520" y="200" width="220" height="80" fill="#ef4444" opacity="0.15" rx="6" stroke="#ef4444" stroke-width="2"/>
+          <text x="630" y="225" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#ef4444">4. Tape Print (Delayed)</text>
+          <text x="630" y="242" text-anchor="middle" style="font-size:10px;fill:currentColor">Print surfaces on TRF</text>
+          <text x="630" y="257" text-anchor="middle" style="font-size:10px;fill:currentColor">500K shares @ $180.25</text>
+          <text x="630" y="272" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">t=5-10 sec (delayed visibility)</text>
+
+          <!-- What retail sees -->
+          <rect x="60" y="200" width="430" height="80" fill="#8b5cf6" opacity="0.08" rx="6" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,4"/>
+          <text x="275" y="225" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">What Retail Sees (Tape Reading)</text>
+          <text x="275" y="245" text-anchor="middle" style="font-size:11px;fill:currentColor">🚫 Steps 1-3 INVISIBLE (executed off public exchange)</text>
+          <text x="275" y="262" text-anchor="middle" style="font-size:11px;fill:#22c55e">✅ Step 4 VISIBLE (print on tape 5-10 seconds later)</text>
+          <text x="275" y="277" text-anchor="middle" style="font-size:10px;fill:currentColor;opacity:0.7">"Oh, a 500K buy just hit... 10 seconds ago"</text>
+
+          <!-- Timeline comparison -->
+          <rect x="60" y="310" width="680" height="160" fill="#fbbf24" opacity="0.08" rx="6"/>
+          <text x="400" y="335" text-anchor="middle" style="font-size:14px;font-weight:600;fill:currentColor">Why Dark Pools Matter: The Information Advantage</text>
+
+          <!-- Lit Exchange (Public) -->
+          <rect x="80" y="355" width="300" height="95" fill="#ef4444" opacity="0.1" rx="4" stroke="#ef4444" stroke-width="1"/>
+          <text x="230" y="375" text-anchor="middle" style="font-size:12px;font-weight:600;fill:#ef4444">Lit Exchange (Public Order Book)</text>
+          <text x="230" y="393" text-anchor="middle" style="font-size:10px;fill:currentColor">• Order visible BEFORE execution</text>
+          <text x="230" y="408" text-anchor="middle" style="font-size:10px;fill:currentColor">• HFTs front-run large orders (+$0.10/share)</text>
+          <text x="230" y="423" text-anchor="middle" style="font-size:10px;fill:currentColor">• Institution loses $50K on slippage</text>
+          <text x="230" y="440" text-anchor="middle" style="font-size:9px;fill:#ef4444;font-weight:600">Institution avoids public exchanges</text>
+
+          <!-- Dark Pool (Hidden) -->
+          <rect x="400" y="355" width="320" height="95" fill="#22c55e" opacity="0.1" rx="4" stroke="#22c55e" stroke-width="1"/>
+          <text x="560" y="375" text-anchor="middle" style="font-size:12px;font-weight:600;fill:#22c55e">Dark Pool (Hidden Execution)</text>
+          <text x="560" y="393" text-anchor="middle" style="font-size:10px;fill:currentColor">• Order hidden until AFTER execution</text>
+          <text x="560" y="408" text-anchor="middle" style="font-size:10px;fill:currentColor">• No front-running, better price ($180.25 vs $180.35)</text>
+          <text x="560" y="423" text-anchor="middle" style="font-size:10px;fill:currentColor">• Institution saves $50K, YOU see print 10 sec later</text>
+          <text x="560" y="440" text-anchor="middle" style="font-size:9px;fill:#22c55e;font-weight:600">Retail gets delayed signal (but still actionable)</text>
+
+          <!-- Arrow markers -->
+          <defs>
+            <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z" fill="currentColor" opacity="0.4"/>
+            </marker>
+          </defs>
+        </svg>
+        <p style="margin-top:1rem;font-size:0.85rem;color:currentColor;opacity:0.7">
+          40% of equity volume trades in dark pools. You don't see the order, only the print (5-10 sec delayed). But clusters of large prints = institutional positioning signal.
+        </p>
+      </div>
+
       <p><strong>In this lesson:</strong></p>
       <ul>
         <li>What dark pools are (and why institutions use them)</li>

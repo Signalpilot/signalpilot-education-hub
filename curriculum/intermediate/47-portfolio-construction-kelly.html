@@ -135,6 +135,69 @@
       <strong>Lisa's advice:</strong> "Full Kelly is a trap. It's mathematically optimal for GROWTH but practically suicidal for SURVIVAL. I had 68% win rate (solid edge) but lost 49% in 3 months using full Kelly because ONE bad week (6-trade losing streak) caused -62% drawdown. Switched to 1/4 Kelly, recovered $53K in 6 months with -12% max DD. Kelly tells you the theoretical max—use 25-50% of that number for real trading. Growth means nothing if you blow up first."
     </p>
 
+    <div style="margin:1.5rem 0;text-align:center">
+      <svg viewBox="0 0 700 450" style="width:100%;max-width:700px;margin:0 auto;display:block">
+        <!-- Title -->
+        <text x="350" y="25" text-anchor="middle" style="font-size:18px;font-weight:600;fill:currentColor">Kelly Fraction vs Expected Drawdown</text>
+        <text x="350" y="45" text-anchor="middle" style="font-size:13px;fill:currentColor;opacity:0.7">The Full Kelly Trap: Maximum Growth, Catastrophic Risk</text>
+
+        <!-- Axes -->
+        <line x1="80" y1="380" x2="620" y2="380" stroke="currentColor" opacity="0.3" stroke-width="2"/>
+        <line x1="80" y1="90" x2="80" y2="380" stroke="currentColor" opacity="0.3" stroke-width="2"/>
+
+        <!-- Y-axis labels (Drawdown %) -->
+        <text x="70" y="95" text-anchor="end" style="font-size:12px;fill:currentColor">0%</text>
+        <text x="70" y="163" text-anchor="end" style="font-size:12px;fill:currentColor">-15%</text>
+        <text x="70" y="235" text-anchor="end" style="font-size:12px;fill:currentColor">-30%</text>
+        <text x="70" y="307" text-anchor="end" style="font-size:12px;fill:currentColor">-45%</text>
+        <text x="70" y="380" text-anchor="end" style="font-size:12px;fill:currentColor">-62%</text>
+
+        <!-- X-axis labels (Kelly Fraction) -->
+        <text x="80" y="400" text-anchor="middle" style="font-size:12px;fill:currentColor">0</text>
+        <text x="215" y="400" text-anchor="middle" style="font-size:12px;fill:currentColor">1/4</text>
+        <text x="350" y="400" text-anchor="middle" style="font-size:12px;fill:currentColor">1/2</text>
+        <text x="485" y="400" text-anchor="middle" style="font-size:12px;fill:currentColor">3/4</text>
+        <text x="620" y="400" text-anchor="middle" style="font-size:12px;fill:currentColor">Full Kelly</text>
+
+        <!-- Axis titles -->
+        <text x="30" y="235" text-anchor="middle" style="font-size:13px;fill:currentColor;font-weight:600" transform="rotate(-90 30 235)">Expected Drawdown</text>
+        <text x="350" y="430" text-anchor="middle" style="font-size:13px;fill:currentColor;font-weight:600">Kelly Fraction</text>
+
+        <!-- Risk curve (exponential) -->
+        <path d="M 80,380 L 215,308 L 350,212 L 485,143 L 620,90" fill="none" stroke="#ef4444" stroke-width="3"/>
+
+        <!-- Safe Zone (1/4 Kelly) -->
+        <rect x="190" y="290" width="50" height="90" fill="#22c55e" opacity="0.15" rx="4"/>
+        <circle cx="215" cy="308" r="8" fill="#22c55e"/>
+        <text x="215" y="260" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#22c55e">SAFE ZONE</text>
+        <text x="215" y="278" text-anchor="middle" style="font-size:11px;fill:#22c55e">1/4 Kelly</text>
+        <text x="215" y="320" text-anchor="start" style="font-size:10px;fill:currentColor">← Lisa's recovery</text>
+        <text x="215" y="333" text-anchor="start" style="font-size:10px;fill:currentColor">-12% DD</text>
+
+        <!-- Danger Zone (Full Kelly) -->
+        <rect x="595" y="75" width="50" height="305" fill="#ef4444" opacity="0.15" rx="4"/>
+        <circle cx="620" cy="90" r="8" fill="#ef4444"/>
+        <text x="620" y="55" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#ef4444">DANGER ZONE</text>
+        <text x="620" y="70" text-anchor="middle" style="font-size:11px;fill:#ef4444">Full Kelly</text>
+        <text x="510" y="100" text-anchor="end" style="font-size:10px;fill:currentColor">Lisa's disaster →</text>
+        <text x="510" y="113" text-anchor="end" style="font-size:10px;fill:currentColor">-62% DD</text>
+
+        <!-- Half Kelly marker -->
+        <circle cx="350" cy="212" r="6" fill="#fbbf24"/>
+        <text x="350" y="195" text-anchor="middle" style="font-size:11px;fill:#fbbf24">1/2 Kelly</text>
+        <text x="350" y="230" text-anchor="middle" style="font-size:10px;fill:currentColor">-30% DD</text>
+
+        <!-- Key insight box -->
+        <rect x="100" y="120" width="260" height="55" fill="#8b5cf6" opacity="0.1" rx="6"/>
+        <text x="230" y="140" text-anchor="middle" style="font-size:12px;font-weight:600;fill:currentColor">Growth vs Survival Trade-off</text>
+        <text x="230" y="157" text-anchor="middle" style="font-size:10px;fill:currentColor">Full Kelly = Max growth, 62% drawdowns</text>
+        <text x="230" y="170" text-anchor="middle" style="font-size:10px;fill:currentColor">1/4 Kelly = 95% of growth, 12% drawdowns</text>
+      </svg>
+      <p style="margin-top:0.5rem;font-size:0.85rem;color:currentColor;opacity:0.7">
+        Professional standard: Use 1/4 to 1/2 Kelly. Lisa's $91K loss proves full Kelly is mathematically optimal but practically catastrophic.
+      </p>
+    </div>
+
     <p>You've completed half of this lesson.</p>
     <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Keep going...</p>
   </div>

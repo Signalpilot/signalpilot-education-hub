@@ -132,6 +132,118 @@
     <p><strong>Example Chain:</strong> Fed cuts rates → Dollar weakens → Commodities rally → Inflation expectations rise → Growth stocks underperform (higher discount rate)</p>
   </div>
 
+  <div style="margin:2rem 0;text-align:center">
+    <svg viewBox="0 0 850 550" style="width:100%;max-width:850px;margin:0 auto;display:block">
+      <!-- Title -->
+      <text x="425" y="25" text-anchor="middle" style="font-size:18px;font-weight:600;fill:currentColor">Intermarket Causality Chain: The Domino Effect</text>
+      <text x="425" y="45" text-anchor="middle" style="font-size:13px;fill:currentColor;opacity:0.7">How DXY movements cascade through markets with 2-8 week lags</text>
+
+      <!-- Chain #1: Dollar → Commodities → Inflation → Equities -->
+      <text x="425" y="75" text-anchor="middle" style="font-size:14px;font-weight:600;fill:#8b5cf6">Chain #1: Dollar → Commodities → Inflation → Equities</text>
+
+      <!-- Step 1: DXY Falls -->
+      <rect x="50" y="100" width="150" height="90" fill="#ef4444" opacity="0.15" rx="6" stroke="#ef4444" stroke-width="2"/>
+      <text x="125" y="125" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#ef4444">1. DXY Falls</text>
+      <text x="125" y="145" text-anchor="middle" style="font-size:10px;fill:currentColor">Dollar breaks support</text>
+      <text x="125" y="160" text-anchor="middle" style="font-size:10px;fill:currentColor">105 → 102 (-2.9%)</text>
+      <text x="125" y="175" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">Week 0: Initial move</text>
+      <text x="125" y="187" text-anchor="middle" style="font-size:9px;font-weight:600;fill:#ef4444">LEADING INDICATOR</text>
+
+      <!-- Arrow 1 -->
+      <path d="M 200,145 L 235,145" stroke="currentColor" opacity="0.4" stroke-width="2" marker-end="url(#arrow2)"/>
+      <text x="217" y="135" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">2-4 weeks</text>
+
+      <!-- Step 2: Commodities Rally -->
+      <rect x="235" y="100" width="150" height="90" fill="#fbbf24" opacity="0.15" rx="6" stroke="#fbbf24" stroke-width="2"/>
+      <text x="310" y="125" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#fbbf24">2. Commodities ↑</text>
+      <text x="310" y="145" text-anchor="middle" style="font-size:10px;fill:currentColor">Oil, copper, gold rally</text>
+      <text x="310" y="160" text-anchor="middle" style="font-size:10px;fill:currentColor">Priced in weaker USD</text>
+      <text x="310" y="175" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">Week 2-4: Response</text>
+      <text x="310" y="187" text-anchor="middle" style="font-size:9px;font-weight:600;fill:#fbbf24">CONFIRMING SIGNAL</text>
+
+      <!-- Arrow 2 -->
+      <path d="M 385,145 L 420,145" stroke="currentColor" opacity="0.4" stroke-width="2" marker-end="url(#arrow2)"/>
+      <text x="402" y="135" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">1-2 months</text>
+
+      <!-- Step 3: Inflation Rises -->
+      <rect x="420" y="100" width="150" height="90" fill="#8b5cf6" opacity="0.15" rx="6" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="495" y="125" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#8b5cf6">3. Inflation ↑</text>
+      <text x="495" y="145" text-anchor="middle" style="font-size:10px;fill:currentColor">CPI/PPI data rise</text>
+      <text x="495" y="160" text-anchor="middle" style="font-size:10px;fill:currentColor">Input costs increase</text>
+      <text x="495" y="175" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">Week 4-8: Lagging data</text>
+      <text x="495" y="187" text-anchor="middle" style="font-size:9px;font-weight:600;fill:#8b5cf6">LAGGING CONFIRMATION</text>
+
+      <!-- Arrow 3 -->
+      <path d="M 570,145 L 605,145" stroke="currentColor" opacity="0.4" stroke-width="2" marker-end="url(#arrow2)"/>
+      <text x="587" y="135" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">immediate</text>
+
+      <!-- Step 4: Equities React -->
+      <rect x="605" y="100" width="195" height="90" fill="#22c55e" opacity="0.15" rx="6" stroke="#22c55e" stroke-width="2"/>
+      <text x="702" y="120" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#22c55e">4. Equities React</text>
+      <text x="702" y="140" text-anchor="middle" style="font-size:10px;fill:currentColor">Fed tightening concerns</text>
+      <text x="702" y="155" text-anchor="middle" style="font-size:10px;fill:currentColor">Growth → Value rotation</text>
+      <text x="702" y="170" text-anchor="middle" style="font-size:10px;fill:currentColor">Valuations compress</text>
+      <text x="702" y="185" text-anchor="middle" style="font-size:9px;font-weight:600;fill:#22c55e">FINAL EFFECT (trade here)</text>
+
+      <!-- Chain #2: Credit Spreads → Risk-Off → Equities -->
+      <text x="425" y="230" text-anchor="middle" style="font-size:14px;font-weight:600;fill:#8b5cf6">Chain #2: Credit Spreads → Risk Appetite → Equities</text>
+
+      <!-- Credit spreads widen -->
+      <rect x="150" y="255" width="200" height="80" fill="#ef4444" opacity="0.15" rx="6" stroke="#ef4444" stroke-width="2"/>
+      <text x="250" y="280" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#ef4444">Credit Spreads Widen</text>
+      <text x="250" y="298" text-anchor="middle" style="font-size:10px;fill:currentColor">HYG/TLT ratio falls</text>
+      <text x="250" y="313" text-anchor="middle" style="font-size:10px;fill:currentColor">Corporate debt stress</text>
+      <text x="250" y="328" text-anchor="middle" style="font-size:9px;font-weight:600;fill:#ef4444">LEADS equities by 1-3 months</text>
+
+      <!-- Arrow -->
+      <path d="M 350,295 L 395,295" stroke="currentColor" opacity="0.4" stroke-width="2" marker-end="url(#arrow2)"/>
+      <text x="372" y="285" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">1-3 months</text>
+
+      <!-- Equities sell off -->
+      <rect x="395" y="255" width="200" height="80" fill="#22c55e" opacity="0.15" rx="6" stroke="#22c55e" stroke-width="2"/>
+      <text x="495" y="280" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#22c55e">Equities Sell Off</text>
+      <text x="495" y="298" text-anchor="middle" style="font-size:10px;fill:currentColor">SPX follows credit lower</text>
+      <text x="495" y="313" text-anchor="middle" style="font-size:10px;fill:currentColor">Risk-off cascade</text>
+      <text x="495" y="328" text-anchor="middle" style="font-size:9px;font-weight:600;fill:#22c55e">Credit leads, stocks follow</text>
+
+      <!-- Chain #3: Yields → Growth/Value Rotation -->
+      <text x="425" y="375" text-anchor="middle" style="font-size:14px;font-weight:600;fill:#8b5cf6">Chain #3: Yields → Growth vs Value Rotation</text>
+
+      <!-- 10Y yields rise -->
+      <rect x="150" y="400" width="200" height="80" fill="#fbbf24" opacity="0.15" rx="6" stroke="#fbbf24" stroke-width="2"/>
+      <text x="250" y="425" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#fbbf24">10Y Yields Rise</text>
+      <text x="250" y="443" text-anchor="middle" style="font-size:10px;fill:currentColor">Discount rate increases</text>
+      <text x="250" y="458" text-anchor="middle" style="font-size:10px;fill:currentColor">4.0% → 4.5%</text>
+      <text x="250" y="473" text-anchor="middle" style="font-size:9px;font-weight:600;fill:#fbbf24">Higher rates = lower valuations</text>
+
+      <!-- Arrow -->
+      <path d="M 350,440 L 395,440" stroke="currentColor" opacity="0.4" stroke-width="2" marker-end="url(#arrow2)"/>
+      <text x="372" y="430" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">immediate</text>
+
+      <!-- Sector rotation -->
+      <rect x="395" y="400" width="200" height="80" fill="#8b5cf6" opacity="0.15" rx="6" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="495" y="425" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#8b5cf6">Sector Rotation</text>
+      <text x="495" y="443" text-anchor="middle" style="font-size:10px;fill:currentColor">OUT: Growth (QQQ, ARKK)</text>
+      <text x="495" y="458" text-anchor="middle" style="font-size:10px;fill:currentColor">INTO: Value (XLF, XLE)</text>
+      <text x="495" y="473" text-anchor="middle" style="font-size:9px;font-weight:600;fill:#8b5cf6">Yield > 4% triggers rotation</text>
+
+      <!-- Key insight box -->
+      <rect x="50" y="500" width="750" height="45" fill="#22c55e" opacity="0.08" rx="6" stroke="#22c55e" stroke-width="2"/>
+      <text x="425" y="522" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">Trading Edge: Equities are LAST to move</text>
+      <text x="425" y="540" text-anchor="middle" style="font-size:11px;fill:currentColor">Watch DXY + Credit + Yields to predict equity moves 2-8 weeks early. Marcus made $36K using this framework.</text>
+
+      <!-- Arrow markers -->
+      <defs>
+        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L0,6 L9,3 z" fill="currentColor" opacity="0.4"/>
+        </marker>
+      </defs>
+    </svg>
+    <p style="margin-top:1rem;font-size:0.85rem;color:currentColor;opacity:0.7">
+      Intermarket causality chains allow you to predict equity moves before they happen. DXY is the leading indicator, equities are the lagging effect.
+    </p>
+  </div>
+
   <h3>Key Causality Chains</h3>
 
   <details class="accordion">
