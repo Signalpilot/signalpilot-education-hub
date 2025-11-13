@@ -64,6 +64,36 @@
         </div>
       </div>
   <p>Professional traders don't just find good setups. They build portfolios that maximize expected returns while controlling risk. This lesson teaches you how to construct a portfolio like an institutional fund manager.</p>
+
+  <!-- TL;DR Skimmer Summary -->
+  <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+    <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
+    <div style="margin-top:1rem">
+      <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
+      <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
+        <li>Kelly Criterion: Math formula for optimal position sizing based on your edge</li>
+        <li>Formula: Kelly % = (Win Rate × Win/Loss Ratio - Loss Rate) / Win/Loss Ratio</li>
+        <li>NEVER use full Kelly (causes 40-70% drawdowns) — use 1/4 to 1/2 Kelly</li>
+        <li>Dynamic sizing: Increase size when equity > 20-day MA, decrease when below</li>
+        <li>Correlation matters: Reduce allocation to highly correlated strategies</li>
+        <li>Cap total portfolio heat at 10% max risk across all positions</li>
+      </ul>
+      <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for trader stories, calculator examples, and Signal Pilot integration.</em></p>
+    </div>
+  </details>
+
+  <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+    <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
+    <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
+    <ul style="line-height:1.8;margin:0 0 0 1.5rem">
+      <li>Calculate Kelly Criterion position size for any trading strategy</li>
+      <li>Understand why full Kelly is dangerous (and what fractional Kelly to use)</li>
+      <li>Build multi-strategy portfolios with proper correlation adjustments</li>
+      <li>Implement dynamic position sizing based on equity curve performance</li>
+      <li>Use Signal Pilot tools to validate edge and optimize allocations</li>
+    </ul>
+  </div>
+
   <div class="callout callout-success">
     <h4>💰 How Kelly Criterion Saved a $500K Account</h4>
     <p>A prop trader had a proven strategy: 58% win rate, avg win $450, avg loss $300. Using fixed 2% risk per trade, his annual return was 28% with 15% max drawdown.</p>
@@ -165,7 +195,174 @@
 
   <h3>Harmonic Oscillator: Regime Detection for Sizing</h3>
   <p><strong>Feature:</strong> Identify trending vs mean-reverting regimes</p>
-  <p><strong>Application:</strong> Increase potential breakout strategy allocation in trending regime, increase mean-reversion allocation in ranging regime</p><h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
+  <p><strong>Application:</strong> Increase potential breakout strategy allocation in trending regime, increase mean-reversion allocation in ranging regime</p>
+
+  <div class="callout" style="background:rgba(251,191,36,0.1);border-left:4px solid #fbbf24;margin:2rem 0;padding:1.5rem">
+    <h4>💡 Pro Tip: The "Correlation Audit" Every Quarter</h4>
+    <p>Most traders blow up not from one bad trade, but from hidden correlation they didn't see coming.</p>
+    <p><strong>Example: March 2023 Banking Crisis</strong></p>
+    <ul>
+      <li>Trader had 4 "uncorrelated" strategies: Regional banks, tech stocks, credit spreads, and volatility selling</li>
+      <li>Historical correlation: 0.2-0.3 (looked independent)</li>
+      <li>March 10, 2023 (SVB collapse): ALL 4 strategies lost money same day</li>
+      <li>True crisis correlation spiked to 0.95 → lost 22% in one session</li>
+    </ul>
+    <p><strong>The Audit:</strong> Every quarter, ask:</p>
+    <ol>
+      <li>"If the Fed raises rates 0.5% unexpectedly, which of my strategies lose?"</li>
+      <li>"If VIX spikes to 40, how many positions get stopped out?"</li>
+      <li>"If credit spreads blow out, what percentage of my portfolio is exposed?"</li>
+    </ol>
+    <p><strong>Action:</strong> If >60% of your strategies fail in the same scenario, you're over-concentrated. Reduce total allocation or add genuinely uncorrelated strategies (e.g., trend-following commodities vs mean-reversion equities).</p>
+  </div>
+
+  <h2 id="practice-exercise">🎯 Practice Exercise: Build Your Kelly Portfolio</h2>
+
+  <div class="callout" style="background:rgba(34,197,94,0.1);border-left:4px solid #22c55e;margin:2rem 0;padding:1.5rem">
+    <h4>Scenario: Your Three Trading Strategies</h4>
+
+    <p><strong>You have $100,000 capital and three proven strategies. Calculate optimal Kelly allocation for each:</strong></p>
+
+    <table style="width:100%;margin:1rem 0;border-collapse:collapse">
+      <thead>
+        <tr style="background:rgba(34,197,94,0.15)">
+          <th style="padding:0.75rem;text-align:left;border:1px solid rgba(34,197,94,0.3)">Strategy</th>
+          <th style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.3)">Win Rate</th>
+          <th style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.3)">Avg Win</th>
+          <th style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.3)">Avg Loss</th>
+          <th style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.3)">Trades/Month</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:0.75rem;border:1px solid rgba(34,197,94,0.2)"><strong>Strategy A:</strong> Momentum Breakouts</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">45%</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">$600</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">$200</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">8</td>
+        </tr>
+        <tr>
+          <td style="padding:0.75rem;border:1px solid rgba(34,197,94,0.2)"><strong>Strategy B:</strong> Mean Reversion</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">65%</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">$300</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">$250</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">12</td>
+        </tr>
+        <tr>
+          <td style="padding:0.75rem;border:1px solid rgba(34,197,94,0.2)"><strong>Strategy C:</strong> Options Income</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">70%</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">$200</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">$400</td>
+          <td style="padding:0.75rem;text-align:center;border:1px solid rgba(34,197,94,0.2)">15</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Additional Info:</strong></p>
+    <ul>
+      <li>Correlation between Strategy A & B: 0.15 (nearly independent)</li>
+      <li>Correlation between Strategy B & C: 0.6 (moderately correlated)</li>
+      <li>Correlation between Strategy A & C: 0.05 (independent)</li>
+    </ul>
+
+    <h4 style="margin-top:1.5rem">Your Tasks:</h4>
+
+    <p><strong>Task 1:</strong> Calculate full Kelly % for each strategy</p>
+    <p><em>Formula: Kelly % = (Win Rate × (Avg Win / Avg Loss) - (1 - Win Rate)) / (Avg Win / Avg Loss)</em></p>
+
+    <p><strong>Task 2:</strong> Which fractional Kelly should you use? (Full, Half, or Quarter?)</p>
+
+    <p><strong>Task 3:</strong> Adjust allocations for correlation. Which strategies need reduced sizing?</p>
+
+    <p><strong>Task 4:</strong> Calculate dollar amount to risk per trade for each strategy</p>
+
+    <h4 style="margin-top:2rem;border-top:1px solid rgba(34,197,94,0.3);padding-top:1rem">📋 Solution (Try First!)</h4>
+
+    <details style="margin-top:1rem">
+      <summary style="cursor:pointer;font-weight:600">Click to Reveal Step-by-Step Solution</summary>
+      <div style="margin-top:1rem;padding:1.5rem;background:rgba(34,197,94,0.05);border-radius:8px">
+
+        <p><strong>Task 1: Calculate Full Kelly %</strong></p>
+
+        <p><strong>Strategy A (Momentum Breakouts):</strong></p>
+        <ul>
+          <li>Win Rate = 45%, Loss Rate = 55%</li>
+          <li>Win/Loss Ratio (b) = $600 / $200 = 3.0</li>
+          <li>Kelly % = (0.45 × 3.0 - 0.55) / 3.0 = (1.35 - 0.55) / 3.0 = 0.8 / 3.0 = <strong>26.7%</strong></li>
+        </ul>
+
+        <p><strong>Strategy B (Mean Reversion):</strong></p>
+        <ul>
+          <li>Win Rate = 65%, Loss Rate = 35%</li>
+          <li>Win/Loss Ratio = $300 / $250 = 1.2</li>
+          <li>Kelly % = (0.65 × 1.2 - 0.35) / 1.2 = (0.78 - 0.35) / 1.2 = 0.43 / 1.2 = <strong>35.8%</strong></li>
+        </ul>
+
+        <p><strong>Strategy C (Options Income):</strong></p>
+        <ul>
+          <li>Win Rate = 70%, Loss Rate = 30%</li>
+          <li>Win/Loss Ratio = $200 / $400 = 0.5</li>
+          <li>Kelly % = (0.70 × 0.5 - 0.30) / 0.5 = (0.35 - 0.30) / 0.5 = 0.05 / 0.5 = <strong>10.0%</strong></li>
+        </ul>
+
+        <p style="margin-top:1.5rem"><strong>Task 2: Which Fractional Kelly?</strong></p>
+        <p><strong>Answer: Use QUARTER KELLY (divide by 4)</strong></p>
+        <p><strong>Reasoning:</strong></p>
+        <ul>
+          <li>Full Kelly causes 40-70% drawdowns (unacceptable for most traders)</li>
+          <li>Half Kelly still causes 20-35% drawdowns (risky)</li>
+          <li>Quarter Kelly gives 10-15% max drawdowns (survivable) while capturing 75%+ of growth</li>
+        </ul>
+
+        <p><strong>Quarter Kelly Allocations:</strong></p>
+        <ul>
+          <li>Strategy A: 26.7% / 4 = <strong>6.7%</strong></li>
+          <li>Strategy B: 35.8% / 4 = <strong>8.95%</strong> → round to <strong>9.0%</strong></li>
+          <li>Strategy C: 10.0% / 4 = <strong>2.5%</strong></li>
+        </ul>
+
+        <p style="margin-top:1.5rem"><strong>Task 3: Adjust for Correlation</strong></p>
+        <p><strong>Analysis:</strong></p>
+        <ul>
+          <li>Strategy B & C have <strong>0.6 correlation</strong> (moderate) → they tend to win/lose together</li>
+          <li>This means you're effectively doubling down on similar market conditions</li>
+          <li>Reduce BOTH by 25-30% to account for overlap</li>
+        </ul>
+
+        <p><strong>Correlation-Adjusted Allocations:</strong></p>
+        <ul>
+          <li>Strategy A: 6.7% (no change - independent from B & C)</li>
+          <li>Strategy B: 9.0% × 0.75 = <strong>6.75%</strong> (reduced for B-C correlation)</li>
+          <li>Strategy C: 2.5% × 0.75 = <strong>1.875%</strong> → round to <strong>1.9%</strong> (reduced for B-C correlation)</li>
+        </ul>
+
+        <p><strong>Total Portfolio Allocation: 6.7% + 6.75% + 1.9% = 15.35%</strong></p>
+        <p><em>(This is excellent! Well below the 20% "danger zone" for total portfolio heat)</em></p>
+
+        <p style="margin-top:1.5rem"><strong>Task 4: Dollar Risk Per Trade</strong></p>
+
+        <p><strong>Account Size: $100,000</strong></p>
+        <ul>
+          <li><strong>Strategy A:</strong> $100,000 × 6.7% = <strong>$6,700 per trade</strong></li>
+          <li><strong>Strategy B:</strong> $100,000 × 6.75% = <strong>$6,750 per trade</strong></li>
+          <li><strong>Strategy C:</strong> $100,000 × 1.9% = <strong>$1,900 per trade</strong></li>
+        </ul>
+
+        <p style="margin-top:1.5rem;padding:1rem;background:rgba(34,197,94,0.1);border-radius:8px;border-left:4px solid #22c55e">
+          <strong>📊 Final Portfolio Summary:</strong><br><br>
+          <strong>Strategy A (Momentum):</strong> Risk $6,700/trade, ~8 trades/month = ~$53,600 monthly exposure<br>
+          <strong>Strategy B (Mean Rev):</strong> Risk $6,750/trade, ~12 trades/month = ~$81,000 monthly exposure<br>
+          <strong>Strategy C (Options):</strong> Risk $1,900/trade, ~15 trades/month = ~$28,500 monthly exposure<br><br>
+          <strong>Expected Annual Return (Conservative):</strong> 18-24% CAGR<br>
+          <strong>Expected Max Drawdown:</strong> 12-16% (manageable)<br>
+          <strong>Risk Level:</strong> Moderate (total allocation 15.35% is healthy)<br><br>
+          <strong>This is a well-balanced, Kelly-optimized portfolio with proper correlation adjustments!</strong>
+        </p>
+      </div>
+    </details>
+  </div>
+
+  <h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
   <div class="quiz">
     <div class="quiz-question">
       <p><strong>Q1:</strong> Your system: 60% win rate, $400 avg win, $200 avg loss. What's the Kelly %?</p>
