@@ -100,7 +100,8 @@ Tips:
     const data = {
       content: content,
       timestamp: Date.now(),
-      lessonTitle: getLessonTitle()
+      lessonTitle: getLessonTitle(),
+      lessonUrl: window.location.href
     };
     localStorage.setItem(key, JSON.stringify(data));
     return data;
