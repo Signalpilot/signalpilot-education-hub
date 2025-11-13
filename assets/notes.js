@@ -223,6 +223,11 @@ Tips:
       if (typeof trackNotesSaved === 'function') {
         trackNotesSaved();
       }
+
+      // Trigger cloud sync
+      if (window.supabaseAuth?.onProgressChange) {
+        window.supabaseAuth.onProgressChange();
+      }
     }
 
     // Clear notes

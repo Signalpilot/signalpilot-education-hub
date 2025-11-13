@@ -353,6 +353,73 @@
     }
   }
 
+  /**
+   * Display user's notes in My Library page
+   */
+  function displayNotes() {
+    // Only on my-library page
+    if (!window.location.pathname.includes('/my-library.html')) return;
+
+    const notesList = document.getElementById('notes-list');
+    if (!notesList) return;
+
+    // Load all notes from localStorage
+    const allNotes = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('sp_notes_')) {
+        try {
+          const lessonId = key.replace('sp_notes_', '');
+          const noteData = JSON.parse(localStorage.getItem(key));
+          if (noteData && noteData.content && noteData.content.trim()) {
+            allNotes[lessonId] = noteData;
+          }
+        } catch (e) {
+          console.error('Error parsing note:', e);
+        }
+      }
+    }
+
+    const notesArray = Object.values(allNotes);
+
+    if (notesArray.length === 0) {
+      notesList.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">📝</div>
+          <p>No notes yet.</p>
+          <p style="font-size: 0.9rem;">Take notes while studying to see them here!</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Sort by last modified (most recent first)
+    notesArray.sort((a, b) => b.timestamp - a.timestamp);
+
+    // Display notes
+    notesList.innerHTML = notesArray.map(note => {
+      const date = new Date(note.timestamp);
+      const preview = note.content.substring(0, 150) + (note.content.length > 150 ? '...' : '');
+      const charCount = note.content.length;
+
+      return `
+        <div class="note-card" style="background:rgba(118,221,255,0.05);border:1px solid rgba(118,221,255,0.2);border-radius:8px;padding:1.5rem;margin-bottom:1rem">
+          <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.75rem">
+            <h4 style="margin:0;font-size:1rem">${note.lessonTitle || 'Untitled Lesson'}</h4>
+            <span style="font-size:0.75rem;color:var(--muted);white-space:nowrap;margin-left:1rem">${date.toLocaleDateString()}</span>
+          </div>
+          <p style="margin:0.5rem 0;font-size:0.9rem;color:var(--muted);line-height:1.5">${preview}</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem">
+            <span style="font-size:0.8rem;color:var(--muted)">${charCount} characters</span>
+            <a href="${note.lessonUrl || '#'}" class="btn btn-sm btn-ghost">View Lesson →</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    logger.log(`[Library] Displayed ${notesArray.length} notes`);
+  }
+
   // Initialize on page load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
@@ -365,6 +432,7 @@
     addBookmarkButton();
     addFavoriteButton();
     addPrintButton();
+    displayNotes();
     logger.log('[Library] Initialized');
   }
 
