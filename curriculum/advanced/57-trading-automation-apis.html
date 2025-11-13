@@ -142,7 +142,6 @@
         <p>You now understand the core concepts.</p>
         <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
       </div>
-
 <h3>Step 1: Connect to Alpaca API</h3>
 
       <pre style="overflow-x:auto"><code>import alpaca_trade_api as tradeapi
@@ -320,8 +319,7 @@ run_bot()</code></pre>
       </div>
 
       <div class="section-break"><span>Part 4: Production Deployment (The Hard Part)</span></div>
-
-      <h2 id="paper-trading-live-trading">Paper Trading ≠ Live Trading</h2>
+<h2 id="paper-trading-live-trading">Paper Trading ≠ Live Trading</h2>
 
       <p>Your bot works perfectly in paper trading. You deploy it live. It crashes. Orders get rejected. You're confused.</p>
 
@@ -358,8 +356,7 @@ run_bot()</code></pre>
           </div>
         </div>
       </div>
-
-      <h3>Retry Logic (Essential)</h3>
+<h3>Retry Logic (Essential)</h3>
 
       <pre style="overflow-x:auto"><code>def place_order_with_retry(api, **order_params):
     """Retry order placement up to 3 times"""
@@ -432,8 +429,7 @@ except Exception as e:
         </ul>
         <p>Code this. Test it. Your account depends on it.</p>
       </div>
-
-      <h3>Hosting: Where to Run Your Bot</h3>
+<h3>Hosting: Where to Run Your Bot</h3>
 
       <div class="tabs">
         <div class="tabs-nav">
@@ -465,8 +461,7 @@ except Exception as e:
       </div>
 
       <div class="section-break"><span>Part 5: The Reality Check</span></div>
-
-      <h2 id="automation-isnt-set-and-forget">Automation Isn't Set-and-Forget</h2>
+<h2 id="automation-isnt-set-and-forget">Automation Isn't Set-and-Forget</h2>
 
       <p>You deploy your bot. It trades for a month. Success rate: 65%. Just like backtest. You're thrilled.</p>
 
@@ -481,9 +476,6 @@ except Exception as e:
         <p>Automation amplifies your edge. But it doesn't adapt to regime changes automatically.</p>
         <p>You still need to monitor, review, and adjust. Just less frequently.</p>
       </div>
-
-      
-
 <h3>Monthly Bot Maintenance Checklist</h3>
 
       <div class="accordion">

@@ -109,7 +109,6 @@
           <li>Framework: Calculate impact = k × √(shares/ADV) where k=0.1-0.5 → If >0.5%, split order</li>
         </ul>
       </div>
-
 <h2 id="part-1-what-is-market-impact">Part 1: What Is Market Impact?</h2>
 
   <h3>Definition & Components</h3>
@@ -146,8 +145,7 @@
   <div class="callout callout-info">
     <p><strong>💡 Key Insight:</strong> For institutional traders, market impact often exceeds spread + commission by 10-100×. A $50M order might cause 0.5-2% slippage = $250K-$1M cost.</p>
   </div>
-
-  <h3>Temporary vs Permanent Impact</h3>
+<h3>Temporary vs Permanent Impact</h3>
 
   <p><strong>Temporary impact:</strong> Price movement during execution that <strong>reverts after</strong> your order completes. Caused by temporary supply/demand imbalance. Liquidity providers step in to absorb the imbalance, returning price to fair value.</p>
 
@@ -221,8 +219,7 @@
     <p>When you execute large orders, the market reverse-engineers your intent. If market thinks you're informed (hedge fund buying on insider info), permanent impact skyrockets. If market thinks you're uninformed (index fund rebalancing), permanent impact is minimal.</p>
     <p><strong>Defense:</strong> Disguise your orders using randomized timing, splitting across venues (dark pools + lit exchanges), and varying order sizes to look like noise rather than signal.</p>
   </div>
-
-  <h2 id="part-15-the-427000-lessonmichaels-market-order-disaster">Part 1.5: The $427,000 Lesson—Michael's Market Order Disaster</h2>
+<h2 id="part-15-the-427000-lessonmichaels-market-order-disaster">Part 1.5: The $427,000 Lesson—Michael's Market Order Disaster</h2>
 
   <p><strong>Michael Rodriguez, portfolio manager at a $50M hedge fund, March 2024.</strong> Needed to build a $5M position in NVDA (approximately 38,500 shares @ $130). Used market orders. Lost $427,000 to market impact in 45 minutes.</p>
 
@@ -250,8 +247,7 @@
       <li>Order hits exchange, starts eating through order book</li>
     </ul>
   </div>
-
-  <h3>The Timeline: How a "Small" Order Caused $427K Slippage</h3>
+<h3>The Timeline: How a "Small" Order Caused $427K Slippage</h3>
 
   <pre style="overflow-x:auto">MARCH 14, 2024 - 10:30-11:15 AM: MICHAEL'S NVDA EXECUTION DISASTER
 
@@ -455,8 +451,7 @@ COMBINED TOTAL: $427,000 lost to market impact in ONE DAY
       <li>Total combined impact: $427,000 in one day</li>
     </ul>
   </div>
-
-  <h3>Michael's Recovery: Learning Professional Execution (6 Months Later)</h3>
+<h3>Michael's Recovery: Learning Professional Execution (6 Months Later)</h3>
 
   <p>After his$427K disaster, Michael spent 4 months studying market impact models, algo execution, and working with an execution consultant. By September 2024, he had rebuilt his process.</p>
 
@@ -597,8 +592,7 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
 </div>
     <p><em>"I lost $427,000 in one day because I didn't respect market microstructure. I thought 0.02% of daily volume meant 'no impact.' Wrong. Intraday volume fluctuates massively. My 'small' order was 5% of the 5-minute volume, which exhausted the order book and triggered HFT predators. Once I learned to use square-root models, VWAP algos, and avoid low-volume periods, my execution costs dropped 95%. I've saved $800K+ in 6 months just by executing intelligently. That $427K loss was the best education I ever bought."</em></p>
   </div>
-
-  <h2 id="part-2-market-impact-models">Part 2: Market Impact Models</h2>
+<h2 id="part-2-market-impact-models">Part 2: Market Impact Models</h2>
 
   <h3>Model #1: Square-Root Law (Simplest)</h3>
   <p><strong>Formula:</strong> Impact = σ × √(Q / V)</p>
@@ -684,8 +678,7 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
 
     <p><strong>Lesson:</strong> There's an <strong>optimal execution speed</strong> that minimizes total cost. Too fast = high impact. Too slow = high risk. Almgren-Chriss finds the balance.</p>
   </div>
-
-  <h3>Model #3: Kyle's Lambda (Information-Based)</h3>
+<h3>Model #3: Kyle's Lambda (Information-Based)</h3>
   <p><strong>Concept:</strong> Market infers information from order flow → permanent impact</p>
   <p><strong>Formula:</strong> Δp = λ × Q</p>
   <ul>
@@ -711,8 +704,7 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
   <div class="callout">
     <p><strong>⚠️ Professional Limit:</strong> Most institutions avoid exceeding 5-10% of daily volume in single stock to minimize footprint. Larger orders split across multiple days.</p>
   </div>
-
-  <h3>Volume Curve (Intraday Variation)</h3>
+<h3>Volume Curve (Intraday Variation)</h3>
   <p><strong>Observation:</strong> Volume is NOT constant throughout the day</p>
 
   <table style="width:100%">
@@ -880,8 +872,7 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
     </ul>
     <p style="margin-top:1rem"><strong>Trade-off:</strong> Higher execution risk (price might rally during 5 days), but much lower market impact. Use when conviction is high and time horizon is long.</p>
   </div>
-
-  <h2 id="part-45-detecting-and-avoiding-hft-predators">Part 4.5: Detecting and Avoiding HFT Predators</h2>
+<h2 id="part-45-detecting-and-avoiding-hft-predators">Part 4.5: Detecting and Avoiding HFT Predators</h2>
 
   <h3>How HFTs Detect Large Orders</h3>
   <p>High-frequency trading firms use pattern recognition to identify institutional orders, then front-run them for profit.</p>
@@ -903,8 +894,7 @@ has liquidity. Listen to it, blend in, and you pay minimal impact."
     <p><strong>Step 5:</strong> HFT sells 10,000 shares @ $100.15 to you → $1,500 profit (stolen from you)</p>
     <p style="margin-top:1rem"><strong>Defense:</strong> Randomize timing, vary order sizes, split across multiple venues/algos, use dark pools for larger clips</p>
   </div>
-
-  <h3>Anti-Gaming Execution Tactics</h3>
+<h3>Anti-Gaming Execution Tactics</h3>
 
   <details class="accordion">
     <summary>Tactic #1: Randomized TWAP (Time Variation)</summary>
@@ -1006,9 +996,7 @@ Result: 10-20% lower impact vs standard TWAP
       </details>
     </div>
   </div>
-      
-
-  <h2 id="practical-checklist">Practical Checklist</h2>
+<h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>Before Executing Large Orders:</h4>
     <ul>
