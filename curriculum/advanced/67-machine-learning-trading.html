@@ -106,7 +106,6 @@
           <li>Framework: Engineer 20+ features → Cross-validate → Select best model → Walk-forward test</li>
         </ul>
       </div>
-
 <h2 id="part-1-why-machine-learning-in-trading">Part 1: Why Machine Learning in Trading?</h2>
 
   <h3>What ML Can Do Better Than Humans</h3>
@@ -150,8 +149,7 @@
 
     <p><strong>What YOU can do:</strong> Focus on simpler ML (random forest, XGBoost) with 10-20 well-engineered features on daily/4H data. Don't try to build neural networks with 100 features and 5,000 samples—that's guaranteed overfitting.</p>
   </div>
-
-  <h2 id="part-2-ml-model-types-for-trading">Part 2: ML Model Types for Trading</h2>
+<h2 id="part-2-ml-model-types-for-trading">Part 2: ML Model Types for Trading</h2>
 
   <h3>Model #1: Random Forests (Most Practical)</h3>
   <p><strong>How it works:</strong> Ensemble of decision trees, each trained on random subset of data. Each tree votes on the prediction, final result is majority vote (classification) or average (regression).</p>
@@ -268,8 +266,7 @@
 
 
   </div>
-
-  <h3>Model #2: Neural Networks (High Complpotential exity)</h3>
+<h3>Model #2: Neural Networks (High Complpotential exity)</h3>
   <p><strong>How it works:</strong> Layers of interconnected nodes learn representations of data</p>
   <p><strong>Strengths:</strong></p>
   <ul>
@@ -288,8 +285,7 @@
   <div class="callout">
     <p><strong>📊 Reality Check:</strong> Most retail traders have &lt;5,000 training samples (daily bars). Neural networks need 50K+ to avoid overfitting. Use simpler models (random forest, logistic regression) instead.</p>
   </div>
-
-  <h3>Model #3: Gradient Boosting (XGBoost, LightGBM)</h3>
+<h3>Model #3: Gradient Boosting (XGBoost, LightGBM)</h3>
   <p><strong>How it works:</strong> Sequentially builds trees, each correcting errors of previous</p>
   <p><strong>Strengths:</strong></p>
   <ul>
@@ -439,8 +435,7 @@
       </div>
     </details>
   </div>
-
-  <h2 id="part-4-the-overfitting-epidemic">Part 4: The Overfitting Epidemic</h2>
+<h2 id="part-4-the-overfitting-epidemic">Part 4: The Overfitting Epidemic</h2>
 
   <h3>How Overfitting Happens in ML Trading</h3>
   <p><strong>Scenario:</strong></p>
@@ -455,8 +450,7 @@
   <div class="callout">
     <p><strong>🔥 The Curse:</strong> More parameters than samples = guaranteed overfitting. If you have 2,500 samples, use MAX 25-50 features (10-100× ratio rule).</p>
   </div>
-
-  <h3>Detecting Overfitting</h3>
+<h3>Detecting Overfitting</h3>
   <table style="width:100%">
     <thead>
       <tr>
@@ -572,8 +566,7 @@
       </details>
     </div>
   </div>
-
-  <h2 id="practical-checklist">Practical Checklist</h2>
+<h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>Before Training ML Model:</h4>
     <ul>

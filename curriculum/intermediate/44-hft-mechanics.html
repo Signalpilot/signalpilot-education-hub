@@ -62,7 +62,7 @@
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
     <span class="badge">🟡 Intermediate • Lesson 44 of 82</span>
   </div>
-  <h1 class="headline xl">High-Frequency Trading: The Microsecond Arms Race</h1>
+<h1 class="headline xl">High-Frequency Trading: The Microsecond Arms Race</h1>
   <p><b>By the time you click "buy," HFT algos have already traded that stock 10,000 times.</b></p>
       <!-- Article Progress Indicator -->
       <div class="article-progress" style="--progress:0%">
@@ -160,7 +160,6 @@
       <strong>Jordan's Lesson:</strong> "I thought slippage was normal. Turns out I was paying an $11K/year HFT tax. The moment I saw spreads widen or quote count spike on Signal Pilot, I'd wait 30 seconds. That simple change saved me $5K in one month. You can't beat HFT on speed, but you can avoid trading when they're hunting."
     </p>
   </div>
-
 <h2 id="part-1-what-is-hft">Part 1: What Is HFT?</h2>
 
   <h3 id="definition-scale">Definition & Scale</h3>
@@ -222,8 +221,7 @@
     </ul>
     <p><strong>Result:</strong> Win rate of 95%+ because they only take statistically favorable trades</p>
   </div>
-
-  <h3 id="key-hft-strategies">Key HFT Strategies</h3>
+<h3 id="key-hft-strategies">Key HFT Strategies</h3>
 
   <p><strong>1. Market Making (40% of HFT volume)</strong></p>
   <ul>
@@ -359,8 +357,7 @@
     </ul>
     <p><strong>Reality:</strong> HFT firms see your order 50,000x-200,000x faster than you see theirs</p>
   </div>
-
-  <h3 id="colocation-infrastructure">Colocation & Infrastructure</h3>
+<h3 id="colocation-infrastructure">Colocation & Infrastructure</h3>
   <p><strong>Colocation:</strong> Placing servers physically next to exchange matching engines</p>
   <p><strong>Cost:</strong> $10,000-100,000/month per rack at NYSE, Nasdaq data centers</p>
   <p><strong>Why:</strong> Reduces latency from 10ms → 0.5ms (20x faster)</p>
@@ -455,8 +452,7 @@
       <li><strong>Institution's cost:</strong> Extra $175,000 in slippage ($0.35 × 500,000 shares)</li>
     </ul>
   </div>
-
-  <h3 id="tactic-2-latency-arbitrage-cross-venue">Tactic #2: Latency Arbitrage (Cross-Venue)</h3>
+<h3 id="tactic-2-latency-arbitrage-cross-venue">Tactic #2: Latency Arbitrage (Cross-Venue)</h3>
   <p><strong>Setup:</strong> Stock trades on 13+ exchanges (NYSE, Nasdaq, BATS, IEX, EDGX, EDGA, CHX, NSX, dark pools)</p>
   <p><strong>Exploit:</strong> Price updates don't arrive simultaneously across all venues</p>
 
@@ -476,8 +472,7 @@
   <div class="callout">
     <p><strong>🎯 Defense:</strong> IEX (Investors Exchange) adds 350-microsecond "speed bump" to prevent latency arbitrage. Route orders through IEX to avoid being HFT prey. The speed bump delays ALL orders equally, so HFT firms can't exploit microsecond advantages.</p>
   </div>
-
-  <h3 id="tactic-3-quote-stuffing">Tactic #3: Quote Stuffing</h3>
+<h3 id="tactic-3-quote-stuffing">Tactic #3: Quote Stuffing</h3>
   <p><strong>What:</strong> Flood market with fake orders, cancel before execution</p>
   <p><strong>Why:</strong> Slow down competitor algos (create processing delays while they parse fake orders)</p>
   <p><strong>Scale:</strong> HFTs can place 10,000-25,000 orders/second, cancel 99.9% before execution</p>
@@ -595,8 +590,7 @@
     </tbody>
   </table>
   </div>
-
-  <h3 id="how-to-defend-against-hfts">How to Defend Against HFTs</h3>
+<h3 id="how-to-defend-against-hfts">How to Defend Against HFTs</h3>
 
   <details class="accordion">
     <summary>Defense #1: Use Limit Orders Only</summary>
@@ -736,7 +730,8 @@
       <p><strong>Opportunity:</strong> Yes, but not by front-running (you can't compete with HFT speed). Instead, recognize institution wants to own NVDA → likely bullish for next 1-5 days. Enter swing trade after institutional accumulation completes (around 12:00 PM when TWAP algo finishes), targeting +2-5% move over 3-5 days.</p>
       <p><strong>Risk:</strong> Institution may be selling (not buying) via same TWAP pattern. Confirm direction using Signal Pilot Pilot Line (net institutional flow).</p>
     </details>
-  </div><h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
+  </div>
+<h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
   <div class="quiz">
     <div class="quiz-question">
       <p><strong>Q1:</strong> You place a market buy order for 1,000 shares of AAPL (bid $150.00, ask $150.05). You get filled at $150.12. What happened?</p>
@@ -778,8 +773,7 @@
       </details>
     </div>
   </div>
-
-  <h2 id="practical-checklist">Practical Checklist</h2><div class="checklist">
+<h2 id="practical-checklist">Practical Checklist</h2><div class="checklist">
     <h4>Before Every Trade:</h4>
     <ul>
       <li><strong>✓ Use limit orders ONLY</strong> (never market orders on volatile stocks or low-liquidity periods)</li>
