@@ -379,6 +379,98 @@
         <li>Trading the Liquidity Cycle (3 practical strategies)</li>
       </ul>
 
+      <div style="background:rgba(139,92,246,0.05);padding:2rem;border-radius:12px;margin:2rem 0;border:2px solid rgba(139,92,246,0.2)">
+        <h4 style="margin-top:0;text-anchor:center">🔄 The Fed Policy Cycle & Market Impact</h4>
+        <svg viewBox="0 0 700 700" style="width:100%;max-width:700px;margin:0 auto;display:block">
+          <!-- Central Fed circle -->
+          <circle cx="350" cy="350" r="80" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="3"/>
+          <text x="350" y="340" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">Federal</text>
+          <text x="350" y="360" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">Reserve</text>
+          <text x="350" y="380" text-anchor="middle" fill="currentColor" font-size="11">Policy Cycle</text>
+
+          <!-- Phase 1: QE / Easy Money (Top) -->
+          <ellipse cx="350" cy="100" rx="130" ry="60" fill="#22c55e" opacity="0.15" stroke="#22c55e" stroke-width="3"/>
+          <text x="350" y="85" text-anchor="middle" fill="#22c55e" font-size="15" font-weight="bold">PHASE 1: QE</text>
+          <text x="350" y="105" text-anchor="middle" fill="currentColor" font-size="12">Quantitative Easing</text>
+          <text x="350" y="122" text-anchor="middle" fill="currentColor" font-size="10">Balance sheet ↑ / Rates ↓</text>
+
+          <!-- Arrow from center to Phase 1 -->
+          <line x1="350" y1="270" x2="350" y2="170" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow41)"/>
+          <text x="365" y="220" text-anchor="start" fill="currentColor" font-size="10">Crisis /</text>
+          <text x="365" y="235" text-anchor="start" fill="currentColor" font-size="10">Recession</text>
+
+          <!-- Market impact for Phase 1 -->
+          <rect x="220" y="30" width="260" height="35" rx="8" fill="#22c55e" opacity="0.2" stroke="#22c55e" stroke-width="2"/>
+          <text x="350" y="53" text-anchor="middle" fill="#22c55e" font-size="13" font-weight="bold">📈 RISK-ON: Stocks ↑ Crypto ↑ Growth ↑</text>
+
+          <!-- Phase 2: Pause / Peak Liquidity (Right) -->
+          <ellipse cx="600" cy="350" rx="70" ry="100" fill="#fbbf24" opacity="0.15" stroke="#fbbf24" stroke-width="3"/>
+          <text x="600" y="340" text-anchor="middle" fill="#fbbf24" font-size="15" font-weight="bold">PHASE 2</text>
+          <text x="600" y="358" text-anchor="middle" fill="currentColor" font-size="12">Pause</text>
+          <text x="600" y="375" text-anchor="middle" fill="currentColor" font-size="10">Rates stable</text>
+
+          <!-- Curved arrow from Phase 1 to Phase 2 -->
+          <path d="M 460 130 Q 550 180 560 280" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow41)"/>
+          <text x="520" y="190" text-anchor="middle" fill="currentColor" font-size="10">Economy</text>
+          <text x="520" y="205" text-anchor="middle" fill="currentColor" font-size="10">recovers</text>
+
+          <!-- Market impact for Phase 2 -->
+          <rect x="575" y="235" width="120" height="35" rx="8" fill="#fbbf24" opacity="0.2" stroke="#fbbf24" stroke-width="2"/>
+          <text x="635" y="258" text-anchor="middle" fill="currentColor" font-size="11" font-weight="600">⚠️ Peak euphoria</text>
+
+          <!-- Phase 3: QT / Tightening (Bottom) -->
+          <ellipse cx="350" cy="600" rx="130" ry="60" fill="#ef4444" opacity="0.15" stroke="#ef4444" stroke-width="3"/>
+          <text x="350" y="585" text-anchor="middle" fill="#ef4444" font-size="15" font-weight="bold">PHASE 3: QT</text>
+          <text x="350" y="605" text-anchor="middle" fill="currentColor" font-size="12">Quantitative Tightening</text>
+          <text x="350" y="622" text-anchor="middle" fill="currentColor" font-size="10">Balance sheet ↓ / Rates ↑</text>
+
+          <!-- Curved arrow from Phase 2 to Phase 3 -->
+          <path d="M 560 420 Q 500 520 410 560" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow41)"/>
+          <text x="510" y="490" text-anchor="middle" fill="currentColor" font-size="10">Inflation ↑</text>
+          <text x="510" y="505" text-anchor="middle" fill="currentColor" font-size="10">Fed fights it</text>
+
+          <!-- Market impact for Phase 3 -->
+          <rect x="220" y="635" width="260" height="35" rx="8" fill="#ef4444" opacity="0.2" stroke="#ef4444" stroke-width="2"/>
+          <text x="350" y="658" text-anchor="middle" fill="#ef4444" font-size="13" font-weight="bold">📉 RISK-OFF: Stocks ↓ Crypto ↓ Growth ↓</text>
+
+          <!-- Phase 4: Fed Put / Pivot (Left) -->
+          <ellipse cx="100" cy="350" rx="70" ry="100" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="3"/>
+          <text x="100" y="335" text-anchor="middle" fill="#8b5cf6" font-size="15" font-weight="bold">PHASE 4</text>
+          <text x="100" y="353" text-anchor="middle" fill="currentColor" font-size="12">Fed Put</text>
+          <text x="100" y="370" text-anchor="middle" fill="currentColor" font-size="10">Pivot signal</text>
+
+          <!-- Curved arrow from Phase 3 to Phase 4 -->
+          <path d="M 240 560 Q 150 510 140 420" fill="none" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow41)"/>
+          <text x="180" y="490" text-anchor="middle" fill="currentColor" font-size="10">Crash</text>
+          <text x="180" y="505" text-anchor="middle" fill="currentColor" font-size="10">-20%+</text>
+
+          <!-- Market impact for Phase 4 -->
+          <rect x="5" y="235" width="120" height="35" rx="8" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="2"/>
+          <text x="65" y="258" text-anchor="middle" fill="currentColor" font-size="11" font-weight="600">🔄 Pivot coming</text>
+
+          <!-- Curved arrow from Phase 4 back to Phase 1 (completing the cycle) -->
+          <path d="M 140 280 Q 180 180 250 130" fill="none" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow41)"/>
+          <text x="165" y="200" text-anchor="middle" fill="currentColor" font-size="10">Fed pivots</text>
+          <text x="165" y="215" text-anchor="middle" fill="currentColor" font-size="10">to QE</text>
+
+          <!-- Key dates examples (small annotations) -->
+          <text x="350" y="145" text-anchor="middle" fill="currentColor" font-size="9" font-style="italic">(2020-2021, 2008-2014)</text>
+          <text x="350" y="565" text-anchor="middle" fill="currentColor" font-size="9" font-style="italic">(2022-2023, 2018)</text>
+
+          <!-- Timeline note at bottom -->
+          <rect x="175" y="685" width="350" height="10" rx="5" fill="currentColor" opacity="0.1"/>
+          <text x="350" y="693" text-anchor="middle" fill="currentColor" font-size="9">Complete cycle: 3-10 years | Current phase determines your trading bias</text>
+
+          <!-- Arrow definition -->
+          <defs>
+            <marker id="arrow41" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="currentColor"/>
+            </marker>
+          </defs>
+        </svg>
+        <p style="text-align:center;margin-top:1.5rem;font-size:0.9rem;color:var(--muted)"><strong>Trading rule:</strong> Identify current phase using Fed balance sheet data (FRED: WALCL). Phase 1-2 = stay long. Phase 3 = reduce exposure or short. Phase 4 = watch for pivot signal.</p>
+      </div>
+
       <div class="callout-warning">
       <div class="callout-warning">
         <h4>📉 CASE STUDY: Michael's $117K "Fighting the Fed" Disaster (2022)</h4>
