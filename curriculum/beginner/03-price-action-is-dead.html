@@ -140,17 +140,177 @@
 
       <p>You see a bullish engulfing candle. Volume is high. Textbook setup, right?</p>
 
-      <p>You a long position might be considered.</p>
+      <p>You enter long.</p>
 
       <p>Price immediately reverses and stops you out.</p>
 
       <p>Sound familiar?</p>
 
-      <div class="callout-key">
-        <h4>💡 Why Icebergs Matter</h4>
-        <p>Institutions don't show their full size because it would scare away counterparties.</p>
-        <p>But if you can <em>detect</em> the iceberg, you know where they're positioned. And you can trade with them.</p>
+      <p><strong>The candle looked perfect. But the order flow told a different story—one you never checked.</strong></p>
+
+      <h3 id="reading-time-and-sales-the-tape">Reading Time & Sales: The Tape</h3>
+
+      <p>Time & Sales shows every single trade as it happens. But the key isn't the trades—it's WHO was aggressive.</p>
+
+      <div class="callout-info" style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h4>📖 Aggressor Detection 101</h4>
+        <p><strong>Aggressive buyer:</strong> Hits the ASK with a market order (can't wait, NEEDS to get filled now)</p>
+        <p style="margin-top:0.5rem"><strong>Aggressive seller:</strong> Hits the BID with a market order (urgent exit or short position)</p>
+        <p style="margin-top:1rem"><strong>Why it matters:</strong> Aggressive = conviction. Passive limit orders = "I'll trade if price comes to me." Big difference.</p>
       </div>
+
+      <h4>Example: Bullish Engulfing with Hidden Distribution</h4>
+
+      <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem;font-family:monospace">
+        <caption style="font-weight:600;margin-bottom:1rem">Time & Sales Tape - What Marcus Missed (Mar 6, 10:15 AM)</caption>
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.5rem;text-align:left">Time</th>
+            <th style="padding:0.5rem;text-align:right">Price</th>
+            <th style="padding:0.5rem;text-align:right">Size</th>
+            <th style="padding:0.5rem;text-align:left">Side</th>
+            <th style="padding:0.5rem;text-align:left">What It Means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.5rem">10:15:02</td>
+            <td style="padding:0.5rem;text-align:right">3990.25</td>
+            <td style="padding:0.5rem;text-align:right">450</td>
+            <td style="padding:0.5rem;color:#22c55e">BUY (ask)</td>
+            <td style="padding:0.5rem">Retail FOMO</td>
+          </tr>
+          <tr style="background:rgba(255,107,107,0.08)">
+            <td style="padding:0.5rem">10:15:03</td>
+            <td style="padding:0.5rem;text-align:right">3990.50</td>
+            <td style="padding:0.5rem;text-align:right;font-weight:600">2,200</td>
+            <td style="padding:0.5rem;color:#ff6b6b;font-weight:600">SELL (bid)</td>
+            <td style="padding:0.5rem;color:#ff6b6b">Institution dumping</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem">10:15:04</td>
+            <td style="padding:0.5rem;text-align:right">3991.00</td>
+            <td style="padding:0.5rem;text-align:right">820</td>
+            <td style="padding:0.5rem;color:#22c55e">BUY (ask)</td>
+            <td style="padding:0.5rem">More retail</td>
+          </tr>
+          <tr style="background:rgba(255,107,107,0.08)">
+            <td style="padding:0.5rem">10:15:06</td>
+            <td style="padding:0.5rem;text-align:right">3991.25</td>
+            <td style="padding:0.5rem;text-align:right;font-weight:600">3,100</td>
+            <td style="padding:0.5rem;color:#ff6b6b;font-weight:600">SELL (bid)</td>
+            <td style="padding:0.5rem;color:#ff6b6b">More distribution</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem">10:15:08</td>
+            <td style="padding:0.5rem;text-align:right">3991.75</td>
+            <td style="padding:0.5rem;text-align:right">580</td>
+            <td style="padding:0.5rem;color:#22c55e">BUY (ask)</td>
+            <td style="padding:0.5rem">Last buyers</td>
+          </tr>
+          <tr style="background:rgba(255,107,107,0.12)">
+            <td style="padding:0.5rem"><strong>10:15:12</strong></td>
+            <td style="padding:0.5rem;text-align:right"><strong>3992.00</strong></td>
+            <td style="padding:0.5rem;text-align:right;font-weight:600">4,850</td>
+            <td style="padding:0.5rem;color:#ff6b6b;font-weight:600">SELL (bid)</td>
+            <td style="padding:0.5rem;color:#ff6b6b"><strong>Massive dump at top</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="key-insight" style="margin-top:1rem">
+        <strong>The Pattern:</strong> Small retail buys (450-820 contracts) vs large institutional sells (2,200-4,850 contracts).<br>
+        <strong>The Delta:</strong> +1,850 buy volume vs -10,150 sell volume = <span style="color:#ff6b6b;font-weight:600">-8,300 net delta</span><br>
+        <strong>The Candle:</strong> Bullish engulfing (looked perfect!)<br>
+        <strong>The Reality:</strong> Distribution. Institutions selling into retail enthusiasm.
+      </div>
+
+      <h3 id="footprint-charts-volume-at-every-price">Footprint Charts: Volume at Every Price</h3>
+
+      <p>Footprint charts show buy vs sell volume INSIDE each candle, at each price tick. Here's what Marcus's "perfect" bullish candle actually looked like:</p>
+
+      <div style="background:rgba(0,0,0,0.2);padding:1.5rem;border-radius:8px;margin:2rem 0;font-family:monospace;font-size:0.85rem">
+        <div style="margin-bottom:1rem;font-weight:600">Footprint: ES Mar 6, 10:15 AM Candle (3990-3992 range)</div>
+        <table style="width:100%;max-width:400px;border-collapse:collapse">
+          <thead>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.2)">
+              <th style="padding:0.3rem;text-align:right">Price</th>
+              <th style="padding:0.3rem;text-align:right;color:#22c55e">Buy Vol</th>
+              <th style="padding:0.3rem;text-align:right;color:#ff6b6b">Sell Vol</th>
+              <th style="padding:0.3rem;text-align:right">Delta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:rgba(255,107,107,0.15)">
+              <td style="padding:0.3rem;text-align:right;font-weight:600">3992.00</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e">820</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b;font-weight:700">5,400</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b;font-weight:600">-4,580</td>
+            </tr>
+            <tr style="background:rgba(255,107,107,0.12)">
+              <td style="padding:0.3rem;text-align:right">3991.75</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e">640</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b;font-weight:600">2,850</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b">-2,210</td>
+            </tr>
+            <tr style="background:rgba(255,107,107,0.08)">
+              <td style="padding:0.3rem;text-align:right">3991.50</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e">1,020</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b">2,200</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b">-1,180</td>
+            </tr>
+            <tr>
+              <td style="padding:0.3rem;text-align:right">3991.25</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e">1,450</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b">1,100</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e">+350</td>
+            </tr>
+            <tr>
+              <td style="padding:0.3rem;text-align:right">3991.00</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e">1,820</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b">890</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e">+930</td>
+            </tr>
+            <tr style="background:rgba(34,197,94,0.08)">
+              <td style="padding:0.3rem;text-align:right">3990.75</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e;font-weight:600">2,100</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b">650</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e;font-weight:600">+1,450</td>
+            </tr>
+            <tr style="background:rgba(34,197,94,0.08)">
+              <td style="padding:0.3rem;text-align:right">3990.50</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e;font-weight:600">1,850</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b">420</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e;font-weight:600">+1,430</td>
+            </tr>
+            <tr>
+              <td style="padding:0.3rem;text-align:right">3990.25</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e">980</td>
+              <td style="padding:0.3rem;text-align:right;color:#ff6b6b">540</td>
+              <td style="padding:0.3rem;text-align:right;color:#22c55e">+440</td>
+            </tr>
+            <tr style="border-top:2px solid rgba(255,255,255,0.3);font-weight:600">
+              <td style="padding:0.5rem;text-align:right">TOTAL</td>
+              <td style="padding:0.5rem;text-align:right;color:#22c55e">10,680</td>
+              <td style="padding:0.5rem;text-align:right;color:#ff6b6b">14,050</td>
+              <td style="padding:0.5rem;text-align:right;color:#ff6b6b">-3,370</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 What the Footprint Reveals</h4>
+        <p><strong>The candle:</strong> Bullish engulfing from 3990.25 → 3992.00 (looks great!)</p>
+        <p style="margin-top:0.75rem"><strong>The footprint:</strong></p>
+        <ul style="margin:0.5rem 0 0 1.5rem">
+          <li><strong>Bottom of candle (3990-3991):</strong> Positive delta +2,210 (buyers active at lows = good)</li>
+          <li><strong>Top of candle (3991.50-3992):</strong> Massive negative delta -7,970 (sellers DUMPING at highs = bad)</li>
+          <li><strong>Net candle delta:</strong> -3,370 (more selling than buying overall)</li>
+        </ul>
+        <p style="margin-top:1rem;font-weight:600;color:#ff6b6b">Translation: Institutions let retail buy the bottom, then dumped everything at the top. The candle was a trap.</p>
+      </div>
+
 <div class="section-break"><span>Part 6: Volume Oracle Regime Integration</span></div>
 <h2 id="context-is-everything">Context is Everything</h2>
 
