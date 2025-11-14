@@ -53,6 +53,15 @@
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
       </div>
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#part-1-footprint-chart-architecture">Part 1: Footprint Chart Architecture</a>
+        <a href="#part-2-stacked-imbalancesabsorption-vs-exhaustion">Part 2: Stacked Imbalances</a>
+        <a href="#part-3-poc-migration-analysis">Part 3: POC Migration Analysis</a>
+        <a href="#part-4-footprint-divergencethe-ultimate-trap-detector">Part 4: Footprint Divergence</a>
+        <a href="#part-5-real-trade-integration">Part 5: Real Trade Integration</a>
+        <a href="#part-6-common-mistakes-advanced-tips">Part 6: Common Mistakes & Tips</a>
+      </nav>
     </aside>
   </div>
 </header>
@@ -110,9 +119,18 @@
         </ul>
       </div>
 
-        
-        
-        
+      <div class="callout-key">
+        <h4>⚡ Quick Wins for Tomorrow</h4>
+        <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+        <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Enable footprint chart on your platform</strong> — Most platforms (TradingView, Bookmap, Sierra Chart, NinjaTrader) have footprint/volume imbalance tools. Add it to ES or NQ chart. Just observe one session—no trading yet.</li>
+          <li><strong>Spot ONE stacked imbalance</strong> — Watch for 3+ consecutive price levels with same-sided imbalances (e.g., all bullish 3:1 ratios). Mark it on the chart. Did price continue (absorption) or reverse (exhaustion)?</li>
+          <li><strong>Track POC for 30 minutes</strong> — Watch how the highest-volume price (POC) shifts bar-to-bar. Is it climbing (bullish), descending (bearish), or stationary (balanced)? Compare POC direction to price movement.</li>
+        </ol>
+      </div>
+
+
+
       </div>
 
       <p class="lead"><b>Candlesticks show you WHAT happened. Footprint charts show you WHO made it happen—and WHY.</b></p>
@@ -406,6 +424,8 @@ $104.50      500 |    2200   4.4:1    Imbalance ✓
           <div><strong>Action:</strong> Wait for reversal, enter long on recovery</div>
         </div>
       </div>
+<h2 id="part-3-poc-migration-analysis">Part 3: POC Migration Analysis</h2>
+
 <h3 id="what-is-the-point-of-control-poc">What Is the Point of Control (POC)?</h3>
 
       <p>The <strong>Point of Control</strong> is the price level with the highest total volume within a given period (candle, session, or profile). It represents where the most trading activity occurred—where institutions did the most business.</p>
@@ -443,10 +463,6 @@ Expect continuation downward.
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0">
         <div style="background:rgba(34,197,94,.08);border:2px solid rgba(34,197,94,.2);border-radius:12px;padding:1.5rem">
           <div style="font-weight:700;margin-bottom:1rem;color:#22c55e">POC climbing</div>
-<div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-  <p>You're now at the halfway point. You've learned the key strategies.</p>
-  <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break if needed, then we'll dive into the advanced concepts ahead.</p>
-</div>
           <div style="margin-bottom:0.75rem"><strong>Interpretation:</strong> Institutions accumulating at higher prices</div>
           <div><strong>Trade Setup:</strong> Long bias—enter pullbacks to previous POC levels</div>
         </div>
@@ -558,6 +574,8 @@ Institutions NOT participating = TRAP.
         <li>✓ Previous trend was extended (divergence needs exhaustion context)</li>
         <li>✓ Market structure break confirms reversal (don't front-run the turn)</li>
       </ul>
+<h2 id="part-5-real-trade-integration">Part 5: Real Trade Integration</h2>
+
 <h3 id="footprint-doesnt-trade-in-isolation">Footprint Doesn't Trade in Isolation</h3>
 
       <p>Footprint charts show WHO is trading. Market structure shows WHERE. Combined, they form a complete trading system:</p>
@@ -739,6 +757,52 @@ Institutions absent at new high
           <li><strong>Divergence Detection:</strong> Find a recent chart where price made a new high or low. Check footprint volume at that extreme vs the previous extreme. Was there divergence? Did price reverse?</li>
           <li><strong>Full Trade Analysis:</strong> Pick one of your recent trades. Overlay footprint analysis. Did you enter at an imbalance zone? Was POC supporting your direction? Could you have improved potential entry/potential exit with footprint data?</li>
         </ol>
+      </div>
+
+      <div class="quiz-section">
+        <h4>✅ Knowledge Check</h4>
+
+        <div class="quiz-question">
+          <p><strong>Q1: You see 4 consecutive price levels showing 3:1+ buying imbalances (ask volume >> bid volume) at a key support level after a pullback in an uptrend. What does this signal?</strong></p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> A) Bullish exhaustion—retail FOMO buying at support, fade the move</label>
+            <label><input type="radio" name="q1" value="b"> B) Bearish absorption—institutions distributing, expect breakdown</label>
+            <label><input type="radio" name="q1" value="c"> C) Bullish absorption—institutions accumulating, enter long</label>
+            <label><input type="radio" name="q1" value="d"> D) No edge—imbalances at support are noise, wait for breakout</label>
+          </div>
+          <div class="quiz-explanation" style="display:none">
+            <strong>✅ Correct Answer: C) Bullish absorption—institutions accumulating, enter long</strong><br><br>
+            Stacked buying imbalances at support after a pullback = bullish absorption. Institutions are defending the level by buying everything retail sells. Context matters: support + pullback + stacked imbalances = continuation setup (not exhaustion). This is an A+ long entry zone—stop below imbalances, target previous highs or next resistance.
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q2: Price makes a new high at $4600 (ES futures), but the POC is stuck at $4585 (not following price higher). What does this POC divergence indicate?</strong></p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> A) Bullish signal—POC will catch up as institutions chase the breakout</label>
+            <label><input type="radio" name="q2" value="b"> B) Bearish signal—institutions NOT participating at new high, trap forming</label>
+            <label><input type="radio" name="q2" value="c"> C) Neutral signal—POC lag is normal, no edge</label>
+            <label><input type="radio" name="q2" value="d"> D) Bullish signal—institutions are hiding orders at lower POC to accumulate more</label>
+          </div>
+          <div class="quiz-explanation" style="display:none">
+            <strong>✅ Correct Answer: B) Bearish signal—institutions NOT participating at new high, trap forming</strong><br><br>
+            POC represents where the highest volume traded—where institutions do most business. If price makes new highs but POC doesn't follow, institutions are NOT participating at those highs. This is POC divergence, a classic trap pattern. Retail is pushing price up with small orders while smart money stays at lower prices. Expect reversal or breakdown. Derek's $28K disaster came from ignoring exactly this signal.
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q3: What's the critical difference between "absorption" and "exhaustion" when reading stacked imbalances?</strong></p>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> A) Absorption = imbalances at support/resistance, Exhaustion = imbalances mid-range</label>
+            <label><input type="radio" name="q3" value="b"> B) Absorption = institutions defending level (continuation), Exhaustion = retail panic at extremes (reversal)</label>
+            <label><input type="radio" name="q3" value="c"> C) Absorption = low volume imbalances, Exhaustion = high volume imbalances</label>
+            <label><input type="radio" name="q3" value="d"> D) Absorption = buying imbalances only, Exhaustion = selling imbalances only</label>
+          </div>
+          <div class="quiz-explanation" style="display:none">
+            <strong>✅ Correct Answer: B) Absorption = institutions defending level (continuation), Exhaustion = retail panic at extremes (reversal)</strong><br><br>
+            Context determines whether imbalances signal continuation or reversal. <strong>Absorption:</strong> Stacked imbalances at support (after pullback) or resistance (after rally) where institutions silently accumulate/distribute—expect continuation. <strong>Exhaustion:</strong> Stacked imbalances at extended extremes (new highs/lows after long moves) where retail panics—expect reversal. Same imbalance pattern, opposite meaning depending on location in structure. Always combine footprint with market structure to differentiate.
+          </div>
+        </div>
       </div>
 
       <div class="callout-info">
