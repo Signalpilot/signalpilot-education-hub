@@ -416,10 +416,6 @@
             </div>
             <div class="week-stats">Starting: $50,000 → Ending: $68,400 • ROI: +36.8%</div>
             <div class="week-issue">Consistent but underwhelming • Took 120 trades (including 18 C-grades that lost -$9,000) • "Working twice as hard for half the results"</div>
-<div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-  <p>You're now at the halfway point. You've learned the key strategies.</p>
-  <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break if needed, then we'll dive into the advanced concepts ahead.</p>
-</div>
           </div>
 
           <div class="timeline-week win" style="background:rgba(34,197,94,0.12);border-left:4px solid #22c55e">
@@ -494,6 +490,8 @@
       <p><em>"Risk 1-2% per trade. Never more. Be disciplined."</em></p>
 
       <p>Sounds smart, right? It's not wrong. But it's incomplete.</p>
+
+      <div class="section-break"><span>Part 3: ATR-Based Position Sizing</span></div>
 
 <h2 id="size-to-volatility-not-ego">Size to Volatility, Not Ego</h2>
 <p>Here's the formula professionals use:</p>
@@ -666,6 +664,19 @@
         </ul>
       </div>
 
+      <div class="callout-key">
+        <h4>⚡ Quick Wins for Tomorrow</h4>
+        <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+        <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Calculate next trade size</strong> — Before entering: (Account × 2%) ÷ (Entry - Stop) = Position Size. Write it down.</li>
+          <li><strong>Grade your setup</strong> — A-grade = 2% risk. B-grade = 1% risk. C-grade = skip entirely.</li>
+          <li><strong>Check portfolio heat</strong> — Add up all open position risks. If >6%, close something or wait.</li>
+        </ol>
+        <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)">
+          After 10 trades with calculated position sizing, you'll see the difference. Wins will be bigger on A-grades, losses will be controlled. This is how you build compounding.
+        </p>
+      </div>
+
       <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">Position sizing isn't sexy. It's not exciting. But it's the difference between surviving 10 years in the market and blowing up in year 1.</p>
 
       <div class="section-break"><span>Test Your Understanding</span></div>
@@ -683,6 +694,32 @@
           </div>
           <div class="quiz-feedback">
             <strong>Correct!</strong> Stop distance = 2× ATR = 2 × $1.50 = $3.00. Position size = $200 / $3.00 = 66.67 ≈ 67 shares. This ensures if you're stopped out, you lose exactly $200 (2% of account).
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q: Why is risking a fixed 1% on every trade considered "amateur hour"?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Because professionals always risk more</div>
+            <div class="quiz-option" data-correct="true">B) Because it treats A-grade and C-grade setups the same, missing opportunities on high-quality setups</div>
+            <div class="quiz-option" data-correct="false">C) Because 1% is too conservative</div>
+            <div class="quiz-option" data-correct="false">D) Because it doesn't account for account size</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Fixed 1% sizing treats all setups equally. A-grade setups (3+ confluences, high win rate) deserve 2% risk to maximize profits when your edge is strongest. C-grade setups should be skipped entirely. Jamie made $18,800 more than Alex in 6 months by sizing to setup quality, not using fixed 1%.
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q: What is portfolio heat and what's the maximum you should risk?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) The temperature of your trading account; no maximum</div>
+            <div class="quiz-option" data-correct="true">B) Total risk across ALL open positions; maximum 6%</div>
+            <div class="quiz-option" data-correct="false">C) The risk on your largest position; maximum 10%</div>
+            <div class="quiz-option" data-correct="false">D) The number of trades you have open; maximum 5</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Portfolio heat = total risk across ALL open positions combined. If you have 3 positions risking 2%, 1.5%, and 1%, your heat is 4.5%. Never exceed 6% total portfolio heat. This prevents catastrophic drawdowns when multiple positions stop out simultaneously during market-wide events.
           </div>
         </div>
 
@@ -741,6 +778,15 @@
   </details>
 
     <aside class="toc-sidebar">
+      <h4 style="margin:0 0 1rem 0;font-size:0.9rem;text-transform:uppercase;color:var(--muted)">Contents</h4>
+      <ul style="list-style:none;padding:0;margin:0 0 2rem 0;line-height:2">
+        <li><a href="#the-tale-of-two-traders" style="color:var(--text);text-decoration:none;font-size:0.9rem">Why Expectancy Is Everything</a></li>
+        <li><a href="#risk-1-per-trade-is-amateur-hour" style="color:var(--text);text-decoration:none;font-size:0.9rem">The Fixed Percentage Trap</a></li>
+        <li><a href="#size-to-volatility-not-ego" style="color:var(--text);text-decoration:none;font-size:0.9rem">ATR-Based Position Sizing</a></li>
+        <li><a href="#dont-blow-up-in-one-session" style="color:var(--text);text-decoration:none;font-size:0.9rem">Portfolio Heat Management</a></li>
+        <li><a href="#the-step-by-step-system" style="color:var(--text);text-decoration:none;font-size:0.9rem">Complete Framework</a></li>
+        <li><a href="#how-not-to-size-positions" style="color:var(--text);text-decoration:none;font-size:0.9rem">Common Mistakes</a></li>
+      </ul>
       <div class="lesson-actions">
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
