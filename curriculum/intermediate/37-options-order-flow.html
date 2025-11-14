@@ -227,6 +227,17 @@
           <li>Framework: Monitor UOA → Large calls above price = bullish → Confirm with stock movement</li>
         </ul>
       </div>
+
+      <div class="callout-key">
+        <h4>⚡ Quick Wins for Tomorrow</h4>
+        <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+        <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Bookmark a free options flow tracker (Unusual Whales, Flowalgo, or Cheddarflow)</strong> — Tomorrow before market open, visit one of these sites (many have free tiers). Watch for ONE "unusual options activity" alert on SPY or QQQ. Note: Strike price, expiration, call/put, premium size. Don't trade it yet—just observe. After 2 hours, check if the underlying stock moved in that direction. Example: 10:30 AM alert shows $2.5M in AAPL $180 calls expiring Friday. By 12:30 PM, did AAPL move toward $180? This builds pattern recognition for how institutional options flow predicts equity movement. Repeat for 5 days = you'll start seeing the correlation.</li>
+          <li><strong>Check SPY put/call ratio ONCE per day at market close</strong> — Go to CBOE website or your broker's options dashboard. Find SPY put/call ratio. Write it down. Above 1.0 = more puts than calls (bearish sentiment, but can be contrarian bullish at extremes). Below 0.7 = more calls (bullish sentiment, but can signal complacency). Track this daily for 2 weeks alongside SPY's price movement next day. You'll discover: Extremes (P/C > 1.2 or < 0.6) often precede reversals. Example: Monday P/C = 1.35 (extreme fear) → Tuesday SPY rallies +1.8% (contrarian signal worked). This single metric prevents you from fighting institutional sentiment.</li>
+          <li><strong>Watch for ONE gamma squeeze setup this week</strong> — When you see massive call buying on a stock that's near or above the strike price (especially 0DTE or weekly expiration), dealers must hedge by buying stock. This creates a gamma squeeze (price pushed higher by hedging flow, not fundamentals). Setup: Large call volume at strike $X → Stock trading at $X-2 → Expiration within 2 days. Monitor if stock ramps toward $X into Friday close (max pain pinning + dealer hedging). Example: Thursday, 50K call contracts at SPY $450 strike expiring Friday, SPY currently $448 → Watch for ramp to $450 by Friday 3:50 PM. Understanding this mechanic = you won't short into gamma squeezes (which can melt your face off).</li>
+        </ol>
+      </div>
+
       <!-- Prerequisites Warning -->
       <div class="callout-warning" style="margin:2rem 0;background:rgba(255,193,7,0.1);border-left:4px solid #ffc107">
         <h4>📋 Prerequisites</h4>
@@ -845,6 +856,63 @@ Total: $1,174 profit on $325 risk = 3.6R
         </ul>
       </div>
 
+      <h2 id="quiz" style="margin-top:3rem">📝 Knowledge Check</h2>
+      <p>Test your understanding of options order flow:</p>
+
+      <div class="quiz-question">
+        <p><strong>You see unusual options activity: 15,000 SPY $460 call contracts (expiring in 2 days) traded at 11:30 AM for $3.2M premium. Volume is 8x normal open interest. SPY is currently at $455. What does this signal?</strong></p>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">
+            A) Bearish — big money is hedging long positions, expect selloff
+          </div>
+          <div class="quiz-option" data-correct="true">
+            B) Bullish — institutional call buying with high conviction, dealers must hedge by buying SPY, expect move toward $460 into expiration
+          </div>
+          <div class="quiz-option" data-correct="false">
+            C) Neutral — options activity doesn't affect the underlying stock price
+          </div>
+        </div>
+        <div class="quiz-explanation">
+          <strong>Correct: B.</strong> This is textbook unusual options activity (UOA) signaling bullish institutional positioning. Volume 8x OI = new positioning (not closing existing). $3.2M premium = meaningful bet. Strike $5 above current price ($460 vs $455) = bullish directional view. Key mechanic: Dealers sold these calls to institutions. Now dealers are SHORT calls, which means they're SHORT delta. To hedge, they MUST buy SPY stock. As SPY rises toward $460, gamma accelerates their buying (gamma squeeze). Statistically, when large near-the-money call flow appears with <3 DTE, the underlying moves toward that strike ~68% of the time by expiration (dealer hedging + institutional conviction). Trade setup: Enter SPY long at $455.50, stop $453, target $459-460, expecting gamma squeeze into Friday close. This is why you monitor options flow even if you only trade equities—it's a leading indicator.
+        </div>
+      </div>
+
+      <div class="quiz-question" style="margin-top:2rem">
+        <p><strong>SPY put/call ratio hits 1.52 on Monday (extreme fear—way more puts than calls bought). Market is down -2.8% that day on no specific news. What's the correct interpretation and trade setup?</strong></p>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">
+            A) Bearish continuation — high P/C confirms selling pressure, short SPY
+          </div>
+          <div class="quiz-option" data-correct="true">
+            B) Contrarian bullish — extreme P/C (>1.5) signals panic/capitulation, expect mean reversion bounce within 1-3 days
+          </div>
+          <div class="quiz-option" data-correct="false">
+            C) Wait for confirmation — P/C ratio alone is insufficient for trading decisions
+          </div>
+        </div>
+        <div class="quiz-explanation">
+          <strong>Correct: B.</strong> Put/call ratio >1.5 is a contrarian bullish signal. Here's why: Retail panics on red days and buys puts for protection (or speculates on further downside). But smart money sells those puts (providing insurance at inflated premiums). P/C >1.5 = peak fear = wrong time to sell. Historically, SPY P/C extremes above 1.4 precede bounces within 1-5 days ~72% of the time. Why? (1) Oversold conditions from panic selling, (2) Put sellers (dealers) hedge by selling stock—once put buying exhausts, that selling pressure disappears, (3) Contrarian setup—when everyone's bearish, there's no one left to sell. Trade setup: Enter SPY long Tuesday morning (after extreme P/C Monday), stop below Monday's low, target +1.5-2.5% bounce. This is a short-term mean reversion play, not a trend trade. P/C ratio is best used as a sentiment gauge for extremes, not for ongoing directional bias.
+        </div>
+      </div>
+
+      <div class="quiz-question" style="margin-top:2rem">
+        <p><strong>It's Thursday. Friday is OpEx (options expiration). SPY currently trades at $448. You check max pain: the strike with highest open interest is $455. Zero Gamma (ZG) level is at $452. What's the expected price behavior into Friday close?</strong></p>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">
+            A) SPY will stay range-bound near $448—max pain has no real impact on price
+          </div>
+          <div class="quiz-option" data-correct="false">
+            B) SPY will crash below ZG ($452) due to negative gamma selling
+          </div>
+          <div class="quiz-option" data-correct="true">
+            C) SPY will likely drift toward $455 (max pain) as dealers unwind hedges and gamma pinning pulls price to highest OI strike
+          </div>
+        </div>
+        <div class="quiz-explanation">
+          <strong>Correct: C.</strong> OpEx pinning toward max pain is a well-documented phenomenon. Why it happens: (1) Max pain ($455) = strike where most options expire worthless (good for option sellers/dealers). (2) As expiration approaches, dealers unwind delta hedges—if SPY is below max pain, they buy stock to push it higher; if above, they sell. (3) Gamma pinning: At-the-money strikes have highest gamma, so price gets "stuck" near that level as dealers hedge gamma exposure. (4) Zero Gamma at $452 is below max pain, meaning above $452 we're in positive gamma territory (dealers buy dips, sell rips = range-bound behavior toward $455). Statistical edge: From Thursday close to Friday 4PM, SPY moves toward max pain strike 64% of the time when starting within ±1.5% of max pain. Trade setup: Thursday close, SPY at $448. Buy SPY, target $454-455 by Friday 3:50 PM, stop $446 (below Wednesday's low). Don't hold through 4:00 PM—pinning effect disappears post-expiration. This is a pure gamma mechanics play, not fundamentals.
+        </div>
+      </div>
+
       <div class="practice-section">
         <h4>🎯 Practice Exercises</h4>
         <ol>
@@ -875,6 +943,13 @@ Total: $1,174 profit on $325 risk = 3.6R
   </div>
 
     <aside class="toc-sidebar">
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#part-1-unusual-options-activity-uoa">Unusual Options Activity</a>
+        <a href="#part-2-gamma-exposure-gex-dealer-hedging-mechanics">Gamma Exposure & Hedging</a>
+        <a href="#part-3-putcall-ratio-analysis">Put/Call Ratio Analysis</a>
+        <a href="#quiz">Knowledge Check</a>
+      </nav>
       <div class="lesson-actions">
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
