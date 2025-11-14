@@ -86,6 +86,18 @@
         </ul>
       </div>
 
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ Quick Wins for Tomorrow (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+          <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+            <li><strong>Document your current edge in writing tonight (codification starts here)</strong> — Open a blank document. Write down your best trading setup step-by-step as if teaching someone who's never traded. Include: (1) Market conditions required (trend/range, volatility level, time of day), (2) Entry trigger (what EXACTLY makes you click buy?), (3) Stop loss placement (where and why?), (4) Target placement (how do you know when to exit?), (5) Position sizing rule. Example: "My edge: SPY breakout pullback. Conditions: Daily uptrend (above 20 EMA), 15-min consolidation after breakout. Entry: Price pulls back to previous resistance, forms bullish candle, enters on close above that candle high. Stop: 2 ATR below entry. Target: Previous swing high or 2:1 R:R. Size: 2% risk." Write this for your best setup. Why this works: You can't code what you can't articulate. Most traders have fuzzy rules ("I just know when it feels right"). That doesn't translate to code. This exercise forces clarity. Tom discovered: "I thought I had clear rules. But writing them down revealed 12 discretionary decisions I made unconsciously. No wonder my first algo failed—I never coded my actual edge!" Action: Spend 30 minutes tonight writing your complete setup rules. If you write "depends" or "sometimes" more than twice, your edge isn't codifiable yet. Keep refining until every step is objective.</li>
+            <li><strong>Backtest your edge manually on historical data (10 trades, paper only)</strong> — Don't code anything yet. Go to TradingView or your platform, rewind the chart 3-6 months. Manually find 10 instances where your setup appeared. For each trade, record: Trade # | Date | Entry | Stop | Target | Actual result if you held to stop/target | R multiple | Notes. Example: "Trade 1 | March 5 | SPY $520 long | Stop $518 | Target $524 | Hit target March 6 | +2R | Perfect setup, followed rules." Do this for 10 trades. Then calculate: (A) Win rate (# wins ÷ 10), (B) Average R (sum all R multiples ÷ 10), (C) Expectancy (win rate × avg win R - loss rate × avg loss R). Tom's manual backtest: 10 trades, 7 wins (70%), avg +2.8R on wins, avg -1R on losses. Expectancy = 0.7 × 2.8 - 0.3 × 1 = +1.66R per trade (excellent!). But manual backtest also revealed: "I skipped 3 setups because they 'felt wrong' (discretion = can't code). I need clearer filters." Why this works: Manual backtesting is fast (2-3 hours), shows if your edge has statistical validity, and reveals hidden discretionary elements BEFORE you waste weeks coding. Many traders code first, backtest later, then discover their edge doesn't exist. Action: Complete 10-trade manual backtest tonight. If expectancy >0.5R per trade, your edge is worth coding. If <0.3R, rethink your setup before automating garbage.</li>
+            <li><strong>Start with a 'hybrid system' for your next 5 trades (automate one element)</strong> — Don't try to fully automate yet. Pick ONE element of your edge to systematize. Options: (A) Entry alerts: Code a scanner that alerts when your setup conditions are met. You still decide to trade manually. (B) Position sizing: Use a fixed formula (always 2% risk, calculated automatically based on entry and stop). (C) Stop loss: Set algorithmic stop orders (not mental stops) immediately upon entry. Example: Tom's hybrid approach: "I kept discretionary entries (I manually clicked buy). But I automated: (1) Position size calculator (entered entry/stop, it told me shares to buy for 2% risk), (2) Stop loss order (placed automatically via API). This removed 50% of my emotional errors while I perfected the entry logic." Why this works: Full automation is overwhelming and often fails. Hybrid systems let you incrementally systematize while keeping the parts you're good at discretionary. Plus, it shows you which parts NEED automation (usually stops and sizing—emotional weak points). Action: For your next 5 trades, automate one element. Track: "Trades with auto-stop vs mental stop: which performed better?" After 5 trades, you'll have proof that partial systematization improves results, which motivates you to automate more.</li>
+          </ol>
+        </div>
+      </details>
+
       <p><b>You found an edge. It works. But you can only trade it 8 hours a day.</b></p>
       <p>What if your edge could trade 24/7? No emotions. No missed setups. Perfect execution.</p>
       <p>That's systematic trading. And it's how professionals scale.</p>
@@ -847,6 +859,15 @@ If reduction > 50%, system is not viable live.</code></pre>
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
       </div>
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#toms-system-development-journey-from-discretionary-success-to-automated-failure-to-proper-rebuild">Tom's System Journey</a>
+        <a href="#act-1-discretionary-success-2022">Act 1: Discretionary Success</a>
+        <a href="#act-2-first-automation-attempt-q1-2023-the-overfitted-disaster">Act 2: Overfitted Disaster</a>
+        <a href="#act-3-proper-system-development-april-august-2023">Act 3: Proper Development</a>
+        <a href="#act-4-live-trading-success-september-2023-october-2024-14-months">Act 4: Live Trading Success</a>
+        <a href="#related-lessons">Related Lessons</a>
+      </nav>
     </aside>
   </div>
 
