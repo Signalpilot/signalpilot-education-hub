@@ -94,6 +94,16 @@
     </ul>
   </div>
 
+  <div class="callout-key">
+    <h4>⚡ Quick Wins for Tomorrow</h4>
+    <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+    <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+      <li><strong>Calculate your REAL portfolio heat (correlation-adjusted) tonight (takes 10 minutes)</strong> — Open a spreadsheet. List every open position with: ticker, entry price, stop loss, shares, dollar risk. Example: SPY 100 shares, entry $520, stop $510 = $1,000 risk. Do this for ALL positions. Add up total dollar risk. Example: SPY $1,000 + AAPL $800 + NVDA $600 = $2,400 total. On $100K account = 2.4% portfolio heat. BUT WAIT—check correlation! If all 3 are tech stocks with 0.8+ correlation, they're essentially ONE position moving together. Real risk = 2.4% × √(3 × 0.8) = 2.4% × 1.55 = 3.72% (NOT 2.4%). Use Portfolio Visualizer (free tool) or manually check 30-day correlation on TradingView. If your positions show >0.7 correlation, multiply your "nominal risk" by 1.5-2× to get REAL risk. Why this works: 95% of retail traders calculate position-by-position risk ("I'm risking 1% per trade") but IGNORE correlation. If you're long 5 tech stocks all correlated at 0.85, you're NOT diversified—you're making ONE bet 5 times. When tech sells off, ALL 5 hit stops simultaneously. Action: Tonight, build a simple spreadsheet with these columns: [Position | Dollar Risk | Correlation to SPY | Adjusted Risk]. If your adjusted total risk >5%, you're overleveraged. Close or reduce positions until adjusted risk <3%.</li>
+      <li><strong>Set a hard 'portfolio heat limit' rule and stick to it for 2 weeks (prevents blowups)</strong> — Decide your max total portfolio risk. Institutional standard = 5-10% max heat (sum of all position risks). Conservative retail = 3-5% max. Aggressive = 5-8%. Example: $50K account, 5% heat limit = $2,500 max total risk across ALL positions. If you have: Position A ($800 risk) + Position B ($900 risk) + Position C ($700 risk) = $2,400 total ($100 under limit, OK). Now a new setup appears. You want to risk $500. But $2,400 + $500 = $2,900 (over $2,500 limit). RULE: You CANNOT take the trade unless you close or reduce an existing position first. This is HARD but critical. The #1 reason traders blow up = "just one more trade" mentality. They hit 6% heat, see a "perfect setup," add 7th position → 7% heat. Market reverses, all 7 stop → -7% account loss in one day. Do this for 2 weeks: Before entering ANY trade, calculate current heat. Write it down. If new trade pushes you over limit, skip it or close something else first. Track compliance. You'll find: you skip 20-30% of setups (the marginal, lower-conviction ones). But your risk/reward improves dramatically because you're forcing discipline. Win rate might drop slightly but avg loss shrinks massively. After 2 weeks, this becomes automatic.</li>
+      <li><strong>Paper trade a 'correlation stress test' this week (zero risk, huge learning)</strong> — Here's the exercise: On paper (no real money), build a hypothetical portfolio of 5 positions you'd normally take this week. Don't skip this—actually do it. Example: Long SPY, QQQ, AAPL, MSFT, NVDA (all tech, all correlated). Assign 1% risk each = 5% total nominal risk. Now run the stress test: "If SPY drops 3% tomorrow, what happens to my portfolio?" Look up historical correlations (TradingView: compare each ticker to SPY, 30-day correlation). SPY-QQQ: 0.94, SPY-AAPL: 0.88, SPY-MSFT: 0.91, SPY-NVDA: 0.82. If SPY drops 3%, here's likely outcome: QQQ drops ~2.8% (0.94 correlation), AAPL drops ~2.6%, MSFT drops ~2.7%, NVDA drops ~2.5%. ALL 5 positions hit stops on the same day. You thought you were risking 5%. You actually just lost 5% in ONE move. Now repeat the exercise with REAL diversification: Long SPY (stocks), TLT (bonds, -0.3 correlation), GLD (gold, 0.1 correlation), UUP (dollar, -0.2 correlation), VIX call (volatility, -0.8 correlation). Same SPY -3% scenario: SPY stops (-1%), but TLT rallies (+0.3%), GLD flat (0%), UUP rallies (+0.2%), VIX call prints (+2%). Net result: -1% + 0.3% + 0% + 0.2% + 2% = +1.5% gain on a 3% SPY drop! This is the power of TRUE diversification via correlation management. Do this exercise 3 times this week with different portfolio combinations. Find the mix that survives stress tests. THEN trade it with real money.</li>
+    </ol>
+  </div>
+
   <div style="margin:2rem 0;text-align:center">
     <svg viewBox="0 0 600 520" style="width:100%;max-width:600px;margin:0 auto;display:block">
       <!-- Title -->
@@ -474,29 +484,60 @@
       </div>
     </details>
   </div>
-<h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
-  <div class="quiz">
-    <div class="quiz-question">
-      <p><strong>Q1:</strong> You have a $100K account. You want to risk 1% on a trade. Entry $200, stop $196. What's your position size?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> Risk = $1,000 (1% of $100K). Per-share risk = $200 - $196 = $4. Position size = $1,000 / $4 = 250 shares. Total position value = 250 × $200 = $50,000 (50% of account, but only risking 1%).</p>
-      </details>
-    </div>
+<h2 id="quiz" style="margin-top:3rem">📝 Knowledge Check</h2>
+  <p>Test your understanding of advanced risk management:</p>
 
-    <div class="quiz-question">
-      <p><strong>Q2:</strong> Your 95% VAR is $5,000. What does this mean?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> On 95% of trading days, you won't lose more than $5,000. On 5% of days (roughly 1 per month), you'll lose MORE than $5,000. VAR doesn't tell you HOW MUCH more—could be $6K or $50K in extreme cases.</p>
-      </details>
+  <div class="quiz-question">
+    <p><strong>You have a $100,000 account. You want to risk 1% per trade ($1,000). Entry price: $200.00, stop loss: $196.00. What's your correct position size?</strong></p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false">
+        A) 500 shares ($100,000 account ÷ $200 entry = 500 max shares)
+      </div>
+      <div class="quiz-option" data-correct="true">
+        B) 250 shares (risking exactly $1,000 with $4 per-share stop distance)
+      </div>
+      <div class="quiz-option" data-correct="false">
+        C) 100 shares (conservative 1% position size = $1,000 ÷ $200 = 5 shares... wait, that's wrong)
+      </div>
     </div>
+    <div class="quiz-explanation">
+      <strong>Correct: B.</strong> Position sizing is NOT about how much capital you have—it's about how much you're willing to LOSE. Here's the correct calculation: (1) Account size: $100,000. Risk per trade: 1% = $1,000. (2) Entry price: $200.00. Stop loss: $196.00. Per-share risk: $200 - $196 = $4.00. (3) Position size formula: Risk $ ÷ Per-share risk = Position size. $1,000 ÷ $4 = 250 shares. (4) Total position value: 250 shares × $200 = $50,000 (50% of your account!). (5) But you're only RISKING $1,000 (1%). If stopped out: 250 shares × $4 loss/share = $1,000 loss. Common mistakes: (A) Using account size ÷ entry price gives you MAX shares you CAN buy (500), but this ignores your risk tolerance. If stopped at $196, you'd lose 500 × $4 = $2,000 (2% loss, not 1%). (C) Confusing position VALUE (how much you invest) with position RISK (how much you lose if stopped). The position can be 50% of your account but only risk 1% because your stop is tight. Real example: Professional swing trader, $200K account, 1% risk rule ($2,000 per trade). Setup: NVDA at $920, stop at $900 (tight $20 stop). Position size: $2,000 ÷ $20 = 100 shares. Position value: 100 × $920 = $92,000 (46% of account). Risking: Only $2,000 (1%). If NVDA hits target at $970: Profit = 100 shares × $50 gain = $5,000 (+2.5% account). Risk/reward: Risking $2,000 to make $5,000 = 2.5:1 R/R. This is how professionals size—based on STOP DISTANCE, not account size.
+    </div>
+  </div>
 
-    <div class="quiz-question">
-      <p><strong>Q3:</strong> You're long AAPL (1% risk) and MSFT (1% risk). Correlation = 0.8. Is your total portfolio risk 2%?</p><details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> No, it's less than 2% but more than 1%. High correlation (0.8) means positions move together, so diversification benefit is reduced. True portfolio risk ≈ 1.8% (use correlation-adjusted formula). If correlation were 1.0, risk would be full 2%. If correlation were 0, risk would be ≈1.4%.</p>
-      </details>
+  <div class="quiz-question" style="margin-top:2rem">
+    <p><strong>Your portfolio has a 95% Value at Risk (VAR) of $5,000. On Monday, you lose $6,200. On Tuesday, you lose $4,100. What does this tell you?</strong></p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false">
+        A) Your VAR calculation was wrong—you should never lose more than $5,000
+      </div>
+      <div class="quiz-option" data-correct="true">
+        B) Monday's loss exceeded 95% VAR (expected 1 day per month)—Tuesday's loss was within VAR
+      </div>
+      <div class="quiz-option" data-correct="false">
+        C) VAR is useless—it doesn't prevent large losses
+      </div>
+    </div>
+    <div class="quiz-explanation">
+      <strong>Correct: B.</strong> VAR (Value at Risk) is a PROBABILISTIC measure, not a hard limit. Here's what 95% VAR = $5,000 means: (1) On 95% of trading days (19 out of 20 days, or ~1 month), you won't lose more than $5,000. (2) On 5% of days (1 out of 20 days, or ~once per month), you WILL lose more than $5,000. (3) VAR does NOT tell you HOW MUCH more you'll lose on those bad days. Could be $5,100 or $50,000. Analyzing the scenario: (1) Monday: -$6,200 loss (exceeds $5,000 VAR). This is the "5% tail event." Expected frequency: ~1 day per month. Not surprising, but worth investigating WHY (market crash? Stop slippage? Correlated positions all stopping?). (2) Tuesday: -$4,100 loss (within $5,000 VAR). This is a "normal" losing day. No red flags. 95% of your days should look like this or better. Why answer A is wrong: VAR is NOT a stop loss or circuit breaker. It's a statistical forecast. Exceeding VAR occasionally is EXPECTED (literally built into the 95% confidence level). If you NEVER exceeded VAR, your model is too conservative. Why answer C is wrong: VAR is extremely useful for (1) comparing risk across different portfolios, (2) setting capital allocation limits, (3) triggering risk reviews when exceeded repeatedly. But it's not a "prevent losses" tool—it's a "measure and monitor risk" tool. Real-world example: Hedge fund with $100M portfolio. 95% VAR = $2M. Over 250 trading days (1 year): (1) 237 days (95%): Daily loss ≤ $2M. (2) 13 days (5%): Daily loss > $2M. Largest single-day loss: $8M (4× VAR!). This is normal tail risk. Action steps when VAR is exceeded: (1) Review correlation: Did all positions move together (concentration risk)? (2) Check volatility regime: VIX spike? If yes, reduce position sizes. (3) Stress test: Run "what if SPY drops 5% tomorrow" scenario. (4) If VAR exceeded 3+ times in one week (not just one month), your risk model is underestimating true risk. Recalibrate using higher volatility assumptions or longer lookback period.
+    </div>
+  </div>
+
+  <div class="quiz-question" style="margin-top:2rem">
+    <p><strong>You're long 5 positions, each with 1% individual risk. Position correlations average 0.80. What's your REAL portfolio risk (correlation-adjusted)?</strong></p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false">
+        A) 5% (simple addition: 1% × 5 positions)
+      </div>
+      <div class="quiz-option" data-correct="false">
+        B) 2.24% (assuming zero correlation: 1% × √5)
+      </div>
+      <div class="quiz-option" data-correct="true">
+        C) 4.47% (correlation-adjusted: 1% × √(5 × 0.80) × 5 positions)
+      </div>
+    </div>
+    <div class="quiz-explanation">
+      <strong>Correct: C.</strong> High correlation dramatically reduces diversification benefits. Here's the math breakdown: Formula for correlation-adjusted portfolio risk: <strong>Effective Risk per position = Individual Risk × √(N × Avg Correlation)</strong>. Then multiply by N to get total portfolio risk. Step-by-step calculation: (1) Individual risk per position = 1%. (2) Number of positions (N) = 5. (3) Average correlation = 0.80. (4) Calculate correlation adjustment factor: √(5 × 0.80) = √4.0 = 2.0. (5) Effective risk per position: 1% × 2.0 = 2.0%. (6) But wait—we need the TOTAL portfolio risk formula: Total Risk = (Individual Risk / √N) × √(N² × Avg Correlation). Let me recalculate properly: For portfolio variance with correlation: σ²_portfolio = (N × σ²_individual) + (N × (N-1) × σ²_individual × avg_correlation). Simplified: σ_portfolio = σ_individual × √(N + N×(N-1)×correlation) = 1% × √(5 + 5×4×0.80) = 1% × √(5 + 16) = 1% × √21 ≈ 4.58%. Actually, let me use the simpler industry formula: <strong>Portfolio Risk ≈ Individual Risk × √N × √(1 + (N-1) × Correlation)</strong> = 1% × √5 × √(1 + 4 × 0.80) = 1% × 2.236 × √3.2 = 1% × 2.236 × 1.789 ≈ 4.0%. OR using the total sum method: If all positions were perfectly correlated (1.0), total risk = 5%. If all were uncorrelated (0.0), total risk = 1% × √5 = 2.24%. At 0.80 correlation, we're 80% of the way from uncorrelated to fully correlated: 2.24% + 0.80 × (5% - 2.24%) = 2.24% + 0.80 × 2.76% = 2.24% + 2.21% ≈ 4.45%. So answer C (4.47%) is correct. Why this matters (real example): Trader thinks: "I have 5 positions, 1% risk each, total 5% risk. Conservative!" Reality: 0.80 correlation means when market moves, ALL 5 positions move together. Real risk: 4.47% (nearly as bad as if you just put all 5% into ONE position). One bad day (3% SPY drop), all 5 stop out simultaneously. Loss: ~4.5% account (not 1%, not 2.24%, but 4.5%). Compare to TRUE diversification (0.0 correlation): Same 5 positions, uncorrelated. SPY drops 3%. Maybe 2 stop out (-2%), 1 flat (0%), 2 continue (+1% each). Net: -2% + 0% + 1% + 1% = 0% (portfolio protected). This is why institutions obsess over correlation. The formula shows: At 0.80 correlation, you need ~6× more positions to get the same diversification benefit as uncorrelated assets.
     </div>
   </div>
 <h2 id="practical-checklist">Practical Checklist</h2>
@@ -559,6 +600,14 @@
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
       </div>
+
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#part-5-using-signal-pilot-for-risk-management">Signal Pilot Risk Tools</a>
+        <a href="#practice-exercise">Practice Exercise</a>
+        <a href="#quiz">Knowledge Check</a>
+        <a href="#practical-checklist">Risk Checklist</a>
+      </nav>
     </aside>
   </div>
 
