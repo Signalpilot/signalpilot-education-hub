@@ -554,6 +554,19 @@
         </ul>
       </div>
 
+      <div class="callout-key">
+        <h4>⚡ Quick Wins for Tomorrow</h4>
+        <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+        <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Find structure level first</strong> — Before your next trade, identify where your thesis breaks (swing low for longs, swing high for shorts)</li>
+          <li><strong>Add ATR buffer</strong> — Measure ATR, place stop at structure ± (2× ATR). This is your actual stop.</li>
+          <li><strong>Calculate position size AFTER</strong> — Use (Account × Risk%) ÷ Stop Distance. If too wide, skip the trade—don't tighten the stop.</li>
+        </ol>
+        <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)">
+          After 10 trades with structure + ATR stops, you'll see the difference. Stops hit = thesis wrong (exit fast). Stops not hit = thesis survives volatility noise.
+        </p>
+      </div>
+
 <div class="section-break"><span>Practice Exercise</span></div>
 
       <div class="callout-key">
@@ -588,6 +601,32 @@
           </div>
           <div class="quiz-feedback">
             <strong>Correct!</strong> Stop placement often be structure-based (where thesis breaks) MINUS an ATR buffer (2× ATR = $4 in this case). Don't place stops based on arbitrary percentages or account size. Let the market's structure and volatility guide you.
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q: Why is a 2% stop loss placed arbitrarily below entry price problematic?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Because 2% is too conservative</div>
+            <div class="quiz-option" data-correct="true">B) Because it ignores market structure and volatility—you'll get stopped by noise, not invalidation</div>
+            <div class="quiz-option" data-correct="false">C) Because professional traders use 5% stops</div>
+            <div class="quiz-option" data-correct="false">D) Because you should never use stops at all</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Percentage-based stops (like "always 2% below entry") ignore the market's actual structure and volatility. In a high-ATR environment, 2% gets you swept by noise. In a low-ATR environment, 2% is unnecessarily wide. Use structure + ATR stops: place your stop where your thesis BREAKS, plus an ATR buffer.
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q: What is the 2R minimum rule and why does it matter?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Always risk 2% per trade</div>
+            <div class="quiz-option" data-correct="true">B) Target must be at least 2× your stop distance; ensures positive expectancy even with 40% win rate</div>
+            <div class="quiz-option" data-correct="false">C) Always use 2 ATR as your stop distance</div>
+            <div class="quiz-option" data-correct="false">D) Take profit after 2 hours in the trade</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> The 2R rule means your target must be at least 2× your risk. If you risk $100 (1R), your target should be $200+ (2R). This ensures that even with a 40% win rate, you have positive expectancy: 4 losses (-4R) + 6 wins (+12R) = +8R. Below 2R, you need 60%+ accuracy just to break even—unrealistic for most strategies.
           </div>
         </div>
 
@@ -636,6 +675,15 @@
   </div>
 
     <aside class="toc-sidebar">
+      <h4 style="margin:0 0 1rem 0;font-size:0.9rem;text-transform:uppercase;color:var(--muted)">Contents</h4>
+      <ul style="list-style:none;padding:0;margin:0 0 2rem 0;line-height:2">
+        <li><a href="#why-tight-stops-get-you-swept" style="color:var(--text);text-decoration:none;font-size:0.9rem">Why 2% Stops Fail</a></li>
+        <li><a href="#size-stops-to-market-volatility-not-account-size" style="color:var(--text);text-decoration:none;font-size:0.9rem">ATR-Based Stops</a></li>
+        <li><a href="#where-your-thesis-breaks" style="color:var(--text);text-decoration:none;font-size:0.9rem">Structure-Based Stops</a></li>
+        <li><a href="#never-risk-more-than-you-can-make" style="color:var(--text);text-decoration:none;font-size:0.9rem">The 2R Minimum Rule</a></li>
+        <li><a href="#your-complete-stop-loss-framework" style="color:var(--text);text-decoration:none;font-size:0.9rem">Complete Framework</a></li>
+        <li><a href="#stop-loss-mistakes-and-how-to-fix-them" style="color:var(--text);text-decoration:none;font-size:0.9rem">Common Mistakes</a></li>
+      </ul>
       <div class="lesson-actions">
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
