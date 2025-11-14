@@ -101,6 +101,18 @@
         </ul>
       </div>
 
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ Quick Wins for Tomorrow (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+          <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+            <li><strong>Check the correlation between your holdings tonight (reveals false diversification)</strong> — True diversification requires uncorrelated assets, not just different tickers. Tonight, calculate the correlation between your holdings using this simple method: (1) Go to Portfolio Visualizer (free tool) or use Excel. (2) Input your holdings (SPY, AAPL, Bitcoin, Gold, etc.) and 1-year of daily price data. (3) Calculate correlation matrix. Correlation ranges from -1 to +1. -1 = perfect inverse (when one goes up, other goes down). 0 = no correlation (move independently). +1 = perfect correlation (move together). Example: You hold SPY, QQQ, AAPL, MSFT, NVDA thinking you're diversified. Correlation check reveals: SPY-QQQ: 0.92 (highly correlated). AAPL-MSFT: 0.85 (highly correlated). All 5 assets correlate 0.80-0.95 with each other. When SPY drops 5%, they ALL drop 4-5%. You're not diversified—you have concentration risk disguised as diversification. True diversification example: SPY (stocks), TLT (bonds), GLD (gold), Bitcoin, USD/JPY (currency). Correlation matrix shows: SPY-TLT: -0.30 (inverse, bonds rise when stocks fall). SPY-GLD: -0.15 (low correlation). SPY-Bitcoin: 0.42 (moderate). Now when SPY drops 5%, TLT might rise +2%, Gold flat, Bitcoin down -2%. Your portfolio only drops -2% instead of -5%. Why this works: Most retail traders unknowingly hold correlated assets (all tech stocks, all growth stocks, all crypto). One macro shift crushes the entire portfolio. By checking correlations, you can identify cluster risk and add true diversifiers. Action: Tonight, check correlations for your top 3-5 holdings. If any pair has correlation >0.70, you're overexposed to that factor (tech, growth, risk-on, etc.). Add at least one asset with correlation <0.30 to reduce portfolio volatility.</li>
+            <li><strong>Calculate the Sharpe ratio for each of your strategies (prioritize capital allocation)</strong> — Not all strategies deserve equal capital. Sharpe ratio tells you which strategies give the best risk-adjusted returns. Here's how to calculate it for your trading strategies: Sharpe Ratio = (Strategy Return - Risk-Free Rate) ÷ Strategy Volatility. Risk-Free Rate = ~4% annually (current T-Bill rate). For each strategy you trade (momentum breakouts, mean reversion, etc.), calculate over the last 6-12 months: (1) Strategy Return = Total profit ÷ starting capital. Example: $12K profit on $100K = 12% return. (2) Strategy Volatility = Standard deviation of monthly returns. Use Excel STDEV function on your monthly % returns. Example: Monthly returns were +3%, -2%, +5%, +1%, -1%, +4%. STDEV = 2.4% per month = 8.3% annualized (×√12). (3) Sharpe = (12% - 4%) ÷ 8.3% = 0.96 (good, above 1.0 is excellent). Do this for ALL your strategies. Example results: Momentum breakouts: Sharpe 1.2 (allocate 40% of capital). Mean reversion: Sharpe 0.8 (allocate 30%). Options selling: Sharpe 0.5 (allocate 10%). Manual discretionary: Sharpe 0.3 (allocate 5%, mostly for testing). Cash/bonds: Sharpe 0.2 (allocate 15%, safety buffer). Why this works: Equal allocation to all strategies is inefficient. If your momentum strategy has Sharpe 1.5 and your discretionary trading has Sharpe 0.3, allocating 50/50 is leaving money on the table. By allocating based on risk-adjusted returns (Sharpe), you maximize portfolio performance. Action: Tonight, calculate Sharpe ratio for your top 2-3 strategies using the last 6 months of data. Reallocate your capital: highest Sharpe gets largest allocation. If any strategy has Sharpe <0.5, consider reducing/eliminating it (poor risk-adjusted returns).</li>
+            <li><strong>Run a simple drawdown analysis on your portfolio (prepares you for worst-case scenarios)</strong> — Most traders don't know their portfolio's maximum drawdown (largest peak-to-valley drop). This blindsides them when it happens. Here's how to calculate it: (1) Plot your daily account balance for the last 6-12 months. (2) For each day, calculate: "How far am I from my all-time high account balance?" (3) The largest % drop from peak = Maximum Drawdown (MDD). Example: January: Account hits $120K (peak). February-March: Account drops to $98K. MDD = ($120K - $98K) ÷ $120K = -18.3%. That's your worst historical drawdown. Now, stress test future scenarios. If your MDD was -18% in a normal year, expect -25-35% in a crisis (2020 COVID, 2022 bear market). Ask yourself: "Can I psychologically handle a -30% drawdown without panic selling?" If no, reduce portfolio volatility (add bonds, reduce position sizes, increase cash %). Why this works: Every trader will experience drawdowns. The question isn't IF, but WHEN and HOW MUCH. By calculating your historical MDD, you set realistic expectations. Most traders quit after their first -20% drawdown because they never mentally prepared for it. Those who survive knew it was coming. Action: Tonight, calculate your maximum drawdown from the last 12 months. Then ask: "If this doubled (-36%), would I survive emotionally and financially?" If no, reduce risk now (before the drawdown, not during). Set a personal "max tolerable drawdown" (e.g., -25%) and build position sizing rules to prevent exceeding it.</li>
+          </ol>
+        </div>
+      </details>
+
       <p><b>"I'm diversified—I hold AAPL, MSFT, GOOGL, AMZN, and NVDA."</b></p>
 
       <p>No, you're not. You're holding 5 highly correlated tech stocks. When QQQ drops 5%, you're dropping 5%. All of them. At once.</p>
@@ -991,6 +1003,15 @@ Result:
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
       </div>
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#laurens-68500-correlation-lesson-the-diversified-portfolio-that-wasnt">Lauren's Correlation Lesson</a>
+        <a href="#the-classic-mistake">The Classic Mistake</a>
+        <a href="#the-core-insight-magic-math">Magic Math Insight</a>
+        <a href="#the-efficient-frontier">The Efficient Frontier</a>
+        <a href="#why-6040-is-broken">Why 60/40 Is Broken</a>
+        <a href="#the-kelly-criterion-how-much-to-allocate">Kelly Criterion Allocation</a>
+      </nav>
     </aside>
   </div>
 

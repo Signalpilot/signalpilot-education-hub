@@ -86,6 +86,18 @@
         </ul>
       </div>
 
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ Quick Wins for Tomorrow (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+          <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+            <li><strong>Start with simple feature engineering on your existing edge (no ML yet)</strong> — Before jumping into neural networks, identify 3-5 simple features that might improve your current strategy. Features are just measurable inputs. Examples for a breakout strategy: (1) ATR ratio (current ATR ÷ 20-day avg ATR) - measures volatility context, (2) Volume ratio (current volume ÷ 20-day avg volume) - measures participation, (3) Time of day (minutes since market open) - captures session effects, (4) RSI divergence (price new high but RSI lower) - momentum weakening, (5) Distance from moving average (price ÷ 20 EMA - 1) - trend strength. Tonight, pick 3 features you can calculate easily. For your next 10 trades, record these features at entry. After 10 trades, analyze: "Did winning trades have different feature values than losing trades?" Example: You notice 8/10 wins had ATR ratio >1.2, while 7/10 losses had ATR ratio <0.9. That's a pattern. You just discovered a filter without any ML: "Only take breakouts when ATR >1.2." Why this works: Feature engineering is 80% of ML success. Most traders skip straight to complex models without understanding which inputs matter. By manually testing features first, you build intuition and avoid overfitting later. Action: Tonight, define 3 features. Track them for 10 trades. If you find a pattern (60%+ correlation with wins/losses), you have a valuable filter—no ML required yet.</li>
+            <li><strong>Learn to spot overfitting in backtests (saves you from ML disasters)</strong> — Overfitting = your model memorized history instead of learning patterns. Here's how to spot it: Run a simple test on any strategy (ML or not). (1) Backtest on all historical data → record win rate and profit. (2) Now backtest on ONLY the first 60% of data (train period). (3) Then test on the remaining 40% (test period). If train period: 75% win rate, +$50K profit. Test period: 52% win rate, -$8K loss. That's overfitting. The strategy learned noise from the train period that didn't repeat. Good strategies show <10% performance drop between train and test. Example: Non-overfitted strategy: Train 68% win, +$42K. Test 64% win, +$38K (only 4% drop, stable edge). Overfitted strategy: Train 82% win, +$68K. Test 49% win, -$12K (33% drop, memorized noise). Tonight, take any strategy you're considering (even your current manual edge). Split your historical data 60/40. Compare train vs test results. Why this works: This simple check reveals if your edge is real or imaginary. Most ML traders skip this and deploy overfitted garbage that dies in live markets. Action: Run this test tonight on your best setup. If test period performance drops >15%, your rules are too fitted to history. Simplify (use fewer parameters, looser filters).</li>
+            <li><strong>Use walk-forward testing before going live (prevents 90% of ML failures)</strong> — Walk-forward testing = rolling your train/test split forward through time. Here's the simple approach: (1) Train on data from Jan-Jun (6 months), (2) Test on Jul (1 month), (3) Move forward: train on Feb-Jul, test on Aug, (4) Repeat for all historical data. If your strategy works, it should be profitable in MOST test periods (70%+). Example: You test 12 periods. Strategy is profitable in 9/12 test months (75% consistency). Good sign. If profitable in only 5/12 months (42%)? Unstable edge that got lucky in one period. For your next strategy test (even discretionary with filters), don't just backtest all data. Instead: Split into 6 rolling periods (2 months train, 1 month test each). Record win rate and profit for each test period. Calculate: "# of profitable test periods ÷ total periods." If <60%, your edge is unstable or overfitted. Why this works: Walk-forward testing simulates live trading better than single backtests. Markets change. Strategies that work across multiple time periods are more likely to survive regime changes. This catches overfitting that single backtests miss. Action: Run walk-forward test tonight on your current strategy. Even if you're not using ML, this validates your edge across different market conditions.</li>
+          </ol>
+        </div>
+      </details>
+
       <p><b>"Feed price data into a neural network → profit."</b></p>
       <p>If only. Here's reality: 90% of ML trading strategies fail live. Not because ML doesn't work—because traders misuse it.</p>
       <p>Markets are non-stationary. Low signal-to-noise. ML overfits spectacularly if you're not careful.</p>
@@ -778,6 +790,14 @@ Retrain Process:
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
       </div>
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#ninas-47300-ml-overfitting-disaster-and-how-she-fixed-it">Nina's ML Disaster</a>
+        <a href="#act-1-the-perfect-model-january-february-2024">Act 1: The "Perfect" Model</a>
+        <a href="#act-2-learning-the-hard-way-april-may-2024">Act 2: Learning the Hard Way</a>
+        <a href="#act-3-live-trading-the-proper-model-june-october-2024">Act 3: Proper Model Live</a>
+        <a href="#related-lessons">Related Lessons</a>
+      </nav>
     </aside>
   </div>
 
