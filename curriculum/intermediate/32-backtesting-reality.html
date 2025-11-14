@@ -143,6 +143,16 @@
         </ul>
       </div>
 
+      <div class="callout-key">
+        <h4>⚡ Quick Wins for Tomorrow</h4>
+        <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+        <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Add slippage and commissions to your backtest</strong> — Open your backtesting platform. For each trade, subtract 0.1-0.2% for slippage (entry + exit = 0.2-0.4% total) + $2-5 commissions. Rerun the test. If expectancy drops below 1.5R or win rate drops below 45%, strategy won't work live. This one adjustment reveals if your edge is real.</li>
+          <li><strong>Walk-forward test your strategy</strong> — Instead of optimizing on ALL data (2020-2024), split it: Train on 2020-2022, test on 2023. Does it still work? If yes, train on 2020-2023, test on 2024. Still works? You have a robust strategy. If it fails on ANY out-of-sample period, you overfitted—strategy is curve-fitted to past data and won't work forward.</li>
+          <li><strong>Check for survivorship bias</strong> — Review your backtest data. Does it include delisted stocks? If you're only testing stocks that exist TODAY (survivors), you're missing the 30-40% that went to zero. Example: Testing 2015-2024 on current S&P 500 = survivor bias (excludes bankrupt companies). Use complete historical data including delistings.</li>
+        </ol>
+      </div>
+
       <p><b>Your backtest: 8R expectancy. 3.5 profit factor. $50,000 profit on $10,000 account.</b></p>
 
       <p>You go live. First week: -2R expectancy. 0.4 profit factor. Account down 12%.</p>
@@ -437,10 +447,6 @@
           <button>Problem 4: Survivorship Bias</button>
         </div>
 <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-  <p>You're now at the halfway point. You've learned the key strategies.</p>
-  <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break if needed, then we'll dive into the advanced concepts ahead.</p>
-</div>
-        <div class="tabs-content">
           <div class="tab-panel active">
             <h3 id="curve-fitting-to-random-noise">Curve-Fitting to Random Noise</h3>
             <p><strong>What it is:</strong> Optimizing parameters until backtest looks perfect</p>
@@ -707,7 +713,33 @@
           </div>
         </div>
 
-        <button class="btn btn-primary quiz-submit">Check Answer</button>
+        <div class="quiz-question" style="margin-top:2rem">
+          <p><strong>You backtest a mean-reversion strategy on SPY from 2010-2024. Results: 2.8R expectancy, 68% win rate, $120K profit. Data includes only current S&P 500 components (stocks in the index today). You go live in 2025—it fails. What went wrong?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Nothing—2025 market conditions changed, unforeseeable</div>
+            <div class="quiz-option" data-correct="true">B) Survivorship bias—backtest excluded 30-40% of stocks that delisted/went bankrupt during 2010-2024</div>
+            <div class="quiz-option" data-correct="false">C) Sample size too small—need more than 14 years of data</div>
+            <div class="quiz-option" data-correct="false">D) Expectancy too high—2.8R is unrealistic for mean reversion</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Classic survivorship bias trap. Testing on "current S&P 500 components" means you only tested WINNERS—stocks that survived 14 years and made it into today's index. You excluded bankrupt companies, delisted stocks, and failed businesses (30-40% of total). These dead stocks would have triggered your mean-reversion entries but never recovered, destroying expectancy. Adam's exact mistake—$47K loss. Solution: Use point-in-time data that includes ALL stocks that existed at each date, including future delistings. Survivorship bias inflates backtest results by 20-50%.
+          </div>
+        </div>
+
+        <div class="quiz-question" style="margin-top:2rem">
+          <p><strong>You walk-forward test your strategy: Train 2018-2020, test 2021 (pass). Train 2018-2021, test 2022 (pass). Train 2018-2022, test 2023 (pass). You didn't model slippage or commissions. Should you trade this strategy live?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Yes—passed all walk-forward tests, robust strategy</div>
+            <div class="quiz-option" data-correct="true">B) No—must add realistic costs (0.2-0.4% slippage + commissions) and retest. If still profitable, then yes.</div>
+            <div class="quiz-option" data-correct="false">C) Yes—walk-forward validation is sufficient, costs don't matter much</div>
+            <div class="quiz-option" data-correct="false">D) No—need at least 10 walk-forward periods to validate</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Correct!</strong> Walk-forward tests prove robustness (not overfit to single period), but you MUST model realistic costs before trading live. Slippage (0.1-0.2% per side = 0.2-0.4% round-trip) + commissions ($2-5/trade) can reduce expectancy by 30-60%. A strategy with 2.5R expectancy and no costs might drop to 1.2R with costs—still profitable but barely. Paul's mistake: 3.2R backtest → 0.8R live after slippage destroyed edge. Add costs LAST (after walk-forward), then if expectancy stays >1.5R and win rate >45%, trade it live. Never skip cost modeling—it's the difference between profit and pain.
+          </div>
+        </div>
+
+        <button class="btn btn-primary quiz-submit">Check Answers</button>
       </div>
 
       <div class="callout-info">
@@ -723,6 +755,14 @@
   </div>
 
     <aside class="toc-sidebar">
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#why-your-perfect-strategy-will-fail-live">Why Strategies Fail Live</a>
+        <a href="#the-hidden-costs-that-kill-strategies">Hidden Costs</a>
+        <a href="#the-only-validation-that-matters">True Validation</a>
+        <a href="#red-flags-of-overfitting">Overfitting Red Flags</a>
+        <a href="#the-professional-validation-method">Professional Method</a>
+      </nav>
       <div class="lesson-actions">
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
