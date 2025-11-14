@@ -105,6 +105,17 @@
           <li>HFT tells: Quote stuffing (rapid order cancels), spread widening during volatility</li>
         </ul>
       </div>
+
+      <div class="callout-key">
+        <h4>⚡ Quick Wins for Tomorrow</h4>
+        <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+        <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Watch for spread widening during the first 15 minutes (9:30-9:45 AM), avoid trading until spreads normalize (2 minutes daily)</strong> — HFT firms DOMINATE the market open because volatility is highest and retail is most active. Open your Level 2 order book or check the bid/ask spread on your broker. At 9:30 AM, spreads are 5-10× wider than midday. Example: AAPL midday spread = $0.01. AAPL at 9:32 AM = $0.05-0.10. Why? HFT market makers widen spreads to protect themselves during volatility. They know retail will panic-buy or panic-sell, so they exploit the urgency. If you place a market order at 9:32 AM, you're paying the WIDEST spread of the day. Cost: On 500 shares, that's $25-50 in unnecessary slippage. Over 100 trades/year = $2,500-5,000 given to HFTs. Action: Every morning, wait until 9:45 AM before placing trades. Check the spread at 9:45 AM—it should be back to normal ($0.01-0.02 for liquid stocks). If spread is still wide at 9:45 AM (unusual), wait until 10:00 AM. Exception: If you MUST trade at 9:30 AM (e.g., news event), use limit orders only, placed at midpoint or better. Never use market orders during this window. This single rule will save you thousands per year in HFT tax.</li>
+          <li><strong>Monitor for quote stuffing: If you see rapid order book flashing (orders appearing/disappearing in milliseconds), step away for 60 seconds</strong> — Quote stuffing is when HFT firms flood the order book with fake orders to slow down competitors or manipulate perception. It looks like this: On Level 2, you see 10,000 shares to buy at $100.00. A millisecond later, it vanishes. Then reappears at $100.01. Then vanishes again. This happens 100+ times per second. Why they do it: (1) Slow down rival HFTs (their systems must process all those orders), (2) Create false impression of supply/demand to trick retail. How to spot it: If your Level 2 order book is "flashing" rapidly (orders appearing/disappearing faster than you can read), that's quote stuffing. If your broker platform starts lagging or freezing during volatile periods, that's HFT overload. Action: When you see quote stuffing, STOP trading for 60 seconds. Don't place any orders. HFTs are battling each other, and you'll get caught in crossfire. Wait for the storm to pass. Typically resolves within 1-2 minutes. Example: Aug 5, 2024 market crash. Between 9:35-9:45 AM, quote stuffing was INSANE. Retail traders who placed market orders got filled 1-2% worse than expected due to spread manipulation. Traders who waited until 9:50 AM got normal fills. The patience cost: 15 minutes. The savings: 1-2% on entry = $5,000-10,000 on a $500K position.</li>
+          <li><strong>Use IEX routing (Investors Exchange) for your next 10 trades to avoid HFT front-running (takes 30 seconds to set up)</strong> — IEX is an exchange designed to PROTECT retail traders from HFT predatory tactics. It has a 350-microsecond "speed bump" that prevents HFTs from seeing your order and front-running it. How front-running works: (1) You place buy order for 1,000 AAPL shares at $180.05. (2) HFT algo sees your order in milliseconds (before it reaches the exchange). (3) HFT buys 1,000 shares at $180.04, then sells to you at $180.05. (4) HFT made $0.01/share × 1,000 = $10 risk-free. You overpaid by $10. How IEX stops this: The 350-microsecond delay means HFTs can't react fast enough to front-run you. By the time they see your order, it's already executed at fair price. How to use IEX: (1) Interactive Brokers: Select "IEX" from routing options dropdown. (2) Fidelity Active Trader Pro: Route → Direct → IEX. (3) TD Ameritrade Thinkorswim: Route → IEX. Not all brokers support it (Robinhood does NOT). If yours doesn't, switch brokers. Action: Route your next 10 trades through IEX. Track your fills vs NBBO (National Best Bid/Offer). You'll notice: (1) Fills at or better than midpoint (not always ask price), (2) Less slippage on volatile stocks, (3) Fewer "price improved away from you" frustrations. Over 100 trades, IEX saves $500-1,500 in improved fills. That's free money HFTs were taking.</li>
+        </ol>
+      </div>
+
       <!-- Prerequisites Warning -->
       <div class="callout-warning" style="margin:2rem 0;background:rgba(255,193,7,0.1);border-left:4px solid #ffc107">
         <h4>📋 Prerequisites</h4>
@@ -731,48 +742,62 @@
       <p><strong>Risk:</strong> Institution may be selling (not buying) via same TWAP pattern. Confirm direction using Signal Pilot Pilot Line (net institutional flow).</p>
     </details>
   </div>
-<h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
-  <div class="quiz">
-    <div class="quiz-question">
-      <p><strong>Q1:</strong> You place a market buy order for 1,000 shares of AAPL (bid $150.00, ask $150.05). You get filled at $150.12. What happened?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> HFT latency arbitrage or order anticipation. HFTs saw your order, bought ahead of you, pushed the price up, then sold to you at $150.12. You paid extra $0.07-0.12/share due to HFT front-running. Defense: Use limit orders at $150.05 instead of market orders.</p>
-      </details>
-    </div>
+<h2 id="quiz" style="margin-top:3rem">📝 Knowledge Check</h2>
+<p>Test your understanding of high-frequency trading mechanics:</p>
 
-    <div class="quiz-question">
-      <p><strong>Q2:</strong> You see 50,000-share bid at $100.00 appear and disappear in 0.5 seconds. What is this?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> Spoofing (fake order to manipulate perception of demand). HFT algo posted large bid to create false buying pressure, then canceled before fill. If you reacted by buying, you were manipulated. Ignore orders that appear/disappear rapidly (hold time under 1 second = likely fake).</p>
-      </details>
+<div class="quiz-question">
+  <p><strong>You place a market buy order for 1,000 shares of AAPL at 10:00 AM. Bid is $150.00, ask is $150.05. You expect to pay $150.05 but get filled at $150.12. What happened?</strong></p>
+  <div class="quiz-options">
+    <div class="quiz-option" data-correct="false">
+      A) Normal market movement—price moved up $0.07 naturally while your order processed
     </div>
-
-    <div class="quiz-question">
-      <p><strong>Q3:</strong> How does IEX (Investors Exchange) protect against HFT latency arbitrage?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> IEX adds a 350-microsecond speed bump (38 miles of coiled fiber) that delays ALL orders equally. This neutralizes HFT's speed advantage, preventing them from front-running price updates across exchanges. If HFT and retail orders both delayed 350 microseconds, no one has latency advantage.</p>
-      </details>
+    <div class="quiz-option" data-correct="true">
+      B) HFT latency arbitrage—HFTs detected your order, front-ran it, pushed price higher, then sold to you
     </div>
-
-    <div class="quiz-question">
-      <p><strong>Q4:</strong> Why do HFTs build $100M+ microwave networks between Chicago and NYC?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> Speed-of-light arbitrage. Microwaves travel through air (straight line, 8.5ms Chicago-NYC) faster than fiber optic cables (follow roads, 14.5ms). 6ms advantage allows HFT to see SPY tick in NYC, trade SPX futures in Chicago before price updates → guaranteed arbitrage profit. $100M investment pays back in 6-18 months from arbitrage profits.</p>
-      </details>
-    </div>
-
-    <div class="quiz-question">
-      <p><strong>Q5:</strong> You notice spreads widen from $0.01 to $0.25 during a 2% market drop. Why?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> HFT liquidity withdrawal. During volatility, HFT market makers pull resting orders (too risky to hold inventory in fast-moving market). This removes liquidity, widens spreads. Retail traders panic-selling into wide spreads get terrible fills (sell at $399.75 instead of $400.00 = extra $0.25/share loss). Defense: Use limit orders, wait for spread to normalize before trading.</p>
-      </details>
+    <div class="quiz-option" data-correct="false">
+      C) Broker error—you should report this to customer service
     </div>
   </div>
+  <div class="quiz-explanation">
+    <strong>Correct: B.</strong> This is textbook HFT front-running via latency arbitrage. Here's the sequence in microseconds: (1) 10:00:00.000 - You click "market buy 1,000 AAPL" on your broker app. (2) 10:00:00.050 - Your order reaches your broker's server (50ms phone → broker). (3) 10:00:00.055 - Broker routes order to exchange (5ms broker → NYSE). (4) 10:00:00.056 - HFT algo detects large buy order coming (they co-locate servers next to exchange, see order 1 millisecond before public). (5) 10:00:00.057 - HFT buys 1,000 shares at $150.05 (front-running your order). (6) 10:00:00.058 - Your order arrives, now ask is $150.12 (HFT pushed it up). (7) 10:00:00.058 - HFT sells 1,000 shares to you at $150.12. (8) HFT profit: $0.07/share × 1,000 = $70 risk-free in 2 milliseconds. You overpaid: $70. Why this works: HFTs have SPEED advantage. They see order flow before you do, react in microseconds. This is legal (!) because they're not technically trading on "inside information"—they're just faster. Defense strategies: (1) Use limit orders ONLY. Place limit buy at $150.05. If price moves to $150.12, you don't get filled (better than overpaying $70). (2) Route to IEX. IEX's 350-microsecond speed bump prevents HFTs from front-running. (3) Trade less liquid hours (11:00 AM - 2:00 PM). HFTs are less active, less front-running. Over 100 trades/year with 1,000 shares each, this costs you $7,000 annually. That's the HFT tax on market orders.
+  </div>
+</div>
+
+<div class="quiz-question" style="margin-top:2rem">
+  <p><strong>You're watching Level 2 order book on TSLA. You see a 50,000-share bid at $200.00. It appears, holds for 0.3 seconds, then vanishes. This happens 10 times in 30 seconds. What is this?</strong></p>
+  <div class="quiz-options">
+    <div class="quiz-option" data-correct="false">
+      A) Large institution trying to accumulate but getting cold feet
+    </div>
+    <div class="quiz-option" data-correct="true">
+      B) Quote stuffing/spoofing—HFT posting fake orders to manipulate perception and slow competitors
+    </div>
+    <div class="quiz-option" data-correct="false">
+      C) Market maker adjusting quotes normally based on volatility
+    </div>
+  </div>
+  <div class="quiz-explanation">
+    <strong>Correct: B.</strong> This is spoofing/quote stuffing—one of the most common HFT manipulation tactics. Here's what's happening: HFT Algo Strategy: (1) Post large fake bid (50,000 shares at $200.00) to create illusion of STRONG BUY INTEREST. (2) Retail/algos see the "wall" and think: "Wow, someone really wants to buy at $200. Price won't fall below $200. Safe to buy now." (3) Retail buys at $200.05-200.10 (thinking support at $200). (4) HFT SELLS to retail at $200.05-200.10 (they're on the opposite side). (5) HFT CANCELS the fake 50,000-share bid at $200.00 (it was never real). (6) Price drops to $199.50 (no real support existed). (7) HFT profits: Sold at $200.10, buys back at $199.50 = $0.60/share. Why it's illegal but unprosecuted: Dodd-Frank Act (2010) banned spoofing, but proving "intent to deceive" is nearly impossible. HFT defense: "Market conditions changed rapidly, we adjusted our quotes." Regulators can't prove the order was FAKE vs legitimate. How to spot spoofing: (1) Order size 10-50× larger than surrounding levels (suspicious). (2) Hold time <1 second (no real buyer holds for 0.3 seconds). (3) Repeating pattern (appears/disappears 10+ times). (4) Never gets filled (real orders eventually trade). Defense: IGNORE orders that flash on/off rapidly. Only trust orders that persist >5 seconds. When you see spoofing active, STOP trading for 60 seconds. Let HFTs battle each other. If you trade during spoofing, you WILL get manipulated. Real example: Navinder Sarao (2010 Flash Crash) made $70M spoofing E-mini S&P futures. He was eventually arrested, but most spoofing goes unpunished because HFTs are too fast to catch.
+  </div>
+</div>
+
+<div class="quiz-question" style="margin-top:2rem">
+  <p><strong>During a 2% market selloff, you notice AAPL bid/ask spread widen from $0.01 (normal) to $0.35 in 10 seconds. You need to sell 1,000 shares. What should you do?</strong></p>
+  <div class="quiz-options">
+    <div class="quiz-option" data-correct="false">
+      A) Place market sell order immediately—sell before it gets worse
+    </div>
+    <div class="quiz-option" data-correct="true">
+      B) Wait 30-60 seconds for spread to normalize, then place limit sell order
+    </div>
+    <div class="quiz-option" data-correct="false">
+      C) Call your broker to complain about the spread
+    </div>
+  </div>
+  <div class="quiz-explanation">
+    <strong>Correct: B.</strong> Wide spread during volatility = HFT LIQUIDITY WITHDRAWAL. Here's the mechanic: Normal conditions (low volatility): HFT market makers quote tight spreads ($0.01-0.02) to capture rebates and spreads on high volume. They're happy to hold inventory briefly. Volatile conditions (2% drop in minutes): HFT market makers PULL all resting orders. Why? Inventory risk is too high. If they buy shares at $150, price might be $148 in 2 seconds. They can't hedge fast enough. So they WIDEN spreads to $0.35-0.50 to compensate for risk OR remove quotes entirely. Result: BID = $149.65, ASK = $150.00 (spread = $0.35). If you panic-sell with market order, you get filled at BID = $149.65. Normal fill would be $149.98 (1-cent spread). You just lost $0.33/share × 1,000 = $330 to HFT liquidity withdrawal. Trade execution during spread spike: (1) DO NOT use market orders. You'll get destroyed by wide spread. (2) Wait 30-60 seconds. HFT spreads usually normalize after initial volatility spike subsides. (3) Place limit sell at $149.90 (split the spread). Wait for fill. (4) If truly urgent, place limit at $149.80 (prioritize speed over fill quality). Why waiting works: Spread widening is TEMPORARY. HFTs pull quotes for 20-60 seconds, then return when volatility stabilizes. If you wait, you save $200-400 per 1,000 shares. Example: Aug 5, 2024 crash. 9:35-9:42 AM, SPY spread hit $0.50-1.00 (normally $0.01). Retail traders panic-selling with market orders lost 0.5-1.0% EXTRA to spread. By 9:45 AM, spreads back to $0.02-0.05. Traders who waited saved $500-1,000 per 100 shares. The HFT lesson: Never trade when spreads are abnormally wide. Patience is free money.
+  </div>
+</div>
 <h2 id="practical-checklist">Practical Checklist</h2><div class="checklist">
     <h4>Before Every Trade:</h4>
     <ul>
@@ -826,6 +851,16 @@
     </div>
 
     <aside class="toc-sidebar">
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#part-1-what-is-hft">What is HFT</a>
+        <a href="#part-2-hft-strategies">HFT Strategies</a>
+        <a href="#part-3-latency-arbitrage">Latency Arbitrage</a>
+        <a href="#part-4-order-anticipation">Order Anticipation</a>
+        <a href="#part-5-spoofing-layering">Spoofing & Layering</a>
+        <a href="#part-6-defense-tactics">Defense Tactics</a>
+        <a href="#quiz">Knowledge Check</a>
+      </nav>
       <div class="lesson-actions">
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
