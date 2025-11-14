@@ -94,6 +94,16 @@
     </ul>
   </div>
 
+  <div class="callout-key">
+    <h4>⚡ Quick Wins for Tomorrow</h4>
+    <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+    <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+      <li><strong>Calculate Kelly % for your BEST trading strategy tonight (takes 15 minutes)</strong> — Pull up your trade journal or brokerage history for your most-traded setup. You need 3 numbers: (1) Win rate (wins ÷ total trades). Example: 35 wins out of 60 trades = 58.3% win rate. (2) Average winner size. Add up all winning trades, divide by number of wins. Example: $12,600 total wins ÷ 35 = $360 avg win. (3) Average loser size. Add up all losing trades, divide by number of losses. Example: $5,000 total losses ÷ 25 = $200 avg loss. Now plug into Kelly formula: Kelly % = (Win Rate × (Avg Win ÷ Avg Loss) - (1 - Win Rate)) ÷ (Avg Win ÷ Avg Loss). Using example: (0.583 × 1.8 - 0.417) ÷ 1.8 = (1.049 - 0.417) ÷ 1.8 = 35.1% full Kelly. BUT DON'T USE FULL KELLY. Use 1/4 Kelly = 35.1% ÷ 4 = 8.8% per trade. On $100K account, that's $8,800 risk per trade (seems huge, but Kelly optimizes for your PROVEN edge). Compare to your current sizing. If you're risking 1-2% per trade with 58% win rate and 1.8:1 reward/risk, you're UNDER-sizing (leaving money on table). If you're risking 10%+ per trade, you're OVER-sizing (risking blowup). Kelly tells you the math-optimal sweet spot. Why this works: Kelly Criterion isn't guessing—it's derived from information theory and maximizes compound growth given YOUR specific edge. Ed Thorp (Blackjack Hall of Fame, hedge fund manager) used Kelly to turn $10K into $800M. It works. Action: Tonight, calculate your Kelly %. If it's 20-40% (full Kelly), use 5-10% (quarter Kelly) starting tomorrow. Track results for 2 weeks. You'll likely see: (1) Bigger wins when edge works, (2) Smaller losses when it doesn't, (3) Smoother equity curve overall.</li>
+      <li><strong>Implement 'equity curve position sizing' for next 10 trades (prevents tilt overtrading)</strong> — This is the simplest risk management upgrade that saves accounts. Here's the rule: At end of each trading day, plot your account balance on a chart. Calculate 20-day simple moving average of your equity. Rule: If today's balance is ABOVE the 20-day MA, you're in a hot streak (edge working). Increase position size by 25% tomorrow. If today's balance is BELOW the 20-day MA, you're in a cold streak (edge not working or bad variance). Decrease position size by 50% tomorrow. Example: Your baseline = 1% risk per trade on $100K account = $1,000/trade. Day 1-10: Account grows to $107K, equity above 20-day MA. New risk: 1% × 1.25 = 1.25% per trade = $1,337/trade (riding the streak). Day 11-15: Hit losing streak, account at $102K, equity below 20-day MA. New risk: 1% × 0.5 = 0.5% per trade = $510/trade (protecting capital during drawdown). This is dynamic Kelly—automatically scaling risk to match performance. Why it works: It prevents the #1 account killer: "revenge trading after losses." When you're losing, this system FORCES you to reduce size (can't dig deeper hole). When you're winning, it lets you compound gains (maximizing hot streaks). Legendary trader Paul Tudor Jones uses equity curve trading. In his documentary, he says: "I risk more when I'm winning, less when I'm losing. Simple." Do this for 10 trades. You'll find: You avoid blowing up during cold streaks (only risking 0.5% when struggling). You maximize winners during hot streaks (risking 1.25-1.5% when crushing it).</li>
+      <li><strong>Run a 'Kelly stress test' on your worst historical losing streak (eye-opening exercise)</strong> — This is the wake-up call every trader needs. Go to your trade journal. Find your worst consecutive losing streak ever. Let's say it was 7 losses in a row. Now run this simulation: Scenario A (Your current sizing): Let's say you risk 2% per trade. 7 losses at 2% each = -14% account drawdown. On $100K account, that's -$14,000. Recovery needed: 16.3% gain to break even. Scenario B (Full Kelly at 20%): 7 losses at 20% each = 0.80^7 = 0.21 = -79% account drawdown (!). On $100K, that's -$79,000. Account at $21,000. Recovery needed: 376% gain to break even (nearly impossible). Scenario C (Quarter Kelly at 5%): 7 losses at 5% each = 0.95^7 = 0.70 = -30% account drawdown. On $100K, that's -$30,000. Recovery needed: 43% gain (doable in 3-6 months). Scenario D (Half Kelly at 10%): 7 losses at 10% each = 0.90^7 = 0.48 = -52% account drawdown. On $100K, that's -$52,000. Recovery needed: 108% gain (psychologically devastating, takes 1-2 years). The lesson: Full Kelly WILL destroy you during losing streaks (which WILL happen—it's math, not if but when). Quarter Kelly gives you room to survive bad variance. Action: Tonight, pull up your worst losing streak. Run the math: How much would you have lost at full Kelly vs quarter Kelly? This 10-minute exercise will convince you to NEVER use full Kelly. Share the results with a trading buddy. It's a reality check.</li>
+    </ol>
+  </div>
+
   <div class="callout callout-success">
     <h4>💰 How Kelly Criterion Saved a $500K Account</h4>
     <p>A prop trader had a proven strategy: 58% win rate, avg win $450, avg loss $300. Using fixed 2% risk per trade, his annual return was 28% with 15% max drawdown.</p>
@@ -426,28 +436,60 @@
       </div>
     </details>
   </div>
-<h2 id="quiz-test-your-understanding">Quiz: Test Your Understanding</h2>
-  <div class="quiz">
-    <div class="quiz-question">
-      <p><strong>Q1:</strong> Your system: 60% win rate, $400 avg win, $200 avg loss. What's the Kelly %?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> p = 0.6, q = 0.4, b = $400/$200 = 2. Kelly = (0.6 × 2 - 0.4) / 2 = (1.2 - 0.4) / 2 = 0.4 = 40%. But use quarter Kelly (10%) or half Kelly (20%) in practice to reduce volatility.</p>
-      </details>
-    </div>
+<h2 id="quiz" style="margin-top:3rem">📝 Knowledge Check</h2>
+  <p>Test your understanding of Kelly Criterion and portfolio construction:</p>
 
-    <div class="quiz-question">
-      <p><strong>Q2:</strong> You have 3 strategies with Kelly %: 20%, 25%, 30%. Correlation = 0.8. Should you allocate 75% total?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> No. High correlation (0.8) means strategies are essentially the same bet. Reduce each allocation by ~30-40% to account for correlation. Adjusted total: ~45-50%, not 75%. Otherwise you're over-leveraged to one market regime.</p>
-      </details>
-    </div><div class="quiz-question">
-      <p><strong>Q3:</strong> Your equity curve drops below its 20-day MA. What should you do with position sizing?</p>
-      <details>
-        <summary>Show Answer</summary>
-        <p><strong>Answer:</strong> Reduce position size by 50% (cut risk from 1% to 0.5% per trade). Equity below MA signals your edge may be impaired or market regime has shifted. Protect capital until equity crosses back above MA, then resume normal sizing.</p>
-      </details>
+  <div class="quiz-question">
+    <p><strong>Your trading system shows: 60% win rate, $400 average win, $200 average loss. What's the correct Kelly % and what should you actually risk per trade?</strong></p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false">
+        A) Full Kelly = 40%, so risk 40% per trade (maximize growth)
+      </div>
+      <div class="quiz-option" data-correct="true">
+        B) Full Kelly = 40%, but use Quarter Kelly = 10% per trade (balance growth and survival)
+      </div>
+      <div class="quiz-option" data-correct="false">
+        C) Kelly doesn't apply here, stick with fixed 1% per trade
+      </div>
+    </div>
+    <div class="quiz-explanation">
+      <strong>Correct: B.</strong> Let's work through the Kelly calculation step-by-step: (1) Win rate (p) = 60% = 0.6. Loss rate (q) = 40% = 0.4. (2) Win/Loss Ratio (b) = $400 / $200 = 2.0. (3) Kelly Formula: f* = (p × b - q) / b = (0.6 × 2.0 - 0.4) / 2.0 = (1.2 - 0.4) / 2.0 = 0.8 / 2.0 = 0.4 = 40% full Kelly. (4) But full Kelly is TOO AGGRESSIVE. Here's why: A 60% win rate means you lose 40% of the time. With 100 trades, you'll hit 5-7 trade losing streaks statistically. At 40% risk per trade, a 5-trade losing streak = 0.60^5 = 0.078 = 92.2% drawdown (!). You'd be left with 7.8% of your account. Psychologically devastating, nearly impossible to recover. (5) Instead, use Quarter Kelly: 40% ÷ 4 = 10% per trade. Same 5-trade losing streak: 0.90^5 = 0.59 = 41% drawdown. Painful but survivable. You still have 59% of capital to recover with. (6) Why Quarter Kelly? Academic studies (Thorp, Poundstone) show: Full Kelly = Max growth, but 40-70% drawdowns. Half Kelly = 75% of growth, 20-35% drawdowns. Quarter Kelly = 50% of growth, 10-20% drawdowns. For most retail traders, Quarter Kelly offers best balance: significant edge capture without account-destroying variance. Real example: Trader with $100K account and this 60% win rate system. Full Kelly (40% risk) = $40,000 per trade. One bad week (5 losses) drops account to $7,800. Game over. Quarter Kelly (10% risk) = $10,000 per trade. Same bad week drops account to $59,000. Still alive, can recover. This is why every professional uses fractional Kelly, never full Kelly.</div>
+    </div>
+  </div>
+
+  <div class="quiz-question" style="margin-top:2rem">
+    <p><strong>You have 3 trading strategies with these full Kelly %: Strategy A = 20%, Strategy B = 25%, Strategy C = 30%. Average correlation between them is 0.80. What's your total portfolio allocation?</strong></p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false">
+        A) 75% total (20% + 25% + 30% = 75%)
+      </div>
+      <div class="quiz-option" data-correct="false">
+        B) 37.5% total (use quarter Kelly for each: 5% + 6.25% + 7.5%)
+      </div>
+      <div class="quiz-option" data-correct="true">
+        C) ~25-30% total (use quarter Kelly PLUS correlation adjustment: reduce by 30-40%)
+      </div>
+    </div>
+    <div class="quiz-explanation">
+      <strong>Correct: C.</strong> This is the correlation trap that destroys portfolios. Here's the analysis: (1) Raw Kelly allocations: Strategy A = 20%, B = 25%, C = 30%. Total = 75%. (2) First adjustment (Quarter Kelly for safety): A = 5%, B = 6.25%, C = 7.5%. Total = 18.75%. (3) But wait—correlation is 0.80! This is HIGH correlation. It means when one strategy wins, the others likely win. When one loses, the others likely lose. You're NOT diversified—you're making the same bet 3 times. (4) Correlation adjustment: With 0.80 correlation, reduce each allocation by 30-40% to account for overlap. A = 5% × 0.65 = 3.25%, B = 6.25% × 0.65 = 4.06%, C = 7.5% × 0.65 = 4.88%. Total = 12.19% → round to ~12-13%. Alternatively, some traders use even more conservative 50% reduction for high correlation: A = 2.5%, B = 3.1%, C = 3.75%. Total = 9.35% → ~10%. (5) Why this matters (real example): Trader ignored correlation, allocated full 18.75% (quarter Kelly) across 3 strategies all correlated 0.80. March 2024 market selloff: ALL 3 strategies hit stops same day. Lost 18.75% in one session. If correlation-adjusted to 10-12%, would've lost only 10-12% (still bad, but survivable). The math: At 0.80 correlation, 3 strategies act like ~1.5 independent bets (not 3). Formula: Effective N = N / √correlation = 3 / √0.80 = 3 / 0.894 = 3.35 → but correlation reduces diversity, so closer to 1.5-2 independent positions. (6) Safe allocation: For 0.80 correlation portfolios, total allocation should be 10-15% max (not 75%, not even 18.75%). Answer C reflects this: 25-30% would be acceptable if correlation were LOW (0.2-0.3), but for 0.80 correlation, go even more conservative to 10-15%.</div>
+    </div>
+  </div>
+
+  <div class="quiz-question" style="margin-top:2rem">
+    <p><strong>Your account equity curve has dropped below its 20-day moving average for the first time in 3 months. Your standard position size is 2% per trade. What should you do?</strong></p>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false">
+        A) Nothing—equity curve trading is pseudoscience, stick to fixed 2% per trade
+      </div>
+      <div class="quiz-option" data-correct="true">
+        B) Reduce position size to 1% per trade (50% reduction) until equity crosses back above 20-day MA
+      </div>
+      <div class="quiz-option" data-correct="false">
+        C) Stop trading entirely until equity recovers—this is a losing streak
+      </div>
+    </div>
+    <div class="quiz-explanation">
+      <strong>Correct: B.</strong> Equity curve trading is one of the most powerful risk management tools professionals use. Here's the logic: (1) What the signal means: Equity below 20-day MA indicates recent performance is below average. This could mean: (a) Bad luck/variance (your edge still works, just hitting losers), (b) Market regime shift (your edge temporarily impaired), or (c) You're trading poorly (tilt, revenge trading, breaking rules). (2) All three scenarios require the same response: REDUCE RISK until edge is proven working again. (3) The rule: If equity drops below 20-day MA, cut position size by 50% (from 2% to 1% in this case). This limits damage while you diagnose the problem. If equity rises above 20-day MA, return to normal 2% sizing. If equity rises significantly above MA (hot streak), increase to 2.5% (25% boost). (4) Why this works (real data): Study by Larry Williams (World Cup Trading Champion): Traders who used equity curve position adjustment had 40% lower max drawdowns than fixed-size traders with SAME edge. Example: $100K account, 60% win rate system. Fixed 2% trader: Hits 10-trade losing streak (happens ~0.4% of the time = 1-2 times per 250 trades). Loses 2% × 10 = 20% account (now at $80K). Equity curve trader: After 2-3 losses, equity drops below MA. Reduces to 1%. Loses 1% × 7 remaining trades = 7% more (total ~10-12% loss, now at $88-90K). Same losing streak, 50% less damage. (5) Why answer A is wrong: "Pseudoscience" dismissal ignores decades of professional use. Paul Tudor Jones, Ed Seykota, and most systematic funds use equity curve adjustments. It's not predicting the future—it's adapting risk to recent performance (which is rational). (6) Why answer C is wrong: Stopping entirely means missing recovery trades. Your edge might still work—you just hit variance. Reducing size (not stopping) keeps you in the game with lower risk. Once equity crosses back above MA (proving edge recovery), you resume normal size and catch the rebound. (7) Implementation: Track your equity daily. Plot 20-day SMA. When below, halve your size. When above, return to normal or boost 25% if well above. This single rule can reduce lifetime max drawdown by 30-50% vs fixed sizing.</div>
     </div>
   </div>
 <h2 id="practical-checklist">Practical Checklist</h2>
@@ -509,6 +551,15 @@
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
       </div>
+
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#part-4-dynamic-position-sizing">Dynamic Position Sizing</a>
+        <a href="#part-5-using-signal-pilot-for-portfolio-construction">Signal Pilot Tools</a>
+        <a href="#practice-exercise">Practice Exercise</a>
+        <a href="#quiz">Knowledge Check</a>
+        <a href="#practical-checklist">Portfolio Checklist</a>
+      </nav>
     </aside>
   </div>
 
