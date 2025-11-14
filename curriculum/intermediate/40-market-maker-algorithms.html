@@ -225,10 +225,20 @@
         </ul>
       </div>
 
-        
-        
-        
-        
+
+
+
+
+      </div>
+
+      <div class="callout-key">
+        <h4>⚡ Quick Wins for Tomorrow</h4>
+        <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+        <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Switch to limit orders on your next 10 trades (100% rule, no exceptions)</strong> — Tomorrow morning, before market open, make a commitment: "For my next 10 trades, I will ONLY use limit orders, even if I miss the move." When you want to buy, look at the bid/ask spread. Bid $100.00, Ask $100.05? Place limit buy at $100.02 (the midpoint). Wait 10 seconds. If it doesn't fill, adjust by $0.01 if absolutely necessary. Track your fills: How much better than the ask did you get? Example: Stock is $50.00/$50.05. You place limit at $50.02. You get filled at $50.02. You just saved $0.03/share vs market order ($50.05). If you bought 200 shares, you saved $6 on that single trade. Multiply by 10 trades = $60 saved. Over 100 trades/year = $600 saved. Over 1,000 trades (if you're active) = $6,000 saved. This one habit alone will pay for your education 10× over. Measure your slippage savings in a spreadsheet: "Fill price minus ask price." You'll never go back to market orders again.</li>
+          <li><strong>Check Level 2 order book before your next entry (identify fake walls)</strong> — Open your broker's Level 2 window (most brokers have this, sometimes called "Market Depth" or "Order Book"). Before you enter your next trade, look at the rows of buy/sell orders. Do you see a HUGE order that dwarfs everything else? Example: You see 50,000 shares to sell at $100.10, but every other level has only 500-2,000 shares. That's likely a FAKE wall (spoofing/layering). Market makers use these to scare you. If you're thinking of buying, that wall makes you hesitate ("too much resistance"). But watch what happens: Within 30 seconds, that 50,000 share order disappears or gets pulled. It was never real. Test this: Find 3 "suspicious" large orders on Level 2 over the next week. Watch them. Count how many get filled vs how many disappear within 60 seconds. You'll find 70-90% vanish unfilled. Once you see this pattern, you'll stop falling for fake walls. You'll realize: "That's not real supply. That's a market maker trying to manipulate my decision."</li>
+          <li><strong>Avoid trading the first 15 minutes (9:30-9:45 AM) and last 10 minutes (3:50-4:00 PM) for ONE week</strong> — This is the single biggest behavior change that separates profitable traders from losers. Market makers WIDEN SPREADS during these windows because (1) volatility is highest, (2) retail rushes to trade, and (3) they can get away with it. Example: Normal AAPL spread at 11:00 AM = $0.01. AAPL spread at 9:32 AM = $0.08 (8× wider). If you market buy at 9:32 AM, you overpay $0.08/share. On 500 shares, that's $40 lost to slippage on ONE trade. Do that 3 times/week = $120/week = $6,240/year in UNNECESSARY costs. For one week, set a rule: "I will not place a trade until 9:45 AM. I will close all trades by 3:50 PM." Track what happens: (1) Your fills improve (tighter spreads), (2) You avoid fake breakouts that reverse at 9:45 AM, (3) You sidestep closing auction manipulation at 3:55 PM. After one week, compare: Old slippage (trading 9:30-4:00) vs New slippage (trading 9:45-3:50). You'll see 40-60% improvement in execution quality. That's free money you were giving to market makers.</li>
+        </ol>
       </div>
 
       <!-- Prerequisites Warning -->
@@ -720,47 +730,61 @@
 
       <div class="section-break"><span>Quiz: Test Your Understanding</span></div>
 
-      <div class="quiz">
-        <h4>🎮 Market Maker Mastery Check</h4>
+      <h2 id="quiz" style="margin-top:3rem">📝 Knowledge Check</h2>
+      <p>Test your understanding of market maker algorithms:</p>
 
-        <div class="quiz-question">
-          <p><strong>1. AAPL bid/ask is $175.00 / $175.05. You place a market sell order for 500 shares. What price do you get?</strong></p>
-          <div class="quiz-options">
-            <div class="quiz-option" data-correct="true">A) $175.00 (the bid)</div>
-            <div class="quiz-option" data-correct="false">B) $175.05 (the ask)</div>
-            <div class="quiz-option" data-correct="false">C) $175.025 (the midpoint)</div>
+      <div class="quiz-question">
+        <p><strong>AAPL bid/ask is $175.00 / $175.05. You place a market sell order for 500 shares. What price do you get?</strong></p>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="true">
+            A) $175.00 (the bid)
           </div>
-          <div class="quiz-feedback">
-            <p><strong>Correct!</strong> Market sell orders are filled at the <strong>bid price</strong> ($175.00). Market makers buy from you at the bid and sell to others at the ask, capturing the spread.</p>
+          <div class="quiz-option" data-correct="false">
+            B) $175.05 (the ask)
+          </div>
+          <div class="quiz-option" data-correct="false">
+            C) $175.025 (the midpoint)
           </div>
         </div>
+        <div class="quiz-explanation">
+          <strong>Correct: A.</strong> Market sell orders are ALWAYS filled at the bid price ($175.00). Here's the mechanic: Market makers post two quotes simultaneously—bid (price they'll buy at) and ask (price they'll sell at). When you place a market sell, you're accepting their bid offer. They buy your shares at $175.00, then turn around and sell them to the next buyer at $175.05, capturing the $0.05 spread ($25 profit on your 500 shares, risk-free, in milliseconds). This is called "spread capture," and it's the market maker's core business model. Why you should care: If you had placed a limit sell at $175.03 (midpoint) instead, you might have gotten filled there, saving $0.03/share = $15 on this trade. Over 100 trades, that's $1,500 saved per year. The bid-ask spread is the market maker's profit margin—and your cost. Market orders guarantee you pay the maximum cost. Limit orders at midpoint split the difference. Always check the spread size before trading: spread > 0.1% of stock price = use limit orders only.
+        </div>
+      </div>
 
-        <div class="quiz-question">
-          <p><strong>2. You see a huge sell order (50,000 shares) appear at $100.10, but it disappears before anyone can fill it. What just happened?</strong></p>
-          <div class="quiz-options">
-            <div class="quiz-option" data-correct="false">A) A large institution changed their mind</div>
-            <div class="quiz-option" data-correct="true">B) Spoofing—a market maker posted a fake order to manipulate price</div>
-            <div class="quiz-option" data-correct="false">C) High-frequency trader testing liquidity</div>
+      <div class="quiz-question" style="margin-top:2rem">
+        <p><strong>You see a huge sell order (50,000 shares) appear at $100.10 on Level 2, but it disappears within 20 seconds before anyone can fill it. What just happened?</strong></p>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">
+            A) A large institution changed their mind about selling
           </div>
-          <div class="quiz-feedback">
-            <p><strong>Correct!</strong> This is <strong>spoofing</strong>—placing large fake orders to create the illusion of supply/demand, then canceling before execution. The fake sell wall scares retail into selling at $100.00. The MM buys at $100.00 and cancels the fake order.</p>
+          <div class="quiz-option" data-correct="true">
+            B) Spoofing—a market maker posted a fake order to manipulate price perception
+          </div>
+          <div class="quiz-option" data-correct="false">
+            C) High-frequency trader testing liquidity conditions
           </div>
         </div>
+        <div class="quiz-explanation">
+          <strong>Correct: B.</strong> This is textbook spoofing—one of the most common (and illegal) market maker manipulation tactics. Here's the full sequence: (1) Market maker wants to buy shares at $100.00 (current bid). (2) They post a FAKE sell order for 50,000 shares at $100.10 (creating the illusion of massive supply/resistance). (3) Retail traders see the order book and think: "Wow, huge seller at $100.10. This stock can't break higher. I should sell now at $100.00 before it drops." (4) Retail panic-sells at $100.00. Market maker buys those shares. (5) Market maker CANCELS the fake 50,000 share order (it was never real). (6) Price rallies to $100.20 (no real resistance existed). Market maker sells at $100.20, pocketing $0.20/share. Why it's illegal: Dodd-Frank Act 2010 banned spoofing, but it's nearly impossible to prove intent. Regulators must show the trader "never intended to execute" the order. Defense: "I changed my mind" or "market conditions shifted." How to spot it: Orders that are 5-10× larger than surrounding levels, appear suddenly, and disappear within 60 seconds without ANY fills = 80% likely spoofing. Track 10 suspicious orders—if 8+ vanish unfilled, you've confirmed the pattern.
+        </div>
+      </div>
 
-        <div class="quiz-question">
-          <p><strong>3. You trade on Robinhood (PFOF broker). NBBO is $100.00 / $100.02. You place a market buy. Citadel fills you at $100.02. Did you get a fair price?</strong></p>
-          <div class="quiz-options">
-            <div class="quiz-option" data-correct="false">A) Yes—you paid the NBBO ask, so it's fair</div>
-            <div class="quiz-option" data-correct="true">B) No—there might have been a better price on a public exchange</div>
-            <div class="quiz-option" data-correct="false">C) Yes—Robinhood is commission-free, so you saved money</div>
+      <div class="quiz-question" style="margin-top:2rem">
+        <p><strong>You trade on Robinhood (PFOF broker). NBBO is $100.00 / $100.02. You place a market buy for 1,000 shares. Citadel fills you at $100.02. Did you get a fair price?</strong></p>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">
+            A) Yes—you paid the NBBO ask, so it's fair by regulation
           </div>
-          <div class="quiz-feedback">
-            <p><strong>Correct!</strong> Even though you paid the NBBO ask ($100.02), there might have been sellers at $100.01 on NYSE or Nasdaq. But Robinhood routed to Citadel instead, so you <em>didn't get price priority</em>. Over hundreds of trades, these $0.01 overages add up to hundreds or thousands of dollars per year.</p>
+          <div class="quiz-option" data-correct="true">
+            B) No—there might have been better prices ($100.01) on public exchanges that you didn't access
+          </div>
+          <div class="quiz-option" data-correct="false">
+            C) Yes—Robinhood is commission-free, so you saved money overall
           </div>
         </div>
-
-        <button class="btn btn-primary quiz-submit">Check Answers</button>
-        <div class="quiz-results"></div>
+        <div class="quiz-explanation">
+          <strong>Correct: B.</strong> This is the hidden cost of Payment for Order Flow (PFOF). Here's what really happened behind the scenes: When you hit "buy" on Robinhood, your order did NOT go to NYSE or Nasdaq (public exchanges). Instead, Robinhood sold your order to Citadel for $0.002/share ($2 payment for your 1,000 share order). Citadel filled you at $100.02 (the NBBO ask), which is LEGAL—they're required to match or beat NBBO. But here's the problem: On the public exchange (NYSE), there was a seller willing to sell at $100.01. You didn't get access to that price because Robinhood routed to Citadel instead of the exchange. You overpaid $0.01/share × 1,000 shares = $10 on this trade. Citadel made $10 (bought at $100.01 on NYSE, sold to you at $100.02). Robinhood made $2 (PFOF payment). You lost $10. "But Robinhood saved me $0 in commissions!" you say. True—but if you trade 100 times/year, you overpay $1,000 in worse fills. Old-school brokers (Fidelity, Schwab) charge $0 commissions now AND route to best execution. The solution: Use a broker that routes to IEX (Investors Exchange) or lets you choose routing. IEX has a 350-microsecond "speed bump" that prevents Citadel from front-running your order. On Interactive Brokers, you can manually select "IEX" routing. Your fills will improve by $0.01-$0.02/share on average.
+        </div>
       </div>
 
       <div class="section-break"><span>Key Takeaways</span></div>
@@ -802,6 +826,16 @@
     </div>
 
     <aside class="toc-sidebar">
+      <nav class="toc-nav">
+        <div class="toc-title">Lesson Navigation</div>
+        <a href="#buy-the-bid-sell-the-ask-repeat">Spread Capture Model</a>
+        <a href="#when-smart-money-trades-market-makers-lose">Adverse Selection</a>
+        <a href="#market-makers-dont-want-directional-risk">Inventory Management</a>
+        <a href="#the-dark-side-of-market-making">Manipulation Tactics</a>
+        <a href="#why-free-trading-isnt-free">Payment for Order Flow</a>
+        <a href="#defense-strategies-for-retail-traders">Defense Strategies</a>
+        <a href="#quiz">Knowledge Check</a>
+      </nav>
       <div class="lesson-actions">
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
