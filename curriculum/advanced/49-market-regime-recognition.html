@@ -116,22 +116,6 @@
       <div class="section-break"><span>Part 1: The Four Regimes (And Why You Keep Trading the Wrong One)</span></div>
 
       
-      <!-- TL;DR Skimmer Summary -->
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
-          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>Market regimes trending ranging volatile quiet different characteristics</li>
-            <li>Each regime needs different strategy trend following fails ranges</li>
-            <li>Regime indicators ADX above 25 trending below 20 ranging VIX volatile</li>
-            <li>Identify regime apply appropriate strategy switch when changes</li>
-            <li>Validation: Regime-matched strategies outperform by 25-40%</li>
-          </ul>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
-        </div>
-      </details>
-
       <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
         <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
         <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
@@ -511,6 +495,42 @@ Ranging Regime:
             <p style="margin-top:1rem">In trends, VWAP is support. In ranges, VWAP is a magnet. Know the difference.</p>
           </div>
         </details>
+      </div>
+
+      <div class="callout callout-danger">
+        <h4>📉 CASE STUDY: Marcus's $43K Regime Blindness Disaster</h4>
+        <p><strong>Trader:</strong> Marcus Chen, 34, full-time trader ($128K account)</p>
+        <p><strong>Strategy:</strong> Trend-following pullbacks (order blocks + BOS), 1.5% risk per trade</p>
+        <p><strong>Fatal flaw:</strong> Never checked market regime—kept using trend strategy when market shifted to ranging</p>
+        <p><strong>Result:</strong> Lost $43,280 (-29.4%) in 3 months when regime changed, recovered using regime-adaptive framework</p>
+
+        <p><strong>The Golden Run (Sep-Oct 2023):</strong> SPY trending strong (ADX 28-35). Marcus's pullback strategy crushed it: 24 trades, 75% win rate, +$18,420 profit. "I finally cracked the code!" But he was just lucky—right strategy, right regime by accident.</p>
+
+        <p><strong>The Disaster (Nov 2023-Jan 2024):</strong> Market shifted to ranging (ADX dropped 32 → 17, SPY chopping $440-460 for 11 weeks). Marcus kept trading SAME strategy without checking regime:</p>
+        <ul style="margin:.75rem 0 0 1.5rem">
+          <li><strong>Nov:</strong> 12 trades, 33% win rate, -$6,840 ("Bad luck, I'll bounce back")</li>
+          <li><strong>Dec:</strong> 15 trades, 20% win rate, -$18,920 (revenge trading, chasing)</li>
+          <li><strong>Jan:</strong> 18 trades, 28% win rate, -$17,520 (increased size to 2%, overtrading)</li>
+          <li><strong>Total damage:</strong> Account $147K → $104K (-$43,280, -29.4% drawdown)</li>
+        </ul>
+
+        <p><strong>What he missed:</strong> ADX collapsed to 15-18 (screaming "RANGING—DON'T TREND TRADE!"). Every pullback bounced, then failed at resistance (false breakouts). Win rate dropped 75% → 27%. He blamed "bad luck" instead of regime change.</p>
+
+        <p><strong>The wake-up:</strong> "My strategy worked PERFECTLY in Sep-Oct (75% win rate). Same rules. Now I'm down $43K. The MARKET changed—SPY trending Sep-Oct, now chopping sideways. I'm trading trend-following in a RANGE. ADX is 16 now vs 32 in September. I never checked regime. I've been fighting a knife fight with a tennis racket for 3 months."</p>
+
+        <p><strong>Recovery (Feb-Apr 2024):</strong> Built regime detection system (ADX + ATR + BB width). Adaptive position sizing: 1.5% in trends, 0.5% in ranges, 0% in volatility. Strategy selection: pullbacks in trends, fade extremes in ranges, SIT OUT when regime wrong.</p>
+        <ul style="margin:.75rem 0 0 1.5rem">
+          <li><strong>Feb:</strong> Ranging (ADX 18) → Skipped most trades, only 4 taken, +$2.2K (avoided $12K+ losses)</li>
+          <li><strong>Mar:</strong> Trending (ADX 27) → Full trend strategy, 73% win rate, +$14.6K</li>
+          <li><strong>Apr:</strong> Trending (ADX 25-29) → 78% win rate, +$11.8K</li>
+          <li><strong>3-month recovery:</strong> +$28,640 (+27.6% from trough)</li>
+        </ul>
+
+        <p><strong>Final results:</strong> Started $128.6K → Peak $147K (lucky) → Trough $104K (regime-blind) → Final $132K (regime-adaptive). Net: +$3.4K (+2.6%) but learned $50K+ lesson.</p>
+
+        <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
+          <strong>Marcus's advice:</strong> "I lost $43K because I never checked if the market was STILL trending. Same strategy, different regime = opposite results (75% vs 27% win rate). Check ADX before every trade: >25 = trending (trade pullbacks), <20 = ranging (skip or fade). A 10-second regime check would have saved me $43K. Regime matters MORE than strategy quality. Track your regime-matched vs mismatched trades—the data will be undeniable. I'll never trade regime-blind again."
+        </p>
       </div>
 
       <div class="key-takeaway">

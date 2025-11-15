@@ -66,28 +66,6 @@
 
   <div class="wrap article-grid">
     <div class="prose">
-      <!-- TL;DR Skimmer Summary -->
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
-          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>Moving average crossovers are LAGGING signals—entry after 60-80% of move is done, poor risk:reward</li>
-            <li>In ranging markets, MA crossovers whipsaw constantly—6-8 false signals per month, death by 1000 cuts</li>
-            <li>Use MAs as trend FILTERS only (price above/below 200 EMA = bias), NOT as entry triggers</li>
-            <li>Pilot Line (adaptive trend reference in Pentarch/Omnideck) = MA done right—no whipsaw spam, adapts to volatility</li>
-            <li>Framework: Use higher TF MA for bias → Wait for pullback TO the MA (not crossover) → Enter on bounce with confirmation</li>
-            <li>Common mistake: Trading crossovers as entries—late entries, tight stops, constant whipsaws in chop</li>
-            <li>Validation: Track MA crossover trades vs pullback-to-MA trades—pullbacks should have 2-3x better R:R</li>
-            <li>Case study: David lost $9.8K buying every 50 EMA touch (36% WR); recovered using Pilot Line + pullback strategy</li>
-          </ul>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
-        </div>
-      </details>
-
-
-
-
       <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
         <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
         <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
@@ -101,339 +79,35 @@
 
       <div class="section-break"><span>Part 1: The MA "Support" Myth</span></div>
 
-<h2 id="davids-9800-ma-support-disaster-when-lagging-indicators-destroy-accounts">David's $9,800 "MA Support" Disaster: When Lagging Indicators Destroy Accounts</h2>
+<div class="callout callout-danger">
+  <h4>📉 CASE STUDY: David's $9,800 "MA Support" Disaster</h4>
+  <p><strong>Trader:</strong> David Martinez, 32, former software engineer ($26K account)</p>
+  <p><strong>Strategy:</strong> MA "support" trading: "Buy every 50 EMA touch in uptrends. Sell every touch in downtrends"</p>
+  <p><strong>Fatal flaw:</strong> Treated moving averages as support/resistance when they're DESCRIPTIVE, not PREDICTIVE</p>
+  <p><strong>Result:</strong> Lost $9,800 (-37.7%) in 9 weeks buying lagging lines that weren't actually support</p>
 
-      <p><strong>David Martinez, 32, Phoenix, Arizona</strong> — Former software engineer turned day trader. Analytical, patient, systematic. $26,000 saved for trading capital.</p>
+  <p><strong>The YouTube promise (Oct 2023):</strong> Finished trading course: "Buy when price touches 50 EMA in uptrends. Simple and effective!" Backtested on clean trends. Results: 58% win rate. "This is my edge!"</p>
 
-      <p><strong>October 2023:</strong> David finishes a YouTube trading course teaching "MA support/resistance strategy." The premise: "Buy when price touches the 50 EMA in uptrends. Sell when price touches the 50 EMA in downtrends. Simple and effective!"</p>
+  <p><strong>The disaster (Jan-Mar 2024, 9 weeks):</strong> Went live with $26K. Bought every 50 EMA touch "like clockwork." Reality: 45 trades, 35.6% win rate, -$9,800 loss (-37.7%). Account: $26K → $16.2K. "Price would touch, I'd enter, then watch it slice straight through the MA like it didn't exist."</p>
 
-      <p>He backtests the strategy on clean trending markets. Results look promising: 58% win rate, decent R:R. He's confident this is his edge.</p>
+  <p><strong>The breaking point (Feb 14, 2024 - ES futures):</strong> 10:18 AM: ES touched 50 EMA at 5,026.50 (EMA: 5,027). David: "TOUCHES = BUY!" Bought 2 contracts. 10:19 AM: Brief bounce to 5,029 (+$50). "Support holding!" 10:22 AM: Price breaks THROUGH 50 EMA, down to 5,022 (-$90). 10:25 AM: Continues falling to 5,016 (-$210). 10:28 AM: Stop hit at 5,011 (-$310). Final damage: MA "support" was just a lagging average showing where price averaged over past 50 bars. It didn't "hold" anything.</p>
 
-      <p><strong>January 2, 2024:</strong> David goes live with $26,000. Every time price touches his 50 EMA, he buys. Every touch is a "high-probability setup."</p>
+  <p><strong>The pattern analysis:</strong> David reviewed all 29 losing trades:</p>
+  <ul style="margin:.75rem 0 0 1.5rem">
+    <li><strong>23 out of 29 losses:</strong> Bought MA "support" touches that immediately broke</li>
+    <li><strong>Golden Cross signals:</strong> Appeared 18-24 days AFTER trends started (20-30% of move missed!)</li>
+    <li><strong>MA "support" in ranging markets:</strong> 8 whipsaws in 2 weeks (Feb 5-16, 7 losses)</li>
+    <li><strong>MA crossovers as exits:</strong> Triggered 15-20% late on average</li>
+  </ul>
 
-      <p><strong>March 8, 2024 (9 weeks later):</strong> Account balance: <strong>$16,200</strong>. Loss: <strong>-$9,800</strong> (-37.7%).</p>
+  <p><strong>Recovery (Apr-Jun 2024):</strong> Stopped trading for 3 weeks. Researched "moving averages lagging indicators" and discovered MAs aren't support—they describe trend, don't predict reversals. New framework: (1) NEVER buy MA touches blindly (MAs aren't support!), (2) USE 3-timeframe MA alignment (1H, 4H, Daily all aligned = trend confirmed), (3) WAIT for Pentarch Pilot Line events (TD = trend detected early, RUN = trend running), (4) AVOID Golden Cross entries (20-30% late!), enter on Pentarch TD events instead. Results over 3 months: 40 trades, 67.5% win rate, +$8,800 profit. Account: $16.2K → $25K (+54.3% recovery).</p>
 
-      <div class="callout-warning">
-        <h4>🚨 What David Learned The Hard Way</h4>
-        <p>"I bought every 50 EMA touch like clockwork. Price would touch, I'd enter, then watch it slice straight through the MA like it didn't exist."</p>
-        <p style="margin-top:0.75rem">"Moving averages aren't support. They're DESCRIPTIVE, not PREDICTIVE. They tell you what happened, not what's about to happen. I was buying a lagging line and calling it an edge."</p>
-        <p style="margin-top:0.75rem"><em>— David Martinez, March 2024 journal potential entry</em></p>
-      </div>
+  <p><strong>Final results:</strong> Started $26K → Trough $16.2K (MA "support") → Final $25K (MA alignment + Pentarch). Net: -$1K (-3.8%) but learned $10K+ lesson.</p>
 
-      <div class="story-summary">
-        <h3>📉 David's "MA Support" Disaster: January-March 2024</h3>
-        <div class="summary-stats">
-          <div class="stat-box">
-            <span class="stat-label">Total Trades (9 weeks)</span>
-            <span class="stat-value">45</span>
-          </div>
-          <div class="stat-box loss">
-            <span class="stat-label">Win Rate</span>
-            <span class="stat-value">35.6%</span>
-          </div>
-          <div class="stat-box loss">
-            <span class="stat-label">Total Loss</span>
-            <span class="stat-value">-$9,800</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Winners/Losers</span>
-            <span class="stat-value">16 / 29</span>
-          </div>
-        </div>
-        <div class="key-insight">
-          <strong>The Core Problem:</strong> David bought every 50 EMA touch like clockwork, treating moving averages as support. Price sliced through the MA like it didn't exist. MAs describe trend, they don't predict reversals.
-        </div>
-      </div>
-
-<h3 id="the-breaking-point-february-14-2024">The Breaking Point: February 14, 2024</h3>
-
-      <p><strong>The trade that exposed the flaw.</strong></p>
-
-      <div class="story-summary">
-        <h3>📉 The ES 50 EMA "Support" Breakdown: February 14, 2024</h3>
-        <div class="summary-stats">
-          <div class="stat-box">
-            <span class="stat-label">Entry Price</span>
-            <span class="stat-value">5,026.50</span>
-          </div>
-          <div class="stat-box loss">
-            <span class="stat-label">Final Loss</span>
-            <span class="stat-value">-$310</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">50 EMA Level</span>
-            <span class="stat-value">5,027</span>
-          </div>
-          <div class="stat-box loss">
-            <span class="stat-label">Price Drop</span>
-            <span class="stat-value">-25 pts</span>
-          </div>
-        </div>
-        <div class="key-insight">
-          <strong>David's Wake-Up Call:</strong> "The 50 EMA didn't 'hold' price. It was just a lagging line showing where price averaged over the past 50 bars. Price sliced through it like it wasn't there. MAs describe, they don't predict."
-        </div>
-      </div>
-
-      <div class="trading-timeline">
-        <div class="timeline-week" style="background:rgba(255,193,7,0.08)">
-          <div class="week-header">
-            <span class="week-label">10:15 AM</span>
-            <span class="week-pnl">ES 5,028</span>
-          </div>
-          <div class="week-stats">50 EMA: 5,027 • Price pulling back • David watching</div>
-          <div class="week-issue">📊 Price approaching 50 EMA, setup forming</div>
-        </div>
-
-        <div class="timeline-week" style="background:rgba(255,193,7,0.12);border-left:4px solid #ffc107">
-          <div class="week-header">
-            <span class="week-label">10:18 AM</span>
-            <span class="week-pnl loss">LONG 2 contracts</span>
-          </div>
-          <div class="week-stats">ES 5,026.50 • 50 EMA: 5,027 • "TOUCHES = BUY!"</div>
-          <div class="week-issue">❌ Bought the "support" touch — textbook MA entry</div>
-        </div>
-
-        <div class="timeline-week" style="background:rgba(255,193,7,0.08)">
-          <div class="week-header">
-            <span class="week-label">10:19 AM</span>
-            <span class="week-pnl win">+$50</span>
-          </div>
-          <div class="week-stats">ES 5,029 • Small bounce • David confident</div>
-          <div class="week-issue">✅ Confirmation! Support holding... or is it?</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">10:22 AM</span>
-            <span class="week-pnl loss">-$90</span>
-          </div>
-          <div class="week-stats">ES 5,022 • Price breaks THROUGH 50 EMA • David nervous</div>
-          <div class="week-issue">😰 Wait... the "support" just broke</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">10:25 AM</span>
-            <span class="week-pnl loss">-$210</span>
-          </div>
-          <div class="week-stats">ES 5,016 • Continues falling • No support!</div>
-          <div class="week-issue">😱 Panicking — price falling fast, no bounce</div>
-        </div>
-
-        <div class="timeline-week loss" style="border-left:4px solid #ff5252">
-          <div class="week-header">
-            <span class="week-label">10:28 AM</span>
-            <span class="week-pnl loss">-$310 STOP HIT</span>
-          </div>
-          <div class="week-stats">ES 5,011 • 50 EMA: 5,026 • OUT</div>
-          <div class="week-issue">🔴 Final damage: MA "support" was just a lagging average</div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">10:45 AM</span>
-            <span class="week-pnl">ES 5,003</span>
-          </div>
-          <div class="week-stats">Out, watching • Downtrend continues • 50 EMA: 5,025</div>
-          <div class="week-issue">💡 Time to rethink: What if MAs aren't support at all?</div>
-        </div>
-      </div>
-
-      <div class="callout-key">
-        <h4>💡 David's Investigation: The MA Myth Exposed</h4>
-        <p>After reviewing all 29 losing trades, David discovered the truth:</p>
-        <ul style="margin:0.75rem 0">
-          <li><strong>23 out of 29 losses</strong> — Bought MA "support" touches that immediately broke</li>
-          <li><strong>Golden Cross signals:</strong> Appeared 18-24 days AFTER trends started (20-30% of move missed!)</li>
-          <li><strong>MA "support" in ranging markets:</strong> 8 whipsaws in 2 weeks (Feb 5-16)</li>
-          <li><strong>MA crossovers as potential exits:</strong> Triggered 15-20% late on average</li>
-        </ul>
-        <p style="margin-top:1rem;font-weight:600;color:#ff5252">Moving averages LAG. They describe what happened, not what's about to happen. David was trading history, not the future.</p>
-      </div>
-<h3 id="the-rebuild-march-june-2024-multi-timeframe-ma-alignment-pentarch">The Rebuild: March-June 2024 (Multi-Timeframe MA Alignment + Pentarch)</h3>
-
-      <p><strong>March 9-31, 2024:</strong> David stops trading. Researches "moving averages lagging indicators" and discovers multi-timeframe MA alignment + Pentarch Pilot Line's 5-event system (TD, IGN, RUN, EXT, BRK).</p>
-
-      <p><strong>April 1, 2024:</strong> David resumes trading with new MA framework. Account: $16,200. New rules:</p>
-      <ol>
-        <li><strong>NEVER</strong> buy MA touches blindly (MAs aren't support!)</li>
-        <li><strong>USE</strong> 3-timeframe MA alignment (1H, 4H, Daily all aligned = trend confirmed)</li>
-        <li><strong>WAIT</strong> for Pentarch Pilot Line events (TD = trend detected, RUN = trend running)</li>
-        <li><strong>AVOID</strong> Golden Cross entries (20-30% late!). Enter on Pentarch TD events instead</li>
-      </ol>
-
-      <div class="story-summary">
-        
-
-
-<h3>📈 David's MA Alignment + Pentarch Rebuild: April-June 2024</h3>
-        <div class="summary-stats">
-          <div class="stat-box win">
-            <span class="stat-label">Total Trades (3 months)</span>
-            <span class="stat-value">40</span>
-          </div>
-          <div class="stat-box win">
-            <span class="stat-label">Win Rate</span>
-            <span class="stat-value">67.5%</span>
-          </div>
-          <div class="stat-box win">
-            <span class="stat-label">Total Profit</span>
-            <span class="stat-value">+$8,800</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Winners/Losers</span>
-            <span class="stat-value">27 / 13</span>
-          </div>
-        </div>
-        <div class="key-insight">
-          <strong>The Paradigm Shift:</strong> David stopped using MAs as entry triggers and started using them as trend filters. Combined with Pentarch TD events for early trend detection, he caught moves weeks before Golden Cross signals appeared.
-        </div>
-      </div>
-
-      <div class="trading-timeline">
-        <div class="timeline-week" style="background:rgba(255,193,7,0.08)">
-          <div class="week-header">
-            <span class="week-label">April 2024</span>
-            <span class="week-pnl" style="color:#ffc107">+$340</span>
-          </div>
-          <div class="week-stats">10 trades • 6 winners / 4 losers • 60.0% win rate</div>
-          <div class="week-issue">📚 Learning: MA alignment filters bad trades</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">May 2024</span>
-            <span class="week-pnl win">+$3,680</span>
-          </div>
-          <div class="week-stats">14 trades • 10 winners / 4 losers • 71.4% win rate</div>
-          <div class="week-issue">✅ Breakthrough: Pentarch TD events catch trends EARLY</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">June 2024</span>
-            <span class="week-pnl win">+$4,780</span>
-          </div>
-          <div class="week-stats">16 trades • 11 winners / 5 losers • 68.8% win rate</div>
-          <div class="week-issue">🎯 MA alignment = trend filter, not entry trigger</div>
-        </div>
-      </div>
-<h3 id="davids-complete-transformation">David's Complete Transformation</h3>
-
-      <div class="story-summary">
-        <h3>🔄 David's Complete Transformation: Jan-Jun 2024</h3>
-        <div class="summary-stats">
-          <div class="stat-box loss">
-            <span class="stat-label">Before (Jan-Mar)</span>
-            <span class="stat-value">-$9,800</span>
-          </div>
-          <div class="stat-box win">
-            <span class="stat-label">After (Apr-Jun)</span>
-            <span class="stat-value">+$8,800</span>
-          </div>
-          <div class="stat-box win">
-            <span class="stat-label">Total Swing</span>
-            <span class="stat-value">$18,600</span>
-          </div>
-          <div class="stat-box win">
-            <span class="stat-label">Account Recovery</span>
-            <span class="stat-value">+54.3%</span>
-          </div>
-        </div>
-        <div class="key-insight">
-          <strong>The Same Tools, Completely Different Usage:</strong> David didn't abandon moving averages. He learned they describe trend, not predict reversals. MAs as filters, not entry triggers.
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0">
-        <div style="background:rgba(255,82,82,0.1);border:2px solid rgba(255,82,82,0.3);border-radius:8px;padding:1.5rem">
-          <h4 style="color:#ff5252;margin:0 0 1rem 0">❌ OLD WAY: MA "Support" (Jan-Mar)</h4>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Total Trades</div>
-            <div style="font-size:1.2rem;font-weight:600">45 trades</div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Win Rate</div>
-            <div style="font-size:1.2rem;font-weight:600;color:#ff5252">35.6%</div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">MA Usage</div>
-            <div style="font-size:1.1rem;font-weight:600">Entry trigger (wrong!)</div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Golden Cross Timing</div>
-            <div style="font-size:1.1rem;font-weight:600;color:#ff5252">18-24 days late</div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Whipsaws (Feb 5-16)</div>
-            <div style="font-size:1.1rem;font-weight:600;color:#ff5252">8 trades, 7 losses</div>
-          </div>
-
-          <div style="margin-bottom:1rem;padding-top:1rem;border-top:2px solid rgba(255,82,82,0.3)">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Total P&L</div>
-            <div style="font-size:1.4rem;font-weight:700;color:#ff5252">-$9,800</div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Account Balance</div>
-            <div style="font-size:1.2rem;font-weight:600">$16,200</div>
-          </div>
-
-          <div>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Understanding</div>
-            <div style="font-size:1rem;font-style:italic">MAs = support</div>
-          </div>
-        </div>
-
-        <div style="background:rgba(34,197,94,0.1);border:2px solid rgba(34,197,94,0.3);border-radius:8px;padding:1.5rem">
-          <h4 style="color:#22c55e;margin:0 0 1rem 0">✅ NEW WAY: MA Alignment (Apr-Jun)</h4>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Total Trades</div>
-            <div style="font-size:1.2rem;font-weight:600">40 trades <span style="color:#22c55e;font-size:0.9rem">(-11% selective)</span></div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Win Rate</div>
-            <div style="font-size:1.2rem;font-weight:600;color:#22c55e">67.5% <span style="font-size:0.9rem">(+90%!)</span></div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">MA Usage</div>
-            <div style="font-size:1.1rem;font-weight:600;color:#22c55e">Trend filter (correct!)</div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Entry Timing</div>
-            <div style="font-size:1.1rem;font-weight:600;color:#22c55e">Pentarch TD events <span style="font-size:0.9rem">(20-30% more upside!)</span></div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Whipsaws Filtered</div>
-            <div style="font-size:1.1rem;font-weight:600;color:#22c55e">0 (MA alignment filters chop)</div>
-          </div>
-
-          <div style="margin-bottom:1rem;padding-top:1rem;border-top:2px solid rgba(34,197,94,0.3)">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Total P&L</div>
-            <div style="font-size:1.4rem;font-weight:700;color:#22c55e">+$8,800</div>
-          </div>
-
-          <div style="margin-bottom:1rem">
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Account Balance</div>
-            <div style="font-size:1.2rem;font-weight:600;color:#22c55e">$25,000 <span style="font-size:0.9rem">(+54%!)</span></div>
-          </div>
-
-          <div>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem">Understanding</div>
-            <div style="font-size:1rem;font-style:italic;color:#22c55e">MAs = trend description</div>
-          </div>
-        </div>
-      </div>
+  <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
+    <strong>David's advice:</strong> "I lost $9,800 buying '50 EMA support' touches that weren't actually support. Moving averages are DESCRIPTIVE (they show where price averaged over past X bars), not PREDICTIVE (they don't tell you where price will bounce). I bought ES at 50 EMA 'support' (5,026.50). Price sliced through it like it didn't exist, dropped 25 points. I lost $310. The 'support' was just a lagging line. 23 out of 29 losses came from buying MA touches that immediately broke. Golden Cross signals appeared 18-24 days AFTER trends started—I missed 20-30% of every move! The lesson: Use MAs as TREND FILTERS, not entry triggers. Check 3-timeframe MA alignment (1H, 4H, Daily all pointing same direction = strong trend confirmed). But DON'T enter on MA touches. Use early trend detection (Pentarch TD events) to catch moves BEFORE Golden Cross appears. After I stopped buying MA 'support' and started using MAs as filters + Pentarch for entries, my win rate jumped from 35.6% to 67.5%. I caught trends 20-30% earlier than Golden Cross signals. MAs describe the trend. They don't predict where price will bounce. Trading MA 'support' is trading a lagging description of history."
+  </p>
+</div>
 <h2 id="what-you-think-they-do-vs-what-they-actually-do">What You Think They Do vs. What They Actually Do</h2>
 <p>Let's clear this up right now:</p>
 

@@ -98,133 +98,32 @@
         </ul>
       </div>
 
-      <!-- TL;DR Skimmer Summary -->
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
-          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>Price shows WHAT happened, volume shows WHO won—buy/sell imbalance reveals institutional intent</li>
-            <li>Absorption: Large volume + small price move = strong hands defending level (institutions accumulating/distributing)</li>
-            <li>Exhaustion: Large volume + big price move = weak hands panicking, no one absorbing (reversal imminent)</li>
-            <li>Delta analysis: Buy volume minus sell volume at each price level—positive delta at lows = accumulation</li>
-            <li>Framework: Require volume confirmation for ALL setups—no volume spike = no trade</li>
-            <li>Common mistake: Trading chart patterns without checking volume—85% of "perfect" patterns fail without volume confirmation</li>
-            <li>Validation: Compare win rate with vs without volume filter—should improve 15-25%</li>
-            <li>Case study: Derek's win rate jumped from 17% to 74% after adding delta analysis to filter weak setups</li>
-          </ul>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
-        </div>
-      </details>
-
       <div class="section-break"><span>Part 1: The Wake-Up Call</span></div>
 
       <p>Before we dive into theory, let me show you what happens when you ignore delta analysis. Meet Derek—a trader who lost $93,000 in 10 weeks because he trusted volume bars without checking <em>quality</em>.</p>
 
-      <div class="callout-warning">
-        <h4>📉 CASE STUDY: Derek's $93K Volume Trap Disaster (Feb-Jun 2024)</h4>
+      <div class="callout callout-danger">
+        <h4>📉 CASE STUDY: Derek's $93K Volume Trap Disaster</h4>
+        <p><strong>Trader:</strong> Derek Johnson, 28, breakout trader ($185K account, 4 years experience)</p>
+        <p><strong>Strategy:</strong> "High volume confirms breakouts" - enter when stocks break resistance on 3× volume</p>
+        <p><strong>Fatal flaw:</strong> Never checked volume DELTA (buy vs sell pressure) - traded quantity, not quality</p>
+        <p><strong>Result:</strong> Lost $93,000 (-50.3%) in 10 weeks buying exhaustion (negative delta breakouts)</p>
 
-        <p><strong>Derek Johnson, 28</strong> — Breakout trader (4 years experience), $185K account</p>
-        <p><strong>Fatal flaw:</strong> Never checked volume DELTA (buy vs sell pressure)—traded quantity, not quality</p>
+        <p><strong>The pattern (Feb-May 2024, 47 trades):</strong> Derek's rule: "If price breaks resistance on 3× volume, enter long. High volume = institutional buying!" Problem: He NEVER checked if that volume was buying or selling. Every trade followed the same pattern: Stock breaks resistance → Volume spikes 3-6× → Derek enters long → Delta is negative (-65% to -92% SELL volume) → Price reverses immediately → Derek stops out.</p>
 
-        <h5>The Disaster</h5>
+        <p><strong>The NVDA disaster (Feb 26, 10:15 AM):</strong> NVDA breaks $785 resistance on 5.2× volume. Derek: "Institutional buying!" Goes long at $786. Reality: Delta = -8,420 (78% SELL volume). Exhaustion, not absorption. Institutions were SELLING into retail FOMO. NVDA drops to $778. Derek stopped out: -$1,200. "The 'breakout' was distribution, not accumulation. High volume doesn't mean bullish—it can mean exit liquidity."</p>
 
-        <p><strong>Derek's rule:</strong> "High volume confirms breakouts." If a stock broke resistance on 3× volume, he entered. Problem: He NEVER checked if that volume was buying or selling.</p>
+        <p><strong>10-week damage:</strong> 47 trades, 8 winners (17% win rate), 39 losers. Account: $185K → $92K. Total loss: -$93,000 (-50.3%). Average delta on entry: -74% (massively negative).</p>
 
-        <p><strong>Feb 26, 10:15 AM:</strong> NVDA breaks $785 on 5× volume. Derek goes long $786. "Institutional buying!" he thinks.<br>
-        <strong>Reality:</strong> Delta = -78% (78% SELL volume). Exhaustion, not absorption. NVDA drops to $778. <strong>Loss: -$1,200</strong>.</p>
+        <p><strong>The breaking point (May 31, 2024):</strong> "I pulled up my 47 failed trades. Every single one had NEGATIVE delta. High volume, but 70-90% of it was SELLING. I thought 'institutional buying!' but it was exhaustion—retail buying the top while institutions dumped. I was the FOMO. 47 times."</p>
 
-        <div class="story-summary" style="margin:1.5rem 0">
-          <h5>📊 Feb 26 Trade Breakdown: The Delta Derek Ignored</h5>
-          <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
-            <thead>
-              <tr style="background:rgba(255,255,255,0.03)">
-                <th style="padding:0.5rem;text-align:left">Time</th>
-                <th style="padding:0.5rem;text-align:left">Event</th>
-                <th style="padding:0.5rem;text-align:right">Price</th>
-                <th style="padding:0.5rem;text-align:right">Volume</th>
-                <th style="padding:0.5rem;text-align:right">Delta</th>
-                <th style="padding:0.5rem;text-align:left">What It Meant</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="padding:0.5rem">10:14 AM</td>
-                <td style="padding:0.5rem">Resistance at $785</td>
-                <td style="padding:0.5rem;text-align:right">$785</td>
-                <td style="padding:0.5rem;text-align:right">Normal</td>
-                <td style="padding:0.5rem;text-align:right">-</td>
-                <td style="padding:0.5rem">Consolidating</td>
-              </tr>
-              <tr style="background:rgba(255,107,107,0.08)">
-                <td style="padding:0.5rem">10:15 AM</td>
-                <td style="padding:0.5rem">Breakout spike</td>
-                <td style="padding:0.5rem;text-align:right">$786</td>
-                <td style="padding:0.5rem;text-align:right">5.2× avg</td>
-                <td style="padding:0.5rem;text-align:right;color:#ff6b6b;font-weight:600">-8,420</td>
-                <td style="padding:0.5rem;color:#ff6b6b">78% SELL volume (exhaustion!)</td>
-              </tr>
-              <tr style="background:rgba(255,107,107,0.12)">
-                <td style="padding:0.5rem">10:16 AM</td>
-                <td style="padding:0.5rem"><strong>Derek enters</strong></td>
-                <td style="padding:0.5rem;text-align:right">$786</td>
-                <td style="padding:0.5rem;text-align:right">-</td>
-                <td style="padding:0.5rem;text-align:right">-</td>
-                <td style="padding:0.5rem">Never checked delta</td>
-              </tr>
-              <tr style="background:rgba(255,107,107,0.15)">
-                <td style="padding:0.5rem">10:22 AM</td>
-                <td style="padding:0.5rem">Price collapses</td>
-                <td style="padding:0.5rem;text-align:right">$778</td>
-                <td style="padding:0.5rem;text-align:right">3.8× avg</td>
-                <td style="padding:0.5rem;text-align:right;color:#ff6b6b;font-weight:600">-6,210</td>
-                <td style="padding:0.5rem"><strong>Stopped out: -$1,200</strong></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="key-insight">
-            <strong>What Derek Missed:</strong> Delta of -8,420 on the breakout candle meant institutions were SELLING into retail FOMO. The "breakout" was distribution, not accumulation. High volume doesn't mean "bullish" - it can mean "exit liquidity."
-          </div>
-        </div>
+        <p><strong>Recovery (Jun-Dec 2024):</strong> New rules: (1) Check delta FIRST—never enter without positive delta (+40% minimum), (2) Absorption = strength (increasing positive delta as price rises), (3) Exhaustion = skip (negative delta on breakout = institutional distribution), (4) Use Plutus Flow for real-time delta tracking (green = absorption, red = exhaustion). Results: 74% win rate, +$65,000 profit. Average delta on entry: +68% (positive). Same breakout strategy, but now only enters when buyers are IN CONTROL.</p>
 
-        <p><strong>The pattern repeated 47 times over 10 weeks:</strong> Stock breaks resistance → Volume spikes 3-6× → Derek enters long → Delta is negative (-65% to -92%) → Price reverses immediately → Derek stops out.</p>
+        <p><strong>Final results:</strong> Started $185K → Trough $92K (volume quantity) → Final $157K (volume quality). Net: -$28K (-15.1%) but learned $93K lesson.</p>
 
-        <p><strong>10-week damage:</strong> 47 trades, 8 winners (17% win rate). Account: $185K → $92K. <strong>Total loss: -$93,000 (-50.3%)</strong>.</p>
-
-        <div class="callout-key">
-          <h4>💡 The Breaking Point</h4>
-          <p>"I pulled up my 47 failed trades. Every single one had NEGATIVE delta. High volume, but 70-90% of it was SELLING. I thought 'institutional buying!' but it was exhaustion—retail buying the top while institutions dumped. I was the FOMO. 47 times."</p>
-          <p style="margin-top:0.75rem"><em>— Derek's journal, May 31, 2024</em></p>
-        </div>
-<h5>The Fix</h5>
-
-        <p><strong>Derek's New Rules (Jun 2024):</strong></p>
-        <ol>
-          <li><strong>Check delta FIRST</strong> — Never enter without positive delta (+40% minimum)</li>
-          <li><strong>Absorption = strength</strong> — Increasing positive delta as price rises</li>
-          <li><strong>Exhaustion = skip</strong> — Negative delta on breakout = institutional distribution</li>
-          <li><strong>Use Plutus Flow</strong> — Real-time delta tracking (green = absorption, red = exhaustion)</li>
-        </ol>
-
-        <div class="story-summary">
-          <h3>💰 The Transformation</h3>
-          <div class="trading-timeline" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
-            <div style="background:rgba(255,107,107,0.1);padding:1rem;border-radius:8px">
-              <div style="font-weight:600;margin-bottom:0.5rem">❌ Before (Feb-May)</div>
-              <div style="font-size:1.5rem;color:#ff6b6b;font-weight:700">-$93,000</div>
-              <div style="font-size:0.85rem;margin-top:0.5rem">Win rate: 17% • Avg delta: -74%</div>
-            </div>
-            <div style="background:rgba(0,212,170,0.1);padding:1rem;border-radius:8px">
-              <div style="font-weight:600;margin-bottom:0.5rem">✅ After (Jun-Dec)</div>
-              <div style="font-size:1.5rem;color:#00d4aa;font-weight:700">+$65,000</div>
-              <div style="font-size:0.85rem;margin-top:0.5rem">Win rate: 74% • Avg delta: +68%</div>
-            </div>
-          </div>
-          <div class="key-insight">
-            <strong>What changed?</strong> Same strategy (breakouts), but now Derek only enters when buyers are IN CONTROL. Volume doesn't lie—but you need to check QUALITY (delta), not just quantity.
-          </div>
-        </div>
-
+        <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
+          <strong>Derek's advice:</strong> "I lost $93K buying 'high volume breakouts' without checking delta. Volume doesn't lie—but you need to check QUALITY (delta), not just quantity. I bought NVDA breakout on 5.2× volume thinking 'institutions buying!' Delta was -8,420 (78% SELL). I was buying exhaustion—retail FOMO while institutions dumped. Price dropped $8 immediately. 47 trades, 47 times I ignored delta. Every loss had negative delta (-65% to -92%). I thought high volume = bullish. Wrong. High volume can mean 'exit liquidity for smart money.' The lesson: ALWAYS check delta before entering. Positive delta (+40% minimum) = absorption (buyers in control, real breakout). Negative delta = exhaustion (sellers dominating, distribution). After I started checking delta first, my win rate went from 17% to 74%. Same strategy (breakouts), but now I only enter when buyers are ACTUALLY in control, not just when volume is high. Volume without delta is blind. You're trading against tape every time."
+        </p>
       </div>
 
       <div class="section-break"><span>Part 2: Understanding Volume Quality</span></div>

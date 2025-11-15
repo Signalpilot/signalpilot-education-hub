@@ -76,28 +76,6 @@
     <div class="prose">
 
       
-      <!-- TL;DR Skimmer Summary -->
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
-          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>Repainting = indicator signals appear during bar, then disappear after bar closes—makes backtests fantasy</li>
-            <li>80%+ of retail indicators on TradingView repaint—perfect backtests, disaster live trading</li>
-            <li>Non-repainting test: Screenshot signal during bar → check after close → if gone, it repaints</li>
-            <li>All SignalPilot indicators are non-repainting: signals final at bar close, never disappear, backtests = live results</li>
-            <li>Framework: ONLY use non-repainting indicators—repaint = worthless for live trading regardless of backtest</li>
-            <li>Common mistake: Trusting backtests without verifying non-repaint—73% backtest WR becomes 31% live</li>
-            <li>Validation: Walk-forward test on live data for 2-4 weeks before trusting any indicator</li>
-            <li>Case study: Jake lost $14.7K in 10 weeks—71% backtest win rate became 34% live due to repainting</li>
-          </ul>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
-        </div>
-      </details>
-
-
-
-
       <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
         <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
         <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
@@ -111,348 +89,35 @@
 
       <div class="section-break"><span>Part 1: The Repainting Nightmare</span></div>
 
-<h2 id="jakes-14700-repainting-nightmare-when-perfect-backtests-destroy-live-accounts">Jake's $14,700 Repainting Nightmare: When "Perfect" Backtests Destroy Live Accounts</h2>
+<div class="callout callout-danger">
+  <h4>📉 CASE STUDY: Jake's $14,700 Repainting Indicator Disaster</h4>
+  <p><strong>Trader:</strong> Jake Morrison, 26, former marketing analyst ($32K account)</p>
+  <p><strong>Strategy:</strong> "Ultimate Reversal Pro" TradingView indicator (47K downloads, 4.8★), 71.4% backtest win rate</p>
+  <p><strong>Fatal flaw:</strong> Indicator was repainting—signals changed or disappeared after bar close</p>
+  <p><strong>Result:</strong> Lost $14,700 (-45.9%) in 10 weeks when "perfect" backtest signals never existed live</p>
 
-      <p><strong>Jake Morrison, 26, Austin, Texas</strong> — Former marketing analyst turned full-time day trader. Smart, disciplined, detail-oriented. $32,000 saved for trading capital.</p>
+  <p><strong>The "perfect" backtest (Jan 2024):</strong> Backtested 18 months ES futures data. Results: 71.4% win rate, 3.2 profit factor, 3.8:1 R:R, -8.2% max DD, +247% return. "This is the edge I've been looking for!"</p>
 
-      <p><strong>January 15, 2024:</strong> Jake discovers a TradingView indicator called "Ultimate Reversal Pro" with 47,000 downloads and 4.8-star reviews. The charts look incredible—clean entries, perfect potential exits, minimal whipsaws.</p>
+  <p><strong>The disaster (Feb-Apr 2024, 10 weeks):</strong> Went live with $32K. Reality: 76 trades, 34.2% win rate (cut in HALF), 0.58 profit factor (negative expectancy), 0.92:1 R:R. Lost $14,700 (-45.9%). Account: $32K → $17.3K.</p>
 
-      <p>He backtests it on 18 months of ES futures data. <strong>The results?</strong> Mind-blowing:</p>
-      <ul>
-        <li><strong>Win Rate:</strong> 71.4%</li>
-        <li><strong>Profit Factor:</strong> 3.2</li>
-        <li><strong>Average R:R:</strong> 3.8:1</li>
-        <li><strong>Max Drawdown:</strong> Only -8.2%</li>
-        <li><strong>Total Return:</strong> +247% over 18 months</li>
-      </ul>
+  <p><strong>The breaking point (Apr 8, 2024):</strong> After 4 losing trades, Jake took screenshots of live signals, then compared after bar close. Every signal moved or disappeared:</p>
+  <ul style="margin:.75rem 0 0 1.5rem">
+    <li><strong>9:38 AM BUY:</strong> Signal at 5,186 → After bar close: moved to 5,179 (7 points lower!) • Lost $680</li>
+    <li><strong>10:52 AM SELL:</strong> Signal at 5,194 → After bar close: disappeared completely! • Lost $520</li>
+    <li><strong>1:15 PM BUY:</strong> Signal at 5,201 → After bar close: moved to 5,196 (5 points lower) • Lost $440</li>
+    <li><strong>2:43 PM SELL:</strong> Signal at 5,209 → After bar close: moved to 5,213 (4 points higher) • Lost $380</li>
+  </ul>
 
-      <p>Jake is ecstatic. <em>"This is it. This is the edge I've been looking for."</em></p>
+  <p><strong>The investigation (Apr 9-15):</strong> Jake tested "Ultimate Reversal Pro" systematically. Visual test: 43 out of 47 signals moved (91.5% repaint rate!). Alert test: 17/20 alert prices didn't match historical locations. Code audit: Found <code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code>. Verdict: Indicator was HEAVILY repainting.</p>
 
-      <p><strong>February 1, 2024:</strong> He goes live with $32,000. Full confidence. Detailed trading plan. Risk management in place.</p>
+  <p><strong>Recovery (May-Aug 2024):</strong> Stopped trading for 2 weeks. Researched deterministic indicators, switched to Signal Pilot's non-repainting tools. New rules: (1) ONLY use indicators with <code>barstate.isconfirmed</code> checks, (2) VERIFY with visual + alert tests, (3) REQUIRE <code>lookahead_off</code> for HTF data, (4) Paper trade 2+ weeks before live. Results over 4 months: 90 trades, 58.9% win rate, 1.94 profit factor, 2.1:1 R:R, +$12,820 profit. Account: $17.3K → $30.1K (+74.1% recovery).</p>
 
-      <p><strong>April 12, 2024 (10 weeks later):</strong> Account balance: <strong>$17,300</strong>. Loss: <strong>-$14,700</strong> (-45.9%).</p>
+  <p><strong>Final results:</strong> Started $32K → Trough $17.3K (repainting indicators) → Final $30.1K (deterministic indicators). Net: -$1.9K (-5.9%) but learned $15K+ lesson.</p>
 
-      <div class="callout-warning">
-        <h4>🚨 What Jake Learned The Devastating Way</h4>
-        <p>"I did everything right. I backtested thoroughly. I followed every signal. I managed risk perfectly. And I still lost $14,700 in 10 weeks."</p>
-        <p style="margin-top:0.75rem">"Then I discovered the indicator was <strong>repainting</strong>. Every perfect signal I saw in the backtest? <em>Never existed</em> when the bar was forming. I was trading a fantasy."</p>
-        <p style="margin-top:0.75rem"><em>— Jake Morrison, April 2024 journal potential entry</em></p>
-      </div>
-
-      <div class="story-summary">
-<h3>📉 Jake's Live Trading Disaster: February-April 2024</h3>
-        <div class="summary-stats">
-          <div class="stat-box">
-            <span class="stat-label">Total Trades (10 weeks)</span>
-            <span class="stat-value">76</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Winners / Losers</span>
-            <span class="stat-value">26 / 50</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Live Win Rate</span>
-            <span class="stat-value loss">34.2%</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Total Loss</span>
-            <span class="stat-value loss">-$14,700</span>
-          </div>
-        </div>
-        <div class="key-insight">
-          <strong>The Repaint Reality:</strong> Backtest showed 71.4% win rate → Live trading delivered 34.2%. The indicator was showing perfect signals that never existed in real-time.
-        </div>
-      </div>
-
-<h3 id="the-breaking-point-april-8-2024">The Breaking Point: April 8, 2024</h3>
-
-      <p><strong>The moment Jake discovered the truth.</strong></p>
-
-      <div class="story-summary">
-        <h3>🔍 The Smoking Gun: April 8, 2024</h3>
-        <div class="key-insight">
-          <strong>Jake's Discovery:</strong> After 4 losing trades in one day, he took screenshots of live signals, then compared them to the chart after the 5-minute bars closed. Every single signal had either moved or disappeared.
-        </div>
-      </div>
-
-      <div class="trading-timeline">
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">9:38 AM • BUY Signal</span>
-            <span class="week-pnl loss">-$680</span>
-          </div>
-          <div class="week-stats">Signal at 5,186 → Entered at 5,186</div>
-          <div class="week-issue">
-            <strong>What happened:</strong> Live chart showed BUY signal at 5,186<br>
-            <strong>After bar close:</strong> Signal moved to 5,179 (7 points lower!)
-          </div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">10:52 AM • SELL Signal</span>
-            <span class="week-pnl loss">-$520</span>
-          </div>
-          <div class="week-stats">Signal at 5,194 → Entered short at 5,194</div>
-          <div class="week-issue">
-            <strong>What happened:</strong> Live chart showed SELL signal at 5,194<br>
-            <strong>After bar close:</strong> Signal disappeared completely!
-          </div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">1:15 PM • BUY Signal</span>
-            <span class="week-pnl loss">-$440</span>
-          </div>
-          <div class="week-stats">Signal at 5,201 → Entered at 5,201</div>
-          <div class="week-issue">
-            <strong>What happened:</strong> Live chart showed BUY signal at 5,201<br>
-            <strong>After bar close:</strong> Signal moved to 5,196 (5 points lower)
-          </div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">2:43 PM • SELL Signal</span>
-            <span class="week-pnl loss">-$380</span>
-          </div>
-          <div class="week-stats">Signal at 5,209 → Entered short at 5,209</div>
-          <div class="week-issue">
-            <strong>What happened:</strong> Live chart showed SELL signal at 5,209<br>
-            <strong>After bar close:</strong> Signal moved to 5,213 (4 points higher!)
-          </div>
-        </div>
-      </div>
-
-      <div class="story-summary">
-        <h3>💡 The Discovery</h3>
-        <div class="key-insight">
-          This was the moment Jake Googled "TradingView indicator signals disappearing" and discovered the term <strong>"repainting"</strong>. His $14,700 loss was from trading signals that never actually existed.
-        </div>
-      </div>
-
-      <div class="callout-key">
-        <h4>💡 Jake's Investigation: The Repaint Test</h4>
-        <p>Over the next week (April 9-15), Jake ran systematic tests on "Ultimate Reversal Pro":</p>
-        <ul style="margin:0.75rem 0">
-          <li><strong>Visual Test:</strong> Tracked 47 signals live vs. historical. Result: <span style="color:#ff5252"><strong>43 out of 47 moved</strong></span> (91.5% repaint rate!)</li>
-          <li><strong>Alert Test:</strong> Set 20 alerts. Result: <span style="color:#ff5252"><strong>17 alert prices didn't match</strong></span> historical signal locations</li>
-          <li><strong>Replay Test:</strong> Bar replay showed signals appearing at prices they never showed historically</li>
-          <li><strong>Code Audit:</strong> Opened Pine Script. Found <code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code></li>
-        </ul>
-        <p style="margin-top:1rem;font-weight:600;color:#ff5252">Verdict: The indicator was HEAVILY repainting. Jake's $14,700 loss was from trading signals that never actually existed.</p>
-      </div>
-<h3 id="the-comparison-backtest-fantasy-vs-live-reality">The Comparison: Backtest Fantasy vs. Live Reality</h3>
-<div class="story-summary">
-        
-
-
-<h3>📊 Jake's Ultimate Reversal Pro: The Brutal Truth</h3>
-        <div class="key-insight">
-          <strong>The fantasy vs reality gap:</strong> What the backtest promised vs what live trading delivered.
-        </div>
-      </div>
-
-      <div class="trading-timeline">
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">📈 Backtest (Repainting Indicator)</span>
-            <span class="week-pnl win">+$10,496</span>
-          </div>
-          <div class="week-stats">Projected 10-week return: +32.8%</div>
-          <div class="week-issue">
-            <strong>The Fantasy Numbers:</strong><br>
-            • Win Rate: 71.4%<br>
-            • Profit Factor: 3.2<br>
-            • Avg R:R: 3.8:1<br>
-            • Max Drawdown: -8.2%
-          </div>
-        </div>
-
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">📉 Live Trading (Reality)</span>
-            <span class="week-pnl loss">-$14,700</span>
-          </div>
-          <div class="week-stats">Actual 10-week return: -45.9%</div>
-          <div class="week-issue">
-            <strong>The Reality Check:</strong><br>
-            • Win Rate: 34.2% (cut in HALF!)<br>
-            • Profit Factor: 0.58 (negative expectancy!)<br>
-            • Avg R:R: 0.92:1 (barely 1:1!)<br>
-            • Max Drawdown: -45.9% (+460% larger!)
-          </div>
-        </div>
-      </div>
-
-      <div class="story-summary"><h3>💔 The Damage</h3>
-        <div class="summary-stats">
-          <div class="stat-box">
-            <span class="stat-label">Win Rate Collapse</span>
-            <span class="stat-value loss">-52%</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Profit Factor Crash</span>
-            <span class="stat-value loss">-82%</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">R:R Destroyed</span>
-            <span class="stat-value loss">-76%</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Total Disaster</span>
-            <span class="stat-value loss">$25,196</span>
-          </div>
-        </div>
-        <div class="key-insight">
-          <strong>What Happened:</strong> The indicator was showing "perfect" signals in backtests that never existed in real-time. Jake was trading a fantasy.
-        </div>
-      </div>
-<h3 id="the-rebuild-may-august-2024-switching-to-deterministic-indicators">The Rebuild: May-August 2024 (Switching to Deterministic Indicators)</h3>
-
-      <p><strong>April 16-30, 2024:</strong> Jake stops trading. Spends 2 weeks researching deterministic indicators, learning Signal Pilot's non-repainting protocol, and rebuilding his strategy with verified indicators.</p>
-
-      <p><strong>May 1, 2024:</strong> Jake resumes trading with Signal Pilot's deterministic indicators. Account: $17,300. New rules:</p>
-      <ol>
-        <li><strong>ONLY</strong> use indicators with <code>barstate.isconfirmed</code> checks</li>
-        <li><strong>VERIFY</strong> every indicator with visual + alert tests before live trading</li>
-        <li><strong>REQUIRE</strong> deterministic code: <code>lookahead=barmerge.lookahead_off</code> for HTF data</li>
-        <li><strong>PAPER TRADE</strong> new indicators for 2 weeks minimum before going live</li>
-      </ol>
-
-      <div class="story-summary">
-        <h3>📈 Jake's Deterministic Indicator Results: May-August 2024</h3>
-        <div class="summary-stats">
-          <div class="stat-box">
-            <span class="stat-label">Total Trades (4 months)</span>
-            <span class="stat-value win">90</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Winners / Losers</span>
-            <span class="stat-value">53 / 37</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Win Rate</span>
-            <span class="stat-value win">58.9%</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Total Profit</span>
-            <span class="stat-value win">+$12,820</span>
-          </div>
-        </div>
-        <div class="key-insight">
-          <strong>The Rebuild:</strong> After switching to non-repainting indicators, Jake finally achieved consistency. Backtest results now matched live trading.
-        </div>
-      </div>
-
-      <div class="trading-timeline">
-        <div class="timeline-week" style="border-left-color:#ffc107">
-          <div class="week-header">
-            <span class="week-label">May 2024 • Learning Phase</span>
-            <span class="week-pnl" style="color:#ffc107">+$180</span>
-          </div>
-          <div class="week-stats">18 trades • 9 winners / 9 losers • 50.0% win rate</div>
-          <div class="week-issue">💡 Finally break-even!</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">June 2024 • Breakthrough</span>
-            <span class="week-pnl win">+$2,840</span>
-          </div>
-          <div class="week-stats">22 trades • 13 winners / 9 losers • 59.1% win rate</div>
-          <div class="week-issue">✅ First profitable month! Confidence returns</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">July 2024 • Validation</span>
-            <span class="week-pnl win">+$4,620</span>
-          </div>
-          <div class="week-stats">26 trades • 16 winners / 10 losers • 61.5% win rate</div>
-          <div class="week-issue">🎯 Signals actually match backtest!</div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">August 2024 • Consistency</span>
-            <span class="week-pnl win">+$5,180</span>
-          </div>
-          <div class="week-stats">24 trades • 15 winners / 9 losers • 62.5% win rate</div>
-          <div class="week-issue">💪 Backtest = live results</div>
-        </div>
-      </div>
-<h3 id="jakes-year-end-stats-the-transformation">Jake's Year-End Stats: The Transformation</h3>
-<div class="story-summary">
-<h3>🔄 Jake Morrison: 2024 Complete Transformation</h3>
-        <div class="key-insight">
-          <strong>Same trader. Different indicators. Life-changing results.</strong>
-        </div>
-      </div>
-
-      <div class="trading-timeline">
-        <div class="timeline-week loss">
-          <div class="week-header">
-            <span class="week-label">❌ Repainting Indicators (Feb-Apr)</span>
-            <span class="week-pnl loss">-$14,700</span>
-          </div>
-          <div class="week-stats">Account: $32,000 → $17,300 • 45.9% loss</div>
-          <div class="week-issue">
-            <strong>The Numbers:</strong><br>
-            • Total Trades: 76<br>
-            • Win Rate: 34.2%<br>
-            • Profit Factor: 0.58 (negative expectancy!)<br>
-            • Avg R:R: 0.92:1<br>
-            • Max Drawdown: -45.9%<br>
-            • Signals Match Backtest: NO (91.5% repaint!)<br>
-            • Sleep Quality: Terrible, confused
-          </div>
-        </div>
-
-        <div class="timeline-week win">
-          <div class="week-header">
-            <span class="week-label">✅ Deterministic Indicators (May-Aug)</span>
-            <span class="week-pnl win">+$12,820</span>
-          </div>
-          <div class="week-stats">Account: $17,300 → $30,120 • 74.1% recovery</div>
-          <div class="week-issue">
-            <strong>The Numbers:</strong><br>
-            • Total Trades: 90 (+18% more selective)<br>
-            • Win Rate: 58.9% (+72% improvement)<br>
-            • Profit Factor: 1.94 (+234%)<br>
-            • Avg R:R: 2.1:1 (+128% improvement)<br>
-            • Max Drawdown: -8.4% (-82% smaller!)<br>
-            • Signals Match Backtest: YES (0% repaint)<br>
-            • Sleep Quality: Calm, confident
-          </div>
-        </div>
-      </div>
-
-      <div class="story-summary">
-        <h3>💰 The Transformation</h3>
-        <div class="summary-stats">
-          <div class="stat-box">
-            <span class="stat-label">Total Swing</span>
-            <span class="stat-value win">$27,520</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Win Rate Improvement</span>
-            <span class="stat-value win">+72%</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Profit Factor Improvement</span>
-            <span class="stat-value win">+234%</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-label">Peace of Mind</span>
-            <span class="stat-value">Priceless</span>
-          </div>
-        </div>
-        <div class="key-insight">
-          <strong>What Changed?</strong> Jake stopped using repainting indicators that showed perfect signals in backtests that never existed live. He switched to deterministic, non-repainting Signal Pilot indicators where backtest = live results.
-        </div>
-      </div>
+  <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
+    <strong>Jake's advice:</strong> "I lost $14,700 because I trusted a repainting indicator. Backtest showed 71.4% win rate. Live: 34.2%. Why? Signals I saw live MOVED or DISAPPEARED after bar close. I traded ghosts. The 'perfect' backtest was a lie. Test EVERY indicator: (1) Screenshot live signals, compare after bar close—if they move, it repaints. (2) Set alerts, verify historical locations match. (3) Check Pine Script for <code>lookahead_off</code> and <code>barstate.isconfirmed</code>. (4) Paper trade 2+ weeks—if live doesn't match backtest, indicator is broken. If backtest looks TOO perfect (>70% win rate, <10% DD), it's probably repainting. Real edges are 55-65% win rates with honest drawdowns. Repainting indicators destroy more accounts than bad strategies ever will. NEVER trust, ALWAYS verify."
+  </p>
+</div>
 
       <div class="section-break"><span>Part 2: Deterministic Indicators</span></div>
 

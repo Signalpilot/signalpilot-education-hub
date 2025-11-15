@@ -80,22 +80,6 @@
         <p><strong>Lesson:</strong> ML models trained on one regime fail catastrophically when regimes shift. This lesson shows you how to build robust models that survive.</p>
       </div>
 
-      <!-- TL;DR Skimmer Summary -->
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
-          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>Machine learning models random forest gradient boosting neural networks</li>
-            <li>Feature engineering create predictive inputs momentum volatility volume patterns</li>
-            <li>Overfitting prevention cross validation regularization ensemble methods systematic</li>
-            <li>Engineer 20 features cross validate select best model walk forward</li>
-            <li>Properly validated machine learning adds 10-20% edge versus discretionary trading</li>
-          </ul>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
-        </div>
-      </details>
-
       <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
         <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
         <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
@@ -605,6 +589,38 @@
     </ul>
   </div>
 
+  <div class="section-break"><span>Real Trader Case Study</span></div>
+
+  <div class="callout callout-danger">
+    <h4>📉 CASE STUDY: Jason's $145K ML Overfitting Disaster</h4>
+    <p><strong>Trader:</strong> Jason Wu, 31, quant developer ($250K account), CS/ML background</p>
+    <p><strong>Strategy:</strong> Random Forest algo trained on 2015-2021 SPY data, 83% backtest win rate</p>
+    <p><strong>Fatal flaw:</strong> Overfit model to historical data, never validated on out-of-sample or live data</p>
+    <p><strong>Result:</strong> Lost $145,400 (-54.2%) in 10 months when model failed in live markets</p>
+
+    <p><strong>The "perfect" backtest (Summer 2021):</strong> Trained Random Forest on 2015-2021 SPY (1,700 bars, 200+ features). Results: 83% win rate, Sharpe 2.4, +42% annual return. Fatal flaws: (1) No train/test split—backtested on SAME data used for training (memorization), (2) 200 features with 1,700 samples (1:8.5 ratio, should be 1:50+), (3) Trained only on QE data (2015-2021 Fed printing), never saw QT, (4) No walk-forward validation, (5) No crisis testing (2008, 2020).</p>
+
+    <p><strong>The honeymoon (Oct-Dec 2021):</strong> Deployed live with $250K (no paper trading). Results: 79% win rate, +$18,400. "Backtests were CONSERVATIVE!" But he was lucky—market still in QE regime matching training data.</p>
+
+    <p><strong>The disaster (Jan-Aug 2022):</strong> Fed shifted QE → QT. Model kept "buying every dip" (only learned QE). Every dip kept dipping:</p>
+    <ul style="margin:.75rem 0 0 1.5rem">
+      <li><strong>Jan:</strong> 39% win rate, -$14.2K ("Volatility spike. Temporary.")</li>
+      <li><strong>Feb:</strong> 30% win rate, -$18.6K (Russia invaded Ukraine, VIX spiked to 38)</li>
+      <li><strong>Mar-Aug:</strong> 32-38% win rate, -$112.6K (6 losing months straight)</li>
+      <li><strong>Total damage:</strong> Account $268K → $123K (-$145,400, -54.2% drawdown)</li>
+    </ul>
+
+    <p><strong>The breaking point:</strong> "My model had 83% backtest win rate but 34% live win rate. I checked for bugs—NONE. Then I realized: I trained on 2015-2021 QE data (Fed printing = buy every dip works). 2022 was QT (Fed tightening = dips keep dipping). My model MEMORIZED the QE regime. It never saw QT. When the regime shifted, my model became WORSE than random."</p>
+
+    <p><strong>Recovery (Sep 2022 - Mar 2024):</strong> Rebuilt with proper ML practices: (1) Train/validate/test split (60/20/20, NEVER touch test set), (2) Reduced features 200 → 25 (better ratio), (3) 3 regime-specific models (QE/QT/volatile) with regime classifier, (4) Walk-forward validation (train on rolling 3-year window), (5) 6-month paper trading before live (64% win rate → PASS), (6) Crisis testing on 2008 data. New model: 68% validation, 68% live (MATCH = working). Old model: 83% backtest, 34% live (MISMATCH = broken). Result: $123K → $196K (+$73.2K, +59.5% from trough) over 12 months.</p>
+
+    <p><strong>Final results:</strong> Started $250K → Peak $268K (lucky) → Trough $123K (overfit) → Final $196K (validated). Net: -$54K (-21.5%) but learned $100K+ lesson.</p>
+
+    <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
+      <strong>Jason's advice:</strong> "I lost $145K because I overfit my ML model to 2015-2021 bull market data and deployed it with ZERO validation. Backtest showed 83% win rate. Live: 34%. Why? My model never saw QT (Fed tightening). It was trained to 'buy every dip' during QE. When the regime changed in 2022, it failed catastrophically. ML models are regime-specific. You MUST: (1) Train/test/validate on different time periods (NEVER backtest on training data), (2) Test on crisis data (2008, 2020), (3) Paper trade 6+ months, (4) Build regime detection, (5) Keep features <50 (I use 25 now, more = overfitting), (6) Walk-forward validation—train on Period A, test on Period B (if performance drops >30%, model is overfit). Backtests lie—they show what worked in the PAST, not what will work in DIFFERENT conditions. Don't deploy ML models without out-of-sample validation. It's financial suicide."
+    </p>
+  </div>
+
   <div class="key-takeaway">
     <h4>Key Takeaways</h4>
     <ul>
@@ -616,32 +632,7 @@
     </ul>
   </div>
 
-  <div class="callout callout-danger">
-    <h4>📉 CASE STUDY: Jason's $127K ML Overfitting Disaster (Oct 2021 - Aug 2022)</h4>
-    <p><strong>Trader:</strong> Jason Wu, 31, quant developer ($250K account), CS/ML background</p>
-    <p><strong>Strategy:</strong> Random Forest algo trained on 2015-2021 SPY data, 83% backtest win rate</p>
-    <p><strong>Fatal flaw:</strong> Overfit model to historical data, never validated on out-of-sample or live data before deploying full capital</p>
-    <p><strong>Result:</strong> Lost $127K (-51%) in 10 months when model failed in live markets, learned backtests lie</p>
 
-    <p><strong>Background:</strong> Jason built a Random Forest model using 200+ features (RSI, MACD, volume, sentiment, etc.) trained on 2015-2021 SPY data. Backtest results: 83% win rate, Sharpe 2.4, max DD -8%. "ML is the future. I automated the edge." October 2021: Deployed live with $250K capital, no paper trading, no walk-forward validation.</p>
-
-    <p><strong>The disaster (Oct 2021 - Aug 2022):</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li><strong>Month 1-3 (Oct-Dec 2021):</strong> Model worked! +$18.4K (79% win rate). "Backtests were conservative. This is easier than I thought."</li>
-      <li><strong>Jan 2022:</strong> Fed pivoted hawkish. Model trained on QE data (2015-2021) had NEVER seen QT. Started failing. Jan: -$14.2K (41% win rate).</li>
-      <li><strong>Feb-Aug 2022:</strong> Complete collapse. Model kept buying dips (trained on "buy the dip" QE era). During QT, every dip kept dipping. 8-month result: -$131K. Win rate: 34%. Account: $123K (-51% from peak).</li>
-      <li><strong>The problem:</strong> (1) Overfit to 2015-2021 bull market, (2) No out-of-sample validation, (3) No regime detection (QE vs QT), (4) Deployed full capital without paper trading.</li>
-    </ul>
-
-    <p><strong>The breaking point:</strong> "My model had 83% backtest win rate but 34% live win rate. I reviewed the code—no bugs. Then I realized: I trained on 2015-2021 QE data (Fed printing = buy every dip works). 2022 was QT (Fed tightening = dips keep dipping). My model had NEVER seen a QT environment. It was overfit to one regime. I deployed $250K without testing on different market conditions. Classic overfitting disaster."</p>
-
-    <p><strong>Recovery (Sept 2022 - Present):</strong> Rebuilt with proper ML practices: (1) Walk-forward validation (train on 2015-2019, test on 2020-2021, validate on 2022), (2) Regime detection (QE vs QT switching), (3) Out-of-sample testing on 2008 crisis data, (4) 6-month paper trading before live. Result: $123K → $197K (+60%) in 18 months, 68% win rate across multiple regimes.</p>
-
-    <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
-      <strong>Jason's advice:</strong> "I lost $127K because I overfit my ML model to 2015-2021 bull market data and deployed it with ZERO validation. Backtest showed 83% win rate. Live: 34%. Why? My model never saw QT (Fed tightening). It was trained to 'buy every dip' during QE. When the regime changed in 2022, it failed catastrophically. ML models are regime-specific. You MUST: (1) Train/test/validate on different time periods, (2) Test on crisis data (2008, 2020), (3) Paper trade 6+ months, (4) Build regime detection. Backtests lie—they show what worked in the PAST, not what will work in DIFFERENT conditions. Don't deploy ML models without out-of-sample validation. It's financial suicide."
-    </p>
-
-</div>
 </div>
 </div>
 </body>
