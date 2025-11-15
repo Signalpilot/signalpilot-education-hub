@@ -74,45 +74,6 @@
 
   <div class="wrap article-grid">
     <div class="prose">
-      <!-- TL;DR Skimmer Summary -->
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
-          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>HFT strategies market making arbitrage price differences latency speed advantage</li>
-            <li>Co-location: Servers physically next to exchange—microsecond advantage</li>
-            <li>HFT impact retail wider spreads uncertainty front running large orders</li>
-            <li>Understand HFT behavior avoid trading spreads widen pulling quotes</li>
-            <li>HFT activity visible quote stuffing rapid spread changes detection</li>
-          </ul>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
-        </div>
-      </div>
-
-      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
-        <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
-        <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
-        <ul style="line-height:1.8;margin:0 0 0 1.5rem">
-          <li>HFT strategies: Market making (quote bid/ask), arbitrage (price differences), latency arbitrage (speed advantage)</li>
-          <li>Co-location: Servers physically next to exchange</li>
-          <li>HFT impact on retail: Wider spreads during uncertainty, front-running large orders</li>
-          <li>Framework: Understand HFT behavior → Avoid trading when spreads widen (HFTs pulling quotes)</li>
-        </ul>
-      </div>
-
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ Quick Wins for Tomorrow (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <p>Don't overwhelm yourself. Start with these 3 actions:</p>
-          <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
-            <li><strong>Watch the bid-ask spread for 5 minutes before your next trade (reveals HFT activity)</strong> — Before entering any trade tomorrow, spend 5 minutes observing the Level 2 order book or bid-ask spread on your instrument (SPY, QQQ, etc.). Watch for these HFT warning signs: (1) Spread suddenly widens (normal 1 cent → suddenly 3-5 cents) = HFTs pulling liquidity, (2) Quote stuffing (hundreds of orders appearing/disappearing in seconds) = HFTs probing for large orders, (3) Rapid price changes with tiny volume (price jumps $0.20 on 10 shares) = spoofing/manipulation. If you see 2+ of these signs, WAIT 10-15 minutes before trading. Example: You want to buy SPY at $520. You check the spread: it's normally $520.00 bid / $520.01 ask (1 cent). Suddenly it widens to $519.98 / $520.04 (6 cents). That's HFTs pulling quotes because they detected uncertainty or a large order. If you trade now with a market order, you'll pay $520.04+ (bad fill). Instead, wait 12 minutes. Spread returns to $520.00/$520.01. Now you can use a limit order at $520.01 and save $0.03/share. On 100 shares, that's $3 saved. Over 100 trades/year, that's $300. Why this works: HFTs widen spreads during periods of information asymmetry or large order detection. By simply waiting 10-15 minutes for spreads to normalize, you avoid paying their "uncertainty tax." Action: For your next 3 trades, observe the spread for 5 minutes first. Record: "Spread normal/wide, waited Y/N, fill price." You'll see that waiting during wide spreads improves your fills by 0.02-0.05%.</li>
-            <li><strong>Use limit orders exclusively for the next 10 trades (stops HFTs from front-running you)</strong> — Starting tomorrow, NEVER use market orders. HFTs can see market orders coming and front-run them (buy ahead of you, sell to you at a higher price). Instead, use limit orders with this approach: (1) Check current bid/ask. Example: SPY $520.00 / $520.01. (2) Place limit buy order AT the current ask ($520.01) or 1 tick inside. (3) Wait 30 seconds. If not filled, move your limit up by 1 cent to $520.02. (4) Repeat until filled. Example: You want to buy 100 shares SPY. Market order approach: Click buy → filled at $520.03 (HFTs saw your order, lifted their offers, you paid the worst price). Limit order approach: Place buy limit $520.01 → Wait 30 sec → Not filled, adjust to $520.02 → Filled. You paid $520.02 vs $520.03 = saved $0.01/share × 100 = $1. Over 200 trades/year, that's $200. Plus, 10-15% of the time, you'll get filled INSIDE the spread (at $520.00 when ask was $520.01) because other sellers hit your bid. Why this works: Limit orders don't telegraph your intent like market orders. HFTs can't front-run what they can't predict. Yes, you might miss 5-10% of trades (no fill), but on the 90% you do get, you save 0.02-0.05% on average. Net result: better annual performance. Action: For your next 10 trades, use ONLY limit orders. Track fill rate (trades filled ÷ attempted) and average slippage vs market orders. You'll see: 85-95% fill rate, 0.03-0.08% better prices than market orders.</li>
-            <li><strong>Avoid the first and last 15 minutes of the trading day (peak HFT activity windows)</strong> — HFTs are most active during: (1) 9:30-9:45 AM (market open - maximum uncertainty, widest spreads), (2) 3:45-4:00 PM (market close - index rebalancing, institutional flows). During these windows, spreads widen 2-5x, liquidity is fake (HFTs quote-stuff then cancel), and you get the worst fills. Create a simple rule: NO TRADES 9:30-9:45 AM or 3:45-4:00 PM. Trade instead during: 10:00 AM-11:30 AM (post-open calm), 2:00-3:30 PM (pre-close stability). Example: You used to trade at 9:35 AM. Average fill on SPY: $520.08 when you wanted $520.00 = $0.08 slippage. You switch to trading at 10:15 AM. New average fill: $520.02 = $0.02 slippage. Saved $0.06/share × 100 shares × 50 trades/year = $300/year. Why this works: HFTs exploit volatility and uncertainty. First/last 15 minutes have maximum of both. By simply avoiding these windows, you trade when spreads are tighter and HFT activity is lower. Your fills improve automatically. Action: For the next 2 weeks, track your fill quality by time of day. Record: "Trade time, intended price, fill price, slippage." Calculate average slippage for trades 9:30-9:45 AM vs 10:00 AM-12:00 PM. You'll likely see 2-4x worse slippage during the open, which proves the value of waiting.</li>
-          </ol>
-        </div>
-      </details>
-
       <p><b>They trade in microseconds. You trade in seconds.</b></p>
 
       <p>By the time you click "buy," they've already canceled their quote, moved the price, and taken the other side of your trade at a better price.</p>

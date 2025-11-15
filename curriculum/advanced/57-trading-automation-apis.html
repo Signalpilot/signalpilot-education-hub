@@ -74,47 +74,6 @@
 
   <div class="wrap article-grid">
     <div class="prose">
-      <!-- TL;DR Skimmer Summary -->
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
-          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>Automation amplifies one bug 47 orders 90 seconds minus 23K</li>
-            <li>Kill switches mandatory daily loss 2% drawdown 8% volatility filter</li>
-            <li>Paper trade 2-4 weeks minimum before live catch bugs fake</li>
-            <li>Add slippage backtests 0.15% trade market orders real world friction</li>
-            <li>Build paper trade add kill switches test safeguards live tiny size</li>
-            <li>Validation: Proper automation setup prevents 80-90% of catastrophic errors</li>
-            <li>Mike lost 97K 4 months runaway loops no kill switches overfitting</li>
-          </ul>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
-        </div>
-      </div>
-
-      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
-        <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
-        <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
-        <ul style="line-height:1.8;margin:0 0 0 1.5rem">
-          <li>Automation amplifies: 1 bug = 47 orders in 90 seconds (real example: -$23K)</li>
-          <li>Kill switches mandatory: Max daily loss (-2%), max drawdown (-8%), volatility filter (VIX >30)</li>
-          <li>Paper trade 2-4 weeks minimum before live</li>
-          <li>Add slippage to backtests: -0.15% per trade for market orders (real-world friction)</li>
-        </ul>
-      </div>
-
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ Quick Wins for Tomorrow (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <p>Don't overwhelm yourself. Start with these 3 actions:</p>
-          <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
-            <li><strong>Build a simple entry alert system first (automation step 1, not full autopilot)</strong> — Don't jump straight to fully automated trading. Start with automation alerts that notify you when your setup appears. Here's the simple framework: (1) Define your setup conditions programmatically. Example: "SPY 15-min closes above previous swing high AND volume >1.5x average AND RSI <70." (2) Use TradingView Pine Script or a simple Python script to scan for these conditions every 5 minutes. (3) Send yourself an alert (email, SMS, push notification) when conditions are met. (4) YOU manually review the alert and decide whether to trade. This is "semi-automation"—the bot finds setups, you execute. Example: You code a Janus sweep scanner. It alerts you: "SPY Janus sweep detected at $520, 15-min bullish candle close." You check the chart, confirm HTF alignment, and manually enter. The bot didn't trade for you—it just saved you from staring at charts 8 hours/day. Why this works: Full automation (bot trades without you) is risky for beginners. One bug = account blown. Semi-automation (bot alerts, you trade) gives you 80% of the benefit (no chart babysitting) with 10% of the risk (you're still the final decision maker). Plus, it forces you to verify your edge manually before trusting it to code. Action: Tonight, write down your best setup's entry conditions in plain English. Tomorrow, code a simple scanner in TradingView or Python that alerts you when those conditions are met. Test it for 1 week. If it catches 80%+ of your manual setups, you've validated your logic—now you can consider full automation.</li>
-            <li><strong>Add mandatory kill switches before any automation goes live (non-negotiable safety)</strong> — If you automate trading, you MUST have kill switches that shut down your bot automatically when things go wrong. Here are the 3 essential kill switches every automated system needs: (1) Daily loss limit: If account loses >2% in one day, bot stops all trading until tomorrow. Prevents runaway losses. (2) Max position size: Bot can never risk more than X% per trade (e.g., 2%). Prevents fat-finger errors (bot accidentally enters 1000 shares instead of 100). (3) Max trades per day: Bot stops after N trades (e.g., 5 trades). Prevents infinite loops (bug causes bot to enter same trade 47 times). Example kill switch code (pseudocode): "Before placing any trade: IF account down >2% today, STOP. IF position size >2% of account, REJECT. IF trades today >=5, STOP." Mike's disaster: His bot had no kill switches. A bug caused it to enter the same trade repeatedly. Result: 47 orders in 90 seconds, -$23K loss. With a simple "max 5 trades/day" kill switch, the bot would've stopped after 5 orders, limiting damage to -$2,400 instead of -$23K. Why this works: Automation amplifies everything—good trades AND bugs. Kill switches limit the blast radius of bugs. They're insurance. You might never need them, but the ONE time you do, they save your account. Action: Before you run ANY automated strategy live (even paper trading), code these 3 kill switches. Test them: Deliberately trigger each kill switch in paper trading to verify they work. If your bot doesn't stop when it hits 2% daily loss, fix it before going live.</li>
-            <li><strong>Paper trade your automation for 2-4 weeks minimum (catches 90% of bugs before they cost money)</strong> — Never go live with automation immediately after coding. Paper trade (simulate trades with fake money) for at least 2-4 weeks first. This catches: (1) Logic bugs (bot enters wrong direction, exits too early, etc.), (2) Connectivity issues (API timeouts, missed orders), (3) Edge decay (strategy worked in backtest, fails in real-time). Here's the paper trading checklist: Week 1-2: Run bot in paper mode. Monitor every single trade it makes. Ask: "Would I have taken this trade manually? Did it follow the rules? Did it exit correctly?" Record bugs/issues. Week 3-4: Fix bugs from weeks 1-2. Re-run paper trading. If bot makes 0 rule violations for 2 consecutive weeks, it's ready for live testing. Example: Sarah paper traded her automated sweep bot for 3 weeks. Discovered bugs: (1) Bot entered trades during pre-market (when spreads are wide, bad fills). Fixed: added time filter (only trade 9:50 AM-3:30 PM). (2) Bot didn't cancel pending orders if setup invalidated. Fixed: added "cancel unfilled orders after 2 minutes" logic. (3) Bot took trades when VIX >28 (high volatility = lower win rate). Fixed: added VIX filter. Paper trading cost her $0 (fake money). Those 3 bugs would've cost $8K-$12K in live trading (estimated). Why this works: Paper trading is free beta testing. You discover bugs when they cost $0 instead of $5,000. Plus, it builds confidence. After watching your bot make 60 profitable paper trades over 4 weeks, you TRUST it enough to risk real money. Action: If you have any automated strategy, paper trade it for minimum 2 weeks starting tomorrow. Log every trade, note any unexpected behavior, fix bugs, repeat. Only go live after 2 consecutive weeks with zero rule violations.</li>
-          </ol>
-        </div>
-      </details>
-
       <p><b>3 AM. Your sweep setup triggers. You're asleep.</b></p>
 
       <p>Your bot places the trade, sets the stop, targets 3R. All while you're dreaming.</p>

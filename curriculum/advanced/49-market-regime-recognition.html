@@ -116,22 +116,6 @@
       <div class="section-break"><span>Part 1: The Four Regimes (And Why You Keep Trading the Wrong One)</span></div>
 
       
-      <!-- TL;DR Skimmer Summary -->
-      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
-        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ TL;DR - 3-Minute Summary (Click to expand)</summary>
-        <div style="margin-top:1rem">
-          <h4 style="margin:0 0 0.75rem 0">📋 Lesson Concepts</h4>
-          <ul style="line-height:1.8;margin:0 0 1rem 1.5rem">
-            <li>Market regimes trending ranging volatile quiet different characteristics</li>
-            <li>Each regime needs different strategy trend following fails ranges</li>
-            <li>Regime indicators ADX above 25 trending below 20 ranging VIX volatile</li>
-            <li>Identify regime apply appropriate strategy switch when changes</li>
-            <li>Validation: Regime-matched strategies outperform by 25-40%</li>
-          </ul>
-          <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)"><em>Read the full lesson for detailed case studies, trader stories with real P&L numbers, and step-by-step examples.</em></p>
-        </div>
-      </details>
-
       <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
         <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
         <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
@@ -513,229 +497,40 @@ Ranging Regime:
         </details>
       </div>
 
-      <div class="section-break"><span>Real Trader Case Study</span></div>
+      <div class="callout callout-danger">
+        <h4>📉 CASE STUDY: Marcus's $43K Regime Blindness Disaster</h4>
+        <p><strong>Trader:</strong> Marcus Chen, 34, full-time trader ($128K account)</p>
+        <p><strong>Strategy:</strong> Trend-following pullbacks (order blocks + BOS), 1.5% risk per trade</p>
+        <p><strong>Fatal flaw:</strong> Never checked market regime—kept using trend strategy when market shifted to ranging</p>
+        <p><strong>Result:</strong> Lost $43,280 (-29.4%) in 3 months when regime changed, recovered using regime-adaptive framework</p>
 
-      <div style="background:rgba(118,221,255,0.08);border:2px solid rgba(118,221,255,0.3);border-radius:12px;padding:2rem;margin:2rem 0">
-        <h2 id="case-study-marcus-regime-blindness" style="margin-top:0;color:#76ddff">📊 Case Study: Marcus — The $43,280 Regime Blindness Disaster (And Recovery)</h2>
+        <p><strong>The Golden Run (Sep-Oct 2023):</strong> SPY trending strong (ADX 28-35). Marcus's pullback strategy crushed it: 24 trades, 75% win rate, +$18,420 profit. "I finally cracked the code!" But he was just lucky—right strategy, right regime by accident.</p>
 
-        <div style="margin:1.5rem 0;padding:1rem;background:rgba(255,255,255,0.03);border-radius:8px">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
-            <div>
-              <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.25rem">Trader Profile</div>
-              <div style="font-weight:700">Marcus Chen, 34</div>
-              <div style="font-size:0.9rem">3 years trading experience</div>
-            </div>
-            <div>
-              <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.25rem">Time Period</div>
-              <div style="font-weight:700">Sep 2023 - Apr 2024</div>
-              <div style="font-size:0.9rem">8-month journey</div>
-            </div>
-            <div>
-              <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.25rem">Starting Capital</div>
-              <div style="font-weight:700">$128,600</div>
-              <div style="font-size:0.9rem">Full-time trader</div>
-            </div>
-            <div>
-              <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.25rem">Primary Strategy</div>
-              <div style="font-weight:700">Trend-following pullbacks</div>
-              <div style="font-size:0.9rem">Order blocks + BOS</div>
-            </div>
-          </div>
-        </div>
-
-        <h3 style="color:#22c55e;margin-top:2rem">✅ Phase 1: The Golden Run (Sep-Oct 2023)</h3>
-
-        <p><strong>Market Conditions:</strong> Strong trending regime post-summer consolidation. SPY rallying from $430 to $450 (Sep-Oct), ADX sustained 28-35, clean higher highs/higher lows structure.</p>
-
-        <p><strong>Marcus's Approach:</strong></p>
-        <ul>
-          <li><strong>Strategy:</strong> Daily/4H order block retests with 1H BOS confirmation, targeting 2-4R on pullback longs</li>
-          <li><strong>Position sizing:</strong> 1.5% risk per trade (standard for his account)</li>
-          <li><strong>Frequency:</strong> 3-4 trades per week, holding 2-5 days each</li>
-          <li><strong>Focus:</strong> AAPL, MSFT, TSLA, SPY — all in strong uptrends</li>
+        <p><strong>The Disaster (Nov 2023-Jan 2024):</strong> Market shifted to ranging (ADX dropped 32 → 17, SPY chopping $440-460 for 11 weeks). Marcus kept trading SAME strategy without checking regime:</p>
+        <ul style="margin:.75rem 0 0 1.5rem">
+          <li><strong>Nov:</strong> 12 trades, 33% win rate, -$6,840 ("Bad luck, I'll bounce back")</li>
+          <li><strong>Dec:</strong> 15 trades, 20% win rate, -$18,920 (revenge trading, chasing)</li>
+          <li><strong>Jan:</strong> 18 trades, 28% win rate, -$17,520 (increased size to 2%, overtrading)</li>
+          <li><strong>Total damage:</strong> Account $147K → $104K (-$43,280, -29.4% drawdown)</li>
         </ul>
 
-        <p><strong>2-Month Results:</strong></p>
-        <div style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;padding:1rem;margin:1rem 0">
-          <ul style="margin:0.5rem 0 0 1.5rem">
-            <li>24 trades: 18 wins, 6 losses (<strong style="color:#22c55e">75% win rate</strong>)</li>
-            <li>Average win: +2.8R | Average loss: -1.0R</li>
-            <li>Total return: <strong style="color:#22c55e;font-size:1.1rem">+$18,420 (+14.3%)</strong></li>
-            <li>Account value: $128,600 → $147,020</li>
-            <li>Largest winner: +4.2R on AAPL pullback to $172 → $185</li>
-            <li>Confidence level: Sky-high ("I finally cracked the code!")</li>
-          </ul>
-        </div>
+        <p><strong>What he missed:</strong> ADX collapsed to 15-18 (screaming "RANGING—DON'T TREND TRADE!"). Every pullback bounced, then failed at resistance (false breakouts). Win rate dropped 75% → 27%. He blamed "bad luck" instead of regime change.</p>
 
-        <div style="padding:1rem;background:rgba(118,221,255,0.08);border-left:3px solid #76ddff;margin:1.5rem 0">
-          <strong>💡 What Was Working:</strong> Trending regime + trend-following strategy = perfect match. ADX >25 confirmed directional bias. Daily order blocks held like clockwork. Marcus's pullback entries caught institutional accumulation perfectly. His win rate was legitimate—because he was trading in the RIGHT regime (even though he didn't know it yet).
-        </div>
+        <p><strong>The wake-up:</strong> "My strategy worked PERFECTLY in Sep-Oct (75% win rate). Same rules. Now I'm down $43K. The MARKET changed—SPY trending Sep-Oct, now chopping sideways. I'm trading trend-following in a RANGE. ADX is 16 now vs 32 in September. I never checked regime. I've been fighting a knife fight with a tennis racket for 3 months."</p>
 
-        <h3 style="color:#ff6b6b;margin-top:2rem">❌ Phase 2: The Regime Shift — Undetected Disaster (Nov 2023 - Jan 2024)</h3>
-
-        <p><strong>Market Conditions:</strong> SPY topped around $455-460 in late October, then entered <strong style="color:#ff6b6b">classic range-bound consolidation</strong>. ADX dropped from 32 → 17. Price chopped between $440-$460 for 11 weeks. Perfect ranging regime (ADX <20, BB width contracted, repeated false breakouts).</p>
-
-        <p><strong>Marcus's Fatal Mistake:</strong> He kept trading the SAME trend-following strategy without checking regime.</p>
-
-        <p><strong>What He Didn't Notice:</strong></p>
-        <ul>
-          <li><span style="color:#ff6b6b">❌</span> ADX collapsed to 15-18 (screaming "RANGING MARKET—DON'T TREND TRADE!")</li>
-          <li><span style="color:#ff6b6b">❌</span> Every "pullback" to order blocks reversed... but then failed at resistance (false breakouts)</li>
-          <li><span style="color:#ff6b6b">❌</span> His 2-4R targets never hit—price stalled at 1.2-1.5R, then reversed</li>
-          <li><span style="color:#ff6b6b">❌</span> Win rate dropped from 75% → 28%, but he blamed "bad luck" instead of regime change</li>
+        <p><strong>Recovery (Feb-Apr 2024):</strong> Built regime detection system (ADX + ATR + BB width). Adaptive position sizing: 1.5% in trends, 0.5% in ranges, 0% in volatility. Strategy selection: pullbacks in trends, fade extremes in ranges, SIT OUT when regime wrong.</p>
+        <ul style="margin:.75rem 0 0 1.5rem">
+          <li><strong>Feb:</strong> Ranging (ADX 18) → Skipped most trades, only 4 taken, +$2.2K (avoided $12K+ losses)</li>
+          <li><strong>Mar:</strong> Trending (ADX 27) → Full trend strategy, 73% win rate, +$14.6K</li>
+          <li><strong>Apr:</strong> Trending (ADX 25-29) → 78% win rate, +$11.8K</li>
+          <li><strong>3-month recovery:</strong> +$28,640 (+27.6% from trough)</li>
         </ul>
 
-        <p><strong>The Brutal 3-Month Grind:</strong></p>
-        <div style="background:rgba(255,107,107,0.15);border-left:4px solid #ff6b6b;padding:1rem;margin:1rem 0">
-          <p style="margin:0 0 0.75rem 0"><strong>November 2023:</strong></p>
-          <ul style="margin:0.5rem 0 0 1.5rem">
-            <li>12 trades: 4 wins, 8 losses (33% win rate)</li>
-            <li>Avg win: +1.4R (targets not reached) | Avg loss: -1.0R</li>
-            <li>Loss: <strong style="color:#ff6b6b">-$6,840</strong> (-4.7%)</li>
-            <li>Reaction: "Tough month. Happens. I'll bounce back."</li>
-          </ul>
+        <p><strong>Final results:</strong> Started $128.6K → Peak $147K (lucky) → Trough $104K (regime-blind) → Final $132K (regime-adaptive). Net: +$3.4K (+2.6%) but learned $50K+ lesson.</p>
 
-          <p style="margin:1.5rem 0 0.75rem 0"><strong>December 2023:</strong></p>
-          <ul style="margin:0.5rem 0 0 1.5rem">
-            <li>15 trades: 3 wins, 12 losses (20% win rate—<em>disaster zone</em>)</li>
-            <li>Increased trade frequency (desperate to "get back to even")</li>
-            <li>Chased breakouts that immediately failed</li>
-            <li>Loss: <strong style="color:#ff6b6b">-$18,920</strong> (-13.5%)</li>
-            <li>Account: $147,020 → $121,260 (gave back ALL gains + more)</li>
-            <li>Emotional state: Frustrated, doubling down, "revenge trading"</li>
-          </ul>
-
-          <p style="margin:1.5rem 0 0.75rem 0"><strong>January 2024:</strong></p>
-          <ul style="margin:0.5rem 0 0 1.5rem">
-            <li>18 trades: 5 wins, 13 losses (28% win rate)</li>
-            <li>Increased position size to 2% risk ("need bigger wins to recover")</li>
-            <li>Entered EVERY pullback (overtrading in chop)</li>
-            <li>Loss: <strong style="color:#ff6b6b">-$17,520</strong> (-14.4%)</li>
-            <li>Account: $121,260 → $103,740</li>
-            <li><strong style="color:#ff6b6b;font-size:1.1rem">Total drawdown from peak: -$43,280 (-29.4%)</strong></li>
-          </ul>
-        </div>
-
-        <div style="padding:1.5rem;background:rgba(255,107,107,0.08);border-left:4px solid #ff6b6b;margin:1.5rem 0">
-          <h4 style="margin-top:0;color:#ff6b6b">🚨 The Brutal Analysis (What Went Wrong)</h4>
-          <p><strong>Marcus's journal entry, Jan 28, 2024:</strong></p>
-          <blockquote style="font-style:italic;border-left:3px solid #ff6b6b;padding-left:1rem;margin:1rem 0">
-            "I don't understand what happened. My strategy worked PERFECTLY in September-October (75% win rate, $18K profit). Same strategy, same stocks, same rules. Now I'm down $43K in 3 months. I'm trading EXACTLY the same way. The only thing that changed is... wait. The MARKET changed. SPY was trending clean in Sep-Oct. Now it's just chopping sideways. I've been trying to catch pullbacks in a RANGE. Every 'breakout' fails. Every order block retest bounces... then dies at resistance. I'm trading trend-following in a RANGING market. That's it. That's the whole problem. I never checked if the market was STILL trending. ADX is at 16 right now—I just looked. In September it was 32. I've been fighting a knife fight with a tennis racket for 3 months."
-          </blockquote>
-        </div>
-
-        <h3 style="color:#fbbf24;margin-top:2rem">⚠️ Phase 3: The Wake-Up Call & Regime Framework (Feb 2024)</h3>
-
-        <p><strong>Marcus's Epiphany:</strong> After analyzing his losing streak, Marcus discovered his Sep-Oct winners ALL occurred during <strong>trending regimes</strong> (ADX >25), while his Nov-Jan disasters ALL occurred during <strong>ranging regimes</strong> (ADX <20).</p>
-
-        <p><strong>New Framework Implemented:</strong></p>
-        <div style="background:rgba(0,212,170,0.08);border:2px solid rgba(0,212,170,0.3);border-radius:8px;padding:1.5rem;margin:1.5rem 0">
-          <h4 style="margin-top:0">🛠️ Marcus's Regime Detection System</h4>
-          <p><strong>Daily Pre-Market Checklist (Added to TradingView):</strong></p>
-          <ol style="margin:0.5rem 0 0 1.5rem">
-            <li><strong>ADX Check:</strong> >25 = trending (green light for trend strategies), <20 = ranging (yellow light—reduce size or skip)</li>
-            <li><strong>ATR Ratio:</strong> Current ATR ÷ 20-day avg ATR. >1.5x = volatile (reduce size), <0.8x = compressed (wait for breakout)</li>
-            <li><strong>Bollinger Band Width:</strong> (Upper - Lower) ÷ Middle. >8% = expanded (good for trends), <4% = squeezed (wait)</li>
-            <li><strong>Structure Alignment:</strong> Weekly + Daily both trending same direction? If yes, trade. If conflict, skip.</li>
-          </ol>
-
-          <p style="margin-top:1rem"><strong>Position Sizing Rules:</strong></p>
-          <ul style="margin:0.5rem 0 0 1.5rem">
-            <li><strong>Strong trending regime</strong> (ADX >30, structure aligned): 1.5% risk (full size)</li>
-            <li><strong>Moderate trend</strong> (ADX 20-25): 1% risk (reduced size)</li>
-            <li><strong>Ranging regime</strong> (ADX <20): 0.5% risk IF trading (tight targets, expect chop) OR skip entirely</li>
-            <li><strong>High volatility</strong> (ATR >1.5x): 0.5% risk max (risk management override)</li>
-          </ul>
-
-          <p style="margin-top:1rem"><strong>Strategy Selection:</strong></p>
-          <ul style="margin:0.5rem 0 0 1.5rem">
-            <li><strong>Trending regime:</strong> Pullback entries (his bread and butter)</li>
-            <li><strong>Ranging regime:</strong> Fade extremes, tight 1-1.5R targets, or SIT OUT</li>
-            <li><strong>Compressed regime:</strong> WAIT for breakout, then trade the new trend</li>
-          </ul>
-        </div>
-
-        <h3 style="color:#22c55e;margin-top:2rem">✅ Phase 4: Recovery Using Regime-Adaptive Trading (Feb-Apr 2024)</h3>
-
-        <p><strong>New Approach in Action:</strong></p>
-
-        <p><strong>February 2024:</strong> SPY still ranging $480-500. Marcus's regime dashboard showed ADX 18 (ranging). <strong>Decision: SKIP most trades.</strong> Only took 4 trades all month (vs his usual 15+), all at range extremes with tight 1.2R targets.</p>
-        <ul>
-          <li>4 trades: 3 wins, 1 loss (75% win rate—back on track!)</li>
-          <li>Profit: <strong style="color:#22c55e">+$2,180</strong> (small, but POSITIVE)</li>
-          <li>More importantly: Avoided $12K+ in losses by NOT overtrading in chop</li>
-        </ul>
-
-        <p><strong>March 2024:</strong> SPY broke out of range, ADX climbed 18 → 27, clean daily BOS at $505. Regime dashboard: <strong>GREEN LIGHT—trending regime confirmed.</strong></p>
-        <ul>
-          <li>Marcus resumed full trend-following strategy (his strength)</li>
-          <li>11 trades: 8 wins, 3 losses (<strong style="color:#22c55e">73% win rate</strong>—back to Sep-Oct form)</li>
-          <li>Profit: <strong style="color:#22c55e">+$14,620</strong> (+14.1%)</li>
-        </ul>
-
-        <p><strong>April 2024:</strong> Regime remained trending (ADX 25-29). Marcus traded confidently, knowing conditions matched his strategy.</p>
-        <ul>
-          <li>9 trades: 7 wins, 2 losses (78% win rate)</li>
-          <li>Profit: <strong style="color:#22c55e">+$11,840</strong> (+10.2%)</li>
-        </ul>
-
-        <div style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;padding:1.5rem;margin:1.5rem 0">
-          <h4 style="margin-top:0;color:#22c55e">📈 Final Results (8-Month Journey)</h4>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
-            <div>
-              <div style="font-weight:700;margin-bottom:0.5rem">Sep-Oct 2023 (Trending - No Regime Awareness):</div>
-              <ul style="margin:0 0 0 1.5rem;font-size:0.95rem">
-                <li>Win rate: 75%</li>
-                <li>Profit: +$18,420</li>
-                <li style="color:#22c55e;font-weight:700">✅ Lucky (right strategy, right regime by accident)</li>
-              </ul>
-            </div>
-            <div>
-              <div style="font-weight:700;margin-bottom:0.5rem">Nov 2023-Jan 2024 (Ranging - Regime Blind):</div>
-              <ul style="margin:0 0 0 1.5rem;font-size:0.95rem">
-                <li>Win rate: 27%</li>
-                <li>Loss: <strong style="color:#ff6b6b">-$43,280</strong></li>
-                <li style="color:#ff6b6b;font-weight:700">❌ Disaster (wrong strategy, wrong regime, no awareness)</li>
-              </ul>
-            </div>
-            <div>
-              <div style="font-weight:700;margin-bottom:0.5rem">Feb-Apr 2024 (Mixed - Regime-Adaptive):</div>
-              <ul style="margin:0 0 0 1.5rem;font-size:0.95rem">
-                <li>Win rate: 75% (when traded)</li>
-                <li>Profit: +$28,640</li>
-                <li style="color:#22c55e;font-weight:700">✅ Sustainable (strategy matched to regime intentionally)</li>
-              </ul>
-            </div>
-            <div>
-              <div style="font-weight:700;margin-bottom:0.5rem">Final Account Value:</div>
-              <ul style="margin:0 0 0 1.5rem;font-size:0.95rem">
-                <li>Started: $128,600</li>
-                <li>Peak (Oct): $147,020</li>
-                <li>Trough (Jan): $103,740 (-29.4%)</li>
-                <li><strong style="color:#22c55e;font-size:1.05rem">Final (Apr): $132,380 (+2.9%)</strong></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div style="padding:1.5rem;background:rgba(118,221,255,0.08);border-left:4px solid #76ddff;margin:2rem 0">
-          <h4 style="margin-top:0;color:#76ddff">🎯 Key Lessons from Marcus's Journey</h4>
-          <ol style="margin:0.5rem 0 0 1.5rem">
-            <li><strong>Your strategy isn't broken—you're using it in the wrong regime.</strong> Marcus's pullback strategy had 75% win rate in trending regimes, 27% in ranging. Same rules, different conditions = opposite results.</li>
-            <li><strong>Regime detection is not optional.</strong> Checking ADX/ATR before every trade would have saved Marcus $43K in losses. A 10-second regime check = difference between -29% and +15% over those months.</li>
-            <li><strong>Sitting out is a position.</strong> Marcus took 4 trades in February (ranging regime) vs 15 in March (trending). February profit was small (+$2K) but he avoided catastrophic losses. Sometimes the best trade is NO trade.</li>
-            <li><strong>Position sizing must adapt to regime.</strong> Full 1.5% risk in ranging markets = getting chopped to death. Reducing to 0.5% (or zero) in unfavorable regimes preserves capital for when conditions improve.</li>
-            <li><strong>Track regime-matched vs regime-mismatched performance.</strong> Marcus's backtest showed regime-matched trades: 75% win rate. Regime-mismatched: 27%. The data was undeniable—regime matters MORE than strategy quality.</li>
-            <li><strong>Recovery requires discipline.</strong> After the $43K drawdown, Marcus didn't revenge-trade or chase. He built a system, waited for trending regimes, then executed his proven strategy. Patience + regime alignment = recovery.</li>
-          </ol>
-        </div>
-
-        <div style="padding:1.5rem;background:rgba(255,193,7,0.08);border:2px solid rgba(255,193,7,0.3);border-radius:8px;margin:2rem 0">
-          <h4 style="margin-top:0;color:#fbbf24">💬 Marcus's Final Reflection (Apr 2024)</h4>
-          <blockquote style="font-style:italic;border-left:3px solid #fbbf24;padding-left:1.5rem;margin:1rem 0">
-            "I spent $43,280 learning a lesson I could have learned for FREE by reading one article on regime detection. In September-October, I thought I was a genius (75% win rate!). I wasn't—I just got lucky the market was trending while I used a trend-following strategy. When the regime shifted to ranging in November, I kept trading EXACTLY the same way. Wrong tool, wrong time. Lost everything I'd made, then some. The turnaround came when I admitted: MY STRATEGY ISN'T THE PROBLEM. I'M USING IT IN THE WRONG CONDITIONS. Now I check regime BEFORE checking setups. ADX <20? I don't care how perfect the order block looks—I'm either skipping or trading with tiny size. This one change—10 seconds of regime checking per day—is worth $50K+ to my account. I'll never trade regime-blind again. Ever."
-          </blockquote>
-        </div>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
+          <strong>Marcus's advice:</strong> "I lost $43K because I never checked if the market was STILL trending. Same strategy, different regime = opposite results (75% vs 27% win rate). Check ADX before every trade: >25 = trending (trade pullbacks), <20 = ranging (skip or fade). A 10-second regime check would have saved me $43K. Regime matters MORE than strategy quality. Track your regime-matched vs mismatched trades—the data will be undeniable. I'll never trade regime-blind again."
+        </p>
       </div>
 
       <div class="key-takeaway">
