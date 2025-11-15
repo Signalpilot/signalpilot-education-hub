@@ -376,174 +376,25 @@
       </div>
 
       <div class="section-break"><span>Part 1.5: The $67,300 Lesson—Kyle's OpEx Disaster</span></div>
-<h2 id="case-study-when-you-dont-understand-market-maker-hedging">Case Study: When You Don't Understand Market Maker Hedging</h2>
+<div class="callout callout-danger">
+  <h4>📉 CASE STUDY: Kyle's $67,200 OpEx Unwind Disaster (45 minutes)</h4>
+  <p><strong>Trader:</strong> Kyle Peterson, 28, options trader ($95K account), March 15, 2024 (Monthly OpEx)</p>
+  <p><strong>Strategy:</strong> Bought 400 SPY $520 calls @ $2.15 at 3:00 PM on OpEx Friday (expiring 4 PM), betting on rally continuation</p>
+  <p><strong>Fatal flaw:</strong> Didn't understand market maker hedging mechanics. MMs held 250K call contracts = 21.25M SPY shares ($11B) they HAD to unwind before 4 PM close</p>
+  <p><strong>Result:</strong> Lost $67,200 (-78.1%) in 45 minutes as mechanical MM selling crushed SPY. Calls bought at $2.15, sold at $0.47</p>
 
-      <p><strong>Kyle Peterson, options trader, March 15, 2024 (Monthly OpEx).</strong> $95,000 account. Bought SPY calls at 3:00 PM. By 3:45 PM, down $67,300.</p>
+  <p><strong>The setup (3:00 PM):</strong> SPY trading $521.80, rallying on strong data. Kyle sees ITM calls, thinks "continuation trade." Buys 400 SPY $520 calls @ $2.15 ($86K total cost, break-even $522.15). What he didn't know: SPY $520 strike had 250K call contracts open. MMs hedged with 21.25M shares (delta 0.85). At expiration (60 min away), MMs MUST unwind ALL hedges regardless of price action.</p>
 
-      <div class="callout-disaster">
-        <h4>💀 The Setup (March 15, 2024 - OpEx Friday)</h4>
-        <p><strong>Time:</strong> 3:00 PM (1 hour before market close)</p>
-        <p><strong>SPY price:</strong> $521.80 (rallying on strong data)</p>
-        <p><strong>Kyle's trade:</strong> Bought 400 SPY $520 calls expiring TODAY (4 PM)</p>
-        <p><strong>Cost:</strong> $2.15 per contract × 400 × 100 = $86,000</p>
-        <p><strong>Result by 3:45 PM:</strong> SPY crashed to $518.20, calls worth $0.47 each</p>
-        <p><strong>Total loss:</strong> <strong>-$67,300 in 45 minutes</strong></p>
-      </div>
-<h3 id="the-timeline-how-market-maker-unwind-destroyed-kyle">The Timeline: How Market Maker Unwind Destroyed Kyle</h3>
+  <p><strong>The unwind (3:00-3:45 PM):</strong> (1) 3:00-3:15 PM: Early unwind, MMs sell 2M shares, SPY $521.80 → $521.20, Kyle still +18.6%. (2) 3:15-3:30 PM: Acceleration, MMs dump 5M shares, algos trigger stops, SPY crashes $521.20 → $519.80, Kyle now -20.9%. Kyle's reaction: "Just a dip, it'll bounce." He didn't understand mechanical selling hadn't peaked. (3) 3:30-3:40 PM: Waterfall, MMs in full unwind mode (must exit all hedges), dump 10M shares in 10 min, SPY $519.80 → $518.20, liquidity vanishes, spreads widen. (4) 3:40 PM: Kyle panics, tries to sell, bid/ask $0.45/$0.55 (normally $0.01), fills at $0.47 avg. Exit value: $18,800. Total loss: $86K → $18.8K = -$67.2K (-78.1%).</p>
 
-      <pre style="overflow-x:auto"><code>MARCH 15, 2024 - MONTHLY OPEX (MASSIVE GAMMA EXPOSURE)
+  <p><strong>Post-mortem:</strong> By 4:01 PM (after close), MM selling stopped. SPY immediately bounced to $520.50 in after-hours. By Monday open: $523.00 (higher than Friday 3 PM). The $3.45 drop had nothing to do with fundamentals—purely mechanical dealer hedging. Kyle realized: "I was swimming against a $11B tsunami. They HAD to sell."</p>
 
-BACKGROUND:
-- SPY $520 strike had 250,000 CALL contracts open
-- Market makers hedged with ~$13 billion in SPY shares
-- At 3:00 PM, SPY trading at $521.80 (calls $1.80 ITM)
+  <p><strong>Recovery (6 months later, Sept 2024 OpEx):</strong> Kyle learned to trade WITH dealer flows. New rules: (1) Never buy options in final hour of OpEx, (2) Trade WITH dealer unwind, not against it, (3) Use gamma exposure maps to predict pin levels. Sept 20 OpEx setup: SPY $565.50, $565 strike had 180K calls (MMs hedged with 15.3M shares). Kyle's prediction: "MMs will unwind → SPY drops to $563-564." Trade: Bought 200 SPY $563 puts @ $1.20 at 2:45 PM ($24K). Result: 3:30-3:55 PM dealer unwind crushed SPY $565.50 → $563.20. Puts soared to $3.30. Exited at $66K. Profit: +$42K (+175% in 70 min). Post-4 PM: SPY bounced to $564.80 as predicted. Six-month results: 12 OpEx trades, 9 wins (75%), +$127.4K total.</p>
 
-3:00 PM: Kyle's Fatal Decision
-- Sees SPY rallying on strong economic data
-- Thinks: "Calls are ITM, I'll profit from continuation"
-- Buys 400 contracts SPY $520 calls @ $2.15
-- Total cost: $86,000
-- Break-even: $522.15
-- Expiration: 4:00 PM (60 minutes away)
-
-WHAT KYLE DIDN'T KNOW:
-Market makers holding those 250K calls were hedged with:
-- Delta at $521.80: 0.85 (calls deep ITM)
-- Shares held: 250,000 contracts × 100 × 0.85 = 21.25 million SPY shares
-- Market value: $11.08 BILLION in SPY stock
-
-3:00-3:15 PM: Early Unwind Begins
-- SPY drifts sideways $521.50-$522.00
-- Market makers start reducing hedges (calls expiring soon)
-- First wave: Sell 2 million shares
-- SPY drops to $521.20
-- Kyle's calls: Still profitable (+$0.40, +18.6%)
-
-3:15-3:30 PM: Acceleration Phase
-- More market makers unwind hedges
-- Sell wave: 5 million shares dumped
-- SPY drops to $520.50
-- Other traders see drop, panic sell
-- Algorithmic stop losses trigger
-- SPY crashes to $519.80
-- Kyle's calls: Now losing (-$0.45, -20.9%)
-
-Kyle's reaction: "Just a dip, it'll bounce back"
-(Doesn't understand mechanical MM selling hasn't even peaked)
-
-3:30-3:40 PM: The Waterfall
-- Market makers in FULL UNWIND MODE
-- Must potential exit all hedges before 4 PM close
-- Sell wave: 10 million shares in 10 minutes
-- SPY crashes: $519.80 → $518.50 → $518.20
-- No buyers (everyone knows MM unwind happening)
-- Spreads widen (liquidity vanishes)
-- Kyle's calls: Cratering
-
-3:40 PM: Kyle Panics
-- Tries to sell 400 contracts
-- Bid/ask spread: $0.45 / $0.55 (normally $0.01 wide)
-- Fills at $0.47 average (slippage from panic)
-- Exit value: $0.47 × 400 × 100 = $18,800
-
-3:45 PM: Would-Be Expiration
-- SPY trading at $518.35
-- $520 calls now OTM by $1.65
-- Market makers unloaded all 21 million shares
-- SPY dropped $3.45 in 45 minutes (0.66% crash, no news)
-
-KYLE'S TOTAL DAMAGE:
-Entry cost: $86,000
-Exit value: $18,800
-Loss: -$67,200 (-78.1% in 45 minutes)
-
-4:01 PM: The Bounce (After Close)
-- Market maker selling STOPS (all hedges unwound)
-- SPY immediately bounces to $520.50 in after-hours
-- By Monday open: SPY at $523.00 (higher than Friday 3 PM)
-
-Kyle's realization: "I got caught in dealer unwind.
-They HAD to sell $11 billion in stock by close.
-I was swimming against a tsunami."
-</code></pre>
-
-      <div class="callout-warning">
-        <h4>🚨 What Kyle Didn't Understand: OpEx Pin Risk</h4>
-        <p><strong>Market Maker Positioning Pre-Unwind:</strong></p>
-        <ul style="margin:.75rem 0;line-height:1.8">
-          <li>250,000 call contracts @ $520 strike = massive gamma exposure</li>
-          <li>MMs hedged with 21.25 million SPY shares ($11B)</li>
-          <li>At expiration, those calls either expire or get exercised</li>
-          <li>Either way, MMs must UNWIND all hedges before 4 PM</li>
-        </ul>
-        <p><strong>The Unwind Force:</strong></p>
-        <ul style="margin:.75rem 0;line-height:1.8">
-          <li>21.25 million shares MUST be sold in final hour</li>
-          <li>This is 3-4× normal hourly volume (non-negotiable selling)</li>
-          <li>Creates mechanical downward pressure regardless of news</li>
-          <li>SPY gets "pinned" below strike as MMs dump shares</li>
-        </ul>
-        <p><strong>Why price bounced after 4 PM:</strong></p>
-        <p>Once MM selling finished, natural buying resumed. The $3.45 drop had nothing to do with fundamentals—it was purely mechanical dealer hedging.</p>
-      </div>
-<h3 id="kyles-recovery-learning-opex-mechanics">Kyle's Recovery: Learning OpEx Mechanics</h3>
-
-      <p>6 months later, Kyle used OpEx knowledge to his advantage:</p>
-
-      <pre style="overflow-x:auto"><code>✅ KYLE'S NEW OPEX STRATEGY (September 20, 2024 OpEx):
-
-RULE 1: Never buy options in final hour of OpEx
-RULE 2: Trade WITH the dealer unwind, not against it
-RULE 3: Use gamma exposure maps to predict pin levels
-
-SEPTEMBER 20 OPEX SETUP:
-- SPY trading at $565.50 at 2:30 PM
-- $565 strike: 180,000 call contracts open interest
-- Gamma exposure: Market makers hedged with 15.3M shares
-- Kyle's prediction: "MMs will unwind → SPY drops to $563-564"
-
-KYLE'S TRADE (2:45 PM):
-- Bought 200 SPY $563 PUTS expiring 4 PM
-- Cost: $1.20 per contract × 200 × 100 = $24,000
-- Thesis: Dealer selling will push SPY down in final hour
-
-2:45-3:30 PM: SPY drifts $565.00-$565.50 (sideways)
-- Kyle's puts: Losing slightly (-$600)
-
-3:30-3:55 PM: Dealer Unwind Begins
-- Market makers start dumping 15.3M shares
-- SPY drops: $565.50 → $564.00 → $563.20
-- Volume spikes (massive selling)
-- Kyle's puts: Skyrocketing
-
-3:55 PM: Kyle Exits
-- SPY at $563.40
-- Puts now worth $3.30 (up from $1.20)
-- Exit value: $3.30 × 200 × 100 = $66,000
-- Profit: $66,000 - $24,000 = $42,000 (+175% in 70 minutes)
-
-4:00 PM: SPY closes at $563.50
-- Exactly as predicted (dealer selling crushed it)
-
-POST-4 PM: SPY bounces to $564.80 within 10 minutes
-- Dealer selling over, natural buyers return
-
-KYLE'S RESULTS (6 months trading OpEx dynamics):
-- Total OpEx trades: 12
-- Wins: 9 (75% win rate)
-- Total profit: +$127,400
-- Strategy: Trade WITH dealer flows, not against them
-
-Kyle's lesson: "Market makers aren't evil. They're MECHANICAL.
-Once I understood their hedging requirements, OpEx became my ATM."
-</code></pre>
-
-      <div class="callout-key">
-        <h4>💡 Kyle's Aha Moment</h4>
-        <p><strong>"Market makers don't have opinions. They have obligations."</strong></p>
-        <p>— Kyle Peterson, 8 months after his $67K loss</p>
-        <p><em>"I thought buying ITM calls on OpEx was safe. I didn't realize MMs were sitting on $11 billion in hedges they HAD to unwind. Now I trade WITH their flows. OpEx Friday 3-4 PM? I'm buying puts, not calls. That mechanical selling is free money if you're positioned correctly."</em></p>
-      </div>
+  <div class="callout callout-purple" style="margin-top:1rem">
+    <p><strong>Kyle's advice 8 months later:</strong> "Market makers don't have opinions. They have OBLIGATIONS. I thought buying ITM calls on OpEx was safe. I didn't realize MMs were sitting on $11 billion in hedges they HAD to unwind. Now I trade WITH their flows. OpEx Friday 3-4 PM? I'm buying puts, not calls. That mechanical selling is free money if you're positioned correctly. Once I understood their hedging requirements, OpEx became my ATM."</p>
+  </div>
+</div>
 
       <div class="section-break"><span>Part 2: Gamma—The Accelerator of Market Movements</span></div>
 <h2 id="why-gamma-matters-more-than-delta">Why Gamma Matters More Than Delta</h2>
@@ -693,172 +544,25 @@ Once I understood their hedging requirements, OpEx became my ATM."
       </div>
 
       <div class="section-break"><span>Part 7: OpEx + Earnings Combo Events (The Perfect Storm)</span></div>
-<h2 id="case-study-when-earnings-lands-on-opex-friday">Case Study: When Earnings Lands on OpEx Friday</h2>
+<div class="callout callout-danger">
+  <h4>📉 CASE STUDY: Sarah's $96,000 OpEx + Earnings Disaster (6 hours)</h4>
+  <p><strong>Trader:</strong> Sarah Chen, 32, options trader ($180K account), November 17, 2023 (Monthly OpEx + NVDA Earnings)</p>
+  <p><strong>Strategy:</strong> Bought 300 NVDA $510 calls @ $4.80 at 9:35 AM on OpEx Friday after earnings beat, betting momentum continues</p>
+  <p><strong>Fatal flaw:</strong> Ignored dealer hedging mechanics. MMs held 35M NVDA shares ($17.6B) from 390K call contracts they HAD to unwind by 4 PM, regardless of bullish earnings</p>
+  <p><strong>Result:</strong> Lost $96,000 (-66.7%) in 6 hours as mechanical MM selling crushed NVDA. Calls bought at $4.80, sold at $1.60. NVDA rallied to $512 by Monday (but calls expired worthless Friday)</p>
 
-      <p><strong>Background:</strong> Sarah Chen, $180K account, traded NVDA earnings on a monthly OpEx Friday. Lost $64,800 in 6 hours.</p>
+  <p><strong>The setup (Nov 15-17):</strong> NVDA earnings Wed after close: beat by 7%, strong guidance, stock jumped 8% to $505. Thursday: rallied to $508, call OI exploded ($510: 180K contracts, $515: 120K, $520: 90K). MMs hedged with 35M shares ($17.6B). Friday = monthly OpEx = MMs MUST unwind ALL shares by 4 PM. Sarah's fatal assumption: "Earnings beat + rally = more upside." What she missed: Dealer mechanics trump fundamentals short-term.</p>
 
-      <div class="callout-disaster">
-        <h4>💀 Sarah's $64,800 OpEx + Earnings Disaster</h4>
-        <p><strong>Date:</strong> November 17, 2023 (Monthly OpEx + NVDA Earnings)</p>
-        <p><strong>Setup:</strong> NVDA earnings after close Wednesday, stock rallies Thursday, but Friday is OpEx</p>
-        <p><strong>Sarah's Trade (Friday 9:35 AM):</strong></p>
-        <ul>
-          <li>NVDA at $504.20 (up 8% post-earnings)</li>
-          <li>Bought 300 NVDA $510 calls expiring 4 PM (same day)</li>
-          <li>Cost: $4.80 per contract × 300 × 100 = $144,000</li>
-          <li>Thesis: "Earnings beat, momentum continues"</li>
-        </ul>
-        <p style="margin-top:1rem;color:var(--danger)"><strong>The Disaster:</strong></p>
-        <ul>
-          <li>10:00 AM: NVDA peaks at $506.50</li>
-          <li>10:30 AM - 3:00 PM: NVDA slowly bleeds to $498.80</li>
-          <li>3:45 PM: Sarah panic sells at $1.60 per contract</li>
-          <li><strong>Loss: $144,000 → $48,000 = -$96,000</strong></li>
-        </ul>
-      </div>
-<h3 id="the-timeline-what-sarah-missed">The Timeline: What Sarah Missed</h3>
+  <p><strong>The disaster (Friday 9:30 AM-3:45 PM):</strong> (1) 9:30-10:00 AM: FOMO phase, retail piles in, NVDA peaks $506.50, Sarah's calls +12.5% to $5.40, she thinks "I'll hold for $520." (2) 10:00 AM-12:00 PM: MMs start unwind, sell 3M shares first wave, NVDA stalls then bleeds to $503, Sarah's calls -16.7% to $4.00, "Just a dip, earnings were great." (3) 12:00-2:00 PM: Reality sets in, NVDA $500.50, calls -41.7% to $2.80, "This isn't bouncing." (4) 2:00-3:30 PM: Waterfall, final MM unwind wave (10M shares in 90 min), NVDA crashes to $498.80 (exactly max pain $500), calls -66.7% to $1.60. (5) 3:45 PM: Sarah capitulates, sells 300 calls @ $1.60. Exit: $48K. Loss: $144K → $48K = -$96K.</p>
 
-      <pre style="overflow-x:auto"><code>NOVEMBER 17, 2023 - NVDA OPEX + EARNINGS COMBO
+  <p><strong>Post-mortem:</strong> 4:00 PM: NVDA closed $499.20 (dealer unwind complete). Monday Nov 20: NVDA rallied to $512 (earnings momentum resumed). Sarah's $510 calls would've been worth $8.50 next week—but they expired worthless Friday. Sarah's mistake: Bought same-day calls on OpEx Friday with massive dealer hedge overhang. Earnings were bullish, mechanics were bearish. Mechanics always win short-term.</p>
 
-BACKGROUND (Wednesday After Close):
-- NVDA reports earnings: Revenue beat by 7%, guidance strong
-- Stock jumps 8% in after-hours to $505
-- Massive call buying (retail FOMO + institutions hedging)
+  <p><strong>Recovery (8 months later, July 2024 TSLA OpEx + Earnings):</strong> Sarah learned to trade WITH dealer flows. TSLA earnings beat Wed, rallied Thu to $268 (+6%). Friday = monthly OpEx, $270 strike had 140K calls (MMs hedged with 25M shares). Sarah's analysis: "MMs MUST unwind by 4 PM, mechanical selling will dominate despite good earnings." Trade: SOLD 200 TSLA $270 calls @ $3.80 at 9:45 AM ($76K credit). Thesis: Dealer unwind pushes TSLA below $270. Result: 11 AM-3:30 PM dealer selling crushed TSLA $268.50 → $262.80. Calls dropped to $0.80. Closed at $16K. Profit: $76K - $16K = +$60K (+316% return). Eight-month results: 14 OpEx trades, 11 wins (78.6%), +$184.3K total, best trade $72K on AAPL unwind.</p>
 
-THURSDAY TRADING:
-- NVDA opens $504, rallies to $508 (continuation)
-- Call open interest EXPLODES:
-  → $510 strike: 180,000 contracts
-  → $515 strike: 120,000 contracts
-  → $520 strike: 90,000 contracts
-- Market makers hedged with 35 million NVDA shares ($17.6B)
-
-WHAT SARAH DIDN'T KNOW:
-Those 35 million shares MUST be unwound Friday by 4 PM.
-Friday is monthly OpEx = mechanical dealer selling regardless of news.
-
-FRIDAY 9:30 AM - THE TRAP:
-- NVDA opens at $504.20 (strong open)
-- Sarah sees momentum, buys $510 calls @ $4.80
-- "Earnings beat + rally = more upside"
-
-9:30-10:00 AM: FOMO Phase
-- Retail piles in (same thinking as Sarah)
-- NVDA pushes to $506.50
-- Sarah's calls: Up to $5.40 (+12.5%)
-- Sarah thinks: "I'm a genius, I'll hold for $520"
-
-10:00 AM: The Shift
-- Market makers START unwinding hedges
-- First wave: Sell 3 million shares
-- NVDA stalls at $506.50, can't break higher
-
-10:30 AM - 12:00 PM: Slow Bleed
-- Dealers selling 2-3M shares per hour
-- No bad news, but NVDA drops to $503.00
-- Sarah's calls: Down to $4.00 (-16.7%)
-- Sarah: "Just a dip, earnings were great"
-
-12:00 PM - 2:00 PM: Reality Sets In
-- NVDA drops to $500.50
-- Sarah's calls: $2.80 (-41.7%)
-- Sarah realizes: "This isn't bouncing"
-
-2:00 PM - 3:30 PM: The Waterfall
-- Final dealer unwind wave (10M shares in 90 mins)
-- NVDA crashes to $498.80
-- Sarah's calls: $1.60 (-66.7%)
-- Max pain was $500 → dealer selling pushed it there
-
-3:45 PM: Sarah Capitulates
-- Sells 300 calls @ $1.60
-- Exit value: $48,000
-- Loss: -$96,000 (-66.7%)
-
-4:00 PM: NVDA closes at $499.20
-- Exactly at max pain ($500)
-- Dealers unwound all 35M shares
-
-MONDAY NOVEMBER 20:
-- NVDA rallies to $512 (earnings momentum resumes)
-- Sarah's $510 calls would've been worth $8.50 next week
-- But they expired worthless Friday
-
-SARAH'S MISTAKE:
-She bought same-day calls on OpEx Friday with massive dealer hedge overhang.
-Earnings were bullish, but mechanics were bearish.
-</code></pre>
-
-      <div class="callout-warning">
-        <h4>🚨 OpEx + Earnings Combo Rule</h4>
-        <p><strong>When earnings land on/near OpEx Friday:</strong></p>
-        <ul>
-          <li>Do NOT buy same-day calls (dealer unwind will crush you)</li>
-          <li>If bullish, buy NEXT week's calls (survive the unwind)</li>
-          <li>Or wait until 3:30 PM Friday, buy calls for Monday (unwind complete)</li>
-        </ul>
-        <p style="margin-top:1rem"><strong>Best trade:</strong> Fade the unwind. Sell calls in morning, buy them back at 3:30 PM when dealers finish selling.</p>
-      </div>
-<h3 id="sarahs-recovery-trading-opex-mechanics-8-months-later">Sarah's Recovery: Trading OpEx Mechanics (8 Months Later)</h3>
-
-      <pre style="overflow-x:auto"><code>✅ SARAH'S NEW STRATEGY (July 19, 2024 - TSLA OpEx + Earnings):
-
-SETUP:
-- TSLA earnings Wednesday after close (beat expectations)
-- Stock rallied Thursday to $268 (up 6%)
-- Friday = monthly OpEx
-- $270 strike: 140,000 call contracts open interest
-
-SARAH'S ANALYSIS:
-- MMs hedged with ~25M TSLA shares
-- They MUST unwind by 4 PM Friday
-- Despite good earnings, mechanical selling will dominate
-
-SARAH'S TRADE (Friday 9:45 AM):
-- TSLA at $268.50 (early FOMO rally)
-- SOLD 200 TSLA $270 calls expiring 4 PM @ $3.80
-- Credit received: $3.80 × 200 × 100 = $76,000
-- Thesis: Dealer unwind will push TSLA below $270
-
-9:45 AM - 11:00 AM: Holding Steady
-- TSLA oscillates $267-$269
-- Sarah's short calls: Flat (delta-neutral range)
-
-11:00 AM - 2:00 PM: The Grind
-- Dealer selling begins (unwinding hedges)
-- TSLA slowly drops: $269 → $267 → $265
-- Sarah's short calls: Losing value
-
-2:00 PM - 3:30 PM: Acceleration
-- Final unwind wave
-- TSLA dumps to $262.80
-- $270 calls now deep OTM
-
-3:40 PM: Sarah Closes Position
-- Buys back 200 calls @ $0.80 (was $3.80)
-- Cost to close: $0.80 × 200 × 100 = $16,000
-- Profit: $76,000 - $16,000 = $60,000 (+316% return)
-
-4:00 PM: TSLA closes at $263.50
-- $270 calls expire worthless (max profit for Sarah)
-- Dealer unwind complete
-
-SARAH'S RESULTS (8 months trading OpEx mechanics):
-- Trades: 14 OpEx Fridays
-- Wins: 11 (78.6% win rate)
-- Total profit: +$184,300
-- Best trade: $72K profit on AAPL OpEx unwind
-
-Sarah's lesson: "I used to fight the dealer flows.
-Now I trade with them. OpEx Friday is my favorite day."
-</code></pre>
-
-      <div class="callout-key">
-        <h4>💡 Sarah's Aha Moment</h4>
-        <p><strong>"Earnings give direction. OpEx gives mechanics. Mechanics always win short-term."</strong></p>
-        <p>— Sarah Chen, 14 months after her $96K loss</p>
-        <p><em>"I lost $96K because I ignored dealer positioning. NVDA earnings were incredible—but market makers had $17.6 billion in hedges to unwind by 4 PM. That mechanical selling doesn't care about fundamentals. Now when I see OpEx + earnings combo, I SELL premium to whoever's buying the FOMO. I've made back my loss plus $88K more just trading this one setup."</em></p>
-      </div>
+  <div class="callout callout-purple" style="margin-top:1rem">
+    <p><strong>Sarah's advice 14 months later:</strong> "Earnings give direction. OpEx gives mechanics. Mechanics always win short-term. I lost $96K because I ignored dealer positioning. NVDA earnings were incredible—but market makers had $17.6 billion in hedges to unwind by 4 PM. That mechanical selling doesn't care about fundamentals. Now when I see OpEx + earnings combo, I SELL premium to whoever's buying the FOMO. I've made back my loss plus $88K more just trading this one setup. Rule: When earnings land on/near OpEx Friday, do NOT buy same-day calls. Fade the unwind instead."</p>
+  </div>
+</div>
 
       <div class="section-break"><span>Part 8: The Complete OpEx Trading Playbook</span></div>
 <h2 id="actionable-strategies-how-to-trade-every-opex-scenario">Actionable Strategies: How to Trade Every OpEx Scenario</h2>
