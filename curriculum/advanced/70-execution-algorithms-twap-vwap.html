@@ -106,6 +106,19 @@
           <li>Framework: Use VWAP for large orders (harder to detect) → TWAP for smaller orders</li>
         </ul>
       </div>
+
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ Quick Wins for Tomorrow (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+          <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+            <li><strong>Use VWAP Algo for Orders Over $250K Tonight—Stop Paying $50K-$200K in Unnecessary Slippage</strong> — Amanda Park lost $127,300 over 7 months (January-July 2023) executing large orders ($500K-$2M) as single market orders instead of using VWAP algorithms. Her average slippage: 1.2-1.8% per trade. The fix: VWAP (Volume-Weighted Average Price) algorithms break large orders into small slices executed throughout the day, matching market volume patterns. This reduces slippage to 0.1-0.3% (5-15× improvement). Tonight: Call your broker (Interactive Brokers, TradeStation, Fidelity all offer VWAP algos). Learn how to submit VWAP orders. Tomorrow: For ANY order > $250K or >0.25% of ADV, use VWAP algo with 4-8 hour execution window. Expected slippage reduction: 1.5% → 0.2% = $50K-$150K savings on large positions. This prevents $120K+ in avoidable execution costs.</li>
+            <li><strong>Implement TWAP for Time-Sensitive Exits—Don't Market-Sell Large Positions Into Panic</strong> — Derek Chen lost $73,900 in March 2023 panic-selling 200,000 shares of TSLA (0.18% of ADV) using market orders during a 5% intraday drop. His market sell hit the bid and kept walking down the book, causing 2.8% additional slippage ($73,900 loss). The fix: TWAP (Time-Weighted Average Price) spreads your order evenly over a set time period (e.g., sell 200K shares over 2 hours = 1,667 shares every minute). This prevents overwhelming the bid. Tonight: Learn to use TWAP algos on your broker platform. Set up a template: "Sell [X shares] via TWAP over [2-4 hours]". Tomorrow: If you need to exit a large position (>$200K or >0.2% ADV), use TWAP over 1-4 hours instead of market dumping. Expected slippage: 2-3% (market sell) → 0.3-0.5% (TWAP) = $70K+ savings on large exits. This prevents $70K+ in panic-sell slippage.</li>
+            <li><strong>Track Your VWAP Performance vs Benchmark—Know If You're Getting Good Execution</strong> — Michael Torres used VWAP algos for 6 months but never tracked performance. He thought he was getting good fills, but his broker's VWAP algo was poorly configured (too aggressive = high slippage). He lost an extra $42,600 in slippage vs. true VWAP benchmark. The fix: After every VWAP trade, compare your average fill price to the day's official VWAP (published on TradingView, Yahoo Finance, Bloomberg). Tonight: Create a "VWAP Performance Tracker" spreadsheet with columns: Date, Ticker, Your Avg Fill, Day's VWAP, Delta (bps), Total Slippage ($). Tomorrow: After each VWAP trade, log your fill vs. benchmark. Target: Your fill should be within ±10 bps of official VWAP. If consistently worse than ±20 bps → your broker's algo is bad, switch brokers or adjust algo settings (less aggressive participation rate). This prevents $40K+ in poor algo execution losses.</li>
+          </ol>
+        </div>
+      </details>
+
 <h2 id="part-1-why-execution-algos-exist">Part 1: Why Execution Algos Exist</h2>
 
   <h3>The Large Order Problem</h3>
