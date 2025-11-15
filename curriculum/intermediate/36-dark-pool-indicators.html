@@ -491,7 +491,69 @@ Time       Price    Size      Exchange   Trade Condition
 
       <p><strong>What counts as a "block trade"?</strong></p>
       <table style="width:100%;border-collapse:collapse;margin:2rem 0">
-</details>
+        <thead>
+          <tr style="background:rgba(255,255,255,.05)">
+            <th style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Instrument Type</th>
+            <th style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Minimum Block Size</th>
+            <th style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Institutional Size</th>
+            <th style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">ETFs (SPY, QQQ)</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50,000 shares</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">500,000+ shares</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1.2M SPY @ $450 = $540M</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Large Cap (AAPL, MSFT)</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">10,000 shares</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">100,000+ shares</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">250K AAPL @ $180 = $45M</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Mid Cap</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">5,000 shares</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">50,000+ shares</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">75K shares @ $85 = $6.4M</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Small Cap</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">2,500 shares</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">25,000+ shares</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">30K shares @ $45 = $1.4M</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">Options (100-delta equiv)</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">100+ contracts</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">500+ contracts</td>
+            <td style="padding:.75rem;border:1px solid rgba(255,255,255,.1)">1,000 SPY calls = 100K shares delta</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Key insight:</strong> Block trade thresholds vary by liquidity. High-volume ETFs like SPY need 50K+ shares to be considered institutional, while small caps show institutional interest at 2,500+ shares. Always scale your expectations to the instrument's average daily volume.</p>
+
+      <h3 id="dark-pool-print-patterns">Dark Pool Print Patterns</h3>
+
+      <div style="margin:2rem 0">
+        <details class="accordion-item">
+          <summary class="accordion-header">Pattern #1: Pre-Market Accumulation</summary>
+          <div class="accordion-content">
+            <p><strong>Setup:</strong> Large dark pool buy prints appear 8:00-9:30 AM ET (before market opens)</p>
+            <p><strong>What it means:</strong> Institutions positioning ahead of retail (they have information or conviction)</p>
+            <p><strong>Bullish signal:</strong> 200K+ shares bought pre-market (expect gap up at open, continuation through day)</p>
+            <p><strong>Example: TSLA pre-market accumulation (June 2024)</strong></p>
+            <ul>
+              <li><strong>8:15 AM:</strong> 350K shares TSLA bought in dark pool at $245.00</li>
+              <li><strong>8:45 AM:</strong> Additional 280K shares at $246.50</li>
+              <li><strong>9:30 AM:</strong> TSLA opens at $249.00 (+$4 gap from previous close)</li>
+              <li><strong>End of day:</strong> TSLA closes at $254.50 (+3.8% from pre-market dark pool entry)</li>
+              <li><strong>Interpretation:</strong> Institutions front-ran retail, accumulated 630K shares pre-market before the rally</li>
+            </ul>
+          </div>
+        </details>
 
         <details class="accordion-item">
           <summary class="accordion-header">Pattern #2: End-of-Day Dark Pool Prints</summary>
