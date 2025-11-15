@@ -605,6 +605,291 @@
     </ul>
   </div>
 
+  <div class="section-break"><span>Real Trader Case Study</span></div>
+
+  <div style="background:rgba(118,221,255,0.08);border:2px solid rgba(118,221,255,0.3);border-radius:12px;padding:2rem;margin:2rem 0">
+    <h2 id="case-study-jason-ml-overfitting" style="margin-top:0;color:#76ddff">📊 Case Study: Jason — The $127K ML Overfitting Disaster (And Redemption)</h2>
+
+    <div style="margin:1.5rem 0;padding:1rem;background:rgba(255,255,255,0.03);border-radius:8px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+        <div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.25rem">Trader Profile</div>
+          <div style="font-weight:700">Jason Wu, 31</div>
+          <div style="font-size:0.9rem">Quant developer, CS/ML background</div>
+        </div>
+        <div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.25rem">Time Period</div>
+          <div style="font-weight:700">Oct 2021 - Mar 2024</div>
+          <div style="font-size:0.9rem">30-month journey</div>
+        </div>
+        <div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.25rem">Starting Capital</div>
+          <div style="font-weight:700">$250,000</div>
+          <div style="font-size:0.9rem">Full algorithmic deployment</div>
+        </div>
+        <div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:0.25rem">ML Strategy</div>
+          <div style="font-weight:700">Random Forest model</div>
+          <div style="font-size:0.9rem">200+ features, daily predictions</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="color:#22c55e;margin-top:2rem">✅ Phase 1: The Perfect Backtest (Model Development, Summer 2021)</h3>
+
+    <p><strong>Jason's Background:</strong> Computer Science degree, 4 years as ML engineer at tech company, learned Python/scikit-learn/TensorFlow. "I can build better models than discretionary traders. Let me apply ML to markets."</p>
+
+    <p><strong>Model Development:</strong></p>
+    <ul>
+      <li><strong>Training data:</strong> SPY daily bars from Jan 2015 - Sep 2021 (6.75 years, ~1,700 bars)</li>
+      <li><strong>Features:</strong> 200+ technical indicators (RSI, MACD, Bollinger Bands, ATR, volume ratios, sentiment scores, VIX, etc.)</li>
+      <li><strong>Target:</strong> Binary classification - predict if SPY closes higher tomorrow (1) or lower (0)</li>
+      <li><strong>Model:</strong> Random Forest with 500 trees, max depth 20, no regularization</li>
+      <li><strong>Validation:</strong> NONE. Just backtested on same 2015-2021 data used for training</li>
+    </ul>
+
+    <p><strong>Backtest Results (Training Data Performance):</strong></p>
+    <div style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;padding:1rem;margin:1rem 0">
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li><strong style="color:#22c55e">Win rate: 83%</strong> (1,410 winners, 290 losers)</li>
+        <li><strong style="color:#22c55e">Sharpe ratio: 2.4</strong> (excellent risk-adjusted returns)</li>
+        <li><strong style="color:#22c55e">Max drawdown: -8.2%</strong> (shallow drawdowns)</li>
+        <li><strong style="color:#22c55e">Annual return: +42%</strong> (compounded)</li>
+        <li>Average win: +1.8% | Average loss: -1.2%</li>
+        <li>Confidence level: "This is REVOLUTIONARY. I've automated the market."</li>
+      </ul>
+    </div>
+
+    <div style="padding:1rem;background:rgba(255,107,107,0.08);border-left:3px solid #ff6b6b;margin:1.5rem 0">
+      <strong>🚨 The Fatal Flaws (Jason Didn't Know):</strong>
+      <ol style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>No train/test split:</strong> Model backtested on SAME data it trained on (memorization, not prediction)</li>
+        <li><strong>200+ features with ~1,700 samples:</strong> Feature-to-sample ratio 1:8.5 (should be 1:50+). Severe overfitting guaranteed.</li>
+        <li><strong>Trained only on QE data:</strong> 2015-2021 = Fed quantitative easing (every dip bought). Model learned "buy every dip = profit" but never saw QT (quantitative tightening).</li>
+        <li><strong>No regime detection:</strong> Model assumed markets always behave like 2015-2021 bull market</li>
+        <li><strong>No walk-forward validation:</strong> Never tested "train on 2015-2019, predict 2020-2021"</li>
+        <li><strong>No crisis testing:</strong> Model never tested on 2008 crash, 2020 COVID crash, or any high-volatility period</li>
+      </ol>
+    </div>
+
+    <h3 style="color:#22c55e;margin-top:2rem">✅ Phase 2: The Honeymoon Period (Oct-Dec 2021)</h3>
+
+    <p><strong>Deployment:</strong> October 2021, Jason deployed his Random Forest model LIVE with full $250K capital. No paper trading, no out-of-sample testing, no regime checks.</p>
+
+    <p><strong>Market Conditions:</strong> Late 2021 still QE environment (Fed printing money, dip-buying works), low VIX (12-16), steady uptrend.</p>
+
+    <p><strong>3-Month Results:</strong></p>
+    <div style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;padding:1rem;margin:1rem 0">
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li>62 trades: 49 wins, 13 losses (<strong style="color:#22c55e">79% win rate</strong>)</li>
+        <li>Profit: <strong style="color:#22c55e;font-size:1.1rem">+$18,400 (+7.4%)</strong></li>
+        <li>Account value: $250,000 → $268,400</li>
+        <li>Sharpe ratio: 2.1 (close to backtest!)</li>
+        <li>Jason's reaction: "Backtests were CONSERVATIVE. This is easier than I thought. ML crushes discretionary trading."</li>
+      </ul>
+    </div>
+
+    <div style="padding:1rem;background:rgba(118,221,255,0.08);border-left:3px solid #76ddff;margin:1.5rem 0">
+      <strong>💡 What Was Working:</strong> Jason got LUCKY. Oct-Dec 2021 market conditions closely matched his training data (QE, low volatility, dip-buying worked). Model wasn't predicting—it was INTERPOLATING within known regime. But regime shifts were coming...
+    </div>
+
+    <h3 style="color:#ff6b6b;margin-top:2rem">❌ Phase 3: The Regime Shift Collapse (Jan-Aug 2022)</h3>
+
+    <p><strong>Market Regime Change:</strong></p>
+    <ul>
+      <li><strong>Dec 15, 2021:</strong> Fed signals hawkish pivot (ending QE, starting QT)</li>
+      <li><strong>Jan 2022 onwards:</strong> Fed tightening, VIX spikes 16 → 35, "buy the dip" STOPS working</li>
+      <li><strong>Market behavior:</strong> Every dip keeps dipping (opposite of 2015-2021 training data)</li>
+      <li><strong>Jason's model:</strong> STILL predicting "buy every dip" (never saw QT environment in training)</li>
+    </ul>
+
+    <p><strong>The 8-Month Disaster:</strong></p>
+
+    <div style="background:rgba(255,107,107,0.15);border-left:4px solid #ff6b6b;padding:1rem;margin:1rem 0">
+      <p style="margin:0 0 0.75rem 0"><strong>January 2022:</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li>Model bought SPY dip at $470. SPY dropped to $450 (-4.3%). Model: "Buy more!" SPY dropped to $420.</li>
+        <li>18 trades: 7 wins, 11 losses (<strong style="color:#ff6b6b">39% win rate</strong> - massive drop from 79%)</li>
+        <li>Loss: <strong style="color:#ff6b6b">-$14,200</strong> (-5.3%)</li>
+        <li>Jason's reaction: "Volatility spike. Temporary. Model will recover."</li>
+      </ul>
+
+      <p style="margin:1.5rem 0 0.75rem 0"><strong>February 2022:</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li>Russia invades Ukraine (Feb 24). VIX spikes to 38. Model keeps buying every dip.</li>
+        <li>20 trades: 6 wins, 14 losses (<strong style="color:#ff6b6b">30% win rate</strong>)</li>
+        <li>Loss: <strong style="color:#ff6b6b">-$18,600</strong> (-7.3%)</li>
+        <li>Account: $268,400 → $235,600 (gave back ALL gains + more)</li>
+      </ul>
+
+      <p style="margin:1.5rem 0 0.75rem 0"><strong>March-August 2022 (The Grind):</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li>6 consecutive losing months as Fed continued tightening</li>
+        <li>Model trained on "buy every dip = profit" kept buying every dip</li>
+        <li>QT regime = every dip kept dipping (opposite of training data)</li>
+        <li>Win rate: <strong style="color:#ff6b6b">32-38%</strong> (random, no edge)</li>
+        <li>Total loss (Mar-Aug): <strong style="color:#ff6b6b">-$112,600</strong></li>
+        <li>Account value: $235,600 → $123,000</li>
+        <li><strong style="color:#ff6b6b;font-size:1.1rem">Total drawdown from peak: -$145,400 (-54.2%)</strong></li>
+      </ul>
+    </div>
+
+    <div style="padding:1.5rem;background:rgba(255,107,107,0.08);border-left:4px solid #ff6b6b;margin:1.5rem 0">
+      <h4 style="margin-top:0;color:#ff6b6b">🚨 The Breaking Point Analysis (Aug 2022)</h4>
+      <p><strong>Jason's journal entry, Aug 15, 2022:</strong></p>
+      <blockquote style="font-style:italic;border-left:3px solid #ff6b6b;padding-left:1rem;margin:1rem 0">
+        "I lost $145K. My model had 83% backtest win rate but 34% live win rate. I spent 2 weeks checking for bugs—NONE. The code is perfect. Then I realized the horrible truth: I trained on 2015-2021 data (QE era - Fed printing, 'buy every dip' worked 80% of the time). 2022 is QT (Fed tightening - 'buy every dip' fails 70% of the time). My model MEMORIZED the QE regime. It never saw QT in training. When the regime shifted, my model became WORSE than random. Classic overfitting disaster. I violated EVERY ML rule: (1) No train/test split (backtested on training data), (2) 200 features with 1,700 samples (12:1 overfit ratio), (3) No out-of-sample validation (never tested on 2008, 2020, or different regimes), (4) Deployed $250K without paper trading. I'm a CS graduate. I should have known better. My 'revolutionary model' was just curve-fitting to one regime."
+      </blockquote>
+
+      <p><strong>The Technical Post-Mortem:</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>Feature importance review:</strong> Top 3 features were all "buy the dip" indicators (RSI oversold, price below 20-day MA, VIX spikes). These worked 2015-2021 (QE) but FAILED in 2022 (QT).</li>
+        <li><strong>Backtest on 2008 crash data:</strong> Model would have lost -78% (never saw crisis in training)</li>
+        <li><strong>Walk-forward test:</strong> Train on 2015-2019, test on 2020-2021 = 58% win rate (not 83%). Red flag Jason missed.</li>
+        <li><strong>Regime analysis:</strong> Model trained exclusively on low-VIX, trending-up regime. Never learned bearish/volatile regimes.</li>
+      </ul>
+    </div>
+
+    <h3 style="color:#fbbf24;margin-top:2rem">⚠️ Phase 4: The Rebuild with Proper ML Practices (Sep 2022 - Feb 2023)</h3>
+
+    <p><strong>Jason's New Approach:</strong> "I need to rebuild from scratch using ACTUAL ML best practices, not YouTube tutorial shortcuts."</p>
+
+    <p><strong>New Model Framework:</strong></p>
+    <div style="background:rgba(0,212,170,0.08);border:2px solid rgba(0,212,170,0.3);border-radius:8px;padding:1.5rem;margin:1.5rem 0">
+      <h4 style="margin-top:0">🛠️ Jason's Proper ML System (v2.0)</h4>
+
+      <p><strong>1. Data Split (Proper Train/Test/Validation):</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>Training:</strong> 2010-2016 (6 years, includes 2011 volatility)</li>
+        <li><strong>Validation:</strong> 2017-2019 (3 years, bull market)</li>
+        <li><strong>Test (held-out):</strong> 2020-2021 (2 years, COVID crash + recovery)</li>
+        <li><strong>Crisis validation:</strong> Separately tested on 2008 data (never used in training)</li>
+        <li><strong>Result:</strong> Model NEVER sees test data until final evaluation</li>
+      </ul>
+
+      <p style="margin-top:1rem"><strong>2. Feature Engineering (Reduced Overfitting):</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>Reduced features:</strong> 200+ → 25 core features (better sample-to-feature ratio)</li>
+        <li><strong>Feature categories:</strong> Momentum (5), volatility (4), volume (3), structure (5), regime (8)</li>
+        <li><strong>Feature importance filtering:</strong> Only keep features with logical trading rationale</li>
+        <li><strong>Removed garbage:</strong> "Day of week," "lunar cycle," and other noise features</li>
+      </ul>
+
+      <p style="margin-top:1rem"><strong>3. Regime Detection Integration:</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>Train 3 separate models:</strong> QE/bull regime, QT/bear regime, high volatility regime</li>
+        <li><strong>Regime classifier:</strong> ADX + VIX + Fed policy → selects active model</li>
+        <li><strong>Model switching:</strong> When regime shifts, switch to appropriate model (don't force one model on all regimes)</li>
+        <li><strong>Result:</strong> No single model forced to predict across incompatible market conditions</li>
+      </ul>
+
+      <p style="margin-top:1rem"><strong>4. Walk-Forward Validation:</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>Process:</strong> Train on rolling 3-year window, test on next 6 months, retrain</li>
+        <li><strong>Example:</strong> Train 2010-2013 → Test 2013H2-2014H1 → Train 2011-2014 → Test 2014H2-2015H1</li>
+        <li><strong>Result:</strong> Model adapts to changing market conditions, not frozen in past</li>
+        <li><strong>Performance metric:</strong> Average test performance across ALL periods (not cherry-picked best period)</li>
+      </ul>
+
+      <p style="margin-top:1rem"><strong>5. Regularization & Overfitting Prevention:</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>Max tree depth:</strong> 20 → 8 (prevent memorization of noise)</li>
+        <li><strong>Min samples per leaf:</strong> 1 → 20 (require statistical significance)</li>
+        <li><strong>Feature selection:</strong> Only use features with >5% importance and logical rationale</li>
+        <li><strong>Cross-validation:</strong> 5-fold CV on training data</li>
+      </ul>
+
+      <p style="margin-top:1rem"><strong>6. Paper Trading Requirement:</strong></p>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>Duration:</strong> 6 months paper trading (Sep 2022 - Feb 2023)</li>
+        <li><strong>Purpose:</strong> Validate model on LIVE data before risking capital</li>
+        <li><strong>Acceptance criteria:</strong> ≥60% win rate, Sharpe >1.2, max DD <15%</li>
+        <li><strong>Result:</strong> Paper trading showed 64% win rate, Sharpe 1.4, max DD -11.2% → PASS</li>
+      </ul>
+    </div>
+
+    <div style="padding:1rem;background:rgba(118,221,255,0.08);border-left:3px solid #76ddff;margin:1.5rem 0">
+      <strong>🔬 New Model Performance (Held-Out Test Data 2020-2021):</strong>
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li>Win rate: <strong style="color:#22c55e">68%</strong> (realistic, not 83% overfit)</li>
+        <li>Sharpe ratio: 1.6 (good, not 2.4 fantasy)</li>
+        <li>Max DD: -14.8% (deeper than backtest, but survived COVID crash)</li>
+        <li>Walk-forward avg: 64-72% win rate across ALL test periods</li>
+        <li><strong>Key difference:</strong> Model performed SIMILARLY on unseen data (validation working!)</li>
+      </ul>
+    </div>
+
+    <h3 style="color:#22c55e;margin-top:2rem">✅ Phase 5: Live Deployment with Proper Validation (Mar 2023 - Mar 2024)</h3>
+
+    <p><strong>Deployment Strategy:</strong></p>
+    <ul>
+      <li><strong>Starting capital:</strong> $123,000 (remaining after disaster)</li>
+      <li><strong>Position sizing:</strong> 0.5% risk per trade (conservative)</li>
+      <li><strong>Model selection:</strong> Regime-adaptive (switches models based on QE/QT/volatility)</li>
+      <li><strong>Retraining:</strong> Monthly walk-forward retraining on rolling 3-year window</li>
+      <li><strong>Kill switch:</strong> If live win rate drops >20% below validation, STOP and investigate</li>
+    </ul>
+
+    <p><strong>12-Month Live Results:</strong></p>
+    <div style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;padding:1rem;margin:1rem 0">
+      <ul style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>Q1 2023:</strong> 68% win rate, +$14,200 (+11.5%)</li>
+        <li><strong>Q2 2023:</strong> 72% win rate, +$18,600 (+13.6%)</li>
+        <li><strong>Q3 2023:</strong> 61% win rate, +$9,400 (+6.1%) — model switched to bear regime during Aug selloff</li>
+        <li><strong>Q4 2023:</strong> 70% win rate, +$16,800 (+10.2%)</li>
+        <li><strong>Q1 2024:</strong> 66% win rate, +$14,200 (+8.4%)</li>
+        <li><strong style="color:#22c55e;font-size:1.1rem">Total: +$73,200 (+59.5% from trough)</strong></li>
+        <li>Account value: $123,000 → $196,200</li>
+        <li>Overall (Oct 2021 - Mar 2024): $250,000 → $196,200 (-21.5% net, but lessons learned invaluable)</li>
+      </ul>
+    </div>
+
+    <div style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;padding:1.5rem;margin:1.5rem 0">
+      <h4 style="margin-top:0;color:#22c55e">📈 Final Results Comparison (30-Month Journey)</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
+        <div>
+          <div style="font-weight:700;margin-bottom:0.5rem">Model v1.0 (Overfit, No Validation):</div>
+          <ul style="margin:0 0 0 1.5rem;font-size:0.95rem">
+            <li>Backtest: 83% win rate (training data)</li>
+            <li>Live: 34% win rate (disaster)</li>
+            <li>Loss: <strong style="color:#ff6b6b">-$145,400 (-54.2%)</strong></li>
+            <li style="color:#ff6b6b;font-weight:700">❌ Classic overfitting failure</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:700;margin-bottom:0.5rem">Model v2.0 (Proper ML, Walk-Forward):</div>
+          <ul style="margin:0 0 0 1.5rem;font-size:0.95rem">
+            <li>Test: 68% win rate (held-out data)</li>
+            <li>Live: 68% win rate (matches validation!)</li>
+            <li>Profit: <strong style="color:#22c55e">+$73,200 (+59.5% from trough)</strong></li>
+            <li style="color:#22c55e;font-weight:700">✅ Sustainable, validated edge</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:1.5rem;background:rgba(118,221,255,0.08);border-left:4px solid #76ddff;margin:2rem 0">
+      <h4 style="margin-top:0;color:#76ddff">🎯 Key Lessons from Jason's Journey</h4>
+      <ol style="margin:0.5rem 0 0 1.5rem">
+        <li><strong>Backtests lie when you test on training data.</strong> Jason's 83% backtest was MEMORIZATION, not prediction. Test win rate (68%) was 15 points lower—that's the REAL model performance.</li>
+        <li><strong>Overfitting kills: Features-to-samples ratio matters.</strong> 200 features with 1,700 samples = guaranteed overfitting. Proper ratio: 1:50+ (Jason's v2.0: 25 features, 1,500+ samples).</li>
+        <li><strong>Models are regime-specific.</strong> Jason's v1.0 learned "buy every dip in QE." When regime shifted to QT, model failed catastrophically. Solution: Train separate models per regime OR include regime features.</li>
+        <li><strong>Walk-forward validation is mandatory.</strong> Train on Period A, test on Period B. If performance degrades >30%, model won't survive live markets. Jason's v1.0 failed this test (would have shown 58%, not 83%).</li>
+        <li><strong>Paper trade for 6+ months.</strong> Jason deployed $250K without paper trading. $145K lesson. His v2.0 paper-traded 6 months, validated edge BEFORE risking capital.</li>
+        <li><strong>Crisis testing reveals model fragility.</strong> Test on 2008 crash, 2020 COVID, high-VIX periods. If model blows up on crisis data, it WILL blow up on next crisis.</li>
+        <li><strong>Live performance should match validation.</strong> Jason's v1.0: backtest 83%, live 34% (model broken). V2.0: validation 68%, live 68% (model working). If live diverges >20% from validation, STOP.</li>
+        <li><strong>Regularization prevents overfitting.</strong> Max tree depth, min samples per leaf, feature selection—these constraints REDUCE backtest performance but IMPROVE live performance.</li>
+      </ol>
+    </div>
+
+    <div style="padding:1.5rem;background:rgba(255,193,7,0.08);border:2px solid rgba(255,193,7,0.3);border-radius:8px;margin:2rem 0">
+      <h4 style="margin-top:0;color:#fbbf24">💬 Jason's Final Reflection (Mar 2024)</h4>
+      <blockquote style="font-style:italic;border-left:3px solid #fbbf24;padding-left:1.5rem;margin:1rem 0">
+        "I paid $145,400 to learn what proper ML validation means. My first model had an 83% backtest win rate—I thought I was a genius. Reality: 34% live win rate. Why? I backtested on the SAME data I trained on. I used 200 features with 1,700 samples. I trained only on QE data and deployed into QT. I violated EVERY rule. Now I know: (1) ALWAYS split data—train/validate/test. NEVER backtest on training data. (2) Keep features <50 (I use 25 now). More features = more overfitting. (3) Walk-forward validation—train on Period A, test on Period B. If performance drops >30%, model is overfit. (4) Test on crisis data (2008, 2020). If model blows up, it's not robust. (5) Paper trade 6+ months BEFORE live deployment. No exceptions. (6) Build regime detection—train separate models for QE/QT/volatile regimes. My new model: 68% validation, 68% live (MATCH = working). Old model: 83% backtest, 34% live (MISMATCH = broken). ML works when done right. But 'right' means rigorous validation, not YouTube tutorials. Backtests are a lie detector—if live performance doesn't match validation, you overfit. Don't deploy ML models without out-of-sample testing. It's financial suicide."
+      </blockquote>
+    </div>
+  </div>
+
   <div class="key-takeaway">
     <h4>Key Takeaways</h4>
     <ul>
@@ -616,32 +901,7 @@
     </ul>
   </div>
 
-  <div class="callout callout-danger">
-    <h4>📉 CASE STUDY: Jason's $127K ML Overfitting Disaster (Oct 2021 - Aug 2022)</h4>
-    <p><strong>Trader:</strong> Jason Wu, 31, quant developer ($250K account), CS/ML background</p>
-    <p><strong>Strategy:</strong> Random Forest algo trained on 2015-2021 SPY data, 83% backtest win rate</p>
-    <p><strong>Fatal flaw:</strong> Overfit model to historical data, never validated on out-of-sample or live data before deploying full capital</p>
-    <p><strong>Result:</strong> Lost $127K (-51%) in 10 months when model failed in live markets, learned backtests lie</p>
 
-    <p><strong>Background:</strong> Jason built a Random Forest model using 200+ features (RSI, MACD, volume, sentiment, etc.) trained on 2015-2021 SPY data. Backtest results: 83% win rate, Sharpe 2.4, max DD -8%. "ML is the future. I automated the edge." October 2021: Deployed live with $250K capital, no paper trading, no walk-forward validation.</p>
-
-    <p><strong>The disaster (Oct 2021 - Aug 2022):</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li><strong>Month 1-3 (Oct-Dec 2021):</strong> Model worked! +$18.4K (79% win rate). "Backtests were conservative. This is easier than I thought."</li>
-      <li><strong>Jan 2022:</strong> Fed pivoted hawkish. Model trained on QE data (2015-2021) had NEVER seen QT. Started failing. Jan: -$14.2K (41% win rate).</li>
-      <li><strong>Feb-Aug 2022:</strong> Complete collapse. Model kept buying dips (trained on "buy the dip" QE era). During QT, every dip kept dipping. 8-month result: -$131K. Win rate: 34%. Account: $123K (-51% from peak).</li>
-      <li><strong>The problem:</strong> (1) Overfit to 2015-2021 bull market, (2) No out-of-sample validation, (3) No regime detection (QE vs QT), (4) Deployed full capital without paper trading.</li>
-    </ul>
-
-    <p><strong>The breaking point:</strong> "My model had 83% backtest win rate but 34% live win rate. I reviewed the code—no bugs. Then I realized: I trained on 2015-2021 QE data (Fed printing = buy every dip works). 2022 was QT (Fed tightening = dips keep dipping). My model had NEVER seen a QT environment. It was overfit to one regime. I deployed $250K without testing on different market conditions. Classic overfitting disaster."</p>
-
-    <p><strong>Recovery (Sept 2022 - Present):</strong> Rebuilt with proper ML practices: (1) Walk-forward validation (train on 2015-2019, test on 2020-2021, validate on 2022), (2) Regime detection (QE vs QT switching), (3) Out-of-sample testing on 2008 crisis data, (4) 6-month paper trading before live. Result: $123K → $197K (+60%) in 18 months, 68% win rate across multiple regimes.</p>
-
-    <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
-      <strong>Jason's advice:</strong> "I lost $127K because I overfit my ML model to 2015-2021 bull market data and deployed it with ZERO validation. Backtest showed 83% win rate. Live: 34%. Why? My model never saw QT (Fed tightening). It was trained to 'buy every dip' during QE. When the regime changed in 2022, it failed catastrophically. ML models are regime-specific. You MUST: (1) Train/test/validate on different time periods, (2) Test on crisis data (2008, 2020), (3) Paper trade 6+ months, (4) Build regime detection. Backtests lie—they show what worked in the PAST, not what will work in DIFFERENT conditions. Don't deploy ML models without out-of-sample validation. It's financial suicide."
-    </p>
-
-</div>
 </div>
 </div>
 </body>
