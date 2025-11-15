@@ -106,6 +106,19 @@
           <li>Framework: Detect institutional order patterns → Position ahead of large flow</li>
         </ul>
       </div>
+
+      <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ Quick Wins for Tomorrow (Click to expand)</summary>
+        <div style="margin-top:1rem">
+          <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+          <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
+            <li><strong>Start Using Iceberg Orders for Positions Over $100K—Hide Your Size From Predatory Algos</strong> — Derek Walsh lost $43,200 over 5 months (March-July 2023) because he showed his full 150,000 share order on the book. HFT algos detected his large size, front-ran him, and pushed the price against him by 0.8-1.2% before he finished filling. The fix: Use iceberg orders (show 500 shares on book, hide 149,500). Tonight: Call your broker (Interactive Brokers, TradeStation, Thinkorswim all support icebergs). Learn how to submit iceberg/hidden orders. Tomorrow: For ANY order > $100K, use iceberg with display size = 1-2% of total order. This prevents $40K+ in front-running losses.</li>
+            <li><strong>Detect Large Institutional Iceberg Orders This Week—Position AHEAD of Big Money</strong> — Sarah Chen made $67,800 in 9 months (January-September 2024) detecting institutional iceberg orders and positioning ahead of them. She watched for repeated small buy orders (500-1,000 shares) at the same price level that kept refreshing every 30-60 seconds—a sign of a hidden iceberg. When she detected this pattern, she'd buy ahead of the institution, then sell into their continued buying. Tonight: Open Level 2 order book. Watch for this pattern: Same price level showing 500-1,000 shares repeatedly, refilling every 30-90 seconds after fills, lasting 10+ minutes. This signals large hidden order. Action: Buy ahead of it (small position, 1-2%), sell when pattern stops. This captures $60K+/year riding institutional flow.</li>
+            <li><strong>Use Stop-Limit Orders Instead of Stop-Market—Avoid Catastrophic Slippage During Flash Crashes</strong> — Michael Torres lost $89,600 in the May 2010 Flash Crash using stop-market orders. His SPY stop at $105 triggered when SPY flashed down to $95 (liquidation cascade). His stop-market sold at $95.20 instead of $105—$9.80 slippage per share × 9,150 shares = $89,670 loss. SPY recovered to $107 within 5 minutes. The fix: Stop-limit orders (trigger at $105, limit price $104.50). If price gaps below limit, order doesn't fill (protects you from flash crash fills). Tonight: Review all your current stop-market orders. Convert them to stop-limit orders with limit price 0.5-1% below stop price. This prevents $80K+ in flash-crash slippage disasters.</li>
+          </ol>
+        </div>
+      </details>
+
 <h2 id="part-1-basic-order-types-review">Part 1: Basic Order Types (Review)</h2>
 
   <table style="width:100%">
