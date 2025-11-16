@@ -100,63 +100,17 @@
         <p>And here's the kicker: <strong>The spread is also a crystal ball.</strong> It tells you what's about to happen BEFORE price moves. But nobody's watching.</p>
       </div>
 
-      <div class="callout-warning">
-        <h4>📉 CASE STUDY: Nina's $82K Spread Death by 1000 Cuts (Mar-Jul 2024)</h4>
-
-        <p><strong>Trader Profile:</strong> Nina Park, 29, day trader (6 years experience, $165K account)</p>
-        <p><strong>Strategy:</strong> High-frequency ES futures scalping, 18 trades/day</p>
-        <p><strong>Fatal flaw:</strong> Used market orders exclusively, never calculated spread costs, ignored spread as % of stop loss</p>
-
-        <h5>The Disaster (Mar-Jul 2024)</h5>
-
-        <p><strong>Nina's pattern (1,620 trades over 18 weeks, 61% win rate, -$82,000):</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Trade frequency:</strong> 18 trades/day × 90 days = 1,620 trades</li>
-          <li><strong>Spread cost:</strong> ES spread 0.25 points = $25 per round-trip</li>
-          <li><strong>Daily spread bleed:</strong> 18 trades × $25 = $450/day in spread costs</li>
-          <li><strong>The killer metric:</strong> Stop loss $75, spread $25 = 33% of risk capital paid to spread BEFORE trade starts</li>
-          <li><strong>Result:</strong> Gross P&L -$37K, spread costs -$45K = total loss -$82K (-49.7% of account)</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>The breaking point calculation (Week 12):</strong></p>
-        <ul style="margin:.5rem 0 0 1.5rem">
-          <li><strong>Typical trade:</strong> Long ES 5200.00, stop 5198.50 (1.5 points = $75 risk)</li>
-          <li><strong>Spread cost:</strong> 0.25 points × 2 (entry + exit) = $25 round-trip</li>
-          <li><strong>Spread as % of stop:</strong> $25 / $75 = 33.3%</li>
-          <li><strong>Required win rate just to break even:</strong> 65%+ (vs actual 61%)</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>Examples of the daily bleed:</strong></p>
-        <ul style="margin:.5rem 0 0 1.5rem">
-          <li><strong>Week 1 (Mar 4):</strong> 17 trades, 65% win rate, gross +$850. Spread costs -$425. Net profit +$425 (spread ate 50%).</li>
-          <li><strong>Week 8 (Apr 22-26):</strong> 720 trades total. Gross +$9,200. Spread costs -$18,000. Net -$8,800 (spread turned winner into loser).</li>
-          <li><strong>Weeks 13-18:</strong> Continued bleeding $2,400-$2,750/week in spread costs. Account dropped from $165K to $83K.</li>
-        </ul>
-
-        <h5>The Fix: Spread-Conscious System</h5>
-
-        <p><strong>Nina's new rules (Aug-Dec 2024 recovery):</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Limit orders only:</strong> 92% fill rate, saved 85% on spread costs ($450/day → $70/day)</li>
-          <li><strong>Reduce frequency:</strong> 18 trades/day → 7/day. Quality > quantity. Win rate jumped 61% → 68%.</li>
-          <li><strong>Spread must be <10% of stop:</strong> Widened stops from 1.5 points to 4 points, reduced size 60%. Spread now 6% of stop (vs 33%).</li>
-          <li><strong>Avoid peak spread hours:</strong> No trading 9:30-9:45 AM or 3:50-4:00 PM (spread 2-4× wider)</li>
-          <li><strong>Monthly spread audit:</strong> If spread costs >15% of gross profit, adjust frequency or widen stops</li>
-        </ul>
-
-        <div class="callout-tip" style="margin-top:1rem">
-          <h4>🎯 Nina's Core Lesson</h4>
-          <blockquote style="font-style:italic;margin:1rem 0;padding-left:1.5rem;border-left:4px solid var(--accent)">
-            "I scalped for 6 years without ONCE calculating my spread costs. That ignorance cost me $82K in 18 weeks. I was paying $450/day in spread costs ($9,000/month, $108K/year). My stop was $75, spread was $25—giving up 33% of my risk BEFORE the trade started. The spread is death by 1,000 cuts. Calculate your spread costs TODAY: trades/day × (spread × 2). Then calculate spread as % of stop. If >10%, you're mathematically compromised. Switch to limit orders, reduce frequency, widen stops. I went from 18 trades/day to 7, spread costs from $450/day to $70/day, win rate from 61% to 68%. Account recovered from $83K to $142K in 5 months."
-          </blockquote>
-          <p style="margin-top:1rem"><strong>The transformation:</strong></p>
-          <ul>
-            <li><strong>Before:</strong> 61% win rate, -$82K (18 trades/day, $450/day spread costs, 33% of stop)</li>
-            <li><strong>After:</strong> 68% win rate, +$59K recovery (7 trades/day, $70/day spread costs, 6% of stop)</li>
-            <li><strong>Key insight:</strong> Spread must be <10% of stop. If not, you're paying more to enter than your edge can support.</li>
-          </ul>
+      <div class="callout callout-danger">
+        <h4>📉 CASE STUDY: Nina's $82,000 Spread Death by 1000 Cuts (18 weeks)</h4>
+        <p><strong>Trader:</strong> Nina Park, 29, day trader (6 years experience, $165K account), Mar-Jul 2024</p>
+        <p><strong>Strategy:</strong> High-frequency ES futures scalping, 18 trades/day, market orders exclusively</p>
+        <p><strong>Fatal flaw:</strong> NEVER calculated spread costs. Ignored spread as % of stop loss. Spread cost: ES 0.25 points = $25 per round-trip. Daily bleed: 18 trades × $25 = $450/day ($9,000/month, $108K/year). Killer metric: Stop $75, spread $25 = 33% of risk capital paid to spread BEFORE trade starts</p>
+        <p><strong>Result:</strong> 1,620 trades over 18 weeks, 61% WR, gross P&L -$37K, spread costs -$45K = total loss -$82K (-49.7%)</p>
+        <p><strong>Breaking point calculation (Week 12):</strong> Typical trade: Long ES 5200.00, stop 5198.50 (1.5 points = $75 risk). Spread cost: 0.25 points × 2 = $25 round-trip. Spread as % of stop: $25 / $75 = 33.3%. Required WR just to break even: 65%+ (vs actual 61%). Examples: Week 1 (Mar 4): 17 trades, 65% WR, gross +$850. Spread costs -$425. Net +$425 (spread ate 50%). Week 8 (Apr 22-26): 720 trades total. Gross +$9,200. Spread costs -$18,000. Net -$8,800 (spread turned winner into loser). Weeks 13-18: Bleeding $2,400-$2,750/week spread costs. $165K → $83K</p>
+        <p><strong>Recovery (Aug-Dec 2024):</strong> Spread-conscious system: (1) Limit orders only: 92% fill rate, saved 85% on spread costs ($450/day → $70/day). (2) Reduce frequency: 18 trades/day → 7/day. Quality > quantity. WR 61% → 68%. (3) Spread <10% of stop: Widened stops 1.5 → 4 points, reduced size 60%. Spread now 6% of stop (vs 33%). (4) Avoid peak spread hours: No trading 9:30-9:45 AM or 3:50-4:00 PM (spread 2-4× wider). (5) Monthly spread audit: If spread costs >15% of gross profit, adjust. Results: $83K → $142K (+$59K) in 5 months</p>
+        <div class="callout callout-purple" style="margin-top:1rem">
+          <p><strong>Nina's lesson:</strong> "I scalped for 6 years without ONCE calculating my spread costs. That ignorance cost me $82K in 18 weeks. I was paying $450/day in spread costs ($9,000/month, $108K/year). My stop was $75, spread was $25—giving up 33% of my risk BEFORE trade started. Spread is death by 1,000 cuts. Calculate your spread costs TODAY: trades/day × (spread × 2). Then spread as % of stop. If >10%, you're mathematically compromised. Switch to limit orders, reduce frequency, widen stops. I went 18 trades/day to 7, spread costs $450/day to $70/day, WR 61% to 68%. Account recovered $83K to $142K in 5 months. Spread must be <10% of stop. If not, you're paying more to enter than your edge can support."</p>
         </div>
-
       </div>
 
       <p><strong>In this lesson, you'll learn:</strong></p>
