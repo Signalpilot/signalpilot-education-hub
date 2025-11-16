@@ -621,7 +621,8 @@ def calculate_half_life(spread):
 half_life = calculate_half_life(spread)
 print(f"Half-Life: {half_life:.1f} days")
 </code></pre>
-        </div>
+          </div>
+        </details>
 
         <details class="accordion-item">
           <summary class="accordion-header">Step 2: Calculating Z-Score Signals</summary>
@@ -657,7 +658,10 @@ elif z_score.iloc[-1] < -potential entry_threshold:
 else:
     print("⚪ NO TRADE (waiting for signal)")
 </code></pre>
-        </div><details class="accordion-item">
+          </div>
+        </details>
+
+        <details class="accordion-item">
           <summary class="accordion-header">Step 3: Backtesting the Strategy</summary>
           <div class="accordion-content">
             <pre style="overflow-x:auto"><code># Simple backtest
