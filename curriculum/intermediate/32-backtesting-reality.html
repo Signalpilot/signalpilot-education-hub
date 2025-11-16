@@ -145,6 +145,7 @@
 
         <h5>The "Perfect" Backtest (2022-2023 Data)</h5>
 
+        <div style="overflow-x:auto">
         <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
           <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Backtest Results (Jan 2022 - Dec 2023, 2 Years)</caption>
           <tr style="background:rgba(34,197,94,0.15);border-bottom:2px solid rgba(34,197,94,0.3)">
@@ -209,6 +210,7 @@
 
         <h5>Live Trading Reality (April-June 2024, 10 Weeks)</h5>
 
+        <div style="overflow-x:auto">
         <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
           <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Live Trading Results (10 Weeks, $50K Account)</caption>
           <tr style="background:rgba(255,82,82,0.15);border-bottom:2px solid rgba(255,82,82,0.3)">
@@ -260,9 +262,11 @@
             <td style="padding:0.75rem;text-align:right"><span style="color:#ff5252;font-weight:bold">$18K swing</span></td>
           </tr>
         </table>
+        </div>
 
         <h5>The Complete Cost Breakdown: Where $18K Disappeared</h5>
 
+        <div style="overflow-x:auto">
         <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
           <caption style="text-align:left;font-weight:bold;margin-bottom:0.5rem">Anatomy of the Performance Gap (37 Trades, 10 Weeks)</caption>
           <tr style="background:rgba(118,221,255,0.15);border-bottom:2px solid rgba(118,221,255,0.3)">
@@ -321,6 +325,7 @@
 
         <h5>What Should Have Been Done: The Proper Validation</h5>
 
+        <div style="overflow-x:auto">
         <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
           <tr style="background:rgba(34,197,94,0.15);border-bottom:2px solid rgba(34,197,94,0.3)">
             <th style="padding:0.75rem;text-align:left">Step</th>
@@ -370,6 +375,7 @@
           <li><strong>Compare results:</strong> If 2023 performance is <70% of 2022, strategy is overfit</li>
         </ol><p><strong>What would have happened:</strong></p>
 
+        <div style="overflow-x:auto">
         <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
           <tr style="background:rgba(255,193,7,0.15);border-bottom:2px solid rgba(255,193,7,0.3)">
             <th style="padding:0.75rem;text-align:left">Period</th>
@@ -395,6 +401,7 @@
             </td>
           </tr>
         </table>
+        </div>
 
         <p><b>The lesson: Chris's backtest was a fantasy. Testing 15,000 parameter combinations guarantees you'll find one that fits historical noise perfectly. The "perfect" 3.8R expectancy was curve-fit garbage. Out-of-sample testing would have revealed this before losing $8,400. Backtesting isn't about finding the best historical performance—it's about finding what will work going forward. And that requires unseen data, realistic costs, and zero look-ahead bias.</b></p>
       </div>
@@ -685,7 +692,7 @@
       <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">In backtesting, perfection is suspicion. Realism is edge. Model costs, avoid overfitting, forward test—or fail live.</p>
 
       <h3 style="margin-bottom:1.5rem">Related Lessons</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1.5rem 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:1rem;margin:1.5rem 0">
         <div class="card" style="padding:1rem">
           <span class="badge">Intermediate #34</span>
           <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Trade Journal Mastery</h4>
