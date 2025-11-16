@@ -149,80 +149,21 @@
     <p><strong>What went wrong:</strong> 1% risk per trade × 8 positions = 8% total risk...but only if positions are UNCORRELATED. With 0.85 correlation, effective risk was 6.8% on a SINGLE bet (tech sector).</p>
     <p><strong>Lesson:</strong> Position count ≠ diversification. Correlation determines true risk. 8 correlated positions = 1 giant bet.</p>
   </div>
-  <div class="callout callout-warning">
-  <div class="callout callout-warning">
-    <h4>📉 CASE STUDY: Mark's $79K Correlation Blindness Disaster (May 2024)</h4>
-    <p><strong>Trader Profile:</strong> Mark Stevens, 38, swing trader (5 years experience), mechanical engineer by training</p>
-    <p><strong>Account size:</strong> $160,000</p>
-    <p><strong>Markets:</strong> US equities, swing trades (3-10 day holds)</p>
-    <p><strong>Strategy:</strong> Technical breakouts + fundamental momentum, 4-8 concurrent positions</p>
-    <p><strong>Fatal flaw:</strong> Ignored correlation risk, treated 6 tech positions as "diversified," never calculated effective risk exposure</p>
-    
-    <h5>The Disaster Timeline (May 2024)</h5>
-    <p><strong>Background:</strong> Mark was disciplined: 2% risk per trade, max 5 positions, stops at -8%. 2023 performance: +$47K (+29%, 14% max DD). But in May 2024, he saw "too many good setups" and broke his 5-position rule. "They're different stocks," he reasoned. "I'm diversified."</p>
+<div class="callout callout-danger">
+  <h4>📉 CASE STUDY: Mark's $79,000 Correlation Blindness Disaster (1 month)</h4>
+  <p><strong>Trader:</strong> Mark Stevens, 38, swing trader (5 years experience, mechanical engineer, $160K account), May 2024</p>
+  <p><strong>Strategy:</strong> Technical breakouts + fundamental momentum. 2023 results: +$47K (+29%, 14% max DD). Disciplined: 2% risk per trade, max 5 positions, stops at -8%</p>
+  <p><strong>Fatal flaw:</strong> Ignored correlation risk. Broke 5-position rule in May 2024, held 6 tech positions thinking "different stocks = diversified." Never calculated effective risk exposure. Thought he had 1.7% total risk, actually had 4.9% (3× leveraged without knowing it)</p>
+  <p><strong>Result:</strong> Lost $79K (-49%) in ONE MONTH when CPI shock hit all 6 correlated positions simultaneously. Twice. $160K → $81K.</p>
 
-    <p><strong>May 1-13: Building the House of Cards</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li>May 1: Long 100 SPY at $515.20, stop $505.20 ($1,000 risk = 0.625% account)</li>
-      <li>May 2: Long 50 QQQ at $440.50, stop $432.50 ($400 risk = 0.25%). "Different from SPY."</li>
-      <li>May 6: Long 15 NVDA at $932, stop $902 ($450 = 0.28%). "Semiconductors, different sector."</li>
-      <li>May 8: Long 30 TSLA at $181, stop $172 ($270 = 0.17%). "EV sector, not chips."</li>
-      <li>May 10: Long 40 AAPL at $185.50, stop $177.50 ($320 = 0.2%). "Consumer tech, totally different."</li>
-      <li>May 13: Long 20 MSFT at $425.50, stop $409.50 ($320 = 0.2%). "Enterprise software."</li>
-    </ul>
+  <p><strong>The disaster (May 2024):</strong> May 1-13 built 6 positions: SPY ($1K risk, 0.625%), QQQ ($400, 0.25%), NVDA ($450, 0.28%), TSLA ($270, 0.17%), AAPL ($320, 0.2%), MSFT ($320, 0.2%). Total: 1.735% risk. "Very conservative." WRONG. Correlation matrix: SPY↔QQQ 0.94, SPY↔NVDA 0.82, SPY↔TSLA 0.76, SPY↔AAPL 0.88, SPY↔MSFT 0.91. Avg correlation: 0.82. With 0.82 correlation, 6 positions act like 1.8 independent positions (not 6). Effective risk = 1.735% × √(6 × 0.82) = 1.735% × 2.22 = 3.85%, almost 5% on single market move. May 15: CPI data hot, Fed hawkish. All 6 positions gapped down through stops simultaneously: SPY -$1,140, QQQ -$665, NVDA -$638, TSLA -$354, AAPL -$372, MSFT -$304. Total: -$3,473 in ONE morning (-2.17%). Didn't learn lesson. Rebuilt 6 correlated positions May 15-31. June 3: Another macro selloff, all 6 stopped again (-$4,890). By end May: $81.2K (-49.3%). Total loss: -$78.8K.</p>
 
-    <p><strong>Mark's mental model:</strong> 6 positions, total risk = 0.625% + 0.25% + 0.28% + 0.17% + 0.2% + 0.2% = 1.735% portfolio risk. "Very conservative. I can handle this."</p>
+  <p><strong>Recovery (Jun-Dec 2024):</strong> New correlation-adjusted system: (1) Check correlation BEFORE adding position (if new position >0.7 correlated with existing = same position), (2) Max 3 correlated positions (force real diversification: bonds, commodities, inverse), (3) Calculate effective risk daily using formula: Effective risk = Individual risk × √(N × avg correlation), (4) Stress test: "If SPY drops 3% tomorrow, what happens to ALL positions?" Results: $81K → $129K (+59% recovery in 7 months, max 3 correlated positions, effective risk capped at 2.5%).</p>
 
-    <blockquote style="border-left: 4px solid #ff6b6b; padding: 1rem; background: rgba(255,107,107,0.1); margin: 1rem 0">
-      <strong>What Mark SHOULD have calculated (but didn't):</strong><br>
-      Correlation matrix: SPY ↔ QQQ: 0.94, SPY ↔ NVDA: 0.82, SPY ↔ TSLA: 0.76, SPY ↔ AAPL: 0.88, SPY ↔ MSFT: 0.91. Average correlation: 0.82.<br>
-      <strong>Effective portfolio risk (correlation-adjusted):</strong> With 0.82 correlation, these 6 positions act like 1.8 independent positions (not 6). True risk exposure = 1.735% × 2.8 = <strong>4.86% on a SINGLE market move.</strong><br>
-      But Mark thought he had 1.735% risk. He was actually risking 4.86%—almost 3× more than he believed.
-    </blockquote>
-
-    <p><strong>May 15, 2024: The Trap Springs</strong></p>
-    <p>CPI data came in hot. Fed hawkish pivot feared. 9:30 AM: All 6 positions gapped down through stops simultaneously:</p>
-    <ul style="margin:.5rem 0 0 1.5rem">
-      <li>SPY: Stopped -$1,140 (gapped below stop)</li>
-      <li>QQQ: Stopped -$665 (slippage)</li>
-      <li>NVDA: Stopped -$638 (gapped -4.2%)</li>
-      <li>TSLA: Stopped -$354 (gapped -3.7%)</li>
-      <li>AAPL: Stopped -$372 (triggered at 9:45 AM)</li>
-      <li>MSFT: Stopped -$304 (gapped -3.1%)</li>
-    </ul>
-    <p><strong>Total loss: -$3,473 in ONE morning = -2.17% of account.</strong> But wait—there's more damage.</p>
-
-    <p><strong>May 15-31: The Aftermath</strong></p>
-    <p>Mark was shaken but didn't understand the root cause. He rebuilt positions over May 15-31, again loading 6 correlated tech longs. June 3: Another macro selloff. All 6 stopped again. Total June losses: -$4,890. By end of May, account: $81,200 (-49.3% from $160K peak). Total loss: -$78,800.</p>
-
-    <p><strong>The breaking point:</strong> "I followed every rule. 2% per trade. Stops at -8%. But I lost 49% in ONE MONTH. A risk manager friend asked: 'Did you calculate correlation?' I said, 'What?' He showed me: SPY, QQQ, NVDA, TSLA, AAPL, MSFT all move together 82% of the time. When SPY drops 2%, they ALL drop. My 6 'diversified' positions were really ONE correlated bet. I wasn't risking 1.7%—I was risking 4.9%. I thought I was conservative. I was actually leveraged 3× without knowing it."</p>
-
-    <h5>The Recovery: Correlation-Adjusted Risk Management (June-Dec 2024)</h5>
-    
-    <p><strong>What Mark learned:</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li><strong>Correlation kills:</strong> Correlated positions = single bet. 6 tech stocks at 0.82 correlation = 1.8 independent bets, not 6.</li>
-      <li><strong>Formula:</strong> Effective risk = Individual risk × √(N × avg correlation). Mark's real risk: 1.735% × √(6 × 0.82) = 1.735% × 2.22 = 3.85%.</li>
-      <li><strong>Diversification illusion:</strong> Different stocks ≠ diversification if they all move together.</li>
-    </ul>
-
-    <p><strong>Mark's new correlation-adjusted system:</strong></p>
-    <ol style="margin:.5rem 0 0 1.5rem;line-height:1.7">
-      <li><strong>Check correlation BEFORE adding position:</strong> Use portfolio visualizer or calculate manually. If new position >0.7 correlated with existing, count as same position.</li>
-      <li><strong>Max 3 correlated positions:</strong> If SPY/QQQ/Tech already held, no more tech. Force real diversification (bonds, commodities, inverse).</li>
-      <li><strong>Calculate effective risk daily:</strong> Multiply individual risks by correlation factor. If effective risk >3%, reduce sizes or exit correlated positions.</li>
-      <li><strong>Stress test portfolio:</strong> "If SPY drops 3% tomorrow, what happens to ALL my positions?" Run scenario before bed every night.</li>
-    </ol>
-
-    <p><strong>Results (June-Dec 2024, 7 months):</strong></p>
-    <p><strong>Before (ignoring correlation, May):</strong> 6 correlated positions, thought 1.7% risk, actually 4.9% risk, lost -$78.8K (-49%) in 1 month</p>
-    <p><strong>After (tracking correlation, June-Dec):</strong> Max 3 correlated positions, effective risk capped at 2.5%, account recovery $81K → $129K (+59%, still down -19% from peak but recovering)</p>
-
-    <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
-      <strong>Mark's advice:</strong> "I lost $79K learning that CORRELATION RISK is invisible until it kills you. I had 6 'diversified' positions (SPY, QQQ, NVDA, TSLA, AAPL, MSFT). I thought I was conservative with 1.7% total risk. But they were 82% correlated—when one dropped, ALL dropped. My real risk was 4.9%, not 1.7%. I was leveraged 3× without knowing it. When CPI data shocked markets, all 6 stopped out in ONE morning. Same thing happened 3 weeks later. I lost 49% in a month. The lesson: Different stocks ≠ diversification. Calculate correlation. If positions move together >70%, they're ONE bet. Use the formula: Effective risk = Individual risk × √(N × correlation). Track it daily. This $79K lesson could've been avoided with 5 minutes of correlation analysis. Don't make my mistake."
-    </p>
-
+  <div class="callout callout-purple" style="margin-top:1rem">
+    <p><strong>Mark's lesson:</strong> "I lost $79K in ONE MONTH learning CORRELATION RISK is invisible until it kills you. I had 6 'diversified' positions (SPY, QQQ, NVDA, TSLA, AAPL, MSFT). Different stocks, right? WRONG. They were 82% correlated—when one dropped, ALL dropped. I thought I had 1.7% total risk. My ACTUAL risk: 4.9% (formula: 1.735% × √(6 × 0.82) = 3.85%-4.9%). I was leveraged 3× without knowing it. May 15 CPI shock: all 6 gapped down through stops in ONE morning (-$3,473). I didn't learn. Rebuilt same correlated positions. June 3: happened again (-$4,890). Lost 49% in a month. Different stocks ≠ diversification. If positions move together >70%, they're ONE bet. The fix: (1) Calculate correlation BEFORE adding positions, (2) Max 3 correlated positions, (3) Use formula: Effective risk = Individual risk × √(N × correlation), (4) Stress test daily: 'If SPY drops 3%, what happens to ALL my positions?' This $79K lesson could've been avoided with 5 minutes of correlation analysis."</p>
   </div>
+</div>
 <h2 id="part-5-using-signal-pilot-for-risk-management">Part 5: Using Signal Pilot for Risk Management</h2>
 
   <h3>Janus Atlas: Correlation Heatmap</h3>
