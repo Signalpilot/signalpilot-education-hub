@@ -100,56 +100,17 @@
         <p><strong>But here's the good news:</strong> Outrunning them isn't necessary. Understanding their playbook and trading on timeframes where speed doesn't matter can be effective.</p>
       </div>
 
-      <div class="callout-warning">
-        <h4>📉 CASE STUDY: Carlos' $74K Stop Hunt Massacre (Jan-Apr 2024)</h4>
-
-        <p><strong>Trader Profile:</strong> Carlos Martinez, 36, scalper (5 years experience, $155K account)</p>
-        <p><strong>Fatal flaw:</strong> Tight stops 5-10 ticks below obvious levels, market orders during HFT peak hours, traded opening volatility</p>
-
-        <h5>The Disaster (Jan-Apr 2024)</h5>
-
-        <p><strong>Carlos' pattern (47 stop hunts in 16 weeks, -$74,000):</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Strategy:</strong> Trade SPY/QQQ breakouts, stops 5-10 ticks below support/above resistance</li>
-          <li><strong>The problem:</strong> HFTs target clustered retail stops, sweep them, then reverse</li>
-          <li><strong>Pattern:</strong> 47 trades stopped within 1-3 ticks of exact support/resistance, immediate reversal after</li>
-          <li><strong>Slippage:</strong> $0.08/share avg (market orders during 9:30-9:45 AM peak HFT hours)</li>
-          <li><strong>Result:</strong> -$68,200 from stop hunts + -$5,800 slippage = -$74,000 (-47.7% of account)</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>Examples of stop hunts:</strong></p>
-        <ul style="margin:.5rem 0 0 1.5rem">
-          <li><strong>Jan 12 (SPY):</strong> Support $475.50. Carlos long $475.75, stop $475.40 (8 ticks below). 9:37 AM: swept to $475.38 (-12¢ below), stopped. 9:38 AM: reversed to $476.40. Loss: -$700.</li>
-          <li><strong>Feb 14 (SPY):</strong> Support $510. Long $510.20, stop $509.90. 9:42 AM: swept to $509.88, stopped. Rallied to $511.50. Loss: -$600.</li>
-          <li><strong>Mar 21 (SPY):</strong> Support $520. Long $520.15, stop $520.05. Swept to $520.03 (TWO TICKS below), stopped. Rallied $1.50. Loss: -$240.</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>The breaking point:</strong> "47 times in 16 weeks, SPY/QQQ hit my EXACT stop within 1-3 ticks, then reversed. This isn't bad luck. HFTs see clustered stops below support. They sweep liquidity, trigger stops, then reverse. It's automated. I'm using market orders during 9:30-9:45 AM—peak HFT activity. Over 900 trades: $7,200 in slippage. I'm paying them to hunt my stops. I can't compete on speed. I need to trade AROUND their game."</p>
-
-        <h5>The Fix: HFT-Aware System</h5>
-
-        <p><strong>Carlos' new rules (May-Dec 2024 recovery):</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Limit orders only:</strong> No market orders. Slippage $0.08/share → $0.01/share</li>
-          <li><strong>Avoid 9:30-9:45 AM:</strong> Peak HFT activity. Trade 10 AM-2 PM instead</li>
-          <li><strong>ATR-based stops:</strong> Stop 1.5× ATR from entry, NOT 5-10 ticks below levels. Less predictable</li>
-          <li><strong>Smaller size, wider stops:</strong> Reduced size 40%, increased stop distance 2×. Same $ risk, less targeting</li>
-          <li><strong>Trade WITH stop hunts:</strong> Wait for sweep + reclaim (e.g., support $520 swept to $519.95, reclaims $520.10 → enter long). Win rate: 68%</li>
-        </ul>
-
-        <div class="callout-tip" style="margin-top:1rem">
-          <h4>🎯 Carlos' Core Lesson</h4>
-          <blockquote style="font-style:italic;margin:1rem 0;padding-left:1.5rem;border-left:4px solid var(--accent)">
-            "HFTs hunt predictable stops. If you place stops 5-10 ticks below support, you're telegraphing your position to algos that process 10,000 orders/second. You CANNOT beat them on speed—they have $500M server farms 50 feet from the exchange. Trade around them: Avoid 9:30-9:45 AM. Use limit orders. Use ATR-based stops (less predictable). Trade WITH stop hunts (wait for sweep + reclaim). I lost $74K fighting HFTs. Now I trade around them. My stop hunt rate dropped from 12/month to 1/month. When I see a stop hunt, I enter WITH the reversal. 68% win rate. You can't beat HFT. But you can stop being their exit liquidity."
-          </blockquote>
-          <p style="margin-top:1rem"><strong>The transformation:</strong></p>
-          <ul>
-            <li><strong>Before:</strong> 47 stop hunts/16 weeks, -$74K (tight stops at obvious levels, market orders 9:30-9:45 AM, $0.08/share slippage)</li>
-            <li><strong>After:</strong> 1 stop hunt/month, +$51K recovery (ATR stops, limit orders, trade 10 AM-2 PM, trade WITH hunts 68% win rate)</li>
-            <li><strong>Key insight:</strong> Stop hunts aren't manipulation—they're automated liquidity provision. Don't fight speed. Trade around it.</li>
-          </ul>
+      <div class="callout callout-danger">
+        <h4>📉 CASE STUDY: Carlos' $74,000 Stop Hunt Massacre (16 weeks)</h4>
+        <p><strong>Trader:</strong> Carlos Martinez, 36, scalper (5 years experience, $155K account), Jan-Apr 2024</p>
+        <p><strong>Strategy:</strong> Trade SPY/QQQ breakouts, stops 5-10 ticks below support/above resistance</p>
+        <p><strong>Fatal flaw:</strong> Tight stops 5-10 ticks below obvious levels, market orders during HFT peak hours (9:30-9:45 AM), traded opening volatility. HFTs target clustered retail stops, sweep them, then reverse. Slippage: $0.08/share avg during peak HFT hours</p>
+        <p><strong>Result:</strong> 47 stop hunts in 16 weeks. 47 trades stopped within 1-3 ticks of exact support/resistance, immediate reversal after. -$68,200 from stop hunts + -$5,800 slippage = -$74K (-47.7%)</p>
+        <p><strong>Examples:</strong> (1) Jan 12 SPY: Support $475.50. Long $475.75, stop $475.40 (8 ticks below). 9:37 AM: swept to $475.38 (-12¢ below), stopped. 9:38 AM: reversed to $476.40. Lost $700. (2) Feb 14 SPY: Support $510. Long $510.20, stop $509.90. 9:42 AM: swept to $509.88, stopped. Rallied to $511.50. Lost $600. (3) Mar 21 SPY: Support $520. Long $520.15, stop $520.05. Swept to $520.03 (TWO TICKS below), stopped. Rallied $1.50. Lost $240. Breaking point: "47 times in 16 weeks, SPY/QQQ hit my EXACT stop within 1-3 ticks, then reversed. This isn't bad luck. HFTs see clustered stops below support. They sweep liquidity, trigger stops, then reverse. It's automated. I'm using market orders during 9:30-9:45 AM—peak HFT activity. Over 900 trades: $7,200 in slippage. I'm paying them to hunt my stops. I can't compete on speed. I need to trade AROUND their game."</p>
+        <p><strong>Recovery (May-Dec 2024):</strong> HFT-aware system: (1) Limit orders only: Slippage $0.08/share → $0.01/share. (2) Avoid 9:30-9:45 AM: Peak HFT. Trade 10 AM-2 PM instead. (3) ATR-based stops: Stop 1.5× ATR from entry, NOT 5-10 ticks below levels. Less predictable. (4) Smaller size, wider stops: Reduced size 40%, increased stop distance 2×. Same $ risk, less targeting. (5) Trade WITH stop hunts: Wait for sweep + reclaim (support $520 swept to $519.95, reclaims $520.10 → enter long). 68% WR. Results: Stop hunt rate 12/month → 1/month, +$51K recovery</p>
+        <div class="callout callout-purple" style="margin-top:1rem">
+          <p><strong>Carlos' lesson:</strong> "HFTs hunt predictable stops. If you place stops 5-10 ticks below support, you're telegraphing your position to algos that process 10,000 orders/second. You CANNOT beat them on speed—they have $500M server farms 50 feet from exchange. Trade around them: Avoid 9:30-9:45 AM. Use limit orders. Use ATR-based stops (less predictable). Trade WITH stop hunts (wait for sweep + reclaim). I lost $74K fighting HFTs. Now I trade around them. Stop hunt rate dropped 12/month to 1/month. When I see stop hunt, I enter WITH reversal. 68% WR. You can't beat HFT. But you can stop being their exit liquidity. Stop hunts aren't manipulation—they're automated liquidity provision. Don't fight speed. Trade around it."</p>
         </div>
-
       </div>
 
       <p><strong>In this lesson, you'll learn:</strong></p>
