@@ -107,66 +107,17 @@
         <li>Combining dark pool data with Janus sweeps for extreme edge</li>
       </ul>
 
-      <div class="callout-warning">
-        <h4>📉 CASE STUDY: Jennifer's $158K Dark Pool Blindness (NVDA 2023-2024)</h4>
-        <p><strong>Trader:</strong> Jennifer Park, 5-year day trader ($420,000 account, Sept 2023)</p>
-        <p><strong>Strategy:</strong> Technical breakouts + momentum trading (NVDA, TSLA, META)</p>
-        <p><strong>Fatal flaw:</strong> Never checked dark pool prints, ignored institutional positioning</p>
-
-        <h5>The Disaster (Sept 2023-Feb 2024)</h5>
-
-        <p><strong>Jennifer's pattern (7 failed trades over 22 weeks, -$158,000):</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Background:</strong> Successful 2022-2023 (+$237K, 61% win rate) using RSI, MACD, support/resistance</li>
-          <li><strong>The problem:</strong> She traded WITH institutional flow by luck in bull market. When institutions rotated in late 2023, her technicals failed</li>
-          <li><strong>What she ignored:</strong> Dark pool prints showing institutional accumulation/distribution</li>
-          <li><strong>Pattern:</strong> Every trade went AGAINST dark pool flow (fought smart money)</li>
-          <li><strong>Result:</strong> 0% win rate (0/7), -$158K (-37.6% of account)</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>Examples of dark pool blindness:</strong></p>
-        <ul style="margin:.5rem 0 0 1.5rem">
-          <li><strong>Sept 20 (NVDA):</strong> Jennifer bought "support" at $445 (RSI oversold). Dark pool reality: 1.7M shares SOLD over 6 days (all below VWAP = distribution). News hit, NVDA dropped to $421. Loss: -$7,290 if held, -$1,140 with stop.</li>
-          <li><strong>Oct 11 (TSLA):</strong> Jennifer bought "breakout" at $252. Dark pool: 890K shares sold over 3 days (distribution). TSLA failed, dropped. Loss: -$3,180.</li>
-          <li><strong>Nov 8 (NVDA):</strong> Jennifer SHORTED "resistance" at $467. Dark pool: 1.5M shares BOUGHT over 4 days (accumulation above VWAP). NVDA rallied. Loss: -$5,940.</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>The breaking point (Nov 17):</strong> After 4 straight losses, Jennifer posted on trading Discord: "My setups used to work. RSI, support, volume—all failing. What am I missing?" Response: "Are you tracking dark pool prints? Institutions dumped 1M+ shares while you were buying 'support'. You were the exit liquidity."</p>
-
-        <p style="margin-top:1rem"><strong>The discovery:</strong> Jennifer pulled dark pool data for all 7 losing trades. EVERY SINGLE ONE showed institutional flow in the OPPOSITE direction. Her 2022 "skill" was actually trading WITH institutions by accident. When they rotated, she kept using same technicals but was now fighting smart money.</p>
-
-        <h5>The Fix: Dark Pool Framework</h5>
-
-        <p><strong>Jennifer's new rule (Dec 2023 onward):</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Check dark pools FIRST:</strong> Look for 50K+ share prints over last 3-5 days (free via FINRA TRF)</li>
-          <li><strong>Accumulation signal:</strong> Prints above VWAP, price consolidating = institutions BUYING (bullish bias)</li>
-          <li><strong>Distribution signal:</strong> Prints below VWAP, price holding = institutions SELLING (bearish bias)</li>
-          <li><strong>Rule:</strong> If dark pool flow OPPOSES technical setup → SKIP TRADE (no edge)</li>
-          <li><strong>Rule:</strong> If dark pool flow CONFIRMS technical setup → HIGH CONVICTION ENTRY (confluence)</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>3-month recovery results (Dec 2023-Feb 2024):</strong></p>
-        <ul style="margin:.5rem 0 0 1.5rem">
-          <li>11 trades with dark pool confirmation, 9 winners (82% win rate vs 0% before)</li>
-          <li>Skipped 14 setups where dark pool opposed technicals (saved ~$45K in prevented losses)</li>
-          <li>Account recovery: $262,000 → $398,000 (+$136K, +52%)</li>
-          <li>Still down from $420K peak, but recovering: -5% vs -38% at worst</li>
-        </ul>
-
-        <div class="callout-tip" style="margin-top:1.5rem">
-          <h4>🎯 Jennifer's Core Lesson</h4>
-          <blockquote style="font-style:italic;margin:1rem 0;padding-left:1.5rem;border-left:4px solid var(--accent)">
-            "I lost $158K in 7 trades because I never checked dark pool data. My 2022 success wasn't skill—it was trading WITH institutions by accident during a bull market. When they rotated in late 2023, my technicals failed catastrophically. EVERY losing trade had dark pool flow in the OPPOSITE direction. Sept 20 NVDA: I bought 'support' at $445, institutions dumped 1.7M shares over 6 days. I was the exit liquidity. Nov 8 NVDA: I shorted 'resistance' at $467, institutions bought 1.5M shares. Now I check dark pools FIRST. Prints above VWAP = accumulation (bullish). Prints below VWAP = distribution (bearish). If dark pool opposes my setup, I SKIP THE TRADE. Win rate went from 0% to 82%. Dark pool data is FREE (FINRA TRF). Use it or become institutional exit liquidity."
-          </blockquote>
-          <p style="margin-top:1rem"><strong>The transformation:</strong></p>
-          <ul>
-            <li><strong>Before:</strong> 0% win rate, -$158K (fought institutional flow, ignored dark pools, 61% win rate in bull market collapsed)</li>
-            <li><strong>After:</strong> 82% win rate, +$136K recovery (check dark pools first, skip trades opposing flow, 14 setups avoided)</li>
-            <li><strong>Key insight:</strong> Technicals show retail sentiment. Dark pools show institutional positioning. Trade WITH smart money, not against.</li>
-          </ul>
+      <div class="callout callout-danger">
+        <h4>📉 CASE STUDY: Jennifer's $158,000 Dark Pool Blindness (22 weeks)</h4>
+        <p><strong>Trader:</strong> Jennifer Park, 5-year day trader ($420K account, Sept 2023), Sept 2023-Feb 2024</p>
+        <p><strong>Strategy:</strong> Technical breakouts + momentum (NVDA, TSLA, META) using RSI, MACD, support/resistance. 2022-2023: 61% WR, +$237K trading WITH institutional flow by luck in bull market</p>
+        <p><strong>Fatal flaw:</strong> NEVER checked dark pool prints. Ignored institutional positioning. When institutions rotated late 2023, her technicals failed catastrophically. Every trade went AGAINST dark pool flow = fought smart money</p>
+        <p><strong>Result:</strong> 7 trades, 0 winners (0% WR), lost $158K (-37.6%). EVERY SINGLE TRADE showed institutional flow in OPPOSITE direction</p>
+        <p><strong>Examples of dark pool blindness:</strong> (1) Sept 20 NVDA: Bought "support" at $445 (RSI oversold). Dark pool reality: 1.7M shares SOLD over 6 days (all below VWAP = distribution). News hit, NVDA dropped $421. Lost $7,290 if held, $1,140 with stop. (2) Oct 11 TSLA: Bought "breakout" at $252. Dark pool: 890K shares sold over 3 days (distribution). TSLA failed, dropped. Lost $3,180. (3) Nov 8 NVDA: SHORTED "resistance" at $467. Dark pool: 1.5M shares BOUGHT over 4 days (accumulation above VWAP). NVDA rallied. Lost $5,940. Breaking point (Nov 17, after 4 straight losses): Posted on Discord "My setups used to work. RSI, support, volume—all failing. What am I missing?" Response: "Are you tracking dark pool prints? Institutions dumped 1M+ shares while you bought 'support'. You were the exit liquidity." Discovery: Pulled dark pool data for ALL 7 losing trades. EVERY SINGLE ONE showed institutional flow OPPOSITE direction. 2022 "skill" was trading WITH institutions by accident. When they rotated, kept using same technicals but now fighting smart money</p>
+        <p><strong>Recovery (Dec 2023-Feb 2024):</strong> New dark pool framework: (1) Check dark pools FIRST (50K+ share prints over 3-5 days, free via FINRA TRF). (2) Accumulation signal: Prints above VWAP, price consolidating = institutions BUYING (bullish). (3) Distribution signal: Prints below VWAP, price holding = institutions SELLING (bearish). (4) If dark pool OPPOSES technical setup → SKIP TRADE (no edge). (5) If dark pool CONFIRMS setup → HIGH CONVICTION (confluence). Results: 11 trades with dark pool confirmation, 9 winners (82% WR vs 0%), skipped 14 setups where dark pool opposed technicals (saved ~$45K prevented losses), $262K → $398K (+$136K, +52%), -5% vs -38% at worst</p>
+        <div class="callout callout-purple" style="margin-top:1rem">
+          <p><strong>Jennifer's lesson:</strong> "I lost $158K in 7 trades (0% WR) because I NEVER checked dark pool data. My 2022 success wasn't skill—it was trading WITH institutions by accident during bull market. When they rotated late 2023, my technicals failed catastrophically. EVERY losing trade had dark pool flow in OPPOSITE direction. Sept 20 NVDA: I bought 'support' at $445, institutions dumped 1.7M shares over 6 days. I was the exit liquidity. Nov 8 NVDA: I shorted 'resistance' at $467, institutions bought 1.5M shares. Now I check dark pools FIRST. Prints above VWAP = accumulation (bullish). Prints below VWAP = distribution (bearish). If dark pool opposes my setup, I SKIP THE TRADE. WR from 0% to 82%. Dark pool data is FREE (FINRA TRF). Use it or become institutional exit liquidity. Technicals show retail sentiment. Dark pools show institutional positioning. Trade WITH smart money, not against."</p>
         </div>
-
       </div>
 
 
