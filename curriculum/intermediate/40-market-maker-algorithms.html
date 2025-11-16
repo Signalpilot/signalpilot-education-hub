@@ -261,145 +261,21 @@
         <li>Defense Strategies for Retail Traders</li>
       </ul>
 
-      <div class="callout-warning">
-      <div class="callout-warning">
-        <h4>📉 CASE STUDY: Eric's $68K Market Maker Death Spiral (Q3 2024)</h4>
+<div class="callout callout-danger">
+  <h4>📉 CASE STUDY: Eric's $68,000 Market Maker Death Spiral (7 weeks)</h4>
+  <p><strong>Trader:</strong> Eric Thompson, 32, software engineer turned day trader (4 years experience, $140K account), Jul-Aug 2024</p>
+  <p><strong>Strategy:</strong> High-frequency scalping SPY/TSLA/NVDA, 60-80 trades/day, 1-3 minute holds. 2023 results: +$87K on 2,400 trades (avg $36/trade). Ramped up frequency in 2024 using 100% market orders for "speed"</p>
+  <p><strong>Fatal flaw:</strong> Never used limit orders, never checked Level 2, traded during widest spread periods (9:30-9:45 AM open, 3:50-4:00 PM close, Fed days). "Limit orders might miss the move."</p>
+  <p><strong>Result:</strong> Win rate was 52% (profitable strategy), but slippage destroyed edge. Average slippage $0.24/share × 300 shares/trade × 60 trades/day = $864/day slippage cost = $30,240 in 7 weeks. Lost $68K (-48.6%). $140K → $72K.</p>
 
-        <p><strong>Trader Profile:</strong> Eric Thompson, 32, former software engineer turned day trader (4 years experience)</p>
-        <p><strong>Account size:</strong> $140,000</p>
-        <p><strong>Markets:</strong> SPY 0DTE options, high-volatility stocks (TSLA, NVDA, AAPL)</p>
-        <p><strong>Strategy:</strong> High-frequency scalping, 50-80 trades/day, 1-3 minute holds</p>
-        <p><strong>Fatal flaw:</strong> Used market orders exclusively for "speed," never checked Level 2, traded during widest spread periods</p>
+  <p><strong>The slippage disaster (Jul-Aug 2024):</strong> Eric's setups were solid, but every trade bled money to market makers. Examples: Jul 9 SPY market buy during 9:32 AM volatility, NBBO spread $549.50/$549.58 (8¢), filled $549.63 (+5¢ slippage) = -$86 loss. Jul 30 Fed day SPY 0DTE calls market buy, $2.50 mid, spread $2.35/$2.65 (30¢ wide), filled $2.68 (+18¢ overpay × 300 contracts = $5,400 extra). Profit was $4,500, should've been $9,900. Aug 1 NVDA earnings market buy during volatility, spread $127.50/$128.20 (70¢!), filled $128.35 (+85¢ slippage) = -$470 vs -$300 with limit. Aug 23 realization: "Win rate 52%, setups solid, but down $14,600 in 7 weeks. Execution report showed $0.24/share avg slippage. I'm trading 60×/day. $14.40/trade lost to slippage = $864/day = $30,240 in 7 weeks. I'm not a trader. I'm Citadel's ATM."</p>
 
-        <h5>The Disaster Timeline (July - September 2024)</h5>
+  <p><strong>Recovery (Sep-Oct 2024):</strong> New execution system: (1) Limit orders only at NBBO mid (split spread with MMs), (2) Check Level 2 for fake walls/spoofing before entry, (3) Avoid 9:30-9:45 AM and 3:50-4:00 PM (widest spreads), (4) Skip if spread > 10% of stop, (5) Track slippage daily (target < $0.03/share), (6) Reduce frequency to 15-20 trades/day (higher quality). Results: $72K → $110K (+$38K, +52.8%) in 10 weeks. Win rate 52% → 67%. Slippage $0.24 → $0.03/share. Daily slippage cost $864 → $45 (95% reduction).</p>
 
-        <p><strong>Background:</strong> Eric was a successful scalper in 2023, making $87K profit on 2,400 trades (avg $36/trade). His edge: quick pattern recognition on 5-min charts. But in 2024, he ramped up frequency to 50-80 trades/day using market orders. "I need speed," he told himself. "Limit orders might miss the move."</p>
-
-        <p><strong>The pattern that destroyed him:</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Trade frequency:</strong> 60-80 trades/day with 100% market orders</li>
-          <li><strong>Average slippage:</strong> $0.24/share</li>
-          <li><strong>Daily slippage cost:</strong> $0.24 × ~300 shares/trade × 60 trades = $864/day</li>
-          <li><strong>7-week slippage:</strong> $864/day × 35 days = $30,240 paid to market makers</li>
-          <li><strong>Win rate:</strong> 52% (profitable strategy), but slippage destroyed edge</li>
-          <li><strong>Total loss:</strong> $140K → $72K (-$68K, -48.6%)</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>Examples of market order slippage:</strong></p>
-        <ul style="margin:.5rem 0 0 1.5rem">
-          <li><strong>July 9 (SPY open):</strong> Market buy 200 shares during 9:32 AM volatility. NBBO: $549.50/$549.58 (8¢ spread). Filled $549.63 (+5¢ slippage). SPY dropped to $549.40. Stopped $549.20. Loss: -$86.</li>
-          <li><strong>July 30 (Fed day):</strong> Market buy 300 SPY 0DTE calls, $2.50 mid. Spread: $2.35/$2.65 (30¢ wide!). Filled $2.68 (+18¢ overpay = $5,400 extra on 300 contracts). SPY rallied, calls hit $3.20. Exited $3.15. Profit: $4,500. Should have been $9,900—gave away $5,400 to slippage.</li>
-          <li><strong>Aug 1 (NVDA earnings):</strong> Pre-positioned 200 shares at market during volatility. Spread ballooned to $127.50/$128.20 (70¢!). Filled $128.35 (+85¢ slippage). NVDA tanked on earnings. Stopped $126.00. Loss: -$470 (would've been -$300 with limit order at mid).</li>
-          <li><strong>Aug 21 (closing auction):</strong> Market buy 400 SPY at 3:57 PM. Spread: $557.20/$557.45. Filled $557.52 (+32¢ slippage). SPY closed $557.30. Exited $557.28. Loss: -$96.</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>The breaking point (Aug 23, 11:47 PM):</strong></p>
-        <blockquote style="border-left: 4px solid #ff6b6b; padding: 1rem; background: rgba(255,107,107,0.1); margin: 1rem 0">
-          "I can't figure out what's wrong. My win rate is 52%—that's profitable. My setups are solid. But I'm down $14,600 in 7 weeks. I checked my execution report today and almost threw up.
-
-          Average slippage per trade: $0.24/share. I'm trading 60 times/day. That's $14.40/trade just LOST to slippage. × 60 trades = $864/day. × 35 trading days = $30,240 in SLIPPAGE ALONE.
-
-          I thought market orders were 'faster.' But I'm literally paying market makers $30K to let me trade. I'm not a trader. I'm a customer. Their customer.
-
-          Tomorrow I'm changing everything."
-        </blockquote>
-
-        <h5>The Discovery: Market Maker Algorithms</h5>
-
-        <p><strong>Aug 24, 2024:</strong> Eric spent 14 hours researching market microstructure. He discovered:</p>
-        <ol>
-          <li><strong>Spread capture:</strong> MMs profit from bid-ask spread. Market orders = guaranteed worst price.</li>
-          <li><strong>Spread widening:</strong> MMs detect volatility and widen spreads 5-10× during open/close/news.</li>
-          <li><strong>Layering:</strong> Fake walls on Level 2 to manipulate price. He'd been falling for it EVERY day.</li>
-          <li><strong>Quote stuffing:</strong> MMs flood order book to create noise, slow down retail, profit from confusion.</li>
-          <li><strong>Latency advantage:</strong> MMs see market orders before execution, adjust prices in microseconds.</li>
-        </ol>
-
-        <p><strong>The Revelation:</strong> "I'm not competing with other retail traders. I'm competing with Citadel's algorithms that process orders in 10 microseconds. And I'm losing $30K/month to slippage because I refuse to wait 2 seconds for a limit order fill."</p>
-
-        <h5>The Recovery Framework (September 2024 - Present)</h5>
-
-        <p><strong>Eric's New Trade Execution System:</strong></p>
-        <ol>
-          <li><strong>Limit Orders Only</strong> – No exceptions. Place at midpoint of bid-ask spread. Wait for fill or move on. "Missing a trade is cheaper than overpaying for a trade."</li>
-          <li><strong>Check Level 2 Before Entry</strong> – Scan for layering (clusters of orders that look fake). If 10,000+ shares appear suddenly at key level = likely spoofing. Wait for confirmation before entering.</li>
-          <li><strong>Avoid Volatile Windows</strong> – No trading 9:30-9:45 AM (widest spreads), 3:50-4:00 PM (auction games), or within 10 min of Fed announcements.</li>
-          <li><strong>Calculate Spread as % of Stop</strong> – If spread > 10% of stop loss, skip the trade. Example: Stop = $1.00, spread = $0.15 (15% of stop) = edge destroyed.</li>
-          <li><strong>Use Mid-Price Limit Orders</strong> – Bid $100, ask $100.10 = mid $100.05. Place limit buy at $100.05 (split the spread with MM).</li>
-          <li><strong>Track Slippage Daily</strong> – Actual fill vs NBBO mid at time of order. Target: < $0.03/share avg slippage.</li>
-          <li><strong>Reduce Trade Frequency</strong> – Went from 60 trades/day to 15-20/day. Higher quality setups, better fills, lower slippage cost.</li>
-        </ol>
-
-        <h5>Results: Before vs After</h5>
-
-        <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0">
-          <thead style="background: rgba(255,255,255,0.05)">
-            <tr>
-              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Metric</th>
-              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">Before (July-Aug)</th>
-              <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255,255,255,0.1)">After (Sep-Oct)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Account Value</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$140K → $72K</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$72K → $110K</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Win Rate</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">52%</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">67%</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Avg Slippage/Share</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$0.24</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$0.03</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Trades per Day</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">60-80</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">15-20</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Daily Slippage Cost</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$864</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">$45</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">Order Type</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">100% market orders</td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)">98% limit orders</td>
-            </tr>
-            <tr style="background: rgba(0,212,170,0.1)">
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>Total P&L (10 weeks)</strong></td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>-$68,000 (-48.6%)</strong></td>
-              <td style="padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1)"><strong>+$38,000 (+52.8%)</strong></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h5>Eric's Advice (In His Own Words)</h5>
-
-        <blockquote style="border-left: 4px solid #00d4aa; padding: 1rem; background: rgba(0,212,170,0.1); margin: 1.5rem 0">
-          "I thought I was a trader. Turns out I was just Citadel's ATM. Here's what I learned the $68K hard way:
-
-          <strong>1. Market orders are not 'fast'—they're expensive.</strong> That 2-second wait for a limit order fill saves you $0.20/share. Over 1,000 trades, that's $20,000.
-
-          <strong>2. Market makers are NOT your enemy—but you ARE their business model.</strong> They profit when you're impatient. Every market order is a gift to them. Stop giving gifts.
-
-          <strong>3. Level 2 is mandatory, not optional.</strong> I fell for fake walls 40+ times. Each time cost me $100-300. That's $4,000-12,000 just from not looking at Level 2.
-
-          <strong>4. Slippage is invisible until you measure it.</strong> I had NO IDEA I was losing $864/day to slippage until I tracked it. Get an execution report from your broker. Calculate: (your fill price - NBBO mid at time of order) × shares.
-
-          <strong>5. The first 15 minutes and last 10 minutes are traps.</strong> Spreads are 5-10× wider. MMs know retail rushes to trade during these windows. Wait until 9:45 AM.
-
-          <strong>6. Reduce frequency, increase quality.</strong> I went from 60 trades/day to 18. My win rate jumped from 52% to 67%. My slippage costs dropped 95% ($864/day → $45/day).
-
-          <strong>Bottom line:</strong> You can't compete with market makers on speed. But you CAN refuse to play their game. Use limit orders. Wait for fills. Trade during liquid hours. Check Level 2. Measure slippage. I lost $68K learning this. Don't be me."
-        </blockquote>
-
-      </div>
+  <div class="callout callout-purple" style="margin-top:1rem">
+    <p><strong>Eric's lesson:</strong> "I lost $68K being Citadel's ATM. I thought market orders were 'fast'—they're expensive. $0.24/share slippage × 60 trades/day = $864/day = $30,240 in 7 weeks. My win rate was 52% (profitable!), but slippage destroyed my edge. Market makers profit from impatient retail. I never checked Level 2, fell for fake walls 40+ times ($4K-12K lost). I traded during widest spreads (9:30-9:45 AM open, 3:50-4:00 PM close) when MMs widen spreads 5-10×. Fed day example: $2.50 mid, spread $2.35/$2.65, filled $2.68 = $5,400 overpay on 300 contracts. The fix: Limit orders only (at NBBO mid), check Level 2, avoid volatile windows, track slippage daily, reduce frequency (60 → 18 trades/day). Results: slippage dropped 95% ($864 → $45/day), win rate jumped to 67%. That 2-second wait for a limit order fill saves $0.20/share. Over 1,000 trades, that's $20K. You can't beat MMs on speed. Refuse to play their game."</p>
+  </div>
+</div>
 
       <div class="section-break"><span>Part 1: Spread Capture — The Core Business Model</span></div>
 <h2 id="buy-the-bid-sell-the-ask-repeat">Buy the Bid, Sell the Ask, Repeat</h2>
