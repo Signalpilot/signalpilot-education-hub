@@ -86,33 +86,21 @@
         <p>This isn't science fiction. It's how professionals trade in 2024.</p>
       </div>
 
-      <div class="callout-warning">
-        <h4>📉 CASE STUDY: Mike's $97K Automation Disaster (March-July 2024)</h4>
-        <p><strong>Trader:</strong> Mike Sullivan, 35, Python developer turned algo trader ($200K account)</p>
-        <p><strong>Strategy:</strong> Automated mean-reversion bot via Alpaca API, no risk controls</p>
-        <p><strong>Fatal flaw:</strong> Deployed untested bot with no kill switch, position limits, or volatility filters</p>
-        <p><strong>Result:</strong> Lost $97K (-49%) when bot went haywire during market crash, learned automation without safeguards is suicide</p>
+<div class="callout callout-danger">
+  <h4>📉 CASE STUDY: Mike's $97,000 Automation Disaster (5 months)</h4>
+  <p><strong>Trader:</strong> Mike Sullivan, 35, Python developer turned algo trader ($200K account), Mar-Jul 2024</p>
+  <p><strong>Strategy:</strong> Automated mean-reversion bot via Alpaca API (buy SPY when RSI < 30, sell when RSI > 70). Backtested 2020-2023: 67% WR, +$140K simulated profit</p>
+  <p><strong>Fatal flaw:</strong> Deployed live with full $200K account with ZERO safety controls: no position limits, no volatility filter, no kill switch, no max drawdown shutoff. "Set it and forget it."</p>
+  <p><strong>Result:</strong> Bot worked 8 weeks (+$14.2K, 71% WR). Lost $97K (-49%) in ONE DAY (April 19) during -5% market crash. Margin call, forced liquidation. $200K → $103K.</p>
 
-        <p><strong>Background:</strong> Mike built a mean-reversion bot in Python: Buy SPY when RSI < 30, sell when RSI > 70. Backtested on 2020-2023 data: 67% win rate, +$140K simulated profit. March 2024: Deployed live via Alpaca API with full $200K account. No position limits, no volatility filter, no kill switch. "It's automated. Set it and forget it."</p>
+  <p><strong>The disaster (April 19, 2024):</strong> CPI shock. SPY gapped down -2.8% to $510. Bot: "RSI 22 = oversold, BUY!" Bought $200K SPY @ $510. SPY fell to $495 by noon (-3% more). Bot kept averaging down: bought $200K more @ $505, $495, $490 (total $800K position on $200K account = 4× leverage via margin). By 3 PM: SPY @ $488, account -$97K, margin call, forced liquidation. Mike was at work, couldn't stop it. What went wrong: (1) No position limits (bot used margin, 4× leveraged), (2) No volatility filter (bot bought during -5% crash), (3) No kill switch (couldn't stop it), (4) No max drawdown limit (kept buying all day). Backtests used 2020-2023 bull market data, didn't include 2022 bear market crashes.</p>
 
-        <p><strong>The disaster (March-July 2024):</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Week 1-8:</strong> Bot worked. +$14.2K (71% win rate). Mike felt like a genius. "Passive income!"</li>
-          <li><strong>April 19 (The Crash):</strong> CPI shock. SPY gapped down -2.8% at open to $510. Bot: "RSI 22 = oversold, BUY!" Bought $200K SPY at $510. SPY continued falling to $495 by noon (-3% more). Bot kept averaging down: bought $200K more at $505, $495, $490 (total $800K position on $200K account = 4× leverage via margin). By 3 PM: SPY at $488, Mike's account -$97K, margin call triggered, forced liquidation.</li>
-          <li><strong>What went wrong:</strong> (1) No position limits (bot used margin, 4× leveraged), (2) No volatility filter (bot bought during -5% crash day), (3) No kill switch (Mike was at work, couldn't stop it), (4) No max drawdown limit (bot kept buying all day).</li>
-        </ul>
+  <p><strong>Recovery (Aug 2024 - Present):</strong> Rebuilt bot with 5 safety controls: (1) Max position: $50K (25% of account), (2) VIX > 25 = disable bot, (3) Max 3 trades/day, (4) Telegram alert if DD > -5%, (5) Auto-shutdown if DD > -10%. Results: $103K → $151K (+47%) in 5 months, zero catastrophic failures.</p>
 
-        <p><strong>The breaking point:</strong> "I came home from work to a margin call email. My $200K account was at $103K. My bot had bought $800K of SPY during a -5% crash day because 'RSI was oversold.' I had NO position limits, NO volatility filter, NO kill switch. The bot did exactly what I programmed it to do—but I never imagined a -5% crash day. Backtests didn't include 2022 bear market. My 'automated income machine' was a ticking time bomb with no safety controls."</p>
-
-        <p><strong>Recovery (Aug 2024 - Present):</strong> Rebuilt bot with safety controls: (1) Max position size: $50K (25% of account), (2) Volatility filter: If VIX > 25, disable bot, (3) Max trades/day: 3, (4) Kill switch: Telegram alert if DD > -5%, (5) Max drawdown: -10% = auto-shutdown. Result: $103K → $151K (+47%) in 5 months, zero catastrophic failures.</p>
-
-        <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
-          <strong>Mike's advice:</strong> "I lost $97K deploying an algo bot with NO safety controls. It worked for 8 weeks (+$14K), then lost everything in ONE day during a market crash. The bot did what I programmed: 'buy when RSI oversold.' But I never programmed: 'don't buy during a -5% crash' or 'max 25% position size' or 'kill switch at -10% DD.' Automation is powerful but DEADLY without safeguards. Never deploy a bot without: position limits, volatility filters, max drawdown shutoff, and a kill switch. Backtests lie—they don't include black swans. Code the safety controls FIRST, then the strategy."
-        </p>
-
-        <p>You now understand the core concepts.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem">Take a 30-second breath before continuing...</p>
-      </div>
+  <div class="callout callout-purple" style="margin-top:1rem">
+    <p><strong>Mike's lesson:</strong> "I lost $97K in ONE DAY deploying an algo bot with NO safety controls. It worked for 8 weeks (+$14K), then lost everything during a market crash. The bot did what I programmed: 'buy when RSI oversold.' But I never programmed: 'don't buy during a -5% crash' or 'max 25% position size' or 'kill switch at -10% DD.' The bot averaged down 4× during the crash, hitting 4× leverage ($800K position on $200K account), triggering a margin call. I was at work, couldn't stop it. Automation is powerful but DEADLY without safeguards. Never deploy a bot without: (1) Position limits (max % of account), (2) Volatility filters (VIX > 25 = shut down), (3) Max drawdown shutoff (-10% = stop), (4) Kill switch (manual override). Backtests lie—they don't include black swans. My backtest used 2020-2023 bull data, skipped 2022 bear market. Code the safety controls FIRST, then the strategy."</p>
+  </div>
+</div>
 <h3>Step 1: Connect to Alpaca API</h3>
 
       <pre style="overflow-x:auto"><code>import alpaca_trade_api as tradeapi
