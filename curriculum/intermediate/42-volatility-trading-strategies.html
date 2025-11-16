@@ -343,83 +343,21 @@ blown up shorting volatility without risk controls.
         </ul>
       </div>
 
-      <div class="callout-warning">
-      <div class="callout-warning">
-        <h4>📉 CASE STUDY: Sarah's $89K Volatility Steamroller Disaster (Dec 2017 - Feb 2018)</h4>
+<div class="callout callout-danger">
+  <h4>📉 CASE STUDY: Sarah's $89,000 Volatility Steamroller Disaster (3 months)</h4>
+  <p><strong>Trader:</strong> Sarah Mitchell, 29, former actuarial analyst (3 years options experience, $124K account built from $50K), Dec 2017 - Feb 2018</p>
+  <p><strong>Strategy:</strong> Selling VIX call spreads during low volatility. Sep 2016 - Nov 2017: 84% win rate (37 of 44 trades). $50K → $124K (+148%). "VIX always mean-reverts. It's free money if you're patient."</p>
+  <p><strong>Fatal flaw:</strong> Massively oversized positions (15-30% risk per trade, 60-80% total VIX exposure), NO stop losses, assumed VIX would ALWAYS mean-revert quickly. Had probabilities right (84% WR), ignored MAGNITUDE (one 5% event with 60% sizing = death)</p>
+  <p><strong>Result:</strong> Lost $89K (-72%) in ONE DAY (Feb 5, 2018 Volmageddon). VIX spiked from 18.5 → 37.32 (+115%) in hours. All positions hit max loss. Margin call, forced liquidation. $124K → $35K.</p>
 
-        <p><strong>Trader Profile:</strong> Sarah Mitchell, 29, former actuarial analyst turned options trader (3 years experience)</p>
-        <p><strong>Starting Account:</strong> $124,000 (built from $50K over 2.5 years trading credit spreads)</p>
-        <p><strong>Strategy:</strong> Selling VIX call spreads during low volatility, collecting premium as VIX mean-reverted lower</p>
-        <p><strong>Fatal flaw:</strong> Massively oversized positions (5-10% risk per trade), no stop losses, assumed VIX would ALWAYS mean-revert quickly from spikes</p>
+  <p><strong>The disaster (Dec 2017 - Feb 2018):</strong> Dec 11: VIX @ 11.8, sold 15x VIX $15/$18 call spreads, max risk $45K (36% of account). Dec 29: VIX @ 9.77 (record low), added 10x spreads, another $30K risk. Total: 60% account in short VIX. Jan 22: VIX @ 10.2, spreads up +$16,800 (98% max profit). Didn't close—wanted full profit. Jan 26: Added 8x more spreads, $24K risk. Total VIX exposure: 78% of account. Feb 1-2: VIX spiked to 16.8-17.3, unrealized loss -$49.5K. She held: "Temporary, will drop tomorrow." Feb 5 Volmageddon: VIX exploded 18.5 → 37.32 in hours. Margin call. All spreads max loss: Feb -$45K, Mar -$30K, Apr -$24K. Total: -$99K realized. Account $86.9K → $35.2K in one day (-72% from Dec peak). Kelly Criterion with her stats (84% WR, 10:1 risk:reward) = 0.0067% per trade (<1%). She bet 15-30% per trade = 450× optimal size.</p>
 
-        <h5>Background: The Winning Streak (Sep 2016 - Nov 2017)</h5>
-        <p>Sarah discovered volatility trading in late 2016. As an actuary, she loved the statistical nature: VIX spikes were predictable, mean reversion was reliable, and the probabilities were on her side. Her strategy: Wait for VIX spike to 16-20, sell VIX call spreads 4-6 weeks out, collect $2-4 credit per spread (max risk $6-8). Win rate: 84% over 14 months (37 of 44 trades profitable).</p>
+  <p><strong>Recovery (Mar 2018 - Aug 2019):</strong> Rebuilt from $35K with iron-clad rules: (1) 2% max risk per trade (on $35K = max $700 risk, max 2 VIX contracts), (2) Stop loss at 2× credit received (if sell for $1, stop @ -$2 loss), (3) Only sell vol when VIX >20 (no selling @ 10-12), (4) Max 10% total vol exposure (prevents one spike destroying account), (5) Hedge long vol when VIX <12 (0.5-1% in VIX calls, offsets losses if spike). Results: $35K → $68K (+94%) in 18 months, 71% WR (lower but survivable), max DD -11% vs -72%.</p>
 
-        <p>By November 2017, Sarah had grown her account from $50K to $124K—a 148% return. She felt invincible. "VIX always mean-reverts," she told friends. "It's free money if you're patient."</p>
-
-        <h5>The Disaster Timeline (December 2017 - February 2018)</h5>
-
-        <p><strong>The pattern that destroyed her:</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Dec 11:</strong> VIX at 11.8. Sarah sold 15x Feb 16 VIX $15/$18 call spreads at $1.20 credit. Max risk: $45,000 (36% of account). "VIX won't stay above 15. Easy money."</li>
-          <li><strong>Dec 18:</strong> VIX dropped to 10.1. Spreads up +$8,100. "See? VIX always drops."</li>
-          <li><strong>Dec 29:</strong> VIX at 9.77 (record low). Sarah added 10x Mar 16 VIX $14/$17 spreads. Another $30K risk (24% of account). <strong>Total exposure: 60% of account in short VIX calls.</strong></li>
-          <li><strong>Jan 22:</strong> VIX at 10.2. Feb spreads up +$16,800 (98% of max profit). She didn't close—wanted full $18,000. "Why leave money on the table?"</li>
-          <li><strong>Jan 26:</strong> Market dropped 1.8%. VIX spiked to 11.1. Sarah ADDED 8x Apr 20 VIX $15/$18 spreads. Another $24K risk. <strong>Total VIX exposure: 78% of account.</strong> "This is the spike I've been waiting for. VIX will be back to 10 in 2 weeks. Loading up."</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>Feb 1-2: The Warnings</strong></p>
-        <ul style="margin:.5rem 0 0 1.5rem">
-          <li><strong>Feb 1:</strong> VIX spiked to 16.8 on 1.8% SPX drop. Sarah's Feb $15/$18 spreads now INSIDE the spread (VIX above short strike). Unrealized loss: -$22,500. She panicked but held—"This is just temporary. Tomorrow it'll drop."</li>
-          <li><strong>Feb 2:</strong> VIX at 17.3. Total unrealized loss: -$49,500 (down 36% for week). Account: $86,900 (down from $136,400 in 4 days).</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>Feb 5, 2018: Volmageddon</strong></p>
-        <ul style="margin:.5rem 0 0 1.5rem">
-          <li><strong>9:30 AM:</strong> Market opens down. VIX at 18.5. Sarah watches, frozen.</li>
-          <li><strong>2:00 PM:</strong> SPX down 3.8% intraday. VIX explodes from 18 → 28 → 37.32 in 2 hours. Sarah's brokerage calls: <strong>MARGIN CALL</strong>. Her short VIX call spreads are max loss on ALL positions.</li>
-          <li><strong>3:30 PM:</strong> Forced liquidation. All spreads closed at max loss: Feb spreads -$45K, Mar spreads -$30K, Apr spreads -$24K. <strong>Total realized loss: -$99,000.</strong></li>
-          <li><strong>Remaining account: $35,200</strong> (started day at $86,900). <strong>Down 72% from December peak.</strong></li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>VIX closed Feb 5 at 37.32—up 115% in ONE DAY.</strong></p>
-
-        <h5>The Breaking Point: Journal Entry (Feb 5, 2018)</h5>
-        <blockquote style="border-left: 4px solid #ff6b6b; padding-left: 1rem; margin: 1rem 0; font-style: italic;">
-          <p>"I just lost $89,000 in one day. 72% of my account. Wiped out.</p>
-          <p>I thought I understood volatility. I'm a fucking ACTUARY. I calculated the probabilities. VIX >30 happens less than 5% of the time. I had 84% win rate for 14 months. THIRTY-SEVEN winning trades in a row.</p>
-          <p>But I never calculated the MAGNITUDE of the loss. Sure, I'd lose 5% of the time. But I was risking 60-80% of my account EACH TIME. One 5% event = account obliteration.</p>
-          <p>This is what everyone means by 'picking up pennies in front of a steamroller.' I picked up 37 pennies. The steamroller got me on trade #38.</p>
-          <p>I violated every rule: Position sizing (60-80% of account on correlated trades, should be 1-2% MAX). Stop losses (had NONE). Concentration (all short VIX, 100% correlation). The math was on my side. But RISK MANAGEMENT wasn't. Never again without stops. Never again with more than 2% risk."</p>
-        </blockquote>
-
-        <h5>What Sarah Discovered About Volatility Risk</h5>
-        <ul>
-          <li><strong>Probability ≠ Expected Value:</strong> 95% win rate with 5:1 risk:reward = NEGATIVE expected value. Winning $2-4 per spread while risking $30-45 per spread. With 60% position sizing, one loss = wipeout.</li>
-          <li><strong>Kelly Criterion:</strong> With 84% win rate and 10:1 risk:reward, Kelly says bet 0.0067% of account per trade (less than 1%). She was betting 15-30% per trade—450x optimal size.</li>
-          <li><strong>Volatility Clustering:</strong> VIX doesn't just spike once—it clusters. Feb 5 was day 1. VIX stayed >20 for 8 weeks.</li>
-          <li><strong>The Steamroller Lesson:</strong> Can't survive ONE max-loss event if risking 60%+ of account. Even with 99% win rate, one 1% event destroys you if sizing is wrong.</li>
-        </ul>
-
-        <h5>The Recovery Framework (Mar 2018 - Present)</h5>
-        <p>Sarah rebuilt from $35K with completely new rules:</p>
-        <ol>
-          <li><strong>Mandatory 2% Max Risk Per Trade</strong> – On $35K: max $700 risk. If selling VIX spreads with $3 width: max 2 contracts. NON-NEGOTIABLE.</li>
-          <li><strong>Stop Loss at 2× Credit Received</strong> – If sell spread for $1 credit, stop at -$2 loss. Prevents "VIX always mean-reverts" thinking.</li>
-          <li><strong>Only Sell Volatility Above 20 VIX</strong> – No more selling at 10-12 (too much upside risk). Only sell after VIX spikes to 20+.</li>
-          <li><strong>Never >10% in Volatility Trades Total</strong> – Even with 5 different VIX trades, total exposure capped at 10% of account. One vol spike can't destroy account.</li>
-          <li><strong>Hedge Long Vol During Complacency</strong> – When VIX <12, allocate 0.5-1% to buying cheap VIX calls. If VIX spikes to 30+, those calls 5-10x offset losses.</li>
-        </ol>
-
-        <h5>Results: 18 Months After Volmageddon (Aug 2019)</h5>
-        <p><strong>Before (2017):</strong> Position sizing 15-30% per trade, no stop losses, 60-80% vol exposure, 84% win rate, account $50K → $124K (+148%) then -$89K in ONE DAY</p>
-        <p><strong>After (Mar 2018 - Aug 2019):</strong> 2% max risk per trade, 2× credit stop loss always, 10% max vol exposure, 71% win rate (lower but safer), account $35K → $68K (+94% recovery in 18 months)</p>
-
-        <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
-          <strong>Sarah's advice:</strong> "I lost $89K learning that PROBABILITY and MAGNITUDE are different. I had the probabilities right (84% win rate). I ignored the magnitude (one 5% event with 60% position sizing = account death). Selling volatility is NOT free money—it's picking up pennies in front of a steamroller. The pennies are real. The steamroller is real. The ONLY way to survive: 2% max risk per trade, hard stops at 2× credit, and NEVER more than 10% total exposure to vol. The math doesn't save you if your position sizing is suicidal. I learned this the $89K way. Don't be me."
-        </p>
-
-      </div>
+  <div class="callout callout-purple" style="margin-top:1rem">
+    <p><strong>Sarah's lesson:</strong> "I lost $89K in ONE DAY learning PROBABILITY ≠ MAGNITUDE. I'm an actuary. I calculated probabilities: 84% win rate, VIX >30 happens <5% of time. But I risked 60-80% of account per trade. One 5% event = obliteration. 'Picking up pennies in front of a steamroller'—I picked up 37 pennies (37 winning trades), steamroller got me on trade #38. Feb 5, 2018: VIX spiked from 18.5 → 37.32 in hours. All my short VIX spreads hit max loss. Margin call. -$99K realized, $124K → $35K (-72%). Kelly Criterion said bet 0.0067% per trade. I bet 15-30% = 450× too big. The fix: (1) 2% max risk per trade (NO exceptions), (2) Stop at 2× credit (prevents 'it always mean-reverts' thinking), (3) Max 10% total vol exposure (one spike can't kill you), (4) Hedge with long vol when VIX <12. Selling volatility isn't free money. The math doesn't save you if position sizing is suicidal. Even 99% win rate dies if you risk 60% per trade. I learned this the $89K way."</p>
+  </div>
+</div>
 
       <h2 id="quiz" style="margin-top:3rem">📝 Knowledge Check</h2>
       <p>Test your understanding of volatility trading strategies:</p>
