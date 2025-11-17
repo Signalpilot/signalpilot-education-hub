@@ -29,7 +29,7 @@
     { code: 'fi', name: 'Suomi', flag: '🇫🇮' },
     { code: 'cs', name: 'Čeština', flag: '🇨🇿' },
     { code: 'el', name: 'Ελληνικά', flag: '🇬🇷' },
-    { code: 'he', name: 'עברית', flag: '🇮🇱' },
+    { code: 'iw', name: 'עברית', flag: '🇮🇱' },  // Google Translate uses 'iw' for Hebrew
     { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩' },
     { code: 'th', name: 'ไทย', flag: '🇹🇭' },
     { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' },
@@ -71,7 +71,7 @@
   // Apply language and direction attributes (from main site)
   function applyDirLang(langCode) {
     document.documentElement.lang = (langCode === 'zh') ? 'zh-CN' : langCode;
-    document.documentElement.dir = (langCode === 'ar' || langCode === 'he') ? 'rtl' : 'ltr';
+    document.documentElement.dir = (langCode === 'ar' || langCode === 'iw') ? 'rtl' : 'ltr';
   }
 
   // Get current language from cookie or localStorage
