@@ -120,13 +120,65 @@
   }
 }
 
-/* Hide Google Translate elements if present */
-.goog-te-banner-frame,
-.goog-te-balloon-frame,
-.goog-te-gadget {
+/* Google Translate fixes - prevent layout breaking (matches main site) */
+body > .skiptranslate {
   display: none !important;
 }
 
 body {
   top: 0 !important;
+  position: relative !important;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-menu-value span {
+  color: inherit !important;
+}
+
+.goog-te-gadget {
+  color: inherit !important;
+  display: none !important;
+}
+
+/* Make Google Translate font wrappers invisible (matches main site) */
+font {
+  font-size: 0.85em !important;
+  line-height: inherit !important;
+  pointer-events: none !important;
+  color: inherit !important;
+  background: transparent !important;
+  font-family: inherit !important;
+}
+
+/* Hide balloon tooltips */
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+#goog-gt-tt {
+  display: none !important;
+}
+
+/* Aggressively hide all Google Translate iframes */
+iframe.goog-te-banner-frame,
+iframe.skiptranslate,
+.goog-te-ftab {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Prevent Google from offsetting body */
+body.translated-ltr,
+body.translated-rtl {
+  top: 0 !important;
+  margin-top: 0 !important;
 }
