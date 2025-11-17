@@ -1,0 +1,55 @@
+Date,Portfolio Value,Daily P/L,Daily Return %,95% VAR,Exceeded VAR?,Notes
+2025-01-15,100000,0,0.00%,5000,No,Starting balance
+2025-01-16,101200,1200,1.20%,5000,No,Good day
+2025-01-17,99800,-1400,-1.38%,5000,No,Within VAR
+2025-01-18,93600,-6200,-6.21%,5000,Yes,FOMC selloff - exceeded VAR
+
+PORTFOLIO VALUE AT RISK (VAR) TRACKER
+=======================================
+
+95% VAR Definition:
+On 95% of days, you won't lose more than the VAR amount.
+On 5% of days (1 in 20), you WILL exceed VAR.
+
+How to Calculate 95% VAR:
+Method 1 - Historical:
+1. Track daily returns for 60+ trading days
+2. Sort returns from worst to best
+3. 95% VAR = 5th percentile loss
+   Example: If day 3 out of 60 = -4.8%, VAR = 4.8%
+
+Method 2 - Volatility-Based:
+95% VAR ≈ Portfolio Value × Daily StdDev × 1.65
+Example: $100K portfolio, 2% daily volatility
+VAR = $100,000 × 0.02 × 1.65 = $3,300
+
+How to Use This Tracker:
+1. Log portfolio value and P/L daily
+2. Set your 95% VAR based on historical data or risk tolerance
+3. Track when you exceed VAR (should happen ~1x per month)
+4. If exceeding VAR >2x per month, you're underestimating risk
+
+Red Flags:
+⚠ Exceeding VAR 3+ times in one month
+⚠ Actual loss >2× VAR (tail risk event)
+⚠ VAR hasn't been exceeded in 6+ months (VAR too conservative)
+
+Example Portfolio VAR Scenarios:
+Conservative: $100K account, 3% VAR = $3,000 max daily loss (95% confidence)
+Moderate: $100K account, 5% VAR = $5,000 max daily loss
+Aggressive: $100K account, 8% VAR = $8,000 max daily loss
+
+Action When VAR Exceeded:
+1. Review: Was it one-off event or systemic?
+2. Check correlation: Did all positions stop simultaneously?
+3. Volatility spike: VIX >30? Reduce position sizes 50%
+4. If exceeded 2x in one week: STOP trading, review risk model
+
+Monthly VAR Report Template:
+- Days traded: __
+- Times VAR exceeded: __ (target: 1-2)
+- Worst single loss: $__
+- Average loss when exceeding VAR: $__
+- Portfolio correlation during VAR breach: __
+
+Save and open in Excel to track daily VAR.
