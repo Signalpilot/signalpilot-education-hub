@@ -161,7 +161,7 @@
     };
 
     const script = document.createElement('script');
-    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     script.async = true;
     script.onerror = function() {
       console.warn('Failed to load Google Translate');
@@ -169,36 +169,16 @@
     document.head.appendChild(script);
   }
 
-  // Force remove Google Translate banner (aggressive cleanup)
-  function removeGoogleBanner() {
-    // Remove the banner iframe
-    const banners = document.querySelectorAll('.goog-te-banner-frame, iframe.goog-te-banner-frame, iframe.skiptranslate');
-    banners.forEach(banner => {
-      if (banner && banner.parentNode) {
-        banner.parentNode.removeChild(banner);
-      }
-    });
-
+  // Clean up Google Translate banner (simpler approach like main site)
+  function cleanupGoogleUI() {
     // Reset body position
     document.body.style.top = '0';
     document.body.style.position = 'relative';
-
-    // Remove any classes Google adds
-    document.body.classList.remove('translated-ltr', 'translated-rtl');
   }
 
-  // Run cleanup repeatedly to catch delayed injections
-  setInterval(removeGoogleBanner, 100);
-
-  // Also run on mutation
-  const observer = new MutationObserver(() => {
-    removeGoogleBanner();
-  });
-
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
+  // Run cleanup after page load
+  window.addEventListener('load', cleanupGoogleUI);
+  setTimeout(cleanupGoogleUI, 1000);
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
