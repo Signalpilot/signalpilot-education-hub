@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
   <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/google-translate.css">
   <link rel="stylesheet" href="/assets/notes.css">
   <link rel="stylesheet" href="/assets/auth-ui.css">
   <!-- Logger must load first, before other scripts that use it -->
@@ -45,7 +46,8 @@
       <li><a href="/search.html">Search</a></li>
       <li><a href="/my-library.html">📚 My Library</a></li>
     </ul></nav>
-    <div class="header-ctls"><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
+    <div class="header-ctls">
+      <div id="google_translate_element"></div><button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
         <span id="theme-icon">🌙</span>
       </button><button id="menuToggle" class="menu-toggle" aria-expanded="false">Menu ☰</button></div>
   </div>
@@ -878,5 +880,7 @@ $100.00  2000  500   +1500  ← Low (buying)
     <!-- Enhanced Analytics & A/B Testing -->
   <script src="/assets/enhanced-analytics.js" defer></script>
   <script src="/assets/ab-test-tldr.js" defer></script>
+  <!-- Google Translate -->
+  <script src="/assets/google-translate.js"></script>
 </body>
 </html>

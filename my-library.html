@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="/assets/signalpilot-theme.css">
   <link rel="stylesheet" href="/assets/edu.css">
   <link rel="stylesheet" href="/assets/chatbot.css">
+  <link rel="stylesheet" href="/assets/google-translate.css">
   <link rel="stylesheet" href="/assets/auth-ui.css">
 
   <!-- html2canvas for certificate image generation -->
@@ -322,6 +323,7 @@
       </ul>
     </nav>
     <div class="header-ctls">
+      <div id="google_translate_element"></div>
       <button id="themeToggle" class="btn btn-ghost btn-sm" type="button" aria-label="Toggle theme">
         <span id="theme-icon">🌙</span>
       </button>
@@ -1740,7 +1742,9 @@
             setTimeout(() => window.print(), 500);
           };
         </scr` + `ipt>
-      </body>
+        <!-- Google Translate -->
+  <script src="/assets/google-translate.js"></script>
+</body>
       </html>
     `;
 
@@ -1813,5 +1817,7 @@ if (!localStorage.getItem('sp_library_initialized')) {
   console.log('%cType forceMigration() to re-sync your progress data', 'color: #76ddff;');
 }
 </script>
+  <!-- Google Translate -->
+  <script src="/assets/google-translate.js"></script>
 </body>
 </html>
