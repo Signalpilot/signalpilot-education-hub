@@ -170,10 +170,10 @@
     button.id = 'langToggle';
     button.className = 'btn btn-ghost btn-sm';
     button.type = 'button';
-    button.setAttribute('aria-label', 'Select language');
+    button.setAttribute('aria-label', `Select language (current: ${currentLangObj.name})`);
     button.setAttribute('aria-haspopup', 'true');
     button.setAttribute('aria-expanded', 'false');
-    button.innerHTML = `<span>${currentLangObj.flag}</span><span style="margin-left: 0.2rem">${currentLangObj.code.toUpperCase().split('-')[0]}</span>`;
+    button.innerHTML = `<span>${currentLangObj.flag}</span>`;
 
     // Create dropdown menu and append to body
     const menu = createDropdownMenu();
