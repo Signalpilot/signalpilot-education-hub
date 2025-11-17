@@ -1,0 +1,50 @@
+Asset,SPY,QQQ,TLT,GLD,UUP,AAPL,MSFT,NVDA
+SPY,1.00,0.95,-0.30,0.10,-0.20,0.87,0.91,0.83
+QQQ,0.95,1.00,-0.35,0.05,-0.25,0.92,0.89,0.90
+TLT,-0.30,-0.35,1.00,0.20,0.15,-0.25,-0.28,-0.30
+GLD,0.10,0.05,0.20,1.00,-0.40,0.08,0.12,0.05
+UUP,-0.20,-0.25,0.15,-0.40,1.00,-0.18,-0.22,-0.20
+AAPL,0.87,0.92,-0.25,0.08,-0.18,1.00,0.88,0.79
+MSFT,0.91,0.89,-0.28,0.12,-0.22,0.88,1.00,0.81
+NVDA,0.83,0.90,-0.30,0.05,-0.20,0.79,0.81,1.00
+
+PORTFOLIO CORRELATION MATRIX
+==============================
+
+How to Use:
+1. List your positions in the Asset column
+2. Calculate 30-day correlation between each pair using TradingView or Portfolio Visualizer
+3. Fill in the correlation values (range: -1.00 to +1.00)
+4. Identify dangerous concentrations (>0.70 = high correlation)
+
+Correlation Interpretation:
++0.90 to +1.00: Extremely high correlation (essentially same position)
++0.70 to +0.89: High correlation (moves together often)
++0.30 to +0.69: Moderate correlation
+-0.29 to +0.29: Low/no correlation (good diversification)
+-0.30 to -0.69: Moderate negative correlation (hedge)
+-0.70 to -1.00: High negative correlation (strong hedge)
+
+Example Analysis - Tech Portfolio Problem:
+SPY + QQQ + AAPL + MSFT + NVDA
+Average correlation: 0.87 (TOO HIGH!)
+This is essentially ONE bet, not 5 positions.
+
+Example - Diversified Portfolio:
+SPY + TLT + GLD + UUP
+Average correlation: -0.04 (GOOD!)
+True diversification - positions don't move together.
+
+Effective N Formula:
+Effective N = N ÷ √(Average Correlation)
+
+Example: 5 positions with 0.80 avg correlation
+Effective N = 5 ÷ √0.80 = 5 ÷ 0.89 = 5.6 ≈ 2 independent bets
+
+ACTION ITEMS:
+□ Check correlation before adding new position
+□ If new position >0.70 correlated with existing, reduce existing or skip new
+□ Target average portfolio correlation <0.40
+□ Stress test: "If SPY drops 3%, what happens to ALL positions?"
+
+Save and open in Excel to calculate portfolio correlations.
