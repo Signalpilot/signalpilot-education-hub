@@ -382,7 +382,6 @@
     <div class="quiz-explanation">
       <strong>Correct: C.</strong> This is the correlation trap that destroys portfolios. Here's the analysis: (1) Raw Kelly allocations: Strategy A = 20%, B = 25%, C = 30%. Total = 75%. (2) First adjustment (Quarter Kelly for safety): A = 5%, B = 6.25%, C = 7.5%. Total = 18.75%. (3) But wait—correlation is 0.80! This is HIGH correlation. It means when one strategy wins, the others likely win. When one loses, the others likely lose. You're NOT diversified—you're making the same bet 3 times. (4) Correlation adjustment: With 0.80 correlation, reduce each allocation by 30-40% to account for overlap. A = 5% × 0.65 = 3.25%, B = 6.25% × 0.65 = 4.06%, C = 7.5% × 0.65 = 4.88%. Total = 12.19% → round to ~12-13%. Alternatively, some traders use even more conservative 50% reduction for high correlation: A = 2.5%, B = 3.1%, C = 3.75%. Total = 9.35% → ~10%. (5) Why this matters (real example): Trader ignored correlation, allocated full 18.75% (quarter Kelly) across 3 strategies all correlated 0.80. March 2024 market selloff: ALL 3 strategies hit stops same day. Lost 18.75% in one session. If correlation-adjusted to 10-12%, would've lost only 10-12% (still bad, but survivable). The math: At 0.80 correlation, 3 strategies act like ~1.5 independent bets (not 3). Formula: Effective N = N / √correlation = 3 / √0.80 = 3 / 0.894 = 3.35 → but correlation reduces diversity, so closer to 1.5-2 independent positions. (6) Safe allocation: For 0.80 correlation portfolios, total allocation should be 10-15% max (not 75%, not even 18.75%). Answer C reflects this: 25-30% would be acceptable if correlation were LOW (0.2-0.3), but for 0.80 correlation, go even more conservative to 10-15%.</div>
     </div>
-  </div>
 
   <div class="quiz-question" style="margin-top:2rem">
     <p><strong>Your account equity curve has dropped below its 20-day moving average for the first time in 3 months. Your standard position size is 2% per trade. What should you do?</strong></p>
@@ -401,7 +400,6 @@
       <strong>Correct: B.</strong> Equity curve trading is one of the most powerful risk management tools professionals use. Here's the logic: (1) What the signal means: Equity below 20-day MA indicates recent performance is below average. This could mean: (a) Bad luck/variance (your edge still works, just hitting losers), (b) Market regime shift (your edge temporarily impaired), or (c) You're trading poorly (tilt, revenge trading, breaking rules). (2) All three scenarios require the same response: REDUCE RISK until edge is proven working again. (3) The rule: If equity drops below 20-day MA, cut position size by 50% (from 2% to 1% in this case). This limits damage while you diagnose the problem. If equity rises above 20-day MA, return to normal 2% sizing. If equity rises significantly above MA (hot streak), increase to 2.5% (25% boost). (4) Why this works (real data): Study by Larry Williams (World Cup Trading Champion): Traders who used equity curve position adjustment had 40% lower max drawdowns than fixed-size traders with SAME edge. Example: $100K account, 60% win rate system. Fixed 2% trader: Hits 10-trade losing streak (happens ~0.4% of the time = 1-2 times per 250 trades). Loses 2% × 10 = 20% account (now at $80K). Equity curve trader: After 2-3 losses, equity drops below MA. Reduces to 1%. Loses 1% × 7 remaining trades = 7% more (total ~10-12% loss, now at $88-90K). Same losing streak, 50% less damage. (5) Why answer A is wrong: "Pseudoscience" dismissal ignores decades of professional use. Paul Tudor Jones, Ed Seykota, and most systematic funds use equity curve adjustments. It's not predicting the future—it's adapting risk to recent performance (which is rational). (6) Why answer C is wrong: Stopping entirely means missing recovery trades. Your edge might still work—you just hit variance. Reducing size (not stopping) keeps you in the game with lower risk. Once equity crosses back above MA (proving edge recovery), you resume normal size and catch the rebound. (7) Implementation: Track your equity daily. Plot 20-day SMA. When below, halve your size. When above, return to normal or boost 25% if well above. This single rule can reduce lifetime max drawdown by 30-50% vs fixed sizing.</div>
     </div>
   </div>
-<h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>Portfolio Construction Workflow:</h4>
     <ul>
@@ -476,7 +474,6 @@
   <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
 
     </div>
-
     <aside class="toc-sidebar">
       <div class="lesson-actions">
         <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
@@ -484,7 +481,6 @@
       </div>
 </aside>
   </div>
-
   <div class="wrap nav-article">
   <a class="btn btn-ghost" href="/curriculum/intermediate/46-advanced-risk-management.html">&larr; Previous Lesson</a>
   <a class="btn btn-primary" href="/curriculum/advanced/48-institutional-order-flow.html">Next Lesson &rarr;</a>
