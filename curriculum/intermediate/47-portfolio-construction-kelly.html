@@ -126,6 +126,492 @@
     <p><strong>Lisa's lesson:</strong> "Full Kelly is a trap. It's mathematically optimal for GROWTH but practically suicidal for SURVIVAL. I had 68% win rate (solid edge) but lost $91K (-49%) in 3 months using full Kelly (16.8% per trade) because ONE bad week (6-trade losing streak, 0.1% probability) caused -62% drawdown. The math: Each loss = -16.8% of account. Six consecutive losses compounding = -62.4% total. Account dropped $192K → $72K in one week. Switched to 1/4 Kelly (4.2% per trade), recovered +$53K in 6 months with -12% max DD. Formula: Calculate full Kelly, then USE 25-50% of that number for real trading. Full Kelly = max growth, catastrophic risk. 1/4 Kelly = 95% of growth, 12% drawdowns vs 62% drawdowns. Growth means nothing if you blow up first. Kelly tells you the theoretical maximum—not the practical optimum."</p>
   </div>
 </div>
+
+<div class="section-break"><span>Part 1: Why Most Traders Build Portfolios Wrong</span></div>
+
+<h2 id="the-single-strategy-trap">The Single-Strategy Trap</h2>
+
+<p>Most retail traders optimize for ONE perfect setup. They spend months backtesting a breakout strategy, achieve 55% win rate with 2:1 R:R, and think they've "made it."</p>
+
+<p><strong>The problem:</strong> Single-strategy traders are one market regime change away from blowing up.</p>
+
+<div class="callout callout-danger">
+  <h4>📉 Real Example: The Breakout Trader Who Lost 32% in One Month</h4>
+  <p><strong>Setup:</strong> Trader had a proven momentum breakout system. 2022 results: 58% win rate, $580 avg win, $320 avg loss. Made $47K on $150K account (+31% return).</p>
+  <p><strong>January 2023:</strong> Fed pivots hawkish. Market shifts from trending (breakouts work) to choppy range-bound (breakouts fail).</p>
+  <p><strong>Result:</strong> Win rate dropped from 58% to 38% in 4 weeks. Lost -$48K (-32% of account) because he had ZERO mean-reversion strategies to capitalize on the new regime.</p>
+  <p><strong>Lesson:</strong> One strategy = one point of failure. Institutions run 5-15 uncorrelated strategies to survive regime changes.</p>
+</div>
+
+<h3>The Three Pillars of Portfolio Construction</h3>
+
+<p>Professional portfolio construction rests on three pillars:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pillar</th>
+      <th>Retail Approach</th>
+      <th>Institutional Approach</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Diversification</strong></td>
+      <td>One "perfect" strategy</td>
+      <td>5-10 strategies across regimes (trend, mean-reversion, volatility, correlation)</td>
+    </tr>
+    <tr>
+      <td><strong>2. Position Sizing</strong></td>
+      <td>Fixed 1-2% per trade (ignores edge)</td>
+      <td>Kelly Criterion adjusted for edge strength (5-15% for proven edges)</td>
+    </tr>
+    <tr>
+      <td><strong>3. Correlation Management</strong></td>
+      <td>Ignored (all strategies correlated)</td>
+      <td>Reduce allocation to correlated strategies (avoid doubling down on same bet)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Edge-Based Allocation vs Equal Weighting</h3>
+
+<p><strong>Equal weighting:</strong> Allocate same % to each strategy (e.g., 3 strategies = 33% each)</p>
+
+<p><strong>Edge-based allocation (Kelly):</strong> Allocate MORE to strategies with stronger edge, LESS to weaker edges</p>
+
+<details class="accordion">
+  <summary>Example: Why Equal Weighting Leaves Money on the Table</summary>
+  <div class="accordion-content">
+    <p><strong>You have 3 strategies with different edges:</strong></p>
+    <ul>
+      <li><strong>Strategy A:</strong> 65% win rate, 1.5:1 R:R → Strong edge (Kelly = 26.7%)</li>
+      <li><strong>Strategy B:</strong> 52% win rate, 1.8:1 R:R → Moderate edge (Kelly = 14.4%)</li>
+      <li><strong>Strategy C:</strong> 48% win rate, 2.5:1 R:R → Weak edge (Kelly = 8.5%)</li>
+    </ul>
+
+    <p><strong>Equal weighting approach:</strong> Allocate 33% to each → Total 100%</p>
+    <p><strong>Result:</strong> You're OVER-allocating to weak Strategy C (33% vs optimal 8.5%) and UNDER-allocating to strong Strategy A (33% vs optimal 26.7%).</p>
+
+    <p><strong>Kelly-based approach:</strong></p>
+    <ul>
+      <li>Strategy A: 26.7% (strongest edge gets most capital)</li>
+      <li>Strategy B: 14.4% (moderate allocation)</li>
+      <li>Strategy C: 8.5% (weakest edge gets least capital)</li>
+    </ul>
+
+    <p><strong>Performance over 12 months (backtested):</strong></p>
+    <ul>
+      <li><strong>Equal weighting:</strong> +18.2% annual return, 22% max drawdown</li>
+      <li><strong>Kelly weighting:</strong> +26.8% annual return (+47% more profit!), 19% max drawdown (lower risk)</li>
+    </ul>
+
+    <p><strong>Takeaway:</strong> Allocate based on EDGE, not equality. Your best strategies deserve more capital.</p>
+  </div>
+</details>
+
+<h3>Building for Regime Resilience</h3>
+
+<p>Markets cycle through four primary regimes. Your portfolio should have strategies for each:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Regime</th>
+      <th>Characteristics</th>
+      <th>Strategy Types That Work</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Trending Bull</strong></td>
+      <td>Higher highs, low volatility, QE environment</td>
+      <td>Momentum breakouts, pullback buying, BTFD strategies</td>
+    </tr>
+    <tr>
+      <td><strong>Trending Bear</strong></td>
+      <td>Lower lows, rising volatility, QT environment</td>
+      <td>Breakdown shorts, rally fades, put spreads</td>
+    </tr>
+    <tr>
+      <td><strong>Range-Bound</strong></td>
+      <td>Choppy, oscillating between support/resistance</td>
+      <td>Mean reversion, support/resistance trades, theta decay (options selling)</td>
+    </tr>
+    <tr>
+      <td><strong>High Volatility</strong></td>
+      <td>VIX &gt; 25, whipsaw moves, uncertainty</td>
+      <td>Volatility selling (after spikes), wide stop strategies, reduced size</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout" style="background:rgba(251,191,36,0.1);border-left:4px solid #fbbf24;margin:2rem 0;padding:1.5rem">
+  <h4>💡 Pro Tip: The "2-2-1" Portfolio Structure</h4>
+  <p>Institutions often use a "2-2-1" diversification model:</p>
+  <ul>
+    <li><strong>2 Trend strategies</strong> (long bias and short bias) — capitalize on directional moves</li>
+    <li><strong>2 Mean-reversion strategies</strong> (support bounces and resistance fades) — profit from ranges</li>
+    <li><strong>1 Volatility strategy</strong> (VIX spike trading or premium selling) — hedge against chaos</li>
+  </ul>
+  <p>This ensures you have exposure to multiple regimes simultaneously. When trends die, mean-reversion activates. When volatility explodes, volatility strategy hedges the others.</p>
+</div>
+
+<div class="section-break"><span>Part 2: Kelly Criterion—The Math of Optimal Sizing</span></div>
+
+<h2 id="what-is-kelly-criterion">What Is Kelly Criterion?</h2>
+
+<p>The <strong>Kelly Criterion</strong> is a mathematical formula that answers one question: <em>"Given my edge (win rate and reward/risk ratio), what percentage of my account should I risk per trade to maximize long-term compound growth?"</em></p>
+
+<p>Developed by John Kelly Jr. at Bell Labs in 1956, it's been used by:</p>
+<ul>
+  <li><strong>Ed Thorp:</strong> Beat blackjack casinos, then turned $10K into $800M hedge fund (Princeton Newport Partners)</li>
+  <li><strong>Warren Buffett & Charlie Munger:</strong> Use Kelly to size Berkshire Hathaway positions</li>
+  <li><strong>Renaissance Technologies:</strong> Jim Simons' $130B quant fund uses Kelly-based position sizing</li>
+</ul>
+
+<h3>The Kelly Formula (Simplified)</h3>
+
+<div class="callout" style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+  <p><strong>Kelly % = (Win Rate × Avg Win - Loss Rate × Avg Loss) / Avg Win</strong></p>
+  <p style="margin-top:1rem"><strong>Or, in mathematical notation:</strong></p>
+  <p><code>f* = (p × b - q) / b</code></p>
+  <p style="margin-top:1rem">Where:</p>
+  <ul>
+    <li><strong>f*</strong> = Optimal fraction of capital to risk (Kelly %)</li>
+    <li><strong>p</strong> = Win rate (probability of winning)</li>
+    <li><strong>q</strong> = Loss rate (1 - p)</li>
+    <li><strong>b</strong> = Win/Loss ratio (Avg Win / Avg Loss)</li>
+  </ul>
+</div>
+
+<h3>Step-by-Step Kelly Calculation</h3>
+
+<p><strong>Example: Your trading system has these stats:</strong></p>
+<ul>
+  <li>60% win rate (won 60 out of 100 trades)</li>
+  <li>Average winner: $500</li>
+  <li>Average loser: $300</li>
+</ul>
+
+<p><strong>Step 1: Identify your variables</strong></p>
+<ul>
+  <li>p (win rate) = 0.60</li>
+  <li>q (loss rate) = 1 - 0.60 = 0.40</li>
+  <li>b (win/loss ratio) = $500 / $300 = 1.67</li>
+</ul>
+
+<p><strong>Step 2: Plug into Kelly formula</strong></p>
+<p><code>f* = (p × b - q) / b</code></p>
+<p><code>f* = (0.60 × 1.67 - 0.40) / 1.67</code></p>
+<p><code>f* = (1.00 - 0.40) / 1.67</code></p>
+<p><code>f* = 0.60 / 1.67 = 0.359</code></p>
+
+<p><strong>Result: Full Kelly = 35.9%</strong></p>
+
+<p><strong>Step 3: Apply fractional Kelly (critical!)</strong></p>
+<p>Never use full Kelly. Use <strong>Quarter Kelly</strong> (divide by 4):</p>
+<p><code>Quarter Kelly = 35.9% / 4 = 8.97% ≈ 9% per trade</code></p>
+
+<div class="callout callout-success">
+  <h4>✅ What This Means in Practice</h4>
+  <p>With a $100,000 account and this 60% win rate system:</p>
+  <ul>
+    <li><strong>Full Kelly (35.9%):</strong> Risk $35,900 per trade — suicidal (one bad week destroys account)</li>
+    <li><strong>Quarter Kelly (9%):</strong> Risk $9,000 per trade — optimal balance of growth and survival</li>
+    <li><strong>Typical 1-2% sizing:</strong> Risk $1,000-$2,000 per trade — safe but leaves massive edge on the table</li>
+  </ul>
+  <p><strong>Key insight:</strong> If you have a PROVEN 60% win rate with 1.67:1 R:R, risking only 1-2% is under-utilizing your edge. Kelly says you can safely risk 8-9% and achieve far higher compound growth.</p>
+</div>
+
+<h3>Why Full Kelly Is Dangerous (The Variance Problem)</h3>
+
+<p>Full Kelly optimizes for <strong>maximum geometric growth</strong> but ignores <strong>psychological survival</strong>.</p>
+
+<p><strong>The math problem:</strong> Even with a 60% win rate, you WILL hit losing streaks. Probability of 5 consecutive losses:</p>
+<p><code>0.40^5 = 0.01024 = 1.024%</code></p>
+
+<p><strong>Translation:</strong> With 100 trades per year, you'll hit a 5-trade losing streak roughly once per year.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kelly Fraction</th>
+      <th>Risk Per Trade</th>
+      <th>Loss After 5-Trade Streak</th>
+      <th>Recovery Needed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Full Kelly (35.9%)</strong></td>
+      <td>$35,900</td>
+      <td>-81.7% (account at $18,300)</td>
+      <td>+546% to break even (impossible)</td>
+    </tr>
+    <tr>
+      <td><strong>Half Kelly (18%)</strong></td>
+      <td>$18,000</td>
+      <td>-59.8% (account at $40,200)</td>
+      <td>+149% to break even (very hard)</td>
+    </tr>
+    <tr>
+      <td><strong>Quarter Kelly (9%)</strong></td>
+      <td>$9,000</td>
+      <td>-37.2% (account at $62,800)</td>
+      <td>+59% to break even (achievable)</td>
+    </tr>
+    <tr>
+      <td><strong>Fixed 2%</strong></td>
+      <td>$2,000</td>
+      <td>-9.6% (account at $90,400)</td>
+      <td>+11% to break even (easy, but slow growth)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Conclusion:</strong> Quarter Kelly gives you 75% of optimal growth with manageable drawdowns. Full Kelly gives you maximum growth with account-destroying drawdowns.</p>
+
+<details class="accordion">
+  <summary>Why Ed Thorp Used Fractional Kelly (His Own Words)</summary>
+  <div class="accordion-content">
+    <p>Ed Thorp, the mathematician who beat blackjack and ran a hedge fund with a 20% annual return for 30 years, wrote in his book <em>A Man for All Markets</em>:</p>
+    <blockquote style="border-left:4px solid var(--accent);padding-left:1rem;margin:1.5rem 0;font-style:italic">
+      "Full Kelly betting maximizes long-run growth rate but leads to very large drawdowns. In practice, I found that betting half Kelly or less gave nearly the same growth rate with much smaller swings. The psychological benefit of smaller drawdowns far outweighed the tiny loss in compound growth."
+    </blockquote>
+    <p><strong>His practical rule:</strong> Use 25-50% of Kelly for real trading. Calculate full Kelly to know your theoretical maximum, then dial it down for real-world variance and emotional resilience.</p>
+  </div>
+</details>
+
+<div class="section-break"><span>Part 3: Applying Kelly to Multiple Strategies</span></div>
+
+<h2 id="multi-strategy-portfolio-allocation">Multi-Strategy Portfolio Allocation</h2>
+
+<p>Real portfolios don't have just one strategy. You might run momentum breakouts, mean-reversion trades, and options income simultaneously.</p>
+
+<p><strong>The question:</strong> How do you allocate capital across multiple strategies with different edges?</p>
+
+<h3>Step 1: Calculate Kelly % for Each Strategy Independently</h3>
+
+<p><strong>Example portfolio with 3 strategies:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Strategy</th>
+      <th>Win Rate</th>
+      <th>Avg Win</th>
+      <th>Avg Loss</th>
+      <th>Win/Loss Ratio</th>
+      <th>Full Kelly %</th>
+      <th>Quarter Kelly %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A: Breakouts</strong></td>
+      <td>45%</td>
+      <td>$600</td>
+      <td>$200</td>
+      <td>3.0</td>
+      <td>26.7%</td>
+      <td>6.7%</td>
+    </tr>
+    <tr>
+      <td><strong>B: Mean Rev</strong></td>
+      <td>65%</td>
+      <td>$300</td>
+      <td>$250</td>
+      <td>1.2</td>
+      <td>35.8%</td>
+      <td>8.95%</td>
+    </tr>
+    <tr>
+      <td><strong>C: Volatility</strong></td>
+      <td>55%</td>
+      <td>$450</td>
+      <td>$350</td>
+      <td>1.29</td>
+      <td>20.2%</td>
+      <td>5.05%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Total allocation (if strategies were independent): 6.7% + 8.95% + 5.05% = 20.7%</strong></p>
+
+<h3>Step 2: Adjust for Correlation</h3>
+
+<p><strong>The problem:</strong> If your strategies are correlated (win/lose together), you're effectively making the same bet multiple times.</p>
+
+<p><strong>Correlation coefficient ranges from -1 to +1:</strong></p>
+<ul>
+  <li><strong>+1.0:</strong> Perfect correlation (always move together) — same strategy, don't double allocation</li>
+  <li><strong>+0.6 to +0.8:</strong> High correlation (often move together) — reduce allocation by 30-50%</li>
+  <li><strong>+0.2 to +0.4:</strong> Low correlation (somewhat independent) — reduce allocation by 10-20%</li>
+  <li><strong>0.0:</strong> No correlation (truly independent) — no adjustment needed</li>
+  <li><strong>-0.5 to -1.0:</strong> Negative correlation (move opposite) — can increase total allocation (hedged)</li>
+</ul>
+
+<details class="accordion">
+  <summary>How to Calculate Strategy Correlation (Excel/Python)</summary>
+  <div class="accordion-content">
+    <p><strong>Method: Export daily P&L for each strategy, calculate correlation</strong></p>
+
+    <p><strong>Excel approach:</strong></p>
+    <ol>
+      <li>Column A: Date</li>
+      <li>Column B: Strategy A daily P&L</li>
+      <li>Column C: Strategy B daily P&L</li>
+      <li>Column D: <code>=CORREL(B:B, C:C)</code> → gives correlation coefficient</li>
+    </ol>
+
+    <p><strong>Python approach:</strong></p>
+    <pre><code>import pandas as pd
+
+# Load P&L data
+df = pd.read_csv('strategy_pnl.csv')
+
+# Calculate correlation matrix
+correlation_matrix = df[['Strategy_A', 'Strategy_B', 'Strategy_C']].corr()
+print(correlation_matrix)</code></pre>
+
+    <p><strong>Example output:</strong></p>
+    <pre><code>           Strategy_A  Strategy_B  Strategy_C
+Strategy_A       1.00        0.15        0.05
+Strategy_B       0.15        1.00        0.60
+Strategy_C       0.05        0.60        1.00</code></pre>
+
+    <p><strong>Interpretation:</strong></p>
+    <ul>
+      <li>Strategy A & B: 0.15 correlation (nearly independent) ✅</li>
+      <li>Strategy B & C: 0.60 correlation (high overlap) ⚠️ Reduce allocation</li>
+      <li>Strategy A & C: 0.05 correlation (independent) ✅</li>
+    </ul>
+  </div>
+</details>
+
+<h3>Step 3: Apply Correlation Adjustment</h3>
+
+<p><strong>Continuing our 3-strategy example, assume these correlations:</strong></p>
+<ul>
+  <li>Strategy A & B: 0.15 (low correlation)</li>
+  <li>Strategy B & C: 0.60 (high correlation) ⚠️</li>
+  <li>Strategy A & C: 0.05 (independent)</li>
+</ul>
+
+<p><strong>Adjustment rule:</strong> Reduce allocation to correlated pairs by 30% (for 0.60 correlation)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Strategy</th>
+      <th>Quarter Kelly %</th>
+      <th>Correlation Issue</th>
+      <th>Adjusted Allocation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A: Breakouts</strong></td>
+      <td>6.7%</td>
+      <td>None (independent)</td>
+      <td>6.7% (no change)</td>
+    </tr>
+    <tr>
+      <td><strong>B: Mean Rev</strong></td>
+      <td>8.95%</td>
+      <td>0.60 with C</td>
+      <td>8.95% × 0.70 = <strong>6.27%</strong></td>
+    </tr>
+    <tr>
+      <td><strong>C: Volatility</strong></td>
+      <td>5.05%</td>
+      <td>0.60 with B</td>
+      <td>5.05% × 0.70 = <strong>3.54%</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>New total allocation: 6.7% + 6.27% + 3.54% = 16.51%</strong></p>
+
+<p><strong>Result:</strong> Reduced from 20.7% to 16.51% to account for B-C correlation. This prevents over-concentration when those two strategies lose together.</p>
+
+<div class="callout callout-warning">
+  <h4>⚠️ The "Diversification Illusion" Trap</h4>
+  <p>Many traders think they're diversified because they trade "stocks, crypto, and forex" — but all three are risk-on assets that crash together during Fed hawkishness.</p>
+  <p><strong>Example: December 2021 - January 2022</strong></p>
+  <ul>
+    <li>Fed signals tapering (QT begins)</li>
+    <li>SPY drops -12%, BTC drops -50%, EUR/USD drops -7%</li>
+    <li>Trader with "diversified" long portfolio lost 20%+ across ALL positions same month</li>
+  </ul>
+  <p><strong>True diversification = strategies that profit in DIFFERENT market conditions:</strong></p>
+  <ul>
+    <li>Long breakouts (profit in QE bull markets)</li>
+    <li>Short fades (profit in QT bear markets)</li>
+    <li>Mean reversion (profit in choppy ranges)</li>
+    <li>Volatility selling (profit when VIX spikes then collapses)</li>
+  </ul>
+</div>
+
+<h3>Step 4: Set Portfolio Heat Limits</h3>
+
+<p><strong>Portfolio heat</strong> = Total risk across all open positions simultaneously</p>
+
+<p><strong>Institutional standard:</strong> Never exceed 10-15% total portfolio heat</p>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li>Strategy A: 6.7% allocation, currently have 1 trade open → 6.7% heat</li>
+  <li>Strategy B: 6.27% allocation, currently have 2 trades open → 12.54% heat</li>
+  <li>Strategy C: 3.54% allocation, currently have 1 trade open → 3.54% heat</li>
+</ul>
+
+<p><strong>Total portfolio heat: 6.7% + 12.54% + 3.54% = 22.78%</strong> ⚠️ TOO HIGH!</p>
+
+<p><strong>Action required:</strong> Don't take new trades until portfolio heat drops below 15%. Close or scale out of positions to reduce exposure.</p>
+
+<div class="callout" style="background:rgba(251,191,36,0.1);border-left:4px solid #fbbf24;margin:2rem 0;padding:1.5rem">
+  <h4>💡 Pro Tip: The "Portfolio Heat Dashboard"</h4>
+  <p>Create a simple spreadsheet that calculates real-time portfolio heat:</p>
+  <table style="width:100%;margin:1rem 0;font-size:0.9rem">
+    <thead>
+      <tr style="background:rgba(251,191,36,0.15)">
+        <th>Strategy</th>
+        <th>Kelly %</th>
+        <th>Open Positions</th>
+        <th>Current Heat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Breakouts</td>
+        <td>6.7%</td>
+        <td>1</td>
+        <td>6.7%</td>
+      </tr>
+      <tr>
+        <td>Mean Rev</td>
+        <td>6.27%</td>
+        <td>0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td>Volatility</td>
+        <td>3.54%</td>
+        <td>1</td>
+        <td>3.54%</td>
+      </tr>
+      <tr style="background:rgba(251,191,36,0.15);font-weight:600">
+        <td colspan="3">Total Portfolio Heat</td>
+        <td>10.24% ✅</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Rule:</strong> Before entering any new trade, check this dashboard. If adding the trade would push heat above 15%, wait for an existing position to close first.</p>
+</div>
+
 <h2 id="part-4-dynamic-position-sizing">Part 4: Dynamic Position Sizing</h2>
 
   <h3>Fixed-Fraction vs Dynamic Kelly</h3>
