@@ -197,6 +197,27 @@
   </div>
 </div>
 
+<div class="quiz-question" style="margin-top:2rem">
+  <p><strong>Case Study Quiz: Derek lost $31,400 (-14.3%) in 3 months trading ARKK/QQQ pairs. He was confident because they showed 0.89 correlation—they moved together historically. Trade #2 destroyed him: he shorted ARKK thinking it was "overextended vs. QQQ," but ARKK exploded +13.5% while QQQ only +1.1%, causing a margin call and -$15,200 loss. He also missed a $26,831 profit opportunity when the spread reversed but he held too long. What was Derek's fatal mistake?</strong></p>
+  <div class="quiz-options">
+    <div class="quiz-option" data-correct="false">
+      <strong>A)</strong> He used too much leverage on the pairs trade, causing margin calls when spreads widened temporarily
+    </div>
+    <div class="quiz-option" data-correct="false">
+      <strong>B)</strong> He held positions too short (under 10 days), not giving mean reversion enough time to occur
+    </div>
+    <div class="quiz-option" data-correct="true">
+      <strong>C)</strong> He NEVER tested for cointegration—confused correlation (0.89 = past similarity) with cointegration (mean-reverting spread). Never ran ADF test (p-value), never calculated half-life. The spread was NOT stationary, so reversion never came
+    </div>
+    <div class="quiz-option" data-correct="false">
+      <strong>D)</strong> He entered at wrong z-scores (z=1.0 instead of z=2.0), so trades lacked statistical edge
+    </div>
+  </div>
+  <div class="quiz-explanation">
+    <p><strong>Correct: C.</strong> Derek's disaster came from confusing correlation with cointegration—he saw ARKK/QQQ had 0.89 correlation (they moved together historically) and assumed they'd always revert when diverging. But correlation measures the PAST, cointegration predicts the FUTURE. He never ran an ADF test to verify the spread was stationary (mean-reverting). Trade #1: ARKK dropped, he bought thinking "cheap vs. QQQ," spread widened further, lost -$6,600. Trade #2: Shorted ARKK thinking "overextended," but ARKK exploded +13.5% on genomics hype while QQQ only +1.1%, margin call forced close, lost -$15,200. Trade #3: Initially up $26,831, but he held 25+ days with no statistical basis for how long reversion takes (no half-life calculation), ARKK short squeezed +10.5% in 2 days, final exit -$8,400. Structural issue: ARKK pivoted to biotech, breaking historical link with QQQ—correlation persisted but cointegration DIED. His recovery: learned proper stat arb—(1) ADF test EVERY pair (p-value <0.05 required), (2) Calculate half-life (<20 days), (3) Z-score entry (|Z| >2.0), (4) Decointegration stop (if ADF p-value rises >0.10, exit immediately). Result: 69.6% win rate, +$23,094 profit in 9 months. Lesson: High correlation doesn't guarantee mean reversion. Test for cointegration first.</p>
+  </div>
+</div>
+
       <div class="section-break"><span>Part 2: Testing for Cointegration—The Augmented Dickey-Fuller Test</span></div>
 
 <h2 id="the-augmented-dickey-fuller-test">The Augmented Dickey-Fuller Test</h2>
