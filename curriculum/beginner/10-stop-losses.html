@@ -280,6 +280,93 @@
     <p><strong>Kevin's lesson:</strong> "I lost $72K placing stops based on my ACCOUNT SIZE instead of MARKET CONDITIONS. Fixed 2% stops are arbitrary—market doesn't care about your account. When VIX spiked and ATR averaged 3-5%, my 2% stops were 0.3-0.5× ATR (way too tight). I got stopped on NOISE 11 times, watched setups hit target without me (-$13.6K). Then I overcorrected to 5% stops, ignoring structure. Losses ran $15K past thesis invalidation. Then I tried mental stops—emotions won 8/8 trades, cost me $11.6K extra. The fix: Stop = Structure ± (2× ATR). Structure = WHERE thesis dies (swept low/high). ATR = buffer for volatility. For longs: Stop = swept low - (2× ATR). Example: Swept low @ $50, ATR $1.50 → stop @ $47 (below structure with $3 buffer). Adjust position SIZE to control dollar risk, NEVER adjust stop. This formula adapts to volatility (ATR) while respecting structure. Noise stop-outs dropped from 11 to 3. Win rate jumped from disaster to 64%. Mental stops fail 100% of time. Percentage stops ignore reality. Market sets the stop distance (ATR + structure), not your account balance."</p>
   </div>
 
+  <div class="quiz-question" style="margin-top:2rem">
+    <p><strong>Case Study Quiz: Kevin lost $72,000 (-63%) in 8 months trading altcoins/small-caps. He went through 3 phases: (1) Fixed 2% stops when volatility spiked: 11 of 14 setups stopped on NOISE, then hit target without him (-$13.6K). (2) Overcorrected to 5% stops: ignored structure, losses ran $15K past thesis invalidation (-$33K). (3) Mental stops: emotions won 8/8 trades, BTC "mental stop" at $28,500 actually exited at $27,100 for +$3,600 extra damage (-$25K total phase). Account: $115K → $43K. What was Kevin's fatal mistake across all 3 phases?</strong></p>
+
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false">
+        A) He traded too volatile assets (altcoins/small-caps—should stick to large-caps with lower volatility)
+      </div>
+      <div class="quiz-option" data-correct="false">
+        B) He used the wrong percentage for fixed stops (should use 1% risk per trade, not 2% or 5%)
+      </div>
+      <div class="quiz-option" data-correct="true">
+        C) He placed stops based on ACCOUNT SIZE (2%, 5%, or mental feelings) instead of MARKET CONDITIONS (volatility/ATR + structure where thesis dies)
+      </div>
+      <div class="quiz-option" data-correct="false">
+        D) He didn't use trailing stops (should trail stops as price moves in his favor)
+      </div>
+    </div>
+
+    <div class="quiz-explanation">
+      <strong>Correct: C.</strong> Kevin's 3-phase disaster demonstrates the most dangerous stop-loss mistake: placing stops based on your ACCOUNT (percentage rules or emotions) instead of what the MARKET demands (volatility + structure).
+
+      <p><strong>The 3-phase catastrophe ($115K → $43K in 8 months):</strong></p>
+
+      <p><strong>Phase 1: Fixed 2% stops (Apr-May 2023) | -$13.6K loss</strong></p>
+      <ul style="margin:.75rem 0 0 1.5rem">
+        <li><strong>Market conditions:</strong> VIX jumped from 15 to 24, ATR on his altcoins averaged 3-5% daily volatility</li>
+        <li><strong>Kevin's stops:</strong> Fixed 2% account risk = 0.3-0.5× ATR (way too tight for the volatility!)</li>
+        <li><strong>Result:</strong> 11 of 14 trades (79%) stopped on NOISE, 9 of 11 (82%) then hit target WITHOUT him</li>
+        <li><strong>The brutal pattern:</strong> Market volatility = 3-5% daily swings. Kevin's stops = 2% from entry. His stops were INSIDE normal market noise. He got stopped, then watched price reverse and hit his original target while he sat on sidelines with -$2,100 avg loss.</li>
+        <li><strong>Account:</strong> $115K → $101K (-12% in 2 months)</li>
+      </ul>
+
+      <p><strong>Phase 2: Fixed 5% stops (Jun-Jul 2023) | -$33K loss</strong></p>
+      <ul style="margin:.75rem 0 0 1.5rem">
+        <li><strong>Kevin's thinking:</strong> "2% is too tight. I need MORE ROOM. 5% stops!"</li>
+        <li><strong>The new problem:</strong> 5% stops ignored STRUCTURE (key levels where thesis dies)</li>
+        <li><strong>Example disaster:</strong> Altcoin broke structure at $2.30 (thesis invalidated = should exit!), but Kevin's 5% stop was at $2.375. Price dropped to $2.10 before hitting his stop. Extra damage: $3,150 on that trade. This pattern repeated 5× = $15K preventable losses.</li>
+        <li><strong>Why it failed:</strong> Wide stops gave price "room" to run PAST the point where his trading thesis was invalidated. He held losing trades that were already proven wrong, letting losses grow unnecessarily large.</li>
+        <li><strong>Account:</strong> $101K → $68K (-33% in 2 months)</li>
+      </ul>
+
+      <p><strong>Phase 3: Mental stops (Jul-Aug 2023) | -$25K loss</strong></p>
+      <ul style="margin:.75rem 0 0 1.5rem">
+        <li><strong>Kevin's thinking:</strong> "Fixed stops don't work. I'll exit when it 'feels wrong.'"</li>
+        <li><strong>Reality check:</strong> Emotions won 8/8 trades (100% failure rate)</li>
+        <li><strong>BTC disaster:</strong> Planned mental stop at $28,500 (would be -$2,800 loss). Price dropped. Kevin froze. "Maybe it'll bounce?" Price kept dropping. Fear paralysis. Finally panic-sold at $27,100. Actual loss: -$6,400. Extra damage from mental stop failure: +$3,600 on one trade.</li>
+        <li><strong>Total mental stop extra damage:</strong> -$11,600 from holding too long because emotions override logic</li>
+        <li><strong>Account:</strong> $68K → $43K (-37% in 2 months, -63% total drawdown from start)</li>
+      </ul>
+
+      <p><strong>Kevin's critical mistake across ALL phases:</strong> He placed stops based on HIS ACCOUNT (2% account risk, 5% account risk, or mental feelings about loss tolerance), not what the MARKET demanded. The market doesn't care about your account size. It has its own volatility (ATR) and structure levels (where thesis breaks). Kevin's stops were either:</p>
+
+      <ul style="margin:.75rem 0 0 1.5rem">
+        <li><strong>Too tight for volatility</strong> (2% stops when ATR = 3-5% = stopped on noise)</li>
+        <li><strong>Too wide for structure</strong> (5% stops past thesis invalidation = let losses run)</li>
+        <li><strong>Nonexistent</strong> (mental stops = emotions won 100% of time)</li>
+      </ul>
+
+      <p><strong>The recovery formula (Oct 2023-Jun 2024) | +$39K profit:</strong> Kevin discovered: <strong>Stop = Structure ± (2× ATR)</strong></p>
+
+      <ul style="margin:.75rem 0 0 1.5rem">
+        <li><strong>Structure:</strong> WHERE your thesis dies (swept low for longs, swept high for shorts)</li>
+        <li><strong>ATR:</strong> Volatility buffer so normal market noise doesn't stop you out</li>
+        <li><strong>For longs:</strong> Stop = swept low - (2× ATR). Example: Swept low at $50, ATR $1.50 → stop at $47 (below structure with $3 buffer)</li>
+        <li><strong>For shorts:</strong> Stop = swept high + (2× ATR). Example: Swept high at $100, ATR $2 → stop at $104 (above structure with $4 buffer)</li>
+        <li><strong>Position sizing:</strong> Adjust SIZE to control dollar risk, NEVER adjust stop distance to fit account</li>
+      </ul>
+
+      <p><strong>Results with ATR + Structure stops:</strong></p>
+      <ul style="margin:.75rem 0 0 1.5rem">
+        <li><strong>Noise stop-outs:</strong> Dropped from 11 (Phase 1) to 3 (recovery) = 73% reduction</li>
+        <li><strong>Win rate:</strong> Jumped from 21% (Phase 1) to 64% (recovery)</li>
+        <li><strong>Stop-out frequency:</strong> 36% (only when thesis actually breaks, not on noise or past invalidation)</li>
+        <li><strong>Account recovery:</strong> $43K → $82K (+91% in 8 months)</li>
+        <li><strong>Kevin's realization:</strong> "Market sets the stop distance (ATR + structure), not your account balance."</li>
+      </ul>
+
+      <p><strong>Why A is wrong:</strong> Volatility wasn't the problem—it was placing stops that IGNORED volatility. Large-caps can also have high ATR during earnings, news, or market crashes. The solution isn't to avoid volatile assets—it's to place stops that ADAPT to whatever volatility exists (using ATR). Kevin's recovery came from same altcoins/small-caps, just with ATR-adjusted stops.</p>
+
+      <p><strong>Why B is wrong:</strong> Using 1% instead of 2% or 5% doesn't fix the core problem. ANY fixed percentage ignores market conditions. If ATR is 3-5%, a 1% stop is even MORE likely to get stopped on noise than Kevin's 2% stops. Fixed percentages are arbitrary numbers from your account—the market doesn't know or care about them. Kevin proved this: 2% failed (too tight), 5% failed (too wide), both because they ignored market reality.</p>
+
+      <p><strong>Why D is wrong:</strong> Trailing stops don't solve the initial stop placement problem. If your entry stop is placed wrong (too tight = noise stop-out, or too wide = past thesis invalidation), trailing it just carries that mistake forward. Kevin needed to fix his ENTRY stop placement first (Structure + ATR), not add trailing logic. Trailing stops are useful for managing winners, but they don't fix the fundamental error of ignoring market conditions when setting initial stops.</p>
+
+      <p><strong>The brutal lesson:</strong> Kevin lost $72K by placing stops based on his comfort level (2%, 5%, mental) instead of market reality. The market has VOLATILITY (ATR = how much price normally swings) and STRUCTURE (key levels where thesis breaks). Your stops must respect both: Place stop at structure level (where you're proven wrong) ± 2× ATR (buffer for normal volatility). Then adjust POSITION SIZE to control dollar risk—NEVER move your stop closer/wider to fit your account risk tolerance. Kevin's advice: "Market sets the stop distance (ATR + structure), not your account balance. Percentage stops ignore reality. Mental stops fail 100% of time." When he switched from account-based stops to market-based stops, his noise stop-outs dropped 73%, win rate jumped from 21% to 64%, and he recovered from -63% drawdown to +91% profit in same 8-month period. Stop placement is not about your feelings or account percentage—it's about where the MARKET tells you you're wrong.</p>
+    </div>
+  </div>
+
         <div class="story-summary">
 
 

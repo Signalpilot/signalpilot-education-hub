@@ -57,6 +57,12 @@
   function showFeedback(questionEl, optionEl, questionId) {
     const isCorrect = optionEl.dataset.correct === 'true';
     const feedbackContainer = questionEl.querySelector('.quiz-feedback');
+    const explanationContainer = questionEl.querySelector('.quiz-explanation');
+
+    // Show quiz-explanation if it exists
+    if (explanationContainer) {
+      explanationContainer.classList.add('show');
+    }
 
     if (!feedbackContainer) return;
 
