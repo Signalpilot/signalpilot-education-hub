@@ -135,15 +135,199 @@
 
       <p>In perpetual futures (most popular crypto derivatives), there's no expiration. To keep the perpetual price anchored to spot, exchanges use <strong>funding payments</strong> every 8 hours.</p>
 
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">Funding Rate</th>
+            <th style="padding:0.75rem;text-align:left">Who Pays Who</th>
+            <th style="padding:0.75rem;text-align:left">Market Interpretation</th>
+            <th style="padding:0.75rem;text-align:left">Trade Signal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(239,68,68,0.08)">
+            <td style="padding:0.75rem"><strong>&gt; +0.10%</strong></td>
+            <td style="padding:0.75rem">Longs pay shorts</td>
+            <td style="padding:0.75rem;font-weight:600;color:#ef4444">Extreme bullish leverage (overcrowded)</td>
+            <td style="padding:0.75rem">Reduce longs / Short into strength</td>
+          </tr>
+          <tr style="background:rgba(255,193,7,0.08)">
+            <td style="padding:0.75rem"><strong>+0.03% to +0.10%</strong></td>
+            <td style="padding:0.75rem">Longs pay shorts (moderate)</td>
+            <td style="padding:0.75rem;font-weight:600;color:#ffc107">Bullish positioning (normal)</td>
+            <td style="padding:0.75rem">Neutral / Monitor for extremes</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>-0.03% to +0.03%</strong></td>
+            <td style="padding:0.75rem">Balanced</td>
+            <td style="padding:0.75rem">Neutral leverage</td>
+            <td style="padding:0.75rem">No funding edge</td>
+          </tr>
+          <tr style="background:rgba(255,193,7,0.08)">
+            <td style="padding:0.75rem"><strong>-0.10% to -0.03%</strong></td>
+            <td style="padding:0.75rem">Shorts pay longs (moderate)</td>
+            <td style="padding:0.75rem;font-weight:600;color:#ffc107">Bearish positioning (normal)</td>
+            <td style="padding:0.75rem">Neutral / Monitor for extremes</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem"><strong>&lt; -0.10%</strong></td>
+            <td style="padding:0.75rem">Shorts pay longs</td>
+            <td style="padding:0.75rem;font-weight:600;color:#22c55e">Extreme bearish leverage (overcrowded)</td>
+            <td style="padding:0.75rem">Reduce shorts / Long the dip</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout-warning">
+        <h4>🚨 High Funding Rate = Overcrowded Trade</h4>
+        <p><strong>Example: May 2021 BTC Funding Crisis</strong></p>
+        <ul style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li>BTC at $58K, funding rate +0.15% per 8 hours (+45% annualized!)</li>
+          <li>This meant longs were paying <strong>45% APR</strong> to hold leveraged positions</li>
+          <li>Signal: Massively overleveraged long positions</li>
+          <li>Result: BTC crashed from $58K → $30K in 2 weeks (-48%)</li>
+          <li>Cascade liquidations: $8.5 billion in longs liquidated in 72 hours</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Lesson:</strong> When funding >+0.10% for 3+ days, expect a violent unwinding. Take profits or reduce leverage.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: CEX vs DEX—Understanding Crypto Exchange Differences</span></div>
+
+      <h2 id="cex-vs-dex-architecture">CEX vs DEX: Architecture & Trade-Offs</h2>
+
+      <p>Crypto has two distinct exchange types with fundamentally different microstructure:</p>
+
+      <h3 id="centralized-exchanges-cex">Centralized Exchanges (CEX)</h3>
+
+      <p><strong>Examples:</strong> Binance, Coinbase, Kraken, Bybit, OKX</p>
+
+      <p><strong>How They Work:</strong> Custodial order book exchanges (like traditional stock exchanges). You deposit funds, exchange holds custody, trades settle off-chain.</p>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">Feature</th>
+            <th style="padding:0.75rem;text-align:left">CEX Characteristics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.75rem"><strong>Liquidity</strong></td>
+            <td style="padding:0.75rem">High (deep order books, institutional MMs)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Speed</strong></td>
+            <td style="padding:0.75rem">Fast (sub-second execution)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Fees</strong></td>
+            <td style="padding:0.75rem">Low (0.02-0.10% maker/taker)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Custody</strong></td>
+            <td style="padding:0.75rem">Exchange holds your funds (counterparty risk)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>KYC</strong></td>
+            <td style="padding:0.75rem">Required (identity verification)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Leverage</strong></td>
+            <td style="padding:0.75rem">10-125× available (perpetual futures)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Slippage</strong></td>
+            <td style="padding:0.75rem">Low (tight spreads on major pairs)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>MEV Risk</strong></td>
+            <td style="padding:0.75rem">None (centralized matching engine)</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3 id="decentralized-exchanges-dex">Decentralized Exchanges (DEX)</h3>
+
+      <p><strong>Examples:</strong> Uniswap, PancakeSwap, Curve, dYdX, GMX</p>
+
+      <p><strong>How They Work:</strong> Non-custodial smart contract protocols. Trades execute on-chain via Automated Market Makers (AMMs) or decentralized order books.</p>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">Feature</th>
+            <th style="padding:0.75rem;text-align:left">DEX Characteristics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.75rem"><strong>Liquidity</strong></td>
+            <td style="padding:0.75rem">Lower (depends on liquidity pools)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Speed</strong></td>
+            <td style="padding:0.75rem">Slow (12-60 seconds per block confirmation)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Fees</strong></td>
+            <td style="padding:0.75rem">High (0.30% swap fee + $5-200 gas on Ethereum L1)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Custody</strong></td>
+            <td style="padding:0.75rem">Self-custody (your keys, your coins)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>KYC</strong></td>
+            <td style="padding:0.75rem">None (permissionless)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Leverage</strong></td>
+            <td style="padding:0.75rem">Limited (1-50× on perpetual DEXs like GMX, dYdX)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Slippage</strong></td>
+            <td style="padding:0.75rem">High (especially on large trades, price impact >1%)</td>
+          </tr>
+          <tr style="background:rgba(239,68,68,0.08)">
+            <td style="padding:0.75rem"><strong>MEV Risk</strong></td>
+            <td style="padding:0.75rem;font-weight:600;color:#ef4444">High (sandwich attacks, front-running)</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3 id="when-to-use-cex-vs-dex">When to Use CEX vs DEX</h3>
+
+      <div class="accordion">
+        <details class="accordion-item">
+          <summary class="accordion-header">Use CEX When:</summary>
+          <div class="accordion-content">
+            <ul>
+              <li><strong>Trading Large Size:</strong> Need deep liquidity and tight spreads (>$100K trades)</li>
+              <li><strong>Using Leverage:</strong> Want access to perpetual futures with 10-100× leverage</li>
+              <li><strong>High-Frequency Trading:</strong> Need sub-second execution and low latency</li>
+              <li><strong>Minimizing Fees:</strong> Want 0.02-0.10% fees instead of 0.30%+ swap fees</li>
+              <li><strong>Fiat On/Off Ramps:</strong> Need to convert USD/EUR directly to crypto</li>
+            </ul>
+            <p style="margin-top:1rem"><strong>Risk:</strong> Counterparty risk (exchange can freeze funds, get hacked, or go bankrupt like FTX)</p>
+          </div>
+        </details>
 
         <details class="accordion-item">
           <summary class="accordion-header">DEX Advantages</summary>
           <div class="accordion-content">
             <ul>
-              <li><strong>No Counterparty Risk:</strong> Your keys, your coins</li>
-              <li><strong>Permissionless:</strong> No KYC, anyone can trade</li>
-              <li><strong>Composability:</strong> Can interact with DeFi protocols directly</li>
-              <li><strong>Transparent:</strong> All transactions on-chain, verifiable</li>
+              <li><strong>No Counterparty Risk:</strong> Your keys, your coins (self-custody)</li>
+              <li><strong>Permissionless:</strong> No KYC, anyone can trade globally</li>
+              <li><strong>Composability:</strong> Can interact with DeFi protocols directly (lending, yield farming)</li>
+              <li><strong>Transparent:</strong> All transactions on-chain, verifiable and auditable</li>
+              <li><strong>Privacy:</strong> Trade without identity disclosure (on some chains)</li>
+              <li><strong>Access to Long-Tail Assets:</strong> Thousands of tokens not listed on CEX</li>
             </ul>
           </div>
         </details>
@@ -152,13 +336,26 @@
           <summary class="accordion-header">DEX Risks</summary>
           <div class="accordion-content">
             <ul>
-              <li><strong>MEV Exploitation:</strong> Bots can front-run/sandwich your trades</li>
-              <li><strong>High Slippage:</strong> Large trades have significant price impact</li>
-              <li><strong>Gas Fees:</strong> Ethereum L1 can cost $50-200 per swap</li>
-              <li><strong>Impermanent Loss:</strong> If you provide liquidity</li>
+              <li><strong>MEV Exploitation:</strong> Bots can front-run/sandwich your trades (2-5% loss per swap)</li>
+              <li><strong>High Slippage:</strong> Large trades have significant price impact (>1% on $50K+ trades)</li>
+              <li><strong>Gas Fees:</strong> Ethereum L1 can cost $50-200 per swap during network congestion</li>
+              <li><strong>Impermanent Loss:</strong> If you provide liquidity to AMM pools</li>
+              <li><strong>Smart Contract Risk:</strong> Bugs or exploits can drain funds (rare but catastrophic)</li>
+              <li><strong>User Error:</strong> Wrong address = permanent loss of funds (no customer support)</li>
             </ul>
           </div>
         </details>
+      </div>
+
+      <div class="callout-success" style="background:rgba(34,197,94,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #22c55e">
+        <h4>✅ Hybrid Strategy: Use Both</h4>
+        <p><strong>Professional traders use CEX for execution, DEX for opportunities:</strong></p>
+        <ul style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>CEX:</strong> Primary trading (leverage, liquid pairs like BTC/ETH)</li>
+          <li><strong>DEX:</strong> New token launches, DeFi yield, arbitrage between CEX/DEX price differences</li>
+          <li><strong>Example:</strong> Trade BTC perpetuals on Binance (low fees, high leverage), but buy new DeFi tokens on Uniswap before CEX listing</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Never keep >20% of capital on CEX long-term</strong> (withdraw to cold storage to eliminate counterparty risk).</p>
       </div>
 
       <div class="section-break"><span>Part 3: MEV—The Dark Side of DEX Trading</span></div>

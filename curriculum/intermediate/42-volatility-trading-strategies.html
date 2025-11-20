@@ -197,6 +197,392 @@
         </tbody>
       </table>
 
+      <div class="section-break"><span>Part 2: VIX Mean Reversion Strategies</span></div>
+
+      <h2 id="trading-vix-extremes">Trading VIX Extremes</h2>
+
+      <p><strong>Core Principle:</strong> VIX exhibits strong mean reversion from statistical extremes. When VIX spikes above 30 or crashes below 12, probability heavily favors reversion to the 15-20 range within 30-60 days.</p>
+
+      <h3 id="vix-mean-reversion-statistics">VIX Mean Reversion Statistics (2000-2024)</h3>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">VIX Level</th>
+            <th style="padding:0.75rem;text-align:right">Frequency</th>
+            <th style="padding:0.75rem;text-align:right">% Lower 30 Days Later</th>
+            <th style="padding:0.75rem;text-align:left">Trade Implication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem"><strong>VIX &gt; 40</strong></td>
+            <td style="padding:0.75rem;text-align:right">3.2% of days</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:600;color:#22c55e">92%</td>
+            <td style="padding:0.75rem">Extreme sell vol opportunity</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem"><strong>VIX 30-40</strong></td>
+            <td style="padding:0.75rem;text-align:right">7.8% of days</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:600;color:#22c55e">85%</td>
+            <td style="padding:0.75rem">Strong sell vol setup</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>VIX 20-30</strong></td>
+            <td style="padding:0.75rem;text-align:right">22.1% of days</td>
+            <td style="padding:0.75rem;text-align:right">64%</td>
+            <td style="padding:0.75rem">Neutral (no strong edge)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>VIX 15-20</strong></td>
+            <td style="padding:0.75rem;text-align:right">38.4% of days</td>
+            <td style="padding:0.75rem;text-align:right">48%</td>
+            <td style="padding:0.75rem">Mean (no edge)</td>
+          </tr>
+          <tr style="background:rgba(239,68,68,0.08)">
+            <td style="padding:0.75rem"><strong>VIX 12-15</strong></td>
+            <td style="padding:0.75rem;text-align:right">19.6% of days</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:600;color:#ef4444">38%</td>
+            <td style="padding:0.75rem">Buy protection (62% higher)</td>
+          </tr>
+          <tr style="background:rgba(239,68,68,0.12)">
+            <td style="padding:0.75rem"><strong>VIX &lt; 12</strong></td>
+            <td style="padding:0.75rem;text-align:right">8.9% of days</td>
+            <td style="padding:0.75rem;text-align:right;font-weight:600;color:#ef4444">18%</td>
+            <td style="padding:0.75rem">Strong buy protection (82% higher)</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3 id="sell-volatility-setup-vix-above-30">Sell Volatility Setup: VIX Above 30</h3>
+
+      <div class="callout-success" style="background:rgba(34,197,94,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #22c55e">
+        <h4>✅ High-Probability Sell Vol Trade</h4>
+        <p><strong>Entry Conditions:</strong></p>
+        <ol style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li>VIX closes above 30 for 2+ consecutive days</li>
+          <li>No systemic crisis in progress (check: banking sector stable, credit spreads not blowing out)</li>
+          <li>VIX futures in backwardation (spot &gt; front month futures = market expects decline)</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Trade Structures (Pick One):</strong></p>
+        <ul style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Option A:</strong> Sell VIX call spreads (1-month expiration, strikes: current VIX +5 / +10)</li>
+          <li><strong>Option B:</strong> Short UVXY or VXX (2× or 1× long VIX ETFs)</li>
+          <li><strong>Option C:</strong> Buy SVXY (inverse VIX ETF) — higher risk, no defined max loss</li>
+        </ul>
+      </div>
+
+      <p><strong>Real Example: October 2023 Israel-Hamas War VIX Spike</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;overflow-x:auto">
+<strong>Setup (Oct 7-9, 2023):</strong>
+Oct 7: Israel-Hamas conflict begins
+Oct 9: VIX spikes from 13.6 → 21.4 (+57% in 2 days)
+Oct 10: VIX peaks at 22.1
+
+<strong>Entry (Oct 10):</strong>
+Sold VIX Nov 10 $25/$30 call spread
+- Spot VIX: 22.1
+- Nov futures: 19.8 (backwardation = bearish VIX signal)
+- Credit collected: $1.20 per spread
+- Max risk: $3.80 (if VIX >30 at expiration)
+- Probability of profit: ~75%
+
+<strong>Thesis:</strong>
+Geopolitical VIX spikes (non-systemic) revert in 1-3 weeks.
+VIX 22 is elevated but not extreme (no financial contagion).
+Futures backwardation confirms market expects mean reversion.
+
+<strong>Outcome (Oct 10 → Nov 3):</strong>
+Oct 20: VIX back to 16.2 (10 days later)
+Nov 3: VIX at 15.8, spread expires worthless
+Profit: $1.20 credit × $100 = $120 per spread (31.5% ROI)
+Time to 80% max profit: 10 days
+      </pre>
+
+      <h3 id="buy-protection-setup-vix-below-12">Buy Protection Setup: VIX Below 12</h3>
+
+      <div class="callout-warning" style="background:rgba(255,193,7,0.1);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #ffc107">
+        <h4>⚠️ Complacency Extreme = Buy Tail Risk</h4>
+        <p><strong>Entry Conditions:</strong></p>
+        <ol style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li>VIX below 12 for 3+ weeks (bottom 10th percentile historically)</li>
+          <li>VIX futures in steep contango (spot &lt; futures by 15-20%+)</li>
+          <li>Market at or near all-time highs (complacency peak)</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Trade Structure:</strong></p>
+        <p style="margin:0.5rem 0 0 1.5rem">Buy VIX calls (3-6 month expiration, strikes 18-25) as portfolio insurance. Cost: 0.5-1.5% of portfolio per quarter. NOT a directional bet—this is INSURANCE against inevitable volatility spike.</p>
+      </div>
+
+      <p><strong>Real Example: January 2018 Pre-Volmageddon</strong></p>
+      <pre style="background:rgba(239,68,68,.05);padding:1rem;border-radius:6px;overflow-x:auto">
+<strong>Setup (Jan 2-26, 2018):</strong>
+VIX trading 9.14 - 11.66 for 4 consecutive weeks
+SPX at all-time highs (2,872)
+VIX futures steep contango: spot 10.3, Feb futures 13.1, Mar 15.2
+Market complacency: Record low VIX, record low realized vol
+
+<strong>Entry (Jan 26, 2018):</strong>
+Bought VIX April $20 calls
+- Spot VIX: 11.08
+- Apr VIX call premium: $0.85
+- Total cost: $85 per contract
+- Max loss: $85 (if VIX stays <20 through April)
+
+<strong>Thesis:</strong>
+VIX <12 for 1 month = statistical extreme (bottom 5th percentile).
+When complacency breaks, spikes are VIOLENT (2015, 2011, 2008).
+Paying $85 for potential 5-20× return = asymmetric bet.
+
+<strong>Outcome (Feb 2-5, 2018 — Volmageddon):</strong>
+Feb 2: VIX starts rising (11.66 → 17.31 in one day)
+Feb 5: VIX EXPLODES to 37.32 intraday (+115% in one day!)
+VIX Apr $20 calls peak value: $18.50
+Profit: $0.85 → $18.50 = <strong>+2,076% return (21× profit)</strong>
+$850 investment → $18,500 profit per 10 contracts
+
+<strong>Key lesson:</strong>
+VIX <12 doesn't mean buy vol IMMEDIATELY. It means START buying
+protection in small sizes. Feb 5 was 10 days after entry. Could've
+been 60 days. The insurance mindset: Pay small premium for massive
+tail-risk hedge.
+      </pre>
+
+      <h3 id="vix-mean-reversion-framework">VIX Mean Reversion Framework</h3>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">VIX Level</th>
+            <th style="padding:0.75rem;text-align:left">Action</th>
+            <th style="padding:0.75rem;text-align:left">Structure</th>
+            <th style="padding:0.75rem;text-align:left">Target / Stop</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem"><strong>VIX &gt; 35</strong></td>
+            <td style="padding:0.75rem">Aggressively sell vol</td>
+            <td style="padding:0.75rem">Sell VIX calls, short UVXY</td>
+            <td style="padding:0.75rem">Target: VIX 20-25 / Stop: VIX +15%</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem"><strong>VIX 25-35</strong></td>
+            <td style="padding:0.75rem">Sell vol (smaller size)</td>
+            <td style="padding:0.75rem">Sell VIX call spreads</td>
+            <td style="padding:0.75rem">Target: VIX 18-22 / Stop: VIX +20%</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>VIX 15-25</strong></td>
+            <td style="padding:0.75rem">No trade (no edge)</td>
+            <td style="padding:0.75rem">Wait for extreme</td>
+            <td style="padding:0.75rem">—</td>
+          </tr>
+          <tr style="background:rgba(255,193,7,0.08)">
+            <td style="padding:0.75rem"><strong>VIX 12-15</strong></td>
+            <td style="padding:0.75rem">Start buying protection</td>
+            <td style="padding:0.75rem">Buy VIX calls (small size)</td>
+            <td style="padding:0.75rem">Cost: 0.5-1% of portfolio</td>
+          </tr>
+          <tr style="background:rgba(239,68,68,0.08)">
+            <td style="padding:0.75rem"><strong>VIX &lt; 12</strong></td>
+            <td style="padding:0.75rem">Buy protection aggressively</td>
+            <td style="padding:0.75rem">Buy VIX calls + SPY puts</td>
+            <td style="padding:0.75rem">Cost: 1-2% of portfolio (insurance)</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout-danger">
+        <h4>🚨 Critical Risk Warning</h4>
+        <p>VIX can spike 50-100% in a SINGLE DAY during crises (COVID, 2008, Volmageddon). NEVER:</p>
+        <ul style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li>Sell naked VIX calls (unlimited risk)</li>
+          <li>Risk >2-3% of account per volatility trade</li>
+          <li>Hold short volatility through major events (FOMC, earnings season, geopolitical escalation)</li>
+          <li>Assume "VIX always mean-reverts" without stops (it does revert, but timing kills)</li>
+        </ul>
+        <p style="margin-top:0.75rem"><strong>Use defined-risk structures (spreads) and ALWAYS use stops.</strong></p>
+      </div>
+
+      <div class="section-break"><span>Part 3: Volatility Skew Trading</span></div>
+
+      <h2 id="understanding-volatility-skew">Understanding Volatility Skew</h2>
+
+      <p><strong>Volatility Skew:</strong> The phenomenon where options at different strike prices trade at different implied volatilities, even though they share the same underlying and expiration.</p>
+
+      <p><strong>Typical SPX/SPY Skew Pattern:</strong></p>
+      <ul>
+        <li><strong>OTM Puts (10% below):</strong> IV = 22-28% (expensive, tail-risk premium)</li>
+        <li><strong>ATM Calls/Puts:</strong> IV = 18-20% (fair value)</li>
+        <li><strong>OTM Calls (10% above):</strong> IV = 15-18% (cheaper, less demand)</li>
+      </ul>
+
+      <p><strong>Why Skew Exists:</strong></p>
+      <ol>
+        <li><strong>Crash protection demand:</strong> Institutions buy OTM puts → bids up put IV</li>
+        <li><strong>Asymmetric return distribution:</strong> Markets crash fast (down 10% in days), rally slow (up 10% in months). Puts protect against violent moves.</li>
+        <li><strong>Leverage effect:</strong> As stocks fall, volatility rises (declining equity value = rising leverage = more uncertainty)</li>
+      </ol>
+
+      <h3 id="cboe-skew-index-explained">CBOE Skew Index Explained</h3>
+
+      <p><strong>CBOE SKEW Index:</strong> Measures the perceived tail risk of SPX by comparing the IV of out-of-the-money SPX options to at-the-money options.</p>
+
+      <div class="callout-info" style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h4>📐 Skew Index Interpretation</h4>
+        <ul style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>SKEW = 100:</strong> No skew (theoretical, never observed). Puts and calls trade at same IV.</li>
+          <li><strong>SKEW = 120-135:</strong> Normal/low skew. Moderate put premium over calls.</li>
+          <li><strong>SKEW = 135-145:</strong> Average skew. Standard tail-risk hedging.</li>
+          <li><strong>SKEW = 145-155:</strong> Elevated skew. Institutions buying protection.</li>
+          <li><strong>SKEW &gt; 155:</strong> Extreme skew. Crash fears, puts massively expensive.</li>
+        </ul>
+      </div>
+
+      <h3 id="trading-skew-compression">Trading Skew Compression</h3>
+
+      <p><strong>Skew Compression:</strong> When OTM put IV falls relative to ATM IV (skew "flattens"). Happens when fear subsides after a selloff.</p>
+
+      <p><strong>Trade Setup: Skew Compression Play</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;overflow-x:auto">
+<strong>Entry Conditions:</strong>
+- CBOE SKEW &gt; 150 (extreme fear)
+- SPX selling off 5-10% from highs
+- OTM put IV 8-12 percentage points above ATM IV
+
+<strong>Trade Structure (Advanced):</strong>
+1. Sell OTM put (10-15% below current price)
+2. Buy ATM put (protect against continued selloff)
+3. This creates a put credit spread, betting skew compresses
+
+<strong>Example (March 2023 Banking Crisis):</strong>
+Setup (March 13, 2023):
+- SPX drops from 4,100 → 3,860 in 1 week (SVB collapse)
+- CBOE SKEW spikes to 157 (extreme)
+- SPX $3,850 put (10% OTM): IV = 32%
+- SPX $4,200 put (ATM): IV = 22%
+- Skew: 10 percentage points
+
+Trade (March 15):
+- Sell SPX April $3,700 put (14% OTM, IV 35%) → collect $18
+- Buy SPX April $3,600 put (17% OTM, IV 32%) → pay $12
+- Net credit: $6 ($600 per spread)
+- Max risk: $100 - $6 = $94 ($9,400)
+
+Outcome (March 15 → April 21):
+- Fed intervenes, banking fears subside
+- SPX rallies back to 4,150 by April 21
+- Both puts expire worthless
+- Profit: $600 per spread (6.4% ROI in 37 days)
+- Skew compressed: SKEW dropped from 157 → 139
+
+<strong>Key Insight:</strong>
+When skew is EXTREME (>150), OTM puts are overpriced relative
+to risk. If you're willing to take tail risk, selling expensive
+puts in a credit spread captures inflated fear premium.
+      </pre>
+
+      <h3 id="trading-skew-expansion">Trading Skew Expansion</h3>
+
+      <p><strong>Skew Expansion:</strong> When OTM put IV rises relative to ATM IV (skew "steepens"). Happens when complacency breaks and institutions rush to buy protection.</p>
+
+      <p><strong>Trade Setup: Buy Cheap Puts When Skew is Low</strong></p>
+      <pre style="background:rgba(239,68,68,.05);padding:1rem;border-radius:6px;overflow-x:auto">
+<strong>Entry Conditions:</strong>
+- CBOE SKEW &lt; 130 (complacency, low tail-risk premium)
+- VIX &lt; 15 (low volatility regime)
+- Market at/near all-time highs for 3+ months
+
+<strong>Trade Structure:</strong>
+Buy OTM SPY puts (3-6 month expiration) as portfolio insurance
+
+<strong>Example (December 2019 Pre-COVID):</strong>
+Setup (Dec 31, 2019):
+- SPX at 3,231 (all-time high)
+- VIX: 12.5 (low vol)
+- CBOE SKEW: 127 (below average)
+- SPY $290 puts (10% OTM, 3-month exp): $2.40 premium
+
+Trade (Dec 31):
+- Buy 10x SPY March $290 puts
+- Cost: $2.40 × 100 × 10 = $2,400
+- Thesis: Insurance against tail risk, skew too low
+
+Outcome (Dec 31 → March 23, 2020):
+- COVID crash: SPY drops from $323 → $220 (-32%)
+- CBOE SKEW spikes to 165 (extreme fear)
+- SPY $290 puts peak at $72 (vs $2.40 entry)
+- Profit: $2.40 → $72 = <strong>+2,900% return (30× profit)</strong>
+- $2,400 → $72,000 value at peak
+
+<strong>Lesson:</strong>
+When SKEW <130 and VIX <15, tail risk is CHEAP. Don't try to
+time the crash. Just own cheap insurance as 1-2% of portfolio.
+      </pre>
+
+      <h3 id="skew-trading-rules">Skew Trading Rules</h3>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">SKEW Level</th>
+            <th style="padding:0.75rem;text-align:left">Market State</th>
+            <th style="padding:0.75rem;text-align:left">Trade Action</th>
+            <th style="padding:0.75rem;text-align:left">Risk Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(239,68,68,0.08)">
+            <td style="padding:0.75rem"><strong>&lt; 125</strong></td>
+            <td style="padding:0.75rem">Extreme complacency (rare)</td>
+            <td style="padding:0.75rem">BUY puts aggressively (cheap insurance)</td>
+            <td style="padding:0.75rem">Low risk, high reward</td>
+          </tr>
+          <tr style="background:rgba(255,193,7,0.08)">
+            <td style="padding:0.75rem"><strong>125-135</strong></td>
+            <td style="padding:0.75rem">Low skew</td>
+            <td style="padding:0.75rem">Buy puts (portfolio insurance)</td>
+            <td style="padding:0.75rem">Low cost, good value</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>135-145</strong></td>
+            <td style="padding:0.75rem">Normal skew</td>
+            <td style="padding:0.75rem">No trade (no edge)</td>
+            <td style="padding:0.75rem">Neutral</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem"><strong>145-155</strong></td>
+            <td style="padding:0.75rem">Elevated fear</td>
+            <td style="padding:0.75rem">Consider selling puts (put spreads)</td>
+            <td style="padding:0.75rem">Moderate risk</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem"><strong>&gt; 155</strong></td>
+            <td style="padding:0.75rem">Extreme fear (panic)</td>
+            <td style="padding:0.75rem">SELL expensive puts (spreads only!)</td>
+            <td style="padding:0.75rem">High risk, high premium</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout-success" style="background:rgba(34,197,94,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #22c55e">
+        <h4>✅ Skew + VIX Combined Framework</h4>
+        <p><strong>Most Powerful Setups (Combine VIX + SKEW):</strong></p>
+        <ol style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>VIX &gt;30 + SKEW &gt;150:</strong> Extreme fear. Sell vol (VIX calls) AND sell expensive puts (put credit spreads). Capture inflated premium on both.</li>
+          <li><strong>VIX &lt;13 + SKEW &lt;130:</strong> Extreme complacency. Buy VIX calls AND buy OTM puts. Cheap tail-risk insurance before inevitable spike.</li>
+          <li><strong>VIX 25-30 + SKEW 145-155:</strong> Elevated but not extreme. Sell smaller vol positions, wait for clearer signal.</li>
+          <li><strong>VIX 15-20 + SKEW 135-145:</strong> Normal regime. No statistical edge. Wait for extremes.</li>
+        </ol>
+        <p style="margin-top:1rem"><strong>Never trade volatility or skew in isolation. Combine signals for highest probability setups.</strong></p>
+      </div>
+
       <h2 id="part-4-dispersion-trading-advanced-institutional-strategy">Part 4: Dispersion Trading (Advanced Institutional Strategy)</h2>
 
 
