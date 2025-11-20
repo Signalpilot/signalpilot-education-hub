@@ -183,6 +183,27 @@
   </div>
 </div>
 
+      <div class="quiz-question" style="margin-top:2rem">
+        <p><strong>Case Study Quiz: Mark was a disciplined trader (2% risk per trade, max 5 positions, stops at -8%). He held 6 positions in May 2024: SPY, QQQ, NVDA, TSLA, AAPL, MSFT with 1.735% total risk. He lost $79K (-49%) in ONE MONTH when TWO macro events hit. What was his fatal mistake?</strong></p>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">
+            A) His 2% risk per trade was too aggressive—should have used 1% or less
+          </div>
+          <div class="quiz-option" data-correct="false">
+            B) He broke his 5-position rule by holding 6 positions instead
+          </div>
+          <div class="quiz-option" data-correct="true">
+            C) He ignored correlation risk—his 6 positions were 82% correlated, creating 4.9% effective risk (3× leveraged) that hit twice on correlated macro events
+          </div>
+          <div class="quiz-option" data-correct="false">
+            D) His stops were too tight at -8%—wider stops would have prevented both stop-outs
+          </div>
+        </div>
+        <div class="quiz-explanation">
+          <strong>Correct: C.</strong> This is one of the most insidious risks in trading: correlation blindness. Mark thought he was diversified with 6 different positions, but they were all the SAME bet. The disaster: May 2024, Mark held 6 positions thinking "different stocks = diversified": SPY ($1K risk, 0.625%), QQQ ($400, 0.25%), NVDA ($450, 0.28%), TSLA ($270, 0.17%), AAPL ($320, 0.2%), MSFT ($320, 0.2%). Total nominal risk: 1.735%. He thought: "Very conservative, under 2%." WRONG. The hidden risk: Correlation matrix showed these positions were 82% correlated on average: SPY↔QQQ 0.94 (almost identical), SPY↔NVDA 0.82, SPY↔TSLA 0.76, SPY↔AAPL 0.88, SPY↔MSFT 0.91. When positions are 82% correlated, they don't act like 6 independent bets—they act like 1.8 independent positions. The correlation-adjusted risk formula: Effective Risk = Nominal Risk × √(N × Average Correlation) = 1.735% × √(6 × 0.82) = 1.735% × 2.22 = 3.85%-4.9% effective risk. Mark thought he had 1.7% total risk. His ACTUAL exposure: 4.9% (almost 3× leveraged without knowing it). The catastrophe: May 15, 2024: Hot CPI data, Fed hawkish. ALL 6 positions gapped down through stops SIMULTANEOUSLY in one morning: SPY -$1,140, QQQ -$665, NVDA -$638, TSLA -$354, AAPL -$372, MSFT -$304. Total loss: -$3,473 (-2.17% of account) in ONE event. Mark's reaction: "Bad luck, macro shock. I'll rebuild." Fatal mistake: He didn't understand it wasn't bad luck—it was correlation. He rebuilt the SAME 6 correlated positions May 15-31. June 3, 2024: Another macro selloff. ALL 6 positions stopped out AGAIN: -$4,890 (-6%). Total damage: $160K → $81K (-49.3%, -$78.8K) in ONE MONTH from TWO correlated events. Why breaking the 5-position rule wasn't the issue: The real problem wasn't having 6 positions instead of 5. The problem was that all 6 were correlated >70%, meaning they moved together. If Mark had held 6 UNCORRELATED positions (stocks, bonds, commodities, inverse ETFs, international), the risk would've been: Effective Risk = 1.735% × √(6 × 0.20) = 1.735% × 1.10 = 1.91% (manageable). But with 82% correlation: 4.9% (deadly). The lesson: Different stocks ≠ diversification. If positions move together >70%, they're ONE bet. When SPY drops 3%, QQQ drops 2.8%, NVDA drops 2.5%, TSLA drops 2.2%, AAPL drops 2.6%, MSFT drops 2.7%. That's NOT 6 independent positions—that's 1 position sized 6×. The recovery: Mark implemented correlation-adjusted risk management: (1) Calculate correlation BEFORE adding positions (if new position >0.7 correlated with existing = it's the same position, skip it). (2) Max 3 correlated positions (force real diversification: stocks, bonds, commodities, inverse). (3) Calculate effective risk daily using the formula. (4) Stress test: "If SPY drops 3% tomorrow, what happens to ALL my positions?" Results: $81K → $129K (+59% recovery in 7 months). Max drawdown: 11% vs 49%. The brutal truth: This $79K disaster could've been avoided with 5 minutes of correlation analysis before adding positions. Correlation risk is invisible until a macro event hits and ALL your "diversified" positions blow up simultaneously.
+        </div>
+      </div>
+
       <div class="section-break"><span>Part 2: Correlation-Adjusted Risk Calculation</span></div>
 <h2 id="calculating-true-portfolio-risk">Calculating True Portfolio Risk</h2>
 

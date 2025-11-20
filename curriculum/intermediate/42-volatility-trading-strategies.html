@@ -747,6 +747,27 @@ blown up shorting volatility without risk controls.
   </div>
 </div>
 
+      <div class="quiz-question" style="margin-top:2rem">
+        <p><strong>Case Study Quiz: Sarah had an 84% win rate selling VIX spreads (37 wins out of 44 trades) and grew $50K to $124K. Yet on Feb 5, 2018 (Volmageddon), she lost $89K (-72%) in ONE DAY. What was her fatal mistake?</strong></p>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">
+            A) Her strategy was bad—selling volatility never works long-term
+          </div>
+          <div class="quiz-option" data-correct="false">
+            B) She should have hedged by buying SPY calls to protect against VIX spikes
+          </div>
+          <div class="quiz-option" data-correct="true">
+            C) She risked 60-80% of her account on short VIX positions (15-30% per trade) with no stop losses, betting 450× larger than optimal Kelly Criterion sizing
+          </div>
+          <div class="quiz-option" data-correct="false">
+            D) She traded too frequently—should have waited for VIX >25 before selling spreads
+          </div>
+        </div>
+        <div class="quiz-explanation">
+          <strong>Correct: C.</strong> This is the classic "picking up pennies in front of a steamroller" disaster. Sarah understood PROBABILITY but ignored MAGNITUDE. Here's why she was destroyed: Sarah had excellent probabilities: 84% win rate (37 wins, 7 losses in 44 trades). VIX >30 happens <5% of the time historically. She was an actuary—she knew the math. But she made one catastrophic error: position sizing. She risked 15-30% of her account PER TRADE. By Jan 2018, she had 60-80% of her entire account in short VIX positions. With an 84% win rate and 10:1 risk/reward, Kelly Criterion optimal bet size = 0.0067% per trade (less than 1%). She was betting 15-30% per trade = 450× optimal sizing. The disaster timeline: Dec 2017-Jan 2018: VIX traded 9.77-12 (record lows). Sarah sold 15x + 10x + 8x VIX call spreads over 6 weeks. Total exposure: 78% of account ($97K at risk out of $124K). On Jan 22, she was up $16,800 (+98% of max profit) but didn't close because "I want the full profit." Fatal mistake. Feb 5, 2018 Volmageddon: VIX exploded from 18.5 → 37.32 (+115%) in hours. All her spreads hit maximum loss simultaneously. The positions: Dec spreads: -$45K max loss (hit), Jan spreads: -$30K max loss (hit), Feb spreads: -$24K max loss (hit). Total realized losses: -$99K. Her account: $124K → $35K (-72%) in one day. Margin call forced liquidation. The probability vs magnitude lesson: She won 37 trades in a row, making small gains each time ($2K-4K per win). Then ONE 5% probability event (VIX spike >30) hit ALL her positions simultaneously because they were correlated (all short VIX). One tail event with 60-80% account exposure = death. The Kelly math: With 84% WR and 10:1 RR, Kelly says bet 0.0067% per trade. On a $124K account, that's $83 max risk per trade (not $45K!). If she'd followed Kelly, the Feb 5 spike would have cost her $83-200 instead of $89,000. Her recovery rules post-disaster: (1) 2% max risk per trade (on $35K = $700 max, about 2 VIX contracts). (2) Stop loss at 2× credit received (if sell spread for $1, stop at -$2 loss). (3) Only sell vol when VIX >20 (don't sell at record lows like 10-12). (4) Max 10% total volatility exposure (prevents one spike destroying account). (5) Hedge with long VIX calls when VIX <12 (costs 0.5-1% but saves you during spikes). Results: $35K → $68K (+94%) in 18 months with 71% WR. Max drawdown: -11% vs -72%. The brutal truth: Selling volatility CAN be profitable (her 84% WR proves it), but ONE oversized position during a tail event = obliteration. Even 99% win rate doesn't save you if you risk 60-80% per trade. Sarah learned the $89K way that position sizing matters MORE than win rate.
+        </div>
+      </div>
+
       <h2 id="quiz" style="margin-top:3rem">📝 Knowledge Check</h2>
       <p>Test your understanding of volatility trading strategies:</p>
 

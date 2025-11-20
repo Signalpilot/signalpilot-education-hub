@@ -140,6 +140,27 @@
         </div>
       </div>
 
+      <div class="quiz-question" style="margin-top:2rem">
+        <p><strong>Case Study Quiz: Tom was a profitable trader (+$64K over 2 years), but lost $87K in 14 weeks holding positions into the 4:00 PM close. He held 23 positions into close and lost 21 times (9% win rate). What was his fatal mistake?</strong></p>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">
+            A) His intraday trend following strategy stopped working due to market conditions
+          </div>
+          <div class="quiz-option" data-correct="false">
+            B) He should have used wider stop losses to avoid getting stopped out near the close
+          </div>
+          <div class="quiz-option" data-correct="true">
+            C) He never checked MOC (Market-on-Close) imbalance data and repeatedly traded against 5M-11M share institutional orders at the close
+          </div>
+          <div class="quiz-option" data-correct="false">
+            D) He held too large positions—should have reduced size when trading into the close
+          </div>
+        </div>
+        <div class="quiz-explanation">
+          <strong>Correct: C.</strong> This is one of the most expensive lessons in trading: ignoring public, FREE data that tells you EXACTLY what institutions are doing. Tom's disaster: For 14 weeks (Feb-May 2024), Tom held positions into the 4:00 PM close 23 times thinking "if it's trending all day, why exit at 3:55 PM? I'll squeeze out extra profit." Fatal mistake: He had NO IDEA that MOC (Market-on-Close) imbalance data exists. What is MOC data? Every trading day at 3:50-3:55 PM, the NYSE publishes how many millions of shares institutions are buying or selling at the 4:00 PM closing auction. This data is PUBLIC and FREE (available on broker platforms, Bloomberg, Twitter @nyseimbalance). Example: "MOC: 6.2M shares to SELL" = institutions dumping 6.2 MILLION shares at close = massive selling pressure from 3:58-4:00 PM. Tom's disasters: Feb 23: Long 400 SPY at $507.50, up +$1,200 by 3:55 PM. MOC imbalance: 6.2M shares to SELL. He never checked. From 3:58-4:00 PM, SPY reversed $509.20 → $507.80 as institutions dumped 6M shares. He exited $507.80 with only +$120 profit (should've been +$1,680 if he'd exited at 3:55 PM). Left $1,560 on the table. Mar 15: Short 300 SPY at $518.50, down -$600 by 3:50 PM (winning trade). MOC imbalance at 3:55 PM: 9.1M shares to BUY (MASSIVE institutional buying coming). He never checked. From 3:56-4:00 PM, SPY rocketed $520.50 → $523.20 as institutions bought 9M shares. He covered at $523.00. Lost -$4,350 on what should've been a winning short. Apr 26 (breaking point): Short SPY into an 11M share BUY imbalance (monster). Lost -$6,820 in 4 minutes as institutions steamrolled his short with 11 MILLION shares. The math: 23 times held into close. 21 times on the WRONG side of 5M+ imbalances (91% failure rate). Average loss per auction: -$3,790. Total auction damage: -$75,490. Only 2 winners (+$4,200 by blind luck). Net: -$87K in 14 weeks. Tom's realization (Apr 26): "A friend asked: 'Do you check MOC data?' I said, 'What's that?' He showed me. For 14 weeks, I've been fighting 5M-11M share imbalances I didn't even know existed. I'm literally dumb money getting run over by smart money." The recovery: Tom implemented a simple MOC protocol: (1) Check MOC data at 3:50-3:55 PM daily. (2) If long + 5M+ sell imbalance: EXIT IMMEDIATELY. (3) If short + 5M+ buy imbalance: COVER IMMEDIATELY. (4) If no position + 10M+ imbalance: ENTER in direction at 3:56 PM, ride to 4:00 PM. Results after implementing MOC checks: 31 close trades, 74% win rate (vs 9% before), average win +$1,240, total +$38,440 (vs -$75,490 before). Account recovered $93K → $131K (+41%) in 16 weeks. The brutal lesson: MOC data is PUBLIC and FREE. It tells you EXACTLY what institutions are doing at close. If you're holding positions into 4:00 PM without checking MOC, you're gambling against multi-million share orders you can't see. Trade WITH institutions, not against them. Tom paid $87K tuition for this lesson. You don't have to.
+        </div>
+      </div>
+
       <div class="section-break"><span>Part 1: Understanding Auction Mechanics</span></div>
 <h2 id="how-opening-and-closing-auctions-work">How Opening and Closing Auctions Work</h2>
 
