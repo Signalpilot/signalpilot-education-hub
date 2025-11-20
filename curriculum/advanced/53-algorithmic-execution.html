@@ -625,5 +625,58 @@ Average Savings per Example stop: $_____/share</code></pre>
 <script src="/assets/ab-test-tldr.js" defer></script>
   <!-- Google Translate -->
   <script src="/assets/lang-switcher.js"></script>
+
+  <script>
+  // Social Share Button Handlers
+  document.addEventListener('DOMContentLoaded', function() {
+    const socialBtns = document.querySelectorAll('[data-share]');
+    const shareToast = document.getElementById('share-toast');
+
+    socialBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const shareType = this.dataset.share;
+        const pageUrl = window.location.href;
+        const pageTitle = document.title.split('—')[0].trim();
+
+        switch(shareType) {
+          case 'twitter':
+            const twitterText = `Just learned about "${pageTitle}" on Signal Pilot Education 📚`;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}&url=${encodeURIComponent(pageUrl)}`;
+            window.open(twitterUrl, '_blank', 'width=550,height=420');
+            break;
+
+          case 'reddit':
+            const redditUrl = `https://reddit.com/submit?url=${encodeURIComponent(pageUrl)}&title=${encodeURIComponent(pageTitle)}`;
+            window.open(redditUrl, '_blank', 'width=550,height=420');
+            break;
+
+          case 'linkedin':
+            const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
+            window.open(linkedinUrl, '_blank', 'width=550,height=420');
+            break;
+
+          case 'hackernews':
+            const hnUrl = `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(pageUrl)}&t=${encodeURIComponent(pageTitle)}`;
+            window.open(hnUrl, '_blank', 'width=550,height=420');
+            break;
+
+          case 'copy':
+            navigator.clipboard.writeText(pageUrl).then(() => {
+              if (shareToast) {
+                shareToast.style.display = 'block';
+                setTimeout(() => {
+                  shareToast.style.display = 'none';
+                }, 2000);
+              }
+            }).catch(err => {
+              console.error('Failed to copy link:', err);
+            });
+            break;
+        }
+      });
+    });
+  });
+  </script>
 </body>
 </html>
