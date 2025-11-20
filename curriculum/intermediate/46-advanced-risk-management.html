@@ -96,6 +96,17 @@
 
   <div class="wrap article-grid">
     <div class="prose">
+      <p class="lead"><b>Position-level risk management keeps you alive. Portfolio-level risk management makes you profitable. The difference? Correlation, concentration, and tail risk management—concepts that separate institutional traders from retail.</b></p>
+
+      <p>Most retail traders focus on individual trade risk: "I'll risk 1% per trade." That's fine—but incomplete. What if you're risking 1% on 8 trades that are 85% correlated? You're not risking 8% spread across 8 independent bets. You're risking 6-7% on ONE bet (the market/sector move) without realizing it.</p>
+
+      <p>Professional risk management is multi-layered: position sizing, correlation control, portfolio heat limits, and tail risk hedging. This lesson teaches you to think like an institutional risk manager.</p>
+
+      <div class="section-break"><span>Part 1: The Four-Layer Risk Framework</span></div>
+<h2 id="building-institutional-grade-risk-controls">Building Institutional-Grade Risk Controls</h2>
+
+      <p>Professional traders stack four layers of risk control. Each layer catches what the previous layers miss. Skip any layer, and you're vulnerable to catastrophic loss.</p>
+
   <div style="margin:2rem 0;text-align:center">
     <svg viewBox="0 0 600 520" style="width:100%;max-width:600px;margin:0 auto;display:block">
       <!-- Title -->
@@ -171,7 +182,97 @@
     <p><strong>Mark's lesson:</strong> "I lost $79K in ONE MONTH learning CORRELATION RISK is invisible until it kills you. I had 6 'diversified' positions (SPY, QQQ, NVDA, TSLA, AAPL, MSFT). Different stocks, right? WRONG. They were 82% correlated—when one dropped, ALL dropped. I thought I had 1.7% total risk. My ACTUAL risk: 4.9% (formula: 1.735% × √(6 × 0.82) = 3.85%-4.9%). I was leveraged 3× without knowing it. May 15 CPI shock: all 6 gapped down through stops in ONE morning (-$3,473). I didn't learn. Rebuilt same correlated positions. June 3: happened again (-$4,890). Lost 49% in a month. Different stocks ≠ diversification. If positions move together >70%, they're ONE bet. The fix: (1) Calculate correlation BEFORE adding positions, (2) Max 3 correlated positions, (3) Use formula: Effective risk = Individual risk × √(N × correlation), (4) Stress test daily: 'If SPY drops 3%, what happens to ALL my positions?' This $79K lesson could've been avoided with 5 minutes of correlation analysis."</p>
   </div>
 </div>
-<h2 id="part-5-using-signal-pilot-for-risk-management">Part 5: Using Signal Pilot for Risk Management</h2>
+
+      <div class="section-break"><span>Part 2: Correlation-Adjusted Risk Calculation</span></div>
+<h2 id="calculating-true-portfolio-risk">Calculating True Portfolio Risk</h2>
+
+      <p>When positions are correlated, your actual risk is HIGHER than the sum of individual position risks. You need to calculate effective risk using correlation adjustments.</p>
+
+      <h3 id="the-correlation-adjusted-risk-formula">The Correlation-Adjusted Risk Formula</h3>
+
+      <p><code>Effective Risk = Nominal Risk × √(N × Average Correlation)</code></p>
+
+      <p><strong>Where:</strong></p>
+      <ul>
+        <li><strong>Nominal Risk:</strong> Sum of individual position risks (e.g., 5 positions × 1% = 5%)</li>
+        <li><strong>N:</strong> Number of positions</li>
+        <li><strong>Average Correlation:</strong> Average correlation coefficient among positions</li>
+      </ul>
+
+      <p><strong>Example:</strong> 5 positions, 1% risk each, 0.80 average correlation</p>
+      <p><code>Effective Risk = 5% × √(5 × 0.80) = 5% × √4 = 5% × 2.0 = 10%</code></p>
+
+      <p><strong>Translation:</strong> You THINK you're risking 5% (5 independent 1% bets). You're ACTUALLY risking 10% because the positions move together.</p>
+
+      <div class="section-break"><span>Part 3: Portfolio Heat Limits</span></div>
+<h2 id="setting-maximum-exposure-rules">Setting Maximum Exposure Rules</h2>
+
+      <p>Portfolio heat = total dollar amount at risk across ALL positions if every stop is hit simultaneously.</p>
+
+      <h3 id="institutional-heat-limits">Institutional Heat Limits</h3>
+
+      <table style="width:100%;border-collapse:collapse;margin:2rem 0;font-size:.9rem">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05);border-bottom:2px solid rgba(255,255,255,.1)">
+            <th style="padding:.75rem;text-align:left">Trader Type</th>
+            <th style="padding:.75rem;text-align:left">Max Portfolio Heat</th>
+            <th style="padding:.75rem;text-align:left">Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">Conservative Retail</td>
+            <td style="padding:.75rem">3-5%</td>
+            <td style="padding:.75rem">Can survive 20+ consecutive losses</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">Aggressive Retail</td>
+            <td style="padding:.75rem">5-8%</td>
+            <td style="padding:.75rem">Higher risk tolerance, faster growth</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">Professional Day Trader</td>
+            <td style="padding:.75rem">8-12%</td>
+            <td style="padding:.75rem">Intraday only, stops tight</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">Institutional Desk</td>
+            <td style="padding:.75rem">10-15%</td>
+            <td style="padding:.75rem">Sophisticated hedging, deep pockets</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Rule:</strong> If adding a new position pushes you over your heat limit, you MUST close or reduce an existing position first. No exceptions.</p>
+
+      <div class="section-break"><span>Part 4: VAR and Tail Risk Hedging</span></div>
+<h2 id="protecting-against-black-swans">Protecting Against Black Swans</h2>
+
+      <p><strong>VAR (Value at Risk):</strong> Statistical measure of maximum loss over a given period at a certain confidence level.</p>
+
+      <p><strong>Example:</strong> 95% VAR of $5,000 means: "There's a 95% chance my daily loss won't exceed $5,000. But 5% of the time (1 in 20 days), I could lose MORE."</p>
+
+      <h3 id="tail-risk-hedging-strategies">Tail Risk Hedging Strategies</h3>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">Long VIX Calls</h4>
+          <p><strong>Cost:</strong> 0.5-1% of portfolio/month</p>
+          <p><strong>Payoff:</strong> 3-10× during crashes (VIX spikes 20 → 80)</p>
+          <p><strong>When:</strong> VIX < 15 (complacency phase)</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">Put Spreads on SPY</h4>
+          <p><strong>Cost:</strong> 0.3-0.8% of portfolio/month</p>
+          <p><strong>Payoff:</strong> 2-5× if SPY -10% or more</p>
+          <p><strong>When:</strong> Market at all-time highs, extended valuations</p>
+        </div>
+      </div>
+
+      <p><strong>Professional approach:</strong> Allocate 0.5-1% of portfolio to tail risk hedges. It's insurance—you hope it expires worthless, but it saves you during black swans.</p>
+
+      <div class="section-break"><span>Part 5: Using Signal Pilot for Risk Management</span></div>
+<h2 id="part-5-using-signal-pilot-for-risk-management">Real-Time Risk Monitoring Tools</h2>
 
   <h3>Janus Atlas: Correlation Heatmap</h3>
   <p><strong>Feature:</strong> Visualize correlation matrix across all open positions</p>

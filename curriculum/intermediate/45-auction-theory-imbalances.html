@@ -139,6 +139,100 @@
           <p><strong>Tom's lesson:</strong> "I lost $87K in 14 weeks because I never checked MOC imbalance data. I had NO IDEA it existed. At 3:50-3:55 PM every day, NYSE publishes how many millions of shares institutions buying/selling at close. I held positions into 4:00 PM 23 times and got destroyed 21 times because I was fighting 5M-11M share imbalances. Once I started checking MOC data, close WR went from 9% to 74%. Made back $38K in 16 weeks. The data is PUBLIC and FREE. If you're holding positions into 4:00 PM without checking MOC, you're gambling. Check the data. Trade WITH institutions, not against them. This lesson cost me $87K. Don't pay the same tuition."</p>
         </div>
       </div>
+
+      <div class="section-break"><span>Part 1: Understanding Auction Mechanics</span></div>
+<h2 id="how-opening-and-closing-auctions-work">How Opening and Closing Auctions Work</h2>
+
+      <p>Unlike continuous trading (9:30 AM - 4:00 PM where orders match instantly), auctions batch all orders together and execute at a single price that maximizes volume.</p>
+
+      <h3 id="the-two-daily-auctions">The Two Daily Auctions</h3>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">Opening Auction (9:30 AM ET)</h4>
+          <p><strong>Purpose:</strong> Establish opening price based on overnight news, futures, international markets</p>
+          <p><strong>Orders accepted:</strong> MOO (Market-on-Open), LOO (Limit-on-Open)</p>
+          <p><strong>Volume:</strong> 5-8% of daily volume</p>
+          <p><strong>Imbalance published:</strong> 9:28 AM (indicative), 9:29:30 AM (final)</p>
+          <p style="margin-top:1rem"><strong>Key insight:</strong> Opening auction sets tone for session. Large buy imbalance → bullish open. Large sell imbalance → bearish open.</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">Closing Auction (4:00 PM ET)</h4>
+          <p><strong>Purpose:</strong> Official closing price for daily settlement, index funds, mutual funds</p>
+          <p><strong>Orders accepted:</strong> MOC (Market-on-Close), LOC (Limit-on-Close)</p>
+          <p><strong>Volume:</strong> 10-15% daily volume (up to 40% on rebalancing days)</p>
+          <p><strong>Imbalance published:</strong> 3:50 PM (first), 3:55 PM (updated), 3:58 PM (final)</p>
+          <p style="margin-top:1rem"><strong>Key insight:</strong> Closing auction is 3-5× larger than opening. Imbalance data gives 5-10 minute warning of institutional flow.</p>
+        </div>
+      </div>
+
+      <h3 id="auction-clearing-price">How the Auction Clearing Price is Determined</h3>
+
+      <p>The auction algorithm finds the price that:</p>
+      <ol>
+        <li><strong>Maximizes volume</strong> (most shares traded)</li>
+        <li><strong>Minimizes imbalance</strong> (leftover buy or sell orders)</li>
+        <li><strong>Closest to last continuous price</strong> (if tie)</li>
+      </ol>
+
+      <p><strong>Example:</strong> At 3:58 PM, there are 10M shares to BUY and 8M shares to SELL at various prices. The algorithm finds $500.50 is the price where the most volume executes (8M shares match, 2M buy imbalance leftover). Market makers absorb the 2M imbalance by selling, pushing price to $500.50 at 4:00:00 PM.</p>
+
+      <div class="section-break"><span>Part 2: Reading Imbalance Data</span></div>
+<h2 id="decoding-moc-and-moo-imbalances">Decoding MOC and MOO Imbalances</h2>
+
+      <p>Imbalance data is published publicly by NYSE and Nasdaq before auctions execute. This is institutional flow being telegraphed to the market—and most retail traders ignore it completely.</p>
+
+      <h3 id="where-to-find-imbalance-data">Where to Find Imbalance Data</h3>
+
+      <p><strong>Free sources:</strong></p>
+      <ul>
+        <li><strong>Twitter/X:</strong> @nyseimbalance (real-time MOC data)</li>
+        <li><strong>Broker platforms:</strong> ToS, IBKR, Schwab (under "auction imbalance" or "MOC data")</li>
+        <li><strong>NYSE website:</strong> nyse.com (market data section)</li>
+        <li><strong>Nasdaq TotalView:</strong> For Nasdaq-listed stocks</li>
+      </ul>
+
+      <h3 id="how-to-interpret-imbalance-size">How to Interpret Imbalance Size</h3>
+
+      <table style="width:100%;border-collapse:collapse;margin:2rem 0;font-size:.9rem">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05);border-bottom:2px solid rgba(255,255,255,.1)">
+            <th style="padding:.75rem;text-align:left">Imbalance Size (SPY)</th>
+            <th style="padding:.75rem;text-align:left">Significance</th>
+            <th style="padding:.75rem;text-align:left">Expected Move</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">< 2M shares</td>
+            <td style="padding:.75rem">Noise / normal</td>
+            <td style="padding:.75rem">0-0.05% (minimal)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">2-5M shares</td>
+            <td style="padding:.75rem">Moderate flow</td>
+            <td style="padding:.75rem">0.05-0.15%</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">5-10M shares</td>
+            <td style="padding:.75rem">Significant flow</td>
+            <td style="padding:.75rem">0.15-0.30%</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">> 10M shares</td>
+            <td style="padding:.75rem">MASSIVE flow</td>
+            <td style="padding:.75rem">0.30-0.60%+</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Trading rule:</strong> Imbalances >5M shares in SPY are tradeable. >10M shares are high-probability setups (75-85% win rate).</p>
+
+      <div class="section-break"><span>Part 3: Auction Trading Strategies</span></div>
+<h2 id="how-to-trade-auction-imbalances">How to Trade Auction Imbalances</h2>
+
+      <p>Now that you understand auction mechanics and imbalance data, here are the three core strategies professionals use:</p>
+
 <h3 id="strategy-1-index-rebalancing-front-running">Strategy 1: Index Rebalancing Front-Running</h3>
 
       <p><strong>The Setup:</strong> Passive index funds (tracking S&P 500, Russell 2000, etc.) MUST buy/sell stocks at the closing auction when index composition changes.</p>
@@ -223,7 +317,37 @@ Buy Nov 16 at $410, sell Dec 21 close at $700 = +71% in 5 weeks
 
       <p><strong>Why Confluence Matters:</strong> Imbalance alone has ~65% win rate. Imbalance + technical level has ~75-80% win rate.</p>
 
-      <h2 id="part-5-using-signal-pilot-for-auction-trading">Part 5: Using Signal Pilot for Auction Trading</h2><h3 id="janus-atlas-pre-market-vs-futures-divergence">Janus Atlas: Pre-Market vs Futures Divergence</h3>
+      <div class="section-break"><span>Part 4: Advanced Auction Tactics</span></div>
+<h2 id="professional-auction-execution">Professional Auction Execution</h2>
+
+      <p>Beyond basic imbalance trading, professionals use advanced tactics to maximize edge and minimize slippage during auctions.</p>
+
+      <h3 id="timing-your-auction-entries">Timing Your Auction Entries</h3>
+
+      <p><strong>The 3-minute window problem:</strong> Imbalance published at 3:55 PM, auction executes at 4:00 PM. You have 5 minutes to position, but spreads widen and slippage increases as 4:00 PM approaches.</p>
+
+      <p><strong>Optimal entry timing:</strong></p>
+      <ul>
+        <li><strong>3:55-3:56 PM:</strong> BEST window. Imbalance known, spreads still normal. Enter here for maximum edge.</li>
+        <li><strong>3:57-3:58 PM:</strong> ACCEPTABLE. Spreads widening slightly, but still tradeable.</li>
+        <li><strong>3:59 PM+:</strong> AVOID. Spreads 5-10× wider, market makers pulling liquidity, slippage kills edge.</li>
+      </ul>
+
+      <h3 id="position-sizing-for-auctions">Position Sizing for Auctions</h3>
+
+      <p>Auction trades are short-duration (5-10 minutes), but high win rate. Size accordingly:</p>
+      <ul>
+        <li><strong>5-10M imbalance:</strong> Risk 1-2% account (moderate conviction)</li>
+        <li><strong>10M+ imbalance:</strong> Risk 2-3% account (high conviction)</li>
+        <li><strong>15M+ imbalance with technical confluence:</strong> Risk 3-5% account (max conviction)</li>
+      </ul>
+
+      <p><strong>Why larger size works:</strong> 5-minute holding period limits risk. If wrong, you know within minutes. High win rate (75%+) justifies increased sizing on best setups.</p>
+
+      <div class="section-break"><span>Part 5: Using Signal Pilot for Auction Trading</span></div>
+<h2 id="part-5-using-signal-pilot-for-auction-trading">Integrating Auction Analysis with Order Flow</h2>
+
+<h3 id="janus-atlas-pre-market-vs-futures-divergence">Janus Atlas: Pre-Market vs Futures Divergence</h3>
 
       <p><strong>Use Case:</strong> Compare SPY pre-market price action to ES futures.</p>
       <p><strong>Signal:</strong> If ES futures +0.5% but SPY pre-market flat → expect opening auction to gap-fill upward (futures lead cash).</p><h3 id="minimal-flow-real-time-moc-imbalance-alerts">Minimal Flow: Real-Time MOC Imbalance Alerts</h3>

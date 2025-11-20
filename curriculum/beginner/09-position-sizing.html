@@ -68,6 +68,125 @@
 
   <div class="wrap article-grid">
     <div class="prose">
+      <p>You have a 60% win rate. Your friend has a 40% win rate.</p>
+
+      <p>Who makes more money?</p>
+
+      <p>The answer isn't who you think. It's whoever sizes their positions correctly.</p>
+
+      <p>This lesson teaches you the single most important concept in trading: <strong>position sizing is the only edge that matters</strong>.</p>
+
+      <div class="section-break"><span>Part 1: Why Win Rate Is a Vanity Metric</span></div>
+<h2 id="expectancy-is-everything">Expectancy Is Everything</h2>
+
+      <p>Here's the brutal truth: Your win rate is irrelevant. What matters is <strong>expectancy</strong>—how much you make per trade on average.</p>
+
+      <h3 id="the-math-that-changes-everything">The Math That Changes Everything</h3>
+
+      <p><strong>Expectancy Formula:</strong></p>
+      <p><code>Expectancy = (Win Rate × Avg Win) - (Loss Rate × Avg Loss)</code></p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">❌ Trader A (High Win Rate, Bad Expectancy)</h4>
+          <p><strong>Win rate:</strong> 70%</p>
+          <p><strong>Avg win:</strong> $100</p>
+          <p><strong>Avg loss:</strong> $400</p>
+          <p style="margin-top:1rem"><strong>Expectancy:</strong></p>
+          <p><code>(0.70 × $100) - (0.30 × $400) = $70 - $120 = -$50</code></p>
+          <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px"><strong>Result:</strong> Loses $50 per trade on average despite 70% win rate. Account bleeds slowly.</p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(0,212,170,.1);border:2px solid rgba(0,212,170,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">✅ Trader B (Low Win Rate, Good Expectancy)</h4>
+          <p><strong>Win rate:</strong> 40%</p>
+          <p><strong>Avg win:</strong> $500</p>
+          <p><strong>Avg loss:</strong> $100</p>
+          <p style="margin-top:1rem"><strong>Expectancy:</strong></p>
+          <p><code>(0.40 × $500) - (0.60 × $100) = $200 - $60 = +$140</code></p>
+          <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px"><strong>Result:</strong> Makes $140 per trade on average despite 40% win rate. Account compounds aggressively.</p>
+        </div>
+      </div>
+
+      <p><strong>The lesson:</strong> Trader B is wrong 60% of the time but makes almost 3x per trade because his winners are bigger than his losers.</p>
+
+      <p>This is why professional traders focus on <strong>risk/reward ratio</strong> and <strong>position sizing</strong>, not win rate.</p>
+
+      <div class="section-break"><span>Part 2: The Fixed Fractional Method</span></div>
+<h2 id="risk-the-same-percentage-every-time">Risk the Same Percentage Every Time</h2>
+
+      <p>The simplest and most effective position sizing method: <strong>risk a fixed percentage of your account on every trade</strong>.</p>
+
+      <h3 id="the-1-rule">The 1% Rule</h3>
+
+      <p><strong>Rule:</strong> Never risk more than 1% of your account on a single trade.</p>
+
+      <p><strong>Why 1%?</strong></p>
+      <ul>
+        <li>You can lose 10 trades in a row and only be down 10% (recoverable)</li>
+        <li>You can lose 20 trades in a row and only be down 18% (still alive)</li>
+        <li>Forces discipline—no emotional "all-in" bets</li>
+        <li>Allows your edge to play out over hundreds of trades</li>
+      </ul>
+
+      <h3 id="the-position-sizing-formula">The Position Sizing Formula</h3>
+
+      <p><code>Position Size = (Account Size × Risk %) / (Entry Price - Stop Loss Price)</code></p>
+
+      <div style="background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Example Calculation</h4>
+        <p><strong>Account size:</strong> $10,000</p>
+        <p><strong>Risk per trade:</strong> 1% = $100</p>
+        <p><strong>Entry price:</strong> $50.00</p>
+        <p><strong>Stop loss:</strong> $48.00</p>
+        <p><strong>Risk per share:</strong> $50.00 - $48.00 = $2.00</p>
+        <p style="margin-top:1rem"><strong>Position size:</strong></p>
+        <p><code>$100 / $2.00 = 50 shares</code></p>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px"><strong>If stopped out:</strong> 50 shares × $2.00 loss = $100 loss (exactly 1% of account)</p>
+      </div>
+
+      <p><strong>Not:</strong> "Buy as many shares as I can afford"</p>
+      <p><strong>But:</strong> "Buy exactly the number of shares that risks 1% if my stop is hit"</p>
+
+      <div class="section-break"><span>Part 3: ATR-Based Position Sizing</span></div>
+<h2 id="scale-to-market-volatility">Scale to Market Volatility</h2>
+
+      <p>The 1% rule works, but it doesn't account for <strong>market volatility</strong>. A stock that moves $5/day needs different sizing than one that moves $0.50/day.</p>
+
+      <p>Enter ATR-based position sizing.</p>
+
+      <h3 id="what-is-atr">What Is ATR (Average True Range)?</h3>
+
+      <p><strong>ATR</strong> measures the average price movement over the last 14 periods. It's a volatility indicator.</p>
+
+      <ul>
+        <li><strong>High ATR (e.g., $5):</strong> Stock is volatile, big daily swings</li>
+        <li><strong>Low ATR (e.g., $0.50):</strong> Stock is calm, small daily swings</li>
+      </ul>
+
+      <p><strong>Why this matters:</strong> Your stop loss should be based on volatility, not arbitrary percentages.</p>
+
+      <h3 id="atr-based-stop-placement">ATR-Based Stop Placement</h3>
+
+      <p><strong>Rule:</strong> Place your stop <strong>2× ATR</strong> away from your entry (beyond key structure).</p>
+
+      <p><strong>Why 2× ATR?</strong></p>
+      <ul>
+        <li>1× ATR = too tight, you'll get swept by normal volatility</li>
+        <li>2× ATR = gives breathing room while still invalidating your thesis if hit</li>
+        <li>3× ATR = too wide, risking too much capital</li>
+      </ul>
+
+      <h3 id="the-complete-atr-sizing-process">The Complete ATR Sizing Process</h3>
+
+      <p>Here's how to combine ATR-based stops with fixed fractional sizing:</p>
+
+      <div style="background:rgba(0,212,170,.08);border:2px solid rgba(0,212,170,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Example: Scaling Position Size to Volatility</h4>
+        <p><strong>Account:</strong> $10,000</p>
+        <p><strong>Setup quality:</strong> A-grade (3+ confluences, high conviction)</p>
+        <p><strong>Risk amount:</strong> 2% of $10,000 = $200</p>
+      </div>
+
         <details class="accordion-item">
           <summary class="accordion-header">Step 1: Grade Your Setup</summary>
           <div class="accordion-content">

@@ -68,6 +68,96 @@
 
   <div class="wrap article-grid">
     <div class="prose">
+      <p>You place a stop loss 2% below your entry. The market sweeps 2.5% down, hits your stop, then rallies 10% without you.</p>
+
+      <p>Sound familiar?</p>
+
+      <p>That's because percentage-based stops are arbitrary. The market doesn't care about your 2%. It cares about structure and volatility.</p>
+
+      <p>This lesson teaches you where stops ACTUALLY belong.</p>
+
+      <div class="section-break"><span>Part 1: Why Percentage Stops Are Meaningless</span></div>
+<h2 id="the-market-doesnt-respect-percentages">The Market Doesn't Respect Percentages</h2>
+
+      <p>Most retail traders place stops based on account risk: "I'll risk 2% of my account."</p>
+
+      <p>Here's the problem: The market has no idea what 2% of your account is. Price moves based on structure, liquidity, and volatility—not your risk tolerance.</p>
+
+      <h3 id="the-percentage-stop-trap">The Percentage Stop Trap</h3>
+
+      <div style="background:rgba(255,107,107,.1);border:2px solid rgba(255,107,107,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Real Example: The 2% Trap</h4>
+        <p><strong>Scenario:</strong> You're trading SPY at $450</p>
+        <p><strong>Your account:</strong> $10,000</p>
+        <p><strong>Max risk:</strong> 2% = $200</p>
+        <p><strong>Position size:</strong> 22 shares (to risk exactly $200 with a $9 stop)</p>
+        <p style="margin-top:1rem"><strong>Your stop:</strong> $441 (2% below entry)</p>
+        <p style="margin-top:1rem"><strong>What happens:</strong></p>
+        <ul style="margin:.5rem 0 0 1.25rem">
+          <li>SPY drops to $440.50 in morning volatility (hits your stop)</li>
+          <li>You're out with a $200 loss</li>
+          <li>SPY rallies to $460 by close (+2.2%)</li>
+        </ul>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px">
+          <strong>What actually happened:</strong> Normal intraday volatility was $10 (2.2%). Your 2% stop was inside normal market noise. You got stopped on volatility, not thesis invalidation.
+        </p>
+      </div>
+
+      <h3 id="the-two-problems-with-percentage-stops">The Two Problems with Percentage Stops</h3>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:1.5rem;margin:2rem 0">
+        <div style="padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">Problem #1: Ignores Volatility</h4>
+          <p>2% on a low-volatility stock (ATR $0.50) = stop too wide</p>
+          <p>2% on a high-volatility stock (ATR $5.00) = stop too tight</p>
+          <p style="margin-top:1rem;padding:.75rem;background:rgba(0,0,0,.2);border-radius:6px">
+            <strong>Example:</strong> 2% on QQQ ($400) = $8 stop. But QQQ's ATR is $6. Your stop is only 1.3× ATR—you'll get swept daily.
+          </p>
+        </div>
+        <div style="padding:1.5rem;background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px">
+          <h4 style="margin:0 0 1rem 0">Problem #2: Ignores Structure</h4>
+          <p>Your 2% stop might land in no-man's land—not at a structural level.</p>
+          <p style="margin-top:1rem">If your stop doesn't invalidate your thesis, it's a bad stop.</p>
+          <p style="margin-top:1rem;padding:.75rem;background:rgba(0,0,0,.2);border-radius:6px">
+            <strong>Example:</strong> You go long at support ($100). Your 2% stop puts you at $98. But the actual structure invalidation is $97.50 (swing low). You're risking $2.50 for no reason—you should risk $2.50 and place stop at $97.50.
+          </p>
+        </div>
+      </div>
+
+      <p><strong>The solution:</strong> Stops should be based on <strong>market structure</strong> and <strong>volatility (ATR)</strong>, then work BACKWARD to calculate position size.</p>
+
+      <div class="section-break"><span>Part 2: ATR-Based Stops</span></div>
+<h2 id="scale-your-stops-to-volatility">Scale Your Stops to Volatility</h2>
+
+      <p>Instead of arbitrary percentages, professional traders use <strong>ATR (Average True Range)</strong> to place stops based on how volatile the market actually is.</p>
+
+      <h3 id="atr-recap">ATR Recap</h3>
+
+      <p><strong>ATR (Average True Range)</strong> = Average price movement over last 14 periods</p>
+
+      <ul>
+        <li><strong>High ATR ($5):</strong> Market is swinging wildly, need wider stops</li>
+        <li><strong>Low ATR ($0.50):</strong> Market is calm, can use tighter stops</li>
+      </ul>
+
+      <p><strong>Key insight:</strong> Your stop should give the market <em>at least</em> 2× its normal volatility before admitting you're wrong.</p>
+
+      <h3 id="the-atr-multiplier-system">The ATR Multiplier System</h3>
+
+      <p>Here's how professionals place stops based on timeframe and strategy:</p>
+
+        <details class="accordion-item">
+          <summary class="accordion-header">1.5× ATR: Tight Stops (Scalping/Day Trading)</summary>
+          <div class="accordion-content">
+            <p><strong>When to use:</strong> Intraday scalps, quick entries/exits, high conviction</p>
+            <p><strong>Risk level:</strong> Higher stop-out rate, but smaller losses when wrong</p>
+            <p><strong>Example:</strong> ES futures ATR = 20 points. Stop = 1.5 × 20 = 30 points below entry</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,.04);border-radius:8px">
+              <strong>Tradeoff:</strong> You'll get stopped more often by noise, but when you're right, R:R is better (smaller stop = better ratio).
+            </p>
+          </div>
+        </details>
+
         <details class="accordion-item">
           <summary class="accordion-header">2.0× ATR: Standard Stops (Swing Trading)</summary>
           <div class="accordion-content">
