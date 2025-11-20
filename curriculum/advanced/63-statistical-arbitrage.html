@@ -924,6 +924,75 @@ print(f"Total PnL: ${sum(trades):.2f}")
       </div>
       <p style="font-size:1.1rem;font-weight:500;margin:2rem 0">Statistical arbitrage is a quantitative edge—but it requires discipline. If you execute this correctly, you're trading with mathematical precision instead of hope.</p>
 
+      <div class="quiz">
+        <h3>Test Your Understanding</h3>
+
+        <div class="quiz-question">
+          <p><strong>Q1: What was Derek's fatal mistake that led to his $31,400 loss trading ARKK/QQQ?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) He used too much leverage on his positions</div>
+            <div class="quiz-option" data-correct="true">B) He confused correlation (0.89) with cointegration and never ran an ADF test</div>
+            <div class="quiz-option" data-correct="false">C) He traded with too small position sizes and couldn't recover losses</div>
+            <div class="quiz-option" data-correct="false">D) He exited winners too early instead of holding through reversions</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> Derek's fundamental error was assuming that high correlation (0.89) meant the spread would mean-revert. He never tested for cointegration using the Augmented Dickey-Fuller test. Correlation only measures past similarity—it doesn't guarantee mean reversion. Cointegration validates that the spread has a statistically stable equilibrium it reverts to.</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q2: For a pairs trading strategy using statistical arbitrage, what ADF test p-value threshold indicates a valid cointegrated pair?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) p-value > 0.10 (spread is non-stationary)</div>
+            <div class="quiz-option" data-correct="true">B) p-value < 0.05 (spread is stationary and mean-reverting)</div>
+            <div class="quiz-option" data-correct="false">C) p-value > 0.50 (high statistical confidence)</div>
+            <div class="quiz-option" data-correct="false">D) p-value = 1.0 (perfect cointegration)</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> A p-value < 0.05 from the Augmented Dickey-Fuller test indicates that the spread is stationary (mean-reverting) with 95% confidence. This is the threshold Derek should have used. If p-value > 0.05, the spread is NOT cointegrated and shouldn't be traded as statistical arbitrage. After Derek's losses, he adopted a strict rule: only trade pairs with ADF p-value < 0.05.</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q3: According to the lesson's conservative z-score strategy, when should you enter a statistical arbitrage pairs trade?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) When |z-score| > 1.0 (spread is 1 standard deviation from mean)</div>
+            <div class="quiz-option" data-correct="true">B) When |z-score| > 2.0 (spread is 2+ standard deviations from mean)</div>
+            <div class="quiz-option" data-correct="false">C) When |z-score| > 0.5 (any deviation from equilibrium)</div>
+            <div class="quiz-option" data-correct="false">D) When z-score returns to 0 (spread at mean)</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> Conservative entry is |z-score| > 2.0, meaning the spread has deviated 2+ standard deviations from its mean—a statistically rare event likely to revert. Aggressive traders might use |z| > 1.5, but 2.0 provides higher confidence. You exit when z-score returns to 0 (mean). If z-score reaches 3.5+, you should stop out as the spread may be de-cointegrating.</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q4: What's the critical difference between correlation and cointegration?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) Correlation is for stocks, cointegration is for futures only</div>
+            <div class="quiz-option" data-correct="false">B) Correlation requires mathematical tests, cointegration can be eyeballed</div>
+            <div class="quiz-option" data-correct="true">C) Correlation measures past directional similarity; cointegration means the spread has a mean-reverting equilibrium relationship</div>
+            <div class="quiz-option" data-correct="false">D) There's no difference—they're the same concept with different names</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> This is the core lesson: Correlation = "they moved together in the past" (direction). Cointegration = "their relationship has gravity" (mean-reverting equilibrium). Two assets can be highly correlated yet drift apart permanently. Only cointegrated pairs—where the spread is statistically proven to revert—can be traded as statistical arbitrage. As the lesson states: "Correlation measures the PAST. Cointegration predicts the FUTURE."</p>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>Q5: According to the lesson's risk management guidelines, what's the maximum position size per pair in statistical arbitrage?</strong></p>
+          <div class="quiz-options">
+            <div class="quiz-option" data-correct="false">A) 10-15% per pair (concentrated positions for maximum edge)</div>
+            <div class="quiz-option" data-correct="true">B) 2-5% per pair (diversified across 5-10 pairs)</div>
+            <div class="quiz-option" data-correct="false">C) 25-30% per pair (all-in on best setups)</div>
+            <div class="quiz-option" data-correct="false">D) 0.5-1% per pair (ultra-conservative sizing)</div>
+          </div>
+          <div class="quiz-feedback">
+            <p><strong>Correct!</strong> Never more than 2-5% per pair, using Kelly or half-Kelly criterion for sizing. You should run 5-10 pairs across different sectors to diversify. This prevents concentration risk—if one pair de-cointegrates, it won't destroy your account. Michael Torres's mistake was oversizing at 5% per pair; when he switched to 2% and diversified across multiple pairs, his execution improved dramatically.</p>
+          </div>
+        </div>
+      </div>
+
       <h3 style="margin:3rem 0 1.5rem 0">Related Lessons</h3>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:1rem;margin:1.5rem 0">
         <div class="card" style="padding:1rem">
