@@ -68,6 +68,125 @@
 
   <div class="wrap article-grid">
     <div class="prose">
+      <p>Candlesticks show you WHAT happened. Time & Sales shows you <strong>WHO</strong> did it and <strong>WHY</strong>.</p>
+
+      <p>When you see a big green candle, you know price went up. But the tape tells you: Was it aggressive institutional buying? Retail panic? Or just low volume noise?</p>
+
+      <p>This lesson teaches you to read the institutional tape—real-time order flow that reveals smart money before it shows up on charts.</p>
+
+      <div class="section-break"><span>Part 1: What is Time & Sales?</span></div>
+<h2 id="reading-the-institutional-tape">Reading the Institutional Tape</h2>
+
+      <p>Time & Sales (also called "the tape") is a real-time feed showing every single trade that executes: time, price, size, and direction (buy or sell).</p>
+
+      <h3 id="what-the-tape-shows">What the Tape Shows</h3>
+
+      <p>Here's what a typical Time & Sales window looks like:</p>
+
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:monospace;font-size:.9rem">
+        <p style="margin:0;font-weight:700;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:.5rem">TIME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRICE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIZE&nbsp;&nbsp;&nbsp;&nbsp;SIDE</p>
+        <p style="margin:.25rem 0;color:#00d4aa">09:30:15&nbsp;&nbsp;&nbsp;4500.00&nbsp;&nbsp;&nbsp;250&nbsp;&nbsp;&nbsp;&nbsp;BUY</p>
+        <p style="margin:.25rem 0;color:#ff6b6b">09:30:16&nbsp;&nbsp;&nbsp;4499.75&nbsp;&nbsp;&nbsp;150&nbsp;&nbsp;&nbsp;&nbsp;SELL</p>
+        <p style="margin:.25rem 0;color:#00d4aa">09:30:17&nbsp;&nbsp;&nbsp;4500.25&nbsp;&nbsp;&nbsp;2,500&nbsp;&nbsp;BUY</p>
+        <p style="margin:.25rem 0;color:#00d4aa">09:30:18&nbsp;&nbsp;&nbsp;4500.50&nbsp;&nbsp;&nbsp;1,800&nbsp;&nbsp;BUY</p>
+        <p style="margin:.25rem 0;color:#ff6b6b">09:30:19&nbsp;&nbsp;&nbsp;4500.25&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;&nbsp;SELL</p>
+      </div>
+
+      <p><strong>What you're seeing:</strong></p>
+      <ul>
+        <li><strong>09:30:17 — 2,500 BUY</strong>: Large institutional buy hitting the ask (aggressive)</li>
+        <li><strong>09:30:18 — 1,800 BUY</strong>: Follow-up institutional buying</li>
+        <li><strong>Small sells (100, 150)</strong>: Retail noise, irrelevant</li>
+      </ul>
+
+      <p>This sequence tells you: <strong>Institutions are aggressively accumulating</strong>. Price is about to move higher.</p>
+
+      <h3 id="why-tape-reading-matters">Why Tape Reading Matters</h3>
+
+      <p>Candlesticks LAG. By the time a bullish engulfing candle closes, institutions are already positioned. The tape shows you <strong>institutional intent in real-time</strong>.</p>
+
+      <div style="background:rgba(139,92,246,.1);border:2px solid rgba(139,92,246,.3);border-radius:12px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Tape vs. Candlesticks</h4>
+        <p><strong>Scenario:</strong> Price at $100.00</p>
+        <table style="width:100%;margin-top:1rem">
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <th style="text-align:left;padding:.5rem">What Candlesticks Show</th>
+            <th style="text-align:left;padding:.5rem">What the Tape Shows</th>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">Small green candle<br>+$0.25 move</td>
+            <td style="padding:.75rem">2,000-lot institutional buy hitting the ask<br>1,500-lot follow-up buy<br>Total: 3,500 contracts accumulated aggressively</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem;color:var(--muted)">Looks weak, might ignore</td>
+            <td style="padding:.75rem;color:#00d4aa">Institutions loading up—bullish setup</td>
+          </tr>
+        </table>
+        <p style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:8px"><strong>Result:</strong> Candlestick traders miss the setup. Tape readers see institutional accumulation and go long. Price rallies $2.00 in next 10 minutes.</p>
+      </div>
+
+      <div class="section-break"><span>Part 2: Identifying Large Institutional Prints</span></div>
+<h2 id="spotting-smart-money-on-the-tape">Spotting Smart Money on the Tape</h2>
+
+      <p>Not all trades matter. A 10-lot retail trade is noise. A 2,000-lot institutional print is a SIGNAL.</p>
+
+      <h3 id="what-qualifies-as-large">What Qualifies as "Large"?</h3>
+
+      <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05);border-bottom:2px solid rgba(255,255,255,.1)">
+            <th style="padding:.75rem;text-align:left">Instrument</th>
+            <th style="padding:.75rem;text-align:left">Retail Size</th>
+            <th style="padding:.75rem;text-align:left">Institutional Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">ES (S&P 500 Futures)</td>
+            <td style="padding:.75rem">1-50 contracts</td>
+            <td style="padding:.75rem;color:#00d4aa"><strong>500+ contracts</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">NQ (Nasdaq Futures)</td>
+            <td style="padding:.75rem">1-25 contracts</td>
+            <td style="padding:.75rem;color:#00d4aa"><strong>250+ contracts</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">SPY (ETF)</td>
+            <td style="padding:.75rem">100-500 shares</td>
+            <td style="padding:.75rem;color:#00d4aa"><strong>10,000+ shares</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">BTC/USD (Crypto)</td>
+            <td style="padding:.75rem">0.01-1 BTC</td>
+            <td style="padding:.75rem;color:#00d4aa"><strong>10+ BTC</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Focus on prints that are 10-50x the average size.</strong> These are institutions positioning.</p>
+
+      <h3 id="the-three-key-institutional-signals">The Three Key Institutional Signals</h3>
+
+      <p>Here's what to watch for on the tape:</p>
+
+        <details class="accordion-item">
+          <summary class="accordion-header">Signal #1: Consecutive Large Buys (Institutional Accumulation)</summary>
+          <div class="accordion-content">
+            <p><strong>Pattern:</strong> Multiple 1,000+ contract buys hitting the ask in rapid succession</p>
+            <p><strong>Example:</strong></p>
+            <pre style="background:rgba(0,0,0,.3);padding:1rem;border-radius:6px;font-family:monospace;font-size:.85rem;white-space:pre-wrap;overflow-wrap:break-word;overflow-x:auto">
+09:45:00   4500.00  1,500  BUY
+09:45:01   4500.25  2,200  BUY
+09:45:02   4500.50  1,800  BUY
+09:45:03   4500.75  2,000  BUY
+            </pre>
+            <p style="margin-top:1rem"><strong>Total:</strong> 7,500 contracts bought in 3 seconds, lifting price from 4500.00 → 4500.75</p>
+            <p><strong>Translation:</strong> Institution is aggressively accumulating, willing to PAY UP to get filled. Bullish urgency—they want IN before price runs.</p>
+            <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.1);border-radius:8px"><strong>Action:</strong> This is a BUY signal. Institutions don't pay up 0.75 points unless they expect significant upside. Look for long entry on next pullback.</p>
+          </div>
+        </details>
+
         <details class="accordion-item">
           <summary class="accordion-header">Signal #2: Consecutive Large Sells (Institutional Distribution)</summary>
           <div class="accordion-content">
