@@ -543,6 +543,184 @@
         </ul>
       </div>
 
+<div class="section-break"><span>Part 4: Vanna—Volatility's Hidden Influence on Delta</span></div>
+
+<h2 id="vanna-mechanics">What is Vanna?</h2>
+
+      <p><strong>Vanna</strong> measures how much delta changes when implied volatility (IV) changes.</p>
+
+      <div class="callout-info" style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h4>📐 Vanna Formula (Simplified)</h4>
+        <p><code>Vanna = Change in Delta ÷ Change in IV</code></p>
+        <p style="margin-top:0.75rem"><strong>Example:</strong></p>
+        <ul style="margin:0.5rem 0 0 1.5rem">
+          <li>SPY $450 call, IV = 15%, Delta = 0.40</li>
+          <li>VIX spikes +5 points → IV jumps to 20%</li>
+          <li>Vanna effect: Delta increases from 0.40 to 0.52 (+0.12)</li>
+        </ul>
+        <p style="margin-top:0.75rem"><strong>Why it matters:</strong> When volatility spikes, market makers must buy MORE shares to hedge the same call options (higher delta = more shares needed).</p>
+      </div>
+
+      <h3 id="vanna-driven-price-moves">Vanna-Driven Price Moves</h3>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">Scenario</th>
+            <th style="padding:0.75rem;text-align:left">IV Change</th>
+            <th style="padding:0.75rem;text-align:left">Vanna Effect on Delta</th>
+            <th style="padding:0.75rem;text-align:left">MM Action</th>
+            <th style="padding:0.75rem;text-align:left">Price Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem"><strong>VIX Crush (IV drops)</strong></td>
+            <td style="padding:0.75rem">IV: 20% → 15%</td>
+            <td style="padding:0.75rem">Call delta decreases</td>
+            <td style="padding:0.75rem">MMs SELL shares (need less hedging)</td>
+            <td style="padding:0.75rem;color:#ff6b6b;font-weight:600">Bearish pressure</td>
+          </tr>
+          <tr style="background:rgba(255,107,107,0.08)">
+            <td style="padding:0.75rem"><strong>VIX Spike (IV rises)</strong></td>
+            <td style="padding:0.75rem">IV: 15% → 25%</td>
+            <td style="padding:0.75rem">Call delta increases</td>
+            <td style="padding:0.75rem">MMs BUY shares (need more hedging)</td>
+            <td style="padding:0.75rem;color:#22c55e;font-weight:600">Bullish pressure</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout-success">
+        <h4>✅ Trading Vanna Squeeze</h4>
+        <p><strong>Setup:</strong> VIX drops sharply (e.g., 28 → 18 in 3 days)</p>
+        <p style="margin-top:0.75rem"><strong>What happens:</strong></p>
+        <ol style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li>Call delta decreases due to vanna</li>
+          <li>MMs sell millions of shares (no longer need full hedge)</li>
+          <li>Price drops 2-4% from mechanical selling</li>
+        </ol>
+        <p style="margin-top:1rem;font-weight:600;color:#ff6b6b"><strong>Trade:</strong> Short SPY when VIX drops below 20 with high call OI. Target 2-3% decline.</p>
+      </div>
+
+<div class="section-break"><span>Part 5: Volmageddon—Volatility Regime Shifts</span></div>
+
+<h2 id="volatility-explosions">When Volatility Explodes</h2>
+
+      <p>Most of the time, VIX trades between 12-20 (calm markets). But 2-3 times per year, it spikes to 30-60+ (panic mode).</p>
+
+      <p><strong>What triggers Volmageddon:</strong></p>
+      <ul style="margin:1rem 0 0 1.5rem">
+        <li><strong>Fed surprises</strong> (unexpected rate hike, hawkish pivot)</li>
+        <li><strong>Geopolitical shocks</strong> (wars, banking crisis)</li>
+        <li><strong>Earnings disasters</strong> (mega-cap misses guidance)</li>
+        <li><strong>Technical breaks</strong> (key support levels collapse)</li>
+      </ul>
+
+      <h3 id="the-volpocalypse-cascade">The Volpocalypse Cascade</h3>
+
+      <div style="background:rgba(0,0,0,0.2);padding:1.5rem;border-radius:8px;margin:2rem 0">
+        <p style="font-weight:600;margin-bottom:1rem">February 5, 2018 - The Original Volmageddon</p>
+        <ol style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>1:00 PM:</strong> Strong jobs report → Fed hike fears → VIX jumps from 17 to 22 (+29%)</li>
+          <li><strong>2:00 PM:</strong> Volatility ETFs (XIV, SVXY) start unwinding → forced buying of VIX futures</li>
+          <li><strong>3:00 PM:</strong> VIX hits 30 → triggers more unwinds → feedback loop begins</li>
+          <li><strong>3:30 PM:</strong> S&P drops -3.8%, VIX explodes to 37 (+115% in 3 hours!)</li>
+          <li><strong>After hours:</strong> VIX peaks at 50, XIV terminates (100% loss), $3B vaporized</li>
+        </ol>
+        <p style="margin-top:1rem;font-weight:600;color:#ff6b6b">Result: SPY dropped -10.2% in 8 trading days. Options traders with short volatility positions lost everything.</p>
+      </div>
+
+      <h3 id="trading-volatility-spikes">Trading Volatility Spikes</h3>
+
+      <div class="callout-warning">
+        <h4>⚠️ Don't Fight Volatility Explosions</h4>
+        <p><strong>Common mistake:</strong> "VIX is at 35, that's too high, I'll sell puts (bet on calm)"</p>
+        <p style="margin-top:0.75rem"><strong>Reality:</strong> VIX can go from 35 to 60 in hours. Selling volatility during spikes = picking up pennies in front of a steamroller.</p>
+        <p style="margin-top:1rem;font-weight:600;color:#22c55e"><strong>Better approach:</strong> Wait for VIX > 30, then buy cheap out-of-the-money puts (tail risk hedge). When VIX spikes to 50+, sell half for 300-500% gains.</p>
+      </div>
+
+<div class="section-break"><span>Part 6: Dealer Positioning & Hedging Flow</span></div>
+
+<h2 id="dealer-long-vs-short">Dealer Long Gamma vs Short Gamma</h2>
+
+      <p>Market makers (dealers) are either <strong>long gamma</strong> or <strong>short gamma</strong> depending on retail/institutional option positioning.</p>
+
+      <h3 id="short-gamma-regime">Short Gamma Regime (Volatile Markets)</h3>
+
+      <div class="callout-info" style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h4>🔴 Dealers Short Gamma = Amplified Volatility</h4>
+        <p><strong>What it means:</strong></p>
+        <ul style="margin:0.5rem 0 0 1.5rem">
+          <li>Retail/institutions bought lots of calls and puts</li>
+          <li>Dealers sold those options (now short gamma)</li>
+          <li>Dealers must hedge by buying when price rises, selling when price falls</li>
+        </ul>
+
+        <p style="margin-top:1rem"><strong>Effect on price:</strong></p>
+        <ul style="margin:0.5rem 0 0 1.5rem">
+          <li>Price rises 1% → Dealers buy shares (chase rally) → price rises MORE</li>
+          <li>Price falls 1% → Dealers sell shares (accelerate decline) → price falls MORE</li>
+          <li><strong>Result:</strong> Exaggerated moves, increased volatility</li>
+        </ul>
+
+        <p style="margin-top:1rem;font-weight:600;color:#ff6b6b"><strong>Trading implication:</strong> In short gamma regimes (VIX > 20), momentum trades work. Buy breakouts, short breakdowns. Dealers amplify the move.</p>
+      </div>
+
+      <h3 id="long-gamma-regime">Long Gamma Regime (Calm Markets)</h3>
+
+      <div class="callout-success">
+        <h4>🟢 Dealers Long Gamma = Dampened Volatility</h4>
+        <p><strong>What it means:</strong></p>
+        <ul style="margin:0.5rem 0 0 1.5rem">
+          <li>Retail/institutions sold lots of options (collecting premium)</li>
+          <li>Dealers bought those options (now long gamma)</li>
+          <li>Dealers hedge by selling when price rises, buying when price falls</li>
+        </ul>
+
+        <p style="margin-top:1rem"><strong>Effect on price:</strong></p>
+        <ul style="margin:0.5rem 0 0 1.5rem">
+          <li>Price rises 1% → Dealers sell shares (fade rally) → price mean-reverts</li>
+          <li>Price falls 1% → Dealers buy shares (support dip) → price mean-reverts</li>
+          <li><strong>Result:</strong> Range-bound, low volatility</li>
+        </ul>
+
+        <p style="margin-top:1rem;font-weight:600;color:#22c55e"><strong>Trading implication:</strong> In long gamma regimes (VIX < 15), mean-reversion works. Sell rallies, buy dips. Dealers provide liquidity and dampen moves.</p>
+      </div>
+
+      <h3 id="tracking-dealer-positioning">How to Track Dealer Positioning</h3>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">Indicator</th>
+            <th style="padding:0.75rem;text-align:left">Where to Find It</th>
+            <th style="padding:0.75rem;text-align:left">Interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.75rem"><strong>VIX Level</strong></td>
+            <td style="padding:0.75rem">TradingView, Bloomberg</td>
+            <td style="padding:0.75rem">VIX < 15 = likely long gamma (low vol)<br>VIX > 20 = likely short gamma (high vol)</td>
+          </tr>
+          <tr style="background:rgba(118,221,255,0.05)">
+            <td style="padding:0.75rem"><strong>Put/Call Ratio</strong></td>
+            <td style="padding:0.75rem">CBOE website (free)</td>
+            <td style="padding:0.75rem">Ratio > 1.0 = more puts bought (dealers short gamma)<br>Ratio < 0.7 = more calls bought (dealers short gamma)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>Gamma Exposure (GEX)</strong></td>
+            <td style="padding:0.75rem">SpotGamma, Quant Tools</td>
+            <td style="padding:0.75rem">Negative GEX = dealers short gamma (volatile)<br>Positive GEX = dealers long gamma (calm)</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
       <div class="section-break"><span>Part 7: OpEx + Earnings Combo Events (The Perfect Storm)</span></div>
 <div class="callout callout-danger">
   <h4>📉 CASE STUDY: Sarah's $96,000 OpEx + Earnings Disaster (6 hours)</h4>

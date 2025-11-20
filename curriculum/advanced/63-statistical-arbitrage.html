@@ -197,13 +197,196 @@
   </div>
 </div>
 
+      <div class="section-break"><span>Part 2: Testing for Cointegration—The Augmented Dickey-Fuller Test</span></div>
+
 <h2 id="the-augmented-dickey-fuller-test">The Augmented Dickey-Fuller Test</h2>
 
-      <p>To validate cointegration, you need to test whether the spread (or ratio) is stationary—meaning it has a constant mean it reverts to.</p>
+      <p>To validate cointegration, you need to test whether the spread (or ratio) is <strong>stationary</strong>—meaning it has a constant mean it reverts to.</p>
 
       <p>The standard test: <strong>Augmented Dickey-Fuller (ADF) test</strong>.</p>
 
-      <div class="tabs-content">
+      <div class="callout-info" style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h4>📐 What the ADF Test Does</h4>
+        <p>The ADF test checks if a time series (like the spread between two assets) is <strong>stationary</strong> or has a <strong>unit root</strong> (random walk, non-stationary).</p>
+        <ul style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Stationary spread:</strong> Has a constant mean and variance. Deviations from the mean are temporary → mean reversion is expected.</li>
+          <li><strong>Non-stationary spread:</strong> Drifts over time with no equilibrium. Deviations can persist indefinitely → no reliable mean reversion.</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Null Hypothesis (H₀):</strong> The spread has a unit root (NOT stationary, NOT cointegrated)</p>
+        <p><strong>Alternative Hypothesis (H₁):</strong> The spread is stationary (cointegrated, mean-reverting)</p>
+      </div>
+
+      <h3 id="interpreting-adf-test-results">Interpreting ADF Test Results</h3>
+
+      <p>The ADF test outputs a <strong>p-value</strong> that tells you the probability that the spread is non-stationary (random walk).</p>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">P-Value</th>
+            <th style="padding:0.75rem;text-align:left">Interpretation</th>
+            <th style="padding:0.75rem;text-align:left">Trade Decision</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem"><strong>&lt; 0.01</strong></td>
+            <td style="padding:0.75rem">Highly stationary (99% confidence)</td>
+            <td style="padding:0.75rem;font-weight:600;color:#22c55e">✅ TRADEABLE (strong cointegration)</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem"><strong>0.01 - 0.05</strong></td>
+            <td style="padding:0.75rem">Stationary (95% confidence)</td>
+            <td style="padding:0.75rem;font-weight:600;color:#22c55e">✅ TRADEABLE (acceptable cointegration)</td>
+          </tr>
+          <tr style="background:rgba(255,193,7,0.08)">
+            <td style="padding:0.75rem"><strong>0.05 - 0.10</strong></td>
+            <td style="padding:0.75rem">Weakly stationary (90% confidence)</td>
+            <td style="padding:0.75rem;font-weight:600;color:#ffc107">⚠️ MARGINAL (risky, watch closely)</td>
+          </tr>
+          <tr style="background:rgba(239,68,68,0.08)">
+            <td style="padding:0.75rem"><strong>&gt; 0.10</strong></td>
+            <td style="padding:0.75rem">Non-stationary (random walk)</td>
+            <td style="padding:0.75rem;font-weight:600;color:#ef4444">❌ DO NOT TRADE (not cointegrated)</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout-success" style="background:rgba(34,197,94,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #22c55e">
+        <h4>✅ Rule of Thumb</h4>
+        <p><strong>Only trade pairs with ADF p-value &lt; 0.05.</strong> This gives you 95% statistical confidence that the spread will mean-revert.</p>
+        <p style="margin-top:0.75rem">If p-value &gt; 0.05, you're trading correlation, not cointegration—and that's gambling.</p>
+      </div>
+
+      <h3 id="calculating-hedge-ratio">Calculating the Hedge Ratio</h3>
+
+      <p>Before running the ADF test, you need to determine the <strong>hedge ratio (β)</strong>—the optimal proportion to balance the two assets in the pair.</p>
+
+      <p><strong>Method:</strong> Run an Ordinary Least Squares (OLS) regression:</p>
+
+      <p style="font-size:1.1rem;text-align:center;margin:1.5rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">
+        Asset A = β × Asset B + ε
+      </p>
+
+      <p><strong>β (beta) = hedge ratio</strong></p>
+
+      <p><strong>Example: KO vs PEP</strong></p>
+      <pre style="background:rgba(0,212,170,.05);padding:1rem;border-radius:6px;overflow-x:auto">
+<strong>Step 1: Collect Historical Prices</strong>
+KO (Coca-Cola): Last 252 days of closing prices
+PEP (PepsiCo): Last 252 days of closing prices
+
+<strong>Step 2: Run OLS Regression (KO = β × PEP)</strong>
+Using Python statsmodels or Excel LINEST function
+Result: β = 1.12
+
+<strong>Interpretation:</strong>
+For every $1 of PEP, you need $1.12 of KO to create a hedged pair.
+
+<strong>Step 3: Calculate Spread</strong>
+Spread = KO - (1.12 × PEP)
+
+Example values:
+- KO = $60.50
+- PEP = $180.20
+- Spread = $60.50 - (1.12 × $180.20) = $60.50 - $201.82 = -$141.32
+
+<strong>Step 4: Run ADF Test on Spread</strong>
+ADF Test Result: p-value = 0.018 ✅
+Interpretation: Spread is stationary (cointegrated at 98% confidence)
+Conclusion: KO/PEP is a tradeable pair
+      </pre>
+
+      <h3 id="real-example-spy-iwm-cointegration-test">Real Example: SPY/IWM Cointegration Test</h3>
+
+      <div style="overflow-x:auto;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.03)">
+            <th style="padding:0.75rem;text-align:left">Step</th>
+            <th style="padding:0.75rem;text-align:left">Process</th>
+            <th style="padding:0.75rem;text-align:left">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.75rem"><strong>1. Data Collection</strong></td>
+            <td style="padding:0.75rem">Download 1 year of daily prices for SPY and IWM</td>
+            <td style="padding:0.75rem">252 trading days</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>2. Correlation Check</strong></td>
+            <td style="padding:0.75rem">Calculate Pearson correlation</td>
+            <td style="padding:0.75rem">r = 0.94 (high correlation)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>3. OLS Regression</strong></td>
+            <td style="padding:0.75rem">SPY = β × IWM + ε</td>
+            <td style="padding:0.75rem">β = 2.68 (hedge ratio)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>4. Spread Calculation</strong></td>
+            <td style="padding:0.75rem">Spread = SPY - (2.68 × IWM)</td>
+            <td style="padding:0.75rem">252 spread values</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.08)">
+            <td style="padding:0.75rem"><strong>5. ADF Test</strong></td>
+            <td style="padding:0.75rem">Test if spread is stationary</td>
+            <td style="padding:0.75rem;font-weight:600;color:#22c55e">p = 0.0082 ✅ COINTEGRATED</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem"><strong>6. Half-Life</strong></td>
+            <td style="padding:0.75rem">How long for 50% mean reversion?</td>
+            <td style="padding:0.75rem">8.2 days (fast reversion)</td>
+          </tr>
+          <tr style="background:rgba(34,197,94,0.12)">
+            <td style="padding:0.75rem"><strong>7. Conclusion</strong></td>
+            <td style="padding:0.75rem">Is this pair tradeable?</td>
+            <td style="padding:0.75rem;font-weight:600;color:#22c55e">YES - Trade the spread</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout-danger">
+        <h4>🚨 Common Mistakes in Cointegration Testing</h4>
+        <ul style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Using too short a lookback period:</strong> Need at least 6-12 months of data for reliable ADF test. 1-3 months = unreliable.</li>
+          <li><strong>Not recalculating β regularly:</strong> Hedge ratios drift over time. Recalculate monthly or you'll trade the wrong spread.</li>
+          <li><strong>Ignoring p-value drift:</strong> A pair cointegrated in January may decointegrate by June. Re-test monthly.</li>
+          <li><strong>Testing only once:</strong> Cointegration is dynamic, not static. Rolling window tests (6-month rolling) are essential.</li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>Part 3: Z-Score Trading Models—Entry & Exit Signals</span></div>
+
+      <h2 id="z-score-the-trading-signal">Z-Score: The Trading Signal</h2>
+
+      <p>Once you've confirmed cointegration (ADF p &lt; 0.05), you need a <strong>trading signal</strong> to tell you WHEN to enter and exit. That signal is the <strong>z-score</strong>.</p>
+
+      <div class="callout-info" style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
+        <h4>📐 Z-Score Formula</h4>
+        <p style="font-size:1.1rem;text-align:center;margin:1rem 0;background:var(--surface-2);padding:1rem;border-radius:8px">
+          Z = (Current Spread - Mean Spread) / Standard Deviation of Spread
+        </p>
+        <p><strong>What it measures:</strong> How many standard deviations the current spread is from its historical mean.</p>
+        <ul style="margin:0.5rem 0 0 1.5rem;line-height:1.8">
+          <li><strong>Z = 0:</strong> Spread is at its mean (no trade)</li>
+          <li><strong>Z = +2:</strong> Spread is 2 standard deviations ABOVE mean (Asset A expensive, Asset B cheap)</li>
+          <li><strong>Z = -2:</strong> Spread is 2 standard deviations BELOW mean (Asset A cheap, Asset B expensive)</li>
+        </ul>
+      </div>
+
+      <h3 id="z-score-trading-frameworks">Z-Score Trading Frameworks</h3>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Conservative Model</button>
+          <button>Aggressive Model</button>
+        </div>
+        <div class="tabs-content">
           <div class="tab-panel">
             <h3 id="conservative-z-score-model">Conservative Z-Score Model</h3>
             <ul>
