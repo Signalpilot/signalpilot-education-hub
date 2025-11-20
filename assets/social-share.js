@@ -80,33 +80,69 @@
    * Check for completion milestones and offer sharing
    */
   function checkCompletionMilestones() {
-    const completed = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed')).length;
-    const milestones = [1, 5, 20, 47, 74, 82];
-    const milestoneNames = {
-      1: 'your first lesson',
-      5: '5 lessons',
-      20: 'Beginner Tier Complete (20 lessons)',
-      47: 'Intermediate Tier Complete (47 lessons)',
-      74: 'Advanced Tier Complete (74 lessons)',
-      82: 'all 82 lessons - Complete Mastery'
-    };
+    // Count total completed lessons
+    const allCompleted = Object.keys(localStorage).filter(k =>
+      k.startsWith('sp_edu_') && k.endsWith('_completed') && !k.includes('_ach_')
+    ).length;
 
-    // Check if just hit a milestone
-    if (milestones.includes(completed)) {
-      // Check if haven't shared this milestone yet
-      const sharedKey = `sp_shared_milestone_${completed}`;
-      if (!localStorage.getItem(sharedKey)) {
+    // Count tier-specific completions
+    const beginnerCompleted = Object.keys(localStorage).filter(k =>
+      k.startsWith('sp_edu_beginner_') && k.endsWith('_completed')
+    ).length;
+
+    const intermediateCompleted = Object.keys(localStorage).filter(k =>
+      k.startsWith('sp_edu_intermediate_') && k.endsWith('_completed')
+    ).length;
+
+    const advancedCompleted = Object.keys(localStorage).filter(k =>
+      k.startsWith('sp_edu_advanced_') && k.endsWith('_completed')
+    ).length;
+
+    // Tier thresholds
+    const BEGINNER_TOTAL = 20;
+    const INTERMEDIATE_TOTAL = 27;
+    const ADVANCED_TOTAL = 35;
+    const TOTAL_LESSONS = 82;
+
+    // Define milestones with tier-specific tracking
+    const milestones = [
+      { count: 1, key: 'first', name: 'your first lesson', type: 'total' },
+      { count: 5, key: '5_lessons', name: '5 lessons', type: 'total' },
+      { count: BEGINNER_TOTAL, key: 'beginner_tier', name: 'Beginner Tier Complete (all 20 beginner lessons)', type: 'tier', tier: 'beginner', tierCount: beginnerCompleted, tierTotal: BEGINNER_TOTAL },
+      { count: INTERMEDIATE_TOTAL, key: 'intermediate_tier', name: 'Intermediate Tier Complete (all 27 intermediate lessons)', type: 'tier', tier: 'intermediate', tierCount: intermediateCompleted, tierTotal: INTERMEDIATE_TOTAL },
+      { count: ADVANCED_TOTAL, key: 'advanced_tier', name: 'Advanced Tier Complete (all 35 advanced lessons)', type: 'tier', tier: 'advanced', tierCount: advancedCompleted, tierTotal: ADVANCED_TOTAL },
+      { count: TOTAL_LESSONS, key: 'complete_mastery', name: 'all 82 lessons - Complete Mastery', type: 'total' }
+    ];
+
+    // Check each milestone
+    milestones.forEach(milestone => {
+      const sharedKey = `sp_shared_milestone_${milestone.key}`;
+
+      // Skip if already shared
+      if (localStorage.getItem(sharedKey)) return;
+
+      let shouldTrigger = false;
+
+      if (milestone.type === 'total') {
+        // Total lesson count milestones
+        shouldTrigger = (allCompleted === milestone.count);
+      } else if (milestone.type === 'tier') {
+        // Tier-specific milestones - only trigger when tier is 100% complete
+        shouldTrigger = (milestone.tierCount === milestone.tierTotal);
+      }
+
+      if (shouldTrigger) {
         setTimeout(() => {
-          showSharePrompt(completed, milestoneNames[completed]);
+          showSharePrompt(milestone.key, milestone.name);
         }, 2000); // Show after 2 seconds
       }
-    }
+    });
   }
 
   /**
    * Show share prompt for milestones
    */
-  function showSharePrompt(count, milestoneName) {
+  function showSharePrompt(milestoneKey, milestoneName) {
     const modal = document.createElement('div');
     modal.style.cssText = `
       position: fixed;
@@ -173,30 +209,30 @@
     modal.appendChild(card);
     document.body.appendChild(modal);
 
-    const shareText = `Just completed ${milestoneName} at Signal Pilot Education! 🚀 ${count}/82 lessons down. #Trading #Education`;
+    const shareText = `Just completed ${milestoneName} at Signal Pilot Education! 🚀 #Trading #Education`;
     const shareUrl = 'https://education.signalpilot.io';
 
     document.getElementById('share-twitter').onclick = () => {
       shareOnTwitter(shareText, shareUrl);
-      localStorage.setItem(`sp_shared_milestone_${count}`, 'true');
+      localStorage.setItem(`sp_shared_milestone_${milestoneKey}`, 'true');
       modal.remove();
     };
 
     document.getElementById('share-linkedin').onclick = () => {
       shareOnLinkedIn(shareUrl);
-      localStorage.setItem(`sp_shared_milestone_${count}`, 'true');
+      localStorage.setItem(`sp_shared_milestone_${milestoneKey}`, 'true');
       modal.remove();
     };
 
     document.getElementById('share-later').onclick = () => {
-      localStorage.setItem(`sp_shared_milestone_${count}`, 'true');
+      localStorage.setItem(`sp_shared_milestone_${milestoneKey}`, 'true');
       modal.remove();
     };
 
     // Close on background click
     modal.onclick = (e) => {
       if (e.target === modal) {
-        localStorage.setItem(`sp_shared_milestone_${count}`, 'true');
+        localStorage.setItem(`sp_shared_milestone_${milestoneKey}`, 'true');
         modal.remove();
       }
     };

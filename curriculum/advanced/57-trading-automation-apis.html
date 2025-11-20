@@ -104,6 +104,27 @@
   </div>
 </div>
 
+<div class="quiz-question" style="margin-top:2rem">
+  <p><strong>Case Study Quiz: Mike lost $97,000 (-49%) in ONE DAY (April 19, 2024) when his automated trading bot crashed his $200K account during a market shock. The bot had worked perfectly for 8 weeks (+$14.2K, 71% win rate) before the disaster. His backtest showed 67% WR and +$140K simulated profit over 2020-2023. What caused the catastrophic failure?</strong></p>
+  <div class="quiz-options">
+    <div class="quiz-option" data-correct="false">
+      <strong>A)</strong> The backtested strategy stopped working in live markets due to execution slippage and latency issues
+    </div>
+    <div class="quiz-option" data-correct="false">
+      <strong>B)</strong> The API connection failed during the crash, preventing the bot from exiting positions when stops were hit
+    </div>
+    <div class="quiz-option" data-correct="true">
+      <strong>C)</strong> He deployed with ZERO safety controls—no position limits, no volatility filter, no kill switch, no max drawdown shutoff. Bot averaged down 4× during -5% crash, hitting $800K position (4× leverage) on $200K account, triggering margin call
+    </div>
+    <div class="quiz-option" data-correct="false">
+      <strong>D)</strong> The bot had a coding bug that caused it to place duplicate orders, accidentally doubling position sizes
+    </div>
+  </div>
+  <div class="quiz-explanation">
+    <p><strong>Correct: C.</strong> Mike's disaster came from deploying automation without ANY safety controls—he programmed "buy when RSI oversold" but never programmed position limits, volatility filters, or kill switches. April 19: CPI shock, SPY gapped down -2.8% to $510. Bot: "RSI 22 = oversold, BUY!" Bought $200K @ $510. SPY fell to $495 by noon. Bot kept averaging down: bought $200K more @ $505, $495, $490 (total $800K position = 4× leverage via margin). By 3 PM: SPY @ $488, account -$97K, margin call, forced liquidation. Mike was at work, couldn't stop it. Four fatal flaws: (1) No position limits—bot used margin to build 4× leveraged position, (2) No volatility filter—bot bought during -5% crash, (3) No kill switch—couldn't stop it remotely, (4) No max drawdown limit—kept buying all day until margin call. His recovery: rebuilt bot with 5 safety controls (max $50K position, VIX > 25 = disable, max 3 trades/day, Telegram alert at -5% DD, auto-shutdown at -10% DD). Result: $103K → $151K (+47%) in 5 months, zero catastrophic failures. Code safety controls FIRST, then strategy.</p>
+  </div>
+</div>
+
 <div class="section-break"><span>Part 1: Why Automate Your Trading?</span></div>
 
 <h2 id="the-human-problem">The Human Problem in Trading</h2>
