@@ -112,36 +112,7 @@
       </div>
 <h3>HFT Latency vs. Retail</h3>
 
-      <div class="tabs">
-        <div class="tabs-nav">
-          <button class="active">Retail Trader (You)</button>
-          <button>HFT Firm</button>
-        </div>
-        <div class="tabs-content">
-          <div class="tab-panel active">
-            <h3>The Retail Reality</h3>
-            <p><strong>Your Setup:</strong></p>
-            <ul>
-              <li>Home internet: 20-50ms to broker</li>
-              <li>Broker routing: 10-30ms to exchange</li>
-              <li>Decision time: 500-5000ms (you're human)</li>
-            </ul>
-            <p><strong>Total latency:</strong> 50-200 milliseconds</p>
-            <p><em>"I clicked as fast as I could!"</em></p>
-          </div>
-          <div class="tab-panel">
-            <h3>The HFT Advantage</h3>
-            <p><strong>Their Setup:</strong></p>
-            <ul>
-              <li>Co-located servers: Same building as exchange</li>
-              <li>Direct fiber connection: 0.5-2ms to exchange</li>
-              <li>Decision time: Algorithmic (microseconds)</li>
-            </ul>
-            <p><strong>Total latency:</strong> 0.5-2 milliseconds</p>
-            <p><em>100x faster than you. Every. Single. Time.</em></p>
-          </div>
-        </div>
-      </div>
+      <p><strong>You:</strong> Home internet (20-50ms) + broker routing (10-30ms) + decision time (500-5000ms) = <strong>50-200ms total</strong>. <strong>HFT:</strong> Co-located servers + direct fiber (0.5-2ms) + algorithmic decisions (microseconds) = <strong>0.5-2ms total</strong>. 100x faster than you. Every. Single. Time.</p>
 
       <div class="section-break"><span>Part 2: The $47K Lesson—Michael's Market Order Massacre</span></div>
 <h2 id="case-study-when-hft-speed-costs-real-money">Case Study: When HFT Speed Costs Real Money</h2>
@@ -276,83 +247,20 @@
 
       <p>HFT activity spikes during high-volatility windows. Avoid trading then.</p>
 
-      <div class="tabs">
-        <div class="tabs-nav">
-          <button class="active">High HFT Activity (Avoid)</button>
-          <button>Low HFT Activity (Trade Here)</button>
-        </div>
-        <div class="tabs-content">
-          <div class="tab-panel active">
-            <h3>When HFTs Feast</h3>
-            <ul>
-              <li><strong>9:30-9:45 AM:</strong> Market open chaos</li>
-              <li><strong>3:45-4:00 PM:</strong> Closing auction games</li>
-              <li><strong>News events:</strong> FOMC, earnings, economic data</li>
-              <li><strong>Low liquidity:</strong> Pre-market, after-hours</li>
-            </ul>
-            <p><em>Wide spreads, high slippage, HFT paradise.</em></p>
-          </div>
-          <div class="tab-panel">
-            <h3>When You Have an Edge</h3>
-            <ul>
-              <li><strong>10:30 AM-12:00 PM:</strong> Post-open calm</li>
-              <li><strong>2:00-3:30 PM:</strong> Pre-close stability</li>
-              <li><strong>Tuesday-Thursday:</strong> Mid-week flow</li>
-              <li><strong>High liquidity periods:</strong> SPY volume > 5M/hour</li>
-            </ul>
-            <p><em>Tighter spreads, better fills, less HFT dominance.</em></p>
-          </div>
-        </div>
-      </div>
+      <p><strong>AVOID (HFT feasts):</strong> 9:30-9:45 AM (open chaos), 3:45-4:00 PM (close games), news events, pre/after-market. <strong>TRADE HERE:</strong> 10:30 AM-12 PM, 2:00-3:30 PM, Tue-Thu, SPY volume >5M/hour. Tighter spreads, less HFT dominance.</p>
 <h3>Tactic 2: Use Limit Orders (Not Market Orders)</h3>
 
       <p>Market orders = guaranteed slippage. Limit orders = you control the price.</p>
 
-      <pre style="overflow-x:auto"><code>Bad: Market order to buy SPY
-- Pays whatever ask is when order arrives
-- HFTs can front-run, reprice
-- Slippage: $0.02-0.10 per share
-
-Good: Limit order at bid ($520.00)
-- You join the queue
-- Wait for natural fill
-- Savings: $0.01-0.03 per share
-- HFTs can't front-run (you're already there)</code></pre>
-
-      <p><strong>Trade-off:</strong> You might not get filled immediately. But you save on slippage.</p>
+      <p><strong>Market order:</strong> Slippage $0.02-0.10/share. <strong>Limit order @ bid:</strong> Join queue, HFTs can't front-run, saves $0.01-0.03/share. Trade-off: May not fill immediately.</p>
 
       <h3>Tactic 3: Hide Your Intent (Iceberg Orders)</h3>
 
-      <p>Big orders get detected and front-run. Hide your size.</p>
-
-      <pre style="overflow-x:auto"><code>Scenario: Want to buy 10,000 shares SPY
-
-Bad: Single 10,000-share market order
-- Visible to HFTs
-- Order flow detected
-- Front-running begins
-- Slippage: $0.05-0.10/share = $500-$1,000 loss
-
-Good: Iceberg order (display 500, hide 9,500)
-- HFT sees only 500 shares
-- Doesn't trigger detection algorithms
-- Reduced slippage: $0.01-0.02/share = $100-200 loss</code></pre>
-
-      <p>Most brokers support iceberg orders. Use them for size.</p>
+      <p>10K share market order = HFTs detect, front-run, $500-1K slippage. <strong>Iceberg (show 500, hide 9.5K):</strong> Doesn't trigger detection, slippage $100-200. Most brokers support icebergs.</p>
 
       <h3>Tactic 4: Trade Longer Timeframes</h3>
 
-      <p>HFTs dominate sub-second to minutes. They don't compete at hours-to-days.</p>
-
-      <pre style="overflow-x:auto"><code>HFT battleground: 0-60 seconds (scalping)
-
-Your edge: Hours to days (swing trading)
-- Fundamentals matter
-- Regime matters
-- Institutional flow matters
-- HFT noise = irrelevant
-
-Takeaway: Trade longer, escape HFT competition</code></pre>
+      <p>HFT dominates 0-60 seconds. Your edge = hours to days where fundamentals, regime, and institutional flow matter. HFT noise = irrelevant at swing timeframes.</p>
 
       <div class="callout-key">
         <h4>🎯 Signal Pilot Advantage</h4>
@@ -364,114 +272,19 @@ Takeaway: Trade longer, escape HFT competition</code></pre>
       <div class="section-break"><span>Part 6: Flash Crashes—When HFT Liquidity Vanishes</span></div>
 <h2 id="may-6-2010-the-flash-crash-that-changed-everything">May 6, 2010: The Flash Crash That Changed Everything</h2>
 
-      <p>2:32 PM. A single mutual fund sell order. 36 minutes of absolute chaos. $1 trillion erased. Then... it came back.</p>
-
-      <pre style="overflow-x:auto"><code>THE FLASH CRASH TIMELINE:
-
-2:32 PM: Waddell & Reed sells $4.1B worth of E-Mini futures
-         (Automated algo, no size limits, pure market order)
-
-2:40 PM: HFT algos detect massive selling pressure
-         - Volume spikes from 70K contracts/min → 200K
-         - HFTs start "hot potato" trading (pass inventory back/forth)
-
-2:42 PM: HFTs withdraw liquidity
-         - Bid/ask spreads widen from $0.01 → $5+
-         - Order books go thin (HFTs pull quotes)
-
-2:44 PM: Cascading stop-losses trigger
-         - Retail stops hit
-         - Institutional stops hit
-         - More HFTs withdraw
-
-2:45 PM: DOW drops 1,000 points in 5 minutes (9% loss)
-         SPY: $107 → $85 in 15 minutes (-20.5%)
-         Accenture: $40 → $0.01 (yes, one cent)
-         Apple: $250 → $199 → $248 in 10 minutes
-
-2:47 PM: CME halts E-Mini futures (5-second pause)
-
-2:48 PM: Market rebounds
-         SPY back to $104 in 10 minutes
-         DOW recovers 600 points
-
-Final damage:
-- Retail traders: Stopped out permanently (stops filled at $85)
-- HFT firms: Many profitable (bought low, sold high)
-- Flash crash trades: 20,000+ later canceled (deemed "erroneous")
-- Trust in markets: Shattered
-</code></pre>
+      <p><strong>The Flash Crash:</strong> 2:32 PM, Waddell & Reed sells $4.1B E-Mini futures (pure market order). 2:40 PM: HFTs detect selling, start "hot potato" trading. 2:42 PM: HFTs withdraw liquidity (spreads widen from $0.01 → $5+). 2:45 PM: DOW drops 1,000 points in 5 minutes (-9%), SPY $107 → $85 (-20.5%), Accenture $40 → $0.01. 2:47 PM: CME halts, then rebounds. <strong>Aftermath:</strong> Retail stopped out permanently at crash prices, HFTs profitable (bought low, sold high), 20K+ trades later canceled as "erroneous."</p>
 
       <div class="callout-disaster">
-        <h4>💀 Real Victims: Retail Traders With Stop Losses</h4>
-        <p><strong>John Parker, SPY position holder:</strong></p>
-<div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-  <p>You're now at the halfway point. You've learned the key strategies.</p>
-  <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break if needed, then we'll dive into the advanced concepts ahead.</p>
-</div>
-        <ul style="margin:.5rem 0">
-          <li>Long 5,000 shares SPY at $105 (cost: $525,000)</li>
-          <li>Stop loss: $102 (3% max loss = $15,000)</li>
-          <li>Actual fill during flash crash: $88.50</li>
-          <li>Loss: $82,500 (15.7% instead of 3%)</li>
-        </ul>
-        <p>SPY recovered to $104 by 3:00 PM. John's position? Stopped out at $88.50. <strong>He lost $82,500 on a position that "should have" lost only $15,000.</strong></p>
-        <p>HFTs that bought at $85-90? They sold back at $102-105 within the hour.</p>
+        <h4>💀 Real Victim: John Parker</h4>
+        <p>Long 5K shares SPY @ $105. Stop @ $102 (3% max loss = $15K). <strong>Actual fill:</strong> $88.50. <strong>Loss:</strong> $82,500 (15.7% instead of 3%). SPY recovered to $104 by 3 PM. John's position? Gone at $88.50. HFTs that bought @ $85-90 sold back @ $102-105 within the hour.</p>
       </div>
-<h2 id="other-notable-flash-crashes-it-keeps-happening">Other Notable Flash Crashes (It Keeps Happening)</h2>
+<h2 id="other-notable-flash-crashes-it-keeps-happening">Other Notable Flash Crashes</h2>
 
-      <h3>August 24, 2015: ETF Flash Crash</h3>
+      <p><strong>Aug 24, 2015 (ETF Flash Crash):</strong> HFTs withdrew at open. XLE -25% (stocks -3%), DUST -50% in 2 min, NUGT +40% for no reason. Retail stop losses filled 20-30% below fair value.</p>
 
-      <pre style="overflow-x:auto"><code>9:30 AM: Market opens after weekend China devaluation fears
-9:31 AM: HFTs withdraw from ETF market making
-9:35 AM: Massive ETF dislocations
+      <p><strong>Oct 15, 2014 (Treasury Flash Rally):</strong> 10Y yield 2.20% → 1.86% (biggest move in decades) in seconds, back to 2.15% by 9:45 AM. HFT algos created feedback loop.</p>
 
-Examples:
-- XLE (Energy ETF): Dropped 25% (stocks only down 3%)
-- DUST (Gold Miners 3x): Plunged 50% in 2 minutes
-- NUGT (Gold Miners 3x): Rose 40% for no reason
-
-Cause: ETF market makers (HFTs) pulled quotes
-        No liquidity = wild price swings
-
-Victims: Retail traders with stop losses on ETFs
-         (Stops filled 20-30% below fair value)
-</code></pre>
-
-      <h3>October 15, 2014: Treasury Flash Rally</h3>
-
-      <pre style="overflow-x:auto"><code>9:33 AM: 10-Year Treasury yield plunges from 2.20% → 1.86%
-         (Biggest move in decades, in seconds)
-
-9:45 AM: Yield back to 2.15%
-
-Cause: Automated algo from HFT firm detected unusual flow
-       Triggered cascade of buy orders
-       Other HFTs joined
-       Liquidity vanished on sell side
-
-SEC investigation: No clear culprit
-Reality: HFT algos created feedback loop
-</code></pre>
-
-      <h3>March 9, 2020: COVID Circuit Breaker Chaos</h3>
-
-      <pre style="overflow-x:auto"><code>Four circuit breakers in two weeks:
-
-March 9: -7.6% drop, halted 15 minutes (9:35 AM)
-March 12: -10% drop, halted 15 minutes (9:37 AM)
-March 16: -13% drop, halted 15 minutes (9:35 AM)
-March 18: -7.5% near-trigger (avoided by minutes)
-
-Pattern noticed:
-- HFT activity surged at 9:30-9:45 AM
-- Liquidity vanished during halts
-- Spreads widened 10-50x normal
-- Retail market orders = massacred
-
-Lesson: HFT provides liquidity when you don't need it.
-        HFT withdraws liquidity when you do need it.
-</code></pre>
+      <p><strong>March 2020 (COVID Chaos):</strong> Four circuit breakers in 2 weeks. HFT liquidity vanished during halts, spreads widened 10-50x. <strong>Key lesson:</strong> HFT provides liquidity when you don't need it, withdraws when you do.</p>
 
       <div class="callout-warning">
         <h4>🚨 Circuit Breakers Exist for This (But They're Not Enough)</h4>
