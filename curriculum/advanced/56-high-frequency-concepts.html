@@ -103,49 +103,7 @@
 
       <p>You see a setup. You click "buy market order."</p>
 
-      <p>Here's what happens in the next 50 milliseconds:</p>
-
-      <div class="accordion">
-        <details class="accordion-item">
-          <summary class="accordion-header">0ms: You Click Buy</summary>
-          <div class="accordion-content">
-            <p>Your order is generated on your computer.</p>
-            <p><strong>Current bid/ask:</strong> $520.00 / $520.01</p>
-            <p>You expect to pay $520.01 (the ask).</p>
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary class="accordion-header">5ms: Order Hits Your Router</summary>
-          <div class="accordion-content">
-            <p>Your WiFi or ethernet sends the order to your internet router.</p>
-            <p>If you're on WiFi: Add 2-5ms latency right here.</p>
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary class="accordion-header">20ms: Order Reaches Your Broker</summary>
-          <div class="accordion-content">
-            <p>Your order travels through your ISP to your broker's servers.</p>
-            <p>HFT firms detected unusual buying pressure 15ms ago.</p>
-            <p>They've already started adjusting.</p>
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary class="accordion-header">45ms: Order Reaches Exchange</summary>
-          <div class="accordion-content">
-            <p>Your broker routes your order to the exchange.</p>
-            <p><strong>New bid/ask:</strong> $520.01 / $520.03</p>
-            <p>The HFT canceled the $520.01 ask and repriced to $520.03.</p>
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary class="accordion-header">50ms: Your Order Fills</summary>
-          <div class="accordion-content">
-            <p>You bought at $520.03 instead of $520.01.</p>
-            <p><strong>Slippage:</strong> $0.02 per share</p>
-            <p>On 1,000 shares? That's $20. Not much. But multiply by billions of trades. That's the HFT business model.</p>
-          </div>
-        </details>
-      </div>
+      <p><strong>50ms Timeline:</strong> 0ms: You click buy @ $520.01 ask. 5ms: Order hits router (WiFi adds 2-5ms). 20ms: Reaches broker (HFTs detected pressure 15ms ago). 45ms: Reaches exchange—HFTs canceled $520.01, repriced to $520.03. 50ms: You fill @ $520.03. Slippage: $0.02/share. On 1,000 shares = $20. Multiply by billions = HFT business model.</p>
 
       <div class="callout-key">
         <h4>💡 The Aha Moment</h4>
@@ -188,101 +146,17 @@
       <div class="section-break"><span>Part 2: The $47K Lesson—Michael's Market Order Massacre</span></div>
 <h2 id="case-study-when-hft-speed-costs-real-money">Case Study: When HFT Speed Costs Real Money</h2>
 
-      <p><strong>Michael Chen, swing trader, June 2023.</strong> Three years of profitable trading. Account: $180,000. One fatal mistake.</p>
+      <p><strong>Michael Chen, June 2023.</strong> $180K account. Bought 15,000 NVDA shares at market @ 9:32 AM (2 min after open). Expected fill: $410.50. Actual: $413.65. Slippage: $47,250 before first tick.</p>
 
       <div class="callout-disaster">
-        <h4>💀 The Setup</h4>
-        <p><strong>Date:</strong> June 14, 2023, 9:32 AM (2 minutes after market open)</p>
-        <p><strong>Trade:</strong> Buy 15,000 shares NVDA (AI rally momentum play)</p>
-        <p><strong>Expected entry:</strong> $410.50 (current ask price on his screen)</p>
-        <p><strong>Actual execution:</strong> Average fill $413.65</p>
-        <p><strong>Slippage:</strong> $3.15 per share × 15,000 shares = <strong>$47,250 loss on potential entry</strong></p>
+        <h4>💀 What Happened (200ms timeline)</h4>
+        <p><strong>0ms:</strong> Michael clicks BUY MARKET. Screen shows $410.50 ask. <strong>35ms:</strong> Order reaches broker. <strong>75ms:</strong> HFT algos detect 15K buy imbalance. <strong>80ms:</strong> HFTs cancel $410.50 asks, reprice to $411.25+. <strong>95-180ms:</strong> Order fills across 18 prices ($411.25→$414.20). <strong>200ms:</strong> NVDA returns to $410.80. HFTs profitable. Michael down $47K.</p>
+        <p><strong>Math:</strong> Expected $6.16M, paid $6.20M = $47K loss (2.6%). If NVDA hit $420, HFTs extracted 49.6% of potential profit.</p>
       </div>
 
-      <p>Michael placed a <strong>market order</strong> for 15,000 shares at <strong>9:32 AM</strong>—the absolute worst time and worst order type.</p>
-
-      <h3>What Happened: The Millisecond-by-Millisecond Breakdown</h3>
-
-      <pre style="overflow-x:auto"><code>9:32:00.000 — Michael sees NVDA ask: $410.50
-              - Decides to go long
-              - Clicks "BUY MARKET 15,000 shares"
-
-9:32:00.005 — Order leaves his computer
-              - WiFi adds 3ms latency
-              - Router processing: 2ms
-
-9:32:00.035 — Order reaches broker (E*TRADE)
-              - Broker processes order: 15ms
-              - Routes to NASDAQ
-
-9:32:00.075 — HFT algos detect large buy imbalance
-              - Citadel's algo sees 15K share order routing
-              - Virtu detects same signal
-              - Jump Trading algos activate
-
-9:32:00.080 — HFTs react (5ms after detection)
-              - Cancel all $410.50 asks
-              - Reprice to $411.25
-              - Buy on other exchanges at $410.60
-
-9:32:00.095 — Michael's order hits NASDAQ
-              - Best ask now: $411.25 (not $410.50)
-              - Fills 3,000 shares at $411.25
-
-9:32:00.120 — HFTs reprice again
-              - New ask: $412.50
-              - Fills 5,000 shares at $412.50
-
-9:32:00.180 — Final fills
-              - Last 7,000 shares: $413.65-$414.20
-              - Total slippage: $47,250
-
-9:32:00.200 — NVDA returns to $410.80
-              - HFTs profitable
-              - Michael down $47K before position even moves</code></pre>
-
-      <p>Michael watched in horror as his "instant" order filled across 18 different prices over 200 milliseconds.</p>
-
-      <div class="callout-warning">
-        <h4>🚨 The Brutal Math</h4>
-        <pre style="overflow-x:auto"><code>Expected cost: 15,000 × $410.50 = $6,157,500
-Actual cost:   15,000 × $413.65 = $6,204,750
-Hidden loss: $47,250 (2.6% of position before first tick)
-
-Even if NVDA rallied to $420:
-Gross profit: $420 - $413.65 = $6.35 × 15,000 = $95,250
-Net profit after slippage: $95,250 - $47,250 = $48,000
-
-HFTs extracted 49.6% of his potential profit.
-In 200 milliseconds.
-</code></pre>
-
-      <h3>Michael's Post-Mortem: What He Should Have Done</h3>
-
-      <p>Six months later, Michael tested the same trade with proper execution:</p>
-
-      <pre style="overflow-x:auto"><code>✅ CORRECT EXECUTION (Simulated):
-
-Time: 10:45 AM (not 9:32 AM market open chaos)
-Order type: Limit order at $410.50 (not market)
-Size: Iceberg — display 500 shares, hide 14,500
-Execution window: 12 minutes (not instant)
-
-Result:
-- Filled 15,000 shares avg $410.62
-- Slippage: $0.12 per share = $1,800
-- Savings vs market order: $45,450
-
-NVDA still rallied to $420.
-But Michael kept an extra $45K.
-</code></pre>
-
-      <div class="callout-key">
-        <h4>💡 The Aha Moment</h4>
-        <p><strong>"I thought speed mattered. I thought market orders were 'professional.'"</strong></p>
-        <p>— Michael Chen, after learning HFT mechanics the hard way</p>
-        <p>Speed does matter... for HFTs. Not for you. <em>Patience and discipline</em> save tens of thousands.</p>
-      </div>
+      <h3>What He Should Have Done</h3>
+      <p><strong>✅ Correct execution:</strong> 10:45 AM (not 9:32), limit order $410.50, iceberg (show 500, hide 14.5K), 12-minute window. Result: Avg fill $410.62, slippage $1,800. Savings: $45,450.</p>
+      <p><strong>Lesson:</strong> Speed matters for HFTs, not you. Patience saves tens of thousands.</p>
 
       <div class="section-break"><span>Part 3: How HFTs Actually Make Money</span></div>
 <h2 id="strategy-1-market-making-the-fair-one">Strategy 1: Market Making (The "Fair" One)</h2>
@@ -293,22 +167,7 @@ But Michael kept an extra $45K.
 
       <p>Here's how it works:</p>
 
-      <pre style="overflow-x:auto"><code>HFT Market Maker:
-Bid: $520.00 (willing to buy 1,000 shares)
-Ask: $520.01 (willing to sell 1,000 shares)
-Spread: $0.01 per share
-
-If both sides fill:
-Buy 1,000 at $520.00 = -$520,000
-Sell 1,000 at $520.01 = +$520,010
-Profit: $10
-
-Add exchange maker rebate: $0.002/share × 2,000 shares = $4
-Total profit: $14
-
-Scale: 1 million round-turns per day = $14 million per day</code></pre>
-
-      <p>Tiny edge. Massive scale. That's the game.</p>
+      <p><strong>Example:</strong> Bid $520.00, Ask $520.01. Both fill = $10 profit + $4 rebate = $14. Scale: 1M round-turns/day = $14M/day. Tiny edge, massive scale.</p>
 
       <div class="callout-tip">
         <h4>🎯 Why This Matters to You</h4>
@@ -322,24 +181,7 @@ Scale: 1 million round-turns per day = $14 million per day</code></pre>
 
       <p>HFTs can see your order coming <em>before</em> it hits the exchange. Here's the play:</p>
 
-      <pre style="overflow-x:auto"><code>Scenario: You're about to buy 10,000 shares of SPY
-
-0ms: HFT detects your order routing to Exchange A
-     (SPY bid: $520.00, ask: $520.01)
-
-0.5ms: HFT cancels their $520.01 ask on Exchange A
-
-1ms: HFT buys SPY on Exchange B at $520.01
-
-2ms: Your order arrives at Exchange A
-     New ask: $520.03 (HFT's new quote)
-
-Result: You pay $520.03 instead of $520.01
-        HFT profit: $0.02 per share × 10,000 = $200
-
-From YOUR order. In 2 milliseconds.</code></pre>
-
-      <p>Sound familiar? It should. This is basically legal front-running.</p>
+      <p><strong>Scenario:</strong> You buy 10K SPY @ $520.01. 0ms: HFT detects routing. 0.5ms: HFT cancels $520.01 ask. 1ms: HFT buys at $520.01 on Exchange B. 2ms: Your order fills @ $520.03. HFT profit: $200 in 2ms. Legal front-running.</p>
 
       <div class="callout-warning">
         <h4>🚨 The Dark Truth</h4>
@@ -351,25 +193,7 @@ From YOUR order. In 2 milliseconds.</code></pre>
 
       <p>This is where HFT crosses into manipulation territory.</p>
 
-      <p><strong>Quote stuffing:</strong> Flood the order book with fake orders to slow competitors and probe for hidden liquidity.</p>
-
-      <pre style="overflow-x:auto"><code>HFT places 10,000 orders in 1 second:
-
-Bid $520.00 (100 shares) → Cancel
-Bid $520.01 (100 shares) → Cancel
-Bid $519.99 (100 shares) → Cancel
-...repeat 10,000 times...
-
-Purpose:
-1. Generate noise (slow competitor algorithms)
-2. Probe for iceberg orders (detect hidden size)
-3. Manipulate NBBO (National Best Bid/Offer)
-
-Result: Order book chaos, flickering prices, retail confusion</code></pre>
-
-      <p>You've seen it: Prices jumping all over the place. Rapid quote updates. Order book looking like a video game.</p>
-
-      <p>That's not market chaos. That's HFT strategies colliding.</p>
+      <p><strong>Quote stuffing:</strong> HFT places 10K orders/second, cancels all. Purpose: (1) Slow competitors, (2) Probe icebergs, (3) Manipulate NBBO. Result: Order book chaos, flickering prices. Prices jumping everywhere = HFT strategies colliding.</p>
 
       <div class="section-break"><span>Part 4: The Payment for Order Flow Scandal</span></div>
 <h2 id="your-free-broker-is-selling-you-to-hfts">Your "Free" Broker Is Selling You to HFTs</h2>
@@ -380,28 +204,7 @@ Result: Order book chaos, flickering prices, retail confusion</code></pre>
 
       <h3>How PFOF Works (And Why You're the Product)</h3>
 
-      <pre style="overflow-x:auto"><code>You: Place order to buy 100 shares SPY at market
-
-Your broker (Robinhood):
-  1. Receives your order
-  2. Sells order to Citadel Securities for $0.002/share
-  3. Revenue: 100 × $0.002 = $0.20
-
-Citadel Securities (HFT market maker):
-  1. Receives your order FIRST (before public market)
-  2. Fills you at $520.01 (current NBBO ask)
-  3. Simultaneously buys on exchange at $520.00
-  4. Profit: $0.01/share - $0.002 PFOF = $0.008/share
-  5. Total profit: 100 × $0.008 = $0.80
-
-You: Get filled at "best price" (technically legal)
-    But never had a chance to buy at bid ($520.00)
-    Hidden cost: $0.01/share = $1.00
-
-Citadel's annual PFOF profit: $7 billion (2022)
-Robinhood's annual PFOF revenue: $1.4 billion (2022)
-Your "free" trades cost: Millions in aggregate
-</code></pre>
+      <p><strong>Example (100 shares SPY):</strong> Robinhood sells order to Citadel for $0.002/share ($0.20 revenue). Citadel fills you @ $520.01, buys @ $520.00, profits $0.008/share ($0.80). You never get chance to buy @ bid. Hidden cost: $0.01/share = $1. Citadel PFOF profit: $7B/year (2022). Robinhood revenue: $1.4B/year.</p>
 
       <div class="callout-warning">
         <h4>🚨 The "Best Execution" Lie</h4>
@@ -409,53 +212,9 @@ Your "free" trades cost: Millions in aggregate
         <p>Translation: <em>"We give you the National Best Bid/Offer (NBBO)... but you never get a chance to provide liquidity at the bid."</em></p>
         <p>You always pay the spread. HFTs always collect it.</p>
       </div>
-<h3>Case Study: Sarah's $12.3K Annual Savings from Switching Brokers</h3>
+<h3>Case Study: Sarah's $12.3K Annual Savings</h3>
 
-      <p><strong>Sarah Martinez, active swing trader, 2023.</strong></p>
-
-      <div class="callout-success">
-        <h4>✅ The Realization</h4>
-        <p><strong>Old broker:</strong> Robinhood (PFOF model)</p>
-        <p><strong>Trading volume:</strong> ~200,000 shares/month</p>
-        <p><strong>Estimated PFOF cost:</strong> $0.01-0.02/share = $2,000-4,000/month</p>
-        <p><strong>Annual hidden cost:</strong> ~$30,000</p>
-      </div>
-
-      <p>Sarah ran an experiment: Same strategy, two different brokers, one month.</p>
-
-      <pre style="overflow-x:auto"><code>EXPERIMENT: January 2023
-
-Strategy: SPY & QQQ swing trades (3-7 day holds)
-Position size: 5,000-10,000 shares per trade
-Frequency: 8-12 trades per month
-
-Broker A (Robinhood - PFOF):
-- Commission: $0
-- Avg slippage: $0.023/share
-- Total trades: 10 entries + 10 potential exits = 20 executions
-- Total shares: 140,000
-- Slippage cost: 140,000 × $0.023 = $3,220
-
-Broker B (Interactive Brokers - Direct routing):
-- Commission: $0.005/share
-- Avg slippage: $0.008/share
-- Total shares: 140,000
-- Commission: 140,000 × $0.005 = $700
-- Slippage: 140,000 × $0.008 = $1,120
-- Total cost: $1,820
-
-Monthly savings: $3,220 - $1,820 = $1,400
-Annual savings: $1,400 × 12 = $16,800
-
-Sarah's actual savings (10 months post-switch): $12,300
-</code></pre>
-
-      <div class="callout-key">
-        <h4>💡 Sarah's Takeaway</h4>
-        <p><strong>"I thought free commissions meant free trading. I was wrong."</strong></p>
-        <p>Paying $0.005/share in commissions saved her $1,200+/month in hidden PFOF costs.</p>
-        <p><em>Commission-free brokers make money by selling your order flow. Direct-routing brokers charge commissions but give you actual market access.</em></p>
-      </div>
+      <p><strong>Sarah Martinez, 2023.</strong> 200K shares/month trader. Tested Robinhood (PFOF) vs Interactive Brokers (direct routing) on 140K shares. <strong>Results:</strong> Robinhood: $0 commission, $0.023/share slippage = $3,220 cost. IBKR: $0.005/share commission + $0.008/share slippage = $1,820 cost. <strong>Savings:</strong> $1,400/month, $12,300 in 10 months. Lesson: Paying $0.005/share commission saved $1,200+/month in hidden PFOF costs.</p>
 <h3>PFOF vs. Direct Routing: The Real Comparison</h3>
 
       <div class="tabs">
