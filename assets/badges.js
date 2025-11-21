@@ -219,7 +219,7 @@
     stats: {},
 
     init() {
-      this.unlockedBadges = JSON.parse(localStorage.getItem('sp_badges') || '[]');
+      this.unlockedBadges = JSON.parse(localStorage.getItem('sp_earned_badges') || '[]');
       this.stats = this.loadStats();
       this.listenForEvents();
       console.log('[Badges] Initialized - Unlocked:', this.unlockedBadges.length, 'badges');
@@ -302,7 +302,12 @@
       if (this.unlockedBadges.includes(badge.id)) return;
 
       this.unlockedBadges.push(badge.id);
-      localStorage.setItem('sp_badges', JSON.stringify(this.unlockedBadges));
+      localStorage.setItem('sp_earned_badges', JSON.stringify(this.unlockedBadges));
+
+      // Store badge earned date
+      localStorage.setItem('sp_badge_' + badge.id, JSON.stringify({
+        earnedAt: new Date().toISOString()
+      }));
 
       // Log unlock
       const unlockLog = JSON.parse(localStorage.getItem('sp_badge_log') || '[]');

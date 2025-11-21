@@ -725,6 +725,10 @@
       <div class="user-menu-header-info">
         <strong>${currentUser.user_metadata?.user_name || 'User'}</strong>
         <p>${currentUser.email}</p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem; padding: 0.5rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2)); border-radius: 6px; display: flex; align-items: center; justify-content: space-between;">
+          <span><strong>Level ${Math.floor((parseInt(localStorage.getItem('sp_total_xp') || '0')) / 500) + 1}</strong></span>
+          <span style="opacity: 0.8;">${localStorage.getItem('sp_total_xp') || '0'} XP</span>
+        </p>
         <p style="font-size: 0.75rem; opacity: 0.7; margin-top: 0.5rem;">☁️ Auto-syncing to cloud</p>
       </div>
       <button class="user-menu-btn" onclick="window.location.href='/my-library.html'; event.stopPropagation();">

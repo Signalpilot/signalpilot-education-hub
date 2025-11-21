@@ -131,42 +131,160 @@
 
     #achievements-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 0.75rem;
     }
 
     .achievement-badge {
+      position: relative;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0.75rem 0.5rem;
-      background: rgba(255, 215, 0, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.3);
       border-radius: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .achievement-badge:hover {
+      background: rgba(139, 92, 246, 0.15);
+      transform: translateY(-2px);
     }
 
     .achievement-badge .badge-icon {
       font-size: 1.75rem;
-      margin-bottom: 0.25rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .achievement-badge .badge-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      flex: 1;
+      min-width: 0;
     }
 
     .achievement-badge .badge-name {
-      font-weight: 600;
-      font-size: 0.8rem;
+      font-weight: 700;
+      font-size: 0.85rem;
       line-height: 1.2;
     }
 
     .achievement-badge .badge-desc {
       font-size: 0.7rem;
       opacity: 0.7;
-      margin-top: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .achievement-badge .badge-checkmark,
+    .achievement-badge .badge-lock {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 0.85rem;
+      line-height: 1;
     }
 
     .achievement-badge.locked {
-      opacity: 0.35;
-      background: rgba(255, 255, 255, 0.02);
-      border-color: rgba(255, 255, 255, 0.1);
+      opacity: 0.4;
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .achievement-badge.earned {
+      background: rgba(255, 215, 0, 0.12);
+      border-color: rgba(255, 215, 0, 0.35);
+    }
+
+    .achievement-badge.locked:hover {
+      transform: none;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Badge Unlock Notification */
+    .badge-unlock-notification {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 10000;
+      transform: translateX(120%);
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      max-width: 350px;
+    }
+
+    .badge-unlock-notification.show {
+      transform: translateX(0);
+    }
+
+    .badge-unlock-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(168, 85, 247, 0.95));
+      border: 2px solid rgba(255, 215, 0, 0.5);
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(139, 92, 246, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+      color: #fff;
+    }
+
+    .badge-unlock-content .badge-icon {
+      font-size: 3rem;
+      line-height: 1;
+      flex-shrink: 0;
+      animation: badgeBounce 0.6s ease;
+    }
+
+    @keyframes badgeBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .badge-unlock-content .badge-info {
+      flex: 1;
+    }
+
+    .badge-unlock-content .badge-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.9;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: #ffd700;
+    }
+
+    .badge-unlock-content .badge-name {
+      font-size: 1.1rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .badge-unlock-content .badge-desc {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 480px) {
+      .badge-unlock-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+      }
+
+      .badge-unlock-content {
+        padding: 1rem;
+      }
+
+      .badge-unlock-content .badge-icon {
+        font-size: 2.5rem;
+      }
     }
 
     /* Study Calendar */
@@ -548,6 +666,8 @@
 <script src="/assets/config.js"></script>
 <script src="/assets/supabase-client.js"></script>
 <script src="/assets/auth-ui.js"></script>
+<script src="/assets/gamification.js"></script>
+<script src="/assets/badges.js"></script>
 <script src="/assets/library.js"></script>
 
 <script>
@@ -771,39 +891,59 @@
   }
 
   function renderAchievements(completedCount) {
-    // Get streak and notes data
-    const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0, "best": 0}');
-    const notesCount = Object.keys(localStorage).filter(k => k.startsWith('sp_note_')).length;
-    const quizStats = JSON.parse(localStorage.getItem('sp_quiz_stats') || '{"perfect": 0, "total": 0}');
-
-    const achievements = [
-      // Completion achievements
-      { icon: '🎯', name: 'First Steps', desc: 'Complete 1 lesson', unlocked: completedCount >= 1 },
-      { icon: '📚', name: 'Dedicated', desc: 'Complete 5 lessons', unlocked: completedCount >= 5 },
-      { icon: '🔟', name: 'Double Digits', desc: 'Complete 10 lessons', unlocked: completedCount >= 10 },
-      { icon: '🟢', name: 'Beginner', desc: 'Complete 20 lessons', unlocked: completedCount >= 20 },
-      { icon: '🟡', name: 'Intermediate', desc: 'Complete 47 lessons', unlocked: completedCount >= 47 },
-      { icon: '🔴', name: 'Advanced', desc: 'Complete 74 lessons', unlocked: completedCount >= 74 },
-      { icon: '🏆', name: 'Master', desc: 'Complete all 82', unlocked: completedCount >= 82 },
-      // Streak achievements
-      { icon: '🔥', name: '3-Day Streak', desc: '3 days in a row', unlocked: streak.best >= 3 },
-      { icon: '⚡', name: 'Week Streak', desc: '7 days in a row', unlocked: streak.best >= 7 },
-      { icon: '💪', name: 'Month Streak', desc: '30 days in a row', unlocked: streak.best >= 30 },
-      // Activity achievements
-      { icon: '📝', name: 'Note Taker', desc: 'Take 5 notes', unlocked: notesCount >= 5 },
-      { icon: '✍️', name: 'Scholar', desc: 'Take 20 notes', unlocked: notesCount >= 20 },
-      { icon: '🧠', name: 'Quiz Ace', desc: '5 perfect quizzes', unlocked: quizStats.perfect >= 5 },
-      { icon: '🌟', name: 'Quiz Master', desc: '20 perfect quizzes', unlocked: quizStats.perfect >= 20 },
-    ];
-
     const container = document.getElementById('achievements-list');
-    container.innerHTML = achievements.map(a => `
-      <div class="achievement-badge ${a.unlocked ? '' : 'locked'}">
-        <span class="badge-icon">${a.icon}</span>
-        <span class="badge-name">${a.name}</span>
-        <span class="badge-desc">${a.desc}</span>
-      </div>
-    `).join('');
+
+    // Wait for BadgeSystem to be available
+    if (!window.BadgeSystem) {
+      setTimeout(() => renderAchievements(completedCount), 100);
+      return;
+    }
+
+    // Get all badges from BadgeSystem
+    const badgeSystem = window.BadgeSystem;
+    const earnedBadges = JSON.parse(localStorage.getItem('sp_earned_badges') || '[]');
+    const allBadges = badgeSystem.getAllBadges();
+
+    // Sort: earned first, then by category
+    const sortedBadges = Object.values(allBadges).sort((a, b) => {
+      const aEarned = earnedBadges.includes(a.id);
+      const bEarned = earnedBadges.includes(b.id);
+      if (aEarned !== bEarned) return bEarned ? 1 : -1;
+      return a.category.localeCompare(b.category);
+    });
+
+    // Render badges
+    container.innerHTML = sortedBadges.map(badge => {
+      const isEarned = earnedBadges.includes(badge.id);
+      const earnedDate = isEarned ?
+        (JSON.parse(localStorage.getItem('sp_badge_' + badge.id) || '{}').earnedAt || '') : '';
+
+      return `
+        <div class="achievement-badge ${isEarned ? 'earned' : 'locked'}"
+             data-badge-id="${badge.id}"
+             title="${badge.description}">
+          <span class="badge-icon">${badge.emoji}</span>
+          <div class="badge-info">
+            <span class="badge-name">${badge.name}</span>
+            <span class="badge-desc">${badge.description}</span>
+            ${isEarned && earnedDate ? `<span class="badge-date" style="font-size:0.7rem;opacity:0.6;margin-top:0.25rem">Earned ${new Date(earnedDate).toLocaleDateString()}</span>` : ''}
+          </div>
+          ${isEarned ? '<span class="badge-checkmark">✓</span>' : '<span class="badge-lock">🔒</span>'}
+        </div>
+      `;
+    }).join('');
+
+    // Add progress hint for locked badges
+    const lockedBadges = sortedBadges.filter(b => !earnedBadges.includes(b.id));
+    if (lockedBadges.length > 0) {
+      container.insertAdjacentHTML('beforeend', `
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:8px;text-align:center">
+          <p style="margin:0;font-size:0.9rem;color:var(--muted)">
+            ${earnedBadges.length} of ${sortedBadges.length} badges earned • Keep learning to unlock more!
+          </p>
+        </div>
+      `);
+    }
   }
 
   // Render Study Calendar (90-day heatmap)
