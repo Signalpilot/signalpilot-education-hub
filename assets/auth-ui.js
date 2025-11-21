@@ -345,14 +345,6 @@
     } else {
       headerControls.appendChild(authBtn);
     }
-
-    // Add cloud sync indicator
-    const syncIndicator = document.createElement('div');
-    syncIndicator.id = 'cloud-sync-indicator';
-    syncIndicator.style.display = 'none';
-    syncIndicator.innerHTML = '<span class="sync-icon">☁️</span>';
-    syncIndicator.title = 'Progress synced to cloud';
-    headerControls.appendChild(syncIndicator);
   }
 
   // Initialize

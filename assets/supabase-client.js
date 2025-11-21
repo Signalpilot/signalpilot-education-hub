@@ -533,14 +533,6 @@
       return; // Already exists
     }
 
-    // Create cloud sync indicator
-    const syncIndicator = document.createElement('div');
-    syncIndicator.id = 'cloud-sync-indicator';
-    syncIndicator.className = 'cloud-sync-indicator';
-    syncIndicator.style.display = 'none';
-    syncIndicator.innerHTML = '<span class="sync-icon">☁️</span>';
-    syncIndicator.title = 'Progress synced to cloud';
-
     // Create auth button
     const authBtn = document.createElement('button');
     authBtn.id = 'auth-button';
@@ -551,11 +543,8 @@
     // Insert before menu toggle (so it appears before it on mobile)
     const menuToggle = headerCtls.querySelector('.menu-toggle');
     if (menuToggle) {
-      headerCtls.insertBefore(syncIndicator, menuToggle);
       headerCtls.insertBefore(authBtn, menuToggle);
     } else {
-      // No menu toggle, just append
-      headerCtls.appendChild(syncIndicator);
       headerCtls.appendChild(authBtn);
     }
 
@@ -585,26 +574,6 @@
       }
     }
 
-    // Show/hide cloud sync indicator
-    const syncIndicator = document.getElementById('cloud-sync-indicator');
-    if (syncIndicator) {
-      syncIndicator.style.display = user ? 'block' : 'none';
-    }
-  }
-
-  // Show sync success indicator
-  function showSyncSuccess() {
-    const syncIndicator = document.getElementById('cloud-sync-indicator');
-    if (syncIndicator) {
-      syncIndicator.innerHTML = '<span class="sync-icon">✅</span>';
-      syncIndicator.title = 'Progress synced successfully';
-
-      // Reset back to cloud icon after 3 seconds
-      setTimeout(() => {
-        syncIndicator.innerHTML = '<span class="sync-icon">☁️</span>';
-        syncIndicator.title = 'Progress synced to cloud';
-      }, 3000);
-    }
   }
 
   // Show sync error notification
