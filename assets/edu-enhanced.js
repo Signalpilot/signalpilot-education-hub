@@ -273,53 +273,8 @@
   // ============================================
   // QUIZ SYSTEM
   // ============================================
-  const Quiz = {
-    init() {
-      document.querySelectorAll('.quiz').forEach(quiz => {
-        const options = quiz.querySelectorAll('.quiz-option');
-        const submit = quiz.querySelector('.quiz-submit');
-        const feedback = quiz.querySelector('.quiz-feedback');
-
-        let selectedOption = null;
-
-        options.forEach(opt => {
-          opt.addEventListener('click', () => {
-            options.forEach(o => o.classList.remove('selected'));
-            opt.classList.add('selected');
-            selectedOption = opt;
-          });
-        });
-
-        if (submit) {
-          submit.addEventListener('click', () => {
-            if (!selectedOption) {
-              alert('Please select an answer');
-              return;
-            }
-
-            const isCorrect = selectedOption.dataset.correct === 'true';
-
-            options.forEach(opt => {
-              opt.style.pointerEvents = 'none';
-              if (opt.dataset.correct === 'true') {
-                opt.classList.add('correct');
-              } else if (opt === selectedOption && !isCorrect) {
-                opt.classList.add('incorrect');
-              }
-            });
-
-            if (feedback) {
-              feedback.classList.add('show');
-              feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
-            }
-
-            submit.disabled = true;
-            submit.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect';
-          });
-        }
-      });
-    }
-  };
+  // Quiz functionality has been moved to quiz-enhanced.js
+  // This module is kept for reference but not used to avoid conflicts
 
   // ============================================
   // SEARCH FUNCTIONALITY
@@ -422,7 +377,7 @@
     ProgressTracker.init();
     Tabs.init();
     Accordion.init();
-    Quiz.init();
+    // Quiz.init() removed - handled by quiz-enhanced.js
     Search.init();
     TableAccordions.init();
   }
