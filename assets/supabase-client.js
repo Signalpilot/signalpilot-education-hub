@@ -563,10 +563,7 @@
           .map(word => word.charAt(0).toUpperCase())
           .join('.')
           .substring(0, 5); // Max 5 chars (X.X.X)
-        authBtn.innerHTML = `
-          <span style="margin-right: 0.25rem;">👤</span>
-          <span>${initials}</span>
-        `;
+        authBtn.textContent = initials;
         // Use arrow function to ensure proper scope
         authBtn.onclick = (e) => {
           e.preventDefault();
