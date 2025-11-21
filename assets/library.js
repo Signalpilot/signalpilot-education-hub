@@ -433,7 +433,38 @@
     addFavoriteButton();
     addPrintButton();
     displayNotes();
+    updateLibraryStats();
     logger.log('[Library] Initialized');
+  }
+
+  // Update stats on My Library page
+  function updateLibraryStats() {
+    // Count completed lessons
+    let completedCount = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('sp_edu_') && key.endsWith('_completed') && !key.includes('_ach_')) {
+        completedCount++;
+      }
+    }
+
+    // Get other counts
+    const bookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]');
+    const downloads = JSON.parse(localStorage.getItem('sp_downloads') || '[]');
+    const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0}');
+
+    // Update DOM elements if they exist
+    const statCompleted = document.getElementById('stat-completed');
+    const statBookmarks = document.getElementById('stat-bookmarks');
+    const statDownloads = document.getElementById('stat-downloads');
+    const statStreak = document.getElementById('stat-streak');
+
+    if (statCompleted) statCompleted.textContent = completedCount;
+    if (statBookmarks) statBookmarks.textContent = bookmarks.length;
+    if (statDownloads) statDownloads.textContent = downloads.length;
+    if (statStreak) statStreak.textContent = streak.current || 0;
+
+    logger.log('[Library] Stats updated:', { completed: completedCount, bookmarks: bookmarks.length, downloads: downloads.length });
   }
 
   // Export public API

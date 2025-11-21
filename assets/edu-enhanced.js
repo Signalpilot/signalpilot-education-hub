@@ -424,6 +424,28 @@
     initAll();
   }
 
+  // ============================================
+  // RESET ALL PROGRESS
+  // ============================================
+  // Call window.resetAllProgress() in browser console to reset everything
+  window.resetAllProgress = function() {
+    if (!confirm('This will reset ALL your progress, XP, badges, bookmarks, and achievements. Continue?')) {
+      return false;
+    }
+    const keysToRemove = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('sp_')) {
+        keysToRemove.push(key);
+      }
+    }
+    keysToRemove.forEach(key => localStorage.removeItem(key));
+    console.log('[Reset] Cleared ' + keysToRemove.length + ' items');
+    alert('Progress reset! Refreshing page...');
+    window.location.reload();
+    return true;
+  };
+
   // Add CSS animations
   const style = document.createElement('style');
   style.textContent = `
