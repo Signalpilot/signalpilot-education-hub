@@ -390,7 +390,14 @@
         <div class="stat-number" id="stat-streak">0</div>
         <div class="stat-label">Day Streak 🔥</div>
       </div>
+      <div class="stat-card" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15)); border: 1px solid rgba(139, 92, 246, 0.3);">
+        <div class="stat-number" id="stat-level" style="background: linear-gradient(135deg, #8b5cf6, #3b82f6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">1</div>
+        <div class="stat-label">Level ⭐</div>
+      </div>
     </div>
+    <p style="text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 1rem;">
+      <strong>Earn XP:</strong> Complete lessons (+100), pass quizzes (+50), maintain streaks (+25/day), unlock achievements (+50-200)
+    </p>
   </section>
 
   <!-- Study Calendar -->
@@ -582,6 +589,11 @@
     const streak = updateStreak();
     document.getElementById('stat-streak').textContent = streak.current || 0;
     document.getElementById('streak-days').textContent = streak.current || 0;
+
+    // Get and update level (from XP)
+    const totalXP = parseInt(localStorage.getItem('sp_total_xp') || '0');
+    const level = Math.floor(totalXP / 500) + 1; // 500 XP per level
+    document.getElementById('stat-level').textContent = level;
 
     // Render visualizations
     renderStudyCalendar();
