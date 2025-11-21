@@ -157,34 +157,10 @@
       }, 5000);
     },
 
-    // Render XP in header
+    // Render XP in header - disabled to reduce header clutter on mobile
     renderXPDisplay() {
-      let display = document.getElementById('xp-display');
-
-      if (!display) {
-        display = document.createElement('div');
-        display.id = 'xp-display';
-        display.className = 'xp-header-display';
-
-        // Find header controls to insert before
-        const headerCtls = document.querySelector('.header-ctls');
-        if (headerCtls) {
-          headerCtls.insertBefore(display, headerCtls.firstChild);
-        } else {
-          // Fallback: add to header
-          const header = document.querySelector('.sp-header .wrap');
-          if (header) {
-            header.appendChild(display);
-          }
-        }
-      }
-
-      display.innerHTML = `
-        <span class="xp-level-badge">Lv.${this.level}</span>
-      `;
-
-      // Add click handler to show stats
-      display.onclick = () => this.showXPStats();
+      // Level display removed from header - users can see XP in My Library
+      return;
     },
 
     // Format large XP numbers
