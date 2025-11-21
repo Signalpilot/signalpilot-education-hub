@@ -31,8 +31,8 @@
     attribute: 'data-theme',
     toggleButtonId: 'themeToggle',
     iconElementId: 'theme-icon',
-    lightIcon: '☀️',
-    darkIcon: '🌙',
+    lightIcon: '☀',
+    darkIcon: '☽',
     lightMetaColor: '#eef1f6',
     darkMetaColor: '#05070d'
   };
