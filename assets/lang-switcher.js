@@ -6,38 +6,44 @@
 (function() {
   'use strict';
 
+  // Use flagcdn.com country codes for cross-platform flag images (Windows compatible)
   const languages = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-    { code: 'pt', name: 'Português', flag: '🇵🇹' },
-    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-    { code: 'zh-CN', name: '中文 (简体)', flag: '🇨🇳' },
-    { code: 'zh-TW', name: '中文 (繁體)', flag: '🇹🇼' },
-    { code: 'ja', name: '日本語', flag: '🇯🇵' },
-    { code: 'ko', name: '한국어', flag: '🇰🇷' },
-    { code: 'ar', name: 'العربية', flag: '🇸🇦' },
-    { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
-    { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
-    { code: 'pl', name: 'Polski', flag: '🇵🇱' },
-    { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
-    { code: 'sv', name: 'Svenska', flag: '🇸🇪' },
-    { code: 'no', name: 'Norsk', flag: '🇳🇴' },
-    { code: 'da', name: 'Dansk', flag: '🇩🇰' },
-    { code: 'fi', name: 'Suomi', flag: '🇫🇮' },
-    { code: 'cs', name: 'Čeština', flag: '🇨🇿' },
-    { code: 'el', name: 'Ελληνικά', flag: '🇬🇷' },
-    { code: 'iw', name: 'עברית', flag: '🇮🇱' },  // Google Translate uses 'iw' for Hebrew
-    { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩' },
-    { code: 'th', name: 'ไทย', flag: '🇹🇭' },
-    { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' },
-    { code: 'uk', name: 'Українська', flag: '🇺🇦' },
-    { code: 'ro', name: 'Română', flag: '🇷🇴' },
-    { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
-    { code: 'bg', name: 'Български', flag: '🇧🇬' }
+    { code: 'en', name: 'English', flagCode: 'us' },
+    { code: 'es', name: 'Español', flagCode: 'es' },
+    { code: 'fr', name: 'Français', flagCode: 'fr' },
+    { code: 'de', name: 'Deutsch', flagCode: 'de' },
+    { code: 'it', name: 'Italiano', flagCode: 'it' },
+    { code: 'pt', name: 'Português', flagCode: 'pt' },
+    { code: 'ru', name: 'Русский', flagCode: 'ru' },
+    { code: 'zh-CN', name: '中文 (简体)', flagCode: 'cn' },
+    { code: 'zh-TW', name: '中文 (繁體)', flagCode: 'tw' },
+    { code: 'ja', name: '日本語', flagCode: 'jp' },
+    { code: 'ko', name: '한국어', flagCode: 'kr' },
+    { code: 'ar', name: 'العربية', flagCode: 'sa' },
+    { code: 'hi', name: 'हिन्दी', flagCode: 'in' },
+    { code: 'tr', name: 'Türkçe', flagCode: 'tr' },
+    { code: 'pl', name: 'Polski', flagCode: 'pl' },
+    { code: 'nl', name: 'Nederlands', flagCode: 'nl' },
+    { code: 'sv', name: 'Svenska', flagCode: 'se' },
+    { code: 'no', name: 'Norsk', flagCode: 'no' },
+    { code: 'da', name: 'Dansk', flagCode: 'dk' },
+    { code: 'fi', name: 'Suomi', flagCode: 'fi' },
+    { code: 'cs', name: 'Čeština', flagCode: 'cz' },
+    { code: 'el', name: 'Ελληνικά', flagCode: 'gr' },
+    { code: 'iw', name: 'עברית', flagCode: 'il' },
+    { code: 'id', name: 'Bahasa Indonesia', flagCode: 'id' },
+    { code: 'th', name: 'ไทย', flagCode: 'th' },
+    { code: 'vi', name: 'Tiếng Việt', flagCode: 'vn' },
+    { code: 'uk', name: 'Українська', flagCode: 'ua' },
+    { code: 'ro', name: 'Română', flagCode: 'ro' },
+    { code: 'hu', name: 'Magyar', flagCode: 'hu' },
+    { code: 'bg', name: 'Български', flagCode: 'bg' }
   ];
+
+  // Helper: Get flag image HTML
+  function getFlagImg(flagCode, size = 20) {
+    return `<img src="https://flagcdn.com/w${size}/${flagCode}.png" width="${size}" height="${Math.round(size*0.75)}" alt="" style="vertical-align:middle;border-radius:2px">`;
+  }
 
   let currentLang = 'en';
 
@@ -129,7 +135,7 @@
       button.type = 'button';
       button.setAttribute('role', 'menuitem');
       button.setAttribute('data-lang', lang.code);
-      button.innerHTML = `${lang.flag} ${lang.name}`;
+      button.innerHTML = `${getFlagImg(lang.flagCode)} ${lang.name}`;
 
       if (lang.code === currentLang) {
         button.classList.add('active');
@@ -173,7 +179,7 @@
     button.setAttribute('aria-label', `Select language (current: ${currentLangObj.name})`);
     button.setAttribute('aria-haspopup', 'true');
     button.setAttribute('aria-expanded', 'false');
-    button.innerHTML = `<span>${currentLangObj.flag}</span>`;
+    button.innerHTML = getFlagImg(currentLangObj.flagCode);
 
     // Create dropdown menu and append to body
     const menu = createDropdownMenu();
