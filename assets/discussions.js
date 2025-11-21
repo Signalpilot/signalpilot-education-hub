@@ -11,6 +11,9 @@
 
     async init(lessonId) {
       this.currentLessonId = lessonId;
+
+      // Wait for auth system to be ready, then get user
+      await this.waitForAuth();
       this.currentUser = await this.getCurrentUser();
 
       // Set up mobile collapse behavior
@@ -23,7 +26,35 @@
       // Set up event listeners
       this.setupEventListeners();
 
-      console.log('[Discussions] Initialized for lesson:', lessonId);
+      // Listen for auth changes to update UI
+      if (window.supabaseAuth && typeof window.supabaseAuth.onAuthStateChange === 'function') {
+        window.supabaseAuth.onAuthStateChange((user) => {
+          this.currentUser = user;
+          this.render(); // Re-render when auth state changes
+          console.log('[Discussions] Auth state changed, user:', user ? user.email : 'none');
+        });
+      }
+
+      console.log('[Discussions] Initialized for lesson:', lessonId, 'User:', this.currentUser?.email || 'not signed in');
+    },
+
+    async waitForAuth() {
+      // Wait up to 3 seconds for auth system to be ready
+      const maxWait = 3000;
+      const checkInterval = 100;
+      let waited = 0;
+
+      while (waited < maxWait) {
+        if (window.supabaseAuth && typeof window.supabaseAuth.getCurrentUser === 'function') {
+          // Wait an additional 200ms to ensure auth has checked session
+          await new Promise(resolve => setTimeout(resolve, 200));
+          return;
+        }
+        await new Promise(resolve => setTimeout(resolve, checkInterval));
+        waited += checkInterval;
+      }
+
+      console.warn('[Discussions] Auth system not ready after waiting');
     },
 
     async getCurrentUser() {
