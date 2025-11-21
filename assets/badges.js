@@ -404,71 +404,71 @@
       switch(badge.id) {
         // Completion badges
         case 'firstSteps':
-          current = stats.lessonsCompleted;
+          current = stats.lessonsCompleted || 0;
           needed = 1;
           message = `${Math.max(0, needed - current)} more lesson${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
         case 'gettingStarted':
-          current = stats.lessonsCompleted;
+          current = stats.lessonsCompleted || 0;
           needed = 10;
           message = `${Math.max(0, needed - current)} more lesson${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
         case 'halfwayThere':
-          current = stats.lessonsCompleted;
+          current = stats.lessonsCompleted || 0;
           needed = 41;
           message = `${Math.max(0, needed - current)} more lesson${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
         case 'almostThere':
-          current = stats.lessonsCompleted;
+          current = stats.lessonsCompleted || 0;
           needed = 70;
           message = `${Math.max(0, needed - current)} more lesson${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
         case 'graduateScholar':
-          current = stats.lessonsCompleted;
+          current = stats.lessonsCompleted || 0;
           needed = 82;
           message = `${Math.max(0, needed - current)} more lesson${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
 
         // Streak badges
         case 'streakStarter':
-          current = Math.max(stats.currentStreak, stats.bestStreak);
+          current = Math.max(stats.currentStreak || 0, stats.bestStreak || 0);
           needed = 7;
           message = `${Math.max(0, needed - current)} more day${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
         case 'streakChampion':
-          current = Math.max(stats.currentStreak, stats.bestStreak);
+          current = Math.max(stats.currentStreak || 0, stats.bestStreak || 0);
           needed = 30;
           message = `${Math.max(0, needed - current)} more day${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
         case 'streakLegend':
-          current = Math.max(stats.currentStreak, stats.bestStreak);
+          current = Math.max(stats.currentStreak || 0, stats.bestStreak || 0);
           needed = 100;
           message = `${Math.max(0, needed - current)} more day${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
 
         // Achievement badges
         case 'quizMaster':
-          current = stats.perfectQuizzes;
+          current = stats.perfectQuizzes || 0;
           needed = 10;
           message = `${Math.max(0, needed - current)} more perfect quiz${needed - current !== 1 ? 'zes' : ''} to unlock`;
           break;
         case 'speedReader':
-          current = stats.fastestLesson > 0 && stats.fastestLesson < 300 ? 1 : 0;
+          current = (stats.fastestLesson || 0) > 0 && (stats.fastestLesson || 0) < 300 ? 1 : 0;
           needed = 1;
           message = 'Complete any lesson in under 5 minutes';
           break;
         case 'noteTaker':
-          current = stats.totalNotes;
+          current = stats.totalNotes || 0;
           needed = 20;
           message = `${Math.max(0, needed - current)} more note${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
         case 'socialButterfly':
-          current = stats.totalShares;
+          current = stats.totalShares || 0;
           needed = 5;
           message = `${Math.max(0, needed - current)} more share${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
         case 'bookworm':
-          current = stats.lessonsThisWeek;
+          current = stats.lessonsThisWeek || 0;
           needed = 10;
           message = `${Math.max(0, needed - current)} more lesson${needed - current !== 1 ? 's' : ''} this week to unlock`;
           break;
@@ -485,20 +485,20 @@
           message = 'Complete any lesson after 10pm';
           break;
         case 'weekendWarrior':
-          current = stats.weekendLessons;
+          current = stats.weekendLessons || 0;
           needed = 5;
           message = `${Math.max(0, needed - current)} more weekend lesson${needed - current !== 1 ? 's' : ''} to unlock`;
           break;
 
         // Special badges
         case 'dedicated':
-          current = stats.totalTimeMinutes;
+          current = stats.totalTimeMinutes || 0;
           needed = 600;
           const hoursNeeded = Math.ceil((needed - current) / 60 * 10) / 10;
           message = `${hoursNeeded > 0 ? hoursNeeded + ' more hours' : 'Almost there!'} to unlock`;
           break;
         case 'perfectionist':
-          current = stats.perfectQuizStreak;
+          current = stats.perfectQuizStreak || 0;
           needed = 5;
           message = `${Math.max(0, needed - current)} more perfect quiz${needed - current !== 1 ? 'zes' : ''} in a row to unlock`;
           break;
@@ -507,7 +507,7 @@
           message = 'Keep learning to unlock!';
       }
 
-      const percent = Math.min(100, Math.floor((current / needed) * 100));
+      const percent = needed > 0 ? Math.min(100, Math.floor((current / needed) * 100)) : 0;
       return { current, needed, percent, message };
     },
 
