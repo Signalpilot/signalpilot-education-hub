@@ -748,44 +748,27 @@
 
   // Migrate existing completed lessons to activity data (runs once)
   function migrateExistingProgress() {
-    const migrationKey = 'sp_activity_migrated';
+    const migrationKey = 'sp_activity_migrated_v2'; // v2 to reset old fake backdated data
 
     // Check if already migrated
     if (localStorage.getItem(migrationKey)) {
       return;
     }
 
-    logger.log('[My Library] Migrating existing progress to activity tracking...');
+    logger.log('[My Library] Resetting activity tracking to start fresh...');
 
-    const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
-    const completed = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed'));
+    // Clear old fake backdated data
+    localStorage.removeItem('sp_activity');
+    localStorage.removeItem('sp_learning_streak');
 
-    if (completed.length > 0) {
-      // Get the earliest date we can use (today minus number of completed lessons)
-      // This creates a realistic-looking streak
-      const today = new Date();
-      const daysBack = Math.min(completed.length, 90); // Cap at 90 days
+    // Initialize fresh activity for today only
+    const today = new Date().toISOString().split('T')[0];
+    const activity = { [today]: { visits: 1, lessonsCompleted: 0 } };
+    localStorage.setItem('sp_activity', JSON.stringify(activity));
 
-      // Distribute completed lessons across recent days
-      for (let i = 0; i < completed.length; i++) {
-        const daysAgo = Math.floor((daysBack - 1) * (i / Math.max(completed.length - 1, 1)));
-        const date = new Date(today);
-        date.setDate(date.getDate() - daysAgo);
-        const dateStr = date.toISOString().split('T')[0];
-
-        if (!activity[dateStr]) {
-          activity[dateStr] = { visits: 1, lessonsCompleted: 1 };
-        } else {
-          activity[dateStr].lessonsCompleted = (activity[dateStr].lessonsCompleted || 0) + 1;
-        }
-      }
-
-      localStorage.setItem('sp_activity', JSON.stringify(activity));
-      logger.log(`[My Library] Migrated ${completed.length} completed lessons to activity data`);
-    }
-
-    // Mark migration as complete
+    // Mark migration as complete with new version
     localStorage.setItem(migrationKey, 'true');
+    logger.log('[My Library] Activity tracking reset. Streak will build from real usage going forward.');
   }
 
   // Debug helper - show what's in localStorage
@@ -808,7 +791,8 @@
   // Force re-migration (for debugging/fixing issues)
   function forceMigration() {
     logger.log('[My Library] Forcing migration...');
-    localStorage.removeItem('sp_activity_migrated');
+    localStorage.removeItem('sp_activity_migrated'); // old key
+    localStorage.removeItem('sp_activity_migrated_v2'); // new key
     localStorage.removeItem('sp_activity');
     localStorage.removeItem('sp_learning_streak');
     migrateExistingProgress();
