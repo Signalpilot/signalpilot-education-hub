@@ -201,26 +201,14 @@ p, li {
   }
 }
 
-html[data-theme="light"] .brand,
-html[data-theme="light"] .brand span {
-  color: #0f172a !important;
+/* Header stays dark in both modes - keep text/icons white */
+.sp-header .brand,
+.sp-header .brand span {
+  color: #fff !important;
 }
 
-/* Light mode header button fixes */
-html[data-theme="light"] #theme-icon {
-  color: #0f172a !important;
-  filter: none !important;
-  -webkit-filter: none !important;
-}
-
-html[data-theme="light"] .header-ctls .btn-ghost,
-html[data-theme="light"] .header-ctls #themeToggle,
-html[data-theme="light"] .header-ctls .lang-dropdown button,
-html[data-theme="light"] #auth-button,
-html[data-theme="light"] .menu-toggle {
-  background: rgba(0,0,0,.08) !important;
-  border-color: rgba(0,0,0,.15) !important;
-  color: #0f172a !important;
+#theme-icon {
+  color: #fff !important;
 }
 
 /* ================================================================
