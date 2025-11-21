@@ -447,10 +447,33 @@
           localStorage.setItem(key, JSON.stringify(notes[key]));
         }
 
-        // Restore bookmarks, favorites, and downloads
-        localStorage.setItem('sp_bookmarks', JSON.stringify(data.bookmarks || []));
-        localStorage.setItem('sp_favorites', JSON.stringify(data.favorites || []));
-        localStorage.setItem('sp_downloads', JSON.stringify(data.downloads || []));
+        // Restore bookmarks, favorites, and downloads (MERGE, don't overwrite)
+        // This prevents data loss when cloud is empty but local has data
+        const mergeArrays = (localKey, cloudData) => {
+          const local = JSON.parse(localStorage.getItem(localKey) || '[]');
+          const cloud = cloudData || [];
+          // Merge by creating a map of unique items by id or url
+          const merged = new Map();
+          local.forEach(item => {
+            const key = item.id || item.url || JSON.stringify(item);
+            merged.set(key, item);
+          });
+          cloud.forEach(item => {
+            const key = item.id || item.url || JSON.stringify(item);
+            merged.set(key, item); // Cloud overwrites local for same item
+          });
+          return Array.from(merged.values());
+        };
+
+        const mergedBookmarks = mergeArrays('sp_bookmarks', data.bookmarks);
+        const mergedFavorites = mergeArrays('sp_favorites', data.favorites);
+        const mergedDownloads = mergeArrays('sp_downloads', data.downloads);
+
+        localStorage.setItem('sp_bookmarks', JSON.stringify(mergedBookmarks));
+        localStorage.setItem('sp_favorites', JSON.stringify(mergedFavorites));
+        localStorage.setItem('sp_downloads', JSON.stringify(mergedDownloads));
+
+        logger.log('[Supabase] Merged data - Bookmarks:', mergedBookmarks.length, 'Favorites:', mergedFavorites.length);
 
         // Restore activity if it exists in cloud
         if (data.activity && Object.keys(data.activity).length > 0) {
