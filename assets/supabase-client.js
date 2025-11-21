@@ -558,9 +558,14 @@
     if (authBtn) {
       if (user) {
         const userName = user.user_metadata?.user_name || user.email.split('@')[0];
+        // Create initials (e.g., "Archi Rasca" -> "A.R")
+        const initials = userName.split(' ')
+          .map(word => word.charAt(0).toUpperCase())
+          .join('.')
+          .substring(0, 5); // Max 5 chars (X.X.X)
         authBtn.innerHTML = `
-          <span style="margin-right: 0.5rem;">👤</span>
-          <span>${userName}</span>
+          <span style="margin-right: 0.25rem;">👤</span>
+          <span>${initials}</span>
         `;
         // Use arrow function to ensure proper scope
         authBtn.onclick = (e) => {
