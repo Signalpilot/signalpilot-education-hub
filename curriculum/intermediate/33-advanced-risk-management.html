@@ -447,7 +447,7 @@ Price reverses to $102 → Stopped with $2 profit (vs. holding to $100)</code></
         <li>[ ] Drawdown: ____%</li>
         <li>[ ] Open positions: ___</li>
         <li>[ ] Total heat: ____%</li>
-        <li>[ ] Regime (Volume Oracle): ______</li>
+        <li>[ ] Regime (<a href="https://docs.signalpilot.io/volume-oracle-v10/" target="_blank" rel="noopener">Volume Oracle</a>): ______</li>
         <li>[ ] Risk per trade today: ____%</li>
       </ul>
 
@@ -491,19 +491,19 @@ If hit 10% DD → Reduce to 50% size for rest of month</code></pre>
 
       <h2 id="signal-pilot-risk-integration">Signal Pilot Risk Integration</h2>
       
-      <h3 id="janus-atlas-structure-based-stops">Janus Atlas: Structure-Based Stops</h3>
+      <h3 id="janus-atlas-structure-based-stops"><a href="https://docs.signalpilot.io/janus-atlas-v10/" target="_blank" rel="noopener">Janus Atlas</a>: Structure-Based Stops</h3>
       <pre style="overflow-x:auto"><code>Janus sweep to $99.50
 Example entry: $100.20
 Example stop: $99.20 (below swept low + ATR buffer)
 
 R:R: ($105 target - $100.20) / ($100.20 - $99.20) = 4.8R</code></pre>
 
-      <h3 id="volume-oracle-regime-risk-adjustment">Volume Oracle: Regime Risk Adjustment</h3>
+      <h3 id="volume-oracle-regime-risk-adjustment"><a href="https://docs.signalpilot.io/volume-oracle-v10/" target="_blank" rel="noopener">Volume Oracle</a>: Regime Risk Adjustment</h3>
       <pre style="overflow-x:auto"><code>Trending: 2% risk/trade
 Ranging: 1% risk/trade
 Volatile: 0.5% risk/trade OR sit out</code></pre>
 
-      <h3 id="plutus-flow-atr-based-sizing">Plutus Flow: ATR-Based Sizing</h3>
+      <h3 id="plutus-flow-atr-based-sizing"><a href="https://docs.signalpilot.io/plutus-flow-v10/" target="_blank" rel="noopener">Plutus Flow</a>: ATR-Based Sizing</h3>
       <pre style="overflow-x:auto"><code>Asset: BTC, ATR = $500
 Target risk: $400
 
