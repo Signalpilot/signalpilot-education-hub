@@ -296,7 +296,7 @@
       // Get all sp_edu_* keys (lesson completion, achievements, etc.)
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_learning') || key.startsWith('sp_lesson'))) {
+        if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_learning') || key.startsWith('sp_lesson') || key === 'sp_total_xp' || key === 'sp_xp_log')) {
           progress[key] = localStorage.getItem(key);
         }
       }
@@ -323,6 +323,7 @@
       logger.log('[Supabase] 📤 Syncing progress to cloud...', {
         progressKeys: Object.keys(progress).length,
         completedLessons: Object.keys(progress).filter(k => k.includes('_completed')).length,
+        totalXP: progress['sp_total_xp'] || 0,
         streakCurrent: streak.current,
         notesCount: Object.keys(notes).length,
         bookmarksCount: bookmarks.length,
@@ -812,7 +813,8 @@
   window.addEventListener('storage', (e) => {
     if (e.key && (e.key.startsWith('sp_edu_') || e.key.startsWith('sp_lesson') || e.key.startsWith('sp_learning') ||
                   e.key.startsWith('sp_notes_') ||
-                  e.key === 'sp_bookmarks' || e.key === 'sp_favorites' || e.key === 'sp_downloads' || e.key === 'sp_activity')) {
+                  e.key === 'sp_bookmarks' || e.key === 'sp_favorites' || e.key === 'sp_downloads' || e.key === 'sp_activity' ||
+                  e.key === 'sp_total_xp' || e.key === 'sp_xp_log')) {
       onProgressChange();
     }
   });
@@ -825,7 +827,8 @@
     // If progress-related key changed, trigger sync
     if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_lesson') || key.startsWith('sp_learning') ||
                 key.startsWith('sp_notes_') ||
-                key === 'sp_bookmarks' || key === 'sp_favorites' || key === 'sp_downloads' || key === 'sp_activity')) {
+                key === 'sp_bookmarks' || key === 'sp_favorites' || key === 'sp_downloads' || key === 'sp_activity' ||
+                key === 'sp_total_xp' || key === 'sp_xp_log')) {
       onProgressChange();
     }
   };
