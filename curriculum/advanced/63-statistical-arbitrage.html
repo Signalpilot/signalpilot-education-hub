@@ -107,28 +107,16 @@
       <details style="background:rgba(0,212,170,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
         <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ Quick Wins for Tomorrow (Click to expand)</summary>
         <div style="margin-top:1rem">
-          <p>Don't overwhelm yourself. Start with these 3 actions:</p>
           <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
-            <li><strong>Test Your First Pair for Cointegration Tonight Using Python (Find Out if SPY-QQQ Actually Mean Reverts BEFORE Risking Money)</strong> — Derek Walsh lost $47,200 over 8 months (March-October 2023) trading "correlated pairs" that WEREN'T cointegrated. He saw SPY and QQQ move together (0.92 correlation), assumed they'd always revert, and traded the spread. August 2023: SPY outperformed QQQ by 4.8% in one month. Derek shorted SPY, bought QQQ, expecting reversion. It never came. The spread widened to 7.2%, then 9.4% over 3 months. He held on (no stop loss), believing "it HAS to revert." Final loss: -$47,200. Why? High correlation ≠ cointegration. Correlated assets can DRIFT APART permanently. Cointegrated assets have a MATHEMATICAL RELATIONSHIP that pulls them back together. The fix: Test for cointegration using the Augmented Dickey-Fuller (ADF) test BEFORE trading any pair. Tonight's action: Install Python libraries: `pip install pandas yfinance statsmodels`. Copy this code to test SPY-QQQ cointegration: `import yfinance as yf; from statsmodels.tsa.stattools import coint; spy = yf.download('SPY', start='2020-01-01')['Adj Close']; qqq = yf.download('QQQ', start='2020-01-01')['Adj Close']; score, pvalue, _ = coint(spy, qqq); print(f'Cointegration p-value: {pvalue}')`. Run it. If p-value < 0.05 → Cointegrated (tradeable pair). If p-value > 0.05 → NOT cointegrated (don't trade). Tomorrow, test 5 potential pairs: SPY-IWM, GLD-SLV, XLE-XLF, USO-XLE, TLT-IEF. Only trade pairs with p-value < 0.05. This single test prevents $40K+ losses from trading fake pairs.</li>
-            <li><strong>Build Your Z-Score Spreadsheet This Week (Know EXACTLY When to Enter and Exit Based on Statistical Edge, Not Gut Feel)</strong> — Amanda Chen lost $38,900 over 6 months (January-June 2024) trading pairs with NO entry/exit rules. She'd see a spread widen, think "this looks big," enter, then panic-exit when it widened more. No system. All emotion. Result: 67 trades, 28 wins (42% win rate), -$38,900 loss. The fix: Use z-scores to quantify WHEN the spread is statistically extreme. Z-score = (Current Spread - Average Spread) / Spread Standard Deviation. If z > +2.0 = spread is 2 standard deviations above mean (RARE event, likely to revert DOWN). If z < -2.0 = spread 2 SD below mean (likely to revert UP). Entry rule: Enter when |z| > 2.0. Exit rule: Exit when z returns to 0 (mean). Tonight's action: Open Google Sheets. Create a "Pairs Trading Tracker" with columns: Date, Asset A Price, Asset B Price, Spread (A - Hedge Ratio × B), 20-Day Avg Spread, 20-Day Spread StdDev, Z-Score = (Spread - Avg) / StdDev, Signal (BUY if z < -2, SELL if z > +2, FLAT if |z| < 1). Tomorrow, pick ONE cointegrated pair (e.g., SPY-IWM). Calculate daily spread for past 60 days. Calculate rolling 20-day average and standard deviation. Compute z-score. Look for historical z-score extremes (|z| > 2). Backtest: If you entered at z = ±2 and exited at z = 0, what would your win rate and profit have been? This gives you statistical confidence BEFORE live trading. Example: SPY-IWM z-score hits +2.5 (spread extremely wide). You SHORT SPY, LONG IWM. When z returns to 0 (spread normalizes), you exit. Average profit per trade: 1.2-2.5% per pair over 3-10 days. This system eliminates guesswork and emotional exits.</li>
-            <li><strong>Start Paper Trading ONE Pair for 30 Days (Prove the Math Works Before Deploying Capital)</strong> — Michael Torres lost $52,400 in his first 60 days of live stat arb trading (September-October 2024) because he went straight from theory to real money without testing execution. He understood cointegration, calculated z-scores correctly, but failed at execution: (1) Entered too early (z = 1.5 instead of 2.0), (2) Exited too early (z = 0.5 instead of 0, missed half the reversion), (3) Oversized positions (5% per pair instead of 2%), (4) No stop loss when spreads widened past z = 3.0. Result: Theory was right, execution destroyed him. Total loss: -$52,400. The fix: Paper trade for 30 days to master execution without risk. November 2024: Michael started over with a paper account. ONE pair (XLE-XLF, energy vs. financials). Rules: Enter at z ≥ 2.0, exit at z ≤ 0.5, stop loss at z ≥ 3.0 (spread diverging too far), position size 2% of account. Result after 30 days: 12 trades, 9 wins (75% win rate), +$4,200 paper profit (would've been real if live). Why it worked: He proved he could EXECUTE the system without emotional interference. December 2024: Went live with real money. Same rules. Result (Dec 2024-Feb 2025): +$18,700 profit in 3 months. Why? He validated execution BEFORE risking capital. Tonight's action: Open a paper trading account (Thinkorswim, TradeStation, Interactive Brokers all offer free paper accounts). Choose ONE cointegrated pair (start simple: SPY-IWM or GLD-SLV). Set your rules: Entry z-score (≥2.0), Exit z-score (≤0.5), Stop loss z-score (≥3.0), Position size (2% per pair). Tomorrow, start tracking the pair daily. When z-score hits your entry threshold, execute the paper trade: LONG underperformer, SHORT outperformer. Track the trade daily. Exit when z returns to 0. Log: Entry date, z-score at entry, exit date, z-score at exit, profit/loss. After 30 days and 10-15 paper trades, calculate: Win rate (target > 65%), Average profit per trade (target > 1.5%), Max drawdown (should be < 5%). If your paper results hit these targets → go live with small size. If not → keep paper trading until execution is flawless. This 30-day paper period prevents $50K+ in live trading mistakes.</li>
+            <li><strong>Test Your First Pair for Cointegration Tonight</strong> — Use Python: `from statsmodels.tsa.stattools import coint; score, pvalue, _ = coint(spy, qqq)`. If p-value < 0.05 = cointegrated (tradeable). If > 0.05 = NOT cointegrated (don't trade). High correlation ≠ cointegration.</li>
+            <li><strong>Build Your Z-Score Spreadsheet</strong> — Z = (Current Spread - Avg Spread) / StdDev. Entry: |z| > 2.0 (2 standard deviations from mean). Exit: z returns to 0. Stop: |z| > 3.0 (diverging too far). Position size: 2% per pair.</li>
+            <li><strong>Paper Trade ONE Pair for 30 Days</strong> — Pick one cointegrated pair (SPY-IWM, KO-PEP). Enter at z ≥ 2.0, exit at z ≤ 0.5. Track 10-15 trades. Target: >65% win rate, >1.5% avg profit. Validate execution before live money.</li>
           </ol>
         </div>
       </details>
 
       <div class="section-break"><span>Part 1: Why Correlation ≠ Cointegration</span></div>
 
-      
-      <div style="background:rgba(118,221,255,0.08);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid var(--accent)">
-        <h3 style="margin:0 0 1rem 0">🎯 What You'll Learn</h3>
-        <p style="margin:0 0 0.75rem 0">By the end of this lesson, you'll be able to:</p>
-        <ul style="line-height:1.8;margin:0 0 0 1.5rem">
-          <li>Stat arb: Trade mean-reversion of correlated pairs (SPY/QQQ, XLE/XLF)</li>
-          <li>Pairs trading: Long underperformer, short outperformer when spread diverges</li>
-          <li>Z-score: Measures standard deviations from mean</li>
-          <li>Framework: Find 0.7+ correlated pairs → Trade when z-score >2 → Exit at mean</li>
-        </ul>
-      </div>
 <h2 id="the-most-dangerous-misconception-in-pairs-trading">The Most Dangerous Misconception in Pairs Trading</h2>
 
       <p>Retail traders love to find "correlated pairs" and trade the divergence. SPY and QQQ move together, right? Tesla and Lucid? Bitcoin and Ethereum?</p>
@@ -214,7 +202,7 @@
     </div>
   </div>
   <div class="quiz-explanation">
-    <p><strong>Correct: C.</strong> Derek's disaster came from confusing correlation with cointegration—he saw ARKK/QQQ had 0.89 correlation (they moved together historically) and assumed they'd always revert when diverging. But correlation measures the PAST, cointegration predicts the FUTURE. He never ran an ADF test to verify the spread was stationary (mean-reverting). Trade #1: ARKK dropped, he bought thinking "cheap vs. QQQ," spread widened further, lost -$6,600. Trade #2: Shorted ARKK thinking "overextended," but ARKK exploded +13.5% on genomics hype while QQQ only +1.1%, margin call forced close, lost -$15,200. Trade #3: Initially up $26,831, but he held 25+ days with no statistical basis for how long reversion takes (no half-life calculation), ARKK short squeezed +10.5% in 2 days, final exit -$8,400. Structural issue: ARKK pivoted to biotech, breaking historical link with QQQ—correlation persisted but cointegration DIED. His recovery: learned proper stat arb—(1) ADF test EVERY pair (p-value <0.05 required), (2) Calculate half-life (<20 days), (3) Z-score entry (|Z| >2.0), (4) Decointegration stop (if ADF p-value rises >0.10, exit immediately). Result: 69.6% win rate, +$23,094 profit in 9 months. Lesson: High correlation doesn't guarantee mean reversion. Test for cointegration first.</p>
+    <p><strong>Correct: C.</strong> Derek confused correlation (past similarity) with cointegration (mean-reverting spread). He never ran an ADF test. ARKK pivoted to biotech, breaking the historical link with QQQ—correlation persisted but cointegration died. Recovery: ADF test every pair (p<0.05), calculate half-life, use z-score entry. Result: 69.6% win rate after learning proper stat arb.</p>
   </div>
 </div>
 
@@ -496,22 +484,8 @@ Conclusion: KO/PEP is a tradeable pair
 
       <p>Don't run just one pair. Build a portfolio of 5-10 cointegrated pairs across different sectors to reduce idiosyncratic risk.</p>
 
-      <div class="accordion">
-        <details class="accordion-item">
-          <summary class="accordion-header">Example Stat Arb Portfolio</summary>
-          <div class="accordion-content">
-            <ul>
-              <li><strong>Pair 1:</strong> KO vs PEP (Consumer Staples)</li>
-              <li><strong>Pair 2:</strong> XOM vs CVX (Energy)</li>
-              <li><strong>Pair 3:</strong> JPM vs BAC (Financials)</li>
-              <li><strong>Pair 4:</strong> AAPL vs MSFT (Tech)</li>
-              <li><strong>Pair 5:</strong> UNH vs CVS (Healthcare)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Benefit:</strong> If one pair decointegrates, others can still perform</p>
-            <p><strong>Risk per Pair:</strong> 2% of capital max</p>
-            <p><strong>Total Portfolio Risk:</strong> 10% across 5 uncorrelated pairs</p>
-          </div>
-        </details>
+      <div class="callout-tip">
+        <p><strong>Example Portfolio:</strong> KO/PEP (Consumer), XOM/CVX (Energy), JPM/BAC (Finance), AAPL/MSFT (Tech), UNH/CVS (Healthcare). 2% per pair, 10% total risk, diversified if one decointegrates.</p>
       </div>
 
       <div class="section-break"><span>Part 5: When Stat Arb Fails</span></div>
@@ -527,11 +501,8 @@ Conclusion: KO/PEP is a tradeable pair
       </ul>
 
       <div class="callout-warning">
-        <h4>🚨 Real Example: LTCM Collapse (1998)</h4>
-        <p>Long-Term Capital Management was a stat arb hedge fund run by Nobel Prize winners. They traded bond spreads with mathematical precision.</p>
-        <p><strong>What Went Wrong:</strong> Russian debt crisis caused spreads to widen far beyond historical norms. LTCM kept adding to positions (z-score hit 10+), expecting reversion.</p>
-        <p><strong>Result:</strong> $4.6 billion loss. Near collapse of the financial system.</p>
-        <p><strong>Lesson:</strong> Statistical models assume normal distributions. Black swan events break those assumptions. Always have stop losses.</p>
+        <h4>🚨 LTCM Collapse (1998)</h4>
+        <p>Nobel Prize-winning stat arb fund lost $4.6B when Russian debt crisis caused spreads to widen beyond historical norms (z-score hit 10+). <strong>Lesson:</strong> Models assume normal distributions. Black swan events break assumptions. Always have stop losses.</p>
       </div>
 <h3 id="stop-loss-rules-for-stat-arb">Stop Loss Rules for Stat Arb</h3>
 
@@ -547,65 +518,15 @@ Conclusion: KO/PEP is a tradeable pair
 
       <p>Step-by-step process for running statistical arbitrage:</p>
 
-      <div class="accordion">
-        <details class="accordion-item">
-          <summary class="accordion-header">Step 1: Pair Discovery (Screen for Candidates)</summary>
-          <div class="accordion-content">
-            <p><strong>Method:</strong> Screen stocks in the same sector or ETFs tracking similar indices</p>
-            <p><strong>Tools:</strong> Python (statsmodels library for ADF test), QuantConnect, or custom scripts</p>
-            <p><strong>Criteria:</strong></p>
-            <ul>
-              <li>Similar market cap (liquidity)</li>
-              <li>Same industry/sector (fundamental link)</li>
-              <li>High correlation (>0.7) as initial filter</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary class="accordion-header">Step 2: Cointegration Testing</summary>
-          <div class="accordion-content">
-            <p><strong>Run ADF test on the spread:</strong></p>
-            <ul>
-              <li>Use 6-12 months of daily data</li>
-              <li>Calculate spread: Asset A - (β × Asset B)</li>
-              <li>ADF p-value < 0.05 = pass</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Reject pairs with p > 0.05</strong> (not cointegrated)</p>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary class="accordion-header">Step 3: Backtesting</summary>
-          <div class="accordion-content">
-            <p><strong>Test z-score model on historical data:</strong></p>
-            <ul>
-              <li>Entry at |Z| > 2, potential exit at Z = 0</li>
-              <li>Calculate win rate, avg profit/loss, Sharpe ratio</li>
-              <li>Verify half-life is reasonable (5-30 days)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>If Sharpe > 1.5 and win rate > 60%, proceed to live testing</strong></p>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary class="accordion-header">Step 4: Live Monitoring</summary>
-          <div class="accordion-content">
-            <p><strong>Track daily:</strong></p>
-            <ul>
-              <li>Current z-score (potential entry/exit signals)</li>
-              <li>Spread volatility (risk sizing)</li>
-              <li>Correlation (warning if dropping)</li>
-              <li>Re-run ADF test monthly (check for decointegration)</li>
-            </ul>
-          </div>
-        </details>
+      <div class="callout-info">
+        <p><strong>Step 1 - Discovery:</strong> Screen same-sector stocks with similar market cap and >0.7 correlation.</p>
+        <p><strong>Step 2 - Test:</strong> ADF test on spread (6-12 months data). p<0.05 = pass, p>0.05 = reject.</p>
+        <p><strong>Step 3 - Backtest:</strong> Entry |Z|>2, exit Z=0. Target: Sharpe >1.5, win rate >60%, half-life 5-30 days.</p>
+        <p><strong>Step 4 - Monitor:</strong> Daily z-score, spread volatility, correlation. Re-run ADF monthly.</p>
       </div>
 
       <div class="callout-tip">
-        <h4>🎯 Pro Tip: Use Rolling Windows</h4>
-        <p>Don't calculate cointegration once and assume it's stable forever. Use a <strong>rolling 6-month window</strong> to recalculate β and re-test ADF every month.</p>
-        <p>If p-value drifts above 0.10, potential exit the pair—it's decointegrating.</p>
+        <p><strong>Pro Tip:</strong> Use rolling 6-month window to recalculate β monthly. Exit if p-value drifts >0.10 (decointegrating).</p>
       </div>
 
       <div class="section-break"><span>Part 7: Advanced Strategies—Intraday Statistical Arbitrage</span></div>
@@ -626,59 +547,19 @@ Conclusion: KO/PEP is a tradeable pair
         <details class="accordion-item">
           <summary class="accordion-header">Example: SPY vs IWM Intraday Pairs</summary>
           <div class="accordion-content">
-            <p><strong>Pair Logic:</strong></p>
-            <ul>
-              <li>SPY = S&P 500 (large cap)</li>
-              <li>IWM = Russell 2000 (small cap)</li>
-              <li>Correlation: 0.92 (5-minute bars)</li>
-              <li>ADF test (5-min spread): p = 0.009 ✅ Cointegrated!</li>
-              <li>Half-life: 12 bars (60 minutes)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Entry Rules:</strong></p>
-            <ul>
-              <li>Calculate 5-min rolling z-score</li>
-              <li>Entry: |Z| > 1.8 (more aggressive than daily)</li>
-              <li>Exit: Z crosses 0 OR 90 minutes elapsed</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Example Trade (Nov 15, 2024):</strong></p>
-            <ul>
-              <li>10:35 AM: SPY at $595.20, IWM at $225.40</li>
-              <li>Spread = SPY - (2.642 × IWM) = -$0.28</li>
-              <li>Z-score = -1.95 (SPY cheap relative to IWM)</li>
-              <li><strong>Trade:</strong> Long 200 SPY, Short 530 IWM</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Result:</strong></p>
-            <ul>
-              <li>11:20 AM: Spread reverts to +$0.05</li>
-              <li>Z-score = +0.12 (mean reversion complete)</li>
-              <li>Exit: Profit $142 in 45 minutes (0.12% return)</li>
-            </ul>
-            <p style="margin-top:1rem;color:var(--success)"><strong>Scalability:</strong> This trade works 8-12× per day with $50-200 profit each. Monthly return: ~3-5% with minimal overnight risk.</p>
+            <p><strong>Setup:</strong> SPY/IWM, correlation 0.92 (5-min), ADF p=0.009✅, half-life 12 bars (60 min)</p>
+            <p><strong>Rules:</strong> Entry |Z| > 1.8, exit when Z crosses 0 OR 90 min elapsed</p>
+            <p><strong>Example (Nov 15, 2024):</strong> 10:35 AM z=-1.95 → Long 200 SPY, Short 530 IWM → 11:20 AM z=+0.12 → Exit +$142 (45 min, 0.12%)</p>
+            <p style="color:var(--success)"><strong>Scalability:</strong> 8-12× per day, $50-200 each. Monthly: ~3-5% with minimal overnight risk.</p>
           </div>
         </details>
 
         <details class="accordion-item">
           <summary class="accordion-header">Intraday Stat Arb Risks</summary>
           <div class="accordion-content">
-            <p><strong>Why Most Retail Traders Fail at This:</strong></p>
-            <ul>
-              <li><strong>Commission Overhead:</strong> $0.005/share × 2 legs × multiple trades = eats profits</li>
-              <li><strong>Slippage:</strong> Market orders on large size = instant -$50-100 loss</li>
-              <li><strong>False Signals:</strong> Intraday noise creates 40-50% false z-score triggers</li>
-              <li><strong>Technology Requirements:</strong> Need algo platform (QuantConnect, TradeStation, custom)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Who Should Do This:</strong></p>
-            <ul>
-              <li>Traders with >$100K capital (need size for profit after costs)</li>
-              <li>Access to professional routing (Interactive Brokers Pro, Lightspeed, etc.)</li>
-              <li>Automated execution (no manual clicking)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Who Should NOT:</strong></p>
-            <ul>
-              <li>Beginner traders (stick to daily/weekly stat arb)</li>
-              <li>Anyone using Robinhood, Webull, etc. (too much slippage)</li>
-              <li>Manual traders (you'll miss fills and get chopped up)</li>
-            </ul>
+            <p><strong>Why Retail Fails:</strong> Commission overhead ($0.005/share × 2 legs), slippage on large size, 40-50% false signals from intraday noise, need algo platform.</p>
+            <p><strong>Requirements:</strong> >$100K capital, professional routing (IBKR Pro, Lightspeed), automated execution.</p>
+            <p><strong>Avoid if:</strong> Beginner, using Robinhood/Webull, or trading manually.</p>
           </div>
         </details>
       </div>
@@ -698,85 +579,34 @@ Conclusion: KO/PEP is a tradeable pair
         </div>
         <div class="tabs-content">
           <div class="tab-panel">
-            <h3 id="conservative-stat-arb-portfolio-100k-account">Conservative Stat Arb Portfolio ($100K Account)</h3>
-            <p><strong>Strategy:</strong> 5 pairs, 2% risk each, daily timeframe</p>
-            <ul>
-              <li><strong>Pair 1:</strong> KO/PEP (Consumer Staples) — 2% allocation</li>
-              <li><strong>Pair 2:</strong> JPM/BAC (Financials) — 2% allocation</li>
-              <li><strong>Pair 3:</strong> XOM/CVX (Energy) — 2% allocation</li>
-              <li><strong>Pair 4:</strong> UNH/CVS (Healthcare) — 2% allocation</li>
-              <li><strong>Pair 5:</strong> WMT/TGT (Retail) — 2% allocation</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Total Risk:</strong> 10% of capital actively deployed</p>
-            <p><strong>Expected Sharpe:</strong> 1.5-2.0</p>
-            <p><strong>Expected Annual Return:</strong> 12-18%</p>
-            <p><strong>Max Drawdown:</strong> -8% to -12%</p>
+            <h3 id="conservative-stat-arb-portfolio-100k-account">Conservative ($100K)</h3>
+            <p><strong>5 pairs, 2% each:</strong> KO/PEP, JPM/BAC, XOM/CVX, UNH/CVS, WMT/TGT</p>
+            <p><strong>Total Risk:</strong> 10% | <strong>Sharpe:</strong> 1.5-2.0 | <strong>Return:</strong> 12-18% | <strong>Max DD:</strong> -8% to -12%</p>
           </div>
           <div class="tab-panel">
-            <h3 id="moderate-stat-arb-portfolio-100k-account">Moderate Stat Arb Portfolio ($100K Account)</h3>
-            <p><strong>Strategy:</strong> 10 pairs, 1.5% risk each, mix of daily and intraday</p>
-            <ul>
-              <li><strong>Daily Pairs (6):</strong> Same as conservative, plus MA/V, DIS/CMCSA</li>
-              <li><strong>Intraday Pairs (4):</strong> SPY/IWM, QQQ/DIA, XLF/XLK, XLE/XLU</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Total Risk:</strong> 15% of capital</p>
-            <p><strong>Expected Sharpe:</strong> 2.0-2.5</p>
-            <p><strong>Expected Annual Return:</strong> 20-30%</p>
-            <p><strong>Max Drawdown:</strong> -12% to -18%</p>
+            <h3 id="moderate-stat-arb-portfolio-100k-account">Moderate ($100K)</h3>
+            <p><strong>10 pairs, 1.5% each:</strong> Daily (6): Conservative + MA/V, DIS/CMCSA | Intraday (4): SPY/IWM, QQQ/DIA, XLF/XLK, XLE/XLU</p>
+            <p><strong>Total Risk:</strong> 15% | <strong>Sharpe:</strong> 2.0-2.5 | <strong>Return:</strong> 20-30% | <strong>Max DD:</strong> -12% to -18%</p>
           </div>
           <div class="tab-panel">
-            <h3 id="aggressive-stat-arb-portfolio-100k-account">Aggressive Stat Arb Portfolio ($100K Account)</h3>
-            <p><strong>Strategy:</strong> 20+ pairs, 1% risk each, heavy intraday focus</p>
-            <ul>
-              <li><strong>Daily Pairs (8):</strong> High Sharpe blue-chips</li>
-              <li><strong>Intraday Pairs (12):</strong> ETF pairs with tight spreads</li>
-              <li><strong>Leverage:</strong> 1.5× (using portfolio margin)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Total Risk:</strong> 20% of capital (30% with leverage)</p>
-            <p><strong>Expected Sharpe:</strong> 2.5-3.5 (if executed properly)</p>
-            <p><strong>Expected Annual Return:</strong> 35-50%</p>
-            <p><strong>Max Drawdown:</strong> -20% to -30%</p>
-            <p style="margin-top:1rem;color:var(--warning)"><strong>Warning:</strong> Requires full-time monitoring, professional execution, and risk management discipline</p>
+            <h3 id="aggressive-stat-arb-portfolio-100k-account">Aggressive ($100K)</h3>
+            <p><strong>20+ pairs, 1% each:</strong> 8 daily blue-chips + 12 intraday ETFs | 1.5× leverage</p>
+            <p><strong>Total Risk:</strong> 20-30% | <strong>Sharpe:</strong> 2.5-3.5 | <strong>Return:</strong> 35-50% | <strong>Max DD:</strong> -20% to -30%</p>
+            <p style="color:var(--warning)"><strong>Warning:</strong> Requires full-time monitoring and professional execution</p>
           </div>
         </div>
       </div>
 
       <div class="callout-warning">
         <h4>🚨 Correlation Between Pairs (Hidden Risk)</h4>
-        <p>Don't just diversify by adding more pairs. Check if your pairs are correlated with EACH OTHER:</p>
-        <p><strong>Bad Portfolio:</strong></p>
-        <ul>
-          <li>KO/PEP, MDLZ/GIS, K/CPB (all food companies)</li>
-          <li>If consumer staples sector crashes, ALL pairs move together</li>
-          <li>Your 10 pairs = 1 bet (sector bet, not stat arb)</li>
-        </ul>
-        <p style="margin-top:1rem"><strong>Good Portfolio:</strong></p>
-        <ul>
-          <li>KO/PEP (consumer), JPM/BAC (finance), XOM/CVX (energy)</li>
-          <li>Sector diversification = uncorrelated pair performance</li>
-          <li>One sector crash doesn't kill entire portfolio</li>
-        </ul>
+        <p><strong>Bad:</strong> KO/PEP, MDLZ/GIS, K/CPB (all food)—sector crash kills ALL pairs.</p>
+        <p><strong>Good:</strong> KO/PEP (consumer) + JPM/BAC (finance) + XOM/CVX (energy)—sector diversification means uncorrelated performance.</p>
       </div>
 <h3 id="rebalancing-your-stat-arb-portfolio">Rebalancing Your Stat Arb Portfolio</h3>
 
       <div class="callout-info">
-        <h4>📖 Monthly Maintenance Checklist</h4>
-        <p><strong>1st of Every Month:</strong></p>
-        <ul>
-          <li>Re-run ADF tests on ALL pairs (check for decointegration)</li>
-          <li>Recalculate hedge ratios (β may drift over time)</li>
-          <li>Update z-score thresholds based on new volatility</li>
-          <li>Remove pairs with p-value > 0.10 (losing cointegration)</li>
-          <li>Add new pairs that pass screening criteria</li>
-        </ul>
-        <p style="margin-top:1rem"><strong>Example Decointegration Detection:</strong></p>
-        <ul>
-          <li>January: KO/PEP ADF p-value = 0.021 ✅</li>
-          <li>February: p-value = 0.046 ✅ (still good)</li>
-          <li>March: p-value = 0.089 ⚠️ (warning)</li>
-          <li>April: p-value = 0.124 ❌ (REMOVE from portfolio)</li>
-        </ul>
-        <p style="margin-top:1rem"><strong>Action:</strong> Close any open KO/PEP positions, find replacement pair</p>
+        <h4>📖 Monthly Maintenance</h4>
+        <p><strong>1st of Every Month:</strong> Re-run ADF tests, recalculate hedge ratios, update z-score thresholds, remove p>0.10 pairs, add new pairs. <strong>Example:</strong> KO/PEP p-value drifts Jan 0.021✅ → Apr 0.124❌ = REMOVE.</p>
       </div>
 
       <div class="section-break"><span>Part 9: Code Implementation (Python Example)</span></div>
@@ -919,13 +749,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
       </div>
 
       <div class="callout-tip">
-        <h4>🎯 Pro Tips for Live Trading</h4>
-        <ul>
-          <li><strong>Paper Trade First:</strong> Run your system for 1-3 months with fake money before risking capital</li>
-          <li><strong>Start Small:</strong> 0.5-1% position sizes until you've proven your edge</li>
-          <li><strong>Monitor Slippage:</strong> If your fills are >0.05% worse than backtest, reduce size or improve execution</li>
-          <li><strong>Track Every Trade:</strong> Log potential entry z-score, potential exit z-score, hold time, P&L—analyze what works</li>
-        </ul>
+        <p><strong>Live Trading Tips:</strong> Paper trade 1-3 months first. Start 0.5-1% sizes. Monitor slippage (>0.05% = reduce size). Log every trade: z-score entry/exit, hold time, P&L.</p>
       </div>
 
       <div class="section-break"><span>Key Takeaways</span></div>
@@ -957,7 +781,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
             <div class="quiz-option" data-correct="false">D) He exited winners too early instead of holding through reversions</div>
           </div>
           <div class="quiz-feedback">
-            <p><strong>Correct!</strong> Derek's fundamental error was assuming that high correlation (0.89) meant the spread would mean-revert. He never tested for cointegration using the Augmented Dickey-Fuller test. Correlation only measures past similarity—it doesn't guarantee mean reversion. Cointegration validates that the spread has a statistically stable equilibrium it reverts to.</p>
+            <p><strong>Correct!</strong> Derek assumed 0.89 correlation meant mean-reversion. He never ran an ADF test. Correlation measures past similarity; cointegration validates a statistically stable equilibrium.</p>
           </div>
         </div>
 
@@ -970,7 +794,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
             <div class="quiz-option" data-correct="false">D) p-value = 1.0 (perfect cointegration)</div>
           </div>
           <div class="quiz-feedback">
-            <p><strong>Correct!</strong> A p-value < 0.05 from the Augmented Dickey-Fuller test indicates that the spread is stationary (mean-reverting) with 95% confidence. This is the threshold Derek should have used. If p-value > 0.05, the spread is NOT cointegrated and shouldn't be traded as statistical arbitrage. After Derek's losses, he adopted a strict rule: only trade pairs with ADF p-value < 0.05.</p>
+            <p><strong>Correct!</strong> ADF p-value < 0.05 means the spread is stationary (mean-reverting) with 95% confidence. If p-value > 0.05, don't trade it as stat arb.</p>
           </div>
         </div>
 
@@ -983,7 +807,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
             <div class="quiz-option" data-correct="false">D) When z-score returns to 0 (spread at mean)</div>
           </div>
           <div class="quiz-feedback">
-            <p><strong>Correct!</strong> Conservative entry is |z-score| > 2.0, meaning the spread has deviated 2+ standard deviations from its mean—a statistically rare event likely to revert. Aggressive traders might use |z| > 1.5, but 2.0 provides higher confidence. You exit when z-score returns to 0 (mean). If z-score reaches 3.5+, you should stop out as the spread may be de-cointegrating.</p>
+            <p><strong>Correct!</strong> Conservative entry: |z| > 2.0 (2+ std devs from mean). Exit when z returns to 0. Stop out if |z| > 3.5 (spread may be de-cointegrating).</p>
           </div>
         </div>
 
@@ -996,7 +820,7 @@ print(f"Total PnL: ${sum(trades):.2f}")
             <div class="quiz-option" data-correct="false">D) There's no difference—they're the same concept with different names</div>
           </div>
           <div class="quiz-feedback">
-            <p><strong>Correct!</strong> This is the core lesson: Correlation = "they moved together in the past" (direction). Cointegration = "their relationship has gravity" (mean-reverting equilibrium). Two assets can be highly correlated yet drift apart permanently. Only cointegrated pairs—where the spread is statistically proven to revert—can be traded as statistical arbitrage. As the lesson states: "Correlation measures the PAST. Cointegration predicts the FUTURE."</p>
+            <p><strong>Correct!</strong> Correlation = "moved together historically." Cointegration = "spread has mean-reverting equilibrium." Highly correlated pairs can drift apart permanently. Only cointegrated pairs can be traded as stat arb.</p>
           </div>
         </div>
 
@@ -1009,32 +833,17 @@ print(f"Total PnL: ${sum(trades):.2f}")
             <div class="quiz-option" data-correct="false">D) 0.5-1% per pair (ultra-conservative sizing)</div>
           </div>
           <div class="quiz-feedback">
-            <p><strong>Correct!</strong> Never more than 2-5% per pair, using Kelly or half-Kelly criterion for sizing. You should run 5-10 pairs across different sectors to diversify. This prevents concentration risk—if one pair de-cointegrates, it won't destroy your account. Michael Torres's mistake was oversizing at 5% per pair; when he switched to 2% and diversified across multiple pairs, his execution improved dramatically.</p>
+            <p><strong>Correct!</strong> Max 2-5% per pair using Kelly/half-Kelly sizing. Run 5-10 pairs across sectors to diversify. If one pair de-cointegrates, it won't destroy your account.</p>
           </div>
         </div>
       </div>
 
-      <h3 style="margin:3rem 0 1.5rem 0">Related Lessons</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:1rem;margin:1.5rem 0">
-        <div class="card" style="padding:1rem">
-          <span class="badge">Advanced #64</span>
-          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Macro Regime Framework</h4>
-          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Understand how regime changes affect your stat arb models.</p>
-          <a href="/curriculum/advanced/64-macro-regime-framework.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
-        </div>
-        <div class="card" style="padding:1rem">
-          <span class="badge">Advanced #66</span>
-          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Quantitative Strategy Design</h4>
-          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Design and backtest quantitative statistical arbitrage strategies.</p>
-          <a href="/curriculum/advanced/66-quantitative-strategy-design.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
-        </div>
-        <div class="card" style="padding:1rem">
-          <span class="badge">Advanced #67</span>
-          <h4 style="margin:.5rem 0 .5rem 0;font-size:1rem">Machine Learning in Trading</h4>
-          <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Apply ML to enhance statistical arbitrage pair selection.</p>
-          <a href="/curriculum/advanced/67-machine-learning-trading.html" class="btn btn-sm btn-ghost">Read Lesson &rarr;</a>
-        </div>
-      </div>
+      <h3 style="margin:2rem 0 1rem 0">Related Lessons</h3>
+      <ul style="margin:0 0 0 1.5rem;line-height:2">
+        <li><a href="/curriculum/advanced/64-macro-regime-framework.html">#64: Macro Regime Framework</a> — How regime changes affect stat arb</li>
+        <li><a href="/curriculum/advanced/66-quantitative-strategy-design.html">#66: Quantitative Strategy Design</a> — Backtest stat arb strategies</li>
+        <li><a href="/curriculum/advanced/67-machine-learning-trading.html">#67: Machine Learning in Trading</a> — ML for pair selection</li>
+      </ul>
 
       <div class="callout-info">
         <h4>⏭️ Coming Up Next</h4>
