@@ -498,43 +498,6 @@
     </div>
   </section>
 
-  <!-- Achievements Section -->
-  <section class="wrap" style="margin:3rem auto">
-    <h3 class="headline md text-center mb-3">🏆 Achievements</h3>
-    <div class="grid auto-200" id="achievements-grid">
-      <div class="card text-center" style="opacity:.4">
-        <div style="font-size:3rem;margin-bottom:.5rem">🎯</div>
-        <strong>First Steps</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 1 lesson</p>
-      </div>
-      <div class="card text-center" style="opacity:.4">
-        <div style="font-size:3rem;margin-bottom:.5rem">📚</div>
-        <strong>Dedicated Learner</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 5 lessons</p>
-      </div>
-      <div class="card text-center" style="opacity:.4">
-        <div style="font-size:3rem;margin-bottom:.5rem">🏅</div>
-        <strong>Beginner Master</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 20 lessons (Beginner tier)</p>
-      </div>
-      <div class="card text-center" style="opacity:.4">
-        <div style="font-size:3rem;margin-bottom:.5rem">⭐</div>
-        <strong>Intermediate Pro</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 47 lessons (Intermediate tier)</p>
-      </div>
-      <div class="card text-center" style="opacity:.4">
-        <div style="font-size:3rem;margin-bottom:.5rem">🏆</div>
-        <strong>Advanced Scholar</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete 74 lessons (Advanced tier)</p>
-      </div>
-      <div class="card text-center" style="opacity:.4">
-        <div style="font-size:3rem;margin-bottom:.5rem">🔥</div>
-        <strong>Complete Mastery</strong>
-        <p style="font-size:.85rem;margin:.25rem 0 0 0;color:var(--muted)">Complete all 82 lessons</p>
-      </div>
-    </div>
-  </section>
-
   <!-- How It Works -->
   <section class="wrap" style="margin:3rem auto">
     <div class="card featured">
@@ -552,8 +515,8 @@
         </div>
         <div class="text-center">
           <div style="font-size:2.5rem;margin-bottom:1rem">🏆</div>
-          <h4 style="margin:0 0 .5rem 0">Track Progress</h4>
-          <p style="font-size:.9rem;color:var(--muted)">Cloud sync, progress tracking, My Library, achievements, and completion badges</p>
+          <h4 style="margin:0 0 .5rem 0">Earn & Track</h4>
+          <p style="font-size:.9rem;color:var(--muted)">Unlock achievements, earn certificates, track streaks, and sync progress across devices in My Library</p>
         </div>
       </div>
     </div>
@@ -630,26 +593,6 @@
         updateProgressDisplay();
       });
     }
-
-    // Unlock achieved badges
-    const milestones = [
-      { count: 1, index: 0 },   // First Steps
-      { count: 5, index: 1 },   // Dedicated Learner
-      { count: 20, index: 2 },  // Beginner Master (Beginner tier complete)
-      { count: 47, index: 3 },  // Intermediate Pro (Intermediate tier complete)
-      { count: 74, index: 4 },  // Advanced Scholar (Advanced tier complete)
-      { count: 82, index: 5 }   // Complete Mastery (All lessons)
-    ];
-
-    milestones.forEach(m => {
-      if (completed >= m.count) {
-        const cards = document.querySelectorAll('#achievements-grid .card');
-        if (cards[m.index]) {
-          cards[m.index].style.opacity = '1';
-          cards[m.index].style.border = '2px solid #ffd700';
-        }
-      }
-    });
   });
 </script>
 <script src="/assets/analytics.js"></script>
