@@ -181,7 +181,6 @@
 
       display.innerHTML = `
         <span class="xp-level-badge">Lv.${this.level}</span>
-        <span class="xp-total">${this.formatXP(this.totalXP)} XP</span>
       `;
 
       // Add click handler to show stats
