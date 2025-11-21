@@ -121,12 +121,14 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
     background:#0a0c14;
     z-index:9999;
     transform:translateX(100%);
-    transition:transform .3s ease;
     overflow-y:auto;
     box-shadow:-8px 0 32px rgba(0,0,0,.8);
+    visibility:hidden;
   }
   .mobile-nav.active{
+    visibility:visible;
     transform:translateX(0);
+    transition:transform .3s ease;
   }
 
   /* Mobile nav content */
