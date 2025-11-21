@@ -200,8 +200,69 @@
     }
 
     .achievement-badge.locked:hover {
-      transform: none;
+      opacity: 0.6;
+      transform: translateY(-2px);
       background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Enhanced tooltips for badges */
+    .achievement-badge[title]:hover::after {
+      content: attr(title);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      padding: 0.5rem 0.75rem;
+      background: rgba(0, 0, 0, 0.95);
+      color: #fff;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      border-radius: 6px;
+      z-index: 1000;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(139, 92, 246, 0.5);
+      animation: tooltipFadeIn 0.2s ease;
+    }
+
+    .achievement-badge[title]:hover::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-2px);
+      border: 6px solid transparent;
+      border-top-color: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      pointer-events: none;
+      animation: tooltipFadeIn 0.2s ease;
+    }
+
+    @keyframes tooltipFadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-8px);
+      }
+    }
+
+    /* Progress bar styling */
+    .badge-progress {
+      animation: progressFadeIn 0.3s ease;
+    }
+
+    @keyframes progressFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Badge Unlock Notification */
@@ -748,44 +809,27 @@
 
   // Migrate existing completed lessons to activity data (runs once)
   function migrateExistingProgress() {
-    const migrationKey = 'sp_activity_migrated';
+    const migrationKey = 'sp_activity_migrated_v2'; // v2 to reset old fake backdated data
 
     // Check if already migrated
     if (localStorage.getItem(migrationKey)) {
       return;
     }
 
-    logger.log('[My Library] Migrating existing progress to activity tracking...');
+    logger.log('[My Library] Resetting activity tracking to start fresh...');
 
-    const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
-    const completed = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed'));
+    // Clear old fake backdated data
+    localStorage.removeItem('sp_activity');
+    localStorage.removeItem('sp_learning_streak');
 
-    if (completed.length > 0) {
-      // Get the earliest date we can use (today minus number of completed lessons)
-      // This creates a realistic-looking streak
-      const today = new Date();
-      const daysBack = Math.min(completed.length, 90); // Cap at 90 days
+    // Initialize fresh activity for today only
+    const today = new Date().toISOString().split('T')[0];
+    const activity = { [today]: { visits: 1, lessonsCompleted: 0 } };
+    localStorage.setItem('sp_activity', JSON.stringify(activity));
 
-      // Distribute completed lessons across recent days
-      for (let i = 0; i < completed.length; i++) {
-        const daysAgo = Math.floor((daysBack - 1) * (i / Math.max(completed.length - 1, 1)));
-        const date = new Date(today);
-        date.setDate(date.getDate() - daysAgo);
-        const dateStr = date.toISOString().split('T')[0];
-
-        if (!activity[dateStr]) {
-          activity[dateStr] = { visits: 1, lessonsCompleted: 1 };
-        } else {
-          activity[dateStr].lessonsCompleted = (activity[dateStr].lessonsCompleted || 0) + 1;
-        }
-      }
-
-      localStorage.setItem('sp_activity', JSON.stringify(activity));
-      logger.log(`[My Library] Migrated ${completed.length} completed lessons to activity data`);
-    }
-
-    // Mark migration as complete
+    // Mark migration as complete with new version
     localStorage.setItem(migrationKey, 'true');
+    logger.log('[My Library] Activity tracking reset. Streak will build from real usage going forward.');
   }
 
   // Debug helper - show what's in localStorage
@@ -808,7 +852,8 @@
   // Force re-migration (for debugging/fixing issues)
   function forceMigration() {
     logger.log('[My Library] Forcing migration...');
-    localStorage.removeItem('sp_activity_migrated');
+    localStorage.removeItem('sp_activity_migrated'); // old key
+    localStorage.removeItem('sp_activity_migrated_v2'); // new key
     localStorage.removeItem('sp_activity');
     localStorage.removeItem('sp_learning_streak');
     migrateExistingProgress();
@@ -918,15 +963,26 @@
       const earnedDate = isEarned ?
         (JSON.parse(localStorage.getItem('sp_badge_' + badge.id) || '{}').earnedAt || '') : '';
 
+      // Get progress for locked badges
+      const progress = !isEarned ? badgeSystem.getProgress(badge) : null;
+
       return `
         <div class="achievement-badge ${isEarned ? 'earned' : 'locked'}"
              data-badge-id="${badge.id}"
-             title="${badge.description}">
+             title="${isEarned ? badge.description : (progress ? progress.message : badge.description)}">
           <span class="badge-icon">${badge.emoji}</span>
           <div class="badge-info">
             <span class="badge-name">${badge.name}</span>
             <span class="badge-desc">${badge.description}</span>
             ${isEarned && earnedDate ? `<span class="badge-date" style="font-size:0.7rem;opacity:0.6;margin-top:0.25rem">Earned ${new Date(earnedDate).toLocaleDateString()}</span>` : ''}
+            ${!isEarned && progress ? `
+              <div class="badge-progress" style="margin-top:0.5rem">
+                <div class="badge-progress-bar" style="width:100%;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden">
+                  <div style="width:${progress.percent}%;height:100%;background:linear-gradient(90deg,rgba(139,92,246,0.8),rgba(59,130,246,0.8));transition:width 0.3s ease"></div>
+                </div>
+                <span class="badge-progress-text" style="font-size:0.65rem;opacity:0.7;margin-top:0.25rem;display:block">${progress.current}/${progress.needed} • ${progress.percent}%</span>
+              </div>
+            ` : ''}
           </div>
           ${isEarned ? '<span class="badge-checkmark">✓</span>' : '<span class="badge-lock">🔒</span>'}
         </div>
