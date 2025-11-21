@@ -89,39 +89,23 @@
       </div>
 
 <div class="callout callout-danger">
-  <h4>📉 CASE STUDY: Mike's $97,000 Automation Disaster (5 months)</h4>
-  <p><strong>Trader:</strong> Mike Sullivan, 35, Python developer turned algo trader ($200K account), Mar-Jul 2024</p>
-  <p><strong>Strategy:</strong> Automated mean-reversion bot via Alpaca API (buy SPY when RSI < 30, sell when RSI > 70). Backtested 2020-2023: 67% WR, +$140K simulated profit</p>
-  <p><strong>Fatal flaw:</strong> Deployed live with full $200K account with ZERO safety controls: no position limits, no volatility filter, no kill switch, no max drawdown shutoff. "Set it and forget it."</p>
-  <p><strong>Result:</strong> Bot worked 8 weeks (+$14.2K, 71% WR). Lost $97K (-49%) in ONE DAY (April 19) during -5% market crash. Margin call, forced liquidation. $200K → $103K.</p>
-
-  <p><strong>The disaster (April 19, 2024):</strong> CPI shock. SPY gapped down -2.8% to $510. Bot: "RSI 22 = oversold, BUY!" Bought $200K SPY @ $510. SPY fell to $495 by noon (-3% more). Bot kept averaging down: bought $200K more @ $505, $495, $490 (total $800K position on $200K account = 4× leverage via margin). By 3 PM: SPY @ $488, account -$97K, margin call, forced liquidation. Mike was at work, couldn't stop it. What went wrong: (1) No position limits (bot used margin, 4× leveraged), (2) No volatility filter (bot bought during -5% crash), (3) No kill switch (couldn't stop it), (4) No max drawdown limit (kept buying all day). Backtests used 2020-2023 bull market data, didn't include 2022 bear market crashes.</p>
-
-  <p><strong>Recovery (Aug 2024 - Present):</strong> Rebuilt bot with 5 safety controls: (1) Max position: $50K (25% of account), (2) VIX > 25 = disable bot, (3) Max 3 trades/day, (4) Telegram alert if DD > -5%, (5) Auto-shutdown if DD > -10%. Results: $103K → $151K (+47%) in 5 months, zero catastrophic failures.</p>
-
-  <div class="callout callout-purple" style="margin-top:1rem">
-    <p><strong>Mike's lesson:</strong> "I lost $97K in ONE DAY deploying an algo bot with NO safety controls. It worked for 8 weeks (+$14K), then lost everything during a market crash. The bot did what I programmed: 'buy when RSI oversold.' But I never programmed: 'don't buy during a -5% crash' or 'max 25% position size' or 'kill switch at -10% DD.' The bot averaged down 4× during the crash, hitting 4× leverage ($800K position on $200K account), triggering a margin call. I was at work, couldn't stop it. Automation is powerful but DEADLY without safeguards. Never deploy a bot without: (1) Position limits (max % of account), (2) Volatility filters (VIX > 25 = shut down), (3) Max drawdown shutoff (-10% = stop), (4) Kill switch (manual override). Backtests lie—they don't include black swans. My backtest used 2020-2023 bull data, skipped 2022 bear market. Code the safety controls FIRST, then the strategy."</p>
-  </div>
+  <h4>📉 CASE STUDY: Mike's $97,000 Automation Disaster</h4>
+  <p><strong>Setup:</strong> Mike Sullivan, Python dev, $200K account. Alpaca API bot (buy SPY @ RSI<30). Backtested 2020-2023: 67% WR, +$140K. Deployed with ZERO safety controls.</p>
+  <p><strong>The disaster (April 19, 2024):</strong> Bot worked 8 weeks (+$14K, 71% WR). CPI shock: SPY gapped down -2.8% to $510. Bot saw RSI 22, kept buying: $200K @ $510, $505, $495, $490 = $800K position (4× leverage). By 3 PM: SPY @ $488, -$97K, margin call. Mike at work, couldn't stop it.</p>
+  <p><strong>Recovery:</strong> Rebuilt with 5 controls: max $50K position, VIX>25=disable, max 3 trades/day, alert @-5% DD, shutdown @-10% DD. Result: $103K → $151K (+47%), zero failures.</p>
+  <p><strong>Lesson:</strong> Code safety controls FIRST: (1) Position limits, (2) Volatility filters, (3) Max DD shutoff, (4) Kill switch. Backtests lie—they skip black swans.</p>
 </div>
 
 <div class="quiz-question" style="margin-top:2rem">
-  <p><strong>Case Study Quiz: Mike lost $97,000 (-49%) in ONE DAY (April 19, 2024) when his automated trading bot crashed his $200K account during a market shock. The bot had worked perfectly for 8 weeks (+$14.2K, 71% win rate) before the disaster. His backtest showed 67% WR and +$140K simulated profit over 2020-2023. What caused the catastrophic failure?</strong></p>
+  <p><strong>Quiz: Mike lost $97K in ONE DAY with his bot. What caused the failure?</strong></p>
   <div class="quiz-options">
-    <div class="quiz-option" data-correct="false">
-      <strong>A)</strong> The backtested strategy stopped working in live markets due to execution slippage and latency issues
-    </div>
-    <div class="quiz-option" data-correct="false">
-      <strong>B)</strong> The API connection failed during the crash, preventing the bot from exiting positions when stops were hit
-    </div>
-    <div class="quiz-option" data-correct="true">
-      <strong>C)</strong> He deployed with ZERO safety controls—no position limits, no volatility filter, no kill switch, no max drawdown shutoff. Bot averaged down 4× during -5% crash, hitting $800K position (4× leverage) on $200K account, triggering margin call
-    </div>
-    <div class="quiz-option" data-correct="false">
-      <strong>D)</strong> The bot had a coding bug that caused it to place duplicate orders, accidentally doubling position sizes
-    </div>
+    <div class="quiz-option" data-correct="false">A) Execution slippage and latency issues</div>
+    <div class="quiz-option" data-correct="false">B) API connection failed during crash</div>
+    <div class="quiz-option" data-correct="true">C) ZERO safety controls—bot averaged down 4× during -5% crash, hitting $800K position (4× leverage) on $200K account</div>
+    <div class="quiz-option" data-correct="false">D) Coding bug caused duplicate orders</div>
   </div>
   <div class="quiz-explanation">
-    <p><strong>Correct: C.</strong> Mike's disaster came from deploying automation without ANY safety controls—he programmed "buy when RSI oversold" but never programmed position limits, volatility filters, or kill switches. April 19: CPI shock, SPY gapped down -2.8% to $510. Bot: "RSI 22 = oversold, BUY!" Bought $200K @ $510. SPY fell to $495 by noon. Bot kept averaging down: bought $200K more @ $505, $495, $490 (total $800K position = 4× leverage via margin). By 3 PM: SPY @ $488, account -$97K, margin call, forced liquidation. Mike was at work, couldn't stop it. Four fatal flaws: (1) No position limits—bot used margin to build 4× leveraged position, (2) No volatility filter—bot bought during -5% crash, (3) No kill switch—couldn't stop it remotely, (4) No max drawdown limit—kept buying all day until margin call. His recovery: rebuilt bot with 5 safety controls (max $50K position, VIX > 25 = disable, max 3 trades/day, Telegram alert at -5% DD, auto-shutdown at -10% DD). Result: $103K → $151K (+47%) in 5 months, zero catastrophic failures. Code safety controls FIRST, then strategy.</p>
+    <strong>Correct: C.</strong> Mike programmed "buy @ RSI oversold" but never programmed position limits, volatility filters, or kill switches. Bot built 4× leveraged position during crash. Recovery: added 5 safety controls, turned $103K → $151K. Code safety controls FIRST.
   </div>
 </div>
 
@@ -328,92 +312,21 @@
 <details class="accordion">
   <summary>Alpaca (Best for Beginners)</summary>
   <div class="accordion-content">
-    <p><strong>Why it's great:</strong></p>
-    <ul>
-      <li><strong>Free paper trading:</strong> Unlimited testing with real market data (no risk)</li>
-      <li><strong>Python library:</strong> Official <code>alpaca-trade-api</code> package (install with pip, start trading in 10 minutes)</li>
-      <li><strong>Commission-free stocks:</strong> Zero commissions on US equities (perfect for high-frequency strategies)</li>
-      <li><strong>Excellent docs:</strong> Step-by-step tutorials, code examples, active community</li>
-    </ul>
-
-    <p><strong>Limitations:</strong></p>
-    <ul>
-      <li>No options trading (stocks/ETFs/crypto only)</li>
-      <li>No futures (if you want ES/NQ automation, use IBKR instead)</li>
-      <li>US markets only (no European or Asian equities)</li>
-    </ul>
-
-    <p><strong>Code example (place order in 5 lines):</strong></p>
-    <pre><code>import alpaca_trade_api as tradeapi
-api = tradeapi.REST('YOUR_KEY', 'YOUR_SECRET', 'https://paper-api.alpaca.markets')
-api.submit_order(symbol='SPY', qty=10, side='buy', type='market', time_in_force='gtc')
-# Done. Order placed.</code></pre>
-
-    <p><strong>Verdict:</strong> Start here if you're new to algo trading. Master the basics, then move to IBKR if you need options/futures.</p>
+    <p><strong>Pros:</strong> Free paper trading, Python library (pip install), commission-free stocks, excellent docs. <strong>Cons:</strong> No options/futures, US markets only. <strong>Verdict:</strong> Start here, move to IBKR when you need options/futures.</p>
   </div>
 </details>
 
 <details class="accordion">
   <summary>Interactive Brokers (Best for Advanced/Multi-Asset)</summary>
   <div class="accordion-content">
-    <p><strong>Why it's powerful:</strong></p>
-    <ul>
-      <li><strong>Every asset class:</strong> Stocks, options, futures, forex, CFDs, bonds—all in one account</li>
-      <li><strong>Global markets:</strong> Trade 135+ exchanges worldwide (US, Europe, Asia)</li>
-      <li><strong>Low costs:</strong> $0.005/share stocks, $0.65/contract options (among cheapest for active traders)</li>
-      <li><strong>Institutional-grade:</strong> Same API used by hedge funds and prop firms</li>
-    </ul>
-
-    <p><strong>Challenges:</strong></p>
-    <ul>
-      <li><strong>Complex setup:</strong> Requires installing Trader Workstation (TWS) or IB Gateway, configuring ports</li>
-      <li><strong>Steep learning curve:</strong> API documentation is technical (not beginner-friendly)</li>
-      <li><strong>Account minimums:</strong> $0 for stocks, but $25K for day trading (PDT rule), $10K+ recommended for margin</li>
-    </ul>
-
-    <p><strong>Code example (using ib_insync library):</strong></p>
-    <pre><code>from ib_insync import *
-ib = IB()
-ib.connect('127.0.0.1', 7497, clientId=1)  # Connect to TWS
-contract = Stock('SPY', 'SMART', 'USD')
-order = MarketOrder('BUY', 10)
-trade = ib.placeOrder(contract, order)
-# Order placed via IBKR</code></pre>
-
-    <p><strong>Verdict:</strong> Choose IBKR if you need options/futures automation or global market access. Skip if you're a beginner (start with Alpaca instead).</p>
+    <p><strong>Pros:</strong> All asset classes (stocks, options, futures, forex), 135+ global exchanges, low costs ($0.005/share), institutional-grade. <strong>Cons:</strong> Complex setup (TWS required), steep learning curve, $25K for day trading. <strong>Verdict:</strong> Choose for options/futures or global access.</p>
   </div>
 </details>
 
 <details class="accordion">
   <summary>Binance (Best for Crypto 24/7 Trading)</summary>
   <div class="accordion-content">
-    <p><strong>Why crypto traders love it:</strong></p>
-    <ul>
-      <li><strong>24/7 markets:</strong> Crypto never sleeps—your bot can trade around the clock</li>
-      <li><strong>600+ trading pairs:</strong> BTC, ETH, altcoins, futures, spot—everything</li>
-      <li><strong>High liquidity:</strong> Tight spreads, fast fills (even for large orders)</li>
-      <li><strong>Low fees:</strong> 0.1% spot (0.075% with BNB discount), 0.02% futures</li>
-    </ul>
-
-    <p><strong>Considerations:</strong></p>
-    <ul>
-      <li><strong>Regulatory risk:</strong> Binance.com not available in US (use Binance.US or alternatives like Coinbase)</li>
-      <li><strong>Volatility:</strong> Crypto can move ±10% in hours (test your bot extensively before going live)</li>
-      <li><strong>Leverage danger:</strong> Binance offers up to 125× leverage on futures (use 1-3× max, or you'll blow up)</li>
-    </ul>
-
-    <p><strong>Code example (using python-binance library):</strong></p>
-    <pre><code>from binance.client import Client
-client = Client(api_key='YOUR_KEY', api_secret='YOUR_SECRET')
-order = client.create_order(
-    symbol='BTCUSDT',
-    side='BUY',
-    type='MARKET',
-    quantity=0.01
-)
-# BTC purchase executed</code></pre>
-
-    <p><strong>Verdict:</strong> Best for crypto algo traders. If you only trade stocks, use Alpaca instead.</p>
+    <p><strong>Pros:</strong> 24/7 markets, 600+ pairs, high liquidity, low fees (0.1% spot). <strong>Cons:</strong> Regulatory risk (not available in US), high volatility, dangerous leverage (125×—use 1-3× max). <strong>Verdict:</strong> Best for crypto algos, not stocks.</p>
   </div>
 </details>
 
@@ -766,35 +679,7 @@ run_bot()</code></pre>
 
       <h3>Common Errors (And How to Handle Them)</h3>
 
-      <div class="tabs">
-        <div class="tabs-nav">
-          <button class="active">The Error</button>
-          <button>The Fix</button>
-        </div>
-        <div class="tabs-content">
-          <div class="tab-panel active"><h3>Things That Will Go Wrong</h3>
-            <ul>
-              <li><strong>Connection timeout:</strong> Internet hiccup, API down</li>
-              <li><strong>Order rejected:</strong> Insufficient funds, invalid price</li>
-              <li><strong>Partial fills:</strong> Order only 60% filled</li>
-              <li><strong>Rate limit exceeded:</strong> Too many API calls</li>
-              <li><strong>Market closed:</strong> Tried to trade at 3 AM</li>
-            </ul>
-            <p><em>"It worked yesterday! Why is it broken today?!"</em></p>
-          </div>
-          <div class="tab-panel">
-            <h3>Bulletproof Your Bot</h3>
-            <ul>
-              <li><strong>Retry logic:</strong> Try 3 times with exponential backoff</li>
-              <li><strong>Pre-trade checks:</strong> Verify funds, market hours, valid price</li>
-              <li><strong>Partial fill handling:</strong> Cancel remaining or market-fill</li>
-              <li><strong>Rate limiting:</strong> Max 200 requests/minute (add delays)</li>
-              <li><strong>Market hours check:</strong> Only trade 9:30 AM - 4:00 PM ET</li>
-            </ul>
-            <p><em>Professional bots handle errors gracefully, log everything, and keep trading.</em></p>
-          </div>
-        </div>
-      </div>
+      <p><strong>Common errors:</strong> Connection timeout, order rejected, partial fills, rate limits, market closed. <strong>Fixes:</strong> Retry logic (3× exponential backoff), pre-trade checks (funds, hours, price), partial fill handling, rate limiting (200 req/min), market hours check (9:30-4 ET). Professional bots handle errors gracefully.</p>
 <h3>Retry Logic (Essential)</h3>
 
       <pre style="overflow-x:auto"><code>def place_order_with_retry(api, **order_params):
@@ -916,43 +801,7 @@ except Exception as e:
         <p>You still need to monitor, review, and adjust. Just less frequently.</p>
       </div>
 <h3>Monthly Bot Maintenance Checklist</h3>
-
-      <div class="accordion">
-        <details class="accordion-item">
-          <summary class="accordion-header">Review Performance Metrics</summary>
-          <div class="accordion-content">
-            <ul>
-              <li>Success rate: Is it within 5% of backtest?</li>
-              <li>Average R: Still positive?</li>
-              <li>Drawdown: Within acceptable limits?</li>
-              <li>Slippage: Has execution quality degraded?</li>
-            </ul>
-            <p><em>If metrics diverge from backtest, investigate why.</em></p>
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary class="accordion-header">Check Error Logs</summary>
-          <div class="accordion-content">
-            <ul>
-              <li>Connection errors: How many?</li>
-              <li>Order rejections: Why were they rejected?</li>
-              <li>Unexpected behavior: Any edge cases?</li>
-            </ul>
-            <p><em>Fix recurring errors. Improve retry logic.</em></p>
-          </div>
-        </details>
-        <details class="accordion-item">
-          <summary class="accordion-header">Regime Check</summary>
-          <div class="accordion-content">
-            <ul>
-              <li>Is the market still in a regime your strategy favors?</li>
-              <li>VIX elevated? Consider pausing or reducing size.</li>
-              <li>Low volatility? Your potential breakout strategy might struggle.</li>
-            </ul>
-            <p><em>Turn off strategies that don't fit current regime.</em></p>
-          </div>
-        </details>
-      </div>
+      <p><strong>1. Performance Metrics:</strong> WR within 5% of backtest? Avg R positive? DD acceptable? Slippage degraded? <strong>2. Error Logs:</strong> Connection errors, order rejections, edge cases. <strong>3. Regime Check:</strong> Market still favors strategy? VIX elevated → pause. Low vol → breakouts struggle.</p>
 
       <div class="key-takeaway">
         <h4>🎓 Key Takeaways</h4>
