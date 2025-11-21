@@ -275,11 +275,11 @@
         <summary style="cursor:pointer;font-weight:600;font-size:1.1rem">⚡ Quick Wins for Tomorrow (Click to expand)</summary>
         <div style="margin-top:1rem">
 
-        <p>Don't overwhelm yourself. Start with these 3 actions:</p>
+        <p>Start with these 3 actions:</p>
         <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
-          <li><strong>Check max pain for SPY/SPX on next Friday OpEx (takes 3 minutes)</strong> — Visit Maximum-Pain.com or SpotGamma.com (free tier). Look up SPY. Note the strike price with highest total open interest (calls + puts). That's max pain. Write it down. On Friday, track where SPY closes relative to that strike. Example: If max pain is $580 and SPY opens Friday at $585, expect gravitational pull downward into close. Watch how price drifts toward that level in the final hour (3:00-4:00 PM). This one observation will change how you view OpEx forever. It's not random—it's mechanical. Over 10 OpEx days, you'll see price close within $2 of max pain 60-70% of the time. That's not luck. That's dealer hedging dynamics.</li>
-          <li><strong>Set an alert for "dealer gamma unwind" 30 minutes before next Friday close</strong> — On your calendar or phone, set a recurring alert: "Friday 3:30 PM - Check OpEx Gamma Unwind." When it goes off, open your chart. Watch for these signs: (1) Sudden selling pressure with no news, (2) Spread widening on SPY options, (3) Volume spike into close. This is dealers unwinding hedges. DO NOT buy calls during this window. DO NOT fight the unwind. If anything, fade the move (if SPY is dumping at 3:45 PM on no news and max pain is $5 below, consider puts OR wait until 4:05 PM to enter longs when selling stops). Just observing this pattern 5 times will save you from 80% of "why did SPY randomly dump at 3:50 PM?" losses. Example: You see SPY at $578 at 3:30 PM, max pain $575. By 3:55 PM it's at $575.50. That's not bearish news—that's mechanical selling. Once you see it, you can't unsee it.</li>
-          <li><strong>Paper trade ONE OpEx mean-reversion setup this Friday (zero risk)</strong> — Here's your first OpEx trade (on paper, no real money yet): Thursday 3:00 PM, check max pain for Friday. Let's say it's $580. Friday morning, if SPY opens at $585+ (far from max pain), place a hypothetical short at $585. Track it all day. Target: $580-581 by 3:30 PM. Stop: $587 (if it runs away from max pain, you're wrong). Record the result. Did price drift toward max pain? How close did it get? What happened in the final hour? Do this 3 times (3 different OpEx Fridays) before risking real money. You're learning to read dealer mechanics, not gambling. After 3 paper trades, if 2 worked, start with small size (50 shares or 1 contract). Example: If this Friday max pain is $575 and SPY opens $580, short 50 shares at $580. Watch it drift to $576 by 3:45 PM. Exit $576.50. Profit: $3.50/share × 50 = $175. Now you've seen it work. Repeat.</li>
+          <li><strong>Check max pain for SPY on Friday OpEx</strong> (Maximum-Pain.com or SpotGamma.com). Note strike with highest OI. Friday, track where SPY closes. Over 10 OpEx, price closes within $2 of max pain 60-70% of time. That's dealer hedging, not luck.</li>
+          <li><strong>Set Friday 3:30 PM alert for "dealer gamma unwind"</strong>. Watch for: sudden selling (no news), spread widening, volume spike. Don't buy calls during unwind. If SPY dumping at 3:45 PM and max pain $5 below, that's mechanical selling, not bearish news.</li>
+          <li><strong>Paper trade ONE OpEx mean-reversion setup</strong>. Thursday 3PM: check max pain (say $580). Friday: if SPY opens $585+, short at $585, target $580-581 by 3:30PM, stop $587. Do 3 times before real money. Example: Max pain $575, SPY opens $580, short 50 shares → $576 by 3:45PM = $3.50/share × 50 = $175.</li>
         </ol>
 
         </div>
@@ -385,13 +385,11 @@
   <p><strong>Fatal flaw:</strong> Didn't understand market maker hedging mechanics. MMs held 250K call contracts = 21.25M SPY shares ($11B) they HAD to unwind before 4 PM close</p>
   <p><strong>Result:</strong> Lost $67,200 (-78.1%) in 45 minutes as mechanical MM selling crushed SPY. Calls bought at $2.15, sold at $0.47</p>
 
-  <p><strong>The setup (3:00 PM):</strong> SPY trading $521.80, rallying on strong data. Kyle sees ITM calls, thinks "continuation trade." Buys 400 SPY $520 calls @ $2.15 ($86K total cost, break-even $522.15). What he didn't know: SPY $520 strike had 250K call contracts open. MMs hedged with 21.25M shares (delta 0.85). At expiration (60 min away), MMs MUST unwind ALL hedges regardless of price action.</p>
+  <p><strong>Setup (3:00 PM):</strong> SPY $521.80. Kyle buys 400 $520 calls @ $2.15 ($86K). Didn't know: 250K call contracts = MMs hedged with 21.25M shares ($11B) they MUST unwind before 4 PM.</p>
 
-  <p><strong>The unwind (3:00-3:45 PM):</strong> (1) 3:00-3:15 PM: Early unwind, MMs sell 2M shares, SPY $521.80 → $521.20, Kyle still +18.6%. (2) 3:15-3:30 PM: Acceleration, MMs dump 5M shares, algos trigger stops, SPY crashes $521.20 → $519.80, Kyle now -20.9%. Kyle's reaction: "Just a dip, it'll bounce." He didn't understand mechanical selling hadn't peaked. (3) 3:30-3:40 PM: Waterfall, MMs in full unwind mode (must exit all hedges), dump 10M shares in 10 min, SPY $519.80 → $518.20, liquidity vanishes, spreads widen. (4) 3:40 PM: Kyle panics, tries to sell, bid/ask $0.45/$0.55 (normally $0.01), fills at $0.47 avg. Exit value: $18,800. Total loss: $86K → $18.8K = -$67.2K (-78.1%).</p>
+  <p><strong>Unwind (3:00-3:45 PM):</strong> MMs sold waves: 2M shares ($521.80 → $521.20), then 5M ($521.20 → $519.80, Kyle -20.9%), then 10M in waterfall ($519.80 → $518.20). Kyle panic-sold at $0.47. Loss: $86K → $18.8K = -$67.2K (-78.1%). By 4:01 PM: SPY bounced $520.50. Monday: $523. Purely mechanical, no fundamentals.</p>
 
-  <p><strong>Post-mortem:</strong> By 4:01 PM (after close), MM selling stopped. SPY immediately bounced to $520.50 in after-hours. By Monday open: $523.00 (higher than Friday 3 PM). The $3.45 drop had nothing to do with fundamentals—purely mechanical dealer hedging. Kyle realized: "I was swimming against a $11B tsunami. They HAD to sell."</p>
-
-  <p><strong>Recovery (6 months later, Sept 2024 OpEx):</strong> Kyle learned to trade WITH dealer flows. New rules: (1) Never buy options in final hour of OpEx, (2) Trade WITH dealer unwind, not against it, (3) Use gamma exposure maps to predict pin levels. Sept 20 OpEx setup: SPY $565.50, $565 strike had 180K calls (MMs hedged with 15.3M shares). Kyle's prediction: "MMs will unwind → SPY drops to $563-564." Trade: Bought 200 SPY $563 puts @ $1.20 at 2:45 PM ($24K). Result: 3:30-3:55 PM dealer unwind crushed SPY $565.50 → $563.20. Puts soared to $3.30. Exited at $66K. Profit: +$42K (+175% in 70 min). Post-4 PM: SPY bounced to $564.80 as predicted. Six-month results: 12 OpEx trades, 9 wins (75%), +$127.4K total.</p>
+  <p><strong>Recovery (6mo later):</strong> Learned to trade WITH dealer flows. Sept OpEx: Bought 200 $563 puts @ $1.20 at 2:45 PM ($24K). MM unwind crushed SPY $565.50 → $563.20. Puts → $3.30. Profit: +$42K (+175%). 6-month results: 12 trades, 9 wins (75%), +$127.4K.</p>
 
   <div class="callout callout-purple" style="margin-top:1rem">
     <p><strong>Kyle's advice 8 months later:</strong> "Market makers don't have opinions. They have OBLIGATIONS. I thought buying ITM calls on OpEx was safe. I didn't realize MMs were sitting on $11 billion in hedges they HAD to unwind. Now I trade WITH their flows. OpEx Friday 3-4 PM? I'm buying puts, not calls. That mechanical selling is free money if you're positioned correctly. Once I understood their hedging requirements, OpEx became my ATM."</p>
@@ -415,7 +413,7 @@
           </div>
         </div>
         <div class="quiz-explanation">
-          <strong>Correct: C.</strong> Kyle's fatal flaw was ignoring market maker hedging mechanics on OpEx Friday's final hour. Here's what happened: Market makers held 250K call contracts = 21.25M SPY shares ($11B worth) that they HAD to unwind before 4:00 PM close. This wasn't optional—it was mechanical. When options expire, dealers must exit ALL hedges. From 3:00-3:45 PM, MMs dumped waves of selling: 2M shares (3:00-3:15), then 5M shares (3:15-3:30), then 10M shares in the final waterfall (3:30-3:45). SPY crashed from $521.80 → $518.20 in 45 minutes with NO fundamental news. Kyle's calls went from $2.15 → $0.47 (-78%). The key lesson: Never buy options in the final hour of OpEx when you're fighting against mechanical dealer flows. It's not about market direction or stop losses—it's about understanding that dealers have OBLIGATIONS to unwind that will overwhelm any bullish thesis short-term. The irony? By 4:05 PM after close, SPY bounced to $520.50. By Monday it was at $523. But Kyle's calls expired worthless at 4 PM. He lost $67K by being 1 hour too early. After learning this, Kyle's new rule: "If I'm bullish on OpEx Friday, I wait until 4:05 PM AFTER the unwind is complete." His recovery trade 6 months later: bought puts during the unwind instead, made $42K (+175%) in 70 minutes by trading WITH dealer mechanics, not against them.
+          <strong>Correct: C.</strong> MMs held 250K call contracts = 21.25M shares ($11B) they HAD to unwind before 4PM. Mechanical, not optional. 3:00-3:45 PM: MMs dumped waves (2M, then 5M, then 10M shares). SPY $521.80 → $518.20 in 45min, NO news. Kyle's calls $2.15 → $0.47 (-78%). Lesson: Never buy options in final hour fighting dealer flows. Dealers have OBLIGATIONS overwhelming any thesis. Irony: 4:05 PM SPY bounced $520.50, Monday $523, but Kyle's calls expired worthless 4 PM. Lost $67K being 1hr early. Recovery: bought puts during unwind = $42K (+175%) in 70min by trading WITH mechanics.
         </div>
       </div>
 
@@ -436,47 +434,9 @@
 
       <h3 id="real-example-gamestop-gamma-squeeze-jan-2021">Real Example: GameStop Gamma Squeeze (Jan 2021)</h3>
 
-      <div class="tabs">
-        <div class="tabs-nav">
-          <button>The Setup</button>
-          <button>The Squeeze</button>
-          <button>The Lesson</button>
-        </div>
-        <div class="tabs-content">
-          <div class="tab-panel">
-            <h3 id="how-gme-became-a-gamma-bomb">How GME Became a Gamma Bomb</h3>
-            <p><strong>Initial State (Jan 11, 2021):</strong></p>
-            <ul>
-              <li>GME at $20</li>
-              <li>Retail buys 500K call options (massive gamma exposure for MMs)</li>
-              <li>MMs sold those calls, hedged with ~10M GME shares</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Jan 13:</strong> GME rallies to $30 on WSB hype</p>
-            <ul>
-              <li>Call delta increases from 0.20 → 0.60</li>
-              <li>MMs must buy another 20M shares to stay hedged</li>
-              <li>This buying pushes GME to $40</li>
-            </ul>
-          </div>
-          <div class="tab-panel">
-            <h3 id="the-gamma-feedback-loop">The Gamma Feedback Loop</h3>
-            <p><strong>Jan 15-25:</strong> Exponential acceleration</p>
-            <ul>
-              <li>GME $40 → $60: MMs buy 30M shares</li>
-              <li>GME $60 → $100: MMs buy 50M shares</li>
-              <li>GME $100 → $200: MMs buy 80M shares</li>
-              <li>GME $200 → $483: MMs in PANIC mode</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Peak Absurdity (Jan 28):</strong></p>
-            <ul>
-              <li>GME float: 50M shares</li>
-              <li>MM gamma hedges: 150M+ shares (3× the float!)</li>
-              <li>Short squeeze + gamma squeeze = infinity squeeze</li>
-            </ul>
-          </div>
-          <div class="tab-panel">
-            <h3 id="what-we-learned">What We Learned</h3>
-            <p><strong>Gamma Squeezes Are Real:</strong></p>
+      <p><strong>GME Gamma Squeeze (Jan 2021):</strong> Jan 11: GME $20, retail buys 500K calls, MMs hedge with 10M shares. Jan 13: GME $30, delta 0.20 → 0.60, MMs buy 20M more → pushes to $40. Jan 15-25 feedback loop: $40 → $60 (MMs buy 30M), $60 → $100 (50M), $100 → $200 (80M), $200 → $483 (PANIC). Jan 28 peak: GME float 50M, MM hedges 150M+ (3× float). Short squeeze + gamma squeeze = infinity squeeze.</p>
+
+      <p><strong>Lesson:</strong>
             <ul>
               <li>High option volume + small float = explosive upside</li>
               <li>MMs mechanically buy on the way up (no choice)</li>
@@ -780,7 +740,7 @@
           </div>
         </div>
         <div class="quiz-explanation">
-          <strong>Correct: C.</strong> This is the deadly OpEx + Earnings combo trap. Sarah made a classic mistake: she conflated fundamental direction with mechanical flows. Here's what happened: NVDA earnings were EXCELLENT (beat by 7%, strong guidance). The stock rallied 8% Wednesday after-hours and continued Thursday to $508. Call open interest exploded: $510 strike had 180K contracts, $515 had 120K, $520 had 90K. Market makers who sold those calls hedged by buying 35 MILLION NVDA shares ($17.6 BILLION worth). Here's the critical part: Friday was monthly OpEx. By 4:00 PM, those calls expire and dealers MUST unwind ALL 35M shares—regardless of how good the earnings were. The mechanics: (9:30-10:00 AM) Retail FOMO, NVDA hit $506.50. (10:00 AM-12:00 PM) MMs started unwinding, sold 3M shares, NVDA bled to $503. (12:00-2:00 PM) More unwind, NVDA dropped to $500.50. (2:00-3:30 PM) Final waterfall, MMs dumped 10M shares in 90 min, NVDA crashed to exactly $500 (max pain). Sarah's calls went from $4.80 → $1.60 (-66.7%, $96K loss). The brutal irony: By Monday Nov 20, NVDA rallied to $512 as earnings momentum resumed. If Sarah had bought NEXT WEEK's calls instead of same-day expiring calls, she would have made money. The lesson Sarah learned: "Earnings give direction (bullish). OpEx gives mechanics (bearish short-term). Mechanics ALWAYS win on the day of expiration." Her new rule: Never buy same-day calls on OpEx Friday, even after great earnings. Instead, sell premium to FOMO buyers or wait until 4:05 PM after unwind completes. Her recovery: 8 months later on TSLA OpEx+Earnings, she SOLD calls instead of buying them, made $60K (+316%) as dealer unwind crushed TSLA exactly as predicted. The setup is now her "ATM."
+          <strong>Correct: C.</strong> OpEx + Earnings trap. NVDA earnings excellent (beat 7%), rallied 8%, but Friday was monthly OpEx. MMs hedged 180K+ call contracts with 35M NVDA shares ($17.6B). Must unwind ALL 35M by 4 PM regardless of earnings. Mechanics: Retail FOMO 9:30 AM, NVDA $506.50. Then MM unwind: 3M shares (→ $503), more unwinding (→ $500.50), final waterfall 10M shares (→ $500 max pain). Sarah's calls $4.80 → $1.60 (-66.7%, -$96K). Monday: NVDA rallied $512 as earnings resumed. Lesson: Earnings = direction, OpEx = mechanics. Mechanics ALWAYS win on expiration day. Never buy same-day calls on OpEx Friday. Recovery: 8mo later SOLD calls on TSLA OpEx+Earnings, made $60K (+316%).
         </div>
       </div>
 
@@ -789,258 +749,28 @@
 
       <p>Now that you understand the mechanics, here's your complete playbook for trading around dealer positioning.</p>
 
-      <div class="tabs">
-        <div class="tabs-nav">
-          <button>Weekly OpEx</button>
-          <button>Monthly OpEx</button>
-          <button>Quarterly OpEx</button>
-          <button>0DTE Daily</button>
-        </div>
-        <div class="tabs-content">
-          <div class="tab-panel">
-            <h3 id="weekly-opex-strategy-every-friday">Weekly OpEx Strategy (Every Friday)</h3>
-            <p><strong>Setup Checklist:</strong></p>
-            <ul>
-              <li>Check max pain level (use tools like Maximum-Pain.com)</li>
-              <li>Note current SPY price vs max pain</li>
-              <li>Review dealer gamma exposure (SpotGamma, SqueezeMetrics)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Trade Setup #1: Mean Reversion to Max Pain</strong></p>
-            <ul>
-              <li><strong>Condition:</strong> SPY opens $3+ away from max pain</li>
-              <li><strong>Entry (9:45 AM):</strong> Trade toward max pain</li>
-              <li><strong>Target:</strong> 50-70% of distance to max pain</li>
-              <li><strong>Stop:</strong> If move away from max pain by 11 AM, potential exit</li>
-              <li><strong>Close:</strong> 3:15 PM (before final unwind)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Example Trade:</strong></p>
-            <pre style="overflow-x:auto"><code>Date: Sept 29, 2024
-Max Pain: $568
-SPY Open: $574.20 (6.2 points away)
+      <p><strong>OpEx Trading Strategies:</strong></p>
 
-Entry: 9:45 AM - Sell SPY $575 calls @ $2.10
-Target: SPY $570 (70% toward max pain)
-Stop: SPY $576 (continuation away)
+      <p><strong>1. Weekly OpEx (Fridays):</strong> Check max pain, note SPY vs max pain. If SPY $3+ away, trade toward max pain. Entry 9:45 AM, target 50-70% of distance, close 3:15 PM. Example: Max pain $568, SPY opens $574.20. Sell $575 calls @ $2.10, by 2:30 PM SPY $569.80, calls $0.60, profit $1.50/contract.</p>
 
-Result:
-- By 2:30 PM: SPY at $569.80
-- Calls worth $0.60
-- Profit: $2.10 - $0.60 = $1.50 × 100 = $150 per contract
-</code></pre>
-          </div>
-          <div class="tab-panel"><h3 id="monthly-opex-strategy-3rd-friday">Monthly OpEx Strategy (3rd Friday)</h3>
-            <p><strong>Why It's Different:</strong></p>
-            <ul>
-              <li>10-20× more contracts than weekly</li>
-              <li>Dealer gamma exposure MASSIVE</li>
-              <li>Pin risk extreme (gravitational pull to max pain)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Trade Setup #2: Final Hour Fade</strong></p>
-            <ul>
-              <li><strong>Condition:</strong> SPY within $2 of max pain at 2 PM</li>
-              <li><strong>Entry (3:00 PM):</strong> Sell ATM straddle expiring 4 PM</li>
-              <li><strong>Thesis:</strong> Pin risk keeps price range-bound final hour</li>
-              <li><strong>Risk:</strong> If pin breaks, loss can be significant</li>
-              <li><strong>Win Rate:</strong> ~65% (high probability, limited reward)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Example Trade:</strong></p>
-            <pre style="overflow-x:auto"><code>Date: Oct 20, 2024 (Monthly OpEx)
-Max Pain: $583
-SPY at 2:00 PM: $584.20
+      <p><strong>2. Monthly OpEx (3rd Friday):</strong> 10-20× more contracts, massive gamma, extreme pin risk. If SPY within $2 of max pain at 2 PM, sell ATM straddle at 3 PM. Pin keeps range tight. ~65% win rate. Example: Max pain $583, SPY $584.20, sell straddle for $2.70 credit, keep $2.60 at 4 PM close.</p>
 
-Entry 3:00 PM:
-- Sell $584 call @ $1.40
-- Sell $584 put @ $1.30
-- Total credit: $2.70 per share
+      <p><strong>3. Quarterly OpEx (Quad Witching):</strong> All derivatives expire, volatility spikes, unpredictable. Buy ATM straddle Thursday, exit Friday 2 PM before pin. Profit from volatile swings. Example: Buy $595 straddle $6.30, Friday swings $591-$597, exit breakeven+ on volatility.</p>
 
-3:00-4:00 PM Price Action:
-- SPY range: $583.50 - $584.80 (tight 1.3 pt range)
-- Max pain gravity keeps it pinned
+      <p><strong>4. 0DTE Daily:</strong> Every day is mini-OpEx (SPX daily expirations). Gamma builds through day. 9:30-11 AM: trade directionally. 11 AM-2 PM: avoid (choppy). 2-4 PM: fade extremes toward max pain. Example: Max pain $578, SPX opens $581. Buy $580 calls @ $2.80, exit 10:15 AM at $5.50 (+$2.70). Then 2:30 PM SPX $583.50, sell $583 calls @ $1.90, dealer unwind to $579.20, exit @ $0.30 (+$1.60). Total: $4.30/contract. 68% win rate.</p>
 
-4:00 PM Close: $584.10
-- Call expires worth $0.10
-- Put expires worthless
-- Keep $2.60 of $2.70 credit
-- Profit: $260 per contract (96% of max profit)
-</code></pre>
-          </div>
-          <div class="tab-panel">
-            <h3 id="quarterly-opex-quad-witching">Quarterly OpEx (Quad Witching)</h3>
-            <p><strong>What Makes It Different:</strong></p>
-            <ul>
-              <li>Stock options + index options + stock futures + index futures all expire</li>
-              <li>Volatility SPIKES due to massive rehedging</li>
-              <li>Unpredictable (avoid directional trades)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Trade Setup #3: Volatility Expansion Trade</strong></p>
-            <ul>
-              <li><strong>Entry (Thursday before Quad Witching):</strong> Buy ATM straddle</li>
-              <li><strong>Thesis:</strong> Friday will see volatile swings (profit either direction)</li>
-              <li><strong>Exit:</strong> Friday by 2 PM (before pin takes over)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Example Trade:</strong></p>
-            <pre style="overflow-x:auto"><code>Date: Dec 14, 2024 (Thursday before Dec 15 Quad Witching)
-SPY: $595.50
-
-Entry:
-- Buy $595 call @ $3.20
-- Buy $595 put @ $3.10
-- Total cost: $6.30
-
-Friday Dec 15 Action:
-- 9:30 AM: SPY dumps to $591 (dealer unwind)
-- 10:30 AM: Rallies to $597 (rehedging)
-- Volatile 6-point range
-
-Exit 1:00 PM: SPY at $596.80
-- $595 call: Worth $4.50 (up from $3.20)
-- $595 put: Worth $1.80 (down from $3.10)
-- Total value: $6.30 (breakeven on premium, made $ on swings)
-
-Alternative: Could've sold call at top ($597) for $5.80 profit
-Key: Exit before final hour pin crushes all premium
-</code></pre>
-          </div>
-          <div class="tab-panel">
-            <h3 id="0dte-daily-strategy">0DTE Daily Strategy</h3>
-            <p><strong>How 0DTE Changed OpEx Dynamics:</strong></p>
-            <ul>
-              <li>EVERY DAY is mini-OpEx now (SPX daily expirations)</li>
-              <li>Gamma exposure builds through the day</li>
-              <li>Final hour always has dealer unwind</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Trade Setup #4: Morning Momentum, Afternoon Fade</strong></p>
-            <ul>
-              <li><strong>9:30-11:00 AM:</strong> Trade directionally (gamma still building)</li>
-              <li><strong>11:00 AM-2:00 PM:</strong> Avoid (choppy, range-bound)</li>
-              <li><strong>2:00-4:00 PM:</strong> Fade extremes toward max pain</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Example Day:</strong></p>
-            <pre style="overflow-x:auto"><code>Date: Nov 8, 2024 (0DTE Friday)
-Max Pain: $578
-
-9:30 AM: SPX opens $581 (CPI data bullish)
-Trade: Buy $580 calls @ $2.80
-10:15 AM: SPX hits $584
-Exit: Sell calls @ $5.50 (profit $2.70)
-
-11:00 AM - 2:00 PM: Sideways chop $582-$584
-Action: Sit out (no edge)
-
-2:30 PM: SPX at $583.50 (3.5 pts above max pain)
-Trade: Sell $583 calls @ $1.90
-3:45 PM: SPX drifts to $579.20 (dealer unwind)
-Exit: Buy back calls @ $0.30
-Profit: $1.60
-
-Total day: $2.70 + $1.60 = $4.30 per contract
-Win rate on 0DTE fade: 68% over 6 months
-</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <div class="callout-tip">
-        <h4>🎯 Complete OpEx Checklist (Use Every Friday)</h4>
-        <p><strong>Pre-Market (8:00 AM):</strong></p>
-        <ul>
-          <li>☐ Check max pain level for SPY/SPX</li>
-          <li>☐ Review dealer gamma exposure (SpotGamma dashboard)</li>
-          <li>☐ Note strikes with highest open interest</li>
-          <li>☐ Check if any major earnings today (OpEx + earnings combo)</li>
-        </ul>
-        <p style="margin-top:1rem"><strong>Market Open (9:30 AM):</strong></p>
-        <ul>
-          <li>☐ Compare opening price to max pain (>$3 away = trade opportunity)</li>
-          <li>☐ Set alerts for key gamma levels (where dealer flows flip)</li>
-        </ul>
-        <p style="margin-top:1rem"><strong>Throughout Day:</strong></p>
-        <ul>
-          <li>☐ 11:00 AM: Reassess if trade thesis intact</li>
-          <li>☐ 2:00 PM: Prepare for final hour dynamics</li>
-          <li>☐ 3:15 PM: Close any directional positions (unwind risk)</li>
-        </ul>
-        <p style="margin-top:1rem"><strong>Post-Close (4:05 PM):</strong></p>
-        <ul>
-          <li>☐ Review how close SPY closed to max pain</li>
-          <li>☐ Note any unusual deviations (study for next time)</li>
-        </ul>
-      </div>
+      <p><strong>OpEx Checklist:</strong> Pre-market: Check max pain, gamma exposure, highest OI strikes, earnings. Open: Compare price to max pain (>$3 = opportunity), set gamma level alerts. Throughout: 11 AM reassess, 2 PM prepare final hour, 3:15 PM close positions. Post-close: Review SPY vs max pain, note deviations.</p>
 
       <div class="section-break"><span>Part 9: Tools & Resources for Tracking Dealer Positioning</span></div>
 <h2 id="how-to-monitor-real-time-dealer-flows">How to Monitor Real-Time Dealer Flows</h2>
 
-      <p>You can't trade what you can't see. These tools make dealer positioning visible:</p>
+      <p><strong>Essential Tools:</strong></p>
 
-      <h3 id="essential-tools">Essential Tools:</h3>
+      <p><strong>1. SpotGamma ($99/mo):</strong> Real-time gamma positioning. Metrics: Absolute Gamma (positive = suppression, negative = amplification), Gamma Flip Level (where hedging flips), Max Pain. Use: Check AM, note flip level. Below flip = trend day, above = range day.</p>
 
-      <div class="accordion">
-        <details class="accordion-item">
-          <summary class="accordion-header">SpotGamma (Dealer Gamma Exposure)</summary>
-          <div class="accordion-content">
-            <p><strong>What it shows:</strong> Real-time dealer gamma positioning</p>
-            <p><strong>Key metrics:</strong></p>
-            <ul>
-              <li><strong>Absolute Gamma:</strong> Total dealer gamma exposure (positive = suppression, negative = amplification)</li>
-              <li><strong>Gamma Flip Level:</strong> Price where dealer hedging behavior flips</li>
-              <li><strong>Max Pain:</strong> Strike with highest total OI</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>How to use:</strong></p>
-            <ul>
-              <li>Check every morning before open</li>
-              <li>Note gamma flip level (key support/resistance)</li>
-              <li>When SPY is below flip level = dealer amplification (trend day likely)</li>
-              <li>When above flip level = dealer suppression (range day likely)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Cost:</strong> $99/month (worth it for active OpEx traders)</p>
-          </div>
-        </details>
+      <p><strong>2. SqueezeMetrics ($49/mo):</strong> DIX (dark pool) + GEX (gamma). High DIX (>45%) = institutions buying (bullish), Low (<40%) = selling (bearish). High DIX + Low GEX = explosive upside. Low DIX + High GEX = grinding range.</p>
 
-        <details class="accordion-item">
-          <summary class="accordion-header">SqueezeMetrics (Dark Pool & Gamma)</summary>
-          <div class="accordion-content">
-            <p><strong>What it shows:</strong> Dark pool indicator (DIX) + dealer gamma exposure (GEX)</p>
-            <p><strong>Key insight:</strong> DIX shows smart money positioning vs dealer hedging needs</p>
-            <ul>
-              <li><strong>High DIX (>45%):</strong> Institutions buying dips → bullish</li>
-              <li><strong>Low DIX (<40%):</strong> Institutions selling rallies → bearish</li>
-              <li><strong>High GEX:</strong> Volatility suppression (range-bound expected)</li>
-              <li><strong>Low/Negative GEX:</strong> Volatility amplification (big moves expected)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>How to combine:</strong></p>
-            <ul>
-              <li>High DIX + Low GEX = Explosive upside (institutions buying, MMs amplifying)</li>
-              <li>Low DIX + High GEX = Grinding range (weak buying, pinned by dealers)</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Cost:</strong> $49/month</p>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary class="accordion-header">Free Tools: CBOE & TradingView</summary>
-          <div class="accordion-content">
-            <p><strong>CBOE Put/Call Ratio:</strong></p>
-            <ul>
-              <li>Free on CBOE.com</li>
-              <li>Shows total call vs put volume</li>
-              <li>High ratio (>1.0) = bearish positioning</li>
-              <li>Low ratio (<0.7) = bullish/FOMO positioning</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>TradingView Options OI Indicator:</strong></p>
-            <ul>
-              <li>Chart overlay showing strike OI</li>
-              <li>Visual representation of gamma walls</li>
-              <li>Free with basic TradingView account</li>
-            </ul>
-            <p style="margin-top:1rem"><strong>Maximum-Pain.com:</strong></p>
-            <ul>
-              <li>Free max pain calculator</li>
-              <li>Updates throughout the day</li>
-              <li>Shows expected pin level for OpEx</li>
-            </ul>
-          </div>
-        </details>
-      </div>
+      <p><strong>3. Free Tools:</strong> CBOE P/C Ratio (CBOE.com): >1.0 bearish, <0.7 bullish. TradingView OI Indicator: Chart overlay for gamma walls. Maximum-Pain.com: Free max pain calculator, updates throughout day.</p>
 
       <div class="callout-warning">
         <h4>🚨 Don't Overtrade Based on Dealer Positioning</h4>
@@ -1069,7 +799,7 @@ Win rate on 0DTE fade: 68% over 6 months
           </div>
         </div>
         <div class="quiz-explanation">
-          <strong>Correct: B.</strong> When price is above max pain on OpEx, dealers holding call hedges will reduce their stock hedge as delta decreases. This creates mechanical selling pressure that drifts price toward max pain ($450) by close. Here's the mechanic: Market makers sold 100,000 calls at $450 strike. When SPY was near $450, they hedged by buying ~5 million shares (100K contracts × 100 shares × 0.50 delta). Now SPY is at $455, those calls are ITM with 0.85 delta, so dealers hold ~8.5M shares. But as expiration approaches and if SPY drifts down, delta decreases—so dealers SELL shares to reduce hedge. This selling pushes SPY toward $450 (max pain). It's not bearish fundamentals—it's pure mechanics. Stats show SPY closes within $2 of max pain on 60-65% of monthly OpEx days.
+          <strong>Correct: B.</strong> Price above max pain = dealers reduce stock hedges as delta decreases, creating mechanical selling toward max pain ($450). MMs sold 100K calls at $450, hedged with 5M shares (0.50 delta). At $455, calls ITM with 0.85 delta = 8.5M shares held. As expiration nears, delta drops, dealers SELL to reduce hedge, pushing SPY toward $450. Pure mechanics, not fundamentals. SPY closes within $2 of max pain 60-65% of monthly OpEx.
         </div>
       </div>
 
@@ -1087,7 +817,7 @@ Win rate on 0DTE fade: 68% over 6 months
           </div>
         </div>
         <div class="quiz-explanation">
-          <strong>Correct: C.</strong> This is the OpEx timing trap that costs traders millions. At 3:00 PM on OpEx, dealers still have massive hedges to unwind in the final hour. With SPY at $520 and max pain at $515, expect mechanical selling pressure as dealers dump call hedges (likely 10-15 million shares) by 4:00 PM. If you buy at 3:00 PM, you're buying BEFORE the waterfall. Better move: Wait until 4:05 PM. By then, dealer unwind is complete, selling pressure evaporates, and price often bounces 0.5-1.5% in after-hours or Monday open. Real example: Sept 15, 2024 OpEx. SPY at $575 at 3:00 PM, max pain $570. Dealers unwound, SPY dropped to $570.80 by 4:00 PM. By 9:35 AM Monday, SPY was back at $574. Traders who bought Friday 3:00 PM got stopped out. Traders who bought Friday 4:05 PM made 0.5% overnight. The best bullish trade on OpEx is often AFTER the close, not before.
+          <strong>Correct: C.</strong> OpEx timing trap. At 3 PM, dealers must unwind hedges in final hour. SPY $520, max pain $515 = expect mechanical selling (10-15M shares) by 4 PM. Buying 3 PM = buying BEFORE waterfall. Wait until 4:05 PM. Unwind complete, selling stops, price often bounces 0.5-1.5% after-hours/Monday. Example Sept 15: SPY $575 at 3 PM, max pain $570. Dropped $570.80 by 4 PM. Monday 9:35 AM: $574. Best bullish trade on OpEx = AFTER close.
         </div>
       </div>
 
@@ -1105,7 +835,7 @@ Win rate on 0DTE fade: 68% over 6 months
           </div>
         </div>
         <div class="quiz-explanation">
-          <strong>Correct: B.</strong> This is gamma squeeze mechanics in action. When GME is at $38 with $40 calls at 0.60 delta, dealers are hedged with 12 million shares (200K × 100 × 0.60). If GME rallies to $42, those calls go deep ITM—delta jumps to ~0.95. Now dealers need 19 million shares (200K × 100 × 0.95). They must BUY another 7 million shares to stay hedged. This buying pushes GME higher → delta increases more → more buying required → feedback loop = gamma squeeze. This is exactly what happened Jan 2021 with GME ($20 → $483). High call OI + small float + rapid price increase = dealers forced to buy massive amounts of stock, creating exponential acceleration. The reverse is also true: if GME drops to $36, delta falls to 0.30, dealers dump 6 million shares, accelerating the crash. Gamma squeezes are mechanical, not fundamental. They're pure options math driving stock price.
+          <strong>Correct: B.</strong> Gamma squeeze mechanics. GME $38, $40 calls 0.60 delta, dealers hedged with 12M shares (200K × 100 × 0.60). GME rallies $42, calls deep ITM, delta → 0.95. Dealers need 19M shares (200K × 100 × 0.95). Must BUY 7M more. Buying pushes GME higher → delta increases → more buying → feedback loop = gamma squeeze. Jan 2021 GME: $20 → $483. High call OI + small float + rapid move = exponential acceleration. Reverse: GME drops $36, delta 0.30, dealers dump 6M shares. Gamma squeezes are mechanical, not fundamental.
         </div>
       </div>
 
