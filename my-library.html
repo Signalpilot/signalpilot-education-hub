@@ -433,21 +433,6 @@
     </div>
   </section>
 
-  <!-- Starred Favorites -->
-  <section class="wrap" style="margin: 3rem auto;">
-    <div class="library-section">
-      <h3>⭐ Starred Favorites</h3>
-      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Your absolute best lessons - quick access to the gems</p>
-      <div id="favorites-list">
-        <div class="empty-state">
-          <div class="empty-state-icon">⭐</div>
-          <p>No favorites yet.</p>
-          <p style="font-size: 0.9rem;">Star your best lessons for quick access!</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Your Notes -->
   <section class="wrap" style="margin: 3rem auto;">
     <div class="library-section">
@@ -567,12 +552,6 @@
       renderBookmarks(bookmarks);
     }
 
-    // Get favorites
-    const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
-    if (favorites.length > 0) {
-      renderFavorites(favorites);
-    }
-
     // Get completed lessons (using correct key pattern: sp_edu_*_completed)
     const completedCount = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed')).length;
     document.getElementById('stat-completed').textContent = completedCount;
@@ -660,7 +639,6 @@
     const completed = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed'));
     const downloads = JSON.parse(localStorage.getItem('sp_downloads') || '[]');
     const bookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]');
-    const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
     const activity = JSON.parse(localStorage.getItem('sp_activity') || '{}');
     const migrated = localStorage.getItem('sp_activity_migrated');
 
@@ -668,7 +646,6 @@
     logger.log('  - Completed lessons:', completed.length, completed);
     logger.log('  - Downloads:', downloads.length);
     logger.log('  - Bookmarks:', bookmarks.length);
-    logger.log('  - Favorites:', favorites.length);
     logger.log('  - Activity days:', Object.keys(activity).length);
     logger.log('  - Migration status:', migrated ? 'Completed' : 'Not run');
     logger.log('  - Activity data:', activity);
@@ -908,23 +885,6 @@
         `).join('')}
       </div>
     `;
-  }
-
-  // Render Favorites
-  function renderFavorites(favorites) {
-    const container = document.getElementById('favorites-list');
-    container.innerHTML = favorites.map(fav => `
-      <div class="library-item">
-        <div class="library-item-info">
-          <div class="library-item-title">⭐ ${fav.title}</div>
-          <div class="library-item-meta">${fav.tier} • Starred ${new Date(fav.date).toLocaleDateString()}</div>
-        </div>
-        <div class="library-item-actions">
-          <a href="${fav.url}" class="btn btn-sm btn-primary">Read Now</a>
-          <button onclick="window.library.removeFavorite('${fav.id}')" class="btn btn-sm btn-ghost">Remove</button>
-        </div>
-      </div>
-    `).join('');
   }
 
   // Render Certificates
@@ -1759,12 +1719,6 @@
       const filtered = bookmarks.filter(b => b.id !== id);
       localStorage.setItem('sp_bookmarks', JSON.stringify(filtered));
       loadLibraryData();
-    },
-    removeFavorite: function(id) {
-      const favorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]');
-      const filtered = favorites.filter(f => f.id !== id);
-      localStorage.setItem('sp_favorites', JSON.stringify(filtered));
-      loadLibraryData();
     }
   };
 
@@ -1781,9 +1735,8 @@
 
   // Also listen for changes in the same tab (not triggered by storage event)
   setInterval(function() {
-    // Check if bookmark/favorite count changed
+    // Check if bookmark count changed
     const currentBookmarks = JSON.parse(localStorage.getItem('sp_bookmarks') || '[]').length;
-    const currentFavorites = JSON.parse(localStorage.getItem('sp_favorites') || '[]').length;
     const currentCompleted = Object.keys(localStorage).filter(k => k.includes('sp_edu_') && k.includes('_completed')).length;
 
     const displayedBookmarks = parseInt(document.getElementById('stat-bookmarks')?.textContent || '0');
