@@ -129,19 +129,42 @@
       opacity: 0.5;
     }
 
+    #achievements-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+
     .achievement-badge {
-      display: inline-flex;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
+      text-align: center;
+      padding: 0.75rem 0.5rem;
       background: rgba(255, 215, 0, 0.1);
       border: 1px solid rgba(255, 215, 0, 0.2);
       border-radius: 8px;
-      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+
+    .achievement-badge .badge-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .achievement-badge .badge-name {
+      font-weight: 600;
+      font-size: 0.8rem;
+      line-height: 1.2;
+    }
+
+    .achievement-badge .badge-desc {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
     }
 
     .achievement-badge.locked {
-      opacity: 0.4;
+      opacity: 0.35;
       background: rgba(255, 255, 255, 0.02);
       border-color: rgba(255, 255, 255, 0.1);
     }
@@ -737,31 +760,37 @@
   }
 
   function renderAchievements(completedCount) {
+    // Get streak and notes data
+    const streak = JSON.parse(localStorage.getItem('sp_learning_streak') || '{"current": 0, "best": 0}');
+    const notesCount = Object.keys(localStorage).filter(k => k.startsWith('sp_note_')).length;
+    const quizStats = JSON.parse(localStorage.getItem('sp_quiz_stats') || '{"perfect": 0, "total": 0}');
+
     const achievements = [
-      { id: 'first_lesson', title: '🎯 First Steps', description: 'Complete your first lesson', unlocked: completedCount >= 1 },
-      { id: 'five_lessons', title: '📚 Dedicated Learner', description: 'Complete 5 lessons', unlocked: completedCount >= 5 },
-      { id: 'beginner_complete', title: '🟢 Beginner Complete', description: 'Complete all 20 beginner lessons', unlocked: completedCount >= 20 },
-      { id: 'intermediate_complete', title: '🟡 Intermediate Complete', description: 'Complete all 47 lessons (through Intermediate)', unlocked: completedCount >= 47 },
-      { id: 'advanced_complete', title: '🔴 Advanced Complete', description: 'Complete all 74 lessons (through Advanced)', unlocked: completedCount >= 74 },
-      { id: 'all_lessons', title: '🏆 Master Trader', description: 'Complete all 82 lessons', unlocked: completedCount >= 82 },
-      { id: 'week_streak', title: '🔥 Week Streak', description: '7 day learning streak', unlocked: false },
-      { id: 'note_taker', title: '📝 Note Taker', description: 'Take notes on 5 lessons', unlocked: false }
+      // Completion achievements
+      { icon: '🎯', name: 'First Steps', desc: 'Complete 1 lesson', unlocked: completedCount >= 1 },
+      { icon: '📚', name: 'Dedicated', desc: 'Complete 5 lessons', unlocked: completedCount >= 5 },
+      { icon: '🔟', name: 'Double Digits', desc: 'Complete 10 lessons', unlocked: completedCount >= 10 },
+      { icon: '🟢', name: 'Beginner', desc: 'Complete 20 lessons', unlocked: completedCount >= 20 },
+      { icon: '🟡', name: 'Intermediate', desc: 'Complete 47 lessons', unlocked: completedCount >= 47 },
+      { icon: '🔴', name: 'Advanced', desc: 'Complete 74 lessons', unlocked: completedCount >= 74 },
+      { icon: '🏆', name: 'Master', desc: 'Complete all 82', unlocked: completedCount >= 82 },
+      // Streak achievements
+      { icon: '🔥', name: '3-Day Streak', desc: '3 days in a row', unlocked: streak.best >= 3 },
+      { icon: '⚡', name: 'Week Streak', desc: '7 days in a row', unlocked: streak.best >= 7 },
+      { icon: '💪', name: 'Month Streak', desc: '30 days in a row', unlocked: streak.best >= 30 },
+      // Activity achievements
+      { icon: '📝', name: 'Note Taker', desc: 'Take 5 notes', unlocked: notesCount >= 5 },
+      { icon: '✍️', name: 'Scholar', desc: 'Take 20 notes', unlocked: notesCount >= 20 },
+      { icon: '🧠', name: 'Quiz Ace', desc: '5 perfect quizzes', unlocked: quizStats.perfect >= 5 },
+      { icon: '🌟', name: 'Quiz Master', desc: '20 perfect quizzes', unlocked: quizStats.perfect >= 20 },
     ];
 
     const container = document.getElementById('achievements-list');
-    const unlocked = achievements.filter(a => a.unlocked);
-
-    if (unlocked.length === 0) {
-      return; // Keep empty state
-    }
-
-    container.innerHTML = achievements.map(achievement => `
-      <div class="achievement-badge ${achievement.unlocked ? '' : 'locked'}">
-        <span style="font-size: 1.5rem;">${achievement.title.split(' ')[0]}</span>
-        <div>
-          <div style="font-weight: 600;">${achievement.title.substring(3)}</div>
-          <div style="font-size: 0.85rem; opacity: 0.8;">${achievement.description}</div>
-        </div>
+    container.innerHTML = achievements.map(a => `
+      <div class="achievement-badge ${a.unlocked ? '' : 'locked'}">
+        <span class="badge-icon">${a.icon}</span>
+        <span class="badge-name">${a.name}</span>
+        <span class="badge-desc">${a.desc}</span>
       </div>
     `).join('');
   }
