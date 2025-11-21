@@ -200,8 +200,69 @@
     }
 
     .achievement-badge.locked:hover {
-      transform: none;
+      opacity: 0.6;
+      transform: translateY(-2px);
       background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Enhanced tooltips for badges */
+    .achievement-badge[title]:hover::after {
+      content: attr(title);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      padding: 0.5rem 0.75rem;
+      background: rgba(0, 0, 0, 0.95);
+      color: #fff;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      border-radius: 6px;
+      z-index: 1000;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(139, 92, 246, 0.5);
+      animation: tooltipFadeIn 0.2s ease;
+    }
+
+    .achievement-badge[title]:hover::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-2px);
+      border: 6px solid transparent;
+      border-top-color: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      pointer-events: none;
+      animation: tooltipFadeIn 0.2s ease;
+    }
+
+    @keyframes tooltipFadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-8px);
+      }
+    }
+
+    /* Progress bar styling */
+    .badge-progress {
+      animation: progressFadeIn 0.3s ease;
+    }
+
+    @keyframes progressFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Badge Unlock Notification */
@@ -902,15 +963,26 @@
       const earnedDate = isEarned ?
         (JSON.parse(localStorage.getItem('sp_badge_' + badge.id) || '{}').earnedAt || '') : '';
 
+      // Get progress for locked badges
+      const progress = !isEarned ? badgeSystem.getProgress(badge) : null;
+
       return `
         <div class="achievement-badge ${isEarned ? 'earned' : 'locked'}"
              data-badge-id="${badge.id}"
-             title="${badge.description}">
+             title="${isEarned ? badge.description : (progress ? progress.message : badge.description)}">
           <span class="badge-icon">${badge.emoji}</span>
           <div class="badge-info">
             <span class="badge-name">${badge.name}</span>
             <span class="badge-desc">${badge.description}</span>
             ${isEarned && earnedDate ? `<span class="badge-date" style="font-size:0.7rem;opacity:0.6;margin-top:0.25rem">Earned ${new Date(earnedDate).toLocaleDateString()}</span>` : ''}
+            ${!isEarned && progress ? `
+              <div class="badge-progress" style="margin-top:0.5rem">
+                <div class="badge-progress-bar" style="width:100%;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden">
+                  <div style="width:${progress.percent}%;height:100%;background:linear-gradient(90deg,rgba(139,92,246,0.8),rgba(59,130,246,0.8));transition:width 0.3s ease"></div>
+                </div>
+                <span class="badge-progress-text" style="font-size:0.65rem;opacity:0.7;margin-top:0.25rem;display:block">${progress.current}/${progress.needed} • ${progress.percent}%</span>
+              </div>
+            ` : ''}
           </div>
           ${isEarned ? '<span class="badge-checkmark">✓</span>' : '<span class="badge-lock">🔒</span>'}
         </div>
