@@ -27,15 +27,9 @@
     },
 
     async getCurrentUser() {
-      // Check if user is logged in via Supabase
-      if (window.supabase) {
-        try {
-          const { data: { user } } = await window.supabase.auth.getUser();
-          return user;
-        } catch (error) {
-          console.warn('[Discussions] Auth check failed:', error);
-          return null;
-        }
+      // Use the main auth system's getCurrentUser function
+      if (window.supabaseAuth && typeof window.supabaseAuth.getCurrentUser === 'function') {
+        return window.supabaseAuth.getCurrentUser();
       }
       return null;
     },
@@ -88,14 +82,17 @@
     },
 
     async loadComments() {
-      if (!window.supabase) {
+      // Check if Supabase is available via the global supabase object
+      const supabase = window.supabase;
+
+      if (!supabase || typeof supabase.from !== 'function') {
         console.warn('[Discussions] Supabase not initialized, using local comments');
         this.comments = this.getLocalComments();
         return;
       }
 
       try {
-        const { data, error } = await window.supabase
+        const { data, error } = await supabase
           .from('comments')
           .select(`
             *,

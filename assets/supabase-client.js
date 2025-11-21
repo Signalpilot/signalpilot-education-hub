@@ -42,7 +42,11 @@
     }
 
     // Create Supabase client
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabaseLib = window.supabase; // Save library reference
+    supabase = supabaseLib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Expose the client globally for other modules (discussions, etc.)
+    window.supabase = supabase;
 
     logger.log('[Supabase] Client initialized');
     return supabase;
