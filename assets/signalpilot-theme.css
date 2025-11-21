@@ -124,8 +124,16 @@ html[data-theme="light"] h6 {
   color: #0f172a !important;
 }
 
-html[data-theme="light"] .brand {
-  color: #0f172a !important;
+/* Brand in header stays white - header is always dark */
+html[data-theme="light"] .sp-header .brand {
+  color: #fff !important;
+}
+
+/* Badge visibility in light mode */
+html[data-theme="light"] .badge {
+  color: #0369a1 !important;
+  background: rgba(14, 165, 233, 0.15) !important;
+  border-color: rgba(14, 165, 233, 0.4) !important;
 }
 
 /* Fix inline white text in light mode */
