@@ -5,6 +5,36 @@
   'use strict';
 
   // ============================================
+  // GAMIFICATION LOADER
+  // ============================================
+  // Dynamically loads gamification system (XP, badges, challenges)
+  (function loadGamification() {
+    // Load CSS
+    if (!document.querySelector('link[href*="gamification.css"]')) {
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = '/assets/gamification.css';
+      document.head.appendChild(css);
+    }
+
+    // Load JS files
+    const scripts = [
+      '/assets/gamification.js',
+      '/assets/badges.js',
+      '/assets/daily-challenges.js'
+    ];
+
+    scripts.forEach(function(src) {
+      if (!document.querySelector('script[src="' + src + '"]')) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.defer = true;
+        document.body.appendChild(script);
+      }
+    });
+  })();
+
+  // ============================================
   // PROGRESS TRACKING SYSTEM
   // ============================================
   const ProgressTracker = {
@@ -94,6 +124,11 @@
 
         localStorage.setItem('sp_activity', JSON.stringify(activity));
         logger.log('[Education] Activity updated for today:', today);
+
+        // Dispatch event for gamification system
+        window.dispatchEvent(new CustomEvent('sp:lessonCompleted', {
+          detail: { lessonId: articleId, level: level }
+        }));
 
         this.showCompletionBadge(articleId);
         this.checkAchievements();

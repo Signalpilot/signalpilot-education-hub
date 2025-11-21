@@ -109,6 +109,11 @@
       trackQuizAnswer(questionId, isCorrect);
     }
 
+    // Dispatch event for gamification system (single question quiz)
+    window.dispatchEvent(new CustomEvent('sp:quizCompleted', {
+      detail: { score: isCorrect ? 100 : 0, correct: isCorrect ? 1 : 0, total: 1 }
+    }));
+
     // Scroll feedback into view
     setTimeout(() => {
       feedbackContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -154,6 +159,11 @@
     if (typeof trackQuizCompleted === 'function') {
       trackQuizCompleted(score, total);
     }
+
+    // Dispatch event for gamification system
+    window.dispatchEvent(new CustomEvent('sp:quizCompleted', {
+      detail: { score: percentage, correct: score, total: total }
+    }));
 
     // Scroll to result
     resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
