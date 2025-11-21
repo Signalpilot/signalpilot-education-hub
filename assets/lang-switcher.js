@@ -40,9 +40,15 @@
     { code: 'bg', name: 'Български', flagCode: 'bg' }
   ];
 
-  // Helper: Get flag image HTML
+  // Helper: Get flag image HTML (using flagcdn with fallback)
   function getFlagImg(flagCode, size = 20) {
-    return `<img src="https://flagcdn.com/w${size}/${flagCode}.png" width="${size}" height="${Math.round(size*0.75)}" alt="" style="vertical-align:middle;border-radius:2px">`;
+    const code = flagCode.toUpperCase();
+    return `<img src="https://flagcdn.com/w${size}/${flagCode}.png"
+      srcset="https://flagcdn.com/w${size*2}/${flagCode}.png 2x"
+      width="${size}" height="${Math.round(size*0.75)}"
+      alt="${code}"
+      onerror="this.style.display='none';this.nextSibling.style.display='inline';"
+      style="vertical-align:middle;border-radius:2px"><span style="display:none;font-size:0.7em;opacity:0.7">${code}</span>`;
   }
 
   let currentLang = 'en';
