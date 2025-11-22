@@ -229,11 +229,14 @@
 
           if (error) throw error;
 
-          // Add full comment data
-          newComment.id = data.id;
-          this.comments.unshift(newComment);
+          console.log('[Discussions] Comment inserted successfully:', data);
+
+          // Reload all comments to get full data with user info
+          await this.loadComments();
+
         } catch (error) {
           console.error('[Discussions] Failed to post comment:', error);
+          console.error('[Discussions] Error details:', error.message, error.code);
           alert('Failed to post comment. Please try again.');
           return;
         }
@@ -382,10 +385,14 @@
 
           if (error) throw error;
 
-          newReply.id = data.id;
-          this.comments.push(newReply);
+          console.log('[Discussions] Reply inserted successfully:', data);
+
+          // Reload all comments to get full data with user info
+          await this.loadComments();
+
         } catch (error) {
           console.error('[Discussions] Failed to post reply:', error);
+          console.error('[Discussions] Error details:', error.message, error.code);
           alert('Failed to post reply. Please try again.');
           return;
         }
@@ -470,6 +477,13 @@
       // Limit the number of comments displayed
       const displayedComments = topLevelComments.slice(0, this.displayLimit);
       const hasMore = topLevelComments.length > this.displayLimit;
+
+      console.log('[Discussions] Rendering:', {
+        total: topLevelComments.length,
+        displaying: displayedComments.length,
+        limit: this.displayLimit,
+        hasMore: hasMore
+      });
 
       let html = displayedComments.map(comment => {
         const replies = sortedComments.filter(c => c.parent_id === comment.id);
