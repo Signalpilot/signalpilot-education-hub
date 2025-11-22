@@ -1,0 +1,530 @@
+/**
+ * Scenario Challenge System
+ * Interactive trading scenarios with timed decisions and scoring
+ */
+
+(function() {
+  'use strict';
+
+  // Challenge state
+  let currentChallenge = null;
+  let startTime = null;
+  let timerInterval = null;
+  let timeRemaining = 0;
+
+  /**
+   * Fetch scenarios from Supabase
+   */
+  async function fetchScenarios(options = {}) {
+    if (!window.supabase) {
+      console.error('Supabase client not initialized');
+      return [];
+    }
+
+    try {
+      let query = window.supabase
+        .from('scenarios')
+        .select('*')
+        .eq('is_active', true);
+
+      // Filter by difficulty
+      if (options.difficulty) {
+        query = query.eq('difficulty', options.difficulty);
+      }
+
+      // Filter by skill category
+      if (options.skillCategory) {
+        query = query.eq('skill_category', options.skillCategory);
+      }
+
+      // Limit results
+      if (options.limit) {
+        query = query.limit(options.limit);
+      }
+
+      const { data, error } = await query;
+
+      if (error) {
+        console.error('Error fetching scenarios:', error);
+        return [];
+      }
+
+      return data || [];
+    } catch (error) {
+      console.error('Error in fetchScenarios:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Get random scenario
+   */
+  async function getRandomScenario(options = {}) {
+    const scenarios = await fetchScenarios(options);
+    if (scenarios.length === 0) return null;
+
+    const randomIndex = Math.floor(Math.random() * scenarios.length);
+    return scenarios[randomIndex];
+  }
+
+  /**
+   * Load scenario by ID
+   */
+  async function loadScenario(scenarioId) {
+    if (!window.supabase) {
+      console.error('Supabase client not initialized');
+      return null;
+    }
+
+    try {
+      const { data, error } = await window.supabase
+        .from('scenarios')
+        .select('*')
+        .eq('id', scenarioId)
+        .single();
+
+      if (error) {
+        console.error('Error loading scenario:', error);
+        return null;
+      }
+
+      return data;
+    } catch (error) {
+      console.error('Error in loadScenario:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Render challenge UI
+   */
+  function renderChallenge(scenario, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    currentChallenge = scenario;
+    startTime = Date.now();
+    timeRemaining = scenario.time_limit_seconds || 60;
+
+    const difficultyColors = {
+      beginner: '#5b8aff',
+      intermediate: '#76ddff',
+      advanced: '#a855f7'
+    };
+
+    const skillIcons = {
+      technical_analysis: '📊',
+      order_flow: '📈',
+      risk_management: '🛡️',
+      psychology: '🧠'
+    };
+
+    let html = `
+      <div class="challenge-container" data-challenge-id="${scenario.id}">
+        <div class="challenge-header">
+          <div class="challenge-meta">
+            <span class="challenge-difficulty" style="color: ${difficultyColors[scenario.difficulty]};">
+              ${scenario.difficulty.toUpperCase()}
+            </span>
+            <span class="challenge-category">
+              ${skillIcons[scenario.skill_category] || '📚'}
+              ${scenario.skill_category.replace('_', ' ')}
+            </span>
+          </div>
+          <div class="challenge-timer" id="challengeTimer">
+            <span class="timer-icon">⏱️</span>
+            <span class="timer-value">${timeRemaining}s</span>
+          </div>
+        </div>
+
+        <div class="challenge-content">
+          <h2 class="challenge-title">${scenario.title}</h2>
+          <p class="challenge-description">${scenario.description}</p>
+    `;
+
+    // Add chart if available
+    if (scenario.chart_image_url) {
+      html += `
+        <div class="challenge-chart">
+          <img src="${scenario.chart_image_url}" alt="Trading Chart" />
+        </div>
+      `;
+    }
+
+    html += `
+          <div class="challenge-context">
+            <strong>Context:</strong> ${scenario.context}
+          </div>
+
+          <div class="challenge-question">
+            <strong>What would you do?</strong>
+          </div>
+
+          <div class="challenge-options" id="challengeOptions">
+    `;
+
+    // Render options
+    const options = scenario.options || [];
+    options.forEach(option => {
+      html += `
+        <button class="challenge-option" data-option-id="${option.id}">
+          <span class="option-letter">${option.id}</span>
+          <span class="option-text">${option.text}</span>
+        </button>
+      `;
+    });
+
+    html += `
+          </div>
+        </div>
+
+        <div class="challenge-result" id="challengeResult" style="display: none;">
+          <!-- Result will be inserted here -->
+        </div>
+      </div>
+    `;
+
+    container.innerHTML = html;
+
+    // Add event listeners to options
+    const optionButtons = container.querySelectorAll('.challenge-option');
+    optionButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const optionId = e.currentTarget.dataset.optionId;
+        handleAnswer(optionId);
+      });
+    });
+
+    // Start timer
+    startTimer();
+  }
+
+  /**
+   * Start challenge timer
+   */
+  function startTimer() {
+    const timerElement = document.getElementById('challengeTimer');
+    if (!timerElement) return;
+
+    timerInterval = setInterval(() => {
+      timeRemaining--;
+
+      const timerValue = timerElement.querySelector('.timer-value');
+      if (timerValue) {
+        timerValue.textContent = `${timeRemaining}s`;
+
+        // Change color when time is running out
+        if (timeRemaining <= 10) {
+          timerValue.style.color = '#ef4444';
+        } else if (timeRemaining <= 30) {
+          timerValue.style.color = '#f59e0b';
+        }
+      }
+
+      if (timeRemaining <= 0) {
+        stopTimer();
+        handleTimeout();
+      }
+    }, 1000);
+  }
+
+  /**
+   * Stop challenge timer
+   */
+  function stopTimer() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+  }
+
+  /**
+   * Handle timeout
+   */
+  function handleTimeout() {
+    // Disable all options
+    const options = document.querySelectorAll('.challenge-option');
+    options.forEach(opt => opt.disabled = true);
+
+    // Show timeout message
+    showResult({
+      isCorrect: false,
+      message: 'Time\'s up! You ran out of time to make a decision.',
+      score: 0,
+      timeTaken: currentChallenge.time_limit_seconds
+    });
+  }
+
+  /**
+   * Handle answer selection
+   */
+  function handleAnswer(selectedOptionId) {
+    stopTimer();
+
+    const timeTaken = Math.floor((Date.now() - startTime) / 1000);
+    const isCorrect = selectedOptionId === currentChallenge.correct_answer_id;
+
+    // Calculate score (correctness + time bonus)
+    let score = 0;
+    if (isCorrect) {
+      const baseScore = currentChallenge.points || 100;
+      const timeBonus = Math.max(0, timeRemaining * 2); // 2 points per second remaining
+      score = baseScore + timeBonus;
+    }
+
+    // Disable all options
+    const options = document.querySelectorAll('.challenge-option');
+    options.forEach(opt => {
+      opt.disabled = true;
+      const optId = opt.dataset.optionId;
+
+      if (optId === currentChallenge.correct_answer_id) {
+        opt.classList.add('correct');
+      } else if (optId === selectedOptionId) {
+        opt.classList.add('incorrect');
+      }
+    });
+
+    // Show result
+    showResult({
+      isCorrect,
+      selectedOptionId,
+      score,
+      timeTaken
+    });
+
+    // Save result to database
+    saveResult({
+      scenario_id: currentChallenge.id,
+      selected_answer_id: selectedOptionId,
+      is_correct: isCorrect,
+      time_taken_seconds: timeTaken,
+      score
+    });
+
+    // Award XP if gamification is available
+    if (isCorrect && window.Gamification) {
+      window.Gamification.awardXP(score, 'Scenario Challenge Completed');
+    }
+  }
+
+  /**
+   * Show challenge result
+   */
+  function showResult(result) {
+    const resultContainer = document.getElementById('challengeResult');
+    const optionsContainer = document.getElementById('challengeOptions');
+
+    if (!resultContainer) return;
+
+    const statusIcon = result.isCorrect ? '✅' : '❌';
+    const statusText = result.isCorrect ? 'CORRECT!' : 'INCORRECT';
+    const statusClass = result.isCorrect ? 'result-correct' : 'result-incorrect';
+
+    let html = `
+      <div class="challenge-result-content ${statusClass}">
+        <div class="result-header">
+          <span class="result-icon">${statusIcon}</span>
+          <span class="result-status">${statusText}</span>
+        </div>
+    `;
+
+    if (result.isCorrect) {
+      html += `
+        <div class="result-score">
+          <div class="result-score-value">+${result.score}</div>
+          <div class="result-score-label">Points earned</div>
+        </div>
+      `;
+    }
+
+    html += `
+        <div class="result-explanation">
+          <h4>Explanation:</h4>
+          <p>${currentChallenge.explanation}</p>
+        </div>
+
+        <div class="result-stats">
+          <div class="result-stat">
+            <span class="result-stat-label">Your time:</span>
+            <span class="result-stat-value">${result.timeTaken}s</span>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button class="btn btn-primary" onclick="window.ScenarioChallenges.loadNextChallenge()">
+            Next Challenge
+          </button>
+          <button class="btn btn-ghost" onclick="window.location.href='/challenges.html'">
+            Back to Challenges
+          </button>
+        </div>
+      </div>
+    `;
+
+    resultContainer.innerHTML = html;
+    resultContainer.style.display = 'block';
+
+    // Scroll to result
+    resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /**
+   * Save result to database
+   */
+  async function saveResult(result) {
+    if (!window.supabase || !window.supabaseAuth) {
+      console.log('Result not saved - user not authenticated');
+      return;
+    }
+
+    try {
+      const user = await window.supabaseAuth.getCurrentUser();
+      if (!user) {
+        console.log('Result not saved - no user');
+        return;
+      }
+
+      const { error } = await window.supabase
+        .from('user_scenario_results')
+        .insert({
+          user_id: user.id,
+          ...result
+        });
+
+      if (error) {
+        console.error('Error saving scenario result:', error);
+      } else {
+        console.log('Scenario result saved successfully');
+
+        // Dispatch event for other components
+        window.dispatchEvent(new CustomEvent('sp:scenarioCompleted', {
+          detail: result
+        }));
+      }
+    } catch (error) {
+      console.error('Error in saveResult:', error);
+    }
+  }
+
+  /**
+   * Load next random challenge
+   */
+  async function loadNextChallenge(options = {}) {
+    const scenario = await getRandomScenario(options);
+
+    if (!scenario) {
+      alert('No scenarios available. Please try again later.');
+      return;
+    }
+
+    renderChallenge(scenario, options.containerId || 'challengeContainer');
+  }
+
+  /**
+   * Get user's challenge statistics
+   */
+  async function getUserStats() {
+    if (!window.supabase || !window.supabaseAuth) {
+      return null;
+    }
+
+    try {
+      const user = await window.supabaseAuth.getCurrentUser();
+      if (!user) return null;
+
+      const { data, error } = await window.supabase
+        .from('user_scenario_results')
+        .select('*')
+        .eq('user_id', user.id);
+
+      if (error) {
+        console.error('Error fetching user stats:', error);
+        return null;
+      }
+
+      const total = data.length;
+      const correct = data.filter(r => r.is_correct).length;
+      const totalScore = data.reduce((sum, r) => sum + (r.score || 0), 0);
+      const avgScore = total > 0 ? Math.round(totalScore / total) : 0;
+      const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+      return {
+        total,
+        correct,
+        totalScore,
+        avgScore,
+        accuracy
+      };
+    } catch (error) {
+      console.error('Error in getUserStats:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Get leaderboard
+   */
+  async function getLeaderboard(limit = 10) {
+    if (!window.supabase) {
+      return [];
+    }
+
+    try {
+      const { data, error } = await window.supabase
+        .from('scenario_leaderboard')
+        .select('*')
+        .limit(limit);
+
+      if (error) {
+        console.error('Error fetching leaderboard:', error);
+        return [];
+      }
+
+      return data || [];
+    } catch (error) {
+      console.error('Error in getLeaderboard:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Initialize challenges system
+   */
+  function init() {
+    // Auto-load challenge if container exists
+    const challengeContainer = document.getElementById('challengeContainer');
+    if (challengeContainer && !challengeContainer.hasChildNodes()) {
+      // Check URL params for specific challenge or options
+      const urlParams = new URLSearchParams(window.location.search);
+      const difficulty = urlParams.get('difficulty');
+      const skillCategory = urlParams.get('skill');
+
+      loadNextChallenge({
+        containerId: 'challengeContainer',
+        difficulty,
+        skillCategory
+      });
+    }
+  }
+
+  // Expose public API
+  window.ScenarioChallenges = {
+    fetchScenarios,
+    getRandomScenario,
+    loadScenario,
+    renderChallenge,
+    loadNextChallenge,
+    getUserStats,
+    getLeaderboard,
+    init
+  };
+
+  // Auto-initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
