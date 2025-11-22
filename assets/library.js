@@ -193,28 +193,11 @@
 
   /**
    * Add bookmark button to lessons
+   * DISABLED: Bookmark button removed from lesson navigation
    */
   function addBookmarkButton() {
-    // Only on lesson pages
-    if (!window.location.pathname.includes('/curriculum/')) return;
-
-    const nav = document.querySelector('.nav-article');
-    if (!nav) return;
-
-    const btn = document.createElement('button');
-    btn.id = 'bookmark-btn';
-    btn.className = 'btn btn-ghost';
-    btn.style.marginLeft = 'auto';
-
-    // Insert before "Next Lesson" button
-    const nextBtn = nav.querySelector('.btn-primary');
-    if (nextBtn) {
-      nav.insertBefore(btn, nextBtn);
-    } else {
-      nav.appendChild(btn);
-    }
-
-    updateBookmarkButton();
+    // Bookmark button disabled - no longer added to navigation
+    return;
   }
 
   /**
