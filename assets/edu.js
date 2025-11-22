@@ -24,8 +24,8 @@
     links.className = 'mobile-nav-links';
     links.innerHTML = `
       <a href="/">Education</a>
-      <a href="/my-library.html">📚 My Library</a>
-      <a href="/search.html">🔍 Search</a>
+      <a href="/my-library.html">My Library</a>
+      <a href="/search.html">Search</a>
       <a href="/calculators.html">Calculators</a>
     `;
 
