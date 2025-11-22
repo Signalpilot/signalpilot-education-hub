@@ -868,6 +868,19 @@
     renderAchievements(completedCount);
     renderCertificates(completedCount);
 
+    // Render Phase 2 visualizations
+    if (window.ProgressViz && typeof window.ProgressViz.createRadarChart === 'function') {
+      window.ProgressViz.createRadarChart('skillsRadarChart');
+    }
+
+    if (window.ProgressViz && typeof window.ProgressViz.displaySkillsBreakdown === 'function') {
+      window.ProgressViz.displaySkillsBreakdown('skillsBreakdown');
+    }
+
+    if (window.LearningPathMap && typeof window.LearningPathMap.render === 'function') {
+      window.LearningPathMap.render('learningPathMap');
+    }
+
     // Display notes (if displayNotes function is available from library.js)
     if (window.library && typeof window.library.displayNotes === 'function') {
       window.library.displayNotes();
