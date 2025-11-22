@@ -8,6 +8,8 @@
     currentUser: null,
     comments: [],
     sortBy: 'recent', // 'recent', 'top', 'oldest'
+    displayLimit: 3, // Initially show 3 comments
+    loadMoreIncrement: 5, // Load 5 more each time
 
     async init(lessonId) {
       this.currentLessonId = lessonId;
@@ -261,8 +263,13 @@
         return;
       }
 
-      const comment = this.comments.find(c => c.id === commentId);
-      if (!comment) return;
+      // Convert to number if it's a string (from onclick handler)
+      const id = typeof commentId === 'string' ? parseInt(commentId) : commentId;
+      const comment = this.comments.find(c => c.id === id);
+      if (!comment) {
+        console.error('[Discussions] Comment not found:', commentId);
+        return;
+      }
 
       const hasUpvoted = comment.votes?.some(v => v.user_id === this.currentUser.id && v.vote_type === 'up');
 
@@ -273,7 +280,7 @@
             await window.supabase
               .from('comment_votes')
               .delete()
-              .eq('comment_id', commentId)
+              .eq('comment_id', id)
               .eq('user_id', this.currentUser.id);
 
             comment.upvotes = Math.max(0, (comment.upvotes || 0) - 1);
@@ -283,7 +290,7 @@
             await window.supabase
               .from('comment_votes')
               .insert([{
-                comment_id: commentId,
+                comment_id: id,
                 user_id: this.currentUser.id,
                 vote_type: 'up'
               }]);
@@ -297,7 +304,7 @@
           await window.supabase
             .from('comments')
             .update({ upvotes: comment.upvotes })
-            .eq('id', commentId);
+            .eq('id', id);
 
         } catch (error) {
           console.error('[Discussions] Failed to upvote:', error);
@@ -325,7 +332,15 @@
         return;
       }
 
-      const textarea = document.getElementById(`reply-input-${parentId}`);
+      // Convert to number if it's a string (from onclick handler)
+      const id = typeof parentId === 'string' ? parseInt(parentId) : parentId;
+
+      const textarea = document.getElementById(`reply-input-${id}`);
+      if (!textarea) {
+        console.error('[Discussions] Reply textarea not found for:', parentId);
+        return;
+      }
+
       const content = textarea.value.trim();
 
       if (!content) return;
@@ -339,7 +354,7 @@
         lesson_id: this.currentLessonId,
         user_id: this.currentUser.id,
         content: content,
-        parent_id: parentId,
+        parent_id: id,
         upvotes: 0,
         created_at: new Date().toISOString(),
         is_pinned: false,
@@ -385,7 +400,9 @@
     },
 
     toggleReplyBox(commentId) {
-      const replyBox = document.getElementById(`reply-box-${commentId}`);
+      // Convert to number if it's a string (from onclick handler)
+      const id = typeof commentId === 'string' ? parseInt(commentId) : commentId;
+      const replyBox = document.getElementById(`reply-box-${id}`);
       if (replyBox) {
         replyBox.style.display = replyBox.style.display === 'none' ? 'block' : 'none';
       }
@@ -450,7 +467,11 @@
         return;
       }
 
-      container.innerHTML = topLevelComments.map(comment => {
+      // Limit the number of comments displayed
+      const displayedComments = topLevelComments.slice(0, this.displayLimit);
+      const hasMore = topLevelComments.length > this.displayLimit;
+
+      let html = displayedComments.map(comment => {
         const replies = sortedComments.filter(c => c.parent_id === comment.id);
         const hasUpvoted = comment.votes?.some(v => v.user_id === this.currentUser?.id && v.vote_type === 'up');
 
@@ -521,6 +542,24 @@
           </div>
         `;
       }).join('');
+
+      // Add "Load More" button if there are more comments
+      if (hasMore) {
+        html += `
+          <div class="comment-load-more">
+            <button class="btn btn-secondary btn-sm" onclick="window.DiscussionSystem.loadMore()">
+              Load More Comments (${topLevelComments.length - this.displayLimit} remaining)
+            </button>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    },
+
+    loadMore() {
+      this.displayLimit += this.loadMoreIncrement;
+      this.render();
     },
 
     escapeHtml(text) {
