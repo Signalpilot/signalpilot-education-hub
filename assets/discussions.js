@@ -8,8 +8,8 @@
     currentUser: null,
     comments: [],
     sortBy: 'recent', // 'recent', 'top', 'oldest'
-    displayLimit: 10, // Initially show 10 comments
-    loadMoreIncrement: 10, // Load 10 more each time
+    displayLimit: 3, // Initially show 3 comments
+    loadMoreIncrement: 5, // Load 5 more each time
 
     async init(lessonId) {
       this.currentLessonId = lessonId;
