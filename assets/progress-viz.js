@@ -6,6 +6,32 @@
 (function() {
   'use strict';
 
+  // Tier structure
+  const TIER_STRUCTURE = {
+    beginner: { start: 1, end: 20, count: 20 },
+    intermediate: { start: 21, end: 47, count: 27 },
+    advanced: { start: 48, end: 74, count: 27 },
+    professional: { start: 75, end: 82, count: 8 }
+  };
+
+  /**
+   * Convert lesson number (1-82) to level and articleId
+   * @param {number} lessonNum - Lesson number (1-82)
+   * @returns {{level: string, articleId: number}} - Level and article ID
+   */
+  function getLessonKey(lessonNum) {
+    if (lessonNum >= 1 && lessonNum <= 20) {
+      return { level: 'beginner', articleId: lessonNum };
+    } else if (lessonNum >= 21 && lessonNum <= 47) {
+      return { level: 'intermediate', articleId: lessonNum - 20 };
+    } else if (lessonNum >= 48 && lessonNum <= 74) {
+      return { level: 'advanced', articleId: lessonNum - 47 };
+    } else if (lessonNum >= 75 && lessonNum <= 82) {
+      return { level: 'professional', articleId: lessonNum - 74 };
+    }
+    return null;
+  }
+
   // Skill categories and lesson mapping
   const SKILL_CATEGORIES = {
     technical_analysis: {
@@ -41,9 +67,13 @@
       let completedLessons = 0;
 
       category.lessons.forEach(lessonNum => {
-        const completed = localStorage.getItem(`sp_edu_${lessonNum}_completed`);
-        if (completed === 'true') {
-          completedLessons++;
+        const lessonKey = getLessonKey(lessonNum);
+        if (lessonKey) {
+          const key = `sp_edu_${lessonKey.level}_${lessonKey.articleId}_completed`;
+          const completed = localStorage.getItem(key);
+          if (completed) {
+            completedLessons++;
+          }
         }
       });
 
@@ -353,8 +383,12 @@
     // Count completed lessons
     let completedLessons = 0;
     for (let i = 1; i <= 82; i++) {
-      if (localStorage.getItem(`sp_edu_${i}_completed`) === 'true') {
-        completedLessons++;
+      const lessonKey = getLessonKey(i);
+      if (lessonKey) {
+        const key = `sp_edu_${lessonKey.level}_${lessonKey.articleId}_completed`;
+        if (localStorage.getItem(key)) {
+          completedLessons++;
+        }
       }
     }
 
