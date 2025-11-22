@@ -202,27 +202,11 @@
 
   /**
    * Add print button for full lesson PDF
+   * DISABLED: Print button removed from lesson navigation (already exists in sidebar)
    */
   function addPrintButton() {
-    // Only on lesson pages
-    if (!window.location.pathname.includes('/curriculum/')) return;
-
-    const nav = document.querySelector('.nav-article');
-    if (!nav) return;
-
-    const btn = document.createElement('button');
-    btn.className = 'btn btn-ghost';
-    btn.innerHTML = '📄 Save as PDF';
-    btn.onclick = () => window.print();
-    btn.title = 'Print or save this lesson as PDF';
-
-    // Insert as second button
-    const backBtn = nav.querySelector('.btn-ghost');
-    if (backBtn && backBtn.nextSibling) {
-      nav.insertBefore(btn, backBtn.nextSibling);
-    } else {
-      nav.appendChild(btn);
-    }
+    // Print button disabled - no longer added to navigation
+    return;
   }
 
   /**
