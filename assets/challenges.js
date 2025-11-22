@@ -295,12 +295,20 @@
       }
     });
 
-    // Show result
+    // Award XP if gamification is available
+    let xpAwarded = 0;
+    if (isCorrect && window.Gamification) {
+      xpAwarded = score;
+      window.Gamification.awardXP(score, 'Scenario Challenge Completed');
+    }
+
+    // Show result with XP
     showResult({
       isCorrect,
       selectedOptionId,
       score,
-      timeTaken
+      timeTaken,
+      xpAwarded
     });
 
     // Save result to database
@@ -311,11 +319,6 @@
       time_taken_seconds: timeTaken,
       score
     });
-
-    // Award XP if gamification is available
-    if (isCorrect && window.Gamification) {
-      window.Gamification.awardXP(score, 'Scenario Challenge Completed');
-    }
   }
 
   /**
@@ -344,6 +347,19 @@
         <div class="result-score">
           <div class="result-score-value">+${result.score}</div>
           <div class="result-score-label">Points earned</div>
+      `;
+
+      // Show XP earned if available
+      if (result.xpAwarded && result.xpAwarded > 0) {
+        html += `
+          <div class="result-xp-value" style="color: #fbbf24; font-size: 1.5rem; font-weight: bold; margin-top: 0.75rem;">
+            ⭐ +${result.xpAwarded} XP
+          </div>
+          <div class="result-score-label" style="color: #fbbf24;">Experience earned</div>
+        `;
+      }
+
+      html += `
         </div>
       `;
     }
