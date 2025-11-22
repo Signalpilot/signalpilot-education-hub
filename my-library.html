@@ -22,9 +22,13 @@
   <link rel="stylesheet" href="/assets/chatbot.css">
   <link rel="stylesheet" href="/assets/lang-switcher.css">
   <link rel="stylesheet" href="/assets/auth-ui.css">
+  <link rel="stylesheet" href="/assets/progress-viz.css">
 
   <!-- html2canvas for certificate image generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- Chart.js for skills radar chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
   <!-- Logger must load first -->
   <script src="/assets/logger.js"></script>
@@ -503,6 +507,17 @@
       opacity: 0.5;
       cursor: not-allowed;
     }
+
+    /* Mobile responsive for skills radar */
+    @media (max-width: 768px) {
+      .skills-radar-container > div > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      .library-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -519,6 +534,7 @@
       <ul>
         <li><a href="/">Education</a></li>
         <li><a aria-current="page" href="/my-library.html">📚 My Library</a></li>
+        <li><a href="/challenges.html">🎯 Challenges</a></li>
         <li><a href="/search.html">🔍 Search</a></li>
         <li><a href="/calculators.html">Calculators</a></li>
       </ul>
@@ -543,6 +559,9 @@
         <a href="/learning-path.html" class="btn btn-primary">
           🗺️ View Learning Path
         </a>
+        <a href="/challenges.html" class="btn btn-primary">
+          🎯 Practice Challenges
+        </a>
         <button id="refresh-library" class="btn btn-ghost btn-sm" onclick="location.reload()">
           🔄 Refresh Data
         </button>
@@ -556,6 +575,10 @@
       <div class="stat-card">
         <div class="stat-number" id="stat-completed">0</div>
         <div class="stat-label">Lessons Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-time-invested">0m</div>
+        <div class="stat-label">Time Invested ⏱️</div>
       </div>
       <div class="stat-card">
         <div class="stat-number" id="stat-downloads">0</div>
@@ -574,6 +597,7 @@
         <div class="stat-label">Level ⭐</div>
       </div>
     </div>
+    <div id="percentile-display" style="text-align: center; margin-top: 1.5rem;"></div>
     <p style="text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 1rem;">
       <strong>Earn XP:</strong> Complete lessons (+100), pass quizzes (+50), maintain streaks (+25/day), unlock achievements (+50-200)
     </p>
@@ -695,6 +719,41 @@
     </div>
   </section>
 
+  <!-- Skills Radar Chart -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="skills-radar-container">
+      <div class="skills-radar-header">
+        <h2 class="skills-radar-title">
+          <span>📊</span>
+          <span>Your Trading Skills</span>
+        </h2>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Track your progress across 4 core trading skill areas</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+        <div style="max-width: 400px; margin: 0 auto;">
+          <canvas id="skillsRadarChart"></canvas>
+        </div>
+        <div id="skillsBreakdown"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Learning Path -->
+  <section class="wrap" style="margin: 3rem auto;">
+    <div class="learning-path-container">
+      <div class="learning-path-header">
+        <h2 class="learning-path-title">
+          <span>🗺️</span>
+          <span>Your Learning Journey</span>
+        </h2>
+        <p class="learning-path-subtitle">
+          Click any unlocked lesson to jump directly to it
+        </p>
+      </div>
+      <div id="learningPathMap"></div>
+    </div>
+  </section>
+
   <!-- Achievements -->
   <section class="wrap" style="margin: 3rem auto;">
     <div class="library-section">
@@ -729,6 +788,8 @@
 <script src="/assets/auth-ui.js"></script>
 <script src="/assets/gamification.js"></script>
 <script src="/assets/badges.js"></script>
+<script src="/assets/progress-viz.js"></script>
+<script src="/assets/learning-path-map.js"></script>
 <script src="/assets/library.js"></script>
 
 <script>
@@ -775,6 +836,30 @@
     const totalXP = parseInt(localStorage.getItem('sp_total_xp') || '0');
     const level = Math.floor(totalXP / 500) + 1; // 500 XP per level
     document.getElementById('stat-level').textContent = level;
+
+    // Update time invested stat
+    if (window.ProgressViz && window.ProgressViz.TimeTracker) {
+      const tracker = new window.ProgressViz.TimeTracker();
+      const formattedTime = tracker.getFormattedTotalTime();
+      document.getElementById('stat-time-invested').textContent = formattedTime;
+    }
+
+    // Update percentile display (async)
+    if (window.ProgressViz && window.ProgressViz.calculatePercentile) {
+      window.ProgressViz.calculatePercentile().then(percentile => {
+        if (percentile !== null && percentile > 0) {
+          const container = document.getElementById('percentile-display');
+          container.innerHTML = `
+            <div class="percentile-display">
+              <span class="percentile-icon">📈</span>
+              You're ahead of ${percentile}% of learners!
+            </div>
+          `;
+        }
+      }).catch(err => {
+        console.log('Percentile calculation not available:', err);
+      });
+    }
 
     // Render visualizations
     renderStudyCalendar();
