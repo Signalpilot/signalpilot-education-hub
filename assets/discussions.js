@@ -125,28 +125,17 @@
       }
 
       try {
+        // Use the view instead of the table with problematic joins
         const { data, error } = await supabase
-          .from('comments')
-          .select(`
-            *,
-            user:user_id (
-              id,
-              email,
-              user_metadata
-            ),
-            votes:comment_votes (
-              user_id,
-              vote_type
-            )
-          `)
+          .from('comments_with_users')
+          .select('*')
           .eq('lesson_id', this.currentLessonId)
-          .eq('is_deleted', false)
           .order('created_at', { ascending: false });
 
         if (error) throw error;
 
         this.comments = data || [];
-        console.log('[Discussions] Loaded', this.comments.length, 'comments');
+        console.log('[Discussions] Loaded', this.comments.length, 'comments from view');
       } catch (error) {
         console.error('[Discussions] Failed to load comments:', error);
         this.comments = this.getLocalComments();
