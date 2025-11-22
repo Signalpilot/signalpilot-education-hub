@@ -475,6 +475,40 @@
 
       <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
 
+      <!-- Discussion Section -->
+      <div class="discussion-section" id="discussion-section">
+        <button class="discussion-toggle" id="discussion-toggle" style="display:none">
+          <span>💬 Discussion (<span id="discussion-count-mobile">0</span>)</span>
+          <span class="discussion-toggle-icon">+</span>
+        </button>
+        <div class="discussion-content">
+          <div class="discussion-header">
+            <h2 class="discussion-title">💬 Discussion <span class="discussion-count" id="discussion-count">(0 comments)</span></h2>
+            <div class="discussion-sort">
+              <label for="discussion-sort">Sort by:</label>
+              <select id="discussion-sort">
+                <option value="recent">Most Recent</option>
+                <option value="top">Top Voted</option>
+                <option value="oldest">Oldest First</option>
+              </select>
+            </div>
+          </div>
+          <div class="comment-composer" id="comment-composer">
+            <textarea id="comment-input" placeholder="Share your thoughts, ask questions, or discuss this lesson..." maxlength="1000"></textarea>
+            <div class="comment-composer-actions">
+              <span class="comment-char-count" id="comment-char-count">0/1000</span>
+              <button class="btn btn-primary" id="post-comment-btn">Post Comment</button>
+            </div>
+          </div>
+          <div class="comments-list" id="comments-list">
+            <div class="comments-loading">
+              <div class="comments-loading-spinner"></div>
+              <p>Loading comments...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <aside class="toc-sidebar">
