@@ -276,6 +276,31 @@
     logger.log(`[Library] Displayed ${notesArray.length} notes`);
   }
 
+  /**
+   * Setup print event handlers to prevent page breaking
+   */
+  function setupPrintHandlers() {
+    let scrollPosition = 0;
+
+    window.addEventListener('beforeprint', () => {
+      // Save scroll position
+      scrollPosition = window.scrollY;
+      logger.log('[Library] Print dialog opened');
+    });
+
+    window.addEventListener('afterprint', () => {
+      // Restore scroll position
+      window.scrollTo(0, scrollPosition);
+
+      // Force repaint to ensure styles are restored
+      document.body.style.display = 'none';
+      document.body.offsetHeight; // Force reflow
+      document.body.style.display = '';
+
+      logger.log('[Library] Print dialog closed, page restored');
+    });
+  }
+
   // Initialize on page load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
@@ -285,6 +310,7 @@
 
   function init() {
     setupDownloadTracking();
+    setupPrintHandlers();
     addBookmarkButton();
     addPrintButton();
     displayNotes();

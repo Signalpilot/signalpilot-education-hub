@@ -1332,6 +1332,13 @@ button,. btn{
 
 /* Print Optimization */
 @media print{
+  /* Disable all animations during print */
+  *,*::before,*::after{
+    animation:none !important;
+    transition:none !important;
+    transform:none !important;
+  }
+
   .sp-header,.sp-footer,.chatbot-button,.chatbot-container,
   .menu-toggle,.mobile-nav,.mobile-nav-backdrop,
   .social-share,.social-share-buttons,#auth-button,#cloud-sync-indicator,
@@ -1347,6 +1354,7 @@ button,. btn{
   body{
     background:#fff !important;
     color:#000 !important;
+    overflow:visible !important;
   }
 
   .wrap{
