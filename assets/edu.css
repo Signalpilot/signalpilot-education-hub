@@ -1334,9 +1334,14 @@ button,. btn{
 @media print{
   .sp-header,.sp-footer,.chatbot-button,.chatbot-container,
   .menu-toggle,.mobile-nav,.mobile-nav-backdrop,
-  .social-share-buttons,#auth-button,#cloud-sync-indicator,
+  .social-share,.social-share-buttons,#auth-button,#cloud-sync-indicator,
   .bg-stars,.bg-aurora,#constellations,.sp-constellations,
-  .nav-article,#bookmark-btn,.btn-ghost,.btn-primary{
+  .nav-article,#bookmark-btn,.btn-ghost,.btn-primary,.btn-secondary,
+  .toc-sidebar,.lesson-actions,
+  .discussion-section,#discussion-section,.discussion-content,
+  .quiz,.quiz-question,.quiz-options,
+  .progress-bar,.article-progress,
+  button,input,textarea,select{
     display:none !important;
   }
 
@@ -1355,15 +1360,18 @@ button,. btn{
     line-height:1.5;
   }
 
-  a{
-    color:#000 !important;
-    text-decoration:underline !important;
+  .prose{
+    max-width:100% !important;
   }
 
-  /* Show URLs after links */
+  a{
+    color:#000 !important;
+    text-decoration:none !important;
+  }
+
+  /* Don't show URLs after links - causes massive page bloat */
   a[href]:after{
-    content:" (" attr(href) ")";
-    font-size:0.8em;
+    content:none !important;
   }
 
   /* Page breaks */
