@@ -62,6 +62,11 @@
   function calculateSkillProgress() {
     const skills = {};
 
+    // Debug: Show what's actually in localStorage
+    console.log('[Progress Viz] Checking localStorage for completed lessons...');
+    const allKeys = Object.keys(localStorage).filter(k => k.includes('_completed'));
+    console.log('[Progress Viz] All completion keys in localStorage:', allKeys);
+
     for (const [categoryId, category] of Object.entries(SKILL_CATEGORIES)) {
       const totalLessons = category.lessons.length;
       let completedLessons = 0;
@@ -72,10 +77,13 @@
           const key = `sp_edu_${lessonKey.level}_${lessonKey.articleId}_completed`;
           const completed = localStorage.getItem(key);
           if (completed) {
+            console.log(`[Progress Viz] Found completed lesson: ${lessonNum} -> ${key}`);
             completedLessons++;
           }
         }
       });
+
+      console.log(`[Progress Viz] ${category.name}: ${completedLessons}/${totalLessons} lessons completed`);
 
       const progress = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
 
