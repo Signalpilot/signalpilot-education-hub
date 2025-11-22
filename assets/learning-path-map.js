@@ -39,10 +39,29 @@
   };
 
   /**
+   * Convert lesson number to level and articleId
+   */
+  function getLessonKey(lessonNum) {
+    if (lessonNum >= 1 && lessonNum <= 20) {
+      return { level: 'beginner', articleId: lessonNum };
+    } else if (lessonNum >= 21 && lessonNum <= 47) {
+      return { level: 'intermediate', articleId: lessonNum - 20 };
+    } else if (lessonNum >= 48 && lessonNum <= 74) {
+      return { level: 'advanced', articleId: lessonNum - 47 };
+    } else if (lessonNum >= 75 && lessonNum <= 82) {
+      return { level: 'professional', articleId: lessonNum - 74 };
+    }
+    return null;
+  }
+
+  /**
    * Get lesson completion status
    */
   function isLessonCompleted(lessonNum) {
-    return localStorage.getItem(`sp_edu_${lessonNum}_completed`) === 'true';
+    const lessonKey = getLessonKey(lessonNum);
+    if (!lessonKey) return false;
+    const key = `sp_edu_${lessonKey.level}_${lessonKey.articleId}_completed`;
+    return !!localStorage.getItem(key);
   }
 
   /**
