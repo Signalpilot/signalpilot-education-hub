@@ -8,6 +8,7 @@ The Supabase integration provides:
 - User authentication (sign up, sign in, password reset)
 - Cloud progress sync (lesson completion, notes, streaks)
 - Cross-device synchronization
+- Discussion threads on lessons (comments, replies, upvotes)
 - Optional account system (users can still use the app without signing in)
 
 ## Step 1: Create Supabase Project
@@ -46,11 +47,13 @@ const SUPABASE_URL = 'https://abcdefghij.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...';
 ```
 
-## Step 4: Create Database Table
+## Step 4: Create Database Tables
+
+### A. User Progress Table
 
 1. In Supabase dashboard, go to **SQL Editor**
 2. Click "New Query"
-3. Paste this SQL:
+3. Copy and run the SQL from `/database-setup.sql` OR paste this SQL:
 
 ```sql
 -- Create user_progress table
@@ -115,6 +118,18 @@ CREATE TRIGGER update_user_progress_updated_at
 
 4. Click "Run" or press `Cmd+Enter` / `Ctrl+Enter`
 5. You should see "Success. No rows returned"
+
+### B. Discussion Threads Tables (Optional)
+
+If you want to enable discussion threads on lessons:
+
+1. In Supabase dashboard, go to **SQL Editor**
+2. Click "New Query"
+3. Copy and run the SQL from `/database-discussions-setup.sql`
+4. Click "Run" or press `Cmd+Enter` / `Ctrl+Enter`
+5. You should see "Success. No rows returned"
+
+This creates the `comments` and `comment_votes` tables needed for lesson discussions.
 
 ## Step 5: Configure Email Settings (Optional)
 
