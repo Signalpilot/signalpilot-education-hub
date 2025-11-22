@@ -868,18 +868,27 @@
     renderAchievements(completedCount);
     renderCertificates(completedCount);
 
-    // Render Phase 2 visualizations
-    if (window.ProgressViz && typeof window.ProgressViz.createRadarChart === 'function') {
-      window.ProgressViz.createRadarChart('skillsRadarChart');
-    }
+    // Render Phase 2 visualizations (with small delay to ensure modules are loaded)
+    setTimeout(() => {
+      if (window.ProgressViz && typeof window.ProgressViz.createRadarChart === 'function') {
+        console.log('[My Library] Rendering skills radar chart...');
+        window.ProgressViz.createRadarChart('skillsRadarChart');
+      } else {
+        console.warn('[My Library] ProgressViz module not loaded');
+      }
 
-    if (window.ProgressViz && typeof window.ProgressViz.displaySkillsBreakdown === 'function') {
-      window.ProgressViz.displaySkillsBreakdown('skillsBreakdown');
-    }
+      if (window.ProgressViz && typeof window.ProgressViz.displaySkillsBreakdown === 'function') {
+        console.log('[My Library] Rendering skills breakdown...');
+        window.ProgressViz.displaySkillsBreakdown('skillsBreakdown');
+      }
 
-    if (window.LearningPathMap && typeof window.LearningPathMap.render === 'function') {
-      window.LearningPathMap.render('learningPathMap');
-    }
+      if (window.LearningPathMap && typeof window.LearningPathMap.render === 'function') {
+        console.log('[My Library] Rendering learning path map...');
+        window.LearningPathMap.render('learningPathMap');
+      } else {
+        console.warn('[My Library] LearningPathMap module not loaded');
+      }
+    }, 100);
 
     // Display notes (if displayNotes function is available from library.js)
     if (window.library && typeof window.library.displayNotes === 'function') {
