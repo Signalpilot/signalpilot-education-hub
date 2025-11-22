@@ -21,13 +21,13 @@
    */
   function getLessonKey(lessonNum) {
     if (lessonNum >= 1 && lessonNum <= 20) {
-      return { level: 'beginner', articleId: lessonNum };
+      return { level: 'Beginner', articleId: lessonNum };
     } else if (lessonNum >= 21 && lessonNum <= 47) {
-      return { level: 'intermediate', articleId: lessonNum - 20 };
+      return { level: 'Intermediate', articleId: lessonNum - 20 };
     } else if (lessonNum >= 48 && lessonNum <= 74) {
-      return { level: 'advanced', articleId: lessonNum - 47 };
+      return { level: 'Advanced', articleId: lessonNum - 47 };
     } else if (lessonNum >= 75 && lessonNum <= 82) {
-      return { level: 'professional', articleId: lessonNum - 74 };
+      return { level: 'Professional', articleId: lessonNum - 74 };
     }
     return null;
   }
