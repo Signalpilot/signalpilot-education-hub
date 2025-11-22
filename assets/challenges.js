@@ -21,6 +21,8 @@
       return [];
     }
 
+    console.log('Fetching scenarios with options:', options);
+
     try {
       let query = window.supabase
         .from('scenarios')
@@ -29,11 +31,13 @@
 
       // Filter by difficulty
       if (options.difficulty) {
+        console.log('Filtering by difficulty:', options.difficulty);
         query = query.eq('difficulty', options.difficulty);
       }
 
       // Filter by skill category
       if (options.skillCategory) {
+        console.log('Filtering by skill category:', options.skillCategory);
         query = query.eq('skill_category', options.skillCategory);
       }
 
@@ -45,13 +49,19 @@
       const { data, error } = await query;
 
       if (error) {
-        console.error('Error fetching scenarios:', error);
+        console.error('Supabase error fetching scenarios:', error);
+        console.error('Error details:', error.message, error.code);
         return [];
+      }
+
+      console.log('Fetched scenarios:', data ? data.length : 0, 'scenarios');
+      if (data && data.length > 0) {
+        console.log('Sample scenario:', data[0]);
       }
 
       return data || [];
     } catch (error) {
-      console.error('Error in fetchScenarios:', error);
+      console.error('Exception in fetchScenarios:', error);
       return [];
     }
   }
@@ -411,10 +421,40 @@
    * Load next random challenge
    */
   async function loadNextChallenge(options = {}) {
+    const container = document.getElementById(options.containerId || 'challengeContainer');
+
+    // Show loading state
+    if (container) {
+      container.innerHTML = `
+        <div style="text-align: center; padding: 3rem; color: var(--muted);">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">⏳</div>
+          <p>Loading challenge...</p>
+        </div>
+      `;
+    }
+
     const scenario = await getRandomScenario(options);
 
     if (!scenario) {
-      alert('No scenarios available. Please try again later.');
+      console.error('No scenarios returned from database');
+
+      if (container) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 3rem; color: var(--muted);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">📚</div>
+            <h3 style="color: var(--text); margin-bottom: 0.5rem;">No Challenges Available</h3>
+            <p>No scenarios match your criteria. Try a different difficulty or category.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
+              <button class="btn btn-primary" onclick="window.ScenarioChallenges.loadNextChallenge()">
+                🎲 Try Random Challenge
+              </button>
+              <button class="btn btn-ghost" onclick="location.reload()">
+                🔄 Reload Page
+              </button>
+            </div>
+          </div>
+        `;
+      }
       return;
     }
 
@@ -489,23 +529,58 @@
   }
 
   /**
+   * Wait for Supabase to be ready
+   */
+  function waitForSupabase(callback, maxAttempts = 20) {
+    let attempts = 0;
+    const checkInterval = setInterval(() => {
+      attempts++;
+      if (window.supabase) {
+        clearInterval(checkInterval);
+        callback();
+      } else if (attempts >= maxAttempts) {
+        clearInterval(checkInterval);
+        console.error('Supabase failed to initialize after', maxAttempts, 'attempts');
+
+        // Show error message to user
+        const container = document.getElementById('challengeContainer');
+        if (container) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 3rem; color: var(--muted);">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+              <h3 style="color: var(--text); margin-bottom: 0.5rem;">Connection Error</h3>
+              <p>Unable to load challenges. Please check your internet connection and refresh the page.</p>
+              <button class="btn btn-primary" onclick="location.reload()" style="margin-top: 1rem;">
+                🔄 Reload Page
+              </button>
+            </div>
+          `;
+        }
+      }
+    }, 100); // Check every 100ms
+  }
+
+  /**
    * Initialize challenges system
    */
   function init() {
-    // Auto-load challenge if container exists
-    const challengeContainer = document.getElementById('challengeContainer');
-    if (challengeContainer && !challengeContainer.hasChildNodes()) {
-      // Check URL params for specific challenge or options
-      const urlParams = new URLSearchParams(window.location.search);
-      const difficulty = urlParams.get('difficulty');
-      const skillCategory = urlParams.get('skill');
+    // Wait for Supabase to be ready before loading challenges
+    waitForSupabase(() => {
+      // Auto-load challenge if container exists
+      const challengeContainer = document.getElementById('challengeContainer');
+      if (challengeContainer && !challengeContainer.hasChildNodes()) {
+        // Check URL params for specific challenge or options
+        const urlParams = new URLSearchParams(window.location.search);
+        const difficulty = urlParams.get('difficulty');
+        const skillCategory = urlParams.get('skill');
 
-      loadNextChallenge({
-        containerId: 'challengeContainer',
-        difficulty,
-        skillCategory
-      });
-    }
+        loadNextChallenge({
+          containerId: 'challengeContainer',
+          difficulty,
+          skillCategory
+        });
+      }
+    });
   }
 
   // Expose public API
