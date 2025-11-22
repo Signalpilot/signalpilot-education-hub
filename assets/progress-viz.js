@@ -71,6 +71,12 @@
       return null;
     }
 
+    // Check if Chart.js is loaded
+    if (typeof Chart === 'undefined') {
+      console.error('Chart.js is not loaded. Please ensure Chart.js CDN is included.');
+      return null;
+    }
+
     const ctx = canvas.getContext('2d');
     const skills = calculateSkillProgress();
 
@@ -78,7 +84,7 @@
     const data = Object.values(skills).map(s => s.progress);
 
     // Destroy existing chart if it exists
-    if (window.skillsRadarChart) {
+    if (window.skillsRadarChart && typeof window.skillsRadarChart.destroy === 'function') {
       window.skillsRadarChart.destroy();
     }
 
