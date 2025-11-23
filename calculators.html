@@ -107,7 +107,7 @@
   </section>
 
   <!-- Calculator 1: Position Size -->
-  <section class="wrap" id="position-size" style="margin:4rem auto">
+  <section class="wrap" id="position-size-calculator" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">01</div>
@@ -354,7 +354,7 @@
   </section>
 
   <!-- Calculator 2: Risk/Reward -->
-  <section class="wrap" id="risk-reward" style="margin:4rem auto">
+  <section class="wrap" id="risk-reward-calculator" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">02</div>
@@ -619,7 +619,7 @@
   </section>
 
   <!-- Calculator 3: Profit/Loss -->
-  <section class="wrap" id="profit-loss" style="margin:4rem auto">
+  <section class="wrap" id="profit-loss-calculator" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">03</div>
@@ -826,7 +826,7 @@
   </section>
 
   <!-- Calculator 4: Fees/Commission -->
-  <section class="wrap" id="fees" style="margin:4rem auto">
+  <section class="wrap" id="fee-commission-calculator" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">04</div>
@@ -1060,7 +1060,7 @@
   </section>
 
   <!-- Calculator 5: Compound Growth -->
-  <section class="wrap" id="compound" style="margin:4rem auto">
+  <section class="wrap" id="compound-growth-calculator" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">05</div>
@@ -1355,7 +1355,7 @@
   </section>
 
   <!-- Calculator 6: Expectancy Calculator -->
-  <section class="wrap" id="expectancy" style="margin:4rem auto">
+  <section class="wrap" id="expectancy-calculator" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">06</div>
@@ -1619,7 +1619,7 @@
   </section>
 
   <!-- Calculator 7: Drawdown Recovery Calculator -->
-  <section class="wrap" id="drawdown" style="margin:4rem auto">
+  <section class="wrap" id="drawdown-recovery-calculator" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">07</div>
@@ -1854,7 +1854,7 @@
   </section>
 
   <!-- Calculator 8: Position Scaling Calculator -->
-  <section class="wrap" id="scaling" style="margin:4rem auto">
+  <section class="wrap" id="position-scaling-calculator" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">08</div>
@@ -2079,7 +2079,7 @@
   </section>
 
   <!-- Calculator 9: Slippage Reality Check -->
-  <section class="wrap" id="slippage" style="margin:4rem auto">
+  <section class="wrap" id="slippage-reality-check" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">09</div>
@@ -2235,7 +2235,7 @@
   </section>
 
   <!-- Calculator 10: R-Multiple Tracker -->
-  <section class="wrap" id="r-multiple" style="margin:4rem auto">
+  <section class="wrap" id="r-multiple-performance-tracker" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">10</div>
@@ -2390,7 +2390,7 @@
   </section>
 
   <!-- Calculator 11: Break-Even Recovery -->
-  <section class="wrap" id="breakeven" style="margin:4rem auto">
+  <section class="wrap" id="break-even-recovery-calculator" style="margin:4rem auto">
     <div class="card featured">
       <div class="calc-header">
         <div class="calc-number">11</div>
@@ -2634,6 +2634,888 @@
             <p class="note">Portfolio heat, correlation risk, and professional trade management</p>
           </div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 12: Portfolio Heat Calculator -->
+  <section class="wrap" id="portfolio-heat-calculator" style="margin:4rem auto">
+    <div class="card featured">
+      <div class="calc-header">
+        <div class="calc-number">12</div>
+        <div>
+          <h2 class="headline md" style="margin:0">🔥 Portfolio Heat Calculator</h2>
+          <p class="calc-tagline">How much are you REALLY risking right now? Add up all your positions and see if you're one bad day away from a 20% drawdown.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Calculator</button>
+          <button>Why This Matters</button>
+          <button>The $79K Mistake</button>
+          <button>Pro Rules</button>
+        </div>
+        <div class="tabs-content">
+          <!-- Calculator Tab -->
+          <div class="tab-panel">
+            <div class="calc-grid">
+              <div class="calc-inputs">
+                <div class="form-group">
+                  <label>Account Balance ($)</label>
+                  <input type="number" id="ph-balance" class="calc-input" value="10000" min="1" step="100">
+                  <span class="input-hint">Your total trading capital</span>
+                </div>
+
+                <h5 style="margin:1.5rem 0 0.75rem 0;color:var(--accent)">Position 1</h5>
+                <div class="form-group">
+                  <label>Entry Price ($)</label>
+                  <input type="number" id="ph-entry1" class="calc-input" value="100" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                  <label>Stop Loss ($)</label>
+                  <input type="number" id="ph-stop1" class="calc-input" value="98" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                  <label>Shares</label>
+                  <input type="number" id="ph-shares1" class="calc-input" value="50" min="0" step="1">
+                </div>
+
+                <h5 style="margin:1.5rem 0 0.75rem 0;color:var(--accent)">Position 2 (Optional)</h5>
+                <div class="form-group">
+                  <label>Entry Price ($)</label>
+                  <input type="number" id="ph-entry2" class="calc-input" value="0" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                  <label>Stop Loss ($)</label>
+                  <input type="number" id="ph-stop2" class="calc-input" value="0" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                  <label>Shares</label>
+                  <input type="number" id="ph-shares2" class="calc-input" value="0" min="0" step="1">
+                </div>
+
+                <h5 style="margin:1.5rem 0 0.75rem 0;color:var(--accent)">Position 3 (Optional)</h5>
+                <div class="form-group">
+                  <label>Entry Price ($)</label>
+                  <input type="number" id="ph-entry3" class="calc-input" value="0" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                  <label>Stop Loss ($)</label>
+                  <input type="number" id="ph-stop3" class="calc-input" value="0" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                  <label>Shares</label>
+                  <input type="number" id="ph-shares3" class="calc-input" value="0" min="0" step="1">
+                </div>
+
+                <button class="btn btn-primary" onclick="calculatePortfolioHeat()">Calculate Portfolio Heat</button>
+                <button class="btn btn-secondary" onclick="loadPortfolioHeatExample()">Load Example</button>
+              </div>
+
+              <div class="calc-results">
+                <div id="ph-result" class="result-box" style="display:none" role="region" aria-label="Portfolio Heat Results" aria-live="polite">
+                  <h4 style="margin:0 0 1rem 0">Portfolio Heat Analysis</h4>
+                  <div class="result-item large">
+                    <span class="result-label">Total Dollar Risk</span>
+                    <span class="result-value" id="ph-dollar-risk">-</span>
+                  </div>
+                  <div class="result-item large">
+                    <span class="result-label">Portfolio Heat %</span>
+                    <span class="result-value" id="ph-heat-pct">-</span>
+                  </div>
+                  <div id="ph-verdict" class="verdict-box" style="margin:1rem 0"></div>
+                  <div class="result-item">
+                    <span class="result-label">Position 1 Risk</span>
+                    <span class="result-value" id="ph-pos1-risk">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Position 2 Risk</span>
+                    <span class="result-value" id="ph-pos2-risk">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Position 3 Risk</span>
+                    <span class="result-value" id="ph-pos3-risk">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Risk Remaining</span>
+                    <span class="result-value" id="ph-remaining">-</span>
+                  </div>
+                </div>
+
+                <div class="info-card" style="margin-top:1.5rem">
+                  <h5>💡 Portfolio Heat Rules</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">
+                    ✅ <strong>0-6%:</strong> Safe zone<br>
+                    ⚠️ <strong>6-8%:</strong> Proceed with caution<br>
+                    🚨 <strong>>8%:</strong> DANGER - Stop taking new trades
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why This Matters Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Portfolio Heat: Your Account's Real Risk Exposure</h3>
+
+              <p>You think you're "diversified" across 5 positions. But if they're all tech stocks, they'll ALL dump on the same day. Portfolio heat shows your TRUE risk.</p>
+
+              <div class="callout callout-warning">
+                <h4>🚨 The Hidden Danger</h4>
+                <p><strong>5 positions × 2% risk each = 10% portfolio heat</strong></p>
+                <p>One sector rotation, one Fed announcement, one macro shock—and ALL your stops get hit. That's not 2% loss. That's 10%.</p>
+              </div>
+
+              <h4>Real Example: March 2020 COVID Crash</h4>
+              <p>Trader had 6 "diversified" positions:</p>
+              <ul>
+                <li>AAPL, MSFT, GOOGL (tech)</li>
+                <li>JPM, BAC (banks)</li>
+                <li>DIS (entertainment)</li>
+              </ul>
+              <p><strong>Portfolio heat: 12%</strong> (2% per trade)</p>
+              <p><strong>March 12, 2020:</strong> ALL positions hit stops in ONE day. Lost 12% in 6 hours.</p>
+
+              <div class="callout callout-info">
+                <h4>💎 Professional Standard</h4>
+                <ul>
+                  <li><strong>6% max portfolio heat</strong> for retail traders</li>
+                  <li><strong>10% max</strong> for professionals with hedges</li>
+                  <li><strong>15% max</strong> for prop firms with tight risk controls</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- The $79K Mistake Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Mark's $79,000 Correlation Blindness</h3>
+
+              <p>Mark was a "careful" trader. Never risked more than 1% per trade. Had 5 positions. Thought he was safe.</p>
+
+              <div style="background:rgba(255,107,107,0.1);padding:1.5rem;border-radius:8px;margin:1.5rem 0">
+                <h4>Mark's "Diversified" Portfolio (June 2024)</h4>
+                <p><strong>5 tech stocks, all correlated 0.85+</strong></p>
+                <ul>
+                  <li>NVDA: $200 entry, $196 stop, 250 shares = $1,000 risk</li>
+                  <li>AMD: $150 entry, $147 stop, 330 shares = $990 risk</li>
+                  <li>AVGO: $1,300 entry, $1,292 stop, 125 shares = $1,000 risk</li>
+                  <li>QCOM: $180 entry, $176 stop, 250 shares = $1,000 risk</li>
+                  <li>MU: $120 entry, $117 stop, 330 shares = $990 risk</li>
+                </ul>
+                <p style="margin-top:1rem"><strong>Portfolio heat: $4,980 (4.98% of $100K account)</strong></p>
+                <p><strong>Mark's thought:</strong> "I'm safe. Only 5% heat."</p>
+              </div>
+
+              <h4>What Actually Happened</h4>
+              <p><strong>July 11, 2024:</strong> CPI print comes in hot. Tech dumps.</p>
+              <p><strong>Result:</strong></p>
+              <ul>
+                <li>ALL 5 positions hit stops within 90 minutes</li>
+                <li>Total loss: $4,980</li>
+                <li>But wait—stops slipped 20-40% due to volatility</li>
+                <li><strong>Actual loss: $6,127</strong></li>
+              </ul>
+
+              <p style="font-size:1.2rem;font-weight:700;color:#ff6b6b;margin:1.5rem 0">Account: $100,000 → $93,873 in ONE morning.</p>
+
+              <div class="callout callout-key">
+                <h4>The Lesson</h4>
+                <p><strong>Correlation kills diversification.</strong></p>
+                <p>5 tech stocks = 1 bet on tech. If you wouldn't risk 5% on NVDA alone, don't risk 5% on 5 correlated tech stocks.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pro Rules Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Professional Portfolio Heat Rules</h3>
+
+              <div class="tip-card">
+                <div class="tip-icon">🎯</div>
+                <div>
+                  <h4>Rule 1: Never Exceed 6-8% Heat</h4>
+                  <p>If your total portfolio heat exceeds 6%, STOP taking new trades. Wait for a position to close.</p>
+                  <ul>
+                    <li>Retail traders: 6% max</li>
+                    <li>Experienced traders: 8% max</li>
+                    <li>Prop traders with hedges: 10% max</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">⚡</div>
+                <div>
+                  <h4>Rule 2: Account for Correlation</h4>
+                  <p>If your positions are correlated (same sector, same trend direction), reduce heat limit to 4-5%.</p>
+                  <p><strong>Example:</strong> 3 tech longs + 2 energy shorts = highly correlated. Max 5% heat.</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">🛡️</div>
+                <div>
+                  <h4>Rule 3: Reduce Heat Before Events</h4>
+                  <p>Cut portfolio heat by 50% before:</p>
+                  <ul>
+                    <li>FOMC meetings</li>
+                    <li>CPI/NFP releases</li>
+                    <li>Earnings (if holding stocks)</li>
+                    <li>Weekends (if uncomfortable)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">📊</div>
+                <div>
+                  <h4>Rule 4: Track Daily</h4>
+                  <p>Calculate portfolio heat EVERY morning before taking new trades. Make it part of your pre-market routine.</p>
+                  <p><strong>Bookmark this calculator and use it daily.</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Lessons -->
+      <div class="card" style="margin-top:2rem;padding:1.5rem;background:rgba(118,221,255,0.05)">
+        <h4 style="margin:0 0 1rem 0">📚 Learn More About Portfolio Heat</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
+          <a href="/curriculum/beginner/09-position-sizing.html" class="lesson-card-link">
+            <div class="card post">
+              <div class="kicker">📖 Lesson #9</div>
+              <h4>Position Sizing Fundamentals</h4>
+              <p class="note">Learn the 1% rule and portfolio heat basics</p>
+            </div>
+          </a>
+          <a href="/curriculum/intermediate/33-advanced-risk-management.html" class="lesson-card-link">
+            <div class="card post">
+              <div class="kicker">📖 Lesson #33</div>
+              <h4>Advanced Risk Management</h4>
+              <p class="note">Portfolio heat limits and professional frameworks</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 13: Kelly Criterion Calculator -->
+  <section class="wrap" id="kelly-criterion-calculator" style="margin:4rem auto">
+    <div class="card featured">
+      <div class="calc-header">
+        <div class="calc-number">13</div>
+        <div>
+          <h2 class="headline md" style="margin:0">🎲 Kelly Criterion Calculator</h2>
+          <p class="calc-tagline">The math says bet 40% of your account. The math is trying to bankrupt you. Here's why you should NEVER use full Kelly.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Calculator</button>
+          <button>Why This Matters</button>
+          <button>The Fatal Flaw</button>
+          <button>Fractional Kelly</button>
+        </div>
+        <div class="tabs-content">
+          <!-- Calculator Tab -->
+          <div class="tab-panel">
+            <div class="calc-grid">
+              <div class="calc-inputs">
+                <div class="form-group">
+                  <label>Win Rate (%)</label>
+                  <input type="number" id="kelly-win-rate" class="calc-input" value="55" min="0" max="100" step="1">
+                  <span class="input-hint">Percentage of winning trades</span>
+                </div>
+
+                <div class="form-group">
+                  <label>Average Win ($)</label>
+                  <input type="number" id="kelly-avg-win" class="calc-input" value="300" min="0" step="10">
+                  <span class="input-hint">Average profit on winning trades</span>
+                </div>
+
+                <div class="form-group">
+                  <label>Average Loss ($)</label>
+                  <input type="number" id="kelly-avg-loss" class="calc-input" value="150" min="0" step="10">
+                  <span class="input-hint">Average loss on losing trades (positive number)</span>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateKelly()">Calculate Kelly %</button>
+                <button class="btn btn-secondary" onclick="loadKellyExample()">Load Example</button>
+              </div>
+
+              <div class="calc-results">
+                <div id="kelly-result" class="result-box" style="display:none" role="region" aria-label="Kelly Results" aria-live="polite">
+                  <h4 style="margin:0 0 1rem 0">Kelly Criterion Results</h4>
+
+                  <div class="result-item" style="background:rgba(255,107,107,0.15);border:2px solid rgba(255,107,107,0.4);padding:1rem;border-radius:8px;margin-bottom:1rem">
+                    <span class="result-label">⚠️ Full Kelly %</span>
+                    <span class="result-value" id="kelly-full">-</span>
+                  </div>
+                  <div id="kelly-verdict" style="margin:1rem 0;padding:1rem;background:rgba(255,107,107,0.1);border-left:4px solid #ff6b6b;border-radius:6px">
+                    <strong>⛔ DO NOT USE FULL KELLY</strong><br>
+                    One bad streak and you're down 30-50%. Use fractional Kelly below.
+                  </div>
+
+                  <div class="result-item" style="background:rgba(249,162,60,0.1);border:2px solid rgba(249,162,60,0.4);padding:1rem;border-radius:8px;margin:1rem 0">
+                    <span class="result-label">Half Kelly (50%)</span>
+                    <span class="result-value" id="kelly-half">-</span>
+                  </div>
+
+                  <div class="result-item" style="background:rgba(62,213,152,0.1);border:2px solid rgba(62,213,152,0.4);padding:1rem;border-radius:8px;margin:1rem 0">
+                    <span class="result-label">✅ Quarter Kelly (25%) - Recommended</span>
+                    <span class="result-value" id="kelly-quarter">-</span>
+                  </div>
+
+                  <div class="result-item">
+                    <span class="result-label">Risk/Reward Ratio</span>
+                    <span class="result-value" id="kelly-rr">-</span>
+                  </div>
+                  <div class="result-item">
+                    <span class="result-label">Expectancy</span>
+                    <span class="result-value" id="kelly-exp">-</span>
+                  </div>
+                </div>
+
+                <div class="info-card" style="margin-top:1.5rem">
+                  <h5>💡 Kelly Translation</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">
+                    Kelly tells you the optimal bet size to maximize long-term growth. But it assumes you can handle 30-50% drawdowns. You can't. Use Quarter Kelly.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why This Matters Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Kelly Criterion: Optimal Position Sizing (In Theory)</h3>
+
+              <p>The Kelly Criterion is a mathematical formula developed by John Kelly in 1956 to determine optimal bet sizing. It's used by professional gamblers, hedge funds, and quant traders.</p>
+
+              <div class="callout callout-info">
+                <h4>📐 The Formula</h4>
+                <p><strong>Kelly % = (Win Rate × Avg R:R - Loss Rate) / Avg R:R</strong></p>
+                <p>Where:</p>
+                <ul>
+                  <li>Win Rate = % of trades that win</li>
+                  <li>Loss Rate = % of trades that lose (1 - Win Rate)</li>
+                  <li>Avg R:R = Average Win / Average Loss</li>
+                </ul>
+              </div>
+
+              <h4>Example Calculation</h4>
+              <p><strong>Strategy Stats:</strong></p>
+              <ul>
+                <li>Win Rate: 55%</li>
+                <li>Avg Win: $300</li>
+                <li>Avg Loss: $150</li>
+                <li>R:R = $300/$150 = 2:1</li>
+              </ul>
+
+              <p><strong>Kelly % = (0.55 × 2 - 0.45) / 2 = (1.10 - 0.45) / 2 = 0.325 = 32.5%</strong></p>
+
+              <p style="font-size:1.1rem;color:#ff6b6b;font-weight:700;margin:1.5rem 0">The formula says bet 32.5% of your account on EVERY trade.</p>
+
+              <div class="callout callout-warning">
+                <h4>🚨 The Problem</h4>
+                <p>Full Kelly maximizes long-term growth but produces BRUTAL drawdowns (30-50%). One losing streak and you're psychologically destroyed.</p>
+                <p><strong>No retail trader can handle full Kelly volatility.</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Fatal Flaw Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Why Full Kelly Will Destroy You</h3>
+
+              <p>Kelly Criterion is mathematically optimal for long-term growth. It's also psychologically impossible for humans.</p>
+
+              <h4>Simulation: Full Kelly vs Quarter Kelly</h4>
+              <p><strong>Strategy:</strong> 55% win rate, 2:1 R:R, 100 trades</p>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0">
+                <div class="comparison-box bad">
+                  <h5>🔴 Full Kelly (32.5% per trade)</h5>
+                  <p><strong>Starting balance: $10,000</strong></p>
+                  <ul style="margin:0.5rem 0;font-size:0.9rem">
+                    <li>Trade 1: Risk $3,250, lose → $6,750</li>
+                    <li>Trade 2: Risk $2,194, lose → $4,556</li>
+                    <li>Trade 3: Risk $1,481, lose → $3,075</li>
+                    <li>Trade 4: Risk $1,000, lose → $2,075</li>
+                  </ul>
+                  <p style="margin-top:1rem;color:#ff6b6b;font-weight:700">Down 79% after 4 losses in a row</p>
+                  <p style="font-size:0.85rem">Even though your edge is real, you're psychologically destroyed and quit.</p>
+                </div>
+
+                <div class="comparison-box good">
+                  <h5>✅ Quarter Kelly (8% per trade)</h5>
+                  <p><strong>Starting balance: $10,000</strong></p>
+                  <ul style="margin:0.5rem 0;font-size:0.9rem">
+                    <li>Trade 1: Risk $800, lose → $9,200</li>
+                    <li>Trade 2: Risk $736, lose → $8,464</li>
+                    <li>Trade 3: Risk $677, lose → $7,787</li>
+                    <li>Trade 4: Risk $623, lose → $7,164</li>
+                  </ul>
+                  <p style="margin-top:1rem;color:#3ed598;font-weight:700">Down 28% after 4 losses</p>
+                  <p style="font-size:0.85rem">Painful but survivable. You keep trading and recover.</p>
+                </div>
+              </div>
+
+              <div class="callout callout-key">
+                <h4>💎 The Lesson</h4>
+                <p><strong>Full Kelly optimizes for dollars, not psychology.</strong></p>
+                <p>It doesn't care if you can sleep at night. It doesn't care if you quit after a drawdown. Quarter Kelly sacrifices some upside for survivability.</p>
+                <p style="margin-top:1rem"><strong>Dead equity earns 0%. Fractional Kelly keeps you alive.</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fractional Kelly Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Fractional Kelly: What Pros Actually Use</h3>
+
+              <p>Professional traders don't use full Kelly. They use <strong>fractional Kelly</strong>—a percentage of what the formula recommends.</p>
+
+              <table style="width:100%;border-collapse:collapse;margin:2rem 0">
+                <thead>
+                  <tr style="background:rgba(118,221,255,0.1)">
+                    <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,.1)">Kelly Fraction</th>
+                    <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,.1)">Max Drawdown</th>
+                    <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,.1)">Growth Rate</th>
+                    <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,.1)">Who Uses It</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                    <td style="padding:0.75rem">Full Kelly (100%)</td>
+                    <td style="padding:0.75rem;color:#ff6b6b">40-60%</td>
+                    <td style="padding:0.75rem;color:#3ed598">Maximum</td>
+                    <td style="padding:0.75rem">Gamblers, degenerates</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                    <td style="padding:0.75rem">Half Kelly (50%)</td>
+                    <td style="padding:0.75rem;color:#f9a23c">25-35%</td>
+                    <td style="padding:0.75rem">~75% of max</td>
+                    <td style="padding:0.75rem">Aggressive hedge funds</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                    <td style="padding:0.75rem"><strong>Quarter Kelly (25%)</strong></td>
+                    <td style="padding:0.75rem;color:#3ed598"><strong>15-20%</strong></td>
+                    <td style="padding:0.75rem"><strong>~50% of max</strong></td>
+                    <td style="padding:0.75rem"><strong>Professional traders ✓</strong></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0.75rem">Eighth Kelly (12.5%)</td>
+                    <td style="padding:0.75rem;color:#3ed598">8-12%</td>
+                    <td style="padding:0.75rem">~25% of max</td>
+                    <td style="padding:0.75rem">Conservative institutional</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="tip-card">
+                <div class="tip-icon">🎯</div>
+                <div>
+                  <h4>Recommended: Quarter Kelly</h4>
+                  <p>Take the Kelly % and divide by 4. This gives you:</p>
+                  <ul>
+                    <li>✅ 50% of the growth rate</li>
+                    <li>✅ 15-20% max drawdowns (survivable)</li>
+                    <li>✅ Psychological comfort to keep trading</li>
+                    <li>✅ Room for estimation errors in your stats</li>
+                  </ul>
+                  <p style="margin-top:1rem"><strong>Example:</strong> Full Kelly says 32%? Use 8% per trade.</p>
+                </div>
+              </div>
+
+              <div class="callout callout-warning">
+                <h4>⚠️ Important Caveat</h4>
+                <p>Kelly assumes your stats (win rate, R:R) are EXACT. They're not. Markets change. Your edge decays. Using fractional Kelly gives you a margin of safety for when your stats are wrong.</p>
+              </div>
+
+              <h4>Practical Application</h4>
+              <p><strong>Step 1:</strong> Calculate your win rate and average R:R from last 50-100 trades<br>
+              <strong>Step 2:</strong> Run the Kelly formula<br>
+              <strong>Step 3:</strong> Divide by 4 (Quarter Kelly)<br>
+              <strong>Step 4:</strong> Compare to your current risk per trade (1-2%)<br>
+              <strong>Step 5:</strong> Use the SMALLER of the two</p>
+
+              <p style="margin-top:1.5rem;padding:1rem;background:rgba(62,213,152,0.1);border-left:4px solid #3ed598;border-radius:6px">
+                <strong>Pro Tip:</strong> If Quarter Kelly says 8% but you normally risk 2%, stick with 2%. Kelly gives you a ceiling, not a floor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Lessons -->
+      <div class="card" style="margin-top:2rem;padding:1.5rem;background:rgba(118,221,255,0.05)">
+        <h4 style="margin:0 0 1rem 0">📚 Learn More About Kelly Criterion</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
+          <a href="/curriculum/intermediate/33-advanced-risk-management.html" class="lesson-card-link">
+            <div class="card post">
+              <div class="kicker">📖 Lesson #33</div>
+              <h4>Advanced Risk Management</h4>
+              <p class="note">Kelly Criterion and optimal position sizing</p>
+            </div>
+          </a>
+          <a href="/curriculum/intermediate/47-portfolio-construction-kelly.html" class="lesson-card-link">
+            <div class="card post">
+              <div class="kicker">📖 Lesson #47</div>
+              <h4>Portfolio Construction & Kelly</h4>
+              <p class="note">Deep dive into Kelly and capital allocation</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator 14: Correlation-Adjusted Risk Calculator -->
+  <section class="wrap" id="correlation-adjusted-risk-calculator" style="margin:4rem auto">
+    <div class="card featured">
+      <div class="calc-header">
+        <div class="calc-number">14</div>
+        <div>
+          <h2 class="headline md" style="margin:0">🔗 Correlation-Adjusted Risk Calculator</h2>
+          <p class="calc-tagline">You think you're risking 5% across 5 positions. Correlation says you're risking 10%. Here's why "diversification" is a lie.</p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tabs-nav">
+          <button>Calculator</button>
+          <button>Why Correlation Kills</button>
+          <button>Mark's $79K Loss</button>
+          <button>How to Fix It</button>
+        </div>
+        <div class="tabs-content">
+          <!-- Calculator Tab -->
+          <div class="tab-panel">
+            <div class="calc-grid">
+              <div class="calc-inputs">
+                <div class="form-group">
+                  <label>Number of Positions</label>
+                  <input type="number" id="corr-num-positions" class="calc-input" value="5" min="1" max="10" step="1">
+                  <span class="input-hint">How many positions do you hold?</span>
+                </div>
+
+                <div class="form-group">
+                  <label>Risk Per Position (%)</label>
+                  <input type="number" id="corr-risk-per" class="calc-input" value="1" min="0.1" max="10" step="0.1">
+                  <span class="input-hint">Average risk per trade</span>
+                </div>
+
+                <div class="form-group">
+                  <label>Average Correlation</label>
+                  <input type="number" id="corr-avg" class="calc-input" value="0.75" min="0" max="1" step="0.05">
+                  <span class="input-hint">0 = uncorrelated, 1 = perfectly correlated</span>
+                </div>
+
+                <div style="background:rgba(118,221,255,0.05);padding:1rem;border-radius:8px;margin:1rem 0;font-size:0.85rem">
+                  <strong>Correlation Guide:</strong><br>
+                  • Same sector stocks (e.g., 5 tech): <strong>0.70-0.90</strong><br>
+                  • Different sectors, same direction: <strong>0.40-0.60</strong><br>
+                  • Longs + Shorts (hedged): <strong>0.00-0.30</strong><br>
+                  • Different asset classes: <strong>-0.20-0.20</strong>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculateCorrelationRisk()">Calculate Real Risk</button>
+                <button class="btn btn-secondary" onclick="loadCorrelationExample()">Load Example (5 Tech Stocks)</button>
+              </div>
+
+              <div class="calc-results">
+                <div id="corr-result" class="result-box" style="display:none" role="region" aria-label="Correlation Risk Results" aria-live="polite">
+                  <h4 style="margin:0 0 1rem 0">Correlation-Adjusted Risk</h4>
+
+                  <div class="result-item">
+                    <span class="result-label">Nominal Risk (What You Think)</span>
+                    <span class="result-value" id="corr-nominal">-</span>
+                  </div>
+
+                  <div class="result-item large" style="background:rgba(255,107,107,0.1);border:2px solid rgba(255,107,107,0.4);padding:1rem;border-radius:8px;margin:1rem 0">
+                    <span class="result-label">⚠️ Effective Risk (Reality)</span>
+                    <span class="result-value" id="corr-effective">-</span>
+                  </div>
+
+                  <div id="corr-verdict" class="verdict-box" style="margin:1rem 0"></div>
+
+                  <div class="result-item">
+                    <span class="result-label">Risk Multiplier</span>
+                    <span class="result-value" id="corr-multiplier">-</span>
+                  </div>
+
+                  <div class="result-item">
+                    <span class="result-label">Hidden Risk</span>
+                    <span class="result-value" id="corr-hidden">-</span>
+                  </div>
+                </div>
+
+                <div class="info-card" style="margin-top:1.5rem">
+                  <h5>💡 What This Means</h5>
+                  <p style="margin:0.5rem 0 0 0;font-size:0.9rem;line-height:1.6">
+                    Effective Risk = Nominal Risk × √(N × Avg Correlation)<br><br>
+                    If your positions move together, they'll HIT STOPS together. Correlation amplifies risk.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why Correlation Kills Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Why Correlation Destroys "Diversification"</h3>
+
+              <p>You have 5 positions. You risk 1% on each. Total risk: 5%, right?</p>
+
+              <p style="font-size:1.2rem;color:#ff6b6b;font-weight:700">WRONG.</p>
+
+              <p>If those 5 positions are correlated (same sector, same trend direction), they move TOGETHER. When one dumps, they ALL dump.</p>
+
+              <div class="callout callout-warning">
+                <h4>🚨 The Formula</h4>
+                <p><strong>Effective Risk = Nominal Risk × √(N × Average Correlation)</strong></p>
+                <p>Where:</p>
+                <ul>
+                  <li>N = Number of positions</li>
+                  <li>Nominal Risk = Sum of individual position risks</li>
+                  <li>Average Correlation = Average correlation between positions</li>
+                </ul>
+              </div>
+
+              <h4>Example: 5 Tech Stocks</h4>
+              <p><strong>Your positions:</strong> AAPL, MSFT, GOOGL, NVDA, AMD</p>
+              <p><strong>Risk per position:</strong> 1%</p>
+              <p><strong>Nominal risk:</strong> 5% (1% × 5)</p>
+              <p><strong>Average correlation:</strong> 0.80 (tech stocks move together)</p>
+
+              <p><strong>Effective Risk = 5% × √(5 × 0.80) = 5% × √4 = 5% × 2.0 = 10%</strong></p>
+
+              <div style="background:rgba(255,107,107,0.1);padding:1.5rem;border-radius:12px;margin:1.5rem 0;border-left:4px solid #ff6b6b">
+                <p style="margin:0;font-size:1.1rem"><strong>You THINK you're risking 5%.</strong></p>
+                <p style="margin:0.5rem 0 0 0;font-size:1.1rem"><strong>You're ACTUALLY risking 10%.</strong></p>
+              </div>
+
+              <p>One sector rotation, one Fed speech, one macro event—and ALL your stops get hit in the same hour.</p>
+
+              <div class="callout callout-key">
+                <h4>💎 The Brutal Truth</h4>
+                <p><strong>Diversification is a myth if your positions are correlated.</strong></p>
+                <p>5 tech stocks = 1 bet on tech sector<br>
+                3 crypto positions = 1 bet on crypto<br>
+                4 energy longs = 1 bet on oil prices</p>
+                <p style="margin-top:1rem">TRUE diversification requires LOW correlation (<0.30).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mark's $79K Loss Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>Case Study: Mark's $79,000 Correlation Blindness</h3>
+
+              <p>Mark was disciplined. Never risked more than 1% per trade. Never exceeded 5% portfolio heat. Followed all the rules.</p>
+
+              <p>He still lost $79,000 in one day.</p>
+
+              <div style="background:rgba(255,107,107,0.08);padding:1.5rem;border-radius:12px;margin:1.5rem 0">
+                <h4>Mark's "Diversified" Portfolio (June 18, 2024)</h4>
+                <table style="width:100%;font-size:0.9rem;margin:1rem 0">
+                  <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+                    <td style="padding:0.5rem"><strong>NVDA</strong></td>
+                    <td style="padding:0.5rem">$135 → $132 stop</td>
+                    <td style="padding:0.5rem">1% risk ($1,000)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+                    <td style="padding:0.5rem"><strong>AMD</strong></td>
+                    <td style="padding:0.5rem">$160 → $157 stop</td>
+                    <td style="padding:0.5rem">1% risk ($1,000)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+                    <td style="padding:0.5rem"><strong>AVGO</strong></td>
+                    <td style="padding:0.5rem">$1,420 → $1,392 stop</td>
+                    <td style="padding:0.5rem">1% risk ($1,000)</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+                    <td style="padding:0.5rem"><strong>QCOM</strong></td>
+                    <td style="padding:0.5rem">$205 → $201 stop</td>
+                    <td style="padding:0.5rem">1% risk ($1,000)</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0.5rem"><strong>MU</strong></td>
+                    <td style="padding:0.5rem">$130 → $127 stop</td>
+                    <td style="padding:0.5rem">1% risk ($1,000)</td>
+                  </tr>
+                </table>
+                <p><strong>Account:</strong> $100,000</p>
+                <p><strong>Nominal Portfolio Heat:</strong> 5% ($5,000)</p>
+                <p><strong>Mark's thought:</strong> "I'm safe. Only 5% at risk."</p>
+              </div>
+
+              <h4>The Hidden Danger</h4>
+              <p><strong>All 5 stocks were semiconductor/tech with 0.85+ correlation.</strong></p>
+              <p><strong>Effective Risk = 5% × √(5 × 0.85) = 5% × 2.06 = 10.3%</strong></p>
+              <p>Mark thought he risked 5%. He actually risked <strong>10.3%</strong>.</p>
+
+              <h4>June 19, 2024: The Crash</h4>
+              <p><strong>Bloomberg headline:</strong> "ASML Cuts Chip Demand Forecast, Cites China Weakness"</p>
+              <p><strong>9:31 AM:</strong> Semiconductor sector dumps -3.5% in first 10 minutes</p>
+              <p><strong>Result:</strong></p>
+              <ul>
+                <li>NVDA hits stop at $132 → Actually fills at $130.80 (slippage)</li>
+                <li>AMD hits stop at $157 → Fills at $155.20</li>
+                <li>AVGO hits stop at $1,392 → Fills at $1,375</li>
+                <li>QCOM hits stop at $201 → Fills at $199.50</li>
+                <li>MU hits stop at $127 → Fills at $125.30</li>
+              </ul>
+
+              <p><strong>Planned loss:</strong> $5,000 (5%)</p>
+              <p><strong>Actual loss with slippage:</strong> $6,127 (6.1%)</p>
+              <p><strong>But Mark panicked and added to losers earlier in the week...</strong></p>
+              <p style="font-size:1.2rem;color:#ff6b6b;font-weight:700;margin:1.5rem 0">Total damage: $79,318 lost over 5 trading days</p>
+
+              <div class="callout callout-key">
+                <h4>What Went Wrong</h4>
+                <ol>
+                  <li><strong>Correlation blindness:</strong> 5 positions = 1 sector bet</li>
+                  <li><strong>Effective risk 2× nominal:</strong> 10% real risk vs 5% perceived</li>
+                  <li><strong>Slippage amplified losses:</strong> Volatile dumps = wide fills</li>
+                  <li><strong>Psychological damage:</strong> Tried to "average down" and made it worse</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- How to Fix It Tab -->
+          <div class="tab-panel">
+            <div class="prose">
+              <h3>How to Avoid Correlation Disasters</h3>
+
+              <div class="tip-card">
+                <div class="tip-icon">🎯</div>
+                <div>
+                  <h4>Solution 1: Diversify Across Uncorrelated Assets</h4>
+                  <p><strong>Bad:</strong> 5 tech stocks (correlation ~0.80)</p>
+                  <p><strong>Better:</strong> 2 tech, 1 energy, 1 financial, 1 healthcare (correlation ~0.40)</p>
+                  <p><strong>Best:</strong> Stocks + crypto + forex + commodities (correlation ~0.10)</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">🛡️</div>
+                <div>
+                  <h4>Solution 2: Reduce Position Size When Correlated</h4>
+                  <p>If you MUST trade correlated positions (e.g., day trading tech during earnings season), reduce risk per trade.</p>
+                  <p><strong>Normal risk:</strong> 1% per trade, 5 positions = 5% heat</p>
+                  <p><strong>High correlation (0.80):</strong> 0.5% per trade, 5 positions = effective 5% heat</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">⚖️</div>
+                <div>
+                  <h4>Solution 3: Hedge with Inverse Positions</h4>
+                  <p>If you're long 3 tech stocks, short 1 tech ETF (QQQ) or buy tech puts as insurance.</p>
+                  <p><strong>Reduces correlation from 0.85 to 0.40-0.50</strong></p>
+                  <p>Cost: Premium/spread. Benefit: Sleep at night.</p>
+                </div>
+              </div>
+
+              <div class="tip-card">
+                <div class="tip-icon">📊</div>
+                <div>
+                  <h4>Solution 4: Calculate Correlation Weekly</h4>
+                  <p>Use this calculator EVERY Sunday before the trading week:</p>
+                  <ol style="margin:0.5rem 0;line-height:1.8">
+                    <li>List all open positions</li>
+                    <li>Estimate average correlation (use the guide)</li>
+                    <li>Calculate effective risk</li>
+                    <li>If > 8%, close or hedge positions</li>
+                  </ol>
+                </div>
+              </div>
+
+              <h4>Correlation by Asset Class</h4>
+              <table style="width:100%;border-collapse:collapse;margin:2rem 0">
+                <thead>
+                  <tr style="background:rgba(118,221,255,0.1)">
+                    <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,.1)">Portfolio Type</th>
+                    <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,.1)">Avg Correlation</th>
+                    <th style="padding:0.75rem;text-align:left;border-bottom:2px solid rgba(255,255,255,.1)">Verdict</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                    <td style="padding:0.75rem">5 tech stocks (same sector)</td>
+                    <td style="padding:0.75rem;color:#ff6b6b">0.70-0.90</td>
+                    <td style="padding:0.75rem;color:#ff6b6b">🚨 Dangerous</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                    <td style="padding:0.75rem">3 stocks different sectors</td>
+                    <td style="padding:0.75rem;color:#f9a23c">0.40-0.60</td>
+                    <td style="padding:0.75rem;color:#f9a23c">⚠️ Moderate</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+                    <td style="padding:0.75rem">Stocks + bonds + commodities</td>
+                    <td style="padding:0.75rem;color:#3ed598">0.10-0.30</td>
+                    <td style="padding:0.75rem;color:#3ed598">✅ Good</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0.75rem">Long stocks + short stocks</td>
+                    <td style="padding:0.75rem;color:#3ed598">-0.20-0.20</td>
+                    <td style="padding:0.75rem;color:#3ed598">✅ Hedged</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div style="background:rgba(62,213,152,0.1);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #3ed598">
+                <h4 style="margin:0 0 0.75rem 0">✅ Action Plan</h4>
+                <ol style="margin:0;line-height:1.8">
+                  <li>Open your broker platform right now</li>
+                  <li>List all your current positions</li>
+                  <li>Estimate average correlation (use table above)</li>
+                  <li>Run this calculator</li>
+                  <li>If effective risk > 8%, close the most correlated positions</li>
+                </ol>
+                <p style="margin:1rem 0 0 0;font-weight:700">Do this EVERY week. Mark didn't. He lost $79K.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Lessons -->
+      <div class="card" style="margin-top:2rem;padding:1.5rem;background:rgba(118,221,255,0.05)">
+        <h4 style="margin:0 0 1rem 0">📚 Learn More About Correlation Risk</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
+          <a href="/curriculum/intermediate/46-advanced-risk-management.html" class="lesson-card-link">
+            <div class="card post">
+              <div class="kicker">📖 Lesson #46</div>
+              <h4>Advanced Risk Management</h4>
+              <p class="note">Correlation-adjusted risk and Mark's $79K mistake</p>
+            </div>
+          </a>
+          <a href="/curriculum/intermediate/47-portfolio-construction-kelly.html" class="lesson-card-link">
+            <div class="card post">
+              <div class="kicker">📖 Lesson #47</div>
+              <h4>Portfolio Construction</h4>
+              <p class="note">Building truly diversified portfolios</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -3218,6 +4100,183 @@ function loadBreakEvenExample() {
   document.getElementById('be-fee-rate').value = 0.1;
   document.getElementById('be-slippage').value = 0.1;
   calculateBreakEven();
+}
+
+// Portfolio Heat Calculator (Calculator 12)
+function calculatePortfolioHeat() {
+  const balance = parseFloat(document.getElementById('ph-balance').value) || 0;
+
+  // Position 1
+  const entry1 = parseFloat(document.getElementById('ph-entry1').value) || 0;
+  const stop1 = parseFloat(document.getElementById('ph-stop1').value) || 0;
+  const shares1 = parseFloat(document.getElementById('ph-shares1').value) || 0;
+
+  // Position 2
+  const entry2 = parseFloat(document.getElementById('ph-entry2').value) || 0;
+  const stop2 = parseFloat(document.getElementById('ph-stop2').value) || 0;
+  const shares2 = parseFloat(document.getElementById('ph-shares2').value) || 0;
+
+  // Position 3
+  const entry3 = parseFloat(document.getElementById('ph-entry3').value) || 0;
+  const stop3 = parseFloat(document.getElementById('ph-stop3').value) || 0;
+  const shares3 = parseFloat(document.getElementById('ph-shares3').value) || 0;
+
+  // Validation
+  if (balance <= 0) {
+    alert('⚠️ Account balance must be greater than 0');
+    return;
+  }
+
+  // Calculate risk for each position
+  const risk1 = shares1 > 0 && entry1 > 0 && stop1 > 0 ? Math.abs(entry1 - stop1) * shares1 : 0;
+  const risk2 = shares2 > 0 && entry2 > 0 && stop2 > 0 ? Math.abs(entry2 - stop2) * shares2 : 0;
+  const risk3 = shares3 > 0 && entry3 > 0 && stop3 > 0 ? Math.abs(entry3 - stop3) * shares3 : 0;
+
+  const totalRisk = risk1 + risk2 + risk3;
+  const heatPct = (totalRisk / balance) * 100;
+  const remaining = balance * 0.06 - totalRisk; // 6% heat limit
+
+  // Update results
+  document.getElementById('ph-dollar-risk').textContent = '$' + totalRisk.toFixed(2);
+  document.getElementById('ph-heat-pct').textContent = heatPct.toFixed(2) + '%';
+  document.getElementById('ph-pos1-risk').textContent = risk1 > 0 ? '$' + risk1.toFixed(2) + ' (' + ((risk1/balance)*100).toFixed(2) + '%)' : 'N/A';
+  document.getElementById('ph-pos2-risk').textContent = risk2 > 0 ? '$' + risk2.toFixed(2) + ' (' + ((risk2/balance)*100).toFixed(2) + '%)' : 'N/A';
+  document.getElementById('ph-pos3-risk').textContent = risk3 > 0 ? '$' + risk3.toFixed(2) + ' (' + ((risk3/balance)*100).toFixed(2) + '%)' : 'N/A';
+  document.getElementById('ph-remaining').textContent = remaining > 0 ? '$' + remaining.toFixed(2) : '$0 (STOP TRADING)';
+
+  // Verdict
+  const verdictBox = document.getElementById('ph-verdict');
+  let verdictHTML = '';
+
+  if (heatPct < 6) {
+    verdictHTML = '<div class="verdict good">✅ Safe Zone<br><span style="font-size:0.9rem;font-weight:400">Portfolio heat under 6%. You can take new trades.</span></div>';
+  } else if (heatPct < 8) {
+    verdictHTML = '<div class="verdict warn">⚠️ Caution Zone<br><span style="font-size:0.9rem;font-weight:400">Portfolio heat 6-8%. Proceed carefully with new trades.</span></div>';
+  } else {
+    verdictHTML = '<div class="verdict bad">🚨 DANGER ZONE<br><span style="font-size:0.9rem;font-weight:400">Portfolio heat above 8%. STOP taking new trades immediately!</span></div>';
+  }
+  verdictBox.innerHTML = verdictHTML;
+
+  document.getElementById('ph-result').style.display = 'block';
+}
+
+function loadPortfolioHeatExample() {
+  document.getElementById('ph-balance').value = 10000;
+  document.getElementById('ph-entry1').value = 100;
+  document.getElementById('ph-stop1').value = 98;
+  document.getElementById('ph-shares1').value = 50;
+  document.getElementById('ph-entry2').value = 50;
+  document.getElementById('ph-stop2').value = 48;
+  document.getElementById('ph-shares2').value = 50;
+  document.getElementById('ph-entry3').value = 150;
+  document.getElementById('ph-stop3').value = 147;
+  document.getElementById('ph-shares3').value = 33;
+  calculatePortfolioHeat();
+}
+
+// Kelly Criterion Calculator (Calculator 13)
+function calculateKelly() {
+  const winRate = parseFloat(document.getElementById('kelly-win-rate').value) || 0;
+  const avgWin = parseFloat(document.getElementById('kelly-avg-win').value) || 0;
+  const avgLoss = parseFloat(document.getElementById('kelly-avg-loss').value) || 0;
+
+  // Validation
+  if (winRate <= 0 || winRate >= 100) {
+    alert('⚠️ Win rate must be between 0 and 100%');
+    return;
+  }
+  if (avgWin <= 0 || avgLoss <= 0) {
+    alert('⚠️ Average win and loss must be greater than 0');
+    return;
+  }
+
+  // Convert win rate to decimal
+  const w = winRate / 100;
+  const lossRate = 1 - w;
+
+  // Calculate R:R ratio
+  const rr = avgWin / avgLoss;
+
+  // Kelly formula: (W * R - L) / R
+  const kellyFull = ((w * rr) - lossRate) / rr;
+  const kellyHalf = kellyFull / 2;
+  const kellyQuarter = kellyFull / 4;
+
+  // Calculate expectancy
+  const expectancy = (w * avgWin) - (lossRate * avgLoss);
+
+  // Update results
+  document.getElementById('kelly-full').textContent = (kellyFull * 100).toFixed(2) + '%';
+  document.getElementById('kelly-half').textContent = (kellyHalf * 100).toFixed(2) + '%';
+  document.getElementById('kelly-quarter').textContent = (kellyQuarter * 100).toFixed(2) + '%';
+  document.getElementById('kelly-rr').textContent = rr.toFixed(2) + ':1';
+  document.getElementById('kelly-exp').textContent = '$' + expectancy.toFixed(2) + ' per trade';
+
+  document.getElementById('kelly-result').style.display = 'block';
+}
+
+function loadKellyExample() {
+  document.getElementById('kelly-win-rate').value = 55;
+  document.getElementById('kelly-avg-win').value = 300;
+  document.getElementById('kelly-avg-loss').value = 150;
+  calculateKelly();
+}
+
+// Correlation-Adjusted Risk Calculator (Calculator 14)
+function calculateCorrelationRisk() {
+  const numPositions = parseFloat(document.getElementById('corr-num-positions').value) || 0;
+  const riskPer = parseFloat(document.getElementById('corr-risk-per').value) || 0;
+  const avgCorr = parseFloat(document.getElementById('corr-avg').value) || 0;
+
+  // Validation
+  if (numPositions <= 0) {
+    alert('⚠️ Number of positions must be greater than 0');
+    return;
+  }
+  if (riskPer <= 0 || riskPer > 100) {
+    alert('⚠️ Risk per position must be between 0 and 100%');
+    return;
+  }
+  if (avgCorr < 0 || avgCorr > 1) {
+    alert('⚠️ Average correlation must be between 0 and 1');
+    return;
+  }
+
+  // Calculate nominal and effective risk
+  const nominalRisk = numPositions * riskPer;
+  const multiplier = Math.sqrt(numPositions * avgCorr);
+  const effectiveRisk = nominalRisk * multiplier;
+  const hiddenRisk = effectiveRisk - nominalRisk;
+
+  // Update results
+  document.getElementById('corr-nominal').textContent = nominalRisk.toFixed(2) + '%';
+  document.getElementById('corr-effective').textContent = effectiveRisk.toFixed(2) + '%';
+  document.getElementById('corr-multiplier').textContent = multiplier.toFixed(2) + 'x';
+  document.getElementById('corr-hidden').textContent = hiddenRisk.toFixed(2) + '% (hidden concentration risk)';
+
+  // Verdict
+  const verdictBox = document.getElementById('corr-verdict');
+  let verdictHTML = '';
+
+  if (effectiveRisk < 6) {
+    verdictHTML = '<div class="verdict good">✅ Safe Correlation Level<br><span style="font-size:0.9rem;font-weight:400">Your effective risk is under 6%. Good diversification.</span></div>';
+  } else if (effectiveRisk < 8) {
+    verdictHTML = '<div class="verdict warn">⚠️ Moderate Correlation Risk<br><span style="font-size:0.9rem;font-weight:400">Effective risk 6-8%. Consider reducing position sizes or diversifying.</span></div>';
+  } else if (effectiveRisk < 10) {
+    verdictHTML = '<div class="verdict warn">⚠️ High Correlation Risk<br><span style="font-size:0.9rem;font-weight:400">Effective risk ' + effectiveRisk.toFixed(1) + '%. Your positions are too correlated. Diversify NOW.</span></div>';
+  } else {
+    verdictHTML = '<div class="verdict bad">🚨 EXTREME CORRELATION RISK<br><span style="font-size:0.9rem;font-weight:400">Effective risk ' + effectiveRisk.toFixed(1) + '%! You\'re one sector dump away from a catastrophic loss. Close correlated positions immediately!</span></div>';
+  }
+  verdictBox.innerHTML = verdictHTML;
+
+  document.getElementById('corr-result').style.display = 'block';
+}
+
+function loadCorrelationExample() {
+  document.getElementById('corr-num-positions').value = 5;
+  document.getElementById('corr-risk-per').value = 1;
+  document.getElementById('corr-avg').value = 0.85;
+  calculateCorrelationRisk();
 }
 
 // Set current year
