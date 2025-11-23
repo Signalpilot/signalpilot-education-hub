@@ -105,6 +105,96 @@
 
       <p class="lead"><b>Candlesticks show you WHAT happened. Footprint charts show you WHO made it happen—and WHY.</b></p>
 
+      <h4 style="margin:2rem 0 1rem 0">📊 Candlestick vs Footprint: The Same Bar, Two Different Stories</h4>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:2rem;margin:2rem 0">
+        <!-- Standard Candlestick View -->
+        <div style="background:rgba(118,221,255,.08);border:2px solid rgba(118,221,255,.3);border-radius:12px;padding:1.5rem">
+          <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#76ddff">📊 Standard Candlestick</div>
+
+          <div style="position:relative;height:200px;background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;display:flex;align-items:center;justify-content:center">
+            <!-- Candlestick visual -->
+            <div style="position:relative;width:40px">
+              <!-- Wick -->
+              <div style="position:absolute;left:50%;transform:translateX(-50%);top:10%;width:2px;height:80%;background:rgba(34,197,94,.5)"></div>
+              <!-- Body -->
+              <div style="position:absolute;left:0;top:30%;width:100%;height:45%;background:#22c55e;border:2px solid #22c55e;border-radius:4px"></div>
+              <!-- High label -->
+              <div style="position:absolute;right:-80px;top:10%;font-size:0.75rem;color:#76ddff">High: $100.50</div>
+              <!-- Close label -->
+              <div style="position:absolute;right:-80px;top:30%;font-size:0.75rem;color:#22c55e">Close: $100.25</div>
+              <!-- Open label -->
+              <div style="position:absolute;right:-80px;bottom:25%;font-size:0.75rem;color:#76ddff">Open: $99.50</div>
+              <!-- Low label -->
+              <div style="position:absolute;right:-80px;bottom:10%;font-size:0.75rem;color:#76ddff">Low: $99.50</div>
+            </div>
+          </div>
+
+          <div style="margin-top:1.5rem;padding:1rem;background:rgba(118,221,255,.1);border-radius:8px">
+            <div style="font-weight:700;margin-bottom:0.75rem;text-align:center">What Retail Sees:</div>
+            <ul style="font-size:0.85rem;margin:0;padding-left:1.25rem;line-height:1.6">
+              <li>Green candle = bullish</li>
+              <li>Price up $0.75</li>
+              <li>Volume: 8,200 contracts</li>
+              <li style="color:#22c55e;font-weight:700">Looks like buying pressure</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footprint Chart View -->
+        <div style="background:rgba(255,193,7,.08);border:2px solid rgba(255,193,7,.3);border-radius:12px;padding:1.5rem">
+          <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#ffc107">🔍 Footprint Chart</div>
+
+          <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.75rem">
+            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(34,197,94,.15);border-left:3px solid #22c55e;margin-bottom:0.15rem;border-radius:3px">
+              <span>$100.50</span>
+              <span style="color:#22c55e">1200</span>
+              <span>300</span>
+              <span style="color:#22c55e">+900</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(34,197,94,.2);border-left:3px solid #22c55e;margin-bottom:0.15rem;border-radius:3px">
+              <span>$100.25</span>
+              <span style="color:#22c55e">2500</span>
+              <span>400</span>
+              <span style="color:#22c55e">+2100</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(255,82,82,.15);border-left:3px solid #ff5252;margin-bottom:0.15rem;border-radius:3px">
+              <span>$100.00</span>
+              <span>800</span>
+              <span style="color:#ff5252">3200</span>
+              <span style="color:#ff5252">-2400</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(255,82,82,.18);border-left:3px solid #ff5252;margin-bottom:0.15rem;border-radius:3px">
+              <span>$99.75</span>
+              <span>500</span>
+              <span style="color:#ff5252">1800</span>
+              <span style="color:#ff5252">-1300</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(255,82,82,.2);border-left:3px solid #ff5252;margin-bottom:0.15rem;border-radius:3px">
+              <span>$99.50</span>
+              <span>200</span>
+              <span style="color:#ff5252">900</span>
+              <span style="color:#ff5252">-700</span>
+            </div>
+          </div>
+
+          <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,82,82,.15);border-radius:8px;border-left:4px solid #ff5252">
+            <div style="font-weight:700;margin-bottom:0.75rem;text-align:center">What Institutions See:</div>
+            <ul style="font-size:0.85rem;margin:0;padding-left:1.25rem;line-height:1.6">
+              <li>Total delta: <span style="color:#ff5252;font-weight:700">-1400</span> (net selling!)</li>
+              <li>Heavy selling at $99.50-$100.00</li>
+              <li>Light buying at top</li>
+              <li style="color:#ff5252;font-weight:700">⚠️ TRAP—distribution, not accumulation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,193,7,.1);border-left:4px solid #ffc107;padding:1.5rem;border-radius:8px;margin:2rem 0">
+        <div style="font-weight:700;font-size:1.05rem;margin-bottom:0.75rem">💡 The Key Difference:</div>
+        <p style="margin:0">The candlestick says "bullish green candle up $0.75." The footprint reveals net SELLING of 1,400 contracts inside that same green candle. Price rose because sellers stepped aside at the top, NOT because buyers were aggressive. This is exactly how retail gets trapped buying distribution tops. <strong>The footprint tells the truth candlesticks hide.</strong></p>
+      </div>
+
       <p>Every price level has two sides: buyers and sellers. But standard candlesticks hide the war happening inside each bar. Did price rise because buyers were aggressive, or because sellers disappeared? Did that "bullish engulfing" candle form on heavy buying or light volume? <strong>Footprint charts reveal the truth.</strong></p>
 
       <p>At its core, a footprint chart displays the exact volume traded at each price level, broken down by aggressor side (market orders hitting the bid or lifting the ask). When you see 5,000 contracts bought at $100.00 but only 500 sold, that's not random—that's institutional absorption. Smart money accumulating while retail sells into "resistance."</p>
@@ -292,6 +382,76 @@ $99.50       200 |     900  = -700    Sellers at low
         <h4>⚠️ The Trap Revealed</h4>
         <p>This bar closed green at $100.25, up $0.75. Most traders see a bullish bar. But the footprint reveals <strong>net selling of 1,400 contracts</strong>. Price rose because sellers stepped aside (low ask volume at top), NOT because buyers were aggressive. This bar is a TRAP—distribution disguised as accumulation. Expect reversal.</p>
       </div>
+
+      <h4 style="margin:2rem 0 1rem 0">📊 Visual Footprint Chart Example</h4>
+      <p>Here's the same bar visualized as an interactive footprint chart with color-coding:</p>
+
+      <div style="background:rgba(0,0,0,.3);padding:1.5rem;border-radius:12px;margin:1.5rem 0;overflow-x:auto">
+        <table style="width:100%;max-width:600px;margin:0 auto;border-collapse:separate;border-spacing:0;font-family:monospace;font-size:0.9rem">
+          <thead>
+            <tr style="background:rgba(255,255,255,.05)">
+              <th style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">Price</th>
+              <th style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">Ask Vol</th>
+              <th style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">Bid Vol</th>
+              <th style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">Delta</th>
+              <th style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">Signal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:rgba(34,197,94,.15);border-left:3px solid #22c55e">
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-weight:700">$100.50</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#22c55e;font-weight:700">1200</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">300</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#22c55e;font-weight:700">+900</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-size:0.85rem">Buying at high</td>
+            </tr>
+            <tr style="background:rgba(34,197,94,.25);border-left:3px solid #22c55e">
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-weight:700">$100.25</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#22c55e;font-weight:700">2500</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">400</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#22c55e;font-weight:700">+2100</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-size:0.85rem">🔥 STRONG BUY</td>
+            </tr>
+            <tr style="background:rgba(255,82,82,.15);border-left:3px solid #ff5252">
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-weight:700">$100.00</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">800</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#ff5252;font-weight:700">3200</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#ff5252;font-weight:700">-2400</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-size:0.85rem">Selling pressure</td>
+            </tr>
+            <tr style="background:rgba(255,82,82,.2);border-left:3px solid #ff5252">
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-weight:700">$99.75</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">500</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#ff5252;font-weight:700">1800</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#ff5252;font-weight:700">-1300</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-size:0.85rem">Heavy selling</td>
+            </tr>
+            <tr style="background:rgba(255,82,82,.25);border-left:3px solid #ff5252">
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-weight:700">$99.50</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1)">200</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#ff5252;font-weight:700">900</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#ff5252;font-weight:700">-700</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-size:0.85rem">Sellers at low</td>
+            </tr>
+            <tr style="background:rgba(255,82,82,.3);border:2px solid #ff5252">
+              <td colspan="3" style="padding:0.75rem;text-align:center;font-weight:700;border:1px solid rgba(255,255,255,.1)">Total Bar Delta</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);color:#ff5252;font-weight:700;font-size:1.1rem">-1400</td>
+              <td style="padding:0.75rem;text-align:center;border:1px solid rgba(255,255,255,.1);font-size:0.85rem">⚠️ NET SELLING</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="display:flex;gap:1.5rem;margin-top:1.5rem;justify-content:center;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:0.5rem">
+            <div style="width:20px;height:20px;background:rgba(34,197,94,.3);border-left:3px solid #22c55e;border-radius:4px"></div>
+            <span style="font-size:0.9rem">Green = Buying pressure (positive delta)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem">
+            <div style="width:20px;height:20px;background:rgba(255,82,82,.3);border-left:3px solid #ff5252;border-radius:4px"></div>
+            <span style="font-size:0.9rem">Red = Selling pressure (negative delta)</span>
+          </div>
+        </div>
+      </div>
+
 <h3 id="three-types-of-footprint-volume">Three Types of Footprint Volume</h3>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:1.5rem;margin:2rem 0">
@@ -361,6 +521,81 @@ $104.50      500 |    2200   4.4:1    Imbalance ✓
 
       <p><strong>Translation:</strong> Institutions SOLD aggressively across $104.50-$105.00. Retail bought into "potential breakout." Institutions distributed. <strong>Expect potential breakdown.</strong></p>
 
+      <h4 style="margin:2rem 0 1rem 0">📊 Visual Stacked Imbalance Comparison</h4>
+      <p>Here's a side-by-side visual comparison of bullish vs bearish stacked imbalances:</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 320px),1fr));gap:2rem;margin:2rem 0">
+        <!-- Bullish Stacked Imbalance Visual -->
+        <div style="background:rgba(34,197,94,.08);border:2px solid #22c55e;border-radius:12px;padding:1.5rem">
+          <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#22c55e">Bullish Absorption (Accumulation)</div>
+
+          <div style="font-family:monospace;font-size:0.85rem">
+            <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(34,197,94,.25);border-left:4px solid #22c55e;margin-bottom:0.25rem;border-radius:4px">
+              <span style="font-weight:700">$101.00</span>
+              <span style="color:#22c55e">2800 ask</span>
+              <span>300 bid</span>
+              <span style="color:#22c55e;font-weight:700">9.3:1</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(34,197,94,.25);border-left:4px solid #22c55e;margin-bottom:0.25rem;border-radius:4px">
+              <span style="font-weight:700">$100.75</span>
+              <span style="color:#22c55e">3200 ask</span>
+              <span>450 bid</span>
+              <span style="color:#22c55e;font-weight:700">7.1:1</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(34,197,94,.25);border-left:4px solid #22c55e;margin-bottom:0.25rem;border-radius:4px">
+              <span style="font-weight:700">$100.50</span>
+              <span style="color:#22c55e">2900 ask</span>
+              <span>380 bid</span>
+              <span style="color:#22c55e;font-weight:700">7.6:1</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(34,197,94,.25);border-left:4px solid #22c55e;margin-bottom:0.25rem;border-radius:4px">
+              <span style="font-weight:700">$100.25</span>
+              <span style="color:#22c55e">2100 ask</span>
+              <span>500 bid</span>
+              <span style="color:#22c55e;font-weight:700">4.2:1</span>
+            </div>
+          </div>
+
+          <div style="margin-top:1.5rem;padding:1rem;background:rgba(34,197,94,.15);border-radius:8px;text-align:center">
+            <div style="font-weight:700;margin-bottom:0.5rem">✅ 4 STACKED LEVELS</div>
+            <div style="font-size:0.9rem">Institutions absorbing ALL selling</div>
+            <div style="font-size:0.9rem;margin-top:0.25rem;color:#22c55e">→ Expect continuation HIGHER</div>
+          </div>
+        </div>
+
+        <!-- Bearish Stacked Imbalance Visual -->
+        <div style="background:rgba(255,82,82,.08);border:2px solid #ff5252;border-radius:12px;padding:1.5rem">
+          <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#ff5252">Bearish Absorption (Distribution)</div>
+
+          <div style="font-family:monospace;font-size:0.85rem">
+            <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(255,82,82,.25);border-left:4px solid #ff5252;margin-bottom:0.25rem;border-radius:4px">
+              <span style="font-weight:700">$105.00</span>
+              <span>400 ask</span>
+              <span style="color:#ff5252">3100 bid</span>
+              <span style="color:#ff5252;font-weight:700">7.8:1</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(255,82,82,.25);border-left:4px solid #ff5252;margin-bottom:0.25rem;border-radius:4px">
+              <span style="font-weight:700">$104.75</span>
+              <span>350 ask</span>
+              <span style="color:#ff5252">2800 bid</span>
+              <span style="color:#ff5252;font-weight:700">8.0:1</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(255,82,82,.25);border-left:4px solid #ff5252;margin-bottom:0.25rem;border-radius:4px">
+              <span style="font-weight:700">$104.50</span>
+              <span>500 ask</span>
+              <span style="color:#ff5252">2200 bid</span>
+              <span style="color:#ff5252;font-weight:700">4.4:1</span>
+            </div>
+          </div>
+
+          <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,82,82,.15);border-radius:8px;text-align:center">
+            <div style="font-weight:700;margin-bottom:0.5rem">⚠️ 3 STACKED LEVELS</div>
+            <div style="font-size:0.9rem">Institutions distributing aggressively</div>
+            <div style="font-size:0.9rem;margin-top:0.25rem;color:#ff5252">→ Expect potential breakdown LOWER</div>
+          </div>
+        </div>
+      </div>
+
       <h3 id="absorption-vs-exhaustion-the-critical-distinction">Absorption vs Exhaustion: The Critical Distinction</h3>
 
       <p>Not all imbalances are bullish. Context determines whether imbalances signal continuation (absorption) or reversal (exhaustion).</p>
@@ -427,6 +662,101 @@ Candle 4: POC at 4552 (moved down -18 points)
 Institutions unloading positions at progressively lower prices.
 Expect continuation downward.
       </pre>
+
+      <h4 style="margin:2rem 0 1rem 0">📊 Visual POC Migration Patterns</h4>
+      <p>Here's a visual representation of POC migration showing institutional positioning:</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 340px),1fr));gap:2rem;margin:2rem 0">
+        <!-- Bullish POC Migration -->
+        <div style="background:rgba(34,197,94,.08);border:2px solid #22c55e;border-radius:12px;padding:1.5rem">
+          <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#22c55e">📈 Bullish POC Migration</div>
+
+          <div style="position:relative;height:240px;background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;overflow:hidden">
+            <!-- Candle 4 (highest) -->
+            <div style="position:absolute;left:75%;top:10%;transform:translateX(-50%)">
+              <div style="width:60px;height:40px;background:rgba(34,197,94,.3);border:2px solid #22c55e;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">4538</div>
+              <div style="text-align:center;font-size:0.7rem;margin-top:0.25rem;color:#22c55e">Candle 4</div>
+              <div style="position:absolute;left:50%;top:50%;width:12px;height:12px;background:#22c55e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 10px #22c55e"></div>
+            </div>
+
+            <!-- Candle 3 -->
+            <div style="position:absolute;left:55%;top:30%;transform:translateX(-50%)">
+              <div style="width:60px;height:40px;background:rgba(34,197,94,.25);border:2px solid #22c55e;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">4522</div>
+              <div style="text-align:center;font-size:0.7rem;margin-top:0.25rem;color:#22c55e">Candle 3</div>
+              <div style="position:absolute;left:50%;top:50%;width:10px;height:10px;background:#22c55e;border-radius:50%;transform:translate(-50%,-50%)"></div>
+            </div>
+
+            <!-- Candle 2 -->
+            <div style="position:absolute;left:35%;top:50%;transform:translateX(-50%)">
+              <div style="width:60px;height:40px;background:rgba(34,197,94,.2);border:2px solid #22c55e;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">4510</div>
+              <div style="text-align:center;font-size:0.7rem;margin-top:0.25rem;color:#22c55e">Candle 2</div>
+              <div style="position:absolute;left:50%;top:50%;width:8px;height:8px;background:#22c55e;border-radius:50%;transform:translate(-50%,-50%)"></div>
+            </div>
+
+            <!-- Candle 1 (lowest) -->
+            <div style="position:absolute;left:15%;top:70%;transform:translateX(-50%)">
+              <div style="width:60px;height:40px;background:rgba(34,197,94,.15);border:2px solid #22c55e;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">4500</div>
+              <div style="text-align:center;font-size:0.7rem;margin-top:0.25rem;color:#22c55e">Candle 1</div>
+              <div style="position:absolute;left:50%;top:50%;width:6px;height:6px;background:#22c55e;border-radius:50%;transform:translate(-50%,-50%)"></div>
+            </div>
+
+            <!-- Trend Arrow -->
+            <div style="position:absolute;left:50%;bottom:5%;width:2px;height:70%;background:linear-gradient(to top, transparent, #22c55e);transform:translateX(-50%) rotate(-45deg);transform-origin:bottom"></div>
+            <div style="position:absolute;right:10%;top:15%;font-size:2rem;color:#22c55e">↗</div>
+          </div>
+
+          <div style="margin-top:1.5rem;padding:1rem;background:rgba(34,197,94,.15);border-radius:8px">
+            <div style="font-weight:700;margin-bottom:0.5rem;text-align:center">Institutions Accumulating Higher</div>
+            <div style="font-size:0.85rem;text-align:center">POC climbs +38 points across 4 candles</div>
+            <div style="font-size:0.85rem;margin-top:0.5rem;text-align:center;color:#22c55e;font-weight:700">→ Long bias, enter pullbacks</div>
+          </div>
+        </div>
+
+        <!-- Bearish POC Migration -->
+        <div style="background:rgba(255,82,82,.08);border:2px solid #ff5252;border-radius:12px;padding:1.5rem">
+          <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#ff5252">📉 Bearish POC Migration</div>
+
+          <div style="position:relative;height:240px;background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;overflow:hidden">
+            <!-- Candle 1 (highest) -->
+            <div style="position:absolute;left:15%;top:10%;transform:translateX(-50%)">
+              <div style="width:60px;height:40px;background:rgba(255,82,82,.15);border:2px solid #ff5252;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">4600</div>
+              <div style="text-align:center;font-size:0.7rem;margin-top:0.25rem;color:#ff5252">Candle 1</div>
+              <div style="position:absolute;left:50%;top:50%;width:6px;height:6px;background:#ff5252;border-radius:50%;transform:translate(-50%,-50%)"></div>
+            </div>
+
+            <!-- Candle 2 -->
+            <div style="position:absolute;left:35%;top:30%;transform:translateX(-50%)">
+              <div style="width:60px;height:40px;background:rgba(255,82,82,.2);border:2px solid #ff5252;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">4585</div>
+              <div style="text-align:center;font-size:0.7rem;margin-top:0.25rem;color:#ff5252">Candle 2</div>
+              <div style="position:absolute;left:50%;top:50%;width:8px;height:8px;background:#ff5252;border-radius:50%;transform:translate(-50%,-50%)"></div>
+            </div>
+
+            <!-- Candle 3 -->
+            <div style="position:absolute;left:55%;top:50%;transform:translateX(-50%)">
+              <div style="width:60px;height:40px;background:rgba(255,82,82,.25);border:2px solid #ff5252;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">4570</div>
+              <div style="text-align:center;font-size:0.7rem;margin-top:0.25rem;color:#ff5252">Candle 3</div>
+              <div style="position:absolute;left:50%;top:50%;width:10px;height:10px;background:#ff5252;border-radius:50%;transform:translate(-50%,-50%)"></div>
+            </div>
+
+            <!-- Candle 4 (lowest) -->
+            <div style="position:absolute;left:75%;top:70%;transform:translateX(-50%)">
+              <div style="width:60px;height:40px;background:rgba(255,82,82,.3);border:2px solid #ff5252;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">4552</div>
+              <div style="text-align:center;font-size:0.7rem;margin-top:0.25rem;color:#ff5252">Candle 4</div>
+              <div style="position:absolute;left:50%;top:50%;width:12px;height:12px;background:#ff5252;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 10px #ff5252"></div>
+            </div>
+
+            <!-- Trend Arrow -->
+            <div style="position:absolute;left:50%;top:5%;width:2px;height:70%;background:linear-gradient(to bottom, transparent, #ff5252);transform:translateX(-50%) rotate(-45deg);transform-origin:top"></div>
+            <div style="position:absolute;right:10%;bottom:15%;font-size:2rem;color:#ff5252">↘</div>
+          </div>
+
+          <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,82,82,.15);border-radius:8px">
+            <div style="font-weight:700;margin-bottom:0.5rem;text-align:center">Institutions Distributing Lower</div>
+            <div style="font-size:0.85rem;text-align:center">POC drops -48 points across 4 candles</div>
+            <div style="font-size:0.85rem;margin-top:0.5rem;text-align:center;color:#ff5252;font-weight:700">→ Short bias, fade rallies</div>
+          </div>
+        </div>
+      </div>
 
       <h3 id="poc-migration-trading-rules">POC Migration Trading Rules</h3>
 
