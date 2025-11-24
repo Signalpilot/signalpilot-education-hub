@@ -190,113 +190,18 @@
 
     <p><strong>Michael Torres's setup (April-May 2010):</strong> Swing trader with $425K account, trading SPY positions of 8,000-10,000 shares. Used stop-market orders at technical support levels to "protect" downside. Thought he was being disciplined with risk management.</p>
 
-    <p><strong>May 6, 2010 — The Flash Crash (2:42-2:47 PM ET, 5 minutes):</strong></p>
+    <p><strong>May 6, 2010 — The Flash Crash:</strong></p>
 
-    <p><strong>Michael's position:</strong></p>
     <ul style="margin:.75rem 0 0 1.5rem">
-      <li><strong>Long 9,150 shares SPY</strong> at avg cost $106.85 (entered May 3-5)</li>
-      <li><strong>Stop-market order:</strong> 9,150 shares at $105.00 (2% stop loss, "safe")</li>
-      <li><strong>Position size:</strong> $977,678 (23% of account)</li>
-      <li><strong>Risk tolerance:</strong> Expected max loss $17,433 (2% = $106.85 - $105.00)</li>
+      <li><strong>Position:</strong> Long 9,150 shares SPY at $106.85 (position size: $977,678)</li>
+      <li><strong>Stop-market order:</strong> $105.00 (2% stop, expected max loss $17,433)</li>
+      <li><strong>What happened:</strong> SPY crashed from $107.50 → $95.00 in 5 minutes (flash crash)</li>
+      <li><strong>Michael's stop triggered at $105</strong> → became market order → <span style="color:#ff5252;font-weight:700">filled at $95.20</span></li>
+      <li><strong>5 minutes later:</strong> SPY recovered to $107 (he sold the exact bottom)</li>
     </ul>
 
-    <p style="margin-top:1.5rem"><strong>What happened (the cascade):</strong></p>
-    <ol style="margin:.75rem 0 0 1.5rem">
-      <li><strong>2:42:44 PM:</strong> SPY trading at $107.50 (Michael up +0.6%)</li>
-      <li><strong>2:44:15 PM:</strong> Institutional algo sells 75,000 E-mini S&P futures contracts (massive sell program, triggered by liquidity crisis)</li>
-      <li><strong>2:44:58 PM:</strong> SPY drops to $105.00 → <span style="color:#ff5252;font-weight:700">Michael's stop triggers, becomes market order</span></li>
-      <li><strong>2:45:12 PM:</strong> SPY at $102.50 (waterfall accelerating, liquidity evaporating)</li>
-      <li><strong>2:45:27 PM:</strong> SPY at $98.00 (algos shut down, no bids)</li>
-      <li><strong>2:45:40 PM:</strong> SPY flashes to $95.00 (10% drop in 90 seconds)</li>
-      <li><strong>2:45:42 PM:</strong> <span style="color:#ff5252;font-weight:700">Michael's 9,150-share market sell order fills at $95.20</span></li>
-      <li><strong>2:47:15 PM:</strong> SPY recovers to $102.00 (3 minutes later)</li>
-      <li><strong>2:50:30 PM:</strong> SPY back at $107.00 (5 minutes after flash crash)</li>
-    </ol>
-
-    <h4 style="margin:2rem 0 1rem 0">📊 Visual: The Stop-Loss Cascade (Waterfall Effect)</h4>
-
-    <div style="background:rgba(0,0,0,.3);border-radius:12px;padding:2rem;margin:2rem 0">
-      <div style="position:relative;background:rgba(0,0,0,.2);border-radius:12px;padding:2rem 2rem 4rem 2rem;min-height:550px">
-        <!-- Price axis -->
-        <div style="position:absolute;left:10px;top:30px;bottom:70px;width:60px;display:flex;flex-direction:column;justify-content:space-between;font-size:0.85rem;font-weight:700">
-          <div style="color:#22c55e">$107.50</div>
-          <div>$106.00</div>
-          <div style="color:#fbbf24">$105.00</div>
-          <div>$102.00</div>
-          <div>$98.00</div>
-          <div style="color:#ff5252">$95.00</div>
-        </div>
-
-        <!-- Chart area -->
-        <div style="position:absolute;left:80px;right:20px;top:30px;bottom:70px">
-          <!-- Initial price (stable) -->
-          <div style="position:absolute;left:0;top:3%;width:20%;height:2px;background:#22c55e"></div>
-          <div style="position:absolute;left:21%;top:1%;font-size:0.75rem;color:#22c55e;white-space:nowrap">2:42 PM: $107.50 (stable)</div>
-
-          <!-- Cascade begins -->
-          <div style="position:absolute;left:25%;top:3%;width:3px;height:30%;background:linear-gradient(to bottom, #22c55e, #fbbf24)"></div>
-
-          <!-- Stop trigger annotation -->
-          <div style="position:absolute;left:29%;top:26%;font-size:0.7rem;background:rgba(251,191,36,.2);padding:0.4rem 0.6rem;border-radius:4px;border:1px solid #fbbf24;white-space:nowrap;max-width:140px">
-            <div style="font-weight:700;color:#fbbf24;margin-bottom:0.25rem">2:44:58 PM</div>
-            <div style="font-size:0.65rem;color:rgba(255,255,255,.8)"><strong>Stop triggers: $105.00</strong></div>
-            <div style="font-size:0.6rem;color:rgba(255,255,255,.6)">Becomes market order</div>
-          </div>
-
-          <!-- Waterfall cascade line -->
-          <div style="position:absolute;left:25%;top:33%;width:3px;height:55%;background:linear-gradient(to bottom, #fbbf24, #ff5252)"></div>
-
-          <!-- Cascade annotations -->
-          <div style="position:absolute;left:5%;top:55%;font-size:0.7rem;color:rgba(255,255,255,.7);background:rgba(255,82,82,.15);padding:0.5rem 0.75rem;border-radius:6px;border-left:3px solid #ff5252;max-width:160px">
-            <div style="font-weight:700;margin-bottom:0.25rem">Retail stops cascade:</div>
-            <div style="font-size:0.65rem">$105 → $102 → $98 → $95</div>
-            <div style="font-size:0.6rem;margin-top:0.25rem;color:rgba(255,255,255,.5)">Each stop triggers more stops</div>
-          </div>
-
-          <!-- Flash crash low point -->
-          <div style="position:absolute;left:27%;top:88%;width:8px;height:8px;background:#ff5252;border-radius:50%;border:2px solid rgba(255,255,255,.3)"></div>
-
-          <!-- Michael's fill annotation -->
-          <div style="position:absolute;left:32%;top:88%;font-size:0.7rem;color:#ff5252;font-weight:700;background:rgba(255,82,82,.2);padding:0.5rem 0.75rem;border-radius:6px;border:2px solid #ff5252;white-space:nowrap">
-            <div style="margin-bottom:0.15rem">2:45:42 PM: $95.20</div>
-            <div style="font-size:0.65rem;color:rgba(255,255,255,.8);font-weight:400">Michael's fill (market order)</div>
-          </div>
-
-          <!-- Recovery line -->
-          <div style="position:absolute;left:27%;top:88%;width:3px;height:-55%;background:linear-gradient(to top, #ff5252, #22c55e);transform:translateY(-100%)"></div>
-          <div style="position:absolute;left:30%;top:20%;width:18%;height:2px;background:#22c55e"></div>
-
-          <!-- Recovery annotation -->
-          <div style="position:absolute;left:49%;top:18%;font-size:0.7rem;color:#22c55e;background:rgba(34,197,94,.15);padding:0.4rem 0.75rem;border-radius:6px;white-space:nowrap">
-            <div style="font-weight:700;margin-bottom:0.15rem">2:50 PM: $107.00</div>
-            <div style="font-size:0.6rem;color:rgba(255,255,255,.7)">Full recovery (5 min)</div>
-          </div>
-
-          <!-- Stop-limit protection line -->
-          <div style="position:absolute;left:25%;top:40%;width:35%;height:2px;background:#8b5cf6;border:2px dashed #8b5cf6"></div>
-
-          <!-- Stop-limit annotation -->
-          <div style="position:absolute;left:62%;top:38%;font-size:0.7rem;color:#8b5cf6;background:rgba(139,92,246,.15);padding:0.5rem 0.75rem;border-radius:6px;border:2px solid #8b5cf6;white-space:nowrap;max-width:150px">
-            <div style="font-weight:700;margin-bottom:0.25rem">Stop-LIMIT at $104.50</div>
-            <div style="font-size:0.6rem;color:rgba(255,255,255,.8);margin-bottom:0.15rem">Would NOT fill at $95.20</div>
-            <div style="font-size:0.6rem;color:#22c55e;font-weight:700">→ Saves $89,600</div>
-          </div>
-        </div>
-
-        <!-- Time axis -->
-        <div style="position:absolute;left:80px;right:20px;bottom:30px;height:30px;border-top:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:rgba(255,255,255,.6)">
-          <span>2:42 PM</span>
-          <span>2:44 PM</span>
-          <span style="color:#ff5252;font-weight:700">2:45 PM</span>
-          <span>2:47 PM</span>
-          <span style="color:#22c55e">2:50 PM</span>
-        </div>
-      </div>
-
-      <div style="margin-top:1.5rem;padding:1.5rem;background:rgba(139,92,246,.15);border-radius:8px;border-left:4px solid #8b5cf6">
-        <div style="font-weight:700;margin-bottom:0.5rem">🔑 Understanding the Cascade:</div>
-        <p style="margin:0;font-size:0.95rem">Thousands of retail traders had stop-market orders clustered at $105, $104, $103, $102, etc. When SPY hit $105, first wave of stops triggered (became market orders), pushing price to $104. This triggered $104 stops → pushed to $103 → triggered $103 stops. This <strong>waterfall effect</strong> accelerated the crash. Stop-LIMIT orders would have prevented fills below $104.50, breaking the cascade chain. <span style="color:#22c55e;font-weight:700">Price protection > guaranteed fill.</span></p>
-      </div>
+    <div style="margin:1.5rem 0;padding:1rem;background:rgba(139,92,246,.15);border-radius:8px;border-left:4px solid #8b5cf6">
+      <strong>The Cascade Effect:</strong> Thousands of retail stop-market orders clustered at $105, $104, $103, etc. When SPY hit $105, first wave triggered (became market orders) → pushed price to $104 → triggered $104 stops → pushed to $103. This <strong>waterfall effect</strong> accelerated the crash. Stop-LIMIT orders would have prevented fills below $104.50, breaking the cascade chain.
     </div>
 
     <p><strong>The devastating numbers:</strong></p>
@@ -318,21 +223,9 @@
 
     <h5>The Fix: Stop-Limit Orders</h5>
 
-    <p><strong>What Michael should have used:</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li><strong>Order type:</strong> Stop-Limit (not stop-market)</li>
-      <li><strong>Stop price:</strong> $105.00 (trigger)</li>
-      <li><strong>Limit price:</strong> $104.50 (0.5% below stop, gives reasonable range)</li>
-      <li><strong>Behavior:</strong> When SPY hits $105, becomes limit order to sell at $104.50 or better. If price gaps below $104.50 → order doesn't fill.</li>
-    </ul>
+    <p><strong>What Michael should have used:</strong> Stop-Limit at $105 stop / $104.50 limit. When SPY hits $105, becomes limit order to sell at $104.50 or better. If price gaps below $104.50 → order doesn't fill.</p>
 
-    <p><strong>What would have happened with stop-limit:</strong></p>
-    <ol style="margin:.75rem 0 0 1.5rem">
-      <li>SPY hits $105.00 at 2:44:58 PM → stop-limit order activates</li>
-      <li>SPY cascades to $95.00 → limit order at $104.50 does NOT fill (price gapped below limit)</li>
-      <li>SPY recovers to $107.00 by 2:50 PM → Michael still long 9,150 shares</li>
-      <li><strong>Result:</strong> Zero loss. Position intact. Avoided $89,670 in catastrophic slippage.</li>
-    </ol>
+    <p><strong>Result with stop-limit:</strong> SPY crashes to $95 → limit order at $104.50 does NOT fill → SPY recovers to $107 → Michael still long 9,150 shares. <span style="color:#22c55e;font-weight:700">Zero loss. Position intact. Avoided $89,670 in catastrophic slippage.</span></p>
 
     <div style="margin-top:1.5rem;padding:1.5rem;background:rgba(34,197,94,0.15);border-radius:12px;border-left:4px solid #22c55e">
       <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.75rem">✅ Post-2010: Michael's New Approach</div>
@@ -490,53 +383,11 @@
           </div>
         </div>
 
-        <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.85rem">
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(255,82,82,.25);margin-bottom:0.25rem;border-radius:4px;border-left:3px solid #ff5252">
-            <span><strong>$151.20</strong> Ask</span>
-            <span style="color:#ff5252;font-weight:700">400 ← Fill #5</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(255,82,82,.25);margin-bottom:0.25rem;border-radius:4px;border-left:3px solid #ff5252">
-            <span><strong>$150.85</strong> Ask</span>
-            <span style="color:#ff5252;font-weight:700">1,100 ← Fill #4</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(255,82,82,.25);margin-bottom:0.25rem;border-radius:4px;border-left:3px solid #ff5252">
-            <span><strong>$150.50</strong> Ask</span>
-            <span style="color:#ff5252;font-weight:700">2,200 ← Fill #3</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(255,82,82,.25);margin-bottom:0.25rem;border-radius:4px;border-left:3px solid #ff5252">
-            <span><strong>$150.25</strong> Ask</span>
-            <span style="color:#ff5252;font-weight:700">3,100 ← Fill #2</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(255,82,82,.3);margin-bottom:0.5rem;border-radius:4px;border:2px solid #ff5252">
-            <span><strong>$150.10</strong> Ask</span>
-            <span style="color:#ff5252;font-weight:700">3,200 ← Fill #1</span>
-          </div>
-          <div style="text-align:center;padding:0.5rem;color:rgba(255,255,255,.5);font-size:0.75rem">
-            Last was: $150.00 (stale)
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(34,197,94,.1);margin-top:0.5rem;border-radius:4px;opacity:0.4">
-            <span><strong>$149.99</strong> Bid</span>
-            <span>3,500</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(34,197,94,.1);border-radius:4px;opacity:0.4">
-            <span><strong>$149.98</strong> Bid</span>
-            <span>2,800</span>
-          </div>
-        </div>
-
-        <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,82,82,.2);border-radius:8px;border-left:4px solid #ff5252">
-          <div style="font-weight:700;margin-bottom:0.5rem">Actual Fill Breakdown:</div>
-          <div style="font-size:0.85rem;line-height:1.6">
-            3,200 × $150.10 = $480,320<br/>
-            3,100 × $150.25 = $465,775<br/>
-            2,200 × $150.50 = $331,100<br/>
-            1,100 × $150.85 = $165,935<br/>
-            400 × $151.20 = $60,480<br/>
-            <div style="border-top:1px solid rgba(255,255,255,.2);margin:0.5rem 0;padding-top:0.5rem">
-              <strong>Total: $1,503,610</strong><br/>
-              <span style="color:#ff5252;font-weight:700">Actual avg: $150.36</span>
-            </div>
-          </div>
+        <div style="padding:1rem;background:rgba(255,82,82,.2);border-radius:8px;border-left:4px solid #ff5252">
+          <div style="font-weight:700;margin-bottom:0.5rem">Fill Result:</div>
+          <div style="font-size:0.95rem">Market order swept through 5 price levels ($150.10 → $151.20)<br/>
+          Expected avg: $150.00 | <span style="color:#ff5252;font-weight:700">Actual avg: $150.36</span><br/>
+          Slippage: $3,610 on single order (0.24%)</div>
         </div>
       </div>
     </div>
@@ -599,171 +450,21 @@
     <p style="margin:0">Retail uses order types naively (market for speed, limit for price, stops at obvious levels). Institutions exploit this predictability systematically. <strong>The solution isn't avoiding these order types—it's using them strategically with iceberg hiding, discretionary ranges, and institutional timing.</strong> The rest of this lesson shows exactly how.</p>
   </div>
 
-  <h3 style="margin:3rem 0 1.5rem 0">The $74,400 Performance Gap: Two Traders, Same Strategy, Different Order Types</h3>
+  <h3 style="margin:3rem 0 1.5rem 0">The $73,860 Performance Gap: Marcus vs Aisha (Same Strategy, Different Order Types)</h3>
 
-  <p>This is a real 6-month comparison (January-June 2024) between two swing traders using identical entry/exit strategies. The only difference: order type selection and execution discipline. Both started with $200K accounts, same risk per trade (2%), same technical setups. Here's what happened:</p>
+  <p>Real 6-month comparison (Jan-June 2024): Two swing traders, identical strategies, both $200K accounts, 62.5% win rate, 48 trades each. <strong>Only difference: order type selection.</strong></p>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 340px),1fr));gap:2rem;margin:2rem 0">
-    <!-- Trader A: Retail Approach -->
-    <div style="background:rgba(255,82,82,.08);border:2px solid #ff5252;border-radius:12px;padding:1.5rem">
-      <div style="text-align:center;font-weight:700;font-size:1.2rem;margin-bottom:1rem;color:#ff5252">❌ Trader A: "Retail Marcus"</div>
-
-      <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;margin-bottom:1.5rem">
-        <div style="font-weight:700;margin-bottom:0.75rem">Profile:</div>
-        <div style="font-size:0.85rem;line-height:1.6">
-          • 32 years old, 4 years trading experience<br/>
-          • $200K starting capital<br/>
-          • Swing trader (3-10 day holds)<br/>
-          • Risk: 2% per trade ($4,000)<br/>
-          • Avg position size: $40K-60K
-        </div>
+  <div style="background:rgba(139,92,246,.12);border-radius:12px;padding:1.5rem;margin:2rem 0">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 200px),1fr));gap:1.5rem;margin-bottom:1.5rem">
+      <div>
+        <div style="font-weight:700;margin-bottom:0.5rem;color:#ff5252">❌ Marcus (Retail)</div>
+        <div style="font-size:0.85rem">Market orders, visible size, stop-markets</div>
       </div>
-
-      <div style="background:rgba(255,82,82,.15);border-radius:8px;padding:1rem;margin-bottom:1.5rem">
-        <div style="font-weight:700;margin-bottom:0.75rem;color:#ff5252">Order Type Habits (Retail):</div>
-        <div style="font-size:0.85rem;line-height:1.6">
-          ✗ <strong>Entries:</strong> Market orders ("get in fast")<br/>
-          ✗ <strong>Position size:</strong> Full 10,000 shares visible on book<br/>
-          ✗ <strong>Stops:</strong> Stop-market at obvious levels ($100.00, $105.00)<br/>
-          ✗ <strong>Exits:</strong> Market orders on profit targets
-        </div>
-      </div>
-
-      <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem">
-        <div style="font-weight:700;margin-bottom:0.75rem">6-Month Results:</div>
-        <table style="width:100%;font-size:0.85rem">
-          <tbody>
-            <tr>
-              <td style="padding:0.35rem 0">Total trades:</td>
-              <td style="text-align:right;font-weight:700">48</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Winning trades:</td>
-              <td style="text-align:right">30 (62.5%)</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Average win:</td>
-              <td style="text-align:right">+$5,280</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Average loss:</td>
-              <td style="text-align:right">-$4,850</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0;color:#ff5252">Avg slippage/trade:</td>
-              <td style="text-align:right;color:#ff5252;font-weight:700">-$1,120</td>
-            </tr>
-            <tr style="border-top:1px solid rgba(255,255,255,.2)">
-              <td style="padding:0.5rem 0 0 0;font-weight:700">Gross P/L:</td>
-              <td style="text-align:right;font-weight:700">+$71,040</td>
-            </tr>
-            <tr style="background:rgba(255,82,82,.2)">
-              <td style="padding:0.35rem 0;color:#ff5252">Total slippage:</td>
-              <td style="text-align:right;color:#ff5252;font-weight:700">-$53,760</td>
-            </tr>
-            <tr style="border-top:2px solid #ff5252">
-              <td style="padding:0.5rem 0 0 0;font-weight:700;font-size:1rem">Net P/L:</td>
-              <td style="text-align:right;font-weight:700;font-size:1rem;color:#ff5252">+$17,280</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Account value:</td>
-              <td style="text-align:right">$217,280</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Return:</td>
-              <td style="text-align:right">+8.6%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,82,82,.2);border-radius:8px;border-left:4px solid #ff5252">
-        <div style="font-weight:700;margin-bottom:0.5rem">The Problem:</div>
-        <div style="font-size:0.85rem">Marcus's strategy works (62.5% win rate), but <strong>slippage ate 75.7% of his profits</strong> ($53,760 out of $71,040 gross). His market orders cost him $1,120 per trade on average. Stop hunts cost him an extra $680/trade. Front-running on large visible orders: $440/trade.</div>
+      <div>
+        <div style="font-weight:700;margin-bottom:0.5rem;color:#22c55e">✅ Aisha (Institutional)</div>
+        <div style="font-size:0.85rem">Limit orders, icebergs, stop-limits</div>
       </div>
     </div>
-
-    <!-- Trader B: Institutional Approach -->
-    <div style="background:rgba(34,197,94,.08);border:2px solid #22c55e;border-radius:12px;padding:1.5rem">
-      <div style="text-align:center;font-weight:700;font-size:1.2rem;margin-bottom:1rem;color:#22c55e">✅ Trader B: "Institutional Aisha"</div>
-
-      <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;margin-bottom:1.5rem">
-        <div style="font-weight:700;margin-bottom:0.75rem">Profile:</div>
-        <div style="font-size:0.85rem;line-height:1.6">
-          • 34 years old, 5 years trading experience<br/>
-          • $200K starting capital<br/>
-          • Swing trader (3-10 day holds)<br/>
-          • Risk: 2% per trade ($4,000)<br/>
-          • Avg position size: $40K-60K
-        </div>
-      </div>
-
-      <div style="background:rgba(34,197,94,.15);border-radius:8px;padding:1rem;margin-bottom:1.5rem">
-        <div style="font-weight:700;margin-bottom:0.75rem;color:#22c55e">Order Type Discipline (Institutional):</div>
-        <div style="font-size:0.85rem;line-height:1.6">
-          ✓ <strong>Entries:</strong> Limit orders with 0.1-0.2% discretion<br/>
-          ✓ <strong>Position size:</strong> Iceberg orders (500 visible, rest hidden)<br/>
-          ✓ <strong>Stops:</strong> Stop-limit (0.5% range, no flash crash fills)<br/>
-          ✓ <strong>Exits:</strong> Limit orders at targets, IOC test first
-        </div>
-      </div>
-
-      <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem">
-        <div style="font-weight:700;margin-bottom:0.75rem">6-Month Results:</div>
-        <table style="width:100%;font-size:0.85rem">
-          <tbody>
-            <tr>
-              <td style="padding:0.35rem 0">Total trades:</td>
-              <td style="text-align:right;font-weight:700">48</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Winning trades:</td>
-              <td style="text-align:right">30 (62.5%)</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Average win:</td>
-              <td style="text-align:right">+$5,680</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Average loss:</td>
-              <td style="text-align:right">-$4,180</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0;color:#22c55e">Avg slippage/trade:</td>
-              <td style="text-align:right;color:#22c55e;font-weight:700">-$85</td>
-            </tr>
-            <tr style="border-top:1px solid rgba(255,255,255,.2)">
-              <td style="padding:0.5rem 0 0 0;font-weight:700">Gross P/L:</td>
-              <td style="text-align:right;font-weight:700">+$95,220</td>
-            </tr>
-            <tr style="background:rgba(34,197,94,.2)">
-              <td style="padding:0.35rem 0;color:#22c55e">Total slippage:</td>
-              <td style="text-align:right;color:#22c55e;font-weight:700">-$4,080</td>
-            </tr>
-            <tr style="border-top:2px solid #22c55e">
-              <td style="padding:0.5rem 0 0 0;font-weight:700;font-size:1rem">Net P/L:</td>
-              <td style="text-align:right;font-weight:700;font-size:1rem;color:#22c55e">+$91,140</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Account value:</td>
-              <td style="text-align:right">$291,140</td>
-            </tr>
-            <tr>
-              <td style="padding:0.35rem 0">Return:</td>
-              <td style="text-align:right;color:#22c55e;font-weight:700">+45.6%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div style="margin-top:1.5rem;padding:1rem;background:rgba(34,197,94,.2);border-radius:8px;border-left:4px solid #22c55e">
-        <div style="font-weight:700;margin-bottom:0.5rem">The Advantage:</div>
-        <div style="font-size:0.85rem">Aisha trades the EXACT same setups as Marcus, but keeps 95.7% of gross profits instead of 24.3%. Her limit orders capture better fills (+$400/trade avg). Iceberg orders prevent front-running (saves $440/trade). Stop-limits avoid flash crash disasters (saves $280/trade). <strong>Total edge: $1,120/trade from order types alone.</strong></div>
-      </div>
-    </div>
-  </div>
-
-  <h4 style="margin:2rem 0 1rem 0">The $74,400 Breakdown: Where Aisha Beat Marcus</h4>
 
   <div style="background:rgba(139,92,246,.12);border-radius:12px;padding:2rem;margin:2rem 0">
     <table style="width:100%;margin:1rem 0">
@@ -826,48 +527,6 @@
       <p style="margin:0;font-size:0.95rem"><strong>Marcus and Aisha had identical win rates (62.5%), identical risk management (2% per trade), and traded the exact same technical setups.</strong> The ONLY difference was order type selection and execution discipline. Marcus used market orders, visible size, and stop-markets like 90% of retail traders. Aisha used limit orders, icebergs, and stop-limits like institutions.</p>
 
       <p style="margin:1rem 0 0 0;font-size:0.95rem">Result: <span style="color:#22c55e;font-weight:700">Aisha made $73,860 more in 6 months</span> (427% higher return). Over 12 months, this compounds to $147K+ extra profit. Over 5 years: $735K+ difference. <strong>Same strategy, different execution = $735K+ lifetime edge.</strong></p>
-    </div>
-  </div>
-
-  <h4 style="margin:2rem 0 1rem 0">What Each Trader Did Differently (Trade-by-Trade)</h4>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 300px),1fr));gap:1.5rem;margin:2rem 0">
-    <div style="background:rgba(255,82,82,.08);border:2px solid #ff5252;border-radius:8px;padding:1.5rem">
-      <div style="font-weight:700;margin-bottom:1rem;color:#ff5252">Marcus's Typical Trade:</div>
-
-      <div style="background:rgba(0,0,0,.2);border-radius:6px;padding:1rem;margin-bottom:1rem;font-size:0.85rem">
-        <strong>Entry:</strong> Sees AAPL at $180.00, submits market buy 10,000 shares. Fills at avg $180.42 (swept through thin book). Slippage: -$4,200.<br/><br/>
-
-        <strong>Visibility:</strong> Full 10,000 shares visible on book. HFT detects large size, front-runs remaining fills. Extra cost: -$1,800.<br/><br/>
-
-        <strong>Stop loss:</strong> Stop-market at $176.00 (2% risk). Flash crash to $174.80, filled at $175.20 instead of $176. Extra loss: -$8,000.<br/><br/>
-
-        <strong>Exit (if win):</strong> Market sell at target. Expected $186, actual avg $185.35. Missed profit: -$6,500.
-      </div>
-
-      <div style="padding:1rem;background:rgba(255,82,82,.15);border-radius:6px">
-        <strong>Total trade cost from poor execution:</strong><br/>
-        Entry + Front-run + Stop + Exit = <span style="color:#ff5252;font-weight:700">-$20,500 slippage</span>
-      </div>
-    </div>
-
-    <div style="background:rgba(34,197,94,.08);border:2px solid #22c55e;border-radius:8px;padding:1.5rem">
-      <div style="font-weight:700;margin-bottom:1rem;color:#22c55e">Aisha's Typical Trade:</div>
-
-      <div style="background:rgba(0,0,0,.2);border-radius:6px;padding:1rem;margin-bottom:1rem;font-size:0.85rem">
-        <strong>Entry:</strong> Sees AAPL at $180.00, submits limit buy 10,000 at $180.05 with $0.10 discretion. Fills at avg $180.08 (better price control). Slippage: -$800.<br/><br/>
-
-        <strong>Visibility:</strong> Iceberg order (500 visible, 9,500 hidden). HFT sees normal 500-share order, ignores. No front-running. Cost: $0.<br/><br/>
-
-        <strong>Stop loss:</strong> Stop-limit at $176.00 trigger / $175.70 limit. Flash crash to $174.80, stop doesn't fill (price below limit). Position recovers, exits manually at $178.50. Saved disaster.<br/><br/>
-
-        <strong>Exit (if win):</strong> Tests with IOC 500 shares at $186, confirms liquidity. Then limit sell 9,500 at $185.95. Actual avg $185.97. Missed profit: -$300.
-      </div>
-
-      <div style="padding:1rem;background:rgba(34,197,94,.15);border-radius:6px">
-        <strong>Total trade cost from disciplined execution:</strong><br/>
-        Entry + No front-run + Protected stop + Smart exit = <span style="color:#22c55e;font-weight:700">-$1,100 slippage</span>
-      </div>
     </div>
   </div>
 
@@ -1144,127 +803,21 @@
   <div class="example-block" style="background:rgba(255,82,82,.08);border-left:4px solid #ff5252">
     <h4>Real Trader Disaster: Derek's $43,200 Front-Running Loss</h4>
 
-    <p><strong>Derek Walsh's pattern (March-July 2023, 5 months):</strong> Professional day trader with $280K account, consistently profitable using limit orders. Made one critical mistake: showed his full order size on the book.</p>
+    <p><strong>Derek Walsh (March-July 2023):</strong> Professional day trader, $280K account, consistently profitable using limit orders. One fatal mistake: showed his full 150,000-share order size on the book.</p>
 
-    <p><strong>The disaster (typical trade):</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li><strong>Derek's order:</strong> Buy 150,000 shares AAPL at $180.00 (visible on book)</li>
-      <li><strong>HFT detection:</strong> Algo sees large 150K bid at $180.00, recognizes accumulation attempt</li>
-      <li><strong>The front-run:</strong> HFT buys 50,000 shares at $180.05-$180.15 ahead of Derek</li>
-      <li><strong>Price manipulation:</strong> HFT pushes price to $181.20 with strategic 5,000-share market buys</li>
-      <li><strong>Derek's response:</strong> Cancels limit order, uses market order at $181.20 (desperation)</li>
-      <li><strong>HFT exit:</strong> Sells 50,000 shares at $181.15-$181.25 to Derek's market order</li>
-    </ul>
+    <p><strong>What happened:</strong> HFT algos detected his large visible orders → front-ran 32 of 40 trades (80%) → pushed prices against him by $1.08/share average → forced him into market orders at worse prices.</p>
 
-    <p style="margin-top:1rem"><strong>The numbers:</strong></p>
-    <ul style="margin:.5rem 0 0 1.5rem">
-      <li>Derek's intended entry: $180.00</li>
-      <li>Derek's actual average: $181.08</li>
-      <li><strong>Slippage per share:</strong> $1.08</li>
-      <li><strong>Position size:</strong> 150,000 shares</li>
-      <li><strong>Cost per trade:</strong> $1.08 × 150,000 = $162,000 extra cost</li>
-      <li><strong>Frequency:</strong> 40 large trades over 5 months</li>
-      <li><strong>Pattern:</strong> Front-run on 32 of 40 trades (80%)</li>
-    </ul>
-
-    <div style="margin-top:1.5rem;padding:1.5rem;background:rgba(255,82,82,0.15);border-radius:12px;border-left:4px solid #ff5252">
-      <div style="font-weight:700;font-size:1.1rem">5-MONTH DAMAGE: -$43,200 in front-running slippage alone</div>
-      <div style="font-weight:700;margin-top:0.5rem">Average slippage: $1,350 per trade (0.8-1.2% extra cost)</div>
-      <div style="font-style:italic;color:var(--muted);margin-top:0.5rem">Derek: "I was profitable on direction. Lost it all to HFTs seeing my size and trading ahead of me."</div>
+    <div style="margin:1rem 0;padding:1rem;background:rgba(255,82,82,0.15);border-radius:8px;border-left:4px solid #ff5252">
+      <strong>5-MONTH DAMAGE:</strong> <span style="color:#ff5252;font-weight:700">-$43,200</span> in front-running slippage (avg $1,350/trade)
     </div>
 
-    <h5>The Fix: Iceberg Orders</h5>
+    <p><strong>The Fix:</strong> Iceberg orders (display 500 shares, hide 149,500). Show only 1-2% of total size. HFT algos see normal 500-share order, ignore. As 500 fills, another 500 automatically appears.</p>
 
-    <p><strong>What Derek should have used:</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li><strong>Total order:</strong> 150,000 shares at $180.00</li>
-      <li><strong>Display size:</strong> 500 shares (1-2% of total, as recommended)</li>
-      <li><strong>Hidden size:</strong> 149,500 shares (invisible to HFT algos)</li>
-      <li><strong>Behavior:</strong> Order book shows only 500 shares at $180.00. As 500 fills, another 500 automatically appears.</li>
-    </ul>
+    <p><strong>Results after switching to icebergs:</strong> Front-running dropped from 80% to 5% of trades. Slippage: $1.08/share → $0.08/share. <span style="color:#22c55e;font-weight:700">Saved $38,400 in 5 months.</span></p>
 
-    <p><strong>Results using iceberg (August 2023 onward):</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li>Front-running incidents: 2 out of 38 trades (5% vs 80% before)</li>
-      <li>Average slippage: $0.08/share (vs $1.08/share before)</li>
-      <li>Cost per trade: $12,000 (vs $162,000 before)</li>
-      <li><strong>5-month savings:</strong> $38,400 avoided slippage</li>
-    </ul>
-
-    <p style="margin-top:1rem"><strong>Derek's takeaway:</strong> "Changed one setting on Interactive Brokers ('Iceberg' checkbox, display size 500). Saved $40K in 5 months. The algos can't front-run what they can't see."</p>
+    <p style="font-style:italic">"Changed one checkbox on Interactive Brokers. Saved $40K in 5 months. Algos can't front-run what they can't see." —Derek</p>
   </div>
 
-  <h4 style="margin:2rem 0 1rem 0">📊 Visual: How Iceberg Orders Hide Size</h4>
-
-  <div style="background:rgba(0,0,0,.3);border-radius:12px;padding:2rem;margin:2rem 0">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:2rem">
-      <!-- Visible Order (Derek's Mistake) -->
-      <div style="background:rgba(255,82,82,.08);border:2px solid #ff5252;border-radius:12px;padding:1.5rem">
-        <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#ff5252">❌ Visible Order (Derek's Mistake)</div>
-
-        <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.85rem">
-          <div style="padding:0.5rem;background:rgba(255,82,82,.2);margin-bottom:0.25rem;border-radius:4px">
-            <strong>$180.05</strong> <span style="float:right">200 × 2</span>
-          </div>
-          <div style="padding:0.5rem;background:rgba(255,82,82,.3);margin-bottom:0.25rem;border-radius:4px;border:2px solid #ff5252">
-            <strong>$180.00</strong> <span style="float:right;color:#ff5252;font-weight:700">150,000</span>
-          </div>
-          <div style="padding:0.5rem;background:rgba(255,82,82,.2);margin-bottom:0.25rem;border-radius:4px">
-            <strong>$179.95</strong> <span style="float:right">1,500</span>
-          </div>
-          <div style="padding:0.5rem;background:rgba(255,82,82,.15);border-radius:4px">
-            <strong>$179.90</strong> <span style="float:right">800</span>
-          </div>
-        </div>
-
-        <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,82,82,.15);border-radius:8px">
-          <div style="font-weight:700;margin-bottom:0.75rem">What HFT Sees:</div>
-          <ul style="font-size:0.85rem;margin:0;padding-left:1.25rem;line-height:1.6">
-            <li>Massive 150K bid at $180.00</li>
-            <li>"Whale trying to accumulate"</li>
-            <li>Front-run opportunity detected</li>
-            <li style="color:#ff5252;font-weight:700">→ Buy ahead at $180.05-$180.20</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Hidden Order (The Fix) -->
-      <div style="background:rgba(34,197,94,.08);border:2px solid #22c55e;border-radius:12px;padding:1.5rem">
-        <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#22c55e">✅ Iceberg Order (The Fix)</div>
-
-        <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.85rem">
-          <div style="padding:0.5rem;background:rgba(34,197,94,.15);margin-bottom:0.25rem;border-radius:4px">
-            <strong>$180.05</strong> <span style="float:right">200 × 2</span>
-          </div>
-          <div style="padding:0.5rem;background:rgba(34,197,94,.2);margin-bottom:0.25rem;border-radius:4px;border:2px solid #22c55e">
-            <strong>$180.00</strong> <span style="float:right;color:#22c55e;font-weight:700">500</span>
-            <div style="font-size:0.75rem;margin-top:0.25rem;color:rgba(255,255,255,.5)">Hidden: 149,500</div>
-          </div>
-          <div style="padding:0.5rem;background:rgba(34,197,94,.15);margin-bottom:0.25rem;border-radius:4px">
-            <strong>$179.95</strong> <span style="float:right">1,500</span>
-          </div>
-          <div style="padding:0.5rem;background:rgba(34,197,94,.1);border-radius:4px">
-            <strong>$179.90</strong> <span style="float:right">800</span>
-          </div>
-        </div>
-
-        <div style="margin-top:1.5rem;padding:1rem;background:rgba(34,197,94,.15);border-radius:8px">
-          <div style="font-weight:700;margin-bottom:0.75rem">What HFT Sees:</div>
-          <ul style="font-size:0.85rem;margin:0;padding-left:1.25rem;line-height:1.6">
-            <li>Normal 500-share bid at $180.00</li>
-            <li>"Typical retail order"</li>
-            <li>No front-run opportunity</li>
-            <li style="color:#22c55e;font-weight:700">→ Ignores, moves on</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:2rem;padding:1.5rem;background:rgba(139,92,246,.15);border-radius:8px;border-left:4px solid #8b5cf6">
-      <div style="font-weight:700;margin-bottom:0.5rem">🎯 The Key Difference:</div>
-      <p style="margin:0;font-size:0.95rem">HFT algos scan for large orders (>10,000 shares) to front-run. Showing 500 shares instead of 150,000 makes you invisible to their detection. The hidden 149,500 fills automatically as the visible 500 refreshes. Same total fill, zero front-running risk. <strong>This one checkbox saved Derek $40K in 5 months.</strong></p>
-    </div>
-  </div>
 
   <p><strong>Detection of other traders' icebergs:</strong></p>
   <ul>
@@ -1578,35 +1131,10 @@
     <p style="margin-top:1rem"><strong>Bottom line:</strong> Institutions can't hide size perfectly. Iceberg orders create detectable patterns. <span style="color:#22c55e;font-weight:700">Learn to spot the pattern, position ahead of big money, ride their flow, exit when they're done. Sarah made $67K in 9 months doing exactly this.</span></p>
   </div>
 
-<h3>Pegged Orders (Automatic Price Adjustment)</h3>
-
-  <details class="accordion">
-    <summary>Primary Peg (Peg to NBBO)</summary>
-    <div class="accordion-content">
-      <p><strong>How it works:</strong> Order automatically adjusts to stay at best bid/ask</p>
-<div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-  <p>You're now at the halfway point. You've learned the key strategies.</p>
-  <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break if needed, then we'll dive into the advanced concepts ahead.</p>
-</div>
-      <p><strong>Example:</strong> Peg buy order. If best bid = $100.00, order sits at $100.00. If best bid moves to $100.05, order automatically updates to $100.05</p>
-      <p><strong>Use case:</strong> Be first in line without manually updating order (market-making, HFT)</p>
-    </div>
-  </details>
-
-  <details class="accordion">
-    <summary>Midpoint Peg</summary>
-    <div class="accordion-content">
-      <p><strong>How it works:</strong> Order sits at midpoint of bid-ask spread</p>
-      <p><strong>Example:</strong> Bid $100.00, ask $100.10 → midpoint peg executes at $100.05</p>
-      <p><strong>Use case:</strong> Dark pools (institutions trade at midpoint to split spread savings)</p>
-      <p><strong>Benefit:</strong> Better price than hitting ask ($100.10) or lifting bid ($100.00)</p>
-    </div>
-  </details>
-
-  <h3>Discretionary Orders (Price Improvement Authority)</h3>
-  <p><strong>Structure:</strong> Limit order with discretion range</p>
-  <p><strong>Example:</strong> Buy limit $100, discretion $0.10 → can execute up to $100.10 if needed</p>
-  <p><strong>Use case:</strong> Prevent missing fill by penny (willing to pay slightly more for certainty)</p>
+<h3>Pegged Orders & Discretionary Orders</h3>
+  <p><strong>Primary Peg:</strong> Order automatically adjusts to stay at best bid/ask. Example: Best bid moves $100 → $100.05, your peg order updates automatically. Use: Market-making, HFT.</p>
+  <p><strong>Midpoint Peg:</strong> Order sits at midpoint of spread. Bid $100, ask $100.10 → executes at $100.05. Use: Dark pools.</p>
+  <p><strong>Discretionary Orders:</strong> Limit with price range. Buy limit $100 with $0.10 discretion = can fill up to $100.10 if needed.</p>
 
   <h2 id="part-5-algorithmic-order-types">Part 5: Algorithmic Order Types</h2>
 
@@ -1622,119 +1150,6 @@
 
 
 
-  <div class="example-block">
-    <h4>Real-World Example: VWAP Algo Execution for Large Cap Stock</h4>
-    <p><strong>Scenario:</strong> Pension fund needs to buy 800,000 shares of JPM (avg daily volume 12M shares, current price $150.00)</p>
-
-    <p><strong>Order Parameters:</strong></p>
-    <ul>
-      <li><strong>Total size:</strong> 800,000 shares</li>
-      <li><strong>Algo type:</strong> VWAP (9:30 AM - 4:00 PM)</li>
-      <li><strong>Participation rate:</strong> Max 10% of volume (avoid market impact)</li>
-      <li><strong>Benchmark:</strong> Daily VWAP</li>
-    </ul>
-
-    <p><strong>VWAP Schedule (Actual Execution):</strong></p>
-    <table style="width:100%">
-      <thead>
-        <tr>
-          <th>Time Period</th>
-          <th>Market Volume</th>
-          <th>% of Day</th>
-          <th>Algo Target</th>
-          <th>Actual Filled</th>
-          <th>Avg Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>9:30-10:00</td>
-          <td>2.4M shares</td>
-          <td>20%</td>
-          <td>160K shares</td>
-          <td>158K shares</td>
-          <td>$150.15</td>
-        </tr>
-        <tr>
-          <td>10:00-11:00</td>
-          <td>1.8M shares</td>
-          <td>15%</td>
-          <td>120K shares</td>
-          <td>121K shares</td>
-          <td>$150.25</td>
-        </tr>
-        <tr>
-          <td>11:00-2:00</td>
-          <td>3.0M shares</td>
-          <td>25%</td>
-          <td>200K shares</td>
-          <td>202K shares</td>
-          <td>$150.10</td>
-        </tr>
-        <tr>
-          <td>2:00-3:00</td>
-          <td>1.2M shares</td>
-          <td>10%</td>
-          <td>80K shares</td>
-          <td>79K shares</td>
-          <td>$150.05</td>
-        </tr>
-        <tr>
-          <td>3:00-4:00</td>
-          <td>3.6M shares</td>
-          <td>30%</td>
-          <td>240K shares</td>
-          <td>240K shares</td>
-          <td>$150.20</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p><strong>Performance Metrics:</strong></p><table style="width:100%">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Total Filled</td>
-          <td>800,000 shares (100%)</td>
-        </tr>
-        <tr>
-          <td>Algo Average Price</td>
-          <td>$150.14</td>
-        </tr>
-        <tr>
-          <td>Daily VWAP</td>
-          <td>$150.18</td>
-        </tr>
-        <tr>
-          <td>Performance vs VWAP</td>
-          <td><strong>-$0.04 (beat by 4 cents)</strong></td>
-        </tr>
-        <tr>
-          <td>Total Savings</td>
-          <td>$32,000 vs VWAP benchmark</td>
-        </tr>
-        <tr>
-          <td>Participation Rate</td>
-          <td>6.7% (under 10% limit)</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p><strong>Why VWAP Beat Benchmark:</strong></p>
-    <ul>
-      <li>Algo weighted execution toward lower-price periods (11 AM-2 PM at $150.10, 2-3 PM at $150.05)</li>
-      <li>Avoided aggressive market orders during high-volatility opening (would have paid $150.30+)</li>
-      <li>10% participation limit prevented moving market (stayed stealthy)</li>
-      <li>Adaptive pacing: when volume spiked 3-4 PM, algo increased execution rate</li>
-    </ul>
-
-    <p><strong>Key Insight:</strong> VWAP doesn't just split order evenly—it dynamically adjusts based on real-time volume. If 30% of volume occurs in first hour but price is unfavorable, algo can "slow down" and wait for better conditions while still hitting overall VWAP target.</p>
-  </div>
 <h3>POV (Percentage of Volume)</h3>
   <p><strong>Execution:</strong> Trade as fixed % of market volume (e.g., 10% participation rate)</p>
   <p><strong>Example:</strong> If market trades 1,000 shares/minute, POV 10% algo trades 100 shares/minute</p>
@@ -1849,36 +1264,6 @@
     </details>
   </div>
 
-  <div class="practice-section">
-    <h3>Exercise 2: Design Your Order Strategy</h3>
-    <p><strong>Goal:</strong> Given a trading scenario, select optimal order type and parameters.</p>
-
-    <p><strong>Scenario:</strong> You manage a $2B equity fund. You need to buy 500,000 shares of mid-cap stock XYZ (avg daily volume 2M shares, current price $65.00). Your goal is to minimize market impact and beat VWAP.</p>
-
-    <p><strong>Questions:</strong></p><ol>
-      <li>Which order type should you use? (Market / Limit / VWAP algo / TWAP algo / Iceberg)</li>
-      <li>What time period should you execute over? (30 min / 2 hours / Full day)</li>
-      <li>What participation rate limit? (5% / 10% / 20% / No limit)</li>
-      <li>Should you probe liquidity first with IOC orders?</li>
-    </ol>
-
-    <details>
-      <summary>Show Answer</summary>
-      <p><strong>Optimal Strategy:</strong></p>
-      <ol>
-        <li><strong>Order type:</strong> <strong>VWAP algo</strong> (trades proportional to volume, minimizes impact)</li>
-        <li><strong>Time period:</strong> <strong>Full day 9:30 AM - 4:00 PM</strong> (spreading over 6.5 hours reduces footprint from 25% of daily volume to manageable 4% per hour)</li>
-        <li><strong>Participation rate:</strong> <strong>10% maximum</strong> (500K shares = 25% of 2M daily volume, so need to limit to avoid dominating tape)</li>
-        <li><strong>IOC probe:</strong> <strong>Yes, send 5K share IOC test at 9:32 AM</strong> to gauge liquidity before deploying full algo</li>
-      </ol>
-      <p><strong>Why not alternatives?</strong></p>
-      <ul>
-        <li><strong>Market order:</strong> Would cause 3-8% slippage (buying 25% of daily volume instantly)</li>
-        <li><strong>TWAP:</strong> Ignores volume patterns (trades same amount during lunch lull vs opening surge)</li>
-        <li><strong>Iceberg alone:</strong> Too slow, would need 2-3 days to fill 500K shares passively</li>
-      </ul>
-    </details>
-  </div>
 <h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>When Placing Orders:</h4>
