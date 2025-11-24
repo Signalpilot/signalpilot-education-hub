@@ -464,167 +464,31 @@
 
       <pre style="overflow-x:auto"><code>AUGUST 8, 2024 - 2:15 PM: LISA'S MEV SANDWICH ATTACK
 
-2:15:03 PM: Lisa Submits Transaction
-─────────────────────────────────────────
-Transaction Details:
-- Action: Swap 500,000 USDC for PEPE
-- Slippage tolerance: 5%
+Lisa's Transaction:
+- Swap 500,000 USDC for PEPE on Uniswap V3
+- Pool liquidity: $8M (her order = 6.25% of pool)
+- Slippage tolerance: 5% (allows $25K manipulation)
+- Expected: 262.6M PEPE @ $0.001904 per token
 - Gas: 50 gwei (normal priority)
-- Transaction ID: 0x7a8b9c...
 
-PEPE Pool State (Before):
-- PEPE in pool: 4.2 billion tokens
-- USDC in pool: $8.0 million
-- Price: 1 PEPE = $0.001904 USDC
-- Lisa expects to receive: 500,000 / 0.001904 = 262.6M PEPE
+MEV Bot Attack (jaredfromsubway.eth):
+1. FRONT-RUN (0.2s before Lisa): Buys $750K PEPE with 250 gwei gas
+   - Price pumps: $0.001904 → $0.002333 (+22.5%)
 
-2:15:03.1 PM: MEV Bot Detects Transaction
-─────────────────────────────────────────
-MEV Bot "jaredfromsubway.eth" (yes, real bot name):
-- Scans mempool every 12ms
-- Sees Lisa's $500K buy
-- Calculates potential profit from sandwich
-- Decision: SANDWICH ATTACK
+2. LISA EXECUTES (at inflated price):
+   - Receives only 203M PEPE @ $0.002463 (59.6M fewer tokens)
 
-Bot Strategy:
-1. Front-run: Buy PEPE BEFORE Lisa (pump price)
-2. Let Lisa's tx execute (at inflated price)
-3. Back-run: Sell PEPE AFTER Lisa (dump on her)
-4. Profit: Price difference
+3. BACK-RUN (0.1s after Lisa): Bot sells $750K PEPE
+   - Price dumps back to $0.001904
+   - Bot profit: $47,200 (0.4 seconds of work)
 
-2:15:03.2 PM: Front-Run Transaction Submitted
-─────────────────────────────────────────
-Bot Transaction #1 (Front-Run):
-- Action: Buy $750K USDC worth of PEPE
-- Gas: 250 gwei (5× higher than Lisa!)
-- Position in block: FIRST (pays more, executes first)
-
-Block Builder sees:
-- Bot's tx: 250 gwei gas
-- Lisa's tx: 50 gwei gas
-- Block builder orders: Bot first, Lisa second
-
-2:15:03.5 PM: FRONT-RUN EXECUTES
-─────────────────────────────────────────
-Bot buys $750K USDC of PEPE:
-
-Pool changes:
-- PEPE: 4.2B → 3.75B (bot removes 450M PEPE)
-- USDC: $8.0M → $8.75M (bot adds $750K)
-- New price: $8.75M / 3.75B = $0.002333 per PEPE
-
-Price impact: +22.5% (bot's buy pumped the price!)
-
-2:15:03.6 PM: LISA'S TRANSACTION EXECUTES
-─────────────────────────────────────────
-Lisa's $500K buy at NEW inflated price:
-
-Pool state (after bot's front-run):
-- PEPE: 3.75B tokens
-- USDC: $8.75M
-- Price: $0.002333 per PEPE
-
-Lisa's swap executes:
-- She pays: $500,000 USDC
-- Pool now: USDC $9.25M, PEPE 3.35B
-- She receives: 3.75B - 3.35B = 400M PEPE
-- Her avg price: $500K / 400M = $0.00125 per PEPE
-
-Wait... that math doesn't work. Let me recalculate with AMM formula:
-- k = 3.75B × $8.75M = 32.8125 trillion
-- After Lisa adds $500K: USDC = $9.25M
-- PEPE remaining: 32.8125T / $9.25M = 3.547B
-- Lisa receives: 3.75B - 3.547B = 203M PEPE
-- Her effective price: $500K / 203M = $0.002463 per PEPE
-
-Lisa's result:
-- Expected (no sandwich): 262.6M PEPE @ $0.001904
-- Actual (sandwiched): 203M PEPE @ $0.002463
-- Difference: 59.6M fewer PEPE (-22.7%!)
-
-2:15:03.7 PM: BACK-RUN TRANSACTION EXECUTES
-─────────────────────────────────────────
-Bot Transaction #2 (Back-Run):
-- Bot sells all 450M PEPE it bought
-- At current inflated price
-
-Pool state (after Lisa's buy):
-- PEPE: 3.547B
-- USDC: $9.25M
-
-Bot sells 450M PEPE:
-- k = 3.547B × $9.25M = 32.8 trillion
-- After selling 450M PEPE: PEPE = 3.997B
-- USDC remaining: 32.8T / 3.997B = $8.206M
-- Bot receives: $9.25M - $8.206M = $1.044M
-
-Bot's Profit Calculation:
-─────────────────────────────────────────
-Bot spent: $750,000 (front-run buy)
-Bot received: $1,044,000 (back-run sell)
-Gross profit: $294,000
-
-Minus gas fees:
-- Front-run tx: $45 (250 gwei)
-- Back-run tx: $45
-- Total gas: $90
-
-Net profit: $293,910
-
-BUT WAIT—that seems too high. Let me recalculate correctly...
-
-Actually, bot's profit = Lisa's slippage loss
-
-Lisa's Loss:
-─────────────────────────────────────────
-Fair market value (no manipulation):
-- 262.6M PEPE @ $0.001904 = $500,000 (what she paid)
-
-Actual value of what she received:
-- 203M PEPE @ market price $0.001904 = $386,372
-
-Lisa's loss: $500,000 - $386,372 = $113,628
-
-But pool price is now different...
-Current pool price after all txs: $0.002053 per PEPE
-Lisa's 203M PEPE current value: 203M × $0.002053 = $416,759
-
-Lisa's immediate loss: $500,000 - $416,759 = $83,241
-
-But it gets worse...
-
-2:15:05 PM: Price Reverts (2 seconds later)
-─────────────────────────────────────────
-After bot's back-run sell, natural arbitrageurs step in
-Price returns to pre-sandwich level: $0.001904
-
-Lisa's PEPE value now:
-- 203M PEPE × $0.001904 = $386,512
-
-LISA'S TOTAL LOSS:
-─────────────────────────────────────────
+LISA'S DAMAGE:
 Amount paid: $500,000
-Value received: $386,512
+Value received: 203M PEPE × $0.001904 = $386,512
 Loss from sandwich: $113,488
-
-Expected with fair execution: $500K → 262.6M PEPE → $500K value
-Actual: $500K → 203M PEPE → $386.5K value
-
 Effective slippage: 22.7% (vs 2% expected!)
 
-MEV BOT'S PROFIT:
-─────────────────────────────────────────
-The bot made ~$47,200 profit
-(Lisa's $113K loss shared between bot and LP fees)
-
-Bot's transaction details on Etherscan:
-- Transaction bundle: 3 txs (front-run, victim, back-run)
-- Total value extracted: $47,200
-- Gas paid: $90
-- Net profit: $47,110
-- Time to execute: 0.4 seconds
-- Bot operator: jaredfromsubway.eth
-</code></pre>
+The bot paid $90 in gas to extract $47,200 from Lisa's single transaction.</code></pre>
 
       <div class="callout-warning">
         <h4>🚨 What Lisa Got Wrong: MEV Protection Basics</h4>
@@ -655,81 +519,33 @@ Bot's transaction details on Etherscan:
       </div>
 <h3 id="lisas-recovery-learning-mev-protection-3-months-later">Lisa's Recovery: Learning MEV Protection (3 Months Later)</h3>
 
-      <pre style="overflow-x:auto"><code>✅ LISA'S NEW DEX TRADING METHODOLOGY (November 2024):
+      <pre style="overflow-x:auto"><code>✅ LISA'S RECOVERY (November 2024): NEW METHODOLOGY
 
-RULE #1: Never large DEX swaps without MEV protection
+Trade Setup: Buy $400K UNI token (2.67% of $15M pool)
 
-TRADE #1: November 15, 2024
-─────────────────────────────────────────
-Setup:
-- Need to buy $400K of UNI token
-- UNI/USDC pool: $15M liquidity (Uniswap V3)
-- Participation: $400K / $15M = 2.67% (moderate)
+OLD METHOD (what caused $113K loss):
+- Single $400K swap, public mempool, 5% slippage tolerance
+- Expected loss: 2.67% pool impact + 3-5% MEV = $22-28K per trade
 
-Lisa's NEW Strategy:
-☑ Use Flashbots Protect RPC (private mempool)
-☑ Set 0.8% max slippage (tight!)
-☑ Split into 4× $100K swaps, 10 minutes apart
-☑ Route through CowSwap for batch auction
+NEW PROTECTED METHOD:
+☑ Flashbots Protect RPC (private mempool - bots can't see tx)
+☑ Split into 4× $100K swaps over 30 minutes (10 min apart)
+☑ Route through CowSwap batch auction (no front-running)
+☑ Max slippage: 0.8% (tight - prevents MEV profit)
 
-Trade Execution:
-─────────────────────────────────────────
-11:00 AM: First $100K swap via CowSwap
-- CowSwap batch auction (no front-running possible)
-- Filled @ $6.423 per UNI
-- Received: 15,570 UNI
-- Slippage: 0.12% (vs 2.67% expected without protection)
+RESULTS (Nov 15, 2024):
+- Total paid: $400,000 for 62,196 UNI ($6.432 avg)
+- Actual slippage: 0.26% average ($1,040 cost)
+- MEV attacks: ZERO
+- Savings vs old method: $21,000-27,000 per trade
 
-11:10 AM: Second $100K swap
-- Filled @ $6.429 per UNI
-- Received: 15,556 UNI
-- Slippage: 0.22%
+6-MONTH RESULTS (34 large trades, $8.4M volume):
+- Average slippage: 0.31% (vs 4-6% without protection)
+- MEV attacks avoided: 34 (100% protection rate)
+- Total savings vs old method: $246,000
 
-11:20 AM: Third $100K swap
-- Filled @ $6.435 per UNI
-- Received: 15,542 UNI
-- Slippage: 0.31%
-
-11:30 AM: Fourth $100K swap
-- Filled @ $6.441 per UNI
-- Received: 15,528 UNI
-- Slippage: 0.40%
-
-TOTAL RESULTS:
-─────────────────────────────────────────
-Total paid: $400,000
-Total received: 62,196 UNI
-Average price: $6.432 per UNI
-Total slippage: 0.26% average
-
-COMPARISON TO OLD METHOD:
-─────────────────────────────────────────
-OLD (single $400K swap, no protection):
-- Expected slippage: 2.67% (pool size impact)
-- MEV sandwich: +3-5% additional slippage
-- Total loss: ~$22,000-28,000
-
-NEW (split + CowSwap + private RPC):
-- Actual slippage: 0.26%
-- MEV sandwich: $0 (protected)
-- Total "slippage cost": $1,040
-
-SAVINGS: $21,000-27,000 per large trade!
-
-LISA'S 6-MONTH RESULTS (Nov 2024-April 2025):
-─────────────────────────────────────────
-Large DEX trades: 34
-Total volume: $8.4M
-Average slippage: 0.31% (vs 4-6% without protection)
-MEV attacks avoided: 34 (100% protection rate)
-Estimated savings vs old method: $246,000
-
-Lisa's breakthrough: "I lost $113K to a sandwich bot in ONE trade.
-Now I use Flashbots Protect + CowSwap for every large swap.
-Zero MEV attacks in 6 months. I've saved $246K just by routing
-through MEV-protected infrastructure. It's free money left on
-the table if you don't use these tools."
-</code></pre>
+Lisa's lesson: "I lost $113K to ONE sandwich attack. Now I use Flashbots
++ CowSwap for every large swap. Zero MEV in 6 months = $246K saved."</code></pre>
 
       <div class="callout-key">
         <h4>💡 Lisa's Aha Moment</h4>
