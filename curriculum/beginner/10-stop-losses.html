@@ -267,7 +267,23 @@
       <p><em>Fix:</em> Tight stops = more stop-outs. Control risk via position SIZE, not stop distance. Wider stop + smaller size > tight stop + large size.</p>
 
       <p><strong>Mistake #3: Moving stop FURTHER away</strong></p>
-      <p><em>Fix:</em> NEVER move stop away from potential entry (only closer or to breakeven). If price isn't working, potential exit. Don't give it "more room."</p>
+      <p><em>Fix:</em> NEVER move stop away from entry (only closer or to breakeven). If price isn't working, exit. Don't give it "more room."</p>
+
+      <div style="background:rgba(255,82,82,.1);border-left:4px solid #ff5252;border-radius:8px;padding:1.25rem;margin:1.5rem 0">
+        <div style="font-weight:700;margin-bottom:0.75rem;color:#ff5252">🚨 Sarah's $8,900 Stop-Moving Disaster</div>
+        <div style="font-size:0.95rem;line-height:1.7">
+          <strong>The Trade:</strong> Sarah entered AAPL long at $100, stop at $97.50 (structure-based, correct placement). Risk: $240.
+        </div>
+        <div style="margin-top:1rem;font-size:0.9rem;line-height:1.7">
+          <strong>9:47 AM:</strong> AAPL drops to $97.80. Sarah panics: "Too close! I need more room." Moves stop to $95. New risk: $480.<br/>
+          <strong>10:12 AM:</strong> AAPL drops to $95.40. Sarah: "This HAS to bounce!" Moves stop to $92. New risk: $768.<br/>
+          <strong>10:35 AM:</strong> AAPL drops to $92.30. Sarah: "One more chance..." Cancels stop entirely.<br/>
+          <strong>2:47 PM:</strong> AAPL at $85. Sarah finally exits in panic. <span style="color:#ff5252;font-weight:700">Loss: $8,900</span> (89 shares × $15).
+        </div>
+        <div style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,.2);border-radius:6px;font-size:0.9rem">
+          <strong>What should have happened:</strong> Stop at $97.50 hits → -$240 loss → Thesis invalidated, move on. Instead: Moved stop 3 times → <span style="color:#ff5252;font-weight:700">$8,900 loss (37× larger)</span>. Original thesis died at $97.50. Everything after was hope, not trading.
+        </div>
+      </div>
 
       <p><strong>Mistake #4: No stop at all ("I'll watch it")</strong></p>
       <p><em>Fix:</em> ALWAYS use hard stop-loss orders. Mental stops fail when emotions kick in. Set it and trust your plan.</p>
@@ -533,13 +549,10 @@
 
         <p>Don't overwhelm yourself. Start with these 3 actions:</p>
         <ol style="margin:0.75rem 0 0 1.5rem;line-height:1.8">
-          <li><strong>Find structure level first</strong> — Before your next trade, identify where your thesis breaks (swing low for longs, swing high for shorts)</li>
-          <li><strong>Add ATR buffer</strong> — Measure ATR, place stop at structure ± (2× ATR). This is your actual stop.</li>
-          <li><strong>Calculate position size AFTER</strong> — Use (Account × Risk%) ÷ Stop Distance. If too wide, skip the trade—don't tighten the stop.</li>
+          <li><strong>Find Structure Level First Tonight</strong> — Before your next trade, identify where your thesis breaks (swing low for longs, swing high for shorts). This is your stop, period. Sarah moved her stop from $97.50 to $95 to $92 to "give it room"—turned a $240 loss into $8,900 (37× larger) because she never honored structure.</li>
+          <li><strong>Add 2× ATR Buffer Tomorrow</strong> — Measure ATR, place stop at structure ± (2× ATR). Kevin used fixed 2% stops ignoring ATR—got stopped 11 times on noise when volatility spiked, lost $13,600 watching trades hit target without him.</li>
+          <li><strong>Calculate Position Size AFTER Stop Placement</strong> — Use (Account × Risk%) ÷ Stop Distance. If stop is too wide, reduce position size or skip the trade—NEVER tighten the stop to force a larger position. The market sets the stop distance, not your desired position size.</li>
         </ol>
-        <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted)">
-          After 10 trades with structure + ATR stops, you'll see the difference. Stops hit = thesis wrong (exit fast). Stops not hit = thesis survives volatility noise.
-        </p>
       
         </div>
       </details>
