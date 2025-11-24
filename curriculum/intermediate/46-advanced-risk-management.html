@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/assets/auth-ui.css">
   <link rel="stylesheet" href="/assets/chatbot.css">
   <link rel="stylesheet" href="/assets/lang-switcher.css">
+  <link rel="stylesheet" href="/assets/discussions.css">
   <!-- Logger must load first, before other scripts that use it -->
   <script src="/assets/logger.js"></script>
   <script src="/assets/dev-utils.js" defer></script>
@@ -108,7 +109,7 @@
       <p>Professional traders stack four layers of risk control. Each layer catches what the previous layers miss. Skip any layer, and you're vulnerable to catastrophic loss.</p>
 
   <div style="margin:2rem 0;text-align:center">
-    <svg viewBox="0 0 600 520" style="width:100%;max-width:600px;margin:0 auto;display:block">
+    <svg viewBox="0 0 800 520" style="width:100%;max-width:800px;margin:0 auto;display:block">
       <!-- Title -->
       <text x="300" y="25" text-anchor="middle" style="font-size:18px;font-weight:600;fill:currentColor">The Portfolio Risk Management Pyramid</text>
       <text x="300" y="45" text-anchor="middle" style="font-size:13px;fill:currentColor;opacity:0.7">Four Layers of Institutional Risk Control</text>
@@ -118,26 +119,24 @@
       <!-- Layer 4 (Top): VAR & Tail Risk - smallest, most critical -->
       <path d="M 300,80 L 240,130 L 360,130 Z" fill="#ef4444" opacity="0.3" stroke="#ef4444" stroke-width="2"/>
       <text x="300" y="108" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">Layer 4: VAR & Tail Risk</text>
-      <text x="300" y="155" text-anchor="middle" style="font-size:11px;fill:currentColor">95% VAR, stress testing</text>
-      <text x="300" y="170" text-anchor="middle" style="font-size:10px;fill:currentColor;opacity:0.7">Maximum daily loss limits</text>
+      <text x="300" y="123" text-anchor="middle" style="font-size:10px;fill:currentColor;opacity:0.8">95% VAR, stress testing</text>
 
       <!-- Layer 3: Portfolio Heat Limits -->
       <path d="M 240,130 L 360,130 L 400,220 L 200,220 Z" fill="#fbbf24" opacity="0.3" stroke="#fbbf24" stroke-width="2"/>
-      <text x="300" y="175" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">Layer 3: Portfolio Heat</text>
-      <text x="300" y="245" text-anchor="middle" style="font-size:11px;fill:currentColor">Total exposure ≤ 5-10%</text>
-      <text x="300" y="260" text-anchor="middle" style="font-size:10px;fill:currentColor;opacity:0.7">Aggregate risk across all positions</text>
+      <text x="300" y="165" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">Layer 3: Portfolio Heat</text>
+      <text x="300" y="182" text-anchor="middle" style="font-size:10px;fill:currentColor;opacity:0.8">Total exposure ≤ 5-10%</text>
 
       <!-- Layer 2: Correlation Management -->
       <path d="M 200,220 L 400,220 L 450,340 L 150,340 Z" fill="#8b5cf6" opacity="0.3" stroke="#8b5cf6" stroke-width="2"/>
-      <text x="300" y="265" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">Layer 2: Correlation Control</text>
-      <text x="300" y="365" text-anchor="middle" style="font-size:11px;fill:currentColor">Effective N = N / √Correlation</text>
-      <text x="300" y="380" text-anchor="middle" style="font-size:10px;fill:currentColor;opacity:0.7">Avoid high-correlation concentration (>0.7)</text>
+      <text x="300" y="270" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">Layer 2: Correlation Control</text>
+      <text x="300" y="288" text-anchor="middle" style="font-size:10px;fill:currentColor;opacity:0.8">Effective N = N / √Correlation</text>
+      <text x="300" y="303" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">Avoid high correlation (>0.7)</text>
 
       <!-- Layer 1 (Base): Position Sizing - largest, foundational -->
       <path d="M 150,340 L 450,340 L 500,460 L 100,460 Z" fill="#22c55e" opacity="0.3" stroke="#22c55e" stroke-width="2"/>
-      <text x="300" y="385" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">Layer 1: Position Sizing</text>
-      <text x="300" y="485" text-anchor="middle" style="font-size:11px;fill:currentColor">0.5-1% risk per trade</text>
-      <text x="300" y="500" text-anchor="middle" style="font-size:10px;fill:currentColor;opacity:0.7">Foundation: Individual trade risk control</text>
+      <text x="300" y="390" text-anchor="middle" style="font-size:13px;font-weight:600;fill:currentColor">Layer 1: Position Sizing</text>
+      <text x="300" y="408" text-anchor="middle" style="font-size:10px;fill:currentColor;opacity:0.8">0.5-1% risk per trade</text>
+      <text x="300" y="423" text-anchor="middle" style="font-size:9px;fill:currentColor;opacity:0.7">Foundation: Individual trade risk control</text>
 
       <!-- Arrow indicators showing build-up from bottom to top -->
       <path d="M 80,450 L 80,100 L 90,110 M 80,100 L 70,110" stroke="currentColor" opacity="0.4" stroke-width="1.5" fill="none"/>
@@ -688,6 +687,40 @@
   </div>
 
   <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
+
+      <!-- Discussion Section -->
+      <div class="discussion-section" id="discussion-section">
+        <button class="discussion-toggle" id="discussion-toggle" style="display:none">
+          <span>💬 Discussion (<span id="discussion-count-mobile">0</span>)</span>
+          <span class="discussion-toggle-icon">+</span>
+        </button>
+        <div class="discussion-content">
+          <div class="discussion-header">
+            <h2 class="discussion-title">💬 Discussion <span class="discussion-count" id="discussion-count">(0 comments)</span></h2>
+            <div class="discussion-sort">
+              <label for="discussion-sort">Sort by:</label>
+              <select id="discussion-sort">
+                <option value="recent">Most Recent</option>
+                <option value="top">Top Voted</option>
+                <option value="oldest">Oldest First</option>
+              </select>
+            </div>
+          </div>
+          <div class="comment-composer" id="comment-composer">
+            <textarea id="comment-input" placeholder="Share your thoughts, ask questions, or discuss this lesson..." maxlength="1000"></textarea>
+            <div class="comment-composer-actions">
+              <span class="comment-char-count" id="comment-char-count">0/1000</span>
+              <button class="btn btn-primary" id="post-comment-btn">Post Comment</button>
+            </div>
+          </div>
+          <div class="comments-list" id="comments-list">
+            <div class="comments-loading">
+              <div class="comments-loading-spinner"></div>
+              <p>Loading comments...</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <aside class="toc-sidebar">
@@ -729,5 +762,14 @@ document.getElementById('year').textContent = new Date().getFullYear();
   <script src="/assets/ab-test-tldr.js" defer></script>
   <!-- Google Translate -->
   <script src="/assets/lang-switcher.js"></script>
+  <!-- Discussion System -->
+  <script src="/assets/discussions.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.DiscussionSystem) {
+        window.DiscussionSystem.init('intermediate-46-advanced-risk-management');
+      }
+    });
+  </script>
 </body>
 </html>

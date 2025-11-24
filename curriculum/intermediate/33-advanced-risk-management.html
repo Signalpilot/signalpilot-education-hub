@@ -137,6 +137,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="/assets/discussions.css">
 </head>
 <body class="table-accordions-mobile">
   <div class="bg-stars"></div><canvas id="constellations" class="sp-constellations"></canvas>
@@ -240,6 +241,12 @@ Max risk: 1% = $100/trade
 Example entry: $100, Example stop: $99
 Shares: $100 risk / $1 stop = 100 shares</code></pre>
 
+      <div style="background:rgba(91,138,255,0.1);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid rgba(91,138,255,0.6)">
+        <h4 style="margin:0 0 0.75rem 0">🧮 Calculate Your Position Size</h4>
+        <p style="margin:0 0 0.75rem 0">Get the exact number of shares to buy based on your risk percentage and stop distance. No more mental math errors.</p>
+        <a href="/calculators.html#position-size-calculator" class="btn btn-primary" style="display:inline-block">Position Size Calculator →</a>
+      </div>
+
       <h3 id="level-2-portfolio-heat-total-risk">Level 2: Portfolio Heat (Total Risk)</h3>
       <p><strong>Rule: Never exceed 6-8% total portfolio risk.</strong></p>
       <pre style="overflow-x:auto"><code>Trade 1: 2% risk ($200)
@@ -251,6 +258,12 @@ Total Heat: 7% ($700)
 
 Next trade must wait (at heat limit)</code></pre>
 
+      <div style="background:rgba(251,191,36,0.1);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #fbbf24">
+        <h4 style="margin:0 0 0.75rem 0">🧮 NEW: Portfolio Heat Calculator</h4>
+        <p style="margin:0 0 0.75rem 0">Track total risk across all your positions. Know your true portfolio heat before it's too late.</p>
+        <a href="/calculators.html#portfolio-heat-calculator" class="btn btn-primary" style="display:inline-block">Calculate Portfolio Heat →</a>
+      </div>
+
       <h3 id="level-3-drawdown-control-survival">Level 3: Drawdown Control (Survival)</h3>
       <p><strong>Rule: Reduce size or stop trading if drawdown > 15-20%.</strong></p>
       <pre style="overflow-x:auto"><code>Account peak: $12,000
@@ -258,6 +271,12 @@ Current: $10,200
 Drawdown: ($12,000 - $10,200) / $12,000 = 15%
 
 Action: Reduce size by 50% until recovery to < 10% drawdown</code></pre>
+
+      <div style="background:rgba(255,107,107,0.1);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid rgba(255,107,107,0.6)">
+        <h4 style="margin:0 0 0.75rem 0">🧮 Calculate Drawdown Recovery</h4>
+        <p style="margin:0 0 0.75rem 0">See exactly how much you need to gain to recover from a drawdown. The math is brutal—a 20% loss requires a 25% gain to recover.</p>
+        <a href="/calculators.html#drawdown-recovery-calculator" class="btn btn-primary" style="display:inline-block">Drawdown Recovery Calculator →</a>
+      </div>
 
       <h2 id="kelly-criterion-optimal-position-sizing">Kelly Criterion (Optimal Position Sizing)</h2>
       
@@ -280,6 +299,13 @@ Half Kelly: 20% (still aggressive)
 Quarter Kelly: 10% (conservative, recommended)
 
 Most professionals: Use 1/4 to 1/2 Kelly</code></pre>
+
+      <div style="background:rgba(0,212,170,0.1);padding:1.5rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d4aa">
+        <h4 style="margin:0 0 0.75rem 0">🧮 NEW: Kelly Criterion Calculator</h4>
+        <p style="margin:0 0 0.75rem 0">Calculate your optimal position size based on win rate and risk/reward ratio. See full Kelly, fractional Kelly, and why you should NEVER use full Kelly.</p>
+        <a href="/calculators.html#kelly-criterion-calculator" class="btn btn-primary" style="display:inline-block;margin-right:0.5rem">Kelly Calculator →</a>
+        <a href="/calculators.html#expectancy-calculator" class="btn btn-secondary" style="display:inline-block">Expectancy Calculator →</a>
+      </div>
 
       <h3 id="practical-kelly-example">Practical Kelly Example</h3>
       <pre style="overflow-x:auto"><code>Strategy: 55% expectancy, 2.5:1 avg R:R
@@ -729,6 +755,40 @@ Position: $400 / $500 ATR = 0.8 BTC (~$36,000 notional)</code></pre>
       </div>
 
       <blockquote><strong>Educational only.</strong> Trading involves substantial risk of loss. Past performance does not guarantee future results.</blockquote>
+
+      <!-- Discussion Section -->
+      <div class="discussion-section" id="discussion-section">
+        <button class="discussion-toggle" id="discussion-toggle" style="display:none">
+          <span>💬 Discussion (<span id="discussion-count-mobile">0</span>)</span>
+          <span class="discussion-toggle-icon">+</span>
+        </button>
+        <div class="discussion-content">
+          <div class="discussion-header">
+            <h2 class="discussion-title">💬 Discussion <span class="discussion-count" id="discussion-count">(0 comments)</span></h2>
+            <div class="discussion-sort">
+              <label for="discussion-sort">Sort by:</label>
+              <select id="discussion-sort">
+                <option value="recent">Most Recent</option>
+                <option value="top">Top Voted</option>
+                <option value="oldest">Oldest First</option>
+              </select>
+            </div>
+          </div>
+          <div class="comment-composer" id="comment-composer">
+            <textarea id="comment-input" placeholder="Share your thoughts, ask questions, or discuss this lesson..." maxlength="1000"></textarea>
+            <div class="comment-composer-actions">
+              <span class="comment-char-count" id="comment-char-count">0/1000</span>
+              <button class="btn btn-primary" id="post-comment-btn">Post Comment</button>
+            </div>
+          </div>
+          <div class="comments-list" id="comments-list">
+            <div class="comments-loading">
+              <div class="comments-loading-spinner"></div>
+              <p>Loading comments...</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <aside class="toc-sidebar">
@@ -771,4 +831,13 @@ Position: $400 / $500 ATR = 0.8 BTC (~$36,000 notional)</code></pre>
   <script src="/assets/ab-test-tldr.js" defer></script>
   <!-- Google Translate -->
   <script src="/assets/lang-switcher.js"></script>
+  <!-- Discussion System -->
+  <script src="/assets/discussions.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.DiscussionSystem) {
+        window.DiscussionSystem.init('intermediate-33-advanced-risk-management');
+      }
+    });
+  </script>
 </body></html>

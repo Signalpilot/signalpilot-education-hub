@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/assets/edu.css">
   <link rel="stylesheet" href="/assets/notes.css">
   <link rel="stylesheet" href="/assets/auth-ui.css">
+  <link rel="stylesheet" href="/assets/discussions.css">
   <link rel="stylesheet" href="/assets/chatbot.css">
   <link rel="stylesheet" href="/assets/lang-switcher.css">
   <!-- Logger must load first, before other scripts that use it -->
@@ -1895,17 +1896,15 @@
       <li>Watch for dark pool prints (large blocks reported after hours)</li>
     </ul>
   </div>
-  </div>
 
-  <div style="margin:2.5rem 0 !important;padding:1.5rem !important;background:linear-gradient(135deg,rgba(91,138,255,.12),rgba(118,221,255,.08)) !important;border:2px solid rgba(91,138,255,.3) !important;border-radius:16px !important;position:relative !important;height:auto !important;min-height:0 !important;max-height:none !important;overflow:visible !important;display:block !important;align-self:start !important;flex:none !important">
-    <div style="position:absolute;top:-24px;left:20px;font-size:1.8rem">💡</div>
-    <h4 style="margin:0.5rem 0 1rem 0 !important;font-size:1.2rem !important;color:var(--accent) !important;height:auto !important">Key Takeaways</h4>
-    <ul style="margin:.5rem 0 0 0 !important;padding-left:1.5rem !important;height:auto !important">
-      <li style="margin-bottom:.5rem !important"><strong>Institutions use 20+ order types</strong> beyond basic market/limit</li>
-      <li style="margin-bottom:.5rem !important"><strong>IOC = fill available, cancel rest.</strong> FOK = all or nothing</li>
-      <li style="margin-bottom:.5rem !important"><strong>MOC orders drive 10-20% of daily volume</strong> (40%+ on rebalancing days)</li>
-      <li style="margin-bottom:.5rem !important"><strong>Iceberg orders hide size</strong> (repeated small fills = large accumulation)</li>
-      <li style="margin-bottom:.5rem !important"><strong>VWAP/TWAP algos minimize impact</strong> by spreading execution over time</li>
+  <div class="key-takeaway">
+    <h4>Key Takeaways</h4>
+    <ul>
+      <li><strong>Institutions use 20+ order types</strong> beyond basic market/limit</li>
+      <li><strong>IOC = fill available, cancel rest.</strong> FOK = all or nothing</li>
+      <li><strong>MOC orders drive 10-20% of daily volume</strong> (40%+ on rebalancing days)</li>
+      <li><strong>Iceberg orders hide size</strong> (repeated small fills = large accumulation)</li>
+      <li><strong>VWAP/TWAP algos minimize impact</strong> by spreading execution over time</li>
     </ul>
   </div>
 
@@ -1944,6 +1943,41 @@
       <li><a href="/downloads/order-type-reference-guide.pdf">Order Type Reference Guide (PDF)</a></li>
       <li><a href="/downloads/iceberg-detection-patterns.pdf">Iceberg Order Detection Patterns (PDF)</a></li>
     </ul>
+  </div>
+
+  <!-- Discussion Section -->
+  <div class="discussion-section" id="discussion-section">
+    <button class="discussion-toggle" id="discussion-toggle" style="display:none">
+      <span>💬 Discussion (<span id="discussion-count-mobile">0</span>)</span>
+      <span class="discussion-toggle-icon">+</span>
+    </button>
+    <div class="discussion-content">
+      <div class="discussion-header">
+        <h2 class="discussion-title">💬 Discussion <span class="discussion-count" id="discussion-count">(0 comments)</span></h2>
+        <div class="discussion-sort">
+          <label for="discussion-sort">Sort by:</label>
+          <select id="discussion-sort">
+            <option value="recent">Most Recent</option>
+            <option value="top">Top Voted</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+        </div>
+      </div>
+      <div class="comment-composer" id="comment-composer">
+        <textarea id="comment-input" placeholder="Share your thoughts, ask questions, or discuss this lesson..." maxlength="1000"></textarea>
+        <div class="comment-composer-actions">
+          <span class="comment-char-count" id="comment-char-count">0/1000</span>
+          <button class="btn btn-primary" id="post-comment-btn">Post Comment</button>
+        </div>
+      </div>
+      <div class="comments-list" id="comments-list">
+        <div class="comments-loading">
+          <div class="comments-loading-spinner"></div>
+          <p>Loading comments...</p>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
     <aside class="toc-sidebar">
@@ -2023,5 +2057,14 @@ if (canvas) {
   <script src="/assets/ab-test-tldr.js" defer></script>
   <!-- Google Translate -->
   <script src="/assets/lang-switcher.js"></script>
+  <!-- Discussion System -->
+  <script src="/assets/discussions.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.DiscussionSystem) {
+        window.DiscussionSystem.init('advanced-69-institutional-order-types');
+      }
+    });
+  </script>
 </body>
 </html>
