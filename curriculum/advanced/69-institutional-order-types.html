@@ -199,61 +199,9 @@
       <li><strong>5 minutes later:</strong> SPY recovered to $107 (he sold the exact bottom)</li>
     </ul>
 
-    <div style="margin:1.5rem 0;padding:1rem;background:rgba(139,92,246,.15);border-radius:8px;border-left:4px solid #8b5cf6">
-      <strong>The Cascade Effect:</strong> Thousands of retail stop-market orders clustered at $105, $104, $103, etc. When SPY hit $105, first wave triggered (became market orders) → pushed price to $104 → triggered $104 stops → pushed to $103. This <strong>waterfall effect</strong> accelerated the crash. Stop-LIMIT orders would have prevented fills below $104.50, breaking the cascade chain.
+    <div style="margin:1.5rem 0;padding:1rem;background:rgba(255,82,82,.2);border-radius:8px;border-left:4px solid #ff5252">
+      <strong>The Damage:</strong> Expected $17,433 loss (2% stop) → Actual fill at $95.20 = <span style="color:#ff5252;font-weight:700">-$107,103 loss</span>. Extra slippage: $89,670 (5.1× worse than planned). Account impact: -25.2% in 5 minutes. SPY recovered to $107 within 5 minutes—he sold the exact bottom. <strong>Cascade effect:</strong> Thousands of stop-market orders at $105, $104, $103 triggered sequentially, accelerating the crash. Stop-limit at $104.50 would have prevented fill, saved entire loss.
     </div>
-
-    <h5 style="margin:2rem 0 1rem 0">📊 Visual: The Stop-Loss Cascade</h5>
-    <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1.5rem;margin:1.5rem 0">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center;max-width:500px">
-        <div style="text-align:right;font-weight:700;color:#22c55e">$107.50</div>
-        <div style="height:4px;background:#22c55e;border-radius:2px"></div>
-
-        <div style="text-align:right;font-weight:700;color:#fbbf24">$105.00</div>
-        <div style="height:4px;background:#fbbf24;border-radius:2px;position:relative">
-          <div style="position:absolute;right:-120px;top:-8px;font-size:0.85rem;color:#fbbf24;white-space:nowrap">← Stop triggers</div>
-        </div>
-
-        <div style="text-align:right;font-weight:700;color:#8b5cf6">$104.50</div>
-        <div style="height:2px;background:#8b5cf6;border-radius:2px;border:1px dashed #8b5cf6;position:relative">
-          <div style="position:absolute;right:-180px;top:-8px;font-size:0.85rem;color:#8b5cf6;white-space:nowrap">← Stop-LIMIT protection</div>
-        </div>
-
-        <div style="text-align:right;font-weight:700;color:#ff5252">$95.20</div>
-        <div style="height:4px;background:#ff5252;border-radius:2px;position:relative">
-          <div style="position:absolute;right:-160px;top:-8px;font-size:0.85rem;color:#ff5252;white-space:nowrap">← Michael's fill (disaster)</div>
-        </div>
-
-        <div style="text-align:right;font-weight:700;color:#22c55e">$107.00</div>
-        <div style="height:4px;background:#22c55e;border-radius:2px;position:relative">
-          <div style="position:absolute;right:-150px;top:-8px;font-size:0.85rem;color:#22c55e;white-space:nowrap">← 5 min later (recovery)</div>
-        </div>
-      </div>
-
-      <div style="margin-top:1.5rem;padding:1rem;background:rgba(139,92,246,.15);border-radius:6px">
-        <div style="font-size:0.9rem;line-height:1.6">
-          <strong>Stop-MARKET:</strong> Filled at $95.20 = <span style="color:#ff5252;font-weight:700">-$89,670 catastrophic loss</span><br/>
-          <strong>Stop-LIMIT ($104.50):</strong> No fill = <span style="color:#22c55e;font-weight:700">$0 loss, position intact</span>
-        </div>
-      </div>
-    </div>
-
-    <p><strong>The devastating numbers:</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li><strong>Expected exit:</strong> $105.00 (stop price)</li>
-      <li><strong>Actual average fill:</strong> $95.20</li>
-      <li><strong>Slippage per share:</strong> $9.80</li>
-      <li><strong>Position size:</strong> 9,150 shares</li>
-      <li><strong>Expected loss:</strong> -$17,433 (2% risk, manageable)</li>
-      <li><strong>ACTUAL LOSS:</strong> <span style="color:#ff5252;font-weight:700;font-size:1.1rem">-$107,103</span></li>
-      <li style="margin-top:0.75rem;padding:1rem;background:rgba(255,82,82,.2);border-radius:6px;border-left:4px solid #ff5252">
-        <strong>Extra slippage damage:</strong> $89,670 ($107,103 - $17,433)<br/>
-        <strong>Account impact:</strong> Lost 25.2% of $425K account in 5 minutes<br/>
-        <strong>Recovery:</strong> SPY back at $107 within 5 minutes (he sold the exact bottom)
-      </li>
-    </ul>
-
-    <p style="margin-top:1.5rem"><strong>Michael's emotional aftermath:</strong> "I did everything right. I had a stop loss. I was managing risk. But my 'protection' destroyed me. I sold SPY at $95 and watched it recover to $107 within 5 minutes. That was 25% of my account—gone. All because I used stop-MARKET instead of stop-LIMIT."</p>
 
     <h5>The Fix: Stop-Limit Orders</h5>
 
@@ -263,38 +211,12 @@
 
     <div style="margin-top:1.5rem;padding:1.5rem;background:rgba(34,197,94,0.15);border-radius:12px;border-left:4px solid #22c55e">
       <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.75rem">✅ Post-2010: Michael's New Approach</div>
-      <div style="font-size:0.95rem;margin-bottom:0.5rem">Converted ALL stop-market orders to stop-limit orders with limit price 0.5-1% below stop trigger.</div>
-      <div style="font-size:0.95rem;margin-bottom:0.5rem"><strong>10-year results (2011-2020):</strong></div>
-      <ul style="font-size:0.95rem;margin:0.5rem 0 0 1.5rem;line-height:1.6">
-        <li>Experienced 7 mini flash crashes (SPY, individual stocks)</li>
-        <li>Stop-limit orders prevented fills on 6 of 7 (price gapped below limit, recovered)</li>
-        <li>Only 1 stop-limit filled normally at valid technical breakdown</li>
-        <li><strong>Estimated savings vs stop-market:</strong> $240,000+ over 10 years</li>
-      </ul>
-      <div style="font-style:italic;color:var(--muted);margin-top:1rem">Michael: "I'll never use stop-market again. The tradeoff is clear: occasionally my stop doesn't fill and I have to manage manually. But I avoid getting liquidated at flash crash lows. That $89K lesson changed my entire approach to risk."</div>
+      <p style="margin:0;font-size:0.95rem">Converted all stop-market to stop-limit (0.5-1% limit range). <strong>10-year results (2011-2020):</strong> Experienced 7 mini flash crashes, stop-limits prevented fills on 6 of 7 (price gapped, recovered). Estimated savings: <span style="color:#22c55e;font-weight:700">$240K+</span>. Tradeoff: 5-10% of stops don't fill, but avoids catastrophic flash crash liquidations.</div>
     </div>
 
     <h5>When Stop-Limit Might Not Fill (The Tradeoff)</h5>
 
-    <p><strong>The risk of stop-limit orders:</strong> If price legitimately breaks down below your limit price and doesn't recover, your stop won't fill and you're still exposed.</p>
-
-    <p><strong>Example of valid breakdown:</strong></p>
-    <ul style="margin:.75rem 0 0 1.5rem">
-      <li>Stock at $100, stop-limit at $95 stop / $94.50 limit</li>
-      <li>Earnings disaster announced after hours → stock opens at $85 (gaps down)</li>
-      <li>Stop-limit doesn't fill (price never touched $94.50)</li>
-      <li>You're still long, down 15% instead of stopped at 5%</li>
-    </ul>
-
-    <p><strong>Michael's framework for managing this:</strong></p>
-    <ol style="margin:.75rem 0 0 1.5rem">
-      <li><strong>Intraday positions:</strong> Use stop-limit with 0.5% limit range (protects from flash crashes, most valid breakdowns fill)</li>
-      <li><strong>Overnight positions:</strong> Use stop-limit with 1% limit range (wider range accounts for gap risk)</li>
-      <li><strong>Earnings/news events:</strong> Close position before event OR accept gap risk (don't use stops during binary events)</li>
-      <li><strong>Manual monitoring:</strong> If stop-limit doesn't fill and price keeps falling, manually exit (don't hold and hope)</li>
-    </ol>
-
-    <p style="margin-top:1rem"><strong>Bottom line:</strong> Stop-limit "failure to fill" happens 5-10% of the time. But it saves you from 100% catastrophic flash crash fills. <span style="color:#22c55e;font-weight:700">Avoiding one $89K flash crash disaster is worth manually managing 10 unfilled stops.</span></p>
+    <p><strong>The risk:</strong> If price legitimately breaks below your limit and doesn't recover, stop won't fill (you're still exposed). Example: Stock at $100, stop-limit $95/$94.50, earnings disaster opens at $85 → no fill, down 15% vs planned 5%. <strong>Framework:</strong> Intraday (0.5% range), Overnight (1% range), Earnings (close before event or accept gap risk), Manual exit if unfilled + price falling. <strong>Bottom line:</strong> Unfilled stops happen 5-10% of time but save you from 100% catastrophic flash fills.</p>
   </div>
 
   <h2 id="how-institutions-exploit-retail-order-types">How Institutions Exploit Retail Order Types</h2>
@@ -354,110 +276,12 @@
     </div>
   </div>
 
-  <h4 style="margin:2rem 0 1rem 0">📊 Visual: Market Order Slippage (Expected vs Reality)</h4>
+  <h4 style="margin:2rem 0 1rem 0">📊 Market Order Slippage (Expected vs Reality)</h4>
 
-  <div style="background:rgba(0,0,0,.3);border-radius:12px;padding:2rem;margin:2rem 0">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 320px),1fr));gap:2rem">
-      <!-- Expected (Retail's Assumption) -->
-      <div style="background:rgba(118,221,255,.08);border:2px solid #76ddff;border-radius:12px;padding:1.5rem">
-        <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#76ddff">💭 What Retail Expects</div>
+  <div style="background:rgba(255,82,82,.15);border-radius:8px;padding:1.5rem;margin:2rem 0;border-left:4px solid #ff5252">
+    <p style="margin:0 0 1rem 0;font-size:0.95rem"><strong>Example:</strong> Market buy 10,000 shares. Retail expects: fill at $150.00 (last trade) = $1,500,000 cost. Reality: HFT pulls liquidity milliseconds before order arrives, sweeps through thin book $150.10 → $151.20 across 5 levels. Actual avg fill: <span style="color:#ff5252;font-weight:700">$150.36</span> = $1,503,610 cost. <strong>Slippage: $3,610 on single order.</strong> Annualized (200 trades/year): <span style="color:#ff5252;font-weight:700">$722K in slippage.</span></p>
 
-        <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;margin-bottom:1rem">
-          <div style="font-size:0.85rem;margin-bottom:0.75rem;color:rgba(255,255,255,.8)">
-            <strong>Order:</strong> Market buy 10,000 shares<br/>
-            <strong>Last trade:</strong> $150.00<br/>
-            <strong>Expectation:</strong> Fill all 10,000 at ~$150.00
-          </div>
-        </div>
-
-        <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.85rem">
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(118,221,255,.15);margin-bottom:0.25rem;border-radius:4px">
-            <span><strong>$150.02</strong> Ask</span>
-            <span style="color:#76ddff">5,000</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(118,221,255,.15);margin-bottom:0.25rem;border-radius:4px">
-            <span><strong>$150.01</strong> Ask</span>
-            <span style="color:#76ddff">5,000</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(118,221,255,.2);margin-bottom:0.5rem;border-radius:4px;border:2px solid #76ddff">
-            <span><strong>$150.00</strong> Ask</span>
-            <span style="color:#76ddff;font-weight:700">10,000 ✓</span>
-          </div>
-          <div style="text-align:center;padding:0.5rem;color:rgba(255,255,255,.5);font-size:0.75rem">
-            Last: $150.00
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(34,197,94,.15);margin-top:0.5rem;border-radius:4px">
-            <span><strong>$149.99</strong> Bid</span>
-            <span>3,500</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:0.5rem;background:rgba(34,197,94,.15);border-radius:4px">
-            <span><strong>$149.98</strong> Bid</span>
-            <span>2,800</span>
-          </div>
-        </div>
-
-        <div style="margin-top:1.5rem;padding:1rem;background:rgba(118,221,255,.15);border-radius:8px">
-          <div style="font-weight:700;margin-bottom:0.5rem">Retail's Math:</div>
-          <div style="font-size:0.85rem;line-height:1.6">
-            10,000 shares × $150.00 = <strong>$1,500,000</strong><br/>
-            <span style="color:#76ddff">Expected avg: $150.00</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Reality (What Actually Happens) -->
-      <div style="background:rgba(255,82,82,.08);border:2px solid #ff5252;border-radius:12px;padding:1.5rem">
-        <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#ff5252">⚠️ What Actually Happens</div>
-
-        <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;margin-bottom:1rem">
-          <div style="font-size:0.85rem;margin-bottom:0.75rem;color:rgba(255,255,255,.8)">
-            <strong>Order:</strong> Market buy 10,000 shares<br/>
-            <strong>Reality:</strong> Sweeps through thin book<br/>
-            <strong>HFT pulled liquidity milliseconds before</strong>
-          </div>
-        </div>
-
-        <div style="padding:1rem;background:rgba(255,82,82,.2);border-radius:8px;border-left:4px solid #ff5252">
-          <div style="font-weight:700;margin-bottom:0.5rem">Fill Result:</div>
-          <div style="font-size:0.95rem">Market order swept through 5 price levels ($150.10 → $151.20)<br/>
-          Expected avg: $150.00 | <span style="color:#ff5252;font-weight:700">Actual avg: $150.36</span><br/>
-          Slippage: $3,610 on single order (0.24%)</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slippage Summary -->
-    <div style="margin-top:2rem;padding:1.5rem;background:rgba(255,82,82,.15);border-radius:8px;border-left:4px solid #ff5252">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 200px),1fr));gap:1.5rem">
-        <div>
-          <div style="font-size:0.85rem;color:rgba(255,255,255,.7);margin-bottom:0.25rem">Expected Cost:</div>
-          <div style="font-size:1.3rem;font-weight:700">$1,500,000</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,.5)">10,000 × $150.00</div>
-        </div>
-        <div>
-          <div style="font-size:0.85rem;color:rgba(255,255,255,.7);margin-bottom:0.25rem">Actual Cost:</div>
-          <div style="font-size:1.3rem;font-weight:700;color:#ff5252">$1,503,610</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,.5)">Avg fill: $150.36</div>
-        </div>
-        <div>
-          <div style="font-size:0.85rem;color:rgba(255,255,255,.7);margin-bottom:0.25rem">Slippage:</div>
-          <div style="font-size:1.3rem;font-weight:700;color:#ff5252">$3,610</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,.5)">0.24% on single order</div>
-        </div>
-        <div>
-          <div style="font-size:0.85rem;color:rgba(255,255,255,.7);margin-bottom:0.25rem">Annualized (200 trades):</div>
-          <div style="font-size:1.3rem;font-weight:700;color:#ff5252">$722,000</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,.5)">Death by 1000 cuts</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:2rem;padding:1.5rem;background:rgba(139,92,246,.15);border-radius:8px;border-left:4px solid #8b5cf6">
-      <div style="font-weight:700;margin-bottom:0.5rem">🔑 Why This Happens:</div>
-      <p style="margin:0;font-size:0.95rem">Market orders have ZERO price protection. You're telling the exchange "I'll pay ANY price, just fill me NOW." HFT algos detect large incoming market orders (via order flow data feeds) and pull liquidity milliseconds before your order arrives. Your market order then sweeps through a thin order book, climbing from $150.10 → $151.20 across 5 price levels. <strong>The "last trade" price of $150.00 is meaningless—that's where the PREVIOUS trade executed, not where YOUR trade will execute.</strong></p>
-
-      <p style="margin:1rem 0 0 0;font-size:0.95rem"><span style="color:#22c55e;font-weight:700">The fix:</span> Use limit orders with a discretionary range. Instead of "market buy 10,000," use "limit buy 10,000 at $150.10 with $0.10 discretion." This fills up to $150.20 if needed but prevents sweeping to $151.20. You might miss the fill occasionally, but you avoid $3,610 in catastrophic slippage on a single order.</p>
-    </div>
+    <p style="margin:0;font-size:0.95rem"><strong>Why:</strong> Market orders have zero price protection. "Last trade" price is meaningless—that's where the PREVIOUS trade executed, not YOUR trade. <strong>Fix:</strong> Use limit orders with discretionary range. "Limit buy 10,000 at $150.10 with $0.10 discretion" fills up to $150.20 but prevents sweeping to $151.20. Occasional missed fills beat $3,610 catastrophic slippage.</p>
   </div>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 300px),1fr));gap:1.5rem;margin:2rem 0">
@@ -486,93 +310,11 @@
 
   <h3 style="margin:3rem 0 1.5rem 0">The $73,860 Performance Gap: Marcus vs Aisha (Same Strategy, Different Order Types)</h3>
 
-  <p>Real 6-month comparison (Jan-June 2024): Two swing traders, identical strategies, both $200K accounts, 62.5% win rate, 48 trades each. <strong>Only difference: order type selection.</strong></p>
-
-  <div style="background:rgba(139,92,246,.12);border-radius:12px;padding:1.5rem;margin:2rem 0">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 200px),1fr));gap:1.5rem;margin-bottom:1.5rem">
-      <div>
-        <div style="font-weight:700;margin-bottom:0.5rem;color:#ff5252">❌ Marcus (Retail)</div>
-        <div style="font-size:0.85rem">Market orders, visible size, stop-markets</div>
-      </div>
-      <div>
-        <div style="font-weight:700;margin-bottom:0.5rem;color:#22c55e">✅ Aisha (Institutional)</div>
-        <div style="font-size:0.85rem">Limit orders, icebergs, stop-limits</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="background:rgba(139,92,246,.12);border-radius:12px;padding:2rem;margin:2rem 0">
-    <table style="width:100%;margin:1rem 0">
-      <thead>
-        <tr>
-          <th style="text-align:left">Metric</th>
-          <th style="text-align:right">Marcus (Retail)</th>
-          <th style="text-align:right">Aisha (Institutional)</th>
-          <th style="text-align:right;color:#22c55e">Difference</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="background:rgba(0,0,0,.2)">
-          <td style="padding:0.75rem">Strategy performance (gross)</td>
-          <td style="text-align:right">+$71,040</td>
-          <td style="text-align:right">+$95,220</td>
-          <td style="text-align:right;color:#fbbf24">+$24,180</td>
-        </tr>
-        <tr>
-          <td style="padding:0.75rem">Entry slippage (market vs limit)</td>
-          <td style="text-align:right;color:#ff5252">-$19,200</td>
-          <td style="text-align:right">-$1,920</td>
-          <td style="text-align:right;color:#22c55e">+$17,280</td>
-        </tr>
-        <tr style="background:rgba(0,0,0,.2)">
-          <td style="padding:0.75rem">Front-running costs (visible vs iceberg)</td>
-          <td style="text-align:right;color:#ff5252">-$21,120</td>
-          <td style="text-align:right">-$960</td>
-          <td style="text-align:right;color:#22c55e">+$20,160</td>
-        </tr>
-        <tr>
-          <td style="padding:0.75rem">Stop hunting/flash crashes</td>
-          <td style="text-align:right;color:#ff5252">-$13,440</td>
-          <td style="text-align:right">-$1,200</td>
-          <td style="text-align:right;color:#22c55e">+$12,240</td>
-        </tr>
-        <tr style="background:rgba(0,0,0,.2)">
-          <td style="padding:0.75rem">Total slippage</td>
-          <td style="text-align:right;color:#ff5252;font-weight:700">-$53,760</td>
-          <td style="text-align:right">-$4,080</td>
-          <td style="text-align:right;color:#22c55e;font-weight:700">+$49,680</td>
-        </tr>
-        <tr style="border-top:2px solid rgba(255,255,255,.3)">
-          <td style="padding:0.75rem;font-weight:700;font-size:1.05rem">Net profit (6 months)</td>
-          <td style="text-align:right;font-weight:700">+$17,280</td>
-          <td style="text-align:right;font-weight:700;color:#22c55e">+$91,140</td>
-          <td style="text-align:right;font-weight:700;font-size:1.1rem;color:#22c55e">+$73,860</td>
-        </tr>
-        <tr style="background:rgba(34,197,94,.15)">
-          <td style="padding:0.75rem;font-weight:700">Account value after 6 months</td>
-          <td style="text-align:right">$217,280</td>
-          <td style="text-align:right;color:#22c55e;font-weight:700">$291,140</td>
-          <td style="text-align:right;font-weight:700;color:#22c55e">+$73,860</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div style="margin-top:2rem;padding:1.5rem;background:rgba(139,92,246,.2);border-radius:8px;border-left:4px solid #8b5cf6">
-      <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.75rem">🎯 The Shocking Truth:</div>
-      <p style="margin:0;font-size:0.95rem"><strong>Marcus and Aisha had identical win rates (62.5%), identical risk management (2% per trade), and traded the exact same technical setups.</strong> The ONLY difference was order type selection and execution discipline. Marcus used market orders, visible size, and stop-markets like 90% of retail traders. Aisha used limit orders, icebergs, and stop-limits like institutions.</p>
-
-      <p style="margin:1rem 0 0 0;font-size:0.95rem">Result: <span style="color:#22c55e;font-weight:700">Aisha made $73,860 more in 6 months</span> (427% higher return). Over 12 months, this compounds to $147K+ extra profit. Over 5 years: $735K+ difference. <strong>Same strategy, different execution = $735K+ lifetime edge.</strong></p>
-    </div>
-  </div>
+  <p><strong>6-month comparison (Jan-June 2024):</strong> Marcus (retail): market orders, visible size, stop-markets → <span style="color:#ff5252">-$53,760 slippage</span>, net +$17,280. Aisha (institutional): limit orders, icebergs, stop-limits → -$4,080 slippage, net <span style="color:#22c55e">+$91,140</span>. <strong>Identical strategies, 62.5% win rates, $200K accounts, 48 trades each.</strong> Difference: <span style="color:#22c55e;font-weight:700">+$73,860</span> in 6 months from execution alone (427% higher return). Breakdown: Entry slippage saved $17,280, front-running costs saved $20,160, stop hunting saved $12,240. Over 5 years: $735K+ difference.</p>
 
   <div style="margin:2rem 0;padding:2rem;background:rgba(34,197,94,.12);border-radius:12px;border-left:4px solid #22c55e">
     <div style="font-weight:700;font-size:1.2rem;margin-bottom:1rem">💡 Key Takeaway: It's Not Your Strategy, It's Your Execution</div>
-
-    <p style="margin:0 0 1rem 0;font-size:0.95rem">Marcus thought his mediocre results meant his strategy was flawed. He spent 6 months tweaking indicators, changing timeframes, and trying new entry patterns. His real problem: <strong>he was giving away $1,120 per trade in completely avoidable slippage.</strong></p>
-
-    <p style="margin:0 0 1rem 0;font-size:0.95rem">Aisha had the exact same win rate and risk management, but she kept $1,035 more per trade by using institutional order types. Over 48 trades, that's $49,680 extra profit from execution alone.</p>
-
-    <p style="margin:0;font-size:0.95rem"><strong>The lesson:</strong> Before changing your strategy, fix your execution. Use limit orders instead of market. Hide size with icebergs. Protect stops with stop-limits. <span style="color:#22c55e;font-weight:700">A mediocre strategy with great execution beats a great strategy with terrible execution every single time.</span></p>
+    <p style="margin:0;font-size:0.95rem">Marcus thought his strategy was flawed, spent 6 months tweaking indicators. Real problem: <strong>$1,120/trade in avoidable slippage.</strong> Aisha had same win rate but kept $1,035 more per trade with institutional order types. <strong>Lesson:</strong> Fix execution before changing strategy. Use limit orders (not market), hide size (icebergs), protect stops (stop-limits). <span style="color:#22c55e;font-weight:700">Mediocre strategy + great execution beats great strategy + terrible execution.</span></p>
   </div>
 
   <h4 style="margin:2rem 0 1rem 0">How to Execute Like Aisha (Not Marcus)</h4>
@@ -756,68 +498,7 @@
 
   <div class="example-block">
     <h4>Real-World Example: Tesla MOC Imbalance During Index Addition</h4>
-    <p><strong>Date:</strong> December 18, 2020 (Tesla added to S&P 500)</p>
-
-    <p><strong>MOC Imbalance Timeline:</strong></p>
-    <table style="width:100%">
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>MOC Imbalance</th>
-          <th>TSLA Price</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>3:50 PM</td>
-          <td>+12.5M shares (buy side)</td>
-          <td>$655.90</td>
-          <td>Initial imbalance published</td>
-        </tr>
-        <tr>
-          <td>3:55 PM</td>
-          <td>+18.3M shares (buy side)</td>
-          <td>$661.20 (+0.8%)</td>
-          <td>Imbalance growing, price rising</td>
-        </tr>
-        <tr>
-          <td>3:58 PM</td>
-          <td>+24.1M shares (buy side)</td>
-          <td>$668.40 (+1.9%)</td>
-          <td>Final imbalance, algos buying aggressively</td>
-        </tr>
-        <tr>
-          <td>4:00 PM</td>
-          <td>Closed</td>
-          <td>$695.00 (+6.0% from 3:50 PM)</td>
-          <td>Closing auction executed</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p><strong>What Happened:</strong></p>
-    <ul>
-      <li>Index funds needed to buy $85 billion worth of TSLA shares at the close (tracking S&P 500)</li>
-      <li>They submitted MOC buy orders totaling 120M+ shares</li>
-      <li>As imbalance published, hedge funds front-ran the known buying pressure</li>
-      <li>Final 10 minutes saw $39 (6%) move purely from MOC-related flow</li>
-    </ul>
-
-    <p><strong>Trading Strategy:</strong></p>
-    <ol>
-      <li><strong>3:50 PM:</strong> See +12.5M buy imbalance → buy TSLA immediately at $655.90</li>
-      <li><strong>3:59 PM:</strong> Sell into strength at $668 (lock in +$12.10 per share)</li>
-      <li><strong>Risk:</strong> Imbalance could reverse if institutional sellers appear (monitor updates)</li>
-      <li><strong>Expected edge:</strong> 80% of large imbalances (&gt;10M shares) result in 0.5-3% closing ramp</li>
-    </ol>
-
-    <p><strong>Real Stats from that Day:</strong></p>
-    <ul>
-      <li>MOC volume: 120M shares (8x normal daily closing auction volume)</li>
-      <li>Traders who followed imbalance: +1-6% gains in 10 minutes</li>
-      <li>Index funds (forced to use MOC): paid +6% premium vs 3:50 PM price</li>
-    </ul>
+    <p><strong>Dec 18, 2020 (Tesla S&P 500 addition):</strong> Index funds needed $85B of TSLA at close (120M+ shares). MOC imbalance published: 3:50 PM (+12.5M buy) at $655.90 → 3:55 PM (+18.3M) at $661.20 → 3:58 PM (+24.1M) at $668.40 → 4:00 PM closed $695 (+6% in 10 minutes). <strong>Strategy:</strong> Buy at 3:50 PM ($655.90), sell 3:59 PM ($668) = +$12.10/share. <strong>Edge:</strong> 80% of large imbalances (>10M) result in 0.5-3% closing ramp as hedge funds front-run known institutional flow.</p>
   </div>
 <h3>LOC (Limit-on-Close)</h3>
   <p><strong>Execution:</strong> Execute at close ONLY if closing price is at or better than limit</p>
@@ -1443,7 +1124,6 @@
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
       </div>
     </aside>
-  </div>
 
   <div class="wrap nav-article">
   <a class="btn btn-ghost" href="/curriculum/advanced/68-crypto-market-microstructure.html">&larr; Previous Lesson</a>

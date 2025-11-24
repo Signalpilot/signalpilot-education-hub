@@ -107,93 +107,9 @@
 
       <h4 style="margin:2rem 0 1rem 0">📊 Candlestick vs Footprint: The Same Bar, Two Different Stories</h4>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 280px),1fr));gap:2rem;margin:2rem 0">
-        <!-- Standard Candlestick View -->
-        <div style="background:rgba(118,221,255,.08);border:2px solid rgba(118,221,255,.3);border-radius:12px;padding:1.5rem">
-          <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#76ddff">📊 Standard Candlestick</div>
-
-          <div style="display:flex;gap:1.5rem;align-items:center;justify-content:center;background:rgba(0,0,0,.2);border-radius:8px;padding:1.5rem;min-height:180px">
-            <!-- Candlestick visual -->
-            <div style="position:relative;width:30px;height:140px;flex-shrink:0">
-              <!-- Wick -->
-              <div style="position:absolute;left:50%;transform:translateX(-50%);top:0;width:2px;height:100%;background:rgba(34,197,94,.6)"></div>
-              <!-- Body -->
-              <div style="position:absolute;left:0;top:25%;width:100%;height:50%;background:#22c55e;border-radius:3px"></div>
-            </div>
-
-            <!-- OHLC Data -->
-            <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.85rem">
-              <div style="color:#76ddff">High: <span style="font-weight:700">$100.50</span></div>
-              <div style="color:#22c55e">Close: <span style="font-weight:700">$100.25</span></div>
-              <div style="color:#76ddff">Open: <span style="font-weight:700">$99.50</span></div>
-              <div style="color:#76ddff">Low: <span style="font-weight:700">$99.50</span></div>
-              <div style="color:#999;margin-top:0.25rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,.1)">Vol: <span style="font-weight:700">8,200</span></div>
-            </div>
-          </div>
-
-          <div style="margin-top:1.5rem;padding:1rem;background:rgba(118,221,255,.1);border-radius:8px">
-            <div style="font-weight:700;margin-bottom:0.75rem;text-align:center">What Retail Sees:</div>
-            <ul style="font-size:0.85rem;margin:0;padding-left:1.25rem;line-height:1.6">
-              <li>Green candle = bullish</li>
-              <li>Price up $0.75</li>
-              <li>Volume: 8,200 contracts</li>
-              <li style="color:#22c55e;font-weight:700">Looks like buying pressure</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Footprint Chart View -->
-        <div style="background:rgba(255,193,7,.08);border:2px solid rgba(255,193,7,.3);border-radius:12px;padding:1.5rem">
-          <div style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:1.5rem;color:#ffc107">🔍 Footprint Chart</div>
-
-          <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.75rem">
-            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(34,197,94,.15);border-left:3px solid #22c55e;margin-bottom:0.15rem;border-radius:3px">
-              <span>$100.50</span>
-              <span style="color:#22c55e">1200</span>
-              <span>300</span>
-              <span style="color:#22c55e">+900</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(34,197,94,.2);border-left:3px solid #22c55e;margin-bottom:0.15rem;border-radius:3px">
-              <span>$100.25</span>
-              <span style="color:#22c55e">2500</span>
-              <span>400</span>
-              <span style="color:#22c55e">+2100</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(255,82,82,.15);border-left:3px solid #ff5252;margin-bottom:0.15rem;border-radius:3px">
-              <span>$100.00</span>
-              <span>800</span>
-              <span style="color:#ff5252">3200</span>
-              <span style="color:#ff5252">-2400</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(255,82,82,.18);border-left:3px solid #ff5252;margin-bottom:0.15rem;border-radius:3px">
-              <span>$99.75</span>
-              <span>500</span>
-              <span style="color:#ff5252">1800</span>
-              <span style="color:#ff5252">-1300</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:0.4rem;background:rgba(255,82,82,.2);border-left:3px solid #ff5252;margin-bottom:0.15rem;border-radius:3px">
-              <span>$99.50</span>
-              <span>200</span>
-              <span style="color:#ff5252">900</span>
-              <span style="color:#ff5252">-700</span>
-            </div>
-          </div>
-
-          <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,82,82,.15);border-radius:8px;border-left:4px solid #ff5252">
-            <div style="font-weight:700;margin-bottom:0.75rem;text-align:center">What Institutions See:</div>
-            <ul style="font-size:0.85rem;margin:0;padding-left:1.25rem;line-height:1.6">
-              <li>Total delta: <span style="color:#ff5252;font-weight:700">-1400</span> (net selling!)</li>
-              <li>Heavy selling at $99.50-$100.00</li>
-              <li>Light buying at top</li>
-              <li style="color:#ff5252;font-weight:700">⚠️ TRAP—distribution, not accumulation</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
       <div style="background:rgba(255,193,7,.1);border-left:4px solid #ffc107;padding:1.5rem;border-radius:8px;margin:2rem 0">
-        <div style="font-weight:700;font-size:1.05rem;margin-bottom:0.75rem">💡 The Key Difference:</div>
-        <p style="margin:0">The candlestick says "bullish green candle up $0.75." The footprint reveals net SELLING of 1,400 contracts inside that same green candle. Price rose because sellers stepped aside at the top, NOT because buyers were aggressive. This is exactly how retail gets trapped buying distribution tops. <strong>The footprint tells the truth candlesticks hide.</strong></p>
+        <p style="margin:0 0 1rem 0"><strong>Example:</strong> Green candle ($99.50 → $100.25, +$0.75, 8,200 vol). <strong>Candlestick says:</strong> Bullish, buying pressure. <strong>Footprint reveals:</strong> Total delta -1,400 (net SELLING!). Heavy selling $99.50-$100.00 (3,200 bid @ $100 vs 800 ask), light buying at top (2,500 ask @ $100.25). Price rose because sellers stepped aside at top, NOT because buyers were aggressive. <strong>Retail trapped buying distribution.</strong></p>
+        <p style="margin:0;font-weight:700">The footprint tells the truth candlesticks hide.</p>
       </div>
 
       <p>Every price level has two sides: buyers and sellers. But standard candlesticks hide the war happening inside each bar. Did price rise because buyers were aggressive, or because sellers disappeared? Did that "bullish engulfing" candle form on heavy buying or light volume? <strong>Footprint charts reveal the truth.</strong></p>
@@ -219,52 +135,7 @@
       <div class="example-block">
         <h4>Real-World Example 1: Derek's $28K "Ignoring Divergence" Disaster</h4>
 
-        <p><strong>Derek's pattern (12 trades, 0% win rate, -$28,340):</strong> Learned footprint mechanics but ignored divergence signals. Every trade had clear warnings—price said "BUY," footprint said "TRAP."</p>
-
-        <p><strong>The pattern repeated 12 times:</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Price action:</strong> New highs, breakouts, "momentum" (looked bullish)</li>
-          <li><strong>Footprint reality:</strong> Volume declining 40-60%, negative delta, POC not following price</li>
-          <li><strong>Derek's mistake:</strong> Focused on price, ignored volume divergence</li>
-          <li><strong>Result:</strong> Bought distribution tops, stopped out 12/12 times</li>
-        </ul>
-
-        <p style="margin-top:1rem"><strong>Examples:</strong></p>
-        <ul style="margin:.5rem 0 0 1.5rem">
-          <li><strong>Mar 11 (SPY):</strong> New high $520. Footprint showed volume DOWN 40%, delta -$18M (selling). Derek: "Bullish!" Stopped. -$1,840.</li>
-          <li><strong>Mar 15 (NVDA):</strong> ATH $920. POC at $915 (institutions NOT participating at highs). Derek: "Breakout!" Stopped. -$3,180.</li>
-          <li><strong>Mar 29 (AAPL):</strong> Breakout $177. All volume at BID (no ask absorption = no buyers). Derek: "Finally!" Trapped. -$2,300.</li>
-        </ul>
-
-        <div style="margin-top:1.5rem;padding:1.5rem;background:rgba(255,82,82,0.15);border-radius:12px;border-left:4px solid #ff5252">
-          <div style="font-weight:700;font-size:1.05rem;margin-bottom:1rem">Sample Divergence Traps (All 12 trades followed this pattern):</div>
-
-          <div style="padding:1rem;background:rgba(255,82,82,0.08);border-radius:8px;margin-bottom:0.75rem">
-            <strong>Mar 20 SPY:</strong> Higher high $523 • ❌ Delta -$22M, ask volume 70% of previous high • Derek: "Trend continuation!" • Result: -$2,100
-          </div>
-
-          <div style="padding:1rem;background:rgba(255,82,82,0.08);border-radius:8px;margin-bottom:0.75rem">
-            <strong>Mar 25 QQQ:</strong> New high $442 • ❌ POC static at $439 (price above, volume below) • Derek: "Higher highs!" • Result: -$2,380
-          </div>
-
-          <div style="padding:1rem;background:rgba(255,82,82,0.08);border-radius:8px">
-            <strong>Mar 29 AAPL:</strong> Breakout $177 • ❌ All volume at BID (zero ask absorption) • Derek: "Finally breaking!" • Result: -$2,300
-          </div>
-        </div>
-
-        <div style="margin-top:2rem;padding:1.5rem;background:rgba(255,82,82,0.15);border-radius:12px;border-left:4px solid #ff5252;text-align:center">
-          <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.5rem">3-WEEK DAMAGE: $28,340 loss (-43.6%) • 12 trades • 0 wins • 100% divergence-trap pattern</div>
-          <div style="color:#fbbf24;margin-top:0.5rem">⚠️ Every trade had clear footprint divergence. Derek saw price, ignored volume. Result: perfect losing streak.</div>
-        </div>
-<h5>The Fix: Derek's Divergence Rules</h5>
-
-        <p><strong>What would have saved $28K:</strong></p>
-        <ul style="margin:.75rem 0 0 1.5rem">
-          <li><strong>Volume divergence:</strong> If volume drops >30% on new high, NO TRADE (would have skipped 8/12)</li>
-          <li><strong>Delta confirmation:</strong> Breakouts need POSITIVE delta, negative = fade (would have skipped 7/12)</li>
-          <li><strong>POC migration:</strong> If POC lags price >2 pts, institutions not participating, NO TRADE (would have skipped 6/12)</li>
-          <li><strong>Exhaustion pattern:</strong> 3+ bid imbalances at resistance = fade, don't follow (would have skipped 5/12)</li>
-        </ul>
+        <p><strong>Derek (12 trades, 0% win rate, -$28,340):</strong> Learned footprint mechanics but ignored divergence. Pattern repeated 12×: Price made new highs/breakouts (looked bullish), footprint showed volume declining 40-60%, negative delta, POC not following price. Examples: SPY $520 (volume -40%, delta -$18M, -$1,840), NVDA $920 (POC stuck at $915, -$3,180), AAPL $177 (all volume at BID = no buyers, -$2,300). <strong>What would have saved $28K:</strong> Volume drops >30% = NO TRADE (8/12 skipped), negative delta on breakout = fade (7/12 skipped), POC lags price >2pts = skip (6/12 skipped). <span style="color:#ff5252;font-weight:700">Price and footprint must AGREE. When they diverge, footprint wins.</span></p>
 
         <div style="margin-top:1.5rem;padding:1rem;background:rgba(34,197,94,0.15);border-radius:12px;border-left:4px solid #22c55e">
           <strong>Result:</strong> ANY single rule would have prevented 5-8 losses. ALL rules = 0/12 trades taken, $0 lost (vs -$28,340).
