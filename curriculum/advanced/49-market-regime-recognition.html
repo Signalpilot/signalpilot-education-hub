@@ -546,46 +546,7 @@ Ranging Regime:
         <p><strong>Objective:</strong> Create a real-time regime detection dashboard and backtest your classification accuracy.</p>
 
         <p><strong>Part 1: Build Your Regime Scorecard</strong></p>
-        <p>Create a spreadsheet or script that calculates your regime score in real-time. Track these inputs for your primary trading instrument (SPY, ES, etc.):</p>
-        <table style="width:100%;border-collapse:collapse;margin:1rem 0">
-          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
-            <th style="padding:.5rem">Indicator</th>
-            <th style="padding:.5rem">Current Value</th>
-            <th style="padding:.5rem">Threshold</th>
-            <th style="padding:.5rem">Score</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-            <td style="padding:.5rem">ADX (14)</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">> 25 = +1, < 20 = -1</td>
-            <td style="padding:.5rem">_______</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-            <td style="padding:.5rem">ATR (14) Ratio</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">> 1.5x = +1, < 0.8x = -1</td>
-            <td style="padding:.5rem">_______</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-            <td style="padding:.5rem">BB Width %</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">> 8% = +1, < 4% = -1</td>
-            <td style="padding:.5rem">_______</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-            <td style="padding:.5rem">Price vs VWAP</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">> 0.5% = +1, < -0.5% = -1</td>
-            <td style="padding:.5rem">_______</td>
-          </tr>
-          <tr>
-            <td style="padding:.5rem"><strong>TOTAL SCORE</strong></td>
-            <td style="padding:.5rem"></td>
-            <td style="padding:.5rem"></td>
-            <td style="padding:.5rem;font-weight:bold">_______</td>
-          </tr>
-        </table>
-        <p><strong>Classification:</strong> Score +3 to +5 = Trending | 0 to +2 = Weak/Ranging | -3 to -5 = Compressed</p>
+        <p>Create a spreadsheet with 4 indicators for your primary instrument (SPY, ES). Score each indicator: <strong>ADX (14):</strong> >25 = +1, <20 = -1. <strong>ATR Ratio:</strong> >1.5× = +1, <0.8× = -1. <strong>BB Width:</strong> >8% = +1, <4% = -1. <strong>Price vs VWAP:</strong> >0.5% = +1, <-0.5% = -1. Sum the scores. <strong>Classification:</strong> +3 to +5 = Trending | 0 to +2 = Weak/Ranging | -3 to -5 = Compressed.</p>
 
         <p><strong>Part 2: 10-Day Regime Classification Backtest</strong></p>
         <p>Go back 10 trading days and classify regime at market open (9:30 AM). Then verify:</p>
@@ -624,33 +585,7 @@ Risk Per Trade Today: $_______</code></pre>
         <p><strong>Build Alerts:</strong> Set alerts for regime score crossing +3 (go aggressive) and -2 (go defensive).</p>
 
         <p><strong>Part 5: Success Rate by Regime Analysis</strong></p>
-        <p>Review your last 20 trades. Classify the regime at time of potential entry, then track effectiveness:</p><table style="width:100%;border-collapse:collapse;margin:1rem 0">
-          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
-            <th style="padding:.5rem">Regime</th>
-            <th style="padding:.5rem">Trades Taken</th>
-            <th style="padding:.5rem">Wins</th>
-            <th style="padding:.5rem">Success Rate</th>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-            <td style="padding:.5rem">Trending (+3 to +5)</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">_______%</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-            <td style="padding:.5rem">Ranging (0 to +2)</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">_______%</td>
-          </tr>
-          <tr>
-            <td style="padding:.5rem">Volatile/Compressed</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">_______</td>
-            <td style="padding:.5rem">_______%</td>
-          </tr>
-        </table>
-        <p><strong>Key Insight:</strong> If expectancy in trends is 70%+ but ranging is 45%, STOP TRADING RANGES. Only take trending regime setups. This one filter can double your profitability.</p>
+        <p>Review your last 20 trades. Classify the regime at time of entry (Trending +3 to +5, Ranging 0 to +2, Volatile/Compressed), count total trades and wins for each regime, calculate success rate. <strong>Key Insight:</strong> If expectancy in trends is 70%+ but ranging is 45%, STOP TRADING RANGES. Only take trending regime setups. This one filter can double your profitability.</p>
 
         <p style="margin-top:1rem;padding:1rem;background:rgba(0,212,170,.15);border-radius:8px"><strong>Implementation Goal:</strong> Build this system within 3 days. Use it for 21 consecutive trading days. Track regime score BEFORE every trade. If score doesn't support your strategy, DON'T TRADE. Your expectancy will improve dramatically.</p>
       </div>
