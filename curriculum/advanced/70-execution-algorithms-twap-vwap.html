@@ -173,129 +173,11 @@
 
   <div class="example-block">
     <h4>Real-World Example: TWAP Execution Breakdown</h4>
-    <p><strong>Scenario:</strong> Mutual fund needs to sell 360,000 shares of MSFT (current price $380.00, avg daily volume 20M shares)</p>
+    <p><strong>Scenario:</strong> Mutual fund sells 360,000 MSFT shares (avg daily volume 20M) via TWAP over 6 hours at 1,000 shares/min constant rate. Avg fill: $379.93, beat decision price ($380.00) by $0.07 but lagged VWAP ($380.08) by $0.15.</p>
 
-    <p><strong>TWAP Parameters:</strong></p>
-    <ul>
-      <li><strong>Duration:</strong> 9:30 AM - 3:30 PM (6 hours = 360 minutes)</li>
-      <li><strong>Execution rate:</strong> 360,000 shares / 360 minutes = 1,000 shares/minute</li>
-      <li><strong>Slice size:</strong> 250 shares every 15 seconds (4 slices/minute = 1,000 shares/minute)</li>
-    </ul>
+    <p><strong>The Problem with TWAP:</strong> During lunch (11:30 AM - 1:30 PM), algo was 3-4% of market volume despite low liquidity (traded 120K shares when market only had 1.5-1.8M volume). This caused price depression and ~$25K slippage. <strong>VWAP would have traded only 18K shares during lunch</strong> (matching volume patterns), saving $15K-$20K.</p>
 
-    <p><strong>Hourly Execution Log:</strong></p>
-    <table style="width:100%">
-      <thead>
-        <tr>
-          <th>Hour</th>
-          <th>Target Shares</th>
-          <th>Actual Filled</th>
-          <th>Avg Price</th>
-          <th>Market Volume</th>
-          <th>Our % of Volume</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>9:30-10:30</td>
-          <td>60,000</td>
-          <td>59,850</td>
-          <td>$380.05</td>
-          <td>4.2M shares</td>
-          <td>1.4%</td>
-        </tr>
-        <tr>
-          <td>10:30-11:30</td>
-          <td>60,000</td>
-          <td>60,100</td>
-          <td>$379.95</td>
-          <td>3.1M shares</td>
-          <td>1.9%</td>
-        </tr>
-        <tr>
-          <td>11:30-12:30</td>
-          <td>60,000</td>
-          <td>59,200</td>
-          <td>$379.85</td>
-          <td>1.8M shares</td>
-          <td><strong>3.3%</strong> (high impact)</td>
-        </tr>
-        <tr>
-          <td>12:30-1:30</td>
-          <td>60,000</td>
-          <td>58,950</td>
-          <td>$379.75</td>
-          <td>1.5M shares</td>
-          <td><strong>3.9%</strong> (very high impact)</td>
-        </tr>
-        <tr>
-          <td>1:30-2:30</td>
-          <td>60,000</td>
-          <td>60,200</td>
-          <td>$379.90</td>
-          <td>2.8M shares</td>
-          <td>2.1%</td>
-        </tr>
-        <tr>
-          <td>2:30-3:30</td>
-          <td>60,000</td>
-          <td>60,700</td>
-          <td>$380.10</td>
-          <td>5.6M shares</td>
-          <td>1.1%</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p><strong>Performance Analysis:</strong></p>
-    <table style="width:100%">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Total Filled</td>
-          <td>359,000 shares (99.7%)</td>
-        </tr>
-        <tr>
-          <td>Average Fill Price</td>
-          <td>$379.93</td>
-        </tr>
-        <tr>
-          <td>Decision Price (9:30 AM)</td>
-          <td>$380.00</td>
-        </tr>
-        <tr>
-          <td>Performance vs Decision</td>
-          <td>+$0.07 (beat by 7 cents)</td>
-        </tr>
-        <tr>
-          <td>Daily VWAP</td>
-          <td>$380.08</td>
-        </tr>
-        <tr>
-          <td>Performance vs VWAP</td>
-          <td>+$0.15 (beat by 15 cents)</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p><strong>The Problem with TWAP:</strong></p>
-    <ul>
-      <li>During lunch (11:30 AM - 1:30 PM), algo was 3-4% of market volume despite low liquidity</li>
-      <li>This caused price depression (our selling moved price down $0.10-$0.15 during low-vol periods)</li>
-      <li>If we used <strong>VWAP instead</strong>, would have traded only 15-20% of order during lunch (18K shares vs 120K), reducing impact</li>
-      <li>Total slippage: ~$25K (could have saved $15K-$20K with VWAP)</li>
-    </ul>
-
-    <p><strong>When TWAP Still Makes Sense:</strong></p>
-    <ul>
-      <li>Very liquid stocks where 1% participation has minimal impact (SPY, AAPL, MSFT with small orders)</li>
-      <li>Simple compliance requirement ("execute evenly throughout day")</li>
-      <li>Orders &lt; 0.5% of daily volume (impact negligible regardless of timing)</li>
-    </ul>
+    <p><strong>When TWAP Still Makes Sense:</strong> Very liquid stocks (SPY, AAPL) where 1% participation has minimal impact, simple compliance requirements, or orders &lt;0.5% of daily volume.</p>
   </div>
 <h2 id="part-3-vwap-volume-weighted-average-price">Part 3: VWAP (Volume-Weighted Average Price)</h2>
 
@@ -451,158 +333,20 @@
     <h4>Real-World Example: Implementation Shortfall vs VWAP</h4>
     <p><strong>Scenario:</strong> Hedge fund PM sees bullish setup in AMD at 2:00 PM. Decision price: $145.00. Order: buy 200,000 shares.</p>
 
-    <p><strong>Two Execution Strategies Compared:</strong></p>
 <div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
   <p>You're now at the halfway point. You've learned the key strategies.</p>
   <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break if needed, then we'll dive into the advanced concepts ahead.</p>
 </div>
-<h5>Strategy A: VWAP Algo (Standard Approach)</h5>
-    <table style="width:100%">
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>Shares Filled</th>
-          <th>Cumulative</th>
-          <th>Avg Price</th>
-          <th>Market Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2:00-2:30</td>
-          <td>30,000</td>
-          <td>30K</td>
-          <td>$145.15</td>
-          <td>$145.20</td>
-        </tr>
-        <tr>
-          <td>2:30-3:00</td>
-          <td>40,000</td>
-          <td>70K</td>
-          <td>$145.40</td>
-          <td>$145.55</td>
-        </tr>
-        <tr>
-          <td>3:00-3:30</td>
-          <td>50,000</td>
-          <td>120K</td>
-          <td>$145.80</td>
-          <td>$146.05</td>
-        </tr>
-        <tr>
-          <td>3:30-4:00</td>
-          <td>80,000</td>
-          <td>200K</td>
-          <td>$146.20</td>
-          <td>$146.50</td>
-        </tr>
-      </tbody>
-    </table>
-    <p><strong>VWAP Result:</strong> Avg fill = $145.72. Implementation shortfall = $0.72/share = <strong>$144K slippage</strong></p>
 
-    <h5>Strategy B: IS Algo (Aggressive Start)</h5>
-    <table style="width:100%">
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>Shares Filled</th>
-          <th>Cumulative</th>
-          <th>Avg Price</th>
-          <th>Market Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2:00-2:15</td>
-          <td><strong>80,000</strong></td>
-          <td>80K</td>
-          <td>$145.08</td>
-          <td>$145.15</td>
-        </tr>
-        <tr>
-          <td>2:15-2:45</td>
-          <td>60,000</td>
-          <td>140K</td>
-          <td>$145.35</td>
-          <td>$145.50</td>
-        </tr>
-        <tr>
-          <td>2:45-3:15</td>
-          <td>40,000</td>
-          <td>180K</td>
-          <td>$145.70</td>
-          <td>$145.90</td>
-        </tr>
-        <tr>
-          <td>3:15-3:35</td>
-          <td>20,000</td>
-          <td>200K</td>
-          <td>$146.05</td>
-          <td>$146.25</td>
-        </tr>
-      </tbody>
-    </table>
-    <p><strong>IS Result:</strong> Avg fill = $145.28. Implementation shortfall = $0.28/share = <strong>$56K slippage</strong></p>
+    <p><strong>VWAP Result:</strong> Avg fill $145.72 (spread evenly over 2 hours). Implementation shortfall = $0.72/share = <strong>$144K slippage</strong>. Patient execution but chased the rally.</p>
 
-    <p><strong>Comparison:</strong></p>
-    <table style="width:100%">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>VWAP</th>
-          <th>IS Algo</th>
-          <th>Difference</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Avg Fill Price</td>
-          <td>$145.72</td>
-          <td>$145.28</td>
-          <td><strong>$0.44 better</strong></td>
-        </tr>
-        <tr>
-          <td>Total Slippage Cost</td>
-          <td>$144,000</td>
-          <td>$56,000</td>
-          <td><strong>$88K savings</strong></td>
-        </tr>
-        <tr>
-          <td>% Filled in First 30 Min</td>
-          <td>30K (15%)</td>
-          <td>80K (40%)</td>
-          <td>+25% faster start</td>
-        </tr>
-        <tr>
-          <td>Market Impact</td>
-          <td>Low</td>
-          <td>Medium</td>
-          <td>Slightly higher</td>
-        </tr>
-      </tbody>
-    </table>
+    <p><strong>IS Algo Result:</strong> Avg fill $145.28 (40% filled aggressively in first 15 min at $145.08, then slowed down). Implementation shortfall = $0.28/share = <strong>$56K slippage</strong>. Saved <strong>$88K</strong> by locking in early.</p>
 
-    <p><strong>Why IS Outperformed:</strong></p>
-    <ol>
-      <li><strong>Strong conviction:</strong> PM's analysis was correct—AMD rallied 1% from decision time to close</li>
-      <li><strong>Early aggression:</strong> IS algo locked in 40% of order at $145.08 (8 cents above decision price)</li>
-      <li><strong>Avoided chasing:</strong> VWAP spread order evenly, forcing fills at $146+ as rally accelerated</li>
-      <li><strong>Adaptive pacing:</strong> IS slowed down after locking early, reduced impact during rally</li>
-    </ol>
+    <p><strong>Why IS Outperformed:</strong> (1) Strong conviction was correct—AMD rallied 1% to close, (2) Early aggression locked in 40% at $145.08, avoided chasing $146+ fills, (3) Adaptive pacing reduced impact after securing early position.</p>
 
-    <p><strong>When IS Fails:</strong></p>
-    <ul>
-      <li><strong>False potential breakout:</strong> If AMD reversed after 2:15 PM and fell to $144, IS would have overpaid early</li>
-      <li><strong>Wrong directional view:</strong> IS assumes you're RIGHT about near-term direction. If wrong, aggressive start = losses.</li>
-      <li><strong>Choppy markets:</strong> In sideways action, VWAP's patient approach outperforms IS</li>
-    </ul>
+    <p><strong>When IS Fails:</strong> If AMD reversed to $144, aggressive start = overpaid. IS requires directional conviction. Wrong direction = losses. Choppy markets favor VWAP's patient approach.</p>
 
-    <p><strong>Use IS When:</strong></p>
-    <ul>
-      <li>High conviction directional trade (strong catalyst, potential breakout, news)</li>
-      <li>Momentum accelerating (don't want price to run away)</li>
-      <li>Time-sensitive (must be filled before close, event, etc.)</li>
-    </ul>
+    <p><strong>Use IS When:</strong> High conviction directional trade (catalyst, breakout, news), momentum accelerating, or time-sensitive (must fill before close/event).</p>
   </div>
 <h3>IS vs VWAP</h3>
   <table style="width:100%">
