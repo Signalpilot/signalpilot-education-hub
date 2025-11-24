@@ -1131,35 +1131,10 @@
     <p style="margin-top:1rem"><strong>Bottom line:</strong> Institutions can't hide size perfectly. Iceberg orders create detectable patterns. <span style="color:#22c55e;font-weight:700">Learn to spot the pattern, position ahead of big money, ride their flow, exit when they're done. Sarah made $67K in 9 months doing exactly this.</span></p>
   </div>
 
-<h3>Pegged Orders (Automatic Price Adjustment)</h3>
-
-  <details class="accordion">
-    <summary>Primary Peg (Peg to NBBO)</summary>
-    <div class="accordion-content">
-      <p><strong>How it works:</strong> Order automatically adjusts to stay at best bid/ask</p>
-<div class="callout-info" style="background:rgba(0,212,170,0.1);border-left:4px solid #00d4aa;margin:2rem 0">
-  <p>You're now at the halfway point. You've learned the key strategies.</p>
-  <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Take a quick stretch break if needed, then we'll dive into the advanced concepts ahead.</p>
-</div>
-      <p><strong>Example:</strong> Peg buy order. If best bid = $100.00, order sits at $100.00. If best bid moves to $100.05, order automatically updates to $100.05</p>
-      <p><strong>Use case:</strong> Be first in line without manually updating order (market-making, HFT)</p>
-    </div>
-  </details>
-
-  <details class="accordion">
-    <summary>Midpoint Peg</summary>
-    <div class="accordion-content">
-      <p><strong>How it works:</strong> Order sits at midpoint of bid-ask spread</p>
-      <p><strong>Example:</strong> Bid $100.00, ask $100.10 → midpoint peg executes at $100.05</p>
-      <p><strong>Use case:</strong> Dark pools (institutions trade at midpoint to split spread savings)</p>
-      <p><strong>Benefit:</strong> Better price than hitting ask ($100.10) or lifting bid ($100.00)</p>
-    </div>
-  </details>
-
-  <h3>Discretionary Orders (Price Improvement Authority)</h3>
-  <p><strong>Structure:</strong> Limit order with discretion range</p>
-  <p><strong>Example:</strong> Buy limit $100, discretion $0.10 → can execute up to $100.10 if needed</p>
-  <p><strong>Use case:</strong> Prevent missing fill by penny (willing to pay slightly more for certainty)</p>
+<h3>Pegged Orders & Discretionary Orders</h3>
+  <p><strong>Primary Peg:</strong> Order automatically adjusts to stay at best bid/ask. Example: Best bid moves $100 → $100.05, your peg order updates automatically. Use: Market-making, HFT.</p>
+  <p><strong>Midpoint Peg:</strong> Order sits at midpoint of spread. Bid $100, ask $100.10 → executes at $100.05. Use: Dark pools.</p>
+  <p><strong>Discretionary Orders:</strong> Limit with price range. Buy limit $100 with $0.10 discretion = can fill up to $100.10 if needed.</p>
 
   <h2 id="part-5-algorithmic-order-types">Part 5: Algorithmic Order Types</h2>
 
@@ -1175,119 +1150,6 @@
 
 
 
-  <div class="example-block">
-    <h4>Real-World Example: VWAP Algo Execution for Large Cap Stock</h4>
-    <p><strong>Scenario:</strong> Pension fund needs to buy 800,000 shares of JPM (avg daily volume 12M shares, current price $150.00)</p>
-
-    <p><strong>Order Parameters:</strong></p>
-    <ul>
-      <li><strong>Total size:</strong> 800,000 shares</li>
-      <li><strong>Algo type:</strong> VWAP (9:30 AM - 4:00 PM)</li>
-      <li><strong>Participation rate:</strong> Max 10% of volume (avoid market impact)</li>
-      <li><strong>Benchmark:</strong> Daily VWAP</li>
-    </ul>
-
-    <p><strong>VWAP Schedule (Actual Execution):</strong></p>
-    <table style="width:100%">
-      <thead>
-        <tr>
-          <th>Time Period</th>
-          <th>Market Volume</th>
-          <th>% of Day</th>
-          <th>Algo Target</th>
-          <th>Actual Filled</th>
-          <th>Avg Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>9:30-10:00</td>
-          <td>2.4M shares</td>
-          <td>20%</td>
-          <td>160K shares</td>
-          <td>158K shares</td>
-          <td>$150.15</td>
-        </tr>
-        <tr>
-          <td>10:00-11:00</td>
-          <td>1.8M shares</td>
-          <td>15%</td>
-          <td>120K shares</td>
-          <td>121K shares</td>
-          <td>$150.25</td>
-        </tr>
-        <tr>
-          <td>11:00-2:00</td>
-          <td>3.0M shares</td>
-          <td>25%</td>
-          <td>200K shares</td>
-          <td>202K shares</td>
-          <td>$150.10</td>
-        </tr>
-        <tr>
-          <td>2:00-3:00</td>
-          <td>1.2M shares</td>
-          <td>10%</td>
-          <td>80K shares</td>
-          <td>79K shares</td>
-          <td>$150.05</td>
-        </tr>
-        <tr>
-          <td>3:00-4:00</td>
-          <td>3.6M shares</td>
-          <td>30%</td>
-          <td>240K shares</td>
-          <td>240K shares</td>
-          <td>$150.20</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p><strong>Performance Metrics:</strong></p><table style="width:100%">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Total Filled</td>
-          <td>800,000 shares (100%)</td>
-        </tr>
-        <tr>
-          <td>Algo Average Price</td>
-          <td>$150.14</td>
-        </tr>
-        <tr>
-          <td>Daily VWAP</td>
-          <td>$150.18</td>
-        </tr>
-        <tr>
-          <td>Performance vs VWAP</td>
-          <td><strong>-$0.04 (beat by 4 cents)</strong></td>
-        </tr>
-        <tr>
-          <td>Total Savings</td>
-          <td>$32,000 vs VWAP benchmark</td>
-        </tr>
-        <tr>
-          <td>Participation Rate</td>
-          <td>6.7% (under 10% limit)</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p><strong>Why VWAP Beat Benchmark:</strong></p>
-    <ul>
-      <li>Algo weighted execution toward lower-price periods (11 AM-2 PM at $150.10, 2-3 PM at $150.05)</li>
-      <li>Avoided aggressive market orders during high-volatility opening (would have paid $150.30+)</li>
-      <li>10% participation limit prevented moving market (stayed stealthy)</li>
-      <li>Adaptive pacing: when volume spiked 3-4 PM, algo increased execution rate</li>
-    </ul>
-
-    <p><strong>Key Insight:</strong> VWAP doesn't just split order evenly—it dynamically adjusts based on real-time volume. If 30% of volume occurs in first hour but price is unfavorable, algo can "slow down" and wait for better conditions while still hitting overall VWAP target.</p>
-  </div>
 <h3>POV (Percentage of Volume)</h3>
   <p><strong>Execution:</strong> Trade as fixed % of market volume (e.g., 10% participation rate)</p>
   <p><strong>Example:</strong> If market trades 1,000 shares/minute, POV 10% algo trades 100 shares/minute</p>
@@ -1402,36 +1264,6 @@
     </details>
   </div>
 
-  <div class="practice-section">
-    <h3>Exercise 2: Design Your Order Strategy</h3>
-    <p><strong>Goal:</strong> Given a trading scenario, select optimal order type and parameters.</p>
-
-    <p><strong>Scenario:</strong> You manage a $2B equity fund. You need to buy 500,000 shares of mid-cap stock XYZ (avg daily volume 2M shares, current price $65.00). Your goal is to minimize market impact and beat VWAP.</p>
-
-    <p><strong>Questions:</strong></p><ol>
-      <li>Which order type should you use? (Market / Limit / VWAP algo / TWAP algo / Iceberg)</li>
-      <li>What time period should you execute over? (30 min / 2 hours / Full day)</li>
-      <li>What participation rate limit? (5% / 10% / 20% / No limit)</li>
-      <li>Should you probe liquidity first with IOC orders?</li>
-    </ol>
-
-    <details>
-      <summary>Show Answer</summary>
-      <p><strong>Optimal Strategy:</strong></p>
-      <ol>
-        <li><strong>Order type:</strong> <strong>VWAP algo</strong> (trades proportional to volume, minimizes impact)</li>
-        <li><strong>Time period:</strong> <strong>Full day 9:30 AM - 4:00 PM</strong> (spreading over 6.5 hours reduces footprint from 25% of daily volume to manageable 4% per hour)</li>
-        <li><strong>Participation rate:</strong> <strong>10% maximum</strong> (500K shares = 25% of 2M daily volume, so need to limit to avoid dominating tape)</li>
-        <li><strong>IOC probe:</strong> <strong>Yes, send 5K share IOC test at 9:32 AM</strong> to gauge liquidity before deploying full algo</li>
-      </ol>
-      <p><strong>Why not alternatives?</strong></p>
-      <ul>
-        <li><strong>Market order:</strong> Would cause 3-8% slippage (buying 25% of daily volume instantly)</li>
-        <li><strong>TWAP:</strong> Ignores volume patterns (trades same amount during lunch lull vs opening surge)</li>
-        <li><strong>Iceberg alone:</strong> Too slow, would need 2-3 days to fill 500K shares passively</li>
-      </ul>
-    </details>
-  </div>
 <h2 id="practical-checklist">Practical Checklist</h2>
   <div class="checklist">
     <h4>When Placing Orders:</h4>
