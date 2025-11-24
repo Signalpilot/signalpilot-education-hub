@@ -319,72 +319,9 @@
   </tbody>
 </table>
 
-<h3>API Feature Comparison</h3>
+<h3>Quick Decision Guide</h3>
 
-<details class="accordion">
-  <summary>Alpaca (Best for Beginners)</summary>
-  <div class="accordion-content">
-    <p><strong>Pros:</strong> Free paper trading, Python library (pip install), commission-free stocks, excellent docs. <strong>Cons:</strong> No options/futures, US markets only. <strong>Verdict:</strong> Start here, move to IBKR when you need options/futures.</p>
-  </div>
-</details>
-
-<details class="accordion">
-  <summary>Interactive Brokers (Best for Advanced/Multi-Asset)</summary>
-  <div class="accordion-content">
-    <p><strong>Pros:</strong> All asset classes (stocks, options, futures, forex), 135+ global exchanges, low costs ($0.005/share), institutional-grade. <strong>Cons:</strong> Complex setup (TWS required), steep learning curve, $25K for day trading. <strong>Verdict:</strong> Choose for options/futures or global access.</p>
-  </div>
-</details>
-
-<details class="accordion">
-  <summary>Binance (Best for Crypto 24/7 Trading)</summary>
-  <div class="accordion-content">
-    <p><strong>Pros:</strong> 24/7 markets, 600+ pairs, high liquidity, low fees (0.1% spot). <strong>Cons:</strong> Regulatory risk (not available in US), high volatility, dangerous leverage (125×—use 1-3× max). <strong>Verdict:</strong> Best for crypto algos, not stocks.</p>
-  </div>
-</details>
-
-<h3>Decision Matrix: Which API Should You Choose?</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Your Goal</th>
-      <th>Recommended API</th>
-      <th>Why</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Learn automation (beginner)</strong></td>
-      <td>Alpaca</td>
-      <td>Easiest setup, free paper trading, best docs</td>
-    </tr>
-    <tr>
-      <td><strong>Automate stock strategies</strong></td>
-      <td>Alpaca or IBKR</td>
-      <td>Alpaca for simplicity, IBKR for lower costs (if high volume)</td>
-    </tr>
-    <tr>
-      <td><strong>Automate options strategies</strong></td>
-      <td>Interactive Brokers</td>
-      <td>Only major broker with robust options API</td>
-    </tr>
-    <tr>
-      <td><strong>Automate futures (ES, NQ, etc.)</strong></td>
-      <td>Interactive Brokers</td>
-      <td>Best futures access, low commissions</td>
-    </tr>
-    <tr>
-      <td><strong>Trade crypto 24/7</strong></td>
-      <td>Binance</td>
-      <td>Highest liquidity, lowest fees, 24/7 uptime</td>
-    </tr>
-    <tr>
-      <td><strong>Multi-asset portfolio (stocks + options + futures)</strong></td>
-      <td>Interactive Brokers</td>
-      <td>All asset classes in one account/API</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Choose Alpaca if:</strong> Learning automation (easiest API, free paper trading, best docs). <strong>Choose Interactive Brokers if:</strong> Need options/futures/global markets (all asset classes, $0.005/share, institutional-grade). <strong>Choose Binance if:</strong> Crypto only (24/7 markets, 600+ pairs, 0.1% fees).</p>
 
 <div class="callout" style="background:rgba(251,191,36,0.1);border-left:4px solid #fbbf24;margin:2rem 0;padding:1.5rem">
   <h4>💡 Pro Tip: Start with Paper Trading (Always)</h4>
@@ -506,175 +443,73 @@ if current_bar.low < swing_low * 0.997:  # Sweep
   <p>This is now executable. A bot can follow these rules perfectly, every single time.</p>
 </div>
 
-<h3>Step 1: Connect to Alpaca API</h3>
+<h3>Complete Bot Implementation (Sweep Reversal Strategy)</h3>
 
       <pre style="overflow-x:auto"><code>import alpaca_trade_api as tradeapi
-import os
+import os, time
 
-# NEVER hardcode credentials! Use environment variables
-API_KEY = os.getenv('ALPACA_API_KEY')
+# Setup
+API_KEY = os.getenv('ALPACA_API_KEY')  # NEVER hardcode!
 API_SECRET = os.getenv('ALPACA_API_SECRET')
-BASE_URL = 'https://paper-api.alpaca.markets'  # Paper trading
+api = tradeapi.REST(API_KEY, API_SECRET, 'https://paper-api.alpaca.markets')
 
-# Initialize API connection
-api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL)
-
-# Test connection
-account = api.get_account()
-print(f"Connected! Buying power: ${float(account.buying_power):,.2f}")</code></pre>
-
-      <p>Run that. If you see your buying power? You're connected. Welcome to automation.</p>
-
-      <h3>Step 2: Fetch Market Data</h3>
-
-      <pre style="overflow-x:auto"><code># Get latest price for SPY
-barset = api.get_barset('SPY', 'minute', limit=50)
-bars = barset['SPY']
-
-# Extract data
-current_bar = bars[-1]
-current_price = current_bar.c  # Close price
-current_low = current_bar.l    # Low of bar
-
-print(f"SPY current price: ${current_price}")
-print(f"Current low: ${current_low}")</code></pre>
-
-      <p>You now have real-time data. Next: trade logic.</p>
-
-      <h3>Step 3: Detect Sweep Potential Reversal Setup</h3>
-
-      <pre style="overflow-x:auto"><code>def get_swing_low(bars, lookback=20):
-    """Find swing low over last N bars"""
+def get_swing_low(bars, lookback=20):
     lows = [bar.l for bar in bars[-lookback:]]
     return min(lows)
 
 def check_sweep(current_price, current_low, swing_low):
-    """
-    Sweep conditions:
-    1. Current low swept below swing low (by 0.3%)
-    2. Price reclaimed back above swing low
-    """
-    if swing_low is None:
-        return False
+    # Sweep = current low < swing low (0.3%), then reclaim above
+    if current_low < swing_low * 0.997 and current_price > swing_low:
+        return True
+    return False
 
-    # Check if swept below
-    if current_low < swing_low * 0.997:  # 0.3% below
-        # Check if reclaimed
-        if current_price > swing_low:
-            return True  # Sweep confirmed!
-
-    return False</code></pre>
-
-      <p>This is your edge, coded. If conditions = true, trade. If false, skip.</p>
-
-      <p>No hesitation. No emotion. Just logic.</p>
-
-      <h3>Step 4: Calculate Position Size (Risk Management)</h3>
-
-      <pre style="overflow-x:auto"><code>def calculate_position_size(api, potential entry, stop):
-    """
-    Risk 2% of account per trade
-    Position size = (Account × Risk%) / (Entry - Stop)
-    """
-    account = api.get_account()
-    equity = float(account.equity)
+def calculate_position_size(api, entry, stop):
+    equity = float(api.get_account().equity)
     risk_amount = equity * 0.02  # 2% risk
+    return int(risk_amount / abs(entry - stop))
 
-    stop_distance = abs(potential entry - stop)
-    size = int(risk_amount / stop_distance)
-
-    return size
-
-# Example: $100K account, $520 potential entry, $518 stop
-# Risk: $100K × 2% = $2,000
-# Stop distance: $520 - $518 = $2
-# Size: $2,000 / $2 = 1,000 shares</code></pre>
-
-      <p>Your bot now risks exactly 2% per trade. Every time. No exceptions.</p>
-
-      <h3>Step 5: Place Bracket Order (Entry + Stop + Target)</h3>
-
-      <pre style="overflow-x:auto"><code>def place_bracket_order(api, symbol, size, potential entry, stop, target):
-    """
-    Bracket order = potential entry + stop-loss + take-profit
-    All three orders placed simultaneously
-    """
+def place_bracket_order(api, symbol, size, entry, stop, target):
     try:
         order = api.submit_order(
-            symbol=symbol,
-            qty=size,
-            side='buy',
-            type='limit',
-            limit_price=potential entry,
-            time_in_force='gtc',  # Good till canceled
+            symbol=symbol, qty=size, side='buy', type='limit',
+            limit_price=entry, time_in_force='gtc',
             order_class='bracket',
             stop_loss={'stop_price': stop},
             take_profit={'limit_price': target}
         )
-
-        print(f"✓ Order placed: {size} shares at ${potential entry}")
-        print(f"  Example stop: ${stop} | Example target: ${target}")
+        print(f"✓ Order: {size} shares @ ${entry} | Stop: ${stop} | Target: ${target}")
         return order
-
     except Exception as e:
         print(f"✗ Order failed: {e}")
-        return None</code></pre>
-
-      <p>One function call. Three orders placed. Your risk is defined before you're even filled.</p>
-
-      <h3>Step 6: Put It All Together (The Main Loop)</h3>
-
-      <pre style="overflow-x:auto"><code>import time
+        return None
 
 def run_bot():
-    """Main bot loop"""
-    swing_low = None
     position = None
-
-    print("Bot started. Watching for sweep setups...")
+    print("Bot started. Watching SPY for sweep setups...")
 
     while True:
         try:
-            # Fetch latest data
-            barset = api.get_barset('SPY', 'minute', limit=50)
-            bars = barset['SPY']
-            current_bar = bars[-1]
-            current_price = current_bar.c
-            current_low = current_bar.l
-
-            # Update swing low
+            bars = api.get_barset('SPY', 'minute', limit=50)['SPY']
+            current_price = bars[-1].c
+            current_low = bars[-1].l
             swing_low = get_swing_low(bars)
 
-            # Check if we're already in a position
-            if position is None:
-                # Look for setup
-                if check_sweep(current_price, current_low, swing_low):
-                    print(f"\n🎯 Sweep detected at ${current_price}!")
+            if position is None and check_sweep(current_price, current_low, swing_low):
+                print(f"🎯 Sweep detected @ ${current_price}")
+                entry = current_price
+                stop = swing_low * 0.995
+                target = entry + (entry - stop) * 3  # 3R
+                size = calculate_position_size(api, entry, stop)
+                position = place_bracket_order(api, 'SPY', size, entry, stop, target)
 
-                    # Calculate potential entry, stop, target
-                    potential entry = current_price
-                    stop = swing_low * 0.995  # Below sweep
-                    target = potential entry + (potential entry - stop) * 3  # 3R target
-
-                    # Calculate size
-                    size = calculate_position_size(api, potential entry, stop)
-
-                    # Place trade
-                    position = place_bracket_order(
-                        api, 'SPY', size, potential entry, stop, target
-                    )
-
-            # Sleep 60 seconds (check every minute)
-            time.sleep(60)
-
+            time.sleep(60)  # Check every minute
         except Exception as e:
             print(f"Error: {e}")
-            time.sleep(60)  # Continue despite errors
+            time.sleep(60)
 
-# Run the bot
-run_bot()</code></pre>
+run_bot()  # 60 lines. Your bot now trades 24/7.</code></pre>
 
-      <p>That's it. 60 lines of code. Your bot now trades 24/7.</p>
+      <p><strong>What this does:</strong> Connects to Alpaca, fetches SPY 1-min bars, detects sweep reversals (low sweeps below swing low, then reclaims), calculates 2% risk position size, places bracket order (entry + stop + 3R target), repeats every 60 seconds. Perfect discipline, zero emotion.</p>
 
       <div class="callout-key">
         <h4>💡 The Aha Moment</h4>
