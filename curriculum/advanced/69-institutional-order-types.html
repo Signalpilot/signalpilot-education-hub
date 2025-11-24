@@ -204,6 +204,41 @@
       <strong>The Cascade Effect:</strong> Thousands of retail stop-market orders clustered at $105, $104, $103, etc. When SPY hit $105, first wave triggered (became market orders) → pushed price to $104 → triggered $104 stops → pushed to $103. This <strong>waterfall effect</strong> accelerated the crash. Stop-LIMIT orders would have prevented fills below $104.50, breaking the cascade chain.
     </div>
 
+    <h5 style="margin:2rem 0 1rem 0">📊 Visual: The Stop-Loss Cascade</h5>
+    <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:1.5rem;margin:1.5rem 0">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center;max-width:500px">
+        <div style="text-align:right;font-weight:700;color:#22c55e">$107.50</div>
+        <div style="height:4px;background:#22c55e;border-radius:2px"></div>
+
+        <div style="text-align:right;font-weight:700;color:#fbbf24">$105.00</div>
+        <div style="height:4px;background:#fbbf24;border-radius:2px;position:relative">
+          <div style="position:absolute;right:-120px;top:-8px;font-size:0.85rem;color:#fbbf24;white-space:nowrap">← Stop triggers</div>
+        </div>
+
+        <div style="text-align:right;font-weight:700;color:#8b5cf6">$104.50</div>
+        <div style="height:2px;background:#8b5cf6;border-radius:2px;border:1px dashed #8b5cf6;position:relative">
+          <div style="position:absolute;right:-180px;top:-8px;font-size:0.85rem;color:#8b5cf6;white-space:nowrap">← Stop-LIMIT protection</div>
+        </div>
+
+        <div style="text-align:right;font-weight:700;color:#ff5252">$95.20</div>
+        <div style="height:4px;background:#ff5252;border-radius:2px;position:relative">
+          <div style="position:absolute;right:-160px;top:-8px;font-size:0.85rem;color:#ff5252;white-space:nowrap">← Michael's fill (disaster)</div>
+        </div>
+
+        <div style="text-align:right;font-weight:700;color:#22c55e">$107.00</div>
+        <div style="height:4px;background:#22c55e;border-radius:2px;position:relative">
+          <div style="position:absolute;right:-150px;top:-8px;font-size:0.85rem;color:#22c55e;white-space:nowrap">← 5 min later (recovery)</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;padding:1rem;background:rgba(139,92,246,.15);border-radius:6px">
+        <div style="font-size:0.9rem;line-height:1.6">
+          <strong>Stop-MARKET:</strong> Filled at $95.20 = <span style="color:#ff5252;font-weight:700">-$89,670 catastrophic loss</span><br/>
+          <strong>Stop-LIMIT ($104.50):</strong> No fill = <span style="color:#22c55e;font-weight:700">$0 loss, position intact</span>
+        </div>
+      </div>
+    </div>
+
     <p><strong>The devastating numbers:</strong></p>
     <ul style="margin:.75rem 0 0 1.5rem">
       <li><strong>Expected exit:</strong> $105.00 (stop price)</li>
@@ -818,6 +853,43 @@
     <p style="font-style:italic">"Changed one checkbox on Interactive Brokers. Saved $40K in 5 months. Algos can't front-run what they can't see." —Derek</p>
   </div>
 
+  <h5 style="margin:2rem 0 1rem 0">📊 Visual: Visible Order vs Iceberg Order</h5>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 250px),1fr));gap:1.5rem;margin:1.5rem 0">
+    <!-- Visible Order -->
+    <div style="background:rgba(255,82,82,.08);border:2px solid #ff5252;border-radius:8px;padding:1rem">
+      <div style="text-align:center;font-weight:700;margin-bottom:1rem;color:#ff5252">❌ Visible Order</div>
+      <div style="background:rgba(0,0,0,.2);border-radius:6px;padding:1rem;font-family:monospace;font-size:0.9rem">
+        <div style="padding:0.5rem;background:rgba(255,82,82,.3);border-radius:4px;border:2px solid #ff5252;text-align:center">
+          <strong>$180.00</strong><br/>
+          <span style="color:#ff5252;font-weight:700;font-size:1.1rem">150,000 shares</span>
+        </div>
+      </div>
+      <div style="margin-top:1rem;padding:0.75rem;background:rgba(255,82,82,.15);border-radius:6px;font-size:0.85rem">
+        <strong>HFT sees:</strong><br/>
+        "Whale accumulating"<br/>
+        → Front-run opportunity<br/>
+        → Buy ahead at $180.05+
+      </div>
+    </div>
+
+    <!-- Iceberg Order -->
+    <div style="background:rgba(34,197,94,.08);border:2px solid #22c55e;border-radius:8px;padding:1rem">
+      <div style="text-align:center;font-weight:700;margin-bottom:1rem;color:#22c55e">✅ Iceberg Order</div>
+      <div style="background:rgba(0,0,0,.2);border-radius:6px;padding:1rem;font-family:monospace;font-size:0.9rem">
+        <div style="padding:0.5rem;background:rgba(34,197,94,.2);border-radius:4px;border:2px solid #22c55e;text-align:center">
+          <strong>$180.00</strong><br/>
+          <span style="color:#22c55e;font-weight:700;font-size:1.1rem">500 shares</span><br/>
+          <span style="font-size:0.75rem;color:rgba(255,255,255,.5)">Hidden: 149,500</span>
+        </div>
+      </div>
+      <div style="margin-top:1rem;padding:0.75rem;background:rgba(34,197,94,.15);border-radius:6px;font-size:0.85rem">
+        <strong>HFT sees:</strong><br/>
+        "Normal 500-share order"<br/>
+        → No opportunity<br/>
+        → Ignores, moves on
+      </div>
+    </div>
+  </div>
 
   <p><strong>Detection of other traders' icebergs:</strong></p>
   <ul>
