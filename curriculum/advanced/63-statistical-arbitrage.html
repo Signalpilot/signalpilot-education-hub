@@ -613,141 +613,27 @@ Conclusion: KO/PEP is a tradeable pair
       <div class="section-break"><span>Part 9: Code Implementation (Python Example)</span></div>
 <h2 id="building-your-stat-arb-system-from-scratch">Building Your Stat Arb System from Scratch</h2>
 
-      <p>Here's a practical Python implementation for testing and trading pairs:</p>
+      <p><strong>Implementation Framework (3-Step Process):</strong></p>
 
-      <div class="accordion">
-        <details class="accordion-item">
-          <summary class="accordion-header">Step 1: Testing for Cointegration</summary>
-          <div class="accordion-content">
-            <pre style="overflow-x:auto"><code>import pandas as pd
-import numpy as np
-from statsmodels.tsa.stattools import adfuller
-from statsmodels.api import OLS
-
-# Example: Test KO vs PEP cointegration
-ko = pd.read_csv('KO_daily.csv')['Close']
-pep = pd.read_csv('PEP_daily.csv')['Close']
-
-# Calculate hedge ratio using OLS regression
-model = OLS(ko, pep).fit()
-beta = model.params[0]
-print(f"Hedge Ratio (β): {beta:.4f}")
-
-# Calculate spread
-spread = ko - (beta * pep)
-
-# Run ADF test on spread
-adf_result = adfuller(spread)
-p_value = adf_result[1]
-
-if p_value < 0.05:
-    print(f"✅ COINTEGRATED! (p-value: {p_value:.4f})")
-else:
-    print(f"❌ NOT cointegrated (p-value: {p_value:.4f})")
-
-# Calculate half-life
-def calculate_half_life(spread):
-    spread_lag = spread.shift(1)
-    spread_diff = spread - spread_lag
-    model = OLS(spread_diff[1:], spread_lag[1:]).fit()
-    theta = model.params[0]
-    half_life = -np.log(2) / np.log(1 + theta)
-    return half_life
-
-half_life = calculate_half_life(spread)
-print(f"Half-Life: {half_life:.1f} days")
-</code></pre>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary class="accordion-header">Step 2: Calculating Z-Score Signals</summary>
-          <div class="accordion-content">
-            <pre style="overflow-x:auto"><code># Calculate rolling z-score
-lookback = 60  # 60-day rolling window
-
-spread_mean = spread.rolling(window=lookback).mean()
-spread_std = spread.rolling(window=lookback).std()
-z_score = (spread - spread_mean) / spread_std
-
-# Entry/exit signals
-potential entry_threshold = 2.0
-potential exit_threshold = 0.0
-stop_threshold = 3.5
-
-# Long spread signal (buy asset A, sell asset B)
-long_potential entry = z_score < -potential entry_threshold
-long_potential exit = z_score > -potential exit_threshold
-
-# Short spread signal (sell asset A, buy asset B)
-short_potential entry = z_score > potential entry_threshold
-short_potential exit = z_score < potential exit_threshold
-
-# Stop loss
-stop_loss = (z_score > stop_threshold) | (z_score < -stop_threshold)
-
-print(f"Current Z-Score: {z_score.iloc[-1]:.2f}")
-if z_score.iloc[-1] > potential entry_threshold:
-    print("🔴 SHORT SPREAD (sell KO, buy PEP)")
-elif z_score.iloc[-1] < -potential entry_threshold:
-    print("🟢 LONG SPREAD (buy KO, sell PEP)")
-else:
-    print("⚪ NO TRADE (waiting for signal)")
-</code></pre>
-          </div>
-        </details>
-
-        <details class="accordion-item">
-          <summary class="accordion-header">Step 3: Backtesting the Strategy</summary>
-          <div class="accordion-content">
-            <pre style="overflow-x:auto"><code># Simple backtest
-position = 0  # 0 = no position, 1 = long spread, -1 = short spread
-trades = []
-pnl = []
-
-for i in range(lookback, len(z_score)):
-    z = z_score.iloc[i]
-
-    # Entry logic
-    if position == 0:
-        if z < -potential entry_threshold:
-            position = 1  # Long spread
-            potential entry_price = spread.iloc[i]
-        elif z > potential entry_threshold:
-            position = -1  # Short spread
-            potential entry_price = spread.iloc[i]
-
-    # Exit logic
-    elif position == 1:  # In long spread
-        if z > -potential exit_threshold or z < -stop_threshold:
-            potential exit_price = spread.iloc[i]
-            profit = potential exit_price - potential entry_price
-            trades.append(profit)
-            position = 0
-
-    elif position == -1:  # In short spread
-        if z < potential exit_threshold or z > stop_threshold:
-            potential exit_price = spread.iloc[i]
-            profit = potential entry_price - potential exit_price
-            trades.append(profit)
-            position = 0
-
-# Calculate statistics
-win_rate = len([t for t in trades if t > 0]) / len(trades)
-avg_win = np.mean([t for t in trades if t > 0])
-avg_loss = np.mean([t for t in trades if t < 0])
-profit_factor = abs(sum([t for t in trades if t > 0])) / abs(sum([t for t in trades if t < 0]))
-
-print(f"Total Trades: {len(trades)}")
-print(f"Win Rate: {win_rate:.1%}")
-print(f"Avg Win: ${avg_win:.2f}")
-print(f"Avg Loss: ${avg_loss:.2f}")
-print(f"Profit Factor: {profit_factor:.2f}")
-print(f"Total PnL: ${sum(trades):.2f}")
-</code></pre>
-        </div>
-        </details>
+      <div style="background:rgba(118,221,255,.08);border-left:4px solid var(--accent);border-radius:8px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Step 1: Testing for Cointegration</h4>
+        <p><strong>Process:</strong> (1) Run OLS regression to find hedge ratio β (e.g., KO = β × PEP), (2) Calculate spread (KO - β × PEP), (3) Run Augmented Dickey-Fuller (ADF) test on spread. If p-value < 0.05 = cointegrated. (4) Calculate half-life (mean reversion speed) using spread lag regression.</p>
+        <p><strong>Example:</strong> KO/PEP β = 0.92, spread p-value = 0.018 (✅ cointegrated), half-life = 12.3 days (mean reversion completes in ~12 days).</p>
       </div>
+
+      <div style="background:rgba(139,92,246,.08);border-left:4px solid #8b5cf6;border-radius:8px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Step 2: Calculating Z-Score Signals</h4>
+        <p><strong>Process:</strong> Calculate 60-day rolling z-score: z = (spread - spread_mean) / spread_std. Set thresholds: Entry ±2.0σ, Exit 0.0σ (mean reversion), Stop ±3.5σ (breakdown).</p>
+        <p><strong>Signals:</strong> Z-score < -2.0 = Long spread (buy KO, sell PEP). Z-score > +2.0 = Short spread (sell KO, buy PEP). Z-score crosses 0 = Exit (mean reversion complete). Z-score > ±3.5 = Stop loss (cointegration broke).</p>
+      </div>
+
+      <div style="background:rgba(0,212,170,.08);border-left:4px solid #00d4aa;border-radius:8px;padding:1.5rem;margin:1.5rem 0">
+        <h4 style="margin-top:0">Step 3: Backtesting the Strategy</h4>
+        <p><strong>Process:</strong> Iterate through historical data, track position state (long/short/flat), enter at ±2.0σ thresholds, exit at 0σ or ±3.5σ stop. Calculate metrics: win rate, avg win/loss, profit factor, total PnL.</p>
+        <p><strong>Target Metrics:</strong> Win rate >55%, profit factor >1.5, Sharpe ratio >1.2, max DD <15%. If backtest fails thresholds, pair likely not tradable (insufficient mean reversion or high transaction costs eating edge).</p>
+      </div>
+
+      <p style="margin-top:1.5rem;padding:1rem;background:rgba(118,221,255,.1);border-radius:8px"><strong>💡 Implementation:</strong> Use Python libraries (statsmodels for ADF test, pandas for data handling) or platforms like QuantConnect/Zipline. Full code examples available in community repository.</p>
 
       <div class="callout-tip">
         <p><strong>Live Trading Tips:</strong> Paper trade 1-3 months first. Start 0.5-1% sizes. Monitor slippage (>0.05% = reduce size). Log every trade: z-score entry/exit, hold time, P&L.</p>
