@@ -92,6 +92,7 @@
         <h4>🚨 This Isn't "Buy Dips" Hope Trading</h4>
         <p>Statistical arbitrage requires rigorous mathematical validation. You can't just eyeball two charts and assume they'll converge. You need cointegration tests, z-score models, and proper risk management—because spreads can diverge further before they converge.</p>
         <p><strong>Without quantitative validation?</strong> You're gambling, not arbitraging.</p>
+      </div>
 
       <div class="callout-tip">
         <h4>🎯 What You'll Master</h4>
@@ -170,21 +171,94 @@
 
       <div class="section-break"><span>Part 1.5: The $31,400 Lesson—Derek's Correlation Trap</span></div>
 
-<div class="callout callout-danger">
-  <h4>📉 CASE STUDY: Derek's $31,400 Correlation vs. Cointegration Disaster (3 months)</h4>
-  <p><strong>Trader:</strong> Derek Martinez, quantitative trader ($220K account), February-May 2024</p>
-  <p><strong>Strategy:</strong> Pairs trading ARKK/QQQ based on 0.89 correlation. "When they diverge, they'll converge back."</p>
-  <p><strong>Fatal flaw:</strong> Never tested for cointegration (no ADF test, no half-life calculation). Confused correlation (past similarity) with cointegration (mean-reverting spread)</p>
-  <p><strong>Result:</strong> Lost $31,400 (-14.3%) in 3 months across 3 trades. Missed $26.8K profit opportunity by holding through reversal. Account: $220K → $188.6K</p>
+<h2 id="dereks-31400-correlation-trap">Derek's $31,400 Correlation Trap: When Correlated Pairs Don't Revert</h2>
 
-  <p><strong>The destruction (Feb-May 2024):</strong> Trade #1 (Feb 12-Mar 8): ARKK dropped, Derek bought thinking "cheap vs. QQQ," spread widened -$5.95 instead of reverting (ARKK continued underperforming). Loss: -$6,600. Trade #2 (Mar 15-Apr 19): Derek shorted ARKK thinking "overextended," but ARKK exploded +13.5% on genomics hype while QQQ only +1.1%, margin call forced close. Loss: -$15,200. Trade #3 (Apr 25-May 10): Revenge trade, shorted ARKK again. Initially up $26,831, then ARKK short squeezed +10.5% in 2 days, Derek held hoping for recovery, final exit -$8,400. Total: -$31,400 + missed $26.8K profit. Fatal mistakes: (1) Correlation ≠ cointegration (0.89 correlation just means past similarity, NOT guaranteed mean reversion), (2) No ADF test (spread was NOT stationary), (3) No half-life (held 25+ days hoping with no statistical basis), (4) Ignored structural changes (ARKK pivoted to biotech, broke historical link with QQQ), (5) Revenge trading (entered Trade #3 emotionally without re-validation).</p>
+      <p><strong>Derek Martinez, 34, Austin, TX</strong> — Quantitative trader, $220K account.</p>
 
-  <p><strong>Recovery (Feb-Nov 2025, 9 months later):</strong> Derek spent months learning proper statistical arbitrage. New process: (1) ADF test EVERY pair (p-value must be <0.05 for stationary spread), (2) Calculate half-life (only trade if mean reversion <20 days), (3) Z-score entry (|Z| > 2.0 = 2+ std devs from mean), (4) Decointegration stop (if ADF p-value rises >0.10, exit immediately). Pairs traded: KO/PEP, XOM/CVX, JPM/BAC (all tested cointegrated). Results: 23 trades, 16 wins (69.6% win rate), avg win +$1,847, avg loss -$923, profit factor 3.2, +$23,094 profit (+12.2% in 9 months, Sharpe 1.94). Account: $188.6K → $211.7K. Best trade: +$4,120 JPM/BAC (z-score 2.8 entry).</p>
+      <p><strong>February 2024:</strong> Derek pairs traded ARKK/QQQ based on 0.89 correlation. "When they diverge, they'll converge back." He never tested for cointegration.</p>
 
-  <div class="callout callout-purple" style="margin-top:1rem">
-    <p><strong>Derek's advice 15 months later:</strong> "Correlation measures the PAST. Cointegration predicts the FUTURE. I lost $31,400 trading ARKK/QQQ because they were 'highly correlated.' But correlation just means they moved similarly historically. It doesn't mean they'll revert in the future. Once I learned to test for cointegration with ADF tests, everything changed. Now I only trade pairs where the spread is PROVEN to mean-revert (ADF p-value <0.05). My win rate went from 0% to 69.6%—and I sleep at night because I'm trading with statistical validation, not hope. Rule: If ADF p-value > 0.05, I don't touch it. No exceptions. I trade math, not correlation coefficients."</p>
-  </div>
-</div>
+      <p><strong>By May 2024:</strong> 3 trades over 3 months. Total loss: <strong>-$31,400</strong> (-14.3%).</p>
+
+      <div class="callout-warning">
+        <h4>🚨 What Derek Learned The Hard Way</h4>
+        <p>"Correlation measures the PAST. Cointegration predicts the FUTURE. I lost $31,400 trading ARKK/QQQ because they were 'highly correlated.' But correlation just means they moved similarly historically. It doesn't mean they'll revert."</p>
+        <p style="margin-top:0.75rem"><em>— Derek Martinez, May 2024</em></p>
+      </div>
+
+      <div class="story-summary">
+        <h3>📉 Derek's 3-Month Disaster: Feb-May 2024</h3>
+
+        <div class="summary-stats">
+          <div class="stat-box">
+            <span class="stat-label">Total Trades</span>
+            <span class="stat-value">3</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Win Rate</span>
+            <span class="stat-value loss">0%</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Total Loss</span>
+            <span class="stat-value loss">-$31,400</span>
+          </div>
+        </div>
+
+        <div class="key-insight">
+          <strong>Fatal Mistakes:</strong> No ADF test (spread wasn't stationary), no half-life calculation (held 25+ days with no statistical basis), ignored structural changes (ARKK pivoted to biotech).
+        </div>
+      </div>
+
+      <h3 id="the-three-disasters">The Three Disasters</h3>
+
+      <p><strong>Trade #1 (Feb 12-Mar 8):</strong> Bought ARKK thinking "cheap vs QQQ." Spread widened instead of reverting. Loss: <strong>-$6,600</strong>.</p>
+
+      <p><strong>Trade #2 (Mar 15-Apr 19):</strong> Shorted ARKK "overextended." ARKK exploded +13.5% on genomics hype. Margin call. Loss: <strong>-$15,200</strong>.</p>
+
+      <p><strong>Trade #3 (Apr 25-May 10):</strong> Revenge trade. Initially up $26,831, then short squeezed +10.5%. Held hoping for recovery. Loss: <strong>-$8,400</strong>.</p>
+
+      <h3 id="the-rebuild-feb-nov-2025">The Rebuild: February-November 2025</h3>
+
+      <p><strong>New Process:</strong></p>
+      <ol>
+        <li><strong>ADF test EVERY pair</strong> — p-value must be &lt;0.05 for stationary spread</li>
+        <li><strong>Calculate half-life</strong> — Only trade if mean reversion &lt;20 days</li>
+        <li><strong>Z-score entry</strong> — |Z| &gt; 2.0 (2+ std devs from mean)</li>
+        <li><strong>Decointegration stop</strong> — If ADF p-value rises &gt;0.10, exit immediately</li>
+      </ol>
+
+      <p><strong>Pairs traded:</strong> KO/PEP, XOM/CVX, JPM/BAC (all tested cointegrated).</p>
+
+      <div class="story-summary">
+        <h3>📈 Derek's 9-Month Transformation</h3>
+        <div class="summary-stats">
+          <div class="stat-box">
+            <span class="stat-label">Win Rate</span>
+            <span class="stat-value win">0% → 69.6%</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Profit Factor</span>
+            <span class="stat-value win">3.2</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Recovery</span>
+            <span class="stat-value win">+$23,094</span>
+          </div>
+        </div>
+        <div class="key-insight">
+          <strong>The Transformation:</strong> Account: $188.6K → $211.7K (+12.2%). Sharpe 1.94. Only trades pairs where ADF p-value &lt;0.05. Best trade: +$4,120 JPM/BAC (z-score 2.8 entry).
+        </div>
+      </div>
+
+      <div class="callout-key">
+        <h4>💡 Derek's Lesson</h4>
+        <p>Correlation = "They move together." Cointegration = "Their relationship has gravity."</p>
+        <ul style="margin:0.75rem 0">
+          <li><strong>ADF p-value &lt;0.05</strong> = spread is stationary, can trade</li>
+          <li><strong>ADF p-value &gt;0.05</strong> = NOT cointegrated, don't touch it</li>
+          <li>Calculate <strong>half-life</strong> to know how long reversion takes</li>
+        </ul>
+        <p style="margin-top:1rem;font-weight:600;color:#00d4aa">Win rate went from 0% to 69.6% by testing for cointegration, not just correlation.</p>
+      </div>
 
 <div class="quiz-question" style="margin-top:2rem">
   <p><strong>Case Study Quiz: Derek lost $31,400 (-14.3%) in 3 months trading ARKK/QQQ pairs. He was confident because they showed 0.89 correlation—they moved together historically. Trade #2 destroyed him: he shorted ARKK thinking it was "overextended vs. QQQ," but ARKK exploded +13.5% while QQQ only +1.1%, causing a margin call and -$15,200 loss. He also missed a $26,831 profit opportunity when the spread reversed but he held too long. What was Derek's fatal mistake?</strong></p>
