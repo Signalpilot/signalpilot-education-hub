@@ -184,6 +184,67 @@
 
       <p>But live? It actually <strong>works</strong>.</p>
 
+<h3 id="visual-repaint-examples">Visual Repaint Examples: Before vs After</h3>
+
+      <p>Here's what repainting actually looks like when you catch it:</p>
+
+      <p><strong>Example 1: "SuperTrend Reversal" Indicator (TradingView, 120K downloads)</strong></p>
+
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05)">
+            <th style="padding:.75rem;text-align:left">Time</th>
+            <th style="padding:.75rem;text-align:left">What You See LIVE (During Bar)</th>
+            <th style="padding:.75rem;text-align:left">What Shows in HISTORY (After Bar Close)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">10:45 AM</td>
+            <td style="padding:.75rem;color:var(--primary)">BUY signal at $5,186 (green arrow)</td>
+            <td style="padding:.75rem;color:var(--danger)">Signal moved to $5,179 (-7 points!)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">11:22 AM</td>
+            <td style="padding:.75rem;color:var(--danger)">SELL signal at $5,194 (red arrow)</td>
+            <td style="padding:.75rem;color:var(--muted)">Signal disappeared completely!</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">2:15 PM</td>
+            <td style="padding:.75rem;color:var(--primary)">BUY signal at $5,201</td>
+            <td style="padding:.75rem;color:var(--danger)">Signal moved to $5,196 (-5 points)</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p><strong>Example 2: "AI Prediction Zones" Indicator (TradingView, 85K downloads)</strong></p>
+
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code><strong>12:04 PM (During bar):</strong>
+Shows "Support Zone" at SPY $519.00-$519.50 (shaded green box)
+Indicator label: "High probability bounce zone — 78% accuracy"
+
+<strong>12:05 PM (After bar close):</strong>
+Support zone MOVED to $518.20-$518.70 (80 cents lower!)
+Now appears perfectly aligned with actual low
+→ This is repainting. Zone "predicted" low AFTER it happened.
+
+<strong>Real-time impact:</strong>
+You bought at $519.00 thinking it was support → Price dropped to $518.20
+Lost $0.80/share on 500 shares = -$400
+Indicator now shows support at $518.20 where it "should have been"
+→ Makes indicator look perfect in history, useless live</code></pre>
+
+      <p><strong>Example 3: "Smart Money Divergence" Indicator (Paid indicator, $199)</strong></p>
+
+      <div style="padding:1rem;background:rgba(255,82,82,0.08);border-radius:8px;border-left:4px solid #ff5252;margin:1.5rem 0">
+        <p><strong>Live signal (1:30 PM):</strong> "BULLISH DIVERGENCE DETECTED — Price lower low, indicator higher low"</p>
+        <p style="margin-top:0.5rem"><strong>After bar close (1:31 PM):</strong> Divergence line moved 3 bars earlier, now shows different angle</p>
+        <p style="margin-top:0.5rem"><strong>Impact:</strong> You entered long at 1:30 PM based on divergence → Price continued down → -$620 loss</p>
+        <p style="margin-top:0.5rem"><strong>Chart history now shows:</strong> Divergence started 3 bars earlier (perfect timing in hindsight)</p>
+      </div>
+
       <div class="section-break"><span>Part 3: Audit Framework</span></div>
 <h2 id="never-trust-always-verify">Never Trust, Always Verify</h2>
 <p>Here's your step-by-step framework for auditing ANY indicator before risking real money:</p>
@@ -201,6 +262,88 @@
         <p><strong>If ANY test fails → DO NOT USE → Find another indicator</strong></p>
       </div>
 
+<h3 id="common-repainting-indicators">Common Repainting Indicators to Avoid</h3>
+
+      <p>Here's a list of indicator types and specific indicators that commonly repaint. If you're using any of these, test them immediately:</p>
+
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05)">
+            <th style="padding:.75rem;text-align:left">Indicator Type/Name</th>
+            <th style="padding:.75rem;text-align:left">Why It Repaints</th>
+            <th style="padding:.75rem;text-align:left">How to Detect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Zigzag indicators</td>
+            <td style="padding:.75rem">Recalculates pivots as price moves—"perfect" swing detection in history</td>
+            <td style="padding:.75rem">Check if pivot points move after bar close</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Higher timeframe (HTF) pulls without <code>lookahead_off</code></td>
+            <td style="padding:.75rem">Uses future HTF data not available in real-time</td>
+            <td style="padding:.75rem">Code audit: search for <code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">"AI/ML prediction" indicators</td>
+            <td style="padding:.75rem">Many use intra-bar data or future-peeking to show "predictions"</td>
+            <td style="padding:.75rem">Bar replay test—do predictions appear before or after the move?</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Divergence indicators (most)</td>
+            <td style="padding:.75rem">Redraw divergence lines as new bars form</td>
+            <td style="padding:.75rem">Screenshot divergence line, check if angle/position changes</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">Support/resistance zones (dynamic)</td>
+            <td style="padding:.75rem">Zones adjust to fit recent price action perfectly</td>
+            <td style="padding:.75rem">Alert test—set alerts on zone boundaries, verify they don't move</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p style="padding:1rem;background:rgba(255,82,82,0.08);border-radius:8px;border-left:4px solid #ff5252;margin:1.5rem 0">
+        <strong>Red flag:</strong> If an indicator's backtest shows >75% win rate with <10% drawdown, it's almost certainly repainting. Real, honest edges produce 55-65% win rates with realistic drawdowns (15-30%). Perfection in backtests = fraud in live trading.
+      </p>
+
+<h3 id="bar-replay-walkthrough">Bar Replay Detection Walkthrough</h3>
+
+      <p>TradingView's Bar Replay feature is one of the best tools for catching repainting indicators. Here's exactly how to use it:</p>
+
+      <p><strong>Step-by-Step Bar Replay Test:</strong></p>
+
+      <ol style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+        <li><strong>Load your indicator on a chart:</strong> Use a liquid instrument (SPY, ES, AAPL) on 5-min or 15-min timeframe</li>
+        <li><strong>Enter Bar Replay mode:</strong> Click the Bar Replay button (looks like a play button with a bar chart)</li>
+        <li><strong>Rewind to 3 days ago:</strong> Gives you enough historical data to test 20-30 signals</li>
+        <li><strong>Play forward bar-by-bar:</strong> Watch for signals to appear during bar formation</li>
+        <li><strong>Document signal timing:</strong> Does the BUY signal appear BEFORE price moves up, or AFTER?</li>
+        <li><strong>Compare to chart history:</strong> Exit replay mode, look at the same time period</li>
+        <li><strong>Check for discrepancies:</strong> Are signals in the same location? Or did they move?</li>
+      </ol>
+
+      <p><strong>Example Test Results (Bar Replay on "Ultimate Reversal Pro"):</strong></p>
+
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code><strong>Replay Mode (Playing forward bar-by-bar):</strong>
+10:15 AM: No signal shown
+10:30 AM: No signal shown
+10:45 AM: Price drops from $520 → $518 → BUY signal appears at $519
+11:00 AM: Price rallies to $522 (signal worked!)
+
+<strong>Historical Chart View (Same time period):</strong>
+10:15 AM: BUY signal shown at $520 (signal MOVED!)
+Original signal: $519 during replay
+Historical signal: $520 in chart view
+→ Difference: Signal moved 1 point to "predict" the low perfectly
+
+<strong>Verdict:</strong> REPAINTING DETECTED
+Signal appeared at $519 during live bar formation
+Signal moved to $520 in historical chart (appears earlier, better entry)
+This is future-peeking—indicator adjusts signals after knowing outcome</code></pre>
+
       <div class="callout-warning">
         <h4>🚨 Real Talk</h4>
         <p>This feels like extra work. It is. But consider the alternative:</p>
@@ -208,6 +351,45 @@
         <p>Skip testing → Blow account → Wonder why trading is "impossible."</p>
         <p><strong>Your choice.</strong></p>
       </div>
+
+<h3 id="code-audit-deep-dive">Code Audit Deep-Dive: Pine Script Red Flags</h3>
+
+      <p>If an indicator provides source code (open-source on TradingView), you can audit it for repainting issues. Here are the exact code patterns to look for:</p>
+
+      <p><strong>Red Flag #1: <code>request.security()</code> without <code>lookahead_off</code></strong></p>
+
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code>// ❌ REPAINTING CODE (uses future HTF data)
+htf_close = request.security(syminfo.tickerid, "60", close)
+
+// ✅ NON-REPAINTING CODE (waits for HTF bar to close)
+htf_close = request.security(syminfo.tickerid, "60", close, lookahead=barmerge.lookahead_off)
+
+// Even better: add [1] offset to use CONFIRMED HTF bar
+htf_close = request.security(syminfo.tickerid, "60", close[1], lookahead=barmerge.lookahead_off)</code></pre>
+
+      <p><strong>Red Flag #2: Calculations using current bar data without <code>barstate.isconfirmed</code></strong></p>
+
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code>// ❌ REPAINTING CODE (signal can change during bar)
+signal = close > ema_20 and rsi > 50
+plotshape(signal, style=shape.triangleup, color=color.green)
+
+// ✅ NON-REPAINTING CODE (only plots on confirmed bar close)
+signal = close > ema_20 and rsi > 50
+plotshape(barstate.isconfirmed and signal, style=shape.triangleup, color=color.green)</code></pre>
+
+      <p><strong>Red Flag #3: Pivot calculations that recalculate</strong></p>
+
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code>// ❌ REPAINTING CODE (pivot location changes as new bars form)
+pivot_high = ta.pivothigh(high, 5, 5)  // looks back 5 bars, forward 5 bars
+// Problem: needs 5 FUTURE bars to confirm pivot → repaints by definition
+
+// ✅ BETTER APPROACH (use fixed swing detection with confirmed bars)
+// Signal Pilot approach: detect swing only after 5 bars have CLOSED
+// No forward-looking, signals are delayed but honest</code></pre>
+
+      <p style="padding:1rem;background:rgba(0,212,170,0.08);border-radius:8px;border-left:4px solid #00d4aa;margin:1.5rem 0">
+        <strong>Pro tip:</strong> If you can't read Pine Script code, use the visual and replay tests instead. They'll catch 95%+ of repainting indicators without needing to understand the code. But if you CAN read code, this is the fastest detection method—spot repainting in 30 seconds by searching for these patterns.
+      </p>
 
       <div class="key-takeaway">
         <h4>🎓 Key Takeaways</h4>
