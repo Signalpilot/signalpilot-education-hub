@@ -94,31 +94,66 @@
 
 <div class="callout callout-danger">
   <h4>📉 CASE STUDY: Jake's $14,700 Repainting Indicator Disaster</h4>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 140px),1fr));gap:0.75rem;margin:1rem 0 1.5rem 0">
+    <div style="background:rgba(255,82,82,0.15);padding:0.75rem;border-radius:8px;text-align:center">
+      <div style="font-size:1.5rem;font-weight:700;color:#ff5252">-$14,700</div>
+      <div style="font-size:0.75rem;color:var(--muted)">Total Loss</div>
+    </div>
+    <div style="background:rgba(255,82,82,0.15);padding:0.75rem;border-radius:8px;text-align:center">
+      <div style="font-size:1.5rem;font-weight:700;color:#ff5252">91.5%</div>
+      <div style="font-size:0.75rem;color:var(--muted)">Repaint Rate</div>
+    </div>
+    <div style="background:rgba(255,107,107,0.12);padding:0.75rem;border-radius:8px;text-align:center">
+      <div style="font-size:1.5rem;font-weight:700;color:#ff6b6b">71% → 34%</div>
+      <div style="font-size:0.75rem;color:var(--muted)">Win Rate Collapse</div>
+    </div>
+    <div style="background:rgba(0,212,170,0.12);padding:0.75rem;border-radius:8px;text-align:center">
+      <div style="font-size:1.5rem;font-weight:700;color:#00d4aa">+74%</div>
+      <div style="font-size:0.75rem;color:var(--muted)">Recovery After Fix</div>
+    </div>
+  </div>
+
   <p><strong>Trader:</strong> Jake Morrison, 26, former marketing analyst ($32K account)</p>
-  <p><strong>Strategy:</strong> "Ultimate Reversal Pro" TradingView indicator (47K downloads, 4.8★), 71.4% backtest win rate</p>
+  <p><strong>Strategy:</strong> "Ultimate Reversal Pro" TradingView indicator (47K downloads, 4.8★)</p>
   <p><strong>Fatal flaw:</strong> Indicator was repainting—signals changed or disappeared after bar close</p>
-  <p><strong>Result:</strong> Lost $14,700 (-45.9%) in 10 weeks when "perfect" backtest signals never existed live</p>
 
-  <p><strong>The "perfect" backtest (Jan 2024):</strong> Backtested 18 months ES futures data. Results: 71.4% win rate, 3.2 profit factor, 3.8:1 R:R, -8.2% max DD, +247% return. "This is the edge I've been looking for!"</p>
+  <details style="margin:1rem 0;background:rgba(0,0,0,0.2);border-radius:8px">
+    <summary style="padding:1rem;cursor:pointer;font-weight:600">📊 The "Perfect" Backtest vs Reality (click to expand)</summary>
+    <div style="padding:0 1rem 1rem 1rem">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem">
+        <div style="background:rgba(139,92,246,0.1);padding:1rem;border-radius:8px">
+          <div style="font-weight:600;margin-bottom:0.5rem;color:#a78bfa">Backtest (Jan 2024)</div>
+          <div style="font-size:0.9rem">71.4% win rate</div>
+          <div style="font-size:0.9rem">3.2 profit factor</div>
+          <div style="font-size:0.9rem">3.8:1 R:R</div>
+          <div style="font-size:0.9rem">+247% return</div>
+        </div>
+        <div style="background:rgba(255,82,82,0.1);padding:1rem;border-radius:8px">
+          <div style="font-weight:600;margin-bottom:0.5rem;color:#ff5252">Live (Feb-Apr 2024)</div>
+          <div style="font-size:0.9rem">34.2% win rate</div>
+          <div style="font-size:0.9rem">0.58 profit factor</div>
+          <div style="font-size:0.9rem">0.92:1 R:R</div>
+          <div style="font-size:0.9rem">-45.9% return</div>
+        </div>
+      </div>
+    </div>
+  </details>
 
-  <p><strong>The disaster (Feb-Apr 2024, 10 weeks):</strong> Went live with $32K. Reality: 76 trades, 34.2% win rate (cut in HALF), 0.58 profit factor (negative expectancy), 0.92:1 R:R. Lost $14,700 (-45.9%). Account: $32K → $17.3K.</p>
-
-  <p><strong>The breaking point (Apr 8, 2024):</strong> After 4 losing trades, Jake took screenshots of live signals, then compared after bar close. Every signal moved or disappeared:</p>
+  <p><strong>The breaking point (Apr 8, 2024):</strong> Jake screenshotted live signals, then compared after bar close:</p>
   <ul style="margin:.75rem 0 0 1.5rem">
     <li><strong>9:38 AM BUY:</strong> Signal at 5,186 → After bar close: moved to 5,179 (7 points lower!) • Lost $680</li>
-    <li><strong>10:52 AM SELL:</strong> Signal at 5,194 → After bar close: disappeared completely! • Lost $520</li>
+    <li><strong>10:52 AM SELL:</strong> Signal at 5,194 → After bar close: <strong>disappeared completely!</strong> • Lost $520</li>
     <li><strong>1:15 PM BUY:</strong> Signal at 5,201 → After bar close: moved to 5,196 (5 points lower) • Lost $440</li>
     <li><strong>2:43 PM SELL:</strong> Signal at 5,209 → After bar close: moved to 5,213 (4 points higher) • Lost $380</li>
   </ul>
 
-  <p><strong>The investigation (Apr 9-15):</strong> Jake tested "Ultimate Reversal Pro" systematically. Visual test: 43 out of 47 signals moved (91.5% repaint rate!). Alert test: 17/20 alert prices didn't match historical locations. Code audit: Found <code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code>. Verdict: Indicator was HEAVILY repainting.</p>
+  <p><strong>The investigation:</strong> 43/47 signals moved (91.5% repaint rate). Code audit found <code>request.security()</code> without <code>lookahead=barmerge.lookahead_off</code>.</p>
 
-  <p><strong>Recovery (May-Aug 2024):</strong> Stopped trading for 2 weeks. Researched deterministic indicators, switched to Signal Pilot's non-repainting tools. New rules: (1) ONLY use indicators with <code>barstate.isconfirmed</code> checks, (2) VERIFY with visual + alert tests, (3) REQUIRE <code>lookahead_off</code> for HTF data, (4) Paper trade 2+ weeks before live. Results over 4 months: 90 trades, 58.9% win rate, 1.94 profit factor, 2.1:1 R:R, +$12,820 profit. Account: $17.3K → $30.1K (+74.1% recovery).</p>
-
-  <p><strong>Final results:</strong> Started $32K → Trough $17.3K (repainting indicators) → Final $30.1K (deterministic indicators). Net: -$1.9K (-5.9%) but learned $15K+ lesson.</p>
+  <p><strong>Recovery (May-Aug 2024):</strong> Switched to deterministic indicators. 90 trades, 58.9% win rate, +$12,820 profit. Account: $17.3K → $30.1K (+74.1%).</p>
 
   <p style="margin-top:1rem;padding:1rem;background:rgba(139,92,246,.08);border-radius:8px;border-left:4px solid #8b5cf6">
-    <strong>Jake's advice:</strong> "I lost $14,700 because I trusted a repainting indicator. Backtest showed 71.4% win rate. Live: 34.2%. Why? Signals I saw live MOVED or DISAPPEARED after bar close. I traded ghosts. The 'perfect' backtest was a lie. Test EVERY indicator: (1) Screenshot live signals, compare after bar close—if they move, it repaints. (2) Set alerts, verify historical locations match. (3) Check Pine Script for <code>lookahead_off</code> and <code>barstate.isconfirmed</code>. (4) Paper trade 2+ weeks—if live doesn't match backtest, indicator is broken. If backtest looks TOO perfect (>70% win rate, <10% DD), it's probably repainting. Real edges are 55-65% win rates with honest drawdowns. Repainting indicators destroy more accounts than bad strategies ever will. NEVER trust, ALWAYS verify."
+    <strong>Jake's advice:</strong> "I lost $14,700 trading ghosts—signals that MOVED after bar close. Test EVERY indicator: screenshot live, compare after bar close. If backtest looks TOO perfect (>70% WR, <10% DD), it's probably repainting. Real edges are 55-65% win rates. NEVER trust, ALWAYS verify."
   </p>
 </div>
 
