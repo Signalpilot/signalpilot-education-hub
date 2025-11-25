@@ -675,6 +675,7 @@
     <div class="quiz-explanation">
       <strong>Correct: B.</strong> Kelly calculation: p=0.6, q=0.4, b=$400/$200=2.0. Formula: f* = (0.6 × 2.0 - 0.4) / 2.0 = 0.8 / 2.0 = 0.4 = 40% full Kelly. But full Kelly = 92% DD on 5-loss streak (0.60^5 leaves 7.8% of account). Quarter Kelly (10%) = 41% DD on same streak (0.90^5 leaves 59%), survivable. Full Kelly: $40K risk/trade, 5 losses = $7,800 left. Quarter Kelly: $10K risk/trade, 5 losses = $59K left. Quarter Kelly captures 50% of growth with 10-20% DDs vs 70%+ at full Kelly.
     </div>
+  </div>
 
   <div class="quiz-question" style="margin-top:2rem">
     <p><strong>You have 3 trading strategies with these full Kelly %: Strategy A = 20%, Strategy B = 25%, Strategy C = 30%. Average correlation between them is 0.80. What's your total portfolio allocation?</strong></p>
@@ -692,6 +693,7 @@
     <div class="quiz-explanation">
       <strong>Correct: C.</strong> Correlation trap: Raw Kelly = 75% total (20+25+30). Quarter Kelly = 18.75% (5+6.25+7.5). But 0.80 correlation = HIGH overlap (strategies win/lose together). At 0.80 correlation, 3 strategies act like ~1.5 independent bets, not 3. Correlation adjustment: Reduce by 30-40%. Result: 5% × 0.65 = 3.25%, 6.25% × 0.65 = 4.06%, 7.5% × 0.65 = 4.88%. Total = 12-13% (or 10% if more conservative). Real example: Trader used 18.75% without adjustment, lost 18.75% in one day when all 3 hit stops together. Correlation-adjusted to 10-12% = half the damage.
     </div>
+  </div>
 
   <div class="quiz-question" style="margin-top:2rem">
     <p><strong>Your account equity curve has dropped below its 20-day moving average for the first time in 3 months. Your standard position size is 2% per trade. What should you do?</strong></p>
@@ -709,6 +711,8 @@
     <div class="quiz-explanation">
       <strong>Correct: B.</strong> Equity below 20-day MA = below-average performance. Could be variance, regime shift, or poor execution. All require same response: REDUCE RISK. Cut size 50% (2% → 1%) until equity crosses back above MA. Larry Williams study: Equity curve traders had 40% lower max DD vs fixed-size with same edge. Example: 10-loss streak. Fixed 2%: loses 20% ($100K → $80K). Equity curve: reduces to 1% after 2-3 losses, loses ~10-12% total ($100K → $88-90K). Same streak, 50% less damage. Rule: Below MA = halve size. Above MA = normal size. Well above MA = boost 25%.
     </div>
+  </div>
+
   <div class="checklist">
     <h4>Portfolio Construction Workflow:</h4>
     <ul>
