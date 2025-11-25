@@ -115,7 +115,15 @@
 
       <p>You see a setup. You click "buy market order."</p>
 
-      <p><strong>50ms Timeline:</strong> 0ms: You click buy @ $520.01 ask. 5ms: Order hits router (WiFi adds 2-5ms). 20ms: Reaches broker (HFTs detected pressure 15ms ago). 45ms: Reaches exchange—HFTs canceled $520.01, repriced to $520.03. 50ms: You fill @ $520.03. Slippage: $0.02/share. On 1,000 shares = $20. Multiply by billions = HFT business model.</p>
+      <p><strong>50ms Timeline:</strong></p>
+      <ul style="margin:0.5rem 0 1rem 1.5rem;line-height:1.8">
+        <li><strong>0ms:</strong> You click buy @ $520.01 ask</li>
+        <li><strong>5ms:</strong> Order hits router (WiFi adds 2-5ms)</li>
+        <li><strong>20ms:</strong> Reaches broker (HFTs detected pressure 15ms ago)</li>
+        <li><strong>45ms:</strong> Reaches exchange—HFTs canceled $520.01, repriced to $520.03</li>
+        <li><strong>50ms:</strong> You fill @ $520.03. Slippage: $0.02/share</li>
+      </ul>
+      <p>On 1,000 shares = $20. Multiply by billions = HFT business model.</p>
 
       <div class="callout-key">
         <h4>💡 The Aha Moment</h4>
@@ -124,22 +132,78 @@
       </div>
 <h3>HFT Latency vs. Retail</h3>
 
-      <p><strong>You:</strong> Home internet (20-50ms) + broker routing (10-30ms) + decision time (500-5000ms) = <strong>50-200ms total</strong>. <strong>HFT:</strong> Co-located servers + direct fiber (0.5-2ms) + algorithmic decisions (microseconds) = <strong>0.5-2ms total</strong>. 100x faster than you. Every. Single. Time.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0">
+        <div style="padding:1rem;background:rgba(255,107,107,.08);border-radius:8px">
+          <h4 style="margin:0 0 0.5rem 0">👤 You (Retail)</h4>
+          <ul style="margin:0;padding-left:1.25rem">
+            <li>Home internet: 20-50ms</li>
+            <li>Broker routing: 10-30ms</li>
+            <li>Decision time: 500-5000ms</li>
+            <li><strong>Total: 50-200ms</strong></li>
+          </ul>
+        </div>
+        <div style="padding:1rem;background:rgba(0,212,170,.08);border-radius:8px">
+          <h4 style="margin:0 0 0.5rem 0">🤖 HFT</h4>
+          <ul style="margin:0;padding-left:1.25rem">
+            <li>Co-located servers: 0.5-2ms</li>
+            <li>Direct fiber: microseconds</li>
+            <li>Algorithmic decisions: microseconds</li>
+            <li><strong>Total: 0.5-2ms</strong></li>
+          </ul>
+        </div>
+      </div>
+      <p style="text-align:center;font-weight:600;color:#ff6b6b">100× faster than you. Every. Single. Time.</p>
 
       <div class="section-break"><span>Part 2: The $47K Lesson—Michael's Market Order Massacre</span></div>
-<h2 id="case-study-when-hft-speed-costs-real-money">Case Study: When HFT Speed Costs Real Money</h2>
+<h2 id="michaels-47250-market-order-massacre">Michael's $47,250 Market Order Massacre</h2>
 
-      <p><strong>Michael Chen, June 2023.</strong> $180K account. Bought 15,000 NVDA shares at market @ 9:32 AM (2 min after open). Expected fill: $410.50. Actual: $413.65. Slippage: $47,250 before first tick.</p>
+      <p><strong>Michael Chen, Seattle, WA</strong> — $180,000 account, June 2023.</p>
 
-      <div class="callout-disaster">
-        <h4>💀 What Happened (200ms timeline)</h4>
-        <p><strong>0ms:</strong> Michael clicks BUY MARKET. Screen shows $410.50 ask. <strong>35ms:</strong> Order reaches broker. <strong>75ms:</strong> HFT algos detect 15K buy imbalance. <strong>80ms:</strong> HFTs cancel $410.50 asks, reprice to $411.25+. <strong>95-180ms:</strong> Order fills across 18 prices ($411.25→$414.20). <strong>200ms:</strong> NVDA returns to $410.80. HFTs profitable. Michael down $47K.</p>
-        <p><strong>Math:</strong> Expected $6.16M, paid $6.20M = $47K loss (2.6%). If NVDA hit $420, HFTs extracted 49.6% of potential profit.</p>
+      <p><strong>The Trade:</strong> Bought 15,000 NVDA shares at market @ 9:32 AM (2 min after open).</p>
+
+      <div class="story-summary">
+        <h3>📉 The Instant $47K Loss</h3>
+        <div class="summary-stats">
+          <div class="stat-box">
+            <span class="stat-label">Expected Fill</span>
+            <span class="stat-value">$410.50</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Actual Fill</span>
+            <span class="stat-value loss">$413.65</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Slippage</span>
+            <span class="stat-value loss">-$47,250</span>
+          </div>
+        </div>
       </div>
 
-      <h3>What He Should Have Done</h3>
-      <p><strong>✅ Correct execution:</strong> 10:45 AM (not 9:32), limit order $410.50, iceberg (show 500, hide 14.5K), 12-minute window. Result: Avg fill $410.62, slippage $1,800. Savings: $45,450.</p>
-      <p><strong>Lesson:</strong> Speed matters for HFTs, not you. Patience saves tens of thousands.</p>
+      <h3 id="the-200ms-timeline">The 200ms Timeline</h3>
+      <ul style="margin:0.5rem 0 1rem 1.5rem;line-height:1.8">
+        <li><strong>0ms:</strong> Michael clicks BUY MARKET. Screen shows $410.50 ask</li>
+        <li><strong>35ms:</strong> Order reaches broker</li>
+        <li><strong>75ms:</strong> HFT algos detect 15K buy imbalance</li>
+        <li><strong>80ms:</strong> HFTs cancel $410.50 asks, reprice to $411.25+</li>
+        <li><strong>95-180ms:</strong> Order fills across 18 prices ($411.25 → $414.20)</li>
+        <li><strong>200ms:</strong> NVDA returns to $410.80. HFTs profitable. Michael down $47K</li>
+      </ul>
+
+      <p><strong>The Math:</strong> Expected $6.16M, paid $6.20M = <strong>$47K loss (2.6%)</strong> before the first tick even printed.</p>
+
+      <h3 id="what-michael-should-have-done">What He Should Have Done</h3>
+      <ol>
+        <li><strong>Wait until 10:45 AM</strong> (not 9:32 AM—avoid opening volatility)</li>
+        <li><strong>Use limit order</strong> at $410.50</li>
+        <li><strong>Use iceberg</strong> — show 500 shares, hide 14,500</li>
+        <li><strong>12-minute execution window</strong></li>
+      </ol>
+      <p><strong>Result:</strong> Avg fill $410.62. Slippage: $1,800. <span style="color:#00d4aa;font-weight:600">Savings: $45,450.</span></p>
+
+      <div class="callout-key">
+        <h4>💡 Michael's Lesson</h4>
+        <p>Speed matters for HFTs, not you. <strong>Patience saves tens of thousands.</strong></p>
+      </div>
 
       <div class="section-break"><span>Part 3: How HFTs Actually Make Money</span></div>
 <h2 id="strategy-1-market-making-the-fair-one">Strategy 1: Market Making (The "Fair" One)</h2>
@@ -843,8 +907,6 @@ Annual savings (2 trades/week): $548 × 100 = $54,800
       </div>
 </aside>
   </div>
-</div>
-
 
   <div class="wrap nav-article">
   <a class="btn btn-ghost" href="/curriculum/advanced/55-machine-learning-trading.html">&larr; Previous Lesson</a>
