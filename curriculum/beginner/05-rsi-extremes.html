@@ -183,6 +183,209 @@
       <p><strong>Mistake #3: Trading RSI alone without confluence</strong></p>
       <p><em>Fix:</em> Require Harmonic Oscillator agreement (4-5/5) + structural confirmation (Janus, Plutus) before potential entry.</p>
 
+<h3 id="rsi-divergence-patterns">RSI Divergence Patterns: Early Warning System</h3>
+
+      <p>Divergences occur when price and RSI move in opposite directions. While not standalone entry signals, they're powerful early warning indicators—especially when combined with regime context.</p>
+
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05)">
+            <th style="padding:.75rem;text-align:left">Divergence Type</th>
+            <th style="padding:.75rem;text-align:left">Pattern</th>
+            <th style="padding:.75rem;text-align:left">Interpretation</th>
+            <th style="padding:.75rem;text-align:left">How to Trade It</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Regular Bullish</td>
+            <td style="padding:.75rem">Price: lower low<br>RSI: higher low</td>
+            <td style="padding:.75rem">Selling pressure weakening (potential reversal)</td>
+            <td style="padding:.75rem;color:var(--primary)">Watch for long entry after structure break (Janus sweep or higher high)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Regular Bearish</td>
+            <td style="padding:.75rem">Price: higher high<br>RSI: lower high</td>
+            <td style="padding:.75rem">Buying pressure weakening (potential reversal)</td>
+            <td style="padding:.75rem;color:var(--danger)">Watch for short entry after structure break (failed breakout or lower low)</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Hidden Bullish</td>
+            <td style="padding:.75rem">Price: higher low<br>RSI: lower low</td>
+            <td style="padding:.75rem">Uptrend continuation signal (pullback strength)</td>
+            <td style="padding:.75rem;color:var(--primary)">Add to long position on bounce from higher low</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">Hidden Bearish</td>
+            <td style="padding:.75rem">Price: lower high<br>RSI: higher high</td>
+            <td style="padding:.75rem">Downtrend continuation signal (rally weakness)</td>
+            <td style="padding:.75rem;color:var(--danger)">Add to short position on rejection from lower high</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p><strong>Example: Regular Bearish Divergence on ES Futures (May 2024)</strong></p>
+
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code><strong>Setup:</strong>
+May 15: ES hits 5,321 (new high), RSI = 68.4
+May 21: ES hits 5,340 (higher high +19 points), RSI = 63.8 (lower high)
+→ BEARISH DIVERGENCE DETECTED
+
+<strong>Pattern:</strong>
+Price making higher highs, but RSI making lower highs
+= Buying pressure weakening despite price increase
+= Warning sign, not entry signal yet
+
+<strong>Confirmation:</strong>
+May 23: ES breaks below 5,310 support (structure break)
+→ Now it's tradeable
+
+<strong>Trade:</strong>
+Entry: Short at 5,307 (after structure break)
+Stop: 5,345 (above divergence high, -38 points risk)
+Target: 5,220 (prior support, +87 points reward)
+Risk/Reward: 1:2.3
+
+<strong>Result:</strong>
+ES dropped to 5,214 over next 4 days (-2.5% move)
+Divergence warned early, structure break confirmed entry</code></pre>
+
+      <p style="padding:1rem;background:rgba(255,82,82,0.08);border-radius:8px;border-left:4px solid #ff5252;margin:1.5rem 0">
+        <strong>Critical rule:</strong> NEVER trade divergence alone. Wait for structure to break (failed higher high, sweep, support/resistance flip). Divergence is a warning to watch closely, not a signal to enter immediately. Without structural confirmation, divergence can persist for weeks while price continues trending.
+      </p>
+
+<h3 id="multi-timeframe-rsi">Multi-Timeframe RSI Alignment: Conviction Indicator</h3>
+
+      <p>Single-timeframe RSI is noisy. Multi-timeframe RSI alignment—when multiple timeframes show the same RSI condition—dramatically increases probability.</p>
+
+      <p><strong>The 3-Timeframe RSI Framework:</strong></p>
+
+      <ol style="margin:.75rem 0 .75rem 1.5rem;line-height:1.8">
+        <li><strong>Higher Timeframe (HTF):</strong> 4x your trading timeframe (if trading 15-min, use 1-hour)</li>
+        <li><strong>Trading Timeframe (TF):</strong> Your main chart timeframe</li>
+        <li><strong>Lower Timeframe (LTF):</strong> 1/4 your trading timeframe (if trading 15-min, use 5-min)</li>
+      </ol>
+
+      <p><strong>High-Probability Setups Require Alignment:</strong></p>
+
+      <div style="padding:1.5rem;background:rgba(0,212,170,0.08);border-radius:8px;margin:1.5rem 0">
+        <p style="margin:0 0 1rem 0"><strong>Bullish Alignment (All 3 timeframes RSI >50):</strong></p>
+        <ul style="margin:0 0 0 1.5rem;line-height:1.8">
+          <li>HTF RSI >50 = Uptrend confirmed on higher timeframe</li>
+          <li>TF RSI >50 = Uptrend confirmed on trading timeframe</li>
+          <li>LTF RSI >50 = Current momentum aligned bullish</li>
+          <li><strong>Trade:</strong> Buy pullbacks to TF RSI 40-50 zone (with HTF >50)</li>
+        </ul>
+        <p style="margin:1.5rem 0 1rem 0"><strong>Bearish Alignment (All 3 timeframes RSI <50):</strong></p>
+        <ul style="margin:0 0 0 1.5rem;line-height:1.8">
+          <li>HTF RSI <50 = Downtrend confirmed on higher timeframe</li>
+          <li>TF RSI <50 = Downtrend confirmed on trading timeframe</li>
+          <li>LTF RSI <50 = Current momentum aligned bearish</li>
+          <li><strong>Trade:</strong> Short rallies to TF RSI 50-60 zone (with HTF <50)</li>
+        </ul>
+      </div>
+
+      <p><strong>Example: Triple RSI Alignment on QQQ (Trading 15-min chart)</strong></p>
+
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code><strong>Setup (June 12, 10:30 AM):</strong>
+HTF (1-hour): RSI = 58.2 (bullish regime)
+TF (15-min): RSI = 44.8 (pullback within uptrend)
+LTF (5-min): RSI = 38.4 (oversold on lower timeframe)
+
+<strong>Analysis:</strong>
+Higher timeframe bullish (RSI >50) = trade WITH uptrend
+Trading timeframe pulled back to 44.8 (healthy pullback zone)
+Lower timeframe oversold = tactical entry timing
+
+<strong>Trade:</strong>
+Entry: Buy QQQ $453.20 when LTF RSI crosses back >40
+Stop: $452.50 (below recent swing low, -$0.70 risk)
+Target: $456.00 (recent high, +$2.80 reward)
+Risk/Reward: 1:4.0
+
+<strong>Execution:</strong>
+10:35 AM: LTF RSI crosses 40 → Entry at $453.20
+10:45 AM: TF RSI back to 52 (momentum returning)
+11:20 AM: QQQ hits $456.10, exit
+
+<strong>Result:</strong>
+Profit: $2.90/share on 200 shares = +$580
+Key: HTF bullish, bought TF pullback, LTF timed entry perfectly</code></pre>
+
+<h3 id="rsi-volume-confluence">RSI + Volume/Order Flow Confluence: Professional Edge</h3>
+
+      <p>RSI alone shows overbought/oversold. RSI + volume/order flow shows WHO is driving the move (retail vs. institutions)—the real edge.</p>
+
+      <p><strong>The Confluence Framework:</strong></p>
+
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05)">
+            <th style="padding:.75rem;text-align:left">RSI Signal</th>
+            <th style="padding:.75rem;text-align:left">Volume/Order Flow Confirmation</th>
+            <th style="padding:.75rem;text-align:left">Interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">RSI >70 (uptrend)</td>
+            <td style="padding:.75rem">High volume + positive delta (Plutus Flow green)</td>
+            <td style="padding:.75rem;color:var(--primary)">Strong institutional buying—continuation likely</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">RSI >70 (uptrend)</td>
+            <td style="padding:.75rem">Low volume + negative delta (Plutus Flow red)</td>
+            <td style="padding:.75rem;color:var(--danger)">Retail FOMO, weak hands—potential reversal warning</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">RSI <30 (downtrend)</td>
+            <td style="padding:.75rem">High volume + negative delta</td>
+            <td style="padding:.75rem;color:var(--danger)">Strong institutional selling—continuation likely</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">RSI <30 (downtrend)</td>
+            <td style="padding:.75rem">Low volume + positive delta</td>
+            <td style="padding:.75rem;color:var(--primary)">Capitulation, potential reversal—watch for structure</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p><strong>Example: RSI + Volume Divergence on SPY (Reversal Signal)</strong></p>
+
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code><strong>Setup (March 8, 2:45 PM):</strong>
+SPY rallying: $518 → $521 (+0.6%)
+RSI: 72.4 (overbought in uptrend)
+Volume: Declining (rally on lighter volume each leg up)
+Plutus Flow: Red bars (more selling than buying despite price up)
+
+<strong>Analysis:</strong>
+Price + RSI = looks bullish (overbought in uptrend)
+Volume + Delta = WARNING (rally on declining volume, negative delta)
+= Retail buying the top, institutions distributing
+
+<strong>Divergence:</strong>
+Price making higher highs, but volume declining + delta negative
+= Unsustainable rally, exhaustion likely
+
+<strong>Trade:</strong>
+Wait for structure break (SPY fails to hold $521)
+Entry: Short SPY $520.40 (after failed breakout)
+Stop: $521.80 (above recent high, -$1.40 risk)
+Target: $517.50 (support, +$2.90 reward)
+
+<strong>Result:</strong>
+SPY reversed to $517.20 by close (-0.6% move)
+RSI showed overbought, but VOLUME showed distribution
+Confluence gave early warning before reversal</code></pre>
+
+      <p style="padding:1rem;background:rgba(0,212,170,0.08);border-radius:8px;border-left:4px solid #00d4aa;margin:1.5rem 0">
+        <strong>Professional approach:</strong> RSI tells you overbought/oversold. Volume/delta tells you WHO is in control. Combine them: RSI >70 + high volume + positive delta = institutions driving = stay long. RSI >70 + low volume + negative delta = retail FOMO = fade it. This is how professionals separate sustainable moves from exhaustion traps.
+      </p>
+
       <div class="key-takeaway">
         <h4>🎓 Key Takeaways</h4>
         <ul>

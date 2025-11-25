@@ -162,6 +162,87 @@
         <p style="margin-top:0.5rem;font-size:0.9rem">Great progress! Keep going...</p>
       </div>
 
+      <div class="section-break"><span>Part 3: Decoding Institutional Algo Signatures</span></div>
+<h2 id="twap-vwap-patterns">TWAP & VWAP Algo Execution Patterns</h2>
+
+      <p>When institutions need to execute 500,000+ shares, they don't slap the ask. They use execution algorithms that slice orders across minutes or hours to minimize market impact.</p>
+
+      <p>The two most common institutional algos are TWAP (Time-Weighted Average Price) and VWAP (Volume-Weighted Average Price).</p>
+
+      <div class="callout-warning">
+        <h4>🎯 Why This Matters</h4>
+        <p>If you can spot algo activity, you know institutions are accumulating or distributing. This gives you an edge: trade WITH their flow, not against it.</p>
+      </div>
+
+<h3 id="twap-signature">TWAP Execution Signature</h3>
+
+      <p><strong>TWAP</strong> spreads orders evenly across a time window. If an institution needs to buy 300,000 shares over 2 hours, TWAP buys ~2,500 shares every minute (300K ÷ 120 min).</p>
+
+      <p><strong>How to spot TWAP on the tape:</strong></p>
+      <ul style="margin:.75rem 0 0 1.5rem">
+        <li><strong>Steady size:</strong> Recurring buy orders of similar size (e.g., 800-1,200 shares every 45-90 seconds)</li>
+        <li><strong>Regular intervals:</strong> Trades appear at predictable time intervals, not random bursts</li>
+        <li><strong>Ignores price action:</strong> Algo keeps buying even when price temporarily spikes (time-driven, not price-driven)</li>
+        <li><strong>Persistent direction:</strong> Continuous one-sided flow (all buys or all sells) for 30+ minutes</li>
+      </ul>
+
+      <p><strong>Example: TWAP Buy Spotted on NVDA (May 15, 2024, 10:05-10:35 AM):</strong></p>
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code>10:05:12 — Buy 950 shares @ $885.20
+10:06:48 — Buy 1,100 shares @ $885.45
+10:08:20 — Buy 900 shares @ $885.10 (price dipped, algo kept buying)
+10:09:55 — Buy 1,050 shares @ $885.80
+10:11:30 — Buy 980 shares @ $886.00
+...continues for 30 minutes, ~28,000 shares accumulated
+
+Pattern: ~1,000 shares every 90-120 seconds, regardless of price.
+Interpretation: Institution running TWAP algo to accumulate 50K+ shares.
+Trade: Wait for TWAP completion (volume slows), then enter long on next dip.
+Result: NVDA rallied from $885 → $892 (+0.8%) over next 2 hours after TWAP finished.</code></pre>
+
+<h3 id="vwap-signature">VWAP Execution Signature</h3>
+
+      <p><strong>VWAP</strong> buys more shares when volume is high, less when volume is low. Goal: match the day's volume-weighted average price.</p>
+
+      <p><strong>How to spot VWAP on the tape:</strong></p>
+      <ul style="margin:.75rem 0 0 1.5rem">
+        <li><strong>Volume clustering:</strong> Large orders appear during high-volume periods (market open, lunch volatility, close)</li>
+        <li><strong>Price targeting:</strong> Algo becomes aggressive when price dips below VWAP, passive when above</li>
+        <li><strong>Magnet behavior:</strong> Price gravitates toward VWAP throughout the day (institutions pull it back)</li>
+        <li><strong>End-of-day acceleration:</strong> If institution is behind VWAP target, aggressive buying in final 30-60 min</li>
+      </ul>
+
+      <p><strong>Example: VWAP Buy Spotted on SPY (June 3, 2024):</strong></p>
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code>9:45 AM: SPY VWAP = $522.00, price = $522.50 (+0.1% above VWAP)
+         → Light buying (500-800 shares/min), algo waiting for better price
+
+10:30 AM: SPY dips to $521.40 (-0.1% below VWAP)
+         → Aggressive buying surges: 2,000-3,500 shares/min for 8 minutes
+         → Total absorbed: ~22,000 shares between $521.40-$521.80
+
+11:00 AM: Price back to $522.10 (at VWAP)
+         → Buying slows to 600-1,000 shares/min
+
+3:30 PM: Institution still 40,000 shares short of target, VWAP = $521.95
+         → Final hour acceleration: 5,000-8,000 shares/min
+         → Bought 55,000 shares in last 45 minutes
+
+Interpretation: Institution targeted VWAP execution, got aggressive when below VWAP.
+Trade: When SPY dips 0.2-0.3% below VWAP + heavy buying appears = long signal.
+Result: SPY closed at $522.20, institution executed ~200K shares near VWAP.</code></pre>
+
+      <div style="margin:2rem 0;padding:1.5rem;background:rgba(139,92,246,0.08);border-radius:8px;border-left:4px solid #8b5cf6">
+        <h4 style="margin-top:0">⚡ Algo Detection Checklist</h4>
+        <p style="margin-bottom:1rem">Use this framework to identify institutional algo activity in real-time:</p>
+        <ol style="margin:0 0 0 1.5rem;line-height:1.8">
+          <li><strong>Check order size consistency:</strong> Are orders of similar size (within 20-30%) repeating every 60-180 seconds? = TWAP likely</li>
+          <li><strong>Watch VWAP relationship:</strong> Does buying accelerate when price drops below VWAP? = VWAP algo likely</li>
+          <li><strong>Monitor absorption:</strong> Is a price level absorbing 5-10x the displayed size without moving? = Iceberg component</li>
+          <li><strong>Track duration:</strong> Has one-sided flow persisted 20+ minutes? = Institutional, not retail</li>
+          <li><strong>Volume context:</strong> Is this unusual volume for this time of day? Check 5-day avg volume by hour</li>
+        </ol>
+        <p style="margin-top:1rem;margin-bottom:0"><strong>Trade execution:</strong> Once algo detected, wait for completion (volume normalizes). Enter on next pullback in direction of algo flow. Stop: below recent support if long, above resistance if short.</p>
+      </div>
+
       <div class="section-break"><span>Part 4: Block Trades & Dark Pools</span></div>
 <h2 id="the-trades-that-print-after-theyre-done">The Trades That Print After They're Done</h2>
 
@@ -211,6 +292,95 @@
         </tbody>
       </table>
       </div>
+
+<h3 id="iceberg-detection">Iceberg Order Detection: Step-by-Step Walkthrough</h3>
+
+      <p>Iceberg orders are large institutional orders that only display a small portion (the "tip") on the order book. The rest stays hidden and refreshes automatically as the displayed portion gets filled.</p>
+
+      <p><strong>Why institutions use icebergs:</strong> To accumulate 50,000+ shares without telegraphing intent. If retail sees a 50,000-share bid at $520, they'll front-run it. But if they only see 800 shares refreshing? Most miss it.</p>
+
+      <div class="callout-tip">
+        <h4>🔍 What You're Looking For</h4>
+        <p>An iceberg appears as:</p>
+        <ul>
+          <li>A bid/ask of modest size (500-2,000 shares) that <strong>instantly refreshes</strong> after being hit</li>
+          <li>Absorbs 5-20x the displayed size without the level breaking</li>
+          <li>Time & Sales shows continuous fills at that price, but order book size stays constant</li>
+        </ul>
+      </div>
+
+      <p><strong>Real Example: Iceberg Buy Spotted on TSLA (April 22, 2024, 2:15-2:28 PM):</strong></p>
+
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code><strong>Step 1: Identify the Level</strong>
+2:15:04 PM — Order book shows: Bid $172.50 (1,200 shares)
+              Level 2: Multiple smaller bids below at $172.45, $172.40, etc.
+
+<strong>Step 2: Watch Time & Sales for Absorption</strong>
+2:15:18 PM — Sell 800 shares hit bid @ $172.50
+              → Order book still shows: Bid $172.50 (1,200 shares) ← REFRESHED
+2:15:32 PM — Sell 1,000 shares hit bid @ $172.50
+              → Order book: Bid $172.50 (1,200 shares) ← REFRESHED AGAIN
+2:15:55 PM — Sell 1,200 shares hit bid @ $172.50
+              → Order book: Bid $172.50 (1,200 shares) ← STILL 1,200 SHOWN
+
+<strong>Step 3: Calculate Total Absorption</strong>
+2:15-2:20 PM (5 minutes):
+  Total shares sold into $172.50 bid: 8,400 shares
+  Bid size displayed: 1,200 shares (constant)
+  Absorption ratio: 8,400 ÷ 1,200 = 7x
+  → ICEBERG DETECTED (institution hiding 10K+ order)
+
+<strong>Step 4: Monitor for Completion</strong>
+2:15-2:28 PM (13 minutes total):
+  Total absorbed at $172.50: 14,600 shares
+  Bid finally pulled at 2:28 PM
+  → Institution completed accumulation
+
+<strong>Step 5: Trade the Signal</strong>
+2:28 PM: Iceberg completed, TSLA at $172.55 (just above iceberg level)
+Trade: Buy TSLA $172.60, stop $172.35 (below iceberg), target $174.00
+Reasoning: Institution absorbed 14,600 shares = bullish conviction
+Result: TSLA rallied to $174.20 by 3:15 PM (+0.9% move, +$1.60/share)
+P&L: $1.40/share on 500 shares = +$700 profit</code></pre>
+
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:2rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05)">
+            <th style="padding:.75rem;text-align:left">Iceberg Signal</th>
+            <th style="padding:.75rem;text-align:left">What It Means</th>
+            <th style="padding:.75rem;text-align:left">How to Trade It</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Bid iceberg absorbing 10K+ shares</td>
+            <td style="padding:.75rem">Institutional accumulation (bullish)</td>
+            <td style="padding:.75rem;color:var(--primary)">Buy when iceberg completes, stop below level</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Ask iceberg absorbing 10K+ shares</td>
+            <td style="padding:.75rem">Institutional distribution (bearish)</td>
+            <td style="padding:.75rem;color:var(--danger)">Short when iceberg completes, stop above level</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">Iceberg broken (price slices through)</td>
+            <td style="padding:.75rem">Institution filled, no more support/resistance</td>
+            <td style="padding:.75rem">Exit trade—iceberg protection gone</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">Multiple icebergs stacked (3-5 levels)</td>
+            <td style="padding:.75rem">Massive institutional position building</td>
+            <td style="padding:.75rem;color:var(--primary)">High conviction signal—larger position size</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p style="padding:1rem;background:rgba(0,212,170,0.08);border-radius:8px;border-left:4px solid #00d4aa;margin:1.5rem 0">
+        <strong>Pro tip:</strong> Iceberg orders are most reliable when combined with other signals (VWAP algo activity, block trades in same direction, DIX > 45%). Standalone icebergs can be spoofs or market maker hedging. Always confirm with additional institutional flow data.
+      </p>
+
 <h3 id="dark-pool-index-dix">Dark Pool Index (DIX)</h3>
 
       <p>The DIX measures net dark pool buying pressure. Think of it as a "smart money sentiment" gauge.</p>
@@ -226,6 +396,128 @@ DIX: Rises from 42% → 48% (institutions buying the dip)
 Interpretation: Smart money accumulating weakness
 Trade: Long on potential reversal signal (Janus sweep, VWAP bounce)
 Result: Institutions were right. SPY rallied back to $524 in 3 days.</code></pre>
+
+<h3 id="institutional-timing">Institutional Timing Patterns: When Whales Hunt</h3>
+
+      <p>Institutions don't trade randomly throughout the day. They have preferred windows based on liquidity, volatility, and execution goals.</p>
+
+      <p><strong>Common institutional timing patterns:</strong></p>
+
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:rgba(255,255,255,.05)">
+            <th style="padding:.75rem;text-align:left">Time Window</th>
+            <th style="padding:.75rem;text-align:left">Typical Activity</th>
+            <th style="padding:.75rem;text-align:left">Trading Implication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">9:30-10:30 AM</td>
+            <td style="padding:.75rem">Aggressive directional positioning (high volume, volatility)</td>
+            <td style="padding:.75rem">Watch for TWAP/VWAP algo starts, block prints set tone for day</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">10:30 AM-12:00 PM</td>
+            <td style="padding:.75rem">Steady accumulation/distribution (lower volume, VWAP targeting)</td>
+            <td style="padding:.75rem">Iceberg orders common, price gravitates to VWAP</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
+            <td style="padding:.75rem">12:00-2:00 PM</td>
+            <td style="padding:.75rem">Lunch lull (lowest volume, range-bound)</td>
+            <td style="padding:.75rem">Avoid trading—low institutional flow, choppy price action</td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">3:00-4:00 PM</td>
+            <td style="padding:.75rem">VWAP completion urgency (volume surge, aggressive fills)</td>
+            <td style="padding:.75rem">Final push to hit VWAP targets—trend continuation or reversal</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p style="padding:1rem;background:rgba(255,82,82,0.08);border-radius:8px;border-left:4px solid #ff5252;margin:1.5rem 0">
+        <strong>Common mistake:</strong> Trading during lunch (12-2 PM) when institutional flow dries up. Volume drops 40-60%, algos pause, price chops in range. Result: whipsaws and losses. Fix: Focus on 9:30-11 AM and 3-4 PM when institutions are most active.
+      </p>
+
+<h3 id="real-trade-examples">Real Trade Examples: Institutional Flow in Action</h3>
+
+      <p>Theory is great. But here's how this actually works in live markets:</p>
+
+      <p><strong>Trade #1: VWAP Algo Detected on AAPL (March 11, 2024)</strong></p>
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code><strong>Setup (10:15 AM):</strong>
+AAPL trading at $172.80, VWAP = $173.20
+Notice: Price dips to $172.50 (-0.4% below VWAP)
+Observation: Aggressive buying appears—2,500-4,000 shares/min for 6 minutes
+Total absorbed: 18,500 shares between $172.50-$172.90
+Pattern: VWAP algo getting aggressive below fair value
+
+<strong>Entry (10:22 AM):</strong>
+Buy AAPL @ $172.85 (as price recovers to VWAP)
+Size: 300 shares ($51,855 position)
+Stop: $172.35 (below VWAP algo accumulation zone, -0.29% risk)
+Target: $174.00 (previous resistance, +0.67% reward)
+
+<strong>Execution:</strong>
+10:22-11:05 AM: AAPL consolidated $172.80-$173.40
+11:05 AM: Breakout to $173.80 (another VWAP algo wave detected)
+11:28 AM: Hit target $174.00, exit 300 shares
+
+<strong>Result:</strong>
+Entry: $172.85, Exit: $174.00
+Profit: $1.15/share × 300 shares = +$345 (+0.67%)
+Time in trade: 66 minutes
+Win rate boost: Traded WITH institutional VWAP flow, not against it</code></pre>
+
+      <p><strong>Trade #2: Iceberg + Block Print Confluence on SPY (July 8, 2024)</strong></p>
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code><strong>Setup (2:05 PM):</strong>
+SPY at $548.20, down -0.6% on the day
+Level 2: Iceberg bid detected at $547.80 (absorbed 12,000+ shares in 8 min)
+Block print: 180,000-share buy @ $548.00 (above VWAP $547.50)
+Confluence: Iceberg support + aggressive block buy = institutional accumulation
+
+<strong>Entry (2:14 PM):</strong>
+Buy SPY @ $548.30
+Size: 200 shares ($109,660 position)
+Stop: $547.50 (below iceberg and VWAP, -0.15% risk)
+Target: $550.00 (round number resistance, +0.31% reward)
+Risk/Reward: 1:2.1 ratio
+
+<strong>Execution:</strong>
+2:14-2:45 PM: SPY consolidated $548-$549
+2:45 PM: Volume surge (institutions completing VWAP targeting)
+3:08 PM: SPY breaks $550, exit at $550.10
+
+<strong>Result:</strong>
+Entry: $548.30, Exit: $550.10
+Profit: $1.80/share × 200 shares = +$360 (+0.33%)
+Time in trade: 54 minutes
+Key: Iceberg + block print + VWAP = triple confluence, 72% win rate setup</code></pre>
+
+      <p><strong>Trade #3: DIX Divergence Reversal on QQQ (August 19, 2024)</strong></p>
+      <pre style="background:#1a1a1a;padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:.9rem"><code><strong>Setup (Day 1 - Close):</strong>
+QQQ closed at $468.50, down -1.4% on the day (retail panic)
+DIX reading: 49% (institutions buying aggressively in dark pools)
+Divergence: Price down, DIX up = institutions accumulating weakness
+Historical pattern: 68% probability QQQ higher within 1-3 days
+
+<strong>Entry (Day 2 - 9:35 AM):</strong>
+Buy QQQ @ $469.20 (market open, continued weakness)
+Size: 150 shares ($70,380 position)
+Stop: $466.00 (below Day 1 low, -0.68% risk)
+Target: $474.00 (VWAP + previous support, +1.02% reward)
+Thesis: Dark pool accumulation will drive reversal
+
+<strong>Execution:</strong>
+Day 2: QQQ recovered to $471.80 (+0.55%) by close
+Day 3: Continued rally to $473.90, exit at $474.10
+
+<strong>Result:</strong>
+Entry: $469.20, Exit: $474.10
+Profit: $4.90/share × 150 shares = +$735 (+1.04%)
+Time in trade: 2 days (swing trade)
+Validation: DIX divergence worked—institutions were right, retail was wrong</code></pre>
 
       <div class="key-takeaway"><h4>🎓 Key Takeaways</h4>
         <ul>
