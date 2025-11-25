@@ -394,8 +394,12 @@ html[data-theme="light"] .hero::before{
 .accordion-content{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 1.25rem}
 .accordion-item.open .accordion-content{max-height:2000px;padding:1.25rem}
 /* Native details element support */
+details.accordion-item{list-style:none}
+details.accordion-item>summary{list-style:none}
+details.accordion-item>summary::-webkit-details-marker{display:none}
+details.accordion-item>summary::marker{display:none;content:''}
 details.accordion-item[open] .accordion-header::after{transform:rotate(180deg)}
-details.accordion-item[open] .accordion-content{max-height:2000px;padding:1.25rem}
+details.accordion-item[open]>.accordion-content{max-height:none;padding:1.25rem;overflow:visible}
 
 /* Quiz Component */
 .quiz{margin:2.5rem 0;padding:2rem;background:rgba(255,255,255,.05);border:2px solid rgba(118,221,255,.2);border-radius:16px}

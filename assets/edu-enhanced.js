@@ -288,6 +288,20 @@
         const header = item.querySelector('.accordion-header');
         if (!header) return;
 
+        // For native <details> elements, use toggle event instead of click
+        if (item.tagName === 'DETAILS') {
+          item.addEventListener('toggle', () => {
+            if (item.open) {
+              // Close all others in same accordion
+              item.closest('.accordion')?.querySelectorAll('details.accordion-item').forEach(i => {
+                if (i !== item) i.removeAttribute('open');
+              });
+            }
+          });
+          return;
+        }
+
+        // For div-based accordions, use click handler
         header.addEventListener('click', () => {
           const isOpen = item.classList.contains('open');
 
