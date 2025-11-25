@@ -136,9 +136,28 @@
       <div class="example-block">
         <h4>Real-World Example: Monica's $27,710 Position Sizing Disaster</h4>
 
-        <p><strong>The mistake:</strong> Monica (profitable day trader, 58% win rate) used 2% risk per swing trade—forgetting overnight gap risk. Problem: Day trading 1-2% risk, swing trading needs 0.5% (4x smaller due to gaps). Result: 5 of 8 trades gapped through stops. Examples: TSLA -$2,950 (should -$738), META -$4,800 (should -$1,200), TSLA short -$4,320 (should -$1,080). <span style="color:#ff5252;font-weight:700">6-week damage: -$27,710 actual vs -$12,060 proper sizing = $15,650 extra loss. Account: $92K → $64K (-30.1%).</span></p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 130px),1fr));gap:0.75rem;margin:1rem 0 1.5rem 0">
+          <div style="background:rgba(255,82,82,0.15);padding:0.75rem;border-radius:8px;text-align:center">
+            <div style="font-size:1.4rem;font-weight:700;color:#ff5252">-$27,710</div>
+            <div style="font-size:0.75rem;color:var(--muted)">Total Loss</div>
+          </div>
+          <div style="background:rgba(255,82,82,0.15);padding:0.75rem;border-radius:8px;text-align:center">
+            <div style="font-size:1.4rem;font-weight:700;color:#ff5252">5 of 8</div>
+            <div style="font-size:0.75rem;color:var(--muted)">Trades Gapped</div>
+          </div>
+          <div style="background:rgba(255,107,107,0.12);padding:0.75rem;border-radius:8px;text-align:center">
+            <div style="font-size:1.4rem;font-weight:700;color:#ff6b6b">2% → 0.5%</div>
+            <div style="font-size:0.75rem;color:var(--muted)">Needed Sizing</div>
+          </div>
+          <div style="background:rgba(0,212,170,0.12);padding:0.75rem;border-radius:8px;text-align:center">
+            <div style="font-size:1.4rem;font-weight:700;color:#00d4aa">+36%</div>
+            <div style="font-size:0.75rem;color:var(--muted)">Recovery After Fix</div>
+          </div>
+        </div>
 
-        <p><strong>The fix (Aug-Dec 2024):</strong> 0.5% risk always, close before earnings, reduce 50% before FOMC/CPI, reduce 30% before weekends, never move stops. Results: $64K → $88K (+36%), 64.7% win rate, largest loss -$520 (vs -$4,800 before).</p>
+        <p><strong>The mistake:</strong> Monica (profitable day trader, 58% WR) used 2% risk for swings—forgetting overnight gaps. Result: 5/8 trades gapped through stops. TSLA -$2,950 (should -$738), META -$4,800 (should -$1,200). <strong style="color:#ff5252">Account: $92K → $64K (-30%).</strong></p>
+
+        <p><strong>The fix:</strong> 0.5% risk, close before earnings, reduce 50% before FOMC/CPI. Results: $64K → $88K (+36%), largest loss -$520 (vs -$4,800 before).</p>
       </div>
 <h2 id="part-1-daily-timeframe-structure-analysis">Part 1: Daily Timeframe Structure Analysis</h2>
 
