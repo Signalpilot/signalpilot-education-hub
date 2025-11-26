@@ -213,6 +213,9 @@
    * Start challenge timer
    */
   function startTimer() {
+    // Stop any existing timer first to prevent double-counting
+    stopTimer();
+
     const timerElement = document.getElementById('challengeTimer');
     if (!timerElement) return;
 
