@@ -11,6 +11,7 @@
   let startTime = null;
   let timerInterval = null;
   let timeRemaining = 0;
+  let challengeAnswered = false;
 
   /**
    * Fetch scenarios from Supabase
@@ -115,6 +116,7 @@
     currentChallenge = scenario;
     startTime = Date.now();
     timeRemaining = scenario.time_limit_seconds || 60;
+    challengeAnswered = false;
 
     const difficultyColors = {
       beginner: '#5b8aff',
@@ -213,6 +215,9 @@
    * Start challenge timer
    */
   function startTimer() {
+    // Stop any existing timer first to prevent double-counting
+    stopTimer();
+
     const timerElement = document.getElementById('challengeTimer');
     if (!timerElement) return;
 
@@ -252,6 +257,9 @@
    * Handle timeout
    */
   function handleTimeout() {
+    if (challengeAnswered) return; // User already answered, ignore timeout
+    challengeAnswered = true;
+
     // Disable all options
     const options = document.querySelectorAll('.challenge-option');
     options.forEach(opt => opt.disabled = true);
@@ -269,6 +277,8 @@
    * Handle answer selection
    */
   function handleAnswer(selectedOptionId) {
+    if (challengeAnswered) return; // Prevent double-submission
+    challengeAnswered = true;
     stopTimer();
 
     const timeTaken = Math.floor((Date.now() - startTime) / 1000);
