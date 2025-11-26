@@ -248,8 +248,22 @@
     // Don't add if already exists
     if (document.querySelector('.social-share')) return;
 
-    const nav = document.querySelector('.nav-article');
-    if (!nav) return;
+    // Try to find Related Lessons section first (better placement - like L12)
+    let insertTarget = null;
+    const sectionBreaks = document.querySelectorAll('.section-break');
+    for (const sb of sectionBreaks) {
+      if (sb.textContent.includes('Related Lessons')) {
+        insertTarget = sb;
+        break;
+      }
+    }
+
+    // Fallback to nav-article if Related Lessons not found
+    if (!insertTarget) {
+      insertTarget = document.querySelector('.nav-article');
+    }
+
+    if (!insertTarget) return;
 
     // Create share section
     const shareSection = document.createElement('div');
@@ -280,8 +294,8 @@
       </div>
     `;
 
-    // Insert before nav-article
-    nav.parentNode.insertBefore(shareSection, nav);
+    // Insert before target (Related Lessons or nav-article)
+    insertTarget.parentNode.insertBefore(shareSection, insertTarget);
 
     // Add click handlers
     shareSection.querySelectorAll('[data-share]').forEach(btn => {
