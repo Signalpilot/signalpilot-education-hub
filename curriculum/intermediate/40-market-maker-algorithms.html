@@ -274,6 +274,7 @@
   </div>
 </div>
 
+      <div class="quiz">
       <div class="quiz-question" style="margin-top:2rem">
         <p><strong>Case Study Quiz: Eric had a 52% win rate (profitable strategy) trading 60 times per day, but still lost $68,000 in 7 weeks. His average slippage was $0.24/share on 300-share positions. What was Eric's fatal mistake?</strong></p>
         <div class="quiz-options">
@@ -293,6 +294,7 @@
         <div class="quiz-explanation">
           <strong>Correct: C.</strong> This is the brutal reality of trading execution costs. Eric's setups were PROFITABLE (52% win rate with good risk:reward), but his execution method destroyed his edge entirely. Here's the math breakdown: Eric traded 60 times/day with 300 shares per trade. His average slippage was $0.24/share (the difference between where he SHOULD have been filled vs where he WAS filled using market orders). Daily slippage cost: $0.24/share × 300 shares × 60 trades = $4,320 per position × 60 = $14.40 per trade × 60 trades = $864/day. Over 35 trading days (7 weeks): $864 × 35 = $30,240 in pure slippage costs. He lost $68K total, meaning $30K+ came from slippage alone—NOT from bad trades. His win rate was profitable! The three execution mistakes: (1) 100% market orders instead of limit orders. Market orders get filled at the worst available price. When SPY spread was $549.50/$549.58 (8¢ wide), he paid $549.63 (slippage of 5¢ = $86 extra on 300 shares). A limit order at $549.52 (the mid) would have saved him $79. (2) Trading during widest spread times. Market makers WIDEN spreads during volatile periods (open, close, Fed announcements) because they can. Eric's Fed day example: options mid price $2.50, but spread was $2.35/$2.65 (30¢ wide). He market bought at $2.68 (18¢ overpay). On 300 contracts, that's $5,400 overpaid on ONE trade. His profit was $4,500—should have been $9,900. (3) Never checking Level 2 order book. Eric fell for 40+ fake walls (spoofing/layering) where MMs posted large orders they never intended to fill, manipulating him into bad decisions. Cost: $4K-12K. The recovery: Eric switched to limit orders only (at NBBO mid), avoided 9:30-9:45 AM and 3:50-4:00 PM windows, checked Level 2 before every trade, reduced frequency (60 → 18 trades/day for higher quality), and tracked slippage daily. Results: Slippage dropped 95% ($864/day → $45/day). Win rate jumped to 67% (better trade selection + better fills). Account recovered from $72K → $110K (+$38K, +52.8%) in 10 weeks. The lesson: You can have a profitable strategy but LOSE MONEY if your execution sucks. That 2-second wait for a limit order fill saves $0.20+/share. Over 1,000 trades, that's $20,000+ in your pocket instead of Citadel's.
         </div>
+      </div>
       </div>
 
       <div class="section-break"><span>Part 1: Spread Capture — The Core Business Model</span></div>
@@ -720,6 +722,7 @@
       <h2 id="quiz" style="margin-top:3rem">📝 Knowledge Check</h2>
       <p>Test your understanding of market maker algorithms:</p>
 
+      <div class="quiz">
       <div class="quiz-question">
         <p><strong>AAPL bid/ask is $175.00 / $175.05. You place a market sell order for 500 shares. What price do you get?</strong></p>
         <div class="quiz-options">
@@ -772,6 +775,7 @@
         <div class="quiz-explanation">
           <strong>Correct: B.</strong> This is the hidden cost of Payment for Order Flow (PFOF). Here's what really happened behind the scenes: When you hit "buy" on Robinhood, your order did NOT go to NYSE or Nasdaq (public exchanges). Instead, Robinhood sold your order to Citadel for $0.002/share ($2 payment for your 1,000 share order). Citadel filled you at $100.02 (the NBBO ask), which is LEGAL—they're required to match or beat NBBO. But here's the problem: On the public exchange (NYSE), there was a seller willing to sell at $100.01. You didn't get access to that price because Robinhood routed to Citadel instead of the exchange. You overpaid $0.01/share × 1,000 shares = $10 on this trade. Citadel made $10 (bought at $100.01 on NYSE, sold to you at $100.02). Robinhood made $2 (PFOF payment). You lost $10. "But Robinhood saved me $0 in commissions!" you say. True—but if you trade 100 times/year, you overpay $1,000 in worse fills. Old-school brokers (Fidelity, Schwab) charge $0 commissions now AND route to best execution. The solution: Use a broker that routes to IEX (Investors Exchange) or lets you choose routing. IEX has a 350-microsecond "speed bump" that prevents Citadel from front-running your order. On Interactive Brokers, you can manually select "IEX" routing. Your fills will improve by $0.01-$0.02/share on average.
         </div>
+      </div>
       </div>
 
       <div class="section-break"><span>Key Takeaways</span></div>
