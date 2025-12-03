@@ -1402,6 +1402,27 @@ button,. btn{
     page-break-inside:avoid;
   }
 
+  /* Expand all accordions in print - content is educational */
+  .accordion-content{
+    max-height:none !important;
+    overflow:visible !important;
+    padding:1.25rem !important;
+  }
+
+  .accordion-header::after{
+    display:none !important;
+  }
+
+  .accordion-item{
+    page-break-inside:avoid;
+  }
+
+  details.accordion-item>.accordion-content{
+    max-height:none !important;
+    overflow:visible !important;
+    padding:1.25rem !important;
+  }
+
   a{
     color:#000 !important;
     text-decoration:none !important;
