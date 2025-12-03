@@ -961,7 +961,7 @@
 
     <aside class="toc-sidebar">
       <div class="lesson-actions">
-        <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
+        <button id="bookmark-btn" class="btn btn-secondary btn-block" onclick="window.library?.isBookmarked() ? window.library.removeBookmark() : window.library.addBookmark({title:document.title})">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
       </div>
     </aside>
@@ -1015,6 +1015,7 @@
 <script src="/assets/supabase-client.js"></script>
 <script src="/assets/auth-ui.js"></script>
   <script src="/assets/library.js"></script>
+  <script>window.addEventListener('load',function(){if(window.library?.isBookmarked()){var b=document.getElementById('bookmark-btn');if(b)b.innerHTML='⭐ Bookmarked'}})</script>
     <!-- Enhanced Analytics & A/B Testing -->
   <script src="/assets/enhanced-analytics.js" defer></script>
   <script src="/assets/ab-test-tldr.js" defer></script>

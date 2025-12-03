@@ -21,6 +21,7 @@
   <script src="/assets/dev-utils.js" defer></script>
   <script src="/assets/notes.js" defer></script>
   <script src="/assets/library.js"></script>
+  <script>window.addEventListener('load',function(){if(window.library?.isBookmarked()){var b=document.getElementById('bookmark-btn');if(b)b.innerHTML='⭐ Bookmarked'}})</script>
     <script src="/assets/quiz-enhanced.js" defer></script>
   <script src="/assets/social-share.js" defer></script>
   <script src="/assets/pwa-init.js"></script>
@@ -776,7 +777,7 @@
 
     <aside class="toc-sidebar">
       <div class="lesson-actions">
-        <button id="bookmark-btn" class="btn btn-secondary btn-block">🔖 Bookmark</button>
+        <button id="bookmark-btn" class="btn btn-secondary btn-block" onclick="window.library?.isBookmarked() ? window.library.removeBookmark() : window.library.addBookmark({title:document.title})">🔖 Bookmark</button>
         <button onclick="window.print()" class="btn btn-secondary btn-block">📄 Save PDF</button>
       </div>
     </aside>
