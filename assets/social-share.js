@@ -248,13 +248,26 @@
     // Don't add if already exists
     if (document.querySelector('.social-share')) return;
 
-    // Try to find Related Lessons section first (better placement - like L12)
+    // Try to find Related Lessons section first (better placement)
     let insertTarget = null;
+
+    // Check section-breaks first
     const sectionBreaks = document.querySelectorAll('.section-break');
     for (const sb of sectionBreaks) {
       if (sb.textContent.includes('Related Lessons')) {
         insertTarget = sb;
         break;
+      }
+    }
+
+    // If not found, check h3 headings (some lessons use h3 for Related Lessons)
+    if (!insertTarget) {
+      const headings = document.querySelectorAll('.prose h3');
+      for (const h3 of headings) {
+        if (h3.textContent.includes('Related Lessons')) {
+          insertTarget = h3;
+          break;
+        }
       }
     }
 
