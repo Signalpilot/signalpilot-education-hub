@@ -14,8 +14,8 @@
   const CONFIG = {
     // Trial offer details
     trialDays: 7,
-    trialUrl: '/pricing.html?trial=true',
-    pricingUrl: '/pricing.html',
+    trialUrl: 'https://signalpilot.io/#pricing',
+    pricingUrl: 'https://signalpilot.io/#pricing',
 
     // CTA trigger points
     inlineTriggerPercent: 50,      // Show inline CTA after 50% of content
@@ -118,12 +118,14 @@
       default: {
         icon: '⚡',
         title: 'The Elite Suite',
-        text: 'Professional-grade indicators used by institutional traders.',
+        text: '7 professional-grade indicators used by institutional traders.',
         features: [
           'Janus Atlas',
           'Volume Oracle',
           'Plutus Flow',
-          'Pentarch'
+          'Pentarch',
+          'Minimal Flow',
+          '+ 2 more'
         ],
         cta: 'Activate License'
       }
