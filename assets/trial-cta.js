@@ -14,8 +14,8 @@
   const CONFIG = {
     // Trial offer details
     trialDays: 7,
-    trialUrl: '/pricing.html?trial=true',
-    pricingUrl: '/pricing.html',
+    trialUrl: 'https://signalpilot.io/#pricing',
+    pricingUrl: 'https://signalpilot.io/#pricing',
 
     // CTA trigger points
     inlineTriggerPercent: 50,      // Show inline CTA after 50% of content
@@ -53,6 +53,7 @@
   // ========================================
   const CONTEXTUAL_TIPS = {
     // Keyword -> Tool mapping for contextual "Pro Tip" blocks
+    // All 7 indicators: Pentarch, Janus Atlas, Omnideck, Augury Grid, Volume Oracle, Harmonic Oscillator, Plutus Flow
     'liquidity': {
       tool: 'Janus Atlas',
       tip: 'You can identify these liquidity zones manually, or use <strong>Janus Atlas</strong> to plot them automatically in real-time.',
@@ -65,7 +66,7 @@
     },
     'order flow': {
       tool: 'Plutus Flow',
-      tip: 'Reading order flow from raw data is complex. <strong>Plutus Flow</strong> visualizes institutional activity in real-time.',
+      tip: 'Reading order flow from raw data is complex. <strong>Plutus Flow</strong> visualizes accumulation and distribution in real-time.',
       icon: '💹'
     },
     'market structure': {
@@ -75,13 +76,23 @@
     },
     'cycles': {
       tool: 'Pentarch',
-      tip: 'Cycle analysis requires patience. <strong>Pentarch</strong> identifies dominant market cycles automatically.',
+      tip: 'Cycle analysis requires patience. <strong>Pentarch</strong> identifies cycle positions automatically: TD, IGN, WRN, CAP, BDN.',
       icon: '🔄'
     },
     'divergence': {
-      tool: 'Minimal Flow',
-      tip: 'Spotting divergences manually is time-consuming. <strong>Minimal Flow</strong> highlights them as they form.',
+      tool: 'Plutus Flow',
+      tip: 'Spotting divergences manually is time-consuming. <strong>Plutus Flow</strong> detects them automatically as they form.',
       icon: '↔️'
+    },
+    'momentum': {
+      tool: 'Harmonic Oscillator',
+      tip: 'Combining multiple momentum indicators is complex. <strong>Harmonic Oscillator</strong> unifies MACD, RSI, and StochRSI into one score.',
+      icon: '📈'
+    },
+    'screening': {
+      tool: 'Augury Grid',
+      tip: 'Scanning multiple symbols manually is tedious. <strong>Augury Grid</strong> monitors 8 symbols with quality scoring.',
+      icon: '🔍'
     }
   };
 
@@ -118,12 +129,15 @@
       default: {
         icon: '⚡',
         title: 'The Elite Suite',
-        text: 'Professional-grade indicators used by institutional traders.',
+        text: '7 professional-grade indicators.',
         features: [
+          'Pentarch',
           'Janus Atlas',
+          'Omnideck',
+          'Augury Grid',
           'Volume Oracle',
-          'Plutus Flow',
-          'Pentarch'
+          'Harmonic Oscillator',
+          'Plutus Flow'
         ],
         cta: 'Activate License'
       }
