@@ -13,7 +13,7 @@
   // ========================================
   const CONFIG = {
     // Trial offer details
-    trialDays: 14,
+    trialDays: 7,
     trialUrl: '/pricing.html?trial=true',
     pricingUrl: '/pricing.html',
 
@@ -23,10 +23,12 @@
     completionTriggerPercent: 90, // Show completion CTA after 90% scroll
 
     // Display settings
-    showInlineCTA: true,
-    showFloatingCTA: true,
-    showSidebarCTA: true,
-    showCompletionCTA: true,
+    // NOTE: Floating CTA disabled - too aggressive, hurts UX
+    // Focus on End-of-Lesson + Sidebar + Tier Unlock for best conversion
+    showInlineCTA: false,       // Disabled: Can be spammy mid-content
+    showFloatingCTA: false,     // Disabled: Pop-ups are annoying
+    showSidebarCTA: true,       // Keep: Passive, doesn't block content
+    showCompletionCTA: true,    // Keep: Highest conversion point
 
     // Dismissal settings (in hours)
     inlineDismissHours: 24,
@@ -46,75 +48,93 @@
   // ========================================
   // CTA Content Variants
   // ========================================
+  // ========================================
+  // Contextual Pro Tips - Maps lesson keywords to relevant tools
+  // ========================================
+  const CONTEXTUAL_TIPS = {
+    // Keyword -> Tool mapping for contextual "Pro Tip" blocks
+    'liquidity': {
+      tool: 'Janus Atlas',
+      tip: 'You can identify these liquidity zones manually, or use <strong>Janus Atlas</strong> to plot them automatically in real-time.',
+      icon: '🎯'
+    },
+    'volume': {
+      tool: 'Volume Oracle',
+      tip: 'Analyzing volume manually takes time. <strong>Volume Oracle</strong> highlights significant volume anomalies instantly.',
+      icon: '📊'
+    },
+    'order flow': {
+      tool: 'Plutus Flow',
+      tip: 'Reading order flow from raw data is complex. <strong>Plutus Flow</strong> visualizes institutional activity in real-time.',
+      icon: '💹'
+    },
+    'market structure': {
+      tool: 'Janus Atlas',
+      tip: 'Mapping market structure by hand works, but <strong>Janus Atlas</strong> automates swing point detection across timeframes.',
+      icon: '🏗️'
+    },
+    'cycles': {
+      tool: 'Pentarch',
+      tip: 'Cycle analysis requires patience. <strong>Pentarch</strong> identifies dominant market cycles automatically.',
+      icon: '🔄'
+    },
+    'divergence': {
+      tool: 'Minimal Flow',
+      tip: 'Spotting divergences manually is time-consuming. <strong>Minimal Flow</strong> highlights them as they form.',
+      icon: '↔️'
+    }
+  };
+
   const CTA_CONTENT = {
+    // Pro Tip inline blocks (educational, not salesy)
     inline: {
       default: {
-        badge: '🚀 Pro Tip',
-        title: 'Unlock Your Full Trading Potential',
-        text: 'Get unlimited access to all 82 lessons, advanced indicators, and real-time market analysis with a free 14-day trial.',
-        features: [
-          'All 82 lessons unlocked',
-          'Advanced SP indicators',
-          'Real-time signals',
-          'Priority support'
-        ]
-      },
-      urgency: {
-        badge: '⏰ Limited Time',
-        title: 'Don\'t Miss Out on Pro Features',
-        text: 'Serious traders upgrade to Pro. Start your free trial today and get full access to institutional-grade tools.',
-        features: [
-          'Complete curriculum',
-          'Exclusive strategies',
-          'Community access',
-          'Weekly webinars'
-        ]
-      },
-      value: {
-        badge: '💡 Did You Know?',
-        title: 'Pro Members See 3x Better Results',
-        text: 'Our data shows Pro members complete the curriculum faster and report significantly better trading outcomes.',
-        features: [
-          'Structured learning path',
-          'Progress tracking',
-          'Certification',
-          'Lifetime updates'
-        ]
+        badge: '💡 Professional Workflow',
+        title: 'Automate This Analysis',
+        text: 'The concepts above can be applied manually, or you can use the SignalPilot indicator suite to automate detection and save hours of chart time.',
+        cta: 'Explore the Suite',
+        ctaSecondary: null
       }
     },
 
+    // End-of-lesson CTA (highest conversion point)
     completion: {
       default: {
-        icon: '🎉',
-        title: 'Great Progress! Ready for More?',
-        text: 'You\'re learning fast! Unlock all 82 lessons and accelerate your trading education with a free Pro trial.',
+        icon: '📈',
+        title: 'Apply What You\'ve Learned',
+        text: 'Don\'t just read about these concepts—trade them. The SignalPilot Suite helps you execute the strategies taught in this curriculum.',
         stats: {
           lessons: '82',
           hours: '40+',
           indicators: '12'
-        }
+        },
+        cta: 'Activate Your License',
+        ctaSecondary: 'Compare Plans'
       }
     },
 
+    // Sidebar CTA (passive, always visible)
     sidebar: {
       default: {
         icon: '⚡',
-        title: 'Go Pro',
-        text: 'Unlock the complete curriculum and advanced features.',
+        title: 'The Elite Suite',
+        text: 'Professional-grade indicators used by institutional traders.',
         features: [
-          'All 82 lessons',
-          'SP indicators',
-          'Cloud sync',
-          'Certificate'
-        ]
+          'Janus Atlas',
+          'Volume Oracle',
+          'Plutus Flow',
+          'Pentarch'
+        ],
+        cta: 'Activate License'
       }
     },
 
+    // Floating CTA (disabled by default)
     floating: {
       default: {
         icon: '🎯',
         title: 'Ready to level up?',
-        subtitle: 'Start your free 14-day Pro trial'
+        subtitle: 'Start your free 7-day Pro trial'
       }
     }
   };
@@ -225,47 +245,49 @@
   // CTA Renderers
   // ========================================
 
+  // Get contextual tip based on lesson content
+  function getContextualTip() {
+    const prose = document.querySelector('.prose');
+    if (!prose) return null;
+
+    const text = prose.textContent.toLowerCase();
+
+    // Check for keyword matches in order of specificity
+    const keywords = ['order flow', 'liquidity', 'market structure', 'volume', 'cycles', 'divergence'];
+    for (const keyword of keywords) {
+      if (text.includes(keyword) && CONTEXTUAL_TIPS[keyword]) {
+        return CONTEXTUAL_TIPS[keyword];
+      }
+    }
+    return null;
+  }
+
   function renderInlineCTA() {
     const content = getContentVariant('inline');
+    const contextualTip = getContextualTip();
+
+    // If we have a contextual tip, use it for more relevant messaging
+    const tipText = contextualTip
+      ? contextualTip.tip
+      : content.text;
+    const tipIcon = contextualTip ? contextualTip.icon : '💡';
 
     return `
-      <div class="trial-cta trial-cta-inline" data-cta-type="inline">
-        <span class="trial-cta-inline__badge">${content.badge}</span>
-        <h3 class="trial-cta-inline__title">${content.title}</h3>
-        <p class="trial-cta-inline__text">${content.text}</p>
-        <div class="trial-cta-inline__features">
-          ${content.features.map(f => `
-            <span class="trial-cta-inline__feature">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/>
-              </svg>
-              ${f}
-            </span>
-          `).join('')}
+      <div class="trial-cta trial-cta-inline trial-cta-inline--protip" data-cta-type="inline">
+        <div class="trial-cta-inline__header">
+          <span class="trial-cta-inline__icon">${tipIcon}</span>
+          <span class="trial-cta-inline__badge">${content.badge}</span>
         </div>
-        <div class="trial-cta-inline__actions">
-          <a href="${CONFIG.trialUrl}" class="trial-cta-btn trial-cta-btn--primary" data-cta-action="start-trial">
-            Start Free Trial
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"/>
-            </svg>
-          </a>
-          <a href="${CONFIG.pricingUrl}" class="trial-cta-btn trial-cta-btn--secondary" data-cta-action="view-pricing">
-            View Pricing
-          </a>
-        </div>
-        <div class="trial-cta-trust">
-          <span>✓ No credit card required</span>
-          <span>✓ Cancel anytime</span>
-          <span>✓ ${CONFIG.trialDays}-day free trial</span>
-        </div>
+        <p class="trial-cta-inline__text">${tipText}</p>
+        <a href="${CONFIG.pricingUrl}" class="trial-cta-inline__link" data-cta-action="explore">
+          ${content.cta} →
+        </a>
       </div>
     `;
   }
 
   function renderCompletionCTA() {
     const content = getContentVariant('completion');
-    const nextLesson = state.currentLesson ? state.currentLesson.order + 1 : 1;
 
     return `
       <div class="trial-cta trial-cta-completion" data-cta-type="completion">
@@ -287,12 +309,14 @@
           </div>
         </div>
         <div class="trial-cta-completion__actions">
-          <a href="${CONFIG.trialUrl}" class="trial-cta-btn trial-cta-btn--white trial-cta-btn--lg" data-cta-action="start-trial">
-            Start Free ${CONFIG.trialDays}-Day Trial
+          <a href="${CONFIG.pricingUrl}" class="trial-cta-btn trial-cta-btn--white trial-cta-btn--lg" data-cta-action="activate">
+            ${content.cta}
           </a>
-          <a href="${CONFIG.pricingUrl}" class="trial-cta-btn trial-cta-btn--ghost" data-cta-action="view-pricing">
-            Compare Plans
-          </a>
+          ${content.ctaSecondary ? `
+            <a href="${CONFIG.pricingUrl}#compare" class="trial-cta-btn trial-cta-btn--ghost" data-cta-action="compare">
+              ${content.ctaSecondary}
+            </a>
+          ` : ''}
         </div>
       </div>
     `;
@@ -303,14 +327,16 @@
 
     return `
       <div class="trial-cta trial-cta-sidebar" data-cta-type="sidebar">
-        <div class="trial-cta-sidebar__icon">${content.icon}</div>
-        <h4 class="trial-cta-sidebar__title">${content.title}</h4>
+        <div class="trial-cta-sidebar__header">
+          <span class="trial-cta-sidebar__icon">${content.icon}</span>
+          <h4 class="trial-cta-sidebar__title">${content.title}</h4>
+        </div>
         <p class="trial-cta-sidebar__text">${content.text}</p>
         <ul class="trial-cta-sidebar__list">
           ${content.features.map(f => `<li>${f}</li>`).join('')}
         </ul>
-        <a href="${CONFIG.trialUrl}" class="trial-cta-btn trial-cta-btn--primary trial-cta-btn--sm" style="width: 100%;" data-cta-action="start-trial">
-          Try Free for ${CONFIG.trialDays} Days
+        <a href="${CONFIG.pricingUrl}" class="trial-cta-btn trial-cta-btn--primary trial-cta-btn--sm" style="width: 100%;" data-cta-action="activate">
+          ${content.cta}
         </a>
       </div>
     `;

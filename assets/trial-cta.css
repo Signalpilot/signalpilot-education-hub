@@ -16,82 +16,67 @@
 }
 
 /* ========================================
-   1. Mid-Lesson CTA (Inline Banner)
+   1. Mid-Lesson CTA - Pro Tip Style
+   Designed to blend with lesson content, not look like an ad
    ======================================== */
 .trial-cta-inline {
-  margin: 2.5rem 0;
-  padding: 2rem;
-  background: var(--cta-bg);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  border-radius: var(--cta-border-radius);
-  position: relative;
-  overflow: hidden;
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba(99, 102, 241, 0.06);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-left: 3px solid var(--cta-primary);
+  border-radius: 0 8px 8px 0;
 }
 
-.trial-cta-inline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--cta-gradient);
+/* Pro Tip variant - subtle, educational feel */
+.trial-cta-inline--protip {
+  background: rgba(0, 212, 170, 0.05);
+  border-color: rgba(0, 212, 170, 0.15);
+  border-left-color: #00d4aa;
+}
+
+.trial-cta-inline__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.trial-cta-inline__icon {
+  font-size: 1.25rem;
 }
 
 .trial-cta-inline__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.75rem;
-  background: rgba(99, 102, 241, 0.15);
-  border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--cta-primary);
+  color: #00d4aa;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-}
-
-.trial-cta-inline__title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--cta-text);
-  margin: 0 0 0.5rem 0;
 }
 
 .trial-cta-inline__text {
   font-size: 0.95rem;
-  color: var(--cta-muted);
-  margin: 0 0 1.25rem 0;
+  color: var(--cta-text);
+  margin: 0 0 0.75rem 0;
   line-height: 1.6;
 }
 
-.trial-cta-inline__features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+.trial-cta-inline__text strong {
+  color: #00d4aa;
 }
 
-.trial-cta-inline__feature {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
+.trial-cta-inline__link {
+  display: inline-block;
   font-size: 0.85rem;
-  color: var(--cta-text);
+  font-weight: 600;
+  color: var(--cta-primary);
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.trial-cta-inline__feature svg {
-  color: #22c55e;
-  flex-shrink: 0;
-}
-
-.trial-cta-inline__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
+.trial-cta-inline__link:hover {
+  color: #8b5cf6;
+  text-decoration: underline;
 }
 
 /* ========================================
@@ -200,16 +185,22 @@
   border-radius: var(--cta-border-radius) var(--cta-border-radius) 0 0;
 }
 
-.trial-cta-sidebar__icon {
-  font-size: 1.5rem;
+.trial-cta-sidebar__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 0.75rem;
+}
+
+.trial-cta-sidebar__icon {
+  font-size: 1.25rem;
 }
 
 .trial-cta-sidebar__title {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--cta-text);
-  margin: 0 0 0.5rem 0;
+  margin: 0;
 }
 
 .trial-cta-sidebar__text {
