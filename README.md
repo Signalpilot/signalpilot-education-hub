@@ -4,6 +4,8 @@
 
 *We don't teach you to trade. We teach you to think like a market maker.*
 
+![Signal Pilot Education Hub Preview](preview.png)
+
 ---
 
 ## 📊 Current Status (Updated 2025-10-30)
