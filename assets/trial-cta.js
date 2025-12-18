@@ -106,7 +106,7 @@
         stats: {
           lessons: '82',
           hours: '40+',
-          indicators: '12'
+          indicators: '7'
         },
         cta: 'Activate Your License',
         ctaSecondary: 'Compare Plans'
@@ -309,11 +309,11 @@
           </div>
         </div>
         <div class="trial-cta-completion__actions">
-          <a href="${CONFIG.pricingUrl}" class="trial-cta-btn trial-cta-btn--white trial-cta-btn--lg" data-cta-action="activate">
+          <a href="${CONFIG.pricingUrl}" class="trial-cta-btn trial-cta-btn--primary" data-cta-action="activate">
             ${content.cta}
           </a>
           ${content.ctaSecondary ? `
-            <a href="${CONFIG.pricingUrl}#compare" class="trial-cta-btn trial-cta-btn--ghost" data-cta-action="compare">
+            <a href="${CONFIG.pricingUrl}#compare" class="trial-cta-btn trial-cta-btn--secondary" data-cta-action="compare">
               ${content.ctaSecondary}
             </a>
           ` : ''}
@@ -430,22 +430,31 @@
   function injectCompletionCTA() {
     if (!CONFIG.showCompletionCTA) return;
 
-    // Find the navigation section at the end
-    const navArticle = document.querySelector('.nav-article, nav.article-nav');
+    // Find insertion points - prefer after quiz/key takeaways, before related lessons
+    const quiz = document.querySelector('.quiz');
+    const keyTakeaway = document.querySelector('.key-takeaway');
+    const relatedLessons = document.querySelector('.section-break + div[style*="grid"]'); // Related lessons grid
+    const relatedSection = Array.from(document.querySelectorAll('.section-break')).find(el =>
+      el.textContent.toLowerCase().includes('related')
+    );
     const discussionSection = document.querySelector('.discussion-section');
-    const relatedLessons = document.querySelector('[class*="related"]');
+    const navArticle = document.querySelector('.nav-article, nav.article-nav');
 
     // Check if there's already a CTA placeholder
     const placeholder = document.querySelector('[data-cta-placeholder="completion"]');
 
+    // Preferred insertion order: after quiz > after key takeaway > before related > before discussion
+    let insertAfter = quiz || keyTakeaway;
+    let insertBefore = relatedSection || discussionSection || navArticle;
+
     if (placeholder) {
       placeholder.outerHTML = renderCompletionCTA();
-    } else {
-      // Insert before navigation or discussion section
-      const insertBefore = navArticle || discussionSection || relatedLessons;
-      if (insertBefore) {
-        insertBefore.insertAdjacentHTML('beforebegin', renderCompletionCTA());
-      }
+    } else if (insertAfter) {
+      // Insert after quiz or key takeaway
+      insertAfter.insertAdjacentHTML('afterend', renderCompletionCTA());
+    } else if (insertBefore) {
+      // Insert before related lessons or discussion
+      insertBefore.insertAdjacentHTML('beforebegin', renderCompletionCTA());
     }
 
     trackEvent(CONFIG.analytics.ctaView, { cta_type: 'completion' });
