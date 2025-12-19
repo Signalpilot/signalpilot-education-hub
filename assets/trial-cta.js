@@ -346,7 +346,7 @@
           <h4 class="trial-cta-sidebar__title">${content.title}</h4>
         </div>
         <p class="trial-cta-sidebar__text">${content.text}</p>
-        <a href="${CONFIG.pricingUrl}" class="trial-cta-sidebar__link" data-cta-action="learn-more">
+        <a href="https://signalpilot.io" class="trial-cta-sidebar__link" data-cta-action="learn-more">
           Learn more →
         </a>
       </div>
