@@ -27,6 +27,7 @@
       <a href="/my-library.html">My Library</a>
       <a href="/search.html">Search</a>
       <a href="/calculators.html">Calculators</a>
+      <a href="https://blog.signalpilot.io" target="_blank" rel="noopener">Blog</a>
     `;
 
     mobileNav.appendChild(header);
