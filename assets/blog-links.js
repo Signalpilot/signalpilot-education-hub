@@ -12,37 +12,157 @@
   const CACHE_KEY = 'sp_blog_articles';
   const CACHE_DURATION = 1000 * 60 * 60; // 1 hour
 
-  // Fallback articles if fetch fails
+  // Fallback articles if fetch fails (synced from blog.signalpilot.io)
   const FALLBACK_ARTICLES = [
     {
-      title: "How Smart Money Actually Moves (And How to See It)",
-      url: "https://blog.signalpilot.io/articles/how-smart-money-moves/",
-      description: "Understanding institutional order flow",
-      tags: ["liquidity", "smart-money", "market-structure", "order-flow"]
+      title: "Why Your Indicators Keep Failing (And What Actually Works)",
+      url: "https://blog.signalpilot.io/articles/why-your-indicators-keep-failing/",
+      description: "You've got RSI, MACD, Bollinger Bands, maybe a few moving averages. Your chart looks like a rainbow exploded on it. And somehow, you're still getting chopped up.",
+      tags: ["indicators", "rsi", "beginner", "tradingview"]
     },
     {
       title: "The Repainting Problem: How Most TradingView Indicators Cheat",
       url: "https://blog.signalpilot.io/articles/the-repainting-problem/",
-      description: "Exposing the dirty secret of indicator development",
+      description: "That indicator with the perfect backtest? The one that nails every top and bottom? It's lying to you. Here's how to spot the deception.",
       tags: ["indicators", "repainting", "tradingview", "backtesting"]
     },
     {
-      title: "Why Your Indicators Keep Failing (And What Actually Works)",
-      url: "https://blog.signalpilot.io/articles/why-your-indicators-keep-failing/",
-      description: "The truth about why most indicators underperform",
-      tags: ["indicators", "rsi", "beginner"]
+      title: "Why Backtesting Results Are Worthless (And What to Do Instead)",
+      url: "https://blog.signalpilot.io/articles/why-backtesting-results-are-worthless/",
+      description: "You found an indicator with a 78% win rate. Backtested over two years. Then you start trading it live and everything falls apart.",
+      tags: ["indicators", "backtesting", "intermediate"]
     },
     {
-      title: "The Psychology of Getting Stopped Out",
+      title: "The Confirmation Trap: Why More Indicators Mean Worse Results",
+      url: "https://blog.signalpilot.io/articles/the-confirmation-trap/",
+      description: "Your chart has four indicators. They rarely agree. When they do, the move is already over. Here's why adding more tools makes trading harder.",
+      tags: ["indicators", "psychology", "intermediate"]
+    },
+    {
+      title: "The Psychology of Getting Stopped Out (And Why It Keeps Happening)",
       url: "https://blog.signalpilot.io/articles/psychology-of-getting-stopped-out/",
-      description: "Understanding the mental game behind stop losses",
-      tags: ["psychology", "stop-loss", "risk-management"]
+      description: "Your analysis was perfect. Entry was clean. Then price tapped your stop to the tick and reversed. It feels personal. Here's what's really happening.",
+      tags: ["psychology", "stop-loss", "risk-management", "intermediate"]
+    },
+    {
+      title: "Why You Keep Breaking Your Own Trading Rules",
+      url: "https://blog.signalpilot.io/articles/why-you-break-trading-rules/",
+      description: "You have a trading plan. It's written down. And yet you took that trade you knew you shouldn't take. Here's the neuroscience behind it.",
+      tags: ["psychology", "risk-management", "intermediate"]
+    },
+    {
+      title: "The Real Reason Most Traders Blow Their First Account",
+      url: "https://blog.signalpilot.io/articles/why-traders-blow-first-account/",
+      description: "Early wins, growing confidence, increasing size, then everything gone. The sequence is predictable. Here's how to break the script.",
+      tags: ["psychology", "risk-management", "beginner"]
     },
     {
       title: "What Profitable Traders Know That You Don't",
       url: "https://blog.signalpilot.io/articles/what-profitable-traders-know/",
-      description: "The mindset shift that separates winners from losers",
-      tags: ["psychology", "beginner"]
+      description: "They're not smarter than you. They don't have better indicators. But something is actually different about how they approach trading.",
+      tags: ["psychology", "advanced"]
+    },
+    {
+      title: "The Only Pattern That Actually Repeats in Markets",
+      url: "https://blog.signalpilot.io/articles/the-only-pattern-that-repeats/",
+      description: "Head and shoulders. Double tops. They don't work reliably. But there's one pattern that genuinely repeats on every timeframe, in every market.",
+      tags: ["cycles", "market-structure", "intermediate"]
+    },
+    {
+      title: "How Smart Money Actually Moves (And How to See It)",
+      url: "https://blog.signalpilot.io/articles/how-smart-money-moves/",
+      description: "\"Follow the smart money.\" But what does that actually mean? And how do you do it when they're trying to hide?",
+      tags: ["cycles", "smart-money", "order-flow", "volume", "advanced"]
+    },
+    {
+      title: "Why Markets Move in Cycles (And How to Profit From It)",
+      url: "https://blog.signalpilot.io/articles/why-markets-move-in-cycles/",
+      description: "Markets trend about 20-30% of the time. The rest? Cycles. Understanding why changes how you trade everything.",
+      tags: ["cycles", "market-structure", "intermediate"]
+    },
+    {
+      title: "Accumulation vs Distribution: Reading What the Chart Won't Tell You",
+      url: "https://blog.signalpilot.io/articles/accumulation-vs-distribution/",
+      description: "Two charts look identical. One precedes a massive rally, one precedes a devastating decline. Here's how to tell the difference.",
+      tags: ["cycles", "volume", "smart-money", "liquidity", "advanced"]
+    },
+    {
+      title: "The 3 Questions to Ask Before Every Trade",
+      url: "https://blog.signalpilot.io/articles/3-questions-before-every-trade/",
+      description: "Your indicator gives a signal. Your finger hovers over the buy button. Stop. Three questions need answers first.",
+      tags: ["risk-management", "beginner"]
+    },
+    {
+      title: "Stop Loss Placement: Why Yours Is Probably Wrong",
+      url: "https://blog.signalpilot.io/articles/stop-loss-placement/",
+      description: "Price hits your stop exactly, reverses, and hits your target without you. It's not conspiracy. Your methodology is flawed.",
+      tags: ["stop-loss", "risk-management", "liquidity", "intermediate"]
+    },
+    {
+      title: "Timeframe Selection: Why It Matters More Than Your Indicator",
+      url: "https://blog.signalpilot.io/articles/timeframe-selection/",
+      description: "The 5-minute chart says buy. The 4-hour says sell. The daily says wait. Who's right? Timeframe selection changes everything.",
+      tags: ["timeframe", "indicators", "beginner"]
+    },
+    {
+      title: "What TradingView Doesn't Tell You About Free Scripts",
+      url: "https://blog.signalpilot.io/articles/tradingview-free-scripts/",
+      description: "100,000+ free indicators. Reviews and likes to guide your choice. What could go wrong? A lot, actually.",
+      tags: ["tradingview", "indicators", "repainting", "beginner"]
+    },
+    {
+      title: "Position Sizing 101: The Math That Keeps You in the Game",
+      url: "https://blog.signalpilot.io/articles/position-sizing-101/",
+      description: "Most traders obsess over entries. The ones who survive obsess over position sizing. Here's the math that separates them.",
+      tags: ["risk-management", "beginner"]
+    },
+    {
+      title: "The 1% Rule: Why Professional Traders Risk So Little",
+      url: "https://blog.signalpilot.io/articles/the-1-percent-rule/",
+      description: "Risking 1% per trade sounds overly cautious. Here's why it's actually the most aggressive approach that still works.",
+      tags: ["risk-management", "intermediate"]
+    },
+    {
+      title: "When to Cut Losses Early (Before Your Stop Gets Hit)",
+      url: "https://blog.signalpilot.io/articles/when-to-cut-losses-early/",
+      description: "Your stop loss is your maximum risk. But sometimes the smart move is to exit before it's hit. Here's how to know the difference.",
+      tags: ["risk-management", "stop-loss", "advanced"]
+    },
+    {
+      title: "Rules-Based vs Discretionary Trading: Which Actually Works?",
+      url: "https://blog.signalpilot.io/articles/rules-based-vs-discretionary/",
+      description: "Some traders swear by rigid systems. Others trust their gut. Here's what actually matters - and why most traders get this wrong.",
+      tags: ["psychology", "intermediate"]
+    },
+    {
+      title: "Building Your First Trading System: A Step-by-Step Guide",
+      url: "https://blog.signalpilot.io/articles/building-your-first-system/",
+      description: "Most traders jump from setup to setup. Systematic traders build once and execute forever. Here's how to create your first real trading system.",
+      tags: ["backtesting", "beginner"]
+    },
+    {
+      title: "Backtesting Without Fooling Yourself: How to Test Strategies Honestly",
+      url: "https://blog.signalpilot.io/articles/backtesting-without-fooling-yourself/",
+      description: "Your backtest shows 80% wins. You trade it live and get destroyed. Here's why - and how to backtest in a way that actually predicts forward performance.",
+      tags: ["backtesting", "indicators", "intermediate"]
+    },
+    {
+      title: "Candlestick Basics: Reading Price Action Like a Pro",
+      url: "https://blog.signalpilot.io/articles/candlestick-basics/",
+      description: "Candlesticks are the language of price. Here's how to read them - and which patterns actually matter for trading.",
+      tags: ["market-structure", "beginner"]
+    },
+    {
+      title: "Support and Resistance Explained: The Foundation of Every Trade",
+      url: "https://blog.signalpilot.io/articles/support-and-resistance-explained/",
+      description: "Support and resistance are the foundation of technical analysis. Here's how to identify real levels - and how to trade them without getting chopped up.",
+      tags: ["market-structure", "liquidity", "beginner"]
+    },
+    {
+      title: "What Is a Trading Edge? (And How to Know If You Have One)",
+      url: "https://blog.signalpilot.io/articles/what-is-a-trading-edge/",
+      description: "Everyone talks about having an \"edge.\" But what does that actually mean? Here's how to understand, identify, and develop a real trading edge.",
+      tags: ["psychology", "backtesting", "beginner"]
     }
   ];
 
