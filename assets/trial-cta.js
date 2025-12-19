@@ -340,17 +340,14 @@
     const content = getContentVariant('sidebar');
 
     return `
-      <div class="trial-cta trial-cta-sidebar" data-cta-type="sidebar">
+      <div class="trial-cta trial-cta-sidebar trial-cta-sidebar--compact" data-cta-type="sidebar">
         <div class="trial-cta-sidebar__header">
           <span class="trial-cta-sidebar__icon">${content.icon}</span>
           <h4 class="trial-cta-sidebar__title">${content.title}</h4>
         </div>
         <p class="trial-cta-sidebar__text">${content.text}</p>
-        <ul class="trial-cta-sidebar__list">
-          ${content.features.map(f => `<li>${f}</li>`).join('')}
-        </ul>
-        <a href="${CONFIG.pricingUrl}" class="trial-cta-btn trial-cta-btn--primary trial-cta-btn--sm" style="width: 100%;" data-cta-action="activate">
-          ${content.cta}
+        <a href="${CONFIG.pricingUrl}" class="trial-cta-sidebar__link" data-cta-action="activate">
+          Learn more →
         </a>
       </div>
     `;
