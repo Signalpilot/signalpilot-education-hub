@@ -1,0 +1,89 @@
+name: Sync Blog Articles
+
+on:
+  # Run daily at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout education repo
+        uses: actions/checkout@v4
+
+      - name: Fetch blog articles
+        id: fetch
+        run: |
+          # Fetch articles from blog API
+          curl -s https://blog.signalpilot.io/api/articles.json -o /tmp/articles.json
+
+          # Check if fetch succeeded
+          if [ ! -s /tmp/articles.json ]; then
+            echo "Failed to fetch articles"
+            exit 1
+          fi
+
+          # Validate JSON
+          if ! jq empty /tmp/articles.json 2>/dev/null; then
+            echo "Invalid JSON received"
+            exit 1
+          fi
+
+          echo "Fetched $(jq '.articles | length' /tmp/articles.json) articles"
+
+      - name: Update fallback articles
+        run: |
+          # Generate the new FALLBACK_ARTICLES array from the fetched JSON
+          node << 'EOF'
+          const fs = require('fs');
+
+          // Read fetched articles
+          const data = JSON.parse(fs.readFileSync('/tmp/articles.json', 'utf8'));
+          const articles = data.articles || [];
+
+          // Format as JavaScript array
+          const formatted = articles.map(a => `    {
+              title: ${JSON.stringify(a.title)},
+              url: ${JSON.stringify(a.url)},
+              description: ${JSON.stringify(a.description)},
+              tags: ${JSON.stringify(a.tags)}
+            }`).join(',\n');
+
+          const newFallback = `  // Fallback articles if fetch fails (synced from blog.signalpilot.io)
+            const FALLBACK_ARTICLES = [
+          ${formatted}
+            ];`;
+
+          // Read current blog-links.js
+          let content = fs.readFileSync('assets/blog-links.js', 'utf8');
+
+          // Replace the FALLBACK_ARTICLES section
+          const regex = /\/\/ Fallback articles if fetch fails.*?const FALLBACK_ARTICLES = \[[\s\S]*?\];/;
+          content = content.replace(regex, newFallback);
+
+          // Write back
+          fs.writeFileSync('assets/blog-links.js', content);
+
+          console.log(`Updated with ${articles.length} articles`);
+          EOF
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet assets/blog-links.js; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/blog-links.js
+          git commit -m "Auto-sync blog articles from blog.signalpilot.io"
+          git push
