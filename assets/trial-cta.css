@@ -254,6 +254,32 @@
   text-decoration: underline;
 }
 
+/* Minimal variant - single line text link */
+.trial-cta-sidebar--minimal {
+  margin-top: 1.5rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.trial-cta-sidebar--minimal::before {
+  display: none;
+}
+
+.trial-cta-sidebar__inline-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--cta-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: block;
+}
+
+.trial-cta-sidebar__inline-link:hover {
+  color: var(--cta-primary);
+}
+
 /* ========================================
    4. Floating Banner CTA
    ======================================== */
