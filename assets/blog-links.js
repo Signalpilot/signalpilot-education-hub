@@ -8,194 +8,233 @@
 (function() {
   'use strict';
 
+  const BLOG_BASE = 'https://blog.signalpilot.io';
+
   // ========================================
   // Blog Post Mappings
   // ========================================
-  // Maps keywords and categories to relevant blog posts
+  // Maps keywords and categories to actual blog posts
 
   const BLOG_POSTS = {
-    // Liquidity & Market Structure
-    'liquidity': [
+    // Indicators & Technical Analysis
+    'indicators': [
       {
-        title: 'Understanding Liquidity Sweeps in Real-Time',
-        url: 'https://blog.signalpilot.io/understanding-liquidity-sweeps',
-        description: 'How institutional traders hunt stop losses and how to trade with them'
+        title: 'Why Your Indicators Keep Failing (And What Actually Works)',
+        url: `${BLOG_BASE}/articles/why-your-indicators-keep-failing/`,
+        description: 'The truth about why most indicators underperform and how to fix it'
       },
       {
-        title: 'Smart Money Concepts Explained',
-        url: 'https://blog.signalpilot.io/smart-money-concepts',
-        description: 'The foundational concepts behind institutional order flow'
+        title: 'The Confirmation Trap: Why More Indicators Mean Worse Results',
+        url: `${BLOG_BASE}/articles/the-confirmation-trap/`,
+        description: 'How adding indicators actually hurts your trading'
+      }
+    ],
+    'repainting': [
+      {
+        title: 'The Repainting Problem: How Most TradingView Indicators Cheat',
+        url: `${BLOG_BASE}/articles/the-repainting-problem/`,
+        description: 'Exposing the dirty secret of indicator development'
+      }
+    ],
+    'rsi': [
+      {
+        title: 'Why Your Indicators Keep Failing (And What Actually Works)',
+        url: `${BLOG_BASE}/articles/why-your-indicators-keep-failing/`,
+        description: 'The truth about why most indicators underperform'
+      }
+    ],
+
+    // Backtesting & Strategy
+    'backtesting': [
+      {
+        title: 'Why Backtesting Results Are Worthless (And What to Do Instead)',
+        url: `${BLOG_BASE}/articles/why-backtesting-results-are-worthless/`,
+        description: 'The hidden flaws in traditional backtesting'
+      }
+    ],
+
+    // Psychology & Risk Management
+    'psychology': [
+      {
+        title: 'The Psychology of Getting Stopped Out (And Why It Keeps Happening)',
+        url: `${BLOG_BASE}/articles/psychology-of-getting-stopped-out/`,
+        description: 'Understanding the mental game behind stop losses'
+      },
+      {
+        title: 'Why You Keep Breaking Your Own Trading Rules',
+        url: `${BLOG_BASE}/articles/why-you-break-trading-rules/`,
+        description: 'The psychology behind self-sabotage in trading'
+      }
+    ],
+    'risk-management': [
+      {
+        title: 'Stop Loss Placement: Why Yours Is Probably Wrong',
+        url: `${BLOG_BASE}/articles/stop-loss-placement/`,
+        description: 'How to place stops that actually protect you'
+      },
+      {
+        title: 'The Real Reason Most Traders Blow Their First Account',
+        url: `${BLOG_BASE}/articles/why-traders-blow-first-account/`,
+        description: 'Avoiding the mistakes that destroy new traders'
+      }
+    ],
+    'stop-loss': [
+      {
+        title: 'Stop Loss Placement: Why Yours Is Probably Wrong',
+        url: `${BLOG_BASE}/articles/stop-loss-placement/`,
+        description: 'How to place stops that actually protect you'
+      },
+      {
+        title: 'The Psychology of Getting Stopped Out (And Why It Keeps Happening)',
+        url: `${BLOG_BASE}/articles/psychology-of-getting-stopped-out/`,
+        description: 'Understanding the mental game behind stop losses'
+      }
+    ],
+
+    // Market Structure & Smart Money
+    'liquidity': [
+      {
+        title: 'How Smart Money Actually Moves (And How to See It)',
+        url: `${BLOG_BASE}/articles/how-smart-money-moves/`,
+        description: 'Understanding institutional order flow'
+      },
+      {
+        title: 'Accumulation vs Distribution: Reading What the Chart Won\'t Tell You',
+        url: `${BLOG_BASE}/articles/accumulation-vs-distribution/`,
+        description: 'Identifying smart money positioning'
       }
     ],
     'market-structure': [
       {
-        title: 'Market Structure Shifts: What They Really Mean',
-        url: 'https://blog.signalpilot.io/market-structure-shifts',
-        description: 'Identifying trend changes before they happen'
+        title: 'How Smart Money Actually Moves (And How to See It)',
+        url: `${BLOG_BASE}/articles/how-smart-money-moves/`,
+        description: 'Understanding institutional order flow'
       },
       {
-        title: 'Reading Price Action Like a Pro',
-        url: 'https://blog.signalpilot.io/reading-price-action',
-        description: 'Beyond candlesticks: what price movement actually tells you'
+        title: 'The Only Pattern That Actually Repeats in Markets',
+        url: `${BLOG_BASE}/articles/the-only-pattern-that-repeats/`,
+        description: 'The fundamental pattern behind all market moves'
+      }
+    ],
+    'institutional': [
+      {
+        title: 'How Smart Money Actually Moves (And How to See It)',
+        url: `${BLOG_BASE}/articles/how-smart-money-moves/`,
+        description: 'Understanding institutional order flow'
+      }
+    ],
+    'smart-money': [
+      {
+        title: 'How Smart Money Actually Moves (And How to See It)',
+        url: `${BLOG_BASE}/articles/how-smart-money-moves/`,
+        description: 'Understanding institutional order flow'
+      },
+      {
+        title: 'Accumulation vs Distribution: Reading What the Chart Won\'t Tell You',
+        url: `${BLOG_BASE}/articles/accumulation-vs-distribution/`,
+        description: 'Identifying smart money positioning'
       }
     ],
 
     // Volume & Order Flow
     'volume': [
       {
-        title: 'Volume Analysis: Separating Signal from Noise',
-        url: 'https://blog.signalpilot.io/volume-analysis-guide',
-        description: 'How to interpret volume in different market contexts'
+        title: 'Accumulation vs Distribution: Reading What the Chart Won\'t Tell You',
+        url: `${BLOG_BASE}/articles/accumulation-vs-distribution/`,
+        description: 'Understanding what volume really tells you'
       },
       {
-        title: 'Delta Divergence Trading Strategy',
-        url: 'https://blog.signalpilot.io/delta-divergence-strategy',
-        description: 'Using buying vs selling pressure to predict reversals'
+        title: 'How Smart Money Actually Moves (And How to See It)',
+        url: `${BLOG_BASE}/articles/how-smart-money-moves/`,
+        description: 'Reading order flow like institutions do'
       }
     ],
     'order-flow': [
       {
-        title: 'Order Flow Trading for Beginners',
-        url: 'https://blog.signalpilot.io/order-flow-beginners',
-        description: 'Introduction to reading the tape and understanding flow'
+        title: 'How Smart Money Actually Moves (And How to See It)',
+        url: `${BLOG_BASE}/articles/how-smart-money-moves/`,
+        description: 'Understanding institutional order flow'
       },
       {
-        title: 'Footprint Charts Demystified',
-        url: 'https://blog.signalpilot.io/footprint-charts-guide',
-        description: 'How to read and trade with footprint charts'
+        title: 'Accumulation vs Distribution: Reading What the Chart Won\'t Tell You',
+        url: `${BLOG_BASE}/articles/accumulation-vs-distribution/`,
+        description: 'Identifying smart money positioning'
       }
     ],
 
-    // Technical Indicators
-    'indicators': [
+    // Cycles & Timing
+    'cycles': [
       {
-        title: 'The Repaint Problem: Why Most Indicators Lie',
-        url: 'https://blog.signalpilot.io/repaint-problem',
-        description: 'How to identify and avoid repainting indicators'
-      },
-      {
-        title: 'Building a Non-Repainting Trading System',
-        url: 'https://blog.signalpilot.io/non-repainting-system',
-        description: 'Creating reliable trading signals you can trust'
-      }
-    ],
-    'rsi': [
-      {
-        title: 'RSI: What You Think You Know Is Wrong',
-        url: 'https://blog.signalpilot.io/rsi-myths',
-        description: 'Why RSI extremes alone are not reversal signals'
+        title: 'Why Markets Move in Cycles (And How to Profit From It)',
+        url: `${BLOG_BASE}/articles/why-markets-move-in-cycles/`,
+        description: 'Understanding market cyclicality'
       }
     ],
 
-    // Risk Management & Psychology
-    'risk-management': [
+    // Trade Management
+    'trading-rules': [
       {
-        title: 'Position Sizing: The Most Important Skill',
-        url: 'https://blog.signalpilot.io/position-sizing-guide',
-        description: 'How to size positions for long-term survival'
+        title: 'Why You Keep Breaking Your Own Trading Rules',
+        url: `${BLOG_BASE}/articles/why-you-break-trading-rules/`,
+        description: 'The psychology behind self-sabotage in trading'
       },
       {
-        title: 'Stop Loss Placement That Actually Works',
-        url: 'https://blog.signalpilot.io/stop-loss-strategies',
-        description: 'Placing stops where they protect, not where they get hunted'
+        title: 'The 3 Questions to Ask Before Every Trade',
+        url: `${BLOG_BASE}/articles/3-questions-before-every-trade/`,
+        description: 'A simple framework for better trade decisions'
       }
     ],
-    'psychology': [
+    'trade-management': [
       {
-        title: 'Overcoming Revenge Trading',
-        url: 'https://blog.signalpilot.io/revenge-trading',
-        description: 'Breaking the emotional cycle that destroys accounts'
-      },
-      {
-        title: 'Trading Psychology: Building Mental Resilience',
-        url: 'https://blog.signalpilot.io/trading-psychology',
-        description: 'Developing the mindset for consistent profitability'
+        title: 'The 3 Questions to Ask Before Every Trade',
+        url: `${BLOG_BASE}/articles/3-questions-before-every-trade/`,
+        description: 'A simple framework for better trade decisions'
       }
     ],
 
-    // Advanced Topics
-    'institutional-trading': [
-      {
-        title: 'How Institutions Actually Trade',
-        url: 'https://blog.signalpilot.io/institutional-trading',
-        description: 'Inside the strategies of professional money managers'
-      },
-      {
-        title: 'Dark Pools and Hidden Liquidity',
-        url: 'https://blog.signalpilot.io/dark-pools-explained',
-        description: 'Understanding off-exchange trading venues'
-      }
-    ],
-    'algorithmic': [
-      {
-        title: 'Algorithmic Trading Fundamentals',
-        url: 'https://blog.signalpilot.io/algo-trading-fundamentals',
-        description: 'Building systematic trading strategies'
-      },
-      {
-        title: 'Backtesting Without Curve Fitting',
-        url: 'https://blog.signalpilot.io/backtesting-guide',
-        description: 'How to validate strategies without overfitting'
-      }
-    ],
-    'options': [
-      {
-        title: 'Options Order Flow Analysis',
-        url: 'https://blog.signalpilot.io/options-order-flow',
-        description: 'Reading institutional options activity'
-      }
-    ],
-    'volatility': [
-      {
-        title: 'Trading Volatility Regimes',
-        url: 'https://blog.signalpilot.io/volatility-trading',
-        description: 'Adapting your strategy to market conditions'
-      }
-    ],
-
-    // Timeframes & Sessions
+    // Timeframes
     'timeframe': [
       {
-        title: 'Multi-Timeframe Analysis Made Simple',
-        url: 'https://blog.signalpilot.io/multi-timeframe-analysis',
-        description: 'Aligning trades across different time horizons'
-      }
-    ],
-    'sessions': [
-      {
-        title: 'Trading the London and NY Sessions',
-        url: 'https://blog.signalpilot.io/trading-sessions-guide',
-        description: 'Optimizing entries around session opens'
+        title: 'Timeframe Selection: Why It Matters More Than Your Indicator',
+        url: `${BLOG_BASE}/articles/timeframe-selection/`,
+        description: 'Choosing the right timeframe for your strategy'
       }
     ],
 
-    // SignalPilot Specific
-    'janus-atlas': [
+    // TradingView Specific
+    'tradingview': [
       {
-        title: 'Mastering Janus Atlas: Complete Guide',
-        url: 'https://blog.signalpilot.io/janus-atlas-guide',
-        description: 'Advanced techniques for liquidity zone detection'
+        title: 'What TradingView Doesn\'t Tell You About Free Scripts',
+        url: `${BLOG_BASE}/articles/tradingview-free-scripts/`,
+        description: 'The hidden risks of free indicators'
+      },
+      {
+        title: 'The Repainting Problem: How Most TradingView Indicators Cheat',
+        url: `${BLOG_BASE}/articles/the-repainting-problem/`,
+        description: 'Exposing the dirty secret of indicator development'
       }
     ],
-    'plutus-flow': [
+
+    // Beginner Content
+    'beginner': [
       {
-        title: 'Plutus Flow: Understanding the Signals',
-        url: 'https://blog.signalpilot.io/plutus-flow-guide',
-        description: 'Reading accumulation and distribution in real-time'
+        title: 'The Real Reason Most Traders Blow Their First Account',
+        url: `${BLOG_BASE}/articles/why-traders-blow-first-account/`,
+        description: 'Avoiding the mistakes that destroy new traders'
+      },
+      {
+        title: 'What Profitable Traders Know That You Don\'t',
+        url: `${BLOG_BASE}/articles/what-profitable-traders-know/`,
+        description: 'The mindset shift that separates winners from losers'
       }
     ],
-    'pentarch': [
+
+    // Confirmation Bias
+    'confirmation-bias': [
       {
-        title: 'Cycle Analysis with Pentarch',
-        url: 'https://blog.signalpilot.io/pentarch-cycles',
-        description: 'Timing entries with market cycle positions'
-      }
-    ],
-    'volume-oracle': [
-      {
-        title: 'Volume Oracle: Detecting Anomalies',
-        url: 'https://blog.signalpilot.io/volume-oracle-guide',
-        description: 'Spotting significant volume events automatically'
+        title: 'The Confirmation Trap: Why More Indicators Mean Worse Results',
+        url: `${BLOG_BASE}/articles/the-confirmation-trap/`,
+        description: 'How adding indicators actually hurts your trading'
       }
     ]
   };
@@ -203,14 +242,14 @@
   // Default posts when no specific match
   const DEFAULT_POSTS = [
     {
-      title: 'Getting Started with SignalPilot',
-      url: 'https://blog.signalpilot.io/getting-started',
-      description: 'Your first steps to professional-grade trading'
+      title: 'What Profitable Traders Know That You Don\'t',
+      url: `${BLOG_BASE}/articles/what-profitable-traders-know/`,
+      description: 'The mindset shift that separates winners from losers'
     },
     {
-      title: 'Trading Education Roadmap',
-      url: 'https://blog.signalpilot.io/education-roadmap',
-      description: 'A structured path from beginner to advanced trader'
+      title: 'The Only Pattern That Actually Repeats in Markets',
+      url: `${BLOG_BASE}/articles/the-only-pattern-that-repeats/`,
+      description: 'The fundamental pattern behind all market moves'
     }
   ];
 
@@ -242,9 +281,9 @@
       const text = prose.textContent.toLowerCase();
       const keywordChecks = [
         'liquidity', 'volume', 'order flow', 'market structure', 'rsi',
-        'risk management', 'psychology', 'institutional', 'algorithmic',
-        'options', 'volatility', 'timeframe', 'sessions', 'janus atlas',
-        'plutus flow', 'pentarch', 'volume oracle', 'indicators'
+        'risk management', 'psychology', 'institutional', 'smart money',
+        'stop loss', 'timeframe', 'tradingview', 'indicators', 'repainting',
+        'backtesting', 'trading rules', 'confirmation bias', 'cycles'
       ];
 
       keywordChecks.forEach(keyword => {
@@ -261,7 +300,15 @@
     if (path.includes('flow')) keywords.push('order-flow');
     if (path.includes('structure')) keywords.push('market-structure');
     if (path.includes('risk')) keywords.push('risk-management');
-    if (path.includes('psychology')) keywords.push('psychology');
+    if (path.includes('psychology') || path.includes('bias')) keywords.push('psychology');
+    if (path.includes('stop')) keywords.push('stop-loss');
+    if (path.includes('repaint')) keywords.push('repainting');
+
+    // Check lesson level
+    const levelMeta = document.querySelector('meta[name="sp-level"]');
+    if (levelMeta && levelMeta.content.toLowerCase() === 'beginner') {
+      keywords.push('beginner');
+    }
 
     return [...new Set(keywords)]; // Remove duplicates
   }
