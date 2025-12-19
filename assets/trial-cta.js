@@ -337,10 +337,17 @@
   }
 
   function renderSidebarCTA() {
+    const content = getContentVariant('sidebar');
+
     return `
-      <div class="trial-cta trial-cta-sidebar trial-cta-sidebar--minimal" data-cta-type="sidebar">
-        <a href="${CONFIG.pricingUrl}" class="trial-cta-sidebar__inline-link" data-cta-action="activate">
-          ⚡ Elite Suite — 7 indicators included →
+      <div class="trial-cta trial-cta-sidebar trial-cta-sidebar--compact" data-cta-type="sidebar">
+        <div class="trial-cta-sidebar__header">
+          <span class="trial-cta-sidebar__icon">${content.icon}</span>
+          <h4 class="trial-cta-sidebar__title">${content.title}</h4>
+        </div>
+        <p class="trial-cta-sidebar__text">${content.text}</p>
+        <a href="${CONFIG.pricingUrl}" class="trial-cta-sidebar__link" data-cta-action="learn-more">
+          Learn more →
         </a>
       </div>
     `;
