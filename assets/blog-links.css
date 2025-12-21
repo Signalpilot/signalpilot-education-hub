@@ -106,3 +106,52 @@
 [data-theme="light"] .blog-link-card__desc {
   color: #5a6a7a;
 }
+
+/* Inline Blog Callouts - Within lesson content */
+.blog-callout {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  margin: 1.5rem 0;
+  background: linear-gradient(135deg, rgba(118, 221, 255, 0.08), rgba(139, 92, 246, 0.06));
+  border: 1px solid rgba(118, 221, 255, 0.2);
+  border-left: 3px solid var(--accent, #76ddff);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.blog-callout:hover {
+  background: linear-gradient(135deg, rgba(118, 221, 255, 0.12), rgba(139, 92, 246, 0.1));
+  border-color: rgba(118, 221, 255, 0.35);
+  transform: translateX(4px);
+}
+
+.blog-callout a {
+  color: var(--accent, #76ddff);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.blog-callout a:hover {
+  text-decoration: underline;
+}
+
+/* Light mode support for inline callouts */
+[data-theme="light"] .blog-callout {
+  background: linear-gradient(135deg, rgba(91, 138, 255, 0.08), rgba(139, 92, 246, 0.05));
+  border-color: rgba(91, 138, 255, 0.25);
+  border-left-color: #5b8aff;
+}
+
+[data-theme="light"] .blog-callout:hover {
+  background: linear-gradient(135deg, rgba(91, 138, 255, 0.12), rgba(139, 92, 246, 0.08));
+}
+
+[data-theme="light"] .blog-callout a {
+  color: #5b8aff;
+}
