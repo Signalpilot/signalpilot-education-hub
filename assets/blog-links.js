@@ -12,6 +12,18 @@
   const CACHE_KEY = 'sp_blog_articles';
   const CACHE_DURATION = 1000 * 60 * 60; // 1 hour
 
+  // Map indicators to priority blog articles for indicator-aware matching
+  const INDICATOR_BLOG_MAP = {
+    'Pentarch': ['how-to-trade-cycles-with-pentarch', 'why-markets-move-in-cycles', 'cycles-within-cycles', 'identifying-cycle-length'],
+    'Janus Atlas': ['support-and-resistance-explained', 'how-smart-money-moves', 'the-only-pattern-that-repeats'],
+    'Plutus Flow': ['accumulation-vs-distribution', 'volume-profile-basics'],
+    'Volume Oracle': ['accumulation-vs-distribution', 'volume-profile-basics', 'how-smart-money-moves'],
+    'Minimal Flow': ['accumulation-vs-distribution', 'volume-profile-basics'],
+    'Harmonic Oscillator': ['when-to-ignore-divergence', 'the-confirmation-trap'],
+    'Omnideck': ['inside-signal-pilot', 'multi-timeframe-confirmation'],
+    'Augury Grid': ['multi-timeframe-confirmation', 'timeframe-selection']
+  };
+
   // Fallback articles if fetch fails (synced from blog.signalpilot.io)
   const FALLBACK_ARTICLES = [
     {
@@ -296,14 +308,56 @@
     return [...keywords];
   }
 
+  /**
+   * Extract indicators mentioned in the current lesson
+   */
+  function getLessonIndicators() {
+    const indicators = new Set();
+    const indicatorNames = Object.keys(INDICATOR_BLOG_MAP);
+
+    // Check meta tag for indicators
+    const indicatorMeta = document.querySelector('meta[name="sp-indicators"]');
+    if (indicatorMeta) {
+      indicatorMeta.content.split(',').forEach(i => {
+        const trimmed = i.trim();
+        if (indicatorNames.includes(trimmed)) {
+          indicators.add(trimmed);
+        }
+      });
+    }
+
+    // Scan page content for indicator names
+    const prose = document.querySelector('.prose');
+    if (prose) {
+      const text = prose.textContent;
+      indicatorNames.forEach(name => {
+        if (text.includes(name)) {
+          indicators.add(name);
+        }
+      });
+    }
+
+    // Check page title
+    const title = document.querySelector('h1');
+    if (title) {
+      indicatorNames.forEach(name => {
+        if (title.textContent.includes(name)) {
+          indicators.add(name);
+        }
+      });
+    }
+
+    return [...indicators];
+  }
+
   // ========================================
   // Article Matching
   // ========================================
 
   /**
-   * Score an article based on keyword matches
+   * Score an article based on keyword matches and indicator relevance
    */
-  function scoreArticle(article, keywords) {
+  function scoreArticle(article, keywords, lessonIndicators) {
     if (!article.tags || !Array.isArray(article.tags)) return 0;
 
     let score = 0;
@@ -317,16 +371,28 @@
       }
     });
 
+    // When scoring articles, check if lesson uses specific indicators
+    // If article matches an indicator the lesson covers, boost score by 100
+    for (const indicator of lessonIndicators) {
+      const priorityArticles = INDICATOR_BLOG_MAP[indicator] || [];
+      if (priorityArticles.some(slug => article.url.includes(slug))) {
+        score += 100;
+      }
+    }
+
     return score;
   }
 
   /**
-   * Get relevant blog posts based on lesson keywords
+   * Get relevant blog posts based on lesson keywords and indicators
    */
   function getRelevantPosts(articles, keywords) {
+    // Get indicators for this lesson
+    const lessonIndicators = getLessonIndicators();
+
     // Score and sort articles
     const scored = articles
-      .map(article => ({ ...article, score: scoreArticle(article, keywords) }))
+      .map(article => ({ ...article, score: scoreArticle(article, keywords, lessonIndicators) }))
       .filter(article => article.score > 0)
       .sort((a, b) => b.score - a.score);
 
