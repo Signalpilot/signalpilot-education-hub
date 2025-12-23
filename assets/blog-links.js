@@ -18,7 +18,7 @@
     'Janus Atlas': ['support-and-resistance-explained', 'how-smart-money-moves', 'the-only-pattern-that-repeats'],
     'Plutus Flow': ['accumulation-vs-distribution', 'volume-profile-basics'],
     'Volume Oracle': ['accumulation-vs-distribution', 'volume-profile-basics', 'how-smart-money-moves'],
-    'Minimal Flow': ['accumulation-vs-distribution', 'volume-profile-basics'],
+    'Volume Oracle': ['accumulation-vs-distribution', 'volume-profile-basics'],
     'Harmonic Oscillator': ['when-to-ignore-divergence', 'the-confirmation-trap'],
     'Omnideck': ['inside-signal-pilot', 'multi-timeframe-confirmation'],
     'Augury Grid': ['multi-timeframe-confirmation', 'timeframe-selection']

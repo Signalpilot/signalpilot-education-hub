@@ -265,7 +265,7 @@ The visual hierarchy makes complex concepts digestible.
   - Lesson 36 (Dark Pool Indicators): 974 lines
 
 **Spot-Checked Lessons**:
-- **Lesson 30** (Minimal Flow Regimes): 954 lines, excellent regime framework, clear case studies
+- **Lesson 30** (Volume Oracle Regimes): 954 lines, excellent regime framework, clear case studies
 - **Lesson 39** (Options Market Microstructure): 1,186 lines, quiz explanation 350+ words (too long), exceptional technical depth on dealer positioning
 - Technical content remains excellent across all spot-checked lessons
 - Case studies present and detailed with specific P&L examples

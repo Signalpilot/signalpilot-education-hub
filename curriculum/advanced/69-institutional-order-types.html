@@ -727,7 +727,7 @@
 
   <h2 id="part-7-using-signal-pilot-to-detect-institutional-order-flow">Part 7: Using Signal Pilot to Detect Institutional Order Flow</h2>
 
-  <h3>Minimal Flow: Iceberg Detection</h3>
+  <h3>Volume Oracle: Iceberg Detection</h3>
   <p><strong>Pattern:</strong> 10+ consecutive fills at same price, same size (e.g., 500 shares × 15 times)</p>
   <p><strong>Signal:</strong> Institution deploying iceberg order (large accumulation/distribution)</p>
   <p><strong>Trade:</strong> Follow institutional direction (if buying, expect continuation)</p>
@@ -824,7 +824,7 @@
     </ul>
     <h4>Detecting Institutional Flow:</h4>
     <ul>
-      <li>Use Signal Pilot Minimal Flow to spot iceberg patterns (repeated same-size fills)</li>
+      <li>Use Signal Pilot Volume Oracle to spot iceberg patterns (repeated same-size fills)</li>
       <li>Check Pentarch Pilot Line for VWAP algo patterns (steady buying over hours)</li>
       <li>Monitor MOC imbalance at 3:50, 3:55, 3:58 PM (trade direction if &gt; 5M shares)</li>
       <li>Watch for dark pool prints (large blocks reported after hours)</li>
