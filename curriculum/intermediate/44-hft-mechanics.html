@@ -657,7 +657,7 @@
 
   <h2 id="part-5-using-signal-pilot-to-detect-hft-activity">Part 5: Using Signal Pilot to Detect HFT Activity</h2>
 
-  <h3 id="minimal-flow-sub-second-order-flow">Minimal Flow: Sub-Second Order Flow</h3>
+  <h3 id="volume-oracle-sub-second-order-flow">Volume Oracle: Sub-Second Order Flow</h3>
   <p><strong>How to use:</strong> Look for rapid-fire prints (100 shares × 50 times in 5 seconds = HFT activity, not institutional accumulation)</p>
   <p><strong>Signal:</strong> If HFT buying aggressively (50+ small prints per minute), institutions may be accumulating → HFTs detected order flow, front-running</p>
   <p><strong>Interpretation:</strong></p>
@@ -719,7 +719,7 @@
 
   <div class="practice-exercise">
     <h4>Exercise 3: Institutional Order Anticipation</h4>
-    <p><strong>Scenario:</strong> Using Signal Pilot Minimal Flow, you observe:</p>
+    <p><strong>Scenario:</strong> Using Signal Pilot Volume Oracle, you observe:</p>
     <ul>
       <li>10:00 AM: 2,000 shares NVDA bought at $450.00</li>
       <li>10:05 AM: 2,000 shares NVDA bought at $450.05</li>
@@ -801,7 +801,7 @@
       <li><strong>✓ Trade during liquid hours</strong> (9:30-11:30 AM, 2:00-4:00 PM ET avoid pre-market, lunch, after-hours)</li>
       <li><strong>✓ Avoid trading during news events</strong> (HFTs widen spreads dramatically during volatility → 10-50x normal spread)</li>
       <li><strong>✓ Watch for spoofing</strong> (large orders flashing on/off in order book in under 1 second = fake orders)</li>
-      <li><strong>✓ Use Signal Pilot Minimal Flow</strong> to detect HFT activity patterns (50+ small prints/min = likely HFT)</li>
+      <li><strong>✓ Use Signal Pilot Volume Oracle</strong> to detect HFT activity patterns (50+ small prints/min = likely HFT)</li>
       <li><strong>✓ If spreads suddenly widen</strong> (e.g., $0.05 → $0.50), wait for normalization (HFT liquidity withdrawal, usually 30-60 sec)</li>
       <li><strong>✓ Avoid predictable patterns</strong> (don't trade same size at same intervals → HFT will detect and front-run)</li>
       <li><strong>✓ Monitor Time & Sales timestamps</strong> (trades in microseconds = HFT active, be extra cautious with order types)</li>

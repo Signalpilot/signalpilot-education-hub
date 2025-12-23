@@ -626,7 +626,7 @@ Result: 10-20% lower impact vs standard TWAP
 
   <h2 id="part-5-using-signal-pilot-to-detect-market-impact">Part 5: Using Signal Pilot to Detect Market Impact</h2>
 
-  <h3>Minimal Flow: Large Print Detection</h3>
+  <h3>Volume Oracle: Large Print Detection</h3>
   <p><strong>Feature:</strong> Highlight prints &gt;10K shares (institutional orders)</p>
   <p><strong>Signal:</strong> If 50K share buy print appears, expect temporary impact (0.1-0.3% move up in next few minutes)</p>
   <p><strong>Trade:</strong> Scalp in direction of large print (institutions likely have more to buy → momentum continues)</p>
@@ -677,7 +677,7 @@ Result: 10-20% lower impact vs standard TWAP
     </ul>
     <h4>While Executing:</h4>
     <ul>
-      <li>Monitor temporary impact via Signal Pilot Minimal Flow (are subsequent prints moving price?)</li>
+      <li>Monitor temporary impact via Signal Pilot Volume Oracle (are subsequent prints moving price?)</li>
       <li>If impact exceeds estimate by 2×, slow down execution (market sensing your order)</li>
       <li>Check Pentarch Pilot Line for cumulative flow (are other institutions also buying?)</li>
     </ul>
