@@ -4,14 +4,14 @@
   const d=document, w=window;
   const prefersReduce = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // CSS - soft gradient only, no orbs
+  // CSS - soft gradient like blog.signalpilot.io
   const CSS_ID='sp-bg-css';
   if(!d.getElementById(CSS_ID)){
     const s=d.createElement('style'); s.id=CSS_ID; s.textContent = `
     .bg-stars{display:none}
     .sp-constellations{display:none}
     .bg-aurora{position:fixed;inset:0;z-index:-1;pointer-events:none;
-      background:linear-gradient(180deg, rgba(91,138,255,0.12) 0%, rgba(60,100,180,0.06) 25%, transparent 50%)}
+      background:linear-gradient(180deg, rgba(156,192,255,0.08) 0%, rgba(124,202,255,0.05) 30%, transparent 60%)}
     `;
     d.head.appendChild(s);
   }
