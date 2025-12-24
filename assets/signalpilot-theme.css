@@ -434,7 +434,7 @@ body {
 
 /* ================================================================
    AURORA BACKGROUND EFFECT
-   Subtle animated gradient overlay for depth
+   Soft gradient overlay (orbs removed)
    ================================================================ */
 
 .bg-aurora {
@@ -448,37 +448,11 @@ body {
   background: linear-gradient(180deg, rgba(91,138,255,0.12) 0%, rgba(60,100,180,0.06) 25%, transparent 50%);
 }
 
-/* Orb effects disabled */
+/* Orbs completely removed */
 .bg-aurora::before,
 .bg-aurora::after {
-  display: none;
-  animation: aurora 20s ease-in-out infinite alternate;
-}
-
-.bg-aurora::before {
-  background: radial-gradient(ellipse at 30% 20%, var(--brand) 0%, transparent 50%);
-  top: -50%;
-  left: -25%;
-}
-
-.bg-aurora::after {
-  background: radial-gradient(ellipse at 70% 80%, var(--accent) 0%, transparent 50%);
-  bottom: -50%;
-  right: -25%;
-  animation-delay: -10s;
-}
-
-@keyframes aurora {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(5%, 5%) rotate(10deg); }
-}
-
-/* Disable aurora animation for reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .bg-aurora::before,
-  .bg-aurora::after {
-    animation: none;
-  }
+  content: none !important;
+  display: none !important;
 }
 
 /* Hide aurora in light mode */
