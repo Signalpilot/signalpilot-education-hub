@@ -25,6 +25,7 @@
     links.innerHTML = `
       <a href="/">Education</a>
       <a href="/my-library.html">My Library</a>
+      <a href="/challenges.html">Challenges</a>
       <a href="/search.html">Search</a>
       <a href="/calculators.html">Calculators</a>
       <a href="https://blog.signalpilot.io" target="_blank" rel="noopener">Blog</a>
