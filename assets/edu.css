@@ -255,8 +255,14 @@ html[data-theme="light"] .callout{border-color:rgba(10,20,40,.10);background:lin
 .bg-stars{display:none}
 .sp-constellations{display:none}
 
-/* Aurora disabled - cleaner look like the blog */
-.bg-aurora{display:none}
+/* Smooth gradient like blog - no orb glows */
+.bg-aurora{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(180deg, rgba(91,138,255,.15) 0%, rgba(60,90,180,.08) 30%, transparent 60%);
+}
 
 @keyframes aurora-shift{
   0%,100%{
