@@ -255,23 +255,8 @@ html[data-theme="light"] .callout{border-color:rgba(10,20,40,.10);background:lin
 .bg-stars{display:none}
 .sp-constellations{display:none}
 
-/* Animated Aurora Gradient Background */
-.bg-aurora{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(91,138,255,.28), transparent 50%),
-    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(118,221,255,.22), transparent 50%),
-    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(123,155,255,.20), transparent 50%),
-    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(91,138,255,.15), transparent 50%);
-  opacity:0.85;
-  animation:aurora-shift 15s ease-in-out infinite;
-  will-change:transform,opacity;
-  -webkit-backface-visibility:hidden;
-  backface-visibility:hidden;
-}
+/* Aurora disabled - cleaner look like the blog */
+.bg-aurora{display:none}
 
 @keyframes aurora-shift{
   0%,100%{
