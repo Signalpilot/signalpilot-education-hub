@@ -301,6 +301,12 @@
     unlockBadge(badge) {
       if (this.unlockedBadges.includes(badge.id)) return;
 
+      // Skip badge unlocks for non-logged-in users
+      if (typeof window.currentUser === 'undefined' || !window.currentUser) {
+        console.log('[Badges] Skipped unlock (not logged in):', badge.name);
+        return;
+      }
+
       this.unlockedBadges.push(badge.id);
       localStorage.setItem('sp_earned_badges', JSON.stringify(this.unlockedBadges));
 
