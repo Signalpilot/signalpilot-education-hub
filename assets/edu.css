@@ -51,7 +51,8 @@ html[data-theme="light"]{
   --bg:#f6f8fc; --bg-2:#ffffff; --text:#0f1524; --muted:#51607a; --muted-2:#3a4866;
   --brand:#345CFF; --brand-2:#5B8AFF; --accent:#0aa1d5;
 }
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.7;letter-spacing:.005em;transition:background-color 0.3s ease, color 0.3s ease;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+html{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.7;letter-spacing:.005em;transition:background-color 0.3s ease, color 0.3s ease;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+body{margin:0;background:transparent;color:inherit;font:inherit;line-height:inherit;letter-spacing:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(16px,4vw,24px)}
 /* Header - Optimized for performance */
 .sp-header{position:sticky;top:0;z-index:110;
