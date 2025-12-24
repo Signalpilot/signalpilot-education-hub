@@ -526,16 +526,6 @@ details.accordion-item[open]>.accordion-content{max-height:none;padding:1.25rem;
     animation:hero-gradient-rotate 30s linear infinite;
   }
 
-  /* Reduce gradient intensity on mobile */
-  .bg-aurora{
-    opacity:0.6;
-    animation:aurora-shift 20s ease-in-out infinite;
-  }
-
-  html[data-theme="light"] .bg-aurora{
-    opacity:0.4;
-  }
-
   /* Module cards mobile */
   .module-card .module-header{
     flex-direction:column;
@@ -682,11 +672,6 @@ details.accordion-item[open]>.accordion-content{max-height:none;padding:1.25rem;
     line-height:1.6;
   }
 
-  /* Further reduce animations on small mobile */
-  .bg-aurora{
-    opacity:0.5;
-  }
-
   .badge{font-size:.9rem;padding:.45rem 1rem}
   .progress-stats{grid-template-columns:repeat(2,1fr);gap:.75rem}
   .prose{font-size:.95rem}
@@ -732,10 +717,6 @@ details.accordion-item[open]>.accordion-content{max-height:none;padding:1.25rem;
   /* Further reduce gradients on very small screens */
   .hero::before{
     filter:blur(25px);
-  }
-
-  .bg-aurora{
-    opacity:0.4;
   }
 }
 
