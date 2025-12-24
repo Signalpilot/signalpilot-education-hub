@@ -76,6 +76,12 @@
     awardXP(amount, reason) {
       if (amount <= 0) return;
 
+      // Skip XP for non-logged-in users - no point showing popup if it won't save to account
+      if (typeof window.currentUser === 'undefined' || !window.currentUser) {
+        console.log('[Gamification] Skipped XP (not logged in):', amount, reason);
+        return;
+      }
+
       const oldLevel = this.level;
       this.totalXP += amount;
       this.level = this.calculateLevel(this.totalXP);
