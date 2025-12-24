@@ -103,6 +103,7 @@
 
         <div class="auth-footer">
           <p>✅ Free forever • 🔒 Secure • No credit card required</p>
+          <p class="privacy-note">🛡️ Your data is yours — we never sell, share, or use it for marketing.</p>
         </div>
       </div>
     `;
