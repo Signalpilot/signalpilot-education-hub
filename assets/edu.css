@@ -251,32 +251,27 @@ html[data-theme="light"] .header-ctls > *:hover{
     display:block;
   }
 
-  /* UNIFORM MOBILE BUTTONS - 36px square, same style */
+  /* UNIFORM MOBILE BUTTONS - All exactly 40px square */
+  .header-ctls{gap:0.5rem !important}
   .header-ctls > *{
-    min-width:36px !important;
-    min-height:36px !important;
-    width:36px !important;
-    height:36px !important;
+    width:40px !important;
+    height:40px !important;
+    min-width:40px !important;
+    min-height:40px !important;
+    max-width:40px !important;
+    max-height:40px !important;
     padding:0 !important;
+    border-radius:10px !important;
+    font-size:0.95rem !important;
+  }
+  #google_translate_element{
+    width:40px !important;
+    height:40px !important;
   }
   .menu-toggle{display:inline-flex !important}
-  #themeToggle #theme-icon{font-size:1rem;line-height:1}
-  #google_translate_element{transform:none !important}
+  #themeToggle #theme-icon{font-size:1.1rem;line-height:1}
 
-  /* Auth button - slightly wider for text */
-  #auth-button{
-    width:auto !important;
-    min-width:36px !important;
-    max-width:60px !important;
-    padding:0 0.4rem !important;
-    font-size:0.7rem !important;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-  }
-
-  .sp-header .wrap{gap:0.4rem}
-  .header-ctls{gap:0.35rem}
+  .sp-header .wrap{gap:0.5rem}
 
   /* Hide desktop nav on mobile */
   #mainnav{display:none !important}
