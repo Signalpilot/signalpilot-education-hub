@@ -116,11 +116,45 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
 }
 #mainnav a:hover{
   color:#fff;
-  background:rgba(255,255,255,.1);
+  background:rgba(255,255,255,.08);
+  transform:translateY(-1px);
 }
-#mainnav a[aria-current="page"]{
+#mainnav a[aria-current="page"],
+#mainnav a.active{
   color:#5b8aff;
   font-weight:700;
+  position:relative;
+}
+#mainnav a[aria-current="page"]::after,
+#mainnav a.active::after{
+  content:"";
+  position:absolute;
+  bottom:0.15rem;
+  left:50%;
+  transform:translateX(-50%);
+  width:60%;
+  height:2px;
+  background:linear-gradient(90deg, transparent, #5b8aff, transparent);
+  border-radius:2px;
+}
+/* Light theme nav adjustments */
+html[data-theme="light"] #mainnav a{
+  color:#4a5568;
+}
+html[data-theme="light"] #mainnav a:hover{
+  color:#1a202c;
+  background:rgba(0,0,0,.05);
+}
+html[data-theme="light"] #mainnav li:not(:last-child)::after{
+  color:rgba(0,0,0,.25);
+}
+html[data-theme="light"] #mainnav a[aria-current="page"],
+html[data-theme="light"] #mainnav a.active{
+  color:#345CFF;
+}
+html[data-theme="light"] #mainnav a[aria-current="page"]::after,
+html[data-theme="light"] #mainnav a.active::after{
+  background:linear-gradient(90deg, transparent, #345CFF, transparent);
 }
 
 /* Header Controls - Compact and Uniform */
