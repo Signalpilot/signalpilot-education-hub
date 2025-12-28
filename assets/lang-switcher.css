@@ -4,6 +4,8 @@
   position: relative;
   flex-shrink: 0;
   z-index: 67 !important;
+  width: 44px !important;
+  height: 44px !important;
 }
 
 #langToggle {
@@ -23,6 +25,7 @@
   justify-content: center !important;
   gap: 0;
   color: var(--text);
+  box-sizing: border-box !important;
 }
 
 /* Language dropdown menu */
@@ -104,6 +107,10 @@
 
 /* Mobile responsive */
 @media (max-width: 1060px) {
+  .lang-dropdown {
+    width: 40px !important;
+    height: 40px !important;
+  }
   #langToggle {
     padding: 0 !important;
     font-size: 0.8rem !important;
