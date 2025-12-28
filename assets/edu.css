@@ -97,28 +97,30 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
 }
 #mainnav li:not(:last-child)::after{
   content:"·";
-  color:rgba(255,255,255,.3);
-  margin:0 0.5rem;
-  font-size:1.2rem;
+  color:rgba(255,255,255,.35);
+  margin:0 0.75rem;
+  font-size:1.4rem;
+  font-weight:300;
 }
 #mainnav a{
   display:inline-flex;
   align-items:center;
-  padding:0.5rem 0.75rem;
+  padding:0.6rem 0.9rem;
   border-radius:8px;
-  color:#9fb6e6;
-  font-weight:600;
-  font-size:0.9rem;
+  color:#b0c4de;
+  font-weight:700;
+  font-size:1rem;
   text-decoration:none;
   white-space:nowrap;
   transition:all 0.2s ease;
 }
 #mainnav a:hover{
   color:#fff;
-  background:rgba(255,255,255,.08);
+  background:rgba(255,255,255,.1);
 }
 #mainnav a[aria-current="page"]{
   color:#5b8aff;
+  font-weight:700;
 }
 
 /* Header Controls - Compact and Uniform */
