@@ -356,15 +356,57 @@
 @media (max-width: 480px) {
   /* Very small screens - use icons only if possible */
   #auth-button {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.5rem;
-    max-width: 90px;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.4rem;
+    max-width: 75px;
+    min-width: 32px;
+    min-height: 30px;
   }
 
   #auth-button span:last-child {
-    max-width: 60px;
+    max-width: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  #cloud-sync-indicator {
+    padding: 0.2rem;
+  }
+
+  .sync-icon {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 420px) {
+  /* Samsung Note 10 and similar sized phones */
+  #auth-button {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.35rem;
+    max-width: 65px;
+  }
+
+  #auth-button span:last-child {
+    max-width: 40px;
+  }
+}
+
+@media (max-width: 375px) {
+  /* Small phones - minimal auth UI */
+  #auth-button {
+    font-size: 0.55rem;
+    padding: 0.18rem 0.3rem;
+    max-width: 55px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+
+  #auth-button span:last-child {
+    max-width: 35px;
+  }
+
+  #cloud-sync-indicator {
+    display: none;
   }
 }
 

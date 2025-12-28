@@ -20,6 +20,7 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
 .menu-toggle:hover{background:rgba(255,255,255,.15)}
 @media (max-width:1060px){
   .menu-toggle{display:inline-flex;align-items:center}
+  .header-ctls{gap:0.35rem}
 
   /* Hide desktop nav on mobile */
   #mainnav{display:none !important}
@@ -93,7 +94,37 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
     color:#fff;
   }
 }
-/* Article */
+
+/* Mobile phone optimization (480px and below) */
+@media (max-width:480px){
+  .menu-toggle{
+    padding:0.3rem 0.45rem;
+    font-size:1rem;
+    min-width:36px;
+    min-height:36px;
+  }
+  .menu-toggle-text{
+    display:none;
+  }
+  .header-ctls{
+    gap:0.25rem;
+  }
+}
+
+/* Small phones (375px and below) */
+@media (max-width:375px){
+  .menu-toggle{
+    padding:0.25rem 0.4rem;
+    min-width:32px;
+    min-height:32px;
+    font-size:0.95rem;
+  }
+  .header-ctls{
+    gap:0.15rem;
+  }
+}
+/* Safe area support for notched devices */
+@supports(padding:max(0px)){
   .sp-header{
     padding-left:max(0px,env(safe-area-inset-left));
     padding-right:max(0px,env(safe-area-inset-right));
