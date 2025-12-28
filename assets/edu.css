@@ -59,7 +59,7 @@ body{margin:0;background:transparent;color:inherit;font:inherit;line-height:inhe
   background:rgba(5,7,13,0.95);border-bottom:1px solid rgba(255,255,255,.08);
   box-shadow:0 2px 8px rgba(0,0,0,0.2)}
 html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
-.sp-header .wrap{display:flex;align-items:center;gap:clamp(0.5rem,2vw,1.5rem);padding:.75rem clamp(16px,4vw,24px);flex-wrap:nowrap}
+.sp-header .wrap{display:flex;align-items:center;gap:clamp(0.5rem,2vw,1.5rem);padding:.75rem clamp(16px,4vw,24px);flex-wrap:nowrap;width:100%;max-width:100%;justify-content:space-between}
 /* Brand styling - ensure Gugi font is applied (inherited from signalpilot-theme.css) */
 .brand, .brand span{
   font-family:'Gugi',system-ui,-apple-system,sans-serif !important;
@@ -69,7 +69,7 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
 #mainnav ul{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
 #mainnav a{display:inline-flex;align-items:center;padding:.5rem .85rem;border-radius:999px;color:#9fb6e6;font-weight:700;text-decoration:none;white-space:nowrap}
 #mainnav a:hover{color:#fff;background:rgba(255,255,255,.12)}
-.header-ctls{margin-left:auto;display:flex;gap:.5rem;align-items:center;flex-shrink:0;flex-wrap:nowrap}
+.header-ctls{display:flex;gap:.5rem;align-items:center;flex-shrink:0;flex-wrap:nowrap}
 
 /* UNIFORM HEADER BUTTONS - All buttons same size and style */
 .header-ctls > *{
