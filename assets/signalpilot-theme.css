@@ -245,6 +245,27 @@ p, li {
 }
 
 /* ================================================================
+   HEADER FULL WIDTH FIX - Override inline CSS max-width: 1200px
+   ================================================================ */
+.sp-header .wrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0.75rem clamp(16px, 4vw, 24px) !important;
+  box-sizing: border-box !important;
+}
+
+/* Header controls - push to right */
+.sp-header .header-ctls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem;
+  margin-left: auto !important;
+}
+
+/* ================================================================
    UTILITY CLASSES
    ================================================================ */
 
