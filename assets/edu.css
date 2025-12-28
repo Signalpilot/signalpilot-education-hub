@@ -76,35 +76,80 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
   font-family:'Gugi',system-ui,-apple-system,sans-serif !important;
   flex-shrink:0
 }
-#mainnav{margin-left:auto;margin-right:auto;flex-shrink:1;min-width:0}
-#mainnav ul{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
-#mainnav a{display:inline-flex;align-items:center;padding:.5rem .85rem;border-radius:999px;color:#9fb6e6;font-weight:700;text-decoration:none;white-space:nowrap}
-#mainnav a:hover{color:#fff;background:rgba(255,255,255,.12)}
-.header-ctls{display:flex;gap:.5rem;align-items:center;flex-shrink:0;flex-wrap:nowrap}
+/* Desktop Navigation - Clean and Professional */
+#mainnav{
+  margin-left:auto;
+  margin-right:auto;
+  flex-shrink:1;
+  min-width:0;
+  background:rgba(255,255,255,.04);
+  border-radius:999px;
+  padding:0.25rem 0.5rem;
+  border:1px solid rgba(255,255,255,.06);
+}
+#mainnav ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:0.25rem;
+  align-items:center;
+}
+#mainnav a{
+  display:inline-flex;
+  align-items:center;
+  padding:0.5rem 1rem;
+  border-radius:999px;
+  color:#9fb6e6;
+  font-weight:600;
+  font-size:0.9rem;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:all 0.2s ease;
+}
+#mainnav a:hover{
+  color:#fff;
+  background:rgba(255,255,255,.1);
+}
+#mainnav a[aria-current="page"]{
+  color:#fff;
+  background:rgba(91,138,255,.25);
+}
+
+/* Header Controls - Compact and Uniform */
+.header-ctls{
+  display:flex;
+  gap:0.4rem;
+  align-items:center;
+  flex-shrink:0;
+}
 
 /* UNIFORM HEADER BUTTONS - All buttons same size and style */
 .header-ctls > *{
   display:inline-flex !important;
   align-items:center !important;
   justify-content:center !important;
-  min-width:40px !important;
-  min-height:40px !important;
-  padding:0.5rem !important;
-  border-radius:12px !important;
-  border:1px solid rgba(255,255,255,.2) !important;
-  background:rgba(0,0,0,.3) !important;
+  min-width:38px !important;
+  min-height:38px !important;
+  padding:0.4rem !important;
+  border-radius:10px !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  background:rgba(255,255,255,.05) !important;
   color:#fff !important;
-  font-size:0.9rem !important;
+  font-size:0.85rem !important;
   cursor:pointer;
-  transition:background .2s ease;
+  transition:all 0.2s ease;
   box-sizing:border-box !important;
 }
-.header-ctls > *:hover{background:rgba(0,0,0,.5) !important}
+.header-ctls > *:hover{
+  background:rgba(255,255,255,.12) !important;
+  border-color:rgba(255,255,255,.25) !important;
+}
 
 /* Menu toggle - HIDDEN on desktop, only show on mobile */
 .menu-toggle{display:none !important;font-weight:600}
 
-/* Google Translate container fix - ensure consistent gap */
+/* Google Translate container fix - remove all inner borders */
 #google_translate_element{
   overflow:hidden !important;
   padding:0 !important;
@@ -112,24 +157,24 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
   width:40px !important;
   height:40px !important;
 }
-#google_translate_element .goog-te-gadget{
+#google_translate_element *{
+  border:none !important;
+  outline:none !important;
+  box-shadow:none !important;
   margin:0 !important;
   padding:0 !important;
+  background:transparent !important;
 }
 #google_translate_element .goog-te-gadget-simple{
-  border:none !important;
-  background:transparent !important;
-  padding:0 !important;
-  margin:0 !important;
-  line-height:1 !important;
   display:flex !important;
   align-items:center !important;
   justify-content:center !important;
+  width:100% !important;
+  height:100% !important;
 }
 #google_translate_element img{
   width:24px !important;
   height:auto !important;
-  margin:0 !important;
 }
 
 /* Hide mobile nav by default on desktop */
