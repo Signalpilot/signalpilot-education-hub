@@ -197,14 +197,24 @@ html[data-theme="light"] #mainnav a.active::after{
 }
 /* Light theme header controls */
 html[data-theme="light"] .header-ctls > *{
-  border-color:rgba(0,0,0,.1) !important;
-  background:rgba(0,0,0,.04) !important;
+  border-color:rgba(0,0,0,.15) !important;
+  background:rgba(0,0,0,.06) !important;
   color:#1a202c !important;
 }
 html[data-theme="light"] .header-ctls > *:hover{
   background:rgba(52,92,255,.1) !important;
   border-color:rgba(52,92,255,.3) !important;
   box-shadow:0 4px 12px rgba(52,92,255,.15);
+}
+/* Light theme - ensure text/icons are visible */
+html[data-theme="light"] #auth-button{
+  color:#1a202c !important;
+}
+html[data-theme="light"] .menu-toggle{
+  color:#1a202c !important;
+}
+html[data-theme="light"] #themeToggle{
+  color:#1a202c !important;
 }
 
 /* Menu toggle - HIDDEN on desktop, only show on mobile */
