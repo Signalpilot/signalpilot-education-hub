@@ -51,8 +51,18 @@ html[data-theme="light"]{
 html{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.7;letter-spacing:.005em;transition:background-color 0.3s ease, color 0.3s ease;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
 body{margin:0;background:transparent;color:inherit;font:inherit;line-height:inherit;letter-spacing:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(16px,4vw,24px)}
-/* Header - Optimized for performance */
-.sp-header .wrap{display:flex;align-items:center;gap:clamp(0.5rem,2vw,1.5rem);padding:.75rem clamp(16px,4vw,24px);flex-wrap:nowrap;width:100%;max-width:100%;justify-content:space-between}
+/* Header - Force full width on ALL screens */
+.sp-header .wrap{
+  display:flex !important;
+  align-items:center !important;
+  gap:clamp(0.5rem,2vw,1.5rem);
+  padding:.75rem clamp(16px,4vw,24px) !important;
+  flex-wrap:nowrap !important;
+  width:100% !important;
+  max-width:none !important;
+  justify-content:space-between !important;
+  box-sizing:border-box !important;
+}
 /* Brand styling - ensure Gugi font is applied (inherited from signalpilot-theme.css) */
 .hero .wrap{
   position:relative;
