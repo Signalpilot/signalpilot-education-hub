@@ -70,10 +70,47 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
 #mainnav a{display:inline-flex;align-items:center;padding:.5rem .85rem;border-radius:999px;color:#9fb6e6;font-weight:700;text-decoration:none;white-space:nowrap}
 #mainnav a:hover{color:#fff;background:rgba(255,255,255,.12)}
 .header-ctls{margin-left:auto;display:flex;gap:.5rem;align-items:center;flex-shrink:0;flex-wrap:nowrap}
-.menu-toggle{display:none;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.3);color:#fff;padding:.5rem .65rem;cursor:pointer;font-size:.9rem;font-weight:600;transition:background .2s ease}
-.menu-toggle:hover{background:rgba(0,0,0,.4)}
-.header-ctls .btn-ghost,.header-ctls #themeToggle,.header-ctls .lang-dropdown button{border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.3)!important}
-.header-ctls .btn-ghost:hover,.header-ctls #themeToggle:hover{background:rgba(0,0,0,.4)!important}
+
+/* UNIFORM HEADER BUTTONS - All buttons same size and style */
+.header-ctls > *{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:40px !important;
+  min-height:40px !important;
+  padding:0.5rem !important;
+  border-radius:12px !important;
+  border:1px solid rgba(255,255,255,.2) !important;
+  background:rgba(0,0,0,.3) !important;
+  color:#fff !important;
+  font-size:0.9rem !important;
+  cursor:pointer;
+  transition:background .2s ease;
+  box-sizing:border-box !important;
+}
+.header-ctls > *:hover{background:rgba(0,0,0,.5) !important}
+
+/* Menu toggle specific */
+.menu-toggle{display:none;font-weight:600}
+
+/* Google Translate container fix */
+#google_translate_element{
+  overflow:hidden !important;
+  padding:0 !important;
+}
+#google_translate_element .goog-te-gadget{
+  margin:0 !important;
+}
+#google_translate_element .goog-te-gadget-simple{
+  border:none !important;
+  background:transparent !important;
+  padding:0 !important;
+  line-height:1 !important;
+}
+#google_translate_element img{
+  width:24px !important;
+  height:auto !important;
+}
 
 /* Hide mobile nav by default on desktop */
 .mobile-nav,
@@ -87,17 +124,32 @@ html[data-theme="light"] .sp-header{border-bottom-color:#d7def0}
   .mobile-nav-backdrop{
     display:block;
   }
-  .menu-toggle{display:inline-flex;align-items:center;padding:.35rem .5rem;font-size:.8rem}
 
-  /* Smaller header buttons on mobile */
-  .header-ctls .btn-sm,
-  #themeToggle{padding:.25rem .4rem;font-size:.75rem;min-width:32px;min-height:32px;display:inline-flex;align-items:center;justify-content:center}
-  #themeToggle #theme-icon{font-size:.85rem;line-height:1;font-family:inherit;-webkit-filter:grayscale(1);filter:grayscale(1)}
-  #google_translate_element{transform:scale(0.8);transform-origin:right center}
-  #auth-button{max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:.25rem .4rem;font-size:.7rem}
+  /* UNIFORM MOBILE BUTTONS - 36px square, same style */
+  .header-ctls > *{
+    min-width:36px !important;
+    min-height:36px !important;
+    width:36px !important;
+    height:36px !important;
+    padding:0 !important;
+  }
+  .menu-toggle{display:inline-flex !important}
+  #themeToggle #theme-icon{font-size:1rem;line-height:1}
+  #google_translate_element{transform:none !important}
 
-  /* Better header spacing on tablets/large phones */
-  .sp-header .wrap{gap:0.5rem}
+  /* Auth button - slightly wider for text */
+  #auth-button{
+    width:auto !important;
+    min-width:36px !important;
+    max-width:60px !important;
+    padding:0 0.4rem !important;
+    font-size:0.7rem !important;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+
+  .sp-header .wrap{gap:0.4rem}
   .header-ctls{gap:0.35rem}
 
   /* Hide desktop nav on mobile */
