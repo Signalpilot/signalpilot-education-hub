@@ -174,11 +174,13 @@
     // Create toggle button
     const button = document.createElement('button');
     button.id = 'langToggle';
-    button.className = 'btn btn-ghost btn-sm';
+    button.className = 'btn btn-ghost';
     button.type = 'button';
     button.setAttribute('aria-label', `Select language (current: ${currentLangObj.name})`);
     button.setAttribute('aria-haspopup', 'true');
     button.setAttribute('aria-expanded', 'false');
+    // Force exact size to match other header buttons
+    button.style.cssText = 'width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;max-width:44px!important;max-height:44px!important;padding:0!important;';
     button.innerHTML = getFlagImg(currentLangObj.flagCode);
 
     // Create dropdown menu and append to body
