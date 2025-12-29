@@ -217,6 +217,15 @@ html[data-theme="light"] #themeToggle{
   color:#1a202c !important;
 }
 
+/* Auth button - wider to fit "Sign In" text */
+#auth-button{
+  width:auto !important;
+  max-width:none !important;
+  min-width:auto !important;
+  padding:0 0.75rem !important;
+  white-space:nowrap;
+}
+
 /* Menu toggle - HIDDEN on desktop, only show on mobile */
 .menu-toggle{display:none !important;font-weight:600}
 
@@ -249,11 +258,10 @@ html[data-theme="light"] #themeToggle{
   /* Auth button can be wider for text */
   #auth-button{
     width:auto !important;
-    max-width:70px !important;
-    padding:0 0.5rem !important;
-    font-size:0.75rem !important;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    max-width:none !important;
+    padding:0 0.6rem !important;
+    font-size:0.8rem !important;
+    white-space:nowrap;
   }
   .menu-toggle{display:inline-flex !important}
   #themeToggle #theme-icon{font-size:1.1rem;line-height:1}
