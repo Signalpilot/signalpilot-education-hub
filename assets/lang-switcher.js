@@ -167,11 +167,6 @@
     const container = document.getElementById('google_translate_element');
     if (!container) return;
 
-    // Replace container content with our button
-    container.className = 'lang-dropdown';
-    // Container is invisible wrapper - no border/bg
-    container.style.cssText = 'width:44px!important;height:44px!important;background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important;';
-
     // Get current language info
     currentLang = getCurrentLanguage();
     const currentLangObj = languages.find(l => l.code === currentLang) || languages[0];
@@ -184,9 +179,10 @@
     button.setAttribute('aria-label', `Select language (current: ${currentLangObj.name})`);
     button.setAttribute('aria-haspopup', 'true');
     button.setAttribute('aria-expanded', 'false');
-    // Force exact size to match other header buttons
-    button.style.cssText = 'width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;max-width:44px!important;max-height:44px!important;padding:0!important;';
     button.innerHTML = getFlagImg(currentLangObj.flagCode);
+
+    // Replace container with just the button (no wrapper)
+    container.parentNode.replaceChild(button, container);
 
     // Create dropdown menu and append to body
     const menu = createDropdownMenu();
