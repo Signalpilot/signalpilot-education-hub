@@ -41,8 +41,9 @@
   ];
 
   // Helper: Get flag image HTML (using flagcdn - same as main site)
-  function getFlagImg(flagCode, size = 20) {
-    return `<img src="https://flagcdn.com/w${size}/${flagCode}.png" width="${size}" height="15" alt="${flagCode.toUpperCase()}" style="vertical-align:middle;border-radius:2px">`;
+  function getFlagImg(flagCode, size = 28) {
+    const height = Math.round(size * 0.7);
+    return `<img src="https://flagcdn.com/w${size}/${flagCode}.png" width="${size}" height="${height}" alt="${flagCode.toUpperCase()}" style="vertical-align:middle;border-radius:2px">`;
   }
 
   let currentLang = 'en';
@@ -166,6 +167,8 @@
 
     // Replace container content with our button
     container.className = 'lang-dropdown';
+    // Force container size to match other header buttons
+    container.style.cssText = 'width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;max-width:44px!important;max-height:44px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;';
 
     // Get current language info
     currentLang = getCurrentLanguage();
