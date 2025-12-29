@@ -41,8 +41,9 @@
   ];
 
   // Helper: Get flag image HTML (using flagcdn - same as main site)
-  function getFlagImg(flagCode, size = 20) {
-    return `<img src="https://flagcdn.com/w${size}/${flagCode}.png" width="${size}" height="15" alt="${flagCode.toUpperCase()}" style="vertical-align:middle;border-radius:2px">`;
+  function getFlagImg(flagCode, size = 28) {
+    const height = Math.round(size * 0.7);
+    return `<img src="https://flagcdn.com/w${size}/${flagCode}.png" width="${size}" height="${height}" alt="${flagCode.toUpperCase()}" style="vertical-align:middle;border-radius:2px">`;
   }
 
   let currentLang = 'en';
