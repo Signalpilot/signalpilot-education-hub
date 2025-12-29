@@ -171,33 +171,26 @@
     currentLang = getCurrentLanguage();
     const currentLangObj = languages.find(l => l.code === currentLang) || languages[0];
 
-    // Create toggle button
-    const button = document.createElement('button');
-    button.id = 'langToggle';
-    button.className = 'btn btn-ghost';
-    button.type = 'button';
-    button.setAttribute('aria-label', `Select language (current: ${currentLangObj.name})`);
-    button.setAttribute('aria-haspopup', 'true');
-    button.setAttribute('aria-expanded', 'false');
-    button.innerHTML = getFlagImg(currentLangObj.flagCode);
-
-    // Replace container with just the button (no wrapper)
-    container.parentNode.replaceChild(button, container);
+    // Turn container itself into the button
+    container.id = 'langToggle';
+    container.setAttribute('role', 'button');
+    container.setAttribute('tabindex', '0');
+    container.setAttribute('aria-label', `Select language (current: ${currentLangObj.name})`);
+    container.setAttribute('aria-haspopup', 'true');
+    container.setAttribute('aria-expanded', 'false');
+    container.innerHTML = getFlagImg(currentLangObj.flagCode);
 
     // Create dropdown menu and append to body
     const menu = createDropdownMenu();
     document.body.appendChild(menu);
 
     // Toggle menu
-    button.addEventListener('click', (e) => {
+    container.addEventListener('click', (e) => {
       e.stopPropagation();
       const isActive = menu.classList.contains('active');
       menu.classList.toggle('active');
-      button.setAttribute('aria-expanded', !isActive);
+      container.setAttribute('aria-expanded', !isActive);
     });
-
-    container.innerHTML = '';
-    container.appendChild(button);
 
     // Apply language attributes on page load
     const lang = getCurrentLanguage();
