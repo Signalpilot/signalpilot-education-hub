@@ -169,8 +169,8 @@
 
     // Replace container content with our button
     container.className = 'lang-dropdown';
-    // Force container size to match other header buttons
-    container.style.cssText = 'width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;max-width:44px!important;max-height:44px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;';
+    // Container is invisible wrapper - no border/bg
+    container.style.cssText = 'width:44px!important;height:44px!important;background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important;';
 
     // Get current language info
     currentLang = getCurrentLanguage();
