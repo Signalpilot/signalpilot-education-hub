@@ -19,10 +19,10 @@ Use this checklist to interpret RSI correctly based on market regime using Harmo
   - **TRENDING DOWNTREND:** RSI <50 = bearish bias, RSI <30 = momentum (stay short)
   - **RANGING:** RSI >70 = overbought (potential fade), RSI <30 = oversold (potential buy)
 
-- [ ] **Check Harmonic Oscillator confluence (5 indicators)**
-  - RSI, Stochastic, CCI, Williams %R, MFI
-  - 5/5 or 4/5 agreement = high confidence signal
-  - 3/5 or less = wait for clarity (conflicting signals)
+- [ ] **Check Harmonic Oscillator confluence (7 components)**
+  - RSI, Stochastic RSI, MACD, EMA Trend, Momentum, Volume, Divergence Zone
+  - 7/7 or 6/7 agreement = high confidence signal
+  - 5/7 or less = wait for clarity (conflicting signals)
 
 - [ ] **Look for divergence (warning signal only)**
   - Bullish divergence: Price makes lower low, RSI makes higher low
@@ -37,7 +37,7 @@ Use this checklist to interpret RSI correctly based on market regime using Harmo
 - [ ] RSI interpretation matches regime:
   - **Trending:** Entry on RSI pullback to 40-50 (uptrend) or 50-60 (downtrend)
   - **Ranging:** Entry on RSI extremes (>70 fade, <30 buy) with Harmonic agreement
-- [ ] Harmonic Oscillator shows 4-5/5 agreement (high confidence)
+- [ ] Harmonic Oscillator shows 6-7/7 agreement (high confidence)
 - [ ] Structural confirmation via Janus Atlas (sweep, breakout, or hold)
 - [ ] Plutus Flow delta alignment (positive for longs, negative for shorts)
 - [ ] No trading against HTF trend (never fade RSI extremes in strong trends)
@@ -49,7 +49,7 @@ Use this checklist to interpret RSI correctly based on market regime using Harmo
 **Entry:**
 - [ ] Entry price: $________
 - [ ] RSI value at entry: ________
-- [ ] Harmonic Oscillator agreement: ____ / 5 indicators
+- [ ] Harmonic Oscillator agreement: ____ / 7 components
 - [ ] Regime type: ________ (trending / ranging)
 
 **Stop Loss:**
@@ -70,7 +70,7 @@ Use this checklist to interpret RSI correctly based on market regime using Harmo
 - [ ] Divergence confirmed + structural break (price breaks key level)
 - [ ] RSI extreme exhaustion (>85 or <15) + price rejection
 - [ ] Regime shifts (trending → volatile, ranging → trending)
-- [ ] Harmonic Oscillator flips (5/5 bullish becomes 4/5 bearish)
+- [ ] Harmonic Oscillator flips (7/7 bullish becomes 5/7 bearish)
 
 ---
 
@@ -83,7 +83,7 @@ Use this checklist to interpret RSI correctly based on market regime using Harmo
 - Did RSI behave as expected for this regime? ________________________________________________
 
 **Harmonic Oscillator value:**
-- Did 4-5/5 agreement lead to better outcomes? ________________________________________________
+- Did 6-7/7 agreement lead to better outcomes? ________________________________________________
 
 **Lessons learned:**
 - ________________________________________________
@@ -96,7 +96,7 @@ Use this checklist to interpret RSI correctly based on market regime using Harmo
 - ✅ RSI >70 in uptrend = continuation (NOT reversal signal)
 - ✅ RSI <30 in downtrend = continuation (NOT reversal signal)
 - ✅ Regime determines interpretation (trending vs ranging)
-- ✅ Harmonic Oscillator 4-5/5 agreement = high confidence
+- ✅ Harmonic Oscillator 6-7/7 agreement = high confidence
 - ✅ Divergence = warning, not signal (wait for structural break)
 - ✅ RSI is a filter, not a trigger (always require structural confirmation)
 

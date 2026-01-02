@@ -125,12 +125,12 @@ Use this checklist for double sweeps, multi-TF confluence sweeps, and sweep-and-
 **Stack these with Janus sweep:**
 - [ ] Plutus Flow: CVD positive/negative? +/- ________
 - [ ] Volume Oracle: Trending regime? Yes / No
-- [ ] Harmonic Oscillator: Oversold/overbought? 5/5 agreement? Yes / No
+- [ ] Harmonic Oscillator: Oversold/overbought? 7/7 agreement? Yes / No
 - [ ] Order book: Imbalance supporting? Ratio: ________
 
 **Total confluence:** ____/5
 
-**If 4-5/5 → Highest conviction (A+ setup)**
+**If 6-7/7 → Highest conviction (A+ setup)**
 
 ---
 
