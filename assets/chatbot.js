@@ -131,7 +131,7 @@ Your learning progress is automatically tracked as you read lessons!
 • RSI >70 in uptrends = continuation (not reversal)
 • RSI <30 in downtrends = continuation (not reversal)
 • Regime determines interpretation (trending vs ranging)
-• Harmonic Oscillator = 5-indicator voting system
+• Harmonic Oscillator = 7-component voting system
 
 **Real example:** Sarah lost $11,400 selling "overbought" RSI in trends, then made +$13,000 back using regime-based RSI interpretation
 
