@@ -20,7 +20,7 @@ Use this checklist to interpret RSI correctly based on market regime using Harmo
   - **RANGING:** RSI >70 = overbought (potential fade), RSI <30 = oversold (potential buy)
 
 - [ ] **Check Harmonic Oscillator confluence (7 components)**
-  - RSI, Stochastic RSI, MACD, EMA Trend, Momentum, Volume, Divergence Zone
+  - RSI, Stochastic, CCI, Williams %R, MFI, Ultimate, AO
   - 7/7 or 6/7 agreement = high confidence signal
   - 5/7 or less = wait for clarity (conflicting signals)
 
