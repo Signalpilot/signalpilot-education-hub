@@ -13,7 +13,7 @@
   // ========================================
   const CONFIG = {
     // Trial offer details
-    trialDays: 7,
+    trialDays: 14,
     trialUrl: 'https://signalpilot.io/#pricing',
     pricingUrl: 'https://signalpilot.io/#pricing',
 
@@ -148,7 +148,7 @@
       default: {
         icon: '🎯',
         title: 'Ready to level up?',
-        subtitle: 'Start your free 7-day Pro trial'
+        subtitle: 'Start your free 14-day Pro trial'
       }
     }
   };
