@@ -15,7 +15,7 @@
 
   // Initialize Lenis with optimized settings
   const lenis = new Lenis({
-    duration: 3.0,           // Scroll animation duration
+    duration: 6,           // Scroll animation duration
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Ease out expo
     orientation: 'vertical', // Vertical scroll
     gestureOrientation: 'vertical',
@@ -56,7 +56,7 @@
       e.preventDefault();
       lenis.scrollTo(element, {
         offset: -80, // Account for fixed header
-        duration: 3.0
+        duration: 6
       });
       // Update URL without jumping
       history.pushState(null, null, hash);
@@ -69,7 +69,7 @@
     if (window.lenis && options?.behavior === 'smooth') {
       window.lenis.scrollTo(this, {
         offset: -80,
-        duration: 3.0
+        duration: 6
       });
     } else {
       originalScrollIntoView.call(this, options);
