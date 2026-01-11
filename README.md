@@ -6,6 +6,8 @@
 
 ![Signal Pilot Education Hub Preview](preview.png)
 
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/K6BgD8wN)
+
 ---
 
 ## 📊 Current Status (Updated 2025-10-30)
@@ -349,7 +351,7 @@ Content is proprietary and provided for educational use by Signal Pilot subscrib
 - **Main Website:** https://signalpilot.io/
 - **Pricing:** https://signalpilot.io/#pricing
 - **Documentation:** https://docs.signalpilot.io/
-- **Discord Community:** [Join Discord](https://signalpilot.io/#faq)
+- **Discord Community:** [Join Discord](https://discord.gg/K6BgD8wN)
 
 ---
 
