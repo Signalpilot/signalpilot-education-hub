@@ -27,7 +27,7 @@
     // Focus on End-of-Lesson + Sidebar + Tier Unlock for best conversion
     showInlineCTA: false,       // Disabled: Can be spammy mid-content
     showFloatingCTA: false,     // Disabled: Pop-ups are annoying
-    showSidebarCTA: true,       // Keep: Passive, doesn't block content
+    showSidebarCTA: false,      // Disabled: Using simple HTML links instead
     showCompletionCTA: true,    // Keep: Highest conversion point
 
     // Dismissal settings (in hours)
