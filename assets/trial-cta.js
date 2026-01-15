@@ -124,22 +124,13 @@
       }
     },
 
-    // Sidebar CTA (passive, always visible)
+    // Sidebar CTA (passive, always visible) - minimal design
     sidebar: {
       default: {
         icon: '⚡',
-        title: 'The Elite Suite',
-        text: '7 professional-grade indicators.',
-        features: [
-          'Pentarch',
-          'Janus Atlas',
-          'Omnideck',
-          'Augury Grid',
-          'Volume Oracle',
-          'Harmonic Oscillator',
-          'Plutus Flow'
-        ],
-        cta: 'Activate License'
+        title: 'Signal Pilot Suite',
+        text: '7 professional indicators',
+        cta: 'Learn more'
       }
     },
 
@@ -337,17 +328,17 @@
   }
 
   function renderSidebarCTA() {
-    const content = getContentVariant('sidebar');
-
+    // Minimal sidebar links - non-distracting
     return `
-      <div class="trial-cta trial-cta-sidebar trial-cta-sidebar--compact" data-cta-type="sidebar">
-        <div class="trial-cta-sidebar__header">
-          <span class="trial-cta-sidebar__icon">${content.icon}</span>
-          <h4 class="trial-cta-sidebar__title">${content.title}</h4>
-        </div>
-        <p class="trial-cta-sidebar__text">${content.text}</p>
-        <a href="https://signalpilot.io" class="trial-cta-sidebar__link" data-cta-action="learn-more">
-          Learn more →
+      <div class="sidebar-links" style="margin-top:1rem;padding:0.75rem;background:var(--bg-elev);border-radius:8px;font-size:0.85rem" data-cta-type="sidebar">
+        <a href="https://signalpilot.io" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);text-decoration:none;padding:0.5rem 0;border-bottom:1px solid var(--bg-soft)" data-cta-action="learn-more">
+          <span>⚡</span> Signal Pilot Suite
+        </a>
+        <a href="https://discord.gg/K6BgD8wN" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);text-decoration:none;padding:0.5rem 0;border-bottom:1px solid var(--bg-soft)">
+          <span>💬</span> Discuss on Discord
+        </a>
+        <a href="https://signalpilot.io/affiliates.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);text-decoration:none;padding:0.5rem 0">
+          <span>💰</span> Earn 15-30% as Affiliate
         </a>
       </div>
     `;
