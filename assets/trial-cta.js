@@ -334,7 +334,7 @@
         <a href="https://signalpilot.io" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);text-decoration:none;padding:0.5rem 0;border-bottom:1px solid var(--bg-soft)" data-cta-action="learn-more">
           <span>⚡</span> Signal Pilot Suite
         </a>
-        <a href="https://discord.gg/K6BgD8wN" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);text-decoration:none;padding:0.5rem 0;border-bottom:1px solid var(--bg-soft)">
+        <a href="https://discord.gg/5guVbGEyj8" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);text-decoration:none;padding:0.5rem 0;border-bottom:1px solid var(--bg-soft)">
           <span>💬</span> Discuss on Discord
         </a>
         <a href="https://signalpilot.io/affiliates.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);text-decoration:none;padding:0.5rem 0">
