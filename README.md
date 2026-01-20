@@ -6,7 +6,7 @@
 
 ![Signal Pilot Education Hub Preview](preview.png)
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/K6BgD8wN)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/5guVbGEyj8)
 
 ---
 
@@ -351,7 +351,7 @@ Content is proprietary and provided for educational use by Signal Pilot subscrib
 - **Main Website:** https://signalpilot.io/
 - **Pricing:** https://signalpilot.io/#pricing
 - **Documentation:** https://docs.signalpilot.io/
-- **Discord Community:** [Join Discord](https://discord.gg/K6BgD8wN)
+- **Discord Community:** [Join Discord](https://discord.gg/5guVbGEyj8)
 
 ---
 
