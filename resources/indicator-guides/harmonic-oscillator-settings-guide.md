@@ -1,314 +1,181 @@
-# Harmonic Oscillator Settings Guide
+# Harmonic Oscillator v1.0 Guide
 
-**Complete Configuration Reference for Signal Pilot's Momentum Voting System**
-
----
-
-## What Is the Harmonic Oscillator?
-
-The Harmonic Oscillator is Signal Pilot's advanced momentum indicator that combines multiple oscillator inputs into a single "voting" system. Instead of watching 5 different indicators, you get one unified momentum read.
+**7-Component Momentum Voting System**
 
 ---
 
-## Core Components
+## What is Harmonic Oscillator?
 
-| Component | What It Measures | Weight |
-|-----------|------------------|--------|
-| **RSI** | Relative strength (overbought/oversold) | Configurable |
-| **Stochastic** | Price position within range | Configurable |
-| **CCI** | Price deviation from mean | Configurable |
-| **Williams %R** | Closing price vs. high-low range | Configurable |
-| **MFI** | Money flow (volume-weighted RSI) | Configurable |
+Harmonic Oscillator is Signal Pilot's momentum consensus indicator. It combines **seven independent components** into a unified voting system. Instead of watching multiple oscillators separately, you get one aggregated momentum reading with regime classification.
 
 ---
 
-## Default Settings
+## The Seven Voting Components
 
-### Oscillator Lengths
+Each component casts a bullish or bearish vote based on its analysis:
 
-| Oscillator | Default Length | Range | Notes |
-|------------|----------------|-------|-------|
-| RSI | 14 | 7-21 | Standard period |
-| Stochastic K | 14 | 7-21 | %K period |
-| Stochastic D | 3 | 3-5 | %D smoothing |
-| CCI | 20 | 14-30 | Commodity Channel Index |
-| Williams %R | 14 | 7-21 | Williams Percent Range |
-| MFI | 14 | 10-20 | Money Flow Index |
-
-### Voting Thresholds
-
-| Setting | Default | Purpose |
-|---------|---------|---------|
-| Bullish Threshold | 70 | Level above which oscillator votes bullish |
-| Bearish Threshold | 30 | Level below which oscillator votes bearish |
-| Strong Threshold | 80/20 | Extreme levels for strong signals |
+| # | Component | What It Analyzes |
+|---|-----------|------------------|
+| 1 | **RSI** | Momentum-aware RSI with directional confirmation |
+| 2 | **Stochastic RSI** | Smoothed stochastic with slope analysis |
+| 3 | **MACD** | Histogram acceleration detection (not just direction) |
+| 4 | **EMA Trend** | Price position relative to trend with slope confirmation |
+| 5 | **Momentum** | Rate of change analysis |
+| 6 | **Volume** | Confirming volume on directional candles |
+| 7 | **Divergence Zone** | Extreme zone detection with price confirmation |
 
 ---
 
-## Settings Panel Breakdown
+## Regime Classification
 
-### Section 1: Display Options
+Based on vote count, Harmonic Oscillator classifies the market:
 
-| Setting | Options | Recommended |
+| Vote Count | Regime | Meaning |
+|------------|--------|---------|
+| 5-7 votes | **TRENDING** | Strong directional momentum |
+| 3-4 votes | **BIAS** | Moderate directional lean |
+| 0-2 votes | **RANGING** | No clear momentum direction |
+
+Displayed as: TRENDING▲, TRENDING▼, BIAS▲, BIAS▼, or RANGING—
+
+---
+
+## Adjustable Settings
+
+**Important:** Oscillator parameters are internally optimized and **not user-adjustable**. This ensures consistent, tested behavior across all users.
+
+### User-Configurable Settings
+
+| Setting | Options | Description |
 |---------|---------|-------------|
-| Show Histogram | On/Off | On |
-| Show Signal Line | On/Off | On |
-| Show Vote Count | On/Off | On |
-| Show Divergence | On/Off | On |
+| **Signal Mode** | Conservative / Balanced / Aggressive | Adjusts consensus thresholds for alerts |
+| **Higher Timeframe Filter** | On / Off | Filter divergence signals by HTF trend direction |
+| **HTF Timeframe** | Dropdown selection | Which higher timeframe to reference |
 
-### Section 2: Oscillator Weights
+### Display Settings
+| Setting | Options |
+|---------|---------|
+| Show Divergences | On/Off |
+| Show Consensus Meter | On/Off |
+| Show Status Panel | On/Off |
+| Show OB/OS Zone Fills | On/Off |
 
-```
-Each oscillator can be weighted 0-100%
-
-Example configurations:
-
-Conservative (equal weight):
-RSI: 20% | Stoch: 20% | CCI: 20% | W%R: 20% | MFI: 20%
-
-RSI-Heavy:
-RSI: 40% | Stoch: 15% | CCI: 15% | W%R: 15% | MFI: 15%
-
-Volume-Focused:
-RSI: 15% | Stoch: 15% | CCI: 15% | W%R: 15% | MFI: 40%
-```
-
-### Section 3: Sensitivity
-
-| Sensitivity | Votes Required | Best For |
-|-------------|----------------|----------|
-| Hair Trigger | 2 of 5 | Scalping, early signals |
-| Normal | 3 of 5 | Standard trading |
-| Rock Solid | 4 of 5 | Position trading, high conviction |
+### Table Settings
+| Setting | Options |
+|---------|---------|
+| Position | 9 locations (corners/edges) |
+| Font Size | Multiple size options |
+| Layout Orientation | Vertical/Horizontal |
 
 ---
 
-## Preset Configurations
+## Visual Elements
 
-### Preset 1: Scalping (Fast)
+### Status Panel
+Displays current regime and vote count:
+- **TRENDING▲ (6/7)** = Strong bullish momentum (6 of 7 components bullish)
+- **BIAS▼ (4/7)** = Moderate bearish lean
+- **RANGING— (2/7)** = No clear direction
 
-```
-RSI Length: 7
-Stochastic K: 9
-CCI: 14
-Williams %R: 9
-MFI: 10
-Sensitivity: Hair Trigger
-```
+### Composite Oscillator
+- 0-100 scale oscillator line
+- Signal line for crossover detection
+- Overbought/oversold zones highlighted
 
-**Use case:** 1m-15m charts, quick entries/exits
+### Divergence Labels
+- **▲ DIV** = Bullish divergence detected
+- **▼ DIV** = Bearish divergence detected
 
----
+### Zone Fills
+Optional shading in overbought (top) and oversold (bottom) regions.
 
-### Preset 2: Day Trading (Standard)
-
-```
-RSI Length: 14
-Stochastic K: 14
-CCI: 20
-Williams %R: 14
-MFI: 14
-Sensitivity: Normal
-```
-
-**Use case:** 15m-1H charts, intraday setups
+### Consensus Meter
+Visual representation of how many components agree on direction.
 
 ---
 
-### Preset 3: Swing Trading (Slow)
+## Signal Mode Explained
 
-```
-RSI Length: 21
-Stochastic K: 21
-CCI: 30
-Williams %R: 21
-MFI: 20
-Sensitivity: Rock Solid
-```
+### Conservative Mode
+- Requires higher vote consensus for signals
+- Fewer signals, higher conviction
+- Best for: Swing trading, fewer trades
 
-**Use case:** 4H-Daily charts, multi-day holds
+### Balanced Mode (Default)
+- Standard consensus thresholds
+- Moderate signal frequency
+- Best for: Most trading styles
 
----
-
-### Preset 4: Crypto Volatile
-
-```
-RSI Length: 10
-Stochastic K: 10
-CCI: 14
-Williams %R: 10
-MFI: 10
-Sensitivity: Normal
-Weight MFI: 30% (higher for volume focus)
-```
-
-**Use case:** BTC, ETH, high-volatility assets
+### Aggressive Mode
+- Lower consensus required for signals
+- More signals, requires filtering
+- Best for: Active trading, scalping
 
 ---
 
-## Reading the Display
+## How to Use Harmonic Oscillator
 
-### The Histogram
+### Reading the Regime
+1. Check current regime (TRENDING, BIAS, or RANGING)
+2. Note vote count (X/7)
+3. Consider direction (▲ bullish, ▼ bearish, — neutral)
 
-```
-Strong Bullish:  ████████████ (Green, tall)
-Bullish:         ████████     (Green, medium)
-Neutral:         ████         (Gray)
-Bearish:         ████████     (Red, medium)
-Strong Bearish:  ████████████ (Red, tall)
-```
+### Trading with Regime
+| Regime | Approach |
+|--------|----------|
+| TRENDING | Trade breakouts, ride momentum |
+| BIAS | Trade pullbacks in bias direction |
+| RANGING | Fade extremes, mean reversion |
 
-| Color | Meaning |
-|-------|---------|
-| Bright Green | 4-5 oscillators voting bullish |
-| Light Green | 3 oscillators voting bullish |
-| Gray | Split vote (2-3 each side) |
-| Light Red | 3 oscillators voting bearish |
-| Bright Red | 4-5 oscillators voting bearish |
-
-### The Signal Line
-
-- **Above zero**: Bullish momentum bias
-- **Below zero**: Bearish momentum bias
-- **Crossing zero**: Momentum shift
-
-### Vote Count Display
-
-```
-[5/0] = All 5 bullish (very strong)
-[4/1] = 4 bullish, 1 bearish (strong)
-[3/2] = 3 bullish, 2 bearish (moderate)
-[2/3] = 2 bullish, 3 bearish (moderate bearish)
-[1/4] = 1 bullish, 4 bearish (strong bearish)
-[0/5] = All 5 bearish (very strong)
-```
+### Using the HTF Filter
+Enable HTF filter to only receive divergence signals that align with the higher timeframe trend direction. This reduces false signals during counter-trend moves.
 
 ---
 
-## Divergence Detection
+## Divergence Signals
 
-### Bullish Divergence
+Harmonic Oscillator automatically detects divergences between price and the composite oscillator:
 
-```
-Price:     ╲     Lower low
-            ╲
-Harmonic:   ╱    Higher low
-           ╱
-```
+### Bullish Divergence (▲ DIV)
+- Price makes lower low
+- Oscillator makes higher low
+- Potential reversal up
 
-**Setting:** Divergence Lookback = 5-20 bars (default: 14)
-
-### Bearish Divergence
-
-```
-Price:     ╱     Higher high
-          ╱
-Harmonic:  ╲    Lower high
-            ╲
-```
+### Bearish Divergence (▼ DIV)
+- Price makes higher high
+- Oscillator makes lower high
+- Potential reversal down
 
 ---
 
-## Combining with Pentarch
+## Integration with Other Indicators
 
-| Pentarch Signal | Harmonic Confirmation |
-|-----------------|----------------------|
-| **TD** | Harmonic at extreme low, divergence forming |
-| **IGN** | Harmonic crossing above zero, vote count improving |
-| **WRN** | Harmonic at extreme high, divergence forming |
-| **CAP** | Harmonic 5/0 bullish (exhaustion) |
-| **BDN** | Harmonic crossing below zero, vote count declining |
+### Harmonic Oscillator + Pentarch
+- Harmonic identifies momentum regime
+- Pentarch provides cycle timing
+- Use Harmonic to filter Pentarch signals (only trade IGN in TRENDING▲)
 
----
+### Harmonic Oscillator + Volume Oracle
+- Both provide regime classification
+- Harmonic = momentum-based regime
+- Volume Oracle = volume-based regime
+- Alignment = higher conviction
 
-## Timeframe Recommendations
-
-| Timeframe | RSI | Stoch | CCI | Settings Profile |
-|-----------|-----|-------|-----|------------------|
-| 1m-5m | 7 | 9 | 14 | Scalping |
-| 15m-1H | 14 | 14 | 20 | Day Trading |
-| 4H-Daily | 21 | 21 | 30 | Swing Trading |
-| Weekly+ | 14 | 14 | 20 | Position (standard works) |
+### Harmonic Oscillator + Janus Atlas
+- Harmonic shows when momentum is strong
+- Janus shows where to enter
+- Trade key levels when momentum supports direction
 
 ---
 
-## Common Issues & Solutions
+## Best Practices
 
-| Issue | Cause | Solution |
-|-------|-------|----------|
-| Too many signals | Sensitivity too high | Increase to Normal/Rock Solid |
-| Missing moves | Sensitivity too low | Decrease to Hair Trigger |
-| Choppy readings | Too short lengths | Increase oscillator lengths |
-| Lagging signals | Too long lengths | Decrease oscillator lengths |
-| False divergences | Lookback too short | Increase divergence lookback |
+1. **Trust the voting system** - 7 components > any single oscillator
+2. **Match strategy to regime** - Don't fade TRENDING markets
+3. **Use HTF filter** - Reduces counter-trend false signals
+4. **5+ votes = high conviction** - Best setups have strong consensus
+5. **Divergences need confirmation** - Don't trade divergence alone
 
 ---
 
-## Advanced: Custom Weighting Strategies
-
-### Trend Following Weight
-
-When trend trading, weight momentum oscillators higher:
-```
-RSI: 35%
-Stochastic: 25%
-CCI: 20%
-Williams %R: 10%
-MFI: 10%
-```
-
-### Mean Reversion Weight
-
-When range trading, weight range oscillators higher:
-```
-RSI: 15%
-Stochastic: 35%
-CCI: 15%
-Williams %R: 25%
-MFI: 10%
-```
-
-### Volume Confirmation Weight
-
-When volume matters (breakouts, news):
-```
-RSI: 15%
-Stochastic: 15%
-CCI: 15%
-Williams %R: 15%
-MFI: 40%
-```
-
----
-
-## Quick Settings Checklist
-
-### Before Trading Session
-
-- [ ] Correct timeframe selected
-- [ ] Oscillator lengths match trading style
-- [ ] Sensitivity appropriate for market conditions
-- [ ] Divergence detection on/off as needed
-- [ ] Vote count display enabled
-
-### Weekly Review
-
-- [ ] Are signals too frequent/rare? Adjust sensitivity
-- [ ] Are signals early/late? Adjust lengths
-- [ ] Is one oscillator dominating? Check weights
-- [ ] Are divergences accurate? Adjust lookback
-
----
-
-## Non-Repainting Guarantee
-
-- All oscillator calculations use closed bar data only
-- Vote counts lock in on bar close
-- Histogram and signal line do not recalculate
-- What you see is permanent once bar closes
-
----
-
-*Educational purposes only. Not financial advice.*
-
-© Signal Pilot Education Hub
+*For momentum trading strategies, see the Education Hub curriculum on oscillators and regime-based trading.*

@@ -1,335 +1,183 @@
-# Volume Oracle Settings Guide
+# Volume Oracle v1.0 Guide
 
-**Order Flow Confluence Engine Configuration**
-
----
-
-## What Is Volume Oracle?
-
-Volume Oracle is Signal Pilot's volume analysis and order flow confluence indicator. It synthesizes multiple volume metrics into actionable signals:
-- **Volume analysis** (above/below average)
-- **Delta (buy vs. sell pressure)**
-- **Cumulative volume delta (CVD)**
-- **Volume profile zones**
-- **Confluence scoring**
+**Regime Detection & Institutional Flow Analysis**
 
 ---
 
-## Core Components
+## What is Volume Oracle?
 
-| Component | What It Measures | Display |
-|-----------|------------------|---------|
-| **Volume Bars** | Current vs. average volume | Colored histogram |
-| **Delta** | Buy volume minus sell volume | Green/red bars |
-| **CVD Line** | Cumulative delta trend | Line overlay |
-| **POC** | Point of Control (highest volume price) | Horizontal line |
-| **VAH/VAL** | Value Area High/Low | Zone boundaries |
-| **Confluence Score** | Multiple factors combined | 0-100 score |
+Volume Oracle is Signal Pilot's **regime detection indicator** that analyzes institutional buying and selling pressure through five backend detection systems. It identifies whether smart money is accumulating, distributing, or neutral.
 
 ---
 
-## Default Settings
+## Core Function: Regime Detection
 
-### Volume Analysis
+Volume Oracle classifies the market into three states:
 
-| Setting | Default | Range | Purpose |
-|---------|---------|-------|---------|
-| Volume MA Length | 20 | 10-50 | Average volume baseline |
-| High Volume Threshold | 1.5x | 1.2-2.0x | Above average definition |
-| Low Volume Threshold | 0.7x | 0.5-0.9x | Below average definition |
-| Volume Smoothing | 3 | 1-5 | Reduce noise |
-
-### Delta Analysis
-
-| Setting | Default | Range | Purpose |
-|---------|---------|-------|---------|
-| Delta Calculation | Close-based | Close/OHLC | How delta is estimated |
-| Delta MA Length | 14 | 7-21 | Delta trend smoothing |
-| Significant Delta | 2x | 1.5-3x | Strong delta threshold |
-
-### Volume Profile
-
-| Setting | Default | Range | Purpose |
-|---------|---------|-------|---------|
-| Profile Period | Session | Session/Daily/Weekly | Profile scope |
-| Row Size | 24 | 12-48 | Price level granularity |
-| Value Area % | 70 | 68-80 | VAH/VAL calculation |
-| Show POC | On | On/Off | Point of Control line |
+| Regime | Color | Meaning |
+|--------|-------|---------|
+| **ACCUMULATION** | Green | Sustained institutional buying detected |
+| **DISTRIBUTION** | Red | Sustained institutional selling detected |
+| **NEUTRAL** | Gray | No clear directional flow |
 
 ---
 
-## Volume Bar Color Coding
+## Five Detection Engines
 
-### Standard Mode
+Volume Oracle uses five internal systems to determine regime:
 
-| Color | Meaning | Volume Level |
-|-------|---------|--------------|
-| 🟢 **Bright Green** | High volume + price up | >1.5x average, bullish |
-| 🟢 Light Green | Normal volume + price up | 0.7-1.5x average, bullish |
-| 🔴 **Bright Red** | High volume + price down | >1.5x average, bearish |
-| 🔴 Light Red | Normal volume + price down | 0.7-1.5x average, bearish |
-| ⚪ Gray | Low volume | <0.7x average |
+### 1. Market Structure Detection
+Swing analysis identifying higher highs/lows vs. lower highs/lows to confirm directional bias.
 
-### Delta-Enhanced Mode
+### 2. Volume Footprint Detection
+Classifies each bar into one of four types:
+- **Momentum** - Strong directional volume
+- **Absorption** - Volume absorbed at levels
+- **Spike** - Unusual volume activity
+- **Normal** - Standard volume
 
-| Color | Meaning |
-|-------|---------|
-| 🟢 Green bar + green outline | Price up, positive delta (confirmed) |
-| 🟢 Green bar + red outline | Price up, negative delta (divergence!) |
-| 🔴 Red bar + red outline | Price down, negative delta (confirmed) |
-| 🔴 Red bar + green outline | Price down, positive delta (divergence!) |
+### 3. Regime Stability Index
+Tracks how often regime flips occur. Stable regimes = higher conviction.
 
----
+### 4. Confluence Scoring
+Multi-factor alignment scoring up to 7 factors including trend, volume, structure.
 
-## Confluence Score Breakdown
-
-### Score Components
-
-```
-Confluence Score = Sum of:
-├── Volume component (0-25 pts)
-├── Delta component (0-25 pts)
-├── CVD component (0-25 pts)
-└── Profile component (0-25 pts)
-
-Total: 0-100 points
-```
-
-### Score Interpretation
-
-| Score | Interpretation | Action Context |
-|-------|----------------|----------------|
-| 80-100 | Very strong confluence | High conviction signal |
-| 60-79 | Strong confluence | Standard signal |
-| 40-59 | Moderate confluence | Proceed with caution |
-| 20-39 | Weak confluence | Wait for better setup |
-| 0-19 | No confluence | Avoid trading |
+### 5. Signal Density Tracking
+Monitors clustering of signals in choppy conditions to filter noise.
 
 ---
 
-## Preset Configurations
+## Adjustable Settings (6 Groups)
 
-### Preset 1: Scalping
+### Detection Settings
+| Setting | Options | Description |
+|---------|---------|-------------|
+| Volume Spike Threshold | Default 2.0 | Multiplier for spike detection |
+| Signal Cooldown | Default 45 bars | Minimum bars between signals |
+| Regime Sensitivity | Conservative/Balanced/Aggressive | Detection strictness |
+| Auto-Volatility Adaptation | On/Off | Adjusts to market conditions |
 
-```
-Volume MA Length: 10
-High Volume Threshold: 1.3x
-Delta Calculation: Close-based
-Delta MA Length: 7
-Profile Period: Session
-Row Size: 48 (fine granularity)
-```
+### Risk Settings
+| Setting | Default | Description |
+|---------|---------|-------------|
+| Account Size | $10,000 | For position sizing calculation |
+| Risk Per Trade | 1% | Risk percentage |
+| ATR Length | 14 | For stop/target calculation |
+| Stop Multiple | 1.5× ATR | Stop loss distance |
+| Target Multiples | 2.0-3.5× ATR | Take profit distances |
+| Trailing Stop | Configurable | Trailing stop settings |
 
-**Best for:** 1m-5m charts, quick volume spikes
+### Multi-Timeframe Settings
+| Setting | Default | Description |
+|---------|---------|-------------|
+| Enable HTF Filter | On/Off | Filter by higher timeframe |
+| Primary HTF | 1H | First higher timeframe |
+| Secondary HTF | 4H | Second higher timeframe |
+| Strict Mode | On/Off | Require HTF alignment |
+| Min HTF Strength | 40% | Minimum HTF confirmation |
 
----
+### Strategy Settings
+| Setting | Options | Description |
+|---------|---------|-------------|
+| Strategy Mode | Trend Following/Mean Reversion/Hybrid | Trading approach |
+| Mean Reversion Threshold | Default 2.5 | For MR signals |
 
-### Preset 2: Day Trading
+### Display Settings
+Toggles for:
+- Regime table (show/hide)
+- Background tint
+- Exit warnings
+- Quality stars
+- Tooltips
+- HTF panel
 
-```
-Volume MA Length: 20
-High Volume Threshold: 1.5x
-Delta Calculation: Close-based
-Delta MA Length: 14
-Profile Period: Session
-Row Size: 24
-```
-
-**Best for:** 15m-1H charts, intraday setups
-
----
-
-### Preset 3: Swing Trading
-
-```
-Volume MA Length: 30
-High Volume Threshold: 2.0x
-Delta Calculation: OHLC-based
-Delta MA Length: 21
-Profile Period: Weekly
-Row Size: 24
-```
-
-**Best for:** 4H-Daily charts, multi-day holds
-
----
-
-## CVD (Cumulative Volume Delta) Settings
-
-### CVD Display Options
-
-| Setting | Options | Recommendation |
-|---------|---------|----------------|
-| Show CVD Line | On/Off | On |
-| CVD Color Mode | Single/Gradient | Gradient |
-| CVD Smoothing | 1-5 | 3 |
-| Show CVD Divergence | On/Off | On |
-
-### Reading CVD
-
-| CVD Pattern | Price Pattern | Interpretation |
-|-------------|---------------|----------------|
-| CVD rising | Price rising | Confirmed uptrend |
-| CVD rising | Price falling | Bullish divergence (accumulation) |
-| CVD falling | Price falling | Confirmed downtrend |
-| CVD falling | Price rising | Bearish divergence (distribution) |
+### Table Style Settings
+| Setting | Options |
+|---------|---------|
+| Layout | Vertical or Horizontal |
+| Position | 9 locations (corners/edges) |
+| Text Size | Multiple sizes |
+| Transparency | 0-100% |
+| Border/Frame Width | Customizable |
 
 ---
 
-## Volume Profile Settings
+## Visual Components
 
-### Profile Period Options
+### On-Chart Elements
+- **Colored volume bars** - Green/red based on regime
+- **Signal labels** - Directional arrows (↑ BULL, ↓ BEAR)
+- **Quality star ratings** - ⭐ to ⭐⭐⭐
+- **Regime background tint** - Subtle green/red shading
+- **Exit warning labels** - ⚠️ when conditions change
+- **Position management labels** - T1, BE, T2 targets
 
-| Period | Shows | Best For |
-|--------|-------|----------|
-| **Session** | Current day's profile | Day trading |
-| **Daily** | Yesterday + today | Swing context |
-| **Weekly** | Current week | Swing trading |
-| **Custom** | User-defined bars | Special analysis |
+### Regime Table Dashboard
+Displays 8 key fields in real-time:
 
-### Key Profile Levels
+| Field | Shows |
+|-------|-------|
+| **Regime** | Current state (Accumulation/Distribution/Neutral) |
+| **Strength** | 0-100% conviction level |
+| **Duration** | Hours since regime started |
+| **Status** | STRONG ✓, FADING ▼, WEAK ✗, CRIT ▼ |
+| **Health** | Warning count (🟢🟡🟠🔴) |
+| **Structure** | ✓ ALIGNED, ✗ CONFLICT, — UNCLEAR |
+| **Market Character** | TRENDING ▲, NORMAL —, CHOPPY ▼ |
+| **Flip Counter** | STABLE or countdown to potential regime change |
 
-| Level | What It Is | How to Use |
-|-------|-----------|------------|
-| **POC** | Price with most volume | Strong S/R, magnet for price |
-| **VAH** | Upper 70% volume boundary | Resistance zone |
-| **VAL** | Lower 70% volume boundary | Support zone |
-| **HVN** | High Volume Node | Strong S/R |
-| **LVN** | Low Volume Node | Price moves fast through |
+---
+
+## Signal Quality Scoring
+
+Signals receive a 0-100% quality score based on:
+- Volume Z-score
+- Flow consistency
+- Trend alignment
+- Regime strength
+
+Displayed as star ratings:
+| Rating | Score Range | Interpretation |
+|--------|-------------|----------------|
+| ⭐⭐⭐ | 85-100% | High conviction |
+| ⭐⭐ | 70-84% | Good quality |
+| ⭐ | Below 70% | Lower conviction |
+
+---
+
+## How to Use Volume Oracle
+
+### Reading the Regime
+1. Check current regime (Green = accumulation, Red = distribution)
+2. Verify strength (higher % = more conviction)
+3. Confirm structure alignment (✓ means price confirms regime)
+4. Note duration (longer regimes = more established)
+
+### Signal Interpretation
+- **BULL ↑ with ⭐⭐⭐** = High-conviction long setup
+- **BEAR ↓ with ⭐⭐⭐** = High-conviction short setup
+- **Exit warning ⚠️** = Consider closing or reducing position
+
+### Multi-Timeframe Approach
+Enable HTF filter to ensure your signals align with higher timeframe regime. Strict mode requires both HTFs to confirm.
 
 ---
 
 ## Integration with Other Indicators
 
 ### Volume Oracle + Pentarch
-
-| Pentarch Signal | Volume Oracle Confirmation |
-|-----------------|---------------------------|
-| **TD** | High volume, positive delta, at/below VAL |
-| **IGN** | Volume expansion, CVD rising |
-| **WRN** | Declining delta despite price rise |
-| **CAP** | Climax volume (2x+), exhaustion |
-| **BDN** | High volume breakdown, negative delta |
+- Volume Oracle provides regime context
+- Pentarch signals become more reliable when aligned with Volume Oracle regime
+- Example: IGN signal during Accumulation regime = stronger long setup
 
 ### Volume Oracle + Janus Atlas
+- Volume Oracle shows directional bias
+- Janus Atlas provides entry levels
+- Trade key levels in direction of Volume Oracle regime
 
-| Janus Signal | Volume Oracle Confirmation |
-|--------------|---------------------------|
-| Sweep at lows | Positive delta on sweep bar |
-| Sweep at highs | Negative delta on sweep bar |
-| Reclaim | Volume confirmation of reversal |
-
----
-
-## Session-Based Settings
-
-### Pre-Market / After-Hours
-
-```
-Volume MA Length: 10 (shorter, less liquidity)
-High Volume Threshold: 2.0x (only significant spikes)
-Show Profile: Off (incomplete data)
-```
-
-### Market Open (First 30 min)
-
-```
-Volume MA Length: 5 (recent context only)
-High Volume Threshold: 1.2x (everything is "high")
-Profile Period: Previous Session
-```
-
-### Regular Hours
-
-```
-Standard settings
-Profile Period: Session (building)
-```
+### The Trinity
+Pentarch + Janus Atlas + Volume Oracle = Maximum confluence
 
 ---
 
-## Asset-Specific Adjustments
-
-### High-Volume Assets (SPY, BTC, AAPL)
-
-```
-Volume MA Length: 20 (standard)
-High Volume Threshold: 1.5x (standard)
-Row Size: 24 (standard)
-```
-
-### Low-Volume Assets (Small caps, exotic pairs)
-
-```
-Volume MA Length: 30 (longer for stability)
-High Volume Threshold: 2.0x (filter noise)
-Row Size: 12 (fewer levels)
-Volume Smoothing: 5 (more smoothing)
-```
-
-### Crypto (24/7 Markets)
-
-```
-Volume MA Length: 20
-Profile Period: Custom (8-hour blocks)
-Consider session: Asian/London/NY
-```
-
----
-
-## Alerts Configuration
-
-### Available Alert Types
-
-| Alert | Trigger | Use For |
-|-------|---------|---------|
-| High Volume | Volume > threshold | Breakout/breakdown watch |
-| Delta Divergence | Delta vs price mismatch | Reversal warning |
-| CVD Cross Zero | CVD crosses zero line | Momentum shift |
-| At POC | Price reaches POC | Key level test |
-| Outside Value Area | Price exits VA | Breakout/acceptance |
-
----
-
-## Troubleshooting
-
-| Issue | Cause | Solution |
-|-------|-------|----------|
-| Volume always "high" | Threshold too low | Increase to 1.8-2.0x |
-| Volume never "high" | Threshold too high | Decrease to 1.2-1.3x |
-| CVD too choppy | Not enough smoothing | Increase CVD smoothing |
-| Profile too cluttered | Too many rows | Decrease row size to 12 |
-| Delta not meaningful | Low volume asset | Use delta only on high vol bars |
-| Confluence always low | Strict settings | Relax thresholds |
-
----
-
-## Optimization Workflow
-
-### Daily
-
-- [ ] Check if volume thresholds match recent volatility
-- [ ] Verify POC aligns with obvious price reactions
-- [ ] Note any CVD divergences forming
-
-### Weekly
-
-- [ ] Review confluence scores vs. actual outcomes
-- [ ] Adjust thresholds if too many/few signals
-- [ ] Check profile period matches trading style
-
----
-
-## Non-Repainting Guarantee
-
-- Volume bars only render on close
-- Delta calculation uses closed bar data
-- CVD line updates only on bar close
-- Profile levels from historical data (don't repaint)
-- Confluence score locks in on bar close
-
----
-
-*Educational purposes only. Not financial advice.*
-
-© Signal Pilot Education Hub
+*For regime-based trading strategies, see the Education Hub curriculum on volume analysis and institutional flow.*
