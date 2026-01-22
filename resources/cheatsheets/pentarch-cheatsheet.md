@@ -130,14 +130,15 @@ BEAR MARKET          BULL MARKET           BEAR MARKET
 
 ---
 
-## Quick Settings Reference
+## Adjustable Settings
 
-| Setting | Options | Default |
-|---------|---------|---------|
-| Regime Sensitivity | Hair Trigger / Normal / Rock Solid | Normal |
-| Show NanoFlow | On/Off | On |
-| Show Pilot Line | On/Off | On |
-| Counter-Regime Mode | On/Off | Off |
+Pentarch has limited user-adjustable settings by design—detection parameters are internally optimized.
+
+| Setting | Options | Description |
+|---------|---------|-------------|
+| Alert Toggles | On/Off for each signal | Enable alerts for TD, IGN, WRN, CAP, BDN |
+| Color Palette | 5 presets | Choose color scheme or customize |
+| Label Size | Small/Medium/Large | Adjust signal label size |
 
 ---
 

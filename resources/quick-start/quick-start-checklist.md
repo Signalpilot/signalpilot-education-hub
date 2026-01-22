@@ -75,12 +75,13 @@
 
 ### Pentarch Settings Check
 
-| Setting | Recommended | Your Setting |
-|---------|-------------|--------------|
-| Regime Sensitivity | Normal | __________ |
-| Show Pilot Line | On | __________ |
-| Show NanoFlow | On | __________ |
-| Bar Coloring | On | __________ |
+Pentarch has limited user-adjustable settings by design.
+
+| Setting | Options | Your Setting |
+|---------|---------|--------------|
+| Alert Toggles | On/Off for each signal | __________ |
+| Color Palette | 5 presets available | __________ |
+| Label Size | Small/Medium/Large | __________ |
 
 ### Confirm Signals Appear
 

@@ -6,10 +6,11 @@
 
 ## What Is Plutus Flow?
 
-Plutus Flow is Signal Pilot's advanced volume analysis indicator combining:
-- **Statistical OBV** — On-Balance Volume with statistical significance filtering
-- **Delta Analysis** — Buy volume vs. sell volume breakdown
-- **Absorption Detection** — Identifying when large orders absorb selling/buying
+Plutus Flow is Signal Pilot's **enhanced On-Balance Volume (OBV)** indicator with four analytical layers:
+- **OBV Line** — Cumulative volume line (rising = accumulation, falling = distribution)
+- **Flow Ribbon & Basis** — Colored bands comparing OBV to dynamic baseline
+- **Statistical Bands** — Upper/lower bands at ±2 standard deviations
+- **Divergence Detection** — Automatic identification of price-OBV divergences
 
 ---
 
@@ -17,10 +18,10 @@ Plutus Flow is Signal Pilot's advanced volume analysis indicator combining:
 
 | Component | What It Shows | Visual |
 |-----------|---------------|--------|
-| **OBV Line** | Cumulative volume trend | Main line (green/red) |
-| **Statistical Bands** | Normal OBV range | Upper/lower bands |
-| **Delta Histogram** | Buy vs. sell volume | Green/red bars |
-| **Absorption Dots** | Large order detection | Colored dots on chart |
+| **OBV Line** | Cumulative volume trend | Main line |
+| **Flow Ribbon** | OBV vs. basis comparison | Green/red background shading |
+| **Statistical Bands** | ±2σ OBV range | Upper/lower boundary lines |
+| **Divergence Labels** | Price-OBV divergences | Bull Div, Bear Div, Bull Hid, Bear Hid |
 
 ---
 
@@ -60,52 +61,44 @@ Plutus Flow is Signal Pilot's advanced volume analysis indicator combining:
 
 ---
 
-## Delta Analysis
+## Extreme Zone Analysis
 
-### Reading the Delta Histogram
+### Statistical Band Markers
 
-```
-        ████  Strong buying pressure
-        ██    Moderate buying
-        █     Light buying
-       ─┼─    Neutral
-        █     Light selling
-        ██    Moderate selling
-        ████  Strong selling pressure
-```
+| Marker | Meaning | Implication |
+|--------|---------|-------------|
+| **White dot** | OBV entering extreme zone (±2σ) | Stretched conditions |
+| **Yellow dot** | OBV exiting extreme zone | Potential reversal area |
 
-### Delta Signals
+### Zone Interpretation
 
-| Delta Pattern | Meaning |
-|---------------|---------|
-| **Positive delta + green candle** | Buyers in control, trend confirmed |
-| **Negative delta + red candle** | Sellers in control, trend confirmed |
-| **Positive delta + red candle** | Absorption — buyers absorbing selling |
-| **Negative delta + green candle** | Distribution — selling into strength |
+| OBV Position | Condition | Watch For |
+|--------------|-----------|-----------|
+| Above upper band | Unusually strong buying | Potential exhaustion |
+| Below lower band | Unusually strong selling | Potential exhaustion |
+| At upper band | Buying stretched | Watch for reversal signals |
+| At lower band | Selling stretched | Watch for reversal signals |
 
 ---
 
-## Absorption Detection
+## Flow Ribbon Interpretation
 
-### What Is Absorption?
+### Reading the Ribbon
 
-When large institutional orders "absorb" opposing pressure without letting price move significantly.
+The flow ribbon shows OBV position relative to its dynamic basis:
 
-### Absorption Signals
+| Ribbon Color | Meaning | Implication |
+|--------------|---------|-------------|
+| **Green ribbon expanding** | OBV above basis, growing | Strong accumulation underway |
+| **Red ribbon expanding** | OBV below basis, growing | Strong distribution underway |
+| **Ribbon flipping color** | OBV crossing basis | Flow direction changing |
 
-| Signal | What Happened | Implication |
-|--------|---------------|-------------|
-| **Bullish Absorption** 🟢 | Large buying absorbed selling pressure | Price likely to rise |
-| **Bearish Absorption** 🔴 | Large selling absorbed buying pressure | Price likely to fall |
+### Cross Signals
 
-### Recognizing Absorption
-
-| Characteristic | Bullish Absorption | Bearish Absorption |
-|----------------|-------------------|-------------------|
-| Candle | Red body or doji | Green body or doji |
-| Delta | Strongly positive | Strongly negative |
-| Volume | Above average | Above average |
-| Result | Price doesn't fall | Price doesn't rise |
+| Signal | What It Shows |
+|--------|---------------|
+| **Green dot** | OBV crossing above basis (bullish) |
+| **Red dot** | OBV crossing below basis (bearish) |
 
 ---
 
@@ -133,23 +126,21 @@ OBV:      ╲         Lower high
 
 ---
 
-## Volume Delta Patterns
+## OBV Trend Patterns
 
-### Healthy Trend (Long)
-| Bar | Delta | Volume | Interpretation |
-|-----|-------|--------|----------------|
-| 1 | +++ | High | Strong initiation |
-| 2 | ++ | Medium | Continuation |
-| 3 | + | Low | Pullback (healthy) |
-| 4 | +++ | High | New leg higher |
+### Healthy Uptrend
+| OBV Behavior | Price Behavior | Interpretation |
+|--------------|----------------|----------------|
+| Rising steadily | Rising | Confirmed accumulation |
+| Rising on dips | Shallow pullbacks | Buyers absorbing supply |
+| Green ribbon expanding | New highs | Strong bullish flow |
 
-### Exhausting Trend (Caution)
-| Bar | Delta | Volume | Interpretation |
-|-----|-------|--------|----------------|
-| 1 | +++ | High | Strong move |
-| 2 | ++ | High | Still strong |
-| 3 | + | Very High | Climax volume |
-| 4 | — | High | No follow-through |
+### Weakening Trend (Caution)
+| OBV Behavior | Price Behavior | Interpretation |
+|--------------|----------------|----------------|
+| Flat or falling | Still rising | Bearish divergence warning |
+| Red ribbon appearing | Stalling | Distribution beginning |
+| Exits upper band | Near highs | Exhaustion possible |
 
 ---
 
@@ -169,21 +160,21 @@ OBV:      ╲         Lower high
 
 ### Before Entry
 - [ ] What's OBV trend direction? (Rising/Falling)
+- [ ] What color is the flow ribbon? (Green/Red)
 - [ ] Any divergence vs. price?
-- [ ] Delta supporting the trade direction?
-- [ ] Absorption signal present?
 - [ ] OBV inside or outside statistical bands?
+- [ ] Any cross signals (green/red dots) recently?
 
 ### During Trade
-- [ ] Is delta supporting continued move?
+- [ ] Is OBV continuing in trade direction?
 - [ ] Watch for divergence developing
-- [ ] Monitor for absorption against your position
+- [ ] Monitor flow ribbon color
 
 ### Exit Signals
 - [ ] OBV divergence against position
-- [ ] Delta consistently opposing your trade
-- [ ] Absorption signal against your position
-- [ ] OBV hits extreme band (exhaustion)
+- [ ] Flow ribbon flips color
+- [ ] OBV hits extreme band (yellow dot exit)
+- [ ] Divergence label appears against position
 
 ---
 
@@ -198,18 +189,21 @@ OBV:      ╲         Lower high
 
 ---
 
-## Settings Quick Reference
+## Adjustable Settings
 
-| Setting | Default | Options |
-|---------|---------|---------|
-| OBV Length | 20 | 10-50 |
-| Delta Display | Histogram | Histogram / Line |
-| Absorption Sensitivity | Normal | Low / Normal / High |
-| Statistical Bands | On | On / Off |
+Plutus Flow has specialized settings for signal quality and filtering:
+
+| Setting Group | Key Options |
+|---------------|-------------|
+| **Calculation** | HTF Timeframe selection |
+| **FlipGuard System** | FlipGuard Bars, Strict Cross Gate, Robust Extremes, Z-gate settings |
+| **Assists** | HTF Alignment Timeframe |
+| **Divergence** | Min Price Swing (xATR threshold) |
+| **Visual** | Show Divergence Labels, Show Extreme Zone Exits, Colors |
 
 ---
 
-## Key Formulas
+## Key Concepts
 
 **OBV Calculation:**
 ```
@@ -221,10 +215,11 @@ If Close = Previous Close:
     OBV = Previous OBV
 ```
 
-**Delta:**
+**Statistical Bands:**
 ```
-Delta = Buy Volume - Sell Volume
-(Estimated from price action within bar)
+Upper Band = OBV Mean + 2σ
+Lower Band = OBV Mean - 2σ
+(Where σ = standard deviation of OBV)
 ```
 
 ---
@@ -233,10 +228,10 @@ Delta = Buy Volume - Sell Volume
 
 | Strength | What You See |
 |----------|--------------|
-| **Strongest** | Divergence + Absorption + Band extreme |
-| **Strong** | Divergence + Absorption |
+| **Strongest** | Divergence + Band extreme + Flow ribbon flip |
+| **Strong** | Divergence + Cross signal |
 | **Moderate** | Divergence alone |
-| **Weak** | Delta shift without divergence |
+| **Weak** | Flow ribbon change without divergence |
 
 ---
 
