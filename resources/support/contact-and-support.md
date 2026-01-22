@@ -10,7 +10,7 @@
 
 | Resource | Best For | Link |
 |----------|----------|------|
-| **Education Hub** | Learning indicators and trading | signalpilot.io/education |
+| **Education Hub** | Learning indicators and trading | education.signalpilot.io |
 | **Quick Start Guide** | Getting started | /resources/quick-start/ |
 | **Pentarch Reference** | Complete indicator documentation | /resources/pentarch-complete-reference.md |
 | **Cheatsheets** | Quick reference guides | /resources/cheatsheets/ |

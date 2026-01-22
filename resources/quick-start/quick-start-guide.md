@@ -201,7 +201,7 @@ Green crosses = healthy bull | Red crosses = healthy bear
 
 | Resource | Location |
 |----------|----------|
-| Full Education Hub | signalpilot.io/education |
+| Full Education Hub | education.signalpilot.io |
 | Pentarch Reference | /resources/pentarch-complete-reference.md |
 | Video Tutorials | signalpilot.io/tutorials |
 | Discord Community | signalpilot.io/discord |
