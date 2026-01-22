@@ -281,6 +281,7 @@ RESOURCES = {
         "fibonacci-cheatsheet.md",
     ],
     "resources/indicator-guides": [
+        "pentarch-settings-guide.md",
         "harmonic-oscillator-settings-guide.md",
         "janus-atlas-timeframe-guide.md",
         "volume-oracle-settings-guide.md",
