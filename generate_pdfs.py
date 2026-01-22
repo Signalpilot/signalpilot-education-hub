@@ -39,9 +39,10 @@ body {
     align-items: center;
 }
 .header-brand .logo {
-    font-size: 14pt;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+    font-family: 'Gugi', system-ui, sans-serif;
+    font-size: 16pt;
+    font-weight: 400;
+    letter-spacing: 2px;
 }
 .header-brand .tagline {
     font-size: 9pt;
@@ -307,6 +308,9 @@ RESOURCES = {
         "revenge-trading-workbook.md",
         "indicator-context-matrix.md",
         "chart-layout-templates.md",
+        "trade-journal-template.md",
+        "position-sizing-calculator-template.md",
+        "backtesting-validation-template.md",
     ],
     "resources/support": [
         "performance-optimization-guide.md",
@@ -331,6 +335,9 @@ def convert_md_to_pdf(md_path, pdf_path):
 <head>
     <meta charset="utf-8">
     <title>Signal Pilot Resource</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="header-brand">
