@@ -1,328 +1,229 @@
-# Janus Atlas Timeframe Guide
+# Janus Atlas v1.0 Guide
 
-**Multi-Timeframe Liquidity Analysis & Configuration**
-
----
-
-## What Is Janus Atlas?
-
-Janus Atlas is Signal Pilot's liquidity detection system. It identifies:
-- **Liquidity sweeps** (stop hunts)
-- **Liquidity pools** (where stops cluster)
-- **Sweep + reclaim patterns** (high-probability reversal setups)
-
-Named after the two-faced Roman god Janus, it looks both ways—at liquidity taken AND liquidity remaining.
+**Multi-Timeframe Auto-Levels with 60+ Level Types**
 
 ---
 
-## Core Functionality
+## What is Janus Atlas?
 
-| Feature | What It Does |
-|---------|--------------|
-| **Sweep Detection** | Identifies when price breaks a level briefly and reverses |
-| **Pool Marking** | Shows where liquidity likely clusters |
-| **Reclaim Signals** | Fires when price sweeps AND reclaims a level |
-| **Multi-TF Pools** | Displays liquidity from higher timeframes |
+Janus Atlas automatically plots **60+ level types** across nine categories—from classic support/resistance to VWAP, volume profile, and Fibonacci levels. It eliminates manual level drawing while providing institutional-grade price mapping.
 
 ---
 
-## Timeframe Settings Overview
+## Level Categories (9 Groups)
 
-### The Two Timeframe Modes
+### 1. Classic Timeframe Levels
+Daily, Weekly, Monthly, Quarterly, and Yearly:
+- High / Low
+- Open / Close
+- Midpoints
 
-| Mode | Description | Use Case |
-|------|-------------|----------|
-| **Single TF** | Shows liquidity for current chart only | Simple, clean display |
-| **Multi-TF** | Shows liquidity from 2-3 timeframes | Full context, confluence |
+### 2. VWAP Family
+Volume-Weighted Average Price levels:
+- Daily through Yearly VWAP
+- Previous period VWAPs
+- ±1σ and ±2σ deviation bands
 
----
+### 3. Volume Profile
+- **POC** (Point of Control) - Highest volume price
+- **VAH** (Value Area High) - Upper value boundary
+- **VAL** (Value Area Low) - Lower value boundary
+- Available across Daily, Weekly, Monthly timeframes
+- **Naked POC (nPOC)** - Untested POC levels
 
-## Single Timeframe Configuration
+### 4. Session Levels
+Asian, European, and North American sessions:
+- Session High / Low
+- Session Open / Close
 
-### Settings
+### 5. Market Structure
+- **HH** - Higher High
+- **HL** - Higher Low
+- **LH** - Lower High
+- **LL** - Lower Low
+- **BOS** - Break of Structure
+- **CHoCH** - Change of Character
 
-| Setting | Default | Options |
-|---------|---------|---------|
-| Lookback Period | 20 | 10-50 bars |
-| Sweep Sensitivity | Normal | Low/Normal/High |
-| Show Pool Zones | On | On/Off |
-| Reclaim Candles | 3 | 1-5 bars |
+### 6. Opening Range
+Configurable session start duration:
+- **orH** - Opening Range High
+- **orL** - Opening Range Low
+- **orMid** - Opening Range Midpoint
+- Duration options: 5, 15, 30, or 60 minutes
 
-### Lookback Period Explained
+### 7. Gap Levels
+- Daily gaps with auto-fill detection
+- Weekend gaps
+- CME gaps (for futures)
 
-```
-Lookback = How many bars back to identify swing highs/lows
+### 8. Killzones
+Session timing with background shading:
+- Asian session
+- London Open
+- New York Open
+- London Close
+- Custom killzone option
 
-Short (10-15):  More levels, more signals, more noise
-Medium (20-30): Balanced, default recommendation
-Long (40-50):   Fewer levels, major swings only
-```
-
-### Sweep Sensitivity
-
-| Level | Trigger | Best For |
-|-------|---------|----------|
-| **Low** | Must break level by 0.5%+ | Major sweeps only |
-| **Normal** | Must break level by 0.2% | Standard trading |
-| **High** | Any break counts | Scalping, every sweep |
-
----
-
-## Multi-Timeframe Configuration
-
-### Recommended TF Combinations
-
-| Your Trading TF | HTF 1 | HTF 2 | HTF 3 |
-|-----------------|-------|-------|-------|
-| 1m | 5m | 15m | — |
-| 5m | 15m | 1H | — |
-| 15m | 1H | 4H | — |
-| 1H | 4H | Daily | — |
-| 4H | Daily | Weekly | — |
-| Daily | Weekly | Monthly | — |
-
-### Multi-TF Display Settings
-
-| Setting | Options | Recommendation |
-|---------|---------|----------------|
-| HTF Pool Color | Customizable | Distinct from current TF |
-| HTF Pool Style | Solid/Dashed | Dashed (differentiate) |
-| Show HTF Labels | On/Off | On (identify source TF) |
-| HTF Pool Opacity | 10-100% | 50% (visible but not dominant) |
+### 9. Fibonacci Levels
+- 8 Fib levels (6 retracements + 2 extensions)
+- 20 anchor options for calculation
+- Two independent Fib sets available
 
 ---
 
-## Timeframe-Specific Strategies
+## Additional Features
 
-### Scalping (1m-5m Charts)
-
-```
-Settings:
-- Lookback: 10-15
-- Sensitivity: High
-- Show HTF Pools: 15m, 1H
-- Reclaim Candles: 1-2
-
-Focus: Quick sweeps at HTF levels, fast reclaims
-```
-
-**Key insight:** HTF liquidity pools on 1m chart = high-conviction levels
+- **Fair Value Gaps (FVG)** - Bullish/bearish imbalance detection
+- **Confluence Zones** - Where multiple levels cluster
+- **Distance Table** - Real-time distance to nearest levels
+- **Custom Sessions** - Define your own session times
 
 ---
 
-### Day Trading (15m-1H Charts)
+## Adjustable Settings (19 Groups)
 
-```
-Settings:
-- Lookback: 20
-- Sensitivity: Normal
-- Show HTF Pools: 4H, Daily
-- Reclaim Candles: 3
+### Primary Controls
+| Setting | Description |
+|---------|-------------|
+| Master Toggles | Enable/disable entire feature groups |
+| Colors | Individual color for each level type |
+| Line Styles | Solid, Dashed, or Dotted |
+| Label Style | Box (default) or Text Only |
+| Label Size | Multiple size options |
+| Line Dim % | 0-50% (dims lines relative to labels) |
+| Extend Lines Right | On/Off toggle |
 
-Focus: Session high/low sweeps, Daily level sweeps
-```
+### Level Toggles (Groups 3-7)
+Each timeframe (Daily, Weekly, Monthly, Quarterly, Yearly) has individual toggles for:
+- High, Low, Open, Close, Midpoint
 
-**Key insight:** Look for sweeps at yesterday's high/low, session extremes
+### Opening Range Settings
+- Session selection: Regular/ETH/Custom
+- Duration: 5, 15, 30, or 60 minutes
+- Individual level toggles (orH, orL, orMid)
 
----
+### Killzone Settings
+- 5 predefined session windows
+- Custom killzone option
+- Background shading toggle
 
-### Swing Trading (4H-Daily Charts)
+### VWAP Settings
+- Individual toggles for Daily/Weekly/Monthly/Quarterly/Yearly VWAP
+- ±1σ and ±2σ deviation bands (toggleable)
+- Previous period VWAP options
+- Separate band colors from main line
 
-```
-Settings:
-- Lookback: 30
-- Sensitivity: Normal
-- Show HTF Pools: Weekly, Monthly
-- Reclaim Candles: 3-5
+### Volume Profile Settings
+- POC/VAH/VAL toggles per timeframe
+- Naked POC count: 1-10 daily, 1-5 weekly
+- Color customization
 
-Focus: Major swing point sweeps, weekly level sweeps
-```
+### Fibonacci Settings
+- Two independent Fib sets
+- 20 anchor options for calculation
+- Individual level toggles:
+  - Retracements: 0.236, 0.382, 0.5, 0.618, 0.786, 0.886
+  - Extensions: 1.272, 1.618
 
-**Key insight:** Weekly liquidity pools = major reversal zones
+### Fair Value Gap Settings
+- Bullish/Bearish detection toggle
+- Max count display: 1-50
+- Show: All or Unmitigated only
+- Mitigation mode: Wick or Close
+- Custom colors
 
----
+### Confluence Zone Settings
+- Minimum levels for confluence: 3+
+- Proximity percentage: default 0.5%
+- Zone color customization
+- Label toggle
 
-### Position Trading (Weekly+ Charts)
-
-```
-Settings:
-- Lookback: 40-50
-- Sensitivity: Low
-- Show HTF Pools: Monthly only
-- Reclaim Candles: 5
-
-Focus: Major structural sweeps only
-```
-
----
-
-## Understanding Sweep Types
-
-### Type 1: Simple Sweep
-
-```
-    ────────── Level
-         │
-         ▼ Sweep below
-         │
-    ─────┴────
-```
-
-Price breaks level briefly, returns. Basic pattern.
-
-### Type 2: Sweep + Reclaim
-
-```
-    ────────── Level
-         │
-         ▼ Sweep below
-         │
-    ─────┴────
-         │
-         ▲ Reclaim above level
-    ████████████
-```
-
-Price breaks level, returns, AND closes back above. **Strong signal.**
-
-### Type 3: Double Sweep
-
-```
-    ────────── Upper Level
-         │
-    ─────┬──── Sweep above
-         │
-         ▼
-    ─────┴──── Sweep below
-         │
-    ────────── Lower Level
-```
-
-Both sides taken in quick succession. **Very strong reversal signal.**
+### Distance Table Settings
+- Layout: Vertical, Horizontal, or Compact
+- Position: 9 options (corners and edges)
+- Size: Tiny, Small, or Normal
+- Sorting: By Distance, Name, or Type
+- Max rows: 5 to All
 
 ---
 
-## Multi-TF Confluence Scoring
+## Alert System
 
-| Confluence Level | What You See | Signal Strength |
-|------------------|--------------|-----------------|
-| **Maximum** | Sweep at pool visible on 3 TFs | Highest conviction |
-| **Strong** | Sweep at pool visible on 2 TFs | High conviction |
-| **Standard** | Sweep at current TF pool only | Normal conviction |
-| **Weak** | Sweep without pool marking | Lower conviction |
+Janus Atlas offers **50 selectable alerts**:
 
----
+### Individual Alerts (36)
+Specific high-interest levels like:
+- Previous Day High/Low
+- Weekly Open/High/Low
+- VWAP touches
+- POC approaches
+- And more
 
-## Session-Based Settings
-
-### London Session (02:00-10:00 EST)
-
-```
-Focus: Sweeps of Asian session high/low
-HTF Pools: Show Daily, 4H
-Sensitivity: Normal to High
-```
-
-**Common pattern:** Sweep Asian high → reverse for London
-
----
-
-### New York Session (08:00-16:00 EST)
-
-```
-Focus: Sweeps of London high/low, OR previous day
-HTF Pools: Show Daily, Weekly
-Sensitivity: Normal
-```
-
-**Common pattern:** Sweep London high → continuation OR reversal
+### Grouped Alerts (14)
+- Previous Day levels
+- Daily levels
+- Weekly levels
+- Monday levels
+- Opening Range
+- VWAP (all timeframes)
+- Volume Profile (Daily/Weekly)
+- Gap levels
+- CME Gaps
+- Market Structure
+- Fair Value Gaps
+- Naked POC
+- Confluence Zones
+- Fibonacci levels
 
 ---
 
-### Asian Session (20:00-02:00 EST)
+## CME Gap Detection (Futures)
 
-```
-Focus: Sweeps within range, setting up for London
-HTF Pools: Show 4H, Daily
-Sensitivity: Low (less volatility)
-```
-
-**Common pattern:** Range-bound, building liquidity for London
-
----
-
-## Janus + Pentarch Integration
-
-| Janus Signal | Pentarch Confirmation | Result |
-|--------------|----------------------|--------|
-| Sweep below pool | TD fires | High-conviction long setup |
-| Sweep + Reclaim | IGN fires | Breakout confirmation |
-| Sweep above pool | WRN fires | Late-cycle warning |
-| Double sweep | TD + IGN sequence | Strong reversal |
+For futures traders:
+- Auto-detect gaps from CME settlement
+- Manual symbol selection from 22 presets
+- Display style: Box or Lines
+- Max gaps: 1-50
+- Box transparency: 0-95%
 
 ---
 
-## Visual Display Guide
+## Recommended Configurations
 
-### Pool Zone Colors (Recommended)
+### Day Trading Setup
+Enable:
+- Previous Day High/Low/Close
+- Opening Range (15 or 30 min)
+- Daily VWAP with bands
+- Daily Volume Profile (POC/VAH/VAL)
+- Killzones (NY Open, London Open)
 
-| Pool Type | Color | Meaning |
-|-----------|-------|---------|
-| Current TF Support Pool | Green (transparent) | Buy-side liquidity below |
-| Current TF Resistance Pool | Red (transparent) | Sell-side liquidity above |
-| HTF Support Pool | Blue (dashed) | Major buy-side liquidity |
-| HTF Resistance Pool | Orange (dashed) | Major sell-side liquidity |
+### Swing Trading Setup
+Enable:
+- Weekly High/Low/Open/Close
+- Monthly levels
+- Weekly VWAP
+- Fibonacci (Weekly anchor)
+- Market Structure
 
-### Signal Markers
-
-| Marker | Meaning |
-|--------|---------|
-| ▼ below candle | Sweep of lows detected |
-| ▲ above candle | Sweep of highs detected |
-| ★ | Sweep + Reclaim (strongest) |
-
----
-
-## Optimization Checklist
-
-### Weekly Settings Review
-
-- [ ] Are sweeps being detected at obvious levels?
-- [ ] Too many pool zones? Increase lookback
-- [ ] Missing sweeps? Decrease lookback or increase sensitivity
-- [ ] HTF pools aligning with major S/R?
-- [ ] Reclaim signals giving enough time? Adjust reclaim candles
-
-### Before Each Session
-
-- [ ] Identify key liquidity pools for the day
-- [ ] Note HTF pools that may be swept
-- [ ] Mark previous session high/low
-- [ ] Check daily/weekly level proximity
+### Scalping Setup
+Enable:
+- Session levels (Asian, European, NA)
+- Opening Range (5 min)
+- Daily VWAP only
+- Fair Value Gaps
+- Confluence Zones
 
 ---
 
-## Troubleshooting
+## Best Practices
 
-| Problem | Cause | Solution |
-|---------|-------|----------|
-| Too many pools | Lookback too short | Increase to 30+ |
-| Missing obvious sweeps | Sensitivity too low | Increase sensitivity |
-| HTF pools cluttering chart | Too many TFs shown | Limit to 2 HTFs |
-| Sweeps not reclaiming | Reclaim candles too few | Increase to 4-5 |
-| Pools not at key levels | Looking at wrong swings | Check lookback period |
+1. **Don't enable everything** - Start with one category and add as needed
+2. **Use confluence zones** - Where multiple levels cluster, probability increases
+3. **Check the distance table** - Know which levels are nearest to current price
+4. **Match levels to timeframe** - Daily levels for day trading, weekly for swing
+5. **Combine with other indicators** - Janus levels + Pentarch signals + Volume Oracle regime
 
 ---
 
-## Non-Repainting Guarantee
-
-- Sweep detection only fires on closed bars
-- Pool zones calculated from historical swings (don't move)
-- Reclaim signals require candle close above/below
-- All signals are permanent once rendered
-
----
-
-*Educational purposes only. Not financial advice.*
-
-© Signal Pilot Education Hub
+*For level-based trading strategies, see the Education Hub curriculum on support/resistance and liquidity concepts.*

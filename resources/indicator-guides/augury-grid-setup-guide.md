@@ -1,407 +1,195 @@
-# Augury Grid Symbol Setup Guide
+# Augury Grid v1.0 Guide
 
-**Multi-Asset Screening & Watchlist Configuration**
-
----
-
-## What Is Augury Grid?
-
-Augury Grid is Signal Pilot's multi-symbol screening indicator. It displays real-time signal status across multiple assets in a compact grid format, allowing you to:
-- Monitor multiple assets simultaneously
-- Identify which symbols have active signals
-- Prioritize attention based on signal strength
-- Build focused watchlists
+**Multi-Symbol Scanner with Quality Scoring**
 
 ---
 
-## Core Functionality
+## What is Augury Grid?
 
-| Feature | What It Does |
-|---------|--------------|
-| **Symbol Grid** | Shows multiple symbols in rows |
-| **Signal Status** | Displays current Pentarch signal for each |
-| **Strength Score** | Rates signal quality 0-100 |
-| **Timeframe Sync** | All symbols on same timeframe |
-| **Alert Integration** | Notifies when signals fire |
+Augury Grid is Signal Pilot's **multi-symbol screening table** that monitors **7 symbols across 3 timeframes** simultaneously—totaling 21 scans. It displays ranked signals with quality scores, entry/exit levels, and real-time P&L tracking.
 
 ---
 
-## Initial Setup
+## Display Overview
 
-### Step 1: Add Augury Grid to Chart
+Augury Grid shows a professional table with **9 columns**:
 
-1. Open TradingView indicator panel
-2. Search "Augury Grid" or "Signal Pilot"
-3. Add to any chart (chart symbol doesn't matter)
-4. Grid appears as overlay or panel
-
-### Step 2: Configure Symbol List
-
-```
-Settings → Symbol Configuration
-
-Enter symbols separated by commas:
-BTCUSD, ETHUSD, SPY, QQQ, AAPL, MSFT, TSLA, NVDA
-```
-
-**Maximum symbols:** 20 per grid
+| Column | Shows |
+|--------|-------|
+| **#** | Rank by quality score |
+| **Sym** | Symbol/ticker |
+| **TF** | Timeframe |
+| **Bias** | Direction + star rating |
+| **Age** | Time since signal |
+| **Entry** | Entry price |
+| **SL** | Stop loss level |
+| **TP** | Take profit level |
+| **P&L** | Current profit/loss |
 
 ---
 
-## Symbol Input Formats
+## Signal Quality Scoring
 
-### Crypto
+Signals receive a 0-100 quality score displayed as stars:
 
-| Exchange | Format | Example |
-|----------|--------|---------|
-| Binance | BINANCE:BTCUSDT | BINANCE:BTCUSDT |
-| Coinbase | COINBASE:BTCUSD | COINBASE:BTCUSD |
-| Bybit | BYBIT:BTCUSDT.P | BYBIT:BTCUSDT.P |
-| Generic | BTCUSD | BTCUSD |
+| Stars | Score Range | Meaning |
+|-------|-------------|---------|
+| ⭐ | 70-84 | Basic quality signal |
+| ⭐⭐ | 85-94 | Good quality signal |
+| ⭐⭐⭐ | 95-100 | Excellent quality signal |
 
-### Stocks
-
-| Exchange | Format | Example |
-|----------|--------|---------|
-| NASDAQ | NASDAQ:AAPL | NASDAQ:AAPL |
-| NYSE | NYSE:IBM | NYSE:IBM |
-| Generic | AAPL | AAPL (auto-routes) |
-
-### Forex
-
-| Format | Example |
-|--------|---------|
-| FX:EURUSD | FX:EURUSD |
-| OANDA:EURUSD | OANDA:EURUSD |
-| EURUSD | EURUSD |
-
-### Futures
-
-| Format | Example |
-|--------|---------|
-| CME:ES1! | CME:ES1! (E-mini S&P) |
-| CME:NQ1! | CME:NQ1! (E-mini Nasdaq) |
-| NYMEX:CL1! | NYMEX:CL1! (Crude Oil) |
+### Multi-Timeframe Confluence Indicators
+- **🔗** = 2 timeframes agree on direction
+- **🔗🔗** = All 3 timeframes aligned (highest conviction)
 
 ---
 
-## Preset Watchlists
+## Lifecycle Indicators
 
-### Crypto Major
-
-```
-BTCUSD, ETHUSD, BNBUSD, SOLUSD, XRPUSD,
-ADAUSD, DOGEUSD, AVAXUSD, DOTUSD, LINKUSD
-```
-
-### US Large Cap Tech
-
-```
-AAPL, MSFT, GOOGL, AMZN, META, NVDA,
-TSLA, AMD, NFLX, CRM
-```
-
-### US Indices & ETFs
-
-```
-SPY, QQQ, IWM, DIA, VIX,
-TLT, GLD, USO, XLF, XLE
-```
-
-### Forex Majors
-
-```
-EURUSD, GBPUSD, USDJPY, USDCHF,
-AUDUSD, USDCAD, NZDUSD, EURGBP
-```
-
-### Futures
-
-```
-ES1!, NQ1!, YM1!, RTY1!,
-CL1!, GC1!, SI1!, ZB1!
-```
+| Indicator | Meaning |
+|-----------|---------|
+| ⏳ + blockers | Signal pending, shows what's missing (MACD, Trend, EMA200, ADX, RSI, Volume, Momentum) |
+| 💀 SL Hit | Position stopped out |
+| 💀 Stale | Signal expired (>30 days old) |
 
 ---
 
-## Grid Display Settings
+## Adjustable Settings
 
-### Layout Options
-
-| Setting | Options | Recommendation |
-|---------|---------|----------------|
-| Columns | 1-5 | 3-4 for desktop |
-| Row Height | Compact/Normal/Large | Normal |
-| Show Symbol | On/Off | On |
-| Show Price | On/Off | Optional |
-| Show Change % | On/Off | On |
-| Show Signal Label | On/Off | On |
-| Show Score | On/Off | On |
-
-### Grid Position
-
-| Position | Best For |
-|----------|----------|
-| Top Right | Minimal chart obstruction |
-| Bottom Right | Below price action |
-| Left Side | Quick reference |
-| Separate Panel | Full focus on grid |
-
----
-
-## Signal Display
-
-### Signal Status Indicators
-
-| Display | Meaning |
+### Display Configuration
+| Setting | Options |
 |---------|---------|
-| 🟣 **TD** | Touchdown active |
-| 🔵 **IGN** | Ignition active |
-| 🟡 **WRN** | Warning active |
-| 🟠 **CAP** | Climax active |
-| 🔴 **BDN** | Breakdown active |
-| ⚪ **—** | No active signal |
+| Mobile Mode | On/Off (simplified layout) |
+| Text Size | Tiny, Small, Normal, Large |
+| Position | 4 corner locations |
+| Column Visibility | Toggle each of 9 columns |
 
-### Score Display
+### Signal Detection Tuning
+| Setting | Range | Default | Description |
+|---------|-------|---------|-------------|
+| ADX Minimum | 10-40 | 20 | Trend strength threshold |
+| RSI Range Low | 20-80 | 40 | Oversold boundary |
+| RSI Range High | 20-80 | 60 | Overbought boundary |
+| Volume Spike | 1.0-3.0× | 1.3 | Volume multiplier for detection |
+| Extension ATR | 1.0-5.0 | 2.5 | Price extension threshold |
 
-```
-Symbol: BTCUSD
-Signal: TD
-Score: 85/100
-
-Score breakdown:
-- Signal recency: How recent (fresher = higher)
-- Regime alignment: Signal matches regime
-- Volume confirmation: Volume supports signal
-- Multi-TF alignment: HTF agrees
-```
-
----
-
-## Filtering & Sorting
-
-### Filter Options
-
-| Filter | What It Does |
-|--------|--------------|
-| Active Signals Only | Hide symbols with no signal |
-| Signal Type | Show only TD, IGN, etc. |
-| Minimum Score | Hide below threshold |
-| Regime Filter | Bull only, Bear only |
-
-### Sort Options
-
-| Sort By | Description |
+### Position Management
+| Setting | Description |
 |---------|-------------|
-| Signal Score | Highest quality first |
-| Signal Recency | Most recent first |
-| Symbol Name | Alphabetical |
-| Price Change % | Biggest movers first |
+| SL ×ATR | Stop loss distance (ATR multiplier) |
+| TP1 ×ATR | First take profit distance |
+| TP2 ×ATR | Runner take profit distance |
+
+### Filtering & Timeframe Options
+| Setting | Default | Description |
+|---------|---------|-------------|
+| Min Score | 70 | Minimum quality to display |
+| Show Top N | 7 | Maximum rows shown |
+| TF 1 | 15m | First timeframe to scan |
+| TF 2 | 4H | Second timeframe to scan |
+| TF 3 | Daily | Third timeframe to scan |
+| Symbol Preset | Various | 8 built-in watchlists + custom |
 
 ---
 
-## Timeframe Configuration
+## Built-In Symbol Presets
 
-### Single Timeframe Mode
+Augury Grid includes 8 pre-configured watchlists:
 
-All symbols display signals from ONE timeframe.
-
-| Your Trading TF | Set Grid To |
-|-----------------|-------------|
-| Scalping | 5m or 15m |
-| Day Trading | 1H |
-| Swing Trading | 4H or Daily |
-| Position Trading | Daily or Weekly |
-
-### Multi-Timeframe Mode (Advanced)
-
-Show signal status across multiple timeframes per symbol.
-
-```
-Symbol | 15m | 1H | 4H | Daily
--------|-----|----|----|------
-BTCUSD | TD  | —  | IGN| —
-ETHUSD | —   | TD | TD | WRN
-SPY    | IGN | IGN| —  | —
-```
-
-**Confluence:** Multiple TFs with same direction = stronger
+1. **Crypto Major** - BTC, ETH, and major altcoins
+2. **Forex Major** - EUR/USD, GBP/USD, USD/JPY, etc.
+3. **US Indices** - SPY, QQQ, DIA, IWM
+4. **Commodities** - Gold, Silver, Oil, etc.
+5. **Tech Stocks** - AAPL, MSFT, GOOGL, etc.
+6. **Custom 1-3** - User-defined symbol lists
 
 ---
 
-## Alert Configuration
+## How to Use Augury Grid
 
-### Grid Alert Types
+### Morning Scan Workflow
+1. Open Augury Grid on preferred chart
+2. Review ranked signals by quality
+3. Look for ⭐⭐⭐ and 🔗🔗 indicators
+4. Click through to symbols with best setups
+5. Confirm with detailed analysis
 
-| Alert | Trigger | Priority |
-|-------|---------|----------|
-| Any Signal | Any symbol fires any signal | Low |
-| Specific Signal | Selected signal type fires | Medium |
-| High Score Signal | Signal with score >80 | High |
-| Multi-TF Confluence | Same signal on 2+ TFs | High |
+### Signal Interpretation
+| What You See | What It Means |
+|--------------|---------------|
+| BULL ⭐⭐⭐ 🔗🔗 | High-quality long, all TFs aligned |
+| BEAR ⭐⭐ 🔗 | Good short, 2 TFs agree |
+| ⏳ [ADX, VOL] | Signal pending, needs more trend strength and volume |
+| 💀 SL Hit | Previous signal stopped out |
 
-### Alert Actions
-
-| Action | Description |
-|--------|-------------|
-| Pop-up | TradingView notification |
-| Sound | Audio alert |
-| Email | Send to email |
-| Webhook | External integration |
-
----
-
-## Workflow: Building Focused Watchlists
-
-### Step 1: Start Broad
-
-```
-Add 15-20 symbols in your universe
-Run for 1-2 sessions
-Note which generate quality signals
-```
-
-### Step 2: Track Performance
-
-```
-When signal fires → note outcome
-Track: Win rate, average move, best TF
-Build data on each symbol
-```
-
-### Step 3: Refine List
-
-```
-Remove: Low win rate, choppy symbols
-Keep: Clean signals, good moves
-Add: Similar symbols to winners
-```
-
-### Step 4: Create Specialized Lists
-
-```
-Morning Watchlist: Active in first 2 hours
-Crypto Overnight: 24/7 opportunities
-Earnings Season: High-IV names
-Trend Following: Strong directional bias
-```
+### Filtering Best Setups
+Use the Min Score filter to show only high-quality signals:
+- **Score 85+** = Show only good/excellent signals
+- **Score 70+** = Show all qualifying signals
+- **Score 95+** = Show only exceptional signals
 
 ---
 
-## Symbol Categories Best Practices
+## Timeframe Selection
 
-### High Volatility (Crypto, Growth Stocks)
+### For Day Trading
+- TF1: 5m or 15m
+- TF2: 1H
+- TF3: 4H
 
-```
-Settings:
-- Higher score threshold (70+)
-- Fresher signal priority
-- Tighter watchlist (8-10 symbols)
-```
+### For Swing Trading
+- TF1: 1H
+- TF2: 4H
+- TF3: Daily
 
-### Low Volatility (Indices, Forex)
-
-```
-Settings:
-- Lower score threshold (60+)
-- Longer signal validity
-- Can monitor more symbols (15-20)
-```
-
-### Correlated Assets
-
-```
-Tip: Don't overload correlated assets
-Example: Don't have all FAANG + QQQ + SPY
-
-Better: Pick representative assets
-- 1 tech leader (AAPL or MSFT)
-- 1 index (SPY or QQQ)
-- Diversify sectors
-```
+### For Position Trading
+- TF1: 4H
+- TF2: Daily
+- TF3: Weekly
 
 ---
 
-## Troubleshooting
+## Integration with Other Indicators
 
-| Issue | Cause | Solution |
-|-------|-------|----------|
-| Symbol not loading | Wrong format | Check exchange prefix |
-| No signals showing | Symbols inactive | Check market hours |
-| Grid too cluttered | Too many symbols | Reduce to 10-12 |
-| Signals not updating | Data delay | Refresh indicator |
-| Scores always low | Strict settings | Relax thresholds |
+### Augury Grid as Scanner
+Use Augury Grid to find opportunities, then switch to that symbol's chart with full indicator stack (Pentarch, Volume Oracle, Janus Atlas) for detailed analysis.
 
----
-
-## Performance Optimization
-
-### For Speed
-
-- Limit to 10-12 symbols
-- Use single timeframe mode
-- Disable price/change display
-- Reduce update frequency
-
-### For Completeness
-
-- Up to 20 symbols
-- Enable multi-TF mode
-- Show all display options
-- Real-time updates
+### Workflow Example
+1. Augury shows BTCUSD ⭐⭐⭐ 🔗🔗 BULL
+2. Switch to BTCUSD chart
+3. Confirm with Pentarch (looking for TD or IGN)
+4. Check Volume Oracle (should show Accumulation)
+5. Find entry level with Janus Atlas
+6. Execute trade
 
 ---
 
-## Sample Configurations
+## Blocker Indicators
 
-### Configuration 1: Crypto Scalper
+When a signal shows ⏳ with blockers, these indicate what conditions aren't met:
 
-```
-Symbols: BTCUSDT, ETHUSDT, BNBUSDT, SOLUSDT, XRPUSDT
-Timeframe: 5m
-Filters: Active signals only, Score >70
-Alerts: All signals with sound
-```
+| Blocker | Meaning |
+|---------|---------|
+| MACD | MACD not confirming direction |
+| Trend | EMA trend not aligned |
+| EMA200 | Price on wrong side of 200 EMA |
+| ADX | Trend strength too weak |
+| RSI | RSI in unfavorable zone |
+| Volume | Volume confirmation missing |
+| Momentum | Momentum not confirming |
 
-### Configuration 2: Stock Swing Trader
-
-```
-Symbols: SPY, QQQ, AAPL, MSFT, NVDA, AMD, TSLA, META, GOOGL, AMZN
-Timeframe: 4H
-Filters: TD and IGN only, Score >65
-Alerts: High score signals only
-```
-
-### Configuration 3: Forex Day Trader
-
-```
-Symbols: EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, NZDUSD
-Timeframe: 1H
-Filters: All signals, Score >60
-Alerts: Multi-TF confluence
-```
+Signals fire when enough conditions clear. Blockers help you understand why a setup isn't ready yet.
 
 ---
 
-## Quick Reference
+## Best Practices
 
-### Minimum Viable Setup
-
-1. Add 5-10 symbols you trade regularly
-2. Set to your primary trading timeframe
-3. Enable "Active Signals Only"
-4. Set score threshold to 65
-5. Turn on alerts for new signals
-
-### Advanced Setup
-
-1. Create 3-4 specialized watchlists
-2. Use multi-TF mode for confluence
-3. Set different alerts per signal type
-4. Review and optimize weekly
+1. **Use as a scanner, not a signal system** - Always confirm with full analysis
+2. **Prioritize 🔗🔗 setups** - Multi-TF alignment = highest probability
+3. **Check blockers** - Understand why signals are pending
+4. **Customize for your style** - Adjust TFs and presets to match your trading
+5. **Don't chase stale signals** - Fresh signals (low Age) are better
 
 ---
 
-*Educational purposes only. Not financial advice.*
-
-© Signal Pilot Education Hub
+*For multi-symbol trading strategies, see the Education Hub curriculum on watchlist management and opportunity scanning.*
