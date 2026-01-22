@@ -45,9 +45,9 @@ Afternoon/Evening:
 [ ] Complete Lesson 1: The Liquidity Lie
 [ ] Download Liquidity Lie Cheatsheet
 [ ] Identify 5 liquidity sweeps on chart
-[ ] Review Pentarch settings
-[ ] Experiment with Regime Sensitivity setting
-[ ] Note: How does Hair Trigger vs. Rock Solid affect signal frequency?
+[ ] Review Pentarch settings (alert toggles, colors, label size)
+[ ] Understand the four-layer detection system
+[ ] Note: All signals fire at bar close only (no repainting)
 ```
 
 **End of Day Goal:** Understand that "support/resistance" is often liquidity that gets swept.

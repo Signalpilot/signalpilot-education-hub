@@ -40,12 +40,13 @@ This guide will take you from installation to your first signal in 10 minutes or
 
 Click the gear icon ⚙️ on Pentarch to access settings.
 
-| Setting | Keep Default | Why |
-|---------|--------------|-----|
-| Regime Sensitivity | Normal | Balanced signals |
-| Show Pilot Line | On | Trend reference |
-| Show NanoFlow | On | Momentum health |
-| Bar Coloring | On | Visual regime |
+Pentarch has limited user-adjustable settings by design—detection parameters are internally optimized.
+
+| Setting | Description |
+|---------|-------------|
+| Alert Toggles | Enable/disable alerts for TD, IGN, WRN, CAP, BDN |
+| Color Palette | Choose from 5 presets or customize |
+| Label Size | Small, Medium, or Large |
 
 ### Verify It's Working
 
@@ -154,9 +155,9 @@ Week 4:  Start small live trading with system
 |---------|----------|
 | No signals showing | Check timeframe (try 1H), check liquid asset |
 | Indicator not loading | Refresh page, check invite-only access |
-| Colors not showing | Enable bar coloring in settings |
-| Signals too frequent | Increase regime sensitivity to Rock Solid |
-| Signals too rare | Decrease regime sensitivity to Hair Trigger |
+| Colors not showing | Bar coloring is always on by default |
+| Signals seem off | Try different timeframe or more volatile asset |
+| Labels too small | Adjust Label Size in settings |
 
 ---
 

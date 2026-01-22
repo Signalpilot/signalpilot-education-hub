@@ -2,174 +2,165 @@
 
 **From Lesson 21: Plutus Flow Mastery**
 
-Use this checklist for POC trading, delta divergence, and volume profile strategies.
+Use this checklist for OBV analysis, divergence trading, and flow ribbon strategies.
 
 ---
 
-## 📋 Pre-Trade: Volume Profile Analysis
+## 📋 Pre-Trade: OBV Analysis
 
-### Step 1: Identify POC (Point of Control)
+### Step 1: Assess OBV Trend Direction
 
-- [ ] **Mark POC on chart**
-  - Current POC: $________ (highest volume node)
-  - POC timeframe: Daily / Session / 4H
-  - Distance from current price: ________ points (%: _____)
+- [ ] **OBV line direction**
+  - Currently: Rising / Falling / Flat
+  - Interpretation: Accumulation / Distribution / Unclear
 
-- [ ] **Check POC migration**
-  - Yesterday's POC: $________
-  - Today's POC: $________
-  - POC migrating? Yes / No (moving with price = strong trend)
+- [ ] **Flow ribbon color**
+  - Current ribbon: Green (above basis) / Red (below basis)
+  - Ribbon expanding or contracting?
 
-### Step 2: Map Value Area
+### Step 2: Check Statistical Bands
 
-- [ ] **Value Area range (70% of volume)**
-  - Value Area High (VAH): $________
-  - Value Area Low (VAL): $________
-  - Current price position: Above VA / Inside VA / Below VA
+- [ ] **OBV position relative to bands**
+  - Above upper band (+2σ)? = Overbought conditions
+  - Below lower band (-2σ)? = Oversold conditions
+  - Inside bands? = Normal conditions
 
-- [ ] **Interpretation:**
-  - Above VA = Overvalued (expect pullback to POC)
-  - Below VA = Undervalued (expect rally to POC)
-  - Inside VA = Fair value (consolidation/chop)
+- [ ] **Recent extreme zone markers**
+  - White dots (entering extreme)? Yes / No
+  - Yellow dots (exiting extreme)? Yes / No
 
-### Step 3: Mark HVN/LVN
+### Step 3: Look for Divergences
 
-- [ ] **High Volume Nodes (HVN)** - Support/Resistance:
-  - HVN 1: $________
-  - HVN 2: $________
-  - HVN 3: $________
-
-- [ ] **Low Volume Nodes (LVN)** - Fast Move Zones:
-  - LVN 1: $________
-  - LVN 2: $________
+- [ ] **Check for divergence labels**
+  - Bull Div (price lower low, OBV higher low)? Yes / No
+  - Bear Div (price higher high, OBV lower high)? Yes / No
+  - Bull Hid (price higher low, OBV lower low)? Yes / No
+  - Bear Hid (price lower high, OBV higher high)? Yes / No
 
 ---
 
 ## ✅ Trading Strategy Selection
 
-### Strategy A: Mean Reversion to POC
+### Strategy A: Divergence Reversal
 
 **Setup:**
-- [ ] Price far from POC (> 2% away)
-- [ ] Current price: $________
-- [ ] POC: $________
-- [ ] Volume Oracle: Ranging regime (mean reversion favored)
-- [ ] No strong HTF directional bias
+- [ ] Divergence label appeared (Bull Div or Bear Div)
+- [ ] Price at key level (support/resistance)
+- [ ] OBV in or near extreme zone
+- [ ] Wait for price confirmation (structure break)
 
 **Execution:**
-- **Entry:** $________ (when price approaches POC)
-- **Stop:** $________ (beyond POC + buffer)
-- **Target:** $________ (opposite side of value area) = ____R
-- **Position size:** ________ (1% risk, B-grade setup)
+- **Entry:** $________ (after price confirms reversal)
+- **Stop:** $________ (beyond the swing point)
+- **Target:** $________ (measured move or key level)
+- **Position size:** ________ (1% risk, needs confirmation)
 
-### Strategy B: POC Breakout with Migration
+### Strategy B: Flow Ribbon Continuation
 
 **Setup:**
-- [ ] POC migrating higher/lower (trend confirmed)
-- [ ] Price at POC after pullback
-- [ ] Volume Oracle: Trending regime
-- [ ] HTF trend supports direction
-- [ ] Plutus CVD positive/negative (aligned)
+- [ ] OBV trend established (clearly rising or falling)
+- [ ] Flow ribbon color matches direction (green for long, red for short)
+- [ ] Pullback to basis (ribbon narrowed but didn't flip)
+- [ ] Cross signal (green/red dot) in trend direction
 
 **Execution:**
-- **Entry:** $________ (at POC support/resistance)
-- **Stop:** $________ (below POC + ATR)
-- **Target 1:** $________ (next HVN) = ____R
-- **Target 2:** $________ (HTF level) = ____R
-- **Position size:** ________ (2% risk, A-grade setup)
+- **Entry:** $________ (on cross signal after pullback)
+- **Stop:** $________ (beyond basis level)
+- **Target:** $________ (prior high/low or next level)
+- **Position size:** ________ (1.5% risk, trend continuation)
 
-### Strategy C: LVN Fast Move
+### Strategy C: Extreme Zone Exit
 
 **Setup:**
-- [ ] Price approaching LVN: $________
-- [ ] Low volume at this level (thin acceptance)
-- [ ] Breakout imminent (building pressure)
-- [ ] Target: Next HVN at $________
+- [ ] OBV reached extreme zone (white dot appeared)
+- [ ] Yellow dot appeared (exiting extreme)
+- [ ] Price showing reversal signs
+- [ ] Divergence may be present
 
 **Execution:**
-- **Entry:** $________ (breakout through LVN)
-- **Stop:** $________ (back inside LVN)
-- **Target:** $________ (next HVN) = ____R
-- **Position size:** ________ (1.5% risk)
+- **Entry:** $________ (after yellow dot + price confirmation)
+- **Stop:** $________ (beyond extreme)
+- **Target:** $________ (basis/mean reversion level)
+- **Position size:** ________ (1% risk, mean reversion)
 
 ---
 
-## 🔍 CVD Divergence Analysis
+## 🔍 Divergence Analysis
 
-### Bullish CVD Divergence:
-- [ ] Price lower low: $________
-- [ ] CVD higher low: +________ (less selling pressure)
-- [ ] Janus sweep at structure: $________
-- [ ] Footprint absorption: +________ delta
-- [ ] **Trade:** Long on reversal confirmation
+### Bullish Divergence (Regular):
+- [ ] Price made lower low: $________
+- [ ] OBV made higher low: Yes / No
+- [ ] Divergence label: Bull Div appeared? Yes / No
+- [ ] **Interpretation:** Selling pressure weakening, potential reversal up
 
-### Bearish CVD Divergence:
-- [ ] Price higher high: $________
-- [ ] CVD lower high: -________ (less buying pressure)
-- [ ] Price at HTF resistance: $________
-- [ ] Footprint exhaustion: -________ delta
-- [ ] **Trade:** Short on breakdown confirmation
+### Bearish Divergence (Regular):
+- [ ] Price made higher high: $________
+- [ ] OBV made lower high: Yes / No
+- [ ] Divergence label: Bear Div appeared? Yes / No
+- [ ] **Interpretation:** Buying pressure weakening, potential reversal down
 
-**CVD Divergence Checklist:**
-- [ ] Divergence spans 3+ candles
-- [ ] Confirmed by price structure (swing high/low)
-- [ ] Footprint shows absorption/exhaustion
-- [ ] HTF supports reversal direction
+### Hidden Bullish Divergence:
+- [ ] Price made higher low: $________
+- [ ] OBV made lower low: Yes / No
+- [ ] Divergence label: Bull Hid appeared? Yes / No
+- [ ] **Interpretation:** Trend continuation in uptrend
+
+### Hidden Bearish Divergence:
+- [ ] Price made lower high: $________
+- [ ] OBV made higher high: Yes / No
+- [ ] Divergence label: Bear Hid appeared? Yes / No
+- [ ] **Interpretation:** Trend continuation in downtrend
 
 ---
 
-## 🎯 POC Trade Execution
+## 🎯 Trade Execution
 
 **Entry timing:**
-- [ ] Price within ±0.5% of POC
-- [ ] Order flow confirms (CVD, footprint)
-- [ ] Volume Oracle regime appropriate
-- [ ] Janus sweep or structure test completed
+- [ ] Divergence confirmed by Plutus Flow label
+- [ ] Price structure supports trade direction
+- [ ] Flow ribbon color aligns (or is flipping)
+- [ ] Not entering against strong OBV trend
 
 **Position management:**
 - **Entry:** $________
-- **Stop:** $________ (structure-based, not arbitrary)
-- **Target:** $________ (HVN, VAH/VAL, or HTF level)
+- **Stop:** $________ (structure-based)
+- **Target:** $________ (key level or measured move)
 - **Risk:** $________ = ____% of account
 - **R:R:** ____:1 (minimum 2:1)
 
 ---
 
-## 🔄 POC Migration Tracking
+## 🔄 Flow State Tracking
 
-**Daily POC tracking:**
-- Day 1: POC at $________
-- Day 2: POC at $________ (moved +/- ________?)
-- Day 3: POC at $________ (trend continuation?)
+**Current market flow:**
+- [ ] OBV rising steadily = Accumulation in progress
+- [ ] OBV falling steadily = Distribution in progress
+- [ ] OBV flat/choppy = No clear flow direction
 
-**Interpretation:**
-- [ ] POC migrating UP = Strong uptrend (buy pullbacks to POC)
-- [ ] POC migrating DOWN = Strong downtrend (sell rallies to POC)
-- [ ] POC static = Weak trend (expect reversion to POC)
-
-**Trading rule:**
-- If POC migrating: Trade WITH trend (pullbacks to POC = opportunity)
-- If POC static: Trade mean reversion (fade extremes to POC)
+**Flow ribbon history (last 5 bars):**
+- [ ] Consistent green = Strong bullish flow
+- [ ] Consistent red = Strong bearish flow
+- [ ] Flipping colors = Uncertain, wait for clarity
 
 ---
 
 ## 🚫 Invalidation Criteria (Exit Immediately)
 
-- [ ] POC breaks and doesn't reclaim (structure failure)
-- [ ] CVD divergence fails (price continues in original direction)
-- [ ] Volume Oracle regime shifts (Trending → Volatile)
-- [ ] Price moves through LVN without acceleration (weak breakout)
+- [ ] OBV makes new extreme against position
+- [ ] Divergence fails (price continues in original direction)
+- [ ] Flow ribbon flips against position
+- [ ] Price structure breaks against trade
 - [ ] Stop loss hit
 
 ---
 
 ## 📊 Post-Trade Review
 
-**Volume profile effectiveness:**
-- Was POC accurate as magnet/support? Yes / No
-- Did HVN/LVN behave as expected? Yes / No
-- CVD divergence reliable? Yes / No
-- POC migration predicted trend strength? Yes / No
+**Plutus Flow effectiveness:**
+- Was divergence reliable? Yes / No
+- Did flow ribbon predict direction? Yes / No
+- Did extreme zones mark reversal areas? Yes / No
+- Cross signals accurate? Yes / No
 
 **What went right:**
 - ________________________________________________
@@ -185,11 +176,11 @@ Use this checklist for POC trading, delta divergence, and volume profile strateg
 ---
 
 **Remember:**
-- ✅ POC = fair value (price gravitates toward it)
-- ✅ POC migration = trend strength indicator
-- ✅ HVN = likely to hold (support/resistance)
-- ✅ LVN = likely to break fast (minimal resistance)
-- ✅ CVD divergence = reversal warning
+- ✅ OBV rising + price rising = Confirmed uptrend (healthy)
+- ✅ OBV rising + price falling = Bullish divergence (potential reversal)
+- ✅ Regular divergences = Potential reversals (wait for confirmation)
+- ✅ Hidden divergences = Trend continuation signals
+- ✅ Don't trade divergence alone—always confirm with price action
 
 **This is for educational purposes only. Not financial advice.**
 

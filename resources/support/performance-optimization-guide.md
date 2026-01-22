@@ -83,19 +83,13 @@ Use for different chart layouts:
 - Second chart: Plutus Flow only
 ```
 
-**Option 2: Disable unused features**
+**Option 2: Distribute indicators across charts**
 ```
-Pentarch settings:
-- Show NanoFlow: Off (if not using)
-- Show Label Text: Off (if using colors only)
-
-Janus Atlas settings:
-- Reduce lookback period
-- Show fewer historical pools
-
-Plutus Flow settings:
-- Disable CVD if not using
-- Reduce profile resolution
+Signal Pilot indicators have internally optimized parameters.
+To reduce load:
+- Use fewer indicators per chart
+- Spread indicators across multiple chart layouts
+- Only display indicators you're actively using
 ```
 
 ### Optimal Settings by System
@@ -165,9 +159,9 @@ Plutus Flow settings:
 
 **Solutions:**
 1. Check timeframe (higher TF = fewer signals)
-2. Verify settings not filtering signals
+2. Verify alert toggles are enabled
 3. Ensure asset has enough history/volume
-4. Check regime sensitivity settings
+4. Try a more volatile asset (BTC, SPY)
 5. Reload indicator
 
 ### Issue 4: Display Issues
@@ -202,27 +196,26 @@ Shorter lookback = Less history = Faster but potentially noisier
 | 4H-Daily | 20 | 30 | 50 |
 | Weekly+ | 14 | 20 | 30 |
 
-### Indicator-Specific Optimization
+### Indicator-Specific Notes
 
 **Pentarch:**
 ```
-Standard: Default settings optimal
-For speed: Disable NanoFlow
-For clarity: Increase regime sensitivity to Rock Solid
+Detection parameters are internally optimized
+User settings: Alert toggles, color palette, label size
+Performance tip: Use on 1H+ timeframes for fewer signals
 ```
 
 **Janus Atlas:**
 ```
-Standard: Lookback 20
-For speed: Lookback 15, reduce HTF pools shown
-For depth: Lookback 30, show all TF pools
+60+ level types available across 9 categories
+Disable level groups you don't use (VWAP, Fib, etc.)
 ```
 
 **Plutus Flow:**
 ```
-Standard: Default
-For speed: Disable profile, reduce OBV smoothing
-For depth: Enable all features
+Enhanced OBV with flow ribbons and divergence detection
+Toggle visual settings as needed
+FlipGuard settings for signal quality
 ```
 
 ---

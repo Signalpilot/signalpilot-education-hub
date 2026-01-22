@@ -161,11 +161,8 @@ A: Yes! Most events require the "correct" regime:
 - WRN/CAP typically require bull regime (except counter-regime mode)
 - BDN follows WRN/CAP, so it's regime-dependent
 
-**Q: Can I make regime more or less sensitive?**
-A: Yes! The "SP: Regime Sensitivity" setting adjusts this:
-- Hair Trigger = Changes quickly (more signals, more whipsaw)
-- Normal = Balanced (default)
-- Rock Solid = Changes rarely (fewer signals, strong indication)
+**Q: Can I adjust the regime detection?**
+A: No. Regime detection parameters are internally optimized and not user-adjustable. This ensures consistent, tested behavior across all users. User-adjustable settings are limited to alert toggles, color palette, and label size.
 
 ---
 
