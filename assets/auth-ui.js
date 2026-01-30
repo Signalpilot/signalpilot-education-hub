@@ -15,8 +15,8 @@
 
     modal.innerHTML = `
       <div class="auth-modal-overlay"></div>
-      <div class="auth-modal-content">
-        <button class="auth-modal-close" onclick="document.getElementById('auth-modal').remove()">✕</button>
+      <div class="auth-modal-content" data-lenis-prevent>
+        <button class="auth-modal-close" onclick="closeAuthModal()">✕</button>
 
         <div class="auth-header">
           <h2 id="auth-title">Sign in to Signal Pilot</h2>
@@ -110,6 +110,9 @@
 
     document.body.appendChild(modal);
 
+    // Pause Lenis smooth scroll so modal can scroll
+    document.dispatchEvent(new CustomEvent('modal-open'));
+
     // Attach form handlers
     attachFormHandlers();
 
@@ -120,17 +123,24 @@
     }, 100);
 
     // Close on overlay click
-    modal.querySelector('.auth-modal-overlay').addEventListener('click', () => {
-      modal.remove();
-    });
+    modal.querySelector('.auth-modal-overlay').addEventListener('click', closeAuthModal);
 
     // Close on Escape key
     document.addEventListener('keydown', function escapeHandler(e) {
       if (e.key === 'Escape') {
-        modal.remove();
+        closeAuthModal();
         document.removeEventListener('keydown', escapeHandler);
       }
     });
+  };
+
+  // Close auth modal and resume Lenis scroll
+  window.closeAuthModal = function() {
+    const modal = document.getElementById('auth-modal');
+    if (modal) {
+      modal.remove();
+      document.dispatchEvent(new CustomEvent('modal-close'));
+    }
   };
 
   // Switch between auth modes
@@ -201,7 +211,7 @@
           if (result.success) {
             showMessage('✅ Signed in successfully! Loading your progress...', 'success');
             setTimeout(() => {
-              document.getElementById('auth-modal').remove();
+              closeAuthModal();
               // Page will reload automatically when cloud progress loads
               // (handled by supabase-client.js auth listener)
             }, 1000);
