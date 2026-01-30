@@ -15,7 +15,7 @@
 
     modal.innerHTML = `
       <div class="auth-modal-overlay"></div>
-      <div class="auth-modal-content" data-lenis-prevent>
+      <div class="auth-modal-content">
         <button class="auth-modal-close" onclick="closeAuthModal()">✕</button>
 
         <div class="auth-header">
@@ -110,9 +110,6 @@
 
     document.body.appendChild(modal);
 
-    // Pause Lenis smooth scroll so modal can scroll
-    document.dispatchEvent(new CustomEvent('modal-open'));
-
     // Attach form handlers
     attachFormHandlers();
 
@@ -134,12 +131,11 @@
     });
   };
 
-  // Close auth modal and resume Lenis scroll
+  // Close auth modal
   window.closeAuthModal = function() {
     const modal = document.getElementById('auth-modal');
     if (modal) {
       modal.remove();
-      document.dispatchEvent(new CustomEvent('modal-close'));
     }
   };
 
