@@ -111,10 +111,35 @@
             const loadResult = await loadProgressFromCloud();
 
             if (loadResult?.data) {
+              // Store current user ID so we know who owns this local data
+              localStorage.setItem('sp_user_id', session.user.id);
               isReloadingForCloudSync = true;
               logger.log('[Supabase] ✅ Cloud progress loaded. Reloading page...');
               setTimeout(() => window.location.reload(), 500);
             } else {
+              // Check if local data belongs to a different user (safety check)
+              const storedUserId = localStorage.getItem('sp_user_id');
+              if (storedUserId && storedUserId !== session.user.id) {
+                // Local data belongs to different user - clear it first
+                logger.log('[Supabase] ⚠️ Local data belongs to different user, clearing...');
+                const keysToRemove = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                  const key = localStorage.key(i);
+                  if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_lesson') ||
+                              key.startsWith('sp_learning') || key.startsWith('sp_notes_') ||
+                              key === 'sp_total_xp' || key === 'sp_xp_log' ||
+                              key === 'sp_bookmarks' || key === 'sp_favorites' ||
+                              key === 'sp_downloads' || key === 'sp_activity')) {
+                    keysToRemove.push(key);
+                  }
+                }
+                keysToRemove.forEach(key => localStorage.removeItem(key));
+                logger.log('[Supabase] Cleared', keysToRemove.length, 'keys from previous user');
+              }
+
+              // Store current user ID
+              localStorage.setItem('sp_user_id', session.user.id);
+
               logger.log('[Supabase] ℹ️ No cloud progress found. Syncing local progress to cloud...');
               await syncProgressToCloud();
             }
@@ -226,6 +251,24 @@
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
+
+      // Clear all user progress from localStorage to prevent data leaking to next user
+      logger.log('[Supabase] Clearing local progress data...');
+      const keysToRemove = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && (key.startsWith('sp_edu_') || key.startsWith('sp_lesson') ||
+                    key.startsWith('sp_learning') || key.startsWith('sp_notes_') ||
+                    key === 'sp_total_xp' || key === 'sp_xp_log' ||
+                    key === 'sp_bookmarks' || key === 'sp_favorites' ||
+                    key === 'sp_downloads' || key === 'sp_activity' ||
+                    key === 'sp_last_cloud_sync' || key === 'sp_activity_migrated' ||
+                    key === 'sp_user_id')) {
+          keysToRemove.push(key);
+        }
+      }
+      keysToRemove.forEach(key => localStorage.removeItem(key));
+      logger.log('[Supabase] Cleared', keysToRemove.length, 'progress keys from localStorage');
 
       // Clear UI and reload to show signed-out state
       logger.log('[Supabase] Signed out successfully, reloading...');
