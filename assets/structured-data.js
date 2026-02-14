@@ -4,16 +4,21 @@
 (function() {
   'use strict';
 
+  var BASE = 'https://education.signalpilot.io';
+
   // Organization Schema
-  const organizationSchema = {
+  var organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Signal Pilot",
     "url": "https://signalpilot.io",
-    "logo": "https://education.signalpilot.io/assets/icons/icon-512x512.png",
+    "logo": BASE + "/assets/icons/icon-512x512.png",
     "sameAs": [
       "https://twitter.com/signalpilot",
-      "https://linkedin.com/company/signalpilot"
+      "https://linkedin.com/company/signalpilot",
+      "https://docs.signalpilot.io",
+      "https://blog.signalpilot.io",
+      "https://education.signalpilot.io"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -23,11 +28,11 @@
   };
 
   // Educational Organization
-  const educationalOrganization = {
+  var educationalOrganization = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "Signal Pilot Education Hub",
-    "url": "https://education.signalpilot.io",
+    "url": BASE,
     "description": "Learn institutional trading concepts from Signal Pilot. 82 comprehensive lessons covering order flow, liquidity engineering, and professional trading frameworks.",
     "provider": {
       "@type": "Organization",
@@ -36,7 +41,7 @@
   };
 
   // Course Schema (for homepage)
-  const courseSchema = {
+  var courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Signal Pilot Trading Education",
@@ -76,6 +81,169 @@
     }
   };
 
+  // SoftwareApplication schemas for each Signal Pilot indicator
+  var indicatorSchemas = {
+    "Volume Oracle": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Volume Oracle",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Trading Indicator",
+      "operatingSystem": "TradingView",
+      "description": "Order flow confluence engine combining Plutus Flow, Janus Atlas, and regime data into one actionable signal matrix for institutional-grade trading decisions.",
+      "url": "https://docs.signalpilot.io/indicators/volume-oracle",
+      "softwareVersion": "10",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io"
+      }
+    },
+    "Plutus Flow": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Plutus Flow",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Trading Indicator",
+      "operatingSystem": "TradingView",
+      "description": "Volume delta and absorption analysis tool for detecting institutional accumulation and distribution before breakouts occur.",
+      "url": "https://docs.signalpilot.io/indicators/plutus-flow",
+      "softwareVersion": "10",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io"
+      }
+    },
+    "Janus Atlas": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Janus Atlas",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Trading Indicator",
+      "operatingSystem": "TradingView",
+      "description": "Liquidity sweep detection system that identifies stop hunts, engineered reversals, and institutional manipulation patterns with volume confluence.",
+      "url": "https://docs.signalpilot.io/indicators/janus-atlas",
+      "softwareVersion": "10",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io"
+      }
+    },
+    "Pentarch Pilot Line": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pentarch Pilot Line",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Trading Indicator",
+      "operatingSystem": "TradingView",
+      "description": "Multi-timeframe trend system using 5 EMAs across 3 timeframes with 8 components including TD, IGN, CAP, WRN, BDN events, Pilot Line, Regime Bar Colors, and NanoFlow.",
+      "url": "https://docs.signalpilot.io/indicators/pentarch",
+      "softwareVersion": "10",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io"
+      }
+    },
+    "Harmonic Oscillator": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Harmonic Oscillator",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Trading Indicator",
+      "operatingSystem": "TradingView",
+      "description": "Regime-adaptive oscillator voting system combining RSI, Stochastic, and CCI for context-aware momentum analysis and divergence detection.",
+      "url": "https://docs.signalpilot.io/indicators/harmonic-oscillator",
+      "softwareVersion": "10",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io"
+      }
+    },
+    "Augury Grid": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Augury Grid",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Trading Indicator",
+      "operatingSystem": "TradingView",
+      "description": "Multi-timeframe grid and session liquidity analysis tool for tracking global liquidity flows across Asian, London, and New York sessions.",
+      "url": "https://docs.signalpilot.io/indicators/augury-grid",
+      "softwareVersion": "10",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io"
+      }
+    },
+    "Omnideck": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Omnideck",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Trading Indicator",
+      "operatingSystem": "TradingView",
+      "description": "3-layer timeframe alignment tool that eliminates conflicting signals by synchronizing daily bias, 4H structure, and 15-minute execution timeframes.",
+      "url": "https://docs.signalpilot.io/indicators/omnideck",
+      "softwareVersion": "10",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io"
+      }
+    }
+  };
+
+  // Indicator mastery lesson numbers (these teach how to configure/use SP indicators)
+  var indicatorLessons = {
+    28: "Pentarch Pilot Line",
+    29: "Harmonic Oscillator",
+    30: "Plutus Flow",
+    31: "Janus Atlas",
+    32: "Volume Oracle"
+  };
+
+  // Lessons that are setup/configuration guides (HowTo pattern)
+  var setupLessons = [6, 9, 10, 11, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 35, 54, 57, 61, 75, 81];
+
   // Learning Resource for individual lessons
   function createLessonSchema(lessonData) {
     return {
@@ -84,8 +252,8 @@
       "name": lessonData.title,
       "description": lessonData.description,
       "learningResourceType": "Lesson",
-      "educationalLevel": lessonData.tier, // beginner, intermediate, advanced
-      "timeRequired": lessonData.duration, // e.g., "PT18M"
+      "educationalLevel": lessonData.tier,
+      "timeRequired": lessonData.duration,
       "inLanguage": "en-US",
       "isPartOf": {
         "@type": "Course",
@@ -96,26 +264,82 @@
     };
   }
 
+  // TechArticle schema for indicator-focused lessons
+  function createTechArticleSchema(lessonData) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": lessonData.title,
+      "description": lessonData.description,
+      "proficiencyLevel": lessonData.tier,
+      "articleSection": "Indicator Configuration",
+      "inLanguage": "en-US",
+      "url": lessonData.url,
+      "author": {
+        "@type": "Organization",
+        "name": "Signal Pilot"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io",
+        "logo": {
+          "@type": "ImageObject",
+          "url": BASE + "/assets/icons/icon-512x512.png"
+        }
+      },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": lessonData.indicatorName
+      }
+    };
+  }
+
+  // HowTo schema for setup/configuration guide lessons
+  function createHowToSchema(lessonData) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": lessonData.title,
+      "description": lessonData.description,
+      "totalTime": lessonData.duration,
+      "inLanguage": "en-US",
+      "url": lessonData.url,
+      "tool": lessonData.indicatorName ? {
+        "@type": "SoftwareApplication",
+        "name": lessonData.indicatorName
+      } : undefined,
+      "step": [{
+        "@type": "HowToStep",
+        "name": "Read the lesson",
+        "text": "Follow the step-by-step guide in this lesson to learn " + lessonData.title.toLowerCase() + ".",
+        "url": lessonData.url
+      }]
+    };
+  }
+
   // BreadcrumbList for navigation
   function createBreadcrumbSchema(items) {
     return {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      "itemListElement": items.map((item, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "name": item.name,
-        "item": item.url
-      }))
+      "itemListElement": items.map(function(item, index) {
+        return {
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": item.name,
+          "item": item.url
+        };
+      })
     };
   }
 
   // Website Schema
-  const websiteSchema = {
+  var websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Signal Pilot Education Hub",
-    "url": "https://education.signalpilot.io",
+    "url": BASE,
     "description": "Interactive trading education platform with 82 lessons, quizzes, and progress tracking.",
     "publisher": {
       "@type": "Organization",
@@ -123,7 +347,7 @@
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://education.signalpilot.io/search.html?q={search_term_string}",
+      "target": BASE + "/search.html?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
@@ -133,28 +357,43 @@
     return {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "mainEntity": faqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
-        }
-      }))
+      "mainEntity": faqs.map(function(faq) {
+        return {
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        };
+      })
     };
   }
 
   // Helper function to inject schema into page
   function injectSchema(schema) {
-    const script = document.createElement('script');
+    if (!schema) return;
+    var script = document.createElement('script');
     script.type = 'application/ld+json';
     script.text = JSON.stringify(schema);
     document.head.appendChild(script);
   }
 
+  // Page name map for breadcrumbs on utility pages
+  var pageNameMap = {
+    '/resources.html': 'Resources',
+    '/glossary.html': 'Glossary',
+    '/learning-path.html': 'Learning Path',
+    '/challenges.html': 'Challenges',
+    '/my-library.html': 'My Library',
+    '/calculators.html': 'Calculators',
+    '/search.html': 'Search',
+    '/reset-password.html': 'Reset Password'
+  };
+
   // Auto-detect page type and inject appropriate schemas
   function initStructuredData() {
-    const pathname = window.location.pathname;
+    var pathname = window.location.pathname;
 
     // Always add Organization schema
     injectSchema(organizationSchema);
@@ -165,67 +404,94 @@
       injectSchema(courseSchema);
       injectSchema(educationalOrganization);
 
+      // Inject all SoftwareApplication schemas on homepage
+      Object.keys(indicatorSchemas).forEach(function(key) {
+        injectSchema(indicatorSchemas[key]);
+      });
+
       // Homepage breadcrumb
       injectSchema(createBreadcrumbSchema([
-        { name: "Home", url: "https://education.signalpilot.io/" }
+        { name: "Home", url: BASE + "/" }
       ]));
     }
 
     // Lesson pages
-    else if (pathname.includes('/curriculum/')) {
-      const lessonId = window.getLessonId ? window.getLessonId() : null;
+    else if (pathname.indexOf('/curriculum/') !== -1) {
+      var lessonId = window.getLessonId ? window.getLessonId() : null;
 
       if (lessonId) {
-        const lessonTitle = document.querySelector('.article header .headline')?.textContent || 'Lesson';
-        const tier = lessonId.split('/')[0]; // beginner, intermediate, advanced
-        const lessonNumber = lessonId.match(/\d+/)?.[0] || '1';
+        var lessonTitle = document.querySelector('.article header .headline');
+        lessonTitle = lessonTitle ? lessonTitle.textContent : 'Lesson';
+        var tier = lessonId.split('/')[0];
+        var lessonNumberMatch = lessonId.match(/\d+/);
+        var lessonNumber = lessonNumberMatch ? parseInt(lessonNumberMatch[0]) : 1;
+        var tierName = tier.charAt(0).toUpperCase() + tier.slice(1);
+        var description = '';
+        var descMeta = document.querySelector('meta[name="description"]');
+        if (descMeta) description = descMeta.content;
 
-        const lessonSchema = createLessonSchema({
+        var lessonData = {
           title: lessonTitle,
-          description: document.querySelector('meta[name="description"]')?.content || '',
-          tier: tier.charAt(0).toUpperCase() + tier.slice(1),
-          duration: "PT18M", // 18 minutes average
-          number: parseInt(lessonNumber)
-        });
+          description: description,
+          tier: tierName,
+          duration: "PT18M",
+          number: lessonNumber,
+          url: window.location.href,
+          indicatorName: indicatorLessons[lessonNumber] || null
+        };
 
-        injectSchema(lessonSchema);
+        // Base LearningResource schema
+        injectSchema(createLessonSchema(lessonData));
+
+        // TechArticle for indicator mastery lessons
+        if (indicatorLessons[lessonNumber]) {
+          injectSchema(createTechArticleSchema(lessonData));
+          // Also inject the specific SoftwareApplication schema
+          var indicatorName = indicatorLessons[lessonNumber];
+          if (indicatorSchemas[indicatorName]) {
+            injectSchema(indicatorSchemas[indicatorName]);
+          }
+        }
+
+        // HowTo for setup/configuration lessons
+        if (setupLessons.indexOf(lessonNumber) !== -1) {
+          injectSchema(createHowToSchema(lessonData));
+        }
 
         // Lesson breadcrumb
         injectSchema(createBreadcrumbSchema([
-          { name: "Home", url: "https://education.signalpilot.io/" },
-          { name: tier.charAt(0).toUpperCase() + tier.slice(1), url: `https://education.signalpilot.io/${tier}.html` },
+          { name: "Home", url: BASE + "/" },
+          { name: tierName, url: BASE + "/" + tier + ".html" },
           { name: lessonTitle, url: window.location.href }
         ]));
       }
     }
 
-    // Tier pages (beginner, intermediate, advanced)
-    else if (pathname.match(/\/(beginner|intermediate|advanced)\.html/)) {
-      const tier = pathname.match(/\/(beginner|intermediate|advanced)/)[1];
-      const tierName = tier.charAt(0).toUpperCase() + tier.slice(1);
+    // Tier pages (beginner, intermediate, advanced, professional)
+    else if (pathname.match(/\/(beginner|intermediate|advanced|professional)\.html/)) {
+      var tierMatch = pathname.match(/\/(beginner|intermediate|advanced|professional)/);
+      var tierPage = tierMatch[1];
+      var tierPageName = tierPage.charAt(0).toUpperCase() + tierPage.slice(1);
 
       injectSchema(createBreadcrumbSchema([
-        { name: "Home", url: "https://education.signalpilot.io/" },
-        { name: tierName, url: window.location.href }
+        { name: "Home", url: BASE + "/" },
+        { name: tierPageName, url: window.location.href }
       ]));
     }
 
-    // Search page
-    else if (pathname.includes('/search.html')) {
-      injectSchema(websiteSchema); // Includes SearchAction
+    // Utility pages (resources, glossary, calculators, search, etc.)
+    else if (pageNameMap[pathname]) {
+      var pageName = pageNameMap[pathname];
 
       injectSchema(createBreadcrumbSchema([
-        { name: "Home", url: "https://education.signalpilot.io/" },
-        { name: "Search", url: "https://education.signalpilot.io/search.html" }
+        { name: "Home", url: BASE + "/" },
+        { name: pageName, url: BASE + pathname }
       ]));
-    }
 
-    // Calculators page
-    else if (pathname.includes('/calculators.html')) {
-      injectSchema(createBreadcrumbSchema([
-        { name: "Home", url: "https://education.signalpilot.io/" },
-        { name: "Calculators", url: "https://education.signalpilot.io/calculators.html" }
-      ]));
+      // SearchAction on search page
+      if (pathname === '/search.html') {
+        injectSchema(websiteSchema);
+      }
     }
 
     logger.log('[SEO] Structured data injected');
@@ -240,10 +506,13 @@
 
   // Expose helper functions globally for custom use
   window.SEO = {
-    createLessonSchema,
-    createBreadcrumbSchema,
-    createFAQSchema,
-    injectSchema
+    createLessonSchema: createLessonSchema,
+    createBreadcrumbSchema: createBreadcrumbSchema,
+    createFAQSchema: createFAQSchema,
+    createTechArticleSchema: createTechArticleSchema,
+    createHowToSchema: createHowToSchema,
+    indicatorSchemas: indicatorSchemas,
+    injectSchema: injectSchema
   };
 
 })();
