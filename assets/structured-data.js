@@ -479,12 +479,17 @@
     else if (pathname.indexOf('/curriculum/') !== -1) {
       var lessonId = window.getLessonId ? window.getLessonId() : null;
 
-      if (lessonId) {
+      // Extract tier from URL path
+      var tierMatch = pathname.match(/\/curriculum\/(beginner|intermediate|advanced|professional)\//);
+      var tier = tierMatch ? tierMatch[1] : null;
+
+      // Extract lesson number from URL or filename
+      var lessonNumMatch = pathname.match(/(\d+)-/);
+      var lessonNumber = lessonNumMatch ? parseInt(lessonNumMatch[1]) : 1;
+
+      if (tier) {
         var lessonTitle = document.querySelector('.article header .headline');
         lessonTitle = lessonTitle ? lessonTitle.textContent : 'Lesson';
-        var tier = lessonId.split('/')[0];
-        var lessonNumberMatch = lessonId.match(/\d+/);
-        var lessonNumber = lessonNumberMatch ? parseInt(lessonNumberMatch[0]) : 1;
         var tierName = tier.charAt(0).toUpperCase() + tier.slice(1);
         var description = '';
         var descMeta = document.querySelector('meta[name="description"]');
@@ -518,12 +523,42 @@
           injectSchema(createHowToSchema(lessonData));
         }
 
-        // Lesson breadcrumb
+        // Lesson breadcrumb: Home > Curriculum > [Course] > [Lesson]
         injectSchema(createBreadcrumbSchema([
           { name: "Home", url: BASE + "/" },
-          { name: tierName, url: BASE + "/" + tier + ".html" },
+          { name: tierName + " Curriculum", url: BASE + "/" + tier + ".html" },
           { name: lessonTitle, url: window.location.href }
         ]));
+
+        // Author schema - Signal Pilot as default author
+        var authorSchema = {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": lessonTitle,
+          "description": description,
+          "author": {
+            "@type": "Organization",
+            "name": "Signal Pilot",
+            "url": "https://signalpilot.io"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Signal Pilot",
+            "url": "https://signalpilot.io",
+            "logo": {
+              "@type": "ImageObject",
+              "url": BASE + "/assets/icons/icon-512x512.png"
+            }
+          },
+          "datePublished": document.querySelector('meta[property="article:published_time"]') ?
+            document.querySelector('meta[property="article:published_time"]').getAttribute('content') :
+            new Date().toISOString(),
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": window.location.href
+          }
+        };
+        injectSchema(authorSchema);
       }
     }
 
