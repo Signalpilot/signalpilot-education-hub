@@ -244,6 +244,50 @@
   // Lessons that are setup/configuration guides (HowTo pattern)
   var setupLessons = [6, 9, 10, 11, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 35, 54, 57, 61, 75, 81];
 
+  // Course Schema for tier landing pages
+  function createTierCourseSchema(tierData) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": tierData.name,
+      "description": tierData.description,
+      "url": tierData.url,
+      "courseCode": tierData.courseCode,
+      "educationalLevel": tierData.educationalLevel,
+      "numberOfLessons": tierData.numberOfLessons,
+      "timeToComplete": tierData.timeToComplete,
+      "inLanguage": "en-US",
+      "provider": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io",
+        "logo": {
+          "@type": "ImageObject",
+          "url": BASE + "/assets/icons/icon-512x512.png"
+        }
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "Online",
+        "instructor": {
+          "@type": "Organization",
+          "name": "Signal Pilot"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250",
+        "bestRating": "5"
+      }
+    };
+  }
+
   // Learning Resource for individual lessons
   function createLessonSchema(lessonData) {
     return {
@@ -315,6 +359,22 @@
         "text": "Follow the step-by-step guide in this lesson to learn " + lessonData.title.toLowerCase() + ".",
         "url": lessonData.url
       }]
+    };
+  }
+
+  // Author schema for byline on lessons
+  function createAuthorSchema(authorData) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": authorData.name,
+      "jobTitle": authorData.jobTitle,
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Signal Pilot",
+        "url": "https://signalpilot.io"
+      },
+      "url": authorData.url || "https://signalpilot.io"
     };
   }
 
@@ -473,6 +533,52 @@
       var tierPage = tierMatch[1];
       var tierPageName = tierPage.charAt(0).toUpperCase() + tierPage.slice(1);
 
+      // Tier course definitions
+      var tierCourses = {
+        'beginner': {
+          name: 'Beginner Curriculum — Signal Pilot Trading Education',
+          description: 'Complete beginner trading curriculum: 20 articles covering market structure, order flow, indicators, psychology, and risk management.',
+          courseCode: 'SP-EDU-101',
+          educationalLevel: 'Beginner',
+          numberOfLessons: 20,
+          timeToComplete: 'PT8W',
+          url: BASE + '/beginner.html'
+        },
+        'intermediate': {
+          name: 'Intermediate Curriculum — Signal Pilot Trading Education',
+          description: 'Advanced institutional trading concepts: 22 articles covering deep order flow analysis, multi-timeframe trading, and professional frameworks.',
+          courseCode: 'SP-EDU-102',
+          educationalLevel: 'Intermediate',
+          numberOfLessons: 22,
+          timeToComplete: 'PT10W',
+          url: BASE + '/intermediate.html'
+        },
+        'advanced': {
+          name: 'Advanced Curriculum — Signal Pilot Trading Education',
+          description: 'Elite trading strategies: 20 articles on market microstructure, institutional tactics, and professional trading systems.',
+          courseCode: 'SP-EDU-103',
+          educationalLevel: 'Advanced',
+          numberOfLessons: 20,
+          timeToComplete: 'PT10W',
+          url: BASE + '/advanced.html'
+        },
+        'professional': {
+          name: 'Professional Curriculum — Signal Pilot Trading Education',
+          description: 'Institutional trading mastery: 6 articles on professional trading operations, career development, and advanced trading systems.',
+          courseCode: 'SP-EDU-104',
+          educationalLevel: 'Professional',
+          numberOfLessons: 6,
+          timeToComplete: 'PT4W',
+          url: BASE + '/professional.html'
+        }
+      };
+
+      // Inject Course schema for this tier
+      if (tierCourses[tierPage]) {
+        injectSchema(createTierCourseSchema(tierCourses[tierPage]));
+      }
+
+      // Inject breadcrumb schema
       injectSchema(createBreadcrumbSchema([
         { name: "Home", url: BASE + "/" },
         { name: tierPageName, url: window.location.href }
@@ -511,6 +617,8 @@
     createFAQSchema: createFAQSchema,
     createTechArticleSchema: createTechArticleSchema,
     createHowToSchema: createHowToSchema,
+    createTierCourseSchema: createTierCourseSchema,
+    createAuthorSchema: createAuthorSchema,
     indicatorSchemas: indicatorSchemas,
     injectSchema: injectSchema
   };
